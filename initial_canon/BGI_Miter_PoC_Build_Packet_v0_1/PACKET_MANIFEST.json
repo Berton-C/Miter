@@ -1,0 +1,68 @@
+{
+  "packet": "BGI Miter PoC Build Packet",
+  "version": "0.1 Draft",
+  "generated_at_utc": "2026-09-01T12:45:12.307928+00:00",
+  "file_count": 12,
+  "files": [
+    {
+      "name": "ACCEPTANCE.md",
+      "size_bytes": 41676,
+      "sha256": "cf4bbdeaeee48641bd181e8130a9b4a948e9ab5ffb5882a190307956b84be155"
+    },
+    {
+      "name": "AUTHORITY_MAP.md",
+      "size_bytes": 24876,
+      "sha256": "a57c93571212b0917fcd0041070cf95eb96e6ef0da59d6aea387450f186b4840"
+    },
+    {
+      "name": "CONSTITUTION.md",
+      "size_bytes": 28942,
+      "sha256": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c"
+    },
+    {
+      "name": "DECISIONS.md",
+      "size_bytes": 17815,
+      "sha256": "db30292cfc6fead859690f221ca491239bc4d4a1710667534cc9274e57323cb2"
+    },
+    {
+      "name": "FAST_PATH.md",
+      "size_bytes": 12939,
+      "sha256": "53b6ba5d4c8576dbe31a8daa165bd22b535ffe3338f0346f269dc87651989b1f"
+    },
+    {
+      "name": "FINAL_POC_REPORT_TEMPLATE.md",
+      "size_bytes": 6282,
+      "sha256": "56648fc0133dccb4b2f5712ba814d41142dd204ea1b25d2a7910583d65819e00"
+    },
+    {
+      "name": "GPT_WORK_KICKOFF_PROMPT.md",
+      "size_bytes": 7062,
+      "sha256": "e9eb4e72f5aff281619e1e6f524b4af2683c2e2a03cac6de74a95e18c4df02c4"
+    },
+    {
+      "name": "HEADLONG_INHERITANCE.md",
+      "size_bytes": 15408,
+      "sha256": "d3d34dabb5ed922d6706c5b33091ec97b738bb21d7741a0d82582c1e95772f63"
+    },
+    {
+      "name": "POC_SPEC.md",
+      "size_bytes": 34101,
+      "sha256": "67bed838dbeb9a886ab69fac09ed38455a24913caaa5b574aed806d873a5da92"
+    },
+    {
+      "name": "README.md",
+      "size_bytes": 15832,
+      "sha256": "5e6a45828b74ee29a0eab00c3d2bc6016320761b7153104b325bf22bb0b9803e"
+    },
+    {
+      "name": "SOURCE_MATERIALS_CHECKLIST.md",
+      "size_bytes": 7442,
+      "sha256": "392eeaa9bdd712b0eb827f0e272465fb7337ac92e62d9ecd015282a23cc627d4"
+    },
+    {
+      "name": "WORK_PROTOCOL.md",
+      "size_bytes": 26687,
+      "sha256": "f3b2424ee7f8019c0a6fab769973e39f844fdcc239cf69e925dc646c7364a98d"
+    }
+  ]
+}

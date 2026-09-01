@@ -1,0 +1,68 @@
+# ----------------------------------------------------------------------
+# macOS metadata
+# ----------------------------------------------------------------------
+.DS_Store
+**/.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# ----------------------------------------------------------------------
+# Secrets and credentials
+# ----------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+*.pem
+*.key
+*.p12
+
+# ----------------------------------------------------------------------
+# Local model weights and caches
+# ----------------------------------------------------------------------
+local_models/
+model_weights/
+*.gguf
+*.safetensors
+*.onnx
+
+# ----------------------------------------------------------------------
+# Private or licensed local assets
+# The full NRC VAD data must never be redistributed through this repo.
+# ----------------------------------------------------------------------
+private_assets/
+local_assets/
+NRC_VAD_Lexicon*/
+NRC-VAD-Lexicon*
+nrc_vad_full/
+
+# ----------------------------------------------------------------------
+# ChromaDB and local databases
+# ----------------------------------------------------------------------
+chroma_db/
+.chroma/
+chroma/
+*.sqlite
+*.sqlite3
+
+# ----------------------------------------------------------------------
+# Live runtime state
+# Runtime documentation/placeholders may remain tracked.
+# ----------------------------------------------------------------------
+runtime/*
+!runtime/.gitkeep
+!runtime/README.md
+logs/
+tmp/
+cache/
+*.log
+
+# ----------------------------------------------------------------------
+# Language and editor caches
+# ----------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
