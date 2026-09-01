@@ -1,0 +1,6 @@
+PASS
+
+No credentials, authorization headers, bearer tokens, private keys, model
+weights, databases, compiled libraries, Chroma persistence, or NRC VAD assets
+were found in the G08 implementation or evidence. The book fixture is synthetic
+and contains no private user manuscript content.

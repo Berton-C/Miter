@@ -1,0 +1,3 @@
+-rw------- runtime/g08/continuity/projects/project-g08-glass-archive/capsules/capsule-g08-001.json
+-rw------- runtime/g08/continuity/projects/project-g08-glass-archive/capsules/capsule-g08-002.json
+-rw------- runtime/g08/continuity/projects/project-g08-glass-archive/current.json

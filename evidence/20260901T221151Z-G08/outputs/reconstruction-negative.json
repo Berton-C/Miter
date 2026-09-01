@@ -1,0 +1,22 @@
+{
+  "candidate_count":2,
+  "candidates": [
+    {
+      "capsule_id":"capsule-g08-001",
+      "content_hash":"ff5bb022c87ef3d7bfed253c425e56c9e0481c1d487a0c24b0e1f9471ea1e2d3",
+      "stored_status":"active"
+    },
+    {
+      "capsule_id":"capsule-g08-002",
+      "content_hash":"01cc5fd17e657d12b848e7f11141773b7cc50921c69ba2544923909359e0865d",
+      "stored_status":"current"
+    }
+  ],
+  "project_id":"project-g08-glass-archive",
+  "reason":"current-index-missing",
+  "schema":"miter-continuity-reconstruction-v1",
+  "selected_capsule_id":null,
+  "selection_policy":"explicit-index-required",
+  "status":"ambiguous",
+  "timestamp_fallback":false
+}

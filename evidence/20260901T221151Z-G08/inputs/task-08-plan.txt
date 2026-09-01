@@ -1,0 +1,21 @@
+GATE: G08 — Structured continuity capsule
+REQUIREMENT IDS: G08, W-010 through W-018, W-050, W-055, W-056, C-032, C-034, C-039, C-045
+CONSTITUTIONAL LAWS: exact continuity is structured; corrections are additive; prior history is never rewritten
+FILES EXPECTED TO CHANGE: effect_membranes/miter_continuity.pl; src/continuity.metta; scripts/g08/*; tests/fixtures/g08_*; this evidence directory
+FILES FORBIDDEN TO CHANGE: protected packet; initial_canon/*; config/local/*; G07 ledger; ~/.miter
+POSITIVE FIXTURE: two checkpoints for project-g08-glass-archive plus explicit current index
+NEGATIVE CONTROL: copied capsule store with current.json removed and both capsules retained
+EXPECTED OBSERVABLE DIFFERENCE: indexed store reconstructs capsule 002 exactly; indexless store reports two candidates and no selection
+CURRENT UNPROVEN ASSUMPTIONS: immutable capsule hashes remain stable across process restart; explicit index is sufficient to distinguish current state
+ROLLBACK METHOD: discard only ignored runtime/g08 and revert this bounded commit before push
+
+Hypothesis: exact book state can be recovered from an explicit, hash-verified
+capsule and current pointer without vector search, timestamp ranking, or an LLM
+context window.
+
+Positive expectation: the current manuscript path/hash, paragraph marker,
+question, and next movement are exact; capsule 001 remains byte-identical and
+directly accessible while capsule 002 explicitly supersedes it.
+
+Negative expectation: with current.json absent, recovery lists both capsule IDs
+in deterministic ID order, selects neither, and reports ambiguity.

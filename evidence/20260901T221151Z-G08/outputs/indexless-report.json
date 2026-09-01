@@ -1,0 +1,20 @@
+{
+  "capsule_count":2,
+  "capsule_file_sha256": [
+    {
+      "file":"capsule-g08-002.json",
+      "sha256":"847a409d1da59067e15c6acbc0e756a697c192f12079c08a111ab7f7abea1b1a"
+    },
+    {
+      "file":"capsule-g08-001.json",
+      "sha256":"cb10b21595e8cf3f816d032eec163bd0e0c1681a00fc509b0fc51fc3c0b7aa3d"
+    }
+  ],
+  "capsules_retained":true,
+  "destination_pointer_exists":false,
+  "project_id":"project-g08-glass-archive",
+  "removed_pointer":"current.json",
+  "schema":"miter-g08-indexless-copy-v1",
+  "source_pointer_existed":true,
+  "timestamp_selection_permitted":false
+}

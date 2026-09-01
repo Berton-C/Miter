@@ -1,0 +1,12 @@
+## main...origin/main
+?? effect_membranes/miter_continuity.pl
+?? evidence/20260901T221151Z-G08/
+?? scripts/g08/
+?? src/continuity.metta
+?? tests/fixtures/g08_capsule_current.json
+?? tests/fixtures/g08_capsule_prior.json
+?? tests/fixtures/g08_manuscript.md
+?? tests/fixtures/g08_negative_reconstruct.metta
+?? tests/fixtures/g08_reconstruct.metta
+?? tests/fixtures/g08_write_current.metta
+?? tests/fixtures/g08_write_prior.metta
