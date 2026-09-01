@@ -1,0 +1,207 @@
+[33m--> metta runnable  -->
+[36m!(bind! &g04-results (new-space))
+[33m-->  prolog goal  -->[35m 
+:- findall(A, 'bind!'('&g04-results', ['new-space'], A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (admit-if-valid $status $alias)
+   (if (== $status semantic-result-valid)
+       (let $ignored (add-atom &g04-results (semantic-result g04-fixed-request-001 $alias validated))
+            semantic-result-admitted)
+       $status))
+[33m--> prolog clause -->
+[32m'admit-if-valid'(A, B, C) :-
+    ==(A, 'semantic-result-valid', D),
+    (   D==true
+    ->  C='semantic-result-admitted',
+        true,
+        'add-atom'('&g04-results',
+                   ['semantic-result', 'g04-fixed-request-001', B, validated],
+                   _)
+    ;   C=A
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self (library lib_import))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library(lib_import, B),
+             'import!'('&self', B, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function consult)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(consult, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_file $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                           ($prologfile (consult))
+                                                                           ($function (superpose $importfunctions)))
+                                                                          (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_file(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    consult(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function use_module)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(use_module, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_module $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                             ($prologfile (use_module))
+                                                                             ($function (superpose $importfunctions)))
+                                                                            (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_module(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    use_module(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file (library lib_import.pl) (static-import! git-import! use-module!))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library('lib_import.pl', B),
+             import_prolog_functions_from_file(B,
+                                               [ 'static-import!',
+                                                 'git-import!',
+                                                 'use-module!'
+                                               ],
+                                               A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_llm.pl" (miter_lm_prepare_request miter_lm_execute_request miter_lm_parse_result))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_llm.pl",
+                                             [ miter_lm_prepare_request,
+                                               miter_lm_execute_request,
+                                               miter_lm_parse_result
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_prepare_request "./config/local/g03-model-profiles.json" "qwen-local" "./tests/fixtures/g04_structured_request.json" "./runtime/g04/qwen.request.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_prepare_request("./config/local/g03-model-profiles.json",
+                                    "qwen-local",
+                                    "./tests/fixtures/g04_structured_request.json",
+                                    "./runtime/g04/qwen.request.json",
+                                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_execute_request "./runtime/g04/qwen.request.json" "./runtime/g04/qwen.raw.json" "./runtime/g04/qwen.timing.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_execute_request("./runtime/g04/qwen.request.json",
+                                    "./runtime/g04/qwen.raw.json",
+                                    "./runtime/g04/qwen.timing.json",
+                                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(let $qwen-status (miter_lm_parse_result "./tests/fixtures/g04_structured_request.json" "./runtime/g04/qwen.raw.json" "./runtime/g04/qwen.typed.json")
+      (admit-if-valid $qwen-status qwen-local))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( B=C,
+             miter_lm_parse_result("./tests/fixtures/g04_structured_request.json",
+                                   "./runtime/g04/qwen.raw.json",
+                                   "./runtime/g04/qwen.typed.json",
+                                   C),
+             'admit-if-valid'(B, 'qwen-local', A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_prepare_request "./config/local/g03-model-profiles.json" "nemotron-local" "./tests/fixtures/g04_nemotron_structured_request.json" "./runtime/g04/nemotron.request.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_prepare_request("./config/local/g03-model-profiles.json",
+                                    "nemotron-local",
+                                    "./tests/fixtures/g04_nemotron_structured_request.json",
+                                    "./runtime/g04/nemotron.request.json",
+                                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_execute_request "./runtime/g04/nemotron.request.json" "./runtime/g04/nemotron.raw.json" "./runtime/g04/nemotron.timing.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_execute_request("./runtime/g04/nemotron.request.json",
+                                    "./runtime/g04/nemotron.raw.json",
+                                    "./runtime/g04/nemotron.timing.json",
+                                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(let $nemotron-status (miter_lm_parse_result "./tests/fixtures/g04_nemotron_structured_request.json" "./runtime/g04/nemotron.raw.json" "./runtime/g04/nemotron.typed.json")
+      (admit-if-valid $nemotron-status nemotron-local))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( B=C,
+             miter_lm_parse_result("./tests/fixtures/g04_nemotron_structured_request.json",
+                                   "./runtime/g04/nemotron.raw.json",
+                                   "./runtime/g04/nemotron.typed.json",
+                                   C),
+             'admit-if-valid'(B, 'nemotron-local', A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(let $malformed-status (miter_lm_parse_result "./tests/fixtures/g04_structured_request.json" "./tests/fixtures/g04_malformed_response.json" "./runtime/g04/malformed.typed.json")
+      (admit-if-valid $malformed-status malformed-mock))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( B=C,
+             miter_lm_parse_result("./tests/fixtures/g04_structured_request.json",
+                                   "./tests/fixtures/g04_malformed_response.json",
+                                   "./runtime/g04/malformed.typed.json",
+                                   C),
+             'admit-if-valid'(B, 'malformed-mock', A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(collapse (match &g04-results (semantic-result $request $alias $standing)
+                               (semantic-result $request $alias $standing)))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           findall(['semantic-result', B, C, D],
+                   match('&g04-results',
+                         ['semantic-result', B, C, D],
+                         ['semantic-result', B, C, D],
+                         ['semantic-result', B, C, D]),
+                   A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+true
+true
+true
+model-request-prepared
+raw-model-response-stored
+semantic-result-admitted
+model-request-prepared
+raw-model-response-stored
+semantic-result-admitted
+malformed-model-response
+((semantic-result g04-fixed-request-001 qwen-local validated) (semantic-result g04-fixed-request-001 nemotron-local validated))

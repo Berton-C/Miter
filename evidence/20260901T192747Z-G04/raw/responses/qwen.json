@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-zpuafxwvtpo8z8yo5qq9pg",
+  "object": "chat.completion",
+  "created": 1788292904,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"answer\": \"inside the blue box\",\n  \"completion_status\": \"complete\",\n  \"evidence_spans\": [\n    \"The copper key is inside the blue box.\"\n  ],\n  \"request_id\": \"g04-fixed-request-001\",\n  \"uncertainty\": 0\n}",
+        "reasoning_content": "We need answer user's request. Need produce one bounded semantic reading as data. Return only object required by supplied schema. User didn't explicitly provide schema? They say \"Return only the object required by the supplied schema.\" But no schema in prompt? Need infer likely fields: maybe answer, evidence, completion_status, uncertainty. Need output JSON object only. Need cite one exact evidence span from SOURCE. Source: \"The copper key is inside the blue box.\" Request: State where the copper key is. If source suffices, completion_status complete. uncertainty number 0 to 1.\n\nNeed likely object: {\"answer\":\"inside the blue box\",\"evidence\":\"The copper key is inside the blue box.\",\"completion_status\":\"complete\",\"uncertainty\":0}. Ensure exact evidence span. Could be just span \"inside the blue box\"? They ask cite one exact evidence span from SOURCE. Could use full sentence. Need only object. No code. Need maybe schema fields: \"where\", \"evidence\", \"completion_status\", \"uncertainty\". We need choose. Since request: State where... Cite one exact evidence span... completion_status... uncertainty. So object likely:\n{\n  \"where\": \"inside the blue box\",\n  \"evidence\": \"The copper key is inside the blue box.\",\n  \"completion_status\": \"complete\",\n  \"uncertainty\": 0\n}\nNeed ensure no extra. Final only JSON.\n",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 132,
+    "completion_tokens": 376,
+    "total_tokens": 508,
+    "completion_tokens_details": {
+      "reasoning_tokens": 295
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 215,
+    "accepted_draft_tokens_count": 197,
+    "rejected_draft_tokens_count": 18
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

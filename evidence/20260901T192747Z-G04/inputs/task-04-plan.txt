@@ -1,0 +1,10 @@
+GATE: G04
+REQUIREMENT IDS: G04, E-001–E-006, W-010–W-017, W-080–W-083, D-009, D-013, D-014, D-022, D-031, D-036, D-037
+CONSTITUTIONAL LAWS: C-005–C-007, C-020–C-023, C-060–C-065
+FILES EXPECTED TO CHANGE: effect_membranes/miter_llm.pl; tests/fixtures/g04_structured_request.json; tests/fixtures/g04_nemotron_structured_request.json; tests/fixtures/g04_malformed_response.json; tests/fixtures/g04_schema_inference.metta; scripts/g04/run_nemotron_cpu_service.sh; scripts/g04/verify_g04.sh; ignored runtime/g04/**; evidence/20260901T192747Z-G04/**
+FILES FORBIDDEN TO CHANGE: CONSTITUTION.md; ACCEPTANCE.md; AUTHORITY_MAP.md; POC_SPEC.md; DECISIONS.md; WORK_PROTOCOL.md; initial_canon/**; docs/sources/**; /Users/bcb/Documents/ClarityOmega/clarityomega/**; existing Chroma persistence; config/local/g03-model-profiles.json; ~/.miter/**
+POSITIVE FIXTURE: Qwen and Nemotron receive the same fixed request and strict five-field JSON schema; each raw provider envelope is stored separately, parsed mechanically, round-trips the request ID, and admits exactly one typed semantic-result atom
+NEGATIVE CONTROL: The same parser receives a committed malformed mock response; it must return a typed rejection, write no parsed product, and admit no semantic-result atom
+EXPECTED OBSERVABLE DIFFERENCE: Two positive semantic-result atoms exist, one per model, while the malformed arm creates none
+CURRENT UNPROVEN ASSUMPTIONS: Both models complete LM Studio's strict schema; native SWI can POST and retain the raw body; PeTTa can conditionally admit results into an isolated AtomSpace; the parser rejects every missing or malformed required field; the attributable request path contains no Python
+ROLLBACK METHOD: Remove only G04 implementation additions, fixtures, verifier, ignored runtime/g04, evidence, and the isolated PeTTa checkout; remove the side-by-side 2.29.0, 2.31.2, and 2.32.0 runtime extensions if desired; the original 2.28.2 selection and Qwen load configuration were restored; no Chroma mutation or ~/.miter state is introduced

@@ -1,0 +1,1 @@
+{"verifier":"g04-verifier-v1","status":"PASS","models":2,"semantic_atoms":2,"malformed_atoms":0,"missing_or_malformed_rejected":true,"request_id_round_trip":true,"raw_typed_separate":true,"provider_output_evaluated":false,"python_process":false,"qwen_duration_ms":71262,"nemotron_duration_ms":171730}

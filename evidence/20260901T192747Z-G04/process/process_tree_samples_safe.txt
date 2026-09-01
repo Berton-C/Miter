@@ -1,0 +1,112 @@
+2026-09-01T20:02:04Z
+45717   708 bcb                    03:21 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:21 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:21 swipl
+2026-09-01T20:02:08Z
+45717   708 bcb                    03:25 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:25 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:25 swipl
+2026-09-01T20:02:11Z
+45717   708 bcb                    03:28 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:28 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:28 swipl
+2026-09-01T20:02:14Z
+45717   708 bcb                    03:31 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:31 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:31 swipl
+2026-09-01T20:02:17Z
+45717   708 bcb                    03:34 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:34 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:34 swipl
+2026-09-01T20:02:20Z
+45717   708 bcb                    03:37 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:37 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:37 swipl
+2026-09-01T20:02:23Z
+45717   708 bcb                    03:40 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:40 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:40 swipl
+2026-09-01T20:02:26Z
+45717   708 bcb                    03:43 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:43 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:43 swipl
+2026-09-01T20:02:29Z
+45717   708 bcb                    03:46 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:46 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:46 swipl
+2026-09-01T20:02:32Z
+45717   708 bcb                    03:49 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:49 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:49 swipl
+2026-09-01T20:02:35Z
+45717   708 bcb                    03:52 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:52 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:52 swipl
+2026-09-01T20:02:38Z
+45717   708 bcb                    03:55 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:55 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:55 swipl
+2026-09-01T20:02:41Z
+45717   708 bcb                    03:59 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    01:59 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    00:59 swipl
+2026-09-01T20:02:45Z
+45717   708 bcb                    04:02 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    02:02 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    01:02 swipl
+2026-09-01T20:02:48Z
+45717   708 bcb                    04:05 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    02:05 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    01:05 swipl
+2026-09-01T20:02:51Z
+45717   708 bcb                    04:08 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    02:08 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    01:08 swipl
+2026-09-01T20:03:21Z
+45717   708 bcb                    04:38 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    02:38 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    01:38 swipl
+2026-09-01T20:03:24Z
+45717   708 bcb                    04:41 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    02:41 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    01:41 swipl
+2026-09-01T20:03:27Z
+45717   708 bcb                    04:44 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    02:44 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    01:44 swipl
+2026-09-01T20:03:30Z
+45717   708 bcb                    04:47 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    02:47 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    01:47 swipl
+2026-09-01T20:03:33Z
+45717   708 bcb                    04:50 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    02:50 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    01:50 swipl
+2026-09-01T20:03:36Z
+45717   708 bcb                    04:54 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    02:54 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    01:54 swipl
+2026-09-01T20:03:40Z
+45717   708 bcb                    04:57 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    02:57 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    01:57 swipl
+2026-09-01T20:03:43Z
+45717   708 bcb                    05:00 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    03:00 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    02:00 swipl
+2026-09-01T20:03:46Z
+45717   708 bcb                    05:03 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    03:03 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    02:03 swipl
+2026-09-01T20:03:49Z
+45717   708 bcb                    05:06 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    03:06 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    02:06 swipl
+2026-09-01T20:03:52Z
+45717   708 bcb                    05:09 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    03:09 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    02:09 swipl
+2026-09-01T20:03:55Z
+45717   708 bcb                    05:12 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46020 98872 bcb                    03:12 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+46256 46252 bcb                    02:12 swipl

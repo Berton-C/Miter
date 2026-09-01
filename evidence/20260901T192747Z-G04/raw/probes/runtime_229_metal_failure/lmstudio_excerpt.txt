@@ -1,0 +1,75 @@
+[2026-09-01 21:52:34][DEBUG] Received request: POST to /v1/chat/completions with body {
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "content": "Produce one bounded semantic reading as data. Return only the object required by the supplied schema. Do not produce executable code or instructions.",
+      "role": "system"
+    },
+    {
+      "content": "SOURCE: The copper key is inside the blue box. REQUEST: State where the copper key is. Cite one exact evidence span from SOURCE. If the source suffices, completion_status must be complete. uncertainty is a number from 0 to 1.",
+      "role": "user"
+    }
+  ],
+  "model": "nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+  "response_format": {
+    "json_schema": {
+      "name": "miter_semantic_result",
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "answer": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "completion_status": {
+            "enum": [
+              "complete",
+              "insufficient_evidence"
+            ],
+            "type": "string"
+          },
+          "evidence_spans": {
+            "items": {
+              "maxLength": 160,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 3,
+            "minItems": 1,
+            "type": "array"
+          },
+          "request_id": {
+            "const": "g04-fixed-request-001",
+            "type": "string"
+          },
+          "uncertainty": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "request_id",
+          "answer",
+          "uncertainty",
+          "evidence_spans",
+          "completion_status"
+        ],
+        "type": "object"
+      },
+      "strict": true
+    },
+    "type": "json_schema"
+  },
+  "seed": 404,
+  "stream": false,
+  "temperature": 0,
+  "ttl": 300
+}
+[2026-09-01 21:52:34][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 21:52:34][DEBUG] 0.25.792.666 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+[2026-09-01 21:52:34][DEBUG] 0.25.793.193 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+[2026-09-01 21:52:34][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Prompt processing progress: 0.0%
+[2026-09-01 21:52:35][DEBUG] 0.26.276.323 E ggml_metal_library_compile_pipeline: failed to compile pipeline: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 21:52:35][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error

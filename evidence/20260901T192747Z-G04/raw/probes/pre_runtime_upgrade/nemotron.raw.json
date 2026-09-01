@@ -1,0 +1,8 @@
+{
+    "error": {
+        "message": "Failed to load model \"nemotron-3.5-30b-a3b-antislop-ftpo-i1\". Error: Engine protocol runtime llama-server for 9KqGZIascFTauqrkyvKgBx3m exited before becoming healthy. exitCode=1, signal=null",
+        "type": "invalid_request_error",
+        "param": "model",
+        "code": null
+    }
+}

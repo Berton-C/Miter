@@ -1,0 +1,7 @@
+effect_membranes/miter_llm.pl
+scripts/g04/run_nemotron_cpu_service.sh
+scripts/g04/verify_g04.sh
+tests/fixtures/g04_malformed_response.json
+tests/fixtures/g04_nemotron_structured_request.json
+tests/fixtures/g04_schema_inference.metta
+tests/fixtures/g04_structured_request.json

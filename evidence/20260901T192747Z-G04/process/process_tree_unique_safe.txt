@@ -1,0 +1,2 @@
+bcb /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.32.0/llama-server
+bcb swipl

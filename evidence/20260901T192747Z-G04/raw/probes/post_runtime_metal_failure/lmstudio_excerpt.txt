@@ -1,0 +1,132 @@
+[2026-09-01 21:48:09][DEBUG] Received request: POST to /v1/chat/completions with body {
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "content": "Produce one bounded semantic reading as data. Return only the object required by the supplied schema. Do not produce executable code or instructions.",
+      "role": "system"
+    },
+    {
+      "content": "SOURCE: The copper key is inside the blue box. REQUEST: State where the copper key is. Cite one exact evidence span from SOURCE. If the source suffices, completion_status must be complete. uncertainty is a number from 0 to 1.",
+      "role": "user"
+    }
+  ],
+  "model": "nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+  "response_format": {
+    "json_schema": {
+      "name": "miter_semantic_result",
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "answer": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "completion_status": {
+            "enum": [
+              "complete",
+              "insufficient_evidence"
+            ],
+            "type": "string"
+          },
+          "evidence_spans": {
+            "items": {
+              "maxLength": 160,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 3,
+            "minItems": 1,
+            "type": "array"
+          },
+          "request_id": {
+            "const": "g04-fixed-request-001",
+            "type": "string"
+          },
+          "uncertainty": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "request_id",
+          "answer",
+          "uncertainty",
+          "evidence_spans",
+          "completion_status"
+        ],
+        "type": "object"
+      },
+      "strict": true
+    },
+    "type": "json_schema"
+  },
+  "seed": 404,
+  "stream": false,
+  "temperature": 0,
+  "ttl": 300
+}
+[2026-09-01 21:48:13][DEBUG][LMSAuthenticator][Client=lms-cli] Client created.
+[2026-09-01 21:48:13][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=listLoaded] Listing loaded models
+[2026-09-01 21:48:13][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=listLoaded] Listing loaded models
+[2026-09-01 21:48:13][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=getLoadConfig] Getting load config stack for specifier: {"type":"instanceReference","instanceReference":"JLGIB3MUh8HGew94E2gL0vfA"}
+[2026-09-01 21:48:13][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=getLoadConfig] Getting load config stack for specifier: {"type":"instanceReference","instanceReference":"BHePcvfjgI9+E+K9AeudWLtF"}
+[2026-09-01 21:48:13][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=getModelInfo] Getting descriptor for specifier: {"type":"instanceReference","instanceReference":"JLGIB3MUh8HGew94E2gL0vfA"}
+[2026-09-01 21:48:13][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=getModelInfo] Getting descriptor for specifier: {"type":"instanceReference","instanceReference":"BHePcvfjgI9+E+K9AeudWLtF"}
+[2026-09-01 21:48:13][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=getLoadConfig] Getting load config stack for specifier: {"type":"instanceReference","instanceReference":"JLGIB3MUh8HGew94E2gL0vfA"}
+[2026-09-01 21:48:13][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=getLoadConfig] Getting load config stack for specifier: {"type":"instanceReference","instanceReference":"BHePcvfjgI9+E+K9AeudWLtF"}
+[2026-09-01 21:48:13][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=getModelInfo] Getting descriptor for specifier: {"type":"instanceReference","instanceReference":"JLGIB3MUh8HGew94E2gL0vfA"}
+[2026-09-01 21:48:13][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=getModelInfo] Getting descriptor for specifier: {"type":"instanceReference","instanceReference":"BHePcvfjgI9+E+K9AeudWLtF"}
+[2026-09-01 21:48:13][DEBUG][LMSAuthenticator][Client=lms-cli][Endpoint=getInstanceProcessingState] Getting instance processing state for specifier: {"type":"instanceReference","instanceReference":"JLGIB3MUh8HGew94E2gL0vfA"}
+[2026-09-01 21:48:13][DEBUG][LMSAuthenticator][Client=lms-cli][Endpoint=getInstanceProcessingState] Getting instance processing state for specifier: {"type":"instanceReference","instanceReference":"BHePcvfjgI9+E+K9AeudWLtF"}
+[2026-09-01 21:48:13][DEBUG][LMSAuthenticator][Client=lms-cli] Client disconnected.
+[2026-09-01 21:48:28][DEBUG] 0.17.551.916 W DEPRECATED: --direct-io and --no-direct-io are deprecated. use --load-mode dio instead
+0.17.551.920 W DEPRECATED: --mlock is deprecated. use --load-mode mlock instead
+[2026-09-01 21:48:28][DEBUG] 0.17.556.437 I srv          init: The UI is disabled
+0.17.556.440 I srv          init: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+[2026-09-01 21:48:28][DEBUG] 0.17.558.166 I srv    load_model: loading model '/Users/bcb/.lmstudio/models/mradermacher/Nemotron-3.5-30B-A3B-Antislop-FTPO-i1-GGUF/Nemotron-3.5-30B-A3B-Antislop-FTPO.i1-Q5_K_M.gguf'
+[2026-09-01 21:48:28][DEBUG] 0.17.775.450 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 999999, abort
+[2026-09-01 21:48:29][DEBUG] 0.17.943.080 W model has unused tensor blk.52.nextn.enorm.weight (size = 10752 bytes) -- ignoring
+0.17.943.085 W model has unused tensor blk.52.nextn.hnorm.weight (size = 10752 bytes) -- ignoring
+0.17.943.088 W model has unused tensor blk.52.nextn.eh_proj.weight (size = 9934848 bytes) -- ignoring
+0.17.943.092 W model has unused tensor blk.52.nextn.shared_head_norm.weight (size = 10752 bytes) -- ignoring
+0.17.943.095 W model has unused tensor blk.52.attn_norm.weight (size = 10752 bytes) -- ignoring
+0.17.943.101 W model has unused tensor blk.52.attn_q.weight (size = 8257536 bytes) -- ignoring
+0.17.943.103 W model has unused tensor blk.52.attn_k.weight (size = 516096 bytes) -- ignoring
+0.17.943.105 W model has unused tensor blk.52.attn_v.weight (size = 731136 bytes) -- ignoring
+0.17.943.112 W model has unused tensor blk.52.attn_output.weight (size = 7569408 bytes) -- ignoring
+0.17.943.117 W model has unused tensor blk.52.post_attention_norm.weight (size = 10752 bytes) -- ignoring
+0.17.943.120 W model has unused tensor blk.52.ffn_gate_inp.weight (size = 688128 bytes) -- ignoring
+0.17.943.122 W model has unused tensor blk.52.exp_probs_b.bias (size = 512 bytes) -- ignoring
+0.17.943.125 W model has unused tensor blk.52.ffn_down_exps.weight (size = 678494208 bytes) -- ignoring
+0.17.943.127 W model has unused tensor blk.52.ffn_up_exps.weight (size = 478937088 bytes) -- ignoring
+0.17.943.129 W model has unused tensor blk.52.ffn_down_shexp.weight (size = 10601472 bytes) -- ignoring
+[2026-09-01 21:48:29][DEBUG] 0.17.943.134 W model has unused tensor blk.52.ffn_up_shexp.weight (size = 7483392 bytes) -- ignoring
+[2026-09-01 21:48:42][DEBUG] 0.31.088.988 W llama_kv_cache: the V embeddings have different sizes across layers and FA is not enabled - padding V cache to 256
+[2026-09-01 21:48:42][DEBUG] 0.31.257.375 I cmn          init: llama threadpool init, n_threads = 13
+[2026-09-01 21:48:48][DEBUG] 0.36.955.783 I srv    load_model: initializing, n_slots = 4, n_ctx_slot = 225792, kv_unified = 'true'
+[2026-09-01 21:48:48][DEBUG] 0.36.965.969 I srv          init: chat template supports preserving reasoning, consider enabling it via --reasoning-preserve
+[2026-09-01 21:48:48][DEBUG] 0.36.966.265 I srv  llama_server: model loaded
+0.36.966.269 I srv  llama_server: listening on http://127.0.0.1:56459
+[2026-09-01 21:48:48][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 21:48:48][DEBUG] 0.37.279.591 I slot get_availabl: id  3 | task -1 | selected slot by LRU, t_last = -1
+[2026-09-01 21:48:48][DEBUG] 0.37.280.227 I slot launch_slot_: id  3 | task 0 | processing task, is_child = 0
+[2026-09-01 21:48:48][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Prompt processing progress: 0.0%
+[2026-09-01 21:48:48][DEBUG] 0.37.642.666 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 21:48:48][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+    at _0xa3f467.chatCompletionSync (/Applications/LM Studio.app/Contents/Resources/app/.webpack/main/index.js:1156:10512)
+    at async _0x4b1585.<computed> (/Applications/LM Studio.app/Contents/Resources/app/.webpack/main/index.js:1156:1709)
+    at async _0x7645e9.handleChatCompletions (/Applications/LM Studio.app/Contents/Resources/app/.webpack/main/index.js:1101:6794)
+- Caused By: TypeError: terminated
+    at Fetch.onAborted (node:internal/deps/undici/undici:11322:53)
+    at Fetch.emit (node:events:519:28)
+    at Fetch.terminate (node:internal/deps/undici/undici:10480:14)
+    at Object.onError (node:internal/deps/undici/undici:11443:38)
+    at Request.onError (node:internal/deps/undici/undici:2210:31)
+    at Object.errorRequest (node:internal/deps/undici/undici:1707:17)
+    at Socket.<anonymous> (node:internal/deps/undici/undici:6433:16)
+    at Socket.emit (node:events:531:35)
+    at TCP.<anonymous> (node:net:346:12)
+    at TCP.callbackTrampoline (node:internal/async_hooks:130:17)
+[2026-09-01 21:48:51][DEBUG][LMSAuthenticator][Client=lms-cli] Client created.

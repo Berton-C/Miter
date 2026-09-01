@@ -1,0 +1,789 @@
+diff --git a/effect_membranes/miter_llm.pl b/effect_membranes/miter_llm.pl
+index cf2bd78..d9782bc 100644
+--- a/effect_membranes/miter_llm.pl
++++ b/effect_membranes/miter_llm.pl
+@@ -2,7 +2,10 @@
+ % These predicates discover exact service IDs and maintain only local aliases.
+ 
+ :- use_module(library(http/http_open)).
++:- use_module(library(http/http_client)).
++:- use_module(library(http/http_json)).
+ :- use_module(library(http/json)).
++:- use_module(library(uri)).
+ :- use_module(library(filesex)).
+ :- use_module(library(lists)).
+ :- use_module(library(pairs)).
+@@ -40,6 +43,63 @@ miter_lm_resolve_profile(ConfigPath0, Alias0, Result) :-
+     ),
+     !.
+ 
++% Function form: four scalar inputs followed by exactly one scalar result.
++% MeTTa supplies the profile choice; this grounding only prepares transport JSON.
++miter_lm_prepare_request(ConfigPath0, Alias0, TemplatePath0, PreparedPath0, Result) :-
++    (   miter_lm_nonempty_atom(ConfigPath0, ConfigPath),
++        miter_lm_nonempty_atom(Alias0, Alias),
++        miter_lm_nonempty_atom(TemplatePath0, TemplatePath),
++        miter_lm_nonempty_atom(PreparedPath0, PreparedPath)
++    ->  catch(
++            miter_lm_prepare_request_checked(
++                ConfigPath, Alias, TemplatePath, PreparedPath, Result0
++            ),
++            _,
++            Result0 = 'request-preparation-error'
++        ),
++        Result = Result0
++    ;   Result = 'invalid-request-preparation-argument'
++    ),
++    !.
++
++% Function form: three scalar inputs followed by exactly one scalar result.
++% The provider body is retained verbatim; timing is a separate mechanical record.
++miter_lm_execute_request(PreparedPath0, RawPath0, TimingPath0, Result) :-
++    (   miter_lm_nonempty_atom(PreparedPath0, PreparedPath),
++        miter_lm_nonempty_atom(RawPath0, RawPath),
++        miter_lm_nonempty_atom(TimingPath0, TimingPath),
++        RawPath \== TimingPath
++    ->  catch(
++            miter_lm_execute_request_checked(
++                PreparedPath, RawPath, TimingPath, Result0
++            ),
++            Error,
++            miter_lm_execute_exception_result(Error, Result0)
++        ),
++        Result = Result0
++    ;   Result = 'invalid-inference-argument'
++    ),
++    !.
++
++% Function form: three scalar inputs followed by exactly one scalar result.
++% This predicate parses JSON as data and never evaluates provider content.
++miter_lm_parse_result(TemplatePath0, RawPath0, TypedPath0, Result) :-
++    (   miter_lm_nonempty_atom(TemplatePath0, TemplatePath),
++        miter_lm_nonempty_atom(RawPath0, RawPath),
++        miter_lm_nonempty_atom(TypedPath0, TypedPath),
++        RawPath \== TypedPath
++    ->  catch(
++            miter_lm_parse_result_checked(
++                TemplatePath, RawPath, TypedPath, Result0
++            ),
++            _,
++            Result0 = 'semantic-result-write-error'
++        ),
++        Result = Result0
++    ;   Result = 'invalid-result-parse-argument'
++    ),
++    !.
++
+ miter_lm_bind_profile_checked(Endpoint, ConfigPath, Alias, TokenA, TokenB, Result) :-
+     miter_lm_fetch_catalog(Endpoint, Status, Payload),
+     (   Status =:= 200
+@@ -81,6 +141,287 @@ miter_lm_resolve_profile_checked(ConfigPath, Alias, Result) :-
+     ;   Result = 'local-model-config-unavailable'
+     ).
+ 
++miter_lm_prepare_request_checked(
++    ConfigPath, Alias, TemplatePath, PreparedPath, Result
++) :-
++    (   exists_file(PreparedPath)
++    ->  Result = 'prepared-request-output-exists'
++    ;   miter_lm_resolve_profile_checked(ConfigPath, Alias, Resolution),
++        (   miter_lm_profile_resolution_error(Resolution)
++        ->  Result = Resolution
++        ;   miter_lm_read_json_file(TemplatePath, Template),
++            (   miter_lm_request_template(
++                    Template, RequestId, Endpoint, RequestBody
++                )
++            ->  put_dict(model, RequestBody, Resolution, ProviderBody),
++                Prepared = _{
++                    schema:'miter-prepared-model-request-v1',
++                    request_id:RequestId,
++                    alias:Alias,
++                    endpoint:Endpoint,
++                    body:ProviderBody
++                },
++                miter_lm_write_json_atomic(PreparedPath, Prepared),
++                Result = 'model-request-prepared'
++            ;   Result = 'invalid-request-template'
++            )
++        )
++    ).
++
++miter_lm_execute_request_checked(PreparedPath, _RawPath, _TimingPath, Result) :-
++    \+ exists_file(PreparedPath),
++    !,
++    Result = 'prepared-request-unavailable'.
++miter_lm_execute_request_checked(_PreparedPath, RawPath, TimingPath, Result) :-
++    (   exists_file(RawPath)
++    ;   exists_file(TimingPath)
++    ),
++    !,
++    Result = 'inference-output-exists'.
++miter_lm_execute_request_checked(PreparedPath, RawPath, TimingPath, Result) :-
++    miter_lm_read_json_file(PreparedPath, Prepared),
++    (   miter_lm_prepared_request(
++            Prepared, RequestId, Alias, ModelId, Endpoint, ProviderBody
++        )
++    ->  get_time(StartedAt),
++        miter_lm_http_post_raw(Endpoint, ProviderBody, HttpStatus, RawBody),
++        get_time(CompletedAt),
++        DurationMs is round((CompletedAt - StartedAt) * 1000),
++        miter_lm_write_text_atomic(RawPath, RawBody),
++        Timing = _{
++            schema:'miter-model-timing-v1',
++            request_id:RequestId,
++            alias:Alias,
++            model:ModelId,
++            http_status:HttpStatus,
++            started_at_epoch:StartedAt,
++            completed_at_epoch:CompletedAt,
++            duration_ms:DurationMs
++        },
++        miter_lm_write_json_atomic(TimingPath, Timing),
++        (   HttpStatus =:= 200
++        ->  Result = 'raw-model-response-stored'
++        ;   Result = 'lm-studio-inference-http-error'
++        )
++    ;   Result = 'invalid-prepared-request'
++    ).
++
++miter_lm_parse_result_checked(TemplatePath, RawPath, TypedPath, Result) :-
++    (   exists_file(TypedPath)
++    ->  Result = 'semantic-result-output-exists'
++    ;   exists_file(TemplatePath),
++        exists_file(RawPath)
++    ->  (   catch(
++                miter_lm_validated_provider_product(
++                    TemplatePath, RawPath, TypedProduct
++                ),
++                _,
++                fail
++            )
++        ->  miter_lm_write_json_atomic(TypedPath, TypedProduct),
++            Result = 'semantic-result-valid'
++        ;   Result = 'malformed-model-response'
++        )
++    ;   Result = 'model-response-input-unavailable'
++    ).
++
++miter_lm_profile_resolution_error('unknown-model-profile').
++miter_lm_profile_resolution_error('local-model-config-unavailable').
++miter_lm_profile_resolution_error('invalid-local-model-config').
++miter_lm_profile_resolution_error('local-model-config-io-error').
++
++miter_lm_request_template(Template, RequestId, Endpoint, Body) :-
++    is_dict(Template),
++    get_dict(schema, Template, Schema0),
++    miter_lm_nonempty_atom(Schema0, Schema),
++    Schema == 'miter-schema-request-v1',
++    get_dict(request_id, Template, RequestId0),
++    miter_lm_nonempty_atom(RequestId0, RequestId),
++    get_dict(endpoint, Template, Endpoint0),
++    miter_lm_nonempty_atom(Endpoint0, Endpoint),
++    miter_lm_local_chat_endpoint(Endpoint),
++    get_dict(body, Template, Body),
++    is_dict(Body),
++    \+ get_dict(model, Body, _),
++    get_dict(messages, Body, Messages),
++    is_list(Messages),
++    Messages \== [],
++    get_dict(response_format, Body, ResponseFormat),
++    is_dict(ResponseFormat).
++
++miter_lm_local_chat_endpoint(Endpoint) :-
++    uri_components(
++        Endpoint,
++        uri_components(http, Authority, '/v1/chat/completions', Search, Fragment)
++    ),
++    var(Search),
++    var(Fragment),
++    uri_authority_components(
++        Authority,
++        uri_authority(User, Password, Host0, Port)
++    ),
++    var(User),
++    var(Password),
++    downcase_atom(Host0, Host),
++    memberchk(Host, ['127.0.0.1', localhost]),
++    integer(Port),
++    between(1, 65535, Port).
++
++miter_lm_prepared_request(
++    Prepared, RequestId, Alias, ModelId, Endpoint, ProviderBody
++) :-
++    is_dict(Prepared),
++    get_dict(schema, Prepared, Schema0),
++    miter_lm_nonempty_atom(Schema0, Schema),
++    Schema == 'miter-prepared-model-request-v1',
++    get_dict(request_id, Prepared, RequestId0),
++    miter_lm_nonempty_atom(RequestId0, RequestId),
++    get_dict(alias, Prepared, Alias0),
++    miter_lm_nonempty_atom(Alias0, Alias),
++    get_dict(endpoint, Prepared, Endpoint0),
++    miter_lm_nonempty_atom(Endpoint0, Endpoint),
++    miter_lm_local_chat_endpoint(Endpoint),
++    get_dict(body, Prepared, ProviderBody),
++    is_dict(ProviderBody),
++    get_dict(model, ProviderBody, ModelId0),
++    miter_lm_nonempty_atom(ModelId0, ModelId).
++
++miter_lm_http_post_raw(Endpoint, ProviderBody, HttpStatus, RawBody) :-
++    setup_call_cleanup(
++        http_open(
++            Endpoint,
++            Stream,
++            [ method(post),
++              post(json(ProviderBody)),
++              status_code(HttpStatus),
++              timeout(900),
++              request_header('Accept'='application/json')
++            ]
++        ),
++        read_string(Stream, _, RawBody),
++        close(Stream)
++    ).
++
++miter_lm_validated_provider_product(TemplatePath, RawPath, TypedProduct) :-
++    miter_lm_read_json_file(TemplatePath, Template),
++    miter_lm_request_template(Template, RequestId, _, _),
++    miter_lm_read_json_file(RawPath, ProviderResponse),
++    miter_lm_provider_product(ProviderResponse, ProviderProduct),
++    miter_lm_typed_product(ProviderProduct, RequestId, TypedProduct).
++
++miter_lm_provider_product(ProviderResponse, ProviderProduct) :-
++    is_dict(ProviderResponse),
++    get_dict(choices, ProviderResponse, [Choice|_]),
++    is_dict(Choice),
++    get_dict(finish_reason, Choice, FinishReason0),
++    miter_lm_nonempty_atom(FinishReason0, FinishReason),
++    FinishReason == stop,
++    get_dict(message, Choice, Message),
++    is_dict(Message),
++    get_dict(content, Message, Content),
++    string(Content),
++    string_length(Content, ContentLength),
++    ContentLength > 0,
++    atom_string(ContentAtom, Content),
++    atom_json_dict(ContentAtom, ProviderProduct, []).
++
++miter_lm_typed_product(Product, RequestId, TypedProduct) :-
++    is_dict(Product),
++    dict_pairs(Product, _, ProductPairs),
++    pairs_keys(ProductPairs, ProductKeys0),
++    sort(ProductKeys0, ProductKeys),
++    ProductKeys == [
++        answer,
++        completion_status,
++        evidence_spans,
++        request_id,
++        uncertainty
++    ],
++    get_dict(request_id, Product, ProductRequestId0),
++    miter_lm_nonempty_atom(ProductRequestId0, ProductRequestId),
++    ProductRequestId == RequestId,
++    get_dict(answer, Product, Answer),
++    miter_lm_bounded_json_string(Answer, 1, 240),
++    get_dict(uncertainty, Product, Uncertainty),
++    number(Uncertainty),
++    Uncertainty >= 0,
++    Uncertainty =< 1,
++    get_dict(evidence_spans, Product, EvidenceSpans),
++    is_list(EvidenceSpans),
++    length(EvidenceSpans, EvidenceCount),
++    between(1, 3, EvidenceCount),
++    maplist(miter_lm_evidence_span, EvidenceSpans),
++    get_dict(completion_status, Product, CompletionStatus),
++    string(CompletionStatus),
++    memberchk(CompletionStatus, ["complete", "insufficient_evidence"]),
++    TypedProduct = _{
++        request_id:ProductRequestId0,
++        answer:Answer,
++        uncertainty:Uncertainty,
++        evidence_spans:EvidenceSpans,
++        completion_status:CompletionStatus
++    }.
++
++miter_lm_evidence_span(Span) :-
++    miter_lm_bounded_json_string(Span, 1, 160).
++
++miter_lm_bounded_json_string(Value, Minimum, Maximum) :-
++    string(Value),
++    string_length(Value, Length),
++    Length >= Minimum,
++    Length =< Maximum.
++
++miter_lm_read_json_file(Path, Dict) :-
++    setup_call_cleanup(
++        open(Path, read, Stream, [encoding(utf8)]),
++        json_read_dict(Stream, Dict),
++        close(Stream)
++    ).
++
++miter_lm_write_json_atomic(Path, Dict) :-
++    file_directory_name(Path, Directory),
++    make_directory_path(Directory),
++    atom_concat(Path, '.tmp', TemporaryPath),
++    setup_call_cleanup(
++        true,
++        ( setup_call_cleanup(
++              open(TemporaryPath, write, Stream, [encoding(utf8)]),
++              ( json_write_dict(Stream, Dict, [width(100)]),
++                nl(Stream)
++              ),
++              close(Stream)
++          ),
++          chmod(TemporaryPath, 0o600),
++          rename_file(TemporaryPath, Path)
++        ),
++        ( exists_file(TemporaryPath) -> delete_file(TemporaryPath) ; true )
++    ).
++
++miter_lm_write_text_atomic(Path, Text) :-
++    file_directory_name(Path, Directory),
++    make_directory_path(Directory),
++    atom_concat(Path, '.tmp', TemporaryPath),
++    setup_call_cleanup(
++        true,
++        ( setup_call_cleanup(
++              open(TemporaryPath, write, Stream, [encoding(utf8)]),
++              format(Stream, '~s', [Text]),
++              close(Stream)
++          ),
++          chmod(TemporaryPath, 0o600),
++          rename_file(TemporaryPath, Path)
++        ),
++        ( exists_file(TemporaryPath) -> delete_file(TemporaryPath) ; true )
++    ).
++
++miter_lm_execute_exception_result(error(socket_error(_, _), _),
++                                  'lm-studio-unavailable') :- !.
++miter_lm_execute_exception_result(error(timeout_error(_, _), _),
++                                  'lm-studio-unavailable') :- !.
++miter_lm_execute_exception_result(error(permission_error(_, _, _), _),
++                                  'inference-output-write-error') :- !.
++miter_lm_execute_exception_result(_, 'inference-transport-error').
++
+ miter_lm_fetch_catalog(Endpoint, Status, Payload) :-
+     setup_call_cleanup(
+         http_open(
+diff --git a/scripts/g04/run_nemotron_cpu_service.sh b/scripts/g04/run_nemotron_cpu_service.sh
+new file mode 100755
+index 0000000..51b14ef
+--- /dev/null
++++ b/scripts/g04/run_nemotron_cpu_service.sh
+@@ -0,0 +1,45 @@
++#!/bin/sh
++set -eu
++
++if [ "$#" -ne 4 ]; then
++  printf '%s\n' 'usage: run_nemotron_cpu_service.sh RUNTIME_BIN MODEL_FILE PORT MODEL_ID' >&2
++  exit 64
++fi
++
++RUNTIME_BIN=$1
++MODEL_FILE=$2
++PORT=$3
++MODEL_ID=$4
++
++if [ ! -x "$RUNTIME_BIN" ]; then
++  printf '%s\n' 'runtime executable is unavailable' >&2
++  exit 66
++fi
++
++if [ ! -f "$MODEL_FILE" ]; then
++  printf '%s\n' 'model file is unavailable' >&2
++  exit 66
++fi
++
++case "$PORT" in
++  ''|*[!0-9]*)
++    printf '%s\n' 'port must be numeric' >&2
++    exit 64
++    ;;
++esac
++
++exec "$RUNTIME_BIN" \
++  --model "$MODEL_FILE" \
++  --host 127.0.0.1 \
++  --port "$PORT" \
++  --alias "$MODEL_ID" \
++  --ctx-size 8192 \
++  --parallel 1 \
++  --device none \
++  --n-gpu-layers 0 \
++  --no-op-offload \
++  --no-kv-offload \
++  --no-ui \
++  --jinja \
++  --no-reasoning-preserve \
++  --log-colors off
+diff --git a/scripts/g04/verify_g04.sh b/scripts/g04/verify_g04.sh
+new file mode 100755
+index 0000000..dd42509
+--- /dev/null
++++ b/scripts/g04/verify_g04.sh
+@@ -0,0 +1,155 @@
++#!/bin/sh
++set -u
++
++if [ "$#" -ne 20 ]; then
++  printf '%s\n' 'usage: verify_g04.sh STDOUT STATUS CONFIG Q_TEMPLATE N_TEMPLATE MALFORMED Q_REQUEST Q_RAW Q_TYPED Q_TIMING N_REQUEST N_RAW N_TYPED N_TIMING NEG_TYPED PROCESS_TREE CONFIG_BEFORE CONFIG_AFTER PROTECTED_BEFORE PROTECTED_AFTER' >&2
++  exit 64
++fi
++
++STDOUT_FILE=$1
++STATUS_FILE=$2
++CONFIG_FILE=$3
++Q_TEMPLATE_FILE=$4
++N_TEMPLATE_FILE=$5
++MALFORMED_FILE=$6
++Q_REQUEST_FILE=$7
++Q_RAW_FILE=$8
++Q_TYPED_FILE=$9
++Q_TIMING_FILE=${10}
++N_REQUEST_FILE=${11}
++N_RAW_FILE=${12}
++N_TYPED_FILE=${13}
++N_TIMING_FILE=${14}
++NEG_TYPED_FILE=${15}
++PROCESS_TREE_FILE=${16}
++CONFIG_BEFORE_FILE=${17}
++CONFIG_AFTER_FILE=${18}
++PROTECTED_BEFORE_FILE=${19}
++PROTECTED_AFTER_FILE=${20}
++
++for required_file in "$STDOUT_FILE" "$STATUS_FILE" "$CONFIG_FILE" "$Q_TEMPLATE_FILE" "$N_TEMPLATE_FILE" "$MALFORMED_FILE" "$Q_REQUEST_FILE" "$Q_RAW_FILE" "$Q_TYPED_FILE" "$Q_TIMING_FILE" "$N_REQUEST_FILE" "$N_RAW_FILE" "$N_TYPED_FILE" "$N_TIMING_FILE" "$PROCESS_TREE_FILE" "$CONFIG_BEFORE_FILE" "$CONFIG_AFTER_FILE" "$PROTECTED_BEFORE_FILE" "$PROTECTED_AFTER_FILE"
++do
++  if [ ! -f "$required_file" ]; then
++    printf '{"verifier":"g04-verifier-v1","status":"FAIL","reason":"missing input"}\n'
++    exit 1
++  fi
++done
++
++failure=""
++fail() {
++  if [ -z "$failure" ]; then failure=$1; else failure="$failure; $1"; fi
++}
++
++runtime_status=$(tr -d '\r\n ' < "$STATUS_FILE")
++[ "$runtime_status" = "0" ] || fail "runtime exit was not zero"
++[ ! -e "$NEG_TYPED_FILE" ] || fail "malformed arm created a typed product"
++
++validate_template() {
++  template_file=$1
++  expected_endpoint=$2
++  jq -e --arg endpoint "$expected_endpoint" '
++  .schema == "miter-schema-request-v1" and
++  .request_id == "g04-fixed-request-001" and
++  .endpoint == $endpoint and
++  .body.max_tokens == 1024 and
++  .body.stream == false and
++  .body.response_format.type == "json_schema" and
++  .body.response_format.json_schema.strict == true and
++  (.body.response_format.json_schema.schema.required | sort) == ["answer","completion_status","evidence_spans","request_id","uncertainty"] and
++  .body.response_format.json_schema.schema.additionalProperties == false
++' "$template_file" >/dev/null 2>&1
++}
++
++validate_template "$Q_TEMPLATE_FILE" "http://127.0.0.1:1234/v1/chat/completions" || fail "qwen fixed request/schema contract"
++validate_template "$N_TEMPLATE_FILE" "http://127.0.0.1:1235/v1/chat/completions" || fail "nemotron fixed request/schema contract"
++
++qwen_id=$(jq -r '.profiles[] | select(.alias == "qwen-local") | .id' "$CONFIG_FILE")
++nemotron_id=$(jq -r '.profiles[] | select(.alias == "nemotron-local") | .id' "$CONFIG_FILE")
++[ -n "$qwen_id" ] || fail "missing qwen profile"
++[ -n "$nemotron_id" ] || fail "missing nemotron profile"
++
++jq -e --arg model "$qwen_id" '.schema == "miter-prepared-model-request-v1" and .request_id == "g04-fixed-request-001" and .alias == "qwen-local" and .endpoint == "http://127.0.0.1:1234/v1/chat/completions" and .body.model == $model' "$Q_REQUEST_FILE" >/dev/null 2>&1 || fail "qwen prepared request"
++jq -e --arg model "$nemotron_id" '.schema == "miter-prepared-model-request-v1" and .request_id == "g04-fixed-request-001" and .alias == "nemotron-local" and .endpoint == "http://127.0.0.1:1235/v1/chat/completions" and .body.model == $model' "$N_REQUEST_FILE" >/dev/null 2>&1 || fail "nemotron prepared request"
++
++q_body=$(mktemp "${TMPDIR:-/tmp}/miter-g04-q-body.XXXXXX") || exit 1
++n_body=$(mktemp "${TMPDIR:-/tmp}/miter-g04-n-body.XXXXXX") || exit 1
++clean_stdout=$(mktemp "${TMPDIR:-/tmp}/miter-g04-stdout.XXXXXX") || exit 1
++q_template_body=$(mktemp "${TMPDIR:-/tmp}/miter-g04-q-template.XXXXXX") || exit 1
++n_template_body=$(mktemp "${TMPDIR:-/tmp}/miter-g04-n-template.XXXXXX") || exit 1
++trap 'rm -f "$q_body" "$n_body" "$clean_stdout" "$q_template_body" "$n_template_body"' EXIT HUP INT TERM
++jq -S '.body | del(.model)' "$Q_REQUEST_FILE" > "$q_body"
++jq -S '.body | del(.model)' "$N_REQUEST_FILE" > "$n_body"
++cmp -s "$q_body" "$n_body" || fail "model requests differ beyond exact model ID"
++jq -S '.body' "$Q_TEMPLATE_FILE" > "$q_template_body"
++jq -S '.body' "$N_TEMPLATE_FILE" > "$n_template_body"
++cmp -s "$q_template_body" "$n_template_body" || fail "fixture bodies differ"
++
++validate_product() {
++  typed_file=$1
++  jq -e '
++    (keys | sort) == ["answer","completion_status","evidence_spans","request_id","uncertainty"] and
++    .request_id == "g04-fixed-request-001" and
++    (.answer | type == "string" and length >= 1 and length <= 240) and
++    (.uncertainty | type == "number" and . >= 0 and . <= 1) and
++    (.evidence_spans | type == "array" and length >= 1 and length <= 3) and
++    all(.evidence_spans[]; type == "string" and length >= 1 and length <= 160) and
++    (.completion_status == "complete" or .completion_status == "insufficient_evidence")
++  ' "$typed_file" >/dev/null 2>&1
++}
++
++validate_provider() {
++  raw_file=$1
++  expected_model=$2
++  jq -e --arg model "$expected_model" '
++    .model == $model and
++    .choices[0].finish_reason == "stop" and
++    (.choices[0].message.content | type == "string" and length > 0) and
++    (.choices[0].message.content | fromjson | type == "object")
++  ' "$raw_file" >/dev/null 2>&1
++}
++
++validate_product "$Q_TYPED_FILE" || fail "qwen typed product"
++validate_product "$N_TYPED_FILE" || fail "nemotron typed product"
++validate_provider "$Q_RAW_FILE" "$qwen_id" || fail "qwen provider envelope"
++validate_provider "$N_RAW_FILE" "$nemotron_id" || fail "nemotron provider envelope"
++jq -e --slurpfile typed "$Q_TYPED_FILE" '(.choices[0].message.content | fromjson) == $typed[0]' "$Q_RAW_FILE" >/dev/null 2>&1 || fail "qwen raw/typed separation"
++jq -e --slurpfile typed "$N_TYPED_FILE" '(.choices[0].message.content | fromjson) == $typed[0]' "$N_RAW_FILE" >/dev/null 2>&1 || fail "nemotron raw/typed separation"
++
++jq -e --arg model "$qwen_id" '.schema == "miter-model-timing-v1" and .request_id == "g04-fixed-request-001" and .model == $model and .http_status == 200 and .duration_ms > 0' "$Q_TIMING_FILE" >/dev/null 2>&1 || fail "qwen timing"
++jq -e --arg model "$nemotron_id" '.schema == "miter-model-timing-v1" and .request_id == "g04-fixed-request-001" and .model == $model and .http_status == 200 and .duration_ms > 0' "$N_TIMING_FILE" >/dev/null 2>&1 || fail "nemotron timing"
++
++[ "$Q_RAW_FILE" != "$Q_TYPED_FILE" ] || fail "qwen raw/typed path collision"
++[ "$N_RAW_FILE" != "$N_TYPED_FILE" ] || fail "nemotron raw/typed path collision"
++[ "$(shasum -a 256 "$Q_RAW_FILE" | awk '{print $1}')" != "$(shasum -a 256 "$Q_TYPED_FILE" | awk '{print $1}')" ] || fail "qwen raw/typed content collision"
++[ "$(shasum -a 256 "$N_RAW_FILE" | awk '{print $1}')" != "$(shasum -a 256 "$N_TYPED_FILE" | awk '{print $1}')" ] || fail "nemotron raw/typed content collision"
++
++jq -e '(.choices[0].message.content | fromjson) as $product | (($product.uncertainty | type) != "number") and ($product | has("completion_status") | not)' "$MALFORMED_FILE" >/dev/null 2>&1 || fail "malformed control is not discriminating"
++
++escape_character=$(printf '\033')
++sed "s/${escape_character}\\[[0-9;]*m//g" "$STDOUT_FILE" | tr -d '\r' > "$clean_stdout"
++[ "$(awk '$0 == "model-request-prepared" { count++ } END { print count+0 }' "$clean_stdout")" = "2" ] || fail "prepared request success count"
++[ "$(awk '$0 == "raw-model-response-stored" { count++ } END { print count+0 }' "$clean_stdout")" = "2" ] || fail "raw response success count"
++[ "$(awk '$0 == "semantic-result-admitted" { count++ } END { print count+0 }' "$clean_stdout")" = "2" ] || fail "semantic admission count"
++[ "$(awk '$0 == "malformed-model-response" { count++ } END { print count+0 }' "$clean_stdout")" = "1" ] || fail "malformed rejection count"
++semantic_line=$(awk '/^\(\(semantic-result / { value=$0 } END { print value }' "$clean_stdout")
++printf '%s\n' "$semantic_line" | rg -q 'semantic-result g04-fixed-request-001 qwen-local validated' || fail "qwen semantic atom"
++printf '%s\n' "$semantic_line" | rg -q 'semantic-result g04-fixed-request-001 nemotron-local validated' || fail "nemotron semantic atom"
++if printf '%s\n' "$semantic_line" | rg -q 'malformed'; then fail "malformed semantic atom"; fi
++[ "$(printf '%s\n' "$semantic_line" | awk '{ text=$0; count=0; while (match(text, /semantic-result/)) { count++; text=substr(text, RSTART+RLENGTH) } print count }')" = "2" ] || fail "semantic atom cardinality"
++
++rg -q '[[:space:]]swipl$' "$PROCESS_TREE_FILE" || fail "missing native swipl process"
++if rg -q -i '[[:space:]](python|python3)([[:space:]]|$)|janus|py-call' "$PROCESS_TREE_FILE"; then fail "Python process in Miter request tree"; fi
++if rg -q -i 'sread|read_term|atom_to_term|process_metta_string|load_files' effect_membranes/miter_llm.pl tests/fixtures/g04_schema_inference.metta; then fail "provider output evaluation surface"; fi
++
++cmp -s "$CONFIG_BEFORE_FILE" "$CONFIG_AFTER_FILE" || fail "local model config drift"
++cmp -s "$PROTECTED_BEFORE_FILE" "$PROTECTED_AFTER_FILE" || fail "protected document drift"
++
++if [ -z "$failure" ]; then
++  qwen_ms=$(jq -r '.duration_ms' "$Q_TIMING_FILE")
++  nemotron_ms=$(jq -r '.duration_ms' "$N_TIMING_FILE")
++  printf '{"verifier":"g04-verifier-v1","status":"PASS","models":2,"semantic_atoms":2,"malformed_atoms":0,"missing_or_malformed_rejected":true,"request_id_round_trip":true,"raw_typed_separate":true,"provider_output_evaluated":false,"python_process":false,"qwen_duration_ms":%s,"nemotron_duration_ms":%s}\n' "$qwen_ms" "$nemotron_ms"
++  exit 0
++fi
++
++printf '{"verifier":"g04-verifier-v1","status":"FAIL","reason":"%s"}\n' "$failure"
++exit 1
+diff --git a/tests/fixtures/g04_malformed_response.json b/tests/fixtures/g04_malformed_response.json
+new file mode 100644
+index 0000000..ce80027
+--- /dev/null
++++ b/tests/fixtures/g04_malformed_response.json
+@@ -0,0 +1,14 @@
++{
++  "id": "g04-malformed-mock",
++  "object": "chat.completion",
++  "choices": [
++    {
++      "index": 0,
++      "finish_reason": "stop",
++      "message": {
++        "role": "assistant",
++        "content": "{\"request_id\":\"g04-fixed-request-001\",\"answer\":\"The copper key is inside the blue box.\",\"uncertainty\":\"low\",\"evidence_spans\":[\"The copper key is inside the blue box.\"]}"
++      }
++    }
++  ]
++}
+diff --git a/tests/fixtures/g04_nemotron_structured_request.json b/tests/fixtures/g04_nemotron_structured_request.json
+new file mode 100644
+index 0000000..a82014d
+--- /dev/null
++++ b/tests/fixtures/g04_nemotron_structured_request.json
+@@ -0,0 +1,73 @@
++{
++  "schema": "miter-schema-request-v1",
++  "request_id": "g04-fixed-request-001",
++  "endpoint": "http://127.0.0.1:1235/v1/chat/completions",
++  "body": {
++    "messages": [
++      {
++        "role": "system",
++        "content": "Produce one bounded semantic reading as data. Return only the object required by the supplied schema. Do not produce executable code or instructions."
++      },
++      {
++        "role": "user",
++        "content": "SOURCE: The copper key is inside the blue box. REQUEST: State where the copper key is. Cite one exact evidence span from SOURCE. If the source suffices, completion_status must be complete. uncertainty is a number from 0 to 1."
++      }
++    ],
++    "response_format": {
++      "type": "json_schema",
++      "json_schema": {
++        "name": "miter_semantic_result",
++        "strict": true,
++        "schema": {
++          "type": "object",
++          "properties": {
++            "request_id": {
++              "type": "string",
++              "const": "g04-fixed-request-001"
++            },
++            "answer": {
++              "type": "string",
++              "minLength": 1,
++              "maxLength": 240
++            },
++            "uncertainty": {
++              "type": "number",
++              "minimum": 0,
++              "maximum": 1
++            },
++            "evidence_spans": {
++              "type": "array",
++              "minItems": 1,
++              "maxItems": 3,
++              "items": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 160
++              }
++            },
++            "completion_status": {
++              "type": "string",
++              "enum": [
++                "complete",
++                "insufficient_evidence"
++              ]
++            }
++          },
++          "required": [
++            "request_id",
++            "answer",
++            "uncertainty",
++            "evidence_spans",
++            "completion_status"
++          ],
++          "additionalProperties": false
++        }
++      }
++    },
++    "temperature": 0,
++    "max_tokens": 1024,
++    "seed": 404,
++    "stream": false,
++    "ttl": 300
++  }
++}
+diff --git a/tests/fixtures/g04_schema_inference.metta b/tests/fixtures/g04_schema_inference.metta
+new file mode 100644
+index 0000000..81ebba3
+--- /dev/null
++++ b/tests/fixtures/g04_schema_inference.metta
+@@ -0,0 +1,26 @@
++!(bind! &g04-results (new-space))
++
++(= (admit-if-valid $status $alias)
++   (if (== $status semantic-result-valid)
++       (let $ignored (add-atom &g04-results (semantic-result g04-fixed-request-001 $alias validated))
++            semantic-result-admitted)
++       $status))
++
++!(import! &self (library lib_import))
++!(import_prolog_functions_from_file "./effect_membranes/miter_llm.pl" (miter_lm_prepare_request miter_lm_execute_request miter_lm_parse_result))
++
++!(miter_lm_prepare_request "./config/local/g03-model-profiles.json" "qwen-local" "./tests/fixtures/g04_structured_request.json" "./runtime/g04/qwen.request.json")
++!(miter_lm_execute_request "./runtime/g04/qwen.request.json" "./runtime/g04/qwen.raw.json" "./runtime/g04/qwen.timing.json")
++!(let $qwen-status (miter_lm_parse_result "./tests/fixtures/g04_structured_request.json" "./runtime/g04/qwen.raw.json" "./runtime/g04/qwen.typed.json")
++      (admit-if-valid $qwen-status qwen-local))
++
++!(miter_lm_prepare_request "./config/local/g03-model-profiles.json" "nemotron-local" "./tests/fixtures/g04_nemotron_structured_request.json" "./runtime/g04/nemotron.request.json")
++!(miter_lm_execute_request "./runtime/g04/nemotron.request.json" "./runtime/g04/nemotron.raw.json" "./runtime/g04/nemotron.timing.json")
++!(let $nemotron-status (miter_lm_parse_result "./tests/fixtures/g04_nemotron_structured_request.json" "./runtime/g04/nemotron.raw.json" "./runtime/g04/nemotron.typed.json")
++      (admit-if-valid $nemotron-status nemotron-local))
++
++!(let $malformed-status (miter_lm_parse_result "./tests/fixtures/g04_structured_request.json" "./tests/fixtures/g04_malformed_response.json" "./runtime/g04/malformed.typed.json")
++      (admit-if-valid $malformed-status malformed-mock))
++
++!(collapse (match &g04-results (semantic-result $request $alias $standing)
++                               (semantic-result $request $alias $standing)))
+diff --git a/tests/fixtures/g04_structured_request.json b/tests/fixtures/g04_structured_request.json
+new file mode 100644
+index 0000000..6bc951b
+--- /dev/null
++++ b/tests/fixtures/g04_structured_request.json
+@@ -0,0 +1,73 @@
++{
++  "schema": "miter-schema-request-v1",
++  "request_id": "g04-fixed-request-001",
++  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
++  "body": {
++    "messages": [
++      {
++        "role": "system",
++        "content": "Produce one bounded semantic reading as data. Return only the object required by the supplied schema. Do not produce executable code or instructions."
++      },
++      {
++        "role": "user",
++        "content": "SOURCE: The copper key is inside the blue box. REQUEST: State where the copper key is. Cite one exact evidence span from SOURCE. If the source suffices, completion_status must be complete. uncertainty is a number from 0 to 1."
++      }
++    ],
++    "response_format": {
++      "type": "json_schema",
++      "json_schema": {
++        "name": "miter_semantic_result",
++        "strict": true,
++        "schema": {
++          "type": "object",
++          "properties": {
++            "request_id": {
++              "type": "string",
++              "const": "g04-fixed-request-001"
++            },
++            "answer": {
++              "type": "string",
++              "minLength": 1,
++              "maxLength": 240
++            },
++            "uncertainty": {
++              "type": "number",
++              "minimum": 0,
++              "maximum": 1
++            },
++            "evidence_spans": {
++              "type": "array",
++              "minItems": 1,
++              "maxItems": 3,
++              "items": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 160
++              }
++            },
++            "completion_status": {
++              "type": "string",
++              "enum": [
++                "complete",
++                "insufficient_evidence"
++              ]
++            }
++          },
++          "required": [
++            "request_id",
++            "answer",
++            "uncertainty",
++            "evidence_spans",
++            "completion_status"
++          ],
++          "additionalProperties": false
++        }
++      }
++    },
++    "temperature": 0,
++    "max_tokens": 1024,
++    "seed": 404,
++    "stream": false,
++    "ttl": 300
++  }
++}

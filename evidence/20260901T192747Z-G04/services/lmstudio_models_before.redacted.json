@@ -1,0 +1,35 @@
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "qwen/qwen3.8-27b",
+      "type": "vlm",
+      "state": "loaded",
+      "loaded_context_length": 8192
+    },
+    {
+      "id": "nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+      "type": "llm",
+      "state": "not-loaded",
+      "loaded_context_length": null
+    },
+    {
+      "id": "muse-glimmer-30b",
+      "type": "vlm",
+      "state": "not-loaded",
+      "loaded_context_length": null
+    },
+    {
+      "id": "glm-4.7-flash-claude-opus-4.5-high-reasoning-distill",
+      "type": "llm",
+      "state": "not-loaded",
+      "loaded_context_length": null
+    },
+    {
+      "id": "text-embedding-nomic-embed-text-v1.5",
+      "type": "embeddings",
+      "state": "not-loaded",
+      "loaded_context_length": null
+    }
+  ]
+}

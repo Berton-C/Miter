@@ -1,0 +1,10 @@
+{
+  "alias":"qwen-local",
+  "completed_at_epoch":1788291465.715645,
+  "duration_ms":26200,
+  "http_status":200,
+  "model":"qwen/qwen3.8-27b",
+  "request_id":"g04-fixed-request-001",
+  "schema":"miter-model-timing-v1",
+  "started_at_epoch":1788291439.515933
+}

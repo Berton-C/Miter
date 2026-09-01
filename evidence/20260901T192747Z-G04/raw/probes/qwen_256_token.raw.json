@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-cvy3a8pit8u9rlhr55rr9c",
+  "object": "chat.completion",
+  "created": 1788291439,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "reasoning_content": "We need answer user's request. Need produce one bounded semantic reading as data. Return only object required by supplied schema. User didn't explicitly provide schema? They say \"Return only the object required by the supplied schema.\" But no schema in prompt? Need infer likely fields: maybe answer, evidence, completion_status, uncertainty. Need output JSON object only. Need cite one exact evidence span from SOURCE. Source: \"The copper key is inside the blue box.\" Request: State where the copper key is. If source suffices, completion_status complete. uncertainty number 0 to 1.\n\nNeed likely object: {\"answer\":\"inside the blue box\",\"evidence\":\"The copper key is inside the blue box.\",\"completion_status\":\"complete\",\"uncertainty\":0}. Ensure exact evidence span. Could be just span \"inside the blue box\"? They ask cite one exact evidence span from SOURCE. Could use full sentence. Need only object. No code. Need maybe schema fields: \"where\", \"evidence\", \"completion_status\", \"uncertainty\". We need choose. Since request: State where... Cite one exact evidence span... completion_status... uncertainty. So object likely:\n{\n  \"where\": \"inside the blue box\",\n  \"evidence\": \"",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 132,
+    "completion_tokens": 256,
+    "total_tokens": 388,
+    "completion_tokens_details": {
+      "reasoning_tokens": 256
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 143,
+    "accepted_draft_tokens_count": 135,
+    "rejected_draft_tokens_count": 8
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

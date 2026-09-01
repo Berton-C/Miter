@@ -1,0 +1,14 @@
+{
+  "id": "g04-malformed-mock",
+  "object": "chat.completion",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\"request_id\":\"g04-fixed-request-001\",\"answer\":\"The copper key is inside the blue box.\",\"uncertainty\":\"low\",\"evidence_spans\":[\"The copper key is inside the blue box.\"]}"
+      }
+    }
+  ]
+}

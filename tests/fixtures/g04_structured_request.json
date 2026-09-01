@@ -1,0 +1,73 @@
+{
+  "schema": "miter-schema-request-v1",
+  "request_id": "g04-fixed-request-001",
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "body": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "Produce one bounded semantic reading as data. Return only the object required by the supplied schema. Do not produce executable code or instructions."
+      },
+      {
+        "role": "user",
+        "content": "SOURCE: The copper key is inside the blue box. REQUEST: State where the copper key is. Cite one exact evidence span from SOURCE. If the source suffices, completion_status must be complete. uncertainty is a number from 0 to 1."
+      }
+    ],
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "miter_semantic_result",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "request_id": {
+              "type": "string",
+              "const": "g04-fixed-request-001"
+            },
+            "answer": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "uncertainty": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "evidence_spans": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 3,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              }
+            },
+            "completion_status": {
+              "type": "string",
+              "enum": [
+                "complete",
+                "insufficient_evidence"
+              ]
+            }
+          },
+          "required": [
+            "request_id",
+            "answer",
+            "uncertainty",
+            "evidence_spans",
+            "completion_status"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "temperature": 0,
+    "max_tokens": 1024,
+    "seed": 404,
+    "stream": false,
+    "ttl": 300
+  }
+}

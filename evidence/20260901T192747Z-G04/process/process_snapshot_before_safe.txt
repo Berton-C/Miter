@@ -1,0 +1,16 @@
+  708     1 bcb              06-05:34:00 /Applications/LM Studio.app/Contents/MacOS/LM Studio
+ 1001     1 bcb              06-05:33:52 /Applications/LM Studio.app/Contents/Frameworks/Electron Framework.framework/Helpers/chrome_crashpad_handler
+ 2953   708 bcb              06-05:33:51 /Applications/LM Studio.app/Contents/Frameworks/LM Studio Helper (GPU).app/Contents/MacOS/LM Studio Helper (GPU)
+ 3466   708 bcb              06-05:33:50 /Applications/LM Studio.app/Contents/Frameworks/LM Studio Helper.app/Contents/MacOS/LM Studio Helper
+ 3986   708 bcb              06-05:33:50 /Users/bcb/.lmstudio/.internal/utils/node
+ 6341   708 bcb              06-05:33:46 /Applications/LM Studio.app/Contents/Frameworks/LM Studio Helper (Renderer).app/Contents/MacOS/LM Studio Helper (Renderer)
+17879   708 bcb                 02:04:06 /Users/bcb/.lmstudio/extensions/backends/llama.cpp-mac-arm64-apple-metal-advsimd-2.28.2/llama-server
+68351     1 bcb              02-03:42:10 /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python
+68352     1 bcb              02-03:42:10 /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python
+68467 68352 bcb              02-03:42:09 /Applications/miniconda3/bin/python
+68468 68351 bcb              02-03:42:09 /Applications/miniconda3/bin/python
+97696 97637 bcb                 05:33:14 /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python
+97698 97637 bcb                 05:33:14 /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python
+97699 97637 bcb                 05:33:14 /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python
+97886 97698 bcb                 05:33:13 /Applications/miniconda3/bin/python
+97889 97699 bcb                 05:33:13 /Applications/miniconda3/bin/python

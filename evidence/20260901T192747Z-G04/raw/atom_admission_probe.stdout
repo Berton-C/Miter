@@ -1,0 +1,59 @@
+[33m--> metta runnable  -->
+[36m!(bind! &g04-results (new-space))
+[33m-->  prolog goal  -->[35m 
+:- findall(A, 'bind!'('&g04-results', ['new-space'], A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (admit-if-valid $status $alias $path)
+   (if (== $status semantic-result-valid)
+       (let $ignored (add-atom &g04-results (semantic-result g04-fixed-request-001 $alias $path))
+            semantic-result-admitted)
+       $status))
+[33m--> prolog clause -->
+[32m'admit-if-valid'(A, B, C, D) :-
+    ==(A, 'semantic-result-valid', E),
+    (   E==true
+    ->  D='semantic-result-admitted',
+        true,
+        'add-atom'('&g04-results',
+                   ['semantic-result', 'g04-fixed-request-001', B, C],
+                   _)
+    ;   D=A
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(admit-if-valid semantic-result-valid qwen-local qwen-result.json)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'admit-if-valid'('semantic-result-valid',
+                            'qwen-local',
+                            'qwen-result.json',
+                            A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(admit-if-valid malformed-model-response malformed-local malformed-result.json)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'admit-if-valid'('malformed-model-response',
+                            'malformed-local',
+                            'malformed-result.json',
+                            A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(collapse (match &g04-results (semantic-result $request $alias $path)
+                               (semantic-result $request $alias $path)))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           findall(['semantic-result', B, C, D],
+                   match('&g04-results',
+                         ['semantic-result', B, C, D],
+                         ['semantic-result', B, C, D],
+                         ['semantic-result', B, C, D]),
+                   A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0msemantic-result-admitted
+malformed-model-response
+((semantic-result g04-fixed-request-001 qwen-local qwen-result.json))

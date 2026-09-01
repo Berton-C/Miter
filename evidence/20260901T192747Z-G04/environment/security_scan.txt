@@ -1,0 +1,9 @@
+G04 public-commit safety scan: PASS
+
+- No candidate file exceeds 5 MiB; the largest implementation/evidence file is below 25 KiB.
+- No GGUF, safetensors, PyTorch, ONNX, SQLite, Chroma, database, or .env file is present in the G04 candidate paths.
+- No private-key marker, bearer credential, or high-confidence API-key/secret/password assignment was found in the G04 candidate paths.
+- config/local/g03-model-profiles.json remains ignored and unchanged.
+- runtime/g04/** remains ignored.
+- No ~/.miter path was created or changed.
+- No model weights were downloaded into, copied into, or staged by the repository.

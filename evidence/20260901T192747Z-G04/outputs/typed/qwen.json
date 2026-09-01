@@ -1,0 +1,7 @@
+{
+  "answer":"inside the blue box",
+  "completion_status":"complete",
+  "evidence_spans": ["The copper key is inside the blue box." ],
+  "request_id":"g04-fixed-request-001",
+  "uncertainty":0
+}
