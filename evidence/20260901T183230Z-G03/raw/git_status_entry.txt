@@ -1,0 +1,5 @@
+ M .gitignore
+?? effect_membranes/miter_llm.pl
+?? evidence/20260901T183230Z-G03/
+?? scripts/g03/
+?? tests/fixtures/g03_lmstudio_discovery.metta

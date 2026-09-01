@@ -1,0 +1,17 @@
+{
+  "run_id": "20260901T183230Z-G03",
+  "gate_id": "G03",
+  "git_commit": "543f3ea6d92676e9ead326b832d47880f49ecbe7",
+  "git_dirty": false,
+  "host": "macOS arm64",
+  "started_at": "2026-09-01T18:32:30Z",
+  "completed_at": "2026-09-01T18:46:34Z",
+  "positive_arm": "Pinned native PeTTa calls the imported Prolog HTTP/JSON membrane, uniquely binds exact live LM Studio IDs into ignored local aliases, and resolves qwen-local and nemotron-local from a separate read.",
+  "negative_arm": "The same resolver requests missing-local and must return exactly unknown-model-profile without model substitution.",
+  "verifier_version": "g03-gate-verifier-v1",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "swipl_version": "10.0.2",
+  "swipl_platform": "arm64-darwin",
+  "lm_studio_endpoint": "http://127.0.0.1:1234/api/v0/models",
+  "local_config_sha256": "aa9832b6eaa4130955297576645bbd36086fd6abb380c539f03a9702bb330c6e"
+}

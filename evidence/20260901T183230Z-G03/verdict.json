@@ -1,0 +1,105 @@
+{
+  "run_id": "20260901T183230Z-G03",
+  "gate_id": "G03",
+  "status": "PASS",
+  "claims": [
+    {
+      "id": "G03-http-json",
+      "status": "PROVEN-RUNTIME",
+      "claim": "Pinned native PeTTa invoked the imported SWI-Prolog membrane, which read LM Studio's live HTTP/JSON catalog.",
+      "evidence": [
+        "raw/petta_fixture.stdout",
+        "raw/petta_fixture.status",
+        "services/lmstudio_models.redacted.json",
+        "hashes/lmstudio_raw_private.sha256"
+      ]
+    },
+    {
+      "id": "G03-exact-chat-profiles",
+      "status": "PROVEN-RUNTIME",
+      "claim": "qwen-local and nemotron-local each resolved to exactly one ID present in the same live service response; no display name or exact ID is embedded in implementation code.",
+      "evidence": [
+        "raw/petta_fixture.stdout",
+        "raw/direct_prolog_resolve.stdout",
+        "services/lmstudio_models.redacted.json",
+        "outputs/verifier.json"
+      ]
+    },
+    {
+      "id": "G03-embedding-profile",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The optional embedding-local alias also resolved uniquely to the live Nomic embedding ID.",
+      "evidence": [
+        "raw/petta_fixture.stdout",
+        "services/lmstudio_models.redacted.json",
+        "outputs/local_model_config_redacted_summary.json"
+      ]
+    },
+    {
+      "id": "G03-local-config",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The three alias-to-ID mappings exist only in a mode-0600 ignored repo-local configuration file; evidence retains its hash and a summary without copying the mapping file into Git.",
+      "evidence": [
+        "hashes/local_model_config.sha256",
+        "outputs/local_model_config_metadata.txt",
+        "outputs/local_model_config_ignore_rule.txt",
+        "outputs/local_model_config_redacted_summary.json"
+      ]
+    },
+    {
+      "id": "G03-negative-control",
+      "status": "PROVEN-RUNTIME",
+      "claim": "missing-local returned exactly unknown-model-profile, deterministically and without substitution.",
+      "evidence": [
+        "raw/petta_fixture.stdout",
+        "raw/direct_prolog_resolve.stdout",
+        "outputs/verifier.json"
+      ]
+    },
+    {
+      "id": "G03-totality-supplement",
+      "status": "PROVEN-RUNTIME",
+      "claim": "A deliberately unavailable endpoint returned exactly one deterministic lm-studio-unavailable scalar and created no configuration file.",
+      "evidence": [
+        "raw/direct_prolog_unavailable.stdout",
+        "raw/direct_prolog_unavailable.status"
+      ]
+    },
+    {
+      "id": "G03-no-python",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The attributable runtime process tree contained native SWI-Prolog and no Python, Janus, or py-call process or seam.",
+      "evidence": [
+        "process/process_tree_unique_safe.txt",
+        "raw/petta_fixture.stderr",
+        "outputs/gate_verifier.json"
+      ]
+    },
+    {
+      "id": "G03-repeatability",
+      "status": "PROVEN-RUNTIME",
+      "claim": "An identical repeat produced byte-identical PeTTa stdout and an identical local configuration hash.",
+      "evidence": [
+        "diffs/petta_repeat_stdout.cmp.status",
+        "diffs/local_config_repeat_hash.cmp.status",
+        "hashes/local_model_config_after_repeat.sha256"
+      ]
+    },
+    {
+      "id": "G03-protected-integrity",
+      "status": "PROVEN-RUNTIME",
+      "claim": "All protected documents retained their entry hashes.",
+      "evidence": [
+        "hashes/protected_documents_before.sha256",
+        "hashes/protected_documents_after.sha256"
+      ]
+    }
+  ],
+  "negative_control_difference": true,
+  "remaining_unproven_assumptions": [
+    "Schema-constrained inference and model-role reliability remain unproven until G04 and G05.",
+    "embedding-local discovery proves addressability only; embedding correctness remains unproven until G06.",
+    "LM Studio remains a replaceable localhost service and no discovered model ID has constitutional preference."
+  ],
+  "next_gate_started": false
+}

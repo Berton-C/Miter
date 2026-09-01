@@ -1,0 +1,10 @@
+GATE: G03
+REQUIREMENT IDS: G03, E-001–E-005, W-010–W-017, D-009, D-013–D-015, D-036, D-037
+CONSTITUTIONAL LAWS: C-060, C-061, C-062, C-063, C-064, C-065
+FILES EXPECTED TO CHANGE: .gitignore; effect_membranes/miter_llm.pl; tests/fixtures/g03_lmstudio_discovery.metta; scripts/g03/verify_g03.sh; ignored config/local/g03-model-profiles.json; evidence/20260901T183230Z-G03/**
+FILES FORBIDDEN TO CHANGE: CONSTITUTION.md; ACCEPTANCE.md; AUTHORITY_MAP.md; POC_SPEC.md; DECISIONS.md; WORK_PROTOCOL.md; initial_canon/**; docs/sources/**; /Users/bcb/Documents/ClarityOmega/clarityomega/**; existing Chroma persistence; ~/.miter/**
+POSITIVE FIXTURE: PeTTa calls the imported Prolog HTTP/JSON membrane, discovers exact live IDs by two local selector tokens per profile, writes the mappings to ignored repo-local configuration, and resolves qwen-local and nemotron-local to those exact IDs
+NEGATIVE CONTROL: The identical resolver receives missing-local and must return exactly unknown-model-profile
+EXPECTED OBSERVABLE DIFFERENCE: Known aliases each produce one exact catalog ID; missing-local produces one typed error scalar and never substitutes another model
+CURRENT UNPROVEN ASSUMPTIONS: Native SWI HTTP/JSON libraries work through PeTTa's imported function path; string marshalling preserves endpoint, path, alias, and selector tokens; exact service IDs marshal back as scalars; ignored atomic local configuration can be read in a separate process; the attributable runtime process tree contains no Python
+ROLLBACK METHOD: Remove only the G03 membrane, fixture, verifier, ignored local profile, evidence, and isolated temporary PeTTa checkout; no Chroma, Mattermost, ClarityOmega, initial_canon, or ~/.miter state is changed

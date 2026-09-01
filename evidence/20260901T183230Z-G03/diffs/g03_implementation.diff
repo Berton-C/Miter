@@ -1,0 +1,346 @@
+diff --git a/.gitignore b/.gitignore
+index d2b61ce..9382dd7 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -19,6 +19,11 @@ credentials/
+ *.key
+ *.p12
+ 
++# ----------------------------------------------------------------------
++# Machine-local service and model profiles
++# ----------------------------------------------------------------------
++config/local/
++
+ # ----------------------------------------------------------------------
+ # Local model weights and caches
+ # ----------------------------------------------------------------------
+diff --git a/effect_membranes/miter_llm.pl b/effect_membranes/miter_llm.pl
+new file mode 100644
+index 0000000..cf2bd78
+--- /dev/null
++++ b/effect_membranes/miter_llm.pl
+@@ -0,0 +1,222 @@
++% LM Studio mechanics for Miter's PeTTa runtime boundary.
++% These predicates discover exact service IDs and maintain only local aliases.
++
++:- use_module(library(http/http_open)).
++:- use_module(library(http/json)).
++:- use_module(library(filesex)).
++:- use_module(library(lists)).
++:- use_module(library(pairs)).
++
++% Function form: five scalar inputs followed by exactly one scalar result.
++miter_lm_bind_profile(Endpoint0, ConfigPath0, Alias0, TokenA0, TokenB0, Result) :-
++    (   miter_lm_nonempty_atom(Endpoint0, Endpoint),
++        miter_lm_nonempty_atom(ConfigPath0, ConfigPath),
++        miter_lm_nonempty_atom(Alias0, Alias),
++        miter_lm_nonempty_atom(TokenA0, TokenA),
++        miter_lm_nonempty_atom(TokenB0, TokenB)
++    ->  catch(
++            miter_lm_bind_profile_checked(
++                Endpoint, ConfigPath, Alias, TokenA, TokenB, Result0
++            ),
++            Error,
++            miter_lm_exception_result(Error, Result0)
++        ),
++        Result = Result0
++    ;   Result = 'invalid-model-profile-argument'
++    ),
++    !.
++
++% Function form: two scalar inputs followed by exactly one scalar result.
++miter_lm_resolve_profile(ConfigPath0, Alias0, Result) :-
++    (   miter_lm_nonempty_atom(ConfigPath0, ConfigPath),
++        miter_lm_nonempty_atom(Alias0, Alias)
++    ->  catch(
++            miter_lm_resolve_profile_checked(ConfigPath, Alias, Result0),
++            Error,
++            miter_lm_exception_result(Error, Result0)
++        ),
++        Result = Result0
++    ;   Result = 'invalid-model-profile-argument'
++    ),
++    !.
++
++miter_lm_bind_profile_checked(Endpoint, ConfigPath, Alias, TokenA, TokenB, Result) :-
++    miter_lm_fetch_catalog(Endpoint, Status, Payload),
++    (   Status =:= 200
++    ->  miter_lm_payload_models(Payload, Models, PayloadResult),
++        miter_lm_bind_from_models(
++            PayloadResult, Models, Endpoint, ConfigPath, Alias, TokenA, TokenB,
++            Result
++        )
++    ;   Result = 'lm-studio-http-error'
++    ).
++
++miter_lm_bind_from_models(ok, Models, Endpoint, ConfigPath, Alias, TokenA, TokenB, Result) :-
++    miter_lm_matching_ids(Models, TokenA, TokenB, Matches),
++    (   Matches = [ModelId]
++    ->  miter_lm_load_profiles(ConfigPath, Endpoint, Profiles),
++        miter_lm_replace_profile(Profiles, Alias, ModelId, UpdatedProfiles),
++        miter_lm_write_profiles(ConfigPath, Endpoint, UpdatedProfiles),
++        Result = 'model-profile-bound'
++    ;   Matches = []
++    ->  Result = 'model-profile-not-found'
++    ;   Result = 'ambiguous-model-profile'
++    ).
++miter_lm_bind_from_models(error, _, _, _, _, _, _, 'invalid-lm-studio-response').
++
++miter_lm_resolve_profile_checked(ConfigPath, Alias, Result) :-
++    (   exists_file(ConfigPath)
++    ->  miter_lm_read_config(ConfigPath, Config),
++        miter_lm_config_endpoint(Config, _),
++        miter_lm_config_profiles(Config, Profiles),
++        (   member(Profile, Profiles),
++            get_dict(alias, Profile, StoredAlias0),
++            miter_lm_nonempty_atom(StoredAlias0, StoredAlias),
++            StoredAlias == Alias,
++            get_dict(id, Profile, ModelId0),
++            miter_lm_nonempty_atom(ModelId0, ModelId)
++        ->  Result = ModelId
++        ;   Result = 'unknown-model-profile'
++        )
++    ;   Result = 'local-model-config-unavailable'
++    ).
++
++miter_lm_fetch_catalog(Endpoint, Status, Payload) :-
++    setup_call_cleanup(
++        http_open(
++            Endpoint,
++            Stream,
++            [ status_code(Status),
++              timeout(10),
++              request_header('Accept'='application/json')
++            ]
++        ),
++        json_read_dict(Stream, Payload),
++        close(Stream)
++    ).
++
++miter_lm_payload_models(Payload, Models, ok) :-
++    is_dict(Payload),
++    get_dict(data, Payload, Models),
++    is_list(Models),
++    !.
++miter_lm_payload_models(_, [], error).
++
++miter_lm_matching_ids(Models, TokenA, TokenB, Matches) :-
++    downcase_atom(TokenA, LowerTokenA),
++    downcase_atom(TokenB, LowerTokenB),
++    findall(
++        ModelId,
++        ( member(Model, Models),
++          is_dict(Model),
++          get_dict(id, Model, ModelId0),
++          miter_lm_nonempty_atom(ModelId0, ModelId),
++          downcase_atom(ModelId, LowerModelId),
++          sub_atom(LowerModelId, _, _, _, LowerTokenA),
++          sub_atom(LowerModelId, _, _, _, LowerTokenB)
++        ),
++        RawMatches
++    ),
++    sort(RawMatches, Matches).
++
++miter_lm_load_profiles(ConfigPath, Endpoint, Profiles) :-
++    (   exists_file(ConfigPath)
++    ->  miter_lm_read_config(ConfigPath, Config),
++        miter_lm_config_endpoint(Config, StoredEndpoint),
++        (   StoredEndpoint == Endpoint
++        ->  miter_lm_config_profiles(Config, Profiles)
++        ;   throw(error(miter_local_config_endpoint_mismatch, _))
++        )
++    ;   Profiles = []
++    ).
++
++miter_lm_read_config(ConfigPath, Config) :-
++    setup_call_cleanup(
++        open(ConfigPath, read, Stream, [encoding(utf8)]),
++        json_read_dict(Stream, Config),
++        close(Stream)
++    ).
++
++miter_lm_config_endpoint(Config, Endpoint) :-
++    is_dict(Config),
++    get_dict(schema, Config, Schema0),
++    miter_lm_nonempty_atom(Schema0, Schema),
++    Schema == 'miter-local-model-profiles-v1',
++    get_dict(endpoint, Config, Endpoint0),
++    miter_lm_nonempty_atom(Endpoint0, Endpoint),
++    !.
++miter_lm_config_endpoint(_, _) :-
++    throw(error(miter_invalid_local_model_config, _)).
++
++miter_lm_config_profiles(Config, Profiles) :-
++    is_dict(Config),
++    get_dict(profiles, Config, Profiles),
++    is_list(Profiles),
++    !.
++miter_lm_config_profiles(_, _) :-
++    throw(error(miter_invalid_local_model_config, _)).
++
++miter_lm_replace_profile(Profiles, Alias, ModelId, UpdatedProfiles) :-
++    exclude(miter_lm_profile_has_alias(Alias), Profiles, RemainingProfiles),
++    maplist(
++        miter_lm_profile_pair,
++        [_{alias:Alias, id:ModelId}|RemainingProfiles],
++        ProfilePairs
++    ),
++    keysort(ProfilePairs, SortedPairs),
++    pairs_values(SortedPairs, UpdatedProfiles).
++
++miter_lm_profile_has_alias(Alias, Profile) :-
++    is_dict(Profile),
++    get_dict(alias, Profile, StoredAlias0),
++    miter_lm_nonempty_atom(StoredAlias0, StoredAlias),
++    StoredAlias == Alias.
++
++miter_lm_profile_pair(Profile, Alias-Profile) :-
++    get_dict(alias, Profile, Alias0),
++    miter_lm_nonempty_atom(Alias0, Alias).
++
++miter_lm_write_profiles(ConfigPath, Endpoint, Profiles) :-
++    file_directory_name(ConfigPath, Directory),
++    make_directory_path(Directory),
++    atom_concat(ConfigPath, '.tmp', TemporaryPath),
++    Config = _{
++        schema:'miter-local-model-profiles-v1',
++        endpoint:Endpoint,
++        profiles:Profiles
++    },
++    setup_call_cleanup(
++        true,
++        ( setup_call_cleanup(
++              open(TemporaryPath, write, Stream, [encoding(utf8)]),
++              ( json_write_dict(Stream, Config, [width(80)]),
++                nl(Stream)
++              ),
++              close(Stream)
++          ),
++          chmod(TemporaryPath, 0o600),
++          rename_file(TemporaryPath, ConfigPath)
++        ),
++        ( exists_file(TemporaryPath) -> delete_file(TemporaryPath) ; true )
++    ).
++
++miter_lm_nonempty_atom(Value, Atom) :-
++    (   atom(Value)
++    ->  Atom = Value
++    ;   string(Value)
++    ->  atom_string(Atom, Value)
++    ),
++    atom_length(Atom, Length),
++    Length > 0.
++
++miter_lm_exception_result(error(socket_error(_, _), _), 'lm-studio-unavailable') :- !.
++miter_lm_exception_result(error(timeout_error(_, _), _), 'lm-studio-unavailable') :- !.
++miter_lm_exception_result(error(miter_local_config_endpoint_mismatch, _),
++                          'local-model-config-endpoint-mismatch') :- !.
++miter_lm_exception_result(error(miter_invalid_local_model_config, _),
++                          'invalid-local-model-config') :- !.
++miter_lm_exception_result(error(permission_error(_, _, _), _),
++                          'local-model-config-write-error') :- !.
++miter_lm_exception_result(error(existence_error(_, _), _),
++                          'local-model-config-io-error') :- !.
++miter_lm_exception_result(_, 'lm-membrane-error').
+diff --git a/scripts/g03/verify_g03.sh b/scripts/g03/verify_g03.sh
+new file mode 100755
+index 0000000..64f034d
+--- /dev/null
++++ b/scripts/g03/verify_g03.sh
+@@ -0,0 +1,79 @@
++#!/bin/sh
++set -u
++
++if [ "$#" -ne 9 ]; then
++  printf '%s\n' 'usage: verify_g03.sh STDOUT STATUS CONFIG REDACTED_RESPONSE PROCESS_TREE DIRECT_PROLOG CONFIG_HASH PROTECTED_BEFORE PROTECTED_AFTER' >&2
++  exit 64
++fi
++
++STDOUT_FILE=$1
++STATUS_FILE=$2
++CONFIG_FILE=$3
++REDACTED_RESPONSE_FILE=$4
++PROCESS_TREE_FILE=$5
++DIRECT_PROLOG_FILE=$6
++CONFIG_HASH_FILE=$7
++PROTECTED_BEFORE_FILE=$8
++PROTECTED_AFTER_FILE=$9
++
++for required_file in "$STDOUT_FILE" "$STATUS_FILE" "$CONFIG_FILE" "$REDACTED_RESPONSE_FILE" "$PROCESS_TREE_FILE" "$DIRECT_PROLOG_FILE" "$CONFIG_HASH_FILE" "$PROTECTED_BEFORE_FILE" "$PROTECTED_AFTER_FILE"
++do
++  if [ ! -f "$required_file" ]; then
++    printf '{"verifier":"g03-verifier-v1","status":"FAIL","reason":"missing input"}\n'
++    exit 1
++  fi
++done
++
++failure=""
++runtime_status=$(tr -d '\r\n ' < "$STATUS_FILE")
++escape_character=$(printf '\033')
++clean_stdout=$(mktemp "${TMPDIR:-/tmp}/miter-g03-stdout.XXXXXX") || exit 1
++trap 'rm -f "$clean_stdout"' EXIT HUP INT TERM
++sed "s/${escape_character}\\[[0-9;]*m//g" "$STDOUT_FILE" | tr -d '\r' > "$clean_stdout"
++
++[ "$runtime_status" = "0" ] || failure="runtime exit was not zero"
++jq -e '.schema == "miter-local-model-profiles-v1" and (.endpoint | type == "string") and (.profiles | type == "array")' "$CONFIG_FILE" >/dev/null 2>&1 || failure="invalid local profile schema"
++
++qwen_id=$(jq -r '.profiles[] | select(.alias == "qwen-local") | .id' "$CONFIG_FILE")
++nemotron_id=$(jq -r '.profiles[] | select(.alias == "nemotron-local") | .id' "$CONFIG_FILE")
++embedding_id=$(jq -r '.profiles[] | select(.alias == "embedding-local") | .id' "$CONFIG_FILE")
++
++[ -n "$qwen_id" ] || failure="qwen-local did not resolve"
++[ -n "$nemotron_id" ] || failure="nemotron-local did not resolve"
++[ -n "$embedding_id" ] || failure="embedding-local did not resolve"
++[ "$(jq '[.profiles[] | select(.alias == "qwen-local")] | length' "$CONFIG_FILE")" = "1" ] || failure="qwen-local cardinality"
++[ "$(jq '[.profiles[] | select(.alias == "nemotron-local")] | length' "$CONFIG_FILE")" = "1" ] || failure="nemotron-local cardinality"
++[ "$(jq '[.profiles[] | select(.alias == "embedding-local")] | length' "$CONFIG_FILE")" = "1" ] || failure="embedding-local cardinality"
++
++jq -e --arg id "$qwen_id" 'any(.data[]; .id == $id)' "$REDACTED_RESPONSE_FILE" >/dev/null 2>&1 || failure="qwen ID absent from service response"
++jq -e --arg id "$nemotron_id" 'any(.data[]; .id == $id)' "$REDACTED_RESPONSE_FILE" >/dev/null 2>&1 || failure="nemotron ID absent from service response"
++jq -e --arg id "$embedding_id" 'any(.data[]; .id == $id)' "$REDACTED_RESPONSE_FILE" >/dev/null 2>&1 || failure="embedding ID absent from service response"
++jq -e '(.data | type == "array") and all(.data[]; (keys | sort) == ["id","state","type"])' "$REDACTED_RESPONSE_FILE" >/dev/null 2>&1 || failure="service response was not mechanically redacted"
++
++[ "$(awk '$0 == "model-profile-bound" { count++ } END { print count+0 }' "$clean_stdout")" = "3" ] || failure="profile bind success count"
++[ "$(awk -v value="$qwen_id" '$0 == value { count++ } END { print count+0 }' "$clean_stdout")" = "1" ] || failure="qwen exact resolution output"
++[ "$(awk -v value="$nemotron_id" '$0 == value { count++ } END { print count+0 }' "$clean_stdout")" = "1" ] || failure="nemotron exact resolution output"
++[ "$(awk -v value="$embedding_id" '$0 == value { count++ } END { print count+0 }' "$clean_stdout")" = "1" ] || failure="embedding exact resolution output"
++[ "$(awk '$0 == "unknown-model-profile" { count++ } END { print count+0 }' "$clean_stdout")" = "1" ] || failure="missing alias did not fail closed"
++
++grep -Fq "qwen_resolve('$qwen_id',true)" "$DIRECT_PROLOG_FILE" || failure="qwen direct resolution determinism"
++grep -Fq "nemotron_resolve('$nemotron_id',true)" "$DIRECT_PROLOG_FILE" || failure="nemotron direct resolution determinism"
++grep -Fq "embedding_resolve('$embedding_id',true)" "$DIRECT_PROLOG_FILE" || failure="embedding direct resolution determinism"
++grep -Fq "missing_resolve('unknown-model-profile',true)" "$DIRECT_PROLOG_FILE" || failure="missing alias direct determinism"
++
++rg -q '[[:space:]]swipl$' "$PROCESS_TREE_FILE" || failure="missing native swipl process"
++if rg -q -i '[[:space:]](python|python3)([[:space:]]|$)|janus|py-call' "$PROCESS_TREE_FILE"; then failure="Python process in Miter tree"; fi
++
++expected_hash=$(awk 'NR == 1 { print $1 }' "$CONFIG_HASH_FILE")
++actual_hash=$(shasum -a 256 "$CONFIG_FILE" | awk '{ print $1 }')
++[ "$expected_hash" = "$actual_hash" ] || failure="local config hash mismatch"
++cmp -s "$PROTECTED_BEFORE_FILE" "$PROTECTED_AFTER_FILE" || failure="protected document hash mismatch"
++git check-ignore -q "$CONFIG_FILE" || failure="local config is not ignored"
++
++if [ -z "$failure" ]; then
++  printf '{"verifier":"g03-verifier-v1","status":"PASS","chat_profiles":2,"embedding_profile":1,"missing_alias":"unknown-model-profile","runtime_exit":0,"deterministic":true,"python_process":false,"redaction":"PASS"}\n'
++  exit 0
++fi
++
++printf '{"verifier":"g03-verifier-v1","status":"FAIL","reason":"%s"}\n' "$failure"
++exit 1
+diff --git a/tests/fixtures/g03_lmstudio_discovery.metta b/tests/fixtures/g03_lmstudio_discovery.metta
+new file mode 100644
+index 0000000..5364794
+--- /dev/null
++++ b/tests/fixtures/g03_lmstudio_discovery.metta
+@@ -0,0 +1,11 @@
++!(import! &self (library lib_import))
++!(import_prolog_functions_from_file "./effect_membranes/miter_llm.pl" (miter_lm_bind_profile miter_lm_resolve_profile))
++
++!(miter_lm_bind_profile "http://127.0.0.1:1234/api/v0/models" "./config/local/g03-model-profiles.json" "qwen-local" "qwen" "27b")
++!(miter_lm_bind_profile "http://127.0.0.1:1234/api/v0/models" "./config/local/g03-model-profiles.json" "nemotron-local" "nemotron" "30b")
++!(miter_lm_bind_profile "http://127.0.0.1:1234/api/v0/models" "./config/local/g03-model-profiles.json" "embedding-local" "embedding" "nomic")
++
++!(miter_lm_resolve_profile "./config/local/g03-model-profiles.json" "qwen-local")
++!(miter_lm_resolve_profile "./config/local/g03-model-profiles.json" "nemotron-local")
++!(miter_lm_resolve_profile "./config/local/g03-model-profiles.json" "embedding-local")
++!(miter_lm_resolve_profile "./config/local/g03-model-profiles.json" "missing-local")

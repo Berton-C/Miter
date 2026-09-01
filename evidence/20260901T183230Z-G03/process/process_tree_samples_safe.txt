@@ -1,0 +1,6 @@
+pid ppid user etime comm
+35141 35130 bcb                    00:00 sh
+35141 35130 bcb                    00:00 sh
+35146 35141 bcb                    00:00 swipl
+35141 35130 bcb                    00:00 (bash)
+35146 35141 bcb                    00:00 (swipl)

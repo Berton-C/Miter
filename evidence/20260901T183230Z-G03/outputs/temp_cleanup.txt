@@ -1,0 +1,3 @@
+Removed the validated detached PeTTa checkout `/private/tmp/miter-g03-petta.S5xTGT` after recording its final clean status and runtime-surface hashes.
+Removed the full private LM Studio response after recording its SHA-256 and committing only the mechanically redacted response.
+Removed the temporary process sample and unavailable-service probe path. No `~/.miter` path was created or modified.

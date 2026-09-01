@@ -1,0 +1,156 @@
+[33m--> metta runnable  -->
+[36m!(import! &self (library lib_import))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library(lib_import, B),
+             'import!'('&self', B, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function consult)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(consult, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_file $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                           ($prologfile (consult))
+                                                                           ($function (superpose $importfunctions)))
+                                                                          (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_file(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    consult(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function use_module)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(use_module, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_module $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                             ($prologfile (use_module))
+                                                                             ($function (superpose $importfunctions)))
+                                                                            (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_module(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    use_module(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file (library lib_import.pl) (static-import! git-import! use-module!))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library('lib_import.pl', B),
+             import_prolog_functions_from_file(B,
+                                               [ 'static-import!',
+                                                 'git-import!',
+                                                 'use-module!'
+                                               ],
+                                               A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_llm.pl" (miter_lm_bind_profile miter_lm_resolve_profile))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_llm.pl",
+                                             [ miter_lm_bind_profile,
+                                               miter_lm_resolve_profile
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_bind_profile "http://127.0.0.1:1234/api/v0/models" "./config/local/g03-model-profiles.json" "qwen-local" "qwen" "27b")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_bind_profile("http://127.0.0.1:1234/api/v0/models",
+                                 "./config/local/g03-model-profiles.json",
+                                 "qwen-local",
+                                 "qwen",
+                                 "27b",
+                                 A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_bind_profile "http://127.0.0.1:1234/api/v0/models" "./config/local/g03-model-profiles.json" "nemotron-local" "nemotron" "30b")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_bind_profile("http://127.0.0.1:1234/api/v0/models",
+                                 "./config/local/g03-model-profiles.json",
+                                 "nemotron-local",
+                                 "nemotron",
+                                 "30b",
+                                 A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_bind_profile "http://127.0.0.1:1234/api/v0/models" "./config/local/g03-model-profiles.json" "embedding-local" "embedding" "nomic")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_bind_profile("http://127.0.0.1:1234/api/v0/models",
+                                 "./config/local/g03-model-profiles.json",
+                                 "embedding-local",
+                                 "embedding",
+                                 "nomic",
+                                 A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_resolve_profile "./config/local/g03-model-profiles.json" "qwen-local")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_resolve_profile("./config/local/g03-model-profiles.json",
+                                    "qwen-local",
+                                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_resolve_profile "./config/local/g03-model-profiles.json" "nemotron-local")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_resolve_profile("./config/local/g03-model-profiles.json",
+                                    "nemotron-local",
+                                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_resolve_profile "./config/local/g03-model-profiles.json" "embedding-local")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_resolve_profile("./config/local/g03-model-profiles.json",
+                                    "embedding-local",
+                                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_lm_resolve_profile "./config/local/g03-model-profiles.json" "missing-local")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_lm_resolve_profile("./config/local/g03-model-profiles.json",
+                                    "missing-local",
+                                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+true
+true
+model-profile-bound
+model-profile-bound
+model-profile-bound
+qwen/qwen3.8-27b
+nemotron-3.5-30b-a3b-antislop-ftpo-i1
+text-embedding-nomic-embed-text-v1.5
+unknown-model-profile

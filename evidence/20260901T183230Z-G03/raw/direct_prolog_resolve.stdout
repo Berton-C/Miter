@@ -1,0 +1,8 @@
+qwen_resolve(['qwen/qwen3.8-27b'])
+qwen_resolve('qwen/qwen3.8-27b',true)
+nemotron_resolve(['nemotron-3.5-30b-a3b-antislop-ftpo-i1'])
+nemotron_resolve('nemotron-3.5-30b-a3b-antislop-ftpo-i1',true)
+embedding_resolve(['text-embedding-nomic-embed-text-v1.5'])
+embedding_resolve('text-embedding-nomic-embed-text-v1.5',true)
+missing_resolve(['unknown-model-profile'])
+missing_resolve('unknown-model-profile',true)

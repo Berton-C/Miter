@@ -1,0 +1,2 @@
+unavailable_service(['lm-studio-unavailable'])
+unavailable_service('lm-studio-unavailable',true)
