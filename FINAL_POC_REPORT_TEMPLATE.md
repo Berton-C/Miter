@@ -52,7 +52,8 @@ A result is `PASS` only when every required clause links to raw gate evidence an
 - Qwen model ID:
 - Nemotron model ID:
 - Embedding model/profile:
-- Chroma version and collection:
+- Miter Chroma container/image, endpoint, volume, and collection:
+- ClarityOmega Chroma isolation proof:
 - Mattermost version:
 - Authority manifest hash:
 - Protected-file hashes:
@@ -234,7 +235,7 @@ At minimum, state that the PoC does not prove:
 
 | Kill criterion | Triggered? | Evidence | Disposition |
 |---|---|---|---|
-| Native membrane failed | | | |
+| Effect membrane failed | | | |
 | Exact continuity failed | | | |
 | Chroma sole truth | | | |
 | Soul mutable by candidate | | | |

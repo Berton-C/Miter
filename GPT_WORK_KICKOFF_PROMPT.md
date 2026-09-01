@@ -72,7 +72,7 @@ Save it under the G00 evidence run.
 4. LM Studio localhost API address and health;
 5. exact model IDs exposed by LM Studio, including the installed Qwen3.8-27B 08-0MTP GGUF and Nemotron 3.5 30B A3B Antislop FTPO I1 if they are currently exposed;
 6. whether a local embedding model is available, but do not install or select one yet;
-7. the user's existing ChromaDB deployment, version if discoverable, persistence path, service address, collection names, and collection metadata/counts using read-only calls;
+7. the user's existing ChromaDB container, image/version, service address, persistence volume/path, collection names, and collection metadata/counts using read-only calls;
 8. a non-destructive backup/snapshot plan for existing Chroma state;
 9. the local NRC VAD asset and/or `nrc_vad_full` collection by path, version, and checksum only—do not copy or redistribute its data;
 10. the existing local Mattermost deployment and service health without reading or exposing credentials;
@@ -80,9 +80,12 @@ Save it under the G00 evidence run.
 12. a process snapshot proving what services are currently running;
 13. a complete G00 evidence manifest and verifier.
 
+Decision D-038 has resolved the deployment mode: G00 must propose the exact pinned Miter Chroma image/version, localhost endpoint, and fresh separate volume or dedicated bind path. Do not create that service or persistence during G00.
+
 ### Safety and privacy constraints
 
 - Make no write to an existing Chroma collection.
+- Never attach a Miter collection or writable Miter state to the existing ClarityOmega Chroma container, volume, or bind mount.
 - Do not start a migration.
 - Do not copy Chroma persistence until the proposed copy command/path is shown and reviewed for safety; for G00, a plan and source inventory are sufficient.
 - Do not open or print credential values.

@@ -246,7 +246,7 @@ Before opening ChatGPT Work:
 - [ ] copy the required architecture/substrate/NACE/VAD/quantale source files available locally;
 - [ ] do not copy the full NRC lexicon into git;
 - [ ] ensure LM Studio is running or record that G00 should start it only after confirmation;
-- [ ] ensure existing ChromaDB writers can be identified;
+- [ ] identify existing ChromaDB writers and record a separate Miter deployment plan; do not reuse existing writable persistence;
 - [ ] do not expose Mattermost credentials;
 - [ ] commit the initial documentation/source state;
 - [ ] verify `git status --short` is empty;

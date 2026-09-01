@@ -97,15 +97,27 @@ A separate local embedding model is required for ChromaDB indexing and querying.
 
 ---
 
-## 5. Native core; sandboxed extension workshop
+## 5. PeTTa/MeTTa core, Prolog effect membranes, and sandboxed extensions
 
-Docker is not required for the cognitive core.
+Docker is not required for the cognitive core. Miter-owned cognition remains in PeTTa/MeTTa. Narrow SWI-Prolog groundings under `effect_membranes/` perform HTTP/JSON transport, durable storage, hashing, process mechanics, and sandbox-broker calls. They return typed mechanical results to MeTTa; they do not own meaning, policy, memory admission, or cognitive state.
+
+Python is not part of Miter's core, effect membranes, provider client, memory client, routing, state, or auditing path. LM Studio and ChromaDB remain replaceable localhost services reached through Prolog HTTP predicates. Their internal implementation languages do not give them cognitive authority.
+
+```text
+PeTTa/MeTTa decision
+  -> effect_membranes/*.pl (SWI-Prolog mechanics)
+  -> localhost service / durable store / sandbox broker
+  -> typed result
+  -> MeTTa interpretation
+```
+
+Miter uses a newly pinned Chroma service with its own persistence volume and collection `miter-ltm-v1`. The existing ClarityOmega Chroma container and persistence remain untouched. Any legacy access is read-only, or occurs through a separately verified copy and explicit migration procedure.
 
 However, arbitrary generated extension code must not run unsandboxed as the logged-in user. The seed organism therefore includes a narrow **Extension Workshop Broker**. It owns candidate worktrees, test execution, build isolation, diffs, and promotion requests. Miter can ask it to create, write, test, inspect, and discard candidate extensions, but the broker—not the model—owns the actual host authority.
 
 The default PoC policy is:
 
-- native PeTTa/MeTTa, LM Studio, and ChromaDB for the core;
+- native PeTTa/MeTTa for cognition, Prolog effect membranes for mechanics, and localhost LM Studio and isolated Miter Chroma services;
 - git branch/worktree isolation for every candidate;
 - Docker or an equivalently isolated runner for arbitrary executable extension tests;
 - declarative MeTTa candidates may be trialed in a quarantine AtomSpace without Docker;
@@ -188,7 +200,7 @@ miter/
 │   ├── nace.metta
 │   └── extension.metta
 │
-├── native/
+├── effect_membranes/
 │   ├── miter_llm.pl
 │   ├── miter_chroma.pl
 │   ├── miter_store.pl

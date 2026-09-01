@@ -106,7 +106,7 @@ After every load-bearing AtomSpace or durable-store write, verification occurs i
 1. Record macOS version, hardware architecture, memory, free disk, shell, git, SWI-Prolog, PeTTa, LM Studio, ChromaDB, Docker, and Mattermost availability.
 2. Record the exact PeTTa source origin and commit or package version.
 3. Discover LM Studio's running local API address and enumerate model identifiers.
-4. Identify the user's existing ChromaDB deployment, persistence path, collections, collection dimensions if available, and server/client version.
+4. Inventory the user's existing ChromaDB container, image/version, endpoint, persistence volume/path, collections, collection dimensions if available, and server/client version using read-only checks.
 5. Identify the existing NRC VAD asset and/or `nrc_vad_full` collection by local path and checksum without copying or redistributing it.
 6. Identify the existing Mattermost deployment and do not read credentials.
 7. Copy or reference the ratified authority files and record their SHA-256 hashes.
@@ -118,6 +118,7 @@ After every load-bearing AtomSpace or durable-store write, verification occurs i
 - Exact model IDs for the currently installed Qwen and Nemotron models.
 - Chroma collections listed without mutation.
 - A safe backup plan for existing Chroma state.
+- A proposed exact pinned Miter Chroma image/version, localhost endpoint, and fresh separate volume or dedicated bind path that leaves the ClarityOmega deployment untouched.
 - Authority hashes recorded.
 - Repository remains implementation-empty except for documents and Task-00 audit scripts.
 
@@ -149,25 +150,25 @@ After every load-bearing AtomSpace or durable-store write, verification occurs i
 
 ---
 
-# III. Native membrane and local model gates
+# III. Effect membrane and local model gates
 
 ## G02 — Direct MeTTa-to-Prolog extension call
 
-**Purpose:** Prove a native extension path without `py-call`.
+**Purpose:** Prove a direct MeTTa-to-Prolog effect-membrane path without `py-call` or any Python helper.
 
 **Prerequisites:** G01.
 
-**Fixture:** A Prolog predicate that accepts scalar MeTTa arguments and returns a scalar deterministic result.
+**Fixture:** A predicate under `effect_membranes/` that accepts scalar MeTTa arguments and returns exactly one scalar typed result.
 
 **Procedure:** Import the predicate through PeTTa's Prolog-extension mechanism and call it from MeTTa.
 
-**Required result:** Exact expected output; process tree contains no Python process attributable to Miter.
+**Required result:** Exact expected output; process tree contains no Python process attributable to Miter; the predicate leaves no choice point.
 
-**Negative control:** Call with a deliberately malformed argument. The boundary must return a typed error result or controlled failure, not a misleading success.
+**Negative control:** Call with a deliberately malformed argument. The boundary must return exactly one typed error result, not silent Prolog failure, an open choice point, or a misleading success.
 
 **Evidence:** imported source, process snapshot, stdout/stderr, verifier result.
 
-**Failure meaning:** The proposed native membrane is not viable in the actual PeTTa version.
+**Failure meaning:** The proposed effect membrane is not viable in the actual PeTTa version.
 
 ---
 
@@ -342,14 +343,14 @@ request_id / answer / uncertainty / evidence_spans / completion_status
 
 **Procedure:**
 
-1. Create a verified backup or snapshot of existing Chroma persistence.
-2. Start or connect to Chroma as a localhost service.
-3. Create only the new Miter collection with explicit embedding metadata.
-4. List all collections before and after.
+1. Record a hash manifest and collection/count snapshot for the existing ClarityOmega Chroma deployment without stopping or mutating it.
+2. Start a newly pinned Miter Chroma container or process on a distinct localhost endpoint with a fresh, separate persistence volume or approved bind mount.
+3. Create `miter-ltm-v1` only in the isolated Miter service, with explicit embedding metadata.
+4. List and verify both deployments after creation.
 
-**Required result:** Existing collections and counts are unchanged. `miter-ltm-v1` exists with the expected metadata.
+**Required result:** The existing ClarityOmega container, persistence identity, collections, and counts are unchanged. The new Miter container/process and persistence are independently identified, and `miter-ltm-v1` exists there with the expected metadata.
 
-**Negative control:** Attempt insertion with the wrong embedding-profile version. It must fail closed.
+**Negative controls:** Attempt insertion with the wrong embedding-profile version, and deliberately misdirect a Miter write toward the legacy endpoint. Both must fail closed before mutation.
 
 **Evidence:** before/after collection manifests, backup hash, service logs.
 
@@ -430,7 +431,7 @@ The result must not be based solely on a Chroma nearest-neighbor document; it mu
 
 **Fixture:** A populated Miter collection plus intact trajectory, memory documents, and capsules.
 
-**Procedure:** Delete only the disposable test copy of the Chroma collection and rebuild it from durable records.
+**Procedure:** Delete only the disposable Miter test collection or disposable Miter test volume and rebuild it from durable records. Do not delete or alter any ClarityOmega collection or persistence.
 
 **Required result:** Collection count, document IDs, metadata hashes, and fixed-query results return within defined tolerance. No canonical event or capsule was read from Chroma as its sole source.
 
@@ -541,7 +542,7 @@ At least one model response must be deterministically made defective through a f
 
 1. Construct native `CommunicativeIntention` atoms.
 2. Ask the selected model to render a candidate.
-3. Run native/structured AuditRNA checks, including VAD output-register checks where relevant.
+3. Run MeTTa-native structured AuditRNA checks, including VAD output-register checks where relevant.
 4. Return specific defects for repair.
 5. Emit only a certified candidate.
 

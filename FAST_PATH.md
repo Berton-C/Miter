@@ -80,14 +80,14 @@ Prove that the chosen native architecture can call local models without `py-call
 
 ## Earliest kill gate
 
-If G02–G04 cannot establish a clean, maintainable native membrane, stop and adjudicate. Do not build memory or Soul on a shaky service seam.
+If G02–G04 cannot establish a clean, maintainable effect membrane, stop and adjudicate. Do not build memory or Soul on a shaky service seam.
 
 ## Minimum implementation
 
 Only:
 
 ```text
-native/miter_llm.pl
+effect_membranes/miter_llm.pl
 config/model profiles
 small MeTTa probe
 fixed schema fixture
@@ -141,13 +141,13 @@ Bolting LTM on after cognition would recreate the goldfish architecture.
 ## Minimum implementation
 
 ```text
-native/miter_store.pl
-native/miter_chroma.pl
+effect_membranes/miter_store.pl
+effect_membranes/miter_chroma.pl
 src/events.metta
 src/memory.metta
 src/continuity.metta
 src/context.metta
-one Chroma collection
+one isolated Miter Chroma service, fresh persistence volume, and `miter-ltm-v1` collection
 one embedding profile
 one book fixture
 ```
@@ -159,6 +159,7 @@ one book fixture
 - no multi-user sharing;
 - no large summarization framework;
 - no Chroma-owned embedding function hidden from Miter metadata.
+- no attachment of Miter writable state to the existing ClarityOmega Chroma container or persistence.
 
 ## Parallelizable work
 

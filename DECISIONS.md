@@ -512,6 +512,39 @@ It is not direct or sovereign knowledge of a human's inner state, diagnosis, or 
 
 ---
 
+## D-036 — Miter effect membranes are in-process SWI-Prolog groundings
+
+**Status:** ACCEPTED
+**Date:** 2026-09-01
+
+**Decision:** Miter-owned cognition is implemented in PeTTa/MeTTa. Mechanical groundings live under `effect_membranes/` and are loaded through PeTTa's Prolog-extension path. The Miter runtime path contains no Python client, helper, object, callback, `py-call`, or Janus seam. Prolog performs only bounded mechanics; MeTTa owns meaning and policy.
+
+**Consequences:** External localhost services may use their own implementation languages, but they remain replaceable and non-authoritative behind typed HTTP boundaries.
+
+---
+
+## D-037 — Effect predicates are narrow, deterministic, and total
+
+**Status:** ACCEPTED
+**Date:** 2026-09-01
+
+**Decision:** Each imported effect predicate accepts scalars or opaque references and returns exactly one typed success or typed error. It leaves no open choice points, never converts failure into silence, holds no meaning-bearing state, writes no cognitive AtomSpace state, and performs only the exact authorized mechanical operation.
+
+**Consequences:** Higher-order interpretation, admission, routing, and authorization remain explicit MeTTa decisions.
+
+---
+
+## D-038 — Miter has an isolated Chroma deployment
+
+**Status:** ACCEPTED
+**Date:** 2026-09-01
+
+**Decision:** The existing ClarityOmega Chroma container and persistence remain untouched. Miter receives a newly pinned Chroma container or process, a separate persistent volume or approved dedicated bind mount, and a new collection named `miter-ltm-v1`. Existing legacy or NRC data may be accessed read-only, or migrated only from a verified copy. Miter and ClarityOmega never share writable Chroma persistence.
+
+**Consequences:** Chroma remains a non-authoritative, rebuildable semantic index. Task 00 must identify the exact image/version, localhost endpoint, and new Miter persistence location before implementation.
+
+---
+
 # Open decisions for Task 00 / early gates
 
 ## D-O01 — Exact PeTTa source and pin
@@ -532,9 +565,9 @@ Choose after enumerating LM Studio/local embedding options and measuring determi
 
 ## D-O03 — Chroma service deployment mode
 
-**Status:** OPEN
+**Status:** SUPERSEDED BY D-038
 
-Use the user's existing deployment if safely reachable; otherwise run a localhost server against a copied/new persistence root. Do not force an in-process client.
+Deployment mode is resolved. Task 00 must still determine the exact pinned image/version, localhost endpoint, and new Miter volume or bind path; it must not attach Miter writable state to existing ClarityOmega persistence.
 
 ---
 

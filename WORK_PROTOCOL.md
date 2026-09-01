@@ -349,11 +349,11 @@ pure read/classification
 
 ---
 
-# V. Native membrane rules
+# V. Effect membrane rules
 
-## W-040 — No `py-call` in the Miter core
+## W-040 — No Python in Miter's core-service path
 
-The core acceptance path may not import or call Python through PeTTa/Janus.
+Miter's core, effect membranes, provider client, memory client, routing, state, and auditing path may not import or call Python, including through PeTTa/Janus, `py-call`, callbacks, or helper processes.
 
 This does not ban:
 
@@ -361,11 +361,11 @@ This does not ban:
 - an extension/tentacle implemented in Python when chosen through the workshop;
 - Python used offline by a human as a reference or migration utility, outside the Miter runtime path.
 
-The claim tested is architectural: no meaning-bearing cognitive transition crosses an in-process MeTTa/Python seam.
+The external ChromaDB server may be implemented in Python only because it is an isolated, replaceable, non-authoritative HTTP service. The claim tested is architectural: no Miter core-service operation or meaning-bearing cognitive transition crosses a MeTTa/Python seam.
 
-## W-041 — Prolog membrane scope
+## W-041 — Prolog effect-membrane scope
 
-Prolog may perform only deterministic mechanics such as:
+Prolog source under `effect_membranes/` may perform only deterministic mechanics such as:
 
 - HTTP/JSON transport;
 - service discovery and health;
@@ -385,6 +385,8 @@ Prolog may not decide:
 - whether a candidate deserves promotion;
 - whether an external action is lawful.
 
+An effect membrane may not retain meaning-bearing cognitive state or write cognitive AtomSpace state. It performs only the exact operation authorized by its typed request.
+
 ## W-042 — Typed membrane results
 
 Every boundary defines:
@@ -400,6 +402,8 @@ timeout/cancellation behavior
 ```
 
 Avoid passing large provider-specific nested structures directly through the MeTTa/Prolog return boundary. Prefer opaque request IDs plus scalar accessors where required by the runtime's marshalling behavior.
+
+Every imported predicate accepts scalars or opaque references, returns exactly one typed success or typed error, leaves no open choice points, and never uses silent Prolog failure as an application result.
 
 ## W-043 — No shell workaround for core services
 
