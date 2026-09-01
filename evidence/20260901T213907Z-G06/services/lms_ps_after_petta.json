@@ -1,0 +1,10 @@
+[
+  {
+    "identifier": "text-embedding-nomic-embed-text-v1.5",
+    "modelKey": "text-embedding-nomic-embed-text-v1.5",
+    "type": "embedding",
+    "status": "idle",
+    "contextLength": 2048,
+    "loadedContextLength": null
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "schema": "miter-embedding-profile-v1",
+  "profile_id": "embedding-local",
+  "model_id": "text-embedding-nomic-embed-text-v1.5",
+  "dimension": 767,
+  "normalization": {
+    "policy": "provider-l2-unit",
+    "l2_tolerance": 0.00001
+  },
+  "chunking": {
+    "algorithm": "utf8-codepoint-sliding-window",
+    "version": "miter-chunk-v1",
+    "max_codepoints": 1600,
+    "overlap_codepoints": 200,
+    "boundary_preference": ["paragraph", "sentence", "codepoint"]
+  },
+  "distance_metric": "cosine",
+  "collection_schema_version": "miter-ltm-v1",
+  "service": {
+    "kind": "lm-studio-openai-compatible",
+    "endpoint": "http://127.0.0.1:1234/v1/embeddings"
+  },
+  "status": "negative-control-only"
+}

@@ -1,0 +1,14 @@
+{
+  "chroma_requests":0,
+  "deterministic":true,
+  "dimension":768,
+  "first_result":"embedding-vector-stored",
+  "input_hashes_equal":true,
+  "input_sha256":"ad2438089c6ac8036f0750e557327ffa7eb1a922e009486ad1001df62e985ef6",
+  "negative_control":"embedding-dimension-mismatch",
+  "profile_id":"embedding-local",
+  "schema":"miter-g06-run-summary-v1",
+  "second_result":"embedding-vector-stored",
+  "service_requests":2,
+  "vector_sha256":"1913b90fbd51aa4e3a93751b185aabded00850002c6990eeb955d38e39a60e13"
+}

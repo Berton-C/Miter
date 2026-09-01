@@ -1,0 +1,5 @@
+executed: /opt/homebrew/bin/swipl -q -s scripts/g06/run_embedding_profile.pl -- config/embedding-profile.json config/local/g03-model-profiles.json tests/fixtures/g06_embedding_input.json evidence/20260901T213907Z-G06/raw/vector-1.json evidence/20260901T213907Z-G06/outputs/vector-1-metadata.json evidence/20260901T213907Z-G06/raw/vector-2.json evidence/20260901T213907Z-G06/outputs/vector-2-metadata.json tests/fixtures/g06_wrong_dimension_profile.json evidence/20260901T213907Z-G06/outputs/wrong-dimension.json evidence/20260901T213907Z-G06/outputs/run-summary.json
+exit_status: 0
+runtime: SWI-Prolog
+python_process: false
+chroma_request_count: 0

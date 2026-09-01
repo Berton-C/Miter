@@ -1,0 +1,12 @@
+PASS
+
+Scope:
+- effect_membranes/miter_chroma.pl
+- config/embedding-profile.json
+- tests/fixtures/g06_*
+- scripts/g06/
+- evidence/20260901T213907Z-G06/
+
+No credentials, authorization headers, bearer tokens, private keys, model
+weights, database files, Chroma persistence, or NRC VAD assets were found.
+The preserved embedding vectors encode only the fixed public test sentence.

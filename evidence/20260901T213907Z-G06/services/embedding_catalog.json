@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+      "id": "text-embedding-nomic-embed-text-v1.5",
+      "type": "embeddings",
+      "publisher": "nomic-ai",
+      "arch": "nomic-bert",
+      "quantization": "Q4_K_M",
+      "max_context_length": 2048
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "chroma_requests":0,
+  "expected_dimension":767,
+  "observed_dimension":768,
+  "rejected_before_chroma_insertion":true,
+  "result":"embedding-dimension-mismatch",
+  "schema":"miter-g06-negative-control-v1"
+}

@@ -1,0 +1,20 @@
+Gate: G06 — Embedding profile discovery
+Baseline: 69ba52ac48a0524a4a3b6480e5e5b9aa2052ad00
+
+Bounded plan:
+1. Preserve protected-document and local-profile hashes before modification.
+2. Pin the exact embedding identity and reproducibility metadata.
+3. Add a typed Prolog embedding membrane with loopback-only HTTP.
+4. Request the fixed embedding twice from LM Studio and preserve both raw vectors.
+5. Prove dimension, unit normalization, and vector-checksum determinism.
+6. Present the same response to a 767-dimensional negative profile.
+7. Require fail-closed rejection before any Chroma insertion request.
+8. Verify no Python process, no Chroma mutation surface, and no protected drift.
+9. Commit and push only if the complete gate verifier passes.
+
+Explicit non-goals:
+- no Chroma collection creation or mutation;
+- no production memory collection;
+- no change to the machine-local model aliases;
+- no edits to the protected build packet;
+- no ~/.miter creation or mutation.

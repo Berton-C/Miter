@@ -1,0 +1,8 @@
+## main...origin/main
+?? config/embedding-profile.json
+?? effect_membranes/miter_chroma.pl
+?? evidence/20260901T213907Z-G06/
+?? scripts/g06/
+?? tests/fixtures/g06_embedding_input.json
+?? tests/fixtures/g06_embedding_profile.metta
+?? tests/fixtures/g06_wrong_dimension_profile.json
