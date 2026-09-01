@@ -1,0 +1,11 @@
+HTTP/1.1 400 Bad Request
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 73
+ETag: W/"49-/rW8NRfHqID6CWlKX2poNmAV69A"
+Date: Tue, 01 Sep 2026 17:25:48 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+

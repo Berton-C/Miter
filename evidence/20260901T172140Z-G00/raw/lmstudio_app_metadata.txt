@@ -1,0 +1,1 @@
+/Applications/LM Studio.app: could not find /Applications/LM Studio.app.

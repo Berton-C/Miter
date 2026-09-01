@@ -1,0 +1,89 @@
+/Users/bcb/Documents/ClarityOmega/clarityomega/docs/sprints/03_vad_integration/vad_lexicon_top100.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/vad_lexicon_top100.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/valence-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/dominance-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/arousal-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/7_design_artifacts/sprints/03_vad_integration/vad_lexicon_top100.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/vad_lexicon_native.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/MWE/mwe-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/MWE/mwe-arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/MWE/mwe-dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/MWE/mwe-valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/valence-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/dominance-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/arousal-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/metta/vad_lexicon_top100.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/metta/vad_lexicon_native.metta
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/vad_lexicon_top100.metta
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/valence-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/dominance-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/arousal-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/vad_lexicon_native.metta
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/VAD/metta/vad_lexicon_top100.metta
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/VAD/metta/vad_lexicon_native.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/docs/sprints/03_vad_integration/vad_lexicon_top100.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/vad_lexicon_top100.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/MWE/mwe-valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/valence-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/dominance-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/PolarSubset/arousal-polar-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/7_design_artifacts/sprints/03_vad_integration/vad_lexicon_top100.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/vad_lexicon_native.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/Unigrams/unigrams-valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/MWE/mwe-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/MWE/mwe-arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/MWE/mwe-dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/MWE/mwe-valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/valence-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/arousal-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/NRC_source/NRC_VAD_Lexicon_v2.1/OneFilePerDimension/dominance-NRC-VAD-Lexicon-v2.1.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/metta/vad_lexicon_top100.metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/VAD/metta/vad_lexicon_native.metta

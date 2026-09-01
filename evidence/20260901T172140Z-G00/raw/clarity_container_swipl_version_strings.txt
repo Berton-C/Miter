@@ -1,0 +1,28 @@
+/tmp/src/swipl-9.2.4/src
+/tmp/src/swipl-9.2.4/build/src
+SWI-Prolog.h
+PL_QLF_VERSION 69
+PL_VERSION_REC 3
+PL_QLF_LOADVERSION 68
+PL_BLOB_VERSION 1
+GNU C11 12.2.0 -mtune=generic -march=x86-64 -gdwarf-2 -g3 -O2 -std=gnu11 -fno-strict-aliasing -fprofile-use -fprofile-dir=/tmp/src/swipl-9.2.4/build/PGO-data -fasynchronous-unwind-tables
+/tmp/src/swipl-9.2.4/build
+PLVERSION_TAG ""
+PL_QUERY_VERSION 10
+PL_FLI_VERSION 2
+PL_BLOB_MAGIC (PL_BLOB_MAGIC_B|PL_BLOB_VERSION)
+__GXX_ABI_VERSION 1017
+PL_VERSION_FLI 2
+PL_VERSION_QLF 4
+__STDC_VERSION__ 201112L
+PL_VERSION_BUILT_IN 7
+PL_VERSION_VM 6
+PL_REC_VERSION 3
+__VERSION__ "12.2.0"
+PL_version(id) PL_version_info(id)
+/tmp/src/swipl-9.2.4/src/pl-main.c
+PL_VERSION_QLF_LOAD 5
+PL_VERSION_SYSTEM 1
+PLVERSION 90204
+.gnu.version
+.gnu.version_r

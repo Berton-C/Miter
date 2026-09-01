@@ -1,0 +1,25 @@
+docs/sources/architecture/ORIG_ClarityClaw_Soul_Architecture_Strategy_Map_current.md
+docs/sources/authority/0k_24_Ratified_Mathematical_Authority.md
+docs/sources/authority/25.5m_Ratified_Mathematical_Authority.md
+docs/sources/authority/25f_Ratified_Balance_as_Intelligence_Mathematical_Object.md
+docs/sources/authority/26.0_Ratified_Mathematical_Authority.md
+docs/sources/authority/26.3_Ratified_Mathematical_Authority.md
+docs/sources/nace/ClarityOmega_NACE_Build_State_Honest_Assessment copy.md
+docs/sources/nace/ClarityOmega_NACE_Caller_Contract.md
+docs/sources/nace/ClarityOmega_NACE_Persistence_Architecture.md
+docs/sources/nace/nace_beliefs.metta
+docs/sources/nace/nace_implementation_plan.md
+docs/sources/nace/nace_pending.metta
+docs/sources/nace/nace_substrate.metta
+docs/sources/quantale/lib_quantale.metta
+docs/sources/quantale/lib_quantale_autopoietic_epistemic_dynamics_engine_v08_7_2_SOUL_EVOLUTIONARY_CANONICAL_TOPOLOGY.metta
+docs/sources/substrate/Atom_Operations_Map.md
+docs/sources/vad/000_vad_affect_perception_consolidated.md
+docs/sources/vad/Paper-VAD-v2-2025.pdf
+docs/sources/vad/README.txt
+docs/sources/vad/lib_vad.metta
+docs/sources/vad/vad_grounded_register.metta
+docs/sources/vad/vad_metta_grounded.py
+docs/sources/vad/vad_routing_substrate.metta
+docs/sources/vad/vote_threshold.metta
+docs/sources/vad/web_vitality_v8.metta

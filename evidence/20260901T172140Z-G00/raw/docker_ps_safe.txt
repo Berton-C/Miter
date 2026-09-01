@@ -1,0 +1,3 @@
+7d1e6e1698c2486bd5bdda127e6ad18a371a2636eb8a0011619f8728adf826bc	clarityomega-clarityclaw	clarity_omega		Exited (137) 2 weeks ago
+2ca9f5b075ee9dfb61b30d53314c57198b077c5872bd21adc4c901e4a4baf284	mattermost/mattermost-team-edition:11.7.7	clarityclaw_mattermost	8067/tcp, 0.0.0.0:8065->8065/tcp, 8074-8075/tcp	Exited (255) 6 days ago
+949148d891f27719cc73b43f0d73c3e8e081dbf32533ed5696d3227cd58a7adc	postgres:16-alpine	clarityclaw_db		Exited (0) 6 days ago

@@ -1,0 +1,127 @@
+{
+  "run_id": "20260901T172140Z-G00",
+  "gate_id": "G00",
+  "status": "PASS",
+  "verifier": "g00-verifier-v1",
+  "claims": [
+    {
+      "id": "G00-host",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The host and required command-line environment were directly inventoried.",
+      "evidence": [
+        "raw/sw_vers.txt",
+        "raw/hardware_profile.txt",
+        "environment/hw_memsize_bytes.txt",
+        "raw/disk_free_kb.txt",
+        "environment/command_paths.txt"
+      ]
+    },
+    {
+      "id": "G00-petta",
+      "status": "PROVEN-RUNTIME",
+      "claim": "No host-native SWI-Prolog or PeTTa command is installed; the current inspected PeTTa is the ClarityOmega linux/amd64 container at commit 6b7f52f064bdbc82fabd0a0998404121fb01d52e with SWI-Prolog 9.2.4 and a native Prolog-import path.",
+      "evidence": [
+        "environment/swipl_version.txt",
+        "raw/homebrew_installed_runtime_search.txt",
+        "raw/petta_container_git_HEAD",
+        "raw/clarity_container_swipl_binary_file.txt",
+        "raw/clarity_container_swipl_version_strings.txt",
+        "services/petta_pinned_prolog_import_paths.txt"
+      ]
+    },
+    {
+      "id": "G00-lmstudio",
+      "status": "PROVEN-RUNTIME",
+      "claim": "LM Studio responds on 127.0.0.1:1234 and exposes the exact Qwen, Nemotron, and embedding model identifiers recorded in the baseline.",
+      "evidence": [
+        "services/lmstudio_api_v0_models.status",
+        "services/lmstudio_api_v0_models.json",
+        "services/lmstudio_v1_models.json"
+      ]
+    },
+    {
+      "id": "G00-chroma-existing",
+      "status": "PROVEN-RUNTIME",
+      "claim": "ClarityOmega uses ChromaDB 1.5.9 as an embedded PersistentClient over its own bind-mounted persistence; the completion snapshot is memories, dimension 1024, 44,643 embeddings, with no standalone HTTP listener.",
+      "evidence": [
+        "services/chromadb_installed_version.txt",
+        "services/clarity_chroma_client_mode.txt",
+        "services/chroma_collection_snapshot_final.tsv",
+        "process/listening_tcp_after_restart.txt",
+        "services/docker_states_after_restart.jsonl"
+      ]
+    },
+    {
+      "id": "G00-chroma-isolation",
+      "status": "SOURCE",
+      "claim": "The exact future Miter deployment is pinned and isolated in a plan; no image, container, volume, collection, migration, or backup was created.",
+      "evidence": [
+        "services/miter_chroma_candidate_image.txt",
+        "outputs/chroma_backup_and_isolation_plan.md"
+      ]
+    },
+    {
+      "id": "G00-nrc",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The private NRC VAD Lexicon 2.1 asset was identified by declared version, local path, size, and SHA-256 only; its data was not copied into evidence.",
+      "evidence": [
+        "services/private_nrc_vad_version_declaration.txt",
+        "services/private_nrc_vad_asset_metadata.tsv",
+        "hashes/private_nrc_vad_asset.sha256"
+      ]
+    },
+    {
+      "id": "G00-mattermost",
+      "status": "PROVEN-RUNTIME",
+      "claim": "Mattermost 11.7.7 is healthy at 127.0.0.1:8065 and no credential was read.",
+      "evidence": [
+        "services/docker_states_after_restart.jsonl",
+        "services/mattermost_ping_after_restart.status",
+        "services/mattermost_ping_after_restart.json"
+      ]
+    },
+    {
+      "id": "G00-sources",
+      "status": "SOURCE",
+      "claim": "All 25 supplied implementation-evidence sources and all five ratified authorities are present and hashed.",
+      "evidence": [
+        "inputs/docs_sources_paths.txt",
+        "hashes/docs_sources.sha256",
+        "hashes/ratified_authorities.sha256"
+      ]
+    },
+    {
+      "id": "G00-negative-controls",
+      "status": "PROVEN-RUNTIME",
+      "claim": "Nonexistent service, model, and collection identifiers were reported unavailable/not found without substitution.",
+      "evidence": [
+        "services/nonexistent_service.status",
+        "services/lmstudio_missing_model.status",
+        "services/lmstudio_missing_model.json",
+        "services/chroma_missing_collection.tsv"
+      ]
+    },
+    {
+      "id": "G00-integrity",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The three protected documents retained their entry hashes. The user-initiated ClarityOmega restart changed the live Chroma persistence, and that delta is preserved rather than misattributed to the audit.",
+      "evidence": [
+        "hashes/protected_documents_before.sha256",
+        "hashes/protected_documents_after.sha256",
+        "diffs/protected_documents.diff",
+        "diffs/chroma_persistence_hashes_completion.diff",
+        "outputs/service_restart_timeline.md"
+      ]
+    }
+  ],
+  "negative_control_difference": true,
+  "remaining_unproven_assumptions": [
+    "Which PeTTa commit will be selected and proven for native arm64 macOS in G01: the ClarityOmega pin 6b7f52f064bdbc82fabd0a0998404121fb01d52e or current upstream ae66fa8e41dcd5539d614706bd4e5cfb34f9608d.",
+    "A native macOS PeTTa/SWI-Prolog installation does not yet exist and its clean build has not been proven.",
+    "LM Studio's CLI reports its server as off even though both model APIs return HTTP 200; the HTTP result is authoritative for this baseline but the CLI discrepancy remains unexplained.",
+    "The proposed Miter Chroma endpoint, volume, and collection do not exist yet and are intentionally unproven until G09.",
+    "A dedicated Mattermost test account/channel and its credential profile have not been selected or inspected."
+  ],
+  "decision_required_before_g01": "Select the PeTTa source commit for the native arm64 clean-build proof. The current ClarityOmega pin is compatibility-proven only in linux/amd64; current upstream is newer but not yet proven against the Miter requirements.",
+  "next_gate_started": false
+}

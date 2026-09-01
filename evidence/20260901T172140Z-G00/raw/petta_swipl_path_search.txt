@@ -1,0 +1,10 @@
+/Users/bcb/Documents/ClarityOmega/clarityclaw-main/petta_shared_files
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/sprint_0_petta_list_idiom_verification.txt
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/sprint_0_petta_list_idiom_verification.py
+/Users/bcb/Documents/ClarityOmega/archives/clarityclaw-omega copy/shared_files/PeTTaWiki
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/repos/clarity_archive/petta_shared_files
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/sprint_0_petta_list_idiom_verification.txt
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/sprint_0_petta_list_idiom_verification.py
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/PeTTaWiki
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/MeTTa/Week-2/Knapsack(PeTTa).metta
+/Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/MeTTa/Week-2/knapsack_ga(PeTTa).metta

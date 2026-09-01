@@ -1,0 +1,70 @@
+{
+  "host": {
+    "operating_system": "macOS 26.5.2",
+    "build": "25F84",
+    "architecture": "arm64",
+    "chip": "Apple M5 Max",
+    "memory_bytes": 51539607552,
+    "data_volume_available_kib": 1024047796,
+    "shell": "/bin/zsh"
+  },
+  "tools": {
+    "git": "2.50.1 (Apple Git-155)",
+    "docker": "29.6.2",
+    "sqlite": "3.51.0",
+    "lm_studio_app": "0.4.20+1",
+    "lm_studio_cli_commit": "71bd99c"
+  },
+  "native_runtime": {
+    "host_swipl_available": false,
+    "host_petta_available": false,
+    "current_inspected_context": "ClarityOmega container",
+    "context_platform": "linux/amd64",
+    "swipl_version": "9.2.4",
+    "swipl_binary_sha256": "d510878ef71d4f117497ef58934f942d0316b45c3d62700fb381d1cc2c51472c",
+    "petta_origin": "https://github.com/patham9/PeTTa.git (canonical repository now trueagi-io/PeTTa)",
+    "petta_commit": "6b7f52f064bdbc82fabd0a0998404121fb01d52e",
+    "native_prolog_import_path_present": true,
+    "current_upstream_petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d"
+  },
+  "lm_studio": {
+    "endpoint": "http://127.0.0.1:1234",
+    "http_health": "available",
+    "models": [
+      {
+        "id": "qwen/qwen3.8-27b",
+        "type": "vlm",
+        "quantization": "Q8_0",
+        "state": "loaded"
+      },
+      {
+        "id": "nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+        "type": "llm",
+        "quantization": "Q5_K_M",
+        "state": "not-loaded"
+      },
+      {
+        "id": "text-embedding-nomic-embed-text-v1.5",
+        "type": "embeddings",
+        "quantization": "Q4_K_M",
+        "state": "not-loaded"
+      }
+    ]
+  },
+  "clarity_chroma": {
+    "version": "1.5.9",
+    "mode": "embedded PersistentClient",
+    "http_endpoint": null,
+    "container": "clarity_omega",
+    "persistence_path": "/Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db",
+    "collection": "memories",
+    "dimension": 1024,
+    "embedding_count_at_completion_snapshot": 44643
+  },
+  "mattermost": {
+    "image": "mattermost/mattermost-team-edition:11.7.7",
+    "image_digest": "sha256:3ecc659553b14335e382a3d4b673afe84f4368ea1ed4cccdb44805add8dedbd7",
+    "endpoint": "http://127.0.0.1:8065",
+    "health": "OK"
+  }
+}

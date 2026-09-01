@@ -1,0 +1,16 @@
+{
+  "run_id": "20260901T172140Z-G00",
+  "gate_id": "G00",
+  "git_commit": "a4eee0e43ca394af89c00e283e93cb4cce4b9f95",
+  "git_dirty": false,
+  "host": "macOS 26.5.2 (25F84), arm64, Apple M5 Max, 51539607552 bytes RAM",
+  "started_at": "2026-09-01T17:21:40Z",
+  "completed_at": "2026-09-01T17:46:37Z",
+  "positive_arm": "Directly inspect the real host, installed runtimes, localhost services, Docker deployment, Chroma persistence, model catalog, NRC asset metadata, source corpus, and repository pins.",
+  "negative_arm": "Probe deliberately nonexistent service, model, and Chroma collection identifiers and require unavailable/not-found results without substitution.",
+  "verifier_version": "g00-verifier-v1",
+  "entry_git_status": "clean",
+  "completion_git_status": "evidence directory untracked only",
+  "runtime_mutation_by_audit": false,
+  "external_state_event": "The user restarted the existing ClarityOmega stack during inventory; before/after service and Chroma persistence evidence is retained."
+}

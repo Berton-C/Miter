@@ -1,0 +1,10 @@
+GATE: G00
+REQUIREMENT IDS: G00, E-001–E-004, W-010–W-016, D-038
+CONSTITUTIONAL LAWS: C-020–C-023, C-061, C-065, C-100, C-102, C-105
+FILES EXPECTED TO CHANGE: evidence/20260901T172140Z-G00/**
+FILES FORBIDDEN TO CHANGE: CONSTITUTION.md, ACCEPTANCE.md, AUTHORITY_MAP.md, POC_SPEC.md, initial_canon/**, /Users/bcb/Documents/ClarityOmega/clarityomega/**, existing Chroma persistence, ~/.miter/**
+POSITIVE FIXTURE: Current Miter repository, host, installed runtimes, localhost services, Docker inventory, and supplied source corpus
+NEGATIVE CONTROL: Deliberately nonexistent service, model, and Chroma collection identifiers
+EXPECTED OBSERVABLE DIFFERENCE: Real installed/running resources are reported by exact identity; nonexistent identifiers are reported unavailable with no substitution or mutation
+CURRENT UNPROVEN ASSUMPTIONS: Exact PeTTa identity/import path, LM Studio endpoint/model IDs, embedding availability, Chroma image/endpoint/persistence/collections, NRC asset identity, Mattermost health, and exact external-repository pins
+ROLLBACK METHOD: Remove only evidence/20260901T172140Z-G00; no runtime, service, repository-source, Chroma, ClarityOmega, or ~/.miter state is changed

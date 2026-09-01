@@ -1,0 +1,1 @@
+4:CLIENT = chromadb.PersistentClient(path="./chroma_db")

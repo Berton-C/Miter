@@ -1,0 +1,11 @@
+✘ JSON API formula.jws.json
+Error: Operation not permitted @ dir_s_mkdir - /Users/bcb/Library/Caches/Homebrew
+✘ JSON API formula_tap_migrations.jws.json
+Error: Operation not permitted @ dir_s_mkdir - /Users/bcb/Library/Caches/Homebrew
+✘ JSON API cask.jws.json
+Error: Operation not permitted @ dir_s_mkdir - /Users/bcb/Library/Caches/Homebrew
+✘ JSON API cask_tap_migrations.jws.json
+Error: Operation not permitted @ dir_s_mkdir - /Users/bcb/Library/Caches/Homebrew
+✘ JSON API cask_tap_migrations.jws.json
+Error: Operation not permitted @ dir_s_mkdir - /Users/bcb/Library/Caches/Homebrew
+Error: Operation not permitted @ dir_s_mkdir - /Users/bcb/Library/Caches/Homebrew

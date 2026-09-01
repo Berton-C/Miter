@@ -1,0 +1,11 @@
+acquire_write                      embedding_metadata_array         
+collection_metadata                embeddings                       
+collections                        embeddings_queue                 
+databases                          embeddings_queue_config          
+embedding_fulltext_search          maintenance_log                  
+embedding_fulltext_search_config   max_seq_id                       
+embedding_fulltext_search_content  migrations                       
+embedding_fulltext_search_data     segment_metadata                 
+embedding_fulltext_search_docsize  segments                         
+embedding_fulltext_search_idx      tenants                          
+embedding_metadata               

@@ -1,0 +1,5 @@
+Server:  OFF 
+
+(i) To start the server, run the following command:
+
+    lms server start

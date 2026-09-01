@@ -1,0 +1,26 @@
+Name:      docker.io/chromadb/chroma:1.5.9
+MediaType: application/vnd.oci.image.index.v1+json
+Digest:    sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6
+           
+Manifests: 
+  Name:        docker.io/chromadb/chroma:1.5.9@sha256:abcce7c335e2dab9f11ef629296f7309b09cb19ae4b34da32ac7e34ff5773140
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/amd64
+               
+  Name:        docker.io/chromadb/chroma:1.5.9@sha256:fcd831fda8565781cf610c7ce588339ba06cb7940f95284789005f0c557d4629
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations: 
+    vnd.docker.reference.type:   attestation-manifest
+    vnd.docker.reference.digest: sha256:abcce7c335e2dab9f11ef629296f7309b09cb19ae4b34da32ac7e34ff5773140
+               
+  Name:        docker.io/chromadb/chroma:1.5.9@sha256:bd21353aee6ccdf4a57bd91e6001626826700f3838e1f230d4aae75bfd4889a1
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/arm64
+               
+  Name:        docker.io/chromadb/chroma:1.5.9@sha256:bbc6086ac8fb8cc7f57c83dfe36d423eb58a89c28f80fc191a87bb6f819a5a00
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations: 
+    vnd.docker.reference.digest: sha256:bd21353aee6ccdf4a57bd91e6001626826700f3838e1f230d4aae75bfd4889a1
+    vnd.docker.reference.type:   attestation-manifest

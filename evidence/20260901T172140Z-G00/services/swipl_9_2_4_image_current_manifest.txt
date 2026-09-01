@@ -1,0 +1,67 @@
+Name:      docker.io/library/swipl:9.2.4
+MediaType: application/vnd.oci.image.index.v1+json
+Digest:    sha256:3d5e9bdc6cfb77567ac0e5a55a990c2a5fd1306c37c98c8613ed7b296ae38f3b
+           
+Manifests: 
+  Name:        docker.io/library/swipl:9.2.4@sha256:6444c9b3c5694b2408a9a92ab245eb20ae99dcc0f38cfde28c6f653d99e1034f
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/amd64
+  Annotations: 
+    org.opencontainers.image.revision:        78523261c9b99a1bd1bb3546e0fcbffc62ef7036
+    org.opencontainers.image.source:          https://github.com/SWI-Prolog/docker-swipl.git#78523261c9b99a1bd1bb3546e0fcbffc62ef7036:9.2.4/bookworm
+    org.opencontainers.image.url:             https://hub.docker.com/_/swipl
+    org.opencontainers.image.version:         stable
+    com.docker.official-images.bashbrew.arch: amd64
+    org.opencontainers.image.base.digest:     sha256:911821c26cc366231183098f489068afff2d55cf56911cb5b7bd32796538dfe1
+    org.opencontainers.image.base.name:       debian:bookworm-slim
+    org.opencontainers.image.created:         2024-05-14T02:56:57Z
+               
+  Name:        docker.io/library/swipl:9.2.4@sha256:67c0a23df8a008493462041e25484eb58f2df8d77d98d690fc733b773d99d808
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations: 
+    com.docker.official-images.bashbrew.arch: amd64
+    vnd.docker.reference.digest:              sha256:6444c9b3c5694b2408a9a92ab245eb20ae99dcc0f38cfde28c6f653d99e1034f
+    vnd.docker.reference.type:                attestation-manifest
+               
+  Name:        docker.io/library/swipl:9.2.4@sha256:93af2394dc5e1fb8dd168537c1b50f9cf140211275e3db9021fc4c6c7a080c4c
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/arm/v7
+  Annotations: 
+    org.opencontainers.image.base.digest:     sha256:9498c3b6d064c51d3df86cea9b2f096d1242ed325ab420487df42a1f68b43066
+    org.opencontainers.image.base.name:       debian:bookworm-slim
+    org.opencontainers.image.created:         2024-05-14T20:27:34Z
+    org.opencontainers.image.revision:        3ef22f678af652268d24285defc0ae60e62e6d26
+    org.opencontainers.image.source:          https://github.com/SWI-Prolog/docker-swipl.git#3ef22f678af652268d24285defc0ae60e62e6d26:9.2.4/bookworm
+    org.opencontainers.image.url:             https://hub.docker.com/_/swipl
+    org.opencontainers.image.version:         stable
+    com.docker.official-images.bashbrew.arch: arm32v7
+               
+  Name:        docker.io/library/swipl:9.2.4@sha256:ae88f91f8996a9e2ea0258d2f6b8e2e4be8aeb4a4871f1e154f5ed091b9f64d0
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations: 
+    com.docker.official-images.bashbrew.arch: arm32v7
+    vnd.docker.reference.digest:              sha256:93af2394dc5e1fb8dd168537c1b50f9cf140211275e3db9021fc4c6c7a080c4c
+    vnd.docker.reference.type:                attestation-manifest
+               
+  Name:        docker.io/library/swipl:9.2.4@sha256:1a15e5db2d03b041b96513d5e34a8cecd84da60c75bcf969f51dd30d034e2373
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/arm64/v8
+  Annotations: 
+    org.opencontainers.image.base.digest:     sha256:6dc38501802c1554f0fd858d1153a6f0e18c71006c6d0b31cf19fa778900e658
+    org.opencontainers.image.base.name:       debian:bookworm-slim
+    org.opencontainers.image.created:         2024-05-14T23:44:40Z
+    org.opencontainers.image.revision:        3ef22f678af652268d24285defc0ae60e62e6d26
+    org.opencontainers.image.source:          https://github.com/SWI-Prolog/docker-swipl.git#3ef22f678af652268d24285defc0ae60e62e6d26:9.2.4/bookworm
+    org.opencontainers.image.url:             https://hub.docker.com/_/swipl
+    org.opencontainers.image.version:         stable
+    com.docker.official-images.bashbrew.arch: arm64v8
+               
+  Name:        docker.io/library/swipl:9.2.4@sha256:150b922d9c4b566d27e5a22eaef0f3dfe8642d9fcd258fb4c0e7ff3225b5cd2d
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations: 
+    com.docker.official-images.bashbrew.arch: arm64v8
+    vnd.docker.reference.digest:              sha256:1a15e5db2d03b041b96513d5e34a8cecd84da60c75bcf969f51dd30d034e2373
+    vnd.docker.reference.type:                attestation-manifest

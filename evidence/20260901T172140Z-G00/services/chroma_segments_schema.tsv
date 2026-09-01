@@ -1,0 +1,5 @@
+cid	name	type	notnull	dflt_value	pk
+0	id	TEXT	0		1
+1	type	TEXT	1		0
+2	scope	TEXT	1		0
+3	collection	TEXT	1		0

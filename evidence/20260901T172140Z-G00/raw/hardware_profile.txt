@@ -1,0 +1,14 @@
+2026-09-01 19:23:06.721 system_profiler[16765:5339715] Error fetching hw.cpufamily: -1
+Hardware:
+
+    Hardware Overview:
+
+      Model Name: MacBook Pro
+      Model Identifier: Mac17,6
+      Model Number: MGE94LL/A
+      Chip: Apple M5 Max
+      Total Number of Cores: 18 (6 Super and 12 Performance)
+      Memory: 48 GB
+      System Firmware Version: 18000.121.3
+      OS Loader Version: 18000.121.3
+

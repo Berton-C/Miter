@@ -1,0 +1,1 @@
+949148d891f27719cc73b43f0d73c3e8e081dbf32533ed5696d3227cd58a7adc	postgres:16-alpine	clarityclaw_db	5432/tcp	Up 53 seconds

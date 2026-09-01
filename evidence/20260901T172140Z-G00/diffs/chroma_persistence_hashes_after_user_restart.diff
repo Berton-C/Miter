@@ -1,0 +1,15 @@
+--- evidence/20260901T172140Z-G00/hashes/chroma_persistence_before.sha256	2026-09-01 19:30:46
++++ evidence/20260901T172140Z-G00/hashes/chroma_persistence_after.sha256	2026-09-01 19:39:16
+@@ -1,6 +1,6 @@
+-087dd7a105a6886b4ba0d9466ce61e01778098b9637ddd2da0fe7d978e741b75  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/data_level0.bin
+-60e48a3ca92964fb40e0e6111030cd6df84a84b9ace5cb180dfe1666266d87c0  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/header.bin
+-9bc0012105566767af5ea4fffd4ae34941a9fa2d2dc9d6d649225bc9c4bc8423  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/index_metadata.pickle
+-90b42038901a79240f773597611d98803d00b4086f1f412c6cf855e85173e9df  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/length.bin
+-05a1499080911704a224a7697a54984c9fa886f4709631eeb2b97ff9298c7fef  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/link_lists.bin
+-070c2b38159dbb61037220de1feb301b343d02dd373e0be1826e674235e69234  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/chroma.sqlite3
++e74faaaca08f66dc45041330ff750a610769cd020b1b8a8112802f70a1b9e4bb  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/data_level0.bin
++6ab2e0793914584d4f7e502ccc34a6c6f4dca632a44d5e5a2cfadf36b0f5dcde  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/header.bin
++43c6e9c45c53dd3e51d3e14ca9156cce67f7d1e3452cf9603010734b93022436  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/index_metadata.pickle
++baade4b4c5090b2be353539941a8dc042213461d73912c12b4aafae0a3e7fab6  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/length.bin
++fc7850fc45aa9b0aab73ed46a9d75128dc482973a21b28bbe23e328011918f56  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/link_lists.bin
++6c334b566defd2a9bbd17538a2d2fde40d25b20fccf93797eb5c82f1ee227224  /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/chroma.sqlite3

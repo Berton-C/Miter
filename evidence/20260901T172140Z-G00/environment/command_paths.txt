@@ -1,0 +1,6 @@
+/usr/bin/git
+/Applications/Docker.app/Contents/Resources/bin/docker
+/usr/bin/curl
+/usr/bin/jq
+/usr/bin/shasum
+/Users/bcb/.lmstudio/bin/lms

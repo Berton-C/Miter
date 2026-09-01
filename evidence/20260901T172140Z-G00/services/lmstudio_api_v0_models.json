@@ -1,0 +1,70 @@
+{
+  "data": [
+    {
+      "id": "qwen/qwen3.8-27b",
+      "object": "model",
+      "type": "vlm",
+      "publisher": "qwen",
+      "arch": "qwen35",
+      "compatibility_type": "gguf",
+      "quantization": "Q8_0",
+      "state": "loaded",
+      "max_context_length": 262144,
+      "loaded_context_length": 8192,
+      "capabilities": [
+        "tool_use"
+      ]
+    },
+    {
+      "id": "nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+      "object": "model",
+      "type": "llm",
+      "publisher": "mradermacher",
+      "arch": "nemotron_h_moe",
+      "compatibility_type": "gguf",
+      "quantization": "Q5_K_M",
+      "state": "not-loaded",
+      "max_context_length": 1048576,
+      "capabilities": [
+        "tool_use"
+      ]
+    },
+    {
+      "id": "muse-glimmer-30b",
+      "object": "model",
+      "type": "vlm",
+      "publisher": "lmstudio-community",
+      "arch": "muse-glimmer",
+      "compatibility_type": "gguf",
+      "quantization": "Q4_K_M",
+      "state": "not-loaded",
+      "max_context_length": 131072
+    },
+    {
+      "id": "glm-4.7-flash-claude-opus-4.5-high-reasoning-distill",
+      "object": "model",
+      "type": "llm",
+      "publisher": "TeichAI",
+      "arch": "deepseek2",
+      "compatibility_type": "gguf",
+      "quantization": "IQ4_XS",
+      "state": "not-loaded",
+      "max_context_length": 202752,
+      "capabilities": [
+        "tool_use"
+      ]
+    },
+    {
+      "id": "text-embedding-nomic-embed-text-v1.5",
+      "object": "model",
+      "type": "embeddings",
+      "publisher": "nomic-ai",
+      "arch": "nomic-bert",
+      "compatibility_type": "gguf",
+      "quantization": "Q4_K_M",
+      "state": "not-loaded",
+      "max_context_length": 2048
+    }
+  ],
+  "object": "list"
+}
