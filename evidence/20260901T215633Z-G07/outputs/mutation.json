@@ -1,0 +1,8 @@
+{
+  "hashes_differ":true,
+  "modified_line":2,
+  "mutated_line_sha256":"fcc3a8a5c95263ae4e142e40d930c316ce74d230c3e1d68684d5ff4671a0eee7",
+  "original_line_sha256":"f639a77260ca657e63de3e025e44467d450daa53928c550b257c6c922ddfc90b",
+  "replacement":"movement-candidate -> movement-certified",
+  "schema":"miter-g07-ledger-mutation-v1"
+}

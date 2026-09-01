@@ -1,0 +1,97 @@
+[33m--> metta runnable  -->
+[36m!(import! &self (library lib_import))
+[33m-->  prolog goal  -->[35m
+:- findall(A,
+           ( library(lib_import, B),
+             'import!'('&self', B, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function consult)
+[33m-->  prolog goal  -->[35m
+:- findall(A, import_prolog_function(consult, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_file $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                           ($prologfile (consult))
+                                                                           ($function (superpose $importfunctions)))
+                                                                          (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_file(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    consult(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function use_module)
+[33m-->  prolog goal  -->[35m
+:- findall(A, import_prolog_function(use_module, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_module $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                             ($prologfile (use_module))
+                                                                             ($function (superpose $importfunctions)))
+                                                                            (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_module(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    use_module(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file (library lib_import.pl) (static-import! git-import! use-module!))
+[33m-->  prolog goal  -->[35m
+:- findall(A,
+           ( library('lib_import.pl', B),
+             import_prolog_functions_from_file(B,
+                                               [ 'static-import!',
+                                                 'git-import!',
+                                                 'use-module!'
+                                               ],
+                                               A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_store.pl" (miter_store_verify_ledger miter_store_readback))
+[33m-->  prolog goal  -->[35m
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_store.pl",
+                                             [ miter_store_verify_ledger,
+                                               miter_store_readback
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_store_verify_ledger "./runtime/g07/store" "./runtime/g07/report-final.json")
+[33m-->  prolog goal  -->[35m
+:- findall(A,
+           miter_store_verify_ledger("./runtime/g07/store",
+                                     "./runtime/g07/report-final.json",
+                                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_store_readback "./runtime/g07/store" "./runtime/g07/readback-final.json")
+[33m-->  prolog goal  -->[35m
+:- findall(A,
+           miter_store_readback("./runtime/g07/store",
+                                "./runtime/g07/readback-final.json",
+                                A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+true
+true
+trajectory-valid
+trajectory-readback-stored

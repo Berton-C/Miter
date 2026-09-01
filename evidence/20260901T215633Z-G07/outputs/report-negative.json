@@ -1,0 +1,11 @@
+{
+  "event_count":4,
+  "failure_code":"event-hash-mismatch",
+  "first_broken_event_id":"evt-g07-internal-movement-0002",
+  "first_broken_sequence":2,
+  "later_lines_preserved":2,
+  "schema":"miter-trajectory-integrity-report-v1",
+  "status":"invalid",
+  "tip_event_hash":null,
+  "validated_prefix":1
+}

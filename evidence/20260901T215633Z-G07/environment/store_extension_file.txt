@@ -1,0 +1,1 @@
+runtime/g07/libmiter_store_posix.dylib: Mach-O 64-bit dynamically linked shared library arm64

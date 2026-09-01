@@ -1,0 +1,31 @@
+{
+  "event_count":3,
+  "events": [
+    {
+      "event_hash":"c535d799137e02f02f91e089ecd32d4b12c21f338d3f68789c6288deedbb5fa2",
+      "event_id":"evt-g07-contact-0001",
+      "event_kind":"external-message",
+      "local_sequence":1,
+      "parent_event_ids": [],
+      "payload_hash":"0040b26beb69af6ba1586bd9cde328109b64292cef4c6d68d4ec77a193aa272a"
+    },
+    {
+      "event_hash":"121c539fd6a9cde6437f30fc18a3d536c108f8d8fa3c6c7a451a8c5282a8af95",
+      "event_id":"evt-g07-internal-movement-0002",
+      "event_kind":"movement-candidate",
+      "local_sequence":2,
+      "parent_event_ids": ["evt-g07-contact-0001" ],
+      "payload_hash":"b410b5c46aa8a16fa4fbd1c21ae67fd9e568be1e510a215821c71db5aa645727"
+    },
+    {
+      "event_hash":"40f2bd7592c6024faf0f44f5e87864c8ea65094fa9807762a3d8563e32190398",
+      "event_id":"evt-g07-witnessed-result-0003",
+      "event_kind":"consequence-observed",
+      "local_sequence":3,
+      "parent_event_ids": ["evt-g07-internal-movement-0002" ],
+      "payload_hash":"7d9ed02491a4f65123c257af088d4402e22937e07d9b0af1c23ca7bb1bf92971"
+    }
+  ],
+  "schema":"miter-trajectory-readback-v1",
+  "tip_event_hash":"40f2bd7592c6024faf0f44f5e87864c8ea65094fa9807762a3d8563e32190398"
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "miter-event-intent-v1",
+  "event_id": "evt-g07-fork-0004",
+  "event_kind": "development-opportunity",
+  "occurred_at": "2026-09-01T22:00:06Z",
+  "recorded_at": "2026-09-01T22:00:07Z",
+  "source_surface": "g07-fixed-fixture",
+  "source_principal": "miter:g07",
+  "audience_scope": "scope:g07-test",
+  "project_scope": "project:g07-ledger",
+  "payload": {"fork_id": "fork-g07-0001", "purpose": "Reference a prior event without rewriting history."},
+  "provenance_kind": "developmental-fork",
+  "parent_event_ids": ["evt-g07-internal-movement-0002"],
+  "correlation_id": "corr-g07-fork"
+}

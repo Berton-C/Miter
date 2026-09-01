@@ -1,0 +1,14 @@
+## main...origin/main
+?? effect_membranes/miter_store.pl
+?? effect_membranes/runtime_extensions/
+?? evidence/20260901T215633Z-G07/
+?? scripts/g07/
+?? src/
+?? tests/fixtures/g07_append_events.metta
+?? tests/fixtures/g07_contact.json
+?? tests/fixtures/g07_fork.json
+?? tests/fixtures/g07_internal_movement.json
+?? tests/fixtures/g07_negative_verify.metta
+?? tests/fixtures/g07_restart_fork.metta
+?? tests/fixtures/g07_restart_readback.metta
+?? tests/fixtures/g07_witnessed_result.json

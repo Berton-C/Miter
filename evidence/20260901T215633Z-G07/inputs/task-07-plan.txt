@@ -1,0 +1,21 @@
+GATE: G07 — Append-only trajectory ledger
+REQUIREMENT IDS: G07, W-010 through W-018, W-043, W-050, C-032, C-037, C-039
+CONSTITUTIONAL LAWS: immutable trajectory; additive interpretation; Chroma is non-authoritative
+FILES EXPECTED TO CHANGE: effect_membranes/miter_store.pl; effect_membranes/runtime_extensions/miter_store_posix.c; src/events.metta; scripts/g07/*; tests/fixtures/g07_*; this evidence directory
+FILES FORBIDDEN TO CHANGE: CONSTITUTION.md; ACCEPTANCE.md; AUTHORITY_MAP.md; POC_SPEC.md; DECISIONS.md; WORK_PROTOCOL.md; initial_canon/*; config/local/*; ~/.miter
+POSITIVE FIXTURE: contact, internal movement, witnessed result, restart readback, additive fork
+NEGATIVE CONTROL: modify old ledger line 2 without updating its event hash
+EXPECTED OBSERVABLE DIFFERENCE: intact ledger validates through sequence 4; mutated copy fails first at sequence 2 and preserves later lines
+CURRENT UNPROVEN ASSUMPTIONS: the host SWI C headers expose stream file descriptors; APFS honors advisory fcntl locks and fsync
+ROLLBACK METHOD: discard only the ignored runtime/g07 test store and revert this bounded commit before push
+
+Hypothesis: a MeTTa-selected event can cross a narrow Prolog store membrane,
+receive deterministic payload/event hashes, append under a cross-process lock,
+and become durable through POSIX fsync without any rewrite of prior bytes.
+
+Positive expectation: three events validate after process restart; a fourth fork
+references event 2 and preserves the exact first three lines.
+
+Negative expectation: changing event kind on old line 2 while retaining its
+stored event hash yields `event-hash-mismatch` at sequence 2, without deleting
+or rewriting lines 3 and 4.

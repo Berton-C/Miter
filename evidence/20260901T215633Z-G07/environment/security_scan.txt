@@ -1,0 +1,7 @@
+PASS
+
+No credentials, authorization headers, bearer tokens, private keys, model
+weights, databases, Chroma persistence, compiled shared libraries, or NRC VAD
+assets were found in the G07 implementation or evidence package. The locally
+compiled arm64 fsync extension remains under ignored `runtime/g07/`; only its
+source, file-type observation, and checksum are committed.

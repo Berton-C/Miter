@@ -1,0 +1,15 @@
+{
+  "schema": "miter-event-intent-v1",
+  "event_id": "evt-g07-contact-0001",
+  "event_kind": "external-message",
+  "occurred_at": "2026-09-01T22:00:00Z",
+  "recorded_at": "2026-09-01T22:00:01Z",
+  "source_surface": "g07-fixed-fixture",
+  "source_principal": "principal:g07-human",
+  "audience_scope": "scope:g07-test",
+  "project_scope": "project:g07-ledger",
+  "payload": {"contact": "Begin the fixed trajectory proof."},
+  "provenance_kind": "direct-contact",
+  "parent_event_ids": [],
+  "correlation_id": "corr-g07-trajectory"
+}
