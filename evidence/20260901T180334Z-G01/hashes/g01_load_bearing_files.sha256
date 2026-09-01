@@ -1,0 +1,4 @@
+b0ee9930c7fbca5d221ff2e31a7cce30bc8e8902f463c5f80be2a971414e3aae  /private/tmp/miter-g01-petta-ae66fa8/run.sh
+80d9cd8d68c9ed6b5646587b42ad8d55080e6d2c9a1c973f827dd4bcc6833678  /private/tmp/miter-g01-petta-ae66fa8/src/main.pl
+be1dc05c047a02c9cfe5004cba6d29720a1f15c8596a1fda3c069002f9baaa3d  tests/fixtures/minimal.metta
+e5e93af7f14f55683c96aa402f9ac32375eee7403d5ff583e086cb56285fc3cf  scripts/g01/verify_g01.sh

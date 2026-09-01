@@ -1,0 +1,153 @@
+{
+  "homebrew_version": "5.1.0-27-gcec640b",
+  "used_options": [],
+  "unused_options": [],
+  "built_as_bottle": true,
+  "poured_from_bottle": true,
+  "loaded_from_api": true,
+  "loaded_from_internal_api": false,
+  "installed_on_request": true,
+  "changed_files": [
+    "share/man/man1/swipl.1",
+    "share/pkgconfig/swipl.pc"
+  ],
+  "time": 1788285954,
+  "source_modified_time": 1773563946,
+  "compiler": "clang",
+  "aliases": [],
+  "runtime_dependencies": [
+    {
+      "full_name": "berkeley-db@5",
+      "version": "5.3.28",
+      "revision": 1,
+      "bottle_rebuild": 0,
+      "pkg_version": "5.3.28_1",
+      "declared_directly": true
+    },
+    {
+      "full_name": "gmp",
+      "version": "6.3.0",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "6.3.0",
+      "declared_directly": true
+    },
+    {
+      "full_name": "libb2",
+      "version": "0.98.1",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "0.98.1",
+      "declared_directly": false
+    },
+    {
+      "full_name": "lz4",
+      "version": "1.10.0",
+      "revision": 0,
+      "bottle_rebuild": 1,
+      "pkg_version": "1.10.0",
+      "declared_directly": false
+    },
+    {
+      "full_name": "xz",
+      "version": "5.8.3",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "5.8.3",
+      "declared_directly": false
+    },
+    {
+      "full_name": "zstd",
+      "version": "1.5.7",
+      "revision": 1,
+      "bottle_rebuild": 0,
+      "pkg_version": "1.5.7_1",
+      "declared_directly": false
+    },
+    {
+      "full_name": "libarchive",
+      "version": "3.8.9",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "3.8.9",
+      "declared_directly": true
+    },
+    {
+      "full_name": "libyaml",
+      "version": "0.2.5",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "0.2.5",
+      "declared_directly": true
+    },
+    {
+      "full_name": "ca-certificates",
+      "version": "2026-08-13",
+      "revision": 0,
+      "bottle_rebuild": 1,
+      "pkg_version": "2026-08-13",
+      "declared_directly": false
+    },
+    {
+      "full_name": "openssl@3",
+      "version": "3.6.4",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "3.6.4",
+      "declared_directly": true
+    },
+    {
+      "full_name": "pcre2",
+      "version": "10.48",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "10.48",
+      "declared_directly": true
+    },
+    {
+      "full_name": "m4",
+      "version": "1.4.21",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "1.4.21",
+      "declared_directly": false
+    },
+    {
+      "full_name": "libtool",
+      "version": "2.6.2",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "2.6.2",
+      "declared_directly": false
+    },
+    {
+      "full_name": "unixodbc",
+      "version": "2.3.14",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "2.3.14",
+      "declared_directly": true
+    }
+  ],
+  "source": {
+    "spec": "stable",
+    "versions": {
+      "stable": "10.0.2",
+      "head": null,
+      "version_scheme": 0,
+      "compatibility_version": null
+    },
+    "path": "/Users/bcb/Library/Caches/Homebrew/api/formula.jws.json",
+    "tap_git_head": null,
+    "tap": "homebrew/core"
+  },
+  "arch": "arm64",
+  "built_on": {
+    "os": "Macintosh",
+    "os_version": "macOS 26.3",
+    "cpu_family": "dunno",
+    "xcode": "26.3",
+    "clt": "26.3.0.0.1.1771626560",
+    "preferred_perl": "5.34"
+  }
+}

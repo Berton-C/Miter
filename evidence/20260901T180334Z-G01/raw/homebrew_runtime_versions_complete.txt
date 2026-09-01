@@ -1,0 +1,14 @@
+berkeley-db@5 5.3.28_1
+gmp 6.3.0
+libarchive 3.8.9
+libb2 0.98.1
+libtool 2.6.2
+libyaml 0.2.5
+lz4 1.10.0
+m4 1.4.21
+openssl@3 3.6.2
+pcre2 10.48
+swi-prolog 10.0.2
+unixodbc 2.3.14
+xz 5.8.3
+zstd 1.5.7_1

@@ -1,0 +1,4 @@
+/opt/homebrew/bin/swipl:
+Mach header
+      magic  cputype cpusubtype  caps    filetype ncmds sizeofcmds      flags
+MH_MAGIC_64    ARM64        ALL  0x00     EXECUTE    20       1264   NOUNDEFS DYLDLINK TWOLEVEL PIE

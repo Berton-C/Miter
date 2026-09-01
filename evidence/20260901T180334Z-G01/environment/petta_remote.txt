@@ -1,0 +1,2 @@
+origin	https://github.com/trueagi-io/PeTTa.git (fetch)
+origin	https://github.com/trueagi-io/PeTTa.git (push)

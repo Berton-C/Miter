@@ -1,0 +1,4 @@
+ M DECISIONS.md
+?? evidence/20260901T180334Z-G01/
+?? scripts/
+?? tests/

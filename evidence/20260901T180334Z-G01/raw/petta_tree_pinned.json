@@ -1,0 +1,1938 @@
+{
+  "sha": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "tree": [
+    {
+      "path": ".github",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c904800f2b688e427ef7c8872c3a896fc2ae337c",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/c904800f2b688e427ef7c8872c3a896fc2ae337c"
+    },
+    {
+      "path": ".github/ci",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9f8a0dac3dfb605861b75c5f53ad64c18b3d5ac6",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/9f8a0dac3dfb605861b75c5f53ad64c18b3d5ac6"
+    },
+    {
+      "path": ".github/ci/Dockerfile",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf7a7cd59b0ddca1373504c19b072c577699e06d",
+      "size": 210,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/cf7a7cd59b0ddca1373504c19b072c577699e06d"
+    },
+    {
+      "path": ".github/workflows",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "68c2c8a092d6f400b37a33f8f6a35a2e7c43e15a",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/68c2c8a092d6f400b37a33f8f6a35a2e7c43e15a"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd86b751fcf0de9d1643fde71152dde2bb47d473",
+      "size": 5202,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/bd86b751fcf0de9d1643fde71152dde2bb47d473"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1186780b5c843c2e1f02a25c35ca6463a954cff3",
+      "size": 142,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/1186780b5c843c2e1f02a25c35ca6463a954cff3"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99b8b6dc8b0f564d1c98eb383e0b2968839c4039",
+      "size": 1071,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/99b8b6dc8b0f564d1c98eb383e0b2968839c4039"
+    },
+    {
+      "path": "MANIFEST.in",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85331511db74699c73c23a736eb04c459358d2d4",
+      "size": 73,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/85331511db74699c73c23a736eb04c459358d2d4"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a054435038af08423e3bc5f4ce53fb0f36b1a5f",
+      "size": 2682,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/9a054435038af08423e3bc5f4ce53fb0f36b1a5f"
+    },
+    {
+      "path": "build.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c736ebc06809060b7892838dd48603cf6689db00",
+      "size": 172,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/c736ebc06809060b7892838dd48603cf6689db00"
+    },
+    {
+      "path": "examples",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f8c07515032ed7079c27add606aa36de3542ae2c",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/f8c07515032ed7079c27add606aa36de3542ae2c"
+    },
+    {
+      "path": "examples/add_atom_fun_space.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b5dac84253acf9b1313a44a8f25f7e0b463b6150",
+      "size": 107,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/b5dac84253acf9b1313a44a8f25f7e0b463b6150"
+    },
+    {
+      "path": "examples/and_or.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11fe7910a24c37655df988a8b89cd3b49f0cf9be",
+      "size": 46,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/11fe7910a24c37655df988a8b89cd3b49f0cf9be"
+    },
+    {
+      "path": "examples/atomops.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d371559bc3c7a4e5a6206ab2cf2e9551f85cdbd0",
+      "size": 619,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d371559bc3c7a4e5a6206ab2cf2e9551f85cdbd0"
+    },
+    {
+      "path": "examples/booleansolver.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1898dfa6aaf51cdca65e1d19f72cfc738c09a1f6",
+      "size": 77,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/1898dfa6aaf51cdca65e1d19f72cfc738c09a1f6"
+    },
+    {
+      "path": "examples/builin_types.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a68652627a80565877c1a39692f8e4fdac9e0c8",
+      "size": 2025,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/8a68652627a80565877c1a39692f8e4fdac9e0c8"
+    },
+    {
+      "path": "examples/callquoteevalreduce.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0c481eaae34def47a4bb2909ce97212ab636c12b",
+      "size": 1726,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/0c481eaae34def47a4bb2909ce97212ab636c12b"
+    },
+    {
+      "path": "examples/callquoteevalreduce2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a7a018f73d1086814bee7d35202f7f95c2d6a869",
+      "size": 483,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/a7a018f73d1086814bee7d35202f7f95c2d6a869"
+    },
+    {
+      "path": "examples/case.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "efd5de01b7e459c0f90e6540c028be2a01234933",
+      "size": 131,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/efd5de01b7e459c0f90e6540c028be2a01234933"
+    },
+    {
+      "path": "examples/case2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "74c356a6931928e11a770412ce4a5e127b7d20f2",
+      "size": 134,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/74c356a6931928e11a770412ce4a5e127b7d20f2"
+    },
+    {
+      "path": "examples/caseconstrain.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e079a7e7967139a80974588dcf14c38881764a9c",
+      "size": 49,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/e079a7e7967139a80974588dcf14c38881764a9c"
+    },
+    {
+      "path": "examples/caseempty.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "613710ef9a87f52b1e11352688043edb98ea3223",
+      "size": 193,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/613710ef9a87f52b1e11352688043edb98ea3223"
+    },
+    {
+      "path": "examples/casenew.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae4d6bd4c2f08c9a07ee749ff03478c034b228e7",
+      "size": 124,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/ae4d6bd4c2f08c9a07ee749ff03478c034b228e7"
+    },
+    {
+      "path": "examples/chain.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da6a95c65e2d55a3ba18a86835ca992c8e0e7bb6",
+      "size": 137,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/da6a95c65e2d55a3ba18a86835ca992c8e0e7bb6"
+    },
+    {
+      "path": "examples/collapse.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb54ced4149ab34c3ef299f2c134f51edeade7e4",
+      "size": 44,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/cb54ced4149ab34c3ef299f2c134f51edeade7e4"
+    },
+    {
+      "path": "examples/comments.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11bc2b75a049484a1b1f1989ad1e777dd3b9448d",
+      "size": 212,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/11bc2b75a049484a1b1f1989ad1e777dd3b9448d"
+    },
+    {
+      "path": "examples/constanthead.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "80e87751a53878d1d7d85bda8aca17c4fe69b7e7",
+      "size": 224,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/80e87751a53878d1d7d85bda8aca17c4fe69b7e7"
+    },
+    {
+      "path": "examples/curry.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6c1fa4380658254601bc6284423f930916cae18f",
+      "size": 866,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/6c1fa4380658254601bc6284423f930916cae18f"
+    },
+    {
+      "path": "examples/cut.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d923b95a2e0b697027f597da2a71beb1560e2ba7",
+      "size": 270,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d923b95a2e0b697027f597da2a71beb1560e2ba7"
+    },
+    {
+      "path": "examples/empty.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05f0eed4dd774a2bc886e1da44fe26dc06e06cbb",
+      "size": 50,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/05f0eed4dd774a2bc886e1da44fe26dc06e06cbb"
+    },
+    {
+      "path": "examples/eval.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25fb7a943ad48aa1bd9b9bb715c865ceef2940ca",
+      "size": 744,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/25fb7a943ad48aa1bd9b9bb715c865ceef2940ca"
+    },
+    {
+      "path": "examples/factorial.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe486fcd1ead1350f67a6c05e4dd327e1458b070",
+      "size": 98,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/fe486fcd1ead1350f67a6c05e4dd327e1458b070"
+    },
+    {
+      "path": "examples/fib.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e18905e774cb116bef98d0798e277421b6576617",
+      "size": 116,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/e18905e774cb116bef98d0798e277421b6576617"
+    },
+    {
+      "path": "examples/fibadd.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c3c1d5d83d8653e4d6cf010dd8a14b5ea3818b12",
+      "size": 202,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/c3c1d5d83d8653e4d6cf010dd8a14b5ea3818b12"
+    },
+    {
+      "path": "examples/fibsmart.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76ddc277477f9c391c3d145be9c15fc96264751d",
+      "size": 162,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/76ddc277477f9c391c3d145be9c15fc96264751d"
+    },
+    {
+      "path": "examples/fibsmartimport.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "634fce03a6043c02357162e9914c8b136ec5bc22",
+      "size": 67,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/634fce03a6043c02357162e9914c8b136ec5bc22"
+    },
+    {
+      "path": "examples/foldall.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a7683da4486b78ebce0a5cce42fea2b7df789168",
+      "size": 1516,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/a7683da4486b78ebce0a5cce42fea2b7df789168"
+    },
+    {
+      "path": "examples/foldallmatch.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2db177754943481b82bf0888b80d2325b14e7717",
+      "size": 153,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/2db177754943481b82bf0888b80d2325b14e7717"
+    },
+    {
+      "path": "examples/foldallspacecount.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6e87583cff90476f32d08e30aec1462879bed4d3",
+      "size": 203,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/6e87583cff90476f32d08e30aec1462879bed4d3"
+    },
+    {
+      "path": "examples/forall.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ad8dbe064c45d4c77763271f1f513a2c2266ced",
+      "size": 1755,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/7ad8dbe064c45d4c77763271f1f513a2c2266ced"
+    },
+    {
+      "path": "examples/functionhead.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e9e8a3c0f61f0a4e24b96c0f63a9946622de9ed",
+      "size": 994,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/7e9e8a3c0f61f0a4e24b96c0f63a9946622de9ed"
+    },
+    {
+      "path": "examples/functionhead2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdbd6477dd7aeb5d40e92e57b4d214968c0f6c2d",
+      "size": 517,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/cdbd6477dd7aeb5d40e92e57b4d214968c0f6c2d"
+    },
+    {
+      "path": "examples/functionhead3.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea62aed392ffbdd569e34cc067e13903e9a0564f",
+      "size": 617,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/ea62aed392ffbdd569e34cc067e13903e9a0564f"
+    },
+    {
+      "path": "examples/functionremoval.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "03c332a9ebe6b270902f2c54761abf578652f215",
+      "size": 326,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/03c332a9ebe6b270902f2c54761abf578652f215"
+    },
+    {
+      "path": "examples/functionremovalspec.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bbe6977c35400a7bf42e9ce1f3f406901cffe74d",
+      "size": 324,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/bbe6977c35400a7bf42e9ce1f3f406901cffe74d"
+    },
+    {
+      "path": "examples/functiontypes.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a64b440564361cea718efb7ed8033da9dbe179f",
+      "size": 402,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/5a64b440564361cea718efb7ed8033da9dbe179f"
+    },
+    {
+      "path": "examples/git_import.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "388e0868ad3f478785d31fb0fae6809f443cbc26",
+      "size": 213,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/388e0868ad3f478785d31fb0fae6809f443cbc26"
+    },
+    {
+      "path": "examples/git_import2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b9fa32e67010d9f027f3443ead688a6139bcd012",
+      "size": 691,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/b9fa32e67010d9f027f3443ead688a6139bcd012"
+    },
+    {
+      "path": "examples/greedy_chess.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06b155975ac1a7058726c7ed91eb41a4270c5047",
+      "size": 118563,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/06b155975ac1a7058726c7ed91eb41a4270c5047"
+    },
+    {
+      "path": "examples/he_assert.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "102079b129e1246576f3d5418aa5fd2179ebf891",
+      "size": 311,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/102079b129e1246576f3d5418aa5fd2179ebf891"
+    },
+    {
+      "path": "examples/he_atomspace.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "15c72c21b03048ad342dbdb8b54b8966c3e94393",
+      "size": 402,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/15c72c21b03048ad342dbdb8b54b8966c3e94393"
+    },
+    {
+      "path": "examples/he_equalreduct.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb1dc0c36885614f64e071599e4adde4a73db6b5",
+      "size": 210,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/fb1dc0c36885614f64e071599e4adde4a73db6b5"
+    },
+    {
+      "path": "examples/he_error.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "831264638d634899d6f4bd95279af70a63f51616",
+      "size": 453,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/831264638d634899d6f4bd95279af70a63f51616"
+    },
+    {
+      "path": "examples/he_evaluation.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c07b7387ae723a23683b8cc3ff564eb4e479486c",
+      "size": 253,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/c07b7387ae723a23683b8cc3ff564eb4e479486c"
+    },
+    {
+      "path": "examples/he_math.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "48ac8872af84d799ccbebbe8bcb39394fb185b6f",
+      "size": 584,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/48ac8872af84d799ccbebbe8bcb39394fb185b6f"
+    },
+    {
+      "path": "examples/he_minimalmetta.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f48d51467529421f5b03b1e6d3093d0ac54b9c1b",
+      "size": 355,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f48d51467529421f5b03b1e6d3093d0ac54b9c1b"
+    },
+    {
+      "path": "examples/he_quoting.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d98e6c80b03f8b11a29498467c2350dc46c41e3",
+      "size": 262,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/0d98e6c80b03f8b11a29498467c2350dc46c41e3"
+    },
+    {
+      "path": "examples/he_types.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e15867b0857abc547c4fd50a5d4cca0b70b7f779",
+      "size": 445,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/e15867b0857abc547c4fd50a5d4cca0b70b7f779"
+    },
+    {
+      "path": "examples/holbenchmark.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4265e273b93b6d9b1c63a0a2ffec2f044a0ffc9d",
+      "size": 831,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/4265e273b93b6d9b1c63a0a2ffec2f044a0ffc9d"
+    },
+    {
+      "path": "examples/holfunctions.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4dfef939752738e3b470b1070350e87697a8465d",
+      "size": 592,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/4dfef939752738e3b470b1070350e87697a8465d"
+    },
+    {
+      "path": "examples/holfunctions_intrinsicop.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "de8312decab85f041c41b69c13982339cc802547",
+      "size": 162,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/de8312decab85f041c41b69c13982339cc802547"
+    },
+    {
+      "path": "examples/hyperpose_primes.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "98f9581be4b9b53db84b8d5aa0b490562720cdf4",
+      "size": 1126,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/98f9581be4b9b53db84b8d5aa0b490562720cdf4"
+    },
+    {
+      "path": "examples/identity.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e80cc571a6d2ed9b34e7bc5c965e89402f9a76f4",
+      "size": 38,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/e80cc571a6d2ed9b34e7bc5c965e89402f9a76f4"
+    },
+    {
+      "path": "examples/if.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89f4f06744db799ffb3afde4e13554b6954639ff",
+      "size": 46,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/89f4f06744db799ffb3afde4e13554b6954639ff"
+    },
+    {
+      "path": "examples/if2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6c0669f7133f8742d1b9daadc51514ff0552160",
+      "size": 47,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/e6c0669f7133f8742d1b9daadc51514ff0552160"
+    },
+    {
+      "path": "examples/if3.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2280480d9031b7e878f081c1bd0b830fbca785d6",
+      "size": 77,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/2280480d9031b7e878f081c1bd0b830fbca785d6"
+    },
+    {
+      "path": "examples/if4.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6199fc165b6d2333327bf22892eb2a2bd72bdbde",
+      "size": 91,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/6199fc165b6d2333327bf22892eb2a2bd72bdbde"
+    },
+    {
+      "path": "examples/ifcasenondet.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "722f8a5a16a0fa75099e6aa45eac6842dff863bc",
+      "size": 252,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/722f8a5a16a0fa75099e6aa45eac6842dff863bc"
+    },
+    {
+      "path": "examples/ifsimple.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3ecd5b05409d1e11c38b33ce108e7e10ea3daae5",
+      "size": 24,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/3ecd5b05409d1e11c38b33ce108e7e10ea3daae5"
+    },
+    {
+      "path": "examples/invertfunction.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e3a1eaa23695201b56525019e158f9e432c4836",
+      "size": 430,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/8e3a1eaa23695201b56525019e158f9e432c4836"
+    },
+    {
+      "path": "examples/invertpeanoplus.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e4005157ad0a73c22bb718beec17bf628fc3694c",
+      "size": 925,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/e4005157ad0a73c22bb718beec17bf628fc3694c"
+    },
+    {
+      "path": "examples/is_alpha_member_test.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99da3bab0f4e8db7319e1224cd5ec337e32517b3",
+      "size": 2202,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/99da3bab0f4e8db7319e1224cd5ec337e32517b3"
+    },
+    {
+      "path": "examples/iter.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4ba1e130f5c6034dc2eb58e213f78b53b7433872",
+      "size": 356,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/4ba1e130f5c6034dc2eb58e213f78b53b7433872"
+    },
+    {
+      "path": "examples/lambda.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0fc7612fbb3b00b51e1061e08235201a3b6ccb79",
+      "size": 852,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/0fc7612fbb3b00b51e1061e08235201a3b6ccb79"
+    },
+    {
+      "path": "examples/let_superpose_if_case.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c461238d9714d59cd197bb1d70abe12c0dc2c04d",
+      "size": 374,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/c461238d9714d59cd197bb1d70abe12c0dc2c04d"
+    },
+    {
+      "path": "examples/letext.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3a337a86507406d9752aeccfbe6a13f1486c76ee",
+      "size": 70,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/3a337a86507406d9752aeccfbe6a13f1486c76ee"
+    },
+    {
+      "path": "examples/letlet.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e8eb832fc85e86e7041370174868306bc0538cf",
+      "size": 95,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/2e8eb832fc85e86e7041370174868306bc0538cf"
+    },
+    {
+      "path": "examples/letstar.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d6c0462eb6a2d219818d1a27d18bba3949803485",
+      "size": 43,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d6c0462eb6a2d219818d1a27d18bba3949803485"
+    },
+    {
+      "path": "examples/lib_roman_pair_helpers.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e1544464bfde524b2a9ecd2efc16601b17c72161",
+      "size": 165,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/e1544464bfde524b2a9ecd2efc16601b17c72161"
+    },
+    {
+      "path": "examples/library.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7efde94de2cd2e32293d1ef24b39a521cc03b0be",
+      "size": 79,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/7efde94de2cd2e32293d1ef24b39a521cc03b0be"
+    },
+    {
+      "path": "examples/listhead.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "82f35d50a23b23f0a4d7abfbf0206320a4284507",
+      "size": 354,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/82f35d50a23b23f0a4d7abfbf0206320a4284507"
+    },
+    {
+      "path": "examples/llm_cities.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9181179ac42146df82e3131e5af4e6c45e2c2364",
+      "size": 486,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/9181179ac42146df82e3131e5af4e6c45e2c2364"
+    },
+    {
+      "path": "examples/logicprog.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f22220d86469d533e4b5419caf654a54c89d760",
+      "size": 554,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/7f22220d86469d533e4b5419caf654a54c89d760"
+    },
+    {
+      "path": "examples/logicprogset.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a797f8746c04b1b1ae3769b8efe8fb395ce792a7",
+      "size": 145,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/a797f8746c04b1b1ae3769b8efe8fb395ce792a7"
+    },
+    {
+      "path": "examples/matchnested.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8ef3a62b778a0610f47199afcc8b5c476151c324",
+      "size": 604,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/8ef3a62b778a0610f47199afcc8b5c476151c324"
+    },
+    {
+      "path": "examples/matchnested2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1fc8f7331004ccdbf0a5248cd1f9d237084d2ad1",
+      "size": 576,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/1fc8f7331004ccdbf0a5248cd1f9d237084d2ad1"
+    },
+    {
+      "path": "examples/matchsingle.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11466c6af0ed6efd72a1a5815c786af9d5f7e34e",
+      "size": 402,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/11466c6af0ed6efd72a1a5815c786af9d5f7e34e"
+    },
+    {
+      "path": "examples/matchtypes.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70d4870aa50396c359d438d581f4431630919dd5",
+      "size": 444,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/70d4870aa50396c359d438d581f4431630919dd5"
+    },
+    {
+      "path": "examples/matespace.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f1b9a5103b86755b73647e65a17d03983fc7be9c",
+      "size": 911,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f1b9a5103b86755b73647e65a17d03983fc7be9c"
+    },
+    {
+      "path": "examples/matespace2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e07ef8af0bd360d491b2322d1ba64901186439d",
+      "size": 977,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/4e07ef8af0bd360d491b2322d1ba64901186439d"
+    },
+    {
+      "path": "examples/matespacefast.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "655e7ef203a549fa912d42f7aca96734ca3aafae",
+      "size": 526,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/655e7ef203a549fa912d42f7aca96734ca3aafae"
+    },
+    {
+      "path": "examples/math.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "48ac8872af84d799ccbebbe8bcb39394fb185b6f",
+      "size": 584,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/48ac8872af84d799ccbebbe8bcb39394fb185b6f"
+    },
+    {
+      "path": "examples/meta_types.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a4497bb4832cd29ea729b92c9e3933b6f933fa7",
+      "size": 219,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/8a4497bb4832cd29ea729b92c9e3933b6f933fa7"
+    },
+    {
+      "path": "examples/metta4_prog.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5567e87565244e550471fe383cb0a59e973d155b",
+      "size": 256,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/5567e87565244e550471fe383cb0a59e973d155b"
+    },
+    {
+      "path": "examples/metta4_streams.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "96d0072c61efa0291fe87a0e9648af94b301797b",
+      "size": 689,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/96d0072c61efa0291fe87a0e9648af94b301797b"
+    },
+    {
+      "path": "examples/mettaset.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "775de9257bed2af427a7a37096732bdf89f26570",
+      "size": 340,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/775de9257bed2af427a7a37096732bdf89f26570"
+    },
+    {
+      "path": "examples/multicall.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9bce9b7d540036f9d8dcaea330cc894b3e45c5b0",
+      "size": 112,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/9bce9b7d540036f9d8dcaea330cc894b3e45c5b0"
+    },
+    {
+      "path": "examples/multiset_operations.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b8132e240b2fcc0868766acf31134650e382664",
+      "size": 395,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/4b8132e240b2fcc0868766acf31134650e382664"
+    },
+    {
+      "path": "examples/mutex_and_transaction.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ae897b720a51db133aef03b74cef427f90dc106",
+      "size": 1547,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/6ae897b720a51db133aef03b74cef427f90dc106"
+    },
+    {
+      "path": "examples/myinterpreter.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c47952615dcf22f544ef7b34734c0890e16c11f5",
+      "size": 271,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/c47952615dcf22f544ef7b34734c0890e16c11f5"
+    },
+    {
+      "path": "examples/nars_direct.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8ac435c17aa8ff0e3b73c5cd265f556bd41e37e",
+      "size": 1273,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/a8ac435c17aa8ff0e3b73c5cd265f556bd41e37e"
+    },
+    {
+      "path": "examples/nars_tuffy.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "072bb9cb5bd66ba84baaf5a6727d8e6aa90516bf",
+      "size": 1088,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/072bb9cb5bd66ba84baaf5a6727d8e6aa90516bf"
+    },
+    {
+      "path": "examples/nestedcons.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4ea9df6301a1a1fecb5c05eca0d7e7746a342173",
+      "size": 62,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/4ea9df6301a1a1fecb5c05eca0d7e7746a342173"
+    },
+    {
+      "path": "examples/newtons_method.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2f3bad25c181d0dd97582758c566284fd5f98f58",
+      "size": 442,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/2f3bad25c181d0dd97582758c566284fd5f98f58"
+    },
+    {
+      "path": "examples/nilbc.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8411009647e787203f41ca61e49b44308582e613",
+      "size": 20749,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/8411009647e787203f41ca61e49b44308582e613"
+    },
+    {
+      "path": "examples/once.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5acfe466d0aeab342e2c0b6bffd0120fe4b9446f",
+      "size": 227,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/5acfe466d0aeab342e2c0b6bffd0120fe4b9446f"
+    },
+    {
+      "path": "examples/outputtype.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4519c4b29412d612b5be95d712b651875562c4bb",
+      "size": 243,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/4519c4b29412d612b5be95d712b651875562c4bb"
+    },
+    {
+      "path": "examples/parametric_types.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f349c4c2080f1e7c4c9d008ac3733874a1c5ebce",
+      "size": 202,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f349c4c2080f1e7c4c9d008ac3733874a1c5ebce"
+    },
+    {
+      "path": "examples/parse.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a2c2cde9b5fed78fdfad0b990882f26ec4d9b86",
+      "size": 321,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/6a2c2cde9b5fed78fdfad0b990882f26ec4d9b86"
+    },
+    {
+      "path": "examples/partialdef.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69c913f98b0474da6d4e6734b79623b8a9b07bd",
+      "size": 136,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/e69c913f98b0474da6d4e6734b79623b8a9b07bd"
+    },
+    {
+      "path": "examples/patrick_iterate_fib.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a249954f9f4f74252611815da65ea4d3cb823a8f",
+      "size": 180,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/a249954f9f4f74252611815da65ea4d3cb823a8f"
+    },
+    {
+      "path": "examples/patrick_iterate_quad.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6a907723e79f9a29cf5eacd3d11e07710bb4aae",
+      "size": 297,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/b6a907723e79f9a29cf5eacd3d11e07710bb4aae"
+    },
+    {
+      "path": "examples/patrick_test.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "790c67ecb149f7c279aef9a5e397601b7e548232",
+      "size": 368,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/790c67ecb149f7c279aef9a5e397601b7e548232"
+    },
+    {
+      "path": "examples/peano.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e29b66aebdd51c215c36452da4fc041649c824ad",
+      "size": 626,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/e29b66aebdd51c215c36452da4fc041649c824ad"
+    },
+    {
+      "path": "examples/peanofast.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e2c0ffa55e1bc570c3e12d3f3f51d766bcd96e3",
+      "size": 309,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/9e2c0ffa55e1bc570c3e12d3f3f51d766bcd96e3"
+    },
+    {
+      "path": "examples/permutations.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c95fb367e8b92add5d02f35c8998f76954301360",
+      "size": 1992,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/c95fb367e8b92add5d02f35c8998f76954301360"
+    },
+    {
+      "path": "examples/pln_direct.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b43fb6956e9f520e770498edc90388b3fdb7e604",
+      "size": 1283,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/b43fb6956e9f520e770498edc90388b3fdb7e604"
+    },
+    {
+      "path": "examples/pln_roman.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "043aa917779ef80d2e93b7f77b36ce0d13acc235",
+      "size": 460,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/043aa917779ef80d2e93b7f77b36ce0d13acc235"
+    },
+    {
+      "path": "examples/pln_tuffy.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f442fcf52a0bef9a1c6beb2dc66661cb4ee99f97",
+      "size": 2033,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f442fcf52a0bef9a1c6beb2dc66661cb4ee99f97"
+    },
+    {
+      "path": "examples/plntest.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7cbeddf66d6940222fc26345a95761c73096ea3f",
+      "size": 1880,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/7cbeddf66d6940222fc26345a95761c73096ea3f"
+    },
+    {
+      "path": "examples/plntestdirect.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "800427a0057ed2d0eb9853aaeaf22422ddbbebd0",
+      "size": 1834,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/800427a0057ed2d0eb9853aaeaf22422ddbbebd0"
+    },
+    {
+      "path": "examples/prologimport.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5dd65de5027ba75536d03895469e4c73ef101572",
+      "size": 3336,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/5dd65de5027ba75536d03895469e4c73ef101572"
+    },
+    {
+      "path": "examples/prologimport_example.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90d92d5bd409622afca016273a44c24e406886b3",
+      "size": 25,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/90d92d5bd409622afca016273a44c24e406886b3"
+    },
+    {
+      "path": "examples/python.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "081de13bbeb9d7dca3951b1f0d3aea74e0d60b94",
+      "size": 665,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/081de13bbeb9d7dca3951b1f0d3aea74e0d60b94"
+    },
+    {
+      "path": "examples/python_import.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dee5a0edbd04f9bb10213ea04ff7db924865c6b6",
+      "size": 192,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/dee5a0edbd04f9bb10213ea04ff7db924865c6b6"
+    },
+    {
+      "path": "examples/python_import_file.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d0b6f3433d12ca1140e293d3c3a9f1d2a7451da",
+      "size": 90,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/4d0b6f3433d12ca1140e293d3c3a9f1d2a7451da"
+    },
+    {
+      "path": "examples/recursive_types.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5054099f231708d4b7289c7893390d82a56b3fa6",
+      "size": 380,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/5054099f231708d4b7289c7893390d82a56b3fa6"
+    },
+    {
+      "path": "examples/recursive_types2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0f4b3dc39a0ddf3c782c97d558e223cd9993da6",
+      "size": 259,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/b0f4b3dc39a0ddf3c782c97d558e223cd9993da6"
+    },
+    {
+      "path": "examples/repl.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d2c4448c09155a41fe76d0e85353de4df76fe82",
+      "size": 369,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/4d2c4448c09155a41fe76d0e85353de4df76fe82"
+    },
+    {
+      "path": "examples/repr.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3091842710a17fdb24dd949555f9835f879bdc4e",
+      "size": 200,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/3091842710a17fdb24dd949555f9835f879bdc4e"
+    },
+    {
+      "path": "examples/roman_test.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fdfcfac6aa89ae2cead1415c93bf1c7bd693bfb4",
+      "size": 1235,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/fdfcfac6aa89ae2cead1415c93bf1c7bd693bfb4"
+    },
+    {
+      "path": "examples/scale.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "44954acb659ceecac5367d6f94f21d087532059c",
+      "size": 1100,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/44954acb659ceecac5367d6f94f21d087532059c"
+    },
+    {
+      "path": "examples/selfprog.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "54ac271e548dd9110b4d4e180ee01c8c33ea9f33",
+      "size": 177,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/54ac271e548dd9110b4d4e180ee01c8c33ea9f33"
+    },
+    {
+      "path": "examples/smartdispatch.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52d1dba1f9d23926bb7bbb095f8f972fee8de0e3",
+      "size": 287,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/52d1dba1f9d23926bb7bbb095f8f972fee8de0e3"
+    },
+    {
+      "path": "examples/spacefunction.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c773ba4a895610d867b11c9caf0f197c5fe97f81",
+      "size": 287,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/c773ba4a895610d867b11c9caf0f197c5fe97f81"
+    },
+    {
+      "path": "examples/spaces.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "256fa24bec53ddefdbf065230839a3a93c659114",
+      "size": 206,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/256fa24bec53ddefdbf065230839a3a93c659114"
+    },
+    {
+      "path": "examples/spaces2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67a79c3d5964d77c9754236c82e2baa733b986ce",
+      "size": 389,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/67a79c3d5964d77c9754236c82e2baa733b986ce"
+    },
+    {
+      "path": "examples/spaces3.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1fc9b8356a2693b0dafbf434041cd63f5c986415",
+      "size": 387,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/1fc9b8356a2693b0dafbf434041cd63f5c986415"
+    },
+    {
+      "path": "examples/spaces_find.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf03302b9171094d0968ec112b4109994e605fd4",
+      "size": 348,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/bf03302b9171094d0968ec112b4109994e605fd4"
+    },
+    {
+      "path": "examples/spaces_removeallatoms.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5905c05a48fd542b1cffa0fc891f65d01bfc9763",
+      "size": 260,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/5905c05a48fd542b1cffa0fc891f65d01bfc9763"
+    },
+    {
+      "path": "examples/spaces_succeedspredicate.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd0c12c242bdd3200191aa19acabf84ffae56f8e",
+      "size": 250,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/cd0c12c242bdd3200191aa19acabf84ffae56f8e"
+    },
+    {
+      "path": "examples/specialize.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c439723e3b62b506807153c858b9955919fde66",
+      "size": 1343,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/1c439723e3b62b506807153c858b9955919fde66"
+    },
+    {
+      "path": "examples/specialize_recursive_wrap.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aba389421ebe40cd290e587c30b0a3868df38bc9",
+      "size": 505,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/aba389421ebe40cd290e587c30b0a3868df38bc9"
+    },
+    {
+      "path": "examples/specializecyclic.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dbfed6364d612ae4707e3d53d477def093a075b6",
+      "size": 396,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/dbfed6364d612ae4707e3d53d477def093a075b6"
+    },
+    {
+      "path": "examples/specializefunctiontypes.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "73c8d79cbd7c46076c90e84d29fa9b6313d00026",
+      "size": 246,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/73c8d79cbd7c46076c90e84d29fa9b6313d00026"
+    },
+    {
+      "path": "examples/state.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5c3bcbd38bf69e8e6943f8118130175b27ed1945",
+      "size": 126,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/5c3bcbd38bf69e8e6943f8118130175b27ed1945"
+    },
+    {
+      "path": "examples/streamops.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fe3ac4d73abdd228067785eb406e23587ac4715",
+      "size": 325,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/8fe3ac4d73abdd228067785eb406e23587ac4715"
+    },
+    {
+      "path": "examples/string.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "127d064c5b831d2000907c09295a81e74719fa8d",
+      "size": 90,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/127d064c5b831d2000907c09295a81e74719fa8d"
+    },
+    {
+      "path": "examples/supercollapse.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c5f2878af0f3bcc12425b4f40816c0f58afe984",
+      "size": 229,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/9c5f2878af0f3bcc12425b4f40816c0f58afe984"
+    },
+    {
+      "path": "examples/superpose_nested.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e797684af99d45f2127535ed7de3e7eb6ac1002",
+      "size": 294,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/3e797684af99d45f2127535ed7de3e7eb6ac1002"
+    },
+    {
+      "path": "examples/superpose_primes.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "96e8349f0953030eaf473f951ca64a9d63e3dea3",
+      "size": 503,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/96e8349f0953030eaf473f951ca64a9d63e3dea3"
+    },
+    {
+      "path": "examples/swrite_variable_identity.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16587972802adcb4b2f0c248d8dbbfb25c7a271f",
+      "size": 1148,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/16587972802adcb4b2f0c248d8dbbfb25c7a271f"
+    },
+    {
+      "path": "examples/tabling_fib.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5747ecd6ec173a8b67ee348acefd0550302b6f1a",
+      "size": 175,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/5747ecd6ec173a8b67ee348acefd0550302b6f1a"
+    },
+    {
+      "path": "examples/test_alpha_unique_atom.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04efdcbd02d0c2aa9530ecb75c082256a30ccf69",
+      "size": 1918,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/04efdcbd02d0c2aa9530ecb75c082256a30ccf69"
+    },
+    {
+      "path": "examples/test_datetime.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b11a0591a8d962ff10f0e695d2a1d02222b6c8f4",
+      "size": 709,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/b11a0591a8d962ff10f0e695d2a1d02222b6c8f4"
+    },
+    {
+      "path": "examples/test_memo_aggregate.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cfc53aeb7d1ef69016798b2cbce9e46c019eb977",
+      "size": 369,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/cfc53aeb7d1ef69016798b2cbce9e46c019eb977"
+    },
+    {
+      "path": "examples/test_memo_dependency_invalidation.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "80e5b4256cdd66a08f89c0058dc7c173e19fda18",
+      "size": 166,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/80e5b4256cdd66a08f89c0058dc7c173e19fda18"
+    },
+    {
+      "path": "examples/test_memo_multi_answer.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe935844e2cfffe9a1314b72b45672d598c7215f",
+      "size": 331,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/fe935844e2cfffe9a1314b72b45672d598c7215f"
+    },
+    {
+      "path": "examples/test_memo_per_arity.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "683a82b283eaf50aa3ba56299779bf2a7deac797",
+      "size": 225,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/683a82b283eaf50aa3ba56299779bf2a7deac797"
+    },
+    {
+      "path": "examples/test_memo_same_name_multi_arity.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2a22d707f0796e0d66feda2b117912a8f247862",
+      "size": 341,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f2a22d707f0796e0d66feda2b117912a8f247862"
+    },
+    {
+      "path": "examples/test_memo_stats.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "479184a43de8a1239f4d6db5e1ba7b7c31b0f6a4",
+      "size": 182,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/479184a43de8a1239f4d6db5e1ba7b7c31b0f6a4"
+    },
+    {
+      "path": "examples/test_memo_variant_nonground.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d50fa693a2f7a717630f2922f2c3f9d7847e76ac",
+      "size": 388,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d50fa693a2f7a717630f2922f2c3f9d7847e76ac"
+    },
+    {
+      "path": "examples/test_string_comments.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30c5bab3ddeaebd960768b4c0212b9f4085b07d6",
+      "size": 830,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/30c5bab3ddeaebd960768b4c0212b9f4085b07d6"
+    },
+    {
+      "path": "examples/test_unify_eval_branches.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0f95d9d39b74693cdcf70ee72ea3346f36b8531",
+      "size": 1565,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f0f95d9d39b74693cdcf70ee72ea3346f36b8531"
+    },
+    {
+      "path": "examples/tests.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d6f84c9005c6be23bf37d0a36e5aeb9802480479",
+      "size": 432,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d6f84c9005c6be23bf37d0a36e5aeb9802480479"
+    },
+    {
+      "path": "examples/tilepuzzle.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "529feeffd2e78d926367031de639d3e9fbe1d68d",
+      "size": 3511,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/529feeffd2e78d926367031de639d3e9fbe1d68d"
+    },
+    {
+      "path": "examples/torch.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "adf115a05567f71366a25db79ab50dfc82f34291",
+      "size": 660,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/adf115a05567f71366a25db79ab50dfc82f34291"
+    },
+    {
+      "path": "examples/translatepredicate.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d94430affd5799a54924967e5a98056393fd406f",
+      "size": 108,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d94430affd5799a54924967e5a98056393fd406f"
+    },
+    {
+      "path": "examples/translatorrule.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d48f285596d77788221958c8c24b06af6feab207",
+      "size": 308,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d48f285596d77788221958c8c24b06af6feab207"
+    },
+    {
+      "path": "examples/translatorrule_fib.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c53c66ea92240afbba249148c6b7fb6f2ceaa932",
+      "size": 328,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/c53c66ea92240afbba249148c6b7fb6f2ceaa932"
+    },
+    {
+      "path": "examples/translatorrule_for.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "42804c60da86f2c0a3ea0ac5bdf4d3eacc2c3426",
+      "size": 337,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/42804c60da86f2c0a3ea0ac5bdf4d3eacc2c3426"
+    },
+    {
+      "path": "examples/twostage.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "094dd502b58fa125396e49b62ab60af1864fba56",
+      "size": 69,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/094dd502b58fa125396e49b62ab60af1864fba56"
+    },
+    {
+      "path": "examples/types.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6369dad1712207973d0beed2a79bd9d7fa35266",
+      "size": 659,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/b6369dad1712207973d0beed2a79bd9d7fa35266"
+    },
+    {
+      "path": "examples/types_dependent.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0596c752b73e48d0ae130aaecf7b867339eb717",
+      "size": 496,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/b0596c752b73e48d0ae130aaecf7b867339eb717"
+    },
+    {
+      "path": "examples/types_nondet.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4fd103aefb68a3d14b7101291e26eefa6316c123",
+      "size": 486,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/4fd103aefb68a3d14b7101291e26eefa6316c123"
+    },
+    {
+      "path": "examples/xor.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d9b5243733cc58d3a12002ec93e33e417863df10",
+      "size": 198,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d9b5243733cc58d3a12002ec93e33e417863df10"
+    },
+    {
+      "path": "lib",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "65624ba462131fc9f47e2dd943f5aeb1ce6cb75f",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/65624ba462131fc9f47e2dd943f5aeb1ce6cb75f"
+    },
+    {
+      "path": "lib/lib_builtin_types.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a92b6af09b74deb248b9450829331f5b288d66fb",
+      "size": 1489,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/a92b6af09b74deb248b9450829331f5b288d66fb"
+    },
+    {
+      "path": "lib/lib_combinatorics.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0b1f03f62910d8d1e2ee0c90cece9c35bfb5a3a",
+      "size": 903,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d0b1f03f62910d8d1e2ee0c90cece9c35bfb5a3a"
+    },
+    {
+      "path": "lib/lib_datastructures.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12c174eb0df13a080a59c0c9b06002e49aa4f76a",
+      "size": 732,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/12c174eb0df13a080a59c0c9b06002e49aa4f76a"
+    },
+    {
+      "path": "lib/lib_datetime.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b2c36376a906198d6b53d0f61f88ac2199c689a2",
+      "size": 263,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/b2c36376a906198d6b53d0f61f88ac2199c689a2"
+    },
+    {
+      "path": "lib/lib_datetime.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb78c9ca5f59435a0781688673c732fa970c44fb",
+      "size": 323,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/cb78c9ca5f59435a0781688673c732fa970c44fb"
+    },
+    {
+      "path": "lib/lib_he.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04c1260cb4ce97740efc06a06c53efa8ddf86a1a",
+      "size": 2045,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/04c1260cb4ce97740efc06a06c53efa8ddf86a1a"
+    },
+    {
+      "path": "lib/lib_import.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "58d54dc9e45d40c816d1fa681a08a721a297531c",
+      "size": 1048,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/58d54dc9e45d40c816d1fa681a08a721a297531c"
+    },
+    {
+      "path": "lib/lib_import.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c8213aef6965a167e30fcc12243d00f79f9aefcb",
+      "size": 14360,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/c8213aef6965a167e30fcc12243d00f79f9aefcb"
+    },
+    {
+      "path": "lib/lib_llm.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "42cc4d4a4529d6ec0eeb269d0b8fa80f0428ec45",
+      "size": 2854,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/42cc4d4a4529d6ec0eeb269d0b8fa80f0428ec45"
+    },
+    {
+      "path": "lib/lib_llm.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fa76a7fdd86745da9f319c3aa8efca0e4dcfc36",
+      "size": 1134,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/8fa76a7fdd86745da9f319c3aa8efca0e4dcfc36"
+    },
+    {
+      "path": "lib/lib_memo.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f9d384c10f026edff470e9b20afb432698188b1",
+      "size": 660,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/7f9d384c10f026edff470e9b20afb432698188b1"
+    },
+    {
+      "path": "lib/lib_memo.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e9c3a8c993e387a20ffda373e31a651cc5d966b",
+      "size": 28300,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/3e9c3a8c993e387a20ffda373e31a651cc5d966b"
+    },
+    {
+      "path": "lib/lib_memo_doc.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "22f178a3d6d7dc8fc2eea4071ea24f5378a8b727",
+      "size": 8782,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/22f178a3d6d7dc8fc2eea4071ea24f5378a8b727"
+    },
+    {
+      "path": "lib/lib_mm2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7cb423df8eff91ad3b9d347b79192d43d5ff2238",
+      "size": 360,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/7cb423df8eff91ad3b9d347b79192d43d5ff2238"
+    },
+    {
+      "path": "lib/lib_nars.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c76545872a2703569bae38bad9b103fd3b80bb5f",
+      "size": 12312,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/c76545872a2703569bae38bad9b103fd3b80bb5f"
+    },
+    {
+      "path": "lib/lib_patrick.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c0feb9bd1635f12386e8bec80d77e229613cd05",
+      "size": 766,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/7c0feb9bd1635f12386e8bec80d77e229613cd05"
+    },
+    {
+      "path": "lib/lib_pln.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a7b98f47c64e0958ea9665e986cd2ac302d34de2",
+      "size": 19626,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/a7b98f47c64e0958ea9665e986cd2ac302d34de2"
+    },
+    {
+      "path": "lib/lib_roman.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "656f3c0f428bb1068c5470bbe29013baafbcc235",
+      "size": 2441,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/656f3c0f428bb1068c5470bbe29013baafbcc235"
+    },
+    {
+      "path": "lib/lib_spaces.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "edff6d1f6b1b43b22aee64b517d2538569d80b31",
+      "size": 1097,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/edff6d1f6b1b43b22aee64b517d2538569d80b31"
+    },
+    {
+      "path": "lib/lib_tabling.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "408baf2f76d71a1c5a8c1ce3adb2bcb82e89e739",
+      "size": 519,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/408baf2f76d71a1c5a8c1ce3adb2bcb82e89e739"
+    },
+    {
+      "path": "lib/lib_vector.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ee71c136e009f5fbbce9bd6fd42e8459a85243b",
+      "size": 525,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/1ee71c136e009f5fbbce9bd6fd42e8459a85243b"
+    },
+    {
+      "path": "lib/lib_zar.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "601a3be1e6ad1663e54f8cb77e0c30d93b438fb6",
+      "size": 932,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/601a3be1e6ad1663e54f8cb77e0c30d93b438fb6"
+    },
+    {
+      "path": "lib/lib_zar.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c734fda21ce16d8dab76278af41eae07d8b1d29",
+      "size": 488,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/1c734fda21ce16d8dab76278af41eae07d8b1d29"
+    },
+    {
+      "path": "python",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2cc12d948ae0ece8dc23f7fea90847bfeb1b51f4",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/2cc12d948ae0ece8dc23f7fea90847bfeb1b51f4"
+    },
+    {
+      "path": "python/HE",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b622e3dadca774fca3f11dfbf5de2cf71a076ba8",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/b622e3dadca774fca3f11dfbf5de2cf71a076ba8"
+    },
+    {
+      "path": "python/HE/compileme.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67d4ce1c854bf7ab60053c7eb0fca59f89a50a72",
+      "size": 91,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/67d4ce1c854bf7ab60053c7eb0fca59f89a50a72"
+    },
+    {
+      "path": "python/HE/hyperonexperimental.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "358f0768139bf62111b7aca0f4533900188333d9",
+      "size": 165,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/358f0768139bf62111b7aca0f4533900188333d9"
+    },
+    {
+      "path": "python/HE/pettamorph.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "51253e337be53c28df793061956c6f1fac72ef28",
+      "size": 1818,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/51253e337be53c28df793061956c6f1fac72ef28"
+    },
+    {
+      "path": "python/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85520b4192c3dba13c1c2ef0e05b48a1b2697b36",
+      "size": 43,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/85520b4192c3dba13c1c2ef0e05b48a1b2697b36"
+    },
+    {
+      "path": "python/helper.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "18ef8eb62933533550762d41f2b1a63eb1468a94",
+      "size": 457,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/18ef8eb62933533550762d41f2b1a63eb1468a94"
+    },
+    {
+      "path": "python/petta",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c632fd143647f994c1e629829cc25061e4770d71",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/c632fd143647f994c1e629829cc25061e4770d71"
+    },
+    {
+      "path": "python/petta/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a78f5790238acc86cd73e67fcf78dbdeb638422e",
+      "size": 3354,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/a78f5790238acc86cd73e67fcf78dbdeb638422e"
+    },
+    {
+      "path": "python/petta/cli.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2423bd569645e523f44868d517e4c97ee32aff00",
+      "size": 839,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/2423bd569645e523f44868d517e4c97ee32aff00"
+    },
+    {
+      "path": "python/pyproject.toml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d6d9d16c727218a4d883fb51a5af588b8991bcb3",
+      "size": 244,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d6d9d16c727218a4d883fb51a5af588b8991bcb3"
+    },
+    {
+      "path": "python/tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9beb627ca00495daf85779b4c469468d7e13b0a8",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/9beb627ca00495daf85779b4c469468d7e13b0a8"
+    },
+    {
+      "path": "python/tests/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "python/tests/conftest.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a0ffe038b688a9b3d74576f6d34f5bb9efc0d96c",
+      "size": 774,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/a0ffe038b688a9b3d74576f6d34f5bb9efc0d96c"
+    },
+    {
+      "path": "python/tests/data",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9d3b4e4e793532f027c65188711d2cba041c46bb",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/9d3b4e4e793532f027c65188711d2cba041c46bb"
+    },
+    {
+      "path": "python/tests/data/dummy.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2b62a7c7ec424457bed1c305255bcb8291e8bc4",
+      "size": 68,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f2b62a7c7ec424457bed1c305255bcb8291e8bc4"
+    },
+    {
+      "path": "python/tests/data/dummy2.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1d0d2fa83d296f5bca284baa579adf48a2b0d6ba",
+      "size": 89,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/1d0d2fa83d296f5bca284baa579adf48a2b0d6ba"
+    },
+    {
+      "path": "python/tests/test_cli.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a88dfd02a6e68309cc951e33599c0052bb51d5f",
+      "size": 1645,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/9a88dfd02a6e68309cc951e33599c0052bb51d5f"
+    },
+    {
+      "path": "python/tests/test_petta.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "64d020e5c3a0bb2e944907b549f1e269b565fc2f",
+      "size": 2055,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/64d020e5c3a0bb2e944907b549f1e269b565fc2f"
+    },
+    {
+      "path": "python/uv.lock",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fd42a79f476b38a0a8803ae6e2ea3740af875e92",
+      "size": 18009,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/fd42a79f476b38a0a8803ae6e2ea3740af875e92"
+    },
+    {
+      "path": "run.sh",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "f4a76d2010d68c77889f1cf639f6d69718f4417f",
+      "size": 326,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f4a76d2010d68c77889f1cf639f6d69718f4417f"
+    },
+    {
+      "path": "setup.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0877fc13c9fea83589988398c92c2a107c2b08ef",
+      "size": 1861,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/0877fc13c9fea83589988398c92c2a107c2b08ef"
+    },
+    {
+      "path": "src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "7a5b16a0804da334e055a369536bbba15cbada87",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/7a5b16a0804da334e055a369536bbba15cbada87"
+    },
+    {
+      "path": "src/ext_points.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e8f949eefe43de87634f19fe01f62bdf6d234c08",
+      "size": 240,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/e8f949eefe43de87634f19fe01f62bdf6d234c08"
+    },
+    {
+      "path": "src/filereader.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e68e3158445513a161fb8226100bc2edb2f1c5d",
+      "size": 6642,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/8e68e3158445513a161fb8226100bc2edb2f1c5d"
+    },
+    {
+      "path": "src/main.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6323b228fb2c945b11eb57eb4cc7a9e4625dc962",
+      "size": 1258,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/6323b228fb2c945b11eb57eb4cc7a9e4625dc962"
+    },
+    {
+      "path": "src/metta.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e9ade0850cadb48315a62b751b24cd32dd1dc74",
+      "size": 16593,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/1e9ade0850cadb48315a62b751b24cd32dd1dc74"
+    },
+    {
+      "path": "src/parser.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9d0cde637c345f079dbdc068aa9358bb017f8e6e",
+      "size": 5063,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/9d0cde637c345f079dbdc068aa9358bb017f8e6e"
+    },
+    {
+      "path": "src/spaces.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f4cddf0224e9ba6c1f13bb23e7dcecfaaad61e87",
+      "size": 4118,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f4cddf0224e9ba6c1f13bb23e7dcecfaaad61e87"
+    },
+    {
+      "path": "src/specializer.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "edbc64f7c22cb34147855bf6b2cce4a649d1afcb",
+      "size": 9828,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/edbc64f7c22cb34147855bf6b2cce4a649d1afcb"
+    },
+    {
+      "path": "src/translator.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "659f9543b736e2a7944fbb53d92f3b0434c62905",
+      "size": 31285,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/659f9543b736e2a7944fbb53d92f3b0434c62905"
+    },
+    {
+      "path": "test.sh",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "d1bae4293fe4b71eef695404f473b5adebc9550b",
+      "size": 1306,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/d1bae4293fe4b71eef695404f473b5adebc9550b"
+    },
+    {
+      "path": "tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "03cfbb2bc7bc09c8847bb8b3850d845eca55abba",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/03cfbb2bc7bc09c8847bb8b3850d845eca55abba"
+    },
+    {
+      "path": "tests/regression",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3425cefe5b94c91f7791b6d4fc385764ce11fca4",
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/trees/3425cefe5b94c91f7791b6d4fc385764ce11fca4"
+    },
+    {
+      "path": "tests/regression/repro1_failed_specialization_memo.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "df919e9e5010a4f55ed65252822c3ef8ad11b2aa",
+      "size": 182,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/df919e9e5010a4f55ed65252822c3ef8ad11b2aa"
+    },
+    {
+      "path": "tests/regression/repro2_exponential_failed_specialization.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5497a9b4be9647f07d0606a5856e070afc614004",
+      "size": 637,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/5497a9b4be9647f07d0606a5856e070afc614004"
+    },
+    {
+      "path": "tests/regression/repro3_failed_specialization_self_leak.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "583040491c49744e70d6bc93877236e01f1724cf",
+      "size": 226,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/583040491c49744e70d6bc93877236e01f1724cf"
+    },
+    {
+      "path": "tests/regression/repro4_variant_normalization.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "957979d869a193bb3f146533f62e5a4778cb9d97",
+      "size": 115,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/957979d869a193bb3f146533f62e5a4778cb9d97"
+    },
+    {
+      "path": "tests/regression/repro5_pybool_if_condition.metta",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f46ad386c93292417ad1db8ad7742ff9d37cbcab",
+      "size": 134,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f46ad386c93292417ad1db8ad7742ff9d37cbcab"
+    },
+    {
+      "path": "tests/regression/test_specializer_regressions.sh",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "f3f439befd63ea3585376342104e73de40bc50a6",
+      "size": 2445,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/f3f439befd63ea3585376342104e73de40bc50a6"
+    },
+    {
+      "path": "tests/test_git_import.sh",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "39a2b1a2498ddc2ccebb6621a969152092c5bf88",
+      "size": 4771,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/39a2b1a2498ddc2ccebb6621a969152092c5bf88"
+    },
+    {
+      "path": "tests/test_packaged_cli.sh",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "b43881d25491610d2f75070fdc913747397076f6",
+      "size": 1109,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/b43881d25491610d2f75070fdc913747397076f6"
+    },
+    {
+      "path": "tests/test_parser_swrite.pl",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8492da6a2d7dcb098fd538866eb89c59bb3c5eb5",
+      "size": 1618,
+      "url": "https://api.github.com/repos/trueagi-io/PeTTa/git/blobs/8492da6a2d7dcb098fd538866eb89c59bb3c5eb5"
+    }
+  ],
+  "truncated": false
+}

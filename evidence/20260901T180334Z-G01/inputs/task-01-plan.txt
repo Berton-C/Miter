@@ -1,0 +1,10 @@
+GATE: G01
+REQUIREMENT IDS: G01, E-001–E-004, W-010–W-017, D-O01
+CONSTITUTIONAL LAWS: C-061, C-062, C-064, C-065
+FILES EXPECTED TO CHANGE: DECISIONS.md; tests/fixtures/minimal.metta; scripts/g01/verify_g01.sh; evidence/20260901T180334Z-G01/**
+FILES FORBIDDEN TO CHANGE: CONSTITUTION.md; ACCEPTANCE.md; AUTHORITY_MAP.md; POC_SPEC.md; initial_canon/**; docs/sources/**; /Users/bcb/Documents/ClarityOmega/clarityomega/**; existing Chroma persistence; ~/.miter/**
+POSITIVE FIXTURE: A deterministic minimal MeTTa arithmetic expression executed by PeTTa commit ae66fa8e41dcd5539d614706bd4e5cfb34f9608d under native arm64 SWI-Prolog
+NEGATIVE CONTROL: The same captured runtime output checked against an intentionally wrong expected scalar
+EXPECTED OBSERVABLE DIFFERENCE: The canonical verifier accepts the real scalar and clean exit; the severed verifier rejects the deliberately wrong expectation
+CURRENT UNPROVEN ASSUMPTIONS: SWI-Prolog 10.0.2 installs natively and satisfies PeTTa's >=9.3 requirement; pinned PeTTa runs on macOS arm64; exact fixture output syntax; no Python process or py-call is needed for this baseline
+ROLLBACK METHOD: Remove the isolated temporary PeTTa checkout and G01 evidence/fixture/verifier commit; if specifically requested, uninstall only the Homebrew swi-prolog formula and its newly installed orphan dependencies after reviewing the package transaction record

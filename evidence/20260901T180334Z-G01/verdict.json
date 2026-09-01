@@ -1,0 +1,83 @@
+{
+  "run_id": "20260901T180334Z-G01",
+  "gate_id": "G01",
+  "status": "PASS",
+  "claims": [
+    {
+      "id": "G01-native-swipl",
+      "status": "PROVEN-RUNTIME",
+      "claim": "SWI-Prolog 10.0.2 is installed as a native arm64-darwin executable and satisfies PeTTa's declared >=9.3 dependency.",
+      "evidence": [
+        "environment/swipl_version_after.txt",
+        "environment/swipl_binary_file.txt",
+        "raw/homebrew_swi_prolog_formula.json",
+        "raw/homebrew_swi_prolog_install_receipt.json"
+      ]
+    },
+    {
+      "id": "G01-source-pin",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The executed PeTTa source was fetched from the canonical repository and detached at ae66fa8e41dcd5539d614706bd4e5cfb34f9608d with a clean 230-file source manifest.",
+      "evidence": [
+        "raw/petta_source_fetch.log",
+        "environment/petta_remote.txt",
+        "environment/petta_commit.txt",
+        "hashes/petta_git_tree.txt",
+        "hashes/petta_tracked_files.sha256",
+        "raw/petta_source_status_final.txt"
+      ]
+    },
+    {
+      "id": "G01-positive-runtime",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The minimal fixture produced final scalar 5 with exit 0 in two separate native executions with byte-identical stdout.",
+      "evidence": [
+        "raw/positive.stdout",
+        "raw/positive.stderr",
+        "raw/positive.status",
+        "raw/positive_repeat.stdout",
+        "raw/positive_repeat.status",
+        "diffs/positive_repeat_stdout.cmp.status"
+      ]
+    },
+    {
+      "id": "G01-negative-control",
+      "status": "PROVEN-RUNTIME",
+      "claim": "Changing only the expected scalar from 5 to 6 caused the verifier to fail with exit 1.",
+      "evidence": [
+        "inputs/expected_positive.txt",
+        "inputs/expected_severed.txt",
+        "outputs/verifier_positive.json",
+        "outputs/verifier_positive.status",
+        "outputs/verifier_severed.json",
+        "outputs/verifier_severed.status"
+      ]
+    },
+    {
+      "id": "G01-runtime-path",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The standard PeTTa launcher invoked native swipl directly; the fixture and captured executable trace contain no Python or py-call seam.",
+      "evidence": [
+        "raw/petta_run_sh.txt",
+        "process/positive_executable_trace.txt",
+        "process/python_seam_scan.txt"
+      ]
+    },
+    {
+      "id": "G01-protected-integrity",
+      "status": "PROVEN-RUNTIME",
+      "claim": "CONSTITUTION.md, ACCEPTANCE.md, AUTHORITY_MAP.md, and POC_SPEC.md retained their entry hashes.",
+      "evidence": [
+        "hashes/protected_documents_before.sha256",
+        "hashes/protected_documents_after.sha256"
+      ]
+    }
+  ],
+  "negative_control_difference": true,
+  "remaining_unproven_assumptions": [
+    "G01 does not prove the MeTTa-to-Prolog import call or typed marshalling; that is G02.",
+    "G01 does not prove that later Miter workloads avoid every possible Janus/Python path; it proves only that this standard minimal execution does not invoke one.",
+    "Optional MORK and FAISS integrations were not built or selected."
+  ],
+  "next_gate_started": false
+}

@@ -1,0 +1,1 @@
++ swipl --stack_limit=8g -q -s /private/tmp/miter-g01-petta-ae66fa8/src/main.pl -- /Users/claritymiter/miter/tests/fixtures/minimal.metta

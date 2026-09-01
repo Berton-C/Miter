@@ -549,9 +549,14 @@ It is not direct or sovereign knowledge of a human's inner state, diagnosis, or 
 
 ## D-O01 — Exact PeTTa source and pin
 
-**Status:** OPEN
+**Status:** ACCEPTED
+**Date:** 2026-09-01
 
-Task 00 must identify the source/version most suitable for native macOS and direct Prolog imports.
+**Decision:** Use the canonical `trueagi-io/PeTTa` repository pinned at commit `ae66fa8e41dcd5539d614706bd4e5cfb34f9608d` for the native macOS clean-build baseline.
+
+**Why:** This is the inspected current `main` commit of the canonical repository at G00/G01 selection time. The older ClarityOmega pin is proven only inside its Linux/amd64 container and is not evidence of native Apple-silicon suitability.
+
+**Revisit trigger:** G01 demonstrates a source-level or native arm64 incompatibility that cannot be corrected without changing the PeTTa pin. A fallback must be explicit and evidence-backed; it may not occur silently.
 
 ---
 
