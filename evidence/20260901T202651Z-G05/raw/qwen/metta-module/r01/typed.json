@@ -1,0 +1,7 @@
+{
+  "answer":"(module g05_candidate)\n(= (eligible $x) (approved $x))",
+  "completion_status":"complete",
+  "evidence_spans": ["CONTRACT: eligibility is derived only from an approved atom." ],
+  "request_id":"g05-metta-module-qwen-local-r01",
+  "uncertainty":0.1
+}

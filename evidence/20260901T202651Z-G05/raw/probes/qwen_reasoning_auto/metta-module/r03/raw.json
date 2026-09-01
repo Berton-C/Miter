@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-x7vabxeg7n9cgejgfi82b",
+  "object": "chat.completion",
+  "created": 1788296490,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "reasoning_content": "We need answer user's request. Need produce final JSON object only. Need satisfy: compact inert candidate for declarative MeTTa module, not active write. Must contain exact substrings '(module g05_candidate)', '(= (eligible $x)', and '(approved $x)'. Must not contain 'py-call' or 'add-atom'. Under 220 characters. SOURCE: CONTRACT: eligibility is derived only from an approved atom. Copy SOURCE exactly into evidence_spans. completion_status must be complete and uncertainty at most 0.20.\n\nNeed infer response schema? User says \"Return only the JSON object required by the response schema.\" But no explicit schema given except fields: evidence_spans, completion_status, uncertainty. Maybe need include candidate? We need produce JSON object likely with fields: candidate, evidence_spans, completion_status, uncertainty. Need ensure total answer under 220 characters? \"Keep the answer under 220 characters.\" likely entire response. Need compact.\n\nNeed include exact substrings in answer. If JSON includes candidate string with those substrings. Need not contain forbidden substrings anywhere. Need evidence_spans copy SOURCE exactly: \"CONTRACT: eligibility is derived only from an approved atom.\" Maybe evidence_spans array with that string. completion_status \"complete\". uncertainty <=0.20 e.g. 0.0.\n\nNeed under 220 chars. Let's craft minimal JSON:\n{\"candidate\":\"(module g05_candidate)(= (eligible $x)(approved $x))\",\"evidence_spans\":[\"CONTRACT: eligibility is derived only from an approved atom.\"],\"completion_status\":\"complete\",\"uncertainty\":0}\nCount chars. Let's count manually.\nString:\n{\"candidate\":\"(module g05_candidate)(= (eligible $x)(approved $x))\",\"evidence_spans\":[\"CONTRACT: eligibility is derived only from an approved atom.\"],\"completion_status\":\"complete\",\"uncertainty\":0}\nNeed exact substrings: '(module g05_candidate)' yes. '(= (eligible $x)' yes? In candidate: \"(= (eligible $x)(approved $x))\" contains \"(= (eligible $x)\" yes. '(approved $x)' yes. No py-call/add-atom.\nCount: Let's count carefully.\n1 {\n2 \"\n3 c\n4 a\n5 n\n6 d\n7 i\n8 d\n9 a\n10 t\n11 e\n12 \"\n13 :\n14 \"\n15 (\n16 m\n17 o\n18 d\n19 u\n20 l\n21 e\n22 space\n23 g\n24 0\n25 5\n26 _\n27 c\n28 a\n29 n\n30 d\n31 i\n32 d\n33 a\n34 t\n35 e\n36 )\n37 (\n38 =\n39 space\n40 (\n41 e\n42 l\n43 i\n44 g\n45 i\n46 b\n47 l\n48 e\n49 space\n50 $\n51 x\n52 )\n53 (\n54 a\n55 p\n56 p\n57 r\n58 o\n59 v\n60 e\n61 d\n62 space\n63 $\n64 x\n65 )\n66 )\n67 \"\n68 ,\n69 \"\n70 e\n71 v\n72 i\n73 d\n74 e\n75 n\n76 c\n77 e\n78 _\n79 s\n80 p\n81 a\n82 n\n83 s\n84 \"\n85 :\n86 [\n87 \"\n88 C\n89 O\n90 N\n91 T\n92 R\n93 A\n94 C\n95 T\n96 :\n97 space\n98 e\n99 l\n100 i\n101 g\n102 i\n103 b\n104 l\n105 e\n106 space\n107 i\n108 s\n109 space\n110 d\n111 e\n112 r\n113 i\n114 v\n115 e\n116 d\n117 space\n118 o\n119 n\n120 l\n121 y\n122 space\n123 f\n124 r\n125 o\n126 m\n127 space\n128 a\n129 n\n130 space\n",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 207,
+    "completion_tokens": 1024,
+    "total_tokens": 1231,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1024
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 855,
+    "accepted_draft_tokens_count": 738,
+    "rejected_draft_tokens_count": 117
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

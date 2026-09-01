@@ -1,0 +1,10 @@
+{
+  "alias":"nemotron-local",
+  "completed_at_epoch":1788297892.314623,
+  "duration_ms":7492,
+  "http_status":200,
+  "model":"nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+  "request_id":"g05-extension-code-nemotron-local-r02",
+  "schema":"miter-model-timing-v1",
+  "started_at_epoch":1788297884.822264
+}

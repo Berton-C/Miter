@@ -1,0 +1,7 @@
+{
+  "answer":"function normalizeEvent(e: unknown): string {\n  if (!e || typeof e !== 'object' || !(e as any).event_id) {\n    throw new Error('Missing event_id');\n  }\n  return (e as any).event_id;\n}\n\nconst ev = { event_id: 'x' };\nconsole.assert(normalizeE",
+  "completion_status":"complete",
+  "evidence_spans": ["function normalizeEvent", "event_id", "throw new Error" ],
+  "request_id":"g05-extension-code-nemotron-local-r02",
+  "uncertainty":0.15
+}

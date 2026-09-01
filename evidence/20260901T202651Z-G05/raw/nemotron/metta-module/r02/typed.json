@@ -1,0 +1,7 @@
+{
+  "answer":"(module g05_candidate\n  (= (eligible $x) (approved $x))\n)\n",
+  "completion_status":"complete",
+  "evidence_spans": ["(module g05_candidate)", "(= (eligible $x)", "(approved $x)" ],
+  "request_id":"g05-metta-module-nemotron-local-r02",
+  "uncertainty":0.15
+}

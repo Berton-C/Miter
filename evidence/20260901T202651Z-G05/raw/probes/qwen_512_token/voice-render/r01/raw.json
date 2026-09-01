@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-lwf1pkk2yll5bbo4m1dk9r",
+  "object": "chat.completion",
+  "created": 1788295595,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"answer\": \"The local backup is complete, and the changes have not been pushed to Git.\",\n  \"completion_status\": \"complete\",\n  \"e",
+        "reasoning_content": "We need answer user's request. Need produce final JSON only. Need satisfy: CommunicativeIntention: acknowledge completed local backup while making clear no Git push occurred. Render one natural sentence of at most 30 words. Answer must include exact phrases 'backup is complete' and 'not been pushed'. SOURCE: STATE: backup complete; Git push not performed. Copy SOURCE exactly into evidence_spans. completion_status must be complete and uncertainty at most 0.10.\n\nNeed infer response schema? They say JSON object required by response schema. We don't have explicit schema but likely fields: answer, evidence_spans, completion_status, uncertainty? Need include exact source in evidence_spans. Maybe evidence_spans array of strings? \"Copy SOURCE exactly into evidence_spans.\" Could be evidence_spans: [\"STATE: backup complete; Git push not performed.\"] or maybe object? Need likely JSON with keys: answer, evidence_spans, completion_status, uncertainty. Need ensure answer one natural sentence <=30 words includes exact phrases. Candidate: \"The local backup is complete, and the changes have not been pushed to Git.\" Word count: The(1) local2 backup3 is4 complete5 and6 the7 changes8 have9 not10 been11 pushed12 to13 Git14. includes 'backup is complete' exact? \"backup is complete\" yes. 'not been pushed' exact? \"not been pushed\" yes. Natural sentence. At most 30.\n\nNeed evidence_spans exact SOURCE: \"STATE: backup complete; Git push not performed.\" Maybe include as string. completion_status: \"complete\". uncertainty: 0.0 or 0.10. Need at most 0.10. Use 0.0.\n\nNeed only JSON object. Ensure no markdown. Final:\n{\n  \"answer\": \"The local backup is complete, and the changes have not been pushed to Git.\",\n  \"evidence_spans\": [\"STATE: backup complete; Git push not performed.\"],\n  \"completion_status\": \"complete\",\n  \"uncertainty\": 0.0\n}\n\nCheck exact phrases: answer contains \"backup is complete\" yes. \"not been pushed\" yes. One sentence. Word count 14. Good.\n",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 183,
+    "completion_tokens": 512,
+    "total_tokens": 695,
+    "completion_tokens_details": {
+      "reasoning_tokens": 474
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 477,
+    "accepted_draft_tokens_count": 351,
+    "rejected_draft_tokens_count": 126
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

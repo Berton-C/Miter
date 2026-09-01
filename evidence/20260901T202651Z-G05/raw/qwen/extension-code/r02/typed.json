@@ -1,0 +1,7 @@
+{
+  "answer":"function normalizeEvent(e){if(!e.event_id)throw new Error('x');return e}\nconsole.assert(normalizeEvent({event_id:1}).event_id===1)",
+  "completion_status":"complete",
+  "evidence_spans": ["CONTRACT: reject input without event_id; do not perform network or process effects." ],
+  "request_id":"g05-extension-code-qwen-local-r02",
+  "uncertainty":0.1
+}

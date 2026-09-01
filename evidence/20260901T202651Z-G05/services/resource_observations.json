@@ -1,0 +1,17 @@
+{
+  "schema": "miter-g05-resource-observations-v1",
+  "profiles": [
+    {
+      "alias": "qwen-local",
+      "observed_model_size_bytes": 29047084256,
+      "observed_resident_bytes": -1,
+      "measurement": "primary GGUF file size; unified GPU resident bytes unavailable"
+    },
+    {
+      "alias": "nemotron-local",
+      "observed_model_size_bytes": 27040755744,
+      "observed_resident_bytes": 32587874304,
+      "measurement": "model file size plus sampled CPU-safe llama-server RSS"
+    }
+  ]
+}

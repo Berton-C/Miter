@@ -1,0 +1,6 @@
+{
+  "expected_digest":"f1ad9b74add79b4d6d37d96ecfbc823acef244cbe2829dca13a1c103debf13ab",
+  "observed_digest":"8e989f603ddb404db112a16a4fadf23e75547ffb9633978649c8f259c0f4a6dd",
+  "schema":"miter-g05-role-selection-v1",
+  "status":"inconsistent_metrics"
+}

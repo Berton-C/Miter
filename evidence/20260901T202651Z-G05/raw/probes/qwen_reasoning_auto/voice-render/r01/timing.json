@@ -1,0 +1,10 @@
+{
+  "alias":"qwen-local",
+  "completed_at_epoch":1788295895.337012,
+  "duration_ms":50972,
+  "http_status":200,
+  "model":"qwen/qwen3.8-27b",
+  "request_id":"g05-voice-render-qwen-local-r01",
+  "schema":"miter-model-timing-v1",
+  "started_at_epoch":1788295844.36465
+}

@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-uoltkuqisnr7hqct88j9o",
+  "object": "chat.completion",
+  "created": 1788297625,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"answer\": \"amber\",\n  \"completion_status\": \"complete\",\n  \"evidence_spans\": [\n    \"The migration marker is amber.\"\n  ],\n  \"request_id\": \"g05-schema-reading-qwen-local-r02\",\n  \"uncertainty\": 0.0\n}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 111,
+    "completion_tokens": 81,
+    "total_tokens": 192,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 108,
+    "accepted_draft_tokens_count": 45,
+    "rejected_draft_tokens_count": 63
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

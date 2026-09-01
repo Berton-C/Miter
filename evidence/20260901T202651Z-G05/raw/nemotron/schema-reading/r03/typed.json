@@ -1,0 +1,7 @@
+{
+  "answer":"amber",
+  "completion_status":"complete",
+  "evidence_spans": ["SOURCE: The migration marker is amber." ],
+  "request_id":"g05-schema-reading-nemotron-local-r03",
+  "uncertainty":0.0
+}

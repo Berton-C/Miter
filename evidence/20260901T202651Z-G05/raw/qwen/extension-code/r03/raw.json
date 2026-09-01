@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-1wkq8bm2055o4gzo4erjic",
+  "object": "chat.completion",
+  "created": 1788297706,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"answer\": \"function normalizeEvent(e){if(!e.event_id)throw new Error('x');return e}\\nconsole.assert(normalizeEvent({event_id:1}).event_id===1)\",\n  \"completion_status\": \"complete\",\n  \"evidence_spans\": [\n    \"CONTRACT: reject input without event_id; do not perform network or process effects.\"\n  ],\n  \"request_id\": \"g05-extension-code-qwen-local-r03\",\n  \"uncertainty\": 0.1\n}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 167,
+    "completion_tokens": 130,
+    "total_tokens": 297,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 156,
+    "accepted_draft_tokens_count": 78,
+    "rejected_draft_tokens_count": 78
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

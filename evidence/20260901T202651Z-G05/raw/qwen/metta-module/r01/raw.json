@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-lkznxw38a0pjkkygrw9gf",
+  "object": "chat.completion",
+  "created": 1788297644,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"answer\": \"(module g05_candidate)\\n(= (eligible $x) (approved $x))\",\n  \"completion_status\": \"complete\",\n  \"evidence_spans\": [\n    \"CONTRACT: eligibility is derived only from an approved atom.\"\n  ],\n  \"request_id\": \"g05-metta-module-qwen-local-r01\",\n  \"uncertainty\": 0.1\n}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 171,
+    "completion_tokens": 105,
+    "total_tokens": 276,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 126,
+    "accepted_draft_tokens_count": 63,
+    "rejected_draft_tokens_count": 63
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

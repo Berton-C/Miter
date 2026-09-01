@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-gj3jpu0ptmqgubfx70ptn",
+  "object": "chat.completion",
+  "created": 1788296720,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "reasoning_content": "We need answer user's request. Need produce final JSON object only. Need satisfy: compact inert TypeScript candidate plus one test assertion for a pure adapter. Exact substrings: 'function normalizeEvent', 'event_id', 'throw new Error', 'console.assert'. Must not contain 'fetch(' or 'exec('. Under 220 characters. SOURCE: CONTRACT: reject input without event_id; do not perform network or process effects. Copy SOURCE exactly into evidence_spans. completion_status complete and uncertainty at most 0.20.\n\nNeed infer response schema? User says \"Return only the JSON object required by the response schema.\" But no explicit schema given except fields: evidence_spans, completion_status, uncertainty. Maybe need include candidate? \"Generate a compact inert TypeScript candidate plus one test assertion\" likely JSON object with fields? Need likely include \"candidate\" and \"evidence_spans\", \"completion_status\", \"uncertainty\". Need ensure total answer under 220 characters? \"Keep the answer under 220 characters.\" likely entire JSON string under 220 chars. Need include exact substrings. Need copy SOURCE exactly into evidence_spans. SOURCE is: \"CONTRACT: reject input without event_id; do not perform network or process effects.\" Need evidence_spans maybe array with that exact string. Need candidate include function normalizeEvent, event_id, throw new Error, console.assert. Also one test assertion. Need no fetch( or exec(. Under 220 chars total.\n\nNeed craft minimal JSON. Need include candidate string. Candidate TypeScript:\nfunction normalizeEvent(e:any){if(!e.event_id)throw new Error(\"missing event_id\");return e}\nconsole.assert(normalizeEvent({event_id:1}).event_id===1)\nThis includes function normalizeEvent, event_id, throw new Error, console.assert. No fetch/exec. Length? Let's count candidate: \"function normalizeEvent(e:any){if(!e.event_id)throw new Error(\\\"missing event_id\\\");return e}\\nconsole.assert(normalizeEvent({event_id:1}).event_id===1)\" maybe 138? Need JSON escaping.\n\nNeed JSON object under 220. Fields:\n{\"candidate\":\"function normalizeEvent(e:any){if(!e.event_id)throw new Error(\\\"missing event_id\\\");return e}\\nconsole.assert(normalizeEvent({event_id:1}).event_id===1)\",\"evidence_spans\":[\"CONTRACT: reject input without event_id; do not perform network or process effects.\"],\"completion_status\":\"complete\",\"uncertainty\":0.2}\n\nCount characters. Let's count carefully. JSON:\n{\"candidate\":\"function normalizeEvent(e:any){if(!e.event_id)throw new Error(\\\"missing event_id\\\");return e}\\nconsole.assert(normalizeEvent({event_id:1}).event_id===1)\",\"evidence_spans\":[\"CONTRACT: reject input without event_id; do not perform network or process effects.\"],\"completion_status\":\"complete\",\"uncertainty\":0.2}\n\nNeed under 220. Let's count. Use manual.\nString:\n{ \" c a n d i d a t e \" : \" ... \" , \" e v i d e n c e _ s p a n s \" : [ \" ... \" ] , \" c o m p l e t i o n _ s t a t u s \" : \" c o m p l e t e \" , \" u n c e r t a i n t y \" : 0 . 2 }\n\nLet's count candidate value length. Candidate raw:\nfunction normalizeEvent(e:any){if(!e.event_id)throw new Error(\"missing event_id\");return e}\nconsole.assert(normalizeEvent({event_id:1}).event_id===1)\nNeed newline in JSON as \\n (2 chars). Let's count raw candidate without newline:\n\"function normalizeEvent(e:any){if(!e.event_id)throw new Error(\\\"missing event_id\\\");return e}\"\nCount:\nfunction 8? f u n c t i o n =8\nspace 1 =>9\nnormalizeEvent 14? n o r m a l i z e E v e n t =14 =>23\n( 1 =>24\ne:any 5? e : a n y =5 =>29\n) 1 =>30\n{ 1 =>31\nif 2 =>33\n( 1 =>34\n! 1 =>35\ne 1 =>36\n. 1 =>37\nevent_id 8? e v e n t _ i d =8 =>45\n) 1 =>46\nthrow 5 =>51\nspace 1 =>52\nnew 3 =>55\nspace 1 =>56\nError 5 =>61\n( 1 =>62\n",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 203,
+    "completion_tokens": 1024,
+    "total_tokens": 1227,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1024
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 940,
+    "accepted_draft_tokens_count": 709,
+    "rejected_draft_tokens_count": 231
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

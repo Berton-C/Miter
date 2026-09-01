@@ -1,0 +1,7 @@
+{
+  "answer":"The local backup is complete, and the changes have not been pushed to Git.",
+  "completion_status":"complete",
+  "evidence_spans": ["STATE: backup complete; Git push not performed." ],
+  "request_id":"g05-voice-render-qwen-local-r02",
+  "uncertainty":0.0
+}

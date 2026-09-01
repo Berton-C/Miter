@@ -1,0 +1,14 @@
+GATE: G05 — Chat-model role bakeoff
+REQUIREMENT IDS: ACCEPTANCE G05; POC_SPEC 7.2–7.4; WORK_PROTOCOL W-080–W-087
+CONSTITUTIONAL LAWS: C-004, C-007, C-054, C-055, C-057, C-061, C-062, C-100, C-102, C-104
+FILES EXPECTED TO CHANGE: tests/fixtures/g05_bakeoff_corpus.json; scripts/g05/*; config/model-role-map.json; evidence/20260901T202651Z-G05/**
+FILES FORBIDDEN TO CHANGE: CONSTITUTION.md; ACCEPTANCE.md; AUTHORITY_MAP.md; POC_SPEC.md; DECISIONS.md; WORK_PROTOCOL.md; initial_canon/**; docs/sources/**; config/local/g03-model-profiles.json
+POSITIVE FIXTURE: Six fixed PoC-relevant cases covering VoiceRNA render, structured repair, schema adherence, declarative MeTTa generation, small extension code/test generation, and uncertainty honesty; three repetitions per case and model with identical fixed decoding parameters; latency and peak provider RSS recorded for every call.
+NEGATIVE CONTROL: Reverse one measured content score in a copied metrics input. The deterministic role selector must either change the selected role map or report an inconsistency.
+EXPECTED OBSERVABLE DIFFERENCE: Canonical measured metrics deterministically produce the reported role map; the reversed-score copy cannot reproduce the unchanged role map as valid.
+CURRENT UNPROVEN ASSUMPTIONS: Both installed chat-model profiles remain runnable through the local LM Studio-supplied runtimes; both support the strict G04 JSON schema on all corpus cases; a fixed mechanical scorer can discriminate PoC role suitability without treating model fluency as authority.
+ROLLBACK METHOD: Stop the bounded local model services; remove only G05 implementation/evidence files or revert the single G05 commit. No model weights, canon, local profile bindings, Chroma state, or ~/.miter state will be changed.
+
+HYPOTHESIS: Repeated fixed-schema products plus deterministic content, uncertainty, latency, and memory measurements are sufficient to assign provisional bounded roles without granting either model semantic or constitutional authority.
+POSITIVE EXPECTATION: At least one model passes every required schema arm, and the selector emits a reproducible tracked role map from the untouched metrics.
+NEGATIVE EXPECTATION: Reversing one measured content score causes a different selection or an explicit inconsistency verdict.

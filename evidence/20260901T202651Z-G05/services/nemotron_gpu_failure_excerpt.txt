@@ -1,0 +1,38 @@
+[2026-09-01 23:09:05][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:09:05][DEBUG] 0.05.983.848 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:09:05][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:09:11][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:09:11][DEBUG] 0.05.973.943 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:09:11][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:09:17][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:09:18][DEBUG] 0.05.960.835 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:09:18][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:09:24][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:09:24][DEBUG] 0.06.464.399 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:09:25][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:09:31][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:09:31][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:09:37][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:09:37][DEBUG] 0.05.963.904 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:09:37][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:09:44][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:09:44][DEBUG] 0.06.231.730 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:09:44][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:09:50][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:09:50][DEBUG] 0.05.707.119 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:09:50][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:09:56][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:09:56][DEBUG] 0.05.945.950 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:09:57][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:10:03][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:10:03][DEBUG] 0.06.218.049 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:10:03][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:10:09][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:10:09][DEBUG] 0.05.437.856 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:10:09][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:10:15][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:10:15][DEBUG] 0.05.960.394 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:10:16][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error
+[2026-09-01 23:10:21][INFO][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Running chat completion on conversation with 2 messages.
+[2026-09-01 23:10:22][DEBUG] 0.05.704.880 E ggml_metal_library_compile_pipeline: kernel not found in any metal library: base = 'kernel_mul_mm_id_map0_ne20_18', name = 'kernel_mul_mm_id_map0_ne20_18_ne02=128'
+[2026-09-01 23:10:22][ERROR][nemotron-3.5-30b-a3b-antislop-ftpo-i1] Error: Channel Error

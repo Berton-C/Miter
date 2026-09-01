@@ -1,0 +1,7 @@
+{
+  "answer":"The backup is complete, but the push remains pending.",
+  "completion_status":"complete",
+  "evidence_spans": ["WITNESS: backup complete; push event absent." ],
+  "request_id":"g05-voice-repair-nemotron-local-r03",
+  "uncertainty":0.05
+}

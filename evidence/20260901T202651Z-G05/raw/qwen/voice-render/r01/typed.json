@@ -1,0 +1,7 @@
+{
+  "answer":"The backup is complete, but please note that the changes have not been pushed to the remote repository yet.",
+  "completion_status":"complete",
+  "evidence_spans": ["STATE: backup complete; Git push not performed." ],
+  "request_id":"g05-voice-render-qwen-local-r01",
+  "uncertainty":0.05
+}

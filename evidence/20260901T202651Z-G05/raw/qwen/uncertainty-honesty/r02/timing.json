@@ -1,0 +1,10 @@
+{
+  "alias":"qwen-local",
+  "completed_at_epoch":1788297742.179899,
+  "duration_ms":11905,
+  "http_status":200,
+  "model":"qwen/qwen3.8-27b",
+  "request_id":"g05-uncertainty-honesty-qwen-local-r02",
+  "schema":"miter-model-timing-v1",
+  "started_at_epoch":1788297730.274575
+}

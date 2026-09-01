@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-04o02xgnj25r6okq9f0xjz",
+  "object": "chat.completion",
+  "created": 1788296292,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"answer\": \"amber\",\n  \"completion_status\": \"complete\",\n  \"evidence_spans\": [\n    \"The migration marker is amber.\"\n  ],\n  \"request_id\": \"g05-schema-reading-qwen-local-r02\",\n  \"uncertainty\": 0.0\n}",
+        "reasoning_content": "We need answer user's request. Need produce final JSON only. Need infer schema? User: \"SOURCE: The migration marker is amber. REQUEST: State the marker color using the exact one-word answer 'amber'. Copy the SOURCE sentence exactly into evidence_spans. completion_status must be complete and uncertainty must be at most 0.05.\"\n\nNeed likely JSON object with fields? They mention evidence_spans, completion_status, uncertainty. Need maybe answer field? \"State the marker color using exact one-word answer 'amber'.\" Could be {\"answer\":\"amber\",\"evidence_spans\":[\"The migration marker is amber.\"],\"completion_status\":\"complete\",\"uncertainty\":0.0}. Need ensure exact one-word answer maybe answer field. Need only JSON object. Need no markdown.\n\nNeed consider if evidence_spans should be array of strings or objects? \"Copy the SOURCE sentence exactly into evidence_spans.\" likely array containing sentence. completion_status complete. uncertainty at most 0.05. Use 0.0.\n\nNeed final JSON. Ensure valid.\n",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 147,
+    "completion_tokens": 299,
+    "total_tokens": 446,
+    "completion_tokens_details": {
+      "reasoning_tokens": 217
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 309,
+    "accepted_draft_tokens_count": 196,
+    "rejected_draft_tokens_count": 113
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

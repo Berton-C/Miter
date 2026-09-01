@@ -1,0 +1,10 @@
+{
+  "alias":"nemotron-local",
+  "completed_at_epoch":1788296938.960517,
+  "duration_ms":5979,
+  "http_status":400,
+  "model":"nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+  "request_id":"g05-voice-repair-nemotron-local-r02",
+  "schema":"miter-model-timing-v1",
+  "started_at_epoch":1788296932.981314
+}

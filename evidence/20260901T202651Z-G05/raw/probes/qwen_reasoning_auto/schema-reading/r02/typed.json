@@ -1,0 +1,7 @@
+{
+  "answer":"amber",
+  "completion_status":"complete",
+  "evidence_spans": ["The migration marker is amber." ],
+  "request_id":"g05-schema-reading-qwen-local-r02",
+  "uncertainty":0.0
+}

@@ -1,0 +1,49 @@
+{
+  "alias":"qwen-local",
+  "body": {
+    "max_tokens":1024,
+    "messages": [
+      {
+	"content":"You are producing one bounded candidate artifact as inert data for mechanical evaluation. Preserve the supplied intention and evidence. Return only the JSON object required by the response schema. Never claim authority, execution, persistence, or external success.",
+	"role":"system"
+      },
+      {
+	"content":"CommunicativeIntention: acknowledge the completed local backup while making clear that no Git push occurred. Render one natural sentence of at most 30 words. The answer must include the exact phrases 'backup is complete' and 'not been pushed'. SOURCE: STATE: backup complete; Git push not performed. Copy SOURCE exactly into evidence_spans. completion_status must be complete and uncertainty must be at most 0.10.",
+	"role":"user"
+      }
+    ],
+    "model":"qwen/qwen3.8-27b",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_g05_product",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "answer": {"maxLength":240,"minLength":1,"type":"string"},
+	    "completion_status": {"enum": ["complete", "insufficient_evidence" ],"type":"string"},
+	    "evidence_spans": {
+	      "items": {"maxLength":160,"minLength":1,"type":"string"},
+	      "maxItems":3,
+	      "minItems":1,
+	      "type":"array"
+	    },
+	    "request_id": {"const":"g05-voice-render-qwen-local-r03","type":"string"},
+	    "uncertainty": {"maximum":1,"minimum":0,"type":"number"}
+	  },
+	  "required": ["request_id", "answer", "uncertainty", "evidence_spans", "completion_status" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":505,
+    "stream":false,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"g05-voice-render-qwen-local-r03",
+  "schema":"miter-prepared-model-request-v1"
+}

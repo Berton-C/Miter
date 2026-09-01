@@ -1,0 +1,4 @@
+## main...origin/main
+?? evidence/20260901T202651Z-G05/
+?? scripts/g05/
+?? tests/fixtures/g05_bakeoff_corpus.json
