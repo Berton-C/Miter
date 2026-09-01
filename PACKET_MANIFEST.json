@@ -1,7 +1,7 @@
 {
   "packet": "BGI Miter PoC Build Packet",
   "version": "0.1.1 Alignment Clarification",
-  "generated_at_utc": "2026-09-01T17:04:34Z",
+  "generated_at_utc": "2026-09-01T17:10:23Z",
   "file_count": 12,
   "files": [
     {
@@ -51,8 +51,8 @@
     },
     {
       "name": "README.md",
-      "size_bytes": 17039,
-      "sha256": "f680e5f987cdbb02325a8ba29b6ad0926b48efd552d8b1c13cc5cd6ae403e81e"
+      "size_bytes": 16020,
+      "sha256": "9e2c5210395823126349265f6764818220da48240b2299443412c09033f21b0d"
     },
     {
       "name": "SOURCE_MATERIALS_CHECKLIST.md",
