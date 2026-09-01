@@ -1,0 +1,4 @@
+?? effect_membranes/
+?? evidence/20260901T181843Z-G02/
+?? scripts/g02/
+?? tests/fixtures/g02_prolog_import.metta

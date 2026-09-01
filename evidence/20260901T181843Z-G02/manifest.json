@@ -1,0 +1,15 @@
+{
+  "run_id": "20260901T181843Z-G02",
+  "gate_id": "G02",
+  "git_commit_at_entry": "a7371a4aee2d14782948eed0ba894165625ec40c",
+  "git_dirty_at_entry": false,
+  "host": "macOS arm64",
+  "started_at": "2026-09-01T18:18:43Z",
+  "completed_at": "2026-09-01T18:24:51Z",
+  "positive_arm": "Import miter_probe_add/3 through PeTTa and call it with integer scalars 20 and 22, requiring exactly miter_int_42.",
+  "negative_arm": "Call the same imported predicate with malformed atom not_an_integer and integer 22, requiring exactly miter_error_expected_integers.",
+  "verifier_version": "g02-gate-verifier-v1",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "swipl_version": "10.0.2",
+  "swipl_platform": "arm64-darwin"
+}

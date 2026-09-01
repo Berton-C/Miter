@@ -1,0 +1,1 @@
+{"verifier":"g02-verifier-v1","status":"PASS","success":"miter_int_42","malformed":"miter_error_expected_integers","success_count":1,"malformed_count":1,"runtime_exit":0,"deterministic":true,"python_process":false}

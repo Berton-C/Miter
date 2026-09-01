@@ -1,0 +1,4 @@
+pid ppid user etime comm
+30866 30855 bcb 00:00 sh
+30872 30866 bcb 00:00 swipl
+30866 30855 bcb 00:00 sh

@@ -1,0 +1,4 @@
+positive_solutions([miter_int_42])
+malformed_solutions([miter_error_expected_integers])
+positive_determinism(miter_int_42,true)
+malformed_determinism(miter_error_expected_integers,true)

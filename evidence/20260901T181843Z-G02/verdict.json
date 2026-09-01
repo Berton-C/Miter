@@ -1,0 +1,83 @@
+{
+  "run_id": "20260901T181843Z-G02",
+  "gate_id": "G02",
+  "status": "PASS",
+  "claims": [
+    {
+      "id": "G02-import",
+      "status": "PROVEN-RUNTIME",
+      "claim": "Pinned PeTTa imported the Miter Prolog predicate through its native Prolog extension mechanism.",
+      "evidence": [
+        "raw/petta_fixture.stdout",
+        "raw/petta_fixture.stderr",
+        "raw/petta_lib_import.metta",
+        "raw/petta_lib_import.pl",
+        "hashes/petta_import_surface.sha256"
+      ]
+    },
+    {
+      "id": "G02-positive",
+      "status": "PROVEN-RUNTIME",
+      "claim": "Integer scalars 20 and 22 returned exactly one typed scalar miter_int_42 with exit 0.",
+      "evidence": [
+        "raw/petta_fixture.stdout",
+        "raw/petta_fixture.status",
+        "raw/direct_prolog_probe.stdout"
+      ]
+    },
+    {
+      "id": "G02-malformed",
+      "status": "PROVEN-RUNTIME",
+      "claim": "Malformed atom input returned exactly one typed error scalar miter_error_expected_integers rather than failure, exception, or success-shaped output.",
+      "evidence": [
+        "raw/petta_fixture.stdout",
+        "raw/direct_prolog_probe.stdout",
+        "outputs/verifier.json"
+      ]
+    },
+    {
+      "id": "G02-determinism",
+      "status": "PROVEN-RUNTIME",
+      "claim": "Both Prolog branches produced one-element solution lists and left no choice point.",
+      "evidence": [
+        "raw/direct_prolog_probe.stdout",
+        "raw/direct_prolog_probe.status"
+      ]
+    },
+    {
+      "id": "G02-no-python",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The attributable process tree was sh to native swipl with no Python or Janus process, and the G02 source contains no Python seam.",
+      "evidence": [
+        "process/process_tree_unique_safe.txt",
+        "raw/petta_fixture.stderr",
+        "outputs/verifier.json"
+      ]
+    },
+    {
+      "id": "G02-repeatability",
+      "status": "PROVEN-RUNTIME",
+      "claim": "The monitored repeat produced byte-identical stdout.",
+      "evidence": [
+        "diffs/petta_repeat_stdout.cmp.status",
+        "raw/petta_fixture_monitored.status"
+      ]
+    },
+    {
+      "id": "G02-protected-integrity",
+      "status": "PROVEN-RUNTIME",
+      "claim": "All protected documents retained their entry hashes.",
+      "evidence": [
+        "hashes/protected_documents_before.sha256",
+        "hashes/protected_documents_after.sha256"
+      ]
+    }
+  ],
+  "negative_control_difference": true,
+  "remaining_unproven_assumptions": [
+    "Typed HTTP and JSON transport through the same membrane remain unproven until G03 and G04.",
+    "The G02 scalar tag convention is a probe contract, not yet the final cross-service schema.",
+    "Patrick's Python-backed Chroma adapter was not executed and is not part of Miter's runtime path."
+  ],
+  "next_gate_started": false
+}

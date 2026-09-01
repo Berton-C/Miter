@@ -1,0 +1,10 @@
+GATE: G02
+REQUIREMENT IDS: G02, E-001–E-005, W-010–W-017, D-006, D-009, D-036
+CONSTITUTIONAL LAWS: C-060, C-061, C-062, C-064, C-065
+FILES EXPECTED TO CHANGE: effect_membranes/miter_probe.pl; tests/fixtures/g02_prolog_import.metta; scripts/g02/verify_g02.sh; evidence/20260901T181843Z-G02/**
+FILES FORBIDDEN TO CHANGE: CONSTITUTION.md; ACCEPTANCE.md; AUTHORITY_MAP.md; POC_SPEC.md; initial_canon/**; docs/sources/**; /Users/bcb/Documents/ClarityOmega/clarityomega/**; existing Chroma persistence; ~/.miter/**
+POSITIVE FIXTURE: MeTTa imports a deterministic Prolog function that accepts integer scalars 20 and 22 and returns the typed scalar atom miter_int_42
+NEGATIVE CONTROL: The identical imported function receives malformed atom not_an_integer and must return exactly miter_error_expected_integers
+EXPECTED OBSERVABLE DIFFERENCE: Valid scalars produce one typed success scalar; malformed input produces one typed error scalar—neither branch fails silently or leaves a choice point
+CURRENT UNPROVEN ASSUMPTIONS: Current PeTTa imports the Miter Prolog file from a non-example path; scalar marshalling preserves integers and atoms; deterministic cuts are reflected as one result; the process tree contains no Python attributable to Miter
+ROLLBACK METHOD: Remove only the G02 membrane, fixture, verifier, evidence, and isolated temporary PeTTa checkout; no service, Chroma, Mattermost, or ~/.miter state is created
