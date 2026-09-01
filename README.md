@@ -11,8 +11,6 @@
 
 ## 1. What this packet is
 
-This packet is the normative construction surface for the first BGI Miter proof of concept. It converts the current architectural discussion, ratified mathematical inheritance, ClarityOmega implementation lessons, and selected Iter/Headlong engineering patterns into a bounded build that ChatGPT Work can execute gate by gate.
-
 It is deliberately smaller than the eventual Miter architecture, but it is not a toy agent. The PoC is required to prove two things:
 
 1. **Miter is alive as the intended kind of cognitive system.** Miter must be a Soul-constituted PeTTa/MeTTa organism whose cognition is not trapped inside an LLM conversation, whose local LLM renders bounded semantic products, whose long-term memory preserves Continuity of Mind, whose voice is audited against Soul-determined intention, and whose ongoing activity includes both receptive readiness and endogenous development.
@@ -37,7 +35,7 @@ This is a mechanism proof. It does not claim a final Soul, complete open-ended-i
 
 Long-term memory is not optional in this PoC.
 
-A system that can reason, self-modify, and speak from Soul but cannot remember a book project after three months is not usable as Miter. The LLM context window is not Miter's mind. ChromaDB semantic retrieval is therefore retained and strengthened rather than removed.
+A system that can reason, self-modify, and speak from Soul but cannot remember a book project after three months is not usable as Miter. The LLM context window is not Miter's mind. ChromaDB semantic retrieval is therefore strengthened.
 
 The PoC uses three coordinated memory surfaces:
 
@@ -115,9 +113,9 @@ This is not a retreat from native execution. It localizes containment at the exa
 
 ---
 
-## 6. Headlong inheritance in one paragraph
+## 6. Headlong inspiration in one paragraph
 
-Headlong is an engineering inspiration, not architectural authority. Miter adopts its strongest patterns: append-only trajectory, context as a projection rather than mutable history, tiered compaction with raw retrieval, channel messages entering one ongoing stream, small composable tools, self-improvement through fork–test–merge, isolated credentials, watchdogs, status and panic controls, and exponential idle backoff that resets on contact. Miter rejects Bash as cognition, unrestricted shell authority, persona text as Soul, direct model execution, and Headlong's absence of privacy walls among participants. See `HEADLONG_INHERITANCE.md`.
+Headlong is an engineering inspiration, not architectural authority. Miter takes inspiration form its strongest patterns: append-only trajectory, context as a projection rather than mutable history, tiered compaction with raw retrieval, channel messages entering one ongoing stream, small composable tools, self-improvement through fork–test–merge, isolated credentials, watchdogs, status and panic controls, and exponential idle backoff that resets on contact. Miter rejects Bash as cognition, unrestricted shell authority, persona text as Soul, direct model execution, and Headlong's absence of privacy walls among participants. See `HEADLONG_INHERITANCE.md`.
 
 ---
 
@@ -309,13 +307,3 @@ Stop the PoC and adjudicate before proceeding if any of these occurs:
 - Mattermost extension requires editing the Miter cognitive core rather than using the surface contract;
 - the final proof cannot survive process restart;
 - a severed arm behaves identically on every discriminating case.
-
----
-
-## 12. Starting with ChatGPT Work
-
-Create the empty repository, copy this packet into its root, stage the source materials listed in `SOURCE_MATERIALS_CHECKLIST.md`, commit that clean baseline, open the folder as a local ChatGPT Work project, and use `GPT_WORK_KICKOFF_PROMPT.md` verbatim for Task 00.
-
-Task 00 is an environment and source audit. It must not begin implementation. Its job is to produce a verified baseline: host details, exact PeTTa and SWI-Prolog versions, LM Studio model identifiers, Chroma status and safe-copy path, existing VAD asset location, source hashes, and the first evidence manifest.
-
-Only after Task 00 passes should Work begin Gate 1.
