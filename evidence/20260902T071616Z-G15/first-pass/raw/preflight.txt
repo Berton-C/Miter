@@ -1,0 +1,6 @@
+bcb
+## main...origin/main
+?? evidence/20260902T071616Z-G15/
+854e21d457551df7dd801af1f6b73d11a2bdcb5c
+SWI-Prolog version 10.0.2 for arm64-darwin
+ae66fa8e41dcd5539d614706bd4e5cfb34f9608d

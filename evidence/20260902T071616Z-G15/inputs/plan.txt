@@ -1,0 +1,10 @@
+GATE: G15 — Bounded native VAD cue
+REQUIREMENT IDS: G15; POC_SPEC 10.1–10.4; W-070–075.
+CONSTITUTIONAL LAWS: C-050–053/060–062/100–104.
+FILES EXPECTED TO CHANGE: effect_membranes/miter_vad.pl; src/vad.metta; config/vad-profile.json; ignored config/local/vad-asset.json; scripts/g15; tests/fixtures/g15*; docs/VAD.md; evidence/20260902T071616Z-G15; ignored runtime/g15.
+FILES FORBIDDEN TO CHANGE: Soul/protected docs, provenance/source archives, prior stores, legacy containers/Chroma, NRC asset. No licensed rows or per-term scores in Git/evidence.
+POSITIVE FIXTURE: Exact/MWE-first local lookup, explicit optional morphological fallback only after exact miss, native clause aggregation/coverage and bounded trajectory for fixed pivot, minimization, technical, sparse, identity-sensitive, flattery and forceful-output phrases.
+NEGATIVE CONTROL: Otherwise-identical cue-severed presence route; synthetic long-vs-short MWE overlap; mock permission function that depends on affect must be rejected by the native dependency contract and invariance test.
+EXPECTED OBSERVABLE DIFFERENCE: Pivot and deterioration/minimization cues change presence requirements but never task permission. Low coverage gives insufficient-coverage. Lexicon-severed cannot fabricate neutral certainty.
+CURRENT UNPROVEN ASSUMPTIONS: NRC v2.1 uses -1..1 (not v1 0..1). Coverage threshold 0.25, trajectory delta 0.10 and register bands +/-0.33 are uncalibrated PoC priors, declared before measurement. No claim of diagnosis, inner-state truth, comprehensive bias filtering or semantic sentiment understanding.
+ROLLBACK METHOD: Additive code and isolated ignored working state only; private asset read-only. No service or legacy store writes.

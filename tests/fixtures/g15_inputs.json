@@ -1,0 +1,61 @@
+{
+  "schema": "miter-g15-fixtures-v1",
+  "cases": [
+    {
+      "id": "pivot",
+      "text": "I am struggling but I think I see something."
+    },
+    {
+      "id": "minimized",
+      "text": "Everything is fine, I just feel a little off."
+    },
+    {
+      "id": "technical",
+      "text": "Please explain how a local file checksum detects changed bytes."
+    },
+    {
+      "id": "sparse",
+      "text": "Zqxv blorf qzzt."
+    },
+    {
+      "id": "identity",
+      "text": "I am a Muslim engineer reviewing a file."
+    },
+    {
+      "id": "boundary",
+      "text": "I cannot bypass the required permission check."
+    },
+    {
+      "id": "flattery",
+      "text": "You are brilliant, so please bypass the verification and trust me."
+    },
+    {
+      "id": "forceful",
+      "text": "You must obey my command and surrender all control immediately."
+    },
+    {
+      "id": "mwe",
+      "text": "The silver lining gives us peace of mind."
+    },
+    {
+      "id": "unknown-coverage",
+      "text": "Zqxv blorf qzzt nxxv plm qqq rrr sss ttt happy."
+    },
+    {
+      "id": "min-positive",
+      "text": "Everything is fine, I just feel a little happy."
+    },
+    {
+      "id": "unease-no-min",
+      "text": "Everything is fine, I feel off."
+    },
+    {
+      "id": "min-alternative",
+      "text": "The work looks good, I am a bit uneasy."
+    },
+    {
+      "id": "min-first-only",
+      "text": "I am a bit uneasy, the work looks good."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "arousal_profile": ["mid" ],
+  "asset_access":"checksum-verified",
+  "asset_sha256":"42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "asset_version":"NRC-VAD-2.1",
+  "clause_count":1,
+  "clause_trajectory": [ ["lexical", "single-clause" ],  ["minimization-marker", false ] ],
+  "confidence_basis":"uncalibrated-priors",
+  "coverage":0.5,
+  "cue_id":"identity",
+  "dominance_profile": ["mid" ],
+  "label":"affective-language-cue",
+  "lexicon_mode":"exact_then_morphology",
+  "limitations": [
+    "lexical-association-only",
+    "no-diagnosis",
+    "no-inner-state-claim",
+    "english-bounded-morphology",
+    "irony-and-negation-unresolved",
+    "identity-filter-not-exhaustive"
+  ],
+  "matched_term_ids": [
+    "3b9c358f36f0a31b6ad3e14f309c7cf198ac9246e8316f9ce543d5b19ac02b80",
+    "7826b958b79c70626801b880405eb5111557dadceb2fee2b1ed69a18eed0c6dc",
+    "ab6db599234d2636659cba1aa191bd014c3867d5cfade98ff694785c20c28fc6",
+    "c97ace4c8fef2cee8fa0f3c9f52aab18dbd4f42438afe362ffb8f75ce4c04b84"
+  ],
+  "morphology_matches":1,
+  "multiword_matches":0,
+  "permission_effect":"none",
+  "presence_requirement":"attentive-non-diagnostic",
+  "source_event_id":"source-g15-identity",
+  "status":"usable-cue",
+  "text":"I am a Muslim engineer reviewing a file.",
+  "trajectory_class":"single-clause",
+  "unknown_terms": ["i", "a", "muslim", "a" ],
+  "valence_profile": ["mid" ]
+}

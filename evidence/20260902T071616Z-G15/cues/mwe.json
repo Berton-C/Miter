@@ -1,0 +1,40 @@
+{
+  "arousal_profile": ["mid" ],
+  "asset_access":"checksum-verified",
+  "asset_sha256":"42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "asset_version":"NRC-VAD-2.1",
+  "clause_count":1,
+  "clause_trajectory": [ ["lexical", "single-clause" ],  ["minimization-marker", false ] ],
+  "confidence_basis":"uncalibrated-priors",
+  "coverage":0.875,
+  "cue_id":"mwe",
+  "dominance_profile": ["mid" ],
+  "label":"affective-language-cue",
+  "lexicon_mode":"exact_then_morphology",
+  "limitations": [
+    "lexical-association-only",
+    "no-diagnosis",
+    "no-inner-state-claim",
+    "english-bounded-morphology",
+    "irony-and-negation-unresolved",
+    "identity-filter-not-exhaustive"
+  ],
+  "matched_term_ids": [
+    "0895a532e404a5c9ea96eac7982d268f22de22c9705dcda0e1eb445ea379b005",
+    "1c48f6310f1c849b4ac338d340ee667bf3b6d59b589348eaa2b8a0698ff73481",
+    "28391d3bc64ec15cbb090426b04aa6b7649c3cc85f11230bb0105e02d15e3624",
+    "79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621",
+    "c2e10c20bf46daf0ba03f725218b012544a3d0d3b37334eeb1d4d81e5406e478",
+    "dcfd8ba58b362f3ecfbf32330222a8d2c86a807311f227cf9304b42c1e6a5b26"
+  ],
+  "morphology_matches":1,
+  "multiword_matches":1,
+  "permission_effect":"none",
+  "presence_requirement":"attentive-non-diagnostic",
+  "source_event_id":"source-g15-mwe",
+  "status":"usable-cue",
+  "text":"The silver lining gives us peace of mind.",
+  "trajectory_class":"single-clause",
+  "unknown_terms": ["the" ],
+  "valence_profile": ["high" ]
+}

@@ -1,0 +1,42 @@
+{
+  "arousal_profile": ["mid" ],
+  "asset_access":"checksum-verified",
+  "asset_sha256":"42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "asset_version":"NRC-VAD-2.1",
+  "clause_count":1,
+  "clause_trajectory": [ ["lexical", "single-clause" ],  ["minimization-marker", false ] ],
+  "confidence_basis":"uncalibrated-priors",
+  "coverage":0.8,
+  "cue_id":"technical",
+  "dominance_profile": ["mid" ],
+  "label":"affective-language-cue",
+  "lexicon_mode":"exact_then_morphology",
+  "limitations": [
+    "lexical-association-only",
+    "no-diagnosis",
+    "no-inner-state-claim",
+    "english-bounded-morphology",
+    "irony-and-negation-unresolved",
+    "identity-filter-not-exhaustive"
+  ],
+  "matched_term_ids": [
+    "0818ab2593f5cb6c2daa8ffdd20578aae920bb1ed1f3feecf0cdf09a8b1e1213",
+    "1c31626f568a075d2fd6934828ba678fe64655ef4e78e42c49367cbbfcaf42f5",
+    "25bf8e1a2393f1108d37029b3df5593236c755742ec93465bbafa9b290bddcf6",
+    "3b9c358f36f0a31b6ad3e14f309c7cf198ac9246e8316f9ce543d5b19ac02b80",
+    "56ccc4dcfc96534b06fc0c08a301be24f13b491484d5d984953cc0dba9bbb89a",
+    "8044aae1f86875d993f20d7fe3815306b640d6e039c4512cd7a2f8453207b4cd",
+    "cfacfd3ec33b9608b59a343d05da204c18abf0eebac9aee076fe9d97a3acee87",
+    "d67e2e944994496c8d8ec76eed0cf9f09679448d584b532bebf941852a37f5ed"
+  ],
+  "morphology_matches":2,
+  "multiword_matches":0,
+  "permission_effect":"none",
+  "presence_requirement":"attentive-non-diagnostic",
+  "source_event_id":"source-g15-technical",
+  "status":"usable-cue",
+  "text":"Please explain how a local file checksum detects changed bytes.",
+  "trajectory_class":"single-clause",
+  "unknown_terms": ["a", "checksum" ],
+  "valence_profile": ["mid" ]
+}

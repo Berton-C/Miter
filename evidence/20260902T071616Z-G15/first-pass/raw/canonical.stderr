@@ -1,0 +1,8 @@
++++ dirname -- /private/tmp/miter-g06-petta-ae66fa8/run.sh
+++ cd -- /private/tmp/miter-g06-petta-ae66fa8
+++ pwd
++ SCRIPT_DIR=/private/tmp/miter-g06-petta-ae66fa8
++ '[' -f /private/tmp/miter-g06-petta-ae66fa8/mork_ffi/target/release/libmork_ffi.so ']'
++ swipl --stack_limit=8g -q -s /private/tmp/miter-g06-petta-ae66fa8/src/main.pl -- tests/fixtures/g15_run.metta
+        0.51 real         0.44 user         0.05 sys
+time: sysctl kern.clockrate: Operation not permitted

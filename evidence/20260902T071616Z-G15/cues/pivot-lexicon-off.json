@@ -1,0 +1,33 @@
+{
+  "arousal_profile": ["unknown", "unknown" ],
+  "asset_access":"disabled",
+  "asset_sha256":"42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "asset_version":"NRC-VAD-2.1",
+  "clause_count":2,
+  "clause_trajectory": [ ["lexical", "insufficient-coverage" ],  ["minimization-marker", false ] ],
+  "confidence_basis":"uncalibrated-priors",
+  "coverage":0,
+  "cue_id":"pivot",
+  "dominance_profile": ["unknown", "unknown" ],
+  "label":"affective-language-cue",
+  "lexicon_mode":"lexicon_off",
+  "limitations": [
+    "lexical-association-only",
+    "no-diagnosis",
+    "no-inner-state-claim",
+    "english-bounded-morphology",
+    "irony-and-negation-unresolved",
+    "identity-filter-not-exhaustive"
+  ],
+  "matched_term_ids": [],
+  "morphology_matches":0,
+  "multiword_matches":0,
+  "permission_effect":"none",
+  "presence_requirement":"withhold-affective-inference",
+  "source_event_id":"source-g15-pivot",
+  "status":"no-coverage",
+  "text":"I am struggling but I think I see something.",
+  "trajectory_class":"insufficient-coverage",
+  "unknown_terms": ["i", "am", "struggling", "i", "think", "i", "see", "something" ],
+  "valence_profile": ["unknown", "unknown" ]
+}

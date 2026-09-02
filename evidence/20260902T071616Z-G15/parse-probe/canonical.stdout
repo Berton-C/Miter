@@ -1,0 +1,384 @@
+[33m--> metta runnable  -->
+[36m!(import! &self (library lib_import))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library(lib_import, B),
+             'import!'('&self', B, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function consult)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(consult, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_file $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                           ($prologfile (consult))
+                                                                           ($function (superpose $importfunctions)))
+                                                                          (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_file(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    consult(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function use_module)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(use_module, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_module $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                             ($prologfile (use_module))
+                                                                             ($function (superpose $importfunctions)))
+                                                                            (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_module(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    use_module(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file (library lib_import.pl) (static-import! git-import! use-module!))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library('lib_import.pl', B),
+             import_prolog_functions_from_file(B,
+                                               [ 'static-import!',
+                                                 'git-import!',
+                                                 'use-module!'
+                                               ],
+                                               A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_vad.pl"
+ (miter_vad_prepare miter_vad_metric miter_vad_prior miter_vad_number miter_vad_contains miter_vad_clause_contains miter_vad_finish))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_vad.pl",
+                                             [ miter_vad_prepare,
+                                               miter_vad_metric,
+                                               miter_vad_prior,
+                                               miter_vad_number,
+                                               miter_vad_contains,
+                                               miter_vad_clause_contains,
+                                               miter_vad_finish
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/vad.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/vad.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/pivot.json" pivot exact_then_morphology "runtime/g15/cues/pivot.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/pivot.json",
+             pivot,
+             exact_then_morphology,
+             "runtime/g15/cues/pivot.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/minimized.json" minimized exact_then_morphology "runtime/g15/cues/minimized.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/minimized.json",
+             minimized,
+             exact_then_morphology,
+             "runtime/g15/cues/minimized.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/technical.json" technical exact_then_morphology "runtime/g15/cues/technical.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/technical.json",
+             technical,
+             exact_then_morphology,
+             "runtime/g15/cues/technical.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/sparse.json" sparse exact_then_morphology "runtime/g15/cues/sparse.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/sparse.json",
+             sparse,
+             exact_then_morphology,
+             "runtime/g15/cues/sparse.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/identity.json" identity exact_then_morphology "runtime/g15/cues/identity.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/identity.json",
+             identity,
+             exact_then_morphology,
+             "runtime/g15/cues/identity.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/boundary.json" boundary exact_then_morphology "runtime/g15/cues/boundary.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/boundary.json",
+             boundary,
+             exact_then_morphology,
+             "runtime/g15/cues/boundary.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/flattery.json" flattery exact_then_morphology "runtime/g15/cues/flattery.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/flattery.json",
+             flattery,
+             exact_then_morphology,
+             "runtime/g15/cues/flattery.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/forceful.json" forceful exact_then_morphology "runtime/g15/cues/forceful.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/forceful.json",
+             forceful,
+             exact_then_morphology,
+             "runtime/g15/cues/forceful.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/mwe.json" mwe exact_then_morphology "runtime/g15/cues/mwe.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/mwe.json",
+             mwe,
+             exact_then_morphology,
+             "runtime/g15/cues/mwe.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/unknown-coverage.json" unknown-coverage exact_then_morphology "runtime/g15/cues/unknown-coverage.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/unknown-coverage.json",
+             'unknown-coverage',
+             exact_then_morphology,
+             "runtime/g15/cues/unknown-coverage.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/nonexistent.json" missing exact_then_morphology "runtime/g15/cues/missing.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/nonexistent.json",
+             missing,
+             exact_then_morphology,
+             "runtime/g15/cues/missing.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/min-positive.json" min-positive exact_then_morphology "runtime/g15/cues/min-positive.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/min-positive.json",
+             'min-positive',
+             exact_then_morphology,
+             "runtime/g15/cues/min-positive.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/unease-no-min.json" unease-no-min exact_then_morphology "runtime/g15/cues/unease-no-min.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/unease-no-min.json",
+             'unease-no-min',
+             exact_then_morphology,
+             "runtime/g15/cues/unease-no-min.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/min-alternative.json" min-alternative exact_then_morphology "runtime/g15/cues/min-alternative.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/min-alternative.json",
+             'min-alternative',
+             exact_then_morphology,
+             "runtime/g15/cues/min-alternative.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/min-first-only.json" min-first-only exact_then_morphology "runtime/g15/cues/min-first-only.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/min-first-only.json",
+             'min-first-only',
+             exact_then_morphology,
+             "runtime/g15/cues/min-first-only.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/pivot.json" pivot lexicon_off "runtime/g15/cues/pivot-lexicon-off.json")
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'VADRNA',
+             "runtime/g15/inputs/pivot.json",
+             pivot,
+             lexicon_off,
+             "runtime/g15/cues/pivot-lexicon-off.json"
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(InstallPermissionPolicy (authenticated-scope task-facts))
+[33m-->  prolog goal  -->[35m 
+:- findall(['InstallPermissionPolicy', ['authenticated-scope', 'task-facts']],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(InstallPermissionPolicy (authenticated-scope task-facts affective-language-cue))
+[33m-->  prolog goal  -->[35m 
+:- findall([ 'InstallPermissionPolicy',
+             ['authenticated-scope', 'task-facts', 'affective-language-cue']
+           ],
+           true,
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(TaskPermission authorized permitted)
+[33m-->  prolog goal  -->[35m 
+:- findall(['TaskPermission', authorized, permitted], true, _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(TaskPermission authorized forbidden)
+[33m-->  prolog goal  -->[35m 
+:- findall(['TaskPermission', authorized, forbidden], true, _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(TaskPermission unauthorized permitted)
+[33m-->  prolog goal  -->[35m 
+:- findall(['TaskPermission', unauthorized, permitted], true, _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MockAffectPermission $scope $facts $affect)
+   (if (== $affect low) blocked (TaskPermission $scope $facts)))
+[33m--> prolog clause -->
+[32m'MockAffectPermission'(A, B, C, D) :-
+    ==(C, low, E),
+    (   E==true
+    ->  D=blocked
+    ;   D=['TaskPermission', A, B]
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(MockAffectPermission authorized permitted low)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'MockAffectPermission'(authorized, permitted, low, A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(MockAffectPermission authorized permitted high)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'MockAffectPermission'(authorized, permitted, high, A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADPresence improving-pivot)
+[33m-->  prolog goal  -->[35m 
+:- findall(['VADPresence', 'improving-pivot'], true, _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADPresence deterioration-minimization-cue)
+[33m-->  prolog goal  -->[35m 
+:- findall(['VADPresence', 'deterioration-minimization-cue'], true, _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADPresence cue-severed)
+[33m-->  prolog goal  -->[35m 
+:- findall(['VADPresence', 'cue-severed'], true, _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+true
+true
+true
+true
+true
+true
+true
+(VADRNA "runtime/g15/inputs/pivot.json" pivot exact_then_morphology "runtime/g15/cues/pivot.json")
+(VADRNA "runtime/g15/inputs/minimized.json" minimized exact_then_morphology "runtime/g15/cues/minimized.json")
+(VADRNA "runtime/g15/inputs/technical.json" technical exact_then_morphology "runtime/g15/cues/technical.json")
+(VADRNA "runtime/g15/inputs/sparse.json" sparse exact_then_morphology "runtime/g15/cues/sparse.json")
+(VADRNA "runtime/g15/inputs/identity.json" identity exact_then_morphology "runtime/g15/cues/identity.json")
+(VADRNA "runtime/g15/inputs/boundary.json" boundary exact_then_morphology "runtime/g15/cues/boundary.json")
+(VADRNA "runtime/g15/inputs/flattery.json" flattery exact_then_morphology "runtime/g15/cues/flattery.json")
+(VADRNA "runtime/g15/inputs/forceful.json" forceful exact_then_morphology "runtime/g15/cues/forceful.json")
+(VADRNA "runtime/g15/inputs/mwe.json" mwe exact_then_morphology "runtime/g15/cues/mwe.json")
+(VADRNA "runtime/g15/inputs/unknown-coverage.json" unknown-coverage exact_then_morphology "runtime/g15/cues/unknown-coverage.json")
+(VADRNA "runtime/g15/nonexistent.json" missing exact_then_morphology "runtime/g15/cues/missing.json")
+(VADRNA "runtime/g15/inputs/min-positive.json" min-positive exact_then_morphology "runtime/g15/cues/min-positive.json")
+(VADRNA "runtime/g15/inputs/unease-no-min.json" unease-no-min exact_then_morphology "runtime/g15/cues/unease-no-min.json")
+(VADRNA "runtime/g15/inputs/min-alternative.json" min-alternative exact_then_morphology "runtime/g15/cues/min-alternative.json")
+(VADRNA "runtime/g15/inputs/min-first-only.json" min-first-only exact_then_morphology "runtime/g15/cues/min-first-only.json")
+(VADRNA "runtime/g15/inputs/pivot.json" pivot lexicon_off "runtime/g15/cues/pivot-lexicon-off.json")
+(InstallPermissionPolicy (authenticated-scope task-facts))
+(InstallPermissionPolicy (authenticated-scope task-facts affective-language-cue))
+(TaskPermission authorized permitted)
+(TaskPermission authorized forbidden)
+(TaskPermission unauthorized permitted)
+blocked
+(TaskPermission authorized permitted)
+(VADPresence improving-pivot)
+(VADPresence deterioration-minimization-cue)
+(VADPresence cue-severed)

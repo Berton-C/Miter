@@ -1,0 +1,14 @@
+{
+  "schema": "miter-vad-profile-v1",
+  "asset_version": "NRC-VAD-2.1",
+  "asset_sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "coordinate_range": [
+    -1,
+    1
+  ],
+  "coverage_prior": 0.25,
+  "trajectory_delta_prior": 0.1,
+  "register_band_prior": 0.33,
+  "confidence": "uncalibrated-priors",
+  "redistribution": "no-lexicon-rows-or-per-term-scores"
+}

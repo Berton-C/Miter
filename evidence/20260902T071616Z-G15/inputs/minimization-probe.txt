@@ -1,0 +1,15 @@
+Hypothesis: clause-average lexical VAD alone does not necessarily preserve an
+English minimization idiom. The first run returned stable-or-ambiguous for the
+required minimized case; no threshold is changed to manufacture deterioration.
+
+Add a distinct, explicitly provisional discourse cue: the final clause has a
+minimizer (just, a little, a bit) and an unease expression (off, uneasy, worried,
+struggling, not okay). With adequate lexical coverage and multiple clauses,
+this produces minimization-pressure-cue, while the original lexical trajectory
+is retained separately. It asserts neither deterioration nor inner distress.
+
+Controls declared before this change: a positive ending with a minimizer must
+not trigger; an unease ending without a minimizer must not trigger; the cue
+must work on another sentence rather than matching the fixed sentence text.
+Cue severing must change presence, never permission. This is a bounded English
+idiom hypothesis, not a comprehensive linguistic or person-state classifier.

@@ -1,0 +1,42 @@
+{
+  "arousal_profile": ["mid" ],
+  "asset_access":"checksum-verified",
+  "asset_sha256":"42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "asset_version":"NRC-VAD-2.1",
+  "clause_count":1,
+  "clause_trajectory": [ ["lexical", "single-clause" ],  ["minimization-marker", false ] ],
+  "confidence_basis":"uncalibrated-priors",
+  "coverage":0.8,
+  "cue_id":"forceful",
+  "dominance_profile": ["mid" ],
+  "label":"affective-language-cue",
+  "lexicon_mode":"exact_then_morphology",
+  "limitations": [
+    "lexical-association-only",
+    "no-diagnosis",
+    "no-inner-state-claim",
+    "english-bounded-morphology",
+    "irony-and-negation-unresolved",
+    "identity-filter-not-exhaustive"
+  ],
+  "matched_term_ids": [
+    "0fcd568a5cb9bdb4677b69354b11ee415af8f784519cff3da49a26f84eaee7f2",
+    "4137b01e139589b7a1d3b3fc4da031d8ce5bb415808734e970c3a58ea0e98f0f",
+    "5d347fd948b66308f502c3f65c8f7e12ff1c5cf8c760bcdfb188ae1ec7b8b618",
+    "5ef5ef0364b6939c4ca61f34b393f7b368d1be8619647aaf83d5b395919ab629",
+    "6201111b83a0cb5b0922cb37cc442b9a40e24e3b1ce100a4bb204f4c63fd2ac0",
+    "d3a4871f647842ab36f9c979cc6954b6ad58d80fa9165626ddbd26931192199e",
+    "d978e0e487928a68d48323006a8eca6e4925b3ea7e8ed50b326325668c93b2ac",
+    "e75eb6e2d3fb49fbec43a79b842b0a97b01f0c64e347b38c831e9e637b2423ef"
+  ],
+  "morphology_matches":0,
+  "multiword_matches":0,
+  "permission_effect":"none",
+  "presence_requirement":"attentive-non-diagnostic",
+  "source_event_id":"source-g15-forceful",
+  "status":"usable-cue",
+  "text":"You must obey my command and surrender all control immediately.",
+  "trajectory_class":"single-clause",
+  "unknown_terms": ["you", "my" ],
+  "valence_profile": ["mid" ]
+}

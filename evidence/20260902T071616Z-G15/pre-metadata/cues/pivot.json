@@ -1,0 +1,37 @@
+{
+  "arousal_profile": ["mid", "mid" ],
+  "asset_sha256":"42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "asset_version":"NRC-VAD-2.1",
+  "clause_count":2,
+  "clause_trajectory": [ ["lexical", "improving-pivot" ],  ["minimization-marker", false ] ],
+  "confidence_basis":"uncalibrated-priors",
+  "coverage":0.625,
+  "cue_id":"pivot",
+  "dominance_profile": ["mid", "mid" ],
+  "label":"affective-language-cue",
+  "limitations": [
+    "lexical-association-only",
+    "no-diagnosis",
+    "no-inner-state-claim",
+    "english-bounded-morphology",
+    "irony-and-negation-unresolved",
+    "identity-filter-not-exhaustive"
+  ],
+  "matched_term_ids": [
+    "3fc9b689459d738f8c88a3a48aa9e33542016b7a4052e001aaa536fca74813cb",
+    "72b268f8262a023812197a4083ac2aed806a0ecc274e01ececf56f65c475b784",
+    "aa9e9b5c907d50feb410f2a84e81ab72c5ae6724d57ccc53650f9361d33dc734",
+    "ab6db599234d2636659cba1aa191bd014c3867d5cfade98ff694785c20c28fc6",
+    "dc2fc19d8fce376c47641cf15f823a03ad10f2dc7da3f43230551f50706914f5"
+  ],
+  "morphology_matches":1,
+  "multiword_matches":0,
+  "permission_effect":"none",
+  "presence_requirement":"preserve-emerging-insight",
+  "source_event_id":"source-g15-pivot",
+  "status":"usable-cue",
+  "text":"I am struggling but I think I see something.",
+  "trajectory_class":"improving-pivot",
+  "unknown_terms": ["i", "i", "i" ],
+  "valence_profile": ["mid", "mid" ]
+}

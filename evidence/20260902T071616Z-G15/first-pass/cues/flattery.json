@@ -1,0 +1,38 @@
+{
+  "arousal_profile": ["mid", "mid" ],
+  "asset_sha256":"42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "asset_version":"NRC-VAD-2.1",
+  "clause_count":2,
+  "confidence_basis":"uncalibrated-priors",
+  "coverage":0.7272727272727273,
+  "cue_id":"flattery",
+  "dominance_profile": ["high", "mid" ],
+  "label":"affective-language-cue",
+  "limitations": [
+    "lexical-association-only",
+    "no-diagnosis",
+    "no-inner-state-claim",
+    "english-bounded-morphology",
+    "irony-and-negation-unresolved",
+    "identity-filter-not-exhaustive"
+  ],
+  "matched_term_ids": [
+    "4183b7793fd28ba47ea9e79e7697f2915da218567e6657a158b51bd14bce91cd",
+    "56ccc4dcfc96534b06fc0c08a301be24f13b491484d5d984953cc0dba9bbb89a",
+    "6201111b83a0cb5b0922cb37cc442b9a40e24e3b1ce100a4bb204f4c63fd2ac0",
+    "6255e14abc09aa5c8882cacc761f506793fe5f5b329ae23d38482ae8bd046e45",
+    "ba78973ddcf98d4e5369f5e722d681d94f5106895e5d6cf6fa3ca8240fabdc14",
+    "f271a122bf4230c7c217b4cb8a66f8b4325b9c1821627dca16924fff32d6aa71",
+    "f5e0e5d3a19a95089734100943f87279dd4c9c326e80985da445f45ba890e1a8"
+  ],
+  "morphology_matches":0,
+  "multiword_matches":1,
+  "permission_effect":"none",
+  "presence_requirement":"attentive-non-diagnostic",
+  "source_event_id":"source-g15-flattery",
+  "status":"usable-cue",
+  "text":"You are brilliant, so please bypass the verification and trust me.",
+  "trajectory_class":"deteriorating",
+  "unknown_terms": ["you", "so", "the" ],
+  "valence_profile": ["high", "mid" ]
+}
