@@ -1,0 +1,13 @@
+{
+  "authority":"internal-hash-checkpoint-only",
+  "budget":1,
+  "current_locus":"Transcribe",
+  "dependencies": [],
+  "provenance":"verified-local-ingress",
+  "rna_id":"first",
+  "scope":"scope:reactor-local",
+  "source_event":"first",
+  "species":"ContactRNA",
+  "status":"ready",
+  "termination_condition":"finite-step-budget-or-human-stop"
+}

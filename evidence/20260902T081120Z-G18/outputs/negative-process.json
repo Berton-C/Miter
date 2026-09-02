@@ -1,0 +1,8 @@
+{
+  "elapsed_seconds":0.30103397369384766,
+  "external_watchdog_seconds":5,
+  "model_calls":0,
+  "model_transport_imported":false,
+  "pid":18828,
+  "status":"exit(0)"
+}

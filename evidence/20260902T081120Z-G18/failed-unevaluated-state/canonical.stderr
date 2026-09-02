@@ -1,0 +1,2 @@
+
+ERROR: [Thread main] /private/tmp/miter-g06-petta-ae66fa8/src/main.pl:36: user:main >/2: Type error: `character' expected, found `[-,2,1]' (a list) ("x" must hold one character)

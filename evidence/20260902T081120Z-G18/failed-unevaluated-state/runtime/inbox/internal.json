@@ -1,0 +1,9 @@
+{
+  "id":"internal",
+  "kind":"due",
+  "obligation":"due-checkpoint",
+  "provenance":"witnessed-obligation",
+  "schema":"miter-reactor-input-v1",
+  "sent_at":1788336894.307223,
+  "steps":2
+}

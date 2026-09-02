@@ -1,0 +1,3 @@
+{"data": ["unauthorized", "perpetual", "continue-autonomous-work", "none" ],"kind":"unauthorized-event","wall_time":1788336942.475419}
+{"data": ["empty-lawful-ready-set", "no-model-call" ],"kind":"quiescent-ready","wall_time":1788336942.477533}
+{"data": ["explicit-stop" ],"kind":"reactor-stopped","wall_time":1788336942.641926}

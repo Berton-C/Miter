@@ -1,0 +1,10 @@
+GATE: G18 — Event reactor and quiescence
+REQUIREMENT IDS: G18; POC_SPEC 12.1–12.3; W-090/091/092.
+CONSTITUTIONAL LAWS: C-070–075; Soul Safety/AgencyBalance/TimeCoherence.
+FILES EXPECTED TO CHANGE: src/reactor.metta; src/bootstrap_reactor.metta; effect_membranes/miter_reactor.pl; config/reactor-profile.json; scripts/g18; tests/fixtures/g18*; this evidence directory; ignored runtime/g18.
+FILES FORBIDDEN TO CHANGE: protected docs, Soul baseline, initial_canon, docs/sources, prior evidence, user services and stores.
+POSITIVE FIXTURE: Real owned PeTTa process receives one human contact and one verified due internal obligation, advances bounded native RNA loci, becomes quiescent, then is awakened by a later file-backed contact. Explicit stop event ends the test.
+NEGATIVE CONTROL: Same ingress with a synthetic continue-autonomous-work event lacking an obligation; native eligibility must reject it and remain quiescent.
+EXPECTED OBSERVABLE DIFFERENCE: Accepted events produce native RNA lifecycle records; the unauthorized source produces rejection and no RNA. Empty ready sets make zero LLM calls, and a later contact wakes the same process.
+CURRENT UNPROVEN ASSUMPTIONS: Local file ingress is trusted harness/CLI transport, not an authenticated external bridge. Bounded fixture actions perform actual ledger hashing; they do not claim general research or integrate the later development pipeline yet.
+ROLLBACK METHOD: Revert additive gate files; retain fixtures and evidence. Stop only the owned reactor child on watchdog expiry; no existing service changes.

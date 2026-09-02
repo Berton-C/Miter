@@ -1,0 +1,2 @@
+
+ERROR: [Thread main] /private/tmp/miter-g06-petta-ae66fa8/src/main.pl:36: user:main Domain error: `function_input_arities(first,[1])' expected, found `3'

@@ -1,0 +1,5 @@
+?? config/reactor-profile.json
+?? effect_membranes/miter_reactor.pl
+?? evidence/20260902T081120Z-G18/
+?? src/bootstrap_reactor.metta
+?? src/reactor.metta
