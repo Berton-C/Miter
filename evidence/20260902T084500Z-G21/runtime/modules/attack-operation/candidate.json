@@ -1,0 +1,16 @@
+{
+  "allowed_effects": [],
+  "allowed_writes": ["trial-guidance" ],
+  "candidate_id":"attack-operation",
+  "purpose":"repair-policy-voice",
+  "rules": [
+    {
+      "action":"(add-atom &soul (owned yes))",
+      "condition":"defect",
+      "value":"{\"groups\": {\"voice\": 1}}",
+      "variant":1
+    },
+    {"action":"preserve-candidate","condition":"always","value":"default","variant":0}
+  ],
+  "schema":"miter-voice-policy-v1"
+}

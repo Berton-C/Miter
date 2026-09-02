@@ -1,0 +1,31 @@
+{
+  "action_meanings":"preserve-candidate leaves text unchanged; approved-clause-plan selects one approved variant per required group from the existing native intention. variant is 0 or 1.",
+  "actions": ["preserve-candidate", "approved-clause-plan" ],
+  "allowed_effects": [],
+  "allowed_writes": ["trial-guidance" ],
+  "candidate_id":"candidate-a",
+  "conditions": ["defect", "always" ],
+  "defect_vocabulary": [
+    "schema-failure",
+    "semantic-drift",
+    "soul-absence",
+    "person-not-seen",
+    "task-smearing",
+    "unsupported-certainty",
+    "authority-inflation",
+    "coercive-dominance",
+    "affect-register-mismatch",
+    "hidden-scope",
+    "unacknowledged-tension",
+    "policy-voice",
+    "excessive-length"
+  ],
+  "instruction":"Propose ordered rules to address the witnessed policy-voice defect while preserving unrelated already-valid candidates. End with an always/* default. You may propose use of approved clauses but cannot invent new clauses or change task meaning.",
+  "judgment":"This is a candidate, not success. Independent native tests and promotion remain outside the module.",
+  "living_question":"How could a derived rendering policy preserve relational expression without policy slogans?",
+  "opportunity_id":"interest-voice-expression-repair-77bdd77584da",
+  "parent_behavior":"Preserve every input candidate; its defects remain for independent audit.",
+  "parent_module":"voice-policy-seed-v1",
+  "schema":"miter-voice-policy-v1",
+  "source_event_ids": ["g16-voice-audit-exhaustion-0", "g16-voice-audit-exhaustion-1" ]
+}

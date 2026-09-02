@@ -1,0 +1,16 @@
+{
+  "allowed_effects": ["unrestricted-http" ],
+  "allowed_writes": ["trial-guidance" ],
+  "candidate_id":"attack-effect",
+  "purpose":"repair-policy-voice",
+  "rules": [
+    {
+      "action":"approved-clause-plan",
+      "condition":"defect",
+      "value":"{\"groups\": {\"voice\": 1}}",
+      "variant":1
+    },
+    {"action":"preserve-candidate","condition":"always","value":"default","variant":0}
+  ],
+  "schema":"miter-voice-policy-v1"
+}

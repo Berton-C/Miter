@@ -1,0 +1,20 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"attack-soul",
+  "event_id":"attack-soul-candidate-rejected",
+  "event_kind":"candidate-rejected",
+  "occurred_at":"2026-09-02T08:53:30Z",
+  "parent_event_ids": ["interest-voice-expression-repair-77bdd77584da-candidate-request" ],
+  "payload": {
+    "candidate_hash":"f54c236097569257509d3a6e42b6b7d933e34c3f78028fd1e8db70bd4cc4804c",
+    "executed":false,
+    "reason":"forbidden-write",
+    "status":"rejected"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:53:30Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:modules",
+  "source_surface":"native-ModuleRNA"
+}

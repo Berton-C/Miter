@@ -1,0 +1,11 @@
+{
+  "allowed_effects": [],
+  "allowed_writes": ["&soul" ],
+  "candidate_id":"attack-soul-b",
+  "purpose":"repair-policy-voice",
+  "rules": [
+    {"action":"approved-clause-plan","condition":"defect","value":"policy-voice","variant":0},
+    {"action":"preserve-candidate","condition":"always","value":"*","variant":0}
+  ],
+  "schema":"miter-voice-policy-v1"
+}

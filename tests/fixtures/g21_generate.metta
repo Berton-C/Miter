@@ -1,0 +1,6 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_modules.metta")
+!(SoulBoot "runtime/g21/integrity-before.json")
+!(miter_module_snapshot "runtime/g21" before-generation)
+!(TrialVoicePlan candidate-a (policy-voice))
+!(ModuleGenerationRNA "runtime/g21" candidate-a)
+!(miter_module_snapshot "runtime/g21" after-generation)

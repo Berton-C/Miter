@@ -1,0 +1,19 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"candidate-b",
+  "event_id":"candidate-b-model-request",
+  "event_kind":"model-request",
+  "occurred_at":"2026-09-02T08:54:39Z",
+  "parent_event_ids": ["interest-voice-expression-repair-77bdd77584da-candidate-request" ],
+  "payload": {
+    "model_alias":"qwen-local",
+    "request_hash":"42ef99af652c3a84aab8a2445c21eb1811e188decc79615d43f00dcff2216f11",
+    "role":"declarative-module-generation"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:54:39Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:modules",
+  "source_surface":"native-ModuleRNA"
+}

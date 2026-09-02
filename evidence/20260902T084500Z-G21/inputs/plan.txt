@@ -1,0 +1,10 @@
+GATE: G21 — Declarative model candidate and quarantine
+REQUIREMENT IDS: G21; POC_SPEC 13.1/13.2; W-100/101/102/107.
+CONSTITUTIONAL LAWS: C-090–092; CandidateBoundary, IndependentStanding, Integrity, NonSovereignty.
+FILES EXPECTED TO CHANGE: src/modules.metta; src/bootstrap_modules.metta; effect_membranes/miter_modules.pl; effect_membranes/miter_module_transport.pl; derived/voice-policy-seed.json; config/module-schema.json; docs/MODULES.md; scripts/g21; tests/fixtures/g21*; this evidence directory; ignored runtime/g21.
+FILES FORBIDDEN TO CHANGE: protected docs and Soul baseline; earlier source runtimes/evidence; active registry; user services and stores; licensed assets; no executable Mattermost implementation.
+POSITIVE FIXTURE: Native generation intention consumes the verified G20 candidate request and baseline parent. One bounded Qwen call authors JSON declarative rules in a fixed vocabulary. Native validation loads only typed facts into &trial; the generic trial interpreter returns a rendering plan. Separate reads prove no changes to &soul, &history or &derived and no external effect.
+NEGATIVE CONTROL: Same admission surface receives clearly labeled synthetic candidates containing a Soul write or unrestricted external effect and rejects them before loading. Unknown operation/condition and extra schema fields also reject. A candidate cannot be called before quarantine.
+EXPECTED OBSERVABLE DIFFERENCE: Valid local-model data becomes callable through the fixed interpreter in &trial only; adversarial data creates a rejection record and no trial atoms or protected mutation. Manifest binds opportunity, source events, parent, request/response and candidate bytes.
+CURRENT UNPROVEN ASSUMPTIONS: First mutable surface is a bounded declarative rule module, not arbitrary generated code. The generator does not own tests or certify success. Trial results and promotion are G22; a plan is not an emitted utterance or external authority.
+ROLLBACK METHOD: Revert additive module layer and seed parent; preserve all raw/evidence files. Terminate only the fixed provider worker if its deadline expires. No existing service needs restart or mutation.

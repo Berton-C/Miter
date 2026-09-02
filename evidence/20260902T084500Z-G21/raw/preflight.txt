@@ -1,0 +1,3 @@
+?? evidence/20260902T084500Z-G21/
+f14dd902ff278d794301fe9f8d550ab01b0913b8 HEAD -> main, origin/main, origin/HEAD
+SWI-Prolog version 10.0.2 for arm64-darwin

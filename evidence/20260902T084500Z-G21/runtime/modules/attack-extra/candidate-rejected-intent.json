@@ -1,0 +1,20 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"attack-extra",
+  "event_id":"attack-extra-candidate-rejected",
+  "event_kind":"candidate-rejected",
+  "occurred_at":"2026-09-02T08:53:30Z",
+  "parent_event_ids": ["interest-voice-expression-repair-77bdd77584da-candidate-request" ],
+  "payload": {
+    "candidate_hash":"fa1d4905df910103faecb0798f7182775212060069decb60fab06ca220e7eedc",
+    "executed":false,
+    "reason":"malformed-schema",
+    "status":"rejected"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:53:30Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:modules",
+  "source_surface":"native-ModuleRNA"
+}

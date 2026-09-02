@@ -1,0 +1,20 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"attack-condition-b",
+  "event_id":"attack-condition-b-candidate-rejected",
+  "event_kind":"candidate-rejected",
+  "occurred_at":"2026-09-02T08:55:54Z",
+  "parent_event_ids": ["interest-voice-expression-repair-77bdd77584da-candidate-request" ],
+  "payload": {
+    "candidate_hash":"0296d9cee7ab8b9c88c3709fe7f224481ae0514d155a121cdcd0d1c5e61dcbd9",
+    "executed":false,
+    "reason":"forbidden-vocabulary",
+    "status":"rejected"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:55:54Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:modules",
+  "source_surface":"native-ModuleRNA"
+}

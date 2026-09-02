@@ -1,0 +1,8 @@
+{
+ "schema":"miter-voice-policy-v1",
+ "candidate_id":"voice-policy-seed-v1",
+ "purpose":"Baseline: preserve the incoming candidate, leaving any defect for the independent voice audit.",
+ "rules":[{"condition":"always","value":"*","action":"preserve-candidate","variant":0}],
+ "allowed_writes":["trial-guidance"],
+ "allowed_effects":[]
+}

@@ -1,0 +1,20 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"attack-operation",
+  "event_id":"attack-operation-candidate-rejected",
+  "event_kind":"candidate-rejected",
+  "occurred_at":"2026-09-02T08:53:30Z",
+  "parent_event_ids": ["interest-voice-expression-repair-77bdd77584da-candidate-request" ],
+  "payload": {
+    "candidate_hash":"7240247850c0eb4a89926bfc51563151f122adcd73720aa33d1af71f71c48d36",
+    "executed":false,
+    "reason":"forbidden-vocabulary",
+    "status":"rejected"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:53:30Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:modules",
+  "source_surface":"native-ModuleRNA"
+}

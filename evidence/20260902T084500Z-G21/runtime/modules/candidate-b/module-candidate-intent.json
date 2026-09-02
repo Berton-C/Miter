@@ -1,0 +1,19 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"candidate-b",
+  "event_id":"candidate-b-module-candidate",
+  "event_kind":"module-candidate",
+  "occurred_at":"2026-09-02T08:55:02Z",
+  "parent_event_ids": ["interest-voice-expression-repair-77bdd77584da-candidate-request" ],
+  "payload": {
+    "candidate_hash":"f4584551e4a47139aa3b7c0e2bdde3a800bae4b3d42fcab61e39e2bac23bb6b6",
+    "raw_response_hash":"c6427f997ac25fc959a1b79daf9adce456524d1ee49ad77c09d7f25a542ca03a",
+    "standing":"untrusted-model-data"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:55:02Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:modules",
+  "source_surface":"native-ModuleRNA"
+}

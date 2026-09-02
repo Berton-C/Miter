@@ -1,0 +1,8 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_modules.metta")
+!(SoulBoot "runtime/g21/integrity-before-b.json")
+!(miter_module_snapshot "runtime/g21" before-generation-b)
+!(miter_module_requests_used "runtime/g21")
+!(ModuleGenerationRNA "runtime/g21" candidate-b)
+!(miter_module_requests_used "runtime/g21")
+!(ModuleGenerationRNA "runtime/g21" candidate-c-budget-exhausted)
+!(miter_module_snapshot "runtime/g21" after-generation-b)
