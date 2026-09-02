@@ -1,0 +1,22 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"bad-budget",
+  "event_id":"g16-voice-termination-bad-budget-0",
+  "event_kind":"voice-termination",
+  "occurred_at":"2026-09-02T08:09:06Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "attempt_budget":-1,
+    "attempts":0,
+    "emission":false,
+    "fallback_text":null,
+    "reason":"invalid-budget",
+    "status":"withheld"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:09:06Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

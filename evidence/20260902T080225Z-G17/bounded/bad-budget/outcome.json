@@ -1,0 +1,8 @@
+{
+  "attempt_budget":-1,
+  "attempts":0,
+  "emission":false,
+  "fallback_text":null,
+  "reason":"invalid-budget",
+  "status":"withheld"
+}

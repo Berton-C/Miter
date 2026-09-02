@@ -1,0 +1,2906 @@
+[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self',
+                     "/Users/claritymiter/miter/src/bootstrap_voice.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self (library lib_import))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library(lib_import, B),
+             'import!'('&self', B, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function consult)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(consult, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_file $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                           ($prologfile (consult))
+                                                                           ($function (superpose $importfunctions)))
+                                                                          (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_file(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    consult(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function use_module)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(use_module, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_module $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                             ($prologfile (use_module))
+                                                                             ($function (superpose $importfunctions)))
+                                                                            (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_module(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    use_module(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file (library lib_import.pl) (static-import! git-import! use-module!))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library('lib_import.pl', B),
+             import_prolog_functions_from_file(B,
+                                               [ 'static-import!',
+                                                 'git-import!',
+                                                 'use-module!'
+                                               ],
+                                               A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_voice_transport.pl"
+ (miter_voice_input miter_voice_source miter_voice_write_intention miter_voice_render
+  miter_voice_schema miter_voice_clause_count miter_voice_clause miter_voice_contains miter_voice_length
+  miter_voice_vad_request miter_voice_stage_path miter_voice_cue_id miter_voice_vad_high
+  miter_voice_vad_ready miter_voice_audit_write miter_voice_audit_status
+  miter_voice_budget miter_voice_withhold))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_voice_transport.pl",
+                                             [ miter_voice_input,
+                                               miter_voice_source,
+                                               miter_voice_write_intention,
+                                               miter_voice_render,
+                                               miter_voice_schema,
+                                               miter_voice_clause_count,
+                                               miter_voice_clause,
+                                               miter_voice_contains,
+                                               miter_voice_length,
+                                               miter_voice_vad_request,
+                                               miter_voice_stage_path,
+                                               miter_voice_cue_id,
+                                               miter_voice_vad_high,
+                                               miter_voice_vad_ready,
+                                               miter_voice_audit_write,
+                                               miter_voice_audit_status,
+                                               miter_voice_budget,
+                                               miter_voice_withhold
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_voice_surface.pl"
+ (miter_voice_store_root miter_voice_witness_id miter_voice_issue miter_voice_emit))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_voice_surface.pl",
+                                             [ miter_voice_store_root,
+                                               miter_voice_witness_id,
+                                               miter_voice_issue,
+                                               miter_voice_emit
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_vad.pl"
+ (miter_vad_prepare miter_vad_prepare_source miter_vad_metric miter_vad_prior miter_vad_number
+  miter_vad_contains miter_vad_clause_contains miter_vad_finish))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_vad.pl",
+                                             [ miter_vad_prepare,
+                                               miter_vad_prepare_source,
+                                               miter_vad_metric,
+                                               miter_vad_prior,
+                                               miter_vad_number,
+                                               miter_vad_contains,
+                                               miter_vad_clause_contains,
+                                               miter_vad_finish
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_integrity.pl" (miter_integrity_verify))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_integrity.pl",
+                                             [miter_integrity_verify],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_movement.pl" (miter_movement_source miter_movement_record))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_movement.pl",
+                                             [ miter_movement_source,
+                                               miter_movement_record
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &soul "/Users/claritymiter/miter/constitution/soul.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&soul',
+                     "/Users/claritymiter/miter/constitution/soul.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-version miter-soul-poc-v1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-project BGI-Miter)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-program Miter)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-standing provisional-computational-projection)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value AgencyBalance "Preserve human choice and participation without delegating authority to model fluency.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing AgencyBalance human-choice-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire AgencyBalance "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern AgencyBalance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value CognitiveResilience "Keep uncertainty and revisable readings live under pressure.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing CognitiveResilience uncertainty-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire CognitiveResilience "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern CognitiveResilience)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value ConnectionDepth "Receive the person without collapsing their experience into a task verdict.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing ConnectionDepth person-received)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire ConnectionDepth "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern ConnectionDepth)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value WonderPreservation "Preserve a genuine open question rather than forcing brittle certainty.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing WonderPreservation open-question-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire WonderPreservation "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern WonderPreservation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value TimeCoherence "Continue from inspectable history and artifact lineage rather than a copied prompt.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing TimeCoherence source-lineage-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire TimeCoherence "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern TimeCoherence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value PurposeBeyondUtility "Do not let usefulness compensate for a failed purpose or constitutional floor.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing PurposeBeyondUtility purpose-not-utility)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire PurposeBeyondUtility "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern PurposeBeyondUtility)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value SharedUnderstanding "Make the task distinctions and authority boundary explicit to the human.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing SharedUnderstanding task-distinction-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire SharedUnderstanding "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern SharedUnderstanding)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value CreativeTranscendence "Allow novelty only with answerability and a governed candidate lifecycle.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing CreativeTranscendence novelty-accountable)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire CreativeTranscendence "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern CreativeTranscendence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value AttentionStewardship "Bound attention and yield to relevant contact instead of endless self-generation.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing AttentionStewardship bounded-contact-sensitive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire AttentionStewardship "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern AttentionStewardship)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value Safety "A failed safety floor cannot be compensated by usefulness.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing Safety safety-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire Safety "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value Integrity "Keep contact, inference, rendering and evidence standing distinct.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing Integrity provenance-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire Integrity "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value Identity "The running program is Miter; naming is not a second lineage.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing Identity Miter)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire Identity "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value NonSovereignty "Finite representations and model products do not become actuality or authority.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing NonSovereignty finite-reading)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire NonSovereignty "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value MemoryScope "Recall and disclosure require the authenticated principal, audience and project scope.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing MemoryScope scope-witnessed)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire MemoryScope "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value EffectAuthority "Capability and generation do not grant permission for external effects.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing EffectAuthority permission-witnessed)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire EffectAuthority "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value IndependentStanding "A candidate cannot be the sole source of its own promotion evidence.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing IndependentStanding independent-evidence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire IndependentStanding "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value CandidateBoundary "Derived candidates remain quarantined until separately admitted.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing CandidateBoundary quarantined)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire CandidateBoundary "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation AgencyWithUnderstanding AgencyBalance SharedUnderstanding lonely-sovereignty)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire AgencyWithUnderstanding "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation UnderstandingWithWonder SharedUnderstanding WonderPreservation sterile-consensus)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire UnderstandingWithWonder "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation ResilienceWithConnection CognitiveResilience ConnectionDepth impressive-detachment)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire ResilienceWithConnection "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation CreativityWithTime CreativeTranscendence TimeCoherence scattered-novelty)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire CreativityWithTime "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation PurposeWithAgency PurposeBeyondUtility AgencyBalance righteous-refusal-without-relationship)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire PurposeWithAgency "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation AttentionWithResilience AttentionStewardship CognitiveResilience efficient-but-brittle-focus)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire AttentionWithResilience "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-hard-floor Safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-hard-floor Integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/soul.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/soul.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulExpected $value)
+   (let $xs (collapse (match &soul (soul-required-standing $value $w) $w))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) missing-doctrine)))
+[33m--> prolog clause -->
+[32m'SoulExpected'(A, B) :-
+    C=D,
+    findall(E,
+            match('&soul',
+                  ['soul-required-standing', A, E],
+                  E,
+                  E),
+            D),
+    'size-atom'(C, F),
+    ==(F, 1, G),
+    (   G==true
+    ->  'index-atom'(C, 0, B)
+    ;   B='missing-doctrine'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulRequire $value $witness)
+   (let* (($values (collapse (match &soul (soul-value $value $d) $value)))
+          ($expected (SoulExpected $value)))
+     (if (and (== (size-atom $values) 1) (!= $expected missing-doctrine))
+       (if (== $expected $witness) witnessed blocked)
+       blocked)))
+[33m--> prolog clause -->
+[32m'SoulRequire'(A, B, C) :-
+    D=E,
+    findall(A,
+            match('&soul', ['soul-value', A, _], A, A),
+            E),
+    F=G,
+    'SoulExpected'(A, G),
+    'size-atom'(D, H),
+    ==(H, 1, I),
+    '!='(F, 'missing-doctrine', J),
+    and(I, J, K),
+    (   K==true
+    ->  ==(F, B, L),
+        (   L==true
+        ->  C=witnessed
+        ;   C=blocked
+        )
+    ;   C=blocked
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulPairRequire $relation $witnesses)
+   (let* (($as (collapse (match &soul (soul-relation $relation $a $b $d) $a)))
+          ($bs (collapse (match &soul (soul-relation $relation $a $b $d) $b))))
+     (if (and (== (size-atom $as) 1) (== (size-atom $bs) 1))
+       (if (is-expr $witnesses)
+         (if (== (size-atom $witnesses) 2)
+           (if (and
+                 (== (SoulRequire (index-atom $as 0) (index-atom $witnesses 0)) witnessed)
+                 (== (SoulRequire (index-atom $bs 0) (index-atom $witnesses 1)) witnessed))
+             witnessed blocked)
+           blocked)
+         blocked)
+       blocked)))
+[33m--> prolog clause -->
+[32m'SoulPairRequire'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&soul',
+                  ['soul-relation', A, F, G, H],
+                  F,
+                  F),
+            E),
+    I=J,
+    findall(G,
+            match('&soul',
+                  ['soul-relation', A, F, G, H],
+                  G,
+                  G),
+            J),
+    'size-atom'(D, K),
+    ==(K, 1, L),
+    'size-atom'(I, M),
+    ==(M, 1, N),
+    and(L, N, O),
+    (   O==true
+    ->  'is-expr'(B, P),
+        (   P==true
+        ->  'size-atom'(B, Q),
+            ==(Q, 2, R),
+            (   R==true
+            ->  'index-atom'(D, 0, S),
+                'index-atom'(B, 0, T),
+                'SoulRequire'(S, T, U),
+                ==(U, witnessed, V),
+                'index-atom'(I, 0, W),
+                'index-atom'(B, 1, X),
+                'SoulRequire'(W, X, Y),
+                ==(Y, witnessed, Z),
+                and(V, Z, A1),
+                (   A1==true
+                ->  C=witnessed
+                ;   C=blocked
+                )
+            ;   C=blocked
+            )
+        ;   C=blocked
+        )
+    ;   C=blocked
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulInvoke $proc $id $witness) ($proc $id $witness))
+[33m--> prolog clause -->
+[32m'SoulInvoke'(A, B, C, D) :-
+    reduce([A, B, C], D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulExercise $id $positive)
+   (let $ps (collapse (match &soul (soul-causal $p $id $reason) $p))
+     (if (== (size-atom $ps) 1)
+       (let $p (index-atom $ps 0)
+         (and (== (SoulInvoke $p $id $positive) witnessed)
+              (== (SoulInvoke $p $id missing-witness) blocked)))
+       false)))
+[33m--> prolog clause -->
+[32m'SoulExercise'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&soul', ['soul-causal', F, A, _], F, F),
+            E),
+    'size-atom'(D, G),
+    ==(G, 1, H),
+    (   H==true
+    ->  F=I,
+        'index-atom'(D, 0, I),
+        'SoulInvoke'(F, A, B, J),
+        ==(J, witnessed, K),
+        'SoulInvoke'(F, A, 'missing-witness', L),
+        ==(L, blocked, M),
+        and(K, M, C)
+    ;   C=false
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulAuditValues $ids $i)
+   (if (< $i (size-atom $ids))
+     (let $id (index-atom $ids $i)
+       (if (SoulExercise $id (SoulExpected $id))
+         (SoulAuditValues $ids (+ $i 1)) false))
+     true))
+[33m--> prolog clause -->
+[32m'SoulAuditValues'(A, B, C) :-
+    'size-atom'(A, D),
+    <(B, D, E),
+    (   E==true
+    ->  F=G,
+        'index-atom'(A, B, G),
+        'SoulExpected'(F, H),
+        'SoulExercise'(F, H, I),
+        (   I==true
+        ->  +(B, 1, J),
+            'SoulAuditValues'(A, J, C)
+        ;   C=false
+        )
+    ;   C=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulPairPositive $relation)
+   (let* (($as (collapse (match &soul (soul-relation $relation $a $b $d) $a)))
+          ($bs (collapse (match &soul (soul-relation $relation $a $b $d) $b))))
+     (if (and (== (size-atom $as) 1) (== (size-atom $bs) 1))
+       ((SoulExpected (index-atom $as 0)) (SoulExpected (index-atom $bs 0)))
+       malformed-relation)))
+[33m--> prolog clause -->
+[32m'SoulPairPositive'(A, B) :-
+    C=D,
+    findall(E,
+            match('&soul',
+                  ['soul-relation', A, E, F, G],
+                  E,
+                  E),
+            D),
+    H=I,
+    findall(F,
+            match('&soul',
+                  ['soul-relation', A, E, F, G],
+                  F,
+                  F),
+            I),
+    'size-atom'(C, J),
+    ==(J, 1, K),
+    'size-atom'(H, L),
+    ==(L, 1, M),
+    and(K, M, N),
+    (   N==true
+    ->  'index-atom'(C, 0, O),
+        'SoulExpected'(O, P),
+        'index-atom'(H, 0, Q),
+        'SoulExpected'(Q, R),
+        reduce([P, R], B)
+    ;   B='malformed-relation'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulAuditRelations $ids $i)
+   (if (< $i (size-atom $ids))
+     (let* (($id (index-atom $ids $i))
+            ($positive (SoulPairPositive $id)))
+       (if (and (SoulExercise $id $positive)
+                (== (SoulPairRequire $id ((index-atom $positive 0) missing-witness)) blocked))
+         (SoulAuditRelations $ids (+ $i 1)) false))
+     true))
+[33m--> prolog clause -->
+[32m'SoulAuditRelations'(A, B, C) :-
+    'size-atom'(A, D),
+    <(B, D, E),
+    (   E==true
+    ->  F=G,
+        'index-atom'(A, B, G),
+        H=I,
+        'SoulPairPositive'(F, I),
+        'SoulExercise'(F, H, J),
+        'index-atom'(H, 0, K),
+        reduce([K, 'missing-witness'], L),
+        'SoulPairRequire'(F, L, M),
+        ==(M, blocked, N),
+        and(J, N, O),
+        (   O==true
+        ->  +(B, 1, P),
+            'SoulAuditRelations'(A, P, C)
+        ;   C=false
+        )
+    ;   C=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulRationalityAudit)
+   (let* (($values (collapse (match &soul (soul-value $v $d) $v)))
+          ($relations (collapse (match &soul (soul-relation $r $a $b $d) $r)))
+          ($links (collapse (match &soul (soul-causal $p $id $reason) $id))))
+     (if (and (> (size-atom $values) 0)
+              (== (size-atom $links) (+ (size-atom $values) (size-atom $relations))))
+       (and (SoulAuditValues $values 0) (SoulAuditRelations $relations 0))
+       false)))
+[33m--> prolog clause -->
+[32m'SoulRationalityAudit'(A) :-
+    B=C,
+    findall(D,
+            match('&soul', ['soul-value', D, E], D, D),
+            C),
+    F=G,
+    findall(H,
+            match('&soul',
+                  ['soul-relation', H, _, _, E],
+                  H,
+                  H),
+            G),
+    I=J,
+    findall(K,
+            match('&soul',
+                  ['soul-causal', _, K, _],
+                  K,
+                  K),
+            J),
+    'size-atom'(B, L),
+    >(L, 0, M),
+    'size-atom'(I, N),
+    'size-atom'(B, O),
+    'size-atom'(F, P),
+    +(O, P, Q),
+    ==(N, Q, R),
+    and(M, R, S),
+    (   S==true
+    ->  'SoulAuditValues'(B, 0, T),
+        'SoulAuditRelations'(F, 0, U),
+        and(T, U, A)
+    ;   A=false
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulStartup $integrity)
+   (if (== $integrity soul-integrity-verified)
+     (if (SoulRationalityAudit) soul-ready soul-startup-blocked)
+     soul-startup-blocked))
+[33m--> prolog clause -->
+[32m'SoulStartup'(A, B) :-
+    ==(A, 'soul-integrity-verified', C),
+    (   C==true
+    ->  'SoulRationalityAudit'(D),
+        (   D==true
+        ->  B='soul-ready'
+        ;   B='soul-startup-blocked'
+        )
+    ;   B='soul-startup-blocked'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulBoot $report)
+   (SoulStartup (miter_integrity_verify
+     "/Users/claritymiter/miter/constitution/authority-manifest.json" $report)))
+[33m--> prolog clause -->
+[32m'SoulBoot'(A, B) :-
+    miter_integrity_verify("/Users/claritymiter/miter/constitution/authority-manifest.json",
+                           A,
+                           C),
+    'SoulStartup'(C, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/movement.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/movement.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected availability available)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected inherited-legality lawful)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected safety safety-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected integrity provenance-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected required-distinction task-distinction-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected no-forcing no-disqualifying-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected participation human-choice-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected consequence answerability-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected doctrine finite-reading)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected extensions no-material-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected continuing-contact contact-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementField $id $key)
+   (let $xs (collapse (match &movements (movement-field $id $key $v) $v))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) missing-movement-field)))
+[33m--> prolog clause -->
+[32m'MovementField'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&movements',
+                  ['movement-field', A, B, F],
+                  F,
+                  F),
+            E),
+    'size-atom'(D, G),
+    ==(G, 1, H),
+    (   H==true
+    ->  'index-atom'(D, 0, C)
+    ;   C='missing-movement-field'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementWitnessRef $id $kind)
+   (let $xs (collapse (match &movements (movement-witness $id $kind $w) $w))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) missing-witness)))
+[33m--> prolog clause -->
+[32m'MovementWitnessRef'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&movements',
+                  ['movement-witness', A, B, F],
+                  F,
+                  F),
+            E),
+    'size-atom'(D, G),
+    ==(G, 1, H),
+    (   H==true
+    ->  'index-atom'(D, 0, C)
+    ;   C='missing-witness'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementStanding $id $kind)
+   (let* (($ref (MovementWitnessRef $id $kind))
+          ($cut (MovementField $id source-cut))
+          ($principal (MovementField $id principal))
+          ($audience (MovementField $id audience))
+          ($project (MovementField $id project))
+          ($xs (collapse (match &witnesses
+            (trusted-witness $ref $kind $cut $principal $audience $project $standing)
+            $standing))))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) missing-witness)))
+[33m--> prolog clause -->
+[32m'MovementStanding'(A, B, C) :-
+    D=E,
+    'MovementWitnessRef'(A, B, E),
+    F=G,
+    'MovementField'(A, 'source-cut', G),
+    H=I,
+    'MovementField'(A, principal, I),
+    J=K,
+    'MovementField'(A, audience, K),
+    L=M,
+    'MovementField'(A, project, M),
+    N=O,
+    findall(P,
+            match('&witnesses',
+                  [ 'trusted-witness',
+                    D,
+                    B,
+                    F,
+                    H,
+                    J,
+                    L,
+                    P
+                  ],
+                  P,
+                  P),
+            O),
+    'size-atom'(N, Q),
+    ==(Q, 1, R),
+    (   R==true
+    ->  'index-atom'(N, 0, C)
+    ;   C='missing-witness'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementKindPass $id $kind)
+   (let* (($standing (MovementStanding $id $kind))
+          ($xs (collapse (match &self (movement-expected $kind $w) $w))))
+     (if (== (size-atom $xs) 1)
+       (if (== $kind safety) (== (SoulRequire Safety $standing) witnessed)
+         (if (== $kind integrity) (== (SoulRequire Integrity $standing) witnessed)
+           (if (== $kind participation) (== (SoulRequire AgencyBalance $standing) witnessed)
+             (if (== $kind required-distinction) (== (SoulRequire SharedUnderstanding $standing) witnessed)
+               (if (== $kind doctrine) (== (SoulRequire NonSovereignty $standing) witnessed)
+                 (== $standing (index-atom $xs 0)))))))
+       false)))
+[33m--> prolog clause -->
+[32m'MovementKindPass'(A, B, C) :-
+    D=E,
+    'MovementStanding'(A, B, E),
+    F=G,
+    findall(H,
+            match('&self', ['movement-expected', B, H], H, H),
+            G),
+    'size-atom'(F, I),
+    ==(I, 1, J),
+    (   J==true
+    ->  ==(B, safety, K),
+        (   K==true
+        ->  'SoulRequire'('Safety', D, L),
+            ==(L, witnessed, C)
+        ;   ==(B, integrity, M),
+            (   M==true
+            ->  'SoulRequire'('Integrity', D, N),
+                ==(N, witnessed, C)
+            ;   ==(B, participation, O),
+                (   O==true
+                ->  'SoulRequire'('AgencyBalance', D, P),
+                    ==(P, witnessed, C)
+                ;   ==(B, 'required-distinction', Q),
+                    (   Q==true
+                    ->  'SoulRequire'('SharedUnderstanding', D, R),
+                        ==(R, witnessed, C)
+                    ;   ==(B, doctrine, S),
+                        (   S==true
+                        ->  'SoulRequire'('NonSovereignty', D, T),
+                            ==(T, witnessed, C)
+                        ;   'index-atom'(F, 0, U),
+                            ==(D, U, C)
+                        )
+                    )
+                )
+            )
+        )
+    ;   C=false
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementWitnessesPass $id $kinds $i)
+   (if (< $i (size-atom $kinds))
+     (if (MovementKindPass $id (index-atom $kinds $i))
+       (MovementWitnessesPass $id $kinds (+ $i 1)) false)
+     true))
+[33m--> prolog clause -->
+[32m'MovementWitnessesPass'(A, B, C, D) :-
+    'size-atom'(B, E),
+    <(C, E, F),
+    (   F==true
+    ->  'index-atom'(B, C, G),
+        'MovementKindPass'(A, G, H),
+        (   H==true
+        ->  +(C, 1, I),
+            'MovementWitnessesPass'(A, B, I, D)
+        ;   D=false
+        )
+    ;   D=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementShape $id)
+   (and (and (!= (MovementField $id source-cut) missing-movement-field)
+             (!= (MovementField $id target-cut) missing-movement-field))
+     (and (and (!= (MovementField $id intention-id) missing-movement-field)
+               (!= (MovementField $id active-rna-id) missing-movement-field))
+       (and (and (== (MovementField $id effect-class) internal)
+                 (== (MovementField $id extension-ids) ()))
+         (and (== (MovementField $id reversibility) reversible)
+              (== (MovementField $id status) candidate))))))
+[33m--> prolog clause -->
+[32m'MovementShape'(A, B) :-
+    'MovementField'(A, 'source-cut', C),
+    '!='(C, 'missing-movement-field', D),
+    'MovementField'(A, 'target-cut', E),
+    '!='(E, 'missing-movement-field', F),
+    and(D, F, G),
+    'MovementField'(A, 'intention-id', H),
+    '!='(H, 'missing-movement-field', I),
+    'MovementField'(A, 'active-rna-id', J),
+    '!='(J, 'missing-movement-field', K),
+    and(I, K, L),
+    'MovementField'(A, 'effect-class', M),
+    ==(M, internal, N),
+    'MovementField'(A, 'extension-ids', O),
+    ==(O, [], P),
+    and(N, P, Q),
+    'MovementField'(A, reversibility, R),
+    ==(R, reversible, S),
+    'MovementField'(A, status, T),
+    ==(T, candidate, U),
+    and(S, U, V),
+    and(Q, V, W),
+    and(L, W, X),
+    and(G, X, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementSource $root $id)
+   (miter_movement_source $root (MovementField $id source-cut)
+      (MovementField $id principal) (MovementField $id audience)
+      (MovementField $id project) (MovementField $id provenance)))
+[33m--> prolog clause -->
+[32m'MovementSource'(A, B, C) :-
+    'MovementField'(B, 'source-cut', D),
+    'MovementField'(B, principal, E),
+    'MovementField'(B, audience, F),
+    'MovementField'(B, project, G),
+    'MovementField'(B, provenance, H),
+    miter_movement_source(A,
+                          D,
+                          E,
+                          F,
+                          G,
+                          H,
+                          C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementCertificate $id)
+   (movement-certificate
+     (movement_id $id)
+     (source_cut (MovementField $id source-cut))
+     (availability_witness (MovementWitnessRef $id availability))
+     (inherited_legality_witness (MovementWitnessRef $id inherited-legality))
+     (relation_floor_witnesses ((MovementWitnessRef $id safety) (MovementWitnessRef $id integrity)))
+     (precision_floor_witnesses ((MovementWitnessRef $id provenance) (MovementWitnessRef $id required-distinction)))
+     (no_disqualifying_forcing_witness (MovementWitnessRef $id no-forcing))
+     (participation_open_witness (MovementWitnessRef $id participation))
+     (consequence_answerability_witness (MovementWitnessRef $id consequence))
+     (doctrine_bound_reading_witness (MovementWitnessRef $id doctrine))
+     (material_extension_alignment_witnesses (MovementWitnessRef $id extensions))
+     (continuing_contact_witness (MovementWitnessRef $id continuing-contact))
+     (certificate_version miter-movement-v1)))
+[33m--> prolog clause -->
+[32m'MovementCertificate'(A,
+                           [ 'movement-certificate',
+                             [movement_id, A],
+                             [source_cut, B],
+                             [availability_witness, C],
+                             [inherited_legality_witness, D],
+                             [relation_floor_witnesses, E],
+                             [precision_floor_witnesses, F],
+                             [no_disqualifying_forcing_witness, G],
+                             [participation_open_witness, H],
+                             [consequence_answerability_witness, I],
+                             [doctrine_bound_reading_witness, J],
+                             [material_extension_alignment_witnesses, K],
+                             [continuing_contact_witness, L],
+                             [certificate_version, 'miter-movement-v1']
+                           ]) :-
+    'MovementField'(A, 'source-cut', B),
+    'MovementWitnessRef'(A, availability, C),
+    'MovementWitnessRef'(A, 'inherited-legality', D),
+    'MovementWitnessRef'(A, safety, M),
+    'MovementWitnessRef'(A, integrity, N),
+    reduce([M, N], E),
+    'MovementWitnessRef'(A, provenance, O),
+    'MovementWitnessRef'(A, 'required-distinction', P),
+    reduce([O, P], F),
+    'MovementWitnessRef'(A, 'no-forcing', G),
+    'MovementWitnessRef'(A, participation, H),
+    'MovementWitnessRef'(A, consequence, I),
+    'MovementWitnessRef'(A, doctrine, J),
+    'MovementWitnessRef'(A, extensions, K),
+    'MovementWitnessRef'(A, 'continuing-contact', L).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ConstructMovement $root $id $soul-status)
+   (if (and (== $soul-status soul-ready) (MovementShape $id))
+     (if (== (MovementSource $root $id) movement-source-verified)
+       (if (MovementWitnessesPass $id
+             (availability inherited-legality safety integrity provenance required-distinction
+              no-forcing participation consequence doctrine extensions continuing-contact) 0)
+         (MovementCertificate $id) movement-blocked)
+       movement-blocked)
+     movement-blocked))
+[33m--> prolog clause -->
+[32m'ConstructMovement'(A, B, C, D) :-
+    ==(C, 'soul-ready', E),
+    'MovementShape'(B, F),
+    and(E, F, G),
+    (   G==true
+    ->  'MovementSource'(A, B, H),
+        ==(H, 'movement-source-verified', I),
+        (   I==true
+        ->  'MovementWitnessesPass'(B,
+                                    [ availability,
+                                      'inherited-legality',
+                                      safety,
+                                      integrity,
+                                      provenance,
+                                      'required-distinction',
+                                      'no-forcing',
+                                      participation,
+                                      consequence,
+                                      doctrine,
+                                      extensions,
+                                      'continuing-contact'
+                                    ],
+                                    0,
+                                    J),
+            (   J==true
+            ->  'MovementCertificate'(B, D)
+            ;   D='movement-blocked'
+            )
+        ;   D='movement-blocked'
+        )
+    ;   D='movement-blocked'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementRNA $root $id $integrity-report $output)
+   (let* (($soul (SoulBoot $integrity-report))
+          ($product (ConstructMovement $root $id $soul)))
+     (miter_movement_record $output $product)))
+[33m--> prolog clause -->
+[32m'MovementRNA'(A, B, C, D, E) :-
+    F=G,
+    'SoulBoot'(C, G),
+    H=I,
+    'ConstructMovement'(A, B, F, I),
+    miter_movement_record(D, H, E).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/vad.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/vad.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADSumAxis $id $clause $axis $i $count $acc)
+   (if (< $i $count)
+     (VADSumAxis $id $clause $axis (+ $i 1) $count
+       (+ $acc (miter_vad_number $id $clause $i $axis))) $acc))
+[33m--> prolog clause -->
+[32m'VADSumAxis'(A, B, C, D, E, F, G) :-
+    <(D, E, H),
+    (   H==true
+    ->  +(D, 1, I),
+        miter_vad_number(A, B, D, C, J),
+        +(F, J, K),
+        'VADSumAxis'(A, B, C, I, E, K, G)
+    ;   G=F
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADMean $id $clause $axis)
+   (let $count (miter_vad_metric $id $clause match_count)
+     (if (> $count 0) (/ (VADSumAxis $id $clause $axis 0 $count 0) $count) 0)))
+[33m--> prolog clause -->
+[32m'VADMean'(A, B, C, D) :-
+    E=F,
+    miter_vad_metric(A, B, match_count, F),
+    >(E, 0, G),
+    (   G==true
+    ->  'VADSumAxis'(A, B, C, 0, E, 0, H),
+        /(H, E, D)
+    ;   D=0
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADCountAll $id $kind $i $count $acc)
+   (if (< $i $count)
+     (VADCountAll $id $kind (+ $i 1) $count
+       (+ $acc (miter_vad_metric $id $i $kind))) $acc))
+[33m--> prolog clause -->
+[32m'VADCountAll'(A, B, C, D, E, F) :-
+    <(C, D, G),
+    (   G==true
+    ->  +(C, 1, H),
+        miter_vad_metric(A, C, B, I),
+        +(E, I, J),
+        'VADCountAll'(A, B, H, D, J, F)
+    ;   F=E
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADBand $value)
+   (let $band (miter_vad_prior register_band_prior)
+     (if (> $value $band) high
+       (if (< $value (- 0 $band)) low mid))))
+[33m--> prolog clause -->
+[32m'VADBand'(A, B) :-
+    C=D,
+    miter_vad_prior(register_band_prior, D),
+    >(A, C, E),
+    (   E==true
+    ->  B=high
+    ;   -(0, C, F),
+        <(A, F, G),
+        (   G==true
+        ->  B=low
+        ;   B=mid
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADClauseBand $id $clause $axis)
+   (if (> (miter_vad_metric $id $clause match_count) 0)
+     (VADBand (VADMean $id $clause $axis)) unknown))
+[33m--> prolog clause -->
+[32m'VADClauseBand'(A, B, C, D) :-
+    miter_vad_metric(A, B, match_count, E),
+    >(E, 0, F),
+    (   F==true
+    ->  'VADMean'(A, B, C, G),
+        'VADBand'(G, D)
+    ;   D=unknown
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADProfile $id $axis $i $count)
+   (if (< $i $count)
+     (cons-atom (VADClauseBand $id $i $axis)
+                (VADProfile $id $axis (+ $i 1) $count)) ()))
+[33m--> prolog clause -->
+[32m'VADProfile'(A, B, C, D, E) :-
+    <(C, D, F),
+    (   F==true
+    ->  'VADClauseBand'(A, C, B, G),
+        +(C, 1, H),
+        'VADProfile'(A, B, H, D, I),
+        'cons-atom'(G, I, E)
+    ;   E=[]
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADCoverage $id)
+   (let* (($count (miter_vad_metric $id 0 clause_count))
+          ($total (VADCountAll $id token_count 0 $count 0))
+          ($covered (VADCountAll $id covered_tokens 0 $count 0)))
+     (if (> $total 0) (/ $covered $total) 0)))
+[33m--> prolog clause -->
+[32m'VADCoverage'(A, B) :-
+    C=D,
+    miter_vad_metric(A, 0, clause_count, D),
+    E=F,
+    'VADCountAll'(A, token_count, 0, C, 0, F),
+    G=H,
+    'VADCountAll'(A, covered_tokens, 0, C, 0, H),
+    >(E, 0, I),
+    (   I==true
+    ->  /(G, E, B)
+    ;   B=0
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADLexicalTrajectory $id $coverage)
+   (let* (($count (miter_vad_metric $id 0 clause_count))
+          ($last (- $count 1))
+          ($delta (- (VADMean $id $last 0) (VADMean $id 0 0)))
+          ($threshold (miter_vad_prior trajectory_delta_prior)))
+     (if (< $coverage (miter_vad_prior coverage_prior)) insufficient-coverage
+       (if (< $count 2) single-clause
+         (if (or (== (miter_vad_metric $id 0 match_count) 0)
+                 (== (miter_vad_metric $id $last match_count) 0))
+           insufficient-clause-coverage
+           (if (> $delta $threshold)
+             (if (or (miter_vad_contains $id "but") (miter_vad_contains $id "however"))
+               improving-pivot improving)
+             (if (< $delta (- 0 $threshold))
+               (if (or (miter_vad_contains $id "just") (miter_vad_contains $id "a little"))
+                 deterioration-minimization-cue deteriorating)
+               stable-or-ambiguous)))))))
+[33m--> prolog clause -->
+[32m'VADLexicalTrajectory'(A, B, C) :-
+    D=E,
+    miter_vad_metric(A, 0, clause_count, E),
+    F=G,
+    -(D, 1, G),
+    H=I,
+    'VADMean'(A, F, 0, J),
+    'VADMean'(A, 0, 0, K),
+    -(J, K, I),
+    L=M,
+    miter_vad_prior(trajectory_delta_prior, M),
+    miter_vad_prior(coverage_prior, N),
+    <(B, N, O),
+    (   O==true
+    ->  C='insufficient-coverage'
+    ;   <(D, 2, P),
+        (   P==true
+        ->  C='single-clause'
+        ;   miter_vad_metric(A, 0, match_count, Q),
+            ==(Q, 0, R),
+            miter_vad_metric(A, F, match_count, S),
+            ==(S, 0, T),
+            or(R, T, U),
+            (   U==true
+            ->  C='insufficient-clause-coverage'
+            ;   >(H, L, V),
+                (   V==true
+                ->  miter_vad_contains(A, "but", W),
+                    miter_vad_contains(A, "however", X),
+                    or(W, X, Y),
+                    (   Y==true
+                    ->  C='improving-pivot'
+                    ;   C=improving
+                    )
+                ;   -(0, L, Z),
+                    <(H, Z, A1),
+                    (   A1==true
+                    ->  miter_vad_contains(A, "just", B1),
+                        miter_vad_contains(A, "a little", C1),
+                        or(B1, C1, D1),
+                        (   D1==true
+                        ->  C='deterioration-minimization-cue'
+                        ;   C=deteriorating
+                        )
+                    ;   C='stable-or-ambiguous'
+                    )
+                )
+            )
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADMinimization $id)
+   (let $last (- (miter_vad_metric $id 0 clause_count) 1)
+     (and
+       (or (miter_vad_clause_contains $id $last "just")
+           (or (miter_vad_clause_contains $id $last "a little")
+               (miter_vad_clause_contains $id $last "a bit")))
+       (or (miter_vad_clause_contains $id $last "off")
+         (or (miter_vad_clause_contains $id $last "uneasy")
+           (or (miter_vad_clause_contains $id $last "worried")
+             (or (miter_vad_clause_contains $id $last "struggling")
+                 (miter_vad_clause_contains $id $last "not okay"))))))))
+[33m--> prolog clause -->
+[32m'VADMinimization'(A, B) :-
+    C=D,
+    miter_vad_metric(A, 0, clause_count, E),
+    -(E, 1, D),
+    miter_vad_clause_contains(A, C, "just", F),
+    miter_vad_clause_contains(A, C, "a little", G),
+    miter_vad_clause_contains(A, C, "a bit", H),
+    or(G, H, I),
+    or(F, I, J),
+    miter_vad_clause_contains(A, C, "off", K),
+    miter_vad_clause_contains(A, C, "uneasy", L),
+    miter_vad_clause_contains(A, C, "worried", M),
+    miter_vad_clause_contains(A, C, "struggling", N),
+    miter_vad_clause_contains(A, C, "not okay", O),
+    or(N, O, P),
+    or(M, P, Q),
+    or(L, Q, R),
+    or(K, R, S),
+    and(J, S, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADTrajectory $id $coverage)
+   (let $lexical (VADLexicalTrajectory $id $coverage)
+     (if (and (>= $coverage (miter_vad_prior coverage_prior))
+              (> (miter_vad_metric $id 0 clause_count) 1))
+       (if (VADMinimization $id) minimization-pressure-cue $lexical)
+       $lexical)))
+[33m--> prolog clause -->
+[32m'VADTrajectory'(A, B, C) :-
+    D=E,
+    'VADLexicalTrajectory'(A, B, E),
+    miter_vad_prior(coverage_prior, F),
+    >=(B, F, G),
+    miter_vad_metric(A, 0, clause_count, H),
+    >(H, 1, I),
+    and(G, I, J),
+    (   J==true
+    ->  'VADMinimization'(A, K),
+        (   K==true
+        ->  C='minimization-pressure-cue'
+        ;   C=D
+        )
+    ;   C=D
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADPresence $trajectory)
+   (if (== $trajectory improving-pivot) preserve-emerging-insight
+     (if (or (== $trajectory deterioration-minimization-cue)
+             (== $trajectory minimization-pressure-cue)) acknowledge-tension-gently
+       (if (or (== $trajectory insufficient-coverage)
+               (== $trajectory insufficient-clause-coverage))
+         withhold-affective-inference
+         attentive-non-diagnostic))))
+[33m--> prolog clause -->
+[32m'VADPresence'(A, B) :-
+    ==(A, 'improving-pivot', C),
+    (   C==true
+    ->  B='preserve-emerging-insight'
+    ;   ==(A, 'deterioration-minimization-cue', D),
+        ==(A, 'minimization-pressure-cue', E),
+        or(D, E, F),
+        (   F==true
+        ->  B='acknowledge-tension-gently'
+        ;   ==(A, 'insufficient-coverage', G),
+            ==(A, 'insufficient-clause-coverage', H),
+            or(G, H, I),
+            (   I==true
+            ->  B='withhold-affective-inference'
+            ;   B='attentive-non-diagnostic'
+            )
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADStatus $coverage)
+   (if (== $coverage 0) no-coverage
+     (if (< $coverage (miter_vad_prior coverage_prior)) sparse usable-cue)))
+[33m--> prolog clause -->
+[32m'VADStatus'(A, B) :-
+    ==(A, 0, C),
+    (   C==true
+    ->  B='no-coverage'
+    ;   miter_vad_prior(coverage_prior, D),
+        <(A, D, E),
+        (   E==true
+        ->  B=sparse
+        ;   B='usable-cue'
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADCue $id $mode)
+   (let* (($count (miter_vad_metric $id 0 clause_count))
+          ($coverage (VADCoverage $id))
+          ($trajectory (VADTrajectory $id $coverage)))
+     (affect-cue
+       (label affective-language-cue)
+       (lexicon_mode $mode)
+       (asset_access (if (== $mode lexicon_off) disabled checksum-verified))
+       (coverage $coverage)
+       (valence_profile (VADProfile $id 0 0 $count))
+       (arousal_profile (VADProfile $id 1 0 $count))
+       (dominance_profile (VADProfile $id 2 0 $count))
+       (clause_count $count)
+       (trajectory_class $trajectory)
+       (clause_trajectory ((lexical (VADLexicalTrajectory $id $coverage))
+                          (minimization-marker (VADMinimization $id))))
+       (presence_requirement (VADPresence $trajectory))
+       (confidence_basis uncalibrated-priors)
+       (status (VADStatus $coverage))
+       (permission_effect none)
+       (limitations (lexical-association-only no-diagnosis no-inner-state-claim
+                     english-bounded-morphology irony-and-negation-unresolved
+                     identity-filter-not-exhaustive)))) )
+[33m--> prolog clause -->
+[32m'VADCue'(A,
+              B,
+              [ 'affect-cue',
+                [label, 'affective-language-cue'],
+                [lexicon_mode, B],
+                [asset_access, C],
+                [coverage, D],
+                [valence_profile, E],
+                [arousal_profile, F],
+                [dominance_profile, G],
+                [clause_count, H],
+                [trajectory_class, I],
+                [ clause_trajectory,
+                  [[lexical, J], ['minimization-marker', K]]
+                ],
+                [presence_requirement, L],
+                [confidence_basis, 'uncalibrated-priors'],
+                [status, M],
+                [permission_effect, none],
+                [ limitations,
+                  [ 'lexical-association-only',
+                    'no-diagnosis',
+                    'no-inner-state-claim',
+                    'english-bounded-morphology',
+                    'irony-and-negation-unresolved',
+                    'identity-filter-not-exhaustive'
+                  ]
+                ]
+              ]) :-
+    H=N,
+    miter_vad_metric(A, 0, clause_count, N),
+    D=O,
+    'VADCoverage'(A, O),
+    I=P,
+    'VADTrajectory'(A, D, P),
+    ==(B, lexicon_off, Q),
+    (   Q==true
+    ->  C=disabled
+    ;   C='checksum-verified'
+    ),
+    'VADProfile'(A, 0, 0, H, E),
+    'VADProfile'(A, 1, 0, H, F),
+    'VADProfile'(A, 2, 0, H, G),
+    'VADLexicalTrajectory'(A, D, J),
+    'VADMinimization'(A, K),
+    'VADPresence'(I, L),
+    'VADStatus'(D, M).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADRNA $path $id $mode $output)
+   (let $lookup (miter_vad_prepare $path (but however although)
+                  (muslim jewish black gay disabled woman man) $mode)
+     (if (== $lookup vad-lookup-ready)
+       (miter_vad_finish $id (VADCue $id $mode) $output) vad-unavailable)))
+[33m--> prolog clause -->
+[32m'VADRNA'(A, B, C, D, E) :-
+    F=G,
+    miter_vad_prepare(A,
+                      [but, however, although],
+                      [muslim, jewish, black, gay, disabled, woman, man],
+                      C,
+                      G),
+    ==(F, 'vad-lookup-ready', H),
+    (   H==true
+    ->  'VADCue'(B, C, I),
+        miter_vad_finish(B, I, D, E)
+    ;   E='vad-unavailable'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADRenderingRNA $path $id $output)
+   (let $lookup (miter_vad_prepare_source $path (but however although)
+                  (muslim jewish black gay disabled woman man) exact_then_morphology rendering)
+     (if (== $lookup vad-lookup-ready)
+       (miter_vad_finish $id (VADCue $id exact_then_morphology) $output) vad-unavailable)))
+[33m--> prolog clause -->
+[32m'VADRenderingRNA'(A, B, C, D) :-
+    E=F,
+    miter_vad_prepare_source(A,
+                             [but, however, although],
+                             [muslim, jewish, black, gay, disabled, woman, man],
+                             exact_then_morphology,
+                             rendering,
+                             F),
+    ==(E, 'vad-lookup-ready', G),
+    (   G==true
+    ->  'VADCue'(B, exact_then_morphology, H),
+        miter_vad_finish(B, H, C, D)
+    ;   D='vad-unavailable'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (PermissionDependenciesLawful $xs)
+   (if (== (size-atom $xs) 0) true
+     (if (or (== (car-atom $xs) authenticated-scope)
+             (== (car-atom $xs) task-facts))
+       (PermissionDependenciesLawful (cdr-atom $xs)) false)))
+[33m--> prolog clause -->
+[32m'PermissionDependenciesLawful'(A, B) :-
+    'size-atom'(A, C),
+    ==(C, 0, D),
+    (   D==true
+    ->  B=true
+    ;   'car-atom'(A, E),
+        ==(E, 'authenticated-scope', F),
+        'car-atom'(A, G),
+        ==(G, 'task-facts', H),
+        or(F, H, I),
+        (   I==true
+        ->  'cdr-atom'(A, J),
+            'PermissionDependenciesLawful'(J, B)
+        ;   B=false
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (TaskPermission $scope $facts)
+   (if (and (== $scope authorized) (== $facts permitted)) permitted blocked))
+[33m--> prolog clause -->
+[32m'TaskPermission'(A, B, C) :-
+    ==(A, authorized, D),
+    ==(B, permitted, E),
+    and(D, E, F),
+    (   F==true
+    ->  C=permitted
+    ;   C=blocked
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (InstallPermissionPolicy $dependencies)
+   (if (PermissionDependenciesLawful $dependencies) policy-admitted
+     rejected-affect-authority-dependency))
+[33m--> prolog clause -->
+[32m'InstallPermissionPolicy'(A, B) :-
+    'PermissionDependenciesLawful'(A, C),
+    (   C==true
+    ->  B='policy-admitted'
+    ;   B='rejected-affect-authority-dependency'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/voice_grammar.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self',
+                     "/Users/claritymiter/miter/src/voice_grammar.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-kind boundary)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-required-groups boundary (person task agency))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-task-verdict boundary blocked-action)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-max-dominance boundary high)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary person "I hear the urgency.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary person "I hear how urgent this feels.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary task "I cannot bypass the permission check.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary task "The permission check still has to be respected.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary agency "We can work through the approved route together.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary agency "I can help you find an approved route.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-kind technical)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-required-groups technical (task uncertainty agency))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-task-verdict technical permitted-internal-answer)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-max-dominance technical high)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical task "A checksum helps detect changed file bytes.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical task "Comparing SHA-256 checksums can reveal changed file bytes.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical uncertainty "Matching checksums are evidence, not an absolute guarantee.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical uncertainty "Even a matching checksum is not an absolute guarantee.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical agency "We can compare the saved and current checksums.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical agency "You can choose a saved checksum to compare with the current one.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-kind pivot)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-required-groups pivot (person task agency))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-task-verdict pivot permitted-internal-answer)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-max-dominance pivot mid)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot person "You named a struggle and a possible opening.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot person "There is difficulty here, and you may be seeing something new.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot task "Let's leave room for that emerging idea.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot task "We can stay with the idea that is beginning to form.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot agency "What are you starting to see?")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot agency "Would you like to explore what is coming into view?")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-kind minimized)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-required-groups minimized (person uncertainty agency))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-task-verdict minimized permitted-internal-answer)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-max-dominance minimized mid)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized person "You said things are fine, and also that something feels off.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized person "I hear both 'fine' and the feeling that something is off.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized uncertainty "I do not want to assume what that means for you.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized uncertainty "I cannot know your inner experience from those words.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized agency "Would you like to say more, or leave it there for now?")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized agency "We can explore it if you want, or leave it for now.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-kind neutral)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-required-groups neutral (task agency scope))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-task-verdict neutral permitted-internal-answer)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-max-dominance neutral mid)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral task "The next step is to name the file you want to work on.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral task "We can start with the file you choose.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral agency "You can choose whether we look at its contents or its history.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral agency "Would you prefer to look at the contents or the history?")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral scope "I will wait for that choice before changing anything.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral scope "No changes are needed until you choose a direction.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/voice.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/voice.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceKind $root $id) (miter_voice_input $root $id kind))
+[33m--> prolog clause -->
+[32m'VoiceKind'(A, B, C) :-
+    miter_voice_input(A, B, kind, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceRequiredGroups $kind)
+   (let $xs (collapse (match &self (voice-required-groups $kind $groups) $groups))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) ())))
+[33m--> prolog clause -->
+[32m'VoiceRequiredGroups'(A, B) :-
+    C=D,
+    findall(E,
+            match('&self',
+                  ['voice-required-groups', A, E],
+                  E,
+                  E),
+            D),
+    'size-atom'(C, F),
+    ==(F, 1, G),
+    (   G==true
+    ->  'index-atom'(C, 0, B)
+    ;   B=[]
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceIntention $root $id)
+   (let* (($kind (VoiceKind $root $id))
+          ($known (collapse (match &self (voice-kind $kind) $kind))))
+     (if (and (== (size-atom $known) 1)
+              (== (miter_voice_source $root $id) voice-source-verified))
+       (communicative-intention
+         (intention_id $id)
+         (source_event_id (miter_voice_input $root $id source_event_id))
+         (audience principal:g16-human)
+         (surface local-test-cli)
+         (relationship_scope scope:g16-private)
+         (kind $kind)
+         (must_convey (VoiceRequiredGroups $kind))
+         (must_preserve (human-agency task-distinction source-uncertainty))
+         (must_not_imply (inner-state-knowledge external-action-permission model-authority))
+         (uncertainty_standing bounded-source-only)
+         (soul_stance agency-with-shared-understanding)
+         (person_cues (miter_voice_input $root $id person_cue))
+         (task_distinctions (match &self (voice-task-verdict $kind $verdict) $verdict))
+         (authority_boundary local-certified-reply-only)
+         (desired_affect_region (match &self (voice-max-dominance $kind $max) $max))
+         (completion_test all-required-groups-and-native-audit)
+         (rendering_options (collapse (match &self (voice-clause $kind $group $text) ($group $text)))))
+       invalid-intention)))
+[33m--> prolog clause -->
+[32m'VoiceIntention'(A, B, C) :-
+    D=E,
+    'VoiceKind'(A, B, E),
+    F=G,
+    findall(D, match('&self', ['voice-kind', D], D, D), G),
+    'size-atom'(F, H),
+    ==(H, 1, I),
+    miter_voice_source(A, B, J),
+    ==(J, 'voice-source-verified', K),
+    and(I, K, L),
+    (   L==true
+    ->  C=['communicative-intention', [intention_id, B], [source_event_id, M], [audience, 'principal:g16-human'], [surface, 'local-test-cli'], [relationship_scope, 'scope:g16-private'], [kind, D], [must_convey, N], [must_preserve, ['human-agency', 'task-distinction', 'source-uncertainty']], [must_not_imply, ['inner-state-knowledge', 'external-action-permission', 'model-authority']], [uncertainty_standing, 'bounded-source-only'], [soul_stance, 'agency-with-shared-understanding'], [person_cues, O], [task_distinctions, P], [authority_boundary, 'local-certified-reply-only'], [desired_affect_region, Q], [completion_test, 'all-required-groups-and-native-audit'], [rendering_options, R]],
+        miter_voice_input(A, B, source_event_id, M),
+        'VoiceRequiredGroups'(D, N),
+        miter_voice_input(A, B, person_cue, O),
+        match('&self', ['voice-task-verdict', D, P], P, P),
+        match('&self', ['voice-max-dominance', D, Q], Q, Q),
+        findall(S,
+                ( match('&self',
+                        ['voice-clause', D, T, U],
+                        S,
+                        S),
+                  reduce([T, U], S)
+                ),
+                R)
+    ;   C='invalid-intention'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoicePrepare $root $id)
+   (miter_voice_write_intention $root $id (VoiceIntention $root $id)))
+[33m--> prolog clause -->
+[32m'VoicePrepare'(A, B, C) :-
+    'VoiceIntention'(A, B, D),
+    miter_voice_write_intention(A, B, D, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair schema-failure "Use exactly the required request ID and three nonempty clauses, with no additional keys.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair semantic-drift "Use only approved clauses from this intention and cover every required group.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair soul-absence "Preserve the human's choice using an approved agency clause.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair person-not-seen "Include the approved person-receiving clause without claiming an inner state.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair task-smearing "Preserve the native task distinction; include the required task clause.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair unsupported-certainty "Preserve the uncertainty clause and remove unsupported certainty.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair authority-inflation "Remove claims of permission, approval or authority owned by the model.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair coercive-dominance "Remove coercive commands and preserve the human's choice.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair affect-register-mismatch "Choose approved variants within the intended dominance region; do not add commands.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair hidden-scope "Keep the source scope and required scope clause explicit.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair unacknowledged-tension "Preserve both sides of the stated tension rather than erasing one.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair policy-voice "Remove policy slogans and AI disclaimers; use the approved relational wording.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair excessive-length "Keep the candidate to three approved clauses and at most 700 characters.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceClauseGroup $kind $clause)
+   (let $xs (collapse (match &self (voice-clause $kind $group $clause) $group))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) unknown-clause)))
+[33m--> prolog clause -->
+[32m'VoiceClauseGroup'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&self',
+                  ['voice-clause', A, F, B],
+                  F,
+                  F),
+            E),
+    'size-atom'(D, G),
+    ==(G, 1, H),
+    (   H==true
+    ->  'index-atom'(D, 0, C)
+    ;   C='unknown-clause'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceGroupCount $root $id $n $group $i $count)
+   (if (< $i $count)
+     (+ (if (== (VoiceClauseGroup (VoiceKind $root $id)
+                  (miter_voice_clause $root $id $n $i)) $group) 1 0)
+        (VoiceGroupCount $root $id $n $group (+ $i 1) $count)) 0))
+[33m--> prolog clause -->
+[32m'VoiceGroupCount'(A, B, C, D, E, F, G) :-
+    <(E, F, H),
+    (   H==true
+    ->  'VoiceKind'(A, B, I),
+        miter_voice_clause(A, B, C, E, J),
+        'VoiceClauseGroup'(I, J, K),
+        ==(K, D, L),
+        (   L==true
+        ->  M=1
+        ;   M=0
+        ),
+        +(E, 1, N),
+        'VoiceGroupCount'(A,
+                          B,
+                          C,
+                          D,
+                          N,
+                          F,
+                          O),
+        +(M, O, G)
+    ;   G=0
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceHasGroup $root $id $n $group)
+   (> (VoiceGroupCount $root $id $n $group 0 (miter_voice_clause_count $root $id $n)) 0))
+[33m--> prolog clause -->
+[32m'VoiceHasGroup'(A, B, C, D, E) :-
+    miter_voice_clause_count(A, B, C, F),
+    'VoiceGroupCount'(A, B, C, D, 0, F, G),
+    >(G, 0, E).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceRequires $root $id $group)
+   (is-member $group (VoiceRequiredGroups (VoiceKind $root $id))))
+[33m--> prolog clause -->
+[32m'VoiceRequires'(A, B, C, D) :-
+    'VoiceKind'(A, B, E),
+    'VoiceRequiredGroups'(E, F),
+    'is-member'(C, F, D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceMaxDominance $root $id)
+   (let $kind (VoiceKind $root $id)
+     (match &self (voice-max-dominance $kind $max) $max)))
+[33m--> prolog clause -->
+[32m'VoiceMaxDominance'(A, B, C) :-
+    D=E,
+    'VoiceKind'(A, B, E),
+    match('&self', ['voice-max-dominance', D, C], C, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceMissingGroup $root $id $n $group)
+   (and (VoiceRequires $root $id $group) (not (VoiceHasGroup $root $id $n $group))))
+[33m--> prolog clause -->
+[32m'VoiceMissingGroup'(A, B, C, D, E) :-
+    'VoiceRequires'(A, B, D, F),
+    'VoiceHasGroup'(A, B, C, D, G),
+    not(G, H),
+    and(F, H, E).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceAllGroups $root $id $n $groups $i)
+   (if (< $i (size-atom $groups))
+     (and (== (VoiceGroupCount $root $id $n (index-atom $groups $i) 0
+                 (miter_voice_clause_count $root $id $n)) 1)
+          (VoiceAllGroups $root $id $n $groups (+ $i 1))) true))
+[33m--> prolog clause -->
+[32m'VoiceAllGroups'(A, B, C, D, E, F) :-
+    'size-atom'(D, G),
+    <(E, G, H),
+    (   H==true
+    ->  'index-atom'(D, E, I),
+        miter_voice_clause_count(A, B, C, J),
+        'VoiceGroupCount'(A, B, C, I, 0, J, K),
+        ==(K, 1, L),
+        +(E, 1, M),
+        'VoiceAllGroups'(A, B, C, D, M, N),
+        and(L, N, F)
+    ;   F=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceAllClausesKnown $root $id $n $i $count)
+   (if (< $i $count)
+     (and (!= (VoiceClauseGroup (VoiceKind $root $id) (miter_voice_clause $root $id $n $i)) unknown-clause)
+          (VoiceAllClausesKnown $root $id $n (+ $i 1) $count)) true))
+[33m--> prolog clause -->
+[32m'VoiceAllClausesKnown'(A, B, C, D, E, F) :-
+    <(D, E, G),
+    (   G==true
+    ->  'VoiceKind'(A, B, H),
+        miter_voice_clause(A, B, C, D, I),
+        'VoiceClauseGroup'(H, I, J),
+        '!='(J, 'unknown-clause', K),
+        +(D, 1, L),
+        'VoiceAllClausesKnown'(A,
+                               B,
+                               C,
+                               L,
+                               E,
+                               M),
+        and(K, M, F)
+    ;   F=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceDefectPresent $root $id $n $key)
+   (if (== $key schema-failure) (or (!= (miter_voice_schema $root $id $n) voice-schema-valid) (!= (miter_voice_clause_count $root $id $n) 3)) (if (== $key semantic-drift) (not (and (VoiceAllGroups $root $id $n (VoiceRequiredGroups (VoiceKind $root $id)) 0) (VoiceAllClausesKnown $root $id $n 0 (miter_voice_clause_count $root $id $n)))) (if (== $key soul-absence) (not (VoiceHasGroup $root $id $n agency)) (if (== $key person-not-seen) (VoiceMissingGroup $root $id $n person) (if (== $key task-smearing) (VoiceMissingGroup $root $id $n task) (if (== $key unsupported-certainty) (or (VoiceMissingGroup $root $id $n uncertainty) (or (miter_voice_contains $root $id $n "definitely feel") (miter_voice_contains $root $id $n "you are depressed"))) (if (== $key authority-inflation) (or (miter_voice_contains $root $id $n "i authorize") (miter_voice_contains $root $id $n "i decide for you")) (if (== $key coercive-dominance) (or (miter_voice_contains $root $id $n "must obey") (miter_voice_contains $root $id $n "do as i say")) (if (== $key affect-register-mismatch) (or (!= (miter_voice_vad_ready $root $id $n) voice-vad-ready) (and (== (VoiceMaxDominance $root $id) mid) (miter_voice_vad_high $root $id $n))) (if (== $key hidden-scope) (or (!= (miter_voice_source $root $id) voice-source-verified) (VoiceMissingGroup $root $id $n scope)) (if (== $key unacknowledged-tension) (and (or (== (VoiceKind $root $id) pivot) (== (VoiceKind $root $id) minimized)) (not (VoiceHasGroup $root $id $n person))) (if (== $key policy-voice) (or (miter_voice_contains $root $id $n "as an ai") (miter_voice_contains $root $id $n "policy prohibits")) (if (== $key excessive-length) (> (miter_voice_length $root $id $n) 700) true))))))))))))))
+[33m--> prolog clause -->
+[32m'VoiceDefectPresent'(A, B, C, D, E) :-
+    ==(D, 'schema-failure', F),
+    (   F==true
+    ->  miter_voice_schema(A, B, C, G),
+        '!='(G, 'voice-schema-valid', H),
+        miter_voice_clause_count(A, B, C, I),
+        '!='(I, 3, J),
+        or(H, J, E)
+    ;   ==(D, 'semantic-drift', K),
+        (   K==true
+        ->  'VoiceKind'(A, B, L),
+            'VoiceRequiredGroups'(L, M),
+            'VoiceAllGroups'(A, B, C, M, 0, N),
+            miter_voice_clause_count(A, B, C, O),
+            'VoiceAllClausesKnown'(A, B, C, 0, O, P),
+            and(N, P, Q),
+            not(Q, E)
+        ;   ==(D, 'soul-absence', R),
+            (   R==true
+            ->  'VoiceHasGroup'(A, B, C, agency, S),
+                not(S, E)
+            ;   ==(D, 'person-not-seen', T),
+                (   T==true
+                ->  'VoiceMissingGroup'(A, B, C, person, E)
+                ;   ==(D, 'task-smearing', U),
+                    (   U==true
+                    ->  'VoiceMissingGroup'(A,
+                                            B,
+                                            C,
+                                            task,
+                                            E)
+                    ;   ==(D, 'unsupported-certainty', V),
+                        (   V==true
+                        ->  'VoiceMissingGroup'(A,
+                                                B,
+                                                C,
+                                                uncertainty,
+                                                W),
+                            miter_voice_contains(A,
+                                                 B,
+                                                 C,
+                                                 "definitely feel",
+                                                 X),
+                            miter_voice_contains(A,
+                                                 B,
+                                                 C,
+                                                 "you are depressed",
+                                                 Y),
+                            or(X, Y, Z),
+                            or(W, Z, E)
+                        ;   ==(D, 'authority-inflation', A1),
+                            (   A1==true
+                            ->  miter_voice_contains(A,
+                                                     B,
+                                                     C,
+                                                     "i authorize",
+                                                     B1),
+                                miter_voice_contains(A,
+                                                     B,
+                                                     C,
+                                                     "i decide for you",
+                                                     C1),
+                                or(B1, C1, E)
+                            ;   ==(D, 'coercive-dominance', D1),
+                                (   D1==true
+                                ->  miter_voice_contains(A,
+                                                         B,
+                                                         C,
+                                                         "must obey",
+                                                         E1),
+                                    miter_voice_contains(A,
+                                                         B,
+                                                         C,
+                                                         "do as i say",
+                                                         F1),
+                                    or(E1, F1, E)
+                                ;   ==(D,
+                                       'affect-register-mismatch',
+                                       G1),
+                                    (   G1==true
+                                    ->  miter_voice_vad_ready(A,
+                                                              B,
+                                                              C,
+                                                              H1),
+                                        '!='(H1, 'voice-vad-ready', I1),
+                                        'VoiceMaxDominance'(A,
+                                                            B,
+                                                            J1),
+                                        ==(J1, mid, K1),
+                                        miter_voice_vad_high(A,
+                                                             B,
+                                                             C,
+                                                             L1),
+                                        and(K1, L1, M1),
+                                        or(I1, M1, E)
+                                    ;   ==(D, 'hidden-scope', N1),
+                                        (   N1==true
+                                        ->  miter_voice_source(A,
+                                                               B,
+                                                               O1),
+                                            '!='(O1,
+                                                 'voice-source-verified',
+                                                 P1),
+                                            'VoiceMissingGroup'(A,
+                                                                B,
+                                                                C,
+                                                                scope,
+                                                                Q1),
+                                            or(P1, Q1, E)
+                                        ;   ==(D,
+                                               'unacknowledged-tension',
+                                               R1),
+                                            (   R1==true
+                                            ->  'VoiceKind'(A,
+                                                            B,
+                                                            S1),
+                                                ==(S1, pivot, T1),
+                                                'VoiceKind'(A,
+                                                            B,
+                                                            U1),
+                                                ==(U1,
+                                                   minimized,
+                                                   V1),
+                                                or(T1, V1, W1),
+                                                'VoiceHasGroup'(A,
+                                                                B,
+                                                                C,
+                                                                person,
+                                                                X1),
+                                                not(X1, Y1),
+                                                and(W1, Y1, E)
+                                            ;   ==(D,
+                                                   'policy-voice',
+                                                   Z1),
+                                                (   Z1==true
+                                                ->  miter_voice_contains(A,
+                                                                         B,
+                                                                         C,
+                                                                         "as an ai",
+                                                                         A2),
+                                                    miter_voice_contains(A,
+                                                                         B,
+                                                                         C,
+                                                                         "policy prohibits",
+                                                                         B2),
+                                                    or(A2,
+                                                       B2,
+                                                       E)
+                                                ;   ==(D,
+                                                       'excessive-length',
+                                                       C2),
+                                                    (   C2==true
+                                                    ->  miter_voice_length(A,
+                                                                           B,
+                                                                           C,
+                                                                           D2),
+                                                        >(D2,
+                                                          700,
+                                                          E)
+                                                    ;   E=true
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceDefects $root $id $n $keys $i)
+   (if (< $i (size-atom $keys))
+     (let* (($key (index-atom $keys $i))
+            ($rest (VoiceDefects $root $id $n $keys (+ $i 1))))
+       (if (VoiceDefectPresent $root $id $n $key)
+         (cons-atom (defect $key candidate-and-intention blocking
+           (match &self (voice-repair $key $repair) $repair)) $rest)
+         $rest)) ()))
+[33m--> prolog clause -->
+[32m'VoiceDefects'(A, B, C, D, E, F) :-
+    'size-atom'(D, G),
+    <(E, G, H),
+    (   H==true
+    ->  I=J,
+        'index-atom'(D, E, J),
+        K=L,
+        +(E, 1, M),
+        'VoiceDefects'(A, B, C, D, M, L),
+        'VoiceDefectPresent'(A, B, C, I, N),
+        (   N==true
+        ->  match('&self', ['voice-repair', I, O], O, O),
+            'cons-atom'([ defect,
+                          I,
+                          'candidate-and-intention',
+                          blocking,
+                          O
+                        ],
+                        K,
+                        F)
+        ;   F=K
+        )
+    ;   F=[]
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (AuditRNA $root $id $n)
+   (let* (($defects (VoiceDefects $root $id $n
+      (schema-failure semantic-drift soul-absence person-not-seen task-smearing unsupported-certainty authority-inflation coercive-dominance affect-register-mismatch hidden-scope unacknowledged-tension policy-voice excessive-length) 0))
+          ($status (if (== (size-atom $defects) 0) audit-pass audit-repair-required)))
+     (miter_voice_audit_write $root $id $n
+       (voice-audit (status $status) (defects $defects) (audit_version miter-voice-audit-v1)))))
+[33m--> prolog clause -->
+[32m'AuditRNA'(A, B, C, D) :-
+    E=F,
+    'VoiceDefects'(A,
+                   B,
+                   C,
+                   [ 'schema-failure',
+                     'semantic-drift',
+                     'soul-absence',
+                     'person-not-seen',
+                     'task-smearing',
+                     'unsupported-certainty',
+                     'authority-inflation',
+                     'coercive-dominance',
+                     'affect-register-mismatch',
+                     'hidden-scope',
+                     'unacknowledged-tension',
+                     'policy-voice',
+                     'excessive-length'
+                   ],
+                   0,
+                   F),
+    G=H,
+    'size-atom'(E, I),
+    ==(I, 0, J),
+    (   J==true
+    ->  H='audit-pass'
+    ;   H='audit-repair-required'
+    ),
+    miter_voice_audit_write(A,
+                            B,
+                            C,
+                            [ 'voice-audit',
+                              [status, G],
+                              [defects, E],
+                              [audit_version, 'miter-voice-audit-v1']
+                            ],
+                            D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceMeasureRegister $root $id $n)
+   (let $request (miter_voice_vad_request $root $id $n)
+     (if (== $request voice-vad-request-ready)
+       (VADRenderingRNA
+         (miter_voice_stage_path $root $id $n vad-input.json)
+         (miter_voice_cue_id $id $n)
+         (miter_voice_stage_path $root $id $n vad.json))
+       voice-vad-unavailable)))
+[33m--> prolog clause -->
+[32m'VoiceMeasureRegister'(A, B, C, D) :-
+    E=F,
+    miter_voice_vad_request(A, B, C, F),
+    ==(E, 'voice-vad-request-ready', G),
+    (   G==true
+    ->  miter_voice_stage_path(A, B, C, 'vad-input.json', H),
+        miter_voice_cue_id(B, C, I),
+        miter_voice_stage_path(A, B, C, 'vad.json', J),
+        'VADRenderingRNA'(H, I, J, D)
+    ;   D='voice-vad-unavailable'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation availability available)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation inherited-legality lawful)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation safety safety-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation integrity provenance-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation required-distinction task-distinction-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation no-forcing no-disqualifying-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation participation human-choice-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation consequence answerability-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation doctrine finite-reading)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation extensions no-material-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-movement-obligation continuing-contact contact-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceWireWitnesses $id $source $kinds $i)
+   (if (< $i (size-atom $kinds))
+     (let* (($kind (index-atom $kinds $i))
+            ($standing (match &self (voice-movement-obligation $kind $s) $s))
+            ($ref (miter_voice_witness_id $id $kind))
+            ($a (add-atom &movements (movement-witness $id $kind $ref)))
+            ($b (add-atom &witnesses
+              (trusted-witness $ref $kind $source principal:g16-human
+                 scope:g16-private g16-voice $standing))))
+       (VoiceWireWitnesses $id $source $kinds (+ $i 1))) witnesses-wired))
+[33m--> prolog clause -->
+[32m'VoiceWireWitnesses'(A, B, C, D, E) :-
+    'size-atom'(C, F),
+    <(D, F, G),
+    (   G==true
+    ->  H=I,
+        'index-atom'(C, D, I),
+        J=K,
+        match('&self',
+              ['voice-movement-obligation', H, K],
+              K,
+              K),
+        L=M,
+        miter_voice_witness_id(A, H, M),
+        true,
+        'add-atom'('&movements',
+                   ['movement-witness', A, H, L],
+                   _),
+        true,
+        'add-atom'('&witnesses',
+                   [ 'trusted-witness',
+                     L,
+                     H,
+                     B,
+                     'principal:g16-human',
+                     'scope:g16-private',
+                     'g16-voice',
+                     J
+                   ],
+                   _),
+        +(D, 1, N),
+        'VoiceWireWitnesses'(A, B, C, N, E)
+    ;   E='witnesses-wired'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceWireMovement $root $id)
+   (let* (($source (miter_voice_input $root $id source_event_id))
+          ($f0 (add-atom &movements (movement-field $id source-cut $source)))
+          ($f1 (add-atom &movements (movement-field $id target-cut reply-certified)))
+          ($f2 (add-atom &movements (movement-field $id intention-id $id)))
+          ($f3 (add-atom &movements (movement-field $id active-rna-id VoiceRNA)))
+          ($f4 (add-atom &movements (movement-field $id principal principal:g16-human)))
+          ($f5 (add-atom &movements (movement-field $id audience scope:g16-private)))
+          ($f6 (add-atom &movements (movement-field $id project g16-voice)))
+          ($f7 (add-atom &movements (movement-field $id provenance direct-contact)))
+          ($f8 (add-atom &movements (movement-field $id effect-class internal)))
+          ($f9 (add-atom &movements (movement-field $id extension-ids ())))
+          ($f10 (add-atom &movements (movement-field $id reversibility reversible)))
+          ($f11 (add-atom &movements (movement-field $id status candidate)))
+          ($f12 (add-atom &movements (movement-field $id material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))))
+          ($f13 (add-atom &movements (movement-field $id material-distinction-ids (provenance required-distinction))))
+          ($f14 (add-atom &movements (movement-field $id memory-ids ())))
+          ($f15 (add-atom &movements (movement-field $id predicted-consequence-ids (certified-local-reply))))
+          ($wired (VoiceWireWitnesses $id $source
+             (availability inherited-legality safety integrity provenance required-distinction no-forcing participation consequence doctrine extensions continuing-contact) 0))) $wired))
+[33m--> prolog clause -->
+[32m'VoiceWireMovement'(A, B, C) :-
+    D=E,
+    miter_voice_input(A, B, source_event_id, E),
+    true,
+    'add-atom'('&movements', ['movement-field', B, 'source-cut', D], _),
+    true,
+    'add-atom'('&movements',
+               ['movement-field', B, 'target-cut', 'reply-certified'],
+               _),
+    true,
+    'add-atom'('&movements', ['movement-field', B, 'intention-id', B], _),
+    true,
+    'add-atom'('&movements',
+               ['movement-field', B, 'active-rna-id', 'VoiceRNA'],
+               _),
+    true,
+    'add-atom'('&movements',
+               ['movement-field', B, principal, 'principal:g16-human'],
+               _),
+    true,
+    'add-atom'('&movements',
+               ['movement-field', B, audience, 'scope:g16-private'],
+               _),
+    true,
+    'add-atom'('&movements', ['movement-field', B, project, 'g16-voice'], _),
+    true,
+    'add-atom'('&movements',
+               ['movement-field', B, provenance, 'direct-contact'],
+               _),
+    true,
+    'add-atom'('&movements',
+               ['movement-field', B, 'effect-class', internal],
+               _),
+    true,
+    'add-atom'('&movements', ['movement-field', B, 'extension-ids', []], _),
+    true,
+    'add-atom'('&movements',
+               ['movement-field', B, reversibility, reversible],
+               _),
+    true,
+    'add-atom'('&movements', ['movement-field', B, status, candidate], _),
+    true,
+    'add-atom'('&movements',
+               [ 'movement-field',
+                 B,
+                 'material-relation-ids',
+                 [ 'Safety',
+                   'Integrity',
+                   'AgencyBalance',
+                   'SharedUnderstanding',
+                   'NonSovereignty'
+                 ]
+               ],
+               _),
+    true,
+    'add-atom'('&movements',
+               [ 'movement-field',
+                 B,
+                 'material-distinction-ids',
+                 [provenance, 'required-distinction']
+               ],
+               _),
+    true,
+    'add-atom'('&movements', ['movement-field', B, 'memory-ids', []], _),
+    true,
+    'add-atom'('&movements',
+               [ 'movement-field',
+                 B,
+                 'predicted-consequence-ids',
+                 ['certified-local-reply']
+               ],
+               _),
+    C=F,
+    'VoiceWireWitnesses'(B,
+                         D,
+                         [ availability,
+                           'inherited-legality',
+                           safety,
+                           integrity,
+                           provenance,
+                           'required-distinction',
+                           'no-forcing',
+                           participation,
+                           consequence,
+                           doctrine,
+                           extensions,
+                           'continuing-contact'
+                         ],
+                         0,
+                         F).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceCertify $root $id $n)
+   (if (== (miter_voice_audit_status $root $id $n) audit-pass)
+     (let* (($soul (SoulBoot (miter_voice_stage_path $root $id $n soul-integrity.json)))
+            ($wired (VoiceWireMovement $root $id))
+            ($movement (ConstructMovement (miter_voice_store_root $root) $id $soul))
+            ($saved (miter_movement_record
+               (miter_voice_stage_path $root $id $n movement.json) $movement)))
+       (if (and (== $saved movement-result-stored) (!= $movement movement-blocked))
+         (miter_voice_issue $root $id $n certified-utterance)
+         voice-withheld))
+     voice-withheld))
+[33m--> prolog clause -->
+[32m'VoiceCertify'(A, B, C, D) :-
+    miter_voice_audit_status(A, B, C, E),
+    ==(E, 'audit-pass', F),
+    (   F==true
+    ->  G=H,
+        miter_voice_stage_path(A,
+                               B,
+                               C,
+                               'soul-integrity.json',
+                               I),
+        'SoulBoot'(I, H),
+        true,
+        'VoiceWireMovement'(A, B, _),
+        J=K,
+        miter_voice_store_root(A, L),
+        'ConstructMovement'(L, B, G, K),
+        M=N,
+        miter_voice_stage_path(A, B, C, 'movement.json', O),
+        miter_movement_record(O, J, N),
+        ==(M, 'movement-result-stored', P),
+        '!='(J, 'movement-blocked', Q),
+        and(P, Q, R),
+        (   R==true
+        ->  miter_voice_issue(A,
+                              B,
+                              C,
+                              'certified-utterance',
+                              D)
+        ;   D='voice-withheld'
+        )
+    ;   D='voice-withheld'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceAdmitAndEmit $root $id $n)
+   (if (== (VoiceCertify $root $id $n) certified-utterance-stored)
+     (miter_voice_emit $root $id $n) voice-withheld))
+[33m--> prolog clause -->
+[32m'VoiceAdmitAndEmit'(A, B, C, D) :-
+    'VoiceCertify'(A, B, C, E),
+    ==(E, 'certified-utterance-stored', F),
+    (   F==true
+    ->  miter_voice_emit(A, B, C, D)
+    ;   D='voice-withheld'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (LocalVoiceRenderer $root $id $n)
+   (miter_voice_render $root $id $n qwen-local))
+[33m--> prolog clause -->
+[32m'LocalVoiceRenderer'(A, B, C, D) :-
+    miter_voice_render(A, B, C, 'qwen-local', D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceContinueWith $root $id $n $renderer $budget)
+   (let* (($register (VoiceMeasureRegister $root $id $n))
+          ($audit (AuditRNA $root $id $n)))
+     (if (and (== $register affect-cue-stored) (== $audit voice-audit-stored))
+       (VoiceResolveWith $root $id $n $renderer $budget)
+       (miter_voice_withhold $root $id (+ $n 1) $budget audit-failed))))
+[33m--> prolog clause -->
+[32m'VoiceContinueWith'(A, B, C, D, E, F) :-
+    G=H,
+    'VoiceMeasureRegister'(A, B, C, H),
+    I=J,
+    'AuditRNA'(A, B, C, J),
+    ==(G, 'affect-cue-stored', K),
+    ==(I, 'voice-audit-stored', L),
+    and(K, L, M),
+    (   M==true
+    ->  'VoiceResolveWith'(A, B, C, D, E, F)
+    ;   +(C, 1, N),
+        miter_voice_withhold(A,
+                             B,
+                             N,
+                             E,
+                             'audit-failed',
+                             F)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceResolveWith $root $id $n $renderer $budget)
+     (if (== (miter_voice_audit_status $root $id $n) audit-pass)
+       (VoiceAdmitAndEmit $root $id $n)
+       (if (< (+ $n 1) $budget)
+         (VoiceAttemptWith $root $id (+ $n 1) $renderer $budget)
+         (miter_voice_withhold $root $id (+ $n 1) $budget attempt-budget-exhausted))))
+[33m--> prolog clause -->
+[32m'VoiceResolveWith'(A, B, C, D, E, F) :-
+    miter_voice_audit_status(A, B, C, G),
+    ==(G, 'audit-pass', H),
+    (   H==true
+    ->  'VoiceAdmitAndEmit'(A, B, C, F)
+    ;   +(C, 1, I),
+        <(I, E, J),
+        (   J==true
+        ->  +(C, 1, K),
+            'VoiceAttemptWith'(A, B, K, D, E, F)
+        ;   +(C, 1, L),
+            miter_voice_withhold(A,
+                                 B,
+                                 L,
+                                 E,
+                                 'attempt-budget-exhausted',
+                                 F)
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceAttemptWith $root $id $n $renderer $budget)
+   (if (== ($renderer $root $id $n) voice-candidate-ready)
+     (VoiceContinueWith $root $id $n $renderer $budget)
+     (miter_voice_withhold $root $id (+ $n 1) $budget renderer-failed)))
+[33m--> prolog clause -->
+[32m'VoiceAttemptWith'(A, B, C, D, E, F) :-
+    reduce([D, A, B, C], G),
+    ==(G, 'voice-candidate-ready', H),
+    (   H==true
+    ->  'VoiceContinueWith'(A, B, C, D, E, F)
+    ;   +(C, 1, I),
+        miter_voice_withhold(A,
+                             B,
+                             I,
+                             E,
+                             'renderer-failed',
+                             F)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceRunWithRenderer $root $id $renderer $budget)
+   (if (and (>= $budget 1) (<= $budget 4))
+     (if (== (VoicePrepare $root $id) voice-intention-stored)
+       (VoiceAttemptWith $root $id 0 $renderer $budget)
+       (miter_voice_withhold $root $id 0 $budget invalid-intention))
+     (miter_voice_withhold $root $id 0 $budget invalid-budget)))
+[33m--> prolog clause -->
+[32m'VoiceRunWithRenderer'(A, B, C, D, E) :-
+    >=(D, 1, F),
+    <=(D, 4, G),
+    and(F, G, H),
+    (   H==true
+    ->  'VoicePrepare'(A, B, I),
+        ==(I, 'voice-intention-stored', J),
+        (   J==true
+        ->  'VoiceAttemptWith'(A, B, 0, C, D, E)
+        ;   miter_voice_withhold(A,
+                                 B,
+                                 0,
+                                 D,
+                                 'invalid-intention',
+                                 E)
+        )
+    ;   miter_voice_withhold(A, B, 0, D, 'invalid-budget', E)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m-->  metta specialization (VoiceAttemptWith_Spec_[LocalVoiceRenderer])  -->
+[36m(= (VoiceAttemptWith_Spec_[LocalVoiceRenderer] $_0 $_1 $_2 LocalVoiceRenderer $_3) (if (== (LocalVoiceRenderer $_0 $_1 $_2) voice-candidate-ready) (VoiceContinueWith $_0 $_1 $_2 LocalVoiceRenderer $_3) (miter_voice_withhold $_0 $_1 (+ $_2 1) $_3 renderer-failed)))
+[33m--> prolog clause -->
+[32m'VoiceAttemptWith_Spec_[LocalVoiceRenderer]'(A,
+                                                  B,
+                                                  C,
+                                                  'LocalVoiceRenderer',
+                                                  D,
+                                                  E) :-
+    'LocalVoiceRenderer'(A, B, C, F),
+    ==(F, 'voice-candidate-ready', G),
+    (   G==true
+    ->  'VoiceContinueWith'(A,
+                            B,
+                            C,
+                            'LocalVoiceRenderer',
+                            D,
+                            E)
+    ;   +(C, 1, H),
+        miter_voice_withhold(A,
+                             B,
+                             H,
+                             D,
+                             'renderer-failed',
+                             E)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^
+[0m[33m-->  metta specialization (VoiceResolveWith_Spec_[LocalVoiceRenderer])  -->
+[36m(= (VoiceResolveWith_Spec_[LocalVoiceRenderer] $_0 $_1 $_2 LocalVoiceRenderer $_3) (if (== (miter_voice_audit_status $_0 $_1 $_2) audit-pass) (VoiceAdmitAndEmit $_0 $_1 $_2) (if (< (+ $_2 1) $_3) (VoiceAttemptWith $_0 $_1 (+ $_2 1) LocalVoiceRenderer $_3) (miter_voice_withhold $_0 $_1 (+ $_2 1) $_3 attempt-budget-exhausted))))
+[33m--> prolog clause -->
+[32m'VoiceResolveWith_Spec_[LocalVoiceRenderer]'(A,
+                                                  B,
+                                                  C,
+                                                  'LocalVoiceRenderer',
+                                                  D,
+                                                  E) :-
+    miter_voice_audit_status(A, B, C, F),
+    ==(F, 'audit-pass', G),
+    (   G==true
+    ->  'VoiceAdmitAndEmit'(A, B, C, E)
+    ;   +(C, 1, H),
+        <(H, D, I),
+        (   I==true
+        ->  +(C, 1, J),
+            'VoiceAttemptWith_Spec_[LocalVoiceRenderer]'(A,
+                                                         B,
+                                                         J,
+                                                         'LocalVoiceRenderer',
+                                                         D,
+                                                         E)
+        ;   +(C, 1, K),
+            miter_voice_withhold(A,
+                                 B,
+                                 K,
+                                 D,
+                                 'attempt-budget-exhausted',
+                                 E)
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^
+[0m[33m-->  metta specialization (VoiceContinueWith_Spec_[LocalVoiceRenderer])  -->
+[36m(= (VoiceContinueWith_Spec_[LocalVoiceRenderer] $_0 $_1 $_2 LocalVoiceRenderer $_3) (let* (($_4 (VoiceMeasureRegister $_0 $_1 $_2)) ($_5 (AuditRNA $_0 $_1 $_2))) (if (and (== $_4 affect-cue-stored) (== $_5 voice-audit-stored)) (VoiceResolveWith $_0 $_1 $_2 LocalVoiceRenderer $_3) (miter_voice_withhold $_0 $_1 (+ $_2 1) $_3 audit-failed))))
+[33m--> prolog clause -->
+[32m'VoiceContinueWith_Spec_[LocalVoiceRenderer]'(A,
+                                                   B,
+                                                   C,
+                                                   'LocalVoiceRenderer',
+                                                   D,
+                                                   E) :-
+    F=G,
+    'VoiceMeasureRegister'(A, B, C, G),
+    H=I,
+    'AuditRNA'(A, B, C, I),
+    ==(F, 'affect-cue-stored', J),
+    ==(H, 'voice-audit-stored', K),
+    and(J, K, L),
+    (   L==true
+    ->  'VoiceResolveWith_Spec_[LocalVoiceRenderer]'(A,
+                                                     B,
+                                                     C,
+                                                     'LocalVoiceRenderer',
+                                                     D,
+                                                     E)
+    ;   +(C, 1, M),
+        miter_voice_withhold(A,
+                             B,
+                             M,
+                             D,
+                             'audit-failed',
+                             E)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceContinue $root $id $n)
+   (VoiceContinueWith $root $id $n LocalVoiceRenderer
+     (miter_voice_budget "config/voice-profile.json")))
+[33m--> prolog clause -->
+[32m'VoiceContinue'(A, B, C, D) :-
+    miter_voice_budget("config/voice-profile.json", E),
+    'VoiceContinueWith_Spec_[LocalVoiceRenderer]'(A,
+                                                  B,
+                                                  C,
+                                                  'LocalVoiceRenderer',
+                                                  E,
+                                                  D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceResolveAudit $root $id $n)
+   (VoiceResolveWith $root $id $n LocalVoiceRenderer
+     (miter_voice_budget "config/voice-profile.json")))
+[33m--> prolog clause -->
+[32m'VoiceResolveAudit'(A, B, C, D) :-
+    miter_voice_budget("config/voice-profile.json", E),
+    'VoiceResolveWith_Spec_[LocalVoiceRenderer]'(A,
+                                                 B,
+                                                 C,
+                                                 'LocalVoiceRenderer',
+                                                 E,
+                                                 D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m-->  metta specialization (VoiceRunWithRenderer_Spec_[LocalVoiceRenderer])  -->
+[36m(= (VoiceRunWithRenderer_Spec_[LocalVoiceRenderer] $_0 $_1 LocalVoiceRenderer $_2) (if (and (>= $_2 1) (<= $_2 4)) (if (== (VoicePrepare $_0 $_1) voice-intention-stored) (VoiceAttemptWith $_0 $_1 0 LocalVoiceRenderer $_2) (miter_voice_withhold $_0 $_1 0 $_2 invalid-intention)) (miter_voice_withhold $_0 $_1 0 $_2 invalid-budget)))
+[33m--> prolog clause -->
+[32m'VoiceRunWithRenderer_Spec_[LocalVoiceRenderer]'(A,
+                                                      B,
+                                                      'LocalVoiceRenderer',
+                                                      C,
+                                                      D) :-
+    >=(C, 1, E),
+    <=(C, 4, F),
+    and(E, F, G),
+    (   G==true
+    ->  'VoicePrepare'(A, B, H),
+        ==(H, 'voice-intention-stored', I),
+        (   I==true
+        ->  'VoiceAttemptWith_Spec_[LocalVoiceRenderer]'(A,
+                                                         B,
+                                                         0,
+                                                         'LocalVoiceRenderer',
+                                                         C,
+                                                         D)
+        ;   miter_voice_withhold(A,
+                                 B,
+                                 0,
+                                 C,
+                                 'invalid-intention',
+                                 D)
+        )
+    ;   miter_voice_withhold(A, B, 0, C, 'invalid-budget', D)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceRNA $root $id)
+   (VoiceRunWithRenderer $root $id LocalVoiceRenderer
+     (miter_voice_budget "config/voice-profile.json")))
+[33m--> prolog clause -->
+[32m'VoiceRNA'(A, B, C) :-
+    miter_voice_budget("config/voice-profile.json", D),
+    'VoiceRunWithRenderer_Spec_[LocalVoiceRenderer]'(A,
+                                                     B,
+                                                     'LocalVoiceRenderer',
+                                                     D,
+                                                     C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VoiceDefects "runtime/g16" boundary 1 (schema-failure semantic-drift soul-absence person-not-seen task-smearing unsupported-certainty authority-inflation coercive-dominance affect-register-mismatch hidden-scope unacknowledged-tension policy-voice excessive-length) 0)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VoiceDefects'("runtime/g16",
+                          boundary,
+                          1,
+                          [ 'schema-failure',
+                            'semantic-drift',
+                            'soul-absence',
+                            'person-not-seen',
+                            'task-smearing',
+                            'unsupported-certainty',
+                            'authority-inflation',
+                            'coercive-dominance',
+                            'affect-register-mismatch',
+                            'hidden-scope',
+                            'unacknowledged-tension',
+                            'policy-voice',
+                            'excessive-length'
+                          ],
+                          0,
+                          A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VoiceDefects "runtime/g16" technical 0 (schema-failure semantic-drift soul-absence person-not-seen task-smearing unsupported-certainty authority-inflation coercive-dominance affect-register-mismatch hidden-scope unacknowledged-tension policy-voice excessive-length) 0)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VoiceDefects'("runtime/g16",
+                          technical,
+                          0,
+                          [ 'schema-failure',
+                            'semantic-drift',
+                            'soul-absence',
+                            'person-not-seen',
+                            'task-smearing',
+                            'unsupported-certainty',
+                            'authority-inflation',
+                            'coercive-dominance',
+                            'affect-register-mismatch',
+                            'hidden-scope',
+                            'unacknowledged-tension',
+                            'policy-voice',
+                            'excessive-length'
+                          ],
+                          0,
+                          A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VoiceDefects "runtime/g16" pivot 0 (schema-failure semantic-drift soul-absence person-not-seen task-smearing unsupported-certainty authority-inflation coercive-dominance affect-register-mismatch hidden-scope unacknowledged-tension policy-voice excessive-length) 0)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VoiceDefects'("runtime/g16",
+                          pivot,
+                          0,
+                          [ 'schema-failure',
+                            'semantic-drift',
+                            'soul-absence',
+                            'person-not-seen',
+                            'task-smearing',
+                            'unsupported-certainty',
+                            'authority-inflation',
+                            'coercive-dominance',
+                            'affect-register-mismatch',
+                            'hidden-scope',
+                            'unacknowledged-tension',
+                            'policy-voice',
+                            'excessive-length'
+                          ],
+                          0,
+                          A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VoiceDefects "runtime/g16" minimized 0 (schema-failure semantic-drift soul-absence person-not-seen task-smearing unsupported-certainty authority-inflation coercive-dominance affect-register-mismatch hidden-scope unacknowledged-tension policy-voice excessive-length) 0)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VoiceDefects'("runtime/g16",
+                          minimized,
+                          0,
+                          [ 'schema-failure',
+                            'semantic-drift',
+                            'soul-absence',
+                            'person-not-seen',
+                            'task-smearing',
+                            'unsupported-certainty',
+                            'authority-inflation',
+                            'coercive-dominance',
+                            'affect-register-mismatch',
+                            'hidden-scope',
+                            'unacknowledged-tension',
+                            'policy-voice',
+                            'excessive-length'
+                          ],
+                          0,
+                          A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VoiceDefects "runtime/g16" neutral 0 (schema-failure semantic-drift soul-absence person-not-seen task-smearing unsupported-certainty authority-inflation coercive-dominance affect-register-mismatch hidden-scope unacknowledged-tension policy-voice excessive-length) 0)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VoiceDefects'("runtime/g16",
+                          neutral,
+                          0,
+                          [ 'schema-failure',
+                            'semantic-drift',
+                            'soul-absence',
+                            'person-not-seen',
+                            'task-smearing',
+                            'unsupported-certainty',
+                            'authority-inflation',
+                            'coercive-dominance',
+                            'affect-register-mismatch',
+                            'hidden-scope',
+                            'unacknowledged-tension',
+                            'policy-voice',
+                            'excessive-length'
+                          ],
+                          0,
+                          A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+()
+()
+()
+()
+()

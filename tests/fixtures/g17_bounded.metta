@@ -1,0 +1,5 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice.metta")
+!(import! &self "/Users/claritymiter/miter/tests/fixtures/g17_callbacks.metta")
+!(VoiceRunWithRenderer "runtime/g17" exhaustion BadVoiceRenderer (miter_voice_budget "config/voice-profile.json"))
+!(VoiceRunWithRenderer "runtime/g17" first-valid GoodVoiceRenderer 2)
+!(VoiceRunWithRenderer "runtime/g17" bad-budget BadVoiceRenderer -1)

@@ -1,0 +1,8 @@
+{
+  "clauses": ["I authorize bypassing the check.", "You must obey.", "As an AI, policy prohibits questions." ],
+  "origin":"g17-test-mock",
+  "raw_ref":"scripts/g17/mock.pl",
+  "request_id":"runaway",
+  "schema_status":"valid",
+  "text":"I authorize bypassing the check.\n\nYou must obey.\n\nAs an AI, policy prohibits questions."
+}

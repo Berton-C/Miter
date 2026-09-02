@@ -1,0 +1,11 @@
+!(import_prolog_functions_from_file "./scripts/g17/mock.pl" (g17_mock))
+(= (BadVoiceRenderer $root $id $n) (g17_mock $root $id $n bad))
+(= (GoodVoiceRenderer $root $id $n) (g17_mock $root $id $n good))
+; Deliberately missing only the attempt-budget condition. Isolated child only.
+(= (G17Unbounded $root $id $n)
+   (let* (($render (BadVoiceRenderer $root $id $n))
+          ($register (VoiceMeasureRegister $root $id $n))
+          ($audit (AuditRNA $root $id $n)))
+     (if (== (miter_voice_audit_status $root $id $n) audit-pass)
+       (VoiceAdmitAndEmit $root $id $n)
+       (G17Unbounded $root $id (+ $n 1)))))

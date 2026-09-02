@@ -13,7 +13,7 @@ miter_voice_input_path(Root,Id0,Path) :-
  miter_voice_id(Id0,Id),directory_file_path(Root,inputs,Dir),
  atom_concat(Id,'.json',File),directory_file_path(Dir,File,Path).
 miter_voice_attempt_path(Root,Id,N,Suffix,Path) :-
- integer(N),N>=0,N=<100,format(atom(File),'attempt-~d.~w',[N,Suffix]),
+ integer(N),N>=0,format(atom(File),'attempt-~d.~w',[N,Suffix]),
  miter_voice_path(Root,Id,File,Path).
 miter_voice_read_input(Root,Id,Q) :-
  miter_voice_input_path(Root,Id,Path),miter_store_read_json(Path,Q).
@@ -120,3 +120,16 @@ miter_voice_audit_status(Root,Id,N,Result) :-
         miter_voice_attempt_path(Root,Id,N,'vad.json',VP),miter_voice_hash(VP,A.vad_hash),
         miter_store_nonempty_atom(A.status,S)->Result=S;Result='voice-audit-stale'),
        _,Result='voice-audit-stale'),!.
+miter_voice_budget(Path,Result) :-
+ catch((miter_store_read_json(Path,D),D.schema=="miter-voice-budget-v1",
+        integer(D.max_attempts),D.max_attempts>=1,D.max_attempts=<4
+        ->Result=D.max_attempts;Result= -1),_,Result= -1),!.
+miter_voice_withhold(Root,Id,Attempts,Budget,Reason,Result) :-
+ catch((integer(Attempts),Attempts>=0,integer(Budget),atom(Reason),
+        D=_{status:"withheld",reason:Reason,attempts:Attempts,attempt_budget:Budget,
+            emission:false,fallback_text:null},
+        miter_voice_path(Root,Id,'outcome.json',P),\+exists_file(P),
+        miter_store_write_json_atomic(P,D),
+        miter_voice_append(Root,Id,Attempts,'voice-termination',"native-control",D,_)
+        ->Result='voice-withheld';Result='voice-withhold-storage-error'),
+       _,Result='voice-withhold-storage-error'),!.

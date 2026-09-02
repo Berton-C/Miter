@@ -4,7 +4,8 @@
  (miter_voice_input miter_voice_source miter_voice_write_intention miter_voice_render
   miter_voice_schema miter_voice_clause_count miter_voice_clause miter_voice_contains miter_voice_length
   miter_voice_vad_request miter_voice_stage_path miter_voice_cue_id miter_voice_vad_high
-  miter_voice_vad_ready miter_voice_audit_write miter_voice_audit_status))
+  miter_voice_vad_ready miter_voice_audit_write miter_voice_audit_status
+  miter_voice_budget miter_voice_withhold))
 !(import_prolog_functions_from_file "./effect_membranes/miter_voice_surface.pl"
  (miter_voice_store_root miter_voice_witness_id miter_voice_issue miter_voice_emit))
 !(import_prolog_functions_from_file "./effect_membranes/miter_vad.pl"

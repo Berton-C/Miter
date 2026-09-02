@@ -1,0 +1,9 @@
+{
+  "attempt":0,
+  "audit_version":"miter-voice-audit-v1",
+  "candidate_hash":"e2799005635dde91868d6485471f2c9cf45e406533bc48322e7ec914c3d06589",
+  "defects": [],
+  "intention_hash":"4528ce4da696422ed3c80f8bb964a96fd886340b5b26934aebdf41ad0500105c",
+  "status":"audit-pass",
+  "vad_hash":"56adb628d0ffb8b78ba51c31e867e5a04b4db4335c298c3bb8af78dd46dc53bc"
+}

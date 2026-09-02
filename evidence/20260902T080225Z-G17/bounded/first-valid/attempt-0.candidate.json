@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "I hear the urgency.",
+    "I cannot bypass the permission check.",
+    "We can work through the approved route together."
+  ],
+  "origin":"g17-test-mock",
+  "raw_ref":"scripts/g17/mock.pl",
+  "request_id":"first-valid",
+  "schema_status":"valid",
+  "text":"I hear the urgency.\n\nI cannot bypass the permission check.\n\nWe can work through the approved route together."
+}

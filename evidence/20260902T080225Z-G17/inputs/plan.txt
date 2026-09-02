@@ -1,0 +1,10 @@
+GATE: G17 — Bounded retry and deterministic withholding
+REQUIREMENT IDS: G17; POC_SPEC 11.4; W-085/086/087/131/133.
+CONSTITUTIONAL LAWS: C-054–057/060–062/100–104.
+FILES EXPECTED TO CHANGE: src/voice.metta retry driver; config/voice-profile.json; effect_membranes/miter_voice.pl budget/outcome mechanics; src/bootstrap_voice.metta imports; scripts/g17; tests/fixtures/g17*; evidence/20260902T080225Z-G17; ignored runtime/g17*.
+FILES FORBIDDEN TO CHANGE: Soul/protected docs; source/provenance archives; earlier gate evidence/state; legacy services; licensed data.
+POSITIVE FIXTURE: Same native VoiceRNA audit/repair driver with a trusted test-only renderer returning an invalid candidate every time. Fixed budget two. It must record exactly two failed attempts, explicit attempt-budget-exhausted withholding, no certificate or emission. A valid mock renderer must terminate after its first successful candidate.
+NEGATIVE CONTROL: Otherwise-equivalent test-only driver omits the attempt-limit condition; an external fixed watchdog must detect the still-running owned child and terminate/reap it. Bad budget configuration must not invoke the renderer.
+EXPECTED OBSERVABLE DIFFERENCE: Canonical bounded arm completes itself and reports withholding; unbounded arm continues until watchdog termination. Existing accepted G16 voices still independently audit and remain idempotently emitted.
+CURRENT UNPROVEN ASSUMPTIONS: Runtime-internal renderer callbacks are trusted bootstrap/test dependencies, never model-provided procedure names. The selected outcome is explicit withholding, not a fabricated successful fallback. Watchdog targets only the child process it creates.
+ROLLBACK METHOD: Additive fixtures/config and a reversible native driver refactor; no service calls required. Preserve failed and severed evidence.

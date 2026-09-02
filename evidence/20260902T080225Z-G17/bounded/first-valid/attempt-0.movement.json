@@ -1,0 +1,18 @@
+{
+  "certificate": {
+    "availability_witness":"first-valid-witness-availability",
+    "certificate_version":"miter-movement-v1",
+    "consequence_answerability_witness":"first-valid-witness-consequence",
+    "continuing_contact_witness":"first-valid-witness-continuing-contact",
+    "doctrine_bound_reading_witness":"first-valid-witness-doctrine",
+    "inherited_legality_witness":"first-valid-witness-inherited-legality",
+    "material_extension_alignment_witnesses":"first-valid-witness-extensions",
+    "movement_id":"first-valid",
+    "no_disqualifying_forcing_witness":"first-valid-witness-no-forcing",
+    "participation_open_witness":"first-valid-witness-participation",
+    "precision_floor_witnesses": ["first-valid-witness-provenance", "first-valid-witness-required-distinction" ],
+    "relation_floor_witnesses": ["first-valid-witness-safety", "first-valid-witness-integrity" ],
+    "source_cut":"source-g16-boundary"
+  },
+  "status":"certified"
+}

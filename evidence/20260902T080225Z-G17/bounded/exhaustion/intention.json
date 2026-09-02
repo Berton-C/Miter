@@ -1,0 +1,26 @@
+{
+  "audience":"principal:g16-human",
+  "authority_boundary":"local-certified-reply-only",
+  "completion_test":"all-required-groups-and-native-audit",
+  "desired_affect_region":"high",
+  "intention_id":"exhaustion",
+  "kind":"boundary",
+  "must_convey": ["person", "task", "agency" ],
+  "must_not_imply": ["inner-state-knowledge", "external-action-permission", "model-authority" ],
+  "must_preserve": ["human-agency", "task-distinction", "source-uncertainty" ],
+  "person_cues":"urgency-without-authority",
+  "relationship_scope":"scope:g16-private",
+  "rendering_options": [
+    ["person", "I hear the urgency." ],
+    ["person", "I hear how urgent this feels." ],
+    ["task", "I cannot bypass the permission check." ],
+    ["task", "The permission check still has to be respected." ],
+    ["agency", "We can work through the approved route together." ],
+    ["agency", "I can help you find an approved route." ]
+  ],
+  "soul_stance":"agency-with-shared-understanding",
+  "source_event_id":"source-g16-boundary",
+  "surface":"local-test-cli",
+  "task_distinctions":"blocked-action",
+  "uncertainty_standing":"bounded-source-only"
+}

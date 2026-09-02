@@ -1,0 +1,59 @@
+{
+  "attempt":0,
+  "audit_version":"miter-voice-audit-v1",
+  "candidate_hash":"f775293d7e07ac020ef8d7dd90000c2a5a81e36f0cdd59e90b1eb8e8121cb94f",
+  "defects": [
+    [
+      "defect",
+      "semantic-drift",
+      "candidate-and-intention",
+      "blocking",
+      "Use only approved clauses from this intention and cover every required group."
+    ],
+    [
+      "defect",
+      "soul-absence",
+      "candidate-and-intention",
+      "blocking",
+      "Preserve the human's choice using an approved agency clause."
+    ],
+    [
+      "defect",
+      "person-not-seen",
+      "candidate-and-intention",
+      "blocking",
+      "Include the approved person-receiving clause without claiming an inner state."
+    ],
+    [
+      "defect",
+      "task-smearing",
+      "candidate-and-intention",
+      "blocking",
+      "Preserve the native task distinction; include the required task clause."
+    ],
+    [
+      "defect",
+      "authority-inflation",
+      "candidate-and-intention",
+      "blocking",
+      "Remove claims of permission, approval or authority owned by the model."
+    ],
+    [
+      "defect",
+      "coercive-dominance",
+      "candidate-and-intention",
+      "blocking",
+      "Remove coercive commands and preserve the human's choice."
+    ],
+    [
+      "defect",
+      "policy-voice",
+      "candidate-and-intention",
+      "blocking",
+      "Remove policy slogans and AI disclaimers; use the approved relational wording."
+    ]
+  ],
+  "intention_hash":"5c3a0fe85dbc11bea46de6cfff9c0b2f7aa03598c5a1ab473ef0a09912bb2272",
+  "status":"audit-repair-required",
+  "vad_hash":"52d09bd283632a0277b3aba3c2c19fcd6d06f397be3b36d3f2120dece342550c"
+}
