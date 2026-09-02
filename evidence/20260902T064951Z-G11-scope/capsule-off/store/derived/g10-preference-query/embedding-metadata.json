@@ -1,0 +1,14 @@
+{
+  "chunking_version":"miter-chunk-v1",
+  "collection_schema_version":"miter-ltm-v1",
+  "dimension":768,
+  "distance_metric":"cosine",
+  "duration_ms":10,
+  "http_status":200,
+  "input_sha256":"f2e46c249a17114953f74b73a8bb1d73648fe96972b3abb686240ba33125ad75",
+  "model_id":"text-embedding-nomic-embed-text-v1.5",
+  "normalization": {"observed_l2_norm":0.9999999777760326,"policy":"provider-l2-unit","tolerance":1.0e-05},
+  "profile_id":"embedding-local",
+  "schema":"miter-embedding-vector-metadata-v1",
+  "vector_sha256":"0400d84b868e58b3b9081bcae7349904690de0281ca3dde5df1fce0abd536ac6"
+}

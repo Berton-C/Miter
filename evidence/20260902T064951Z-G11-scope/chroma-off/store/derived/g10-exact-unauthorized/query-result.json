@@ -1,0 +1,1 @@
+{"details": {"distances": [ [] ],"documents": [ [] ],"embeddings":null,"ids": [ [] ],"include": ["metadatas", "documents", "distances" ],"metadatas": [ [] ],"uris":null},"http_requests":3,"result":"chroma-query-stored","schema":"miter-chroma-result-v1"}

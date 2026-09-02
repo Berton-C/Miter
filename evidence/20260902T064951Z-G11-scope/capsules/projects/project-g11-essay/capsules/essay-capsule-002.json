@@ -1,0 +1,32 @@
+{
+  "audience_scope":"scope:g08-private-project",
+  "blocked_by": [],
+  "capsule_id":"essay-capsule-002",
+  "commitments": [
+    "Keep the key's warmth consistent with chapter-one foreshadowing.",
+    "Do not resolve Jonas's trustworthiness in this scene."
+  ],
+  "content_hash":"707d4fa883b27161899f2b080a0d2ed9ea967a0f0b65895dfc87ab8d26b61e5a",
+  "created_at":"2026-09-02T06:30:00Z",
+  "current_artifact_hash":"f08da3d1598b2f66f883ba532e500ece825d037d5be883f6e5c42bbece2f7d0a",
+  "current_artifact_ref":"tests/fixtures/g11_scope_essay.md",
+  "current_goal":"Research observatory imagery.",
+  "exact_location":"Essay section 2",
+  "last_completed_work":"Compared historical telescope rooms.",
+  "live_tensions": [
+    "Trust Jonas versus protecting the archive secret.",
+    "Urgency of the storm versus deliberate disclosure."
+  ],
+  "next_intended_movement":"Add the brass-stair source citation.",
+  "open_questions": ["Which source documents the brass stair?" ],
+  "previous_capsule_id":"essay-capsule-001",
+  "principal_scope":"principal:g08-human",
+  "project_id":"project-g11-essay",
+  "project_name":"observatory-essay-fixture",
+  "project_purpose":"Complete a continuity-preserving speculative novel draft.",
+  "relevant_event_ids": ["source-g11-scope-essay" ],
+  "relevant_memory_ids": [],
+  "schema_version":"miter-project-continuity-v1",
+  "status":"current",
+  "supersedes_capsule_id":"essay-capsule-001"
+}

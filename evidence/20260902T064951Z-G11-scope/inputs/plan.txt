@@ -1,0 +1,10 @@
+GATE: G11 supplemental specification-conformance check
+REQUIREMENT IDS: POC_SPEC 6.10; G11.
+CONSTITUTIONAL LAWS: C-034/035/041/042/100/104.
+FILES EXPECTED TO CHANGE: scripts/g11/prepare_scope.pl; tests/fixtures/g11_scope*; effect_membranes/miter_memory.pl exact source-header scope checks; this evidence run; ignored runtime/g11-scope.
+FILES FORBIDDEN TO CHANGE: prior gate evidence/stores, protected docs, initial_canon, docs/sources, legacy services/data, credentials, licensed data, ~/.miter.
+POSITIVE FIXTURE: Named book-continuity-fixture with earlier/later capsules, source event, superseded memory, and a related but different essay project/capsule/artifact. A two-project registry must select the book by declared kind and authenticated scope, not a singleton assumption.
+NEGATIVE CONTROL: Repeat Chroma-severed and capsule-resolver-severed arms with the distracting writing project present.
+EXPECTED OBSERVABLE DIFFERENCE: Exact book state survives Chroma removal, never resolves the essay, and cannot be certified when the capsule resolver is severed.
+CURRENT UNPROVEN ASSUMPTIONS: The initial G11 gate proof omitted POC_SPEC 6.10's competing-writing-project fixture and literal fixture name. Its evidence is retained as a narrower proof; this supplement must pass before continuing to G13.
+ROLLBACK METHOD: Keep all prior fixture state unchanged. New copied stores and additive capsules remain available; no service mutation occurs.

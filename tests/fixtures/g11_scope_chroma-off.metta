@@ -1,0 +1,5 @@
+!(import! &self (library lib_import))
+!(import_prolog_functions_from_file "./effect_membranes/miter_resume.pl" (miter_resume_field miter_resume_registry_count miter_resume_registry_project miter_resume_begin miter_resume_witness miter_resume_answer miter_memory_query miter_continuity_reconstruct))
+!(import! &self "/Users/claritymiter/miter/src/memory.metta")
+!(import! &self "/Users/claritymiter/miter/src/continuity.metta")
+!(ContinuityRNA "runtime/g11-scope/chroma-off/context.json" chroma-off)

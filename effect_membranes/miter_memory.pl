@@ -17,12 +17,17 @@ miter_mem_sources(Root, C) :-
     miter_store_load_ledger(Root, Lines),
     miter_store_analyze(Root, Lines, A, Events),
     A.status == valid, C.source_event_ids = [_|_],
-    forall(member(Id, C.source_event_ids), (member(E, Events), E.event_id == Id)),
+    forall(member(Id, C.source_event_ids),
+           (member(E, Events), E.event_id == Id,
+            E.source_principal == C.principal_scope,
+            E.audience_scope == C.audience_scope,
+            E.project_scope == C.project_scope)),
     ( C.source_capsule_ref == "none" -> true
     ; miter_chroma_read_json(C.source_capsule_ref, Capsule),
       miter_continuity_capsule_valid(Capsule),
       miter_continuity_validate_artifact(Capsule),
       Capsule.capsule_id == C.source_capsule_id,
+      Capsule.project_id == C.project_scope,
       Capsule.principal_scope == C.principal_scope,
       Capsule.audience_scope == C.audience_scope ),
     forall(member(Old, C.supersedes_ids), miter_mem_load(Root, Old, _, _)).
