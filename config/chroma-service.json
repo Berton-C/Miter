@@ -1,0 +1,16 @@
+{
+  "schema": "miter-chroma-service-v1",
+  "endpoint": "http://127.0.0.1:8001",
+  "distribution_version": "1.5.9",
+  "api_version_response": "1.0.0",
+  "cli_version_response": "1.4.4",
+  "image": "docker.io/chromadb/chroma:1.5.9@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6",
+  "container": "miter-chroma",
+  "volume": "miter-chroma-v1",
+  "tenant": "default_tenant",
+  "database": "default_database",
+  "collection": "miter-ltm-v1",
+  "embedding_profile_sha256": "0bd1ec2ff3f91f5ee51bc8ee665761ccf24bab434518565eff0f8aea3a41dfc0",
+  "source_store_root": "/Users/claritymiter/miter/runtime",
+  "miter_version": "poc-v0.1"
+}

@@ -1,0 +1,12 @@
+[package]
+name = "chroma-cli"
+version = "1.4.4"
+edition = "2021"
+
+[dependencies]
+arboard = "3.4.1"
+bytes = { workspace = true }
+clap = { version = "4.5.28", features = ["derive"] }
+chroma = { workspace = true }
+chroma-frontend = { workspace = true }
+chroma-config = { workspace = true }

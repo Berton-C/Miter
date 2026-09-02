@@ -1,0 +1,17 @@
+{
+  "gate_id": "G09",
+  "status": "BLOCKED",
+  "claims": [
+    {
+      "claim": "Verified legacy backup and unchanged-state isolation proof",
+      "status": "FAIL",
+      "evidence": ["completion_report.md", "raw/legacy_state.json", "raw/legacy_collections.tsv"]
+    }
+  ],
+  "negative_control_difference": false,
+  "notes": [
+    "Preflight only; required positive and negative arms have not been executed.",
+    "Awaiting explicit permission to pause the user-started legacy writer.",
+    "No service changes, backup, collection mutations, commit, or push."
+  ]
+}

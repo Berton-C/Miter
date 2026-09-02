@@ -1,0 +1,5 @@
+PASS runtime/g09/wrong-profile.json [chroma-profile-mismatch]
+PASS runtime/g09/legacy-target.json [chroma-target-blocked]
+PASS runtime/g09/legacy-http.json [chroma-target-blocked]
+PASS /nonexistent/miter-request.json [chroma-membrane-error]
+PASS invalid-scalar total

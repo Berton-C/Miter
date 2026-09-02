@@ -1,0 +1,10 @@
+GATE: G09
+REQUIREMENT IDS: G09; POC_SPEC 6.4/6.5; D-038; W-010..017, W-040..044, W-050..053.
+CONSTITUTIONAL LAWS: C-032, C-033, C-035, C-043, C-060..065, C-100..105.
+FILES EXPECTED TO CHANGE: config/chroma-service.json; effect_membranes/miter_chroma_service.pl; scripts/g09/; tests/fixtures/g09*; this evidence run. Retain the earlier blocked preflight unchanged.
+FILES FORBIDDEN TO CHANGE: initial_canon, docs/sources, protected documents, legacy data except normal service shutdown/restart writes, licensed NRC data, credentials, ~/.miter.
+POSITIVE FIXTURE: Separate pinned Chroma 1.5.9 container miter-chroma on 127.0.0.1:8001 with fresh volume miter-chroma-v1. Create and separately verify miter-ltm-v1 with complete G06 embedding metadata. Independently compare legacy identity, counts, and hashes over the stopped-writer test window; verify the byte-for-byte backup first.
+NEGATIVE CONTROL: Wrong embedding-profile fingerprint and explicitly legacy-targeted insertion both reject before any HTTP request. The actual legacy deployment is embedded (no HTTP endpoint): test its real persistence URI, plus disallowed historical HTTP port 8000. Verify no legacy mutation and no inserted Miter records.
+EXPECTED OBSERVABLE DIFFERENCE: Isolated collection creation succeeds; negative inserts produce typed pre-dispatch rejections with zero HTTP requests and unchanged counts.
+CURRENT UNPROVEN ASSUMPTIONS: Chroma image/API compatibility and actual native membrane execution remain unproven. User explicitly approved a brief stop of only clarity_omega, verified backup/isolation, and restart on 2026-09-02. No migration or legacy inspection server is needed.
+ROLLBACK METHOD: Restart clarity_omega on success or error; preserve its backup. Stop only miter-chroma if isolation fails; preserve its fresh volume for diagnosis. Git changes remain separately reviewable; no force/reset or protected-file edits.

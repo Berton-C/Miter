@@ -1,0 +1,26 @@
+docker.io/chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6: Pulling from chromadb/chroma
+af930220c3b8: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+b3d387d9b72e: Pulling fs layer
+40d643378433: Pulling fs layer
+d69102e172ea: Pulling fs layer
+40d643378433: Waiting
+d69102e172ea: Waiting
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+40d643378433: Verifying Checksum
+40d643378433: Download complete
+b3d387d9b72e: Verifying Checksum
+b3d387d9b72e: Download complete
+af930220c3b8: Verifying Checksum
+af930220c3b8: Download complete
+af930220c3b8: Pull complete
+4f4fb700ef54: Pull complete
+b3d387d9b72e: Pull complete
+40d643378433: Pull complete
+d69102e172ea: Verifying Checksum
+d69102e172ea: Download complete
+d69102e172ea: Pull complete
+Digest: sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6
+Status: Downloaded newer image for chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6
+docker.io/chromadb/chroma:1.5.9@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6

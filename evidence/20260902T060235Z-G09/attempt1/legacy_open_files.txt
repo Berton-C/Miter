@@ -1,0 +1,9 @@
+COMMAND     PID USER   FD   TYPE DEVICE  SIZE/OFF    NODE NAME
+com.apple 18176  bcb   30r   DIR   1,17       128 1382918 /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db
+com.apple 18176  bcb 1960r   REG   1,17 237617152 1382954 /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/chroma.sqlite3
+com.apple 18176  bcb 1979r   DIR   1,17       224 1382919 /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911
+com.apple 18176  bcb 1981r   REG   1,17   4246204 1382951 /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/index_metadata.pickle
+com.apple 18176  bcb 1982r   REG   1,17       100 1382950 /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/header.bin
+com.apple 18176  bcb 1984r   REG   1,17 212151588 1382921 /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/data_level0.bin
+com.apple 18176  bcb 1986r   REG   1,17    200332 1382952 /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/length.bin
+com.apple 18176  bcb 1988r   REG   1,17    437312 1382953 /Users/bcb/Documents/ClarityOmega/clarityomega/volumes/omegaclaw/chroma_db/90631b0c-2120-4c46-8e59-b9d299602911/link_lists.bin

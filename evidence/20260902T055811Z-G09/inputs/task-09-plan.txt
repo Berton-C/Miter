@@ -1,0 +1,10 @@
+GATE: G09 — Chroma service isolation and safe collection creation
+REQUIREMENT IDS: G09; POC_SPEC sections 6.4 and 6.5; D-005 and D-038; W-010 through W-017, W-040 through W-044, W-050 through W-053.
+CONSTITUTIONAL LAWS: C-032, C-033, C-035, C-043, C-060, C-061, C-062, C-064, C-065, C-100 through C-105.
+FILES EXPECTED TO CHANGE: This G09 preflight evidence only until authority to pause the legacy writer is obtained. After that, bounded Chroma service config, membrane, fixtures, and independent verifier.
+FILES FORBIDDEN TO CHANGE: initial_canon/, docs/sources/, protected authority documents, ClarityOmega repository/persistence, NRC assets, credentials, and ~/.miter.
+POSITIVE FIXTURE: Verified legacy backup and unchanged legacy container/persistence/collections/counts; isolated pinned Miter Chroma 1.5.9 on loopback port 8001 with fresh miter-chroma-v1 volume and miter-ltm-v1 collection carrying G06 embedding metadata.
+NEGATIVE CONTROL: Wrong embedding-profile version and a misdirected legacy-target write must be rejected before mutation. No legacy HTTP service has been identified; do not invent an endpoint or claim a simulated target is the real deployment.
+EXPECTED OBSERVABLE DIFFERENCE: The authorized isolated collection is created and separately read back; both forbidden writes leave stored state unchanged.
+CURRENT UNPROVEN ASSUMPTIONS: Backup has not been performed or verified. User started clarity_omega during preflight at 2026-09-02T05:57:02.729975709Z; explicit approval for a temporary interruption is absent. Live unchanged-count proof and negative controls have not been run.
+ROLLBACK METHOD: No service or core changes have been made. Preserve this evidence. Do not stop/restart the user's service or remove any data without authorization.

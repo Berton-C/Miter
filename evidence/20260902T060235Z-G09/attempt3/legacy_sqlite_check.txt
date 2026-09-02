@@ -1,0 +1,1 @@
+malformed inverted index for FTS5 table main.embedding_fulltext_search

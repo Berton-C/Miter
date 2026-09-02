@@ -1,0 +1,7 @@
+!(import! &self (library lib_import))
+!(import_prolog_functions_from_file "./effect_membranes/miter_chroma_service.pl" (miter_chroma_service_request))
+!(miter_chroma_service_request "config/chroma-service.json" "config/embedding-profile.json" "tests/fixtures/g09_snapshot.json" "runtime/g09/before.json")
+!(miter_chroma_service_request "config/chroma-service.json" "config/embedding-profile.json" "runtime/g09/wrong-profile.json" "runtime/g09/wrong-profile-result.json")
+!(miter_chroma_service_request "config/chroma-service.json" "config/embedding-profile.json" "runtime/g09/legacy-target.json" "runtime/g09/legacy-target-result.json")
+!(miter_chroma_service_request "config/chroma-service.json" "config/embedding-profile.json" "runtime/g09/legacy-http.json" "runtime/g09/legacy-http-result.json")
+!(miter_chroma_service_request "config/chroma-service.json" "config/embedding-profile.json" "tests/fixtures/g09_snapshot.json" "runtime/g09/after.json")

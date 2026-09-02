@@ -1,0 +1,265 @@
+{
+  "collection": {
+    "configuration_json": {
+      "embedding_function": null,
+      "hnsw": {
+        "ef_construction": 100,
+        "ef_search": 100,
+        "max_neighbors": 16,
+        "resize_factor": 1.2,
+        "space": "cosine",
+        "sync_threshold": 1000
+      },
+      "spann": null
+    },
+    "database": "default_database",
+    "dimension": null,
+    "id": "81cae435-d5cf-4141-a350-5808a02a6083",
+    "log_position": 0,
+    "metadata": {
+      "chunking_algorithm": "utf8-codepoint-sliding-window",
+      "chunking_version": "miter-chunk-v1",
+      "collection_status": "active",
+      "created_at": "2026-09-02T06:02:35Z",
+      "distance_metric": "cosine",
+      "embedding_dimension": 768,
+      "embedding_model_id": "text-embedding-nomic-embed-text-v1.5",
+      "embedding_profile_id": "embedding-local",
+      "embedding_profile_sha256": "0bd1ec2ff3f91f5ee51bc8ee665761ccf24bab434518565eff0f8aea3a41dfc0",
+      "miter_version": "poc-v0.1",
+      "normalization": "provider-l2-unit",
+      "schema_version": "miter-ltm-v1",
+      "source_store_root": "/Users/claritymiter/miter/runtime"
+    },
+    "name": "miter-ltm-v1",
+    "schema": {
+      "defaults": {
+        "bool": {
+          "bool_inverted_index": {
+            "config": {},
+            "enabled": true
+          }
+        },
+        "float": {
+          "float_inverted_index": {
+            "config": {},
+            "enabled": true
+          }
+        },
+        "float_list": {
+          "vector_index": {
+            "config": {
+              "hnsw": {
+                "batch_size": 100,
+                "ef_construction": 100,
+                "ef_search": 100,
+                "max_neighbors": 16,
+                "num_threads": 10,
+                "resize_factor": 1.2,
+                "sync_threshold": 1000
+              },
+              "space": "cosine"
+            },
+            "enabled": false
+          }
+        },
+        "int": {
+          "int_inverted_index": {
+            "config": {},
+            "enabled": true
+          }
+        },
+        "sparse_vector": {
+          "sparse_vector_index": {
+            "config": {
+              "bm25": false,
+              "embedding_function": {
+                "type": "unknown"
+              }
+            },
+            "enabled": false
+          }
+        },
+        "string": {
+          "fts_index": {
+            "config": {},
+            "enabled": false
+          },
+          "string_inverted_index": {
+            "config": {},
+            "enabled": true
+          }
+        }
+      },
+      "keys": {
+        "#document": {
+          "string": {
+            "fts_index": {
+              "config": {},
+              "enabled": true
+            },
+            "string_inverted_index": {
+              "config": {},
+              "enabled": false
+            }
+          }
+        },
+        "#embedding": {
+          "float_list": {
+            "vector_index": {
+              "config": {
+                "hnsw": {
+                  "batch_size": 100,
+                  "ef_construction": 100,
+                  "ef_search": 100,
+                  "max_neighbors": 16,
+                  "num_threads": 10,
+                  "resize_factor": 1.2,
+                  "sync_threshold": 1000
+                },
+                "source_key": "#document",
+                "space": "cosine"
+              },
+              "enabled": true
+            }
+          }
+        }
+      }
+    },
+    "tenant": "default_tenant",
+    "version": 0
+  },
+  "collections": [
+    {
+      "configuration_json": {
+        "embedding_function": null,
+        "hnsw": {
+          "ef_construction": 100,
+          "ef_search": 100,
+          "max_neighbors": 16,
+          "resize_factor": 1.2,
+          "space": "cosine",
+          "sync_threshold": 1000
+        },
+        "spann": null
+      },
+      "database": "default_database",
+      "dimension": null,
+      "id": "81cae435-d5cf-4141-a350-5808a02a6083",
+      "log_position": 0,
+      "metadata": {
+        "chunking_algorithm": "utf8-codepoint-sliding-window",
+        "chunking_version": "miter-chunk-v1",
+        "collection_status": "active",
+        "created_at": "2026-09-02T06:02:35Z",
+        "distance_metric": "cosine",
+        "embedding_dimension": 768,
+        "embedding_model_id": "text-embedding-nomic-embed-text-v1.5",
+        "embedding_profile_id": "embedding-local",
+        "embedding_profile_sha256": "0bd1ec2ff3f91f5ee51bc8ee665761ccf24bab434518565eff0f8aea3a41dfc0",
+        "miter_version": "poc-v0.1",
+        "normalization": "provider-l2-unit",
+        "schema_version": "miter-ltm-v1",
+        "source_store_root": "/Users/claritymiter/miter/runtime"
+      },
+      "name": "miter-ltm-v1",
+      "schema": {
+        "defaults": {
+          "bool": {
+            "bool_inverted_index": {
+              "config": {},
+              "enabled": true
+            }
+          },
+          "float": {
+            "float_inverted_index": {
+              "config": {},
+              "enabled": true
+            }
+          },
+          "float_list": {
+            "vector_index": {
+              "config": {
+                "hnsw": {
+                  "batch_size": 100,
+                  "ef_construction": 100,
+                  "ef_search": 100,
+                  "max_neighbors": 16,
+                  "num_threads": 10,
+                  "resize_factor": 1.2,
+                  "sync_threshold": 1000
+                },
+                "space": "cosine"
+              },
+              "enabled": false
+            }
+          },
+          "int": {
+            "int_inverted_index": {
+              "config": {},
+              "enabled": true
+            }
+          },
+          "sparse_vector": {
+            "sparse_vector_index": {
+              "config": {
+                "bm25": false,
+                "embedding_function": {
+                  "type": "unknown"
+                }
+              },
+              "enabled": false
+            }
+          },
+          "string": {
+            "fts_index": {
+              "config": {},
+              "enabled": false
+            },
+            "string_inverted_index": {
+              "config": {},
+              "enabled": true
+            }
+          }
+        },
+        "keys": {
+          "#document": {
+            "string": {
+              "fts_index": {
+                "config": {},
+                "enabled": true
+              },
+              "string_inverted_index": {
+                "config": {},
+                "enabled": false
+              }
+            }
+          },
+          "#embedding": {
+            "float_list": {
+              "vector_index": {
+                "config": {
+                  "hnsw": {
+                    "batch_size": 100,
+                    "ef_construction": 100,
+                    "ef_search": 100,
+                    "max_neighbors": 16,
+                    "num_threads": 10,
+                    "resize_factor": 1.2,
+                    "sync_threshold": 1000
+                  },
+                  "source_key": "#document",
+                  "space": "cosine"
+                },
+                "enabled": true
+              }
+            }
+          }
+        }
+      },
+      "tenant": "default_tenant",
+      "version": 0
+    }
+  ],
+  "count": 0
+}
