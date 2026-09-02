@@ -1,0 +1,63 @@
+{
+  "schema":"miter-g10-candidates-v1",
+  "base": {
+    "schema":"miter-memory-candidate-v1",
+    "principal_scope":"principal:g08-human",
+    "audience_scope":"scope:g08-private-project",
+    "project_scope":"project-g08-glass-archive",
+    "sensitivity":"private",
+    "durability":"durable",
+    "provenance_kind":"direct-contact",
+    "created_at":"2026-09-02T06:00:00Z",
+    "source_capsule_id":"none",
+    "source_capsule_ref":"none",
+    "source_artifact_refs":[],
+    "supersedes_ids":[],
+    "correction_reason":"none"
+  },
+  "candidates":[
+    {
+      "memory_id":"mem-g10-checkpoint",
+      "memory_type":"project-checkpoint",
+      "title":"The Glass Archive manuscript checkpoint",
+      "summary":"Paused in chapter three at Mara's archive-key decision.",
+      "body":"The Glass Archive book is paused at Chapter 3 / The Observatory / paragraph 4 decision beat. The observatory entrance was revised and a stair added beneath the silent telescope. The unresolved question is whether Mara should reveal the archive key to Jonas before the storm breaks. Next: draft Mara's decision beat, then test the reveal against chapter-one foreshadowing.",
+      "why_later":"Recover the exact writing checkpoint after a long absence.",
+      "source_event_ids":["source-g10-checkpoint"],
+      "provenance_kind":"capsule-derived",
+      "source_capsule_id":"capsule-g08-002",
+      "source_capsule_ref":"runtime/g08/continuity/projects/project-g08-glass-archive/capsules/capsule-g08-002.json",
+      "source_artifact_refs":["tests/fixtures/g08_manuscript.md"]
+    },
+    {
+      "memory_id":"mem-g10-pref-old",
+      "memory_type":"relationship-preference",
+      "title":"Earlier writing feedback preference",
+      "summary":"Brief and upbeat feedback was previously requested.",
+      "body":"For our writing sessions, keep feedback brief and upbeat.",
+      "why_later":"Respect the human's stated working preference while it remains current.",
+      "source_event_ids":["source-g10-pref-old"]
+    },
+    {
+      "memory_id":"mem-g10-transient",
+      "memory_type":"fact",
+      "title":"Transient kettle observation",
+      "summary":"An incidental sound without future relevance.",
+      "body":"The kettle clicked while I waited.",
+      "why_later":"none",
+      "durability":"transient",
+      "source_event_ids":["source-g10-transient"]
+    },
+    {
+      "memory_id":"mem-g10-pref-new",
+      "memory_type":"relationship-preference",
+      "title":"Corrected writing feedback preference",
+      "summary":"Detailed, candid feedback with unresolved questions preserved.",
+      "body":"For our writing sessions, give detailed, candid feedback and preserve unresolved questions.",
+      "why_later":"The human explicitly corrected the working preference for future sessions.",
+      "source_event_ids":["source-g10-pref-new"],
+      "supersedes_ids":["mem-g10-pref-old"],
+      "correction_reason":"Explicit human correction; the prior preference remains historical."
+    }
+  ]
+}

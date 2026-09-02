@@ -1,0 +1,4 @@
+miter-chroma Up 6 minutes 127.0.0.1:8001->8000/tcp
+clarity_omega Up 6 minutes 
+clarityclaw_mattermost Up 13 hours (healthy) 0.0.0.0:8065->8065/tcp, [::]:8065->8065/tcp
+clarityclaw_db Up 13 hours 5432/tcp

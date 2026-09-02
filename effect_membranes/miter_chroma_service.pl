@@ -38,10 +38,17 @@ miter_cs_dispatch(C, PP, P, Q, OP, Result, Details) :-
     miter_cs_require(HashString == C.embedding_profile_sha256, 'chroma-profile-mismatch'),
     miter_cs_require(Q.embedding_profile_sha256 == HashString, 'chroma-profile-mismatch'),
     miter_chroma_profile(P, _, _, _, _, _, _, _, _),
-    miter_cs_require(memberchk(Q.operation, ["create", "snapshot", "add"]),
+    miter_cs_require(memberchk(Q.operation, ["create", "snapshot", "add", "upsert", "query", "get"]),
                      'chroma-operation-blocked'),
     % Validate add payload before health/collection queries as well.
-    ( Q.operation == "add" -> miter_cs_validate_add(P, Q) ; true ),
+    ( memberchk(Q.operation,["add","upsert"]) -> miter_cs_validate_add(P, Q) ; true ),
+    ( Q.operation == "query" ->
+        miter_chroma_read_json(Q.embedding_response_ref, QR),
+        miter_chroma_validate_response(P, QR, QV, _),
+        miter_cs_require(QV == 'embedding-valid', QV),
+        miter_cs_require((is_dict(Q.where), integer(Q.n_results),
+                          between(1, 20, Q.n_results)), 'chroma-query-invalid')
+    ; true ),
     miter_cs_http(C, get, '/api/v2/version', none, OP, Version),
     miter_cs_require(Version == C.api_version_response, 'chroma-server-version-mismatch'),
     miter_cs_operation(Q.operation, C, P, Q, OP, Result, Details).
@@ -85,11 +92,28 @@ miter_cs_operation("snapshot", C, P, _, OP, 'chroma-snapshot-stored', Details) :
     miter_cs_http(C, get, Path, none, OP, Count),
     Details = _{collections:Collections, collection:Collection, count:Count}.
 miter_cs_operation("add", C, P, Q, OP, 'chroma-record-added', _{record_id:Q.record_id}) :-
+    miter_cs_write_record("add", C, P, Q, OP).
+miter_cs_operation("upsert", C, P, Q, OP, 'chroma-record-indexed', _{record_id:Q.record_id}) :-
+    miter_cs_write_record("upsert", C, P, Q, OP).
+miter_cs_operation("query", C, P, Q, OP, 'chroma-query-stored', Response) :-
+    miter_cs_get_collection(C, P, OP, Collection),
+    miter_chroma_read_json(Q.embedding_response_ref, ER),
+    miter_chroma_response_vector(ER, _, Vector),
+    miter_cs_base(Base), format(atom(Path), '~w/~s/query', [Base, Collection.id]),
+    miter_cs_http(C, post, Path,
+        _{query_embeddings:[Vector],where:Q.where,n_results:Q.n_results,
+          include:["metadatas","documents","distances"]}, OP, Response).
+miter_cs_operation("get", C, P, _, OP, 'chroma-records-stored', Response) :-
+    miter_cs_get_collection(C, P, OP, Collection),
+    miter_cs_base(Base), format(atom(Path), '~w/~s/get', [Base, Collection.id]),
+    miter_cs_http(C, post, Path, _{include:["metadatas","documents"]}, OP, Response).
+
+miter_cs_write_record(Operation, C, P, Q, OP) :-
     miter_cs_get_collection(C, P, OP, Collection),
     miter_chroma_read_json(Q.embedding_response_ref, Response),
     miter_chroma_response_vector(Response, _, Vector),
     miter_cs_base(Base),
-    format(atom(Path), '~w/~s/add', [Base, Collection.id]),
+    format(atom(Path), '~w/~s/~s', [Base, Collection.id, Operation]),
     Body = _{ids:[Q.record_id], embeddings:[Vector], documents:[Q.document],
              metadatas:[Q.metadata]},
     miter_cs_http(C, post, Path, Body, OP, _).

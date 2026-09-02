@@ -1,0 +1,4 @@
+source-g10-checkpoint event-appended
+source-g10-pref-old event-appended
+source-g10-transient event-appended
+source-g10-pref-new event-appended

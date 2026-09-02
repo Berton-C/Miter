@@ -1,0 +1,6 @@
+
+Warning: /Users/claritymiter/miter/effect_membranes/miter_chroma_service.pl:107:
+Warning:    Clauses of miter_cs_operation/7 are not together in the source-file
+Warning:    Earlier definition at /Users/claritymiter/miter/effect_membranes/miter_chroma_service.pl:80
+Warning:    Current predicate: miter_cs_write_record/5
+Warning:    Use :- discontiguous miter_cs_operation/7. to suppress this message

@@ -1,0 +1,273 @@
+[33m--> metta runnable  -->
+[36m!(import! &self (library lib_import))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library(lib_import, B),
+             'import!'('&self', B, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function consult)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(consult, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_file $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                           ($prologfile (consult))
+                                                                           ($function (superpose $importfunctions)))
+                                                                          (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_file(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    consult(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function use_module)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(use_module, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_module $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                             ($prologfile (use_module))
+                                                                             ($function (superpose $importfunctions)))
+                                                                            (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_module(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    use_module(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file (library lib_import.pl) (static-import! git-import! use-module!))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library('lib_import.pl', B),
+             import_prolog_functions_from_file(B,
+                                               [ 'static-import!',
+                                                 'git-import!',
+                                                 'use-module!'
+                                               ],
+                                               A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_memory.pl" (miter_memory_supersession_count miter_memory_index))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_memory.pl",
+                                             [ miter_memory_supersession_count,
+                                               miter_memory_index
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/memory.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/memory.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MemoryTypeAllowed $kind)
+   (or (or (== $kind project-checkpoint) (== $kind relationship-preference))
+       (or (or (== $kind fact) (== $kind decision))
+           (or (or (== $kind commitment) (== $kind episode))
+               (or (or (== $kind relationship) (== $kind open-question))
+                   (or (== $kind learned-procedure) (== $kind developmental-trace)))))))
+[33m--> prolog clause -->
+[32m'MemoryTypeAllowed'(A, B) :-
+    ==(A, 'project-checkpoint', C),
+    ==(A, 'relationship-preference', D),
+    or(C, D, E),
+    ==(A, fact, F),
+    ==(A, decision, G),
+    or(F, G, H),
+    ==(A, commitment, I),
+    ==(A, episode, J),
+    or(I, J, K),
+    ==(A, relationship, L),
+    ==(A, 'open-question', M),
+    or(L, M, N),
+    ==(A, 'learned-procedure', O),
+    ==(A, 'developmental-trace', P),
+    or(O, P, Q),
+    or(N, Q, R),
+    or(K, R, S),
+    or(H, S, T),
+    or(E, T, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MemoryAdmission $kind $durability $provenance $source)
+   (if (== $durability transient) rejected-transient
+     (if (== $source sources-verified)
+       (if (== $durability durable)
+         (if (MemoryTypeAllowed $kind)
+           (if (or (== $provenance direct-contact) (== $provenance capsule-derived))
+             admitted rejected-provenance)
+           rejected-type)
+         rejected-durability)
+       rejected-source)))
+[33m--> prolog clause -->
+[32m'MemoryAdmission'(A, B, C, D, E) :-
+    ==(B, transient, F),
+    (   F==true
+    ->  E='rejected-transient'
+    ;   ==(D, 'sources-verified', G),
+        (   G==true
+        ->  ==(B, durable, H),
+            (   H==true
+            ->  'MemoryTypeAllowed'(A, I),
+                (   I==true
+                ->  ==(C, 'direct-contact', J),
+                    ==(C, 'capsule-derived', K),
+                    or(J, K, L),
+                    (   L==true
+                    ->  E=admitted
+                    ;   E='rejected-provenance'
+                    )
+                ;   E='rejected-type'
+                )
+            ;   E='rejected-durability'
+            )
+        ;   E='rejected-source'
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MemoryCandidateRNA $root $extension $candidate)
+   (let* (($kind (miter_memory_field $candidate "memory_type"))
+          ($durability (miter_memory_field $candidate "durability"))
+          ($provenance (miter_memory_field $candidate "provenance_kind"))
+          ($source (miter_memory_check_sources $root $candidate))
+          ($decision (MemoryAdmission $kind $durability $provenance $source)))
+     (if (== $decision admitted)
+       (miter_memory_persist $root $extension $candidate)
+       (miter_memory_reject $root $extension $candidate $decision))))
+[33m--> prolog clause -->
+[32m'MemoryCandidateRNA'(A, B, C, D) :-
+    E=[miter_memory_field, C, "memory_type"],
+    F=[miter_memory_field, C, "durability"],
+    G=[miter_memory_field, C, "provenance_kind"],
+    H=[miter_memory_check_sources, A, C],
+    I=J,
+    'MemoryAdmission'(E, F, G, H, J),
+    ==(I, admitted, K),
+    (   K==true
+    ->  D=[miter_memory_persist, A, B, C]
+    ;   D=[miter_memory_reject, A, B, C, I]
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MemoryStanding $root $id)
+   (let $count (miter_memory_supersession_count $root $id)
+     (if (< $count 0) malformed
+       (if (> $count 0) superseded active))))
+[33m--> prolog clause -->
+[32m'MemoryStanding'(A, B, C) :-
+    D=E,
+    miter_memory_supersession_count(A, B, E),
+    <(D, 0, F),
+    (   F==true
+    ->  C=malformed
+    ;   >(D, 0, G),
+        (   G==true
+        ->  C=superseded
+        ;   C=active
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (IndexAdmittedMemoryRNA $root $id)
+   (let $standing (MemoryStanding $root $id)
+     (if (== $standing malformed) memory-integrity-failed
+       (miter_memory_index $root $id $standing))))
+[33m--> prolog clause -->
+[32m'IndexAdmittedMemoryRNA'(A, B, C) :-
+    D=E,
+    'MemoryStanding'(A, B, E),
+    ==(D, malformed, F),
+    (   F==true
+    ->  C='memory-integrity-failed'
+    ;   miter_memory_index(A, B, D, C)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (RecallRNA $root $principal $audience $project $standing $text $tag)
+   (if (or (== $standing active) (== $standing superseded))
+     (miter_memory_query $root $principal $audience $project $standing $text $tag)
+     invalid-recall-standing))
+[33m--> prolog clause -->
+[32m'RecallRNA'(A,
+                 B,
+                 C,
+                 D,
+                 E,
+                 F,
+                 G,
+                 H) :-
+    ==(E, active, I),
+    ==(E, superseded, J),
+    or(I, J, K),
+    (   K==true
+    ->  H=[miter_memory_query, A, B, C, D, E, F, G]
+    ;   H='invalid-recall-standing'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(MemoryStanding "runtime/g10/store" "mem-g10-pref-old")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'MemoryStanding'("runtime/g10/store", "mem-g10-pref-old", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(MemoryStanding "runtime/g10/store" "mem-g10-pref-new")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'MemoryStanding'("runtime/g10/store", "mem-g10-pref-new", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(IndexAdmittedMemoryRNA "runtime/g10/store" "mem-g10-checkpoint")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'IndexAdmittedMemoryRNA'("runtime/g10/store",
+                                    "mem-g10-checkpoint",
+                                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(IndexAdmittedMemoryRNA "runtime/g10/store" "mem-g10-pref-old")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'IndexAdmittedMemoryRNA'("runtime/g10/store", "mem-g10-pref-old", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(IndexAdmittedMemoryRNA "runtime/g10/store" "mem-g10-pref-new")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'IndexAdmittedMemoryRNA'("runtime/g10/store", "mem-g10-pref-new", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+true
+true
+true
+superseded
+active
+memory-indexed
+memory-indexed
+memory-indexed

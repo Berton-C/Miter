@@ -1,0 +1,7 @@
+!(import! &self (library lib_import))
+!(import_prolog_functions_from_file "./effect_membranes/miter_memory.pl" (miter_memory_field miter_memory_check_sources miter_memory_persist miter_memory_reject))
+!(import! &self "/Users/claritymiter/miter/src/memory.metta")
+!(MemoryCandidateRNA "runtime/g10/store" "runtime/g07/libmiter_store_posix.dylib" "runtime/g10/candidates/mem-g10-checkpoint.json")
+!(MemoryCandidateRNA "runtime/g10/store" "runtime/g07/libmiter_store_posix.dylib" "runtime/g10/candidates/mem-g10-pref-old.json")
+!(MemoryCandidateRNA "runtime/g10/store" "runtime/g07/libmiter_store_posix.dylib" "runtime/g10/candidates/mem-g10-transient.json")
+!(MemoryCandidateRNA "runtime/g10/store" "runtime/g07/libmiter_store_posix.dylib" "runtime/g10/candidates/mem-g10-pref-new.json")

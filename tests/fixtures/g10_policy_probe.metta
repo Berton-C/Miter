@@ -1,0 +1,8 @@
+!(import! &self (library lib_import))
+!(import! &self "/Users/claritymiter/miter/src/memory.metta")
+!(MemoryAdmission project-checkpoint durable capsule-derived sources-verified)
+!(MemoryAdmission relationship-preference durable direct-contact sources-verified)
+!(MemoryAdmission fact transient direct-contact sources-verified)
+!(MemoryAdmission fact durable model-generated sources-verified)
+!(MemoryAdmission fact durable direct-contact missing-source)
+!(MemoryAdmission arbitrary-type durable direct-contact sources-verified)

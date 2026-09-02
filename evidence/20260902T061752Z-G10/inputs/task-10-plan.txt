@@ -1,0 +1,10 @@
+GATE: G10
+REQUIREMENT IDS: G10; POC_SPEC 6.2/6.4/6.7/6.8; W-054..058.
+CONSTITUTIONAL LAWS: C-020, C-023, C-032..044, C-060..065, C-100..105.
+FILES EXPECTED TO CHANGE: src/memory.metta; effect_membranes/miter_memory.pl and miter_chroma_service.pl; scripts/g10; tests/fixtures/g10*; this evidence run; ignored runtime/g10.
+FILES FORBIDDEN TO CHANGE: protected documents, initial_canon, docs/sources, legacy services/data, NRC assets, credentials, ~/.miter.
+POSITIVE FIXTURE: Native MemoryCandidateRNA reads candidate fields, validates sources, admits a project checkpoint and two relationship preference versions, rejects a transient sentence, and indexes only independently persisted admitted records. RecallRNA constructs exact principal/audience/project/standing filters and queries paraphrases. Current and history are separate projections.
+NEGATIVE CONTROL: Identical exact-text query under unauthorized principal/audience scope cannot return the private preference even though its vector is the closest possible match. Rejected transient has neither a durable memory record nor a Chroma record. Old preference remains available only as superseded history.
+EXPECTED OBSERVABLE DIFFERENCE: Authorized current query returns the correction with complete provenance; history returns the old preference; unauthorized query returns no private record. Native admission decision changes persistence and indexing.
+CURRENT UNPROVEN ASSUMPTIONS: Dynamic MeTTa policy calls, Chroma add/query/get transport, scope filtering, and content/source validation need runtime proof. Test identities are explicit authenticated-harness principals, not a claim of completed surface authentication.
+ROLLBACK METHOD: Preserve append-only G10 trajectory and memory records. Derived test Chroma data is disposable, but no collection is deleted in this gate. Revert a gate commit if requested; never touch legacy storage.

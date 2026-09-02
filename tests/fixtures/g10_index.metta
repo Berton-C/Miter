@@ -1,0 +1,8 @@
+!(import! &self (library lib_import))
+!(import_prolog_functions_from_file "./effect_membranes/miter_memory.pl" (miter_memory_supersession_count miter_memory_index))
+!(import! &self "/Users/claritymiter/miter/src/memory.metta")
+!(MemoryStanding "runtime/g10/store" "mem-g10-pref-old")
+!(MemoryStanding "runtime/g10/store" "mem-g10-pref-new")
+!(IndexAdmittedMemoryRNA "runtime/g10/store" "mem-g10-checkpoint")
+!(IndexAdmittedMemoryRNA "runtime/g10/store" "mem-g10-pref-old")
+!(IndexAdmittedMemoryRNA "runtime/g10/store" "mem-g10-pref-new")

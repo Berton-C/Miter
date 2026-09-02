@@ -1,0 +1,8 @@
+!(import! &self (library lib_import))
+!(import_prolog_functions_from_file "./effect_membranes/miter_memory.pl" (miter_memory_query))
+!(import! &self "/Users/claritymiter/miter/src/memory.metta")
+!(RecallRNA "runtime/g10/store" "principal:g08-human" "scope:g08-private-project" "project-g08-glass-archive" active "Where did the novel draft stop, and what should I write next?" "g10-book-query")
+!(RecallRNA "runtime/g10/store" "principal:g08-human" "scope:g08-private-project" "project-g08-glass-archive" active "How do I want you to critique my writing now?" "g10-preference-query")
+!(RecallRNA "runtime/g10/store" "principal:g08-human" "scope:g08-private-project" "project-g08-glass-archive" superseded "What feedback approach did I request before the correction?" "g10-history-query")
+!(RecallRNA "runtime/g10/store" "principal:g08-human" "scope:g08-private-project" "project-g08-glass-archive" active "For our writing sessions, give detailed, candid feedback and preserve unresolved questions." "g10-exact-authorized")
+!(RecallRNA "runtime/g10/store" "principal:g10-other" "scope:g10-other-private" "project-g08-glass-archive" active "For our writing sessions, give detailed, candid feedback and preserve unresolved questions." "g10-exact-unauthorized")
