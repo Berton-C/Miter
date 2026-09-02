@@ -1,0 +1,2759 @@
+[33m--> metta runnable  -->
+[36m!(import! &self (library lib_import))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library(lib_import, B),
+             'import!'('&self', B, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function consult)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(consult, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_file $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                           ($prologfile (consult))
+                                                                           ($function (superpose $importfunctions)))
+                                                                          (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_file(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    consult(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function use_module)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(use_module, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_module $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                             ($prologfile (use_module))
+                                                                             ($function (superpose $importfunctions)))
+                                                                            (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_module(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    use_module(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file (library lib_import.pl) (static-import! git-import! use-module!))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library('lib_import.pl', B),
+             import_prolog_functions_from_file(B,
+                                               [ 'static-import!',
+                                                 'git-import!',
+                                                 'use-module!'
+                                               ],
+                                               A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_integrity.pl" (miter_integrity_verify))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_integrity.pl",
+                                             [miter_integrity_verify],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_movement.pl" (miter_movement_source miter_movement_record))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_movement.pl",
+                                             [ miter_movement_source,
+                                               miter_movement_record
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &soul "/Users/claritymiter/miter/constitution/soul.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&soul',
+                     "/Users/claritymiter/miter/constitution/soul.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-version miter-soul-poc-v1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-project BGI-Miter)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-program Miter)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-standing provisional-computational-projection)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value AgencyBalance "Preserve human choice and participation without delegating authority to model fluency.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing AgencyBalance human-choice-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire AgencyBalance "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern AgencyBalance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value CognitiveResilience "Keep uncertainty and revisable readings live under pressure.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing CognitiveResilience uncertainty-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire CognitiveResilience "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern CognitiveResilience)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value ConnectionDepth "Receive the person without collapsing their experience into a task verdict.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing ConnectionDepth person-received)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire ConnectionDepth "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern ConnectionDepth)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value WonderPreservation "Preserve a genuine open question rather than forcing brittle certainty.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing WonderPreservation open-question-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire WonderPreservation "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern WonderPreservation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value TimeCoherence "Continue from inspectable history and artifact lineage rather than a copied prompt.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing TimeCoherence source-lineage-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire TimeCoherence "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern TimeCoherence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value PurposeBeyondUtility "Do not let usefulness compensate for a failed purpose or constitutional floor.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing PurposeBeyondUtility purpose-not-utility)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire PurposeBeyondUtility "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern PurposeBeyondUtility)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value SharedUnderstanding "Make the task distinctions and authority boundary explicit to the human.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing SharedUnderstanding task-distinction-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire SharedUnderstanding "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern SharedUnderstanding)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value CreativeTranscendence "Allow novelty only with answerability and a governed candidate lifecycle.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing CreativeTranscendence novelty-accountable)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire CreativeTranscendence "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern CreativeTranscendence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value AttentionStewardship "Bound attention and yield to relevant contact instead of endless self-generation.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing AttentionStewardship bounded-contact-sensitive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire AttentionStewardship "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern AttentionStewardship)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value Safety "A failed safety floor cannot be compensated by usefulness.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing Safety safety-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire Safety "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value Integrity "Keep contact, inference, rendering and evidence standing distinct.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing Integrity provenance-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire Integrity "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value Identity "The running program is Miter; naming is not a second lineage.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing Identity Miter)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire Identity "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value NonSovereignty "Finite representations and model products do not become actuality or authority.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing NonSovereignty finite-reading)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire NonSovereignty "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value MemoryScope "Recall and disclosure require the authenticated principal, audience and project scope.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing MemoryScope scope-witnessed)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire MemoryScope "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value EffectAuthority "Capability and generation do not grant permission for external effects.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing EffectAuthority permission-witnessed)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire EffectAuthority "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value IndependentStanding "A candidate cannot be the sole source of its own promotion evidence.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing IndependentStanding independent-evidence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire IndependentStanding "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value CandidateBoundary "Derived candidates remain quarantined until separately admitted.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing CandidateBoundary quarantined)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire CandidateBoundary "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation AgencyWithUnderstanding AgencyBalance SharedUnderstanding lonely-sovereignty)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire AgencyWithUnderstanding "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation UnderstandingWithWonder SharedUnderstanding WonderPreservation sterile-consensus)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire UnderstandingWithWonder "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation ResilienceWithConnection CognitiveResilience ConnectionDepth impressive-detachment)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire ResilienceWithConnection "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation CreativityWithTime CreativeTranscendence TimeCoherence scattered-novelty)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire CreativityWithTime "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation PurposeWithAgency PurposeBeyondUtility AgencyBalance righteous-refusal-without-relationship)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire PurposeWithAgency "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation AttentionWithResilience AttentionStewardship CognitiveResilience efficient-but-brittle-focus)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire AttentionWithResilience "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-hard-floor Safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-hard-floor Integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/soul.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/soul.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulExpected $value)
+   (let $xs (collapse (match &soul (soul-required-standing $value $w) $w))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) missing-doctrine)))
+[33m--> prolog clause -->
+[32m'SoulExpected'(A, B) :-
+    C=D,
+    findall(E,
+            match('&soul',
+                  ['soul-required-standing', A, E],
+                  E,
+                  E),
+            D),
+    'size-atom'(C, F),
+    ==(F, 1, G),
+    (   G==true
+    ->  'index-atom'(C, 0, B)
+    ;   B='missing-doctrine'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulRequire $value $witness)
+   (let* (($values (collapse (match &soul (soul-value $value $d) $value)))
+          ($expected (SoulExpected $value)))
+     (if (and (== (size-atom $values) 1) (!= $expected missing-doctrine))
+       (if (== $expected $witness) witnessed blocked)
+       blocked)))
+[33m--> prolog clause -->
+[32m'SoulRequire'(A, B, C) :-
+    D=E,
+    findall(A,
+            match('&soul', ['soul-value', A, _], A, A),
+            E),
+    F=G,
+    'SoulExpected'(A, G),
+    'size-atom'(D, H),
+    ==(H, 1, I),
+    '!='(F, 'missing-doctrine', J),
+    and(I, J, K),
+    (   K==true
+    ->  ==(F, B, L),
+        (   L==true
+        ->  C=witnessed
+        ;   C=blocked
+        )
+    ;   C=blocked
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulPairRequire $relation $witnesses)
+   (let* (($as (collapse (match &soul (soul-relation $relation $a $b $d) $a)))
+          ($bs (collapse (match &soul (soul-relation $relation $a $b $d) $b))))
+     (if (and (== (size-atom $as) 1) (== (size-atom $bs) 1))
+       (if (is-expr $witnesses)
+         (if (== (size-atom $witnesses) 2)
+           (if (and
+                 (== (SoulRequire (index-atom $as 0) (index-atom $witnesses 0)) witnessed)
+                 (== (SoulRequire (index-atom $bs 0) (index-atom $witnesses 1)) witnessed))
+             witnessed blocked)
+           blocked)
+         blocked)
+       blocked)))
+[33m--> prolog clause -->
+[32m'SoulPairRequire'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&soul',
+                  ['soul-relation', A, F, G, H],
+                  F,
+                  F),
+            E),
+    I=J,
+    findall(G,
+            match('&soul',
+                  ['soul-relation', A, F, G, H],
+                  G,
+                  G),
+            J),
+    'size-atom'(D, K),
+    ==(K, 1, L),
+    'size-atom'(I, M),
+    ==(M, 1, N),
+    and(L, N, O),
+    (   O==true
+    ->  'is-expr'(B, P),
+        (   P==true
+        ->  'size-atom'(B, Q),
+            ==(Q, 2, R),
+            (   R==true
+            ->  'index-atom'(D, 0, S),
+                'index-atom'(B, 0, T),
+                'SoulRequire'(S, T, U),
+                ==(U, witnessed, V),
+                'index-atom'(I, 0, W),
+                'index-atom'(B, 1, X),
+                'SoulRequire'(W, X, Y),
+                ==(Y, witnessed, Z),
+                and(V, Z, A1),
+                (   A1==true
+                ->  C=witnessed
+                ;   C=blocked
+                )
+            ;   C=blocked
+            )
+        ;   C=blocked
+        )
+    ;   C=blocked
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulInvoke $proc $id $witness) ($proc $id $witness))
+[33m--> prolog clause -->
+[32m'SoulInvoke'(A, B, C, D) :-
+    reduce([A, B, C], D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulExercise $id $positive)
+   (let $ps (collapse (match &soul (soul-causal $p $id $reason) $p))
+     (if (== (size-atom $ps) 1)
+       (let $p (index-atom $ps 0)
+         (and (== (SoulInvoke $p $id $positive) witnessed)
+              (== (SoulInvoke $p $id missing-witness) blocked)))
+       false)))
+[33m--> prolog clause -->
+[32m'SoulExercise'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&soul', ['soul-causal', F, A, _], F, F),
+            E),
+    'size-atom'(D, G),
+    ==(G, 1, H),
+    (   H==true
+    ->  F=I,
+        'index-atom'(D, 0, I),
+        'SoulInvoke'(F, A, B, J),
+        ==(J, witnessed, K),
+        'SoulInvoke'(F, A, 'missing-witness', L),
+        ==(L, blocked, M),
+        and(K, M, C)
+    ;   C=false
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulAuditValues $ids $i)
+   (if (< $i (size-atom $ids))
+     (let $id (index-atom $ids $i)
+       (if (SoulExercise $id (SoulExpected $id))
+         (SoulAuditValues $ids (+ $i 1)) false))
+     true))
+[33m--> prolog clause -->
+[32m'SoulAuditValues'(A, B, C) :-
+    'size-atom'(A, D),
+    <(B, D, E),
+    (   E==true
+    ->  F=G,
+        'index-atom'(A, B, G),
+        'SoulExpected'(F, H),
+        'SoulExercise'(F, H, I),
+        (   I==true
+        ->  +(B, 1, J),
+            'SoulAuditValues'(A, J, C)
+        ;   C=false
+        )
+    ;   C=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulPairPositive $relation)
+   (let* (($as (collapse (match &soul (soul-relation $relation $a $b $d) $a)))
+          ($bs (collapse (match &soul (soul-relation $relation $a $b $d) $b))))
+     (if (and (== (size-atom $as) 1) (== (size-atom $bs) 1))
+       ((SoulExpected (index-atom $as 0)) (SoulExpected (index-atom $bs 0)))
+       malformed-relation)))
+[33m--> prolog clause -->
+[32m'SoulPairPositive'(A, B) :-
+    C=D,
+    findall(E,
+            match('&soul',
+                  ['soul-relation', A, E, F, G],
+                  E,
+                  E),
+            D),
+    H=I,
+    findall(F,
+            match('&soul',
+                  ['soul-relation', A, E, F, G],
+                  F,
+                  F),
+            I),
+    'size-atom'(C, J),
+    ==(J, 1, K),
+    'size-atom'(H, L),
+    ==(L, 1, M),
+    and(K, M, N),
+    (   N==true
+    ->  'index-atom'(C, 0, O),
+        'SoulExpected'(O, P),
+        'index-atom'(H, 0, Q),
+        'SoulExpected'(Q, R),
+        reduce([P, R], B)
+    ;   B='malformed-relation'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulAuditRelations $ids $i)
+   (if (< $i (size-atom $ids))
+     (let* (($id (index-atom $ids $i))
+            ($positive (SoulPairPositive $id)))
+       (if (and (SoulExercise $id $positive)
+                (== (SoulPairRequire $id ((index-atom $positive 0) missing-witness)) blocked))
+         (SoulAuditRelations $ids (+ $i 1)) false))
+     true))
+[33m--> prolog clause -->
+[32m'SoulAuditRelations'(A, B, C) :-
+    'size-atom'(A, D),
+    <(B, D, E),
+    (   E==true
+    ->  F=G,
+        'index-atom'(A, B, G),
+        H=I,
+        'SoulPairPositive'(F, I),
+        'SoulExercise'(F, H, J),
+        'index-atom'(H, 0, K),
+        reduce([K, 'missing-witness'], L),
+        'SoulPairRequire'(F, L, M),
+        ==(M, blocked, N),
+        and(J, N, O),
+        (   O==true
+        ->  +(B, 1, P),
+            'SoulAuditRelations'(A, P, C)
+        ;   C=false
+        )
+    ;   C=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulRationalityAudit)
+   (let* (($values (collapse (match &soul (soul-value $v $d) $v)))
+          ($relations (collapse (match &soul (soul-relation $r $a $b $d) $r)))
+          ($links (collapse (match &soul (soul-causal $p $id $reason) $id))))
+     (if (and (> (size-atom $values) 0)
+              (== (size-atom $links) (+ (size-atom $values) (size-atom $relations))))
+       (and (SoulAuditValues $values 0) (SoulAuditRelations $relations 0))
+       false)))
+[33m--> prolog clause -->
+[32m'SoulRationalityAudit'(A) :-
+    B=C,
+    findall(D,
+            match('&soul', ['soul-value', D, E], D, D),
+            C),
+    F=G,
+    findall(H,
+            match('&soul',
+                  ['soul-relation', H, _, _, E],
+                  H,
+                  H),
+            G),
+    I=J,
+    findall(K,
+            match('&soul',
+                  ['soul-causal', _, K, _],
+                  K,
+                  K),
+            J),
+    'size-atom'(B, L),
+    >(L, 0, M),
+    'size-atom'(I, N),
+    'size-atom'(B, O),
+    'size-atom'(F, P),
+    +(O, P, Q),
+    ==(N, Q, R),
+    and(M, R, S),
+    (   S==true
+    ->  'SoulAuditValues'(B, 0, T),
+        'SoulAuditRelations'(F, 0, U),
+        and(T, U, A)
+    ;   A=false
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulStartup $integrity)
+   (if (== $integrity soul-integrity-verified)
+     (if (SoulRationalityAudit) soul-ready soul-startup-blocked)
+     soul-startup-blocked))
+[33m--> prolog clause -->
+[32m'SoulStartup'(A, B) :-
+    ==(A, 'soul-integrity-verified', C),
+    (   C==true
+    ->  'SoulRationalityAudit'(D),
+        (   D==true
+        ->  B='soul-ready'
+        ;   B='soul-startup-blocked'
+        )
+    ;   B='soul-startup-blocked'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulBoot $report)
+   (SoulStartup (miter_integrity_verify
+     "/Users/claritymiter/miter/constitution/authority-manifest.json" $report)))
+[33m--> prolog clause -->
+[32m'SoulBoot'(A, B) :-
+    miter_integrity_verify("/Users/claritymiter/miter/constitution/authority-manifest.json",
+                           A,
+                           C),
+    'SoulStartup'(C, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/movement.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/movement.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected availability available)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected inherited-legality lawful)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected safety safety-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected integrity provenance-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected required-distinction task-distinction-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected no-forcing no-disqualifying-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected participation human-choice-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected consequence answerability-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected doctrine finite-reading)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected extensions no-material-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-expected continuing-contact contact-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementField $id $key)
+   (let $xs (collapse (match &movements (movement-field $id $key $v) $v))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) missing-movement-field)))
+[33m--> prolog clause -->
+[32m'MovementField'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&movements',
+                  ['movement-field', A, B, F],
+                  F,
+                  F),
+            E),
+    'size-atom'(D, G),
+    ==(G, 1, H),
+    (   H==true
+    ->  'index-atom'(D, 0, C)
+    ;   C='missing-movement-field'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementWitnessRef $id $kind)
+   (let $xs (collapse (match &movements (movement-witness $id $kind $w) $w))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) missing-witness)))
+[33m--> prolog clause -->
+[32m'MovementWitnessRef'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&movements',
+                  ['movement-witness', A, B, F],
+                  F,
+                  F),
+            E),
+    'size-atom'(D, G),
+    ==(G, 1, H),
+    (   H==true
+    ->  'index-atom'(D, 0, C)
+    ;   C='missing-witness'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementStanding $id $kind)
+   (let* (($ref (MovementWitnessRef $id $kind))
+          ($cut (MovementField $id source-cut))
+          ($principal (MovementField $id principal))
+          ($audience (MovementField $id audience))
+          ($project (MovementField $id project))
+          ($xs (collapse (match &witnesses
+            (trusted-witness $ref $kind $cut $principal $audience $project $standing)
+            $standing))))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) missing-witness)))
+[33m--> prolog clause -->
+[32m'MovementStanding'(A, B, C) :-
+    D=E,
+    'MovementWitnessRef'(A, B, E),
+    F=G,
+    'MovementField'(A, 'source-cut', G),
+    H=I,
+    'MovementField'(A, principal, I),
+    J=K,
+    'MovementField'(A, audience, K),
+    L=M,
+    'MovementField'(A, project, M),
+    N=O,
+    findall(P,
+            match('&witnesses',
+                  [ 'trusted-witness',
+                    D,
+                    B,
+                    F,
+                    H,
+                    J,
+                    L,
+                    P
+                  ],
+                  P,
+                  P),
+            O),
+    'size-atom'(N, Q),
+    ==(Q, 1, R),
+    (   R==true
+    ->  'index-atom'(N, 0, C)
+    ;   C='missing-witness'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementKindPass $id $kind)
+   (let* (($standing (MovementStanding $id $kind))
+          ($xs (collapse (match &self (movement-expected $kind $w) $w))))
+     (if (== (size-atom $xs) 1)
+       (if (== $kind safety) (== (SoulRequire Safety $standing) witnessed)
+         (if (== $kind integrity) (== (SoulRequire Integrity $standing) witnessed)
+           (if (== $kind participation) (== (SoulRequire AgencyBalance $standing) witnessed)
+             (if (== $kind required-distinction) (== (SoulRequire SharedUnderstanding $standing) witnessed)
+               (if (== $kind doctrine) (== (SoulRequire NonSovereignty $standing) witnessed)
+                 (== $standing (index-atom $xs 0)))))))
+       false)))
+[33m--> prolog clause -->
+[32m'MovementKindPass'(A, B, C) :-
+    D=E,
+    'MovementStanding'(A, B, E),
+    F=G,
+    findall(H,
+            match('&self', ['movement-expected', B, H], H, H),
+            G),
+    'size-atom'(F, I),
+    ==(I, 1, J),
+    (   J==true
+    ->  ==(B, safety, K),
+        (   K==true
+        ->  'SoulRequire'('Safety', D, L),
+            ==(L, witnessed, C)
+        ;   ==(B, integrity, M),
+            (   M==true
+            ->  'SoulRequire'('Integrity', D, N),
+                ==(N, witnessed, C)
+            ;   ==(B, participation, O),
+                (   O==true
+                ->  'SoulRequire'('AgencyBalance', D, P),
+                    ==(P, witnessed, C)
+                ;   ==(B, 'required-distinction', Q),
+                    (   Q==true
+                    ->  'SoulRequire'('SharedUnderstanding', D, R),
+                        ==(R, witnessed, C)
+                    ;   ==(B, doctrine, S),
+                        (   S==true
+                        ->  'SoulRequire'('NonSovereignty', D, T),
+                            ==(T, witnessed, C)
+                        ;   'index-atom'(F, 0, U),
+                            ==(D, U, C)
+                        )
+                    )
+                )
+            )
+        )
+    ;   C=false
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementWitnessesPass $id $kinds $i)
+   (if (< $i (size-atom $kinds))
+     (if (MovementKindPass $id (index-atom $kinds $i))
+       (MovementWitnessesPass $id $kinds (+ $i 1)) false)
+     true))
+[33m--> prolog clause -->
+[32m'MovementWitnessesPass'(A, B, C, D) :-
+    'size-atom'(B, E),
+    <(C, E, F),
+    (   F==true
+    ->  'index-atom'(B, C, G),
+        'MovementKindPass'(A, G, H),
+        (   H==true
+        ->  +(C, 1, I),
+            'MovementWitnessesPass'(A, B, I, D)
+        ;   D=false
+        )
+    ;   D=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementShape $id)
+   (and (and (!= (MovementField $id source-cut) missing-movement-field)
+             (!= (MovementField $id target-cut) missing-movement-field))
+     (and (and (!= (MovementField $id intention-id) missing-movement-field)
+               (!= (MovementField $id active-rna-id) missing-movement-field))
+       (and (and (== (MovementField $id effect-class) internal)
+                 (== (MovementField $id extension-ids) ()))
+         (and (== (MovementField $id reversibility) reversible)
+              (== (MovementField $id status) candidate))))))
+[33m--> prolog clause -->
+[32m'MovementShape'(A, B) :-
+    'MovementField'(A, 'source-cut', C),
+    '!='(C, 'missing-movement-field', D),
+    'MovementField'(A, 'target-cut', E),
+    '!='(E, 'missing-movement-field', F),
+    and(D, F, G),
+    'MovementField'(A, 'intention-id', H),
+    '!='(H, 'missing-movement-field', I),
+    'MovementField'(A, 'active-rna-id', J),
+    '!='(J, 'missing-movement-field', K),
+    and(I, K, L),
+    'MovementField'(A, 'effect-class', M),
+    ==(M, internal, N),
+    'MovementField'(A, 'extension-ids', O),
+    ==(O, [], P),
+    and(N, P, Q),
+    'MovementField'(A, reversibility, R),
+    ==(R, reversible, S),
+    'MovementField'(A, status, T),
+    ==(T, candidate, U),
+    and(S, U, V),
+    and(Q, V, W),
+    and(L, W, X),
+    and(G, X, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementSource $root $id)
+   (miter_movement_source $root (MovementField $id source-cut)
+      (MovementField $id principal) (MovementField $id audience)
+      (MovementField $id project) (MovementField $id provenance)))
+[33m--> prolog clause -->
+[32m'MovementSource'(A, B, C) :-
+    'MovementField'(B, 'source-cut', D),
+    'MovementField'(B, principal, E),
+    'MovementField'(B, audience, F),
+    'MovementField'(B, project, G),
+    'MovementField'(B, provenance, H),
+    miter_movement_source(A,
+                          D,
+                          E,
+                          F,
+                          G,
+                          H,
+                          C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementCertificate $id)
+   (movement-certificate
+     (movement_id $id)
+     (source_cut (MovementField $id source-cut))
+     (availability_witness (MovementWitnessRef $id availability))
+     (inherited_legality_witness (MovementWitnessRef $id inherited-legality))
+     (relation_floor_witnesses ((MovementWitnessRef $id safety) (MovementWitnessRef $id integrity)))
+     (precision_floor_witnesses ((MovementWitnessRef $id provenance) (MovementWitnessRef $id required-distinction)))
+     (no_disqualifying_forcing_witness (MovementWitnessRef $id no-forcing))
+     (participation_open_witness (MovementWitnessRef $id participation))
+     (consequence_answerability_witness (MovementWitnessRef $id consequence))
+     (doctrine_bound_reading_witness (MovementWitnessRef $id doctrine))
+     (material_extension_alignment_witnesses (MovementWitnessRef $id extensions))
+     (continuing_contact_witness (MovementWitnessRef $id continuing-contact))
+     (certificate_version miter-movement-v1)))
+[33m--> prolog clause -->
+[32m'MovementCertificate'(A,
+                           [ 'movement-certificate',
+                             [movement_id, A],
+                             [source_cut, B],
+                             [availability_witness, C],
+                             [inherited_legality_witness, D],
+                             [relation_floor_witnesses, E],
+                             [precision_floor_witnesses, F],
+                             [no_disqualifying_forcing_witness, G],
+                             [participation_open_witness, H],
+                             [consequence_answerability_witness, I],
+                             [doctrine_bound_reading_witness, J],
+                             [material_extension_alignment_witnesses, K],
+                             [continuing_contact_witness, L],
+                             [certificate_version, 'miter-movement-v1']
+                           ]) :-
+    'MovementField'(A, 'source-cut', B),
+    'MovementWitnessRef'(A, availability, C),
+    'MovementWitnessRef'(A, 'inherited-legality', D),
+    'MovementWitnessRef'(A, safety, M),
+    'MovementWitnessRef'(A, integrity, N),
+    reduce([M, N], E),
+    'MovementWitnessRef'(A, provenance, O),
+    'MovementWitnessRef'(A, 'required-distinction', P),
+    reduce([O, P], F),
+    'MovementWitnessRef'(A, 'no-forcing', G),
+    'MovementWitnessRef'(A, participation, H),
+    'MovementWitnessRef'(A, consequence, I),
+    'MovementWitnessRef'(A, doctrine, J),
+    'MovementWitnessRef'(A, extensions, K),
+    'MovementWitnessRef'(A, 'continuing-contact', L).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ConstructMovement $root $id $soul-status)
+   (if (and (== $soul-status soul-ready) (MovementShape $id))
+     (if (== (MovementSource $root $id) movement-source-verified)
+       (if (MovementWitnessesPass $id
+             (availability inherited-legality safety integrity provenance required-distinction
+              no-forcing participation consequence doctrine extensions continuing-contact) 0)
+         (MovementCertificate $id) movement-blocked)
+       movement-blocked)
+     movement-blocked))
+[33m--> prolog clause -->
+[32m'ConstructMovement'(A, B, C, D) :-
+    ==(C, 'soul-ready', E),
+    'MovementShape'(B, F),
+    and(E, F, G),
+    (   G==true
+    ->  'MovementSource'(A, B, H),
+        ==(H, 'movement-source-verified', I),
+        (   I==true
+        ->  'MovementWitnessesPass'(B,
+                                    [ availability,
+                                      'inherited-legality',
+                                      safety,
+                                      integrity,
+                                      provenance,
+                                      'required-distinction',
+                                      'no-forcing',
+                                      participation,
+                                      consequence,
+                                      doctrine,
+                                      extensions,
+                                      'continuing-contact'
+                                    ],
+                                    0,
+                                    J),
+            (   J==true
+            ->  'MovementCertificate'(B, D)
+            ;   D='movement-blocked'
+            )
+        ;   D='movement-blocked'
+        )
+    ;   D='movement-blocked'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MovementRNA $root $id $integrity-report $output)
+   (let* (($soul (SoulBoot $integrity-report))
+          ($product (ConstructMovement $root $id $soul)))
+     (miter_movement_record $output $product)))
+[33m--> prolog clause -->
+[32m'MovementRNA'(A, B, C, D, E) :-
+    F=G,
+    'SoulBoot'(C, G),
+    H=I,
+    'ConstructMovement'(A, B, F, I),
+    miter_movement_record(D, H, E).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &movements "/Users/claritymiter/miter/tests/fixtures/g14_candidates.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&movements',
+                     "/Users/claritymiter/miter/tests/fixtures/g14_candidates.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-provenance utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-provenance continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-distinction utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-distinction continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field high-score-unsafe utility 1000000000)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe safety w-safety-failed)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness high-score-unsafe continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-availability utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-availability continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-inherited-legality utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-inherited-legality continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-safety utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-safety continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-integrity utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-integrity continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-no-forcing utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-no-forcing continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-participation utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-participation continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-consequence utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-consequence continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-doctrine utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-doctrine continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-extensions utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-extensions continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field missing-continuing-contact utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness missing-continuing-contact extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field scope-forgery utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery availability w-forged-scope)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness scope-forgery continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source source-cut nonexistent-event)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field unknown-source utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness unknown-source continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field soul-severed utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness soul-severed continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension extension-ids (unreviewed-extension))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field undeclared-extension utility 1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness undeclared-extension continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score source-cut source-g10-pref-new)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score target-cut cut-after-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score intention-id intent-feedback)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score active-rna-id rna-g14)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score principal principal:g08-human)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score audience scope:g08-private-project)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score project project-g08-glass-archive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score provenance direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score effect-class internal)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score extension-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score reversibility reversible)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score status candidate)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score material-relation-ids (Safety Integrity AgencyBalance SharedUnderstanding NonSovereignty))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score material-distinction-ids (provenance required-distinction))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score memory-ids ())
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score predicted-consequence-ids (consequence-g14))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-field complete-high-score utility 1000000000)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score availability w-availability)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score inherited-legality w-inherited-legality)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score safety w-safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score integrity w-integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score provenance w-provenance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score required-distinction w-required-distinction)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score no-forcing w-no-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score participation w-participation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score consequence w-consequence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score doctrine w-doctrine)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score extensions w-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(movement-witness complete-high-score continuing-contact w-continuing-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &witnesses "/Users/claritymiter/miter/tests/fixtures/g14_witnesses.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&witnesses',
+                     "/Users/claritymiter/miter/tests/fixtures/g14_witnesses.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-availability availability source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive available)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-inherited-legality inherited-legality source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive lawful)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-safety safety source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive safety-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-integrity integrity source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive provenance-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-provenance provenance source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive direct-contact)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-required-distinction required-distinction source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive task-distinction-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-no-forcing no-forcing source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive no-disqualifying-forcing)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-participation participation source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive human-choice-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-consequence consequence source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive answerability-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-doctrine doctrine source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive finite-reading)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-extensions extensions source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive no-material-extensions)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-continuing-contact continuing-contact source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive contact-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-safety-failed safety source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive safety-failed)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(trusted-witness w-forged-scope availability source-g10-pref-new principal:other scope:g08-private-project project-g08-glass-archive available)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/tests/fixtures/g14_severed_constructor.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self',
+                     "/Users/claritymiter/miter/tests/fixtures/g14_severed_constructor.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ConstructMovementWithoutProvenance $root $id $soul-status)
+   (if (and (== $soul-status soul-ready) (MovementShape $id))
+     (if (== (MovementSource $root $id) movement-source-verified)
+       (if (MovementWitnessesPass $id
+             (availability inherited-legality safety integrity required-distinction
+              no-forcing participation consequence doctrine extensions continuing-contact) 0)
+         (MovementCertificate $id) movement-blocked)
+       movement-blocked)
+     movement-blocked))
+[33m--> prolog clause -->
+[32m'ConstructMovementWithoutProvenance'(A, B, C, D) :-
+    ==(C, 'soul-ready', E),
+    'MovementShape'(B, F),
+    and(E, F, G),
+    (   G==true
+    ->  'MovementSource'(A, B, H),
+        ==(H, 'movement-source-verified', I),
+        (   I==true
+        ->  'MovementWitnessesPass'(B,
+                                    [ availability,
+                                      'inherited-legality',
+                                      safety,
+                                      integrity,
+                                      'required-distinction',
+                                      'no-forcing',
+                                      participation,
+                                      consequence,
+                                      doctrine,
+                                      extensions,
+                                      'continuing-contact'
+                                    ],
+                                    0,
+                                    J),
+            (   J==true
+            ->  'MovementCertificate'(B, D)
+            ;   D='movement-blocked'
+            )
+        ;   D='movement-blocked'
+        )
+    ;   D='movement-blocked'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_movement_record "runtime/g14/severed-missing-provenance.json" (ConstructMovementWithoutProvenance "runtime/g10/store" missing-provenance (SoulBoot "runtime/g14/severed-integrity.json")))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( 'SoulBoot'("runtime/g14/severed-integrity.json", B),
+             'ConstructMovementWithoutProvenance'("runtime/g10/store",
+                                                  'missing-provenance',
+                                                  B,
+                                                  C),
+             miter_movement_record("runtime/g14/severed-missing-provenance.json",
+                                   C,
+                                   A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+true
+true
+true
+true
+true
+true
+true
+true
+true
+movement-result-stored

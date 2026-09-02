@@ -1,0 +1,16 @@
+; Fixed independent synthetic witness fixture, not model/candidate output.
+; Actual source event existence/hash/scope/type is also checked against G10 ledger.
+(trusted-witness w-availability availability source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive available)
+(trusted-witness w-inherited-legality inherited-legality source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive lawful)
+(trusted-witness w-safety safety source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive safety-preserved)
+(trusted-witness w-integrity integrity source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive provenance-preserved)
+(trusted-witness w-provenance provenance source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive direct-contact)
+(trusted-witness w-required-distinction required-distinction source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive task-distinction-preserved)
+(trusted-witness w-no-forcing no-forcing source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive no-disqualifying-forcing)
+(trusted-witness w-participation participation source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive human-choice-open)
+(trusted-witness w-consequence consequence source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive answerability-open)
+(trusted-witness w-doctrine doctrine source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive finite-reading)
+(trusted-witness w-extensions extensions source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive no-material-extensions)
+(trusted-witness w-continuing-contact continuing-contact source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive contact-open)
+(trusted-witness w-safety-failed safety source-g10-pref-new principal:g08-human scope:g08-private-project project-g08-glass-archive safety-failed)
+(trusted-witness w-forged-scope availability source-g10-pref-new principal:other scope:g08-private-project project-g08-glass-archive available)

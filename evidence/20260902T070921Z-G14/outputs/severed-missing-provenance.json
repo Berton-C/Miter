@@ -1,0 +1,18 @@
+{
+  "certificate": {
+    "availability_witness":"w-availability",
+    "certificate_version":"miter-movement-v1",
+    "consequence_answerability_witness":"w-consequence",
+    "continuing_contact_witness":"w-continuing-contact",
+    "doctrine_bound_reading_witness":"w-doctrine",
+    "inherited_legality_witness":"w-inherited-legality",
+    "material_extension_alignment_witnesses":"w-extensions",
+    "movement_id":"missing-provenance",
+    "no_disqualifying_forcing_witness":"w-no-forcing",
+    "participation_open_witness":"w-participation",
+    "precision_floor_witnesses": ["missing-witness", "w-required-distinction" ],
+    "relation_floor_witnesses": ["w-safety", "w-integrity" ],
+    "source_cut":"source-g10-pref-new"
+  },
+  "status":"certified"
+}

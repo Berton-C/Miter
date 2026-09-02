@@ -1,0 +1,10 @@
+GATE: G14 — Movement certificate blocks missing obligations
+REQUIREMENT IDS: G14; POC_SPEC 8.2/8.3.
+CONSTITUTIONAL LAWS: C-002/004/005/006/007/009/010/011/012/013/020/023/024/096/100-105.
+FILES EXPECTED TO CHANGE: src/movement.metta; effect_membranes/miter_movement.pl; tests/fixtures/g14*; scripts/g14; evidence/20260902T070921Z-G14; ignored runtime/g14.
+FILES FORBIDDEN TO CHANGE: G13 Soul and its pinned sources/manifest; protected docs; initial_canon; docs/sources; prior evidence/stores; legacy services; licensed/private data.
+POSITIVE FIXTURE: Complete bounded internal movement with all POC 8.3 witness families, exact source-event provenance, trusted separate witness registry, and explicit no-extension standing.
+NEGATIVE CONTROL: Remove provenance, remove a required distinction, fail Safety despite high utility; separately remove every witness family, forge a witness scope, and point to a missing event. A test-only constructor omitting provenance must admit the previously blocked no-provenance arm.
+EXPECTED OBSERVABLE DIFFERENCE: Only complete and source-scoped canonical fixture gets a structured certificate. Scores never replace obligations. Severed constructor differs for missing provenance and remains outside production.
+CURRENT UNPROVEN ASSUMPTIONS: Compound certificate serialization requires runtime proof. Fixture witnesses establish constructor structure, not general semantic truth, live extension approval or permission to emit model output.
+ROLLBACK METHOD: Additive files and isolated runtime only; no service writes, no modification of Soul pin.
