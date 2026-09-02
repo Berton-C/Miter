@@ -1,0 +1,8 @@
+constitution/soul.metta: OK
+src/soul.metta: OK
+effect_membranes/miter_integrity.pl: OK
+CONSTITUTION.md: OK
+AUTHORITY_MAP.md: OK
+POC_SPEC.md: OK
+docs/sources/architecture/ORIG_ClarityClaw_Soul_Architecture_Strategy_Map_current.md: OK
+docs/sources/authority/26.3_Ratified_Mathematical_Authority.md: OK

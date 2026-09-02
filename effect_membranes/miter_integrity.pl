@@ -1,0 +1,43 @@
+% Mechanical SHA-256 and loaded-atom snapshot only. No Soul interpretation.
+% Inputs: trusted pin path and diagnostic output path. Reads fixed source files
+% and &soul; never writes constitutional sources, manifests or runtime atoms.
+% Consumers: native SoulStartup. Errors are total and deny readiness.
+:- use_module(library(crypto)).
+:- use_module(library(http/json)).
+:- use_module(library(filesex)).
+miter_integrity_sources([
+ 'constitution/soul.metta','src/soul.metta','effect_membranes/miter_integrity.pl',
+ 'CONSTITUTION.md','AUTHORITY_MAP.md','POC_SPEC.md',
+ 'docs/sources/architecture/ORIG_ClarityClaw_Soul_Architecture_Strategy_Map_current.md',
+ 'docs/sources/authority/26.3_Ratified_Mathematical_Authority.md']).
+miter_integrity_snapshot(Output, Result) :-
+ catch((miter_integrity_measure(D), miter_integrity_write(Output,D)
+        -> Result='soul-snapshot-stored'; Result='soul-integrity-error'),
+       _, Result='soul-integrity-error'), !.
+miter_integrity_verify(Pin, Output, Result) :-
+ catch((miter_integrity_measure(D),
+        setup_call_cleanup(open(Pin,read,S,[encoding(utf8)]),json_read_dict(S,P),close(S)),
+        with_output_to(string(DJ),json_write_dict(current_output,D,[width(0)])),
+        with_output_to(string(PJ),json_write_dict(current_output,P,[width(0)])),
+        (DJ == PJ -> R='soul-integrity-verified'; R='soul-integrity-mismatch'),
+        miter_integrity_write(Output,_{result:R,measured:D,pin:P})
+        -> Result=R; Result='soul-integrity-error'),
+       _, Result='soul-integrity-error'), !.
+miter_integrity_measure(D) :-
+ miter_integrity_sources(Paths), maplist(miter_integrity_file,Paths,Files),
+ findall(Text, (current_predicate('&soul'/Arity), functor(Head,'&soul',Arity),
+               clause(Head,true), Head=..[_|Atom], ground(Atom),
+               with_output_to(string(Text),write_term(Atom,[quoted(true),ignore_ops(true)]))),Raw),
+ msort(Raw,Atoms), length(Atoms,Count),
+ atomics_to_string(Atoms,"\n",Canonical),
+ crypto_data_hash(Canonical,Hash,[algorithm(sha256),encoding(utf8)]),
+ atom_string(Hash,HashString),
+ D=_{schema:"miter-soul-integrity-v1",files:Files,atom_count:Count,
+     atom_manifest_sha256:HashString,atom_manifest:Atoms}.
+miter_integrity_file(Path,_{path:Name,sha256:HashString}) :-
+ crypto_file_hash(Path,Hash,[algorithm(sha256),encoding(octet)]),
+ atom_string(Path,Name), atom_string(Hash,HashString).
+miter_integrity_write(Path,D) :-
+ (atom(Path);string(Path)), file_directory_name(Path,Dir), make_directory_path(Dir),
+ setup_call_cleanup(open(Path,write,S,[encoding(utf8)]),
+   (json_write_dict(S,D,[width(0)]),nl(S)),close(S)).

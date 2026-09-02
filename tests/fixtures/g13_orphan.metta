@@ -1,0 +1,8 @@
+!(import! &self (library lib_import))
+!(import_prolog_functions_from_file "./effect_membranes/miter_integrity.pl" (miter_integrity_snapshot miter_integrity_verify))
+!(import! &soul "/Users/claritymiter/miter/constitution/soul.metta")
+!(import! &self "/Users/claritymiter/miter/src/soul.metta")
+!(add-atom &soul (soul-value Orphan "No causal consumer."))
+!(SoulRationalityAudit)
+!(SoulStartup soul-integrity-verified)
+!(SoulBoot "runtime/g13/orphan-integrity.json")

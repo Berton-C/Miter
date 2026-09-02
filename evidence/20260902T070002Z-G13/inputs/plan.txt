@@ -1,0 +1,10 @@
+GATE: G13 — Soul load and immutability baseline
+REQUIREMENT IDS: G13; POC_SPEC 8.1; WORK_PROTOCOL W-020/021/130/131/136.
+CONSTITUTIONAL LAWS: C-001 through C-015; C-020/023/041/042.
+FILES EXPECTED TO CHANGE: constitution/soul.metta and authority manifest; src/soul.metta; effect_membranes/miter_integrity.pl; scripts/g13; tests/fixtures/g13*; evidence/20260902T070002Z-G13; ignored runtime/g13.
+FILES FORBIDDEN TO CHANGE: existing protected docs, initial_canon, docs/sources, earlier evidence/stores, legacy services/data, credentials, licensed data, ~/.miter.
+POSITIVE FIXTURE: Load a compact, explicitly provisional nine-pattern seed into &soul; hash both source and enumerated atoms; execute every causal procedure with positive and contrary witnesses; native startup audit allows continuation.
+NEGATIVE CONTROL: Orphan value, unknown/dead procedure, changed loaded atom, and changed source in disposable fixtures. Each must withhold startup; severing a required relation changes that relation's acceptance.
+EXPECTED OBSERVABLE DIFFERENCE: Only intact, completely enacted doctrine passes startup; all declared values and six degradation relations have a running, discriminating native consumer.
+CURRENT UNPROVEN ASSUMPTIONS: Dedicated named-space import, scalar reads and native procedure dispatch require a bounded probe. G13 establishes integrity baseline, not the later G23 adversarial candidate-isolation proof. Descriptions are bounded PoC projections of supplied ancestry, not invented ratified Soul mathematics.
+ROLLBACK METHOD: Additive files and isolated runtime/g13 only; revert this gate's commit if required. No external service mutations.

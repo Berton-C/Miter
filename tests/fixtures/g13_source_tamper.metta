@@ -1,0 +1,6 @@
+!(import! &self (library lib_import))
+!(import_prolog_functions_from_file "/Users/claritymiter/miter/effect_membranes/miter_integrity.pl" (miter_integrity_verify))
+!(import! &soul "/Users/claritymiter/miter/constitution/soul.metta")
+!(import! &self "/Users/claritymiter/miter/src/soul.metta")
+!(SoulRationalityAudit)
+!(SoulBoot "/Users/claritymiter/miter/runtime/g13/source-tamper-integrity.json")

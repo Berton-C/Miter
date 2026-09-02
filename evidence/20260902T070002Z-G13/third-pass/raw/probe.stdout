@@ -1,0 +1,116 @@
+[33m--> metta runnable  -->
+[36m!(import! &soul "/Users/claritymiter/miter/tests/fixtures/g13_probe_atoms.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&soul',
+                     "/Users/claritymiter/miter/tests/fixtures/g13_probe_atoms.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(probe-value AgencyBalance agency-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(probe-value Safety safety-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ProbeRequire $v $w)
+   (let $expected (match &soul (probe-value $v $e) $e)
+     (if (== $w $expected) witnessed blocked)))
+[33m--> prolog clause -->
+[32m'ProbeRequire'(A, B, C) :-
+    D=E,
+    match('&soul', ['probe-value', A, E], E, E),
+    ==(B, D, F),
+    (   F==true
+    ->  C=witnessed
+    ;   C=blocked
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ProbeDispatch $proc $v $w) ($proc $v $w))
+[33m--> prolog clause -->
+[32m'ProbeDispatch'(A, B, C, D) :-
+    reduce([A, B, C], D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(match &soul (probe-value AgencyBalance $e) $e)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           match('&soul', ['probe-value', 'AgencyBalance', A], A, A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(size-atom (collapse (get-atoms &soul)))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( findall(B, 'get-atoms'('&soul', B), C),
+             'size-atom'(C, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m-->  metta specialization (ProbeDispatch_Spec_[ProbeRequire])  -->
+[36m(= (ProbeDispatch_Spec_[ProbeRequire] ProbeRequire $_0 $_1) (ProbeRequire $_0 $_1))
+[33m--> prolog clause -->
+[32m'ProbeDispatch_Spec_[ProbeRequire]'('ProbeRequire', A, B, C) :-
+    'ProbeRequire'(A, B, C).
+[33m^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(ProbeDispatch ProbeRequire AgencyBalance agency-preserved)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'ProbeDispatch_Spec_[ProbeRequire]'('ProbeRequire',
+                                               'AgencyBalance',
+                                               'agency-preserved',
+                                               A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(ProbeDispatch ProbeRequire AgencyBalance missing)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'ProbeDispatch_Spec_[ProbeRequire]'('ProbeRequire',
+                                               'AgencyBalance',
+                                               missing,
+                                               A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(== (ProbeDispatch NonexistentProcedure AgencyBalance agency-preserved) witnessed)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( 'ProbeDispatch'('NonexistentProcedure',
+                             'AgencyBalance',
+                             'agency-preserved',
+                             B),
+             ==(B, witnessed, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(collapse (get-atoms &soul))
+[33m-->  prolog goal  -->[35m 
+:- findall(A, findall(B, 'get-atoms'('&soul', B), A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(index-atom (collapse (match &soul (probe-value $v $e) $v)) 0)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( findall(B,
+                     match('&soul',
+                           ['probe-value', B, _],
+                           B,
+                           B),
+                     C),
+             'index-atom'(C, 0, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+agency-preserved
+2
+witnessed
+blocked
+false
+((probe-value AgencyBalance agency-preserved) (probe-value Safety safety-preserved))
+AgencyBalance
