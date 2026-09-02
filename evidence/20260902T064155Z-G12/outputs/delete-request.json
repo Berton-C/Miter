@@ -1,0 +1,1 @@
+{"confirm_disposable":true,"embedding_profile_sha256":"0bd1ec2ff3f91f5ee51bc8ee665761ccf24bab434518565eff0f8aea3a41dfc0","endpoint":"http://127.0.0.1:8001","expected_collection_id":"81cae435-d5cf-4141-a350-5808a02a6083","expected_count":3,"idempotency_key":"g12-delete","operation":"delete-disposable","request_id":"g12-delete","schema":"miter-chroma-request-v1"}

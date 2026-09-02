@@ -1,0 +1,6 @@
+!(import! &self (library lib_import))
+!(import_prolog_functions_from_file "./effect_membranes/miter_memory.pl" (miter_memory_record_count miter_memory_record_id miter_memory_supersession_count miter_memory_index miter_chroma_probe_reset miter_chroma_probe_report))
+!(import! &self "/Users/claritymiter/miter/src/memory.metta")
+!(miter_chroma_probe_reset)
+!(RebuildSemanticIndexRNA "runtime/g12/corrupt-store")
+!(miter_chroma_probe_report "runtime/g12/corrupt-transport.json")

@@ -1,0 +1,10 @@
+GATE: G12
+REQUIREMENT IDS: G12; POC_SPEC 6.1/6.2/6.4; W-050/051/053/060.
+CONSTITUTIONAL LAWS: C-032..035, C-039, C-043/044, C-060..065, C-100..105.
+FILES EXPECTED TO CHANGE: src/memory.metta; effect_membranes/miter_memory.pl and miter_chroma_service.pl; scripts/g12; tests/fixtures/g12*; this evidence run; ignored runtime/g12; only the disposable miter-ltm-v1 collection in the isolated Miter service.
+FILES FORBIDDEN TO CHANGE: protected docs, initial_canon, docs/sources, ClarityOmega or Mattermost, original canonical memory/history/capsules, credentials, NRC assets, ~/.miter.
+POSITIVE FIXTURE: Snapshot the three known synthetic records and five fixed queries; confirm collection ID/count; delete only that collection; separately verify empty service collection list plus intact local history/capsule; recreate logical collection metadata and rebuild via native RebuildSemanticIndexRNA from hash-verified durable records.
+NEGATIVE CONTROL: Alter one copied memory document without changing its content hash. Native preflight must stop before any index call, preserve the corrupt bytes for diagnosis, and leave the rebuilt good collection unchanged.
+EXPECTED OBSERVABLE DIFFERENCE: Good rebuild restores identical IDs/document bodies/metadata and fixed-query ranking within absolute cosine-distance tolerance 0.000001; corrupt-copy rebuild returns memory-integrity-failed with zero HTTP requests. Canonical source hashes remain identical.
+CURRENT UNPROVEN ASSUMPTIONS: Delete/list HTTP operations, native rebuild iteration, and post-loss query equivalence require runtime proof. The earlier verified legacy backup is unrelated and will not be read or changed.
+ROLLBACK METHOD: Restore only the disposable Miter collection from intact durable records if a probe fails. Preserve the original records, old index snapshot, and corrupt-copy evidence. Never delete a volume or legacy collection.

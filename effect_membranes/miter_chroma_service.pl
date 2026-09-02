@@ -38,7 +38,7 @@ miter_cs_dispatch(C, PP, P, Q, OP, Result, Details) :-
     miter_cs_require(HashString == C.embedding_profile_sha256, 'chroma-profile-mismatch'),
     miter_cs_require(Q.embedding_profile_sha256 == HashString, 'chroma-profile-mismatch'),
     miter_chroma_profile(P, _, _, _, _, _, _, _, _),
-    miter_cs_require(memberchk(Q.operation, ["create", "snapshot", "add", "upsert", "query", "get"]),
+    miter_cs_require(memberchk(Q.operation, ["create", "snapshot", "add", "upsert", "query", "get", "list", "delete-disposable"]),
                      'chroma-operation-blocked'),
     % Validate add payload before health/collection queries as well.
     ( memberchk(Q.operation,["add","upsert"]) -> miter_cs_validate_add(P, Q) ; true ),
@@ -107,6 +107,26 @@ miter_cs_operation("get", C, P, _, OP, 'chroma-records-stored', Response) :-
     miter_cs_get_collection(C, P, OP, Collection),
     miter_cs_base(Base), format(atom(Path), '~w/~s/get', [Base, Collection.id]),
     miter_cs_http(C, post, Path, _{include:["metadatas","documents"]}, OP, Response).
+miter_cs_operation("list", C, _, _, OP, 'chroma-collections-listed', _{collections:Collections}) :-
+    miter_cs_base(Base),miter_cs_http(C,get,Base,none,OP,Collections).
+miter_cs_operation("delete-disposable", C, P, Q, OP, 'chroma-disposable-collection-deleted', Details) :-
+    miter_cs_require(Q.confirm_disposable == true,'chroma-delete-not-confirmed'),
+    miter_cs_get_collection(C,P,OP,Collection),
+    miter_cs_require(Collection.id == Q.expected_collection_id,'chroma-delete-identity-mismatch'),
+    miter_cs_base(Base),format(atom(CountPath),'~w/~s/count',[Base,Collection.id]),
+    miter_cs_http(C,get,CountPath,none,OP,Count),
+    miter_cs_require(Count == Q.expected_count,'chroma-delete-count-mismatch'),
+    format(atom(Path),'~w/~s',[Base,C.collection]),
+    miter_cs_http(C,delete,Path,none,OP,_),
+    Details=_{collection_id:Collection.id}.
+
+% Request-local probe instruments: transport state, never cognitive state.
+miter_chroma_probe_reset('transport-probe-started') :- nb_setval(miter_cs_http_count,0),!.
+miter_chroma_probe_report(Path,Result) :-
+    catch((nb_getval(miter_cs_http_count,Count),
+           miter_cs_write(Path,_{http_requests_observed:Count})
+           ->Result='transport-probe-stored';Result='transport-probe-error'),
+          _,Result='transport-probe-error'),!.
 
 miter_cs_write_record(Operation, C, P, Q, OP) :-
     miter_cs_get_collection(C, P, OP, Collection),

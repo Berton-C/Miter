@@ -179,6 +179,12 @@ miter_mem_all(Root, Records) :-
     miter_mem_path(Root, 'memories', Directory),
     directory_files(Directory, Names), include(miter_mem_json_name, Names, Files),
     maplist(miter_mem_load_named(Root,Directory),Files,Records).
+
+miter_memory_record_count(Root, Count) :-
+    catch((miter_mem_all(Root,Records),length(Records,N)->Count=N;Count= -1),_,Count= -1),!.
+miter_memory_record_id(Root, Index, Id) :-
+    catch((miter_mem_all(Root,Records),findall(I,(member(R,Records),I=R.memory_id),Ids),
+           sort(Ids,Sorted),nth0(Index,Sorted,V)->Id=V;Id="missing-memory"),_,Id="malformed-memory"),!.
 miter_mem_json_name(Name) :- file_name_extension(_, json, Name).
 miter_mem_load_named(Root,Directory,Name,Record) :-
     directory_file_path(Directory,Name,Path), miter_chroma_read_json(Path,R),

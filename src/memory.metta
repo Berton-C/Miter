@@ -44,3 +44,17 @@
    (if (or (== $standing active) (== $standing superseded))
      (miter_memory_query $root $principal $audience $project $standing $text $tag)
      invalid-recall-standing))
+
+; Complete integrity preflight before the first replaceable-index effect.
+(= (RebuildSemanticIndexRNA $root)
+   (let $count (miter_memory_record_count $root)
+     (if (< $count 0) memory-integrity-failed
+       (RebuildMemoryAt $root 0 $count))))
+(= (RebuildMemoryAt $root $index $count)
+   (if (< $index $count)
+     (let* (($id (miter_memory_record_id $root $index))
+            ($result (IndexAdmittedMemoryRNA $root $id)))
+       (if (== $result memory-indexed)
+         (RebuildMemoryAt $root (+ $index 1) $count)
+         $result))
+     semantic-index-rebuilt))
