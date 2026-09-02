@@ -1,0 +1,9 @@
+{
+  "authority":"quarantined-candidate-only",
+  "living_question":"What remains uncertain about the expression that produced these witnessed defects?",
+  "opportunity_id":"interest-expression-inquiry-9aeed8da93af",
+  "request_id":"interest-expression-inquiry-9aeed8da93af",
+  "source_event_ids": ["g16-voice-audit-exhaustion-0", "g16-voice-audit-exhaustion-1" ],
+  "status":"awaiting-candidate-generator",
+  "target_surface":"VoicePolicy"
+}

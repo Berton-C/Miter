@@ -1,0 +1,30 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-RNA-state-27",
+  "event_kind":"RNA-state",
+  "occurred_at":"2026-09-02T08:38:36Z",
+  "parent_event_ids": [],
+  "payload": {
+    "data": {
+      "authority":"internal-hash-checkpoint-only",
+      "budget":0,
+      "current_locus":"Consolidate",
+      "dependencies": [],
+      "provenance":"verified-local-ingress",
+      "rna_id":"later",
+      "scope":"scope:reactor-local",
+      "source_event":"later",
+      "species":"ContactRNA",
+      "status":"completed",
+      "termination_condition":"finite-step-budget-or-human-stop"
+    },
+    "wall_time":1788338316.026761
+  },
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:38:36Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

@@ -1,0 +1,16 @@
+[
+  ["observation", "self-claim-0", "authority-inflation", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-0", "coercive-dominance", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-0", "person-not-seen", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-0", "policy-voice", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-0", "semantic-drift", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-0", "soul-absence", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-0", "task-smearing", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-1", "authority-inflation", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-1", "coercive-dominance", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-1", "person-not-seen", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-1", "policy-voice", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-1", "semantic-drift", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-1", "soul-absence", "self-authored", "hashes-verified" ],
+  ["observation", "self-claim-1", "task-smearing", "self-authored", "hashes-verified" ]
+]

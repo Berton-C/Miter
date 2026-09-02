@@ -1,0 +1,11 @@
+{
+  "event_count":6,
+  "failure_code":null,
+  "first_broken_event_id":null,
+  "first_broken_sequence":null,
+  "later_lines_preserved":0,
+  "schema":"miter-trajectory-integrity-report-v1",
+  "status":"valid",
+  "tip_event_hash":"e70fa207a0899a6986c0fccfae57481231f6ea1e9bdec15b0f10f6e5506e1b84",
+  "validated_prefix":6
+}

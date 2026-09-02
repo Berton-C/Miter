@@ -1,0 +1,5 @@
+{"data": ["unauthorized", "perpetual", "continue-autonomous-work", "none" ],"kind":"unauthorized-event","wall_time":1788338316.269104}
+{"data": ["empty-lawful-ready-set", "no-model-call" ],"kind":"quiescent-ready","wall_time":1788338316.272773}
+{"data": ["wait", 0.05, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788338316.273975}
+{"data": ["wait", 0.1, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788338316.337491}
+{"data": ["explicit-stop" ],"kind":"reactor-stopped","wall_time":1788338316.440037}

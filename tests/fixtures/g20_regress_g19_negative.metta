@@ -1,0 +1,7 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_reactor.metta")
+(= (G20RegressionInternals)
+   (collapse (match &rna (ready $id ResearchRNA $locus $n) (ready $id ResearchRNA $locus $n))))
+(= (G20RegressionNonInterruptible $root)
+   (if (> (size-atom (G20RegressionInternals)) 0) (G20RegressionInternals) (ReactorReady)))
+!(SoulBoot "runtime/g20-regression/g19/negative/integrity.json")
+!(ReactorCycleWith "runtime/g20-regression/g19/negative" false 0.05 G20RegressionNonInterruptible)

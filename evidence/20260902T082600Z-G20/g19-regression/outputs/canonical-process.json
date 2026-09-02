@@ -1,0 +1,7 @@
+{
+  "elapsed_seconds":3.953118085861206,
+  "model_call_count_basis":"reactor has no model transport",
+  "model_calls":0,
+  "pid":21123,
+  "status":"exit(0)"
+}

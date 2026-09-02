@@ -1,0 +1,9 @@
+{
+  "id":"stop",
+  "kind":"stop",
+  "obligation":"none",
+  "provenance":"direct-contact",
+  "schema":"miter-reactor-input-v1",
+  "sent_at":1788338222.492538,
+  "steps":1
+}

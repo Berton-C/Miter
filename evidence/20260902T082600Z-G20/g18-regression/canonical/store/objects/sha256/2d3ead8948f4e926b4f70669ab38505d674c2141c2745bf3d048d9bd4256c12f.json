@@ -1,0 +1,1 @@
+{"data": {"authority":"internal-hash-checkpoint-only","budget":2,"current_locus":"Transcribe","dependencies": [],"provenance":"verified-local-ingress","rna_id":"internal","scope":"scope:reactor-local","source_event":"internal","species":"ConsolidateRNA","status":"suspended","termination_condition":"finite-step-budget-or-human-stop"},"wall_time":1788338315.772076}

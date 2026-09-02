@@ -1,0 +1,1424 @@
+[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/bootstrap_reactor.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self',
+                     "/Users/claritymiter/miter/src/bootstrap_reactor.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self (library lib_import))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library(lib_import, B),
+             'import!'('&self', B, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function consult)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(consult, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_file $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                           ($prologfile (consult))
+                                                                           ($function (superpose $importfunctions)))
+                                                                          (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_file(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    consult(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function use_module)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(use_module, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_module $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                             ($prologfile (use_module))
+                                                                             ($function (superpose $importfunctions)))
+                                                                            (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_module(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    use_module(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file (library lib_import.pl) (static-import! git-import! use-module!))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library('lib_import.pl', B),
+             import_prolog_functions_from_file(B,
+                                               [ 'static-import!',
+                                                 'git-import!',
+                                                 'use-module!'
+                                               ],
+                                               A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_reactor.pl"
+ (miter_reactor_input miter_reactor_obligation miter_reactor_config miter_reactor_record
+  miter_reactor_checkpoint miter_reactor_step miter_reactor_wait))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_reactor.pl",
+                                             [ miter_reactor_input,
+                                               miter_reactor_obligation,
+                                               miter_reactor_config,
+                                               miter_reactor_record,
+                                               miter_reactor_checkpoint,
+                                               miter_reactor_step,
+                                               miter_reactor_wait
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_integrity.pl" (miter_integrity_verify))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_integrity.pl",
+                                             [miter_integrity_verify],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &soul "/Users/claritymiter/miter/constitution/soul.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&soul',
+                     "/Users/claritymiter/miter/constitution/soul.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-version miter-soul-poc-v1)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-project BGI-Miter)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-program Miter)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-standing provisional-computational-projection)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value AgencyBalance "Preserve human choice and participation without delegating authority to model fluency.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing AgencyBalance human-choice-open)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire AgencyBalance "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern AgencyBalance)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value CognitiveResilience "Keep uncertainty and revisable readings live under pressure.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing CognitiveResilience uncertainty-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire CognitiveResilience "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern CognitiveResilience)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value ConnectionDepth "Receive the person without collapsing their experience into a task verdict.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing ConnectionDepth person-received)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire ConnectionDepth "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern ConnectionDepth)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value WonderPreservation "Preserve a genuine open question rather than forcing brittle certainty.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing WonderPreservation open-question-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire WonderPreservation "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern WonderPreservation)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value TimeCoherence "Continue from inspectable history and artifact lineage rather than a copied prompt.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing TimeCoherence source-lineage-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire TimeCoherence "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern TimeCoherence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value PurposeBeyondUtility "Do not let usefulness compensate for a failed purpose or constitutional floor.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing PurposeBeyondUtility purpose-not-utility)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire PurposeBeyondUtility "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern PurposeBeyondUtility)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value SharedUnderstanding "Make the task distinctions and authority boundary explicit to the human.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing SharedUnderstanding task-distinction-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire SharedUnderstanding "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern SharedUnderstanding)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value CreativeTranscendence "Allow novelty only with answerability and a governed candidate lifecycle.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing CreativeTranscendence novelty-accountable)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire CreativeTranscendence "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern CreativeTranscendence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value AttentionStewardship "Bound attention and yield to relevant contact instead of endless self-generation.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing AttentionStewardship bounded-contact-sensitive)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire AttentionStewardship "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-pattern AttentionStewardship)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value Safety "A failed safety floor cannot be compensated by usefulness.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing Safety safety-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire Safety "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value Integrity "Keep contact, inference, rendering and evidence standing distinct.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing Integrity provenance-preserved)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire Integrity "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value Identity "The running program is Miter; naming is not a second lineage.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing Identity Miter)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire Identity "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value NonSovereignty "Finite representations and model products do not become actuality or authority.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing NonSovereignty finite-reading)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire NonSovereignty "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value MemoryScope "Recall and disclosure require the authenticated principal, audience and project scope.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing MemoryScope scope-witnessed)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire MemoryScope "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value EffectAuthority "Capability and generation do not grant permission for external effects.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing EffectAuthority permission-witnessed)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire EffectAuthority "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value IndependentStanding "A candidate cannot be the sole source of its own promotion evidence.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing IndependentStanding independent-evidence)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire IndependentStanding "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-value CandidateBoundary "Derived candidates remain quarantined until separately admitted.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-required-standing CandidateBoundary quarantined)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulRequire CandidateBoundary "Native witness guard; consumed by startup and later movement/voice admission.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation AgencyWithUnderstanding AgencyBalance SharedUnderstanding lonely-sovereignty)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire AgencyWithUnderstanding "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation UnderstandingWithWonder SharedUnderstanding WonderPreservation sterile-consensus)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire UnderstandingWithWonder "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation ResilienceWithConnection CognitiveResilience ConnectionDepth impressive-detachment)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire ResilienceWithConnection "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation CreativityWithTime CreativeTranscendence TimeCoherence scattered-novelty)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire CreativityWithTime "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation PurposeWithAgency PurposeBeyondUtility AgencyBalance righteous-refusal-without-relationship)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire PurposeWithAgency "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-relation AttentionWithResilience AttentionStewardship CognitiveResilience efficient-but-brittle-focus)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-causal SoulPairRequire AttentionWithResilience "Both roles must remain witnessed; one cannot compensate for the other.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-hard-floor Safety)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(soul-hard-floor Integrity)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/soul.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/soul.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulExpected $value)
+   (let $xs (collapse (match &soul (soul-required-standing $value $w) $w))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) missing-doctrine)))
+[33m--> prolog clause -->
+[32m'SoulExpected'(A, B) :-
+    C=D,
+    findall(E,
+            match('&soul',
+                  ['soul-required-standing', A, E],
+                  E,
+                  E),
+            D),
+    'size-atom'(C, F),
+    ==(F, 1, G),
+    (   G==true
+    ->  'index-atom'(C, 0, B)
+    ;   B='missing-doctrine'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulRequire $value $witness)
+   (let* (($values (collapse (match &soul (soul-value $value $d) $value)))
+          ($expected (SoulExpected $value)))
+     (if (and (== (size-atom $values) 1) (!= $expected missing-doctrine))
+       (if (== $expected $witness) witnessed blocked)
+       blocked)))
+[33m--> prolog clause -->
+[32m'SoulRequire'(A, B, C) :-
+    D=E,
+    findall(A,
+            match('&soul', ['soul-value', A, _], A, A),
+            E),
+    F=G,
+    'SoulExpected'(A, G),
+    'size-atom'(D, H),
+    ==(H, 1, I),
+    '!='(F, 'missing-doctrine', J),
+    and(I, J, K),
+    (   K==true
+    ->  ==(F, B, L),
+        (   L==true
+        ->  C=witnessed
+        ;   C=blocked
+        )
+    ;   C=blocked
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulPairRequire $relation $witnesses)
+   (let* (($as (collapse (match &soul (soul-relation $relation $a $b $d) $a)))
+          ($bs (collapse (match &soul (soul-relation $relation $a $b $d) $b))))
+     (if (and (== (size-atom $as) 1) (== (size-atom $bs) 1))
+       (if (is-expr $witnesses)
+         (if (== (size-atom $witnesses) 2)
+           (if (and
+                 (== (SoulRequire (index-atom $as 0) (index-atom $witnesses 0)) witnessed)
+                 (== (SoulRequire (index-atom $bs 0) (index-atom $witnesses 1)) witnessed))
+             witnessed blocked)
+           blocked)
+         blocked)
+       blocked)))
+[33m--> prolog clause -->
+[32m'SoulPairRequire'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&soul',
+                  ['soul-relation', A, F, G, H],
+                  F,
+                  F),
+            E),
+    I=J,
+    findall(G,
+            match('&soul',
+                  ['soul-relation', A, F, G, H],
+                  G,
+                  G),
+            J),
+    'size-atom'(D, K),
+    ==(K, 1, L),
+    'size-atom'(I, M),
+    ==(M, 1, N),
+    and(L, N, O),
+    (   O==true
+    ->  'is-expr'(B, P),
+        (   P==true
+        ->  'size-atom'(B, Q),
+            ==(Q, 2, R),
+            (   R==true
+            ->  'index-atom'(D, 0, S),
+                'index-atom'(B, 0, T),
+                'SoulRequire'(S, T, U),
+                ==(U, witnessed, V),
+                'index-atom'(I, 0, W),
+                'index-atom'(B, 1, X),
+                'SoulRequire'(W, X, Y),
+                ==(Y, witnessed, Z),
+                and(V, Z, A1),
+                (   A1==true
+                ->  C=witnessed
+                ;   C=blocked
+                )
+            ;   C=blocked
+            )
+        ;   C=blocked
+        )
+    ;   C=blocked
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulInvoke $proc $id $witness) ($proc $id $witness))
+[33m--> prolog clause -->
+[32m'SoulInvoke'(A, B, C, D) :-
+    reduce([A, B, C], D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulExercise $id $positive)
+   (let $ps (collapse (match &soul (soul-causal $p $id $reason) $p))
+     (if (== (size-atom $ps) 1)
+       (let $p (index-atom $ps 0)
+         (and (== (SoulInvoke $p $id $positive) witnessed)
+              (== (SoulInvoke $p $id missing-witness) blocked)))
+       false)))
+[33m--> prolog clause -->
+[32m'SoulExercise'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&soul', ['soul-causal', F, A, _], F, F),
+            E),
+    'size-atom'(D, G),
+    ==(G, 1, H),
+    (   H==true
+    ->  F=I,
+        'index-atom'(D, 0, I),
+        'SoulInvoke'(F, A, B, J),
+        ==(J, witnessed, K),
+        'SoulInvoke'(F, A, 'missing-witness', L),
+        ==(L, blocked, M),
+        and(K, M, C)
+    ;   C=false
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulAuditValues $ids $i)
+   (if (< $i (size-atom $ids))
+     (let $id (index-atom $ids $i)
+       (if (SoulExercise $id (SoulExpected $id))
+         (SoulAuditValues $ids (+ $i 1)) false))
+     true))
+[33m--> prolog clause -->
+[32m'SoulAuditValues'(A, B, C) :-
+    'size-atom'(A, D),
+    <(B, D, E),
+    (   E==true
+    ->  F=G,
+        'index-atom'(A, B, G),
+        'SoulExpected'(F, H),
+        'SoulExercise'(F, H, I),
+        (   I==true
+        ->  +(B, 1, J),
+            'SoulAuditValues'(A, J, C)
+        ;   C=false
+        )
+    ;   C=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulPairPositive $relation)
+   (let* (($as (collapse (match &soul (soul-relation $relation $a $b $d) $a)))
+          ($bs (collapse (match &soul (soul-relation $relation $a $b $d) $b))))
+     (if (and (== (size-atom $as) 1) (== (size-atom $bs) 1))
+       ((SoulExpected (index-atom $as 0)) (SoulExpected (index-atom $bs 0)))
+       malformed-relation)))
+[33m--> prolog clause -->
+[32m'SoulPairPositive'(A, B) :-
+    C=D,
+    findall(E,
+            match('&soul',
+                  ['soul-relation', A, E, F, G],
+                  E,
+                  E),
+            D),
+    H=I,
+    findall(F,
+            match('&soul',
+                  ['soul-relation', A, E, F, G],
+                  F,
+                  F),
+            I),
+    'size-atom'(C, J),
+    ==(J, 1, K),
+    'size-atom'(H, L),
+    ==(L, 1, M),
+    and(K, M, N),
+    (   N==true
+    ->  'index-atom'(C, 0, O),
+        'SoulExpected'(O, P),
+        'index-atom'(H, 0, Q),
+        'SoulExpected'(Q, R),
+        reduce([P, R], B)
+    ;   B='malformed-relation'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulAuditRelations $ids $i)
+   (if (< $i (size-atom $ids))
+     (let* (($id (index-atom $ids $i))
+            ($positive (SoulPairPositive $id)))
+       (if (and (SoulExercise $id $positive)
+                (== (SoulPairRequire $id ((index-atom $positive 0) missing-witness)) blocked))
+         (SoulAuditRelations $ids (+ $i 1)) false))
+     true))
+[33m--> prolog clause -->
+[32m'SoulAuditRelations'(A, B, C) :-
+    'size-atom'(A, D),
+    <(B, D, E),
+    (   E==true
+    ->  F=G,
+        'index-atom'(A, B, G),
+        H=I,
+        'SoulPairPositive'(F, I),
+        'SoulExercise'(F, H, J),
+        'index-atom'(H, 0, K),
+        reduce([K, 'missing-witness'], L),
+        'SoulPairRequire'(F, L, M),
+        ==(M, blocked, N),
+        and(J, N, O),
+        (   O==true
+        ->  +(B, 1, P),
+            'SoulAuditRelations'(A, P, C)
+        ;   C=false
+        )
+    ;   C=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulRationalityAudit)
+   (let* (($values (collapse (match &soul (soul-value $v $d) $v)))
+          ($relations (collapse (match &soul (soul-relation $r $a $b $d) $r)))
+          ($links (collapse (match &soul (soul-causal $p $id $reason) $id))))
+     (if (and (> (size-atom $values) 0)
+              (== (size-atom $links) (+ (size-atom $values) (size-atom $relations))))
+       (and (SoulAuditValues $values 0) (SoulAuditRelations $relations 0))
+       false)))
+[33m--> prolog clause -->
+[32m'SoulRationalityAudit'(A) :-
+    B=C,
+    findall(D,
+            match('&soul', ['soul-value', D, E], D, D),
+            C),
+    F=G,
+    findall(H,
+            match('&soul',
+                  ['soul-relation', H, _, _, E],
+                  H,
+                  H),
+            G),
+    I=J,
+    findall(K,
+            match('&soul',
+                  ['soul-causal', _, K, _],
+                  K,
+                  K),
+            J),
+    'size-atom'(B, L),
+    >(L, 0, M),
+    'size-atom'(I, N),
+    'size-atom'(B, O),
+    'size-atom'(F, P),
+    +(O, P, Q),
+    ==(N, Q, R),
+    and(M, R, S),
+    (   S==true
+    ->  'SoulAuditValues'(B, 0, T),
+        'SoulAuditRelations'(F, 0, U),
+        and(T, U, A)
+    ;   A=false
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulStartup $integrity)
+   (if (== $integrity soul-integrity-verified)
+     (if (SoulRationalityAudit) soul-ready soul-startup-blocked)
+     soul-startup-blocked))
+[33m--> prolog clause -->
+[32m'SoulStartup'(A, B) :-
+    ==(A, 'soul-integrity-verified', C),
+    (   C==true
+    ->  'SoulRationalityAudit'(D),
+        (   D==true
+        ->  B='soul-ready'
+        ;   B='soul-startup-blocked'
+        )
+    ;   B='soul-startup-blocked'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (SoulBoot $report)
+   (SoulStartup (miter_integrity_verify
+     "/Users/claritymiter/miter/constitution/authority-manifest.json" $report)))
+[33m--> prolog clause -->
+[32m'SoulBoot'(A, B) :-
+    miter_integrity_verify("/Users/claritymiter/miter/constitution/authority-manifest.json",
+                           A,
+                           C),
+    'SoulStartup'(C, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/reactor.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/reactor.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorEligible $root (event $id $kind $provenance $obligation $steps))
+   (or (and (== $kind human) (== $provenance direct-contact))
+       (and (or (== $kind due) (== $kind research)) (and (== $provenance witnessed-obligation)
+          (== (miter_reactor_obligation $root $obligation) obligation-verified)))))
+[33m--> prolog clause -->
+[32m'ReactorEligible'(A,
+                       [event, _, B, C, D, _],
+                       E) :-
+    ==(B, human, F),
+    ==(C, 'direct-contact', G),
+    and(F, G, H),
+    ==(B, due, I),
+    ==(B, research, J),
+    or(I, J, K),
+    ==(C, 'witnessed-obligation', L),
+    miter_reactor_obligation(A, D, M),
+    ==(M, 'obligation-verified', N),
+    and(L, N, O),
+    and(K, O, P),
+    or(H, P, E).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorIngestOne $root (event $id $kind $provenance $obligation $steps))
+   (if (and (== $kind stop) (== $provenance direct-contact))
+     (add-atom &rna (reactor-stop requested))
+     (if (ReactorEligible $root (event $id $kind $provenance $obligation $steps))
+       (let* (($species (if (== $kind human) ContactRNA (if (== $kind research) ResearchRNA ConsolidateRNA)))
+              ($a (add-atom &rna (ready $id $species Transcribe $steps)))
+              ($s (miter_reactor_checkpoint $root $id $species Transcribe $steps ready)))
+         (miter_reactor_record $root RNA-created (rna-created $id $species $kind $obligation)))
+       (miter_reactor_record $root unauthorized-event (unauthorized $id $kind $obligation)))))
+[33m--> prolog clause -->
+[32m'ReactorIngestOne'(A,
+                        [event, B, C, D, E, F],
+                        G) :-
+    ==(C, stop, H),
+    ==(D, 'direct-contact', I),
+    and(H, I, J),
+    (   J==true
+    ->  'add-atom'('&rna', ['reactor-stop', requested], G)
+    ;   'ReactorEligible'(A,
+                          [event, B, C, D, E, F],
+                          K),
+        (   K==true
+        ->  L=M,
+            ==(C, human, N),
+            (   N==true
+            ->  M='ContactRNA'
+            ;   ==(C, research, O),
+                (   O==true
+                ->  M='ResearchRNA'
+                ;   M='ConsolidateRNA'
+                )
+            ),
+            true,
+            'add-atom'('&rna', [ready, B, L, 'Transcribe', F], _),
+            true,
+            miter_reactor_checkpoint(A,
+                                     B,
+                                     L,
+                                     'Transcribe',
+                                     F,
+                                     ready,
+                                     _),
+            miter_reactor_record(A,
+                                 'RNA-created',
+                                 [ 'rna-created',
+                                   B,
+                                   L,
+                                   C,
+                                   E
+                                 ],
+                                 G)
+        ;   miter_reactor_record(A,
+                                 'unauthorized-event',
+                                 [unauthorized, B, C, E],
+                                 G)
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorIngest $root $events $i)
+   (if (< $i (size-atom $events))
+     (let $r (ReactorIngestOne $root (index-atom $events $i))
+       (ReactorIngest $root $events (+ $i 1))) ingested))
+[33m--> prolog clause -->
+[32m'ReactorIngest'(A, B, C, D) :-
+    'size-atom'(B, E),
+    <(C, E, F),
+    (   F==true
+    ->  true,
+        'index-atom'(B, C, G),
+        'ReactorIngestOne'(A, G, _),
+        +(C, 1, H),
+        'ReactorIngest'(A, B, H, D)
+    ;   D=ingested
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorReady) (collapse (match &rna (ready $id $sp $locus $n) (ready $id $sp $locus $n))))
+[33m--> prolog clause -->
+[32m'ReactorReady'(A) :-
+    findall([ready, B, C, D, E],
+            match('&rna',
+                  [ready, B, C, D, E],
+                  [ready, B, C, D, E],
+                  [ready, B, C, D, E]),
+            A).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorAdvance $root (ready $id $sp $locus $n))
+   (let $removed (remove-atom &rna (ready $id $sp $locus $n))
+     (if (== $locus Transcribe)
+       (let* (($a (add-atom &rna (ready $id $sp Inquire $n)))
+              ($s (miter_reactor_checkpoint $root $id $sp Inquire $n ready))) advanced)
+       (if (== $locus Inquire)
+         (let* (($w (miter_reactor_step $root $id))
+                ($next (if (> $n 1) Inquire Witness))
+                ($remaining (- $n 1))
+                ($a (add-atom &rna (ready $id $sp $next $remaining)))
+                ($s (miter_reactor_checkpoint $root $id $sp $next $remaining ready))) $w)
+         (miter_reactor_checkpoint $root $id $sp Consolidate 0 completed)))))
+[33m--> prolog clause -->
+[32m'ReactorAdvance'(A, [ready, B, C, D, E], F) :-
+    true,
+    'remove-atom'('&rna', [ready, B, C, D, E], _),
+    ==(D, 'Transcribe', G),
+    (   G==true
+    ->  F=advanced,
+        true,
+        'add-atom'('&rna', [ready, B, C, 'Inquire', E], _),
+        true,
+        miter_reactor_checkpoint(A,
+                                 B,
+                                 C,
+                                 'Inquire',
+                                 E,
+                                 ready,
+                                 _)
+    ;   ==(D, 'Inquire', H),
+        (   H==true
+        ->  F=I,
+            miter_reactor_step(A, B, I),
+            J=K,
+            >(E, 1, L),
+            (   L==true
+            ->  K='Inquire'
+            ;   K='Witness'
+            ),
+            M=N,
+            -(E, 1, N),
+            true,
+            'add-atom'('&rna', [ready, B, C, J, M], _),
+            true,
+            miter_reactor_checkpoint(A,
+                                     B,
+                                     C,
+                                     J,
+                                     M,
+                                     ready,
+                                     _)
+        ;   miter_reactor_checkpoint(A,
+                                     B,
+                                     C,
+                                     'Consolidate',
+                                     0,
+                                     completed,
+                                     F)
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorSuspendOne $root (ready $id $sp $locus $n))
+   (if (!= $sp ContactRNA)
+     (let* (($s (miter_reactor_checkpoint $root $id $sp $locus $n suspended))
+            ($r (remove-atom &rna (ready $id $sp $locus $n)))
+            ($a (add-atom &rna (suspended $id $sp $locus $n)))) suspended)
+     human-ready))
+[33m--> prolog clause -->
+[32m'ReactorSuspendOne'(A,
+                         [ready, B, C, D, E],
+                         F) :-
+    '!='(C, 'ContactRNA', G),
+    (   G==true
+    ->  F=suspended,
+        true,
+        miter_reactor_checkpoint(A,
+                                 B,
+                                 C,
+                                 D,
+                                 E,
+                                 suspended,
+                                 _),
+        true,
+        'remove-atom'('&rna', [ready, B, C, D, E], _),
+        true,
+        'add-atom'('&rna', [suspended, B, C, D, E], _)
+    ;   F='human-ready'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorSuspend $root $items $i)
+   (if (< $i (size-atom $items))
+     (let $s (ReactorSuspendOne $root (index-atom $items $i))
+       (ReactorSuspend $root $items (+ $i 1))) suspended))
+[33m--> prolog clause -->
+[32m'ReactorSuspend'(A, B, C, D) :-
+    'size-atom'(B, E),
+    <(C, E, F),
+    (   F==true
+    ->  true,
+        'index-atom'(B, C, G),
+        'ReactorSuspendOne'(A, G, _),
+        +(C, 1, H),
+        'ReactorSuspend'(A, B, H, D)
+    ;   D=suspended
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorResumeOne $root (suspended $id $sp $locus $n))
+   (let* (($s (miter_reactor_checkpoint $root $id $sp $locus $n resumed))
+          ($r (remove-atom &rna (suspended $id $sp $locus $n)))
+          ($a (add-atom &rna (ready $id $sp $locus $n)))) resumed))
+[33m--> prolog clause -->
+[32m'ReactorResumeOne'(A,
+                        [suspended, B, C, D, E],
+                        resumed) :-
+    true,
+    miter_reactor_checkpoint(A,
+                             B,
+                             C,
+                             D,
+                             E,
+                             resumed,
+                             _),
+    true,
+    'remove-atom'('&rna', [suspended, B, C, D, E], _),
+    true,
+    'add-atom'('&rna', [ready, B, C, D, E], _).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorResume $root $items $i)
+   (if (< $i (size-atom $items))
+     (let $s (ReactorResumeOne $root (index-atom $items $i))
+       (ReactorResume $root $items (+ $i 1))) resumed))
+[33m--> prolog clause -->
+[32m'ReactorResume'(A, B, C, D) :-
+    'size-atom'(B, E),
+    <(C, E, F),
+    (   F==true
+    ->  true,
+        'index-atom'(B, C, G),
+        'ReactorResumeOne'(A, G, _),
+        +(C, 1, H),
+        'ReactorResume'(A, B, H, D)
+    ;   D=resumed
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorSelect $root)
+   (let $humans (collapse (match &rna (ready $id ContactRNA $locus $n)
+                           (ready $id ContactRNA $locus $n)))
+     (if (> (size-atom $humans) 0)
+       (let $s (ReactorSuspend $root (ReactorReady) 0) (ReactorReady))
+       (let* (($items (collapse (match &rna (suspended $id $sp $locus $n)
+                                 (suspended $id $sp $locus $n))))
+              ($r (ReactorResume $root $items 0))) (ReactorReady)))))
+[33m--> prolog clause -->
+[32m'ReactorSelect'(A, B) :-
+    C=D,
+    findall([ready, E, 'ContactRNA', F, G],
+            match('&rna',
+                  [ready, E, 'ContactRNA', F, G],
+                  [ready, E, 'ContactRNA', F, G],
+                  [ready, E, 'ContactRNA', F, G]),
+            D),
+    'size-atom'(C, H),
+    >(H, 0, I),
+    (   I==true
+    ->  true,
+        'ReactorReady'(J),
+        'ReactorSuspend'(A, J, 0, _),
+        'ReactorReady'(B)
+    ;   K=L,
+        findall([suspended, E, M, F, G],
+                match('&rna',
+                      [suspended, E, M, F, G],
+                      [suspended, E, M, F, G],
+                      [suspended, E, M, F, G]),
+                L),
+        true,
+        'ReactorResume'(A, K, 0, _),
+        'ReactorReady'(B)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorReturnInterval $x) (+ $x 0))
+[33m--> prolog clause -->
+[32m'ReactorReturnInterval'(A, B) :-
+    +(A, 0, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorIdlePromoters $root $promoters $i)
+   (if (< $i (size-atom $promoters))
+     (let* (($promoter (index-atom $promoters $i)) ($result ($promoter $root)))
+       (ReactorIdlePromoters $root $promoters (+ $i 1))) idle-opportunities-examined))
+[33m--> prolog clause -->
+[32m'ReactorIdlePromoters'(A, B, C, D) :-
+    'size-atom'(B, E),
+    <(C, E, F),
+    (   F==true
+    ->  G=H,
+        'index-atom'(B, C, H),
+        true,
+        reduce([G, A], _),
+        +(C, 1, I),
+        'ReactorIdlePromoters'(A, B, I, D)
+    ;   D='idle-opportunities-examined'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorIdleOpportunity $root)
+   (ReactorIdlePromoters $root
+     (collapse (match &rna_hooks (idle-promoter $p) $p)) 0))
+[33m--> prolog clause -->
+[32m'ReactorIdleOpportunity'(A, B) :-
+    findall(C,
+            match('&rna_hooks', ['idle-promoter', C], C, C),
+            D),
+    'ReactorIdlePromoters'(A, D, 0, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorAdvanceRegistered $root (ready $id $sp $locus $n))
+   (let $hooks (collapse (match &rna_hooks (rna-advancer $sp $p) $p))
+     (if (== (size-atom $hooks) 1)
+       (let $p (index-atom $hooks 0) ($p $root $id $locus $n))
+       (ReactorAdvance $root (ready $id $sp $locus $n)))))
+[33m--> prolog clause -->
+[32m'ReactorAdvanceRegistered'(A,
+                                [ready, B, C, D, E],
+                                F) :-
+    G=H,
+    findall(I,
+            match('&rna_hooks', ['rna-advancer', C, I], I, I),
+            H),
+    'size-atom'(G, J),
+    ==(J, 1, K),
+    (   K==true
+    ->  I=L,
+        'index-atom'(G, 0, L),
+        reduce([I, A, B, D, E], F)
+    ;   'ReactorAdvance'(A,
+                         [ready, B, C, D, E],
+                         F)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorNextInterval $interval)
+   (let* (($next (* $interval 2)) ($cap (miter_reactor_config idle_cap_seconds)))
+     (if (> $next $cap) (ReactorReturnInterval $cap) (ReactorReturnInterval $next))))
+[33m--> prolog clause -->
+[32m'ReactorNextInterval'(A, B) :-
+    C=D,
+    *(A, 2, D),
+    E=F,
+    miter_reactor_config(idle_cap_seconds, F),
+    >(C, E, G),
+    (   G==true
+    ->  'ReactorReturnInterval'(E, B)
+    ;   'ReactorReturnInterval'(C, B)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorCycleWith $root $idle $interval $selector)
+   (let* (($incoming (miter_reactor_input $root))
+          ($ingested (ReactorIngest $root $incoming 0))
+          ($stop (collapse (match &rna (reactor-stop requested) requested)))
+          ($ready-before ($selector $root))
+          ($interest (if (and (== (size-atom $ready-before) 0) (== (size-atom $stop) 0))
+                       (ReactorIdleOpportunity $root) no-idle-selection))
+          ($ready ($selector $root)))
+     (if (> (size-atom $stop) 0)
+       (miter_reactor_record $root reactor-stopped (explicit-stop))
+       (if (> (size-atom $ready) 0)
+         (let* (($base (miter_reactor_config idle_base_seconds))
+                ($wake (if (== $idle true) (miter_reactor_record $root wake (contact-or-due-work)) already-awake))
+                ($reset (if (== $idle true) (miter_reactor_record $root interval-reset (backoff $base contact-or-due-work)) already-reset))
+                ($advance (ReactorAdvanceRegistered $root (index-atom $ready 0))))
+           (if (== $advance reactor-store-failed) reactor-failed
+             (ReactorCycleWith $root false (miter_reactor_config idle_base_seconds) $selector)))
+         (let* (($q (if (== $idle false) (miter_reactor_record $root quiescent-ready (empty-lawful-ready-set no-model-call)) already-quiescent))
+                ($schedule (miter_reactor_record $root idle-wait (wait $interval no-progress-claim no-model-call)))
+                ($wait (miter_reactor_wait $root $interval))
+                ($next (if (== $wait input-ready) (miter_reactor_config idle_base_seconds)
+                           (ReactorNextInterval $interval))))
+           (ReactorCycleWith $root true $next $selector))))))
+[33m--> prolog clause -->
+[32m'ReactorCycleWith'(A, B, C, D, E) :-
+    F=G,
+    miter_reactor_input(A, G),
+    true,
+    'ReactorIngest'(A, F, 0, _),
+    H=I,
+    findall(requested,
+            match('&rna', ['reactor-stop', requested], requested, requested),
+            I),
+    J=K,
+    reduce([D, A], K),
+    true,
+    'size-atom'(J, L),
+    ==(L, 0, M),
+    'size-atom'(H, N),
+    ==(N, 0, O),
+    and(M, O, P),
+    (   P==true
+    ->  'ReactorIdleOpportunity'(A, Q)
+    ;   Q='no-idle-selection'
+    ),
+    R=S,
+    reduce([D, A], S),
+    'size-atom'(H, T),
+    >(T, 0, U),
+    (   U==true
+    ->  miter_reactor_record(A, 'reactor-stopped', ['explicit-stop'], E)
+    ;   'size-atom'(R, V),
+        >(V, 0, W),
+        (   W==true
+        ->  X=Y,
+            miter_reactor_config(idle_base_seconds, Y),
+            true,
+            ==(B, true, Z),
+            (   Z==true
+            ->  miter_reactor_record(A,
+                                     wake,
+                                     ['contact-or-due-work'],
+                                     A1)
+            ;   A1='already-awake'
+            ),
+            true,
+            ==(B, true, B1),
+            (   B1==true
+            ->  miter_reactor_record(A,
+                                     'interval-reset',
+                                     [backoff, X, 'contact-or-due-work'],
+                                     C1)
+            ;   C1='already-reset'
+            ),
+            D1=E1,
+            'index-atom'(R, 0, F1),
+            'ReactorAdvanceRegistered'(A, F1, E1),
+            ==(D1, 'reactor-store-failed', G1),
+            (   G1==true
+            ->  E='reactor-failed'
+            ;   miter_reactor_config(idle_base_seconds, H1),
+                'ReactorCycleWith'(A, false, H1, D, E)
+            )
+        ;   true,
+            ==(B, false, I1),
+            (   I1==true
+            ->  miter_reactor_record(A,
+                                     'quiescent-ready',
+                                     ['empty-lawful-ready-set', 'no-model-call'],
+                                     J1)
+            ;   J1='already-quiescent'
+            ),
+            true,
+            miter_reactor_record(A,
+                                 'idle-wait',
+                                 [ wait,
+                                   C,
+                                   'no-progress-claim',
+                                   'no-model-call'
+                                 ],
+                                 _),
+            K1=L1,
+            miter_reactor_wait(A, C, L1),
+            M1=N1,
+            ==(K1, 'input-ready', O1),
+            (   O1==true
+            ->  miter_reactor_config(idle_base_seconds, N1)
+            ;   'ReactorNextInterval'(C, N1)
+            ),
+            'ReactorCycleWith'(A, true, M1, D, E)
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m-->  metta specialization (ReactorCycleWith_Spec_[ReactorSelect])  -->
+[36m(= (ReactorCycleWith_Spec_[ReactorSelect] $_0 $_1 $_2 ReactorSelect) (let* (($_3 (miter_reactor_input $_0)) ($_4 (ReactorIngest $_0 $_3 0)) ($_5 (collapse (match &rna (reactor-stop requested) requested))) ($_6 (ReactorSelect $_0)) ($_7 (if (and (== (size-atom $_6) 0) (== (size-atom $_5) 0)) (ReactorIdleOpportunity $_0) no-idle-selection)) ($_8 (ReactorSelect $_0))) (if (> (size-atom $_5) 0) (miter_reactor_record $_0 reactor-stopped (explicit-stop)) (if (> (size-atom $_8) 0) (let* (($_9 (miter_reactor_config idle_base_seconds)) ($_10 (if (== $_1 true) (miter_reactor_record $_0 wake (contact-or-due-work)) already-awake)) ($_11 (if (== $_1 true) (miter_reactor_record $_0 interval-reset (backoff $_9 contact-or-due-work)) already-reset)) ($_12 (ReactorAdvanceRegistered $_0 (index-atom $_8 0)))) (if (== $_12 reactor-store-failed) reactor-failed (ReactorCycleWith $_0 false (miter_reactor_config idle_base_seconds) ReactorSelect))) (let* (($_13 (if (== $_1 false) (miter_reactor_record $_0 quiescent-ready (empty-lawful-ready-set no-model-call)) already-quiescent)) ($_14 (miter_reactor_record $_0 idle-wait (wait $_2 no-progress-claim no-model-call))) ($_15 (miter_reactor_wait $_0 $_2)) ($_16 (if (== $_15 input-ready) (miter_reactor_config idle_base_seconds) (ReactorNextInterval $_2)))) (ReactorCycleWith $_0 true $_16 ReactorSelect))))))
+[33m--> prolog clause -->
+[32m'ReactorCycleWith_Spec_[ReactorSelect]'(A,
+                                             B,
+                                             C,
+                                             'ReactorSelect',
+                                             D) :-
+    E=F,
+    miter_reactor_input(A, F),
+    _=G,
+    'ReactorIngest'(A, E, 0, G),
+    H=I,
+    findall(requested,
+            match('&rna', ['reactor-stop', requested], requested, requested),
+            I),
+    J=K,
+    'ReactorSelect'(A, K),
+    _=L,
+    ( 'size-atom'(J, M),
+      ==(M, 0, N),
+      'size-atom'(H, O),
+      ==(O, 0, P),
+      and(N, P, Q)
+    ),
+    (   Q==true
+    ->  'ReactorIdleOpportunity'(A, L)
+    ;   L='no-idle-selection'
+    ),
+    R=S,
+    'ReactorSelect'(A, S),
+    'size-atom'(H, T),
+    >(T, 0, U),
+    (   U==true
+    ->  miter_reactor_record(A, 'reactor-stopped', ['explicit-stop'], D)
+    ;   'size-atom'(R, V),
+        >(V, 0, W),
+        (   W==true
+        ->  X=Y,
+            miter_reactor_config(idle_base_seconds, Y),
+            _=Z,
+            ==(B, true, A1),
+            (   A1==true
+            ->  miter_reactor_record(A,
+                                     wake,
+                                     ['contact-or-due-work'],
+                                     Z)
+            ;   Z='already-awake'
+            ),
+            _=B1,
+            ==(B, true, C1),
+            (   C1==true
+            ->  miter_reactor_record(A,
+                                     'interval-reset',
+                                     [backoff, X, 'contact-or-due-work'],
+                                     B1)
+            ;   B1='already-reset'
+            ),
+            D1=E1,
+            'index-atom'(R, 0, F1),
+            'ReactorAdvanceRegistered'(A, F1, E1),
+            ==(D1, 'reactor-store-failed', G1),
+            (   G1==true
+            ->  D='reactor-failed'
+            ;   miter_reactor_config(idle_base_seconds, H1),
+                'ReactorCycleWith'(A, false, H1, 'ReactorSelect', D)
+            )
+        ;   _=I1,
+            ==(B, false, J1),
+            (   J1==true
+            ->  miter_reactor_record(A,
+                                     'quiescent-ready',
+                                     ['empty-lawful-ready-set', 'no-model-call'],
+                                     I1)
+            ;   I1='already-quiescent'
+            ),
+            _=K1,
+            miter_reactor_record(A,
+                                 'idle-wait',
+                                 [ wait,
+                                   C,
+                                   'no-progress-claim',
+                                   'no-model-call'
+                                 ],
+                                 K1),
+            L1=M1,
+            miter_reactor_wait(A, C, M1),
+            N1=O1,
+            ==(L1, 'input-ready', P1),
+            (   P1==true
+            ->  miter_reactor_config(idle_base_seconds, O1)
+            ;   'ReactorNextInterval'(C, O1)
+            ),
+            'ReactorCycleWith'(A, true, N1, 'ReactorSelect', D)
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorCycle $root $idle)
+   (ReactorCycleWith $root $idle (miter_reactor_config idle_base_seconds) ReactorSelect))
+[33m--> prolog clause -->
+[32m'ReactorCycle'(A, B, C) :-
+    miter_reactor_config(idle_base_seconds, D),
+    'ReactorCycleWith_Spec_[ReactorSelect]'(A,
+                                            B,
+                                            D,
+                                            'ReactorSelect',
+                                            C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (ReactorStart $root $integrity-path)
+   (if (== (SoulBoot $integrity-path) soul-ready)
+     (ReactorCycle $root false) reactor-soul-blocked))
+[33m--> prolog clause -->
+[32m'ReactorStart'(A, B, C) :-
+    'SoulBoot'(B, D),
+    ==(D, 'soul-ready', E),
+    (   E==true
+    ->  'ReactorCycle'(A, false, C)
+    ;   C='reactor-soul-blocked'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (G20RegressionInternals)
+   (collapse (match &rna (ready $id ResearchRNA $locus $n) (ready $id ResearchRNA $locus $n))))
+[33m--> prolog clause -->
+[32m'G20RegressionInternals'(A) :-
+    findall([ready, B, 'ResearchRNA', C, D],
+            match('&rna',
+                  [ready, B, 'ResearchRNA', C, D],
+                  [ready, B, 'ResearchRNA', C, D],
+                  [ready, B, 'ResearchRNA', C, D]),
+            A).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (G20RegressionNonInterruptible $root)
+   (if (> (size-atom (G20RegressionInternals)) 0) (G20RegressionInternals) (ReactorReady)))
+[33m--> prolog clause -->
+[32m'G20RegressionNonInterruptible'(_, A) :-
+    'G20RegressionInternals'(B),
+    'size-atom'(B, C),
+    >(C, 0, D),
+    (   D==true
+    ->  'G20RegressionInternals'(A)
+    ;   'ReactorReady'(A)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(SoulBoot "runtime/g20-regression/g19/negative/integrity.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'SoulBoot'("runtime/g20-regression/g19/negative/integrity.json",
+                      A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m-->  metta specialization (ReactorCycleWith_Spec_[G20RegressionNonInterruptible])  -->
+[36m(= (ReactorCycleWith_Spec_[G20RegressionNonInterruptible] $_0 $_1 $_2 G20RegressionNonInterruptible) (let* (($_3 (miter_reactor_input $_0)) ($_4 (ReactorIngest $_0 $_3 0)) ($_5 (collapse (match &rna (reactor-stop requested) requested))) ($_6 (G20RegressionNonInterruptible $_0)) ($_7 (if (and (== (size-atom $_6) 0) (== (size-atom $_5) 0)) (ReactorIdleOpportunity $_0) no-idle-selection)) ($_8 (G20RegressionNonInterruptible $_0))) (if (> (size-atom $_5) 0) (miter_reactor_record $_0 reactor-stopped (explicit-stop)) (if (> (size-atom $_8) 0) (let* (($_9 (miter_reactor_config idle_base_seconds)) ($_10 (if (== $_1 true) (miter_reactor_record $_0 wake (contact-or-due-work)) already-awake)) ($_11 (if (== $_1 true) (miter_reactor_record $_0 interval-reset (backoff $_9 contact-or-due-work)) already-reset)) ($_12 (ReactorAdvanceRegistered $_0 (index-atom $_8 0)))) (if (== $_12 reactor-store-failed) reactor-failed (ReactorCycleWith $_0 false (miter_reactor_config idle_base_seconds) G20RegressionNonInterruptible))) (let* (($_13 (if (== $_1 false) (miter_reactor_record $_0 quiescent-ready (empty-lawful-ready-set no-model-call)) already-quiescent)) ($_14 (miter_reactor_record $_0 idle-wait (wait $_2 no-progress-claim no-model-call))) ($_15 (miter_reactor_wait $_0 $_2)) ($_16 (if (== $_15 input-ready) (miter_reactor_config idle_base_seconds) (ReactorNextInterval $_2)))) (ReactorCycleWith $_0 true $_16 G20RegressionNonInterruptible))))))
+[33m--> prolog clause -->
+[32m'ReactorCycleWith_Spec_[G20RegressionNonInterruptible]'(A,
+                                                             B,
+                                                             C,
+                                                             'G20RegressionNonInterruptible',
+                                                             D) :-
+    E=F,
+    miter_reactor_input(A, F),
+    _=G,
+    'ReactorIngest'(A, E, 0, G),
+    H=I,
+    findall(requested,
+            match('&rna', ['reactor-stop', requested], requested, requested),
+            I),
+    J=K,
+    'G20RegressionNonInterruptible'(A, K),
+    _=L,
+    ( 'size-atom'(J, M),
+      ==(M, 0, N),
+      'size-atom'(H, O),
+      ==(O, 0, P),
+      and(N, P, Q)
+    ),
+    (   Q==true
+    ->  'ReactorIdleOpportunity'(A, L)
+    ;   L='no-idle-selection'
+    ),
+    R=S,
+    'G20RegressionNonInterruptible'(A, S),
+    'size-atom'(H, T),
+    >(T, 0, U),
+    (   U==true
+    ->  miter_reactor_record(A, 'reactor-stopped', ['explicit-stop'], D)
+    ;   'size-atom'(R, V),
+        >(V, 0, W),
+        (   W==true
+        ->  X=Y,
+            miter_reactor_config(idle_base_seconds, Y),
+            _=Z,
+            ==(B, true, A1),
+            (   A1==true
+            ->  miter_reactor_record(A,
+                                     wake,
+                                     ['contact-or-due-work'],
+                                     Z)
+            ;   Z='already-awake'
+            ),
+            _=B1,
+            ==(B, true, C1),
+            (   C1==true
+            ->  miter_reactor_record(A,
+                                     'interval-reset',
+                                     [backoff, X, 'contact-or-due-work'],
+                                     B1)
+            ;   B1='already-reset'
+            ),
+            D1=E1,
+            'index-atom'(R, 0, F1),
+            'ReactorAdvanceRegistered'(A, F1, E1),
+            ==(D1, 'reactor-store-failed', G1),
+            (   G1==true
+            ->  D='reactor-failed'
+            ;   miter_reactor_config(idle_base_seconds, H1),
+                'ReactorCycleWith'(A,
+                                   false,
+                                   H1,
+                                   'G20RegressionNonInterruptible',
+                                   D)
+            )
+        ;   _=I1,
+            ==(B, false, J1),
+            (   J1==true
+            ->  miter_reactor_record(A,
+                                     'quiescent-ready',
+                                     ['empty-lawful-ready-set', 'no-model-call'],
+                                     I1)
+            ;   I1='already-quiescent'
+            ),
+            _=K1,
+            miter_reactor_record(A,
+                                 'idle-wait',
+                                 [ wait,
+                                   C,
+                                   'no-progress-claim',
+                                   'no-model-call'
+                                 ],
+                                 K1),
+            L1=M1,
+            miter_reactor_wait(A, C, M1),
+            N1=O1,
+            ==(L1, 'input-ready', P1),
+            (   P1==true
+            ->  miter_reactor_config(idle_base_seconds, O1)
+            ;   'ReactorNextInterval'(C, O1)
+            ),
+            'ReactorCycleWith'(A,
+                               true,
+                               N1,
+                               'G20RegressionNonInterruptible',
+                               D)
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(ReactorCycleWith "runtime/g20-regression/g19/negative" false 0.05 G20RegressionNonInterruptible)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'ReactorCycleWith_Spec_[G20RegressionNonInterruptible]'("runtime/g20-regression/g19/negative",
+                                                                   false,
+                                                                   0.05,
+                                                                   'G20RegressionNonInterruptible',
+                                                                   A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+soul-ready
+reactor-recorded

@@ -1,0 +1,15 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-interval-reset-36",
+  "event_kind":"interval-reset",
+  "occurred_at":"2026-09-02T08:38:43Z",
+  "parent_event_ids": [],
+  "payload": {"data": ["backoff", 0.05, "contact-or-due-work" ],"wall_time":1788338323.208821},
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:38:43Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

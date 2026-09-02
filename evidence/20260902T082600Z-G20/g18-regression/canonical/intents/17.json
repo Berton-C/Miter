@@ -1,0 +1,15 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-quiescent-ready-17",
+  "event_kind":"quiescent-ready",
+  "occurred_at":"2026-09-02T08:38:35Z",
+  "parent_event_ids": [],
+  "payload": {"data": ["empty-lawful-ready-set", "no-model-call" ],"wall_time":1788338315.814465},
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:38:35Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

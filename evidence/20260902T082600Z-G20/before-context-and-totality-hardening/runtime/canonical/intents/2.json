@@ -1,0 +1,24 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-RNA-created-2",
+  "event_kind":"RNA-created",
+  "occurred_at":"2026-09-02T08:32:24Z",
+  "parent_event_ids": [],
+  "payload": {
+    "data": [
+      "rna-created",
+      "interest-voice-expression-repair-a4fac8f2f3ab",
+      "DevelopRNA",
+      "endogenous-interest",
+      "a4fac8f2f3ab6beb7439dc471d5cbb276b5883dc53d74180c117861b8afb14c9"
+    ],
+    "wall_time":1788337944.970134
+  },
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:32:24Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

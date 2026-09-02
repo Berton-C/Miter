@@ -1,0 +1,13 @@
+{
+  "authority":"internal-hash-checkpoint-only",
+  "budget":0,
+  "current_locus":"Consolidate",
+  "dependencies": [],
+  "provenance":"verified-local-ingress",
+  "rna_id":"internal",
+  "scope":"scope:reactor-local",
+  "source_event":"internal",
+  "species":"ConsolidateRNA",
+  "status":"completed",
+  "termination_condition":"finite-step-budget-or-human-stop"
+}

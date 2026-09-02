@@ -1,0 +1,9 @@
+{
+  "elapsed_seconds":0.3306150436401367,
+  "external_watchdog_seconds":5,
+  "model_call_count_basis":"fixed reactor import/call graph contains no model transport",
+  "model_calls":0,
+  "model_transport_imported":false,
+  "pid":21092,
+  "status":"exit(0)"
+}

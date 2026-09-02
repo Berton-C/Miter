@@ -1,0 +1,30 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-RNA-state-3",
+  "event_kind":"RNA-state",
+  "occurred_at":"2026-09-02T08:35:12Z",
+  "parent_event_ids": [],
+  "payload": {
+    "data": {
+      "authority":"candidate-storage-and-isolated-trial-only",
+      "budget":2,
+      "current_locus":"Inquire",
+      "dependencies": ["candidate-generator" ],
+      "provenance":"native-opportunity",
+      "rna_id":"interest-expression-inquiry-9aeed8da93af",
+      "scope":"scope:g16-private",
+      "source_event":"interest-expression-inquiry-9aeed8da93af-development-opportunity",
+      "species":"DevelopRNA",
+      "status":"awaiting-candidate-generator",
+      "termination_condition":"one-candidate-or-budget-exhausted-or-ground-withdrawn"
+    },
+    "wall_time":1788338112.417268
+  },
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:35:12Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

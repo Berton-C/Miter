@@ -1,0 +1,9 @@
+{
+  "id":"perpetual",
+  "kind":"continue-autonomous-work",
+  "obligation":"none",
+  "provenance":"self-authored",
+  "schema":"miter-reactor-input-v1",
+  "sent_at":1788338316.154829,
+  "steps":1
+}

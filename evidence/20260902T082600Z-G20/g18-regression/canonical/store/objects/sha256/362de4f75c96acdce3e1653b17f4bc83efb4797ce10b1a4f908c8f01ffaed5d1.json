@@ -1,0 +1,1 @@
+{"data": {"authority":"internal-hash-checkpoint-only","budget":0,"current_locus":"Consolidate","dependencies": [],"provenance":"verified-local-ingress","rna_id":"later","scope":"scope:reactor-local","source_event":"later","species":"ContactRNA","status":"completed","termination_condition":"finite-step-budget-or-human-stop"},"wall_time":1788338316.026761}

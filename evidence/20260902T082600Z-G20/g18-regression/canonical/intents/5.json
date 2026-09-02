@@ -1,0 +1,30 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-RNA-state-5",
+  "event_kind":"RNA-state",
+  "occurred_at":"2026-09-02T08:38:35Z",
+  "parent_event_ids": [],
+  "payload": {
+    "data": {
+      "authority":"internal-hash-checkpoint-only",
+      "budget":2,
+      "current_locus":"Transcribe",
+      "dependencies": [],
+      "provenance":"verified-local-ingress",
+      "rna_id":"internal",
+      "scope":"scope:reactor-local",
+      "source_event":"internal",
+      "species":"ConsolidateRNA",
+      "status":"suspended",
+      "termination_condition":"finite-step-budget-or-human-stop"
+    },
+    "wall_time":1788338315.772076
+  },
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:38:35Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

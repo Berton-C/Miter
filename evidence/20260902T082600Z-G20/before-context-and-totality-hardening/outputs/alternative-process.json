@@ -1,0 +1,7 @@
+{
+  "elapsed_seconds":0.7714221477508545,
+  "model_call_count_basis":"candidate request is held at generator boundary; idle selection calls no transport",
+  "model_calls":0,
+  "pid":20526,
+  "status":"exit(0)"
+}

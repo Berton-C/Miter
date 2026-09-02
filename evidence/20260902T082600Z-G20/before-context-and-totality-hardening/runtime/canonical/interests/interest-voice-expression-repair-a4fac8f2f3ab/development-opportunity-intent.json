@@ -1,0 +1,32 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"interest-voice-expression-repair-a4fac8f2f3ab",
+  "event_id":"interest-voice-expression-repair-a4fac8f2f3ab-development-opportunity",
+  "event_kind":"development-opportunity",
+  "occurred_at":"2026-09-02T08:32:24Z",
+  "parent_event_ids": ["g16-voice-audit-exhaustion-0", "g16-voice-audit-exhaustion-1" ],
+  "payload": {
+    "allowed_effects": ["candidate-storage", "isolated-trial" ],
+    "interruptibility":"safe-boundary",
+    "living_question":"How could a derived rendering policy preserve relational expression without policy slogans?",
+    "opportunity_id":"interest-voice-expression-repair-a4fac8f2f3ab",
+    "progress_witness":"independent-trial-consequence-or-explicit-hold",
+    "proposal_id":"voice-expression-repair",
+    "purpose":"Investigate a witnessed expressive deficiency, without claiming a successful repair in advance.",
+    "reading_standing":"proposed-investigation-not-proven-improvement",
+    "resource_budget": ["model-calls", 2, "trial-runs", 8 ],
+    "soul_ground":"CreativeTranscendence",
+    "source_cut":"a4fac8f2f3ab6beb7439dc471d5cbb276b5883dc53d74180c117861b8afb14c9",
+    "source_event_ids": ["g16-voice-audit-exhaustion-0", "g16-voice-audit-exhaustion-1" ],
+    "status":"admitted-for-quarantined-development",
+    "stop_condition":"one-candidate-or-budget-exhausted-or-ground-withdrawn",
+    "target_surface":"VoicePolicy",
+    "task_authority":"unchanged"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:32:24Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:interests",
+  "source_surface":"native-InterestRNA"
+}

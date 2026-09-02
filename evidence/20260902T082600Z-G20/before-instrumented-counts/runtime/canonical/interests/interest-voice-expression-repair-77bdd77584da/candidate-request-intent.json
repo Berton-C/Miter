@@ -1,0 +1,23 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"interest-voice-expression-repair-77bdd77584da",
+  "event_id":"interest-voice-expression-repair-77bdd77584da-candidate-request",
+  "event_kind":"candidate-request",
+  "occurred_at":"2026-09-02T08:35:09Z",
+  "parent_event_ids": ["interest-voice-expression-repair-77bdd77584da-development-opportunity" ],
+  "payload": {
+    "authority":"quarantined-candidate-only",
+    "living_question":"How could a derived rendering policy preserve relational expression without policy slogans?",
+    "opportunity_id":"interest-voice-expression-repair-77bdd77584da",
+    "request_id":"interest-voice-expression-repair-77bdd77584da",
+    "source_event_ids": ["g16-voice-audit-exhaustion-0", "g16-voice-audit-exhaustion-1" ],
+    "status":"awaiting-candidate-generator",
+    "target_surface":"VoicePolicy"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:35:09Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:interests",
+  "source_surface":"native-InterestRNA"
+}

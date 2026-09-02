@@ -1,0 +1,5 @@
+{"data": ["empty-lawful-ready-set", "no-model-call" ],"kind":"quiescent-ready","wall_time":1788338220.450623}
+{"data": ["wait", 0.05, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788338220.465529}
+{"data": ["wait", 0.1, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788338220.607777}
+{"data": ["wait", 0.2, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788338220.799038}
+{"data": ["explicit-stop" ],"kind":"reactor-stopped","wall_time":1788338220.84016}

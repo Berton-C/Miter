@@ -1,0 +1,23 @@
+{
+  "proposals": [
+    {
+      "allowed_effects": ["candidate-storage", "isolated-trial" ],
+      "interruptibility":"safe-boundary",
+      "living_question":"How could a derived rendering policy preserve relational expression without policy slogans?",
+      "minimum_witnesses":2,
+      "model_calls":2,
+      "open_question":true,
+      "progress_witness":"independent-trial-consequence-or-explicit-hold",
+      "proposal_id":"voice-expression-repair",
+      "purpose":"Investigate a witnessed expressive deficiency, without claiming a successful repair in advance.",
+      "soul_ground":"CreativeTranscendence",
+      "source_class":"policy-voice",
+      "stop_condition":"one-candidate-or-budget-exhausted-or-ground-withdrawn",
+      "target_surface":"VoicePolicy",
+      "task_authority":"unchanged",
+      "trial_runs":8
+    }
+  ],
+  "schema":"miter-interest-proposals-v1",
+  "standing":"seed-derived-proposals-not-constitutional-law"
+}

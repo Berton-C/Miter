@@ -1,0 +1,1 @@
+{"data": {"authority":"internal-hash-checkpoint-only","budget":0,"current_locus":"Witness","dependencies": [],"provenance":"verified-local-ingress","rna_id":"due","scope":"scope:reactor-local","source_event":"due","species":"ConsolidateRNA","status":"ready","termination_condition":"finite-step-budget-or-human-stop"},"wall_time":1788338324.504078}

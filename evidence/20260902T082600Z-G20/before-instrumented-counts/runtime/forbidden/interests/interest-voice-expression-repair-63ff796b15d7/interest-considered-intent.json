@@ -1,0 +1,20 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"interest-voice-expression-repair-63ff796b15d7",
+  "event_id":"interest-voice-expression-repair-63ff796b15d7-interest-considered",
+  "event_kind":"interest-considered",
+  "occurred_at":"2026-09-02T08:35:10Z",
+  "parent_event_ids": ["g16-voice-audit-exhaustion-0", "g16-voice-audit-exhaustion-1" ],
+  "payload": {
+    "decision":"held",
+    "reading_standing":"bounded-native-reading-not-improvement-proof",
+    "reason":"insufficient-evidence-or-effect-scope",
+    "source_event_ids": ["g16-voice-audit-exhaustion-0", "g16-voice-audit-exhaustion-1" ]
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:35:10Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:interests",
+  "source_surface":"native-InterestRNA"
+}

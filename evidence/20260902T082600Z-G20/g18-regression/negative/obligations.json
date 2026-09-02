@@ -1,0 +1,3 @@
+{
+  "obligations": [ {"allowed_effect":"internal-hash-checkpoint","due_at":0,"id":"due-checkpoint"} ]
+}

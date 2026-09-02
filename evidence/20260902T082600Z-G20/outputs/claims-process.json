@@ -1,0 +1,7 @@
+{
+  "elapsed_seconds":0.4178030490875244,
+  "model_call_count_basis":"instrumented provider entry; positive counter control run separately",
+  "model_calls":0,
+  "pid":20923,
+  "status":"exit(0)"
+}

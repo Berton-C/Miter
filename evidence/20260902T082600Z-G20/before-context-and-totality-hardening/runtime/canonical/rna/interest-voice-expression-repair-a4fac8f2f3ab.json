@@ -1,0 +1,13 @@
+{
+  "authority":"candidate-storage-and-isolated-trial-only",
+  "budget":2,
+  "current_locus":"Inquire",
+  "dependencies": ["candidate-generator" ],
+  "provenance":"native-opportunity",
+  "rna_id":"interest-voice-expression-repair-a4fac8f2f3ab",
+  "scope":"scope:g16-private",
+  "source_event":"interest-voice-expression-repair-a4fac8f2f3ab-development-opportunity",
+  "species":"DevelopRNA",
+  "status":"awaiting-candidate-generator",
+  "termination_condition":"one-candidate-or-budget-exhausted-or-ground-withdrawn"
+}

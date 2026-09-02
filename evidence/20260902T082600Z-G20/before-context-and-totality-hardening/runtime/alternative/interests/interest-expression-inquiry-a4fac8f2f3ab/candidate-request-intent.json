@@ -1,0 +1,23 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"interest-expression-inquiry-a4fac8f2f3ab",
+  "event_id":"interest-expression-inquiry-a4fac8f2f3ab-candidate-request",
+  "event_kind":"candidate-request",
+  "occurred_at":"2026-09-02T08:32:44Z",
+  "parent_event_ids": ["interest-expression-inquiry-a4fac8f2f3ab-development-opportunity" ],
+  "payload": {
+    "authority":"quarantined-candidate-only",
+    "living_question":"What remains uncertain about the expression that produced these witnessed defects?",
+    "opportunity_id":"interest-expression-inquiry-a4fac8f2f3ab",
+    "request_id":"interest-expression-inquiry-a4fac8f2f3ab",
+    "source_event_ids": ["g16-voice-audit-exhaustion-0", "g16-voice-audit-exhaustion-1" ],
+    "status":"awaiting-candidate-generator",
+    "target_surface":"VoicePolicy"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:32:44Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:interests",
+  "source_surface":"native-InterestRNA"
+}

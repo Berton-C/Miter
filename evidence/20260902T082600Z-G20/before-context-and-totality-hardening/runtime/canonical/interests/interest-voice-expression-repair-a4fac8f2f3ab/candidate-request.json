@@ -1,0 +1,9 @@
+{
+  "authority":"quarantined-candidate-only",
+  "living_question":"How could a derived rendering policy preserve relational expression without policy slogans?",
+  "opportunity_id":"interest-voice-expression-repair-a4fac8f2f3ab",
+  "request_id":"interest-voice-expression-repair-a4fac8f2f3ab",
+  "source_event_ids": ["g16-voice-audit-exhaustion-0", "g16-voice-audit-exhaustion-1" ],
+  "status":"awaiting-candidate-generator",
+  "target_surface":"VoicePolicy"
+}
