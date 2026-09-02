@@ -1,0 +1,10 @@
+GATE: G11
+REQUIREMENT IDS: G11; POC_SPEC 6.3/6.7/6.8/6.9; W-050, W-055, W-058, W-060.
+CONSTITUTIONAL LAWS: C-030..036, C-040..045, C-060..065, C-100..105.
+FILES EXPECTED TO CHANGE: src/continuity.metta; effect_membranes/miter_resume.pl; scripts/g11; tests/fixtures/g11*; this evidence run; ignored runtime/g11.
+FILES FORBIDDEN TO CHANGE: protected docs, initial_canon, docs/sources, legacy services/data, prior gate stores, credentials, NRC assets, ~/.miter.
+POSITIVE FIXTURE: A source-linked book pause at simulated T0=2026-09-02T07:00:00Z, unrelated events through T0+90 days, a separate fresh PeTTa process with empty chat context, and the exact vague request. Native ContinuityRNA selects the sole scope-matching book from a durable registry, runs RecallRNA, resolves the capsule, verifies its trajectory witness, and certifies exact fields.
+NEGATIVE CONTROL: Chroma-severed native path performs zero embedding/Chroma calls but retains exact reconstruction. Capsule-resolver-severed path runs actual semantic recall yet returns non-authoritative recall without exact fields. No global services are stopped for these controls.
+EXPECTED OBSERVABLE DIFFERENCE: Canonical and Chroma-severed exact fields match; capsule-severed cannot claim exact continuity. Semantic ranking cannot select authoritative project state. Three separate process IDs and empty-context manifests are captured.
+CURRENT UNPROVEN ASSUMPTIONS: Native RNA composition and complete source/event bindings require runtime proof. This is the specified book-intent fixture, not general natural-language intent understanding or the later full Soul/reactor startup gate. Simulated time never changes host clock.
+ROLLBACK METHOD: Preserve append-only fixture history; use independent copied stores for each severed arm. No existing service or prior gate data is changed.
