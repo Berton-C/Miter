@@ -1,0 +1,10 @@
+GATE: G19 — Human priority, safe suspension and adaptive idle backoff
+REQUIREMENT IDS: G19; W-091/093/094/095; POC_SPEC 12.2/12.5.
+CONSTITUTIONAL LAWS: C-070–075; AgencyBalance, AttentionStewardship, TimeCoherence.
+FILES EXPECTED TO CHANGE: src/reactor.metta; effect_membranes/miter_reactor.pl; scripts/g19; tests/fixtures/g19*; this evidence directory; ignored runtime/g19.
+FILES FORBIDDEN TO CHANGE: protected docs and Soul baseline; prior evidence; source archives; existing user services.
+POSITIVE FIXTURE: A finite ResearchRNA hashes ledger checkpoints across slow fixture boundaries. Inject a human event after work begins. Suspend internal state, finish contact first, resume the same remaining internal budget, then observe idle intervals reaching a cap and resetting on a later contact and due work.
+NEGATIVE CONTROL: Test-only selector keeps internal work non-interruptible. The identical incoming contact must remain delayed until internal completion and fail the priority invariant.
+EXPECTED OBSERVABLE DIFFERENCE: Canonical contact completes between suspension and resumed internal completion. Severed contact completes only afterward. Idle wake records explicitly claim no progress and invoke no model.
+CURRENT UNPROVEN ASSUMPTIONS: ResearchRNA here performs a bounded ledger-integrity investigation, not free-form research. Slow-work latency is a declared test fixture. Local inbox is trusted ingress; external authentication remains later work.
+ROLLBACK METHOD: Revert scheduling changes and additive fixtures. Preserve all traces; terminate only owned test children on deadline. No services need stopping.

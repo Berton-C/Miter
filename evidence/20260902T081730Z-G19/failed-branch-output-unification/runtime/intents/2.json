@@ -1,0 +1,18 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-RNA-created-2",
+  "event_kind":"RNA-created",
+  "occurred_at":"2026-09-02T08:19:32Z",
+  "parent_event_ids": [],
+  "payload": {
+    "data": ["rna-created", "research", "ResearchRNA", "research", "due-checkpoint" ],
+    "wall_time":1788337172.127306
+  },
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:19:32Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

@@ -1,0 +1,9 @@
+{
+  "id":"research",
+  "kind":"research",
+  "obligation":"due-checkpoint",
+  "provenance":"witnessed-obligation",
+  "schema":"miter-reactor-input-v1",
+  "sent_at":1788337257.640521,
+  "steps":8
+}

@@ -48,7 +48,10 @@ miter_reactor_checkpoint(Root,Id,Species,Locus,Budget,Status,Result) :-
    miter_store_write_json_atomic(P,D),
    miter_reactor_record(Root,'RNA-state',D,Result)),_,Result='reactor-store-failed'),!.
 miter_reactor_step(Root,Id,Result) :-
- catch((directory_file_path(Root,'store/trajectory.jsonl',P),
+ catch((directory_file_path(Root,'fixture-work-profile.json',WP),
+  (exists_file(WP)->miter_store_read_json(WP,W),number(W.step_delay_seconds),
+    W.step_delay_seconds>=0,W.step_delay_seconds=<0.25,sleep(W.step_delay_seconds);true),
+  directory_file_path(Root,'store/trajectory.jsonl',P),
   crypto_file_hash(P,H,[algorithm(sha256),encoding(octet)]),
   miter_reactor_record(Root,'step-witness',[Id,H],R),R=='reactor-recorded'
   ->Result='step-witnessed';Result='step-failed'),_,Result='step-failed'),!.

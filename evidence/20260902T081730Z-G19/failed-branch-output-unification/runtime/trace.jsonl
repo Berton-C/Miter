@@ -1,0 +1,2 @@
+{"data": {"authority":"internal-hash-checkpoint-only","budget":8,"current_locus":"Transcribe","dependencies": [],"provenance":"verified-local-ingress","rna_id":"research","scope":"scope:reactor-local","source_event":"research","species":"ResearchRNA","status":"ready","termination_condition":"finite-step-budget-or-human-stop"},"kind":"RNA-state","wall_time":1788337172.12559}
+{"data": ["rna-created", "research", "ResearchRNA", "research", "due-checkpoint" ],"kind":"RNA-created","wall_time":1788337172.127306}

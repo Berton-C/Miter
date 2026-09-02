@@ -1,0 +1,18 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-step-witness-22",
+  "event_kind":"step-witness",
+  "occurred_at":"2026-09-02T08:20:58Z",
+  "parent_event_ids": [],
+  "payload": {
+    "data": ["research", "0989cdc726fb141135366581dcc4dd1bd99d389b7d27ee4afcc615dbe3341b3b" ],
+    "wall_time":1788337258.926449
+  },
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-02T08:20:58Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}
