@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "The next step is to name the file you want to work on.",
+    "You can choose whether we look at its contents or its history.",
+    "The next step is to name the file you want to work on."
+  ],
+  "origin":"synthetic-defect-probe",
+  "raw_ref":"tests/fixtures/g16_defect_cases.json",
+  "request_id":"probe-hidden-scope",
+  "schema_status":"valid",
+  "text":"The next step is to name the file you want to work on.\n\nYou can choose whether we look at its contents or its history.\n\nThe next step is to name the file you want to work on."
+}

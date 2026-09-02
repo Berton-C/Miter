@@ -1,0 +1,19 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-task-smearing",
+  "event_id":"g16-rendering-contact-probe-task-smearing-0",
+  "event_kind":"rendering-contact",
+  "occurred_at":"2026-09-02T07:57:44Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "origin":"synthetic-defect-probe",
+    "raw_ref":"tests/fixtures/g16_defect_cases.json",
+    "text":"I hear the urgency.\n\nI hear the urgency.\n\nWe can work through the approved route together."
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"rendering",
+  "recorded_at":"2026-09-02T07:57:44Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

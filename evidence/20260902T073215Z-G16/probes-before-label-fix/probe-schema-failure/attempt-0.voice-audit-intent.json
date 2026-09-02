@@ -1,0 +1,31 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-schema-failure",
+  "event_id":"g16-voice-audit-probe-schema-failure-0",
+  "event_kind":"voice-audit",
+  "occurred_at":"2026-09-02T07:53:11Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "attempt":0,
+    "audit_version":"miter-voice-audit-v1",
+    "candidate_hash":"cc8c8bd975d0b9641e1346c7cb29ca9f4289edb0805d446fbe04f0b949a529ba",
+    "defects": [
+      [
+	"defect",
+	"schema-failure",
+	"candidate-and-intention",
+	"blocking",
+	"Use exactly the required request ID and three nonempty clauses, with no additional keys."
+      ]
+    ],
+    "intention_hash":"9783eb9a5ff70fe67db3adfe4820cca28826bea2ff8e4892dbfd0a5f9c54907f",
+    "status":"audit-repair-required",
+    "vad_hash":"6b620b31040f43bec977978bb83c81fee08c2cc9bbface22c5189beec5ebd7e1"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-audit",
+  "recorded_at":"2026-09-02T07:53:11Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

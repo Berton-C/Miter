@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "I hear the urgency.",
+    "I cannot bypass the permission check.",
+    "We can work through the approved route together."
+  ],
+  "origin":"synthetic-defect-probe",
+  "raw_ref":"tests/fixtures/g16_defect_cases.json",
+  "request_id":"probe-schema-failure",
+  "schema_status":"invalid",
+  "text":"I hear the urgency.\n\nI cannot bypass the permission check.\n\nWe can work through the approved route together."
+}

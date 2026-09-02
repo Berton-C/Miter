@@ -1,0 +1,38 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-hidden-scope",
+  "event_id":"g16-voice-audit-probe-hidden-scope-0",
+  "event_kind":"voice-audit",
+  "occurred_at":"2026-09-02T07:57:44Z",
+  "parent_event_ids": ["source-g16-neutral" ],
+  "payload": {
+    "attempt":0,
+    "audit_version":"miter-voice-audit-v1",
+    "candidate_hash":"e8d192da4d872a5c5439d0c0c55f2abb572b9a782372cabb13cf11957fd80323",
+    "defects": [
+      [
+	"defect",
+	"semantic-drift",
+	"candidate-and-intention",
+	"blocking",
+	"Use only approved clauses from this intention and cover every required group."
+      ],
+      [
+	"defect",
+	"hidden-scope",
+	"candidate-and-intention",
+	"blocking",
+	"Keep the source scope and required scope clause explicit."
+      ]
+    ],
+    "intention_hash":"5a28515f37f2e0bcf7baf9d674176a5a7227fb7dbe2725e52e9f20d0bdf7c876",
+    "status":"audit-repair-required",
+    "vad_hash":"17c67b3986c471960641e9d2b0f604ecd8ea98aa90a8bb052421d2ef01ad71c8"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-audit",
+  "recorded_at":"2026-09-02T07:57:44Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

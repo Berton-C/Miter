@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "I do not want to assume what that means for you.",
+    "I do not want to assume what that means for you.",
+    "Would you like to say more, or leave it there for now?"
+  ],
+  "origin":"synthetic-defect-probe",
+  "raw_ref":"tests/fixtures/g16_defect_cases.json",
+  "request_id":"probe-unacknowledged-tension",
+  "schema_status":"valid",
+  "text":"I do not want to assume what that means for you.\n\nI do not want to assume what that means for you.\n\nWould you like to say more, or leave it there for now?"
+}

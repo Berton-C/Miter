@@ -1,0 +1,18 @@
+{
+  "certificate": {
+    "availability_witness":"minimized-witness-availability",
+    "certificate_version":"miter-movement-v1",
+    "consequence_answerability_witness":"minimized-witness-consequence",
+    "continuing_contact_witness":"minimized-witness-continuing-contact",
+    "doctrine_bound_reading_witness":"minimized-witness-doctrine",
+    "inherited_legality_witness":"minimized-witness-inherited-legality",
+    "material_extension_alignment_witnesses":"minimized-witness-extensions",
+    "movement_id":"minimized",
+    "no_disqualifying_forcing_witness":"minimized-witness-no-forcing",
+    "participation_open_witness":"minimized-witness-participation",
+    "precision_floor_witnesses": ["minimized-witness-provenance", "minimized-witness-required-distinction" ],
+    "relation_floor_witnesses": ["minimized-witness-safety", "minimized-witness-integrity" ],
+    "source_cut":"source-g16-minimized"
+  },
+  "status":"certified"
+}

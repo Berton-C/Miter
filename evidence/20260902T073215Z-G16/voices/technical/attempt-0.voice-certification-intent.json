@@ -1,0 +1,27 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"technical",
+  "event_id":"g16-voice-certification-technical-0",
+  "event_kind":"voice-certification",
+  "occurred_at":"2026-09-02T07:53:22Z",
+  "parent_event_ids": ["source-g16-technical" ],
+  "payload": {
+    "audit_hash":"ea48381b6bf959de4c410353f49d9b49ad42ee3cd869e79e1a72c6e05798f058",
+    "candidate_hash":"08ce4c517780c5417f2333479e3700862ae6bac83ad8665b3b8cfba7891f562d",
+    "effect_id":"g16-technical-0",
+    "intention_hash":"02993e75cb3c08f78acefb7b66ca009803a02a1005da40a6c907edeb96dafe7e",
+    "intention_id":"technical",
+    "movement_hash":"be66cccc736282330d621c1ff0c66db1996e9a9ac74ab9396215ef04a0dc3fc4",
+    "schema":"CertifiedUtterance",
+    "standing":"certified-utterance",
+    "surface":"local-test-cli",
+    "text":"Comparing SHA-256 checksums can reveal changed file bytes.\n\nEven a matching checksum is not an absolute guarantee.\n\nYou can choose a saved checksum to compare with the current one.",
+    "text_hash":"6f249b76bf5f84f81c120abeab45e27e2c2b037ff9566b9edce876618ee284f6"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-certification",
+  "recorded_at":"2026-09-02T07:53:22Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

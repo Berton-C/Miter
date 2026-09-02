@@ -1,0 +1,20 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"technical",
+  "event_id":"g16-voice-emission-technical-0",
+  "event_kind":"voice-emission",
+  "occurred_at":"2026-09-02T07:53:22Z",
+  "parent_event_ids": ["source-g16-technical" ],
+  "payload": {
+    "effect_id":"g16-technical-0",
+    "observed_file":"runtime/g16/surface/g16-technical-0.txt",
+    "surface":"local-test-cli",
+    "text_hash":"6f249b76bf5f84f81c120abeab45e27e2c2b037ff9566b9edce876618ee284f6"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"action-result",
+  "recorded_at":"2026-09-02T07:53:22Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

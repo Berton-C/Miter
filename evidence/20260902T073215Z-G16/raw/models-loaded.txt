@@ -1,0 +1,4 @@
+
+IDENTIFIER                              MODEL                                   STATUS    SIZE        CONTEXT    PARALLEL    DEVICE    TTL     
+text-embedding-nomic-embed-text-v1.5    text-embedding-nomic-embed-text-v1.5    IDLE      84.11 MB    2048       -           Local     21m / 1h
+

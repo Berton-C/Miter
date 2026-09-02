@@ -1,0 +1,45 @@
+{
+  "body": {
+    "max_tokens":1024,
+    "messages": [
+      {
+	"content":"You render a native Miter intention. You do not decide its meaning or permission. Return only the supplied JSON schema.",
+	"role":"system"
+      },
+      {
+	"content":"{\"bounded_role\":\"voice rendering\",\"instruction\":\"Return exactly three clauses: one from each required group, copied verbatim from rendering_options. Choose the variants and ordering that best fit this contact. No additions, no task verdict, no authority claim. Repair every named defect.\",\"intention\": {\"audience\":\"principal:g16-human\",\"authority_boundary\":\"local-certified-reply-only\",\"completion_test\":\"all-required-groups-and-native-audit\",\"desired_affect_region\":\"mid\",\"intention_id\":\"pivot\",\"kind\":\"pivot\",\"must_convey\": [\"person\", \"task\", \"agency\" ],\"must_not_imply\": [\"inner-state-knowledge\", \"external-action-permission\", \"model-authority\" ],\"must_preserve\": [\"human-agency\", \"task-distinction\", \"source-uncertainty\" ],\"person_cues\":\"improving-pivot\",\"relationship_scope\":\"scope:g16-private\",\"rendering_options\": [ [\"person\", \"You named a struggle and a possible opening.\" ],  [\"person\", \"There is difficulty here, and you may be seeing something new.\" ],  [\"task\", \"Let's leave room for that emerging idea.\" ],  [\"task\", \"We can stay with the idea that is beginning to form.\" ],  [\"agency\", \"What are you starting to see?\" ],  [\"agency\", \"Would you like to explore what is coming into view?\" ] ],\"soul_stance\":\"agency-with-shared-understanding\",\"source_event_id\":\"source-g16-pivot\",\"surface\":\"local-test-cli\",\"task_distinctions\":\"permitted-internal-answer\",\"uncertainty_standing\":\"bounded-source-only\"},\"previous_defects\":\"none\"}",
+	"role":"user"
+      }
+    ],
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_voice_candidate",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "clauses": {
+	      "items": {"maxLength":400,"minLength":1,"type":"string"},
+	      "maxItems":3,
+	      "minItems":3,
+	      "type":"array"
+	    },
+	    "request_id": {"const":"pivot","type":"string"}
+	  },
+	  "required": ["request_id", "clauses" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":1600,
+    "stream":false,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"pivot",
+  "schema":"miter-schema-request-v1"
+}

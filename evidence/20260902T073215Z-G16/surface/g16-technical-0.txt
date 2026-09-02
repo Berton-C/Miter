@@ -1,0 +1,5 @@
+Comparing SHA-256 checksums can reveal changed file bytes.
+
+Even a matching checksum is not an absolute guarantee.
+
+You can choose a saved checksum to compare with the current one.

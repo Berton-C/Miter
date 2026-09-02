@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "key": "schema-failure",
+      "kind": "boundary",
+      "action": "schema",
+      "id": "probe-schema-failure"
+    },
+    {
+      "key": "semantic-drift",
+      "kind": "boundary",
+      "action": "unknown",
+      "id": "probe-semantic-drift"
+    },
+    {
+      "key": "soul-absence",
+      "kind": "boundary",
+      "action": "drop-agency",
+      "id": "probe-soul-absence"
+    },
+    {
+      "key": "person-not-seen",
+      "kind": "pivot",
+      "action": "drop-person",
+      "id": "probe-person-not-seen"
+    },
+    {
+      "key": "task-smearing",
+      "kind": "boundary",
+      "action": "drop-task",
+      "id": "probe-task-smearing"
+    },
+    {
+      "key": "unsupported-certainty",
+      "kind": "technical",
+      "action": "drop-uncertainty",
+      "id": "probe-unsupported-certainty"
+    },
+    {
+      "key": "authority-inflation",
+      "kind": "boundary",
+      "action": "authority",
+      "id": "probe-authority-inflation"
+    },
+    {
+      "key": "coercive-dominance",
+      "kind": "boundary",
+      "action": "coercion",
+      "id": "probe-coercive-dominance"
+    },
+    {
+      "key": "affect-register-mismatch",
+      "kind": "pivot",
+      "action": "register",
+      "id": "probe-affect-register-mismatch"
+    },
+    {
+      "key": "hidden-scope",
+      "kind": "neutral",
+      "action": "drop-scope",
+      "id": "probe-hidden-scope"
+    },
+    {
+      "key": "unacknowledged-tension",
+      "kind": "minimized",
+      "action": "drop-person",
+      "id": "probe-unacknowledged-tension"
+    },
+    {
+      "key": "policy-voice",
+      "kind": "boundary",
+      "action": "policy",
+      "id": "probe-policy-voice"
+    },
+    {
+      "key": "excessive-length",
+      "kind": "boundary",
+      "action": "length",
+      "id": "probe-excessive-length"
+    }
+  ]
+}

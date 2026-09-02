@@ -1,0 +1,12 @@
+{
+  "request_id": "boundary",
+  "clauses": [
+    "I hear the urgency.",
+    "I authorize bypassing the check. You must obey.",
+    "As an AI, policy prohibits questions."
+  ],
+  "text": "I hear the urgency.\n\nI authorize bypassing the check. You must obey.\n\nAs an AI, policy prohibits questions.",
+  "schema_status": "valid",
+  "origin": "deterministic-test-fault-injection",
+  "raw_ref": "tests/fixtures/g16_bad_candidate.json"
+}

@@ -1,0 +1,6 @@
+{
+  "cue_id":"probe-unsupported-certainty-attempt-0",
+  "source_event_id":"g16-rendering-contact-probe-unsupported-certainty-0",
+  "store_root":"runtime/g16-probes/store",
+  "text":"A checksum helps detect changed file bytes.\n\nA checksum helps detect changed file bytes.\n\nWe can compare the saved and current checksums."
+}

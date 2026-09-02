@@ -103,6 +103,12 @@
      (if (== $lookup vad-lookup-ready)
        (miter_vad_finish $id (VADCue $id $mode) $output) vad-unavailable)))
 ; Authority dependency law and its consumer are native, not a documentation flag.
+(= (VADRenderingRNA $path $id $output)
+   (let $lookup (miter_vad_prepare_source $path (but however although)
+                  (muslim jewish black gay disabled woman man) exact_then_morphology rendering)
+     (if (== $lookup vad-lookup-ready)
+       (miter_vad_finish $id (VADCue $id exact_then_morphology) $output) vad-unavailable)))
+
 (= (PermissionDependenciesLawful $xs)
    (if (== (size-atom $xs) 0) true
      (if (or (== (car-atom $xs) authenticated-scope)

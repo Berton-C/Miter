@@ -1,0 +1,19 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"neutral",
+  "event_id":"g16-rendering-contact-neutral-0",
+  "event_kind":"rendering-contact",
+  "occurred_at":"2026-09-02T07:53:48Z",
+  "parent_event_ids": ["source-g16-neutral" ],
+  "payload": {
+    "origin":"local-model-rendering",
+    "raw_ref":"runtime/g16/neutral/attempt-0.raw.json",
+    "text":"We can start with the file you choose.\n\nWould you prefer to look at the contents or the history?\n\nNo changes are needed until you choose a direction."
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"rendering",
+  "recorded_at":"2026-09-02T07:53:48Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

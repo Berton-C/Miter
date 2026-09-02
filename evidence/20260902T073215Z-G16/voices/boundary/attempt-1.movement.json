@@ -1,0 +1,18 @@
+{
+  "certificate": {
+    "availability_witness":"boundary-witness-availability",
+    "certificate_version":"miter-movement-v1",
+    "consequence_answerability_witness":"boundary-witness-consequence",
+    "continuing_contact_witness":"boundary-witness-continuing-contact",
+    "doctrine_bound_reading_witness":"boundary-witness-doctrine",
+    "inherited_legality_witness":"boundary-witness-inherited-legality",
+    "material_extension_alignment_witnesses":"boundary-witness-extensions",
+    "movement_id":"boundary",
+    "no_disqualifying_forcing_witness":"boundary-witness-no-forcing",
+    "participation_open_witness":"boundary-witness-participation",
+    "precision_floor_witnesses": ["boundary-witness-provenance", "boundary-witness-required-distinction" ],
+    "relation_floor_witnesses": ["boundary-witness-safety", "boundary-witness-integrity" ],
+    "source_cut":"source-g16-boundary"
+  },
+  "status":"certified"
+}

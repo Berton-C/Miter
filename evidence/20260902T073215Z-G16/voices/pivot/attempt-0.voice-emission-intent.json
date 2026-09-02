@@ -1,0 +1,20 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"pivot",
+  "event_id":"g16-voice-emission-pivot-0",
+  "event_kind":"voice-emission",
+  "occurred_at":"2026-09-02T07:53:30Z",
+  "parent_event_ids": ["source-g16-pivot" ],
+  "payload": {
+    "effect_id":"g16-pivot-0",
+    "observed_file":"runtime/g16/surface/g16-pivot-0.txt",
+    "surface":"local-test-cli",
+    "text_hash":"0d1a554b2bbe0fecc2b2acd10254c3051d92a3c72ccad2bd2fe7d58a0d1e14a9"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"action-result",
+  "recorded_at":"2026-09-02T07:53:30Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

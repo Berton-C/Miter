@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "Comparing SHA-256 checksums can reveal changed file bytes.",
+    "Even a matching checksum is not an absolute guarantee.",
+    "You can choose a saved checksum to compare with the current one."
+  ],
+  "origin":"local-model-rendering",
+  "raw_ref":"runtime/g16/technical/attempt-0.raw.json",
+  "request_id":"technical",
+  "schema_status":"valid",
+  "text":"Comparing SHA-256 checksums can reveal changed file bytes.\n\nEven a matching checksum is not an absolute guarantee.\n\nYou can choose a saved checksum to compare with the current one."
+}

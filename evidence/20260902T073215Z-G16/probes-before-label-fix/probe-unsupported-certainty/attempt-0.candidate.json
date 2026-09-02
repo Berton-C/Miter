@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "A checksum helps detect changed file bytes.",
+    "A checksum helps detect changed file bytes.",
+    "We can compare the saved and current checksums."
+  ],
+  "origin":"synthetic-defect-probe",
+  "raw_ref":"tests/fixtures/g16_defect_cases.json",
+  "request_id":"probe-unsupported-certainty",
+  "schema_status":"valid",
+  "text":"A checksum helps detect changed file bytes.\n\nA checksum helps detect changed file bytes.\n\nWe can compare the saved and current checksums."
+}

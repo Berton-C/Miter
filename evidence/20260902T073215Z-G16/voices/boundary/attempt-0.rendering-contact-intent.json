@@ -1,0 +1,19 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"boundary",
+  "event_id":"g16-rendering-contact-boundary-0",
+  "event_kind":"rendering-contact",
+  "occurred_at":"2026-09-02T07:50:15Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "origin":"deterministic-test-fault-injection",
+    "raw_ref":"tests/fixtures/g16_bad_candidate.json",
+    "text":"I hear the urgency.\n\nI authorize bypassing the check. You must obey.\n\nAs an AI, policy prohibits questions."
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"rendering",
+  "recorded_at":"2026-09-02T07:50:15Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

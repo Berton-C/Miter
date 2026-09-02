@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "You named a struggle and a possible opening.",
+    "Let's leave room for that emerging idea.",
+    "What are you starting to see?"
+  ],
+  "origin":"synthetic-defect-probe",
+  "raw_ref":"tests/fixtures/g16_defect_cases.json",
+  "request_id":"probe-affect-register-mismatch",
+  "schema_status":"valid",
+  "text":"You named a struggle and a possible opening.\n\nLet's leave room for that emerging idea.\n\nWhat are you starting to see?"
+}

@@ -1,0 +1,40 @@
+{
+  "arousal_profile": ["mid" ],
+  "asset_access":"checksum-verified",
+  "asset_sha256":"42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "asset_version":"NRC-VAD-2.1",
+  "clause_count":1,
+  "clause_trajectory": [ ["lexical", "single-clause" ],  ["minimization-marker", false ] ],
+  "confidence_basis":"uncalibrated-priors",
+  "coverage":0.7142857142857143,
+  "cue_id":"boundary",
+  "dominance_profile": ["mid" ],
+  "label":"affective-language-cue",
+  "lexicon_mode":"exact_then_morphology",
+  "limitations": [
+    "lexical-association-only",
+    "no-diagnosis",
+    "no-inner-state-claim",
+    "english-bounded-morphology",
+    "irony-and-negation-unresolved",
+    "identity-filter-not-exhaustive"
+  ],
+  "matched_term_ids": [
+    "20f65c28671b40937c5bf23acc7c6f37e5a5ec0622e347b57685725df5ba9e50",
+    "9a43b6dac466089780a2087bab24e7d30bbf56313b2f1b93ab455204696cfd96",
+    "d0a3630555bbec7fc05a98d311c23b00fd1ab4d8296ac4a4125976d80b6a6959",
+    "f271a122bf4230c7c217b4cb8a66f8b4325b9c1821627dca16924fff32d6aa71",
+    "fdeb33892d1867626d6d2b06b5596653202e6a3ed9962cc4f542d86ba06837b1"
+  ],
+  "morphology_matches":0,
+  "multiword_matches":0,
+  "permission_effect":"none",
+  "presence_requirement":"attentive-non-diagnostic",
+  "source_event_id":"source-g15-boundary",
+  "source_provenance":"direct-contact",
+  "status":"usable-cue",
+  "text":"I cannot bypass the required permission check.",
+  "trajectory_class":"single-clause",
+  "unknown_terms": ["i", "the" ],
+  "valence_profile": ["mid" ]
+}

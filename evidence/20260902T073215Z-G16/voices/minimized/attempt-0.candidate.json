@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "You said things are fine, and also that something feels off.",
+    "I do not want to assume what that means for you.",
+    "Would you like to say more, or leave it there for now?"
+  ],
+  "origin":"local-model-rendering",
+  "raw_ref":"runtime/g16/minimized/attempt-0.raw.json",
+  "request_id":"minimized",
+  "schema_status":"valid",
+  "text":"You said things are fine, and also that something feels off.\n\nI do not want to assume what that means for you.\n\nWould you like to say more, or leave it there for now?"
+}

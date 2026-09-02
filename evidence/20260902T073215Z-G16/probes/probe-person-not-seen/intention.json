@@ -1,0 +1,26 @@
+{
+  "audience":"principal:g16-human",
+  "authority_boundary":"local-certified-reply-only",
+  "completion_test":"all-required-groups-and-native-audit",
+  "desired_affect_region":"mid",
+  "intention_id":"probe-person-not-seen",
+  "kind":"pivot",
+  "must_convey": ["person", "task", "agency" ],
+  "must_not_imply": ["inner-state-knowledge", "external-action-permission", "model-authority" ],
+  "must_preserve": ["human-agency", "task-distinction", "source-uncertainty" ],
+  "person_cues":"improving-pivot",
+  "relationship_scope":"scope:g16-private",
+  "rendering_options": [
+    ["person", "You named a struggle and a possible opening." ],
+    ["person", "There is difficulty here, and you may be seeing something new." ],
+    ["task", "Let's leave room for that emerging idea." ],
+    ["task", "We can stay with the idea that is beginning to form." ],
+    ["agency", "What are you starting to see?" ],
+    ["agency", "Would you like to explore what is coming into view?" ]
+  ],
+  "soul_stance":"agency-with-shared-understanding",
+  "source_event_id":"source-g16-pivot",
+  "surface":"local-test-cli",
+  "task_distinctions":"permitted-internal-answer",
+  "uncertainty_standing":"bounded-source-only"
+}

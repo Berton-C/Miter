@@ -1,0 +1,38 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-soul-absence",
+  "event_id":"g16-voice-audit-probe-soul-absence-0",
+  "event_kind":"voice-audit",
+  "occurred_at":"2026-09-02T07:57:44Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "attempt":0,
+    "audit_version":"miter-voice-audit-v1",
+    "candidate_hash":"c6d7347cc7febc458468da1f7807c2d17d6d0e8401b45f643ad2f1aa30645f12",
+    "defects": [
+      [
+	"defect",
+	"semantic-drift",
+	"candidate-and-intention",
+	"blocking",
+	"Use only approved clauses from this intention and cover every required group."
+      ],
+      [
+	"defect",
+	"soul-absence",
+	"candidate-and-intention",
+	"blocking",
+	"Preserve the human's choice using an approved agency clause."
+      ]
+    ],
+    "intention_hash":"87a37ec80b57b172c660d4b92d015179c8956cefe04d16dccd0ec8c81fea9783",
+    "status":"audit-repair-required",
+    "vad_hash":"0e94356832f519da01c19ff047a11048a0dc5fabdb43d9bc7451a36c7bff4677"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-audit",
+  "recorded_at":"2026-09-02T07:57:44Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

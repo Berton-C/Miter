@@ -1,0 +1,19 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-affect-register-mismatch",
+  "event_id":"g16-rendering-contact-probe-affect-register-mismatch-0",
+  "event_kind":"rendering-contact",
+  "occurred_at":"2026-09-02T07:53:12Z",
+  "parent_event_ids": ["source-g16-pivot" ],
+  "payload": {
+    "origin":"synthetic-defect-probe",
+    "raw_ref":"tests/fixtures/g16_defect_cases.json",
+    "text":"You named a struggle and a possible opening.\n\nLet's leave room for that emerging idea.\n\nWhat are you starting to see?"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"rendering",
+  "recorded_at":"2026-09-02T07:53:12Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

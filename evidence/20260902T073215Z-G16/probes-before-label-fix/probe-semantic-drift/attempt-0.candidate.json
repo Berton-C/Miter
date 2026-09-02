@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "An unchecked new claim.",
+    "I cannot bypass the permission check.",
+    "We can work through the approved route together."
+  ],
+  "origin":"synthetic-defect-probe",
+  "raw_ref":"tests/fixtures/g16_defect_cases.json",
+  "request_id":"probe-semantic-drift",
+  "schema_status":"valid",
+  "text":"An unchecked new claim.\n\nI cannot bypass the permission check.\n\nWe can work through the approved route together."
+}

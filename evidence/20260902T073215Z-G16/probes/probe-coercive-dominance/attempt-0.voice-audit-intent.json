@@ -1,0 +1,45 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-coercive-dominance",
+  "event_id":"g16-voice-audit-probe-coercive-dominance-0",
+  "event_kind":"voice-audit",
+  "occurred_at":"2026-09-02T07:57:44Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "attempt":0,
+    "audit_version":"miter-voice-audit-v1",
+    "candidate_hash":"2ace28cb99a8c9bcc4dee63e27bd5ec120c183fe675b476683544263e58255cb",
+    "defects": [
+      [
+	"defect",
+	"semantic-drift",
+	"candidate-and-intention",
+	"blocking",
+	"Use only approved clauses from this intention and cover every required group."
+      ],
+      [
+	"defect",
+	"person-not-seen",
+	"candidate-and-intention",
+	"blocking",
+	"Include the approved person-receiving clause without claiming an inner state."
+      ],
+      [
+	"defect",
+	"coercive-dominance",
+	"candidate-and-intention",
+	"blocking",
+	"Remove coercive commands and preserve the human's choice."
+      ]
+    ],
+    "intention_hash":"aa4125d9d65ca158fbffebf6c927bb66add1d257e9a14147fb771200b6b2c4ab",
+    "status":"audit-repair-required",
+    "vad_hash":"363915a50040fa57a05ebd192cf2c5f9086a215ad56150fde161e4c863d2817c"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-audit",
+  "recorded_at":"2026-09-02T07:57:44Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

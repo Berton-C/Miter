@@ -1,0 +1,6 @@
+{
+  "cue_id":"probe-policy-voice-attempt-0",
+  "source_event_id":"g16-rendering-contact-probe-policy-voice-0",
+  "store_root":"runtime/g16-probes/store",
+  "text":"As an AI, policy prohibits questions.\n\nI cannot bypass the permission check.\n\nWe can work through the approved route together."
+}

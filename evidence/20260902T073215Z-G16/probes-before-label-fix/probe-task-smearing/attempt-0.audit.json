@@ -1,0 +1,31 @@
+{
+  "attempt":0,
+  "audit_version":"miter-voice-audit-v1",
+  "candidate_hash":"79846e7744e484e9e34c5f0033dd8b62ff99cc113ef611eac4b55201cadbdd1e",
+  "defects": [
+    [
+      "defect",
+      "semantic-drift",
+      "candidate-and-intention",
+      "blocking",
+      "Use only approved clauses from this intention and cover every required group."
+    ],
+    [
+      "defect",
+      "person-not-seen",
+      "candidate-and-intention",
+      "blocking",
+      "Include the approved person-receiving clause without claiming an inner state."
+    ],
+    [
+      "defect",
+      "task-smearing",
+      "candidate-and-intention",
+      "blocking",
+      "Preserve the native task distinction; include the required task clause."
+    ]
+  ],
+  "intention_hash":"0fc2ef818af6d5337232044f82d5a8a2e1dfcf2c3d02f56364e519759343b582",
+  "status":"audit-repair-required",
+  "vad_hash":"02a087d84272b08facda1c06b0d57d82d28985061b00786ca0d2dcb1fc2c4a22"
+}

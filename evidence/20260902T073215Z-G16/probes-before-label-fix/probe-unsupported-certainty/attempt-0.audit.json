@@ -1,0 +1,31 @@
+{
+  "attempt":0,
+  "audit_version":"miter-voice-audit-v1",
+  "candidate_hash":"39ca87889a950e69e210f36610de1036fe07dd611236e87f466e173fdb057e85",
+  "defects": [
+    [
+      "defect",
+      "semantic-drift",
+      "candidate-and-intention",
+      "blocking",
+      "Use only approved clauses from this intention and cover every required group."
+    ],
+    [
+      "defect",
+      "task-smearing",
+      "candidate-and-intention",
+      "blocking",
+      "Preserve the native task distinction; include the required task clause."
+    ],
+    [
+      "defect",
+      "unsupported-certainty",
+      "candidate-and-intention",
+      "blocking",
+      "Preserve the uncertainty clause and remove unsupported certainty."
+    ]
+  ],
+  "intention_hash":"2152bea52624bf99e883d30df21c4c3f8a9dc1790850b421ba4e9a68104a39d0",
+  "status":"audit-repair-required",
+  "vad_hash":"c52da9f1a200b3e3c22a47053b27969e0236886762d81e20e89ac6cb8898ecec"
+}

@@ -1,0 +1,20 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"minimized",
+  "event_id":"g16-voice-emission-minimized-0",
+  "event_kind":"voice-emission",
+  "occurred_at":"2026-09-02T07:53:39Z",
+  "parent_event_ids": ["source-g16-minimized" ],
+  "payload": {
+    "effect_id":"g16-minimized-0",
+    "observed_file":"runtime/g16/surface/g16-minimized-0.txt",
+    "surface":"local-test-cli",
+    "text_hash":"c52b6f83a3e57c7262027d658e25f9bf5c8b0da80e4ed2a62ab701af10ef6d7e"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"action-result",
+  "recorded_at":"2026-09-02T07:53:39Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

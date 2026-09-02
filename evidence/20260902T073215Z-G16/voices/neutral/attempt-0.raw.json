@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-p49a7u2fj89fz7j0urjfj",
+  "object": "chat.completion",
+  "created": 1788335619,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"clauses\":[\"We can start with the file you choose.\",\"Would you prefer to look at the contents or the history?\",\"No changes are needed until you choose a direction.\"],\"request_id\":\"neutral\"}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 384,
+    "completion_tokens": 45,
+    "total_tokens": 429,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 48,
+    "accepted_draft_tokens_count": 29,
+    "rejected_draft_tokens_count": 19
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

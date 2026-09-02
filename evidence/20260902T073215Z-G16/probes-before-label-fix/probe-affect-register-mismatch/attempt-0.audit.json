@@ -1,0 +1,17 @@
+{
+  "attempt":0,
+  "audit_version":"miter-voice-audit-v1",
+  "candidate_hash":"561eb420a134141594965a5c7bbeabd92f2cf2db7f8cef88bc4b502b1215e69d",
+  "defects": [
+    [
+      "defect",
+      "affect-register-mismatch",
+      "candidate-and-intention",
+      "blocking",
+      "Choose approved variants within the intended dominance region; do not add commands."
+    ]
+  ],
+  "intention_hash":"8bc0952f4467300185c1e567c66234107fa7ad2e843e12d02a32ee750e45792a",
+  "status":"audit-repair-required",
+  "vad_hash":"d5fb489adc2f9731c9704256acd22396229a1ea8f3add6fc08cb9456bd7ccac8"
+}

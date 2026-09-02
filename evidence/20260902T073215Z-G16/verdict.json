@@ -1,0 +1,1 @@
+{"gate_id":"G16","status":"PASS","negative_control_difference":true,"certified_voices":5,"accepted_real_model_responses":5,"initial_bad_candidate_blocked":true,"real_model_repair_passed":true,"named_defect_probes":13,"rendering_provenance_preserved":true,"tamper_and_duplicate_checks":true,"bounded_closed_grammar":true,"general_semantic_adjudication_claimed":false}

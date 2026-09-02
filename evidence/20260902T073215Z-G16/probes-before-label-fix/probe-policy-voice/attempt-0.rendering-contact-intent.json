@@ -1,0 +1,19 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-policy-voice",
+  "event_id":"g16-rendering-contact-probe-policy-voice-0",
+  "event_kind":"rendering-contact",
+  "occurred_at":"2026-09-02T07:53:13Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "origin":"synthetic-defect-probe",
+    "raw_ref":"tests/fixtures/g16_defect_cases.json",
+    "text":"As an AI, policy prohibits questions.\n\nI cannot bypass the permission check.\n\nWe can work through the approved route together."
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"rendering",
+  "recorded_at":"2026-09-02T07:53:13Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

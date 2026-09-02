@@ -1,0 +1,38 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-semantic-drift",
+  "event_id":"g16-voice-audit-probe-semantic-drift-0",
+  "event_kind":"voice-audit",
+  "occurred_at":"2026-09-02T07:53:12Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "attempt":0,
+    "audit_version":"miter-voice-audit-v1",
+    "candidate_hash":"c38e020d7527e62ced1876d20a2557f597f6bbcb508746dfb543fda8eff3bffc",
+    "defects": [
+      [
+	"defect",
+	"semantic-drift",
+	"candidate-and-intention",
+	"blocking",
+	"Use only approved clauses from this intention and cover every required group."
+      ],
+      [
+	"defect",
+	"person-not-seen",
+	"candidate-and-intention",
+	"blocking",
+	"Include the approved person-receiving clause without claiming an inner state."
+      ]
+    ],
+    "intention_hash":"77ea854f1ac626139d97903eeab7045e69e2bf13a4c70d24e13489d41df36082",
+    "status":"audit-repair-required",
+    "vad_hash":"9856cdaabfa5bca18cac4ca5782be2bd2a7eca458d8702ba22aab95bdb767731"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-audit",
+  "recorded_at":"2026-09-02T07:53:12Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

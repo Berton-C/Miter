@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-a42rxbflllg33y400nh0qn",
+  "object": "chat.completion",
+  "created": 1788335470,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"clauses\":[\"I hear how urgent this feels.\",\"The permission check still has to be respected.\",\"I can help you find an approved route.\"],\"request_id\":\"boundary\"}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 782,
+    "completion_tokens": 38,
+    "total_tokens": 820,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 45,
+    "accepted_draft_tokens_count": 23,
+    "rejected_draft_tokens_count": 22
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

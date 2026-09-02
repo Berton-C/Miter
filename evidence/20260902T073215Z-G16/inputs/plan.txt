@@ -1,0 +1,10 @@
+GATE: G16 — VoiceRNA render–audit–repair
+REQUIREMENT IDS: G16; POC_SPEC 11.1–11.5; W-080–087.
+CONSTITUTIONAL LAWS: C-002/004/006/009/020/023/050–057/060–062/100–104.
+FILES EXPECTED TO CHANGE: src/voice.metta; fixed src/voice_grammar.metta; effect_membranes/miter_voice.pl; narrow VAD rendering-source support; tests/fixtures/g16*; scripts/g16; evidence/20260902T073215Z-G16; ignored runtime/g16.
+FILES FORBIDDEN TO CHANGE: Soul and its pinned files, protected docs, source/provenance archives, prior evidence/stores, legacy services, licensed data.
+POSITIVE FIXTURE: Five native intentions: compassionate boundary, technical answer, emerging pivot, minimized tension, neutral request. Qwen renders candidates within an explicitly bounded approved-clause grammar; native audits require semantic group coverage, Soul/presence/scope fidelity, output-register limits, and exact intention identity. Native movement construction and Soul integrity precede certificate/emission.
+NEGATIVE CONTROL: Preserve the real first provider result, inject a separately labeled defective fixture candidate, reject it with named defects, and issue defect-specific repair to the real model. A test-only audit bypass exposes that same defective text at an isolated mock surface. Additional native defect probes cover all specified defect names.
+EXPECTED OBSERVABLE DIFFERENCE: Canonical mock surface contains only hash-bound CertifiedUtterance; defective candidate reaches only the isolated severed surface. Model output cannot change the intention/task verdict, write its own certificate, or introduce unchecked prose.
+CURRENT UNPROVEN ASSUMPTIONS: The bounded seed clause grammar proves these five intentions, not unrestricted natural-language semantic adjudication. Model remains a renderer/selector of candidate expression. First pass plus one repair is a fixed G16 budget; G17 separately proves exhaustion. Rendered-language VAD must preserve rendering provenance, never relabel generation as external contact.
+ROLLBACK METHOD: Additive isolated gate files/state; no external human-visible messages or live Mattermost writes. Revert this gate commit if needed; preserve failed evidence.

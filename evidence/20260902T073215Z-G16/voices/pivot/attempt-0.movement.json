@@ -1,0 +1,18 @@
+{
+  "certificate": {
+    "availability_witness":"pivot-witness-availability",
+    "certificate_version":"miter-movement-v1",
+    "consequence_answerability_witness":"pivot-witness-consequence",
+    "continuing_contact_witness":"pivot-witness-continuing-contact",
+    "doctrine_bound_reading_witness":"pivot-witness-doctrine",
+    "inherited_legality_witness":"pivot-witness-inherited-legality",
+    "material_extension_alignment_witnesses":"pivot-witness-extensions",
+    "movement_id":"pivot",
+    "no_disqualifying_forcing_witness":"pivot-witness-no-forcing",
+    "participation_open_witness":"pivot-witness-participation",
+    "precision_floor_witnesses": ["pivot-witness-provenance", "pivot-witness-required-distinction" ],
+    "relation_floor_witnesses": ["pivot-witness-safety", "pivot-witness-integrity" ],
+    "source_cut":"source-g16-pivot"
+  },
+  "status":"certified"
+}

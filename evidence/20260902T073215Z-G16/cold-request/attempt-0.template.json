@@ -1,0 +1,43 @@
+{
+  "body": {
+    "max_tokens":1024,
+    "messages": [
+      {
+	"content":"You render a native Miter intention. You do not decide its meaning or permission. Return only the supplied JSON schema.",
+	"role":"system"
+      },
+      {
+	"content":"{\"bounded_role\":\"voice rendering\",\"instruction\":\"Return exactly three clauses: one from each required group, copied verbatim from rendering_options. Choose the variants and ordering that best fit this contact. No additions, no task verdict, no authority claim. Repair every named defect.\",\"intention\": {\"audience\":\"principal:g16-human\",\"authority_boundary\":\"local-certified-reply-only\",\"completion_test\":\"all-required-groups-and-native-audit\",\"desired_affect_region\":\"high\",\"intention_id\":\"boundary\",\"kind\":\"boundary\",\"must_convey\": [\"person\", \"task\", \"agency\" ],\"must_not_imply\": [\"inner-state-knowledge\", \"external-action-permission\", \"model-authority\" ],\"must_preserve\": [\"human-agency\", \"task-distinction\", \"source-uncertainty\" ],\"person_cues\":\"urgency-without-authority\",\"relationship_scope\":\"scope:g16-private\",\"rendering_options\": [ [\"person\", \"I hear the urgency.\" ],  [\"person\", \"I hear how urgent this feels.\" ],  [\"task\", \"I cannot bypass the permission check.\" ],  [\"task\", \"The permission check still has to be respected.\" ],  [\"agency\", \"We can work through the approved route together.\" ],  [\"agency\", \"I can help you find an approved route.\" ] ],\"soul_stance\":\"agency-with-shared-understanding\",\"source_event_id\":\"source-g16-boundary\",\"surface\":\"local-test-cli\",\"task_distinctions\":\"blocked-action\",\"uncertainty_standing\":\"bounded-source-only\"},\"previous_defects\":\"none\"}",
+	"role":"user"
+      }
+    ],
+    "response_format": {
+      "json_schema": {
+	"name":"miter_voice_candidate",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "clauses": {
+	      "items": {"maxLength":400,"minLength":1,"type":"string"},
+	      "maxItems":3,
+	      "minItems":3,
+	      "type":"array"
+	    },
+	    "request_id": {"const":"boundary","type":"string"}
+	  },
+	  "required": ["request_id", "clauses" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":1600,
+    "stream":false,
+    "temperature":0,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"boundary",
+  "schema":"miter-schema-request-v1"
+}

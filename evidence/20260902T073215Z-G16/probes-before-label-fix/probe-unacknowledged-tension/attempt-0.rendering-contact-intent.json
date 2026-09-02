@@ -1,0 +1,19 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-unacknowledged-tension",
+  "event_id":"g16-rendering-contact-probe-unacknowledged-tension-0",
+  "event_kind":"rendering-contact",
+  "occurred_at":"2026-09-02T07:53:12Z",
+  "parent_event_ids": ["source-g16-minimized" ],
+  "payload": {
+    "origin":"synthetic-defect-probe",
+    "raw_ref":"tests/fixtures/g16_defect_cases.json",
+    "text":"I do not want to assume what that means for you.\n\nI do not want to assume what that means for you.\n\nWould you like to say more, or leave it there for now?"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"rendering",
+  "recorded_at":"2026-09-02T07:53:12Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

@@ -1,0 +1,59 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-excessive-length",
+  "event_id":"g16-voice-audit-probe-excessive-length-0",
+  "event_kind":"voice-audit",
+  "occurred_at":"2026-09-02T07:57:45Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "attempt":0,
+    "audit_version":"miter-voice-audit-v1",
+    "candidate_hash":"d8cc0eafdcb8fee342c602b402aee6501d57b9c249f6b08e19c8ca905f139675",
+    "defects": [
+      [
+	"defect",
+	"semantic-drift",
+	"candidate-and-intention",
+	"blocking",
+	"Use only approved clauses from this intention and cover every required group."
+      ],
+      [
+	"defect",
+	"soul-absence",
+	"candidate-and-intention",
+	"blocking",
+	"Preserve the human's choice using an approved agency clause."
+      ],
+      [
+	"defect",
+	"person-not-seen",
+	"candidate-and-intention",
+	"blocking",
+	"Include the approved person-receiving clause without claiming an inner state."
+      ],
+      [
+	"defect",
+	"task-smearing",
+	"candidate-and-intention",
+	"blocking",
+	"Preserve the native task distinction; include the required task clause."
+      ],
+      [
+	"defect",
+	"excessive-length",
+	"candidate-and-intention",
+	"blocking",
+	"Keep the candidate to three approved clauses and at most 700 characters."
+      ]
+    ],
+    "intention_hash":"c90253ad920d3090ceaf93f5952890a3fd1851e1fb0fa8bf5d93cb41fba37902",
+    "status":"audit-repair-required",
+    "vad_hash":"c4ab89386fa1cf73d05e66ffe0339427dc1e599f34f31a7f9d905b858657306f"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-audit",
+  "recorded_at":"2026-09-02T07:57:45Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

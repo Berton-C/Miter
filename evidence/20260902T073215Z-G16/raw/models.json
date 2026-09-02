@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "id": "text-embedding-nomic-embed-text-v1.5",
+      "object": "model",
+      "owned_by": "organization_owner"
+    },
+    {
+      "id": "qwen/qwen3.8-27b",
+      "object": "model",
+      "owned_by": "organization_owner"
+    },
+    {
+      "id": "nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+      "object": "model",
+      "owned_by": "organization_owner"
+    },
+    {
+      "id": "muse-glimmer-30b",
+      "object": "model",
+      "owned_by": "organization_owner"
+    },
+    {
+      "id": "glm-4.7-flash-claude-opus-4.5-high-reasoning-distill",
+      "object": "model",
+      "owned_by": "organization_owner"
+    }
+  ],
+  "object": "list"
+}

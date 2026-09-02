@@ -1,0 +1,5 @@
+We can start with the file you choose.
+
+Would you prefer to look at the contents or the history?
+
+No changes are needed until you choose a direction.

@@ -1,0 +1,13 @@
+{
+  "audit_hash":"061885a7c64a187b44deaccc28a10240f17d149904b0d01d91f2a28bd4901da5",
+  "candidate_hash":"43ff9782b8f7002d0356dc7711df5bafc6c91ba6f82f68800afd6582290e6740",
+  "effect_id":"g16-boundary-1",
+  "intention_hash":"326f7dda68c7f1b6919cb2dec7fbe23662da1de819fddb7f484c518f65b1f8d2",
+  "intention_id":"boundary",
+  "movement_hash":"00bc263e2b82195433b399fb9470bd93d58becfc98fabd2462ac3fe5d5f35b34",
+  "schema":"CertifiedUtterance",
+  "standing":"certified-utterance",
+  "surface":"local-test-cli",
+  "text":"I hear how urgent this feels.\n\nThe permission check still has to be respected.\n\nI can help you find an approved route.",
+  "text_hash":"58ce3a09eb5059177fe3f392aec1436ae5d60203b7787c96b938bc60e38a4bd5"
+}

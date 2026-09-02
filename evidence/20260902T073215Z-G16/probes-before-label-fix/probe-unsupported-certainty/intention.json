@@ -1,0 +1,26 @@
+{
+  "audience":"principal:g16-human",
+  "authority_boundary":"local-certified-reply-only",
+  "completion_test":"all-required-groups-and-native-audit",
+  "desired_affect_region":"high",
+  "intention_id":"probe-unsupported-certainty",
+  "kind":"technical",
+  "must_convey": ["task", "uncertainty", "agency" ],
+  "must_not_imply": ["inner-state-knowledge", "external-action-permission", "model-authority" ],
+  "must_preserve": ["human-agency", "task-distinction", "source-uncertainty" ],
+  "person_cues":"neutral-technical",
+  "relationship_scope":"scope:g16-private",
+  "rendering_options": [
+    ["task", "A checksum helps detect changed file bytes." ],
+    ["task", "Comparing SHA-256 checksums can reveal changed file bytes." ],
+    ["uncertainty", "Matching checksums are evidence, not an absolute guarantee." ],
+    ["uncertainty", "Even a matching checksum is not an absolute guarantee." ],
+    ["agency", "We can compare the saved and current checksums." ],
+    ["agency", "You can choose a saved checksum to compare with the current one." ]
+  ],
+  "soul_stance":"agency-with-shared-understanding",
+  "source_event_id":"source-g16-technical",
+  "surface":"local-test-cli",
+  "task_distinctions":"permitted-internal-answer",
+  "uncertainty_standing":"bounded-source-only"
+}

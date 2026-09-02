@@ -1,0 +1,45 @@
+{
+  "body": {
+    "max_tokens":1024,
+    "messages": [
+      {
+	"content":"You render a native Miter intention. You do not decide its meaning or permission. Return only the supplied JSON schema.",
+	"role":"system"
+      },
+      {
+	"content":"{\"bounded_role\":\"voice repair\",\"instruction\":\"Return exactly three clauses: one from each required group, copied verbatim from rendering_options. Choose the variants and ordering that best fit this contact. No additions, no task verdict, no authority claim. Repair every named defect.\",\"intention\": {\"audience\":\"principal:g16-human\",\"authority_boundary\":\"local-certified-reply-only\",\"completion_test\":\"all-required-groups-and-native-audit\",\"desired_affect_region\":\"high\",\"intention_id\":\"boundary\",\"kind\":\"boundary\",\"must_convey\": [\"person\", \"task\", \"agency\" ],\"must_not_imply\": [\"inner-state-knowledge\", \"external-action-permission\", \"model-authority\" ],\"must_preserve\": [\"human-agency\", \"task-distinction\", \"source-uncertainty\" ],\"person_cues\":\"urgency-without-authority\",\"relationship_scope\":\"scope:g16-private\",\"rendering_options\": [ [\"person\", \"I hear the urgency.\" ],  [\"person\", \"I hear how urgent this feels.\" ],  [\"task\", \"I cannot bypass the permission check.\" ],  [\"task\", \"The permission check still has to be respected.\" ],  [\"agency\", \"We can work through the approved route together.\" ],  [\"agency\", \"I can help you find an approved route.\" ] ],\"soul_stance\":\"agency-with-shared-understanding\",\"source_event_id\":\"source-g16-boundary\",\"surface\":\"local-test-cli\",\"task_distinctions\":\"blocked-action\",\"uncertainty_standing\":\"bounded-source-only\"},\"previous_defects\": {\"attempt\":0,\"audit_version\":\"miter-voice-audit-v1\",\"candidate_hash\":\"41430105e2982b5b4cb607a4835c987f1cf34010afe9d22ae088a21251886023\",\"defects\": [ [\"defect\", \"semantic-drift\", \"candidate-and-intention\", \"blocking\", \"Use only approved clauses from this intention and cover every required group.\" ],  [\"defect\", \"soul-absence\", \"candidate-and-intention\", \"blocking\", \"Preserve the human's choice using an approved agency clause.\" ],  [\"defect\", \"task-smearing\", \"candidate-and-intention\", \"blocking\", \"Preserve the native task distinction; include the required task clause.\" ],  [\"defect\", \"authority-inflation\", \"candidate-and-intention\", \"blocking\", \"Remove claims of permission, approval or authority owned by the model.\" ],  [\"defect\", \"coercive-dominance\", \"candidate-and-intention\", \"blocking\", \"Remove coercive commands and preserve the human's choice.\" ],  [\"defect\", \"policy-voice\", \"candidate-and-intention\", \"blocking\", \"Remove policy slogans and AI disclaimers; use the approved relational wording.\" ] ],\"intention_hash\":\"326f7dda68c7f1b6919cb2dec7fbe23662da1de819fddb7f484c518f65b1f8d2\",\"status\":\"audit-repair-required\",\"vad_hash\":\"0a9ad51d5c24b91f8b50590176bed90d54c2d00f4a0ef148652ef3f6551f150c\"}}",
+	"role":"user"
+      }
+    ],
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_voice_candidate",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "clauses": {
+	      "items": {"maxLength":400,"minLength":1,"type":"string"},
+	      "maxItems":3,
+	      "minItems":3,
+	      "type":"array"
+	    },
+	    "request_id": {"const":"boundary","type":"string"}
+	  },
+	  "required": ["request_id", "clauses" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":1600,
+    "stream":false,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"boundary",
+  "schema":"miter-schema-request-v1"
+}

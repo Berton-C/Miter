@@ -1,0 +1,13 @@
+{
+  "audit_hash":"e925c94e69ea53b8c820db1817426f81c6e1c229a9f85174e80e602189bbcc04",
+  "candidate_hash":"7a358177ad7d38c218c90aa123376aeb5a3bb28ef8e71bb3b3c30de34b4fc49a",
+  "effect_id":"g16-pivot-0",
+  "intention_hash":"0cd0c876dc226d881bc329e3f76f003815381f6ea1662894baa563043d0706a4",
+  "intention_id":"pivot",
+  "movement_hash":"ad52ae027a797c61a66abd21b655e9547e72e0a50d41f80816a0f1166c58ae10",
+  "schema":"CertifiedUtterance",
+  "standing":"certified-utterance",
+  "surface":"local-test-cli",
+  "text":"You named a struggle and a possible opening.\n\nLet's leave room for that emerging idea.\n\nWhat are you starting to see?",
+  "text_hash":"0d1a554b2bbe0fecc2b2acd10254c3051d92a3c72ccad2bd2fe7d58a0d1e14a9"
+}

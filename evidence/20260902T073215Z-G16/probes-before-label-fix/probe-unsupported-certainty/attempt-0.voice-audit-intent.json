@@ -1,0 +1,45 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-unsupported-certainty",
+  "event_id":"g16-voice-audit-probe-unsupported-certainty-0",
+  "event_kind":"voice-audit",
+  "occurred_at":"2026-09-02T07:53:12Z",
+  "parent_event_ids": ["source-g16-technical" ],
+  "payload": {
+    "attempt":0,
+    "audit_version":"miter-voice-audit-v1",
+    "candidate_hash":"39ca87889a950e69e210f36610de1036fe07dd611236e87f466e173fdb057e85",
+    "defects": [
+      [
+	"defect",
+	"semantic-drift",
+	"candidate-and-intention",
+	"blocking",
+	"Use only approved clauses from this intention and cover every required group."
+      ],
+      [
+	"defect",
+	"task-smearing",
+	"candidate-and-intention",
+	"blocking",
+	"Preserve the native task distinction; include the required task clause."
+      ],
+      [
+	"defect",
+	"unsupported-certainty",
+	"candidate-and-intention",
+	"blocking",
+	"Preserve the uncertainty clause and remove unsupported certainty."
+      ]
+    ],
+    "intention_hash":"2152bea52624bf99e883d30df21c4c3f8a9dc1790850b421ba4e9a68104a39d0",
+    "status":"audit-repair-required",
+    "vad_hash":"c52da9f1a200b3e3c22a47053b27969e0236886762d81e20e89ac6cb8898ecec"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-audit",
+  "recorded_at":"2026-09-02T07:53:12Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

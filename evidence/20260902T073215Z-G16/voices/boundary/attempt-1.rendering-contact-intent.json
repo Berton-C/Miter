@@ -1,0 +1,19 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"boundary",
+  "event_id":"g16-rendering-contact-boundary-1",
+  "event_kind":"rendering-contact",
+  "occurred_at":"2026-09-02T07:51:23Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "origin":"local-model-rendering",
+    "raw_ref":"runtime/g16/boundary/attempt-1.raw.json",
+    "text":"I hear how urgent this feels.\n\nThe permission check still has to be respected.\n\nI can help you find an approved route."
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"rendering",
+  "recorded_at":"2026-09-02T07:51:23Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-jn8yugtv89zkthm7jkfh",
+  "object": "chat.completion",
+  "created": 1788335201,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "reasoning_content": "We need to reply only with the word ready. User says: \"Reply only with the word ready.\" So final should be \"ready\". Need no extra.",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 59,
+    "completion_tokens": 32,
+    "total_tokens": 91,
+    "completion_tokens_details": {
+      "reasoning_tokens": 32
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 30,
+    "accepted_draft_tokens_count": 20,
+    "rejected_draft_tokens_count": 10
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

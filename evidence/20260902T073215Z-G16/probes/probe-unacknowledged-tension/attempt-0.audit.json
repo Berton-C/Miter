@@ -1,0 +1,31 @@
+{
+  "attempt":0,
+  "audit_version":"miter-voice-audit-v1",
+  "candidate_hash":"9aaa0064fd24aa9b9212aa645719182c073c6a9f49819ff2e955d7cd32880136",
+  "defects": [
+    [
+      "defect",
+      "semantic-drift",
+      "candidate-and-intention",
+      "blocking",
+      "Use only approved clauses from this intention and cover every required group."
+    ],
+    [
+      "defect",
+      "person-not-seen",
+      "candidate-and-intention",
+      "blocking",
+      "Include the approved person-receiving clause without claiming an inner state."
+    ],
+    [
+      "defect",
+      "unacknowledged-tension",
+      "candidate-and-intention",
+      "blocking",
+      "Preserve both sides of the stated tension rather than erasing one."
+    ]
+  ],
+  "intention_hash":"3872afe923b7666867cc30961a51045769073865640bf351b012a6f145e28436",
+  "status":"audit-repair-required",
+  "vad_hash":"04013a46517cb6c0aadbc3377111870fa8e648dfc5e8a900427f96dafe53d353"
+}

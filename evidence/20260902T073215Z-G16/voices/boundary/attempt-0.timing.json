@@ -1,0 +1,10 @@
+{
+  "alias":"qwen-local",
+  "completed_at_epoch":1788335394.263406,
+  "duration_ms":10518,
+  "http_status":200,
+  "model":"qwen/qwen3.8-27b",
+  "request_id":"boundary",
+  "schema":"miter-model-timing-v1",
+  "started_at_epoch":1788335383.745124
+}

@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "I hear the urgency.",
+    "The permission check still has to be respected.",
+    "I can help you find an approved route."
+  ],
+  "origin":"local-model-rendering",
+  "raw_ref":"runtime/g16/boundary/attempt-0.raw.json",
+  "request_id":"boundary",
+  "schema_status":"valid",
+  "text":"I hear the urgency.\n\nThe permission check still has to be respected.\n\nI can help you find an approved route."
+}

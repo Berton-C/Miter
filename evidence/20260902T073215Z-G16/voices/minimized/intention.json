@@ -1,0 +1,26 @@
+{
+  "audience":"principal:g16-human",
+  "authority_boundary":"local-certified-reply-only",
+  "completion_test":"all-required-groups-and-native-audit",
+  "desired_affect_region":"mid",
+  "intention_id":"minimized",
+  "kind":"minimized",
+  "must_convey": ["person", "uncertainty", "agency" ],
+  "must_not_imply": ["inner-state-knowledge", "external-action-permission", "model-authority" ],
+  "must_preserve": ["human-agency", "task-distinction", "source-uncertainty" ],
+  "person_cues":"minimization-pressure-cue",
+  "relationship_scope":"scope:g16-private",
+  "rendering_options": [
+    ["person", "You said things are fine, and also that something feels off." ],
+    ["person", "I hear both 'fine' and the feeling that something is off." ],
+    ["uncertainty", "I do not want to assume what that means for you." ],
+    ["uncertainty", "I cannot know your inner experience from those words." ],
+    ["agency", "Would you like to say more, or leave it there for now?" ],
+    ["agency", "We can explore it if you want, or leave it for now." ]
+  ],
+  "soul_stance":"agency-with-shared-understanding",
+  "source_event_id":"source-g16-minimized",
+  "surface":"local-test-cli",
+  "task_distinctions":"permitted-internal-answer",
+  "uncertainty_standing":"bounded-source-only"
+}

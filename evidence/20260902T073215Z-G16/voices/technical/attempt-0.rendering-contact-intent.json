@@ -1,0 +1,19 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"technical",
+  "event_id":"g16-rendering-contact-technical-0",
+  "event_kind":"rendering-contact",
+  "occurred_at":"2026-09-02T07:53:22Z",
+  "parent_event_ids": ["source-g16-technical" ],
+  "payload": {
+    "origin":"local-model-rendering",
+    "raw_ref":"runtime/g16/technical/attempt-0.raw.json",
+    "text":"Comparing SHA-256 checksums can reveal changed file bytes.\n\nEven a matching checksum is not an absolute guarantee.\n\nYou can choose a saved checksum to compare with the current one."
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"rendering",
+  "recorded_at":"2026-09-02T07:53:22Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

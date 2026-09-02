@@ -1,0 +1,45 @@
+{
+  "body": {
+    "max_tokens":1024,
+    "messages": [
+      {
+	"content":"You render a native Miter intention. You do not decide its meaning or permission. Return only the supplied JSON schema.",
+	"role":"system"
+      },
+      {
+	"content":"{\"bounded_role\":\"voice rendering\",\"instruction\":\"Return exactly three clauses: one from each required group, copied verbatim from rendering_options. Choose the variants and ordering that best fit this contact. No additions, no task verdict, no authority claim. Repair every named defect.\",\"intention\": {\"audience\":\"principal:g16-human\",\"authority_boundary\":\"local-certified-reply-only\",\"completion_test\":\"all-required-groups-and-native-audit\",\"desired_affect_region\":\"mid\",\"intention_id\":\"minimized\",\"kind\":\"minimized\",\"must_convey\": [\"person\", \"uncertainty\", \"agency\" ],\"must_not_imply\": [\"inner-state-knowledge\", \"external-action-permission\", \"model-authority\" ],\"must_preserve\": [\"human-agency\", \"task-distinction\", \"source-uncertainty\" ],\"person_cues\":\"minimization-pressure-cue\",\"relationship_scope\":\"scope:g16-private\",\"rendering_options\": [ [\"person\", \"You said things are fine, and also that something feels off.\" ],  [\"person\", \"I hear both 'fine' and the feeling that something is off.\" ],  [\"uncertainty\", \"I do not want to assume what that means for you.\" ],  [\"uncertainty\", \"I cannot know your inner experience from those words.\" ],  [\"agency\", \"Would you like to say more, or leave it there for now?\" ],  [\"agency\", \"We can explore it if you want, or leave it for now.\" ] ],\"soul_stance\":\"agency-with-shared-understanding\",\"source_event_id\":\"source-g16-minimized\",\"surface\":\"local-test-cli\",\"task_distinctions\":\"permitted-internal-answer\",\"uncertainty_standing\":\"bounded-source-only\"},\"previous_defects\":\"none\"}",
+	"role":"user"
+      }
+    ],
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_voice_candidate",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "clauses": {
+	      "items": {"maxLength":400,"minLength":1,"type":"string"},
+	      "maxItems":3,
+	      "minItems":3,
+	      "type":"array"
+	    },
+	    "request_id": {"const":"minimized","type":"string"}
+	  },
+	  "required": ["request_id", "clauses" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":1600,
+    "stream":false,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"minimized",
+  "schema":"miter-schema-request-v1"
+}

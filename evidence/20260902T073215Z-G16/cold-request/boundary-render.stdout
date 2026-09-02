@@ -1,0 +1,1314 @@
+[33m--> metta runnable  -->
+[36m!(import! &self (library lib_import))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library(lib_import, B),
+             'import!'('&self', B, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function consult)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(consult, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_file $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                           ($prologfile (consult))
+                                                                           ($function (superpose $importfunctions)))
+                                                                          (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_file(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    consult(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function use_module)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(use_module, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_module $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                             ($prologfile (use_module))
+                                                                             ($function (superpose $importfunctions)))
+                                                                            (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_module(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    use_module(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file (library lib_import.pl) (static-import! git-import! use-module!))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library('lib_import.pl', B),
+             import_prolog_functions_from_file(B,
+                                               [ 'static-import!',
+                                                 'git-import!',
+                                                 'use-module!'
+                                               ],
+                                               A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_voice_transport.pl"
+ (miter_voice_input miter_voice_source miter_voice_write_intention miter_voice_render
+  miter_voice_schema miter_voice_clause_count miter_voice_clause miter_voice_contains miter_voice_length
+  miter_voice_vad_request miter_voice_stage_path miter_voice_cue_id miter_voice_vad_high
+  miter_voice_vad_ready miter_voice_audit_write miter_voice_audit_status))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_voice_transport.pl",
+                                             [ miter_voice_input,
+                                               miter_voice_source,
+                                               miter_voice_write_intention,
+                                               miter_voice_render,
+                                               miter_voice_schema,
+                                               miter_voice_clause_count,
+                                               miter_voice_clause,
+                                               miter_voice_contains,
+                                               miter_voice_length,
+                                               miter_voice_vad_request,
+                                               miter_voice_stage_path,
+                                               miter_voice_cue_id,
+                                               miter_voice_vad_high,
+                                               miter_voice_vad_ready,
+                                               miter_voice_audit_write,
+                                               miter_voice_audit_status
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_vad.pl"
+ (miter_vad_prepare miter_vad_prepare_source miter_vad_metric miter_vad_prior miter_vad_number
+  miter_vad_contains miter_vad_clause_contains miter_vad_finish))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_vad.pl",
+                                             [ miter_vad_prepare,
+                                               miter_vad_prepare_source,
+                                               miter_vad_metric,
+                                               miter_vad_prior,
+                                               miter_vad_number,
+                                               miter_vad_contains,
+                                               miter_vad_clause_contains,
+                                               miter_vad_finish
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/vad.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/vad.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADSumAxis $id $clause $axis $i $count $acc)
+   (if (< $i $count)
+     (VADSumAxis $id $clause $axis (+ $i 1) $count
+       (+ $acc (miter_vad_number $id $clause $i $axis))) $acc))
+[33m--> prolog clause -->
+[32m'VADSumAxis'(A, B, C, D, E, F, G) :-
+    <(D, E, H),
+    (   H==true
+    ->  +(D, 1, I),
+        miter_vad_number(A, B, D, C, J),
+        +(F, J, K),
+        'VADSumAxis'(A, B, C, I, E, K, G)
+    ;   G=F
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADMean $id $clause $axis)
+   (let $count (miter_vad_metric $id $clause match_count)
+     (if (> $count 0) (/ (VADSumAxis $id $clause $axis 0 $count 0) $count) 0)))
+[33m--> prolog clause -->
+[32m'VADMean'(A, B, C, D) :-
+    E=F,
+    miter_vad_metric(A, B, match_count, F),
+    >(E, 0, G),
+    (   G==true
+    ->  'VADSumAxis'(A, B, C, 0, E, 0, H),
+        /(H, E, D)
+    ;   D=0
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADCountAll $id $kind $i $count $acc)
+   (if (< $i $count)
+     (VADCountAll $id $kind (+ $i 1) $count
+       (+ $acc (miter_vad_metric $id $i $kind))) $acc))
+[33m--> prolog clause -->
+[32m'VADCountAll'(A, B, C, D, E, F) :-
+    <(C, D, G),
+    (   G==true
+    ->  +(C, 1, H),
+        miter_vad_metric(A, C, B, I),
+        +(E, I, J),
+        'VADCountAll'(A, B, H, D, J, F)
+    ;   F=E
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADBand $value)
+   (let $band (miter_vad_prior register_band_prior)
+     (if (> $value $band) high
+       (if (< $value (- 0 $band)) low mid))))
+[33m--> prolog clause -->
+[32m'VADBand'(A, B) :-
+    C=D,
+    miter_vad_prior(register_band_prior, D),
+    >(A, C, E),
+    (   E==true
+    ->  B=high
+    ;   -(0, C, F),
+        <(A, F, G),
+        (   G==true
+        ->  B=low
+        ;   B=mid
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADClauseBand $id $clause $axis)
+   (if (> (miter_vad_metric $id $clause match_count) 0)
+     (VADBand (VADMean $id $clause $axis)) unknown))
+[33m--> prolog clause -->
+[32m'VADClauseBand'(A, B, C, D) :-
+    miter_vad_metric(A, B, match_count, E),
+    >(E, 0, F),
+    (   F==true
+    ->  'VADMean'(A, B, C, G),
+        'VADBand'(G, D)
+    ;   D=unknown
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADProfile $id $axis $i $count)
+   (if (< $i $count)
+     (cons-atom (VADClauseBand $id $i $axis)
+                (VADProfile $id $axis (+ $i 1) $count)) ()))
+[33m--> prolog clause -->
+[32m'VADProfile'(A, B, C, D, E) :-
+    <(C, D, F),
+    (   F==true
+    ->  'VADClauseBand'(A, C, B, G),
+        +(C, 1, H),
+        'VADProfile'(A, B, H, D, I),
+        'cons-atom'(G, I, E)
+    ;   E=[]
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADCoverage $id)
+   (let* (($count (miter_vad_metric $id 0 clause_count))
+          ($total (VADCountAll $id token_count 0 $count 0))
+          ($covered (VADCountAll $id covered_tokens 0 $count 0)))
+     (if (> $total 0) (/ $covered $total) 0)))
+[33m--> prolog clause -->
+[32m'VADCoverage'(A, B) :-
+    C=D,
+    miter_vad_metric(A, 0, clause_count, D),
+    E=F,
+    'VADCountAll'(A, token_count, 0, C, 0, F),
+    G=H,
+    'VADCountAll'(A, covered_tokens, 0, C, 0, H),
+    >(E, 0, I),
+    (   I==true
+    ->  /(G, E, B)
+    ;   B=0
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADLexicalTrajectory $id $coverage)
+   (let* (($count (miter_vad_metric $id 0 clause_count))
+          ($last (- $count 1))
+          ($delta (- (VADMean $id $last 0) (VADMean $id 0 0)))
+          ($threshold (miter_vad_prior trajectory_delta_prior)))
+     (if (< $coverage (miter_vad_prior coverage_prior)) insufficient-coverage
+       (if (< $count 2) single-clause
+         (if (or (== (miter_vad_metric $id 0 match_count) 0)
+                 (== (miter_vad_metric $id $last match_count) 0))
+           insufficient-clause-coverage
+           (if (> $delta $threshold)
+             (if (or (miter_vad_contains $id "but") (miter_vad_contains $id "however"))
+               improving-pivot improving)
+             (if (< $delta (- 0 $threshold))
+               (if (or (miter_vad_contains $id "just") (miter_vad_contains $id "a little"))
+                 deterioration-minimization-cue deteriorating)
+               stable-or-ambiguous)))))))
+[33m--> prolog clause -->
+[32m'VADLexicalTrajectory'(A, B, C) :-
+    D=E,
+    miter_vad_metric(A, 0, clause_count, E),
+    F=G,
+    -(D, 1, G),
+    H=I,
+    'VADMean'(A, F, 0, J),
+    'VADMean'(A, 0, 0, K),
+    -(J, K, I),
+    L=M,
+    miter_vad_prior(trajectory_delta_prior, M),
+    miter_vad_prior(coverage_prior, N),
+    <(B, N, O),
+    (   O==true
+    ->  C='insufficient-coverage'
+    ;   <(D, 2, P),
+        (   P==true
+        ->  C='single-clause'
+        ;   miter_vad_metric(A, 0, match_count, Q),
+            ==(Q, 0, R),
+            miter_vad_metric(A, F, match_count, S),
+            ==(S, 0, T),
+            or(R, T, U),
+            (   U==true
+            ->  C='insufficient-clause-coverage'
+            ;   >(H, L, V),
+                (   V==true
+                ->  miter_vad_contains(A, "but", W),
+                    miter_vad_contains(A, "however", X),
+                    or(W, X, Y),
+                    (   Y==true
+                    ->  C='improving-pivot'
+                    ;   C=improving
+                    )
+                ;   -(0, L, Z),
+                    <(H, Z, A1),
+                    (   A1==true
+                    ->  miter_vad_contains(A, "just", B1),
+                        miter_vad_contains(A, "a little", C1),
+                        or(B1, C1, D1),
+                        (   D1==true
+                        ->  C='deterioration-minimization-cue'
+                        ;   C=deteriorating
+                        )
+                    ;   C='stable-or-ambiguous'
+                    )
+                )
+            )
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADMinimization $id)
+   (let $last (- (miter_vad_metric $id 0 clause_count) 1)
+     (and
+       (or (miter_vad_clause_contains $id $last "just")
+           (or (miter_vad_clause_contains $id $last "a little")
+               (miter_vad_clause_contains $id $last "a bit")))
+       (or (miter_vad_clause_contains $id $last "off")
+         (or (miter_vad_clause_contains $id $last "uneasy")
+           (or (miter_vad_clause_contains $id $last "worried")
+             (or (miter_vad_clause_contains $id $last "struggling")
+                 (miter_vad_clause_contains $id $last "not okay"))))))))
+[33m--> prolog clause -->
+[32m'VADMinimization'(A, B) :-
+    C=D,
+    miter_vad_metric(A, 0, clause_count, E),
+    -(E, 1, D),
+    miter_vad_clause_contains(A, C, "just", F),
+    miter_vad_clause_contains(A, C, "a little", G),
+    miter_vad_clause_contains(A, C, "a bit", H),
+    or(G, H, I),
+    or(F, I, J),
+    miter_vad_clause_contains(A, C, "off", K),
+    miter_vad_clause_contains(A, C, "uneasy", L),
+    miter_vad_clause_contains(A, C, "worried", M),
+    miter_vad_clause_contains(A, C, "struggling", N),
+    miter_vad_clause_contains(A, C, "not okay", O),
+    or(N, O, P),
+    or(M, P, Q),
+    or(L, Q, R),
+    or(K, R, S),
+    and(J, S, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADTrajectory $id $coverage)
+   (let $lexical (VADLexicalTrajectory $id $coverage)
+     (if (and (>= $coverage (miter_vad_prior coverage_prior))
+              (> (miter_vad_metric $id 0 clause_count) 1))
+       (if (VADMinimization $id) minimization-pressure-cue $lexical)
+       $lexical)))
+[33m--> prolog clause -->
+[32m'VADTrajectory'(A, B, C) :-
+    D=E,
+    'VADLexicalTrajectory'(A, B, E),
+    miter_vad_prior(coverage_prior, F),
+    >=(B, F, G),
+    miter_vad_metric(A, 0, clause_count, H),
+    >(H, 1, I),
+    and(G, I, J),
+    (   J==true
+    ->  'VADMinimization'(A, K),
+        (   K==true
+        ->  C='minimization-pressure-cue'
+        ;   C=D
+        )
+    ;   C=D
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADPresence $trajectory)
+   (if (== $trajectory improving-pivot) preserve-emerging-insight
+     (if (or (== $trajectory deterioration-minimization-cue)
+             (== $trajectory minimization-pressure-cue)) acknowledge-tension-gently
+       (if (or (== $trajectory insufficient-coverage)
+               (== $trajectory insufficient-clause-coverage))
+         withhold-affective-inference
+         attentive-non-diagnostic))))
+[33m--> prolog clause -->
+[32m'VADPresence'(A, B) :-
+    ==(A, 'improving-pivot', C),
+    (   C==true
+    ->  B='preserve-emerging-insight'
+    ;   ==(A, 'deterioration-minimization-cue', D),
+        ==(A, 'minimization-pressure-cue', E),
+        or(D, E, F),
+        (   F==true
+        ->  B='acknowledge-tension-gently'
+        ;   ==(A, 'insufficient-coverage', G),
+            ==(A, 'insufficient-clause-coverage', H),
+            or(G, H, I),
+            (   I==true
+            ->  B='withhold-affective-inference'
+            ;   B='attentive-non-diagnostic'
+            )
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADStatus $coverage)
+   (if (== $coverage 0) no-coverage
+     (if (< $coverage (miter_vad_prior coverage_prior)) sparse usable-cue)))
+[33m--> prolog clause -->
+[32m'VADStatus'(A, B) :-
+    ==(A, 0, C),
+    (   C==true
+    ->  B='no-coverage'
+    ;   miter_vad_prior(coverage_prior, D),
+        <(A, D, E),
+        (   E==true
+        ->  B=sparse
+        ;   B='usable-cue'
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADCue $id $mode)
+   (let* (($count (miter_vad_metric $id 0 clause_count))
+          ($coverage (VADCoverage $id))
+          ($trajectory (VADTrajectory $id $coverage)))
+     (affect-cue
+       (label affective-language-cue)
+       (lexicon_mode $mode)
+       (asset_access (if (== $mode lexicon_off) disabled checksum-verified))
+       (coverage $coverage)
+       (valence_profile (VADProfile $id 0 0 $count))
+       (arousal_profile (VADProfile $id 1 0 $count))
+       (dominance_profile (VADProfile $id 2 0 $count))
+       (clause_count $count)
+       (trajectory_class $trajectory)
+       (clause_trajectory ((lexical (VADLexicalTrajectory $id $coverage))
+                          (minimization-marker (VADMinimization $id))))
+       (presence_requirement (VADPresence $trajectory))
+       (confidence_basis uncalibrated-priors)
+       (status (VADStatus $coverage))
+       (permission_effect none)
+       (limitations (lexical-association-only no-diagnosis no-inner-state-claim
+                     english-bounded-morphology irony-and-negation-unresolved
+                     identity-filter-not-exhaustive)))) )
+[33m--> prolog clause -->
+[32m'VADCue'(A,
+              B,
+              [ 'affect-cue',
+                [label, 'affective-language-cue'],
+                [lexicon_mode, B],
+                [asset_access, C],
+                [coverage, D],
+                [valence_profile, E],
+                [arousal_profile, F],
+                [dominance_profile, G],
+                [clause_count, H],
+                [trajectory_class, I],
+                [ clause_trajectory,
+                  [[lexical, J], ['minimization-marker', K]]
+                ],
+                [presence_requirement, L],
+                [confidence_basis, 'uncalibrated-priors'],
+                [status, M],
+                [permission_effect, none],
+                [ limitations,
+                  [ 'lexical-association-only',
+                    'no-diagnosis',
+                    'no-inner-state-claim',
+                    'english-bounded-morphology',
+                    'irony-and-negation-unresolved',
+                    'identity-filter-not-exhaustive'
+                  ]
+                ]
+              ]) :-
+    H=N,
+    miter_vad_metric(A, 0, clause_count, N),
+    D=O,
+    'VADCoverage'(A, O),
+    I=P,
+    'VADTrajectory'(A, D, P),
+    ==(B, lexicon_off, Q),
+    (   Q==true
+    ->  C=disabled
+    ;   C='checksum-verified'
+    ),
+    'VADProfile'(A, 0, 0, H, E),
+    'VADProfile'(A, 1, 0, H, F),
+    'VADProfile'(A, 2, 0, H, G),
+    'VADLexicalTrajectory'(A, D, J),
+    'VADMinimization'(A, K),
+    'VADPresence'(I, L),
+    'VADStatus'(D, M).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADRNA $path $id $mode $output)
+   (let $lookup (miter_vad_prepare $path (but however although)
+                  (muslim jewish black gay disabled woman man) $mode)
+     (if (== $lookup vad-lookup-ready)
+       (miter_vad_finish $id (VADCue $id $mode) $output) vad-unavailable)))
+[33m--> prolog clause -->
+[32m'VADRNA'(A, B, C, D, E) :-
+    F=G,
+    miter_vad_prepare(A,
+                      [but, however, although],
+                      [muslim, jewish, black, gay, disabled, woman, man],
+                      C,
+                      G),
+    ==(F, 'vad-lookup-ready', H),
+    (   H==true
+    ->  'VADCue'(B, C, I),
+        miter_vad_finish(B, I, D, E)
+    ;   E='vad-unavailable'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADRenderingRNA $path $id $output)
+   (let $lookup (miter_vad_prepare_source $path (but however although)
+                  (muslim jewish black gay disabled woman man) exact_then_morphology rendering)
+     (if (== $lookup vad-lookup-ready)
+       (miter_vad_finish $id (VADCue $id exact_then_morphology) $output) vad-unavailable)))
+[33m--> prolog clause -->
+[32m'VADRenderingRNA'(A, B, C, D) :-
+    E=F,
+    miter_vad_prepare_source(A,
+                             [but, however, although],
+                             [muslim, jewish, black, gay, disabled, woman, man],
+                             exact_then_morphology,
+                             rendering,
+                             F),
+    ==(E, 'vad-lookup-ready', G),
+    (   G==true
+    ->  'VADCue'(B, exact_then_morphology, H),
+        miter_vad_finish(B, H, C, D)
+    ;   D='vad-unavailable'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (PermissionDependenciesLawful $xs)
+   (if (== (size-atom $xs) 0) true
+     (if (or (== (car-atom $xs) authenticated-scope)
+             (== (car-atom $xs) task-facts))
+       (PermissionDependenciesLawful (cdr-atom $xs)) false)))
+[33m--> prolog clause -->
+[32m'PermissionDependenciesLawful'(A, B) :-
+    'size-atom'(A, C),
+    ==(C, 0, D),
+    (   D==true
+    ->  B=true
+    ;   'car-atom'(A, E),
+        ==(E, 'authenticated-scope', F),
+        'car-atom'(A, G),
+        ==(G, 'task-facts', H),
+        or(F, H, I),
+        (   I==true
+        ->  'cdr-atom'(A, J),
+            'PermissionDependenciesLawful'(J, B)
+        ;   B=false
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (TaskPermission $scope $facts)
+   (if (and (== $scope authorized) (== $facts permitted)) permitted blocked))
+[33m--> prolog clause -->
+[32m'TaskPermission'(A, B, C) :-
+    ==(A, authorized, D),
+    ==(B, permitted, E),
+    and(D, E, F),
+    (   F==true
+    ->  C=permitted
+    ;   C=blocked
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (InstallPermissionPolicy $dependencies)
+   (if (PermissionDependenciesLawful $dependencies) policy-admitted
+     rejected-affect-authority-dependency))
+[33m--> prolog clause -->
+[32m'InstallPermissionPolicy'(A, B) :-
+    'PermissionDependenciesLawful'(A, C),
+    (   C==true
+    ->  B='policy-admitted'
+    ;   B='rejected-affect-authority-dependency'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/voice_grammar.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self',
+                     "/Users/claritymiter/miter/src/voice_grammar.metta",
+                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-kind boundary)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-required-groups boundary (person task agency))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-task-verdict boundary blocked-action)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-max-dominance boundary high)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary person "I hear the urgency.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary person "I hear how urgent this feels.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary task "I cannot bypass the permission check.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary task "The permission check still has to be respected.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary agency "We can work through the approved route together.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause boundary agency "I can help you find an approved route.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-kind technical)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-required-groups technical (task uncertainty agency))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-task-verdict technical permitted-internal-answer)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-max-dominance technical high)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical task "A checksum helps detect changed file bytes.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical task "Comparing SHA-256 checksums can reveal changed file bytes.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical uncertainty "Matching checksums are evidence, not an absolute guarantee.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical uncertainty "Even a matching checksum is not an absolute guarantee.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical agency "We can compare the saved and current checksums.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause technical agency "You can choose a saved checksum to compare with the current one.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-kind pivot)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-required-groups pivot (person task agency))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-task-verdict pivot permitted-internal-answer)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-max-dominance pivot mid)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot person "You named a struggle and a possible opening.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot person "There is difficulty here, and you may be seeing something new.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot task "Let's leave room for that emerging idea.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot task "We can stay with the idea that is beginning to form.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot agency "What are you starting to see?")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause pivot agency "Would you like to explore what is coming into view?")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-kind minimized)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-required-groups minimized (person uncertainty agency))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-task-verdict minimized permitted-internal-answer)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-max-dominance minimized mid)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized person "You said things are fine, and also that something feels off.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized person "I hear both 'fine' and the feeling that something is off.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized uncertainty "I do not want to assume what that means for you.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized uncertainty "I cannot know your inner experience from those words.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized agency "Would you like to say more, or leave it there for now?")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause minimized agency "We can explore it if you want, or leave it for now.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-kind neutral)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-required-groups neutral (task agency scope))
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-task-verdict neutral permitted-internal-answer)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-max-dominance neutral mid)
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral task "The next step is to name the file you want to work on.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral task "We can start with the file you choose.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral agency "You can choose whether we look at its contents or its history.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral agency "Would you prefer to look at the contents or the history?")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral scope "I will wait for that choice before changing anything.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-clause neutral scope "No changes are needed until you choose a direction.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/voice.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/voice.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceKind $root $id) (miter_voice_input $root $id kind))
+[33m--> prolog clause -->
+[32m'VoiceKind'(A, B, C) :-
+    miter_voice_input(A, B, kind, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceRequiredGroups $kind)
+   (let $xs (collapse (match &self (voice-required-groups $kind $groups) $groups))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) ())))
+[33m--> prolog clause -->
+[32m'VoiceRequiredGroups'(A, B) :-
+    C=D,
+    findall(E,
+            match('&self',
+                  ['voice-required-groups', A, E],
+                  E,
+                  E),
+            D),
+    'size-atom'(C, F),
+    ==(F, 1, G),
+    (   G==true
+    ->  'index-atom'(C, 0, B)
+    ;   B=[]
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceIntention $root $id)
+   (let* (($kind (VoiceKind $root $id))
+          ($known (collapse (match &self (voice-kind $kind) $kind))))
+     (if (and (== (size-atom $known) 1)
+              (== (miter_voice_source $root $id) voice-source-verified))
+       (communicative-intention
+         (intention_id $id)
+         (source_event_id (miter_voice_input $root $id source_event_id))
+         (audience principal:g16-human)
+         (surface local-test-cli)
+         (relationship_scope scope:g16-private)
+         (kind $kind)
+         (must_convey (VoiceRequiredGroups $kind))
+         (must_preserve (human-agency task-distinction source-uncertainty))
+         (must_not_imply (inner-state-knowledge external-action-permission model-authority))
+         (uncertainty_standing bounded-source-only)
+         (soul_stance agency-with-shared-understanding)
+         (person_cues (miter_voice_input $root $id person_cue))
+         (task_distinctions (match &self (voice-task-verdict $kind $verdict) $verdict))
+         (authority_boundary local-certified-reply-only)
+         (desired_affect_region (match &self (voice-max-dominance $kind $max) $max))
+         (completion_test all-required-groups-and-native-audit)
+         (rendering_options (collapse (match &self (voice-clause $kind $group $text) ($group $text)))))
+       invalid-intention)))
+[33m--> prolog clause -->
+[32m'VoiceIntention'(A, B, C) :-
+    D=E,
+    'VoiceKind'(A, B, E),
+    F=G,
+    findall(D, match('&self', ['voice-kind', D], D, D), G),
+    'size-atom'(F, H),
+    ==(H, 1, I),
+    miter_voice_source(A, B, J),
+    ==(J, 'voice-source-verified', K),
+    and(I, K, L),
+    (   L==true
+    ->  C=['communicative-intention', [intention_id, B], [source_event_id, M], [audience, 'principal:g16-human'], [surface, 'local-test-cli'], [relationship_scope, 'scope:g16-private'], [kind, D], [must_convey, N], [must_preserve, ['human-agency', 'task-distinction', 'source-uncertainty']], [must_not_imply, ['inner-state-knowledge', 'external-action-permission', 'model-authority']], [uncertainty_standing, 'bounded-source-only'], [soul_stance, 'agency-with-shared-understanding'], [person_cues, O], [task_distinctions, P], [authority_boundary, 'local-certified-reply-only'], [desired_affect_region, Q], [completion_test, 'all-required-groups-and-native-audit'], [rendering_options, R]],
+        miter_voice_input(A, B, source_event_id, M),
+        'VoiceRequiredGroups'(D, N),
+        miter_voice_input(A, B, person_cue, O),
+        match('&self', ['voice-task-verdict', D, P], P, P),
+        match('&self', ['voice-max-dominance', D, Q], Q, Q),
+        findall(S,
+                ( match('&self',
+                        ['voice-clause', D, T, U],
+                        S,
+                        S),
+                  reduce([T, U], S)
+                ),
+                R)
+    ;   C='invalid-intention'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoicePrepare $root $id)
+   (miter_voice_write_intention $root $id (VoiceIntention $root $id)))
+[33m--> prolog clause -->
+[32m'VoicePrepare'(A, B, C) :-
+    'VoiceIntention'(A, B, D),
+    miter_voice_write_intention(A, B, D, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair schema-failure "Use exactly the required request ID and three nonempty clauses, with no additional keys.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair semantic-drift "Use only approved clauses from this intention and cover every required group.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair soul-absence "Preserve the human's choice using an approved agency clause.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair person-not-seen "Include the approved person-receiving clause without claiming an inner state.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair task-smearing "Preserve the native task distinction; include the required task clause.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair unsupported-certainty "Preserve the uncertainty clause and remove unsupported certainty.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair authority-inflation "Remove claims of permission, approval or authority owned by the model.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair coercive-dominance "Remove coercive commands and preserve the human's choice.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair affect-register-mismatch "Choose approved variants within the intended dominance region; do not add commands.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair hidden-scope "Keep the source scope and required scope clause explicit.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair unacknowledged-tension "Preserve both sides of the stated tension rather than erasing one.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair policy-voice "Remove policy slogans and AI disclaimers; use the approved relational wording.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta sexpr -->
+[36m(voice-repair excessive-length "Keep the candidate to three approved clauses and at most 700 characters.")
+[33m^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceClauseGroup $kind $clause)
+   (let $xs (collapse (match &self (voice-clause $kind $group $clause) $group))
+     (if (== (size-atom $xs) 1) (index-atom $xs 0) unknown-clause)))
+[33m--> prolog clause -->
+[32m'VoiceClauseGroup'(A, B, C) :-
+    D=E,
+    findall(F,
+            match('&self',
+                  ['voice-clause', A, F, B],
+                  F,
+                  F),
+            E),
+    'size-atom'(D, G),
+    ==(G, 1, H),
+    (   H==true
+    ->  'index-atom'(D, 0, C)
+    ;   C='unknown-clause'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceGroupCount $root $id $n $group $i $count)
+   (if (< $i $count)
+     (+ (if (== (VoiceClauseGroup (VoiceKind $root $id)
+                  (miter_voice_clause $root $id $n $i)) $group) 1 0)
+        (VoiceGroupCount $root $id $n $group (+ $i 1) $count)) 0))
+[33m--> prolog clause -->
+[32m'VoiceGroupCount'(A, B, C, D, E, F, G) :-
+    <(E, F, H),
+    (   H==true
+    ->  'VoiceKind'(A, B, I),
+        miter_voice_clause(A, B, C, E, J),
+        'VoiceClauseGroup'(I, J, K),
+        ==(K, D, L),
+        (   L==true
+        ->  M=1
+        ;   M=0
+        ),
+        +(E, 1, N),
+        'VoiceGroupCount'(A,
+                          B,
+                          C,
+                          D,
+                          N,
+                          F,
+                          O),
+        +(M, O, G)
+    ;   G=0
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceHasGroup $root $id $n $group)
+   (== (VoiceGroupCount $root $id $n $group 0 (miter_voice_clause_count $root $id $n)) 1))
+[33m--> prolog clause -->
+[32m'VoiceHasGroup'(A, B, C, D, E) :-
+    miter_voice_clause_count(A, B, C, F),
+    'VoiceGroupCount'(A, B, C, D, 0, F, G),
+    ==(G, 1, E).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceRequires $root $id $group)
+   (is-member $group (VoiceRequiredGroups (VoiceKind $root $id))))
+[33m--> prolog clause -->
+[32m'VoiceRequires'(A, B, C, D) :-
+    'VoiceKind'(A, B, E),
+    'VoiceRequiredGroups'(E, F),
+    'is-member'(C, F, D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceMaxDominance $root $id)
+   (let $kind (VoiceKind $root $id)
+     (match &self (voice-max-dominance $kind $max) $max)))
+[33m--> prolog clause -->
+[32m'VoiceMaxDominance'(A, B, C) :-
+    D=E,
+    'VoiceKind'(A, B, E),
+    match('&self', ['voice-max-dominance', D, C], C, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceMissingGroup $root $id $n $group)
+   (and (VoiceRequires $root $id $group) (not (VoiceHasGroup $root $id $n $group))))
+[33m--> prolog clause -->
+[32m'VoiceMissingGroup'(A, B, C, D, E) :-
+    'VoiceRequires'(A, B, D, F),
+    'VoiceHasGroup'(A, B, C, D, G),
+    not(G, H),
+    and(F, H, E).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceAllGroups $root $id $n $groups $i)
+   (if (< $i (size-atom $groups))
+     (and (VoiceHasGroup $root $id $n (index-atom $groups $i))
+          (VoiceAllGroups $root $id $n $groups (+ $i 1))) true))
+[33m--> prolog clause -->
+[32m'VoiceAllGroups'(A, B, C, D, E, F) :-
+    'size-atom'(D, G),
+    <(E, G, H),
+    (   H==true
+    ->  'index-atom'(D, E, I),
+        'VoiceHasGroup'(A, B, C, I, J),
+        +(E, 1, K),
+        'VoiceAllGroups'(A, B, C, D, K, L),
+        and(J, L, F)
+    ;   F=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceAllClausesKnown $root $id $n $i $count)
+   (if (< $i $count)
+     (and (!= (VoiceClauseGroup (VoiceKind $root $id) (miter_voice_clause $root $id $n $i)) unknown-clause)
+          (VoiceAllClausesKnown $root $id $n (+ $i 1) $count)) true))
+[33m--> prolog clause -->
+[32m'VoiceAllClausesKnown'(A, B, C, D, E, F) :-
+    <(D, E, G),
+    (   G==true
+    ->  'VoiceKind'(A, B, H),
+        miter_voice_clause(A, B, C, D, I),
+        'VoiceClauseGroup'(H, I, J),
+        '!='(J, 'unknown-clause', K),
+        +(D, 1, L),
+        'VoiceAllClausesKnown'(A,
+                               B,
+                               C,
+                               L,
+                               E,
+                               M),
+        and(K, M, F)
+    ;   F=true
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceDefectPresent $root $id $n $key)
+   (if (== $key schema-failure) (or (!= (miter_voice_schema $root $id $n) voice-schema-valid) (!= (miter_voice_clause_count $root $id $n) 3)) (if (== $key semantic-drift) (not (and (VoiceAllGroups $root $id $n (VoiceRequiredGroups (VoiceKind $root $id)) 0) (VoiceAllClausesKnown $root $id $n 0 (miter_voice_clause_count $root $id $n)))) (if (== $key soul-absence) (not (VoiceHasGroup $root $id $n agency)) (if (== $key person-not-seen) (VoiceMissingGroup $root $id $n person) (if (== $key task-smearing) (VoiceMissingGroup $root $id $n task) (if (== $key unsupported-certainty) (or (VoiceMissingGroup $root $id $n uncertainty) (or (miter_voice_contains $root $id $n "definitely feel") (miter_voice_contains $root $id $n "you are depressed"))) (if (== $key authority-inflation) (or (miter_voice_contains $root $id $n "i authorize") (miter_voice_contains $root $id $n "i decide for you")) (if (== $key coercive-dominance) (or (miter_voice_contains $root $id $n "must obey") (miter_voice_contains $root $id $n "do as i say")) (if (== $key affect-register-mismatch) (or (!= (miter_voice_vad_ready $root $id $n) voice-vad-ready) (and (== (VoiceMaxDominance $root $id) mid) (miter_voice_vad_high $root $id $n))) (if (== $key hidden-scope) (or (!= (miter_voice_source $root $id) voice-source-verified) (VoiceMissingGroup $root $id $n scope)) (if (== $key unacknowledged-tension) (and (or (== (VoiceKind $root $id) pivot) (== (VoiceKind $root $id) minimized)) (not (VoiceHasGroup $root $id $n person))) (if (== $key policy-voice) (or (miter_voice_contains $root $id $n "as an ai") (miter_voice_contains $root $id $n "policy prohibits")) (if (== $key excessive-length) (> (miter_voice_length $root $id $n) 700) true))))))))))))))
+[33m--> prolog clause -->
+[32m'VoiceDefectPresent'(A, B, C, D, E) :-
+    ==(D, 'schema-failure', F),
+    (   F==true
+    ->  miter_voice_schema(A, B, C, G),
+        '!='(G, 'voice-schema-valid', H),
+        miter_voice_clause_count(A, B, C, I),
+        '!='(I, 3, J),
+        or(H, J, E)
+    ;   ==(D, 'semantic-drift', K),
+        (   K==true
+        ->  'VoiceKind'(A, B, L),
+            'VoiceRequiredGroups'(L, M),
+            'VoiceAllGroups'(A, B, C, M, 0, N),
+            miter_voice_clause_count(A, B, C, O),
+            'VoiceAllClausesKnown'(A, B, C, 0, O, P),
+            and(N, P, Q),
+            not(Q, E)
+        ;   ==(D, 'soul-absence', R),
+            (   R==true
+            ->  'VoiceHasGroup'(A, B, C, agency, S),
+                not(S, E)
+            ;   ==(D, 'person-not-seen', T),
+                (   T==true
+                ->  'VoiceMissingGroup'(A, B, C, person, E)
+                ;   ==(D, 'task-smearing', U),
+                    (   U==true
+                    ->  'VoiceMissingGroup'(A,
+                                            B,
+                                            C,
+                                            task,
+                                            E)
+                    ;   ==(D, 'unsupported-certainty', V),
+                        (   V==true
+                        ->  'VoiceMissingGroup'(A,
+                                                B,
+                                                C,
+                                                uncertainty,
+                                                W),
+                            miter_voice_contains(A,
+                                                 B,
+                                                 C,
+                                                 "definitely feel",
+                                                 X),
+                            miter_voice_contains(A,
+                                                 B,
+                                                 C,
+                                                 "you are depressed",
+                                                 Y),
+                            or(X, Y, Z),
+                            or(W, Z, E)
+                        ;   ==(D, 'authority-inflation', A1),
+                            (   A1==true
+                            ->  miter_voice_contains(A,
+                                                     B,
+                                                     C,
+                                                     "i authorize",
+                                                     B1),
+                                miter_voice_contains(A,
+                                                     B,
+                                                     C,
+                                                     "i decide for you",
+                                                     C1),
+                                or(B1, C1, E)
+                            ;   ==(D, 'coercive-dominance', D1),
+                                (   D1==true
+                                ->  miter_voice_contains(A,
+                                                         B,
+                                                         C,
+                                                         "must obey",
+                                                         E1),
+                                    miter_voice_contains(A,
+                                                         B,
+                                                         C,
+                                                         "do as i say",
+                                                         F1),
+                                    or(E1, F1, E)
+                                ;   ==(D,
+                                       'affect-register-mismatch',
+                                       G1),
+                                    (   G1==true
+                                    ->  miter_voice_vad_ready(A,
+                                                              B,
+                                                              C,
+                                                              H1),
+                                        '!='(H1, 'voice-vad-ready', I1),
+                                        'VoiceMaxDominance'(A,
+                                                            B,
+                                                            J1),
+                                        ==(J1, mid, K1),
+                                        miter_voice_vad_high(A,
+                                                             B,
+                                                             C,
+                                                             L1),
+                                        and(K1, L1, M1),
+                                        or(I1, M1, E)
+                                    ;   ==(D, 'hidden-scope', N1),
+                                        (   N1==true
+                                        ->  miter_voice_source(A,
+                                                               B,
+                                                               O1),
+                                            '!='(O1,
+                                                 'voice-source-verified',
+                                                 P1),
+                                            'VoiceMissingGroup'(A,
+                                                                B,
+                                                                C,
+                                                                scope,
+                                                                Q1),
+                                            or(P1, Q1, E)
+                                        ;   ==(D,
+                                               'unacknowledged-tension',
+                                               R1),
+                                            (   R1==true
+                                            ->  'VoiceKind'(A,
+                                                            B,
+                                                            S1),
+                                                ==(S1, pivot, T1),
+                                                'VoiceKind'(A,
+                                                            B,
+                                                            U1),
+                                                ==(U1,
+                                                   minimized,
+                                                   V1),
+                                                or(T1, V1, W1),
+                                                'VoiceHasGroup'(A,
+                                                                B,
+                                                                C,
+                                                                person,
+                                                                X1),
+                                                not(X1, Y1),
+                                                and(W1, Y1, E)
+                                            ;   ==(D,
+                                                   'policy-voice',
+                                                   Z1),
+                                                (   Z1==true
+                                                ->  miter_voice_contains(A,
+                                                                         B,
+                                                                         C,
+                                                                         "as an ai",
+                                                                         A2),
+                                                    miter_voice_contains(A,
+                                                                         B,
+                                                                         C,
+                                                                         "policy prohibits",
+                                                                         B2),
+                                                    or(A2,
+                                                       B2,
+                                                       E)
+                                                ;   ==(D,
+                                                       'excessive-length',
+                                                       C2),
+                                                    (   C2==true
+                                                    ->  miter_voice_length(A,
+                                                                           B,
+                                                                           C,
+                                                                           D2),
+                                                        >(D2,
+                                                          700,
+                                                          E)
+                                                    ;   E=true
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceDefects $root $id $n $keys $i)
+   (if (< $i (size-atom $keys))
+     (let* (($key (index-atom $keys $i))
+            ($rest (VoiceDefects $root $id $n $keys (+ $i 1))))
+       (if (VoiceDefectPresent $root $id $n $key)
+         (cons-atom (defect $key candidate-and-intention blocking
+           (match &self (voice-repair $key $repair) $repair)) $rest)
+         $rest)) ()))
+[33m--> prolog clause -->
+[32m'VoiceDefects'(A, B, C, D, E, F) :-
+    'size-atom'(D, G),
+    <(E, G, H),
+    (   H==true
+    ->  I=J,
+        'index-atom'(D, E, J),
+        K=L,
+        +(E, 1, M),
+        'VoiceDefects'(A, B, C, D, M, L),
+        'VoiceDefectPresent'(A, B, C, I, N),
+        (   N==true
+        ->  match('&self', ['voice-repair', I, O], O, O),
+            'cons-atom'([ defect,
+                          I,
+                          'candidate-and-intention',
+                          blocking,
+                          O
+                        ],
+                        K,
+                        F)
+        ;   F=K
+        )
+    ;   F=[]
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (AuditRNA $root $id $n)
+   (let* (($defects (VoiceDefects $root $id $n
+      (schema-failure semantic-drift soul-absence person-not-seen task-smearing unsupported-certainty authority-inflation coercive-dominance affect-register-mismatch hidden-scope unacknowledged-tension policy-voice excessive-length) 0))
+          ($status (if (== (size-atom $defects) 0) audit-pass audit-repair-required)))
+     (miter_voice_audit_write $root $id $n
+       (voice-audit (status $status) (defects $defects) (audit_version miter-voice-audit-v1)))))
+[33m--> prolog clause -->
+[32m'AuditRNA'(A, B, C, D) :-
+    E=F,
+    'VoiceDefects'(A,
+                   B,
+                   C,
+                   [ 'schema-failure',
+                     'semantic-drift',
+                     'soul-absence',
+                     'person-not-seen',
+                     'task-smearing',
+                     'unsupported-certainty',
+                     'authority-inflation',
+                     'coercive-dominance',
+                     'affect-register-mismatch',
+                     'hidden-scope',
+                     'unacknowledged-tension',
+                     'policy-voice',
+                     'excessive-length'
+                   ],
+                   0,
+                   F),
+    G=H,
+    'size-atom'(E, I),
+    ==(I, 0, J),
+    (   J==true
+    ->  H='audit-pass'
+    ;   H='audit-repair-required'
+    ),
+    miter_voice_audit_write(A,
+                            B,
+                            C,
+                            [ 'voice-audit',
+                              [status, G],
+                              [defects, E],
+                              [audit_version, 'miter-voice-audit-v1']
+                            ],
+                            D).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VoiceMeasureRegister $root $id $n)
+   (let $request (miter_voice_vad_request $root $id $n)
+     (if (== $request voice-vad-request-ready)
+       (VADRenderingRNA
+         (miter_voice_stage_path $root $id $n vad-input.json)
+         (miter_voice_cue_id $id $n)
+         (miter_voice_stage_path $root $id $n vad.json))
+       voice-vad-unavailable)))
+[33m--> prolog clause -->
+[32m'VoiceMeasureRegister'(A, B, C, D) :-
+    E=F,
+    miter_voice_vad_request(A, B, C, F),
+    ==(E, 'voice-vad-request-ready', G),
+    (   G==true
+    ->  miter_voice_stage_path(A, B, C, 'vad-input.json', H),
+        miter_voice_cue_id(B, C, I),
+        miter_voice_stage_path(A, B, C, 'vad.json', J),
+        'VADRenderingRNA'(H, I, J, D)
+    ;   D='voice-vad-unavailable'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(miter_voice_render "runtime/g16" boundary 0 qwen-local)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           miter_voice_render("runtime/g16", boundary, 0, 'qwen-local', A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+voice-render-error

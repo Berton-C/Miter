@@ -1,0 +1,8 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice.metta")
+!(miter_voice_emit "runtime/g16" boundary 1)
+!(miter_voice_emit "runtime/g16" technical 0)
+!(miter_voice_emit "runtime/g16" pivot 0)
+!(miter_voice_emit "runtime/g16" minimized 0)
+!(miter_voice_emit "runtime/g16" neutral 0)
+!(miter_voice_emit "runtime/g16" boundary 0)
+!(miter_voice_emit "runtime/g16-tamper" boundary 1)

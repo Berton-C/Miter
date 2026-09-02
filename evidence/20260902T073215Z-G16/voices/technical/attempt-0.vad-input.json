@@ -1,0 +1,6 @@
+{
+  "cue_id":"technical-attempt-0",
+  "source_event_id":"g16-rendering-contact-technical-0",
+  "store_root":"runtime/g16/store",
+  "text":"Comparing SHA-256 checksums can reveal changed file bytes.\n\nEven a matching checksum is not an absolute guarantee.\n\nYou can choose a saved checksum to compare with the current one."
+}

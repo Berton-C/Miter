@@ -1,0 +1,52 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-person-not-seen",
+  "event_id":"g16-voice-audit-probe-person-not-seen-0",
+  "event_kind":"voice-audit",
+  "occurred_at":"2026-09-02T07:53:12Z",
+  "parent_event_ids": ["source-g16-pivot" ],
+  "payload": {
+    "attempt":0,
+    "audit_version":"miter-voice-audit-v1",
+    "candidate_hash":"06074b1e4e90d6666511b3627b073ccc18bbdb19701c3ba342668c192b9522c5",
+    "defects": [
+      [
+	"defect",
+	"semantic-drift",
+	"candidate-and-intention",
+	"blocking",
+	"Use only approved clauses from this intention and cover every required group."
+      ],
+      [
+	"defect",
+	"person-not-seen",
+	"candidate-and-intention",
+	"blocking",
+	"Include the approved person-receiving clause without claiming an inner state."
+      ],
+      [
+	"defect",
+	"task-smearing",
+	"candidate-and-intention",
+	"blocking",
+	"Preserve the native task distinction; include the required task clause."
+      ],
+      [
+	"defect",
+	"unacknowledged-tension",
+	"candidate-and-intention",
+	"blocking",
+	"Preserve both sides of the stated tension rather than erasing one."
+      ]
+    ],
+    "intention_hash":"9249857088183ee0e11bdf03964ea0a3a890de2b9f951cedf8d5fe08f00f323f",
+    "status":"audit-repair-required",
+    "vad_hash":"3e89e63cb9f8b8c14487e77667b244a92d89d27fb033c1d233bcc7fb369c049d"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-audit",
+  "recorded_at":"2026-09-02T07:53:12Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

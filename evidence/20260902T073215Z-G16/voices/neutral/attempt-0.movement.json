@@ -1,0 +1,18 @@
+{
+  "certificate": {
+    "availability_witness":"neutral-witness-availability",
+    "certificate_version":"miter-movement-v1",
+    "consequence_answerability_witness":"neutral-witness-consequence",
+    "continuing_contact_witness":"neutral-witness-continuing-contact",
+    "doctrine_bound_reading_witness":"neutral-witness-doctrine",
+    "inherited_legality_witness":"neutral-witness-inherited-legality",
+    "material_extension_alignment_witnesses":"neutral-witness-extensions",
+    "movement_id":"neutral",
+    "no_disqualifying_forcing_witness":"neutral-witness-no-forcing",
+    "participation_open_witness":"neutral-witness-participation",
+    "precision_floor_witnesses": ["neutral-witness-provenance", "neutral-witness-required-distinction" ],
+    "relation_floor_witnesses": ["neutral-witness-safety", "neutral-witness-integrity" ],
+    "source_cut":"source-g16-neutral"
+  },
+  "status":"certified"
+}

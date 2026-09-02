@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-2x0fr4djo4qpuj3xaulk6",
+  "object": "chat.completion",
+  "created": 1788335589,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"clauses\":[\"Comparing SHA-256 checksums can reveal changed file bytes.\",\"Even a matching checksum is not an absolute guarantee.\",\"You can choose a saved checksum to compare with the current one.\"],\"request_id\":\"technical\"}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 388,
+    "completion_tokens": 51,
+    "total_tokens": 439,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 54,
+    "accepted_draft_tokens_count": 33,
+    "rejected_draft_tokens_count": 21
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

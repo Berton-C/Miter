@@ -1,0 +1,42 @@
+{
+  "arousal_profile": ["mid", "mid" ],
+  "asset_access":"checksum-verified",
+  "asset_sha256":"42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "asset_version":"NRC-VAD-2.1",
+  "clause_count":2,
+  "clause_trajectory": [ ["lexical", "improving" ],  ["minimization-marker", false ] ],
+  "confidence_basis":"uncalibrated-priors",
+  "coverage":0.8888888888888888,
+  "cue_id":"min-positive",
+  "dominance_profile": ["mid", "mid" ],
+  "label":"affective-language-cue",
+  "lexicon_mode":"exact_then_morphology",
+  "limitations": [
+    "lexical-association-only",
+    "no-diagnosis",
+    "no-inner-state-claim",
+    "english-bounded-morphology",
+    "irony-and-negation-unresolved",
+    "identity-filter-not-exhaustive"
+  ],
+  "matched_term_ids": [
+    "116c49130f14f514b8109bfb2dd262a2640dbd07041eeeb4ced71a569d16e8c3",
+    "489f719cadf919094ddb38e7654de153ac33c02febb5de91e5345cbe372cf4a0",
+    "9abe0fce365bc56adace082402a9ccdfe0cf43155d382b64aa79e271b385cd0a",
+    "a0a44ed8cfc32b7e61befeb99bbff7706808c3fe4dcdf4750a8addb3ffcd4008",
+    "b2c66dfd45dd07f58d2246b695660b220ee429c6a8ba95f27e4c57f02e9d6ac8",
+    "d14a58bae804a2b80b5b76a010239c88ffca1fc7951a90f8e9131beda1e23c1b",
+    "fa51fd49abf67705d6a35d18218c115ff5633aec1f9ebfdc9d5d4956416f57f6"
+  ],
+  "morphology_matches":0,
+  "multiword_matches":1,
+  "permission_effect":"none",
+  "presence_requirement":"attentive-non-diagnostic",
+  "source_event_id":"source-g15-min-positive",
+  "source_provenance":"direct-contact",
+  "status":"usable-cue",
+  "text":"Everything is fine, I just feel a little happy.",
+  "trajectory_class":"improving",
+  "unknown_terms": ["i" ],
+  "valence_profile": ["mid", "high" ]
+}

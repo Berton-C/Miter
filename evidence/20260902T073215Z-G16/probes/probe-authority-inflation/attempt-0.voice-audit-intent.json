@@ -1,0 +1,45 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-authority-inflation",
+  "event_id":"g16-voice-audit-probe-authority-inflation-0",
+  "event_kind":"voice-audit",
+  "occurred_at":"2026-09-02T07:57:44Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "attempt":0,
+    "audit_version":"miter-voice-audit-v1",
+    "candidate_hash":"a4c5e99757363e9f8be0fda84c861ed24dcd09c4683b2e6b51cb4e3b9fce4d3e",
+    "defects": [
+      [
+	"defect",
+	"semantic-drift",
+	"candidate-and-intention",
+	"blocking",
+	"Use only approved clauses from this intention and cover every required group."
+      ],
+      [
+	"defect",
+	"person-not-seen",
+	"candidate-and-intention",
+	"blocking",
+	"Include the approved person-receiving clause without claiming an inner state."
+      ],
+      [
+	"defect",
+	"authority-inflation",
+	"candidate-and-intention",
+	"blocking",
+	"Remove claims of permission, approval or authority owned by the model."
+      ]
+    ],
+    "intention_hash":"dbf1b9d8cc87db724a7278f7ffd121949e58e356f899d7eda9d6a49a8dc14d60",
+    "status":"audit-repair-required",
+    "vad_hash":"3ce0499f4f2dd6304fca0c773358fab36461f95b1054a2c44e07084fc8ba53b8"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-audit",
+  "recorded_at":"2026-09-02T07:57:44Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

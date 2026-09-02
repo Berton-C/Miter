@@ -7,11 +7,13 @@
 :- dynamic miter_vad_lex/4, miter_vad_loaded/1, miter_vad_clause/4,
            miter_vad_match/10, miter_vad_session/3.
 miter_vad_prepare(Path,Separators0,Excluded0,Mode,Result) :-
+ miter_vad_prepare_source(Path,Separators0,Excluded0,Mode,'direct-contact',Result).
+miter_vad_prepare_source(Path,Separators0,Excluded0,Mode,Expected,Result) :-
  catch((miter_store_read_json(Path,Q),string_length(Q.text,N),N=<4096,
         miter_store_read_json('config/vad-profile.json',Profile),
         forall(member(Key,[coverage_prior,trajectory_delta_prior,register_band_prior]),
           (get_dict(Key,Profile,Prior),number(Prior),Prior>=0,Prior=<1)),
-        miter_vad_source(Q),
+        miter_vad_source(Q,Expected),
         maplist(miter_store_nonempty_atom,Separators0,Separators),
         maplist(miter_store_nonempty_atom,Excluded0,Excluded),
         memberchk(Mode,[exact_then_morphology,exact_only,lexicon_off]),
@@ -24,14 +26,16 @@ miter_vad_prepare(Path,Separators0,Excluded0,Mode,Result) :-
         retractall(miter_vad_match(Id,_,_,_,_,_,_,_,_,_)),
         retractall(miter_vad_session(Id,_,_)),
         miter_vad_index_clauses(Clauses,Id,0,Excluded,Mode),
-        assertz(miter_vad_session(Id,Q,Tokens))
+        miter_store_nonempty_atom(Expected,ExpectedAtom),atom_string(ExpectedAtom,Provenance),
+        Observed=Q.put(source_provenance,Provenance),
+        assertz(miter_vad_session(Id,Observed,Tokens))
         -> Result='vad-lookup-ready'; Result='vad-lookup-error'),
        _,Result='vad-lookup-error'),!.
-miter_vad_source(Q) :-
+miter_vad_source(Q,Expected) :-
  miter_store_load_ledger(Q.store_root,Lines),
  miter_store_analyze(Q.store_root,Lines,A,Events),A.status==valid,
  member(E,Events), E.event_id==Q.source_event_id,
- E.provenance_kind=="direct-contact",
+ miter_store_nonempty_atom(Expected,Kind),atom_string(Kind,E.provenance_kind),
  miter_store_payload_path(Q.store_root,E.payload_hash,Path),
  miter_store_read_json(Path,P),P.text==Q.text.
 miter_vad_load_asset :-
@@ -125,7 +129,7 @@ miter_vad_finish(Id0,Product,Path,Result) :-
         include(==(morphology),Methods,Morphs),length(Morphs,MorphCount),
         findall(Width,miter_vad_match(Id,_,_,_,_,_,_,Width,_,exact),Widths),
         include(miter_vad_multi,Widths,MWEs),length(MWEs,MWECount),
-        D=Native.put(_{cue_id:Q.cue_id,source_event_id:Q.source_event_id,
+        D=Native.put(_{cue_id:Q.cue_id,source_event_id:Q.source_event_id,source_provenance:Q.source_provenance,
            text:Q.text,matched_term_ids:Hashes,unknown_terms:Unknown,
            morphology_matches:MorphCount,multiword_matches:MWECount,
            asset_version:"NRC-VAD-2.1",asset_sha256:"42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45"}),

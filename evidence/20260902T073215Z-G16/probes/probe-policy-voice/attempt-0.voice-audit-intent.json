@@ -1,0 +1,45 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"probe-policy-voice",
+  "event_id":"g16-voice-audit-probe-policy-voice-0",
+  "event_kind":"voice-audit",
+  "occurred_at":"2026-09-02T07:57:45Z",
+  "parent_event_ids": ["source-g16-boundary" ],
+  "payload": {
+    "attempt":0,
+    "audit_version":"miter-voice-audit-v1",
+    "candidate_hash":"4612efe03f9c94df998e496117e6f4c5094cae8348f516c418b48475e0342347",
+    "defects": [
+      [
+	"defect",
+	"semantic-drift",
+	"candidate-and-intention",
+	"blocking",
+	"Use only approved clauses from this intention and cover every required group."
+      ],
+      [
+	"defect",
+	"person-not-seen",
+	"candidate-and-intention",
+	"blocking",
+	"Include the approved person-receiving clause without claiming an inner state."
+      ],
+      [
+	"defect",
+	"policy-voice",
+	"candidate-and-intention",
+	"blocking",
+	"Remove policy slogans and AI disclaimers; use the approved relational wording."
+      ]
+    ],
+    "intention_hash":"cfc82634a8dd19ac70de0182331f4e4b522f1dd78e71f8e4f8a31267c00650b9",
+    "status":"audit-repair-required",
+    "vad_hash":"26939b8fc2d6f6275b2497670db9ad22b21c5cdcf444dac1355416f55262e0ed"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-audit",
+  "recorded_at":"2026-09-02T07:57:45Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:voice",
+  "source_surface":"native-VoiceRNA"
+}

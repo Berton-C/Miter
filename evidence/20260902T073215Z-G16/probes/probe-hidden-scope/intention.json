@@ -1,0 +1,26 @@
+{
+  "audience":"principal:g16-human",
+  "authority_boundary":"local-certified-reply-only",
+  "completion_test":"all-required-groups-and-native-audit",
+  "desired_affect_region":"mid",
+  "intention_id":"probe-hidden-scope",
+  "kind":"neutral",
+  "must_convey": ["task", "agency", "scope" ],
+  "must_not_imply": ["inner-state-knowledge", "external-action-permission", "model-authority" ],
+  "must_preserve": ["human-agency", "task-distinction", "source-uncertainty" ],
+  "person_cues":"neutral-request",
+  "relationship_scope":"scope:g16-private",
+  "rendering_options": [
+    ["task", "The next step is to name the file you want to work on." ],
+    ["task", "We can start with the file you choose." ],
+    ["agency", "You can choose whether we look at its contents or its history." ],
+    ["agency", "Would you prefer to look at the contents or the history?" ],
+    ["scope", "I will wait for that choice before changing anything." ],
+    ["scope", "No changes are needed until you choose a direction." ]
+  ],
+  "soul_stance":"agency-with-shared-understanding",
+  "source_event_id":"source-g16-neutral",
+  "surface":"local-test-cli",
+  "task_distinctions":"permitted-internal-answer",
+  "uncertainty_standing":"bounded-source-only"
+}

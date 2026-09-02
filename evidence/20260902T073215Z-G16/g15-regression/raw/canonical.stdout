@@ -1,0 +1,823 @@
+[33m--> metta runnable  -->
+[36m!(import! &self (library lib_import))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library(lib_import, B),
+             'import!'('&self', B, A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function consult)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(consult, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_file $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                           ($prologfile (consult))
+                                                                           ($function (superpose $importfunctions)))
+                                                                          (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_file(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    consult(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_function use_module)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, import_prolog_function(use_module, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (import_prolog_functions_from_module $prologfile $importfunctions) (let* (($prologfile (exists_file))
+                                                                             ($prologfile (use_module))
+                                                                             ($function (superpose $importfunctions)))
+                                                                            (import_prolog_function $function)))
+[33m--> prolog clause -->
+[32mimport_prolog_functions_from_module(A, B, C) :-
+    A=D,
+    exists_file(D),
+    A=E,
+    use_module(E),
+    F=G,
+    superpose(B, G),
+    import_prolog_function(F, C).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file (library lib_import.pl) (static-import! git-import! use-module!))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           ( library('lib_import.pl', B),
+             import_prolog_functions_from_file(B,
+                                               [ 'static-import!',
+                                                 'git-import!',
+                                                 'use-module!'
+                                               ],
+                                               A)
+           ),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import_prolog_functions_from_file "./effect_membranes/miter_vad.pl"
+ (miter_vad_prepare miter_vad_metric miter_vad_prior miter_vad_number miter_vad_contains miter_vad_clause_contains miter_vad_finish))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           import_prolog_functions_from_file("./effect_membranes/miter_vad.pl",
+                                             [ miter_vad_prepare,
+                                               miter_vad_metric,
+                                               miter_vad_prior,
+                                               miter_vad_number,
+                                               miter_vad_contains,
+                                               miter_vad_clause_contains,
+                                               miter_vad_finish
+                                             ],
+                                             A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(import! &self "/Users/claritymiter/miter/src/vad.metta")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'import!'('&self', "/Users/claritymiter/miter/src/vad.metta", A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADSumAxis $id $clause $axis $i $count $acc)
+   (if (< $i $count)
+     (VADSumAxis $id $clause $axis (+ $i 1) $count
+       (+ $acc (miter_vad_number $id $clause $i $axis))) $acc))
+[33m--> prolog clause -->
+[32m'VADSumAxis'(A, B, C, D, E, F, G) :-
+    <(D, E, H),
+    (   H==true
+    ->  +(D, 1, I),
+        miter_vad_number(A, B, D, C, J),
+        +(F, J, K),
+        'VADSumAxis'(A, B, C, I, E, K, G)
+    ;   G=F
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADMean $id $clause $axis)
+   (let $count (miter_vad_metric $id $clause match_count)
+     (if (> $count 0) (/ (VADSumAxis $id $clause $axis 0 $count 0) $count) 0)))
+[33m--> prolog clause -->
+[32m'VADMean'(A, B, C, D) :-
+    E=F,
+    miter_vad_metric(A, B, match_count, F),
+    >(E, 0, G),
+    (   G==true
+    ->  'VADSumAxis'(A, B, C, 0, E, 0, H),
+        /(H, E, D)
+    ;   D=0
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADCountAll $id $kind $i $count $acc)
+   (if (< $i $count)
+     (VADCountAll $id $kind (+ $i 1) $count
+       (+ $acc (miter_vad_metric $id $i $kind))) $acc))
+[33m--> prolog clause -->
+[32m'VADCountAll'(A, B, C, D, E, F) :-
+    <(C, D, G),
+    (   G==true
+    ->  +(C, 1, H),
+        miter_vad_metric(A, C, B, I),
+        +(E, I, J),
+        'VADCountAll'(A, B, H, D, J, F)
+    ;   F=E
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADBand $value)
+   (let $band (miter_vad_prior register_band_prior)
+     (if (> $value $band) high
+       (if (< $value (- 0 $band)) low mid))))
+[33m--> prolog clause -->
+[32m'VADBand'(A, B) :-
+    C=D,
+    miter_vad_prior(register_band_prior, D),
+    >(A, C, E),
+    (   E==true
+    ->  B=high
+    ;   -(0, C, F),
+        <(A, F, G),
+        (   G==true
+        ->  B=low
+        ;   B=mid
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADClauseBand $id $clause $axis)
+   (if (> (miter_vad_metric $id $clause match_count) 0)
+     (VADBand (VADMean $id $clause $axis)) unknown))
+[33m--> prolog clause -->
+[32m'VADClauseBand'(A, B, C, D) :-
+    miter_vad_metric(A, B, match_count, E),
+    >(E, 0, F),
+    (   F==true
+    ->  'VADMean'(A, B, C, G),
+        'VADBand'(G, D)
+    ;   D=unknown
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADProfile $id $axis $i $count)
+   (if (< $i $count)
+     (cons-atom (VADClauseBand $id $i $axis)
+                (VADProfile $id $axis (+ $i 1) $count)) ()))
+[33m--> prolog clause -->
+[32m'VADProfile'(A, B, C, D, E) :-
+    <(C, D, F),
+    (   F==true
+    ->  'VADClauseBand'(A, C, B, G),
+        +(C, 1, H),
+        'VADProfile'(A, B, H, D, I),
+        'cons-atom'(G, I, E)
+    ;   E=[]
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADCoverage $id)
+   (let* (($count (miter_vad_metric $id 0 clause_count))
+          ($total (VADCountAll $id token_count 0 $count 0))
+          ($covered (VADCountAll $id covered_tokens 0 $count 0)))
+     (if (> $total 0) (/ $covered $total) 0)))
+[33m--> prolog clause -->
+[32m'VADCoverage'(A, B) :-
+    C=D,
+    miter_vad_metric(A, 0, clause_count, D),
+    E=F,
+    'VADCountAll'(A, token_count, 0, C, 0, F),
+    G=H,
+    'VADCountAll'(A, covered_tokens, 0, C, 0, H),
+    >(E, 0, I),
+    (   I==true
+    ->  /(G, E, B)
+    ;   B=0
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADLexicalTrajectory $id $coverage)
+   (let* (($count (miter_vad_metric $id 0 clause_count))
+          ($last (- $count 1))
+          ($delta (- (VADMean $id $last 0) (VADMean $id 0 0)))
+          ($threshold (miter_vad_prior trajectory_delta_prior)))
+     (if (< $coverage (miter_vad_prior coverage_prior)) insufficient-coverage
+       (if (< $count 2) single-clause
+         (if (or (== (miter_vad_metric $id 0 match_count) 0)
+                 (== (miter_vad_metric $id $last match_count) 0))
+           insufficient-clause-coverage
+           (if (> $delta $threshold)
+             (if (or (miter_vad_contains $id "but") (miter_vad_contains $id "however"))
+               improving-pivot improving)
+             (if (< $delta (- 0 $threshold))
+               (if (or (miter_vad_contains $id "just") (miter_vad_contains $id "a little"))
+                 deterioration-minimization-cue deteriorating)
+               stable-or-ambiguous)))))))
+[33m--> prolog clause -->
+[32m'VADLexicalTrajectory'(A, B, C) :-
+    D=E,
+    miter_vad_metric(A, 0, clause_count, E),
+    F=G,
+    -(D, 1, G),
+    H=I,
+    'VADMean'(A, F, 0, J),
+    'VADMean'(A, 0, 0, K),
+    -(J, K, I),
+    L=M,
+    miter_vad_prior(trajectory_delta_prior, M),
+    miter_vad_prior(coverage_prior, N),
+    <(B, N, O),
+    (   O==true
+    ->  C='insufficient-coverage'
+    ;   <(D, 2, P),
+        (   P==true
+        ->  C='single-clause'
+        ;   miter_vad_metric(A, 0, match_count, Q),
+            ==(Q, 0, R),
+            miter_vad_metric(A, F, match_count, S),
+            ==(S, 0, T),
+            or(R, T, U),
+            (   U==true
+            ->  C='insufficient-clause-coverage'
+            ;   >(H, L, V),
+                (   V==true
+                ->  miter_vad_contains(A, "but", W),
+                    miter_vad_contains(A, "however", X),
+                    or(W, X, Y),
+                    (   Y==true
+                    ->  C='improving-pivot'
+                    ;   C=improving
+                    )
+                ;   -(0, L, Z),
+                    <(H, Z, A1),
+                    (   A1==true
+                    ->  miter_vad_contains(A, "just", B1),
+                        miter_vad_contains(A, "a little", C1),
+                        or(B1, C1, D1),
+                        (   D1==true
+                        ->  C='deterioration-minimization-cue'
+                        ;   C=deteriorating
+                        )
+                    ;   C='stable-or-ambiguous'
+                    )
+                )
+            )
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADMinimization $id)
+   (let $last (- (miter_vad_metric $id 0 clause_count) 1)
+     (and
+       (or (miter_vad_clause_contains $id $last "just")
+           (or (miter_vad_clause_contains $id $last "a little")
+               (miter_vad_clause_contains $id $last "a bit")))
+       (or (miter_vad_clause_contains $id $last "off")
+         (or (miter_vad_clause_contains $id $last "uneasy")
+           (or (miter_vad_clause_contains $id $last "worried")
+             (or (miter_vad_clause_contains $id $last "struggling")
+                 (miter_vad_clause_contains $id $last "not okay"))))))))
+[33m--> prolog clause -->
+[32m'VADMinimization'(A, B) :-
+    C=D,
+    miter_vad_metric(A, 0, clause_count, E),
+    -(E, 1, D),
+    miter_vad_clause_contains(A, C, "just", F),
+    miter_vad_clause_contains(A, C, "a little", G),
+    miter_vad_clause_contains(A, C, "a bit", H),
+    or(G, H, I),
+    or(F, I, J),
+    miter_vad_clause_contains(A, C, "off", K),
+    miter_vad_clause_contains(A, C, "uneasy", L),
+    miter_vad_clause_contains(A, C, "worried", M),
+    miter_vad_clause_contains(A, C, "struggling", N),
+    miter_vad_clause_contains(A, C, "not okay", O),
+    or(N, O, P),
+    or(M, P, Q),
+    or(L, Q, R),
+    or(K, R, S),
+    and(J, S, B).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADTrajectory $id $coverage)
+   (let $lexical (VADLexicalTrajectory $id $coverage)
+     (if (and (>= $coverage (miter_vad_prior coverage_prior))
+              (> (miter_vad_metric $id 0 clause_count) 1))
+       (if (VADMinimization $id) minimization-pressure-cue $lexical)
+       $lexical)))
+[33m--> prolog clause -->
+[32m'VADTrajectory'(A, B, C) :-
+    D=E,
+    'VADLexicalTrajectory'(A, B, E),
+    miter_vad_prior(coverage_prior, F),
+    >=(B, F, G),
+    miter_vad_metric(A, 0, clause_count, H),
+    >(H, 1, I),
+    and(G, I, J),
+    (   J==true
+    ->  'VADMinimization'(A, K),
+        (   K==true
+        ->  C='minimization-pressure-cue'
+        ;   C=D
+        )
+    ;   C=D
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADPresence $trajectory)
+   (if (== $trajectory improving-pivot) preserve-emerging-insight
+     (if (or (== $trajectory deterioration-minimization-cue)
+             (== $trajectory minimization-pressure-cue)) acknowledge-tension-gently
+       (if (or (== $trajectory insufficient-coverage)
+               (== $trajectory insufficient-clause-coverage))
+         withhold-affective-inference
+         attentive-non-diagnostic))))
+[33m--> prolog clause -->
+[32m'VADPresence'(A, B) :-
+    ==(A, 'improving-pivot', C),
+    (   C==true
+    ->  B='preserve-emerging-insight'
+    ;   ==(A, 'deterioration-minimization-cue', D),
+        ==(A, 'minimization-pressure-cue', E),
+        or(D, E, F),
+        (   F==true
+        ->  B='acknowledge-tension-gently'
+        ;   ==(A, 'insufficient-coverage', G),
+            ==(A, 'insufficient-clause-coverage', H),
+            or(G, H, I),
+            (   I==true
+            ->  B='withhold-affective-inference'
+            ;   B='attentive-non-diagnostic'
+            )
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADStatus $coverage)
+   (if (== $coverage 0) no-coverage
+     (if (< $coverage (miter_vad_prior coverage_prior)) sparse usable-cue)))
+[33m--> prolog clause -->
+[32m'VADStatus'(A, B) :-
+    ==(A, 0, C),
+    (   C==true
+    ->  B='no-coverage'
+    ;   miter_vad_prior(coverage_prior, D),
+        <(A, D, E),
+        (   E==true
+        ->  B=sparse
+        ;   B='usable-cue'
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADCue $id $mode)
+   (let* (($count (miter_vad_metric $id 0 clause_count))
+          ($coverage (VADCoverage $id))
+          ($trajectory (VADTrajectory $id $coverage)))
+     (affect-cue
+       (label affective-language-cue)
+       (lexicon_mode $mode)
+       (asset_access (if (== $mode lexicon_off) disabled checksum-verified))
+       (coverage $coverage)
+       (valence_profile (VADProfile $id 0 0 $count))
+       (arousal_profile (VADProfile $id 1 0 $count))
+       (dominance_profile (VADProfile $id 2 0 $count))
+       (clause_count $count)
+       (trajectory_class $trajectory)
+       (clause_trajectory ((lexical (VADLexicalTrajectory $id $coverage))
+                          (minimization-marker (VADMinimization $id))))
+       (presence_requirement (VADPresence $trajectory))
+       (confidence_basis uncalibrated-priors)
+       (status (VADStatus $coverage))
+       (permission_effect none)
+       (limitations (lexical-association-only no-diagnosis no-inner-state-claim
+                     english-bounded-morphology irony-and-negation-unresolved
+                     identity-filter-not-exhaustive)))) )
+[33m--> prolog clause -->
+[32m'VADCue'(A,
+              B,
+              [ 'affect-cue',
+                [label, 'affective-language-cue'],
+                [lexicon_mode, B],
+                [asset_access, C],
+                [coverage, D],
+                [valence_profile, E],
+                [arousal_profile, F],
+                [dominance_profile, G],
+                [clause_count, H],
+                [trajectory_class, I],
+                [ clause_trajectory,
+                  [[lexical, J], ['minimization-marker', K]]
+                ],
+                [presence_requirement, L],
+                [confidence_basis, 'uncalibrated-priors'],
+                [status, M],
+                [permission_effect, none],
+                [ limitations,
+                  [ 'lexical-association-only',
+                    'no-diagnosis',
+                    'no-inner-state-claim',
+                    'english-bounded-morphology',
+                    'irony-and-negation-unresolved',
+                    'identity-filter-not-exhaustive'
+                  ]
+                ]
+              ]) :-
+    H=N,
+    miter_vad_metric(A, 0, clause_count, N),
+    D=O,
+    'VADCoverage'(A, O),
+    I=P,
+    'VADTrajectory'(A, D, P),
+    ==(B, lexicon_off, Q),
+    (   Q==true
+    ->  C=disabled
+    ;   C='checksum-verified'
+    ),
+    'VADProfile'(A, 0, 0, H, E),
+    'VADProfile'(A, 1, 0, H, F),
+    'VADProfile'(A, 2, 0, H, G),
+    'VADLexicalTrajectory'(A, D, J),
+    'VADMinimization'(A, K),
+    'VADPresence'(I, L),
+    'VADStatus'(D, M).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADRNA $path $id $mode $output)
+   (let $lookup (miter_vad_prepare $path (but however although)
+                  (muslim jewish black gay disabled woman man) $mode)
+     (if (== $lookup vad-lookup-ready)
+       (miter_vad_finish $id (VADCue $id $mode) $output) vad-unavailable)))
+[33m--> prolog clause -->
+[32m'VADRNA'(A, B, C, D, E) :-
+    F=G,
+    miter_vad_prepare(A,
+                      [but, however, although],
+                      [muslim, jewish, black, gay, disabled, woman, man],
+                      C,
+                      G),
+    ==(F, 'vad-lookup-ready', H),
+    (   H==true
+    ->  'VADCue'(B, C, I),
+        miter_vad_finish(B, I, D, E)
+    ;   E='vad-unavailable'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (VADRenderingRNA $path $id $output)
+   (let $lookup (miter_vad_prepare_source $path (but however although)
+                  (muslim jewish black gay disabled woman man) exact_then_morphology rendering)
+     (if (== $lookup vad-lookup-ready)
+       (miter_vad_finish $id (VADCue $id exact_then_morphology) $output) vad-unavailable)))
+[33m--> prolog clause -->
+[32m'VADRenderingRNA'(A, B, C, D) :-
+    E=[miter_vad_prepare_source, A, [but, however, although], [muslim, jewish, black, gay, disabled, woman, man], exact_then_morphology, rendering],
+    ==(E, 'vad-lookup-ready', F),
+    (   F==true
+    ->  'VADCue'(B, exact_then_morphology, G),
+        miter_vad_finish(B, G, C, D)
+    ;   D='vad-unavailable'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (PermissionDependenciesLawful $xs)
+   (if (== (size-atom $xs) 0) true
+     (if (or (== (car-atom $xs) authenticated-scope)
+             (== (car-atom $xs) task-facts))
+       (PermissionDependenciesLawful (cdr-atom $xs)) false)))
+[33m--> prolog clause -->
+[32m'PermissionDependenciesLawful'(A, B) :-
+    'size-atom'(A, C),
+    ==(C, 0, D),
+    (   D==true
+    ->  B=true
+    ;   'car-atom'(A, E),
+        ==(E, 'authenticated-scope', F),
+        'car-atom'(A, G),
+        ==(G, 'task-facts', H),
+        or(F, H, I),
+        (   I==true
+        ->  'cdr-atom'(A, J),
+            'PermissionDependenciesLawful'(J, B)
+        ;   B=false
+        )
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (TaskPermission $scope $facts)
+   (if (and (== $scope authorized) (== $facts permitted)) permitted blocked))
+[33m--> prolog clause -->
+[32m'TaskPermission'(A, B, C) :-
+    ==(A, authorized, D),
+    ==(B, permitted, E),
+    and(D, E, F),
+    (   F==true
+    ->  C=permitted
+    ;   C=blocked
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (InstallPermissionPolicy $dependencies)
+   (if (PermissionDependenciesLawful $dependencies) policy-admitted
+     rejected-affect-authority-dependency))
+[33m--> prolog clause -->
+[32m'InstallPermissionPolicy'(A, B) :-
+    'PermissionDependenciesLawful'(A, C),
+    (   C==true
+    ->  B='policy-admitted'
+    ;   B='rejected-affect-authority-dependency'
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/pivot.json" pivot exact_then_morphology "runtime/g16/g15-regression/cues/pivot.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/pivot.json",
+                    pivot,
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/pivot.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/minimized.json" minimized exact_then_morphology "runtime/g16/g15-regression/cues/minimized.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/minimized.json",
+                    minimized,
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/minimized.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/technical.json" technical exact_then_morphology "runtime/g16/g15-regression/cues/technical.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/technical.json",
+                    technical,
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/technical.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/sparse.json" sparse exact_then_morphology "runtime/g16/g15-regression/cues/sparse.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/sparse.json",
+                    sparse,
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/sparse.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/identity.json" identity exact_then_morphology "runtime/g16/g15-regression/cues/identity.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/identity.json",
+                    identity,
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/identity.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/boundary.json" boundary exact_then_morphology "runtime/g16/g15-regression/cues/boundary.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/boundary.json",
+                    boundary,
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/boundary.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/flattery.json" flattery exact_then_morphology "runtime/g16/g15-regression/cues/flattery.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/flattery.json",
+                    flattery,
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/flattery.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/forceful.json" forceful exact_then_morphology "runtime/g16/g15-regression/cues/forceful.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/forceful.json",
+                    forceful,
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/forceful.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/mwe.json" mwe exact_then_morphology "runtime/g16/g15-regression/cues/mwe.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/mwe.json",
+                    mwe,
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/mwe.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/unknown-coverage.json" unknown-coverage exact_then_morphology "runtime/g16/g15-regression/cues/unknown-coverage.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/unknown-coverage.json",
+                    'unknown-coverage',
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/unknown-coverage.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/nonexistent.json" missing exact_then_morphology "runtime/g16/g15-regression/cues/missing.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/nonexistent.json",
+                    missing,
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/missing.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/min-positive.json" min-positive exact_then_morphology "runtime/g16/g15-regression/cues/min-positive.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/min-positive.json",
+                    'min-positive',
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/min-positive.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/unease-no-min.json" unease-no-min exact_then_morphology "runtime/g16/g15-regression/cues/unease-no-min.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/unease-no-min.json",
+                    'unease-no-min',
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/unease-no-min.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/min-alternative.json" min-alternative exact_then_morphology "runtime/g16/g15-regression/cues/min-alternative.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/min-alternative.json",
+                    'min-alternative',
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/min-alternative.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/min-first-only.json" min-first-only exact_then_morphology "runtime/g16/g15-regression/cues/min-first-only.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/min-first-only.json",
+                    'min-first-only',
+                    exact_then_morphology,
+                    "runtime/g16/g15-regression/cues/min-first-only.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADRNA "runtime/g15/inputs/pivot.json" pivot lexicon_off "runtime/g16/g15-regression/cues/pivot-lexicon-off.json")
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADRNA'("runtime/g15/inputs/pivot.json",
+                    pivot,
+                    lexicon_off,
+                    "runtime/g16/g15-regression/cues/pivot-lexicon-off.json",
+                    A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(InstallPermissionPolicy (authenticated-scope task-facts))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'InstallPermissionPolicy'(['authenticated-scope', 'task-facts'], A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(InstallPermissionPolicy (authenticated-scope task-facts affective-language-cue))
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'InstallPermissionPolicy'([ 'authenticated-scope',
+                                       'task-facts',
+                                       'affective-language-cue'
+                                     ],
+                                     A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(TaskPermission authorized permitted)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, 'TaskPermission'(authorized, permitted, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(TaskPermission authorized forbidden)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, 'TaskPermission'(authorized, forbidden, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(TaskPermission unauthorized permitted)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, 'TaskPermission'(unauthorized, permitted, A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta function -->
+[36m(= (MockAffectPermission $scope $facts $affect)
+   (if (== $affect low) blocked (TaskPermission $scope $facts)))
+[33m--> prolog clause -->
+[32m'MockAffectPermission'(A, B, C, D) :-
+    ==(C, low, E),
+    (   E==true
+    ->  D=blocked
+    ;   'TaskPermission'(A, B, D)
+    ).
+[33m^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(MockAffectPermission authorized permitted low)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'MockAffectPermission'(authorized, permitted, low, A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(MockAffectPermission authorized permitted high)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'MockAffectPermission'(authorized, permitted, high, A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADPresence improving-pivot)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, 'VADPresence'('improving-pivot', A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADPresence deterioration-minimization-cue)
+[33m-->  prolog goal  -->[35m 
+:- findall(A,
+           'VADPresence'('deterioration-minimization-cue', A),
+           _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0m[33m--> metta runnable  -->
+[36m!(VADPresence cue-severed)
+[33m-->  prolog goal  -->[35m 
+:- findall(A, 'VADPresence'('cue-severed', A), _).
+[33m^^^^^^^^^^^^^^^^^^^^^^^
+[0mtrue
+true
+true
+true
+true
+true
+true
+true
+true
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+vad-unavailable
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+affect-cue-stored
+policy-admitted
+rejected-affect-authority-dependency
+permitted
+blocked
+blocked
+blocked
+permitted
+preserve-emerging-insight
+acknowledge-tension-gently
+attentive-non-diagnostic

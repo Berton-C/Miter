@@ -1,0 +1,12 @@
+{
+  "clauses": [
+    "You named a struggle and a possible opening.",
+    "Let's leave room for that emerging idea.",
+    "What are you starting to see?"
+  ],
+  "origin":"local-model-rendering",
+  "raw_ref":"runtime/g16/pivot/attempt-0.raw.json",
+  "request_id":"pivot",
+  "schema_status":"valid",
+  "text":"You named a struggle and a possible opening.\n\nLet's leave room for that emerging idea.\n\nWhat are you starting to see?"
+}

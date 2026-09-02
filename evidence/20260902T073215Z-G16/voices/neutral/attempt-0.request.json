@@ -1,0 +1,47 @@
+{
+  "alias":"qwen-local",
+  "body": {
+    "max_tokens":1024,
+    "messages": [
+      {
+	"content":"You render a native Miter intention. You do not decide its meaning or permission. Return only the supplied JSON schema.",
+	"role":"system"
+      },
+      {
+	"content":"{\"bounded_role\":\"voice rendering\",\"instruction\":\"Return exactly three clauses: one from each required group, copied verbatim from rendering_options. Choose the variants and ordering that best fit this contact. No additions, no task verdict, no authority claim. Repair every named defect.\",\"intention\": {\"audience\":\"principal:g16-human\",\"authority_boundary\":\"local-certified-reply-only\",\"completion_test\":\"all-required-groups-and-native-audit\",\"desired_affect_region\":\"mid\",\"intention_id\":\"neutral\",\"kind\":\"neutral\",\"must_convey\": [\"task\", \"agency\", \"scope\" ],\"must_not_imply\": [\"inner-state-knowledge\", \"external-action-permission\", \"model-authority\" ],\"must_preserve\": [\"human-agency\", \"task-distinction\", \"source-uncertainty\" ],\"person_cues\":\"neutral-request\",\"relationship_scope\":\"scope:g16-private\",\"rendering_options\": [ [\"task\", \"The next step is to name the file you want to work on.\" ],  [\"task\", \"We can start with the file you choose.\" ],  [\"agency\", \"You can choose whether we look at its contents or its history.\" ],  [\"agency\", \"Would you prefer to look at the contents or the history?\" ],  [\"scope\", \"I will wait for that choice before changing anything.\" ],  [\"scope\", \"No changes are needed until you choose a direction.\" ] ],\"soul_stance\":\"agency-with-shared-understanding\",\"source_event_id\":\"source-g16-neutral\",\"surface\":\"local-test-cli\",\"task_distinctions\":\"permitted-internal-answer\",\"uncertainty_standing\":\"bounded-source-only\"},\"previous_defects\":\"none\"}",
+	"role":"user"
+      }
+    ],
+    "model":"qwen/qwen3.8-27b",
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_voice_candidate",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "clauses": {
+	      "items": {"maxLength":400,"minLength":1,"type":"string"},
+	      "maxItems":3,
+	      "minItems":3,
+	      "type":"array"
+	    },
+	    "request_id": {"const":"neutral","type":"string"}
+	  },
+	  "required": ["request_id", "clauses" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":1600,
+    "stream":false,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"neutral",
+  "schema":"miter-prepared-model-request-v1"
+}

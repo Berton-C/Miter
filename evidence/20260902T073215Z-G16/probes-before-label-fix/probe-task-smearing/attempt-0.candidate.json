@@ -1,0 +1,8 @@
+{
+  "clauses": ["I hear the urgency.", "I hear the urgency.", "We can work through the approved route together." ],
+  "origin":"synthetic-defect-probe",
+  "raw_ref":"tests/fixtures/g16_defect_cases.json",
+  "request_id":"probe-task-smearing",
+  "schema_status":"valid",
+  "text":"I hear the urgency.\n\nI hear the urgency.\n\nWe can work through the approved route together."
+}

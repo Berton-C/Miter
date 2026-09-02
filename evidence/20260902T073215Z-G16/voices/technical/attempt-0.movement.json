@@ -1,0 +1,18 @@
+{
+  "certificate": {
+    "availability_witness":"technical-witness-availability",
+    "certificate_version":"miter-movement-v1",
+    "consequence_answerability_witness":"technical-witness-consequence",
+    "continuing_contact_witness":"technical-witness-continuing-contact",
+    "doctrine_bound_reading_witness":"technical-witness-doctrine",
+    "inherited_legality_witness":"technical-witness-inherited-legality",
+    "material_extension_alignment_witnesses":"technical-witness-extensions",
+    "movement_id":"technical",
+    "no_disqualifying_forcing_witness":"technical-witness-no-forcing",
+    "participation_open_witness":"technical-witness-participation",
+    "precision_floor_witnesses": ["technical-witness-provenance", "technical-witness-required-distinction" ],
+    "relation_floor_witnesses": ["technical-witness-safety", "technical-witness-integrity" ],
+    "source_cut":"source-g16-technical"
+  },
+  "status":"certified"
+}
