@@ -1,0 +1,2 @@
+data: {"choices":[{"delta":{"content":"{\"smoke\":\"SYNTHETIC syntax-only string:  two spaces\\nLéa\"}"},"finish_reason":"stop"}]}
+

@@ -1,0 +1,1 @@
+{"status":"PASS-BOUNDED","all_four_claims_retained":true,"no_fifth_request":true,"new_model_calls":0,"synthetic_probe":true,"observed":["model-unavailable","error(model_grant_exhausted,'G28-R2 has four retained spending claims')"]}

@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"repair-2","grant_id":"g28-r2-002","idempotency_key":"repair-2-smoke-no-output","operation":"run_declared_test","request_id":"repair-2-smoke-no-output","schema":"miter-workshop-request-v1","test_id":"smoke-no-output"},"request_hash":"2d65a63ffbfc1e2340b461e3883cc03189aa85ecffb3cb34af4432d570ade3f8"}

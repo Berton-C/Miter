@@ -1,0 +1,1 @@
+{"status":"PREPARED","target":["candidate_tests/smoke.sh"],"preserved":[{"path":"extension/adapter.sh","sha256":"ba699acc64161dad6124c66677188d14352bee869c94e91514f5db7f707252b4"}],"prior_history_preserved":true,"independent_tests_unchanged":true,"negative_tests":["smoke-no-output","smoke-no-lf"],"model_calls":0}

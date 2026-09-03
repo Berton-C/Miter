@@ -1,0 +1,28 @@
+diff --git a/candidate_tests/smoke.sh b/candidate_tests/smoke.sh
+new file mode 100644
+index 0000000..e4e71df
+--- /dev/null
++++ b/candidate_tests/smoke.sh
+@@ -0,0 +1,13 @@
++#!/bin/sh
++set -eu
++
++ARG='hello'
++OUT=/tmp/smoke_out.$$ 
++EXP=/tmp/smoke_exp.$$ 
++trap 'rm -f "$OUT" "$EXP"' EXIT INT TERM
++
++/bin/sh /workspace/extension/adapter.sh "$ARG" > "$OUT"
++
++printf '%s\n' "$ARG" > "$EXP"
++
++cmp -s "$OUT" "$EXP"
+diff --git a/extension/adapter.sh b/extension/adapter.sh
+new file mode 100644
+index 0000000..a8c71b7
+--- /dev/null
++++ b/extension/adapter.sh
+@@ -0,0 +1,2 @@
++#!/bin/sh
++printf '%s\n' "$1"
+\ No newline at end of file

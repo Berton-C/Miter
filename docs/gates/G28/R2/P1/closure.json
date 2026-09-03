@@ -1,0 +1,84 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G28",
+  "plan": "docs/gates/G28/R2/P1/plan.json",
+  "plan_commit": "aa8bcd341438194100d4801fc70b80a686873284",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "docs/gates/G28/R2/completion.md",
+      "sha256": "31f1ad422b4b9215b5b64c2a7d577cc688cd65d67a279a63c7051b4076b40df7"
+    },
+    {
+      "path": "evidence/G28-R2/all-attempts.json",
+      "sha256": "6986cdd5cea8b1dc999eccdacc85d870c2e26cf2253eea5245e60b0d08fde045"
+    },
+    {
+      "path": "evidence/G28-R2/verification.json",
+      "sha256": "1a80db8383e68047f54614c6ae1d17c1c6147673fe4615f88810d1a46a68be4e"
+    },
+    {
+      "path": "evidence/G28-R2/quality-006/verdict.json",
+      "sha256": "2e99c29768c3828c7cda28a014f3da73a9f118006563d8a9ba590654f5e8583f"
+    },
+    {
+      "path": "evidence/G28-R2/diagnostics-002/verdict.json",
+      "sha256": "4f4f5716c5019695962bc67e3e8697fdd5d49e4495c8f5b3ff257b3ba8a1ee8a"
+    },
+    {
+      "path": "evidence/G28-R2/attempt-004/verdict.json",
+      "sha256": "4b30972ddf53ae16677601a95a50bdb3c4d80255d4057d35573220c17c37e05b"
+    },
+    {
+      "path": "evidence/G28-R2/attempt-004/boundary-verdict.json",
+      "sha256": "400d64f695cd6d076d737ef963c5a92546b5057070393b44424d2f205e196a63"
+    },
+    {
+      "path": "evidence/G28-R2/attempt-004/budget-verdict.json",
+      "sha256": "72c1cb333ec951d3319048fff461c5f6dae00e8b9bedbd65582be5f56e68714c"
+    },
+    {
+      "path": "src/executable_development_v3.metta",
+      "sha256": "058623d09f4b1e8054a9315b613fb274d324e3b21d4392df94134eea5f51784e"
+    },
+    {
+      "path": "src/bootstrap_executable_development_v3.metta",
+      "sha256": "6edaaceb91504209c30e5e3d6a8cbc5c0a3bc014fc7f636bbe48d11ee20894f5"
+    },
+    {
+      "path": "src/executable_partial_revision_v1.metta",
+      "sha256": "658d1df406a088b26f9eeb5a62de27bec4981bdb77d776c66f88c01a6711b3a8"
+    },
+    {
+      "path": "effect_membranes/miter_executable_development_v3.pl",
+      "sha256": "bb42ec0c5f2b29b1fd6faa4cfb9b414967b84afa67d6096d18a6717703c21db7"
+    },
+    {
+      "path": "config/executable-candidate-schema-v3.json",
+      "sha256": "14f9f540998c9fbc6c8e95aa797362e54beb83e538d058addaf3206e557f7c66"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G28-R2-targeted-repair",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Finite native file/obligation projection with reversed, neutral, severed/restored controls. Request-context pivot authored by builder; no general native shell diagnosis claimed."
+    },
+    {
+      "id": "G28-R2-independent-trial",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Real model-authored smoke passes normal and two mutant-sensitivity trials; original adapter passes six fixed cases. Concrete approval now supplied; merge and later uptake not yet implemented."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/020/024/060/093–104 and S-501–504/605–607/901/903/1004/1102–1105 require native source/evidence comparison, independent consequence and distinct promotion. Both controls and whole-ledger context reread; see completion.md.",
+    "causal_evidence": "PRConstruct changes repair target when actual obligation evidence reverses, preserves selection under neutral/renamed relations and loses the distinction when its observation reader is severed. Real replayed prior trial selects smoke only. Fresh contract-only generation passes six unchanged cases, its own test and two fixed mutants; 51 event links verified.",
+    "substitution_audit": "Finite file/interface bindings and prompt semantics supplied by builder; generated replacement supplied by local model. No Python seam or Prolog goal choice. P1 is builder diagnostic intervention, not native discovery. No universal Soul, M25, held-out or general software-capability claim.",
+    "capability_and_constraint_audit": "Four globally counted local calls; no fifth request, no persistent model settings, live reach, service stop or push. Adapter hash unchanged. Controls and unrelated G22/user R1 edit preserved. No candidate-owned acceptance or direct-main write. Passing repair is not G28 completion.",
+    "remaining_gaps": "Approved isolated merge, exact state transition, restart/later use and active-version rollback are next under R3. Whole Soul and Mattermost integration remain incomplete."
+  },
+  "reviewer": "Codex builder with independent deterministic contract/hash checks; no separate model or human code review invented.",
+  "review_limits": "Packaging verifies structural fidelity only. Full G28 remains open; same-gate subclaim progression is explicitly linked because checker next_plan is limited to a different numbered gate.",
+  "terminal_reason": "The repair/trial experiment is complete, but G28 is not. The human approval boundary was reached and Berton then authorized continuation; separately frozen R3 handles the remaining merge/use claim before any G29 progression.",
+  "same_gate_continuation": "docs/gates/G28/R3/plan.json"
+}

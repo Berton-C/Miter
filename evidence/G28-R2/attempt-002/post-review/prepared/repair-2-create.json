@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"repair-2","grant_id":"g28-r2-002","idempotency_key":"repair-2-create","operation":"create_candidate_worktree","request_id":"repair-2-create","schema":"miter-workshop-request-v1"},"request_hash":"f481afc72f1c47e9f03c1d0218ea021c277ac80bb850481352c6e1e3198daa99"}

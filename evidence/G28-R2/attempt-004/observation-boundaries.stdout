@@ -1,0 +1,12 @@
+true
+true
+true
+true
+true
+true
+true
+true
+(result unknown executable-trial-unqualified)
+(result duplicate executable-trial-unqualified)
+(result extra executable-trial-unqualified)
+(result restored executable-trial-qualified)

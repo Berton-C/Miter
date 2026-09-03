@@ -1,0 +1,14 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+import {root,hash,read,save,native} from '../g22_v2/common.mjs';
+const tag=process.argv[2];assert.match(tag??'',/^[0-9]{3}$/);const d=root+'/evidence/G28-R2/diagnostics-'+tag;assert(!fs.existsSync(d));fs.mkdirSync(d);
+const files=['effect_membranes/miter_executable_development_v3.pl','effect_membranes/miter_model_stream_v1.pl','src/executable_development_v3.metta','scripts/g28_r2/diagnostics.pl','scripts/g28_r2/diagnostics.mjs'];
+save(d+'/freeze.json',{files:files.map(p=>({path:root+'/'+p,sha256:hash(fs.readFileSync(root+'/'+p))}))});
+const wire=(content,finish='stop',done=true)=>'data: '+JSON.stringify({choices:[{delta:{content},finish_reason:finish}]})+'\n\n'+(done?'data: [DONE]\n\n':'');
+const product=JSON.stringify({smoke:'SYNTHETIC syntax-only string:  two spaces\nLéa'});
+const fixtures={complete:wire(product),truncated:wire(product,'length'),timeout:wire(product,'stop',false),malformed:wire('{'),unexpected:wire(JSON.stringify({smoke:'inert',adapter:'extra forbidden field'})),empty:wire(JSON.stringify({smoke:''})),badstream:wire(product)+'data: invalid\n',partial:wire(product).slice(0,27)};
+for(const[name,text]of Object.entries(fixtures))save(d+'/'+name+'.sse',text);
+const boot=`!(import! &self "${root}/src/bootstrap_executable_development_v3.metta")\n!(import_prolog_functions_from_file "${root}/scripts/g28_r2/diagnostics.pl" (zd_read))\n`;
+const r=native(d,'observe',Object.keys(fixtures).map(k=>`!(result ${k} (let $o (zd_read "${d}/${k}.sse" ${k==='timeout'?'timeout':'eof'}) ((index-atom $o 7) (ZReady $o))))`).join('\n'),boot);
+assert.equal(r.length,8);for(const x of r)assert.equal(x[2][1],x[1]==='complete'?'true':'false');
+assert.equal(r.find(x=>x[1]==='unexpected')[2][0],'schema-mismatch');assert.equal(r.find(x=>x[1]==='badstream')[2][0],'malformed-stream');
+save(d+'/verdict.json',{status:'PASS-BOUNDED',new_model_calls:0,rows:r,limits:'Synthetic parser/ready boundary only; HTTP timeout capture remains the unchanged R1 membrane evidence'});console.log(JSON.stringify(read(d+'/verdict.json')));

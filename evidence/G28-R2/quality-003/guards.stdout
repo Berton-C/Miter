@@ -1,0 +1,10 @@
+true
+(result unknown-not-ready false)
+(result ready true)
+(result assembled ((candidate-file alpha source-a hash-a) (candidate-file beta new hash-new)))
+(result escaped (partial-assembly-held))
+(result duplicated (partial-assembly-held))
+(result missing (partial-assembly-held))
+(result sensitive true)
+(result insensitive false)
+(result truncation false)

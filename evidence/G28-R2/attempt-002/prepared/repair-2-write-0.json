@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"repair-2","contents":"#!/bin/sh\nprintf '%s\\n' \"$1\"","grant_id":"g28-r2-002","idempotency_key":"repair-2-write-0","operation":"write_candidate_file","path":"extension/adapter.sh","request_id":"repair-2-write-0","schema":"miter-workshop-request-v1"},"request_hash":"234b20fa0778cbddaf7ae821eeb359c1bca599baa7d41dd465626b7de3e7d90d"}

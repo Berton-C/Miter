@@ -1,0 +1,12 @@
+true
+true
+true
+true
+true
+true
+true
+true
+(result manifest-bound candidate-source-unbound)
+(result manifest-valid false)
+(result disk candidate-disk-bound)
+(result replay artifact-shaped)

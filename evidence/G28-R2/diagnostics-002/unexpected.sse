@@ -1,0 +1,4 @@
+data: {"choices":[{"delta":{"content":"{\"smoke\":\"inert\",\"adapter\":\"extra forbidden field\"}"},"finish_reason":"stop"}]}
+
+data: [DONE]
+

@@ -1,0 +1,1 @@
+{"status":null,"signal":"SIGTERM","error":"spawnSync /opt/homebrew/bin/swipl ETIMEDOUT","started_at":"2026-09-03T16:20:06.576Z","elapsed_ms":120007}

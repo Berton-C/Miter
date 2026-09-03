@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"fresh-1","grant_id":"g28-r2-004","idempotency_key":"fresh-1-smoke","operation":"run_declared_test","request_id":"fresh-1-smoke","schema":"miter-workshop-request-v1","test_id":"candidate-smoke"},"request_hash":"060b25f4b88b9469dee895b82018f3b49cdb2b96e76e6a189b759b835762d2fc"}

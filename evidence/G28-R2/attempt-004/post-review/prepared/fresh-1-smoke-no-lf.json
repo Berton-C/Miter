@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"fresh-1","grant_id":"g28-r2-004","idempotency_key":"fresh-1-smoke-no-lf","operation":"run_declared_test","request_id":"fresh-1-smoke-no-lf","schema":"miter-workshop-request-v1","test_id":"smoke-no-lf"},"request_hash":"3b0d45615e4de1921f41b5e510b6d7c809ea96c51f57229df14f5ac91a150b25"}

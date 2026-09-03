@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"parent-r2-004","grant_id":"g28-r2-004","idempotency_key":"parent-create","operation":"create_candidate_worktree","request_id":"parent-create","schema":"miter-workshop-request-v1"},"request_hash":"d8d3b63cc92d13d4e6ef8c966fbc1ca68cb9442e32fad8777e13a607241fd1f3"}
