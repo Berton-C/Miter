@@ -1,0 +1,13 @@
+true
+true
+true
+true
+true
+true
+true
+true
+ready
+(case-result boundary (quarantine-construction-result candidate-quarantined stored))
+(case-result trial-count 1)
+(case-result legacy-absent true)
+done

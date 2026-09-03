@@ -1,0 +1,13 @@
+# SC07 attempt history
+
+All inputs are explicitly synthetic finite laboratory contacts. No blind held-out performance is claimed. Generic operators and inputs are frozen before each execution; repairs do not add behavior entries.
+
+- `probe-001`: initial constructive mechanism demonstrated five complete alternatives, one with a grounded whole-retention co-expression requirement, and a truthful inquiry when the seed cannot express that relation. Permission-shifting material was excluded.
+- `attempt-001`: a later slot-safety edit introduced one extra closing parenthesis; the loader returned without defining the native consumer. The oracle rejected unevaluated VConstruct/VEligible outputs. Preserved, not passed. Structural parsing/arity checks now run before launching the suite.
+- `attempt-002`: the native construction was valid but the independent oracle compared the lexical order of coordinated verbs rather than their demonstrated equivalent meaning. Native and oracle both supported the same role groups. The checker now canonicalizes only the order of the finite choose/inspect/restore conjunction for comparison, while independently checking actual clause meanings and complete composition sets. No candidate meaning or expected relation was weakened.
+- `attempt-003`: the structural check caught a missing closing parenthesis in the newly added asynchronous VWait before any native/provider execution. No model request occurred.
+- `attempt-004`: all twenty-three cases and six native arms passed the independent complete-possibility-set checks. Source, meaning, composition and joint-context severing each expose a real failure; restoration recovers the result.
+- `live-001`: one actual qwen-local request returned an inert v2 expressive capability. Native construction produced one supported expression under the sourced joint relation. Provider transport took 46,265 ms. The prompt explicitly supplied finite recognized grammar resources and slot meanings; this is model authorship of a bounded declarative capability, not invention of a new language or independent proof of benefit.
+- `boundaries-001`: seventeen replay/synthetic boundary and actual fake-HTTP cases passed, including absence of the retired behavioral predicates in the corrected bootstrap. No additional model calls. Replay and altered provider envelopes are not new source observations or fresh model authorship.
+
+SC06's rejected first-match contract and all its evidence remain unchanged. The v2 candidate is quarantined and unpromoted. No G22 comparative quality trial, production mutation, NACE, service change or external human emission occurred.

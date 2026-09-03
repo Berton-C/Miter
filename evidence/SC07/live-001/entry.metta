@@ -1,0 +1,5 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice_construction.metta")
+!(add-atom &soul (sc07-protected-canary soul immutable-test-content))
+!(add-atom &history (sc07-protected-canary history immutable-test-content))
+!(add-atom &derived (sc07-protected-canary derived immutable-test-content))
+!(case-result live-run (VRun "/Users/claritymiter/miter/evidence/SC07/live-001" voice-realization-001 (vc_frame "/Users/claritymiter/miter/evidence/SC07/live-001") (vc_receipts "/Users/claritymiter/miter/evidence/SC07/live-001") ((surface-capability VoicePolicy retention-omission miter-voice-realization-v2 (trial-expression) ())) (development-grant (scope cut-fixture principal-fixture project-fixture test-owner-structural-contact) 1 1024 120)))

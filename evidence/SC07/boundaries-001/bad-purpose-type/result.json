@@ -1,0 +1,11 @@
+{
+  "native": [
+    "quarantine-construction-result",
+    "malformed-schema",
+    ["malformed-candidate" ],
+    "model-candidate-bound",
+    "trial-unavailable",
+    "trial-unavailable"
+  ],
+  "stored_at":1788433805.651024
+}

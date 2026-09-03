@@ -1,0 +1,75 @@
+{
+  "body": {
+    "max_tokens":1024,
+    "messages": [
+      {
+	"content":"Propose a reusable expressive-capability module, not a policy deciding what Miter should do. Return the supplied v2 JSON schema. Copy candidate_id exactly. Supply constructions for reported-request, retain and completion, using token arrays of individual lowercase words and typed slots @artifact, @person, @verb or @verbs. @verb binds one retained participation; @verbs can coordinate a related group using and. The seed cannot express grouped participations in one clause. Propose a way to express the source-grounded joint participations supplied in the context. This is a finite grammar experiment: recognized surface forms include you requested revision of @artifact; the requested change is to revise @artifact; @person must remain able to @verbs @artifact; the change must keep @person able to @verbs @artifact; the revision of @artifact is complete. Use separate tokens, without punctuation; sentence punctuation is supplied mechanically. These grammatical resources do not select behavior. No defect/action rules, default action, priority, evaluator, code or external effects. A declared meaning is only your proposal; native interpretation must independently establish it. Miter constructs and compares possibilities, and you cannot decide which should be used. Keep this bounded and reusable across names and role combinations.",
+	"role":"system"
+      },
+      {
+	"content":"{\"allowed_effects\": [],\"allowed_writes\": [\"trial-expression\" ],\"candidate_id\":\"voice-realization-001\",\"intended_relations\": [ [\"retain\", \"artifact\", \"person\", \"recovery\", \"recover\" ],  [\"retain\", \"artifact\", \"person\", \"inspection\", \"inspect\" ],  [\"retain\", \"artifact\", \"person\", \"choice\", \"choose\" ],  [\"reported-request\",  [\"path\", \"artifact\", \"revised\" ] ] ],\"joint_relations\": [ [ [\"retain\", \"artifact\", \"person\", \"choice\", \"choose\" ],  [\"retain\", \"artifact\", \"person\", \"inspection\", \"inspect\" ],  [\"retain\", \"artifact\", \"person\", \"recovery\", \"recover\" ] ] ],\"parent_module\":\"voice-realization-seed-v2\"}",
+	"role":"user"
+      }
+    ],
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_voice_realization",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "allowed_effects": {"items": {"type":"string"},"maxItems":0,"type":"array"},
+	    "allowed_writes": {
+	      "items": {"enum": ["trial-expression" ],"type":"string"},
+	      "maxItems":1,
+	      "minItems":1,
+	      "type":"array"
+	    },
+	    "candidate_id": {"maxLength":100,"minLength":1,"type":"string"},
+	    "constructions": {
+	      "items": {
+		"additionalProperties":false,
+		"properties": {
+		  "id": {"maxLength":100,"minLength":1,"type":"string"},
+		  "meaning": {"enum": ["reported-request", "retain", "completion" ],"type":"string"},
+		  "tokens": {
+		    "items": {"maxLength":64,"minLength":1,"type":"string"},
+		    "maxItems":24,
+		    "minItems":1,
+		    "type":"array"
+		  }
+		},
+		"required": ["id", "meaning", "tokens" ],
+		"type":"object"
+	      },
+	      "maxItems":8,
+	      "minItems":1,
+	      "type":"array"
+	    },
+	    "purpose": {"maxLength":500,"minLength":1,"type":"string"},
+	    "schema": {"enum": ["miter-voice-realization-v2" ],"type":"string"}
+	  },
+	  "required": [
+	    "schema",
+	    "candidate_id",
+	    "purpose",
+	    "constructions",
+	    "allowed_writes",
+	    "allowed_effects"
+	  ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":7070,
+    "stream":false,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"voice-realization-001",
+  "schema":"miter-schema-request-v1"
+}

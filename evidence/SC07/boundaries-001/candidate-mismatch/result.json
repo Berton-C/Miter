@@ -1,0 +1,59 @@
+{
+  "native": [
+    "quarantine-construction-result",
+    "unproven-candidate-lineage",
+    [
+      "voice-realization",
+      "miter-voice-realization-v2",
+      "voice-realization-001",
+      "Changed after provider output",
+      [
+	[
+	  "construction",
+	  "reported-request",
+	  "reported-request",
+	  [
+	    ["literal", "you" ],
+	    ["literal", "requested" ],
+	    ["literal", "revision" ],
+	    ["literal", "of" ],
+	    ["slot", "artifact" ]
+	  ]
+	],
+	[
+	  "construction",
+	  "retain",
+	  "retain",
+	  [
+	    ["slot", "person" ],
+	    ["literal", "must" ],
+	    ["literal", "remain" ],
+	    ["literal", "able" ],
+	    ["literal", "to" ],
+	    ["slot", "verbs" ],
+	    ["slot", "artifact" ]
+	  ]
+	],
+	[
+	  "construction",
+	  "completion",
+	  "completion",
+	  [
+	    ["literal", "the" ],
+	    ["literal", "revision" ],
+	    ["literal", "of" ],
+	    ["slot", "artifact" ],
+	    ["literal", "is" ],
+	    ["literal", "complete" ]
+	  ]
+	]
+      ],
+      ["trial-expression" ],
+      []
+    ],
+    "unproven-model-candidate",
+    "trial-unavailable",
+    "trial-unavailable"
+  ],
+  "stored_at":1788433804.512965
+}

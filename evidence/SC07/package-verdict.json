@@ -1,0 +1,16 @@
+{
+  "status": "PASS-BOUNDED",
+  "construction_cases": 23,
+  "native_arms": 6,
+  "boundary_cases": 17,
+  "parser_classes": 3,
+  "actual_model_requests": 1,
+  "model_duration_ms": 46265,
+  "actual_candidate_supported_expressions": 1,
+  "compass_atoms_unchanged": 129,
+  "protected_canaries_unchanged": 3,
+  "trial_atoms_added": 1,
+  "stop_observed_ms": 2.9268264770507812,
+  "stop_persisted_ms": 10.290861129760742,
+  "limits": "Finite native construction and scoped joint comparison; supplied grammar resources, not novel general language, full Soul, quality improvement, promotion, NACE or recurring-driver integration."
+}

@@ -1,0 +1,5 @@
+true
+true
+true
+true
+(case-result live-run (quarantine-construction-result candidate-quarantined stored))

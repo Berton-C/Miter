@@ -1,0 +1,13 @@
+true
+true
+true
+true
+true
+true
+true
+true
+ready
+(case-result boundary (development-transport-incomplete model-timeout stored))
+(case-result trial-count 0)
+(case-result legacy-absent true)
+done

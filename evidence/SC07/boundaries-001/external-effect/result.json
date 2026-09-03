@@ -1,0 +1,59 @@
+{
+  "native": [
+    "quarantine-construction-result",
+    "forbidden-effect",
+    [
+      "voice-realization",
+      "miter-voice-realization-v2",
+      "voice-realization-001",
+      "Express source-grounded joint participations by coordinating related verbs with 'and' within the @verbs slot, enabling a single clause to retain multiple capabilities for a person regarding an artifact.",
+      [
+	[
+	  "construction",
+	  "reported-request",
+	  "reported-request",
+	  [
+	    ["literal", "you" ],
+	    ["literal", "requested" ],
+	    ["literal", "revision" ],
+	    ["literal", "of" ],
+	    ["slot", "artifact" ]
+	  ]
+	],
+	[
+	  "construction",
+	  "retain",
+	  "retain",
+	  [
+	    ["slot", "person" ],
+	    ["literal", "must" ],
+	    ["literal", "remain" ],
+	    ["literal", "able" ],
+	    ["literal", "to" ],
+	    ["slot", "verbs" ],
+	    ["slot", "artifact" ]
+	  ]
+	],
+	[
+	  "construction",
+	  "completion",
+	  "completion",
+	  [
+	    ["literal", "the" ],
+	    ["literal", "revision" ],
+	    ["literal", "of" ],
+	    ["slot", "artifact" ],
+	    ["literal", "is" ],
+	    ["literal", "complete" ]
+	  ]
+	]
+      ],
+      ["trial-expression" ],
+      ["http-post" ]
+    ],
+    "model-candidate-bound",
+    "trial-unavailable",
+    "trial-unavailable"
+  ],
+  "stored_at":1788433805.42783
+}

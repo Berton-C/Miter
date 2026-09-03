@@ -1,0 +1,13 @@
+# SC07 finite constructive expression contract
+
+The committed SC07 plan and approved contract correction govern the experiment. MeTTa computes source-grounded intention, proposed fragment meaning, bounded composition search and source-grounded comparison. Prolog performs lexical/type projection, hashes, storage, provider transport and readback. JavaScript is offline evidence tooling, never a runtime reasoner.
+
+The candidate is inert grammatical data: a meaning category and token/slot constructions. A declared meaning is not trusted; actual independent native reading must match its bound claims. This permits useful construction while excluding unsupported completion, permission/actor shifts and unknown wording. Scope/source/family meanings remain inherited from SC02–SC06, with only the declared development capability changed to the explicit v2 schema.
+
+Co-expression fixtures supply a scoped human-confirmed relation over actual intended claims. Native support validation, not the module, establishes its standing. This relation is an explicit finite engineering specialization, not a universal brevity/style rule, a full M263 implementation, or an automatic whole-Soul judgment. Absent and unqualified relations cannot impose it; a stale material human source yields revalidation rather than assumed permission. Equivalent/incomparable supported expressions remain alternatives.
+
+The search grant counts actual agenda expansions across branches. Zero/exhausted search returns an unresolved frontier, not false completion or an assertion that no solution exists. The current default invocation allows 256 expansions; accepted grants are bounded by 4,096, intent size by eight claims and qualified fragments by 128. These are finite experiment resource limits, not limits on an undertaking's lifetime or prescribed answers.
+
+Test source frames, expected claims and output oracle remain distinct. The oracle independently instantiates grammatical bindings and enumerates subsets of fragments instead of reproducing the native missing-relation agenda. It checks actual meanings and the complete supported possibility set, normalizing only equivalent conjunction order. These are builder-authored and frozen-operator transfer cases, not unseen human encounters.
+
+The v2 seed is builder-authored and declares its standing. The actual model candidate has its own source/request/parent lineage. Neither a callable construction nor safe loading proves quality improvement or earns promotion. Protected-space canaries test nonempty isolation; the actual 129-atom loaded compass is also read before and after. No production memory/Soul deployment is claimed.

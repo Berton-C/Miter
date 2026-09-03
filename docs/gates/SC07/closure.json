@@ -1,0 +1,119 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "SC07",
+  "plan": "docs/gates/SC07/plan.json",
+  "plan_commit": "083f47ab5ea3675ffcea624e10b37c241cada692",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "src/development_evidence.metta",
+      "sha256": "3c294d2aa47f4068a7aa46b59bef36ecd6007a398e308acc9dbcb0e15b6df112"
+    },
+    {
+      "path": "src/voice_construction.metta",
+      "sha256": "57a68c16d5658ebd04d2e4119e9a2f1f0fc634a2ba1871548ff4ce86eaee50f2"
+    },
+    {
+      "path": "src/bootstrap_voice_construction.metta",
+      "sha256": "b862cac3ce57ad48c72e0c8d6dd6a992bd170b3e6b6c24c79b474d661a17eaca"
+    },
+    {
+      "path": "effect_membranes/miter_voice_construction.pl",
+      "sha256": "d2ab4a7b2a0d235a4b27008b1fe175ee15e062bc5cf733a6832c5af047ecfef7"
+    },
+    {
+      "path": "config/voice-realization-schema-v2.json",
+      "sha256": "38bb7ccc1ce2e5d35db256114a7c1772817308d53be06d6090d69a1f26608427"
+    },
+    {
+      "path": "derived/voice-realization-seed-v2.json",
+      "sha256": "e18142fdd6aef1bcada31af1b2dd9a9cb36780cedf0e616582557c069ed9be96"
+    },
+    {
+      "path": "tests/fixtures/sc07/contract.md",
+      "sha256": "fde3b582a5ad3a6d553b97bb4aa8745f59b76bcfcbbf9550858372baf93ac03e"
+    },
+    {
+      "path": "docs/gates/SC07/completion.md",
+      "sha256": "df0b14043e75d34a01d91b0dc7b97dc2a8977d27cd8ec2f86cfc73808db4c3b8"
+    },
+    {
+      "path": "docs/gates/SC07/rejoin-assessment.md",
+      "sha256": "54be456e307a1b56b75f783ec336a81db118c0969a451f3a6ede601cd01208b1"
+    },
+    {
+      "path": "docs/gates/SC08/plan.json",
+      "sha256": "1c343152dcfc7b35bd0ee00aa1e4734928c06847f809e3240a00dda3d03a38c5"
+    },
+    {
+      "path": "docs/gates/SC08/plan.md",
+      "sha256": "6a1ea9a90a253a53c9d0169c7903bd26bcb656daa4b4058c1f69a6ff1de6231e"
+    },
+    {
+      "path": "evidence/SC07/raw-inventory.json",
+      "sha256": "1bd8ef4ea5561c5a39e4d05e2095276658d29c33950a205d0ae674c668404c41"
+    },
+    {
+      "path": "evidence/SC07/package-verdict.json",
+      "sha256": "d5b108c396b0876b3bd1ddcd029c44c0245cd6ba181d1ed9c6bd11644b6c4b6f"
+    },
+    {
+      "path": "scripts/sc07/boundaries.mjs",
+      "sha256": "bb8bca47c8b4973c3b3c1b0d58d90d7a2deaf986ecea401fb06e924afc460d40"
+    },
+    {
+      "path": "scripts/sc07/boundaries.pl",
+      "sha256": "b85444ef7606d6e012f947681c0271f6a1c996451da48bbff4b1c0e595d82dd7"
+    },
+    {
+      "path": "scripts/sc07/cases.mjs",
+      "sha256": "a5e973c734b2e795544c690a0caae17497b18d7748967b948444ba59c64e5d31"
+    },
+    {
+      "path": "scripts/sc07/check-package.mjs",
+      "sha256": "3bccc7bbf4dd4c037e942082a54e0824daac0a6cc7ef597122538a6d1a026003"
+    },
+    {
+      "path": "scripts/sc07/inventory.mjs",
+      "sha256": "4ec8608f376c081f97f662754f3d614709447ac2eeac921fa3458b6a2a22bee4"
+    },
+    {
+      "path": "scripts/sc07/live.mjs",
+      "sha256": "e1e937a4679cba97934a1e3a39e084d08aed402f0a7d2f9c7dcd7761609b47f6"
+    },
+    {
+      "path": "scripts/sc07/probe.mjs",
+      "sha256": "0f1965262303fba025acefb1ff188f2d01c40bcbf65e3e3dcdeb54b2534c5a00"
+    },
+    {
+      "path": "scripts/sc07/run.mjs",
+      "sha256": "7a98d4113c179904cf4ede99a669998c6ad2a72553eaa278e386f5a24f07534d"
+    },
+    {
+      "path": "scripts/sc07/verify.mjs",
+      "sha256": "d62458bb97667a0dc42e28e2f85d0ac9a2a660d8a7c7c52ee4e584aaedcea5d5"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "SC07-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "23 finite construction cases and six causal arms; native source-grounded binding, semantic verification, composition and joint-participation comparison. Not general language, complete five-authority mathematics or all nine flourishing enactors."
+    },
+    {
+      "id": "SC07-B",
+      "status": "PROVEN-HARNESS",
+      "limit": "One actual local-model v2 expressive candidate, exact native opportunity lineage, trial-only quarantine and native construction; 17 boundary cases. No comparative quality, promotion, emission or recurring-driver claim."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/009/011/012/054–062 and S-501–504/902 require source-grounded native construction, not a scenario-to-behavior catalogue. The explicit approved v2 contract preserves mechanisms and retires first-match selection in the corrected path. Both controls and source archives are unchanged.",
+    "causal_evidence": "Same expressive resources support five ordinary alternatives, one whole-joint alternative and two partial-joint alternatives; an incapable singular seed produces inquiry. Source/intention, semantic checking, composition and joint-consumer severing expose false or missing results; restoration recovers them. Reordering preserves the complete set. Actual model lineage and populated protected-space readback are independently checked.",
+    "substitution_audit": "The module supplies grammatical productions, not defect/action/priority/default rules. Native source relations determine actual bindings and comparisons; no scalar or first-list winner is imposed. Finite grammar, human-confirmed co-expression fixtures and three interface projections are declared limitations. Independent oracle enumerates subsets instead of duplicating native agenda search. Failed attempts and oracle correction remain visible.",
+    "capability_and_constraint_audit": "Positive compositions and live generated grammatical capability succeed. Search frontier and material unresolved context remain explicit. Exactly one inert trial atom is added; 129 compass atoms and three protected canaries remain unchanged. Stop persistence is 10.291 ms in laboratory testing, not provider-confirmed cancellation. No production service/data change, core Python/JS seam, G22, promotion or push.",
+    "remaining_gaps": "Corrected expression generation/quarantine is not yet driven by ongoing cognition. SC08 follows that concrete dependency with delayed contact, persisted interruptible generation and restart tests. Broad Soul semantics, complete five authorities, NACE and production multi-user scheduler remain unproved. SC06 retains FAIL fidelity despite preserved mechanical success; raw inventories require their dedicated recursive verifiers."
+  },
+  "reviewer": "Codex builder; separately implemented deterministic evidence verification, not an independent human or agent review.",
+  "review_limits": "Finite source-grounded construction, not completeness of the Soul. Raw failure history retained. SC08 must establish recurring-path prerequisites before the agreed G22 pause.",
+  "next_plan": "docs/gates/SC08/plan.json"
+}
