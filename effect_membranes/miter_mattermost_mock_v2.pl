@@ -135,7 +135,9 @@ g31_p3_prior_contract(true) :-
     get_dict(status, PostedOutcome, accepted),
     miter_mattermost_bridge:surface_ingest(
         Config, State1, Posted, State1, DuplicateOutcome),
-    g31_p3_status_reason(DuplicateOutcome, suppressed, duplicate, true),
+    % The production candidate checks TS =< Cursor before the seen set, so an
+    % exact repeat at the current cursor is intentionally stale_cursor.
+    g31_p3_status_reason(DuplicateOutcome, suppressed, stale_cursor, true),
     g31_p3_edited(Edited),
     miter_mattermost_bridge:surface_ingest(
         Config, State1, Edited, State2, EditedOutcome),

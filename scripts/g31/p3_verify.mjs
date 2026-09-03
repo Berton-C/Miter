@@ -17,6 +17,7 @@ const lineage = read(`${dir}/lineage.json`);
 for (const file of lineage.files)
   assert.equal(hash(fs.readFileSync(file.path)), file.sha256, file.path);
 assert.equal(lineage.actual_model_calls, 1);
+assert.equal(lineage.model_calls_this_resume, 0);
 assert.equal(lineage.selected_model, 'z-ai/glm-5.3');
 assert.equal(lineage.exact_source_transform.other_byte_changes, 0);
 const input = read(`${dir}/input.json`).native;
@@ -39,7 +40,7 @@ assert.equal(read(`${dir}/secret-audit.json`).key_material_returned, false);
 const owner = read(`${root}/evidence/G31/P3-call-1.claim/owner.json`);
 assert.equal(owner.request, 'openrouter-g31-p3-revision-1');
 assert.equal(owner.slot, 1);
-const files = [];
+const files = [...lineage.files.map(item => item.path)];
 function walk(item) {
   const stat = fs.statSync(item);
   if (stat.isDirectory()) for (const child of fs.readdirSync(item))
@@ -48,7 +49,7 @@ function walk(item) {
 }
 walk(dir);
 walk(`${root}/evidence/G31/P3-call-1.claim`);
-for (const file of files) {
+for (const file of new Set(files)) {
   const content = fs.readFileSync(file).toString('latin1');
   assert(!/sk-or-v1-[A-Za-z0-9._-]+/.test(content), file);
   assert(!/Bearer\s+[A-Za-z0-9._-]{12,}/.test(content), file);

@@ -1,0 +1,21 @@
+{
+  "status": "FAIL-EVIDENCE",
+  "phase": "offline-severed-mapping-control",
+  "failure_kind": "normal-prolog-failure-not-totalized",
+  "source_attempt": "p3-351",
+  "model_calls_this_attempt": 0,
+  "captured_candidate_sha256": "cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3",
+  "captured_identity_verified": true,
+  "candidate_syntax_passed": true,
+  "canonical_mock_passed": true,
+  "canonical_native_standing": "g31-p3-candidate-qualified",
+  "observed": "The severed candidate caused g31_p3_mock_trial_checked/3 to fail normally at the missing pending_post_id relation. catch/3 handles exceptions but not normal failure, so the membrane emitted no typed negative observation and PeTTa had no consequence to compare.",
+  "local_mattermost_requests": 0,
+  "openrouter_credential_lookups": 0,
+  "mattermost_credential_lookups": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "activated": false,
+  "promoted": false,
+  "recovery": "Totalize the mock membrane so both exceptions and normal contract failure return g31-p3-mock-failure, then repeat the offline captured-byte resume without any model or credential access."
+}
