@@ -1,0 +1,46 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G29",
+  "plan": "docs/gates/G29/R9/plan.json",
+  "plan_commit": "d75dc3431b1ac45e942f509b7bf748506c7a6275",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G29/R9/outcome.md","sha256":"f3bd405e76abd63a3b7b1e583f45e85fac129da55151ced4c696ec01e6feca4e"},
+    {"path":"evidence/G29/attempt-901/run-verdict.json","sha256":"7b3dac37890c379cad4394b989a08928fdc97adf9d25a48c5bcc51c22f2e9b46"},
+    {"path":"evidence/G29/attempt-901/quality-verdict.json","sha256":"ce02257ba27d5b86d2de8c70324fd94823e4ea361e089c433b1890d367168d37"},
+    {"path":"evidence/G29/attempt-901/verification.json","sha256":"f1b6f8ee5410b936669dbc6289b7e3292f8045579066e3ece31e75ae97e085a1"},
+    {"path":"evidence/G29/attempt-901/manifest.json","sha256":"82746886948223168d3effcfd05d13e9b128fb7704cfad514172d2251e22298f"},
+    {"path":"evidence/G29/attempt-901/candidate/extension/mattermost_bridge.pl","sha256":"dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34"},
+    {"path":"evidence/G29/attempt-901/candidate/candidate_tests/mattermost_contract_tests.pl","sha256":"ad2a4215a1b0abd506e8fabd7b85e439d006535f55e9345b9bd9459bef906d2d"},
+    {"path":"evidence/G29/attempt-901/openrouter-bridge-r9-1-observation.json","sha256":"7d8413c7d95371e57e1fc9cd608962a3764a6bb5d7f12ab0d3df55ed631c14b6"},
+    {"path":"evidence/G29/attempt-901/openrouter-tests-r9-2-observation.json","sha256":"f08b0c64551393c9eaab9949d07c9c1c3d35bd09d202a21a2957713d1a7748e5"},
+    {"path":"evidence/G29/attempt-901/post-verifier-provenance.json","sha256":"7a9609df9cb680ff5042f7d7dbe0c4455462f0478e0837baeef4be0d95812468"}
+  ],
+  "claim_results": [
+    {
+      "id": "G29-R9-exact-bridge-product",
+      "status": "PROVEN-RUNTIME",
+      "limit": "One exact GLM 5.3 bridge source envelope was admitted under the R9 8,192-token/300-second/2-MiB grant. This proves the bounded returned artifact and its provenance, not live Mattermost behavior or general remote-model reliability."
+    },
+    {
+      "id": "G29-R9-dependency-gated-tests-product",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The tests claim and request occurred only after exact bridge readiness and contained the exact new bridge bytes. Native controls held the tests effect for a truncated bridge. This finite dependency does not prove arbitrary workflow orchestration."
+    },
+    {
+      "id": "G29-R9-qualified-authored-candidate",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The two exact model products assembled unchanged into quarantined mattermost-r9, passed syntax, model-authored PLUnit, independent process execution, forbidden-core and causal controls. Qualification is design/authorship evidence only; external failure recovery, restart persistence, activation and promotion remain unproven."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004-C-007, C-060-C-067, C-090-C-104 and S-501-S-504/S-901-S-905/S-1003-S-1005 require native determination, bounded model rendering, mechanical membranes, distinct candidate/trial/promotion states and raw evidence. R9 retained both controls and implemented the returned R8 sequencing consequence without treating model output as authority.",
+    "causal_evidence": "Removing or making the remote resource ambiguous leaves selection unresolved. An exact bridge authorizes the tests continuation while a length-truncated bridge holds it. Direct-core access, syntax failure and trial failure each change qualification to unqualified. The two exact products alone produce the quarantined candidate; independent SWI-Prolog execution confirms the recorded trial result.",
+    "substitution_audit": "GLM rendered only source within a native-selected, explicit contract; it did not choose the undertaking, grant, acceptance standard, next call, or promotion. Prolog performed Keychain, HTTPS, file and process mechanics. JavaScript froze and checked artifacts but supplied no candidate implementation. Candidate-owned tests were corroborated by native negative controls and an independent process and remain insufficient for G30.",
+    "capability_and_constraint_audit": "Exactly two R9 OpenRouter calls used exact z-ai/glm-5.3 with ZDR requested, data collection denied, parameter support required and authorization redacted. No diagnostic, fallback model identity, local-model load, Docker mutation, Mattermost network, credential disclosure, core access, activation or promotion occurred. The central human-editable model registry stores only a Keychain reference.",
+    "remaining_gaps": "G30 must independently prove or falsify authorization-before-cognition, canonical event/deduplication behavior, witnessed send failure, same-key safe recovery, persistent restart cursor and severed identity/idempotency dependence. G31 alone may receive an exact human live grant. Complete Soul cognition, sustained developmental re-expression and general self-extension remain open."
+  },
+  "reviewer": "Codex builder using native causal controls, exact byte/hash provenance, isolated SWI-Prolog execution, privacy/secret scans and a separately recorded post-verifier correction; no candidate self-certification was accepted.",
+  "review_limits": "This closure certifies only the finite G29 R9 authorship and quarantine experiment. Provider identity is recorded as returned observation, ZDR was requested rather than independently audited, and neither external behavior nor production suitability is inferred.",
+  "next_plan": "docs/gates/G30/plan.json"
+}

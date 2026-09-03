@@ -1,0 +1,7 @@
+true
+(result canonical (remote-model-resource-selected openrouter-glm53 "z-ai/glm-5.3" (openrouter-glm53)))
+(result reordered (remote-model-resource-selected openrouter-glm53 "z-ai/glm-5.3" (openrouter-glm53)))
+(result removed (remote-model-resource-unresolved ()))
+(result ambiguous (remote-model-resource-unresolved (peer openrouter-glm53)))
+(result ready tests-authorized)
+(result truncated tests-held)

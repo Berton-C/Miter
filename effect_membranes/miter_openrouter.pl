@@ -26,7 +26,7 @@ or_profile(Profile) :- or_profile_path(Path),sd_json(Path,Registry),is_dict(Regi
  or_exact_endpoint(Profile.endpoint),or_exact_model(Profile.model),Profile.reasoning_effort=="high",
  is_dict(Profile.provider),Profile.provider.zdr==true,Profile.provider.data_collection=="deny",
  Profile.provider.require_parameters==true,Profile.provider.allow_fallbacks==true,
- is_dict(Profile.limits),Profile.limits.max_output_tokens==4096,Profile.limits.deadline_seconds==300,Profile.limits.capture_bytes==2097152,
+ is_dict(Profile.limits),Profile.limits.max_output_tokens==8192,Profile.limits.deadline_seconds==300,Profile.limits.capture_bytes==2097152,
  is_dict(Profile.credential_reference),Profile.credential_reference.source=="macos-keychain",
  Profile.credential_reference.account=="bcb",Profile.credential_reference.service=="ai.bgi.miter.openrouter".
 
@@ -39,13 +39,13 @@ or_registry_secret_free(_).
 or_message(Role,Content,_{role:RoleString,content:Content}) :- memberchk(Role,[system,user]),atom_string(Role,RoleString),
  string(Content),string_length(Content,N),N>0,N=<524288.
 or_body(Profile,System,User,Tokens,Body) :- or_message(system,System,S),or_message(user,User,U),
- integer(Tokens),Tokens>=1,Tokens=<4096,
+ integer(Tokens),Tokens>=1,Tokens=<8192,
  Body=_{model:Profile.model,messages:[S,U],temperature:0,top_p:1,max_tokens:Tokens,
   reasoning_effort:Profile.reasoning_effort,stream:false,provider:Profile.provider},or_body_valid(Body).
 or_body_valid(Body) :- is_dict(Body),dict_pairs(Body,_,Pairs),pairs_keys(Pairs,Keys),
  Keys==[max_tokens,messages,model,provider,reasoning_effort,stream,temperature,top_p],
  or_exact_model(Body.model),Body.temperature=:=0,Body.top_p=:=1,integer(Body.max_tokens),
- Body.max_tokens>=1,Body.max_tokens=<4096,Body.reasoning_effort=="high",Body.stream==false,
+ Body.max_tokens>=1,Body.max_tokens=<8192,Body.reasoning_effort=="high",Body.stream==false,
  Body.messages=[S,U],is_dict(S),is_dict(U),S.role=="system",U.role=="user",
  string(S.content),string(U.content),\+get_dict(response_format,Body,_),
  is_dict(Body.provider),Body.provider.zdr==true,Body.provider.data_collection=="deny",
@@ -71,12 +71,19 @@ or_r8_spend(R,tests,Id) :- or_r8_spend_slot(R,tests,Id,3).
 or_r8_spend_slot(R,Kind,Id,Slot) :- format(atom(P),'/Users/claritymiter/miter/evidence/G29/R8-call-~d.claim',[Slot]),
  \+exists_directory(P),make_directory(P),directory_file_path(P,'owner.json',Owner),
  sd_durable_json(Owner,_{root:R,request:Id,kind:Kind,slot:Slot,grant:"G29-R8",model:"z-ai/glm-5.3"}).
+or_r9_spend(R,bridge,Id) :- or_r9_spend_slot(R,bridge,Id,1).
+or_r9_spend(R,tests,Id) :- or_r9_spend_slot(R,tests,Id,2).
+or_r9_spend_slot(R,Kind,Id,Slot) :- format(atom(P),'/Users/claritymiter/miter/evidence/G29/R9-call-~d.claim',[Slot]),
+ \+exists_directory(P),make_directory(P),directory_file_path(P,'owner.json',Owner),
+ sd_durable_json(Owner,_{root:R,request:Id,kind:Kind,slot:Slot,grant:"G29-R9",model:"z-ai/glm-5.3"}).
 or_spend(R,diagnostic,'openrouter-probe-r7-1') :- or_r7_spend(R,diagnostic,'openrouter-probe-r7-1').
 or_spend(R,bridge,'openrouter-bridge-r7-2') :- or_r7_spend(R,bridge,'openrouter-bridge-r7-2').
 or_spend(R,tests,'openrouter-tests-r7-3') :- or_r7_spend(R,tests,'openrouter-tests-r7-3').
 or_spend(R,diagnostic,'openrouter-probe-r8-1') :- or_r8_spend(R,diagnostic,'openrouter-probe-r8-1').
 or_spend(R,bridge,'openrouter-bridge-r8-2') :- or_r8_spend(R,bridge,'openrouter-bridge-r8-2').
 or_spend(R,tests,'openrouter-tests-r8-3') :- or_r8_spend(R,tests,'openrouter-tests-r8-3').
+or_spend(R,bridge,'openrouter-bridge-r9-1') :- or_r9_spend(R,bridge,'openrouter-bridge-r9-1').
+or_spend(R,tests,'openrouter-tests-r9-2') :- or_r9_spend(R,tests,'openrouter-tests-r9-2').
 
 or_named(R,Id,Suffix,Path) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^[a-zA-Z0-9_-]+$',A),
  format(atom(File),'~w-~w.json',[A,Suffix]),sd_path(R,File,Path).
@@ -144,6 +151,8 @@ or_source_grant('openrouter-bridge-r7-2',bridge,2048,300).
 or_source_grant('openrouter-tests-r7-3',tests,2048,300).
 or_source_grant('openrouter-bridge-r8-2',bridge,4096,300).
 or_source_grant('openrouter-tests-r8-3',tests,4096,300).
+or_source_grant('openrouter-bridge-r9-1',bridge,8192,300).
+or_source_grant('openrouter-tests-r9-2',tests,4096,300).
 
 or_offline_audit(['openrouter-membrane-audit',true,true,true,true,true,true,true,true]) :- or_profile(P),
  or_body(P,"system","user",64,Good),or_body_valid(Good),
@@ -151,18 +160,18 @@ or_offline_audit(['openrouter-membrane-audit',true,true,true,true,true,true,true
  put_dict(model,P,"z-ai/glm-5.3:free",BadModel),\+or_profile_contract(BadModel),
  put_dict(response_format,Good,_{type:"json_object"},BadFormat),\+or_body_valid(BadFormat),
  put_dict(authorization,Good,"supplied",BadCredential),\+or_body_valid(BadCredential),
- put_dict(max_tokens,Good,4097,BadTokens),\+or_body_valid(BadTokens),or_missing_keychain_rejected,
+ put_dict(max_tokens,Good,8193,BadTokens),\+or_body_valid(BadTokens),or_missing_keychain_rejected,
  with_output_to(string(Rendered),json_write_dict(current_output,_{body:Good,authorization:"keychain-redacted"},[width(0)])),\+sub_string(Rendered,_,_,_,"sk-or-v1-").
 or_profile_contract(P) :- is_dict(P),or_exact_endpoint(P.endpoint),or_exact_model(P.model).
 
 % The secret is compared in memory and only a boolean leaves this audit.
 % The candidate identifier and evidence root remain under exact bounded roots.
 or_secret_absent(R,CandidateId,Result) :- catch((or_secret_absent_checked(R,CandidateId)->Result=true;Result=false),_,Result=false),!.
-or_secret_absent_checked(R,CandidateId) :- sd_root(R,_),miter_store_nonempty_atom(CandidateId,Id),memberchk(Id,['mattermost-r7','mattermost-r8']),
+or_secret_absent_checked(R,CandidateId) :- sd_root(R,_),miter_store_nonempty_atom(CandidateId,Id),memberchk(Id,['mattermost-r7','mattermost-r8','mattermost-r9']),
  or_profile(P),or_keychain(P,Key),or_tree_secret_absent(R,Key),
  atom_concat('/Users/claritymiter/miter/runtime/g29/candidates/',Id,Candidate),
  (exists_directory(Candidate)->or_tree_secret_absent(Candidate,Key);true),
- (Id=='mattermost-r7'->Round='R7';Round='R8'),
+ (Id=='mattermost-r7'->Round='R7';Id=='mattermost-r8'->Round='R8';Round='R9'),
  forall(between(1,3,Slot),(format(atom(Claim),'/Users/claritymiter/miter/evidence/G29/~w-call-~d.claim',[Round,Slot]),
   (exists_directory(Claim)->or_tree_secret_absent(Claim,Key);true))).
 or_tree_secret_absent(Root,Key) :- forall(directory_member(Root,Path,[recursive(true),follow_links(false),file_type(regular)]),
