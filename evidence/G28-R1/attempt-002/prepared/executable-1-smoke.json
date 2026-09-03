@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"executable-1","grant_id":"g28-grant-001","idempotency_key":"executable-1-smoke","operation":"run_declared_test","request_id":"executable-1-smoke","schema":"miter-workshop-request-v1","test_id":"candidate-smoke"},"request_hash":"36d1304347384021355807ac58e23c8b7f55e8077cc13901b0d42990d6f3713d"}

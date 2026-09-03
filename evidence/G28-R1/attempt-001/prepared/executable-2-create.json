@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"executable-2","grant_id":"g28-grant-001","idempotency_key":"executable-2-create","operation":"create_candidate_worktree","request_id":"executable-2-create","schema":"miter-workshop-request-v1"},"request_hash":"937c0413f75ee5bd34c658f25c87084b86e3cdf5b1cc492f97b2732c46a944d5"}

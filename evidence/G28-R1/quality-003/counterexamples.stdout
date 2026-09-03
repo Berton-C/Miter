@@ -1,0 +1,7 @@
+true
+(result absent ())
+(result mismatch ((edge discrepancy specific)))
+(result failed-process ((edge discrepancy specific)))
+(result passed-process ())
+(result output-truncated false)
+(result direct-counterexample true)

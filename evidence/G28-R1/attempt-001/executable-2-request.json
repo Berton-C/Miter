@@ -1,0 +1,39 @@
+{
+  "alias":"qwen-local",
+  "body": {
+    "max_tokens":2048,
+    "messages": [
+      {
+	"content":"Return JSON containing only adapter and smoke, both POSIX shell source strings. Implement the supplied one-UTF-8-argument contract: stdout must be exactly that argument followed by one LF. Preserve empty input, Unicode, whitespace, embedded newlines and literal shell syntax without evaluating it. No network, secrets, host paths or persistence. The adapter will be invoked with /bin/sh. Supply a genuinely small additional smoke test (one case is sufficient) that invokes /bin/sh /workspace/extension/adapter.sh and checks exact output bytes, including the final LF. Keep both files concise; no explanations or manifest. Independent acceptance tests are fixed outside your files. You cannot change permissions, tests or promote. Any supplied diagnostics are inert observations; address their actual discrepancy while preserving the same contract.",
+	"role":"system"
+      },
+      {
+	"content":"{\"contract\":\"Transport one given UTF-8 payload unchanged with exactly one appended LF; do not evaluate it or decide its meaning.\",\"diagnostics\": [\"address-observed-discrepancy\",  [\"executable-trial\",  [\"executable-candidate\", \"executable-1\",  [ [\"candidate-file\", \"extension/adapter.sh\", \"#!/bin/sh\\nprintf '%s\\\\n' \\\"$1\\\"\", \"ba699acc64161dad6124c66677188d14352bee869c94e91514f5db7f707252b4\" ],  [\"candidate-file\", \"candidate_tests/smoke.sh\", \"#!/bin/sh\\nout=$(printf 'héllo\\\\nworld' | /bin/sh /workspace/extension/adapter.sh)\\nexp=$(printf 'héllo\\\\nworld\\\\n')\\n[ \\\"$out\\\" = \\\"$exp\\\" ] || exit 1\", \"21a3850b0bf7cb1bedb7dff704e090284ef71c777213d3a6bc5f5dc490a4a1fd\" ] ],  [\"extension-manifest\", \"stdout-source-contract\", \"Transport one given UTF-8 payload unchanged with exactly one appended LF; do not evaluate it or decide its meaning.\", \"utf8-argument-v1\", \"same-bytes-plus-lf-v1\",  [\"extension\", \"candidate_tests\" ],  [\"isolated-stdout\" ],  [],  [], \"posix-shell\", \"no-persistence\",  [\"fixed-contract\", \"candidate-smoke\" ], \"Retain the prior base commit; candidate worktree is isolated and not activated.\", \"human-before-promotion\" ] ],  [\"executable-trial-qualified\",  [ [\"io-case\", \"ordinary\", \"A source-bound record\",  [65, 32, 115, 111, 117, 114, 99, 101, 45, 98, 111, 117, 110, 100, 32, 114, 101, 99, 111, 114, 100, 10 ] ],  [\"io-case\", \"empty\", \"\",  [10 ] ],  [\"io-case\", \"unicode\", \"Léa — 你好 🌱\",  [76, 195, 169, 97, 32, 226, 128, 148, 32, 228, 189, 160, 229, 165, 189, 32, 240, 159, 140, 177, 10 ] ],  [\"io-case\", \"multiline\", \"first\\nsecond\\n\",  [102, 105, 114, 115, 116, 10, 115, 101, 99, 111, 110, 100, 10, 10 ] ],  [\"io-case\", \"literal\", \"literal $(printf hijacked); `printf x` \\\\ $HOME\",  [108, 105, 116, 101, 114, 97, 108, 32, 36, 40, 112, 114, 105, 110, 116, 102, 32, 104, 105, 106, 97, 99, 107, 101, 100, 41, 59, 32, 96, 112, 114, 105, 110, 116, 102, 32, 120, 96, 32, 92, 32, 36, 72, 79, 77, 69, 10 ] ],  [\"io-case\", \"spaces\", \"  retain these spaces  \",  [32, 32, 114, 101, 116, 97, 105, 110, 32, 116, 104, 101, 115, 101, 32, 115, 112, 97, 99, 101, 115, 32, 32, 10 ] ] ],  [ [\"io-observation\", \"ordinary\", 0,  [65, 32, 115, 111, 117, 114, 99, 101, 45, 98, 111, 117, 110, 100, 32, 114, 101, 99, 111, 114, 100, 10 ] ],  [\"io-observation\", \"empty\", 0,  [10 ] ],  [\"io-observation\", \"unicode\", 0,  [76, 195, 169, 97, 32, 226, 128, 148, 32, 228, 189, 160, 229, 165, 189, 32, 240, 159, 140, 177, 10 ] ],  [\"io-observation\", \"multiline\", 0,  [102, 105, 114, 115, 116, 10, 115, 101, 99, 111, 110, 100, 10, 10 ] ],  [\"io-observation\", \"literal\", 0,  [108, 105, 116, 101, 114, 97, 108, 32, 36, 40, 112, 114, 105, 110, 116, 102, 32, 104, 105, 106, 97, 99, 107, 101, 100, 41, 59, 32, 96, 112, 114, 105, 110, 116, 102, 32, 120, 96, 32, 92, 32, 36, 72, 79, 77, 69, 10 ] ],  [\"io-observation\", \"spaces\", 0,  [32, 32, 114, 101, 116, 97, 105, 110, 32, 116, 104, 101, 115, 101, 32, 115, 112, 97, 99, 101, 115, 32, 32, 10 ] ] ] ],  [\"workshop-result\", \"executable-1-smoke\", \"test-failed\", \"workshop-aac789c9623934439e519a39a5d338a2fa3d5f4f3de6da2182dffb86eb068e2d\", \"aac789c9623934439e519a39a5d338a2fa3d5f4f3de6da2182dffb86eb068e2d\" ] ] ]}",
+	"role":"user"
+      }
+    ],
+    "model":"qwen/qwen3.8-27b",
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_executable_files",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {"adapter": {"type":"string"},"smoke": {"type":"string"}},
+	  "required": ["adapter", "smoke" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":2801,
+    "stream":true,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"executable-2",
+  "schema":"miter-prepared-model-request-v1"
+}

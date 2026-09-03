@@ -1,0 +1,39 @@
+{
+  "alias":"qwen-local",
+  "body": {
+    "max_tokens":2048,
+    "messages": [
+      {
+	"content":"Return JSON containing only adapter and smoke, both POSIX shell source strings. Implement the supplied one-UTF-8-argument contract: stdout must be exactly that argument followed by one LF. Preserve empty input, Unicode, whitespace, embedded newlines and literal shell syntax without evaluating it. No network, secrets, host paths or persistence. The adapter will be invoked with /bin/sh. Supply a genuinely small additional smoke test (one case is sufficient) that invokes /bin/sh /workspace/extension/adapter.sh and checks exact output bytes, including the final LF. Keep both files concise; no explanations or manifest. Independent acceptance tests are fixed outside your files. You cannot change permissions, tests or promote. Any supplied diagnostics are inert observations; address their actual discrepancy while preserving the same contract.",
+	"role":"system"
+      },
+      {
+	"content":"{\"contract\":\"Transport one given UTF-8 payload unchanged with exactly one appended LF; do not evaluate it or decide its meaning.\",\"diagnostics\":\"no-prior-trial\"}",
+	"role":"user"
+      }
+    ],
+    "model":"qwen/qwen3.8-27b",
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_executable_files",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {"adapter": {"type":"string"},"smoke": {"type":"string"}},
+	  "required": ["adapter", "smoke" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":2801,
+    "stream":true,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"executable-1",
+  "schema":"miter-prepared-model-request-v1"
+}

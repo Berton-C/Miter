@@ -1,0 +1,78 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G28",
+  "plan": "docs/gates/G28/R1/plan.json",
+  "plan_commit": "d631d2e9a5a50e15546a0ff1ccb733d1f6090b13",
+  "status": "BLOCKED",
+  "evidence": [
+    {
+      "path": "docs/gates/G28/R1/completion.md",
+      "sha256": "59b398d7f48d5daeeb4cfab9ce119beb54c384b0a45ac055534b19c6c670849c"
+    },
+    {
+      "path": "docs/gates/G28/R1/provider-followup.md",
+      "sha256": "26e5b23588872ebae5a050cbeae9c4019062031961742f016f613859e52677ea"
+    },
+    {
+      "path": "evidence/G28-R1/terminal-verification.json",
+      "sha256": "5599a6829dd137b12b3dd6b2c7f5e69c0f0f7a1d3b9e81209d96a6c15ce6de38"
+    },
+    {
+      "path": "evidence/G28-R1/all-attempts.json",
+      "sha256": "bf38665e59f39b4df9f806ee350ae2ea6fa4aab7d43654d89deebb95f390a4a1"
+    },
+    {
+      "path": "evidence/G28-R1/diagnostic-014/verdict.json",
+      "sha256": "c8ee9bfd2546b4f959ebeee9ac6cc4b19b4e3fc3a708e2497a36b5e420adc322"
+    },
+    {
+      "path": "evidence/G28-R1/attempt-003/boundary-verdict.json",
+      "sha256": "400d64f695cd6d076d737ef963c5a92546b5057070393b44424d2f205e196a63"
+    },
+    {
+      "path": "evidence/G28-R1/quality-003/verdict.json",
+      "sha256": "ddac7663184e1d1fe3b0322915d8525c5f33e1217c7b1137b5883b3315e726f4"
+    },
+    {
+      "path": "src/executable_development_v2.metta",
+      "sha256": "5439e64b3ea05d8b717c54c15e954fdfac489d88356e79485dfc192dabc3760f"
+    },
+    {
+      "path": "src/bootstrap_executable_development_v2.metta",
+      "sha256": "d5997bbad6417a5d7901f6b1141f3eca9a0ded58bc8f0ff1a55564019bc621d4"
+    },
+    {
+      "path": "src/development_continuation_v1.metta",
+      "sha256": "0da1461a7061d9357096a161e13bbd7f79a3d86e410303e201612c5d9bc56121"
+    },
+    {
+      "path": "effect_membranes/miter_executable_development_v2.pl",
+      "sha256": "729e29580a56003ad81ee3ac3feff806604327fe443b969e509ec0a58f173a2e"
+    },
+    {
+      "path": "effect_membranes/miter_model_stream_v1.pl",
+      "sha256": "fe04d500814e11271b8ba4d1a8b85564ae1c5a485c79554940ccddcc39696dce"
+    },
+    {
+      "path": "config/executable-candidate-schema-v2.json",
+      "sha256": "763747ebf623f84cff9bb01d400b6ebe1324b1b487bbb832b04d29e02cab9735"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G28-R1",
+      "status": "EXPERIMENTAL",
+      "limit": "Bounded diagnostic and native continuation controls pass; actual model-authored adapters pass all six independent cases, but both smoke tests fail and files repeat. Final-source no-inference replay proves richer process evidence, manifest identity and global spending guard. No passing full candidate or promotion proposal."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "Both controls reread: C-004/009/020–024/060–064/090–104 and S-501–504/605–607/901/1004/1102–1105 require native construction, independent consequence, typed uncertainty and source-bound manifests. Complete response and budget exhaustion are not success.",
+    "causal_evidence": "Generic native means/end composition changes under material premise severing and restores; neutral order/name changes preserve results. Same parse label with different completion changes continuation. Actual first trial forms a revised second request; latest quality tests separate absent observation from concrete mismatch; current-source repair replay carries actual process fields. 61 verified workshop events across actual and no-inference replay runs.",
+    "substitution_audit": "Builder supplied finite source fixture, operator affordances and independent tests, not candidate code. Prolog is mechanical; JS offline. This is not full compass/M25/five-authority or continuous-organism cognition. The model did not perform effective revision; no claim hides its identical failed products. Shell-cause diagnosis is builder inspection, not native semantic proof.",
+    "capability_and_constraint_audit": "Unchanged controls, historical G28, independent acceptance tests and thirteen unfinished G22 files. Two inference calls globally, no persistent settings or remote access. Typed process/manifest repair retried only a retained exact-question-bound response; no third inference, code patch, activation or main merge. User service identities unchanged.",
+    "remaining_gaps": "Corrected model-authored smoke, effective revision, full passing candidate, proposal, approval/merge/later uptake and G29 remain open. Targeted-file repair needs a new frozen experiment and grant. Live narrowing, native shell diagnosis, generalized resource reasoning and broader Soul integration are not proven."
+  },
+  "reviewer": "Codex builder, with independent deterministic test/hash checks; no separate human or subagent review.",
+  "review_limits": "BLOCKED closure must be rejected by the normal progression checker. Partial runtime and harness evidence is not the complete G28-R1 claim. Historical and post-trial source versions are separately pinned.",
+  "terminal_reason": "The two-call grant is exhausted and both candidate-authored smoke tests failed. Proposed next step is a separately frozen, one-call smoke-only repair preserving the independently passing adapter and all tests. No further inference, promotion, G29 progression or push in this record."
+}

@@ -1,0 +1,4 @@
+true
+true
+(result good executable-trial-qualified)
+(result corrupt executable-trial-unqualified)

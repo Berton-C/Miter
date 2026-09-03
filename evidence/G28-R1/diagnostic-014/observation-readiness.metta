@@ -1,0 +1,7 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_executable_development_v2.metta")
+!(import_prolog_functions_from_file "/Users/claritymiter/miter/scripts/g28_r1/observations.pl" (dg_observation dg_incomplete))
+!(result good (YReady (dg_observation "/Users/claritymiter/miter/evidence/G28-R1/diagnostic-014/good/observation.json")))
+!(result timeout (YReady (dg_observation "/Users/claritymiter/miter/evidence/G28-R1/diagnostic-014/timeout/observation.json")))
+!(result length (YReady (dg_observation "/Users/claritymiter/miter/evidence/G28-R1/diagnostic-014/length/observation.json")))
+!(result malformed (YReady (dg_observation "/Users/claritymiter/miter/evidence/G28-R1/diagnostic-014/malformed/observation.json")))
+!(result error (YReady (dg_observation "/Users/claritymiter/miter/evidence/G28-R1/diagnostic-014/error/observation.json")))

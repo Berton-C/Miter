@@ -1,0 +1,2 @@
+ERROR: [Thread main] /private/tmp/miter-g06-petta-ae66fa8/src/main.pl:36: user:main Syntax error: missing ')', starting at line 3:
+result timeout (YReady (model-observation diagnostic timeout 200 1011 false unknown malformed-artifact 90 "{\"adapter\":\"# synthe" ())))

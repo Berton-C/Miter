@@ -1,0 +1,4 @@
+* 8087986 Miter-origin bounded executable candidate
+| * 4ed2753 Miter-origin bounded executable candidate
+|/  
+* b6bfb2a Pin G28 missing-adapter baseline

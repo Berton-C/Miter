@@ -1,0 +1,1 @@
+{"native": ["model-observation", "diagnostic", "eof", 200, 12, true, "stop", "malformed-artifact", 247, "{malformed",  [] ],"term": {"list": [ {"atom":"model-observation"},  {"atom":"diagnostic"},  {"atom":"eof"},  {"number":200},  {"number":12},  {"atom":"true"},  {"atom":"stop"},  {"atom":"malformed-artifact"},  {"number":247},  {"string":"{malformed"},  {"list": []} ]}}

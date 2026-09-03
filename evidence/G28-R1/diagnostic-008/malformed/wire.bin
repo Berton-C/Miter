@@ -1,0 +1,7 @@
+data: {"choices":[{"delta":{"content":"{malformed"},"finish_reason":null}]}
+
+data: {"choices":[{"delta":{"content":""},"finish_reason":null}]}
+
+data: {"choices":[{"delta":{},"finish_reason":"stop"}],"usage":{"completion_tokens":19}}
+
+data: [DONE]

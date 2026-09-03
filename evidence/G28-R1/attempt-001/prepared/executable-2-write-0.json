@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"executable-2","contents":"#!/bin/sh\nprintf '%s\\n' \"$1\"","grant_id":"g28-grant-001","idempotency_key":"executable-2-write-0","operation":"write_candidate_file","path":"extension/adapter.sh","request_id":"executable-2-write-0","schema":"miter-workshop-request-v1"},"request_hash":"6c84de9cbdcc0b4bc888c3c4feb64723f333573715c178f9c65c23b1cd6cb157"}

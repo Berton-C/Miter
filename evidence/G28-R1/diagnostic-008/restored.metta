@@ -1,0 +1,8 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_executable_development_v2.metta")
+!(result fresh (let $r (YContinuationCompare ((edge request material) (edge grant usable))) (index-atom $r 1)))
+!(result repeat (let $r (YContinuationCompare ((edge grant usable))) (index-atom $r 1)))
+!(result revision (let $r (YContinuationCompare ((edge discrepancy specific) (edge grant usable))) (index-atom $r 1)))
+!(result narrow (let $r (YContinuationCompare ((edge request verbose) (edge grant usable))) (index-atom $r 1)))
+!(result grant (let $r (YContinuationCompare ((edge request material) (edge grant inadequate))) (index-atom $r 1)))
+!(result trial (let $r (YContinuationCompare ((edge artifact ready))) (index-atom $r 1)))
+!(result competing (let $r (YContinuationCompare ((edge artifact ready) (edge request material) (edge grant usable))) (index-atom $r 1)))

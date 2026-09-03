@@ -1,0 +1,7 @@
+data: {"choices":[{"delta":{"content":"{\"adapter\":\"# syn"},"finish_reason":null}]}
+
+data: {"choices":[{"delta":{"content":"thetic transport probe only\\n\",\"smoke\":\"#  preserve  spaces and Unicode 🌱\\n\"}"},"finish_reason":null}]}
+
+data: {"choices":[{"delta":{},"finish_reason":"stop"}],"usage":{"completion_tokens":19}}
+
+data: [DONE]

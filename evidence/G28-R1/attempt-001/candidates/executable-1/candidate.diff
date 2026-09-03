@@ -1,0 +1,20 @@
+diff --git a/candidate_tests/smoke.sh b/candidate_tests/smoke.sh
+new file mode 100644
+index 0000000..7b39864
+--- /dev/null
++++ b/candidate_tests/smoke.sh
+@@ -0,0 +1,4 @@
++#!/bin/sh
++out=$(printf 'héllo\nworld' | /bin/sh /workspace/extension/adapter.sh)
++exp=$(printf 'héllo\nworld\n')
++[ "$out" = "$exp" ] || exit 1
+\ No newline at end of file
+diff --git a/extension/adapter.sh b/extension/adapter.sh
+new file mode 100644
+index 0000000..a8c71b7
+--- /dev/null
++++ b/extension/adapter.sh
+@@ -0,0 +1,2 @@
++#!/bin/sh
++printf '%s\n' "$1"
+\ No newline at end of file

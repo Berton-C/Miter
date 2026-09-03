@@ -1,0 +1,1 @@
+{"message":"observation-readiness","stack":"AssertionError [ERR_ASSERTION]: observation-readiness\n    at native (file:///Users/claritymiter/miter/scripts/g22_v2/common.mjs:14:9)\n    at file:///Users/claritymiter/miter/scripts/g28_r1/diagnostics.mjs:37:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}

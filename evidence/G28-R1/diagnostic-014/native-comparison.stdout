@@ -1,0 +1,10 @@
+true
+true
+true
+(result fresh generate)
+(result repeat ())
+(result revision incorporate)
+(result narrow narrow)
+(result grant request-resources)
+(result trial inspect-trial)
+(result competing (generate inspect-trial))

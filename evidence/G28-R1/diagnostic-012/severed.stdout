@@ -1,0 +1,10 @@
+true
+true
+true
+(result fresh request-resources)
+(result repeat request-resources)
+(result revision request-resources)
+(result narrow request-resources)
+(result grant request-resources)
+(result trial request-resources)
+(result competing request-resources)

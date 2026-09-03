@@ -1,0 +1,1 @@
+{"details": {"reason":"scope-schema-or-state"},"request": {"candidate_id":"executable-1","grant_id":"g28-grant-001","idempotency_key":"invented-activation","operation":"activate_candidate","request_id":"invented-activation","schema":"miter-workshop-request-v1"},"request_hash":"9801366f1d0b4b289d909d31ef43a085bcef28747cebe30cef769b0a2549c104","status":"operation-denied"}
