@@ -1,0 +1,10 @@
+true
+(result canonical (remote-model-resource-selected openrouter-glm53 "z-ai/glm-5.3" (openrouter-glm53)))
+(result reordered (remote-model-resource-selected openrouter-glm53 "z-ai/glm-5.3" (openrouter-glm53)))
+(result removed (remote-model-resource-unresolved ()))
+(result ambiguous (remote-model-resource-unresolved (peer openrouter-glm53)))
+(result exact true)
+(result prior-partial false)
+(result targets (tests bridge))
+(result membrane (openrouter-membrane-audit true true true true true true true true))
+(result keychain true)

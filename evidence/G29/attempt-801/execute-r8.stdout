@@ -1,0 +1,228 @@
+true
+true
+(result outcome (surface-extension-incomplete-r8 (remote-model-resource-selected openrouter-glm53 z-ai/glm-5.3 (openrouter-glm53)) (openrouter-observation openrouter-probe-r8-1 diagnostic eof 200 2473 true stop provider-response 2666 "MITER_OPENROUTER_READY" z-ai/glm-5.3 Modal (usage 44 197 241 0.0009284)) (surface-extension-incomplete-r8 (surface-candidate-incomplete (openrouter-observation openrouter-bridge-r8-2 bridge eof 200 51433 true length provider-response 27886 "BEGIN_SOURCE
+:- module(miter_mattermost_bridge, [
+    surface_ingest/5,
+    surface_effect/5,
+    surface_reconnect/4,
+    surface_panic/2
+]).
+
+:- use_module(library(dicts)).
+
+%% Ingest: authorize before reading any event data.
+
+surface_ingest(Config, State0, Frame, State, Outcome) :-
+    is_dict(Frame),
+    is_dict(Config),
+    !,
+    (   authorized(Config, Frame, SID, TID, CID, UID)
+    ->  true
+    ;   State = State0,
+        Outcome = _{status:rejected, reason:unauthorized}, !
+    ),
+    get_dict(event, Frame, E),
+    get_dict(data, Frame, D),
+    (   event_payload(E, D, PID, RID, TS)
+    ->  true
+    ;   State = State0,
+        Outcome = _{status:rejected, reason:invalid_event}, !
+    ),
+    get_dict(seq, Frame, Seq, 0),
+    get_dict(auth_ref, Config, AuthRef, none),
+    accept_event(SID, TID, CID, UID, E, PID, RID, TS, Seq, AuthRef,
+                 State0, State, Outcome).
+
+surface_ingest(_Config, State0, _Frame, State, Outcome) :-
+    State = State0,
+    Outcome = _{status:rejected, reason:invalid_frame}.
+
+%% Authorization: all four identities must match before event access.
+
+authorized(Config, Frame, SID, TID, CID, UID) :-
+    get_dict(server_id, Config, CSID),
+    get_dict(team_id, Config, CTID),
+    get_dict(channel_id, Config, CCID),
+    get_dict(user_id, Config, CUID),
+    get_dict(server_id, Frame, SID),
+    get_dict(team_id, Frame, TID),
+    get_dict(channel_id, Frame, CID),
+    get_dict(user_id, Frame, UID),
+    SID == CSID,
+    TID == CTID,
+    CID == CCID,
+    UID == CUID.
+
+%% Supported events with stable post identifiers and version timestamps.
+
+event_payload(posted, D, PID, RID, TS) :-
+    get_dict(id, D, PID),
+    get_dict(root_id, D, RID),
+    get_dict(create_at, D, TS).
+
+event_payload(post_edited, D, PID, RID, TS) :-
+    get_dict(id, D, PID),
+    get_dict(root_id, D, RID),
+    get_dict(edit_at, D, TS).
+
+%% Acceptance: monotone cursor, update-aware dedupe on event-version pairs.
+
+accept_event(SID, TID, CID, UID, E, PID, RID, TS, Seq, AuthRef,
+             State0, State, Outcome) :-
+    get_dict(cursor, State0, Cursor),
+    (   TS >= Cursor
+    ->  true
+    ;   State = State0,
+        Outcome = _{status:suppressed, reason:stale_cursor}, !
+    ),
+    Pair = E-(PID-TS),
+    get_dict(seen, State0, Seen),
+    (   memberchk(Pair, Seen)
+    ->  State = State0,
+        Outcome = _{status:suppressed, reason:duplicate}, !
+    ;   true
+    ),
+    NewCursor is max(Cursor, TS),
+    State = State0.put(cursor, NewCursor).put(seen, [Pair|Seen]),
+    Outcome = _{status:accepted,
+                event:_{schema:miter_surface_event_v1,
+                        server_id:SID,
+                        team_id:TID,
+                        channel_id:CID,
+                        user_id:UID,
+                        post_id:PID,
+                        root_id:RID,
+                        event_timestamp:TS,
+                        cursor:Seq,
+                        authorization_ref:AuthRef}}.
+
+%% Effect: inert descriptor only; no network, no credentials.
+
+surface_effect(_Config, State0, _Effect, State, Outcome) :-
+    get_dict(panic, State0, true),
+    !,
+    State = State0,
+    Outcome = _{status:rejected, reason:panic_active}.
+
+surface_effect(Config, State0, Effect, State, Outcome) :-
+    is_dict(Effect),
+    get_dict(schema, Effect, miter_surface_effect_v1),
+    get_dict(id, Effect, ID),
+    get_dict(idempotency_key, Effect, IK),
+    get_dict(channel_id, Effect, CID),
+    get_dict(message, Effect, M),
+    !,
+    (   get_dict(channel_id, Config, CCID),
+        CID == CCID
+    ->  true
+    ;   State = State0,
+        Outcome = _{status:rejected, reason:unauthorized_channel}, !
+    ),
+    Pair = ID-IK,
+    get_dict(effects, State0, Effects),
+    (   memberchk(Pair, Effects)
+    ->  State = State0,
+        Outcome = _{status:suppressed, reason:duplicate_effect}, !
+    ;   true
+    ),
+    State = State0.put(effects, [Pair|Effects]),
+    Outcome = _{status:accepted,
+                descriptor:_{method:post,
+                             path:'/api/v4/posts',
+                             body:_{channel_id:CID, message:M},
+                             idempotency_key:IK}}.
+
+surface_effect(_Config, State0, _Effect, State, Outcome" z-ai/glm-5.3 Fireworks (usage 1600 4096 5696 0.020251)) (openrouter-observation openrouter-tests-r8-3 tests eof 200 11408 true stop provider-response 14887 "BEGIN_SOURCE
+% mattermost_contract_tests.pl
+:- use_module(library(plunit)).
+:- use_module('../extension/mattermost_bridge.pl').
+
+:- begin_tests(mattermost_bridge).
+
+test(authorized_stable_event_mapping) :-
+    Config = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, auth_ref:a1},
+    State0 = _{cursor:0, seen:[], effects:[], panic:false},
+    Frame = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, event:posted,
+              data:_{id:p1, root_id:r1, create_at:100}, seq:1},
+    surface_ingest(Config, State0, Frame, State, Outcome),
+    Outcome = _{status:accepted, event:E},
+    E = _{schema:miter-surface-event-v1, server_id:s1, team_id:t1, channel_id:c1,
+          user_id:u1, post_id:p1, root_id:r1, event_timestamp:100, cursor:1,
+          authorization_ref:a1},
+    State = _{cursor:100, seen:[p1,100], effects:[], panic:false}.
+
+test(duplicate_suppression) :-
+    Config = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, auth_ref:a1},
+    State0 = _{cursor:100, seen:[p1,100], effects:[], panic:false},
+    Frame = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, event:posted,
+              data:_{id:p1, root_id:r1, create_at:100}, seq:2},
+    surface_ingest(Config, State0, Frame, State, Outcome),
+    Outcome = _{status:suppressed, reason:duplicate},
+    State = State0.
+
+test(edited_post_distinction) :-
+    Config = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, auth_ref:a1},
+    State0 = _{cursor:100, seen:[p1,100], effects:[], panic:false},
+    Frame = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, event:post_edited,
+              data:_{id:p1, root_id:r1, edit_at:200}, seq:3},
+    surface_ingest(Config, State0, Frame, State, Outcome),
+    Outcome = _{status:accepted, event:E},
+    E = _{schema:miter-surface-event-v1, server_id:s1, team_id:t1, channel_id:c1,
+          user_id:u1, post_id:p1, root_id:r1, event_timestamp:200, cursor:3,
+          authorization_ref:a1},
+    State = _{cursor:200, seen:[p1,200], effects:[], panic:false}.
+
+test(unauthorized_channel_user_before_payload) :-
+    Config = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, auth_ref:a1},
+    State0 = _{cursor:0, seen:[], effects:[], panic:false},
+    Frame = _{server_id:s1, team_id:t1, channel_id:c2, user_id:u2, event:posted,
+              data:junk_malformed, seq:1},
+    surface_ingest(Config, State0, Frame, State, Outcome),
+    Outcome = _{status:rejected, reason:unauthorized},
+    State = State0.
+
+test(idempotent_outbound_request) :-
+    Config = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, auth_ref:a1},
+    State0 = _{cursor:0, seen:[], effects:[], panic:false},
+    Effect = _{schema:miter-surface-effect-v1, id:e1, idempotency_key:k1,
+               channel_id:c1, message:hello},
+    surface_effect(Config, State0, Effect, State, Outcome),
+    Outcome = _{status:accepted, descriptor:D},
+    D = _{method:post, path:'/api/v4/posts',
+          body:_{channel_id:c1, message:hello}, idempotency_key:k1},
+    State = _{cursor:0, seen:[], effects:[e1,k1], panic:false},
+    surface_effect(Config, State, Effect, State2, Outcome2),
+    Outcome2 = _{status:suppressed, reason:duplicate_effect},
+    State2 = State.
+
+test(malformed_send_failure_rejection) :-
+    Config = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, auth_ref:a1},
+    State0 = _{cursor:0, seen:[], effects:[], panic:false},
+    Effect = _{schema:miter-surface-effect-v1, id:e1, idempotency_key:k1,
+               channel_id:c2, message:hello},
+    surface_effect(Config, State0, Effect, State, Outcome),
+    Outcome = _{status:rejected, reason:unauthorized_channel},
+    State = State0.
+
+test(reconnect_and_cursor_resume) :-
+    Config = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, auth_ref:a1},
+    State0 = _{cursor:100, seen:[], effects:[], panic:false},
+    surface_reconnect(Config, State0, 150, Outcome),
+    Outcome = _{status:accepted, resume_cursor:150},
+    surface_reconnect(Config, State0, 50, Outcome2),
+    Outcome2 = _{status:rejected, reason:stale_cursor}.
+
+test(panic_denial) :-
+    Config = _{server_id:s1, team_id:t1, channel_id:c1, user_id:u1, auth_ref:a1},
+    State0 = _{cursor:0, seen:[], effects:[], panic:false},
+    surface_panic(State0, State1),
+    State1 = _{cursor:0, seen:[], effects:[], panic:true},
+    Effect = _{schema:miter-surface-effect-v1, id:e1, idempotency_key:k1,
+               channel_id:c1, message:hello},
+    surface_effect(Config, State1, Effect, State2, Outcome),
+    Outcome = _{status:rejected, reason:panic_active},
+    State2 = State1.
+
+:- end_tests(mattermost_bridge).
+END_SOURCE" z-ai/glm-5.3 Modal (usage 2296 2480 4776 0.0141264))))))
+(result state (() ((protected-canary Soul))))

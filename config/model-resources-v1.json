@@ -52,7 +52,7 @@
       "roles": ["semantic-reading", "voice-rendering", "extension-implementation"],
       "reasoning_effort": "high",
       "limits": {
-        "max_output_tokens": 2048,
+        "max_output_tokens": 4096,
         "deadline_seconds": 300,
         "capture_bytes": 2097152
       },
