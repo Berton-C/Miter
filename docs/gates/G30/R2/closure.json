@@ -1,0 +1,65 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G30",
+  "plan": "docs/gates/G30/R2/plan.json",
+  "plan_commit": "5ecacd83850b6a6fe1bd330953b75ac2b5766fd0",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G30/R2/outcome.md","sha256":"ed3daf8697a1f1d73e0b96e41b6f6d89d7cdedcf06529e3b6ebe988d4b865b85"},
+    {"path":"evidence/G30/attempt-201/run-verdict.json","sha256":"e0de0fbc388f65d53277ec2ebed956d6e8ef9c43a7d7d3e8cc66940930317299"},
+    {"path":"evidence/G30/attempt-201/quality-verdict.json","sha256":"c1a7bcc5a43a294ed8e916e1f663320cf081dcd5413f7be3ea35edb00e4dc880"},
+    {"path":"evidence/G30/attempt-201/verification.json","sha256":"128ea2acbc7d53c6f77914a21c5e98ee1c63cb507f457bc89e9a6dd3974f0a85"},
+    {"path":"evidence/G30/attempt-201/manifest.json","sha256":"c427781155cec2cb399a309591b92fb96f0188f1e8d12737797e5deaf7cd6844"},
+    {"path":"evidence/G30/attempt-201/native-result.json","sha256":"4cb7dae3d70ead676159aa4b74a6764808ed2935a87ca5ee705b90247f9b05db"},
+    {"path":"evidence/G30/attempt-201/canonical/summary.json","sha256":"7d9af308dd9d950a8bdc07b8007394135b2294a548d254818bf06925c8edb069"},
+    {"path":"evidence/G30/attempt-201/canonical/request-log.json","sha256":"fa2dba045aedbeacada9a65fbecf40d1d169e9e87c4740c8d36de6271aef8dad"},
+    {"path":"evidence/G30/attempt-201/canonical/failure-witnesses.json","sha256":"233304c2637ff44757d99b2af89ee6f4b11770ed710bff3e40bc18bede9a650c"},
+    {"path":"evidence/G30/attempt-201/canonical/durable-state.json","sha256":"398f02b97cb05a16954dc0997a16f85ede55a21816cbefe7f6978639ab5251be"},
+    {"path":"evidence/G30/attempt-201/canonical/final-state.json","sha256":"f8e3784e3ae155655d27e1499094e497ed63fd93d798d8a22dd47dabcd47cde4"},
+    {"path":"evidence/G30/attempt-201/severance.json","sha256":"1f47444f884cb8fec098eece5858f0c3ad70103607f35546a7031e36529d090a"},
+    {"path":"evidence/G30/attempt-201/severed-identity/summary.json","sha256":"8e4468aae2a92c5f2abaa57a8a695f45d447574c4553cfe87f626a09df766e49"},
+    {"path":"evidence/G30/attempt-201/severed-idempotency/summary.json","sha256":"93907808fd641cde86a0440fd949bd4a942dacbd7697624da76624ad0c6ffb9a"}
+  ],
+  "claim_results": [
+    {
+      "id": "G30-R2-durable-type-rehydration",
+      "status": "PROVEN-HARNESS",
+      "limit": "The builder Prolog membrane explicitly normalizes only stored schema/event/effect/idempotency identity strings into the atom-valued contract. A fresh SWI-Prolog child read the state successfully. This proves the finite G30 representation crossing, not crash/power-loss durability in production."
+    },
+    {
+      "id": "G30-R2-canonical-authorized-inbound",
+      "status": "PROVEN-HARNESS",
+      "limit": "One fixed authorized post became one canonical SurfaceEvent, its duplicate created none, and one edit remained distinct under the finite mock identities. This is mock evidence, not a live Mattermost protocol claim."
+    },
+    {
+      "id": "G30-R2-authorization-before-cognition",
+      "status": "PROVEN-HARNESS",
+      "limit": "A non-allowlisted frame with no payload returned unauthorized rather than invalid_frame and emitted no event. The identity-severed bridge changed that result. No actual memory or live cognitive service was invoked in G30."
+    },
+    {
+      "id": "G30-R2-idempotent-failure-recovery",
+      "status": "PROVEN-HARNESS",
+      "limit": "The deterministic mock witnessed one confirmed failure and one uncertain outcome, retried each descriptor under the same key, and created one server post per effect. This depends on destination-side key reconciliation and is not an unconditional exactly-once claim for arbitrary services."
+    },
+    {
+      "id": "G30-R2-durable-restart-cursor",
+      "status": "PROVEN-HARNESS",
+      "limit": "A fresh child process restored cursor 200 and both seen event versions and retained them through effects. It proves finite fixture restart readback, not a long-running production bridge or power-loss recovery."
+    },
+    {
+      "id": "G30-R2-severed-contract-dependence",
+      "status": "PROVEN-HARNESS",
+      "limit": "Exact builder mutations removing identity allowlisting or candidate effect deduplication changed their corresponding observations, while native synthetic consequence changes made assessment unqualified. These finite arms do not exhaust all Mattermost or integrated-Soul severances."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-064-C-066/C-098-C-103 and S-804/S-903-S-905/S-1003-S-1005/S-1101-S-1105 require typed identity/effects, honest failure, independent trials, restart evidence and causal severing before live reach. G30 retained both controls and applied those meanings to the exact G29 candidate without treating its own tests as authority.",
+    "causal_evidence": "Canonical authorization, duplicate/edit mapping, definitive and uncertain failures, same-key retries, destination deduplication and fresh-process restart are recorded in raw logs and durable state. Changing authorization, server create count, cursor or effect dedupe changes native qualification. Independently severing identity or idempotency changes the corresponding observed result.",
+    "substitution_audit": "The candidate produced only typed event/effect mappings and inert descriptors. Prolog supplied deterministic service and restart mechanics, not Soul decisions. PeTTa/MeTTa assessed the complete relation set. JavaScript froze, launched and independently checked evidence. Candidate-authored tests passed but did not certify G30. The first two harness failures remain distinct and immutable.",
+    "capability_and_constraint_audit": "The exact G29 source hash remained unchanged and quarantined. All trials were offline, credential-free and model-free. No Mattermost HTTP/WebSocket, Docker mutation, cognitive-core modification, activation or promotion occurred. The mock represented both confirmed and uncertain effect outcomes and destination-side idempotent reconciliation.",
+    "remaining_gaps": "G31 requires Berton's explicit exact first-live grant and must bind a dedicated server/account/channel, external credential reference, canary payload, memory scope, VoiceRNA certificate, durable live cursor/effect journal, panic and rollback. G32 integrated severed arms and G33 sustained omitted-part development remain unproven."
+  },
+  "reviewer": "Codex builder using exact candidate hashes, native PeTTa/MeTTa causal assessment, deterministic Prolog mock logs, real child-process restart, independent severed mutations and separate candidate-test execution.",
+  "review_limits": "This closure certifies G30's finite deterministic mock only. It makes no live, credential, promotion, production, whole-Soul or unconditional exactly-once claim.",
+  "next_plan": "docs/gates/G31/P0/plan.json"
+}

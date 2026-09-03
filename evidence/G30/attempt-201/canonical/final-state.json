@@ -1,0 +1,1 @@
+{"candidate_hash":"not_embedded","cursor":200,"effects": [ {"id":"e2","idempotency_key":"k2"},  {"id":"e1","idempotency_key":"k1"} ],"panic":false,"schema":"miter-g30-durable-state-v1","seen": [ {"id":"p1","version":200},  {"id":"p1","version":100} ]}

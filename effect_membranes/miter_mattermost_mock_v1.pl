@@ -371,16 +371,21 @@ g30_state_json(State, Json) :-
              panic:State.panic}.
 
 g30_json_state(Json, State) :-
-    Json.schema == 'miter-g30-durable-state-v1',
+    g30_atom(Json.schema, Schema),
+    Schema == 'miter-g30-durable-state-v1',
     maplist(g30_json_seen, Json.seen, Seen),
     maplist(g30_json_effect, Json.effects, Effects),
     State = _{cursor:Json.cursor, seen:Seen, effects:Effects,
               panic:Json.panic}.
 
 g30_seen_json(Id-Version, _{id:Id, version:Version}).
-g30_json_seen(Json, Id-Version) :- Id = Json.id, Version = Json.version.
+g30_json_seen(Json, Id-Version) :-
+    g30_atom(Json.id, Id),
+    Version = Json.version.
 g30_effect_json(Id-Key, _{id:Id, idempotency_key:Key}).
-g30_json_effect(Json, Id-Key) :- Id = Json.id, Key = Json.idempotency_key.
+g30_json_effect(Json, Id-Key) :-
+    g30_atom(Json.id, Id),
+    g30_atom(Json.idempotency_key, Key).
 
 g30_write_json_atomic(Path, Dict) :-
     file_directory_name(Path, Directory),
