@@ -1,0 +1,7 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice_trials_v2.metta")
+!(add-atom &soul (protected-canary Soul))
+!(add-atom &history (protected-canary adverse-history))
+!(result first (TVExecute "/Users/claritymiter/miter/evidence/G22/attempt-005/boundaries/same-runtime-repeat"))
+!(result second (TVExecute "/Users/claritymiter/miter/evidence/G22/attempt-005/boundaries/same-runtime-repeat"))
+!(result staged (size-atom (collapse (match &derived (pending-trial-commit "/Users/claritymiter/miter/evidence/G22/attempt-005/boundaries/same-runtime-repeat" $i) $i))))
+!(result active (size-atom (collapse (match &derived (active-voice-v2 "/Users/claritymiter/miter/evidence/G22/attempt-005/boundaries/same-runtime-repeat" $p $c $pin) $c))))

@@ -1,0 +1,6 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice_construction.metta")
+!(import_prolog_functions_from_file "/Users/claritymiter/miter/effect_membranes/miter_voice_trials_v2.pl" (tv_input tv_module tv_save tv_verify tv_commit tv_restore tv_snapshot))
+!(import! &self "/Users/claritymiter/miter/evidence/G22/attempt-002/hard-floor/severed.metta")
+!(add-atom &soul (protected-canary Soul))
+!(add-atom &history (protected-canary adverse-history))
+!(result decision (let* (($i (tv_input "/Users/claritymiter/miter/evidence/G22/attempt-002/hard-floor" input)) ($p (tv_module "/Users/claritymiter/miter/evidence/G22/attempt-002/hard-floor" parent)) ($c (tv_module "/Users/claritymiter/miter/evidence/G22/attempt-002/hard-floor" candidate))) (TVAdjudicate (index-atom $i 1) $p $c (index-atom $i 2) (tv_input "/Users/claritymiter/miter/evidence/G22/attempt-002/hard-floor" parent-report) (tv_input "/Users/claritymiter/miter/evidence/G22/attempt-002/hard-floor" candidate-report))))

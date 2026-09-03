@@ -1,0 +1,4 @@
+true
+true
+true
+(result check (trial-not-admitted trial-integrity-failed))

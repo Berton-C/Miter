@@ -1,0 +1,4 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice_trials_v2.metta")
+!(add-atom &soul (protected-canary Soul))
+!(add-atom &history (protected-canary adverse-history))
+!(result diagnosis (let* (($i (tv_input "/Users/claritymiter/miter/evidence/G22/attempt-001/canonical" input)) ($m (tv_module "/Users/claritymiter/miter/evidence/G22/attempt-001/canonical" parent)) ($r (tv_input "/Users/claritymiter/miter/evidence/G22/attempt-001/canonical" parent-report))) ((== (index-atom $r 1) $m) (== (index-atom $r 2) (index-atom $i 2)) (TVManifestValid (index-atom $i 1) 0 ()) (TVReportValid (index-atom $i 1) $m (index-atom $i 2) $r) (collapse (let $c (superpose (index-atom $i 1)) ((index-atom $c 1) (size-atom (TVFind $c (index-atom $r 3))) (== (index-atom (TVFind $c (index-atom $r 3)) 0) (TVObserve $c $m))))))))

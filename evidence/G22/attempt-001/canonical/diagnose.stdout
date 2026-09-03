@@ -1,0 +1,4 @@
+true
+true
+true
+(result diagnosis (true true true false ()))

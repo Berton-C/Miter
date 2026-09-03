@@ -1,0 +1,114 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G23",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G23-A: the same native v2 trial-admission boundary rejects attempted Soul/control/criterion/permission/history mutation before effect, records immutable rejection events, and preserves protected state.",
+  "claim_ids": [
+    "G23-A"
+  ],
+  "non_claims": "Authority containment of inert declarative candidates, not cognition quality, arbitrary executable sandboxing, full nine enactors or workshop/live reach.",
+  "rationale": "G22 establishes trial/consequence/admission. C-090–097 and S-1004 next require proof that candidates cannot change the law, evidence or permissions that judge them.",
+  "requirements": [
+    "C-003",
+    "C-004",
+    "C-020",
+    "C-025",
+    "C-060",
+    "C-061",
+    "C-062",
+    "C-064",
+    "C-090",
+    "C-091",
+    "C-092",
+    "C-095",
+    "C-096",
+    "C-097",
+    "C-100",
+    "C-101",
+    "C-102",
+    "C-103",
+    "S-401",
+    "S-402",
+    "S-405",
+    "S-903",
+    "S-905",
+    "S-1004",
+    "S-1104",
+    "T-26",
+    "T-28"
+  ],
+  "reading": "Both unchanged controls: full C-003/004/020–025/060–066/090–104; Soul §§4,9,10.4,11 and whole ledger; ACCEPTANCE G23; WORK_PROTOCOL W-100–109; G22 closure/evidence and SC07 approved v2 contract. Repeat applicable clauses at closure.",
+  "representation": "Six labelled synthetic inert candidates request forbidden writes to actual protected surfaces. Unchanged native VModuleValid/TVAdjudicate/TVExecute yield independent negative consequences. Same typed mechanical persistence records rejection without activation. Isolated guard-severed interpreter demonstrates unsafe write declaration becomes admitted to quarantine.",
+  "consumer": "Existing native module writer/adjudication and typed mechanical persistence; new work is builder-side adversarial fixtures and verification. No candidate code is executed. No new semantic policies.",
+  "falsifiers": "plan.md freezes six mutation targets, same-path positive control, exact source/hash and AtomSpace readback, native writer-guard severing with detected unsafe authority reachability, neutral naming and restored rejection.",
+  "scope_review": "Test-only G23 under the existing dedicated laboratory prefix evidence/G22/g23-* to avoid widening a runtime membrane simply for a gate number. No protected files or historical evidence edited. No model/service/executable/network activity. Exact current G22 code remains unchanged unless a failing result requires a separate reviewed revision plan.",
+  "rollback": "Only additive test/evidence/docs. Unsafe severed harness has no persistence/effect broker loaded and cannot write real protected surfaces. Preserve all rejected candidates and negative history.",
+  "predecessor": "docs/gates/G22/closure.json",
+  "allowed_paths": [
+    "scripts/g23_v2/",
+    "tests/fixtures/g23_v2/",
+    "evidence/G22/g23-001/",
+    "evidence/G22/g23-002/",
+    "evidence/G22/g23-003/",
+    "docs/gates/G23/completion.md",
+    "docs/gates/G23/closure.json",
+    "docs/gates/G24/"
+  ],
+  "preserved": [
+    {
+      "path": "effect_membranes/miter_trials.pl",
+      "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256",
+      "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/inputs/plan.txt",
+      "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/preflight.txt",
+      "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stderr",
+      "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/g22/prepare.pl",
+      "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"
+    },
+    {
+      "path": "src/bootstrap_trials.metta",
+      "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"
+    },
+    {
+      "path": "src/trials.metta",
+      "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"
+    },
+    {
+      "path": "tests/fixtures/g22_canonical.metta",
+      "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"
+    },
+    {
+      "path": "tests/fixtures/g22_cases.json",
+      "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"
+    },
+    {
+      "path": "tests/fixtures/g22_parent.metta",
+      "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"
+    },
+    {
+      "path": "tests/fixtures/g22_severed.metta",
+      "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"
+    }
+  ]
+}

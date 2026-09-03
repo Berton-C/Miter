@@ -1,0 +1,6 @@
+true
+true
+true
+(result admit wrong-schema-or-id)
+(result trial 0)
+stored

@@ -1,0 +1,95 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G22",
+  "plan": "docs/gates/G22/plan.json",
+  "plan_commit": "964e949d1a408270dc142a01d25a2e114a17a861",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "docs/gates/G22/completion.md",
+      "sha256": "04679c1636161fa06943904d655847ea05d6f1571194e536f2981d34aa61ae18"
+    },
+    {
+      "path": "evidence/G22/raw-inventory.json",
+      "sha256": "e59551704966dafbfe96b447a18181236ae8af5eba693848ce8362f27b61854d"
+    },
+    {
+      "path": "evidence/G22/attempt-006/verdict.json",
+      "sha256": "eabab19a4ffde92e42ffb8deecba8a41f6867ee45bd42a3e261cc082c90a2ab5"
+    },
+    {
+      "path": "evidence/G22/attempt-006/independent-final.json",
+      "sha256": "1028371245ac18b03f24f2095827878eef33902a1c13f6d425a30effc05cb8a1"
+    },
+    {
+      "path": "evidence/G22/attempt-006/boundaries/verdict.json",
+      "sha256": "5e77aa8b2c16451b44e803a50068241b58fa83f570adb2d84c5da81e613e4a1a"
+    },
+    {
+      "path": "src/voice_trials_v2.metta",
+      "sha256": "ae6592684df6d9c3e8fd5be565fdca886a3eba0ecf08fa86118f2d8fa5a50c01"
+    },
+    {
+      "path": "src/bootstrap_voice_trials_v2.metta",
+      "sha256": "4440d9605d29340ee37b2cb17c9ae6c64214ac405e8635ff184e98fb1ba4a1b2"
+    },
+    {
+      "path": "effect_membranes/miter_voice_trials_v2.pl",
+      "sha256": "79a0515a6e1d1aee8b42fddeacd0494a4820890703bda14619a6116bca402715"
+    },
+    {
+      "path": "scripts/g22_v2/boundaries.mjs",
+      "sha256": "74ef6ff78c6be26ca923a2d1f0ec81342544548a64dc6ce74f47925793767817"
+    },
+    {
+      "path": "scripts/g22_v2/cases.mjs",
+      "sha256": "dac2658f7853aa6ef245eb5d22d9045be5496548d7408a1318e9eadc26ddbc89"
+    },
+    {
+      "path": "scripts/g22_v2/common.mjs",
+      "sha256": "db73a8f4207c155ba5ce12f7703b3009364dabae7e99de7f8ee45d234e60d104"
+    },
+    {
+      "path": "scripts/g22_v2/run.mjs",
+      "sha256": "d44aea1b457281f725d41446c2a46f49a9edeac85768860a9c6f4a1dd10f84df"
+    },
+    {
+      "path": "scripts/g22_v2/seal.mjs",
+      "sha256": "da3bb1efe60df3bd8bc34b2abea6e7e326dfcb829f025f6b1c515d7119f5345b"
+    },
+    {
+      "path": "scripts/g22_v2/verify.mjs",
+      "sha256": "ff9e26c2926adcef8823872ed33031c7528ad14d7c5baaebc09c525b828cefdd"
+    },
+    {
+      "path": "scripts/fidelity/check.mjs",
+      "sha256": "5f6a78e1f5dd72705d1415883826616981e15fff723b4f2f8ef23c2fe0794c98"
+    },
+    {
+      "path": "scripts/fidelity/check.test.mjs",
+      "sha256": "f90d6eec87c849c992c09d3c7623dc231a244d6e0ec46a80f5dfd6853ceb3e9b"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G22-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "13 finite source-framed cases, actual candidate 10 vs parent 6, adverse 9 but loses completion and is rejected; material-consumer severed/restored, order/renaming neutral and seven typed-evidence routes. Not broad voice or whole M25."
+    },
+    {
+      "id": "G22-B",
+      "status": "PROVEN-HARNESS",
+      "limit": "Actual SC08 candidate earns explicit accepted-development, independent rejected counterexample event, native active projection and restart use. 18 boundary checks and five independently hash-verified ledgers. Scoped laboratory, not production multi-RNA or power-loss proof."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "Reread full C-090–104, C-003–025/054–066 and Soul §§4/5/9/10/11 with whole-design ledger and M25 §§8–13. Situated source relations form expression and no gain compensates a material loss; generation, consequence and accepted development remain distinct. Controls unchanged.",
+    "causal_evidence": "Removing completion grammar loses an actual source-supported capability despite four useful joint gains. TVMaterialLosses severing changes rejection to admissibility; restoration rejects. Independent complete expression-set enumeration checks actual words/claims. Changed/duplicate/missing evidence fails through the same type-preserving route that admits its unchanged control. Later joint expression appears only from admitted capability; duplicate/recovery preserves one event.",
+    "substitution_audit": "No case-name-to-behavior selector or aggregate admission score. Fixed trusted native re-evaluation verifies candidate-independent facts; candidate supplies grammar only. Prolog transports, hashes and commits a native-staged typed intent, never decides semantic quality. Test fixtures and JS verifier are disclosed builder instrumentation. Synthetic scope authority and finite language remain limits.",
+    "capability_and_constraint_audit": "Positive expressive expansion is retained, including neutral names/order; incomplete contexts stay incomplete. Parent and rejected history remain. Atom/string roundtrip repaired; negative fixture confound corrected with a paired positive route. Compact hash-bound reports reduce repeated proof expansion. No Python, new model request, source/control mutation, service changes or production activation. Native compass and protected canaries preserved.",
+    "remaining_gaps": "Full nine enactors/five mathematical foundations, unified production undertaking-to-promotion scheduler, broad human-benefit evaluation, native NAL efficacy, general rollback, workshop/Mattermost and integrated acceptance runner remain unfinished. Historical G20/21 v2 seams requalified only as stated. Attempts 001–005 superseded by 006, not retrospectively greened."
+  },
+  "reviewer": "Codex builder, with separate deterministic offline verification; no independent human or agent reviewer claimed.",
+  "review_limits": "Bounded declarative laboratory development and exact finite semantic capability, not whole Soul or full PoC completion. Raw failures and injected faults retained.",
+  "next_plan": "docs/gates/G23/plan.json"
+}

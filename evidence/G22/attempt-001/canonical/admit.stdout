@@ -1,0 +1,7 @@
+true
+true
+true
+stored
+(result execute (trial-persistence-incomplete (trial-not-admitted invalid-or-stale-trial-evidence) development-not-committed))
+(result active active-module-unavailable)
+stored

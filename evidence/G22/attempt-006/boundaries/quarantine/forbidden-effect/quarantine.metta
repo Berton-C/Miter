@@ -1,0 +1,6 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice_trials_v2.metta")
+!(add-atom &soul (protected-canary Soul))
+!(add-atom &history (protected-canary adverse-history))
+!(result admit (let $m (tv_module "/Users/claritymiter/miter/evidence/G22/attempt-006/boundaries/quarantine/forbidden-effect" candidate) (VQuarantine (index-atom $m 2) $m model-candidate-bound)))
+!(result trial (size-atom (collapse (match &trial (trial-voice-realization $id $m) $m))))
+!(tv_snapshot "/Users/claritymiter/miter/evidence/G22/attempt-006/boundaries/quarantine/forbidden-effect" after)
