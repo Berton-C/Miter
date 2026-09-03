@@ -3,10 +3,14 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {root,hash,read,save} from '../g22_v2/common.mjs';
 
-const tag=process.argv[2]??'102';
+const tag=process.argv[2]??'103';
 const dir=`${root}/evidence/G31/p4-${tag}`;
 const run=read(`${dir}/run-verdict.json`),quality=read(`${dir}/quality-verdict.json`);
 assert.equal(run.status,'PASS-BOUNDED');assert.equal(quality.status,'PASS-BOUNDED');
+const carrier=read(`${dir}/carrier-controls.json`);
+assert.equal(carrier.status,'PASS-BOUNDED');
+assert.equal(carrier.anonymous_dict_state_roundtrip,true);
+assert.equal(carrier.open_value_rejected,true);
 const manifest=read(`${dir}/manifest.json`);
 for(const file of manifest.files)assert.equal(hash(fs.readFileSync(file.path)),file.sha256,file.path);
 const candidate=`${dir}/candidate/extension/mattermost_bridge.pl`;
@@ -43,6 +47,7 @@ for(const key of ['model_calls','credential_lookups','local_mattermost_requests'
 assert.equal(run.promoted,false);assert.equal(run.activated,false);
 save(`${dir}/verification.json`,{status:'PASS-BOUNDED',frozen_inputs_verified:true,
   miter_candidate_unchanged:true,generic_transport_authorship_verified:true,
+  anonymous_dict_state_roundtrip_verified:true,open_state_value_rejected:true,
   exact_hash_binding_verified:true,authorization_first_verified:true,
   stable_effect_identity_verified:true,durable_journals_verified:true,
   child_restart_verified:true,panic_verified:true,rollback_verified:true,

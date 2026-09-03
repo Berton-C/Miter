@@ -1,0 +1,1 @@
+{"attempts":2,"body": {"channel_id":"channel-test","message":"offline-canary","pending_post_id":"stable-key-1"},"creates":1,"first_receipt":"loopback-receipt-87831382","method":"post","path":"/api/v4/posts","schema":"surface-loopback-summary-v1","second_receipt":"loopback-receipt-87831382"}

@@ -1,0 +1,54 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G31",
+  "plan": "docs/gates/G31/P4/R3/plan.json",
+  "plan_commit": "fb1be59fe8302c51fc611a28af1c7196a4b01291",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G31/P4/R3/outcome.md","sha256":"ee8287dafcd61950f5932d8455934da83dda27abc97fb155e7841429db6cc6da"},
+    {"path":"evidence/G31/p4-104/run-verdict.json","sha256":"1520df267f9916c1c52bd812a6934479fe3c53a6b46ec9fd5c33a331a83a379b"},
+    {"path":"evidence/G31/p4-104/quality-verdict.json","sha256":"6044f82292167d31a8fe0d30b394e11f49422d1986d0cbe347427fda79a906f4"},
+    {"path":"evidence/G31/p4-104/verification.json","sha256":"8c12f656d0c38f520ddc165a00c64a55081ff34be9cddfe0bd5a73b7c592cac5"},
+    {"path":"evidence/G31/p4-104/manifest.json","sha256":"7017b96fcdc04b98c54b9da18160462b19bf657c5eeea6df573a825a6b0dc19a"},
+    {"path":"evidence/G31/p4-104/carrier-controls.json","sha256":"dc8c5a1af0b91b8e22a3eb31f7648c14ad6bf834215f27a8d3886dbfadaa1c23"},
+    {"path":"evidence/G31/p4-104/canonical-result.json","sha256":"fc15864284b1b508bc5b766e4692e9923c1775a4c764015d35a0bc8be2e09eea"},
+    {"path":"evidence/G31/p4-104/wrong-principal-result.json","sha256":"d77828e6f141dfcb28e9f3d6634a2a23349cad6a3104babcb31654d97a33a6eb"},
+    {"path":"evidence/G31/p4-104/no-journal-result.json","sha256":"94b620f98d7ae9029ebbcd08effe06b40b03f3bcec04d3f865c7cf27e44fabd5"},
+    {"path":"evidence/G31/p4-104/wrong-candidate-hash-result.json","sha256":"75efae3ae1557754862ea8b0e2f33cca7e626a5373d03dd36645a97777000fbb"},
+    {"path":"evidence/G31/p4-104/canonical/cursor.json","sha256":"0ea5a50e86d78b56e1c0b8136d648969ec5cf3755f90f3cc00d6cf3bb174e6a2"},
+    {"path":"evidence/G31/p4-104/canonical/restart.json","sha256":"0764ce619a76a86b103b4663fd99dfc6ef1ab9803eb9ea28df502acc54809421"},
+    {"path":"evidence/G31/p4-103/failure-verdict.json","sha256":"d6497dda4e63776eb7761a7f025ececee75749d0537824d03a276889bc6d3111"}
+  ],
+  "claim_results": [
+    {
+      "id": "G31-P4-R3-closed-anonymous-dict-state",
+      "status": "PROVEN-HARNESS",
+      "limit": "A direct Prolog control accepted nested anonymous dictionaries and rejected a variable in an actual value. This proves the finite carrier predicate and fixture forms, not every possible Prolog term or future state schema."
+    },
+    {
+      "id": "G31-P4-R3-variant-exact-native-state-carrier",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The canonical state was numbered on a copy, durably persisted, reconstructed in a fresh SWI process, and canonically re-encoded without change, preserving the term up to anonymous-tag variable renaming. It does not claim cross-Prolog-version binary compatibility."
+    },
+    {
+      "id": "G31-P4-R3-independent-cursor-hash-binding",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Cursor, candidate hash, and transport hash were stored and independently compared during fresh-process recovery. The proof is scoped to the offline journal and exact tested sources."
+    },
+    {
+      "id": "G31-P4-R3-fresh-process-state-readback",
+      "status": "PROVEN-RUNTIME",
+      "limit": "A separate SWI process verified the complete cursor, confirmed effect, active lab version, reconstructed state, and source identities. This is restart qualification in the localhost laboratory, not live Mattermost or production crash recovery."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004-C-008/C-020-C-024/C-064-C-066/C-095-C-104 and S-501-S-504/S-903-S-905/S-1003-S-1005/S-1101-S-1105 require native meaning, exact authority and identity, durable consequence, and failure-sensitive continuation. R3 retained candidate state as native structure instead of flattening it into JSON or inventing destination behavior.",
+    "causal_evidence": "The exact candidate plus exact generic transport qualified only when authorization, descriptor identity, journal-before-send, same receipt, fresh-process restart, panic, rollback, loopback scope, and complete evidence co-occurred. Severing either hash or any required observation held standing. An unauthorized principal and absent journal stopped before request; a variable in state data was rejected.",
+    "substitution_audit": "The Miter-authored P3 candidate remained byte-identical and exclusively owns Mattermost-specific mappings. The Work-authored Prolog module contains no Mattermost endpoint, event, pending-key, or posted-event literals and performs generic descriptor I/O and durable mechanics only. PeTTa/MeTTa owns qualification; JavaScript launches and verifies evidence without choosing behavior. No first-match policy participates.",
+    "capability_and_constraint_audit": "Attempt 103 preserved the sandbox EPERM rather than misclassifying it or changing code. Attempt 104 reran identical sources with localhost permission. Across both attempts there were zero model calls, credential lookups, Mattermost requests, message reads/writes, promotions, or activations. The successful transport was loopback-only and native standing remains explicitly live-ineligible.",
+    "remaining_gaps": "No exact live grant exists yet for a dedicated Mattermost principal, allowlisted channel, credential reference, server identity, time/scope, and canary effects. The adapter is quarantined and not promoted or activated. A live restart/no-replay trial, VoiceRNA-certified response, secret scan over redacted evidence, and panic test remain necessary before G31 can close. G32 and G33 also remain open."
+  },
+  "reviewer": "Codex builder using frozen control hashes, exact source and candidate hashes, native PeTTa/MeTTa standing, SWI-Prolog loopback and restart mechanics, preserved environmental failure evidence, changed-evidence controls, and independent journal/effect verification.",
+  "review_limits": "This closes only G31 P4 R3's offline generic-transport and state-carrier qualification. It does not contact Mattermost, read a credential, grant live authority, promote or activate the candidate, prove universal exactly-once behavior, or close G31.",
+  "terminal_reason": "The P4 transport-qualification sub-gate is complete. G31 remains open until an exact human-authored live grant and its prerequisites permit a separately frozen canary plan; the checker forbids a same-gate next_plan link."
+}

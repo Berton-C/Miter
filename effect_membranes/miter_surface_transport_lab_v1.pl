@@ -302,17 +302,33 @@ p4_value_atom(Value,Atom) :-
 p4_atom(Value,Atom) :- p4_value_atom(Value,Atom),atom_length(Atom,Length),Length>0.
 
 p4_encode_ground_state(State,StateTerm) :-
-    ground(State),
-    term_string(State,StateTerm,
+    p4_closed_state(State),
+    copy_term(State,NumberedState),
+    numbervars(NumberedState,0,_),
+    term_string(NumberedState,StateTerm,
       [quoted(true),ignore_ops(true),numbervars(true)]).
 
 p4_decode_ground_state(StateTerm0,State) :-
     p4_value_atom(StateTerm0,StateTermAtom),
     read_term_from_atom(StateTermAtom,State,[syntax_errors(error)]),
-    ground(State),
+    p4_closed_state(State),
     p4_encode_ground_state(State,Reencoded),
     atom_string(StateTermAtom,Original),
-    Reencoded == Original.
+    Reencoded == Original,
+    read_term_from_atom(Reencoded,RoundTrip,[syntax_errors(error)]),
+    State =@= RoundTrip.
+
+% Anonymous SWI dictionaries have variable tags even when their values are
+% closed. Admit that representation detail, but no variable in state data.
+p4_closed_state(Value) :- var(Value),!,fail.
+p4_closed_state(Value) :- atomic(Value),!.
+p4_closed_state(Dict) :- is_dict(Dict,Tag),!,
+    (var(Tag);atom(Tag)),
+    dict_pairs(Dict,_,Pairs),
+    maplist(p4_closed_pair,Pairs).
+p4_closed_state(Compound) :- compound(Compound),
+    Compound=..[_|Arguments],maplist(p4_closed_state,Arguments).
+p4_closed_pair(_-Value) :- p4_closed_state(Value).
 
 p4_error(Error,['p4-trial-failure',Text]) :-
     term_string(Error,Text,[quoted(true)]).

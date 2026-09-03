@@ -1,0 +1,23 @@
+{
+  "status": "FAIL-PRESERVED",
+  "gate": "G31",
+  "phase": "P4",
+  "revision": "R3",
+  "attempt": 103,
+  "failure_class": "sandbox-local-socket-denied",
+  "observation": "The variant-safe carrier and durable state writes succeeded. The sandbox then denied opening the localhost loopback server with socket_error(eperm, 'Operation not permitted').",
+  "candidate_sha256": "cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3",
+  "transport_sha256": "81d2ee5d219e2cdadeb231202d698f0a5cf10a6f50a633cbcf7ccd21e40da4d6",
+  "candidate_changed": false,
+  "state_carrier_succeeded": true,
+  "socket_opened": false,
+  "loopback_requests": 0,
+  "model_calls": 0,
+  "credential_lookups": 0,
+  "local_mattermost_requests": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "promoted": false,
+  "activated": false,
+  "next_step": "Rerun the identical frozen R3 experiment under permission to open a localhost-only test socket; do not change code or plan."
+}

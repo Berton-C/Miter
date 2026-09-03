@@ -1,4 +1,4 @@
-// G31 P4 R2 generic loopback transport laboratory with lossless state journal.
+// G31 P4 R3 generic loopback transport laboratory with variant-exact state journal.
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -7,7 +7,7 @@ import {root,hash,checkOpen} from '../fidelity/check.mjs';
 import {native,save,read,pins,sexp} from '../g22_v2/common.mjs';
 
 process.chdir(root);
-const tag=process.argv[2]??'102';
+const tag=process.argv[2]??'103';
 assert.match(tag,/^\d{3}$/);
 const dir=`${root}/evidence/G31/p4-${tag}`;
 assert(!fs.existsSync(dir));
@@ -18,8 +18,8 @@ process.on('uncaughtException',error=>{
     promoted:false,activated:false});
   console.error(error.stack);process.exitCode=1;
 });
-const opening=checkOpen('docs/gates/G31/P4/R2/plan.json');
-assert.equal(opening.plan_commit,'e9ad6dcbc09f4966fc06bcf9cc6488a3cbbd11bf');
+const opening=checkOpen('docs/gates/G31/P4/R3/plan.json');
+assert.equal(opening.plan_commit,'fb1be59fe8302c51fc611a28af1c7196a4b01291');
 save(`${dir}/opening.json`,opening);
 
 const sourceCandidateRel='evidence/G31/p3-371/candidate/extension/mattermost_bridge.pl';
@@ -34,6 +34,14 @@ fs.writeFileSync(candidate,committed);
 const transport=`${root}/effect_membranes/miter_surface_transport_lab_v1.pl`;
 const transportHash=hash(fs.readFileSync(transport));
 const fixture=`${root}/tests/fixtures/g31/p4_loopback_fixture.json`;
+
+const carrierGoal="Closed=_{cursor:1,nested:_{value:ok}},miter_surface_transport_lab_v1:p4_encode_ground_state(Closed,S),miter_surface_transport_lab_v1:p4_decode_ground_state(S,R),Closed=@=R,Open=_{cursor:1,value:_},\\+miter_surface_transport_lab_v1:p4_encode_ground_state(Open,_),writeln(carrier-controls-pass),halt";
+const carrierOutput=execFileSync('/opt/homebrew/bin/swipl',
+  ['-q','-f','none','-s',transport,'-g',carrierGoal],{cwd:root,encoding:'utf8'}).trim();
+assert.equal(carrierOutput,'carrier-controls-pass');
+save(`${dir}/carrier-controls.json`,{status:'PASS-BOUNDED',
+  anonymous_dict_state_roundtrip:true,open_value_rejected:true,
+  canonical_reencoding_verified:true,transport_sha256:transportHash});
 
 const transportSource=fs.readFileSync(transport,'utf8');
 const forbidden=/mattermost|pending_post_id|\/api\/v4\/posts|post_edited|\bposted\b/i;
@@ -80,6 +88,8 @@ const sources=[
   'docs/gates/G31/P4/R1/plan.json','docs/gates/G31/P4/R1/plan.md',
   'docs/gates/G31/P4/R1/attempt-101-outcome.md',
   'docs/gates/G31/P4/R2/plan.json','docs/gates/G31/P4/R2/plan.md',
+  'docs/gates/G31/P4/R2/attempt-102-outcome.md',
+  'docs/gates/G31/P4/R3/plan.json','docs/gates/G31/P4/R3/plan.md',
   'src/participation.metta','src/surface_transport_qualification_v1.metta',
   'src/bootstrap_surface_transport_qualification_v1.metta',
   'effect_membranes/miter_store.pl','effect_membranes/miter_surface_transport_lab_v1.pl',
@@ -87,14 +97,16 @@ const sources=[
   'scripts/g31/p4_quality.mjs','scripts/g31/p4_verify.mjs','scripts/fidelity/check.mjs'
 ];
 save(`${dir}/manifest.json`,{
-  schema:'miter-g31-p4-r2-freeze-v1',plan:'docs/gates/G31/P4/R2/plan.json',
+  schema:'miter-g31-p4-r3-freeze-v1',plan:'docs/gates/G31/P4/R3/plan.json',
   plan_commit:opening.plan_commit,
   files:pins([...sources.map(file=>`${root}/${file}`),sourceCandidate,candidate,
-    fixture,`${dir}/authorship-audit.json`,`${dir}/canonical-result.json`,
+    fixture,`${dir}/authorship-audit.json`,`${dir}/carrier-controls.json`,
+    `${dir}/canonical-result.json`,
     `${dir}/wrong-principal-result.json`,`${dir}/no-journal-result.json`,
     `${dir}/wrong-candidate-hash-result.json`]),
   candidate_sha256:candidateHash,transport_sha256:transportHash,
   model_calls:0,credential_lookups:0,local_mattermost_requests:0,
+  anonymous_dict_state_roundtrip:true,open_value_rejected:true,
   promoted:false,activated:false
 });
 save(`${dir}/run-verdict.json`,{
@@ -112,6 +124,7 @@ save(`${dir}/run-verdict.json`,{
   credential_used:canonical.observation[16],transport_generic:canonical.observation[17],
   evidence_complete:canonical.observation[18],wrong_principal_held:true,
   no_journal_held:true,wrong_candidate_hash_held:true,
+  anonymous_dict_state_roundtrip:true,open_value_rejected:true,
   native_standing:canonical.standing[0],model_calls:0,
   credential_lookups:0,local_mattermost_requests:0,message_reads:0,message_writes:0,
   promoted:false,activated:false
