@@ -22,21 +22,37 @@ sd_durable_json(P,D) :- miter_store_ensure_extension('/Users/claritymiter/miter/
  atom_concat(P,'.tmp',T),\+exists_file(T),setup_call_cleanup(open(T,write,S,[encoding(utf8)]),
  (chmod(T,0o600),json_write_dict(S,D,[width(0)]),nl(S),flush_output(S),miter_store_fsync_stream(S)),close(S)),rename_file(T,P).
 
-sd_root(R,A) :- miter_store_nonempty_atom(R,A),
- re_match('^/Users/claritymiter/miter/evidence/G29/attempt-[0-9]{3}$',A),
- exists_directory(A),sd_no_links(A).
-sd_no_links('/Users/claritymiter/miter/evidence/G29') :- !.
-sd_no_links(P) :- \+read_link(P,_,_),file_directory_name(P,D),D\==P,sd_no_links(D).
+sd_root_profile(A,g29) :-
+ re_match('^/Users/claritymiter/miter/evidence/G29/attempt-[0-9]{3}$',A).
+sd_root_profile(A,g31_p3) :-
+ re_match('^/Users/claritymiter/miter/evidence/G31/p3-[0-9]{3}$',A).
+sd_profile_base(g29,'/Users/claritymiter/miter/evidence/G29').
+sd_profile_base(g31_p3,'/Users/claritymiter/miter/evidence/G31').
+sd_root(R,A) :- miter_store_nonempty_atom(R,A),sd_root_profile(A,Profile),
+ sd_profile_base(Profile,Base),exists_directory(A),sd_no_links(A,Base).
+sd_no_links(P,P) :- !.
+sd_no_links(P,Base) :- \+read_link(P,_,_),file_directory_name(P,D),D\==P,
+ sd_no_links(D,Base).
 sd_path(R,F0,P) :- sd_root(R,A),miter_store_nonempty_atom(F0,F),
  re_match('^[a-zA-Z0-9_.-]+$',F),\+sub_atom(F,_,_,_,'..'),directory_file_path(A,F,P),\+read_link(P,_,_).
-sd_verify(R) :- sd_path(R,'manifest.json',P),sd_json(P,M),M.schema=="miter-g29-freeze-v1",
- forall(member(F,M.files),(crypto_file_hash(F.path,H,[algorithm(sha256),encoding(octet)]),atom_string(H,F.sha256))),
- forall(member(Rel,['CONSTITUTION.md','MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md','config/surface-event-v1.json','config/surface-effect-v1.json',
+sd_profile_manifest(g29,M,Required) :- M.schema=="miter-g29-freeze-v1",
+ Required=['CONSTITUTION.md','MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md','config/surface-event-v1.json','config/surface-effect-v1.json',
   'config/mattermost-design-candidate-v1.json','config/mattermost-design-part-v1.json','config/mattermost-code-part-v1.json',
   'src/surface_design_v1.metta','src/bootstrap_surface_design_v1.metta',
   'src/surface_extension_v1.metta','src/bootstrap_surface_extension_v1.metta','effect_membranes/miter_surface_design_v1.pl',
-  'effect_membranes/miter_surface_extension_v1.pl','effect_membranes/miter_model_stream_v1.pl','effect_membranes/miter_llm.pl']),
-  (atom_concat('/Users/claritymiter/miter/',Rel,Path),member(E,M.files),atom_string(Path,E.path))).
+  'effect_membranes/miter_surface_extension_v1.pl','effect_membranes/miter_model_stream_v1.pl','effect_membranes/miter_llm.pl'].
+sd_profile_manifest(g31_p3,M,Required) :- M.schema=="miter-g31-p3-freeze-v1",
+ Required=['CONSTITUTION.md','MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md','BUILD_FIDELITY_PROTOCOL.md','config/model-resources-v1.json',
+  'src/participation.metta','src/mattermost_live_reconciliation_v1.metta','src/mattermost_candidate_revision_v1.metta',
+  'src/bootstrap_mattermost_candidate_revision_v1.metta','effect_membranes/miter_store.pl',
+  'effect_membranes/miter_surface_design_v1.pl','effect_membranes/miter_openrouter.pl','effect_membranes/miter_mattermost_mock_v2.pl'].
+sd_manifest_pins_valid(M) :- is_list(M.files),forall(member(F,M.files),
+ (crypto_file_hash(F.path,H,[algorithm(sha256),encoding(octet)]),atom_string(H,F.sha256))).
+sd_manifest_required_present(M,Required) :- forall(member(Rel,Required),
+ (atom_concat('/Users/claritymiter/miter/',Rel,Path),member(E,M.files),atom_string(Path,E.path))).
+sd_verify(R) :- sd_path(R,'manifest.json',P),sd_json(P,M),sd_root(R,A),
+ sd_root_profile(A,Profile),sd_profile_manifest(Profile,M,Required),
+ sd_manifest_pins_valid(M),sd_manifest_required_present(M,Required).
 sd_input(R,N) :- catch((sd_verify(R),sd_path(R,'input.json',P),sd_json(P,D),sd_native(D.native,N)),_,fail),!.
 sd_input(_,['surface-design-input-unavailable']).
 sd_runtime(R,['runtime-inventory',[

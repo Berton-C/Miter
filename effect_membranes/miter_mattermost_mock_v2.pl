@@ -39,6 +39,34 @@ g31_p3_renderer_ready(Result) :-
     ),
     !.
 
+% Full evidence-root standing. This remains effect-free and is evaluated only
+% after the builder has frozen the manifest and before transport is possible.
+g31_p3_request_root_ready(Root0, Result) :-
+    catch((g31_p3_atom(Root0, Root),
+           sd_verify(Root),
+           or_source_grant('openrouter-g31-p3-revision-1', bridge, 8192, 300),
+           \+ exists_directory('/Users/claritymiter/miter/evidence/G31/P3-call-1.claim')
+          -> Result = true ; Result = false), _, Result = false),
+    !.
+
+% Mechanical profile regression probe; no storage, credential, or network
+% effect. The G29 source contract remains distinct from the new G31 P3 one.
+g31_p3_storage_profile_quality(Result) :-
+    ( sd_root_profile('/Users/claritymiter/miter/evidence/G29/attempt-901', g29),
+      sd_root_profile('/Users/claritymiter/miter/evidence/G31/p3-351', g31_p3),
+      \+ sd_root_profile('/Users/claritymiter/miter/evidence/G31/arbitrary', _),
+      sd_profile_manifest(g29, _{schema:"miter-g29-freeze-v1",files:[]}, G29Required),
+      memberchk('config/surface-event-v1.json', G29Required),
+      \+ memberchk('src/mattermost_candidate_revision_v1.metta', G29Required),
+      sd_profile_manifest(g31_p3, _{schema:"miter-g31-p3-freeze-v1",files:[]}, G31Required),
+      memberchk('src/mattermost_candidate_revision_v1.metta', G31Required),
+      \+ memberchk('config/surface-event-v1.json', G31Required),
+      \+ sd_profile_manifest(g31_p3, _{schema:"miter-g29-freeze-v1",files:[]}, _)
+    -> Result = true
+    ; Result = false
+    ),
+    !.
+
 g31_p3_mock_trial(Candidate0, ExpectedHash0, Result) :-
     catch(g31_p3_mock_trial_checked(Candidate0, ExpectedHash0, Result0),
           Error, g31_p3_mock_error(Error, Result0)),

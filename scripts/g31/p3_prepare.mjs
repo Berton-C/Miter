@@ -16,9 +16,9 @@ process.on('uncaughtException', error => {
   console.error(error.stack);
   process.exitCode = 1;
 });
-const opening = checkOpen('docs/gates/G31/P3/R4/plan.json');
+const opening = checkOpen('docs/gates/G31/P3/R5/plan.json');
 assert.equal(opening.plan_commit,
-  'ac335d70b7082ef92a52a8b805e44eb56f905066');
+  'b9f47d497bcdea720456a8e3041415694c76d5e0');
 save(`${dir}/opening.json`, opening);
 
 const p2 = read(`${root}/evidence/G31/p2-001/native-input.json`);
@@ -69,12 +69,16 @@ const sources = [
   'docs/gates/G31/P3/R3/plan.json', 'docs/gates/G31/P3/R3/plan.md',
   'docs/gates/G31/P3/R3/attempt-331-outcome.md',
   'docs/gates/G31/P3/R4/plan.json', 'docs/gates/G31/P3/R4/plan.md',
+  'docs/gates/G31/P3/R4/attempt-341-outcome.md',
+  'docs/gates/G31/P3/R5/plan.json', 'docs/gates/G31/P3/R5/plan.md',
   'docs/gates/G31/P3/attempt-301-outcome.md',
   'docs/gates/G31/P2/outcome.md', 'config/model-resources-v1.json',
   'src/participation.metta', 'src/mattermost_live_reconciliation_v1.metta',
   'src/mattermost_candidate_revision_v1.metta',
   'src/bootstrap_mattermost_candidate_revision_v1.metta',
   'effect_membranes/miter_openrouter.pl',
+  'effect_membranes/miter_store.pl',
+  'effect_membranes/miter_surface_design_v1.pl',
   'effect_membranes/miter_mattermost_mock_v2.pl',
   'scripts/g31/p3_prepare.mjs', 'scripts/g31/p3_run.mjs',
   'scripts/g31/p3_quality.mjs', 'scripts/g31/p3_verify.mjs',
@@ -88,9 +92,10 @@ const retained = [candidatePath,
   `${root}/evidence/G31/p3-301/failure-verdict.json`,
   `${root}/evidence/G31/p3-311/failure-verdict.json`,
   `${root}/evidence/G31/p3-321/failure-verdict.json`,
-  `${root}/evidence/G31/p3-331/failure-verdict.json`];
+  `${root}/evidence/G31/p3-331/failure-verdict.json`,
+  `${root}/evidence/G31/p3-341/failure-verdict.json`];
 save(`${dir}/manifest.json`, {
-  schema:'miter-g31-p3-r4-freeze-v1', plan:'docs/gates/G31/P3/R4/plan.json',
+  schema:'miter-g31-p3-freeze-v1', plan:'docs/gates/G31/P3/R5/plan.json',
   plan_commit:opening.plan_commit,
   files:pins([...sources.map(file => `${root}/${file}`), ...retained,
     `${dir}/input.json`, `${dir}/revision-question.json`]),
@@ -102,9 +107,22 @@ save(`${dir}/manifest.json`, {
   message_reads:0, message_writes:0, docker_calls:0,
   candidate_promotions:0, candidate_activations:0
 });
+const storageRows = native(dir, 'native-storage-readiness',
+  `!(result profile (g31_p3_storage_profile_quality))\n`+
+  `!(result root (g31_p3_request_root_ready ${sexp(dir)}))`, boot);
+assert.equal(storageRows.length, 2);
+const storage = Object.fromEntries(storageRows.map(row => [row[1],row[2]]));
+assert.equal(storage.profile, 'true');
+assert.equal(storage.root, 'true');
+save(`${dir}/storage-readiness.json`, {
+  status:'PASS-BOUNDED', native:storage,
+  exact_profiles:['g29-attempt','g31-p3'], manifest_pins_verified:true,
+  credential_lookups:0, network_requests:0
+});
 save(`${dir}/prepared.json`, {
   status:'PREPARED', native_question:true,
   qualified_renderer_grounding_visible:true,
+  complete_storage_root_ready:true,
   compact_stdout_and_durable_source_handoff:true,
   source_candidate_sha256:candidateHash,
   source_consequence:'pending-post-id-body-map-required',

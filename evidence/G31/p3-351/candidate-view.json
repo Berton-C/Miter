@@ -1,0 +1,1 @@
+{"native":["effect-descriptor-view","cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3","v11-7-7",["body-fields","channel-id","message","pending-post-id"],["envelope-fields","idempotency-key"],["field-maps",["map","idempotency-key","pending-post-id"]],true,30,true]}

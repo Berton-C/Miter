@@ -1,0 +1,2 @@
+true
+(result rendered (g31-p3-model-observed (request openrouter-g31-p3-revision-1) (purpose bridge) (transport eof) (http-status 200) (elapsed-ms 23484) (complete true) (finish stop) provider-response (bytes 19914) (model z-ai/glm-5.3) (provider BaseTen) (usage (usage 2040 2884 4924 0.0155456))))
