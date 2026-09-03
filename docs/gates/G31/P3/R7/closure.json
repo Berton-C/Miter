@@ -1,0 +1,49 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G31",
+  "plan": "docs/gates/G31/P3/R7/plan.json",
+  "plan_commit": "785acd79a037d633d5d9469bd54ba4a2f78e0371",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G31/P3/R7/outcome.md","sha256":"7509ee2171cafffb29c678e7c4dc7fda082a86d1a6fab1e909be26c0997936f0"},
+    {"path":"evidence/G31/p3-371/run-verdict.json","sha256":"b2d539d5f3f3a2a3a0af301c5791106a7d112887f645b85480a4ee41cbab41c7"},
+    {"path":"evidence/G31/p3-371/quality-verdict.json","sha256":"854cfdd9e039a297d63cae7249846ea7f344dda439d1cc4051c0bd728f315560"},
+    {"path":"evidence/G31/p3-371/verification.json","sha256":"beb915da3828d6903654ccb55280cfb2eab92f014525c510f6c878aac78b7472"},
+    {"path":"evidence/G31/p3-371/manifest.json","sha256":"5c47fa2f5e903a1da10c02cc3c9436a1f8d721d471db110fb05f798c8197b905"},
+    {"path":"evidence/G31/p3-371/lineage.json","sha256":"0cb7aa7563a1410956cc1f4945455b77ae1dbfb8d552a587e2c5041b81b3290c"},
+    {"path":"evidence/G31/p3-371/canonical-result.json","sha256":"1fc91788e363b8dbee857052269081f77cf7c563f7d75fd0a657f8ed00624f29"},
+    {"path":"evidence/G31/p3-371/severed-result.json","sha256":"c8e24271b921603999389bf6b45554835b742948f89469b3e8d5b58f877176f0"},
+    {"path":"evidence/G31/p3-371/secret-audit.json","sha256":"2660c6f1491520e6fdbe4915136a00846ef5745d48de77f5c55125ff2565484d"},
+    {"path":"evidence/G31/p3-351/model-observation-native.json","sha256":"cf22176ff01227d58ceb8bf9f555f63d1eaa37ff9a3cf206d8cbbd2ad7f95b93"},
+    {"path":"evidence/G31/p3-351/candidate/extension/mattermost_bridge.pl","sha256":"cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3"},
+    {"path":"evidence/G31/p3-351/storage-profile-quality.json","sha256":"ba90dc1b09893735c43ff914435d160b542b8fe9fedd5f445420039e65193de0"},
+    {"path":"evidence/G31/P3-call-1.claim/owner.json","sha256":"3c1e075e69de2371fc86f18aa7af8ad8c87203fc103a363ae986b19eca0b8da8"}
+  ],
+  "claim_results": [
+    {
+      "id": "G31-P3-R7-total-mock-observation",
+      "status": "PROVEN-HARNESS",
+      "limit": "The P3 Prolog mock returned a structured canonical observation, a typed contract-failed observation for ordinary checked failure, and retains typed exception conversion. This proves totality for the finite mock predicate, not every Prolog or Mattermost failure."
+    },
+    {
+      "id": "G31-P3-R7-severed-relation-held",
+      "status": "PROVEN-HARNESS",
+      "limit": "Removing the pending_post_id mapping produced a typed mock failure and native held standing, while the exact candidate qualified. This isolates the required relation in the finite v11.7.7-shaped fixture, not a universal server guarantee."
+    },
+    {
+      "id": "G31-P3-R7-zero-call-causal-completion",
+      "status": "PROVEN-HARNESS",
+      "limit": "R7 verified and reused attempt 351's committed one-call response and exact candidate with zero new model or credential calls. Native controls held wrong version, missing map, late retry, missing journal, changed receipt, and hidden expiry limits. The result remains quarantined and offline."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-020-C-024/C-064-C-066/C-095-C-104 and S-501-S-504/S-903-S-905/S-1003-S-1005/S-1101-S-1105 require source-grounded construction, explicit uncertainty, non-compensatory relations, bounded LLM participation, typed effects and consequences, causal trials, and no live reach before exact authority. P3 preserved each as a relation participating in native standing rather than a first-match repair rule.",
+    "causal_evidence": "The exact P2 discrepancy caused the single candidate source change. Canonical source/candidate/mock relations qualified; severing the pending-post mapping held the candidate. Independently changing version, window, journal, returned receipt, and disclosed limits also changed native standing. Same-key retry created one post only inside the explicit 30-second fixture, while expiry and cache loss remained duplication risks.",
+    "substitution_audit": "GLM 5.3 rendered source but did not choose the discrepancy, grant itself authority, interpret tests, or promote output. Prolog supplied source transport and deterministic mock mechanics. PeTTa/MeTTa constructed the repair question and candidate standing. JavaScript preserved bytes and independently checked identities/effects. The builder corrected only harness boundaries and never hand-authored the candidate transform.",
+    "capability_and_constraint_audit": "Exactly one explicitly approved OpenRouter request was made; all R6/R7 work reused its committed observation without Keychain access. Candidate hash cf771e7b...ca3 remained quarantined. Secret patterns were absent. No local Mattermost HTTP/WebSocket, Mattermost credential, Docker call, message read/write, candidate activation, or promotion occurred. Universal exactly-once remains explicitly unproved.",
+    "remaining_gaps": "The candidate still produces inert descriptors and has no qualified live transport. P4 must establish exact candidate/transport binding, authorization-first parsing, durable cursor/effect journaling, bounded recovery, restart, panic and rollback in an offline transport laboratory. The actual live tuple and explicit Mattermost authority remain incomplete; G31 canary, G32 integrated severance, and G33 sustained omitted-part development remain open."
+  },
+  "reviewer": "Codex builder using frozen control hashes, committed provider lineage, exact source comparison, native PeTTa/MeTTa standing, deterministic SWI-Prolog mechanics, severed relations, changed-evidence controls, and independent credential/effect checks.",
+  "review_limits": "This closes only the R7/P3 quarantined-candidate claim. It does not qualify or activate a transport, grant Mattermost authority, perform a live canary, prove production readiness, or certify complete Soul cognition.",
+  "terminal_reason": "The P3 revision sub-gate is complete. G31 remains open under the separately frozen P4 transport-qualification plan; the checker forbids a same-gate next_plan link."
+}

@@ -68,7 +68,9 @@ g31_p3_storage_profile_quality(Result) :-
     !.
 
 g31_p3_mock_trial(Candidate0, ExpectedHash0, Result) :-
-    catch(g31_p3_mock_trial_checked(Candidate0, ExpectedHash0, Result0),
+    catch((g31_p3_mock_trial_checked(Candidate0, ExpectedHash0, Result0)
+          -> true
+          ; Result0 = ['g31-p3-mock-failure', 'contract-failed']),
           Error, g31_p3_mock_error(Error, Result0)),
     Result = Result0,
     !.

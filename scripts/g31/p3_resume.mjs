@@ -23,9 +23,9 @@ process.on('uncaughtException', error => {
   process.exitCode=1;
 });
 
-const opening = checkOpen('docs/gates/G31/P3/R6/plan.json');
+const opening = checkOpen('docs/gates/G31/P3/R7/plan.json');
 assert.equal(opening.plan_commit,
-  'fc72a2bddf19012b2c1b18b6dc88a72c1acf6da1');
+  '785acd79a037d633d5d9469bd54ba4a2f78e0371');
 save(`${dir}/opening.json`,opening);
 
 const capturedRel = [
@@ -130,7 +130,7 @@ save(`${dir}/secret-audit.json`,{status:'PASS-BOUNDED',
 
 const capturedModelFiles = capturedRel.slice(1,6).map(file=>`${root}/${file}`);
 save(`${dir}/lineage.json`,{
-  schema:'miter-g31-p3-r6-lineage-v1',source_attempt:`p3-${sourceTag}`,
+  schema:'miter-g31-p3-r7-lineage-v1',source_attempt:`p3-${sourceTag}`,
   source_candidate_sha256:current[1],candidate_sha256:candidateHash,
   exact_source_transform:{from:oldText,to:newText,other_byte_changes:0},
   selected_resource:'openrouter-glm53',selected_model:'z-ai/glm-5.3',
@@ -162,8 +162,8 @@ save(`${dir}/run-verdict.json`,{
 const sources = [
   'CONSTITUTION.md','MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md',
   'BUILD_FIDELITY_PROTOCOL.md','WORK_PROTOCOL.md','ACCEPTANCE.md',
-  'docs/gates/G31/P3/R6/plan.json','docs/gates/G31/P3/R6/plan.md',
-  'docs/gates/G31/P3/R5/attempt-351-outcome.md',
+  'docs/gates/G31/P3/R7/plan.json','docs/gates/G31/P3/R7/plan.md',
+  'docs/gates/G31/P3/R6/attempt-361-outcome.md',
   'src/participation.metta','src/mattermost_live_reconciliation_v1.metta',
   'src/mattermost_candidate_revision_v1.metta',
   'src/bootstrap_mattermost_candidate_revision_v1.metta',
@@ -173,7 +173,7 @@ const sources = [
   'scripts/g31/p3_verify.mjs','scripts/fidelity/check.mjs'
 ];
 save(`${dir}/manifest.json`,{
-  schema:'miter-g31-p3-r6-resume-v1',plan:'docs/gates/G31/P3/R6/plan.json',
+  schema:'miter-g31-p3-r7-resume-v1',plan:'docs/gates/G31/P3/R7/plan.json',
   plan_commit:opening.plan_commit,
   files:pins([...sources.map(file=>`${root}/${file}`),
     ...capturedRel.map(file=>`${root}/${file}`),`${dir}/input.json`,
