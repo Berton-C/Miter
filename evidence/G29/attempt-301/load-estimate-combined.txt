@@ -1,0 +1,8 @@
+Model: nemotron-3.5-30b-a3b-antislop-ftpo-i1
+Context Length: 16,384
+GPU Offload: 100%
+Estimated GPU Memory:   25.18 GiB
+Estimated Total Memory: 25.18 GiB
+Confidence: LOW
+
+Estimate: This model may be loaded based on your resource guardrails settings.

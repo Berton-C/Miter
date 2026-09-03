@@ -1,0 +1,4 @@
+true
+true
+(result outcome (surface-extension-incomplete-r3 (model-resource-selected nemotron-local (nemotron-local)) (surface-candidate-incomplete (surface-part-observation repair-bridge-1 bridge eof 200 9900 false unknown schema-mismatch 78 "" ()) (surface-part-observation repair-tests-2 tests eof 200 9811 false unknown schema-mismatch 78 "" ()))))
+(result state (() ((protected-canary Soul))))

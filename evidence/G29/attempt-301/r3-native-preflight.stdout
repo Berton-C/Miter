@@ -1,0 +1,8 @@
+true
+(result resource (model-resource-selected nemotron-local (nemotron-local)))
+(result resource-reordered (model-resource-selected nemotron-local (nemotron-local)))
+(result resource-removed (model-resource-unresolved ()))
+(result resource-ambiguous (model-resource-unresolved (nemotron-local qwen-local)))
+(result targets (tests bridge))
+(result bridge-file-valid true)
+(result tests-file-valid true)

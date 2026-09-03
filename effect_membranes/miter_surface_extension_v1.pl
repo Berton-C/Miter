@@ -32,6 +32,9 @@ sx_r1_spend(R,Id) :- once((member(Slot,[1,2,3,4]),format(atom(P),'/Users/clarity
 sx_r2_spend(R,Id) :- once((member(Slot,[1,2]),format(atom(P),'/Users/claritymiter/miter/evidence/G29/R2-call-~d.claim',[Slot]),
  \+exists_directory(P),catch(make_directory(P),_,fail))),directory_file_path(P,'owner.json',O),
  sd_durable_json(O,_{root:R,request:Id,slot:Slot,grant:"G29-R2"}).
+sx_r3_spend(R,Id) :- once((member(Slot,[1,2]),format(atom(P),'/Users/claritymiter/miter/evidence/G29/R3-call-~d.claim',[Slot]),
+ \+exists_directory(P),catch(make_directory(P),_,fail))),directory_file_path(P,'owner.json',O),
+ sd_durable_json(O,_{root:R,request:Id,slot:Slot,grant:"G29-R3"}).
 
 sx_model(R,Q,Observation) :- catch((sx_model_checked(R,Q,Observation)->true;Observation=['surface-model-unavailable',unstaged_or_invalid]),E,
  (term_string(E,S),Observation=['surface-model-unavailable',S])),!.
@@ -120,8 +123,8 @@ sx_part_product(Id,DesignId,tests,D,['surface-code-part',DesignId,Id,File,['mode
 sx_repair_model(R,Q,Observation) :- catch((sx_repair_model_checked(R,Q,Observation)->true;Observation=['surface-part-unavailable',unstaged_or_invalid]),E,
  (term_string(E,S),Observation=['surface-part-unavailable',S])),!.
 sx_repair_model_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&derived'('surface-repair-generation-pending',R,Q),true),
- Q=['surface-repair-generation',Id,DesignId,CandidateId,Part,'qwen-local',Instructions,OldFile,Observations],
- atom(Id),atom(DesignId),atom(CandidateId),memberchk(Part,[bridge,tests]),string(Instructions),
+ Q=['surface-repair-generation',Id,DesignId,CandidateId,Part,Model,Instructions,OldFile,Observations],
+ atom(Id),atom(DesignId),atom(CandidateId),memberchk(Part,[bridge,tests]),memberchk(Model,['qwen-local','nemotron-local']),string(Instructions),
  OldFile=['surface-candidate-file',OldPath0,OldSource0,OldHash],
  miter_store_nonempty_atom(OldPath0,OldPathAtom),atom_string(OldPathAtom,OldPath),
  miter_store_nonempty_atom(OldSource0,OldSourceAtom),atom_string(OldSourceAtom,OldSource),is_list(Observations),
@@ -132,7 +135,7 @@ sx_repair_model_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&deri
   sx_named(R,Id,request,RP),sx_named(R,Id,wire,Wire),sx_named(R,Id,header,Header),sx_named(R,Id,timing,Timing),
   (exists_file(RP)->
     (exists_file(Timing)->sd_json(Timing,TR);ms_capture(RP,Wire,Header,300,2097152,TR),sd_durable_json(Timing,TR));
-   sx_named(R,Id,claim,Claim),make_directory(Claim),sx_r2_spend(R,Id),
+   sx_named(R,Id,claim,Claim),make_directory(Claim),sx_repair_spend(Model,R,Id),
    sd_json('/Users/claritymiter/miter/config/mattermost-code-part-v1.json',Schema),
    sd_encode(PromptFile,OldDoc),sd_encode(Observations,ObservationDoc),
    with_output_to(string(User),json_write_dict(current_output,_{design_id:DesignId,candidate_id:CandidateId,target:Part,
@@ -143,9 +146,11 @@ sx_repair_model_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&deri
      response_format:_{type:"json_schema",json_schema:_{name:"miter_mattermost_repair_part",strict:true,schema:Schema}},
      temperature:0,top_p:1,reasoning_effort:"none",max_tokens:2048,seed:2903,stream:true,ttl:300}},
    sx_named(R,Id,template,TP),sd_durable_json(TP,Template),
-   miter_lm_prepare_request('/Users/claritymiter/miter/config/local/g03-model-profiles.json','qwen-local',TP,RP,'model-request-prepared'),
+   miter_lm_prepare_request('/Users/claritymiter/miter/config/local/g03-model-profiles.json',Model,TP,RP,'model-request-prepared'),
    ms_capture(RP,Wire,Header,300,2097152,TR),sd_durable_json(Timing,TR)),
   sx_part_observation(Id,DesignId,Part,Wire,TR,Observation),sd_encode(Observation,EO),sd_durable_json(OP,_{native:Observation,term:EO})).
+sx_repair_spend('qwen-local',R,Id) :- sx_r2_spend(R,Id).
+sx_repair_spend('nemotron-local',R,Id) :- sx_r3_spend(R,Id).
 sx_manifest(M,['mattermost-manifest',Schema,Kind,Modality,Role,Source,Target,['permissions',Network,M.permissions.credentials,Live],Inbound,
  Idempotency,Reconnect,Credentials,Memory,Failure,Panic,Rollback,Tests]) :-
  maplist(miter_store_nonempty_atom,
@@ -154,7 +159,7 @@ sx_manifest(M,['mattermost-manifest',Schema,Kind,Modality,Role,Source,Target,['p
   [Schema,Kind,Modality,Role,Source,Target,Network,Live,Idempotency,Reconnect,Credentials,Memory,Failure,Panic,Rollback]),
  maplist(miter_store_nonempty_atom,M.inbound_ids,Inbound),maplist(miter_store_nonempty_atom,M.tests,Tests).
 
-sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-([1-4]|r1|r2)$',A),
+sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-([1-4]|r1|r2|r3)$',A),
  atom_concat('/Users/claritymiter/miter/runtime/g29/candidates/',A,P).
 sx_rel("extension/mattermost_bridge.pl").
 sx_rel("candidate_tests/mattermost_contract_tests.pl").

@@ -1,0 +1,49 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G29",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G29 R4: native recovery-operation comparison may select a uniquely supported transient explicit Nemotron preload after retained on-demand startup crashes; exact post-trial unload and unchanged candidate qualification are mandatory, and at most two new model products may be rendered.",
+  "claim_ids": ["G29-R4-native-runtime-recovery", "G29-R4-qualified-authored-candidate"],
+  "non_claims": "No persistent LM Studio setting change, remote model, qwen retry, G30 mock result, live Mattermost contact, credentials, adapter activation, production readiness, promotion, or complete Soul cognition. A successful preload does not imply a valid candidate.",
+  "rationale": "R3 uniquely selected the unused local Nemotron resource, but both on-demand requests terminated during startup and correlated with new LM Studio crash dumps. No model remained loaded. A 16K/full-GPU estimate is 25.18 GiB on a 48 GiB host and the actual prompts need far less than 8K context. A finite explicit load with 8K context and speculative MTP disabled changes the observed runtime condition while remaining reversible and avoiding persistent settings.",
+  "requirements": [
+    "C-004", "C-005", "C-006", "C-007", "C-008", "C-020", "C-021", "C-023", "C-024",
+    "C-060", "C-061", "C-062", "C-063", "C-064", "C-065", "C-066", "C-067",
+    "C-090", "C-091", "C-093", "C-094", "C-095", "C-096", "C-097", "C-098", "C-099", "C-100", "C-102", "C-103", "C-104",
+    "S-103", "S-106", "S-501", "S-502", "S-503", "S-504", "S-601", "S-607", "S-801", "S-804",
+    "S-901", "S-903", "S-904", "S-905", "S-1003", "S-1004", "S-1005", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105",
+    "T-27", "T-28", "T-30", "T-36"
+  ],
+  "reading": "Retain unchanged controls and ledger. Reread the R3 plan/outcome; attempt-301 exact error streams, timings, crash metadata, load estimate and empty post-state; R2 exact candidate/test consequences; model profile; WORK_PROTOCOL effect/recovery constraints; and ACCEPTANCE G29/G30.",
+  "representation": "Recovery-operation atoms separate model, startup mechanism, context, GPU disposition, speculative mode, TTL, reversibility, changed evidence and authority. Native set comparison returns selected or unresolved standing. Preload/unload process observations remain mechanical evidence. Candidate products, resource standing and qualification observations remain separate.",
+  "consumer": "G29 MeTTa owns operation comparison, whether a request may proceed, repair targets, assembly, qualification and continuation. Prolog invokes the exact allowlisted local CLI operation, captures state/process evidence, transports local requests, quarantines source, and runs syntax/tests. JavaScript freezes and independently verifies only.",
+  "falsifiers": "Order changes recovery selection; removal still loads; equally supported operations first-match; load uses another model, larger context, persistent configuration or no TTL; inference proceeds after failed preload; exact model is not unloaded; baseline model state changes; calls exceed two; or invalid/credential-bearing/direct-core/test-failing source qualifies or is promoted.",
+  "scope_review": "One transient explicit Nemotron load and exact unload, plus at most two nemotron-local generation claims at 2048 output tokens, 300 seconds and 2 MiB each. Context 8192, full GPU, speculative MTP disabled, TTL 900. No persistent setting, remote model, qwen, credential, Mattermost network, production activation, push, user-service stop beyond unloading the exact model this experiment loaded, or hand-authored candidate repair.",
+  "rollback": "R1-R3 evidence and call claims remain immutable. If preload fails, unload if necessary and stop without generation. If generation fails, preserve exact streams and unload. R4 writes only new G29 evidence/runtime quarantine and G29 tooling. No candidate promotion or core modification.",
+  "predecessor": "docs/gates/G29/R3/outcome.md and evidence/G29/attempt-301/r3-failure-verdict.json: two on-demand Nemotron startup terminations with correlated crash metadata",
+  "allowed_paths": [
+    "src/surface_design_v1.metta", "src/bootstrap_surface_design_v1.metta", "src/surface_extension_v1.metta", "src/bootstrap_surface_extension_v1.metta",
+    "effect_membranes/miter_surface_design_v1.pl", "effect_membranes/miter_surface_extension_v1.pl",
+    "config/surface-event-v1.json", "config/surface-effect-v1.json", "config/mattermost-design-candidate-v1.json", "config/mattermost-design-part-v1.json", "config/mattermost-code-part-v1.json",
+    "scripts/g29/", "tests/fixtures/g29/", "evidence/G29/", "docs/gates/G29/", "docs/gates/G30/", "runtime/g29/"
+  ],
+  "preserved": [
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"}
+  ]
+}
