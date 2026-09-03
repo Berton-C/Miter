@@ -1,0 +1,18 @@
+true
+true
+true
+true
+true
+true
+(result attack-0 forbidden-write)
+(result reachable-0 ())
+(result attack-1 forbidden-write)
+(result reachable-1 ())
+(result attack-2 forbidden-write)
+(result reachable-2 ())
+(result attack-3 forbidden-write)
+(result reachable-3 ())
+(result attack-4 forbidden-write)
+(result reachable-4 ())
+(result attack-5 forbidden-write)
+(result reachable-5 ())

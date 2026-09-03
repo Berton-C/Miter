@@ -1,0 +1,8 @@
+true
+true
+true
+true
+stored
+(result verdict (trial-executed (trial-not-admitted invalid-module-or-manifest) development-durable rejected-development-retained))
+(result quarantine forbidden-write)
+stored

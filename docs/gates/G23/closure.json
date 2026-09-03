@@ -1,0 +1,50 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G23",
+  "plan": "docs/gates/G23/plan.json",
+  "plan_commit": "8d03c5cc6559b43a1136ee98ec4c346c5c6b2616",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "docs/gates/G23/completion.md",
+      "sha256": "0c95d15c014cc8bb84584a1d3f22a8d3e825ba76fd1707d33525512f152bcb9b"
+    },
+    {
+      "path": "scripts/g23_v2/run.mjs",
+      "sha256": "b6de38d0912e7f4b7d11fccb377ba38ce89615137feb4f464f7779c1b8f68158"
+    },
+    {
+      "path": "evidence/G22/g23-002/verdict.json",
+      "sha256": "df7bcdc7b8d19c5d034bcd5fe3501ceca223cc746c867c005e24b7bfe3115699"
+    },
+    {
+      "path": "evidence/G22/g23-002/full-inventory.json",
+      "sha256": "959cd63d1b1e12ce8d6bde0e495b45c1a63ba34dbaf5a17422b35b7a1234e5ed"
+    },
+    {
+      "path": "evidence/G22/g23-002/protected-before.json",
+      "sha256": "ae2dc00247cba971932c9d0c5f5bf6485c539f7121ca190b8ed08889df8d86f1"
+    },
+    {
+      "path": "evidence/G22/g23-002/protected-after.json",
+      "sha256": "ae2dc00247cba971932c9d0c5f5bf6485c539f7121ca190b8ed08889df8d86f1"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G23-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "Six inert mutation requests rejected and durably recorded; actual candidate positive, native guard-severed reachability, restored and neutral tests. Real controls/adverse history plus explicitly fixture workshop grant; not executable sandbox proof."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-002–008/090–097 and S-403–405/903/1004 distinguish derived capability from governing authority. Both unchanged controls and applicable full clauses/whole-design relationships reread.",
+    "causal_evidence": "Native allowed-write guard blocks all six at module admission; severed guard permits unsafe declarations into quarantine, restoration blocks. Same real TVExecute path retains successful actual candidate and six rejected-development records; independent hashes and native separate state readback.",
+    "substitution_audit": "No six-target runtime denylist or behavioral choice table. Targets are adversarial fixtures; the generic native closed writer family is the causal authority boundary. Candidate output is inert; the isolated severed harness has no effect/persistence broker. JS only builds and checks tests.",
+    "capability_and_constraint_audit": "No runtime/control changes. G22 useful admission remains. Protected files, 79 Soul-space atoms and 129 compass atoms preserved. Legacy Soul seed is attack-test data only. No new model calls, service mutations or live reach.",
+    "remaining_gaps": "Production workshop grant and executable containment remain G27; all-nine cognition, unified production lifecycle, general language, NAL efficacy and Mattermost remain unfinished. g23-001 probe type mismatch is retained; final g23-002 uses the actual guard in all four arms."
+  },
+  "reviewer": "Codex builder with separate deterministic checks; no independent reviewer claimed.",
+  "review_limits": "Bounded declarative authority attacks, not proof against arbitrary host compromise or complete Soul implementation.",
+  "next_plan": "docs/gates/G24/plan.json"
+}

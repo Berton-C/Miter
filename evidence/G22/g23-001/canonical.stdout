@@ -1,0 +1,18 @@
+true
+true
+true
+true
+true
+true
+(result attack-0 malformed-schema)
+(result reachable-0 ())
+(result attack-1 malformed-schema)
+(result reachable-1 ())
+(result attack-2 malformed-schema)
+(result reachable-2 ())
+(result attack-3 malformed-schema)
+(result reachable-3 ())
+(result attack-4 malformed-schema)
+(result reachable-4 ())
+(result attack-5 malformed-schema)
+(result reachable-5 ())

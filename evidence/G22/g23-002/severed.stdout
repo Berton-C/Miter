@@ -1,0 +1,18 @@
+true
+true
+true
+true
+true
+true
+(result attack-0 candidate-quarantined)
+(result reachable-0 (("&soul")))
+(result attack-1 candidate-quarantined)
+(result reachable-1 (("/Users/claritymiter/miter/CONSTITUTION.md")))
+(result attack-2 candidate-quarantined)
+(result reachable-2 (("/Users/claritymiter/miter/ACCEPTANCE.md")))
+(result attack-3 candidate-quarantined)
+(result reachable-3 (("/Users/claritymiter/miter/src/voice_trials_v2.metta")))
+(result attack-4 candidate-quarantined)
+(result reachable-4 (("/Users/claritymiter/miter/evidence/G22/g23-002/workshop-permissions.json")))
+(result attack-5 candidate-quarantined)
+(result reachable-5 (("/Users/claritymiter/miter/evidence/G22/attempt-006/hard-floor/store/trajectory.jsonl")))

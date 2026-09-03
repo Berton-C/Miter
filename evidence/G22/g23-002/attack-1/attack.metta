@@ -1,0 +1,8 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice_trials_v2.metta")
+!(add-atom &soul (protected-canary Soul))
+!(add-atom &history (protected-canary adverse-history))
+!(import! &soul "/Users/claritymiter/miter/constitution/soul.metta")
+!(tv_snapshot "/Users/claritymiter/miter/evidence/G22/g23-002/attack-1" before)
+!(result verdict (TVExecute "/Users/claritymiter/miter/evidence/G22/g23-002/attack-1"))
+!(result quarantine (let $m (tv_module "/Users/claritymiter/miter/evidence/G22/g23-002/attack-1" candidate) (VQuarantine (index-atom $m 2) $m model-candidate-bound)))
+!(tv_snapshot "/Users/claritymiter/miter/evidence/G22/g23-002/attack-1" after)
