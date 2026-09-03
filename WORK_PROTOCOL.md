@@ -23,6 +23,8 @@ The governing maxim is:
 
 ## W-001 — Required reading order
 
+**2026-09-03 ratified supplement:** `BUILD_FIDELITY_PROTOCOL.md` governs opening, closure, and next-plan derivation for every subsequent gate. Read both `CONSTITUTION.md` and the ratified `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md`, including applicable source meanings and falsifiers, before planning and again during closure review. A gate number or a passing fixture cannot replace that review. The supplement strengthens this protocol without weakening any existing acceptance criterion.
+
 Before Task 00, read in this order:
 
 1. `CONSTITUTION.md`
@@ -70,6 +72,8 @@ A design change requires:
 ## W-004 — One gate per task
 
 A Work task implements one gate or one explicitly named prerequisite nugget. It must not opportunistically build later subsystems.
+
+Berton's 2026-09-03 instruction authorizes sequential bounded gate work in the current task: each gate still has a separate frozen plan, evidence, fidelity closure, and source-derived next plan before the next implementation begins. This is not permission to merge claims or skip gate boundaries.
 
 ## W-005 — No acceptance by narration
 

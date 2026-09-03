@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {validatePlan,local} from './check.mjs';
+const source=JSON.parse(fs.readFileSync(local('docs/gates/SC01/plan.json')));
+const fresh=()=>structuredClone(source);
+test('valid plan is packaging, not semantic certification',()=>assert.equal(validatePlan(fresh()).gate,'SC01'));
+test('changed control is rejected',()=>assert.throws(()=>validatePlan(fresh(),p=>p==='CONSTITUTION.md'?Buffer.from('changed'):fs.readFileSync(local(p))),/control changed/));
+test('unknown requirement rejected',()=>{const p=fresh();p.requirements.push('S-9999');assert.throws(()=>validatePlan(p),/unknown requirement/)});
+test('both controls required',()=>{const p=fresh();p.requirements=['S-501'];assert.throws(()=>validatePlan(p),/both controls/)});
+test('missing falsifiers rejected',()=>{const p=fresh();p.falsifiers='';assert.throws(()=>validatePlan(p),/missing falsifiers/)});
+test('preserved-work tampering rejected',()=>{const p=fresh();p.preserved[0].sha256='0'.repeat(64);assert.throws(()=>validatePlan(p),/preserved work changed/)});
+test('path escape rejected',()=>assert.throws(()=>local('../elsewhere'),/escapes/));
+test('duplicate claim IDs rejected',()=>{const p=fresh();p.claim_ids.push(p.claim_ids[0]);assert.throws(()=>validatePlan(p),/unique claim/)});

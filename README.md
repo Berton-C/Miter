@@ -11,6 +11,8 @@
 
 ## 1. What this packet is
 
+**Current build control (2026-09-03):** Berton has ratified the [Soul constitutive specification](MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md) alongside the [Constitution](CONSTITUTION.md). Every new gate must follow the [build-fidelity protocol](BUILD_FIDELITY_PROTOCOL.md). The [reassessment](docs/MITER_SOUL_BUILD_REASSESSMENT.md) identifies the historical mechanical evidence and cognitive corrections; it is not a declaration that the Soul is already implemented. The historical packet remains provenance, not permission to ignore the ratified specification.
+
 It is deliberately smaller than the eventual Miter architecture, but it is not a toy agent. The PoC is required to prove two things:
 
 1. **Miter is alive as the intended kind of cognitive system.** Miter must be a Soul-constituted PeTTa/MeTTa organism whose cognition is not trapped inside an LLM conversation, whose local LLM renders bounded semantic products, whose long-term memory preserves Continuity of Mind, whose voice is audited against Soul-determined intention, and whose ongoing activity includes both receptive readiness and endogenous development.

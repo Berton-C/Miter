@@ -602,4 +602,22 @@ Miter chooses based on the bridge contract, available libraries, sandbox support
 
 # Final ledger rule
 
+## D-039 — Soul specification v0.2 ratified
+
+**Status:** ACCEPTED BY BERTON
+**Date:** 2026-09-03
+
+Berton accepted `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md` v0.2 and authorized its commitment and implementation alignment. The accepted pre-adoption document SHA-256 is `f777ecf8be2e799669ce724a0657c068eb66b6d93cce751bd82ed8da63d97463`. The adopted document retains that design and adds this ratification standing and protocol references. It is subordinate to `CONSTITUTION.md` and the five mathematical authorities. Exact unresolved implementation choices remain explicit; historical sources, numerical thresholds, and code are not admitted wholesale. See `docs/ratification/SOUL_SPEC_V02.md`.
+
+## D-040 — Gate-to-gate build fidelity
+
+**Status:** AUTHORIZED BY BERTON; IMPLEMENTED METHODOLOGY
+**Date:** 2026-09-03
+
+Berton requested a methodology that checks every completed gate against both control documents and derives the next gate plan from them. Adopt `BUILD_FIDELITY_PROTOCOL.md`: source-pinned opening, frozen claims/falsifiers, raw runtime evidence, explicit semantic/drift review, mechanically checked closure, and a source-derived next plan. The process governs builders, not Miter's runtime cognition. It does not amend `CONSTITUTION.md` or `ACCEPTANCE.md`.
+
+Preserve the bounded G01–G21 evidence and unfinished G22 work. Begin alignment with a separately identified SC01 prerequisite in native relational construction; do not relabel a narrow old gate as rich Soul proof. Existing gate progression resumes only with its unmet constitutive dependencies made explicit. Comprehensive erasure and public-source packaging remain deferred; live external reach still requires its specific grant.
+
+---
+
 A later implementation surprise does not retroactively change these decisions. It creates a new decision entry with evidence and an explicit supersession relation.
