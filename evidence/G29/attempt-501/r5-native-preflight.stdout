@@ -1,0 +1,8 @@
+true
+(result experiment (request-shape-selected plain-sentinel nemotron-local (plain-sentinel)))
+(result experiment-reordered (request-shape-selected plain-sentinel nemotron-local (plain-sentinel)))
+(result experiment-removed (request-shape-unresolved ()))
+(result experiment-ambiguous (request-shape-unresolved (remote-sentinel plain-sentinel)))
+(result exact-diagnostic true)
+(result mismatch-diagnostic false)
+(result targets (tests bridge))
