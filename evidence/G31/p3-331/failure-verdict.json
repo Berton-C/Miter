@@ -1,0 +1,23 @@
+{
+  "status": "FAIL-EVIDENCE",
+  "phase": "native-renderer-visibility-preflight",
+  "failure_kind": "petta-prolog-import-library-absent",
+  "zero_effect_preflight_passed": false,
+  "native_question_standing_passed": true,
+  "native_process_status": 0,
+  "native_stderr_empty": true,
+  "observed": "The P3 bootstrap invoked import_prolog_functions_from_file without first importing PeTTa's lib_import definitions, so the requested grounding remained an unevaluated MeTTa expression.",
+  "petta_source_basis": "/private/tmp/miter-g06-petta-ae66fa8/lib/lib_import.metta",
+  "model_call_claim_created": false,
+  "model_requests_created": 0,
+  "actual_model_calls": 0,
+  "openrouter_credential_lookups": 0,
+  "local_mattermost_requests": 0,
+  "mattermost_credential_lookups": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "candidate_created": false,
+  "activated": false,
+  "promoted": false,
+  "recovery": "Import (library lib_import) in the P3 bootstrap before importing any Prolog grounding, then require the existing effect-free readiness predicate to reduce to true before the unchanged one-call experiment."
+}

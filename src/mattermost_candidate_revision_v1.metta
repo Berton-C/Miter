@@ -65,7 +65,7 @@
   (if (PShape $question openrouter-source 10)
    (let* (($stage (add-atom &derived
                     (openrouter-source-pending $root $question)))
-          ($observation (or_source $root $question))
+          ($observation (g31_p3_openrouter_source $root $question))
           ($clear (remove-atom &derived
                     (openrouter-source-pending $root $question))))
     (G31P3ObservationSummary $observation))

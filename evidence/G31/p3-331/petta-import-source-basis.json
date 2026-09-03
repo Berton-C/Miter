@@ -1,0 +1,16 @@
+{
+  "schema": "miter-g31-p3-petta-source-basis-v1",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "lib_import_metta": {
+    "path": "lib/lib_import.metta",
+    "sha256": "609731cade81b0dc1aa749f3360a76d354d11d1d333c851785ab8aaf420d3f68",
+    "observation": "Defines import_prolog_functions_from_file by consulting the requested file and registering each requested function."
+  },
+  "metta_runtime": {
+    "path": "src/metta.pl",
+    "sha256": "11285f8180b0af7fbb9ec98ab1a369826607c57ca2735213d052abefe2b4f6ad",
+    "observation": "Defines import_prolog_function/2 and register_fun/1; importing the library is required before the MeTTa helper can register file predicates."
+  },
+  "working_precedent": "src/bootstrap_mattermost_mock_trial_v1.metta imports (library lib_import) before import_prolog_functions_from_file.",
+  "inference": "Attempt 331's unreduced g31_p3_renderer_ready expression is explained by the missing explicit lib_import bootstrap dependency."
+}

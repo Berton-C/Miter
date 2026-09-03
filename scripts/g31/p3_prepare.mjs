@@ -16,9 +16,9 @@ process.on('uncaughtException', error => {
   console.error(error.stack);
   process.exitCode = 1;
 });
-const opening = checkOpen('docs/gates/G31/P3/R2/plan.json');
+const opening = checkOpen('docs/gates/G31/P3/R3/plan.json');
 assert.equal(opening.plan_commit,
-  '2a456e9992df7cffcf56775a9a8a2cc782164ff4');
+  '4fa88f39c8240f55a975d0516e437d62e2748006');
 save(`${dir}/opening.json`, opening);
 
 const p2 = read(`${root}/evidence/G31/p2-001/native-input.json`);
@@ -39,9 +39,12 @@ save(`${dir}/input.json`, {
 });
 const boot = `!(import! &self "${root}/src/bootstrap_mattermost_candidate_revision_v1.metta")\n`;
 const rows = native(dir, 'native-question',
+  `!(result grounding (g31_p3_renderer_ready))\n`+
   `!(result standing (G31P3QuestionStanding ${sexp(source)} v11-7-7 ${sexp(current)} ${sexp(oldFile)}))`, boot);
-assert.equal(rows.length, 1);
-const standing = rows[0][2];
+assert.equal(rows.length, 2);
+const byName = Object.fromEntries(rows.map(row => [row[1],row[2]]));
+assert.equal(byName.grounding, 'true');
+const standing = byName.standing;
 assert.equal(standing[0], 'g31-p3-revision-question-ready');
 assert.equal(standing[1][1], 'openrouter-g31-p3-revision-1');
 assert.equal(standing[2][1], candidateHash);
@@ -62,6 +65,8 @@ const sources = [
   'docs/gates/G31/P3/R1/plan.json', 'docs/gates/G31/P3/R1/plan.md',
   'docs/gates/G31/P3/R1/attempt-311-outcome.md',
   'docs/gates/G31/P3/R2/plan.json', 'docs/gates/G31/P3/R2/plan.md',
+  'docs/gates/G31/P3/R2/attempt-321-outcome.md',
+  'docs/gates/G31/P3/R3/plan.json', 'docs/gates/G31/P3/R3/plan.md',
   'docs/gates/G31/P3/attempt-301-outcome.md',
   'docs/gates/G31/P2/outcome.md', 'config/model-resources-v1.json',
   'src/participation.metta', 'src/mattermost_live_reconciliation_v1.metta',
@@ -79,9 +84,10 @@ const retained = [candidatePath,
   `${root}/evidence/G31/p2-001/native-result.json`,
   `${root}/evidence/G31/p2-001/verification.json`,
   `${root}/evidence/G31/p3-301/failure-verdict.json`,
-  `${root}/evidence/G31/p3-311/failure-verdict.json`];
+  `${root}/evidence/G31/p3-311/failure-verdict.json`,
+  `${root}/evidence/G31/p3-321/failure-verdict.json`];
 save(`${dir}/manifest.json`, {
-  schema:'miter-g31-p3-r2-freeze-v1', plan:'docs/gates/G31/P3/R2/plan.json',
+  schema:'miter-g31-p3-r3-freeze-v1', plan:'docs/gates/G31/P3/R3/plan.json',
   plan_commit:opening.plan_commit,
   files:pins([...sources.map(file => `${root}/${file}`), ...retained,
     `${dir}/input.json`, `${dir}/revision-question.json`]),
@@ -95,6 +101,7 @@ save(`${dir}/manifest.json`, {
 });
 save(`${dir}/prepared.json`, {
   status:'PREPARED', native_question:true,
+  qualified_renderer_grounding_visible:true,
   compact_stdout_and_durable_source_handoff:true,
   source_candidate_sha256:candidateHash,
   source_consequence:'pending-post-id-body-map-required',

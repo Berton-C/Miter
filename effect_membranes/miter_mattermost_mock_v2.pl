@@ -23,6 +23,22 @@ or_spend(Root, bridge, 'openrouter-g31-p3-revision-1') :-
         model:'z-ai/glm-5.3'
     }).
 
+% Explicitly defined here so PeTTa imports this qualified surface rather than
+% relying on a predicate that is only present through a transitive load.
+g31_p3_openrouter_source(Root, Question, Observation) :-
+    or_source(Root, Question, Observation).
+
+% Effect-free: checks predicate/grant/slot visibility without reading a key or
+% contacting the provider.
+g31_p3_renderer_ready(Result) :-
+    ( current_predicate(or_source/3),
+      or_source_grant('openrouter-g31-p3-revision-1', bridge, 8192, 300),
+      \+ exists_directory('/Users/claritymiter/miter/evidence/G31/P3-call-1.claim')
+    -> Result = true
+    ; Result = false
+    ),
+    !.
+
 g31_p3_mock_trial(Candidate0, ExpectedHash0, Result) :-
     catch(g31_p3_mock_trial_checked(Candidate0, ExpectedHash0, Result0),
           Error, g31_p3_mock_error(Error, Result0)),
