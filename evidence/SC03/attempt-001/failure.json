@@ -1,0 +1,1 @@
+{"status":"FAIL","message":"timed out waiting for laboratory condition","stack":"Error: timed out waiting for laboratory condition\n    at waitFor (file:///Users/claritymiter/miter/scripts/sc03/run.mjs:18:138)\n    at async file:///Users/claritymiter/miter/scripts/sc03/run.mjs:29:306"}

@@ -1,0 +1,99 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "SC03",
+  "plan": "docs/gates/SC03/plan.json",
+  "plan_commit": "70f59bafd397578984f3cf4afa35d126ec0afa27",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "src/undertaking.metta",
+      "sha256": "f0d8ad50b0921b1e07144104698d7c238a78df93879cf00cd60e55292c7bec8c"
+    },
+    {
+      "path": "src/bootstrap_undertaking.metta",
+      "sha256": "f97e76ec8b188fff1f628a17d313ff8191a156a36c8d05520c56da38b600b85e"
+    },
+    {
+      "path": "effect_membranes/miter_undertaking.pl",
+      "sha256": "80417deb75b8c7079b37b7daeb9ce3c5868a6dcd2e477ef24be2fc6a57f24fd5"
+    },
+    {
+      "path": "scripts/sc03/inventory.mjs",
+      "sha256": "338d8e6cb0e72ccb5c560bb197bc4bb1493477ff69f91f59a69426b621a765b9"
+    },
+    {
+      "path": "scripts/sc03/lab_edit.pl",
+      "sha256": "9d26c44674491ffeb2f60aeda718124181aed5e8b872732ea4ab818ee7e35625"
+    },
+    {
+      "path": "scripts/sc03/main.pl",
+      "sha256": "bbbf834e58361863d4af188f8e6ad57d9137474bd31b73dac75004ddc94b81b9"
+    },
+    {
+      "path": "scripts/sc03/prepare.mjs",
+      "sha256": "05d8b16143247f0305ccbb90da8a8cda92c3c9e3eddf20e8ffe8700422ba2711"
+    },
+    {
+      "path": "scripts/sc03/probe.mjs",
+      "sha256": "e63c77134daecb7604d3d9fb230b3c235fc127485c722986159f5a2c8e6af5c2"
+    },
+    {
+      "path": "scripts/sc03/run.mjs",
+      "sha256": "b87943a877e8413ee9eaac82bbbd63edef4fb91c994eadce4c82a9faa373cca7"
+    },
+    {
+      "path": "scripts/sc03/verify-package.mjs",
+      "sha256": "e30d0ff1fcd9c12e9ff3de66cd9631b1746de6dc4fbdcbcbf46bc0b6bb083290"
+    },
+    {
+      "path": "evidence/SC03/raw-inventory.json",
+      "sha256": "f8ef9cb780ebcfbc7deff46368b126af7359ded0f5b118104778fd9351b11aa9"
+    },
+    {
+      "path": "evidence/SC03/closure-checks.json",
+      "sha256": "b575e1df3081ec4c93e4725e69ec517c2ed2c4cf784b1bad90ef145f56998b01"
+    },
+    {
+      "path": "evidence/SC03/attempt-006/verdict.json",
+      "sha256": "c1a3826bcd854b580f3c3bbf1b29c2d9c80cf8e7d5875b513a803e64f05e33f0"
+    },
+    {
+      "path": "docs/gates/SC03/completion.md",
+      "sha256": "f5c6147f69e5680f5c9e0b0badd3539f4552a8df1d7e9bfa6074d8fdb321ab82"
+    },
+    {
+      "path": "docs/gates/SC04/plan.json",
+      "sha256": "d5660f918fd1fd078cb6bba080474b8ee63ffded6d882c26d120cdaff2429faa"
+    },
+    {
+      "path": "docs/gates/SC04/plan.md",
+      "sha256": "6fc1f56688b78c5ea2023b772b2bb3766b23834cc44e56f558d303a94b6cc6e8"
+    },
+    {
+      "path": "docs/gates/SC04/rejoin-dependencies.md",
+      "sha256": "2c76593bc4789195d39594e9bfafc0ea97935b3e1cf627795035ba85605807ac"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "SC03-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "19-group final suite; finite native graph undertaking across recurring turns and renewable allocations. Not full Soul, production scheduling or arbitrary feature construction."
+    },
+    {
+      "id": "SC03-B",
+      "status": "PROVEN-HARNESS",
+      "limit": "Tested single-process local graph crash/restart, exact receipt/context binding, interruption, changed dependencies and revocation. No power-loss, multi-process or general remote exactly-once guarantee."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "completion.md rereads and applies S-601/605/606, C-024/030/060/070–075/101, non-compensatory S-503/504 and permission/meaning separation. Full control ledger interfaces remain partial as recorded.",
+    "causal_evidence": "attempt-006 raw native transitions and separately read world/receipts: two actual graph effects, renewed grant, consequence/continuity-severed differences, restored equality, source/version/revocation and 10,000 native turns. Independent delta/history verifier, not narration.",
+    "substitution_audit": "Native UTurn/UPurpose/UConsider compose SC01/SC02 relations. Prolog observes, serializes and applies exact bound local deltas; it does not choose purpose or operation. JavaScript is offline fixture/verifier tooling and is not in the runtime dependency route.",
+    "capability_and_constraint_audit": "Closure review removed mandatory runtime lifetime, separated write permission from cognition/completion, and bound pending effects to current source context. Allocation exhaustion is incomplete, not completed; rest does not fabricate progress. No scalar eligibility or forced model calls.",
+    "remaining_gaps": "Three finite interface meanings and a laboratory-owned source registry remain. General language, full nine flourishing enactors, native opportunity/voice/candidate integration, production trajectory and later learning/self-extension are not proven. Rejoin NOT READY; SC04 plan addresses finite raw-language grounding."
+  },
+  "reviewer": "Codex builder; separate deterministic verifier, no independent agent or human review.",
+  "review_limits": "Package validity and finite test outcomes do not establish semantic adequacy or whole-system readiness. scripts/sc03/inventory.mjs verifies the 1423 raw files; the generic closure checker pins the inventory, not its recursive contents. See completion.md.",
+  "next_plan": "docs/gates/SC04/plan.json"
+}

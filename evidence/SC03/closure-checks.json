@@ -1,0 +1,76 @@
+{
+  "status": "PASS-PACKAGE",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "preserved_g22": 13,
+  "unchanged": [
+    {
+      "path": "src/participation.metta",
+      "sha256": "d98fe21b90732109a69bdd47cb8d4db7cdd01a873d63066a03cc2d68b8cbe0e3"
+    },
+    {
+      "path": "src/participation_support.metta",
+      "sha256": "eca5840100f88719e92a8db764991449e28bf9b829b12ac1a69ee2afcf8e7b19"
+    },
+    {
+      "path": "constitution/soul_compass_v02.metta",
+      "sha256": "4008936744e864c508fc862e477789de8db0a2ce4a36b2daa3245f9d47c281d0"
+    }
+  ],
+  "runtime_entry": "scripts/sc03/main.pl",
+  "runtime_boundary": "PeTTa/MeTTa cognition; Prolog mechanics; no JavaScript or Python/Java invocation in inspected entry/membranes",
+  "runtime_sources": [
+    {
+      "path": "scripts/sc03/main.pl",
+      "sha256": "bbbf834e58361863d4af188f8e6ad57d9137474bd31b73dac75004ddc94b81b9"
+    },
+    {
+      "path": "effect_membranes/miter_undertaking.pl",
+      "sha256": "80417deb75b8c7079b37b7daeb9ce3c5868a6dcd2e477ef24be2fc6a57f24fd5"
+    },
+    {
+      "path": "effect_membranes/miter_store.pl",
+      "sha256": "b5b1906ede97d278ff6cfeba8001873a8f0192d308e87bf8cb97f0c51fcd4b39"
+    },
+    {
+      "path": "src/undertaking.metta",
+      "sha256": "f0d8ad50b0921b1e07144104698d7c238a78df93879cf00cd60e55292c7bec8c"
+    },
+    {
+      "path": "src/bootstrap_undertaking.metta",
+      "sha256": "f97e76ec8b188fff1f628a17d313ff8191a156a36c8d05520c56da38b600b85e"
+    }
+  ],
+  "commands": [
+    {
+      "args": [
+        "scripts/fidelity/check.mjs",
+        "plan",
+        "docs/gates/SC04/plan.json"
+      ],
+      "status": 0,
+      "stdout": "{\n  \"status\": \"PLAN-VALID\",\n  \"gate\": \"SC04\",\n  \"semantic_fidelity_certified\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "scripts/sc01/validate-docs.cjs"
+      ],
+      "status": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"parts\": 12,\n  \"requirements\": 64,\n  \"flourishingRecords\": 9,\n  \"ledgerRows\": 73,\n  \"testFamilies\": 36,\n  \"decisionTopics\": 13,\n  \"constitutionalClauses\": 81,\n  \"localSources\": 47,\n  \"remoteReferences\": 2,\n  \"localLinksChecked\": 84,\n  \"copiesIdentical\": true,\n  \"failures\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "--test",
+        "scripts/fidelity/check.test.mjs"
+      ],
+      "status": 0,
+      "stdout": "TAP version 13\n# Subtest: valid plan is packaging, not semantic certification\nok 1 - valid plan is packaging, not semantic certification\n  ---\n  duration_ms: 2.907542\n  ...\n# Subtest: changed control is rejected\nok 2 - changed control is rejected\n  ---\n  duration_ms: 0.730333\n  ...\n# Subtest: unknown requirement rejected\nok 3 - unknown requirement rejected\n  ---\n  duration_ms: 0.849041\n  ...\n# Subtest: both controls required\nok 4 - both controls required\n  ---\n  duration_ms: 0.688958\n  ...\n# Subtest: missing falsifiers rejected\nok 5 - missing falsifiers rejected\n  ---\n  duration_ms: 0.912084\n  ...\n# Subtest: preserved-work tampering rejected\nok 6 - preserved-work tampering rejected\n  ---\n  duration_ms: 0.7735\n  ...\n# Subtest: path escape rejected\nok 7 - path escape rejected\n  ---\n  duration_ms: 0.054958\n  ...\n# Subtest: duplicate claim IDs rejected\nok 8 - duplicate claim IDs rejected\n  ---\n  duration_ms: 0.678292\n  ...\n1..8\n# tests 8\n# suites 0\n# pass 8\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 58.061833\n",
+      "stderr": ""
+    }
+  ],
+  "semantic_fidelity_certified": false
+}
