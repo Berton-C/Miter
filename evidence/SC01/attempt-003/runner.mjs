@@ -1,0 +1,120 @@
+// Offline builder harness; all candidate construction runs in native MeTTa.
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {execFileSync,spawnSync} from 'node:child_process';
+import {hash,checkOpen,root} from '../fidelity/check.mjs';
+process.chdir(root);
+const rel=process.argv[2];
+assert.match(rel??'',/^evidence\/SC01\/attempt-\d{3}$/);
+assert(!fs.existsSync(rel),'never overwrite an evidence attempt');
+fs.mkdirSync(rel,{recursive:true});
+const save=(name,data)=>fs.writeFileSync(rel+'/'+name,typeof data==='string'?data:JSON.stringify(data,null,2)+'\n');
+process.on('uncaughtException',error=>{save('failure.json',{status:'FAIL',message:error.message,stack:error.stack});console.error(error.stack);process.exitCode=1});
+save('runner.mjs',fs.readFileSync('scripts/sc01/run.mjs','utf8'));
+save('opening.json',checkOpen('docs/gates/SC01/plan.json'));
+const petta='/private/tmp/miter-g06-petta-ae66fa8';
+assert.equal(execFileSync('git',['-C',petta,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),'ae66fa8e41dcd5539d614706bd4e5cfb34f9608d');
+assert.equal(execFileSync('git',['-C',petta,'status','--porcelain'],{encoding:'utf8'}).trim(),'');
+save('environment.json',{petta,pin:'ae66fa8e41dcd5539d614706bd4e5cfb34f9608d',swi:execFileSync('/opt/homebrew/bin/swipl',['--version'],{encoding:'utf8'}).trim(),model_calls:0,services_touched:[],scope:'isolated native harness; no actual effect authority'});
+const base=JSON.parse(fs.readFileSync('tests/fixtures/sc01/cases.json'));
+const clone=x=>structuredClone(x);
+const cases=[];
+const add=(id,mutate=()=>{})=>{const c=clone(base);c.id=id;mutate(c);cases.push(c);return c};
+add('canonical');
+add('neutral-reorder',c=>{c.state.reverse();c.operations.reverse()});
+add('no-operator',c=>c.operations=[]);
+add('slice-exhausted',c=>c.budget=1);
+add('already-complete',c=>c.state.push(['edge','artifact','revised']));
+add('unknown-focus',c=>c.focus[0][1]='UnsupportedPattern');
+add('malformed-budget',c=>c.budget='unbounded');
+add('malformed-operation',c=>c.operations[0]=['operation','bad']);
+add('malformed-state',c=>c.state='not-a-graph');
+add('malformed-scope',c=>c.scope='unscoped');
+add('malformed-request',c=>c.request=['permission','anything']);
+add('malformed-focus',c=>c.focus=[['material-interface','AgencyBalance']]);
+add('malformed-edge',c=>c.state.push(['edge','missing-endpoint']));
+add('cycle-not-access',c=>{c.state=c.state.filter(e=>e[2]!=='recover');c.state.push(['edge','person','cycle'],['edge','cycle','person']);c.operations=c.operations.slice(0,1)});
+add('foreign-principal',c=>{c.focus.forEach(f=>f[3]='another-person')});
+add('delegated-access',c=>{c.state.push(['edge','person','delegate'],['edge','delegate','choose'],['edge','delegate','inspect'],['edge','delegate','recover']);c.operations=c.operations.slice(0,1)});
+add('material-relation-severed',c=>{c.operations[1][3]=c.operations[1][3].filter(e=>e[2]!=='recover')});
+add('joint-incompatible',c=>{c.operations=[['operation','only-choice',[],[['edge','artifact','revised'],['edge','person','choose']],[['edge','person','inspect'],['edge','person','recover']]],['operation','only-inspection',[],[['edge','artifact','revised'],['edge','person','inspect']],[['edge','person','choose'],['edge','person','recover']]],['operation','only-recovery',[],[['edge','artifact','revised'],['edge','person','recover']],[['edge','person','choose'],['edge','person','inspect']]]]});
+add('longer-composition',c=>{c.operations[1][3]=[['edge','person','relay-one']];c.operations.push(['operation','relay-two',[],[['edge','relay-one','delegate']],[]],['operation','relay-three',[],[['edge','delegate','choose'],['edge','delegate','inspect'],['edge','delegate','recover']],[]]);c.budget=4});
+add('renamed-transfer',c=>{const map=new Map(['person','artifact','original','revised','choose','inspect','recover','delegate','direct-change','preserve-participation'].map((s,i)=>[s,'node-'+i]));const rename=v=>Array.isArray(v)?v.map(rename):(map.get(v)??v);for(const k of ['state','operations','request','focus'])c[k]=rename(c[k])});
+for(const [value,endpoint] of [['AgencyBalance','choose'],['SharedUnderstanding','inspect'],['TimeCoherence','recover']]) add('single-'+value,c=>{c.operations=c.operations.slice(0,1);c.operations[0][4]=[['edge','person',endpoint]]});
+const sexp=x=>Array.isArray(x)?'('+x.map(sexp).join(' ')+')':String(x);
+function parse(line) {
+  const tokens=line.match(/"(?:\\.|[^"\\])*"|\(|\)|[^\s()]+/gu)??[];let i=0;
+  const one=()=>{const t=tokens[i++];if(t==='('){const a=[];while(tokens[i]!==')'){assert(i<tokens.length,'unterminated expression');a.push(one())}i++;return a}if(t?.startsWith('"'))return JSON.parse(t);assert(t!==undefined,'missing token');return t};
+  const value=one();assert.equal(i,tokens.length);return value;
+}
+const source=fs.readFileSync('src/participation.metta','utf8');
+const compass=fs.readFileSync('constitution/soul_compass_v02.metta','utf8');
+save('participation.metta',source);save('soul_compass_v02.metta',compass);save('cases.json',cases);
+const runs={};
+for(const variant of ['canonical','sever-AgencyBalance','sever-SharedUnderstanding','sever-TimeCoherence','restored']) {
+  let code=source;
+  if(variant.startsWith('sever-')) {
+    const value=variant.slice(6);
+    const target='(path (index-atom $row 3) (index-atom $row 4)) unresolved-interface-meaning';
+    assert.equal(code.split(target).length,2);
+    code=code.replace(target,`(if (== $value ${value}) (path (index-atom $row 3) (index-atom $row 3)) (path (index-atom $row 3) (index-atom $row 4))) unresolved-interface-meaning`);
+  }
+  save(variant+'.metta',code);
+  const entry=[`!(import! &compass "${root}/constitution/soul_compass_v02.metta")`,`!(import! &self "${root}/${rel}/${variant}.metta")`,...cases.map(c=>`!(let $result (ComposeParticipation ${sexp(c.scope)} ${sexp(c.state)} ${sexp(c.operations)} ${sexp(c.request)} ${sexp(c.focus)} ${sexp(c.budget)}) (case-result ${c.id} $result))`), '!(let $rows (collapse (match &compass (compass-field $p $f $m $s) (field $p $f $m $s))) (compass-readback $rows))'].join('\n')+'\n';
+  save(variant+'-entry.metta',entry);
+  const start=performance.now();
+  const r=spawnSync('/opt/homebrew/bin/swipl',['--stack_limit=1g','-q','-s',petta+'/src/main.pl','--',root+'/'+rel+'/'+variant+'-entry.metta'],{encoding:'utf8',timeout:30000,maxBuffer:24*1024*1024});
+  save(variant+'.stdout',r.stdout??'');save(variant+'.stderr',r.stderr??'');
+  save(variant+'-process.json',{status:r.status,signal:r.signal,error:r.error?.message??null,elapsed_ms:performance.now()-start,deadline_ms:30000});
+  assert.equal(r.status,0,variant+' runtime failed');assert.equal(r.stderr,'',variant+' stderr');
+  const clean=r.stdout.replace(/\x1b\[[0-9;]*m/g,'');
+  const values=clean.split('\n').filter(l=>l.startsWith('(case-result ')).map(parse);
+  assert.equal(values.length,cases.length,variant+' must produce one evaluated result per case');
+  const readbacks=clean.split('\n').filter(l=>l.startsWith('(compass-readback ')).map(parse);
+  assert.equal(readbacks.length,1);
+  runs[variant]=Object.fromEntries(values.map(v=>[v[1],v[2]]));
+  save(variant+'-results.json',runs[variant]);save(variant+'-readback.json',readbacks[0][1]);
+}
+const candidates=(variant,id)=>{const r=runs[variant][id];return Array.isArray(r)&&r[0]==='scoped-search'?r[4].filter(x=>Array.isArray(x)&&x[0]==='candidate-participation'):[]};
+const canonical=id=>candidates('canonical',id);
+const steps=p=>p[1].map(t=>t[1]).reverse();
+const signature=(variant,id)=>[...new Set(candidates(variant,id).map(p=>JSON.stringify(steps(p))))].sort();
+const checks=[];
+const expect=(name,fn)=>{fn();checks.push(name)};
+expect('constructive two-step participation',()=>{assert(canonical('canonical').length);for(const p of canonical('canonical'))assert.deepEqual(steps(p),['preserve-participation','direct-change'])});
+expect('neutral reordering preserves solution set',()=>assert.deepEqual(signature('canonical','canonical'),signature('canonical','neutral-reorder')));
+expect('already complete needs no artificial step',()=>{assert(canonical('already-complete').length);for(const p of canonical('already-complete'))assert.equal(steps(p).length,0)});
+for(const id of ['no-operator','slice-exhausted','cycle-not-access','foreign-principal','material-relation-severed','joint-incompatible'])expect(id,()=>assert.equal(canonical(id).length,0));
+expect('legitimate delegated path remains useful',()=>{assert(canonical('delegated-access').length);for(const p of canonical('delegated-access'))assert.deepEqual(steps(p),['direct-change'])});
+expect('longer composed interface without new interpreter branch',()=>{assert(canonical('longer-composition').length);assert(canonical('longer-composition').every(p=>steps(p).length===4))});
+expect('renamed transfer without trigger words',()=>{assert(canonical('renamed-transfer').length);assert(canonical('renamed-transfer').every(p=>steps(p).length===2))});
+for(const id of ['unknown-focus','malformed-budget','malformed-operation','malformed-state','malformed-scope','malformed-request','malformed-focus','malformed-edge'])expect(id,()=>assert(['unresolved-interface-meaning','invalid-slice-budget','malformed-structural-input'].includes(runs.canonical[id])));
+for(const value of ['AgencyBalance','SharedUnderstanding','TimeCoherence'])expect('causal sever/restore '+value,()=>{assert.equal(canonical('single-'+value).length,0);assert(candidates('sever-'+value,'single-'+value).length);assert.equal(candidates('restored','single-'+value).length,0)});
+expect('restoration preserves canonical set',()=>assert.deepEqual(signature('canonical','canonical'),signature('restored','canonical')));
+// Independent verification of supplied native traces, not host-side planning.
+// It checks every returned transition and goal; it never constructs an answer.
+const edgeSet=state=>new Set(state.map(JSON.stringify));
+const reach=(state,from,to)=>{const seen=new Set(),todo=[from];while(todo.length){const at=todo.pop();if(at===to)return true;if(seen.has(at))continue;seen.add(at);for(const e of state)if(e[1]===at)todo.push(e[2]);}return false};
+expect('native transition proofs and all joint goals checked independently',()=>{
+  for(const variant of ['canonical','restored'])for(const c of cases)for(const p of candidates(variant,c.id)){
+    const envelope=runs[variant][c.id];assert.deepEqual(envelope[1],c.scope);assert.deepEqual(envelope[2][1],c.focus);
+    let state=c.state;
+    for(const t of [...p[1]].reverse()){
+      assert.equal(t[0],'transition');assert.deepEqual(edgeSet(t[2]),edgeSet(state));
+      const op=c.operations.find(x=>x[1]===t[1]);assert(op);const before=edgeSet(state);
+      for(const edge of op[2])assert(before.has(JSON.stringify(edge)));
+      const after=new Set(before);for(const edge of op[4])after.delete(JSON.stringify(edge));for(const edge of op[3])after.add(JSON.stringify(edge));
+      assert.deepEqual(edgeSet(t[3]),after);state=t[3];
+      for(const f of c.focus)assert(reach(state,f[3],f[4]),'material interface lost in intermediate state');
+    }
+    assert.deepEqual(edgeSet(p[2]),edgeSet(state));assert(reach(state,c.request[1],c.request[2]));
+    for(const f of c.focus)assert(reach(state,f[3],f[4]));
+  }
+});
+const doc=fs.readFileSync('MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md','utf8');
+const expected=[];
+for(const section of doc.split(/^### FC-/m).slice(1,10)) {const lines=section.split('\n');const [id,name]=lines[0].split(' — ');for(const line of lines.slice(1)){if(/^##/.test(line))break;const m=line.match(/^- \*\*([^*]+):\*\* (.+)$/);if(m)expected.push(['field',name.trim(),m[1].toLowerCase().replaceAll(/[^a-z0-9]+/g,'-').replaceAll(/^-|-$/g,''),m[2],'FC-'+id]);}}
+expect('all 126 fields separately read from native AtomSpace equal control',()=>{assert.equal(expected.length,126);const actual=JSON.parse(fs.readFileSync(rel+'/canonical-readback.json'));assert.deepEqual(actual.map(JSON.stringify).sort(),expected.map(JSON.stringify).sort())});
+save('verdict.json',{gate:'SC01',status:'PASS-BOUNDED',checks,case_count:cases.length,variants:Object.keys(runs),semantic_fields:expected.length,source_sha256:hash(source),compass_sha256:hash(compass),limits:'Structured declared relations and finite projection only. No broad Soul/DPF, language, authority, effect, persistence, or blind held-out claim.'});
+console.log(JSON.stringify({status:'PASS-BOUNDED',checks:checks.length,cases:cases.length,variants:Object.keys(runs).length,evidence:rel}));

@@ -1,0 +1,11 @@
+{
+  "scope": ["scope", "cut-fixture", "principal-fixture", "project-fixture", "test-owner-structural-contact"],
+  "state": [["edge","person","choose"],["edge","person","inspect"],["edge","person","recover"],["edge","artifact","original"]],
+  "request": ["path","artifact","revised"],
+  "focus": [["material-interface","AgencyBalance","choice","person","choose","obs-choice"],["material-interface","SharedUnderstanding","inspection","person","inspect","obs-inspect"],["material-interface","TimeCoherence","recovery","person","recover","obs-recover"]],
+  "operations": [
+    ["operation","direct-change",[["edge","artifact","original"]],[["edge","artifact","revised"]],[["edge","person","choose"],["edge","person","inspect"],["edge","person","recover"]]],
+    ["operation","preserve-participation",[["edge","artifact","original"]],[["edge","person","delegate"],["edge","delegate","choose"],["edge","delegate","inspect"],["edge","delegate","recover"]],[]]
+  ],
+  "budget": 2
+}

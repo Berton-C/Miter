@@ -1,0 +1,18 @@
+{
+  "status": "CLOSURE-PACKAGE-VALID",
+  "gate": "SC01",
+  "claims": [
+    {
+      "id": "SC01-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "126 source-exact FC data fields independently read from native AtomSpace; representation fidelity only, not nine functioning semantic reasoners."
+    },
+    {
+      "id": "SC01-B",
+      "status": "PROVEN-HARNESS",
+      "limit": "Finite native structural composition with three context-declared interface projections; useful and causal under sever/restore. Fixture supplies meaning-bearing focus/scope premises. No full M25, language, actual authority, effects, persistence or integrated Soul claim."
+    }
+  ],
+  "next_plan": "docs/gates/SC02/plan.json",
+  "semantic_fidelity_certified": false
+}

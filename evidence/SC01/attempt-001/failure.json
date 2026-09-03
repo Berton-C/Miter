@@ -1,0 +1,7 @@
+{
+  "status": "FAIL",
+  "stage": "independent severed-arm assertion",
+  "reason": "The test harness sliced the sever- prefix at index 7 instead of 6, producing gencyBalance rather than AgencyBalance; it did not actually sever the intended consumer.",
+  "disposition": "Preserve all raw outputs. Repair the harness generically without changing the frozen expected counterfactual.",
+  "additional_observation": "Multiple equivalent native derivations inflated candidate counts. Investigate deterministic membership before the next attempt; duplicates are not independent support."
+}

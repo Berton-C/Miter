@@ -1,0 +1,30 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "SC01",
+  "plan": "docs/gates/SC01/plan.json",
+  "plan_commit": "b0ffcfdd0cfcf86f3239221be1ee9ed48ee2e460",
+  "status": "PASS-BOUNDED",
+  "evidence": [],
+  "claim_results": [
+    {
+      "id": "SC01-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "126 source-exact FC data fields independently read from native AtomSpace; representation fidelity only, not nine functioning semantic reasoners."
+    },
+    {
+      "id": "SC01-B",
+      "status": "PROVEN-HARNESS",
+      "limit": "Finite native structural composition with three context-declared interface projections; useful and causal under sever/restore. Fixture supplies meaning-bearing focus/scope premises. No full M25, language, actual authority, effects, persistence or integrated Soul claim."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "See completion.md: re-read both controls' applicable full clauses and whole Appendix A/B interfaces. S-106 movement at contact, S-201/204/302 meaningful connected compass and C-009/011/012 remain governing; only the exact finite prerequisite is proven.",
+    "causal_evidence": "attempt-003: 26 assertions, 23 cases, five native variants. Constructive two-step and longer-chain results, per-obligation sever/restore, neutral rename/reorder, operator/relation severing, intermediate and joint final-goal trace verification, 126-field native readback.",
+    "substitution_audit": "No scenario-to-answer branches or host-side plan construction in src/participation.metta. Host verifier inspects outputs. Fixture-owned request, operator semantics, focus and scope are still semantic premises. Rich prose fields are data; three explicit finite interface meanings are consumed. Source standing and material-interface derivation remain SC02, not silently passed.",
+    "capability_and_constraint_audit": "Delegation succeeds; already-complete request needs no invented work. Finite slice exhaustion remains unresolved. Context-declared access is not universal oversight or a fixed nine-check script. Per-transition preservation repaired a real trial gap without creating real effects. Products remain inert; original runtime and authorities untouched.",
+    "remaining_gaps": "No whole S/FC/T family upgraded. Full D/Ω/I/W/C, wider native meanings, grounded-language evaluation, situated purpose, continuous durable driver integration, memory/voice/effect requalification, NACE, governed hot activation and Miter-authored Mattermost remain. SC02 plan derives the next causal dependency from fixture-owned focus and unchecked provenance."
+  },
+  "reviewer": "Codex builder; independent deterministic verification code, no independent agent or human re-review.",
+  "review_limits": "Builder interpretation is inspectable but not independently certified. Native trials are finite visible structured fixtures, not blind held-out generality. Fidelity checker proves package identity/scope/completeness only.",
+  "next_plan": "docs/gates/SC02/plan.json"
+}

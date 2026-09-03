@@ -1,0 +1,6 @@
+{
+  "exit": 0,
+  "error": null,
+  "claim": "exploratory observation, not acceptance",
+  "finding": "Final-only goals allow an intermediate loss followed by restoration; retain this output before correcting transition checks."
+}

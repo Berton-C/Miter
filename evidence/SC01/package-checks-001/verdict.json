@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "closure_checks": [
+    "missing-evidence",
+    "changed-evidence",
+    "missing-claim",
+    "unproved-claim",
+    "missing-fidelity-review",
+    "missing-review-attribution",
+    "missing-next-plan",
+    "unlinked-next-plan",
+    "canonical-package"
+  ],
+  "plan_tests": 8,
+  "document_audit": {
+    "result": "PASS",
+    "parts": 12,
+    "requirements": 64,
+    "flourishingRecords": 9,
+    "ledgerRows": 73,
+    "testFamilies": 36,
+    "decisionTopics": 13,
+    "constitutionalClauses": 81,
+    "localSources": 47,
+    "remoteReferences": 2,
+    "localLinksChecked": 84,
+    "copiesIdentical": true,
+    "failures": []
+  },
+  "checker_sha256": "e19be5406bb456162fdaff3d70b7b56550317f25226731ef54906389a1b18fec",
+  "limits": "Structural packaging, identity and source-document coverage checks only. Not semantic fidelity certification."
+}
