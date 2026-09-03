@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"sample","grant_id":"grant-attempt-004","idempotency_key":"key-r16","network":"host","operation":"run_declared_test","request_id":"r16","schema":"miter-workshop-request-v1","test_id":"contract"},"request_hash":"03a9d8b4b42ca0436e5ab797d9bff4a0a9cf906bb2c41a28c1175cfbf1f82359"}

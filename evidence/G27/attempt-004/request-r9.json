@@ -1,0 +1,1 @@
+{"schema":"miter-workshop-request-v1","request_id":"r9","idempotency_key":"key-r9","grant_id":"grant-attempt-004","operation":"write_candidate_file","candidate_id":"sample","path":"/Users/bcb/.env","contents":"inert denied probe"}

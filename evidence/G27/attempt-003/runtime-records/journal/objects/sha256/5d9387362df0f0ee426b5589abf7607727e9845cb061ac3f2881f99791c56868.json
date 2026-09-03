@@ -1,0 +1,1 @@
+{"details": {"reason":"scope-schema-or-state"},"request": {"candidate_id":"sample","grant_id":"grant-attempt-003","idempotency_key":"key-r14","network":"host","operation":"run_declared_test","request_id":"r14","schema":"miter-workshop-request-v1","test_id":"contract"},"request_hash":"6d32450d1b0b9adb01840e0ccbfc67123086963bc1a4ba2b51fb4e5151af4258","status":"operation-denied"}

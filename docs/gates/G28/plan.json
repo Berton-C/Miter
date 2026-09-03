@@ -1,0 +1,152 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G28",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G28-A: a source-grounded native development undertaking generates a small nonnetworked executable adapter through a bounded LLM oracle, writes and trials it only through the workshop, compares actual contract observations natively, preserves candidate commits and produces a reviewable promotion proposal; no promotion occurs without explicit approval.",
+  "claim_ids": [
+    "G28-A"
+  ],
+  "non_claims": "No Mattermost implementation, live external reach, all-nine cognition, general software authorship, guaranteed first-pass success or production deployment. This is the finite nonnetworked G28 sample adapter, not the omitted-part proof.",
+  "rationale": "G27 supplies mechanical containment. C-091/093/095/097 and S-607/1004 now require native-origin candidate lineage and actual code trials. The existing VoicePolicy-specific opportunity cannot be falsely reused as if it already authorizes executable work.",
+  "requirements": [
+    "C-004",
+    "C-006",
+    "C-007",
+    "C-008",
+    "C-009",
+    "C-020",
+    "C-021",
+    "C-023",
+    "C-024",
+    "C-060",
+    "C-061",
+    "C-062",
+    "C-064",
+    "C-065",
+    "C-066",
+    "C-090",
+    "C-091",
+    "C-093",
+    "C-094",
+    "C-095",
+    "C-096",
+    "C-097",
+    "C-098",
+    "C-099",
+    "C-100",
+    "C-101",
+    "C-102",
+    "C-103",
+    "C-104",
+    "S-501",
+    "S-502",
+    "S-504",
+    "S-601",
+    "S-605",
+    "S-607",
+    "S-901",
+    "S-903",
+    "S-904",
+    "S-905",
+    "S-1001",
+    "S-1004",
+    "S-1005",
+    "S-1102",
+    "S-1103",
+    "S-1104",
+    "S-1105",
+    "T-14",
+    "T-16",
+    "T-23",
+    "T-24",
+    "T-26",
+    "T-27",
+    "T-28",
+    "T-30",
+    "T-32",
+    "T-36"
+  ],
+  "reading": "Both controls: source standing, native generation/admission, S-607/901/1004/1105 and whole ledger; ACCEPTANCE G28; POC_SPEC §15; WORK_PROTOCOL W-100–109; G27 closure; current native language/support and local provider contracts. Reread at closure.",
+  "representation": "Supported finite executable interface contract, scoped capability inventory, missing-interface derivation, resource/grant envelope and native continuation. Raw model artifact remains inert; candidate files, request lineage, exact per-case observations, native comparison and promotion proposal have distinct standing.",
+  "consumer": "New native source-grounded opportunity and bounded generation/trial continuation. Prolog performs local model HTTP/JSON, file transport and existing workshop requests; actual byte-contract comparison and proposal standing remain native. No source code supplied by builder is credited to Miter.",
+  "falsifiers": "plan.md freezes missing/available/unsupported-source opportunity contrasts, generated-file lineage, actual native file-write requests, fixed versus candidate-owned tests, parent/severed failures, code tampering, mismatched grants, native observation-comparison severing/restoration, immutable-main and explicit no-promotion-before-approval.",
+  "scope_review": "New native executable-development modules, noncognitive transport, schema/contract and offline fixtures; extend workshop with fixed candidate commit and proposal recording operations only. Reuse runtime/g27/attempt-28* sandbox scopes. One existing local qwen model profile, bounded calls; no model settings changes, no new credentials, no live network reach or service stops.",
+  "rollback": "All candidates remain isolated worktrees with retained commits and raw failed trials. No merge/registry activation before a separately presented explicit approval. Existing gate evidence and original unfinished G22 remain unchanged.",
+  "predecessor": "docs/gates/G27/closure.json",
+  "allowed_paths": [
+    "src/executable_development_v1.metta",
+    "src/bootstrap_executable_development_v1.metta",
+    "effect_membranes/miter_executable_development_v1.pl",
+    "effect_membranes/miter_workshop_v1.pl",
+    "config/executable-candidate-schema-v1.json",
+    "scripts/g28/",
+    "tests/fixtures/g28/",
+    "runtime/g27/attempt-28001/",
+    "runtime/g27/attempt-28002/",
+    "runtime/g27/attempt-28003/",
+    "runtime/g27/attempt-28004/",
+    "runtime/g27/attempt-28005/",
+    "runtime/g28/",
+    "evidence/G28/",
+    "docs/gates/G28/completion.md",
+    "docs/gates/G28/closure.json",
+    "docs/gates/G29/"
+  ],
+  "preserved": [
+    {
+      "path": "effect_membranes/miter_trials.pl",
+      "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256",
+      "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/inputs/plan.txt",
+      "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/preflight.txt",
+      "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stderr",
+      "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/g22/prepare.pl",
+      "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"
+    },
+    {
+      "path": "src/bootstrap_trials.metta",
+      "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"
+    },
+    {
+      "path": "src/trials.metta",
+      "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"
+    },
+    {
+      "path": "tests/fixtures/g22_canonical.metta",
+      "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"
+    },
+    {
+      "path": "tests/fixtures/g22_cases.json",
+      "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"
+    },
+    {
+      "path": "tests/fixtures/g22_parent.metta",
+      "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"
+    },
+    {
+      "path": "tests/fixtures/g22_severed.metta",
+      "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"
+    }
+  ]
+}

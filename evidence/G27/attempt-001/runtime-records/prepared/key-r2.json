@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"sample","contents":"hello from the isolated candidate\n","grant_id":"grant-attempt-001","idempotency_key":"key-r2","operation":"write_candidate_file","path":"extension/message.txt","request_id":"r2","schema":"miter-workshop-request-v1"},"request_hash":"ea434548d60b3187c518eed9e0e409e59710bc0ff1ce526e456e507e88891f2e"}

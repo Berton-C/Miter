@@ -1,0 +1,1 @@
+{"details": {},"request": {"candidate_id":"sample","contents":"must not overwrite","grant_id":"grant-attempt-004","idempotency_key":"key-r4","operation":"write_candidate_file","path":"extension/message.txt","request_id":"r2","schema":"miter-workshop-request-v1"},"request_hash":"04aa1ed4ca8fac0725f0a189a991d6ebebd533f4c12c8ef9c896a7541cdc8a90","status":"request-id-conflict"}

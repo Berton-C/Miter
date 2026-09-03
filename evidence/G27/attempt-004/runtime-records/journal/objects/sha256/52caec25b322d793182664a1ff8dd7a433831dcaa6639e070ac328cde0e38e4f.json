@@ -1,0 +1,1 @@
+{"details": {},"request": {"candidate_id":"sample","contents":"must not replay","grant_id":"grant-attempt-004","idempotency_key":"key-r5","operation":"write_candidate_file","path":"extension/pending.txt","request_id":"r5","schema":"miter-workshop-request-v1"},"request_hash":"d25785408dff81bc08ae6bd34bdb0a60fe3494cc3218c017d6c353c9fe31e79a","status":"workshop-recovery-required"}

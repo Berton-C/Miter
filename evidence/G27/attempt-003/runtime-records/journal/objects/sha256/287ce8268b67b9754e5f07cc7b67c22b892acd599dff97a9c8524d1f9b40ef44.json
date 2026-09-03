@@ -1,0 +1,1 @@
+{"details": {"reason":"scope-schema-or-state"},"request": {"candidate_id":"sample","grant_id":"grant-attempt-003","idempotency_key":"key-r15","operation":"run_declared_test","request_id":"r15","schema":"miter-workshop-request-v1","test_id":"undeclared"},"request_hash":"af038db776e5e6e56769442fc932180843dd92d468cee1276f0621ee2f5bed81","status":"operation-denied"}

@@ -1,0 +1,1 @@
+{"schema":"miter-workshop-request-v1","request_id":"r13","idempotency_key":"key-r13","grant_id":"grant-attempt-004","operation":"write_candidate_file","candidate_id":"sample","path":"../contracts/contract.sh","contents":"inert denied probe"}

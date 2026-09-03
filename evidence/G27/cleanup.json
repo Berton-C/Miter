@@ -1,0 +1,10 @@
+{
+  "standing": "Actual test cleanup, not service maintenance",
+  "removed_unused_test_volumes": [
+    "f4dbe5588cb6d5b334b4db6f653b3bdcb098468b50e2d5a87fb71c50acf2320c",
+    "db70c3d7e9c9fbd53d94cffa60ea141cac343c8706a1d701249161166fcb02fd"
+  ],
+  "basis": "Names matched G27 attempt-003 r19/r20 container inspections; creation times 2026-09-03T14:02:22Z and 14:02:23Z; no remaining container referenced either volume. No database process was started.",
+  "result": "Both removals succeeded. Later tests replace the image-declared volume with bounded tmpfs and remove only their own containers and volumes. Existing services and service volumes were not modified.",
+  "diagnostic": "The traced repeat of attacks.sh used miter-g27-diagnostic-003 and removed that test container with its own anonymous volume. It found inactive tunnel interfaces under network none; the final test checks actual route absence and blocked connectivity, not an assumed interface-name list."
+}

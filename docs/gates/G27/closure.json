@@ -1,0 +1,70 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G27",
+  "plan": "docs/gates/G27/plan.json",
+  "plan_commit": "eaa914245a802fa46d6d426a2a20379f4f6acb06",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "docs/gates/G27/completion.md",
+      "sha256": "4f96243ff3cdd7def571c2b2ab1d683d74dc58c34ca2918346a8b6d92ec2c05e"
+    },
+    {
+      "path": "config/workshop-contract-v1.json",
+      "sha256": "504b03fb06525878f554a729088b1e4028fbce7563b2df50007670c83fa040d6"
+    },
+    {
+      "path": "src/workshop_boundary_v1.metta",
+      "sha256": "8053923f2a5c1ba76809a73000a0b65de889756126e5e5714c48c40c491b2bf8"
+    },
+    {
+      "path": "src/bootstrap_workshop_boundary_v1.metta",
+      "sha256": "d2a0531dc257030226a91b0564a2a17397ee32f7e751b677396d924f699c6082"
+    },
+    {
+      "path": "effect_membranes/miter_workshop_v1.pl",
+      "sha256": "9a21ef0c4be7eed85a22ca86097cf4228f4d640fca69e04bf4a298587dafdd42"
+    },
+    {
+      "path": "scripts/g27/run.mjs",
+      "sha256": "505fe3e9ae30b67bfdb33db071ee4df6937dbd186ea557785523095e611ba251"
+    },
+    {
+      "path": "scripts/g27/seal.mjs",
+      "sha256": "5f84cc39b0f3e7d32ff34ed447207e4bda907bb1a3d73c245e8b56a9b1ddeb13"
+    },
+    {
+      "path": "evidence/G27/attempt-004/verdict.json",
+      "sha256": "9593299efb02803d2eb1a1c33d1476303c68c462475680447677b306ea0b86c9"
+    },
+    {
+      "path": "evidence/G27/attempt-004/independent-final.json",
+      "sha256": "38bc182911d7273688f09aabbfdc974073b86a4a98b038843870000f43c38cb7"
+    },
+    {
+      "path": "evidence/G27/attempt-004/all-attempts.json",
+      "sha256": "345a42ff24e505a63bde372840ff77d37558237ca9b34b9324f11b183d7b05bd"
+    },
+    {
+      "path": "evidence/G27/cleanup.json",
+      "sha256": "ceffcaa88754a409f81355466960915d5cf4965d7191fde090ac75a2cfb6e1d0"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G27-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "Thirty-three typed operations, exact replay/conflict/crash-standing tests, actual Docker containment/limits, extra-mount severing and restored/neutral useful work; no kernel security or Soul authorship claim."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-093–096/064/065 and S-1004/1103 require mechanical construction authority separate from cognition. Applicable clauses, §15 workshop contract and whole Soul ledger reread.",
+    "causal_evidence": "Native wrapper reaches real isolated worktrees, file/test/diff/archive broker. Actual mounts, limits, no-network configuration and observed attacks verified. Extra synthetic canary mount changes reach and is detected; restoration blocks it. All operation event hashes and service identities agree.",
+    "substitution_audit": "No LLM or builder sample is attributed to Miter authorship. Broker dispatch is mechanical schema/capability routing, not Soul decision-making. Fixed test outputs are observations; raw stdout is not promoted to semantic authority.",
+    "capability_and_constraint_audit": "Positive useful construction remains, unknown operations are explicitly unsupported, identities/replay/uncertain prepared state remain distinct. Containers cleaned; worktrees recoverably archived. Only two verified empty test volumes removed; no user service/data modified.",
+    "remaining_gaps": "Finite Docker boundary, not arbitrary exploit proof. Candidate commit/promotion and native source-grounded executable undertaking remain G28. Earlier routing/identity/probe assumptions preserved as failures. Production cognition, integrated acceptance dispatcher and Mattermost remain incomplete."
+  },
+  "reviewer": "Codex builder plus independent deterministic fixture/profile/hash verification; no separate human/agent reviewer claimed.",
+  "review_limits": "Mechanical containment and artifact lineage only; not autonomous extension authorship or general Soul navigation.",
+  "next_plan": "docs/gates/G28/plan.json"
+}

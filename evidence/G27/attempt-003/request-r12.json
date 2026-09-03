@@ -1,0 +1,1 @@
+{"schema":"miter-workshop-request-v1","request_id":"r12","idempotency_key":"key-r12","grant_id":"grant-attempt-003","operation":"write_candidate_file","candidate_id":"sample","path":"extension/escape/new.txt","contents":"must not escape"}

@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"sample","grant_id":"grant-attempt-003","idempotency_key":"key-r19","operation":"run_declared_test","request_id":"r19","schema":"miter-workshop-request-v1","test_id":"contract"},"request_hash":"88d64ce45006c6a3503c7be9b991ffb63fe8b99ced708d6228ef0fc0148e3132"}
