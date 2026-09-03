@@ -1,0 +1,59 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G31",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G31 P4 R1: Work-provided generic descriptor transport and loopback mechanics can test the exact Miter-authored P3 Mattermost candidate without acquiring adapter authorship, while native PeTTa/MeTTa binds both hashes and determines bounded transport-qualified standing from authorization, identity, journal, restart, panic, rollback, and severed evidence.",
+  "claim_ids": [
+    "G31-P4-R1-authorship-boundary-preserved",
+    "G31-P4-R1-generic-transport-candidate-binding",
+    "G31-P4-R1-durable-mechanical-recovery",
+    "G31-P4-R1-native-causal-qualification"
+  ],
+  "non_claims": "No Work-authored Mattermost adapter or protocol policy, no new candidate/model call, no local Mattermost contact, credential lookup/use, actual message read/send, live grant, production activation/promotion, universal exactly-once, or complete Soul cognition.",
+  "rationale": "D-024/C-099/S-1005 permit Work to build generic surface mechanics and fixed mocks but reserve the omitted adapter to Miter. The initial P4 wording could blur that boundary. The P3 candidate already owns all Mattermost-specific event/effect mappings, so P4 must contribute only protocol-agnostic execution and evidence mechanics.",
+  "requirements": [
+    "C-004", "C-005", "C-006", "C-007", "C-008", "C-020", "C-023", "C-024",
+    "C-050", "C-054", "C-055", "C-060", "C-062", "C-063", "C-064", "C-065",
+    "C-066", "C-090", "C-091", "C-093", "C-095", "C-096", "C-097", "C-098",
+    "C-099", "C-100", "C-102", "C-103", "C-104", "S-103", "S-501", "S-502",
+    "S-503", "S-504", "S-804", "S-901", "S-902", "S-903", "S-904", "S-905",
+    "S-1001", "S-1003", "S-1004", "S-1005", "S-1101", "S-1102", "S-1103",
+    "S-1104", "S-1105", "T-30", "T-36"
+  ],
+  "reading": "Retain both controls and the complete G29-G31 ledger. Reread D-024/D-026, POC_SPEC 16.1-16.4, P3 R7 closure and exact candidate, G30 mechanics, P1 transport obligation, P2 destination limits, generic event/effect schemas, C-061-C-066/C-095-C-104, and S-804/S-901-S-905/S-1001-S-1005/S-1101-S-1105.",
+  "representation": "Keep the P3 candidate byte-identical and identify it as the only Mattermost-specific source. Build a separately hashed generic surface transport laboratory accepting only typed method/path/body/header/capability descriptors and loopback destinations. Fixed fixture semantics remain in test code. Native relations bind candidate hash, generic transport hash, fixture version, journal/restart/panic/rollback observations, and explicit live-ineligible scope.",
+  "consumer": "The Miter-authored P3 candidate maps Mattermost-shaped frames/effects. Generic Prolog mechanics execute granted loopback descriptors, persist opaque typed journal records, restart a reader, and stop on panic without interpreting Soul or destination meaning. PeTTa/MeTTa alone determines qualification. JavaScript freezes evidence and verifies authorship separation and zero external effects.",
+  "falsifiers": "Generic transport source contains Mattermost endpoint/event/pending-key/identity policy; Work changes candidate bytes; fixture policy migrates into the transport; another candidate or transport hash passes; unauthorized frame reaches candidate parsing; journal is optional; retry identity changes; restart/panic/rollback fails; native severances still qualify; or any model, credential, Mattermost, promotion, or activation effect occurs.",
+  "scope_review": "Build one protocol-agnostic loopback descriptor executor and opaque durable journal/restart/panic/rollback laboratory, fixed destination fixture, native qualification relations, authorship scan, severed controls, evidence, and closure. No candidate edit, Mattermost-specific production code, model, Mattermost host/credential/message, Docker mutation, promotion, activation, push, or control change.",
+  "rollback": "R1 adds only generic laboratory mechanics, fixed fixtures, native qualification code, tests and evidence. Removing them returns to the P3 quarantined candidate. No external, active, or promoted state changes.",
+  "predecessor": "docs/gates/G31/P4/assessment.md",
+  "allowed_paths": [
+    "src/surface_transport_qualification_v1.metta",
+    "src/bootstrap_surface_transport_qualification_v1.metta",
+    "effect_membranes/miter_surface_transport_lab_v1.pl",
+    "scripts/g31/",
+    "tests/fixtures/g31/",
+    "evidence/G31/",
+    "docs/gates/G31/",
+    "runtime/g31/"
+  ],
+  "preserved": [
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"}
+  ]
+}
