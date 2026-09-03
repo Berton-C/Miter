@@ -1,0 +1,23 @@
+{
+  "status": "FAIL-EVIDENCE",
+  "phase": "compact-question-preflight",
+  "failure_kind": "native-builder-scalar-type-mismatch",
+  "compact_question_constructed": true,
+  "request_id_preserved": true,
+  "candidate_hash_preserved": true,
+  "observed_envelope_atoms": ["8192", "300"],
+  "expected_numeric_values": [8192, 300],
+  "native_process_status": 0,
+  "native_stderr_empty": true,
+  "model_call_claim_created": false,
+  "model_requests_created": 0,
+  "actual_model_calls": 0,
+  "local_mattermost_requests": 0,
+  "mattermost_credential_lookups": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "candidate_created": false,
+  "activated": false,
+  "promoted": false,
+  "recovery": "Normalize only the compact builder-view token/deadline scalars to numbers and verify exact values; do not alter the native question, model envelope, call grant, or candidate conditions."
+}

@@ -16,9 +16,9 @@ process.on('uncaughtException', error => {
   console.error(error.stack);
   process.exitCode = 1;
 });
-const opening = checkOpen('docs/gates/G31/P3/plan.json');
+const opening = checkOpen('docs/gates/G31/P3/R1/plan.json');
 assert.equal(opening.plan_commit,
-  '917da92efe8eda4a257f3a081d224210f01ad46b');
+  '7e2f79b0920b3cb0c96ba5fc69ae257aa075ec91');
 save(`${dir}/opening.json`, opening);
 
 const p2 = read(`${root}/evidence/G31/p2-001/native-input.json`);
@@ -39,19 +39,23 @@ save(`${dir}/input.json`, {
 });
 const boot = `!(import! &self "${root}/src/bootstrap_mattermost_candidate_revision_v1.metta")\n`;
 const rows = native(dir, 'native-question',
-  `!(result question (G31P3RevisionQuestion ${sexp(source)} v11-7-7 ${sexp(current)} ${sexp(oldFile)}))`, boot);
+  `!(result standing (G31P3QuestionStanding ${sexp(source)} v11-7-7 ${sexp(current)} ${sexp(oldFile)}))`, boot);
 assert.equal(rows.length, 1);
-const question = rows[0][2];
-assert.equal(question[0], 'openrouter-source');
-assert.equal(question[1], 'openrouter-g31-p3-revision-1');
-assert.equal(question[8], 8192);
-assert.equal(question[9], 300);
-save(`${dir}/revision-question.json`, {native:question});
+const standing = rows[0][2];
+assert.equal(standing[0], 'g31-p3-revision-question-ready');
+assert.equal(standing[1][1], 'openrouter-g31-p3-revision-1');
+assert.equal(standing[2][1], candidateHash);
+assert.deepEqual(standing[4], ['envelope',8192,300]);
+save(`${dir}/revision-question.json`, {native:standing,
+  full_request_material:`${dir}/input.json`,
+  source_bytes_transport:'durable-json-not-native-stdout'});
 
 const sources = [
   'CONSTITUTION.md', 'MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md',
   'BUILD_FIDELITY_PROTOCOL.md', 'WORK_PROTOCOL.md', 'ACCEPTANCE.md',
   'docs/gates/G31/P3/plan.json', 'docs/gates/G31/P3/plan.md',
+  'docs/gates/G31/P3/R1/plan.json', 'docs/gates/G31/P3/R1/plan.md',
+  'docs/gates/G31/P3/attempt-301-outcome.md',
   'docs/gates/G31/P2/outcome.md', 'config/model-resources-v1.json',
   'src/participation.metta', 'src/mattermost_live_reconciliation_v1.metta',
   'src/mattermost_candidate_revision_v1.metta',
@@ -66,9 +70,10 @@ const retained = [candidatePath,
   `${root}/evidence/G29/attempt-901/candidate/candidate_tests/mattermost_contract_tests.pl`,
   `${root}/evidence/G31/p2-001/manifest.json`,
   `${root}/evidence/G31/p2-001/native-result.json`,
-  `${root}/evidence/G31/p2-001/verification.json`];
+  `${root}/evidence/G31/p2-001/verification.json`,
+  `${root}/evidence/G31/p3-301/failure-verdict.json`];
 save(`${dir}/manifest.json`, {
-  schema:'miter-g31-p3-freeze-v1', plan:'docs/gates/G31/P3/plan.json',
+  schema:'miter-g31-p3-r1-freeze-v1', plan:'docs/gates/G31/P3/R1/plan.json',
   plan_commit:opening.plan_commit,
   files:pins([...sources.map(file => `${root}/${file}`), ...retained,
     `${dir}/input.json`, `${dir}/revision-question.json`]),
@@ -82,6 +87,7 @@ save(`${dir}/manifest.json`, {
 });
 save(`${dir}/prepared.json`, {
   status:'PREPARED', native_question:true,
+  compact_stdout_and_durable_source_handoff:true,
   source_candidate_sha256:candidateHash,
   source_consequence:'pending-post-id-body-map-required',
   maximum_model_calls:1, actual_model_calls:0,

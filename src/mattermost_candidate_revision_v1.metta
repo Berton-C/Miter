@@ -29,6 +29,36 @@
     8192 300)
    (g31-p3-revision-question-held $assessment))))
 
+(= (G31P3QuestionStanding $source $observedVersion $candidate $oldFile)
+ (let $question
+  (G31P3RevisionQuestion $source $observedVersion $candidate $oldFile)
+  (if (PShape $question openrouter-source 10)
+   (g31-p3-revision-question-ready
+    (request (index-atom $question 1))
+    (candidate (index-atom $candidate 1))
+    (source-version $observedVersion (index-atom $source 2))
+    (envelope (index-atom $question 8) (index-atom $question 9))
+    (discrepancies pending-post-id-in-request-body
+                   effect-key-mapped-to-pending-post-id))
+   $question)))
+
+(= (G31P3ObservationSummary $observation)
+ (if (PShape $observation openrouter-observation 14)
+  (g31-p3-model-observed
+   (request (index-atom $observation 1))
+   (purpose (index-atom $observation 2))
+   (transport (index-atom $observation 3))
+   (http-status (index-atom $observation 4))
+   (elapsed-ms (index-atom $observation 5))
+   (complete (index-atom $observation 6))
+   (finish (index-atom $observation 7))
+   (parse (index-atom $observation 8))
+   (bytes (index-atom $observation 9))
+   (model (index-atom $observation 11))
+   (provider (index-atom $observation 12))
+   (usage (index-atom $observation 13)))
+  (g31-p3-model-unavailable $observation)))
+
 (= (G31P3Run $root $source $observedVersion $candidate $oldFile)
  (let $question
   (G31P3RevisionQuestion $source $observedVersion $candidate $oldFile)
@@ -38,7 +68,7 @@
           ($observation (or_source $root $question))
           ($clear (remove-atom &derived
                     (openrouter-source-pending $root $question))))
-    (g31-p3-model-candidate $question $observation))
+    (G31P3ObservationSummary $observation))
    $question)))
 
 (= (G31P3MockValid $mock $candidateHash)
