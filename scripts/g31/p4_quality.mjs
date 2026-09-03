@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import {root,read,save,native,sexp} from '../g22_v2/common.mjs';
 
-const tag=process.argv[2]??'101';
+const tag=process.argv[2]??'102';
 const dir=`${root}/evidence/G31/p4-${tag}`;
 assert.equal(read(`${dir}/run-verdict.json`).status,'PASS-BOUNDED');
 const canonical=read(`${dir}/canonical-result.json`).observation;

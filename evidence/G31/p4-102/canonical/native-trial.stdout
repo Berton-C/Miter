@@ -1,0 +1,2 @@
+true
+(result canonical (p4-trial-failure contract-failed) (g31-p4-transport-held cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3 ccb8574b077ab711816c43dbc5af05931c2f91de8b68a6db99fd50558449378a (p4-trial-failure contract-failed)))

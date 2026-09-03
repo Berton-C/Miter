@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {root,hash,read,save} from '../g22_v2/common.mjs';
 
-const tag=process.argv[2]??'101';
+const tag=process.argv[2]??'102';
 const dir=`${root}/evidence/G31/p4-${tag}`;
 const run=read(`${dir}/run-verdict.json`),quality=read(`${dir}/quality-verdict.json`);
 assert.equal(run.status,'PASS-BOUNDED');assert.equal(quality.status,'PASS-BOUNDED');
@@ -20,11 +20,18 @@ for(const file of ['effect-pending.json','effect-confirmed.json','cursor.json',
   'loopback-summary.json'])assert(fs.existsSync(`${canonical}/${file}`),file);
 const pending=read(`${canonical}/effect-pending.json`);
 const confirmed=read(`${canonical}/effect-confirmed.json`);
+const cursor=read(`${canonical}/cursor.json`);
 const restart=read(`${canonical}/restart.json`);
 const loopback=read(`${canonical}/loopback-summary.json`);
 const rollback=read(`${canonical}/version-rollback.json`);
 assert.equal(pending.status,'pending');assert.equal(confirmed.status,'confirmed');
 assert.equal(pending.identity,confirmed.identity);assert.equal(restart.verified,true);
+assert.equal(cursor.schema,'surface-cursor-journal-v1');
+assert.equal(typeof cursor.state_term,'string');assert(cursor.state_term.length>0);
+assert.equal(cursor.candidate_hash,run.candidate_sha256);
+assert.equal(cursor.transport_hash,run.transport_sha256);
+assert.equal(restart.cursor.state_term,cursor.state_term);
+assert.equal(restart.cursor.cursor,cursor.cursor);
 assert.equal(loopback.attempts,2);assert.equal(loopback.creates,1);
 assert.equal(loopback.first_receipt,loopback.second_receipt);
 assert.equal(rollback.active,'inactive');assert.equal(rollback.history_preserved,true);

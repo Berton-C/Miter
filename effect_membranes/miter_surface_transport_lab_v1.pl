@@ -74,8 +74,12 @@ p4_canonical(Root,CandidateHash,Transport,TransportHash,Module,Data,Result) :-
         status:pending,identity:Identity,descriptor:Descriptor,
         candidate_hash:CandidateHash,transport_hash:TransportHash}),
     p4_journal_path(Root,'cursor.json',CursorPath),
-    p4_durable_json(CursorPath,_{schema:'surface-cursor-journal-v1',state:State2,
-        candidate_hash:CandidateHash}),
+    p4_encode_ground_state(State2,StateTerm),
+    get_dict(cursor,State2,StateCursor),
+    integer(StateCursor),
+    p4_durable_json(CursorPath,_{schema:'surface-cursor-journal-v1',
+        cursor:StateCursor,state_term:StateTerm,candidate_hash:CandidateHash,
+        transport_hash:TransportHash}),
     p4_journal_path(Root,'version-before.json',BeforePath),
     p4_durable_json(BeforePath,_{active:inactive,candidate_hash:CandidateHash}),
     p4_journal_path(Root,'version-lab.json',LabPath),
@@ -222,7 +226,13 @@ p4_resume_worker(Root0,CandidateHash0,TransportHash0,Result) :-
            p4_journal_path(Root,'version-lab.json',VersionPath),
            maplist(p4_read_json,[CursorPath,EffectPath,VersionPath],
                                 [Cursor,Effect,Version]),
+           p4_value_atom(Cursor.schema,'surface-cursor-journal-v1'),
            p4_value_atom(Cursor.candidate_hash,CandidateHash),
+           p4_value_atom(Cursor.transport_hash,TransportHash),
+           p4_decode_ground_state(Cursor.state_term,ReconstructedState),
+           get_dict(cursor,ReconstructedState,StateCursor),
+           integer(Cursor.cursor),
+           StateCursor =:= Cursor.cursor,
            p4_value_atom(Effect.candidate_hash,CandidateHash),
            p4_value_atom(Effect.transport_hash,TransportHash),
            p4_value_atom(Effect.status,confirmed),
@@ -290,6 +300,19 @@ p4_native_pair(Key-Value,Key-Native) :- p4_native(Value,Native).
 p4_value_atom(Value,Atom) :-
     (atom(Value)->Atom=Value;string(Value)->atom_string(Atom,Value)).
 p4_atom(Value,Atom) :- p4_value_atom(Value,Atom),atom_length(Atom,Length),Length>0.
+
+p4_encode_ground_state(State,StateTerm) :-
+    ground(State),
+    term_string(State,StateTerm,
+      [quoted(true),ignore_ops(true),numbervars(true)]).
+
+p4_decode_ground_state(StateTerm0,State) :-
+    p4_value_atom(StateTerm0,StateTermAtom),
+    read_term_from_atom(StateTermAtom,State,[syntax_errors(error)]),
+    ground(State),
+    p4_encode_ground_state(State,Reencoded),
+    atom_string(StateTermAtom,Original),
+    Reencoded == Original.
 
 p4_error(Error,['p4-trial-failure',Text]) :-
     term_string(Error,Text,[quoted(true)]).

@@ -1,0 +1,22 @@
+{
+  "status": "FAIL-PRESERVED",
+  "gate": "G31",
+  "phase": "P4",
+  "revision": "R2",
+  "attempt": 102,
+  "failure_class": "native-state-groundness-model-mismatch",
+  "observation": "The lossless carrier stopped before cursor persistence and before loopback I/O because SWI-Prolog represents an anonymous dictionary tag as a variable, causing ground/1 to reject the candidate's otherwise closed state.",
+  "candidate_sha256": "cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3",
+  "transport_sha256": "ccb8574b077ab711816c43dbc5af05931c2f91de8b68a6db99fd50558449378a",
+  "candidate_changed": false,
+  "socket_opened": false,
+  "loopback_requests": 0,
+  "model_calls": 0,
+  "credential_lookups": 0,
+  "local_mattermost_requests": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "promoted": false,
+  "activated": false,
+  "next_step": "Freeze a revised carrier that permits variables only as anonymous dictionary tags, numbers them canonically on a copy, and requires variant-exact reconstruction with identical canonical re-encoding."
+}

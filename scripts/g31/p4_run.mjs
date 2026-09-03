@@ -1,4 +1,4 @@
-// G31 P4 R1 generic loopback transport laboratory.
+// G31 P4 R2 generic loopback transport laboratory with lossless state journal.
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -7,7 +7,7 @@ import {root,hash,checkOpen} from '../fidelity/check.mjs';
 import {native,save,read,pins,sexp} from '../g22_v2/common.mjs';
 
 process.chdir(root);
-const tag=process.argv[2]??'101';
+const tag=process.argv[2]??'102';
 assert.match(tag,/^\d{3}$/);
 const dir=`${root}/evidence/G31/p4-${tag}`;
 assert(!fs.existsSync(dir));
@@ -18,8 +18,8 @@ process.on('uncaughtException',error=>{
     promoted:false,activated:false});
   console.error(error.stack);process.exitCode=1;
 });
-const opening=checkOpen('docs/gates/G31/P4/R1/plan.json');
-assert.equal(opening.plan_commit,'30dc10612c235c5f5712986f5b8c6b21f88f3f19');
+const opening=checkOpen('docs/gates/G31/P4/R2/plan.json');
+assert.equal(opening.plan_commit,'e9ad6dcbc09f4966fc06bcf9cc6488a3cbbd11bf');
 save(`${dir}/opening.json`,opening);
 
 const sourceCandidateRel='evidence/G31/p3-371/candidate/extension/mattermost_bridge.pl';
@@ -78,6 +78,8 @@ const sources=[
   'BUILD_FIDELITY_PROTOCOL.md','WORK_PROTOCOL.md','ACCEPTANCE.md','POC_SPEC.md','DECISIONS.md',
   'docs/gates/G31/P3/R7/closure.json','docs/gates/G31/P4/assessment.md',
   'docs/gates/G31/P4/R1/plan.json','docs/gates/G31/P4/R1/plan.md',
+  'docs/gates/G31/P4/R1/attempt-101-outcome.md',
+  'docs/gates/G31/P4/R2/plan.json','docs/gates/G31/P4/R2/plan.md',
   'src/participation.metta','src/surface_transport_qualification_v1.metta',
   'src/bootstrap_surface_transport_qualification_v1.metta',
   'effect_membranes/miter_store.pl','effect_membranes/miter_surface_transport_lab_v1.pl',
@@ -85,7 +87,7 @@ const sources=[
   'scripts/g31/p4_quality.mjs','scripts/g31/p4_verify.mjs','scripts/fidelity/check.mjs'
 ];
 save(`${dir}/manifest.json`,{
-  schema:'miter-g31-p4-r1-freeze-v1',plan:'docs/gates/G31/P4/R1/plan.json',
+  schema:'miter-g31-p4-r2-freeze-v1',plan:'docs/gates/G31/P4/R2/plan.json',
   plan_commit:opening.plan_commit,
   files:pins([...sources.map(file=>`${root}/${file}`),sourceCandidate,candidate,
     fixture,`${dir}/authorship-audit.json`,`${dir}/canonical-result.json`,
