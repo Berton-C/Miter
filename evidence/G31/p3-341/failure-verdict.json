@@ -1,0 +1,21 @@
+{
+  "status": "FAIL-EVIDENCE",
+  "phase": "source-renderer-root-verification",
+  "failure_kind": "g29-coupled-storage-root-rejected-g31-evidence",
+  "zero_effect_bootstrap_preflight_passed": true,
+  "native_question_standing_passed": true,
+  "qualified_grounding_invoked": true,
+  "observed": "The OpenRouter renderer returned openrouter-observation-unavailable/unstaged_or_invalid before transport because sd_root/2 and sd_verify/1 accept only G29 attempt roots and the miter-g29-freeze-v1 manifest schema, while this bounded request is rooted under evidence/G31/p3-341.",
+  "model_call_claim_created": false,
+  "model_request_artifacts_created": 0,
+  "actual_model_calls": 0,
+  "openrouter_credential_lookups": 0,
+  "local_mattermost_requests": 0,
+  "mattermost_credential_lookups": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "candidate_created": false,
+  "activated": false,
+  "promoted": false,
+  "recovery": "Replace the accidental G29-only storage coupling with explicit, narrow G29 and G31-P3 root/manifest profiles; add a full G31 manifest-root readiness check before the unchanged one-call experiment, and retain all existing G29 validation."
+}

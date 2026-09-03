@@ -16,9 +16,9 @@ process.on('uncaughtException', error => {
   console.error(error.stack);
   process.exitCode = 1;
 });
-const opening = checkOpen('docs/gates/G31/P3/R3/plan.json');
+const opening = checkOpen('docs/gates/G31/P3/R4/plan.json');
 assert.equal(opening.plan_commit,
-  '4fa88f39c8240f55a975d0516e437d62e2748006');
+  'ac335d70b7082ef92a52a8b805e44eb56f905066');
 save(`${dir}/opening.json`, opening);
 
 const p2 = read(`${root}/evidence/G31/p2-001/native-input.json`);
@@ -67,6 +67,8 @@ const sources = [
   'docs/gates/G31/P3/R2/plan.json', 'docs/gates/G31/P3/R2/plan.md',
   'docs/gates/G31/P3/R2/attempt-321-outcome.md',
   'docs/gates/G31/P3/R3/plan.json', 'docs/gates/G31/P3/R3/plan.md',
+  'docs/gates/G31/P3/R3/attempt-331-outcome.md',
+  'docs/gates/G31/P3/R4/plan.json', 'docs/gates/G31/P3/R4/plan.md',
   'docs/gates/G31/P3/attempt-301-outcome.md',
   'docs/gates/G31/P2/outcome.md', 'config/model-resources-v1.json',
   'src/participation.metta', 'src/mattermost_live_reconciliation_v1.metta',
@@ -85,9 +87,10 @@ const retained = [candidatePath,
   `${root}/evidence/G31/p2-001/verification.json`,
   `${root}/evidence/G31/p3-301/failure-verdict.json`,
   `${root}/evidence/G31/p3-311/failure-verdict.json`,
-  `${root}/evidence/G31/p3-321/failure-verdict.json`];
+  `${root}/evidence/G31/p3-321/failure-verdict.json`,
+  `${root}/evidence/G31/p3-331/failure-verdict.json`];
 save(`${dir}/manifest.json`, {
-  schema:'miter-g31-p3-r3-freeze-v1', plan:'docs/gates/G31/P3/R3/plan.json',
+  schema:'miter-g31-p3-r4-freeze-v1', plan:'docs/gates/G31/P3/R4/plan.json',
   plan_commit:opening.plan_commit,
   files:pins([...sources.map(file => `${root}/${file}`), ...retained,
     `${dir}/input.json`, `${dir}/revision-question.json`]),
