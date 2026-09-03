@@ -1,0 +1,15 @@
+{
+  "native": [
+    "development-grant",
+    [
+      "scope",
+      "cut-fixture",
+      "principal-fixture",
+      "project-fixture",
+      "test-owner-structural-contact"
+    ],
+    1,
+    1024,
+    120
+  ]
+}

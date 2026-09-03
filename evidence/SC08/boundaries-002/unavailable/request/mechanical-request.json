@@ -1,0 +1,7 @@
+{
+  "alias":"qwen-local",
+  "body": {"messages": [],"model":"not-a-model-mechanical-fixture"},
+  "endpoint":"http://127.0.0.1:63304/v1/chat/completions",
+  "request_id":"offline-cycle-http-probe",
+  "schema":"miter-prepared-model-request-v1"
+}

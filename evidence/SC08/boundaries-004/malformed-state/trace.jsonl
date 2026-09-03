@@ -1,0 +1,4 @@
+{"kind":"driver_started","semantic":"dc2c0f8bd761b0693583a0f73bc596bb84e3d40c555fb0d3bc59009247fbd6d5","sequence":0,"snapshots":"/Users/claritymiter/miter/evidence/SC08/boundaries-004/malformed-state/sessions/1788435698.216383","wall_time":1788435698.218415}
+{"global_bytes":647024,"kind":"driver_sample","local_bytes":3584,"turn":0,"wall_time":1788435698.218511}
+{"kind":"cancellation","result":"no-active-worker","server_confirmation":false,"wall_time":1788435698.242137}
+{"kind":"driver_returned","outcome": ["cycle-fault", "malformed-state" ],"wall_time":1788435698.243782}

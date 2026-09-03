@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-dnbudayhuuqm4547nnohp",
+  "object": "chat.completion",
+  "created": 1788435071,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"allowed_effects\": [],\n  \"allowed_writes\": [\n    \"trial-expression\"\n  ],\n  \"candidate_id\": \"cycle-expression-001\",\n  \"constructions\": [\n    {\n      \"id\": \"reported-request\",\n      \"meaning\": \"reported-request\",\n      \"tokens\": [\n        \"you\",\n        \"requested\",\n        \"revision\",\n        \"of\",\n        \"@artifact\"\n      ]\n    },\n    {\n      \"id\": \"retain\",\n      \"meaning\": \"retain\",\n      \"tokens\": [\n        \"@person\",\n        \"must\",\n        \"remain\",\n        \"able\",\n        \"to\",\n        \"@verbs\",\n        \"@artifact\"\n      ]\n    },\n    {\n      \"id\": \"completion\",\n      \"meaning\": \"completion\",\n      \"tokens\": [\n        \"the\",\n        \"revision\",\n        \"of\",\n        \"@artifact\",\n        \"is\",\n        \"complete\"\n      ]\n    }\n  ],\n  \"purpose\": \"Express source-grounded joint participations by coordinating related verbs in a single retain clause using @verbs, while maintaining distinct surface forms for reported-request and completion.\",\n  \"schema\": \"miter-voice-realization-v2\"\n}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 439,
+    "completion_tokens": 291,
+    "total_tokens": 730,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 246,
+    "accepted_draft_tokens_count": 209,
+    "rejected_draft_tokens_count": 37
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

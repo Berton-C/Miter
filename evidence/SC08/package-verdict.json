@@ -1,0 +1,16 @@
+{
+  "status": "PASS-BOUNDED",
+  "native_cases": 23,
+  "native_arms": 4,
+  "driver_turns": 10000,
+  "stable_history_transitions": 1,
+  "actual_model_requests": 1,
+  "actual_candidate_supported_expressions": 1,
+  "model_duration_ms": 46125,
+  "boundary_checks": 13,
+  "final_recovery_replay_cases": 5,
+  "history_hashes_independently_checked": 53,
+  "protected_compass_atoms": 129,
+  "max_fake_pending_interrupt_ms": 318.2191848754883,
+  "limits": "Finite development continuation and expression grammar. No full multi-RNA production scheduler, full nine enactors, complete five authorities, candidate quality/promotion/NACE, G22 or power-loss/external exactly-once claim."
+}

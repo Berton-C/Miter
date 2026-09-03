@@ -1,0 +1,1 @@
+{"message":"Cannot read properties of undefined (reading 'wall_time')","stack":"TypeError: Cannot read properties of undefined (reading 'wall_time')\n    at file:///Users/claritymiter/miter/scripts/sc08/boundaries.mjs:10:181"}

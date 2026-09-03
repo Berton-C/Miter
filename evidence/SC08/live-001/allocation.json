@@ -1,0 +1,1 @@
+{"prior":[],"maximum_new_calls":1,"max_tokens":1024,"deadline_seconds":120,"endpoint":"http://127.0.0.1:1234/v1/chat/completions","synthetic_only":true,"no_service_changes":true}

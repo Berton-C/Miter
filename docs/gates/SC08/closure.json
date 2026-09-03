@@ -1,0 +1,115 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "SC08",
+  "plan": "docs/gates/SC08/plan.json",
+  "plan_commit": "ee0141e5364b7b1f0f6a41dd6e480af8891e0bfa",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "src/development_cycle.metta",
+      "sha256": "8a868046c6d26ccbe60b00a9b52ee67a948f00db10fc2f8817977a65ddef396d"
+    },
+    {
+      "path": "src/bootstrap_development_cycle.metta",
+      "sha256": "13990150c553889207e70e3e443076878f49e04aae7ba241216837d5fd514730"
+    },
+    {
+      "path": "effect_membranes/miter_development_cycle.pl",
+      "sha256": "f709078873c62a2fae4e2e4477cee1e6ae6c4931e85bd1afe3e2552384423d5e"
+    },
+    {
+      "path": "effect_membranes/miter_voice_construction.pl",
+      "sha256": "967e13fbee24be700312f5c7c8f78e77c46327146bbb9225aefd7ed0914922ef"
+    },
+    {
+      "path": "docs/gates/SC08/completion.md",
+      "sha256": "6a666d38f8681dbf444b025e5ffede3b8289cc0d258859e79d698b7108802fa2"
+    },
+    {
+      "path": "docs/gates/SC08/rejoin-assessment.md",
+      "sha256": "fefae8af30c91d56bb0e0ede2295348f06e248e873545026dec6758e754a8a0a"
+    },
+    {
+      "path": "tests/fixtures/sc08/contract.md",
+      "sha256": "31dc1f6bf765134462311932136d01494c5f8a4964229ef3457e4e5af97feb13"
+    },
+    {
+      "path": "evidence/SC08/package-verdict.json",
+      "sha256": "1aad4cf1bcc98385deab2e1ecd4c175f3f3a9be2ef186a6faadc8960393b2596"
+    },
+    {
+      "path": "evidence/SC08/raw-inventory.json",
+      "sha256": "e45772b29ac01c5591863bc1c416ebb7db0c487d995e73e2d38679641983424b"
+    },
+    {
+      "path": "scripts/sc08/boundaries.mjs",
+      "sha256": "5dfb1ceef2e57f73238318ea0d14f6038b2f850abddca5d312d455f4b3b5cdce"
+    },
+    {
+      "path": "scripts/sc08/causal.mjs",
+      "sha256": "a329f006cccf6fe6cb4f466a15e2e1266aea9cc378fa08d3d74e4cd20de4380c"
+    },
+    {
+      "path": "scripts/sc08/check-package.mjs",
+      "sha256": "4ad0f23ccedbb15d4f1cbdc3f7e54a27ea871fed6462e7019b41cf013f8daad2"
+    },
+    {
+      "path": "scripts/sc08/common.mjs",
+      "sha256": "b3b18a440bd67ee73dd1075a5b25d4583e1ce2a5892831bd73ebb6f27fc19590"
+    },
+    {
+      "path": "scripts/sc08/driver.mjs",
+      "sha256": "e9fc48e9627e415d0a0fd403ac68d60683ac194660773904526d011b79fa2b57"
+    },
+    {
+      "path": "scripts/sc08/inventory.mjs",
+      "sha256": "2615bc078a0f51639f3fab23e998f282f081ad63f959693d36a25d337b753553"
+    },
+    {
+      "path": "scripts/sc08/live.mjs",
+      "sha256": "7d122362b2251aad21f02d338be1eb44e0b5f8a23164609a0682cbae0291440a"
+    },
+    {
+      "path": "scripts/sc08/main.pl",
+      "sha256": "0ea7181efd89d12a85710b8c3d1db08d550fddc4c2cf22daad8a918a6d1b3d51"
+    },
+    {
+      "path": "scripts/sc08/mechanics.pl",
+      "sha256": "2a1eb02575746de68ab58f2f0e4c22f489368f318c279ffb3d11e4a6c719d339"
+    },
+    {
+      "path": "scripts/sc08/probe.mjs",
+      "sha256": "019342915b283b9819772dd81cd57336b163d29ba6deb25b0a4f5cd26895b5b4"
+    },
+    {
+      "path": "scripts/sc08/replay.mjs",
+      "sha256": "783002337ff7ee0ca47497b56312ea7c458e170831925e5e4cc3216e5dc11ca3"
+    },
+    {
+      "path": "scripts/sc08/verify-hashes.pl",
+      "sha256": "1e9fcffc1fe206abd6d338fe442bb64e0b8cf0bcd87a6d7219bae463199bb7be"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "SC08-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "Recurring native finite VoicePolicy undertaking receives delayed independent audit evidence, derives actual opportunity/RNA/generation and avoids repeated work. 23 native cases/four arms plus 10,000 turns. Not general endogenous navigation or a unified production multi-RNA scheduler."
+    },
+    {
+      "id": "SC08-B",
+      "status": "PROVEN-HARNESS",
+      "limit": "One actual local-model v2 candidate carried by the same persisted undertaking, native revalidated construction, no-repeat restart, 13 boundary checks and five final-code replays. Not quality improvement/promotion, full Soul, provider-confirmed cancellation or universal exactly-once."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/020–025, S-501–504 require meaningful native source participation; C-030–045/S-601/605/803 require continuity independent of model context; C-070–075/S-606 require recurring native readiness without compulsory model inference. C-090–097/S-1004 preserve candidate/trial/development separation. Both controls and applicable full clauses were reread; no control/source changes.",
+    "causal_evidence": "Delayed distinct audit family causes native opportunity/RNA/request, while same-family replay and self-authored claims do not. Source-family/opportunity-consumer severing loses that request and restoration recovers it. Actual model output is natively constructed, restored without reissue and blocked on changed source. 53 transition hashes independently checked; final 10,000-turn driver has one material history transition and steady local stack.",
+    "substitution_audit": "Native CStep, DOpportunity/DDevelop and VGeneration/VQuarantine/VTrialConstruct own meaning and eligibility. Prolog performs observation/hash/persistence/worker/pacing mechanics. No first-match behavior table, scalar sovereign or host defect selector was introduced. Finite grammar, target surface and synthetic source authority remain disclosed fixture premises, not proof of open-ended intelligence.",
+    "capability_and_constraint_audit": "Useful source-grounded construction succeeds and preserves 129 compass atoms plus protected canaries. Pending identity/grant use survives interruption and restart; uncertain outcomes do not cause automatic resend. Final-code pending interruption max 318.22 ms under the laboratory bound. Complete interpretation-chain and semantic-pin validation added. No core Python/JS, active registry, production service/config change, G22, historical gate requalification or push.",
+    "remaining_gaps": "The finite G20/G21 rejoin dependencies are evidenced, but full nine enactors, five mathematical foundations, production multi-RNA/multi-user continuity, broad voice, independent candidate quality, NACE and Mattermost remain unfinished. Known transport result recovery and startup hardening postdate the actual live call; preserved live code plus final-code replay/boundary tests explicitly qualify that change. No power-loss or provider cancellation guarantee."
+  },
+  "reviewer": "Codex builder; distinct offline deterministic checks and standalone hash verification, not an independent human or agent reviewer.",
+  "review_limits": "PASS-BOUNDED concerns the frozen finite mechanism only. Failed attempts, disclosed replays and version differences are retained. The complete Miter build remains unfinished.",
+  "terminal_reason": "User-requested review pause at established finite rejoin prerequisites, before G22/later progression and before repeating affected historical mechanical evidence. See docs/gates/SC08/rejoin-assessment.md for the explicit v2 trial and requalification decisions; no new SC09 prerequisite is invented."
+}

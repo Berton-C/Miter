@@ -1,0 +1,1 @@
+{"message":"","stack":"AssertionError [ERR_ASSERTION]\n    at file:///Users/claritymiter/miter/scripts/sc08/driver.mjs:7:155\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
