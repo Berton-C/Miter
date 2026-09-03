@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "candidate_id", "files", "manifest"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["miter-executable-candidate-v1"]},
+    "candidate_id": {"type": "string"},
+    "files": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "object", "additionalProperties": false, "required": ["path", "contents"], "properties": {"path": {"type": "string"}, "contents": {"type": "string"}}}},
+    "manifest": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_id", "purpose", "input_contract", "output_contract", "allowed_paths", "effects", "network", "credentials", "language", "memory_scope", "tests", "rollback", "approval"],
+      "properties": {
+        "source_id": {"type": "string"}, "purpose": {"type": "string"},
+        "input_contract": {"type": "string", "enum": ["utf8-argument-v1"]},
+        "output_contract": {"type": "string", "enum": ["same-bytes-plus-lf-v1"]},
+        "allowed_paths": {"type": "array", "items": {"type": "string"}},
+        "effects": {"type": "array", "items": {"type": "string"}},
+        "network": {"type": "array", "items": {"type": "string"}},
+        "credentials": {"type": "array", "items": {"type": "string"}},
+        "language": {"type": "string", "enum": ["posix-shell"]},
+        "memory_scope": {"type": "string", "enum": ["no-persistence"]},
+        "tests": {"type": "array", "items": {"type": "string"}},
+        "rollback": {"type": "string"},
+        "approval": {"type": "string", "enum": ["human-before-promotion"]}
+      }
+    }
+  }
+}

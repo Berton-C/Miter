@@ -1,0 +1,1 @@
+{"request": {"candidate_id":"parent","grant_id":"g28-grant-003","idempotency_key":"parent-trial","operation":"run_declared_test","request_id":"parent-trial","schema":"miter-workshop-request-v1","test_id":"ordinary"},"request_hash":"6f99f08918ad2475394d898e6bbccaf71e83a46a0118a2b277a30a5395b866ce"}

@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "schema": {"type": "string", "enum": ["miter-voice-realization-v2"]},
+    "candidate_id": {"type": "string", "minLength": 1, "maxLength": 100},
+    "purpose": {"type": "string", "minLength": 1, "maxLength": 500},
+    "constructions": {
+      "type": "array", "minItems": 1, "maxItems": 8,
+      "items": {"type": "object", "properties": {
+        "id": {"type": "string", "minLength": 1, "maxLength": 100},
+        "meaning": {"type": "string", "enum": ["reported-request", "retain", "completion"]},
+        "tokens": {"type": "array", "minItems": 1, "maxItems": 24, "items": {"type": "string", "minLength": 1, "maxLength": 64}}
+      }, "required": ["id", "meaning", "tokens"], "additionalProperties": false}
+    },
+    "allowed_writes": {"type": "array", "items": {"type": "string", "enum": ["trial-expression"]}, "minItems": 1, "maxItems": 1},
+    "allowed_effects": {"type": "array", "items": {"type": "string"}, "maxItems": 0}
+  },
+  "required": ["schema", "candidate_id", "purpose", "constructions", "allowed_writes", "allowed_effects"],
+  "additionalProperties": false
+}

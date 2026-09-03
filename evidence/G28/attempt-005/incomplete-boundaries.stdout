@@ -1,0 +1,8 @@
+true
+true
+(result input executable-input)
+(result unstaged executable-model-incomplete)
+(result replay stored)
+(result held executable-input-unavailable)
+(result forged io-incomplete)
+(result lineage candidate-source-unbound)

@@ -1,0 +1,78 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G28",
+  "plan": "docs/gates/G28/plan.json",
+  "plan_commit": "8661316a45ae5a171d8f8b70997eb62fe6ea7b21",
+  "status": "BLOCKED",
+  "evidence": [
+    {
+      "path": "docs/gates/G28/completion.md",
+      "sha256": "6408ba295e1f4ed6b001536346cc4adc0332e71a12553e75d167accada59186c"
+    },
+    {
+      "path": "src/executable_development_v1.metta",
+      "sha256": "6ba84a21334fe05e596fd6fff93f5ebed85535b8b3c4ee74d4bf7aba04110ee8"
+    },
+    {
+      "path": "src/bootstrap_executable_development_v1.metta",
+      "sha256": "abf73b0782ed7f3ae3bd04ae102a7f54b58f9cee2de7be9ea45dc80a1754d5dc"
+    },
+    {
+      "path": "effect_membranes/miter_executable_development_v1.pl",
+      "sha256": "4c5f8433a2d8b2be5e6f34ac3003c4ec5026dc62d893957595250c755f35f43e"
+    },
+    {
+      "path": "effect_membranes/miter_workshop_v1.pl",
+      "sha256": "afd684282fd7be922395dcfa03caf19ce3412ad35bfa6fb425ab1096ad0591b7"
+    },
+    {
+      "path": "config/executable-candidate-schema-v1.json",
+      "sha256": "422c7120be06b2cfc6388f7bd8f0b8ddd42f046a691c4c537d8f114d95b52b78"
+    },
+    {
+      "path": "scripts/g28/run.mjs",
+      "sha256": "1a7429306c30837f1da6c90fdd35916f826edc4fc96ec780775a95ec0b2cac44"
+    },
+    {
+      "path": "scripts/g28/boundaries.mjs",
+      "sha256": "992ebf0dbb0ca36a6508ad85af25deb3f1d9b19eab3192ed606173dc93792a01"
+    },
+    {
+      "path": "scripts/g28/boundaries.pl",
+      "sha256": "a0a204d50a1a7a6c7c0c31f76277d859c632e33e8994938ee727cfde3afebf8a"
+    },
+    {
+      "path": "scripts/g28/incomplete.mjs",
+      "sha256": "26921272fbda0615943e1774cdc1fb704683cdf96d5ea287e984aaf3f05a565f"
+    },
+    {
+      "path": "scripts/g28/seal.mjs",
+      "sha256": "308338eba0433162ced3c533bd55d50768b06487b6d2d40483abcab09cc4d8ba"
+    },
+    {
+      "path": "evidence/G28/terminal-verification.json",
+      "sha256": "f342275efd7eb86fb93d1623cbdbe32e10e9083bcc98fd7baf39c6c659ea3706"
+    },
+    {
+      "path": "evidence/G28/all-attempts.json",
+      "sha256": "ea162923fc7a4073c9f8845f8a301048c91f39c4fe54b7fd1117f15a22e6cea9"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G28-A",
+      "status": "EXPERIMENTAL",
+      "limit": "Source/inventory/comparison preliminary probes, actual parent/main-write controls and no-inference replay guard are proven in a finite harness. The two actual model calls exhausted the frozen envelope; executable authorship, trials, candidate commits, proposal, approval and promotion remain unproven."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/006/020–024/090–104 and S-501/607/901/1004/1102–1104 require supported native work, separate product/trial/acceptance standing and truthful incompletion. Applicable full clauses and whole requirement ledger re-read; control hashes unchanged.",
+    "causal_evidence": "Six source opportunity variants, canonical/severed/restored byte-comparison probes, two actual missing-adapter parent failures, two main-write rejections and six verified workshop events. Actual two-call timeout/truncation remains incomplete. Prepared-without-response replay guard tested without further inference.",
+    "substitution_audit": "No builder-authored adapter or favorable model assertion was accepted. Finite source-supported interface gap is not full Soul navigation. Prolog transport/replay accounting is mechanical. Diagnostic server predictions were not retroactively admitted as native products.",
+    "capability_and_constraint_audit": "No numerical threshold, test expectation or frozen source meaning weakened. Resource failure preserved; budget not silently renewed. Main and user services unchanged, test containers removed, unrelated G22 and immutable provenance preserved.",
+    "remaining_gaps": "Actual generated executable path, full positive candidate-boundary suite, independent code review, candidate commit, approval/merge/later use unproven. G29 blocked. Production integrated cognition and all-nine/five-authority realization remain partial."
+  },
+  "reviewer": "Codex builder; independent deterministic hash/profile/journal/probe verification, not a separate human or agent reviewer.",
+  "review_limits": "This is an unsuccessful gate closure. Tests of preliminary and recovery paths do not establish G28-A. Fidelity close must reject progression from BLOCKED.",
+  "terminal_reason": "Await Berton's renewed source grant and explicitly refrozen model resource profile; suggested at most two 2048-output-token/300-second calls with concise generation. No G29 progression or executable promotion authorized by this record."
+}

@@ -1,0 +1,1 @@
+{"status":"PASS-BOUNDED","claim":"Prepared-without-response cannot spend the same request again; unstaged model use, unknown input, forged observation and absent product retain distinct failed standing","new_model_calls":0,"candidate_writes":0,"promotion":false,"does_not_prove":"Candidate generation/trial/commit/promotion remains unproved"}

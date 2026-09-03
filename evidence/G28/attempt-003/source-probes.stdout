@@ -1,0 +1,8 @@
+true
+true
+(result canonical executable-opportunity)
+(result available executable-development-not-needed)
+(result unknown executable-development-held)
+(result generated executable-development-held)
+(result foreign executable-development-held)
+(result neutral executable-opportunity)

@@ -1,0 +1,1 @@
+* 7a69ff7320cb4f518026279820d9e172465e3100 Pin G28 missing-adapter baseline
