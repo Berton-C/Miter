@@ -1,0 +1,1 @@
+{"status":"FAIL","message":"canonical runtime","stack":"AssertionError [ERR_ASSERTION]: canonical runtime\n    at file:///Users/claritymiter/miter/scripts/sc02/run.mjs:27:433"}

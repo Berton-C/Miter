@@ -1,0 +1,1 @@
+{"original_sha256":"dd217c45d28758bfb506b418898d7c0e9e6d1b9ea4377ae9fa6ec886f1b7a27a","adapted_sha256":"82c5c7be4759c24154bc02f19649f5c028db22cf4bd667a22bf8ed09c3f8f854","changes":"Only import location and evidence path regex; original acceptance assertions unchanged.","status":0,"signal":null}

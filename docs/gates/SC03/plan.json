@@ -1,0 +1,145 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "SC03",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "SC03-A: source-bound native participation runs as a durable undertaking across recurring turns and bounded renewable slices. SC03-B: contact, dependency/semantic-version changes, interruption and restart cause native revalidation without fabricated completion or repeated graph effects.",
+  "claim_ids": [
+    "SC03-A",
+    "SC03-B"
+  ],
+  "non_claims": "An isolated versioned graph/artifact laboratory, not a full Soul, general language, nine complete enactors, NACE, live external effects, G22 promotion, or Mattermost. A graph transition demonstrates this declared surface only; no universal exactly-once guarantee.",
+  "rationale": "SC02 removes fixture-supplied focus and checks support at the current dependency view. The next constitutive gap is an actual ongoing undertaking engine using that reasoning rather than step-counted hashing. Preserve further grounded-language and semantic/locus work as separate unmet prerequisites.",
+  "requirements": [
+    "C-003",
+    "C-004",
+    "C-009",
+    "C-011",
+    "C-012",
+    "C-020",
+    "C-024",
+    "C-025",
+    "C-030",
+    "C-031",
+    "C-034",
+    "C-040",
+    "C-042",
+    "C-045",
+    "C-060",
+    "C-061",
+    "C-062",
+    "C-064",
+    "C-066",
+    "C-070",
+    "C-071",
+    "C-072",
+    "C-073",
+    "C-074",
+    "C-075",
+    "C-100",
+    "C-101",
+    "C-102",
+    "C-103",
+    "C-104",
+    "S-106",
+    "S-402",
+    "S-404",
+    "S-405",
+    "S-501",
+    "S-502",
+    "S-503",
+    "S-504",
+    "S-601",
+    "S-602",
+    "S-603",
+    "S-604",
+    "S-605",
+    "S-606",
+    "S-607",
+    "S-803",
+    "S-904",
+    "S-1101",
+    "S-1102",
+    "S-1103",
+    "T-16",
+    "T-18",
+    "T-19",
+    "T-24",
+    "T-33",
+    "T-34"
+  ],
+  "reading": "At derivation, complete Soul §§6.1–6.7 and 11.1–11.5 and Constitution C-060–064/070–075 read alongside SC02 source/cut semantics. At opening re-read applicable clauses and the whole design ledger; include source-bound purpose and exact local effect authority. Unchanged previous control/source readings remain context, not proof from hashes.",
+  "representation": "Durable typed undertaking/frame, current contact and proof dependencies, grant/slice status, versioned local graph operations, independent observed receipts and explicit pending/revalidation/completion states. Driver recurrence, execution slice and undertaking lifetime are separate.",
+  "consumer": "Native MeTTa turn/selection/renewal/revalidation operators invoke SC01/SC02 derivations. A Prolog trampoline, wait/worker, serialization and exact local graph transport remain non-cognitive mechanics.",
+  "falsifiers": "plan.md freezes constructive multi-turn work without new prompts, short-slice renewal, no operator or unresolved purpose, completed work, changed contact/version, interruption during delayed work, restart and duplicate receipt, source/continuity/consequence-severed and restored arms, stack/resource and prompt/model-call observations.",
+  "scope_review": "plan.md and rejoin-dependencies.md distinguish the finite driver prerequisite from remaining native semantics, language/voice, surface certification and G21 bridge. No G22 trial or later mechanical gate is run before the user-requested pause.",
+  "rollback": "Additive isolated native engine and local test membrane. Preserve original reactor/workshop sources, seed and manifest, controls, archives and unfinished G22. Explicit revert retains all trial evidence; local graph trials remain under evidence/SC03.",
+  "predecessor": "docs/gates/SC02/closure.json",
+  "allowed_paths": [
+    "src/undertaking.metta",
+    "src/bootstrap_undertaking.metta",
+    "effect_membranes/miter_undertaking.pl",
+    "scripts/sc03/",
+    "tests/fixtures/sc03/",
+    "evidence/SC03/",
+    "docs/gates/SC03/closure.json",
+    "docs/gates/SC03/completion.md",
+    "docs/gates/SC04/"
+  ],
+  "preserved": [
+    {
+      "path": "effect_membranes/miter_trials.pl",
+      "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256",
+      "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/inputs/plan.txt",
+      "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/preflight.txt",
+      "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stderr",
+      "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/g22/prepare.pl",
+      "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"
+    },
+    {
+      "path": "src/bootstrap_trials.metta",
+      "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"
+    },
+    {
+      "path": "src/trials.metta",
+      "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"
+    },
+    {
+      "path": "tests/fixtures/g22_canonical.metta",
+      "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"
+    },
+    {
+      "path": "tests/fixtures/g22_cases.json",
+      "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"
+    },
+    {
+      "path": "tests/fixtures/g22_parent.metta",
+      "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"
+    },
+    {
+      "path": "tests/fixtures/g22_severed.metta",
+      "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"
+    }
+  ]
+}

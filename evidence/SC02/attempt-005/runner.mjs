@@ -1,0 +1,53 @@
+// Offline builder verifier. All support/focus/plan construction is native MeTTa.
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {spawnSync,execFileSync} from 'node:child_process';
+import {root,hash,checkOpen} from '../fidelity/check.mjs';
+import {verifyTraces} from './verify-traces.mjs';
+process.chdir(root);
+const {cases}=await import('./cases.mjs');
+const dir=process.argv[2];assert.match(dir??'',/^evidence\/SC02\/attempt-\d{3}$/);
+assert(!fs.existsSync(dir),'no evidence overwrite');fs.mkdirSync(dir,{recursive:true});
+const save=(n,x)=>fs.writeFileSync(dir+'/'+n,typeof x==='string'?x:JSON.stringify(x)+'\n');
+process.on('uncaughtException',e=>{save('failure.json',{status:'FAIL',message:e.message,stack:e.stack});console.error(e.stack);process.exitCode=1});
+save('opening.json',checkOpen('docs/gates/SC02/plan.json'));
+const pin='ae66fa8e41dcd5539d614706bd4e5cfb34f9608d',petta='/private/tmp/miter-g06-petta-ae66fa8';
+assert.equal(execFileSync('git',['-C',petta,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),pin);
+assert.equal(execFileSync('git',['-C',petta,'status','--porcelain'],{encoding:'utf8'}).trim(),'');
+save('environment.json',{pin,petta,swi:execFileSync('/opt/homebrew/bin/swipl',['--version'],{encoding:'utf8'}).trim(),services_touched:[],model_calls:0});
+for(const [name,p] of [['runner.mjs','scripts/sc02/run.mjs'],['case-builder.mjs','scripts/sc02/cases.mjs'],['participation.metta','src/participation.metta'],['compass.metta','constitution/soul_compass_v02.metta']])save(name,fs.readFileSync(p,'utf8'));
+save('cases.json',cases);
+save('trace-verifier.mjs',fs.readFileSync('scripts/sc02/verify-traces.mjs','utf8'));
+const sexp=x=>Array.isArray(x)?'('+x.map(sexp).join(' ')+')':String(x);
+function parse(line){const t=line.match(/"(?:\\.|[^"\\])*"|\(|\)|[^\s()]+/gu)??[];let i=0;const one=()=>{const x=t[i++];if(x==='('){const a=[];while(t[i]!==')'){assert(i<t.length);a.push(one())}i++;return a}assert(x!==undefined);return x.startsWith('"')?JSON.parse(x):x};const a=one();assert.equal(i,t.length);return a;}
+const source=fs.readFileSync('src/participation_support.metta','utf8');save('support.metta',source);
+const variants={canonical:null,'sever-registry':['(SObserved $registry $node))','true)'],'sever-scope':['(if (SScope $scope $node)','(if true'],'sever-current':['(if (SCurrent $current $node)','(if true'],'sever-focus':['(== (index-atom $payload 2) (index-atom $request 1))','false'],restored:null};
+const runs={};
+for(const [variant,mutation] of Object.entries(variants)){
+  let code=source;if(mutation){assert.equal(code.split(mutation[0]).length,2,variant+' unique mutation');code=code.replace(...mutation)}save(variant+'.metta',code);
+  const entry=[`!(import! &compass "${root}/constitution/soul_compass_v02.metta")`,`!(import! &self "${root}/src/participation.metta")`,`!(import! &self "${root}/${dir}/${variant}.metta")`,...cases.map(c=>`!(let $r (GroundParticipation ${[c.scope,c.nodes,c.registry,c.current,c.operations,c.request,c.budget].map(sexp).join(' ')}) (case-result ${c.id} $r))`)].join('\n')+'\n';save(variant+'-entry.metta',entry);
+  const start=performance.now(),r=spawnSync('/opt/homebrew/bin/swipl',['--stack_limit=1g','-q','-s',petta+'/src/main.pl','--',root+'/'+dir+'/'+variant+'-entry.metta'],{encoding:'utf8',timeout:30000,maxBuffer:32*1024*1024});save(variant+'.stdout',r.stdout??'');save(variant+'.stderr',r.stderr??'');save(variant+'-process.json',{status:r.status,signal:r.signal,error:r.error?.message??null,elapsed_ms:performance.now()-start});assert.equal(r.status,0,variant+' runtime');assert.equal(r.stderr,'',variant+' stderr');
+  const lines=r.stdout.replace(/\x1b\[[0-9;]*m/g,'').split('\n').filter(l=>l.startsWith('(case-result '));assert.equal(lines.length,cases.length,variant+' evaluated outputs');runs[variant]=Object.fromEntries(lines.map(l=>{const v=parse(l);return[v[1],v[2]]}));save(variant+'-results.json',runs[variant]);
+}
+const ground=(v,id)=>runs[v][id];
+const plans=(v,id)=>{const g=ground(v,id),s=g?.[4];return Array.isArray(s)&&s[0]==='scoped-search'?s[4].filter(x=>x[0]==='candidate-participation'):[]};
+const steps=p=>p[1].map(t=>t[1]).reverse();
+const signature=(v,id)=>[...new Set(plans(v,id).map(p=>JSON.stringify(steps(p))))].sort();
+const checks=[];const expect=(name,fn)=>{fn();checks.push(name)};
+expect('every native result is evaluated and explicitly typed',()=>{for(const results of Object.values(runs))for(const c of cases){const g=results[c.id];if(c.id==='malformed-scope'){assert.equal(g,'malformed-grounding-input');continue;}assert.equal(g[0],'grounded-participation');assert.equal(g.length,5);assert.equal(g[2][0],'readings');assert.equal(g[3][0],'interface-derivations');for(const p of g[2][1])assert(['supported','unresolved','candidate-origin'].includes(p[0]));assert(['scoped-search','unresolved'].includes(g[4][0]));}});
+expect('native constructive dependency formation',()=>assert.deepEqual(signature('canonical','canonical'),['["preserve-participation","direct-change"]']));
+for(const id of ['neutral-order','shared-material','derived-citation','memory-citation','duplicate-descendants','later-cut-unchanged','unrelated-uncertainty','generated-release','foreign-release','nonhuman-release','longer-support-chain','renamed-transfer'])expect(id,()=>assert.deepEqual(signature('canonical',id),signature('canonical','canonical')));
+for(const id of ['generated-material','registry-mismatch','foreign-material','foreign-project','missing-root','invented-entailment','support-cycle','stale-material','conflicting-commitment','duplicate-identity','unknown-role','malformed-parents','malformed-scope','changed-relevant-contact'])expect(id,()=>assert.equal(plans('canonical',id).length,0,id));
+for(const id of ['human-release','delegated'])expect(id,()=>assert.deepEqual(signature('canonical',id),['["direct-change"]']));
+expect('completion has no invented work',()=>assert.deepEqual(signature('canonical','complete'),['[]']));
+const walk=(x,fn)=>{if(Array.isArray(x)){fn(x);x.forEach(y=>walk(y,fn))}};
+expect('duplicate support retains one independent root',()=>{let found=false;walk(ground('canonical','duplicate-descendants')[2],p=>{if(p[0]==='supported'&&p[2]?.[0]==='derived'&&p[2][1]==='combined'){found=true;assert.equal(p[3].length,1);assert.equal(p[3][0][1],'commit-0');}});assert(found)});
+expect('memory remains memory-derived',()=>{let found=false;walk(ground('canonical','memory-citation')[2],p=>{if(p[0]==='derived'&&p[1]==='citation'){assert.equal(p[2],'memory-recall');found=true}});assert(found)});
+expect('generated material remains candidate-origin',()=>{let found=false;walk(ground('canonical','generated-material')[2],p=>{if(p[0]==='candidate-origin'&&p[1]==='commit-0')found=true});assert(found)});
+for(const [variant,id] of [['sever-registry','registry-mismatch'],['sever-scope','foreign-material'],['sever-current','stale-material']])expect('causal '+variant,()=>{assert(plans(variant,id).length);assert.equal(plans('restored',id).length,0)});
+expect('causal native commitment join',()=>{assert(signature('sever-focus','canonical').includes('["direct-change"]'));assert(!signature('restored','canonical').includes('["direct-change"]'))});
+expect('restored equals canonical for every case',()=>{for(const c of cases)assert.deepEqual(ground('restored',c.id),ground('canonical',c.id))});
+expect('native scope and source-bearing focus exposed',()=>{const g=ground('canonical','canonical');assert.deepEqual(g[1],cases[0].scope);assert.equal(g[3][1].length,3);for(const f of g[3][1])assert.equal(f[5][0],'support-basis')});
+expect('independent proof-tree and transition verification',()=>{for(const variant of ['canonical','restored'])for(const c of cases)verifyTraces(c,ground(variant,c.id))});
+save('verdict.json',{gate:'SC02',status:'PASS-BOUNDED',checks,case_count:cases.length,variants:Object.keys(variants),source_sha256:hash(source),limits:'Fixture-admitted structured observations; native citation/support and interface projection only. No authenticated live contact, broad semantics, full Soul or runtime authority.'});
+console.log(JSON.stringify({status:'PASS-BOUNDED',checks:checks.length,cases:cases.length,variants:Object.keys(variants).length,evidence:dir}));

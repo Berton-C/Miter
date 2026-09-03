@@ -1,0 +1,45 @@
+// Visible structured transfer fixtures. No blind held-out claim.
+import fs from 'node:fs';
+const original=JSON.parse(fs.readFileSync('tests/fixtures/sc01/cases.json'));
+export const base={scope:original.scope,nodes:[],registry:[],current:[],operations:original.operations,request:original.request,budget:original.budget};
+export function addNode(c,id,kind,payload,parents=[],audiences=[c.scope[2]]){
+  const n=['node',id,kind,audiences,c.scope[3],'v1',payload,parents];c.nodes.push(n);c.current.push(['at',id,'v1']);
+  if(['external-contact','human-confirmation','testimony','action-result'].includes(kind))c.registry.push(['observation',...n.slice(1,7)]);
+  return n;
+}
+original.state.forEach((edge,i)=>addNode(base,'edge-'+i,'external-contact',edge));
+original.focus.forEach((f,i)=>addNode(base,'commit-'+i,'human-confirmation',['commitment','agreement-'+i,'artifact',f[3],f[2],f[4]]));
+export const cases=[];
+const add=(id,fn=()=>{})=>{const c=structuredClone(base);c.id=id;fn(c);cases.push(c);return c};
+const node=(c,id)=>c.nodes.find(x=>x[1]===id);
+const registry=(c,id)=>c.registry.find(x=>x[1]===id);
+add('canonical');
+add('neutral-order',c=>{c.nodes.reverse();c.registry.reverse();c.current.reverse();c.operations.reverse()});
+add('generated-material',c=>{node(c,'commit-0')[2]='generation';c.registry=c.registry.filter(r=>r[1]!=='commit-0')});
+add('registry-mismatch',c=>registry(c,'commit-0')[6]=['commitment','agreement-0','other-artifact','person','choice','choose']);
+add('foreign-material',c=>{node(c,'commit-0')[3]=['other-person'];registry(c,'commit-0')[3]=['other-person']});
+add('shared-material',c=>{node(c,'commit-0')[3].push('collaborator');registry(c,'commit-0')[3].push('collaborator')});
+add('foreign-project',c=>{node(c,'commit-0')[4]='other-project';registry(c,'commit-0')[4]='other-project'});
+add('derived-citation',c=>addNode(c,'citation','inference',node(c,'commit-0')[6],['commit-0']));
+add('memory-citation',c=>addNode(c,'citation','memory-recall',node(c,'commit-0')[6],['commit-0']));
+add('duplicate-descendants',c=>{for(let i=0;i<4;i++)addNode(c,'copy-'+i,'inference',node(c,'commit-0')[6],['commit-0']);addNode(c,'combined','inference',node(c,'commit-0')[6],['copy-0','copy-1','copy-2','copy-3'])});
+add('missing-root',c=>{const p=node(c,'commit-0')[6];c.nodes=c.nodes.filter(n=>n[1]!=='commit-0');addNode(c,'citation','inference',p,['commit-0'])});
+add('invented-entailment',c=>{const n=node(c,'commit-0');n[2]='inference';n[7]=['edge-0'];c.registry=c.registry.filter(r=>r[1]!=='commit-0')});
+add('support-cycle',c=>{const n=node(c,'commit-0');n[2]='inference';n[7]=['cycle'];addNode(c,'cycle','inference',n[6],['commit-0'])});
+add('stale-material',c=>c.current.find(x=>x[1]==='commit-0')[2]='v2');
+add('later-cut-unchanged',c=>c.scope[1]='later-cut');
+add('unrelated-uncertainty',c=>addNode(c,'irrelevant','inference',['note','unrelated-artifact'],['missing']));
+add('human-release',c=>{for(let i=0;i<3;i++)addNode(c,'release-'+i,'human-confirmation',['release','agreement-'+i]);c.operations=c.operations.slice(0,1)});
+add('generated-release',c=>{for(let i=0;i<3;i++)addNode(c,'release-'+i,'generation',['release','agreement-'+i])});
+add('foreign-release',c=>{for(let i=0;i<3;i++)addNode(c,'release-'+i,'human-confirmation',['release','agreement-'+i],[],['other-person'])});
+add('nonhuman-release',c=>{for(let i=0;i<3;i++)addNode(c,'release-'+i,'external-contact',['release','agreement-'+i])});
+add('conflicting-commitment',c=>addNode(c,'incompatible','human-confirmation',['commitment','agreement-0','artifact','person','choice','different-endpoint']));
+add('duplicate-identity',c=>c.nodes.push(structuredClone(node(c,'commit-0'))));
+add('unknown-role',c=>{node(c,'commit-0')[6][4]='unknown-role';registry(c,'commit-0')[6][4]='unknown-role'});
+add('malformed-parents',c=>node(c,'commit-0')[7]='not-parent-list');
+add('malformed-scope',c=>c.scope='unscoped');
+add('complete',c=>addNode(c,'done','external-contact',['edge','artifact','revised']));
+add('delegated',c=>{for(const [i,e] of base.operations[1][3].entries())addNode(c,'delegated-'+i,'external-contact',e);c.operations=c.operations.slice(0,1)});
+add('changed-relevant-contact',c=>{for(const [i,e] of base.operations[1][3].entries())addNode(c,'delegated-'+i,'external-contact',e);c.operations=c.operations.slice(0,1);const n=node(c,'delegated-3');n[5]='v2';n[6]=['edge','delegate','unavailable'];c.current.find(x=>x[1]===n[1])[2]='v2';c.registry=c.registry.filter(r=>r[1]!==n[1]);c.registry.push(['observation',...n.slice(1,7)])});
+add('longer-support-chain',c=>{let prev='commit-0';for(let i=0;i<5;i++){const id='link-'+i;addNode(c,id,'inference',node(c,'commit-0')[6],[prev]);prev=id;}});
+add('renamed-transfer',c=>{const map=new Map(['artifact','person','choose','inspect','recover','delegate','original','revised'].map((x,i)=>[x,'entity-'+i]));const f=v=>Array.isArray(v)?v.map(f):(map.get(v)??v);for(const k of ['nodes','registry','operations','request'])c[k]=f(c[k]);});
