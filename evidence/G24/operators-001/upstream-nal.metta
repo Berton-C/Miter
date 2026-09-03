@@ -1,0 +1,6 @@
+!(import! &self "/private/tmp/miter-g06-petta-ae66fa8/lib/lib_nars.metta")
+!(result case-0 (collapse (Truth_Revision (stv 0.5 0) (stv 1 0.5))))
+!(result case-1 (collapse (Truth_Revision (stv 0.5 0) (stv 0 0.5))))
+!(result case-2 (collapse (Truth_Revision (stv 1 0.5) (stv 0 0.5))))
+!(result case-3 (collapse (Truth_Revision (stv 0.25 0.8) (stv 0.9 0.4))))
+!(result case-4 (collapse (Truth_Revision (stv 0.2 0.99) (stv 0.8 0.99))))

@@ -1,0 +1,1 @@
+{"status":"PASS-BOUNDED","events":50,"ledgers":6,"source_shapes":true,"projection_and_journal_agree":true,"scope":"Exact byte hashes, sequence/parents, old-to-new state chaining, scalar/roots projection and current source identities; not whole-Soul certification"}

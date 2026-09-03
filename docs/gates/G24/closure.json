@@ -1,0 +1,95 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G24",
+  "plan": "docs/gates/G24/plan.json",
+  "plan_commit": "a17994b60bcd4f5acb35476b422c6d98b30b11d7",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "docs/gates/G24/completion.md",
+      "sha256": "09940efcc3313dc6d03103d2e0608b4448de0765eb108349b77a94b45433c1e8"
+    },
+    {
+      "path": "src/nal_revision_v1.metta",
+      "sha256": "d95af9c411bdbfaba9272e70cee9c3bc06f96a111885bccfcfbb34baa0bacf9a"
+    },
+    {
+      "path": "src/nace_v2.metta",
+      "sha256": "14fd20dc2fd90f7c22c424ac81b8bc59918e7ee342f7ff38e62e34fcf271c8ac"
+    },
+    {
+      "path": "src/bootstrap_nace_v2.metta",
+      "sha256": "bb3329310d35531731b8f8630ff22c3d1fb68aa007bc926bbb96e63f35fcd40e"
+    },
+    {
+      "path": "effect_membranes/miter_nace_v2.pl",
+      "sha256": "d2b5a14623ea31693995bcb5cc227e07ba2de2125aa439c808ba240e438cbfdb"
+    },
+    {
+      "path": "scripts/g24_v2/boundaries.mjs",
+      "sha256": "0321c460f4e4c8178526b2e20de0323d1952153c2b1282e8811ada1acc0c9878"
+    },
+    {
+      "path": "scripts/g24_v2/cases.mjs",
+      "sha256": "b1a5b1abe88d93abc0871477e914f5845396c35303e83b10e3683bfba79c7c13"
+    },
+    {
+      "path": "scripts/g24_v2/operators.mjs",
+      "sha256": "f8d9b74241057da5f89a3ed5054588bb906a31fccddf0e375b4b6901d9423ff7"
+    },
+    {
+      "path": "scripts/g24_v2/run.mjs",
+      "sha256": "2f77dc08af325a7a12d14e087f2736c57c619661173b1d1ea224358dbc26e7ea"
+    },
+    {
+      "path": "scripts/g24_v2/seal.mjs",
+      "sha256": "5780e0a81e29a28d52c84e848c6e732f3d447b4c8eb8e83fa5365fd296870f37"
+    },
+    {
+      "path": "evidence/G24/operators-001/verdict.json",
+      "sha256": "ecd77b67711160edd0d0f78cda6fc0b0e748b348230c3512028b8b5725b0230f"
+    },
+    {
+      "path": "evidence/G24/operators-001/freeze.json",
+      "sha256": "f6ae4e7492c28be137efc4713f64b45773041d093a7bbe6b0c0c8450dfd6cc14"
+    },
+    {
+      "path": "evidence/G24/attempt-006/verdict.json",
+      "sha256": "8f8495367986818ff868705da6d2581ac12b18c57379bac88336a87f656da10f"
+    },
+    {
+      "path": "evidence/G24/attempt-006/boundaries/verdict.json",
+      "sha256": "1cb941c7b68878540b5f93b09dcfc4d17b55df96586d65aaca34c555a1d92840"
+    },
+    {
+      "path": "evidence/G24/attempt-006/independent-final.json",
+      "sha256": "21beff6a403e35c2da9124345670c1ade4c3b4d4c4b9bf7c1d06b9f42bd5b8f2"
+    },
+    {
+      "path": "evidence/G24/raw-inventory.json",
+      "sha256": "6d31dd7fbb615ef3eebe2c59406b447e0c24c6961e2e4dafa1c8dec068df4d6f"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G24-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "Exact qualified pinned NAL closure: five vectors, seven arms, single answer, contamination and unsupported reimport exposed; not full PLN/NAL inference."
+    },
+    {
+      "id": "G24-B",
+      "status": "PROVEN-HARNESS",
+      "limit": "Twelve finite source-framed cases, four causal/naming arms and restarts, eleven boundary checks, fifty events across six ledgers; no human-benefit or G25 ranking claim."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-080–085 and S-1001–1003 reread with M24 evidence ancestry, M25 non-authorizing scalars and M260 lineage. Both control identities unchanged.",
+    "causal_evidence": "Native question grounding, actual construction and observed retention relations supply typed outcomes. Qualified native NAL revises actual AtomSpace fields and durable state. Severing revision retains prior STVs; restoration recovers revision; independent raw hashes/scalars and restart agree.",
+    "substitution_audit": "No prelabelled success rule, first-match behavior table or Prolog reasoning. Recomputed observations reject forged states. JS is offline testing. Unit weight semantics are explicit and source-derived, not the historical 0.1 assumption.",
+    "capability_and_constraint_audit": "Useful positive and negative observations both execute. Unknown/invalid outcomes remain typed, family overlap does not inflate. No controls, historical evidence or live services changed. Fresh worker required for changed interpreter.",
+    "remaining_gaps": "Fixture families are declared independence, not natural statistical evidence. Finite coexpression efficacy is not all-nine cognition, all-five mathematics, general human benefit or learned selection. Failed attempts retained. Same-process reload unsupported. G25 consumer and full acceptance dispatcher remain."
+  },
+  "reviewer": "Codex builder with separate deterministic verification; no independent human/agent reviewer claimed.",
+  "review_limits": "Bounded native capability learning and persistence only. Structural fidelity checking is not semantic certification.",
+  "next_plan": "docs/gates/G25/plan.json"
+}

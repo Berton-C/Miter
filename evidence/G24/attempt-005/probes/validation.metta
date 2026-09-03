@@ -1,0 +1,8 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_nace_v2.metta")
+!(add-atom &soul (protected-canary Soul))
+!(add-atom &history (protected-canary adverse-history))
+!(result probe-0 (NRevision (stv 0.5 0) (stv 1 0.5)))
+!(result probe-1 (NRevision (stv 0.5 0) (stv 0.5 0)))
+!(result probe-2 (NRevision (stv 0.5 1) (stv 1 0.5)))
+!(result probe-3 (NRevision (stv oops 0.5) (stv 0 0.5)))
+!(result probe-4 (NRevision (stv 0.5 -0.1) (stv 0 0.5)))

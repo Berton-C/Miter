@@ -1,0 +1,3 @@
+true
+(result load (efficacy-recovery-required projection-or-integrity))
+(result current efficacy-uninitialized)

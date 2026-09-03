@@ -1,0 +1,21 @@
+// Independent operator/source/namespace experiment, not production reasoning.
+import fs from 'node:fs';import assert from 'node:assert/strict';import {spawnSync} from 'node:child_process';
+import {root,hash,checkOpen} from '../fidelity/check.mjs';import {parse,sexp} from '../sc04/fixtures.mjs';
+process.chdir(root);const rel=process.argv[2];assert.match(rel??'',/^evidence\/G24\/operators-\d{3}$/);const dir=root+'/'+rel;assert(!fs.existsSync(dir));fs.mkdirSync(dir,{recursive:true});
+const save=(name,x)=>fs.writeFileSync(dir+'/'+name,typeof x==='string'?x:JSON.stringify(x)+'\n');process.on('uncaughtException',e=>{save('failure.json',{message:e.message,stack:e.stack});console.error(e.stack);process.exitCode=1});save('opening.json',checkOpen('docs/gates/G24/plan.json'));
+const petta='/private/tmp/miter-g06-petta-ae66fa8',nal=petta+'/lib/lib_nars.metta',pln=petta+'/lib/lib_pln.metta',qualified=root+'/src/nal_revision_v1.metta';
+assert.equal(hash(fs.readFileSync(nal)),'f2a1ab3be59c59128894367a2f52a12c0fafdf1fb26b4affedd48270b47d4b43');assert.equal(hash(fs.readFileSync(pln)),'6b980321bbe9b49e5b12e2fcee0479ab1d5c7550c2104a67b0722a5b473da4ee');
+const syntax=p=>parse('('+fs.readFileSync(p,'utf8').replace(/^;.*$/gm,'')+')'),defs=syntax(qualified),original=syntax(nal),unqualify=x=>Array.isArray(x)?x.map(unqualify):x.replace?.('MiterNAL_','')??x;
+for(const d of defs){const x=unqualify(d),o=original.find(f=>f[0]==='='&&f[1]?.[0]===x[1][0]);assert.deepEqual(x,o,'exact qualified source closure '+x[1][0])}assert.equal(defs.length,4);
+const vectors=[[[.5,0],[1,.5]],[[.5,0],[0,.5]],[[1,.5],[0,.5]],[[.25,.8],[.9,.4]],[[.2,.99],[.8,.99]]];
+const reference=([f,c],[g,d])=>{const a=c/(1-c),b=d/(1-d),w=a+b;return [(a*f+b*g)/w,Math.min(.99,Math.max(w/(w+1),c,d))]};
+save('freeze.json',{files:[nal,pln,qualified,root+'/scripts/g24_v2/operators.mjs'].map(path=>({path,sha256:hash(fs.readFileSync(path))})),vectors,reference:vectors.map(v=>reference(...v))});
+const load=p=>`!(import! &self "${p}")\n`;const result={};
+for(const [name,libs,op]of [['qualified',[qualified],'MiterNAL_Truth_Revision'],['upstream-nal',[nal],'Truth_Revision'],['pln-nal-qualified',[pln,nal,qualified],'MiterNAL_Truth_Revision'],['nal-pln-qualified',[nal,pln,qualified],'MiterNAL_Truth_Revision'],['restart',[qualified],'MiterNAL_Truth_Revision'],['reload',[qualified,qualified],'MiterNAL_Truth_Revision'],['unqualified-contamination',[pln,nal],'Truth_Revision']]){
+ const code=libs.map(load).join('')+vectors.map((v,i)=>`!(result case-${i} (collapse (${op} ${sexp(['stv',...v[0]])} ${sexp(['stv',...v[1]])})))`).join('\n')+'\n';save(name+'.metta',code);
+ const start=Date.now(),p=spawnSync('/opt/homebrew/bin/swipl',['--stack_limit=1g','-q','-s',petta+'/src/main.pl','--',dir+'/'+name+'.metta','silent'],{encoding:'utf8',timeout:30000,maxBuffer:16*1024*1024});save(name+'.stdout',p.stdout??'');save(name+'.stderr',p.stderr??'');save(name+'-process.json',{status:p.status,signal:p.signal,elapsed_ms:Date.now()-start});assert.equal(p.status,0);assert.equal(p.stderr,'');
+ result[name]=p.stdout.replace(/\x1b\[[0-9;]*m/g,'').split('\n').filter(l=>l.startsWith('(result ')).map(parse);assert.equal(result[name].length,vectors.length);
+ if(name!=='unqualified-contamination'&&name!=='reload')result[name].forEach((r,i)=>{assert.equal(r[2].length,1,name+' cardinality');const v=r[2][0];assert.equal(v[0],'stv');reference(...vectors[i]).forEach((x,j)=>assert(Math.abs(Number(v[j+1])-x)<1e-10))});
+}
+assert.notDeepEqual(result['unqualified-contamination'],result.qualified,'unqualified negative control must expose collision');
+const reloadUnique=result.reload.every(r=>r[2].length===1);save('verdict.json',{status:'PASS-BOUNDED',vectors:vectors.length,arms:Object.keys(result),source_equivalent:true,qualified_answer_cardinality:1,unqualified_cardinalities:result['unqualified-contamination'].map(r=>r[2].length),reload:reloadUnique?'idempotent-import':'reimport-duplicates-not-supported',restriction:reloadUnique?'normal import safe':'No same-process reimport; version-pinned continuation requires fresh worker for interpreter change'});console.log(JSON.stringify({status:'PASS-BOUNDED',reloadUnique,unqualified:result['unqualified-contamination'].map(r=>r[2].length)}));

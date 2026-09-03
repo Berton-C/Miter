@@ -1,0 +1,2 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_nace_v2.metta")
+!(result learned (let* (($inv (index-atom (index-atom (nn_input "/Users/claritymiter/miter/evidence/G24/attempt-006/boundaries/missing-projection") 1) 0)) ($loaded (NLoad "/Users/claritymiter/miter/evidence/G24/attempt-006/boundaries/missing-projection" $inv))) (NProcess "/Users/claritymiter/miter/evidence/G24/attempt-006/boundaries/missing-projection" $inv)))

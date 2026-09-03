@@ -1,0 +1,5 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_nace_v2.metta")
+!(add-atom &soul (protected-canary Soul))
+!(add-atom &history (protected-canary adverse-history))
+!(import! &self "/Users/claritymiter/miter/src/nal_revision_v1.metta")
+!(result duplicate (NRevision (stv 0.5 0) (stv 1 0.5)))

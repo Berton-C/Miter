@@ -1,0 +1,23 @@
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+true
+(result restart-0 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-1 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-2 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-3 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-4 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-5 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-6 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-7 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-8 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-9 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-10 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (2)))))
+(result restart-11 (restored efficacy-projected ((frequency (0.5)) (confidence (0)) (units (0)))))

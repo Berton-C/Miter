@@ -1,0 +1,4 @@
+true
+(result process (efficacy-rejected malformed-invocation))
+(result load (efficacy-rejected malformed-invocation))
+(result apply (efficacy-rejected malformed-invocation))
