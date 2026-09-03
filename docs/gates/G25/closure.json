@@ -1,0 +1,58 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G25",
+  "plan": "docs/gates/G25/plan.json",
+  "plan_commit": "744cb1b798161ab8eb2ab4187a01273fe26704aa",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "docs/gates/G25/completion.md",
+      "sha256": "438ce8e9b2be96e492899472d2ffafdd0e8ad51139f53e0133d517d12dd5e710"
+    },
+    {
+      "path": "src/nace_selection_v1.metta",
+      "sha256": "e12c73d3f945f4f42d77853197c289f090aea6785b43a1b665ed21dba1fb5129"
+    },
+    {
+      "path": "src/bootstrap_nace_selection_v1.metta",
+      "sha256": "b5f329eb415cdee859020e7ac4f0148cf81544814f9a4417ef45cbf8348b22e3"
+    },
+    {
+      "path": "scripts/g25_v2/run.mjs",
+      "sha256": "c188253ea06d9d5ada9b78326bcb1413da954639ed5a96d3cdde6fbae60d46cd"
+    },
+    {
+      "path": "evidence/G24/g25-002/verdict.json",
+      "sha256": "978e92fe06b509cbf598a108b1bcd6489146d5f218592be16d1c4b6cafe91687"
+    },
+    {
+      "path": "evidence/G24/g25-002/inventory.json",
+      "sha256": "03b3e412b64faca01c4b2e9fe29eadd2c6f56082f5fe0becb21b75abd617c410"
+    },
+    {
+      "path": "evidence/G24/g25-001/source-src__nace_selection_v1.metta",
+      "sha256": "6310974b013c19e123f91818c606cdc670fcaa7bfa69d74437cf0f42c3654175"
+    },
+    {
+      "path": "evidence/G24/g25-001/source-scripts__g25_v2__run.mjs",
+      "sha256": "013ce3cec5b7b242c78bbd8e78703b20d23ab701114736477cff9facb8c914c7"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G25-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "Native ranking changes at a byte-identical encounter, survives neutral variation and restoration, and is absent with the learned consumer severed. Finite trial allocation, no effect authority."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-083/S-1003 require consequential future use; C-009 and M25 keep source/meaning support non-compensatory. Applicable full sections and whole ledger reread; both controls unchanged.",
+    "causal_evidence": "Parent 0.833333→0.5 and actual candidate 0.75→0.875 change ranking; actual stored prior snapshot retains former ranking in severed consumer. Twenty-eight journal events, restart, eight boundary probes and independent expression/arithmetic checks.",
+    "substitution_audit": "No scenario behavior entries or first-match selector. Native construction determines supported alternatives; explicit matching context scopes efficacy. Maxima/ties remain visible. Host code tests but neither ranks nor classifies runtime outcomes.",
+    "capability_and_constraint_audit": "Useful alternatives remain. High synthetic efficacy cannot admit permission shift, changed hard source excludes parent, incompatible encounters cannot compare. No changes to earlier runtime, controls, services or model settings.",
+    "remaining_gaps": "Finite fallible capability question and fixture families; no human-benefit or measured efficiency claim. Full production integration and general reasoning remain unfinished. g25-001 initial comparator lacked general encounter check; retained source snapshots and final rerun show repair."
+  },
+  "reviewer": "Codex builder; separate deterministic raw checks, no independent reviewer claimed.",
+  "review_limits": "Learned finite trial ranking, not complete Soul navigation or production effect selection.",
+  "next_plan": "docs/gates/G26/plan.json"
+}

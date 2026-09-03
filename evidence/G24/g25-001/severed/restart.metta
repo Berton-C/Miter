@@ -1,0 +1,6 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_nace_selection_v1.metta")
+!(add-atom &soul (protected-canary Soul))
+!(add-atom &history (protected-canary adverse-history))
+!(NLoad "/Users/claritymiter/miter/evidence/G24/g25-001/severed" (index-atom (index-atom (nn_input "/Users/claritymiter/miter/evidence/G24/g25-001/severed") 1) 7))
+!(NLoad "/Users/claritymiter/miter/evidence/G24/g25-001/severed" (index-atom (index-atom (nn_input "/Users/claritymiter/miter/evidence/G24/g25-001/severed") 1) 8))
+!(result replay (ERank ((index-atom (index-atom (nn_input "/Users/claritymiter/miter/evidence/G24/g25-001/severed") 1) 7) (index-atom (index-atom (nn_input "/Users/claritymiter/miter/evidence/G24/g25-001/severed") 1) 8))))
