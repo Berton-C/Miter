@@ -1,0 +1,6 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice_development.metta")
+!(add-atom &soul (sc06-protected-canary soul immutable-test-content))
+!(add-atom &history (sc06-protected-canary history immutable-test-content))
+!(add-atom &derived (sc06-protected-canary derived immutable-test-content))
+!(case-result live-run (DRun "/Users/claritymiter/miter/evidence/SC06/live-002" voice-development-002 (scope cut-fixture principal-fixture project-fixture test-owner-structural-contact) (vd_read_receipts "/Users/claritymiter/miter/evidence/SC06/live-002") ((surface-capability VoicePolicy retention-omission miter-voice-policy-v1 (trial-guidance) ())) (development-grant (scope cut-fixture principal-fixture project-fixture test-owner-structural-contact) 1 1024 120)))
+!(case-result live-callability (DTrialPlan voice-development-002 (semantic-drift)))

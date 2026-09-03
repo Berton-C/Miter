@@ -1,0 +1,1 @@
+{"source":"evidence/SC06/live-001/","standing":"Offline replay/synthetic adversarial envelopes, NOT additional model calls or fresh evidence","cases":["valid-replay","candidate-mismatch","soul-write","external-effect","bad-purpose-type","unknown-field","wrong-id","integrity-changed","timeout","unavailable","cancel"]}

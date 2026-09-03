@@ -1,0 +1,11 @@
+true
+true
+true
+true
+true
+true
+true
+ready
+(case-result boundary (quarantine-result unproven-candidate-lineage storage-or-integrity-failed))
+(case-result trial-count 0)
+done

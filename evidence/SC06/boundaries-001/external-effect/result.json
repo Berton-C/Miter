@@ -1,0 +1,21 @@
+{
+  "native": [
+    "quarantine-result",
+    "forbidden-effect",
+    [
+      "voice-policy",
+      "miter-voice-policy-v1",
+      "voice-development-001",
+      "Propose declarative VoicePolicy for experimental candidate",
+      [
+	["rule", "defect", "semantic-drift", "preserve-candidate", 0 ],
+	["rule", "defect", "semantic-drift", "approved-clause-plan", 1 ],
+	["rule", "always", "*", "preserve-candidate", 0 ]
+      ],
+      ["trial-guidance" ],
+      ["http-post" ]
+    ],
+    "model-candidate-bound"
+  ],
+  "stored_at":1788431683.303591
+}

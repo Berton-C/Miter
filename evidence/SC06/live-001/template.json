@@ -1,0 +1,77 @@
+{
+  "body": {
+    "max_tokens":1024,
+    "messages": [
+      {
+	"content":"Propose a declarative VoicePolicy using the supplied schema. Address the independently witnessed retention omission using semantic-drift as the schema's classification. This is an experimental candidate, not approval. A defect rule can select approved-clause-plan, which realizes the current native intention, or preserve-candidate. End with an always/* default. Conditions are defect or always; actions preserve-candidate or approved-clause-plan; variant is 0 or 1. Do not write code, add fields, change Soul, claim success, or request external effects. Copy candidate_id exactly. Native interpretation, audit and promotion are outside your authority.",
+	"role":"system"
+      },
+      {
+	"content":"{\"allowed_effects\": [],\"allowed_writes\": [\"trial-guidance\" ],\"candidate_id\":\"voice-development-001\",\"parent_module\":\"voice-policy-seed-v1\",\"soul_ground\": [\"SharedUnderstanding\" ],\"source_events\": [\"receipt-a\", \"receipt-b\" ],\"target\":\"VoicePolicy\"}",
+	"role":"user"
+      }
+    ],
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_voice_policy",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "allowed_effects": {"items": {"type":"string"},"type":"array"},
+	    "allowed_writes": {"items": {"type":"string"},"type":"array"},
+	    "candidate_id": {"type":"string"},
+	    "purpose": {"maxLength":500,"minLength":1,"type":"string"},
+	    "rules": {
+	      "items": {
+		"additionalProperties":false,
+		"properties": {
+		  "action": {"enum": ["preserve-candidate", "approved-clause-plan" ],"type":"string"},
+		  "condition": {"enum": ["defect", "always" ],"type":"string"},
+		  "value": {
+		    "enum": [
+		      "schema-failure",
+		      "semantic-drift",
+		      "soul-absence",
+		      "person-not-seen",
+		      "task-smearing",
+		      "unsupported-certainty",
+		      "authority-inflation",
+		      "coercive-dominance",
+		      "affect-register-mismatch",
+		      "hidden-scope",
+		      "unacknowledged-tension",
+		      "policy-voice",
+		      "excessive-length",
+		      "*"
+		    ],
+		    "type":"string"
+		  },
+		  "variant": {"maximum":1,"minimum":0,"type":"integer"}
+		},
+		"required": ["condition", "value", "action", "variant" ],
+		"type":"object"
+	      },
+	      "maxItems":8,
+	      "minItems":1,
+	      "type":"array"
+	    },
+	    "schema": {"const":"miter-voice-policy-v1","type":"string"}
+	  },
+	  "required": ["schema", "candidate_id", "purpose", "rules", "allowed_writes", "allowed_effects" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":6060,
+    "stream":false,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"voice-development-001",
+  "schema":"miter-schema-request-v1"
+}

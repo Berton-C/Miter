@@ -1,0 +1,11 @@
+true
+true
+true
+true
+true
+true
+true
+ready
+(case-result boundary (quarantine-result wrong-schema-or-id stored))
+(case-result trial-count 0)
+done

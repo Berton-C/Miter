@@ -1,0 +1,85 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "SC06",
+  "plan": "docs/gates/SC06/plan.json",
+  "plan_commit": "c574bcdf65168c48ecdc5f0b94f4377959f61b13",
+  "status": "FAIL",
+  "mechanical_status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "src/voice_development.metta",
+      "sha256": "34d643a0bdc98d66b6f7c1a4519d928072c3ea89a736162f5aea0f2c65b27815"
+    },
+    {
+      "path": "src/bootstrap_voice_development.metta",
+      "sha256": "5dc4bb2bdc3fa0d1b12d0096f855b7ca5bb44970a537d70e2cef1a153ecf5fe0"
+    },
+    {
+      "path": "effect_membranes/miter_voice_development.pl",
+      "sha256": "f04f15bb6dab5c2463113a2156be9176b79bae8e6f9a6a70dcb138dff37bcc69"
+    },
+    {
+      "path": "scripts/sc06/check-package.mjs",
+      "sha256": "4ba0acd755b7d3731026614125b21e501f097f1ad3e6939d780d0a5eacf3840a"
+    },
+    {
+      "path": "scripts/sc06/inventory.mjs",
+      "sha256": "1c1505aa95c1b211104be6c660e653aa7989be2475bd72afa2a72dfc40b86e0d"
+    },
+    {
+      "path": "scripts/sc06/verify.mjs",
+      "sha256": "887cc6baf5943bffa6ea4ab950cfeffb777e35a64f5665a7f24daedfc2b678ce"
+    },
+    {
+      "path": "tests/fixtures/sc06/contract.md",
+      "sha256": "3a2d929479210020b19b49753e54299dd8fe3b01723f8b0868f4f8b5ce914f47"
+    },
+    {
+      "path": "evidence/SC06/raw-inventory.json",
+      "sha256": "1066064fcb58f77ff51b1da131b034ae93801df0b11ac34685bfd6b672fca918"
+    },
+    {
+      "path": "evidence/SC06/package-verdict.json",
+      "sha256": "14b8cc415bdb4ce01a79755d90b18340cc0fc9c56eb3867e7c0906d6f576bc0f"
+    },
+    {
+      "path": "docs/gates/SC06/completion.md",
+      "sha256": "45aa065f2fde79bc5d7beea71334b8d9bbe09875435b03a19488af2a11cec77e"
+    },
+    {
+      "path": "docs/gates/SC07/CONTRACT_CORRECTION.md",
+      "sha256": "1fcf9bce014a71c87a3ade3ed5c7440db61cdbc4996073946447b950d3162526"
+    },
+    {
+      "path": "docs/gates/SC07/plan.json",
+      "sha256": "4b62124195a12cbdb0fd535abc7d139defa0679a213548705bc5ec25221a4e82"
+    },
+    {
+      "path": "docs/gates/SC07/plan.md",
+      "sha256": "5e57d8e61b452879f3f0c1ddad7bb325855b3a7bedd8f52ea0c9f5d335b3092e"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "SC06-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "Finite recomputed source/audit/family opportunity; not recurring-driver integration."
+    },
+    {
+      "id": "SC06-B",
+      "status": "PROVEN-HARNESS",
+      "limit": "Actual v1 candidate lineage/quarantine mechanics; first-match decision contract fails the broader fidelity review and is not approved for integration."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/009/011/012/054–062 and S-501/504/902 require source-grounded construction and comparison, not ordered behavioral lookup.",
+    "causal_evidence": "Native opportunity/audit/family severing and actual quarantine verified, but DApplyRules chooses the first matching action regardless of the actual participation of competing repairs.",
+    "substitution_audit": "The v1 ordered defect/action module is a real behavioral selector despite native intention and audit around it. Labeling its output a Soul decision or later quality pass would not repair that gap.",
+    "capability_and_constraint_audit": "Keep proven source, persistence, quarantine and native audit. No controls or old evidence changed; Berton explicitly authorized a versioned expressive-capability correction.",
+    "remaining_gaps": "SC07 must replace behavioral selection before ongoing-cognition integration. Recurring driver coupling, G22 comparative trial/promotion, NACE, all nine full enactors and Mattermost remain unproved."
+  },
+  "reviewer": "Codex builder; separate offline deterministic evidence checker, not independent human/agent review.",
+  "review_limits": "Mechanical evidence is retained at its exact finite scope; FAIL is a fidelity result, not an assertion that all mechanics failed.",
+  "next_plan": "docs/gates/SC07/plan.json",
+  "terminal_reason": "No progression pass under this contract. Berton's explicit correction authorizes SC07 as a replacement experiment from the named SC06 reassessment, not automatic progression."
+}

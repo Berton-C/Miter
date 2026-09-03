@@ -1,0 +1,38 @@
+{
+  "files": [
+    {
+      "file":"receipts.json",
+      "sha256":"5f985e30b5cc4bb2c3aa86bf8b1bad2435ea1befabde49d67b9da3c0680a7a6d"
+    },
+    {
+      "file":"grant.json",
+      "sha256":"458217f5fab72495f1db8df80f7cbde85bddb43e165f114b1c3a5e5c3a26052d"
+    },
+    {
+      "file":"candidate.json",
+      "sha256":"26321b6f3efc9c9147ef0dcbfd49aa1ba1d92906b14540d36c6ea9693e7b646d"
+    },
+    {
+      "file":"raw.json",
+      "sha256":"1de27cf2d21050c588defa57728d9710619b378b0ac6e677a543de4494c21cda"
+    },
+    {
+      "file":"request.json",
+      "sha256":"29a165468dbb001163be1236d101443c2c209a2ed5c0c0c014e5d25b87a379d3"
+    },
+    {
+      "file":"generation-intention.json",
+      "sha256":"a3064518f2fb15ebb4c98a2de2c2c42978dee97e78499454d9e3db57735d6147"
+    },
+    {
+      "file":"opportunity.json",
+      "sha256":"368e726d8d6e3d44ef931753e8e0e7ac931eb6ecaf3b5114d5f1b4bd85fcba4e"
+    },
+    {
+      "file":"develop.json",
+      "sha256":"32378d5ade2ac493991a63908c6c5e0c4cab9c08de183eb6aea97332fc6ef240"
+    }
+  ],
+  "parent_hash":"4f3dc1e5933083d20c3641ce0bc5ec6bf7d86c7f0f8e816ecedfb76762b8ad87",
+  "standing":"candidate-not-accepted-development"
+}

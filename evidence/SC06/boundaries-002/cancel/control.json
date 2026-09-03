@@ -1,0 +1,14 @@
+{
+  "event": [
+    "control",
+    "voice-development-001",
+    [
+      "scope",
+      "cut-fixture",
+      "principal-fixture",
+      "project-fixture",
+      "test-owner-structural-contact"
+    ],
+    "stop"
+  ]
+}

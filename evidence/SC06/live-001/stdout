@@ -1,0 +1,3 @@
+true
+(if true (quarantine-result candidate-quarantined stored) (partial let ($_0 storage-or-integrity-failed)) (development-transport-incomplete candidate-available $_0))
+(case-result live-callability (rendering-plan preserve-candidate 0))

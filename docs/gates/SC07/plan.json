@@ -1,0 +1,166 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "SC07",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "SC07-A: native source-grounded expressive construction and comparison replace first-match behavioral selection. SC07-B: an actual local-model v2 expressive-capability candidate retains exact native opportunity lineage and trial-only quarantine.",
+  "claim_ids": [
+    "SC07-A",
+    "SC07-B"
+  ],
+  "non_claims": "Finite technical grammar and three flourishing-interface projections; not all nine/full five-authority mathematics, general language, recurring-driver integration, candidate quality improvement, promotion, NACE, G22 or Mattermost.",
+  "rationale": "Berton explicitly approved correction after SC06 mechanical success exposed first-match decision substitution. Preserve mechanics; earn native construction before ongoing-cognition integration.",
+  "requirements": [
+    "C-003",
+    "C-004",
+    "C-005",
+    "C-006",
+    "C-007",
+    "C-008",
+    "C-009",
+    "C-010",
+    "C-011",
+    "C-012",
+    "C-020",
+    "C-021",
+    "C-022",
+    "C-023",
+    "C-024",
+    "C-025",
+    "C-054",
+    "C-055",
+    "C-056",
+    "C-057",
+    "C-060",
+    "C-061",
+    "C-062",
+    "C-064",
+    "C-065",
+    "C-070",
+    "C-074",
+    "C-080",
+    "C-090",
+    "C-091",
+    "C-092",
+    "C-095",
+    "C-096",
+    "C-097",
+    "C-100",
+    "C-101",
+    "C-102",
+    "C-103",
+    "C-104",
+    "S-102",
+    "S-201",
+    "S-202",
+    "S-204",
+    "S-205",
+    "S-401",
+    "S-402",
+    "S-403",
+    "S-501",
+    "S-502",
+    "S-503",
+    "S-504",
+    "S-602",
+    "S-606",
+    "S-901",
+    "S-902",
+    "S-903",
+    "S-905",
+    "S-1001",
+    "S-1004",
+    "S-1101",
+    "S-1102",
+    "S-1103",
+    "S-1104",
+    "T-11",
+    "T-14",
+    "T-15",
+    "T-22",
+    "T-23",
+    "T-26",
+    "T-28",
+    "T-30",
+    "T-31",
+    "T-34"
+  ],
+  "reading": "Re-read Constitution C-003–014/020–025/054–067/080–105, Soul §§1.2/5/9/10/11 and unchanged whole-design ledger context, WORK_PROTOCOL W-032–034 and fidelity F-01–07. User-approved contract correction is explicit, not a control amendment.",
+  "representation": "Typed source-grounded intentions, reusable inert token/slot constructions, independently interpreted fragments, composed expression possibilities, scoped supported co-expression relations, candidate/source/model/parent lineage and trial-only atoms.",
+  "consumer": "Native MeTTa binds, interprets, composes and compares; Prolog performs exact JSON/hash/store/provider mechanics. No candidate order, defect label, generic scalar or host semantic choice determines a result.",
+  "falsifiers": "plan.md freezes causal source, semantic verification, composition and joint-relation severing; neutral ordering/renaming, useful construction, unknown/unsupported alternatives, actual candidate provenance and populated protected-space readback.",
+  "scope_review": "Retain SC06 raw failure/mechanics and all G22 files. No G22 trials/promotion, affected historical mechanical reruns, source archives, controls, production services/config/data or push. At most two scoped local-model requests.",
+  "rollback": "Add isolated v2 schema/bootstrap/native construction and evidence; no active registry or legacy candidate promotion. Retain v1 unchanged as historical evidence. No arbitrary generated source execution.",
+  "predecessor": "docs/gates/SC06/completion.md",
+  "allowed_paths": [
+    "src/development_evidence.metta",
+    "src/voice_construction.metta",
+    "src/bootstrap_voice_construction.metta",
+    "effect_membranes/miter_voice_construction.pl",
+    "config/voice-realization-schema-v2.json",
+    "derived/voice-realization-seed-v2.json",
+    "scripts/sc07/",
+    "tests/fixtures/sc07/",
+    "evidence/SC07/",
+    "docs/gates/SC07/completion.md",
+    "docs/gates/SC07/closure.json",
+    "docs/gates/SC07/rejoin-assessment.md",
+    "docs/gates/SC08/"
+  ],
+  "preserved": [
+    {
+      "path": "effect_membranes/miter_trials.pl",
+      "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256",
+      "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/inputs/plan.txt",
+      "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/preflight.txt",
+      "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stderr",
+      "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/g22/prepare.pl",
+      "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"
+    },
+    {
+      "path": "src/bootstrap_trials.metta",
+      "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"
+    },
+    {
+      "path": "src/trials.metta",
+      "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"
+    },
+    {
+      "path": "tests/fixtures/g22_canonical.metta",
+      "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"
+    },
+    {
+      "path": "tests/fixtures/g22_cases.json",
+      "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"
+    },
+    {
+      "path": "tests/fixtures/g22_parent.metta",
+      "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"
+    },
+    {
+      "path": "tests/fixtures/g22_severed.metta",
+      "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"status":"PASS-BOUNDED","opportunity_cases":16,"module_schema_cases":13,"compiler_cases":10,"trial_callability_checks":5,"arms":["canonical","sever-source","sever-revalidation","sever-family","restored"],"scope":"Synthetic finite inputs, recomputed native audits plus separate source/meaning oracle; no candidate-quality trial, promotion or model call."}

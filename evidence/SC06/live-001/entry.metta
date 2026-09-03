@@ -1,0 +1,3 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_voice_development.metta")
+!(DRun "/Users/claritymiter/miter/evidence/SC06/live-001" voice-development-001 (scope cut-fixture principal-fixture project-fixture test-owner-structural-contact) (vd_read_receipts "/Users/claritymiter/miter/evidence/SC06/live-001") ((surface-capability VoicePolicy retention-omission miter-voice-policy-v1 (trial-guidance) ())) (development-grant (scope cut-fixture principal-fixture project-fixture test-owner-structural-contact) 1 1024 120))
+!(case-result live-callability (DTrialPlan voice-development-001 (semantic-drift)))

@@ -1,0 +1,11 @@
+true
+true
+true
+true
+true
+true
+true
+ready
+(case-result boundary (development-transport-incomplete (provider-incomplete inference-output-exists) stored))
+(case-result trial-count 0)
+done

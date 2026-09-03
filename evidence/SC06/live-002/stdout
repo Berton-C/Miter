@@ -1,0 +1,6 @@
+true
+true
+true
+true
+(case-result live-run (quarantine-result candidate-quarantined stored))
+(case-result live-callability (rendering-plan approved-clause-plan 0))

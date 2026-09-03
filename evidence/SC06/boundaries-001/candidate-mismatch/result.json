@@ -1,0 +1,21 @@
+{
+  "native": [
+    "quarantine-result",
+    "unproven-candidate-lineage",
+    [
+      "voice-policy",
+      "miter-voice-policy-v1",
+      "voice-development-001",
+      "Altered after model output",
+      [
+	["rule", "defect", "semantic-drift", "preserve-candidate", 0 ],
+	["rule", "defect", "semantic-drift", "approved-clause-plan", 1 ],
+	["rule", "always", "*", "preserve-candidate", 0 ]
+      ],
+      ["trial-guidance" ],
+      []
+    ],
+    "unproven-model-candidate"
+  ],
+  "stored_at":1788431682.875385
+}

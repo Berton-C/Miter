@@ -1,0 +1,28 @@
+{
+  "status": "PASS-BOUNDED",
+  "harness": {
+    "status": "PASS-BOUNDED",
+    "opportunity_cases": 16,
+    "module_schema_cases": 13,
+    "compiler_cases": 10,
+    "trial_callability_checks": 5,
+    "arms": [
+      "canonical",
+      "sever-source",
+      "sever-revalidation",
+      "sever-family",
+      "restored"
+    ],
+    "scope": "Synthetic finite inputs, recomputed native audits plus separate source/meaning oracle; no candidate-quality trial, promotion or model call."
+  },
+  "boundary_cases": 11,
+  "typed_parser_classes": 3,
+  "actual_model_requests": 2,
+  "final_model_duration_ms": 28977,
+  "protected_compass_atoms": 129,
+  "protected_fixture_canaries": 3,
+  "trial_atoms_added": 1,
+  "cancellation_observed_ms": 6.206989288330078,
+  "cancellation_persisted_ms": 12.635946273803711,
+  "limits": "Finite source-bound opportunity and model candidate quarantine. Not recurring-driver integration, quality, promotion, NACE or general Soul; first live partial return retained."
+}

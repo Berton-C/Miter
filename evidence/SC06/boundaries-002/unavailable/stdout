@@ -1,0 +1,11 @@
+true
+true
+true
+true
+true
+true
+true
+ready
+(case-result boundary (development-transport-incomplete provider-unavailable stored))
+(case-result trial-count 0)
+done

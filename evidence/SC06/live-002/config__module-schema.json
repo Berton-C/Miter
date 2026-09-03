@@ -1,0 +1,19 @@
+{
+ "type":"object",
+ "properties":{
+  "schema":{"type":"string","const":"miter-voice-policy-v1"},
+  "candidate_id":{"type":"string"},
+  "purpose":{"type":"string","minLength":1,"maxLength":500},
+  "rules":{"type":"array","minItems":1,"maxItems":8,"items":{
+   "type":"object","properties":{
+    "condition":{"type":"string","enum":["defect","always"]},
+    "value":{"type":"string","enum":["schema-failure","semantic-drift","soul-absence","person-not-seen","task-smearing","unsupported-certainty","authority-inflation","coercive-dominance","affect-register-mismatch","hidden-scope","unacknowledged-tension","policy-voice","excessive-length","*"]},
+    "action":{"type":"string","enum":["preserve-candidate","approved-clause-plan"]},
+    "variant":{"type":"integer","minimum":0,"maximum":1}
+   },"required":["condition","value","action","variant"],"additionalProperties":false}},
+  "allowed_writes":{"type":"array","items":{"type":"string"}},
+  "allowed_effects":{"type":"array","items":{"type":"string"}}
+ },
+ "required":["schema","candidate_id","purpose","rules","allowed_writes","allowed_effects"],
+ "additionalProperties":false
+}
