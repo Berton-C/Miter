@@ -1,0 +1,22 @@
+{
+  "status": "FAIL-EVIDENCE",
+  "phase": "native-render-grounding",
+  "failure_kind": "transitive-prolog-grounding-not-imported",
+  "zero_effect_preflight_passed": true,
+  "full_request_constructed": true,
+  "native_process_status": 0,
+  "native_stderr_empty": true,
+  "observed": "or_source/3 remained an unevaluated MeTTa expression because it is defined in a transitively loaded Prolog file rather than directly in the file named by import_prolog_functions_from_file.",
+  "model_call_claim_created": false,
+  "model_requests_created": 0,
+  "actual_model_calls": 0,
+  "openrouter_credential_lookups": 0,
+  "local_mattermost_requests": 0,
+  "mattermost_credential_lookups": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "candidate_created": false,
+  "activated": false,
+  "promoted": false,
+  "recovery": "Define a P3-qualified wrapper directly in the approved Prolog membrane, import that wrapper explicitly, and verify its visibility and exact one-call grant without invoking it during preflight."
+}

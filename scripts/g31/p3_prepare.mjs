@@ -16,9 +16,9 @@ process.on('uncaughtException', error => {
   console.error(error.stack);
   process.exitCode = 1;
 });
-const opening = checkOpen('docs/gates/G31/P3/R1/plan.json');
+const opening = checkOpen('docs/gates/G31/P3/R2/plan.json');
 assert.equal(opening.plan_commit,
-  '7e2f79b0920b3cb0c96ba5fc69ae257aa075ec91');
+  '2a456e9992df7cffcf56775a9a8a2cc782164ff4');
 save(`${dir}/opening.json`, opening);
 
 const p2 = read(`${root}/evidence/G31/p2-001/native-input.json`);
@@ -45,8 +45,13 @@ const standing = rows[0][2];
 assert.equal(standing[0], 'g31-p3-revision-question-ready');
 assert.equal(standing[1][1], 'openrouter-g31-p3-revision-1');
 assert.equal(standing[2][1], candidateHash);
-assert.deepEqual(standing[4], ['envelope',8192,300]);
+const envelope = standing[4].slice(1).map(value => Number(value));
+assert(envelope.every(Number.isFinite));
+assert(envelope.every(Number.isInteger));
+assert.deepEqual(envelope, [8192,300]);
 save(`${dir}/revision-question.json`, {native:standing,
+  normalized_envelope:{max_output_tokens:envelope[0],
+    deadline_seconds:envelope[1]},
   full_request_material:`${dir}/input.json`,
   source_bytes_transport:'durable-json-not-native-stdout'});
 
@@ -55,6 +60,8 @@ const sources = [
   'BUILD_FIDELITY_PROTOCOL.md', 'WORK_PROTOCOL.md', 'ACCEPTANCE.md',
   'docs/gates/G31/P3/plan.json', 'docs/gates/G31/P3/plan.md',
   'docs/gates/G31/P3/R1/plan.json', 'docs/gates/G31/P3/R1/plan.md',
+  'docs/gates/G31/P3/R1/attempt-311-outcome.md',
+  'docs/gates/G31/P3/R2/plan.json', 'docs/gates/G31/P3/R2/plan.md',
   'docs/gates/G31/P3/attempt-301-outcome.md',
   'docs/gates/G31/P2/outcome.md', 'config/model-resources-v1.json',
   'src/participation.metta', 'src/mattermost_live_reconciliation_v1.metta',
@@ -71,9 +78,10 @@ const retained = [candidatePath,
   `${root}/evidence/G31/p2-001/manifest.json`,
   `${root}/evidence/G31/p2-001/native-result.json`,
   `${root}/evidence/G31/p2-001/verification.json`,
-  `${root}/evidence/G31/p3-301/failure-verdict.json`];
+  `${root}/evidence/G31/p3-301/failure-verdict.json`,
+  `${root}/evidence/G31/p3-311/failure-verdict.json`];
 save(`${dir}/manifest.json`, {
-  schema:'miter-g31-p3-r1-freeze-v1', plan:'docs/gates/G31/P3/R1/plan.json',
+  schema:'miter-g31-p3-r2-freeze-v1', plan:'docs/gates/G31/P3/R2/plan.json',
   plan_commit:opening.plan_commit,
   files:pins([...sources.map(file => `${root}/${file}`), ...retained,
     `${dir}/input.json`, `${dir}/revision-question.json`]),
