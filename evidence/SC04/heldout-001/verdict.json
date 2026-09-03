@@ -1,0 +1,1 @@
+{"status":"PASS-BOUNDED","gate":"SC04","phase":"undisclosed-generated-instances","cases":64,"freeze_commit":"9176a1144377588fe5fa99e94fda995c64cb754f","pin":"ae66fa8e41dcd5539d614706bd4e5cfb34f9608d","limits":"Generated instances inside a builder-known finite grammar/domain. No external blind review, broad language generality, live model, or effect claim."}

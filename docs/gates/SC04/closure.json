@@ -1,0 +1,127 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "SC04",
+  "plan": "docs/gates/SC04/plan.json",
+  "plan_commit": "1d13fda10c643f4972556d59c3dfbb6a431bab7a",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "src/grounded_language.metta",
+      "sha256": "42a43c76c98ecaca207541d2407b1c581023b61876637c7716b3628f52ce832c"
+    },
+    {
+      "path": "src/bootstrap_grounded_language.metta",
+      "sha256": "2c68c71c7bccc6345be91c5efbe16956b1e1742c3a43599daf549f8fc1bbcce5"
+    },
+    {
+      "path": "src/participation_support.metta",
+      "sha256": "339a06269a2a98c6714db62bb49f803293ed197cb6f6d8f527bcf5871ade530f"
+    },
+    {
+      "path": "effect_membranes/miter_language.pl",
+      "sha256": "87f0982ce4e22a4360b7efa78da1733c7681ae52b6f932e326a5d0c796f8aa1c"
+    },
+    {
+      "path": "scripts/sc04/cases.mjs",
+      "sha256": "5d62e62c127656cbea9b9f0fdc8bd3f670f05acba86c6dd28417faf733eba596"
+    },
+    {
+      "path": "scripts/sc04/check-package.mjs",
+      "sha256": "260dcdc1db782ee7edb24ebd4872da8bd4c81e8ca0228aa76a14a7298ac7631f"
+    },
+    {
+      "path": "scripts/sc04/fixtures.mjs",
+      "sha256": "02f943491052f52f4266cdbd725cfbbf74b66ae39e7fd8646897cf31abc8bee6"
+    },
+    {
+      "path": "scripts/sc04/heldout.mjs",
+      "sha256": "d03f9ae3c344ee9bc90c77da1527627907ee58c5337d8bdd0d906f9d957ab8bc"
+    },
+    {
+      "path": "scripts/sc04/probe.mjs",
+      "sha256": "f7fe5afef018422bb46448e79d4d08d83cb4c090e79f9a577b35f9955f6ba3d3"
+    },
+    {
+      "path": "scripts/sc04/regress.mjs",
+      "sha256": "000c95c28497b6371acb5ea9ffd1861f1e1744c7045e43e2cbe7070aef5e2527"
+    },
+    {
+      "path": "scripts/sc04/run.mjs",
+      "sha256": "bc6a5cbeed2cd8aa35c7e159ad398a0c86e91e5349e8bb018de2295ea6bde972"
+    },
+    {
+      "path": "scripts/sc04/unfamiliar.mjs",
+      "sha256": "4f301dd50ace039d76ed2f6057afbe87e80913efa960a1a9c71d82bfdda57c81"
+    },
+    {
+      "path": "scripts/sc04/verify.mjs",
+      "sha256": "5b1e1176b10d0a6315d9d598636330f9c8e18cd9762061f858fb8367662b0f71"
+    },
+    {
+      "path": "tests/fixtures/sc04/contract.md",
+      "sha256": "6f14d52d6bd89f4b82c4e022652518177771d824c2e785be48ff435e88a39a1b"
+    },
+    {
+      "path": "docs/gates/SC04/completion.md",
+      "sha256": "7f1cd9435257937671ab88c92052742fd35dcbeabdc620ce956eab0a767495e5"
+    },
+    {
+      "path": "docs/gates/SC05/plan.json",
+      "sha256": "43feb2c522d0c93d4791d1bd3e9d785f1bcfeca7895addd4f2ef032bb9565152"
+    },
+    {
+      "path": "docs/gates/SC05/plan.md",
+      "sha256": "d69f0703d3ad795e90fa50be56278bb1e060b6563e9ff9ddc378c64a10350507"
+    },
+    {
+      "path": "docs/gates/SC05/rejoin-dependencies.md",
+      "sha256": "83b41945debd54512b30c357bb1f208ec3782bb9780bb4a6d3712b987e739e8f"
+    },
+    {
+      "path": "evidence/SC04/raw-inventory.json",
+      "sha256": "e644973cb71409d0ce0e82294288003bd775bb1651809958ff994a9f81e00fe7"
+    },
+    {
+      "path": "evidence/SC04/package-checks.json",
+      "sha256": "d3846fd4fb4432e917d2fa7cc3fe7f5c3f321d5fc160258d229d34a64b50254d"
+    },
+    {
+      "path": "evidence/SC04/attempt-004/verdict.json",
+      "sha256": "1a85719a5a1270e0d2d183db522f259600f9d1d97eb994114f8f60cba889c25d"
+    },
+    {
+      "path": "evidence/SC04/regression-001/verdict.json",
+      "sha256": "814cdf1a37a8caecde263fb6be74364437300f7bae6b6127e44a34aaf2e1c04f"
+    },
+    {
+      "path": "evidence/SC04/heldout-001/verdict.json",
+      "sha256": "2a7f6fb61801dce5285b5a4d1c5e065381ac5f95a7537d3f4df6a08a7f4ffc32"
+    },
+    {
+      "path": "evidence/SC04/heldout-001/freeze.json",
+      "sha256": "d9960e9a026757790bc590ced3b350650389900df5ed94735ead30465adcb18a"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "SC04-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "Finite controlled relational English, human-declared name/interface meanings and separately observed graph paths. 32 training cases/five arms plus 64 undisclosed generated instances after freeze. Not arbitrary language or production source authentication."
+    },
+    {
+      "id": "SC04-B",
+      "status": "PROVEN-HARNESS",
+      "limit": "Native semantic proofs materially determine constructive paths or source-specific inquiries; generated/forged proposal assessments add no independent support. Model-proposal fixtures only, no live model or general VoiceRNA claim."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "completion.md applies S-501–505, C-004/012/020/023/040/060 and the finite FC-01/05/07 interface meanings. Complete relevant clauses and the whole-design ledger interfaces reread; raw contact, interpreted meaning and actual ability remain separate.",
+    "causal_evidence": "Native raw outputs, source-span/binding/root and graph-transition checks; material semantic/span/participation severing and restoration; 32 training cases, 64 generated post-freeze instances, unchanged SC02 42-check regression. Counterfactual tests distinguish permission, obligation, release, contradiction, completion and scoped uncertainty.",
+    "substitution_audit": "Prolog performs tokenization only. MeTTa resolves grammar/relations/standing and constructs participation or inquiry. JavaScript is offline checking/generation, not an input source of semantic decisions. Matching model proposals are not necessary to native interpretation and are not claimed as live model participation.",
+    "capability_and_constraint_audit": "Unknown wording is not a false premise; other-object uncertainty does not universally veto useful work. Explicit supported release enables a simpler path and supported completion requires no work. Only admitted finite grammar meanings are claimed; no compulsory global style, model invocation, or new action permission.",
+    "remaining_gaps": "General language, all nine full enactors, authentic ingress, actual native VoiceRNA/model participation and native VoicePolicy development-opportunity/quarantine integration remain unproven. SC05 addresses the next model/voice dependency. G22 NOT READY."
+  },
+  "reviewer": "Codex builder with separate deterministic finite verifier; no independent agent or human semantic review.",
+  "review_limits": "Finite evidence only. The builder knows the unfamiliar-instance generator/domain; concrete cases were disclosed after commit freeze. check-package.mjs verifies the 310 raw-file inventory; the generic closure checker pins that inventory, not its recursive contents. Packaging scan sequencing failure and successful recheck are retained.",
+  "next_plan": "docs/gates/SC05/plan.json"
+}

@@ -1,0 +1,154 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "SC05",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "SC05-A: a source-grounded native participation result forms a scoped communicative intention and native relational audit with span-level causal alterations. SC05-B: a bounded local model supplies candidate expression only; useful faithful expression and native repair dispositions are distinguished without model-owned authority.",
+  "claim_ids": [
+    "SC05-A",
+    "SC05-B"
+  ],
+  "non_claims": "A finite relational-language VoiceRNA experiment, not general natural-language or emotional understanding, full nine flourishing semantics, human-facing live emission, production privacy, G21 candidate trials/promotion, G22, NACE or Mattermost.",
+  "rationale": "SC04 demonstrates controlled-language source interpretation and native candidate construction. The next missing rejoin prerequisite is an actual model/voice participation boundary: the native organism must form the communicative intention and recognize alterations instead of using supplied defect labels or five canned scenarios. Its actual audits can later ground a G20/G21 opportunity.",
+  "requirements": [
+    "C-003",
+    "C-004",
+    "C-005",
+    "C-006",
+    "C-007",
+    "C-009",
+    "C-010",
+    "C-011",
+    "C-012",
+    "C-020",
+    "C-021",
+    "C-023",
+    "C-040",
+    "C-041",
+    "C-042",
+    "C-050",
+    "C-051",
+    "C-052",
+    "C-054",
+    "C-055",
+    "C-056",
+    "C-057",
+    "C-060",
+    "C-061",
+    "C-062",
+    "C-064",
+    "C-065",
+    "C-070",
+    "C-071",
+    "C-090",
+    "C-091",
+    "C-100",
+    "C-101",
+    "C-102",
+    "C-103",
+    "C-104",
+    "S-201",
+    "S-202",
+    "S-203",
+    "S-204",
+    "S-205",
+    "S-206",
+    "S-501",
+    "S-502",
+    "S-503",
+    "S-504",
+    "S-602",
+    "S-606",
+    "S-702",
+    "S-705",
+    "S-804",
+    "S-901",
+    "S-902",
+    "S-903",
+    "S-905",
+    "S-1102",
+    "S-1103",
+    "S-1104",
+    "T-04",
+    "T-09",
+    "T-14",
+    "T-17",
+    "T-22",
+    "T-23",
+    "T-28"
+  ],
+  "reading": "SC04 closure reviewed complete Soul Part 5, §§7.1–7.5, 9.1–9.5 and 10.4 plus Appendix A, C-001–015/020–025/050–067/090–099 and actual G20/G21/G22 dependency meanings. At opening/closure reread relevant full meanings and ledger interfaces, including C-057's already-ratified native disposition interpretation.",
+  "representation": "Scoped native communicative intention with speech-act meaning, intended relations, source/participant/cut bindings, uncertainty and completion standing. Candidate raw text/model envelope remains derived; native audit exposes exact span/proposition alterations and next permissible repair/inquiry/finish dispositions.",
+  "consumer": "Native MeTTa intention construction, finite relational expression interpretation, causal audit and repair disposition. Prolog transports the scoped local model request, preserves raw/correlated output, tokenizes and stores exact native products; JavaScript remains offline evidence tooling.",
+  "falsifiers": "plan.md freezes constructive expression, material relation and speech-act alterations, source/scope and model-authority attacks, independent raw-span/proof checks, bounded service/error handling, native causal severing/restoration, and the runtime language boundary.",
+  "scope_review": "No G22 or affected historical mechanical rerun. Retain historical G16/G20/G21 as narrowly qualified mechanics. The next plan must derive a real VoicePolicy development opportunity and quarantine product from native audits before the G22 rejoin pause; broad semantics and other whole-design gaps remain visible.",
+  "rollback": "Additive relational voice experiment and isolated Prolog provider transport. Existing voice/module/trial files, controls, archives, seed, original integrity manifest and G22 remain untouched. No live human emission, service restart, new provider/model pin or deployment change. Model artifacts stay in isolated SC05 evidence.",
+  "predecessor": "docs/gates/SC04/closure.json",
+  "allowed_paths": [
+    "src/relational_voice.metta",
+    "src/bootstrap_relational_voice.metta",
+    "effect_membranes/miter_relational_voice.pl",
+    "scripts/sc05/",
+    "tests/fixtures/sc05/",
+    "evidence/SC05/",
+    "docs/gates/SC05/closure.json",
+    "docs/gates/SC05/completion.md",
+    "docs/gates/SC06/"
+  ],
+  "preserved": [
+    {
+      "path": "effect_membranes/miter_trials.pl",
+      "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256",
+      "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/inputs/plan.txt",
+      "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/preflight.txt",
+      "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stderr",
+      "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/g22/prepare.pl",
+      "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"
+    },
+    {
+      "path": "src/bootstrap_trials.metta",
+      "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"
+    },
+    {
+      "path": "src/trials.metta",
+      "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"
+    },
+    {
+      "path": "tests/fixtures/g22_canonical.metta",
+      "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"
+    },
+    {
+      "path": "tests/fixtures/g22_cases.json",
+      "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"
+    },
+    {
+      "path": "tests/fixtures/g22_parent.metta",
+      "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"
+    },
+    {
+      "path": "tests/fixtures/g22_severed.metta",
+      "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"
+    }
+  ]
+}
