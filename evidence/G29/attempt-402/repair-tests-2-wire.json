@@ -1,0 +1,3 @@
+event: error
+data: {"error":{"message":"terminated"},"message":"terminated"}
+

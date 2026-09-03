@@ -35,6 +35,9 @@ sx_r2_spend(R,Id) :- once((member(Slot,[1,2]),format(atom(P),'/Users/claritymite
 sx_r3_spend(R,Id) :- once((member(Slot,[1,2]),format(atom(P),'/Users/claritymiter/miter/evidence/G29/R3-call-~d.claim',[Slot]),
  \+exists_directory(P),catch(make_directory(P),_,fail))),directory_file_path(P,'owner.json',O),
  sd_durable_json(O,_{root:R,request:Id,slot:Slot,grant:"G29-R3"}).
+sx_r4_spend(R,Id) :- once((member(Slot,[1,2]),format(atom(P),'/Users/claritymiter/miter/evidence/G29/R4-call-~d.claim',[Slot]),
+ \+exists_directory(P),catch(make_directory(P),_,fail))),directory_file_path(P,'owner.json',O),
+ sd_durable_json(O,_{root:R,request:Id,slot:Slot,grant:"G29-R4"}).
 
 sx_model(R,Q,Observation) :- catch((sx_model_checked(R,Q,Observation)->true;Observation=['surface-model-unavailable',unstaged_or_invalid]),E,
  (term_string(E,S),Observation=['surface-model-unavailable',S])),!.
@@ -151,6 +154,29 @@ sx_repair_model_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&deri
   sx_part_observation(Id,DesignId,Part,Wire,TR,Observation),sd_encode(Observation,EO),sd_durable_json(OP,_{native:Observation,term:EO})).
 sx_repair_spend('qwen-local',R,Id) :- sx_r2_spend(R,Id).
 sx_repair_spend('nemotron-local',R,Id) :- sx_r3_spend(R,Id).
+
+sx_repair_model_r4(R,Q,Observation) :- catch((sx_repair_model_r4_checked(R,Q,Observation)->true;Observation=['surface-part-unavailable',unstaged_or_invalid]),E,
+ (term_string(E,S),Observation=['surface-part-unavailable',S])),!.
+sx_repair_model_r4_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&derived'('surface-r4-generation-pending',R,Q),true),
+ Q=['surface-r4-generation',Id,DesignId,CandidateId,Part,'nemotron-local',Instructions,OldFile,Observations],
+ atom(Id),atom(DesignId),atom(CandidateId),memberchk(Part,[bridge,tests]),string(Instructions),
+ OldFile=['surface-candidate-file',OldPath0,OldSource0,OldHash],miter_store_nonempty_atom(OldPath0,OldPathAtom),atom_string(OldPathAtom,OldPath),
+ miter_store_nonempty_atom(OldSource0,OldSourceAtom),atom_string(OldSourceAtom,OldSource),is_list(Observations),PromptFile=['surface-candidate-file',OldPath,OldSource,OldHash],
+ sx_named(R,Id,generation,GP),(exists_file(GP)->sd_json(GP,G),sd_document_native(G,Q);sd_encode(Q,Enc),sd_durable_json(GP,_{native:Q,term:Enc})),
+ sx_named(R,Id,observation,OP),
+ (exists_file(OP)->sd_json(OP,Stored),sd_document_native(Stored,Observation);
+  sx_named(R,Id,request,RP),sx_named(R,Id,wire,Wire),sx_named(R,Id,header,Header),sx_named(R,Id,timing,Timing),
+  (exists_file(RP)->(exists_file(Timing)->sd_json(Timing,TR);ms_capture(RP,Wire,Header,300,2097152,TR),sd_durable_json(Timing,TR));
+   sx_named(R,Id,claim,Claim),make_directory(Claim),sx_r4_spend(R,Id),sd_json('/Users/claritymiter/miter/config/mattermost-code-part-v1.json',Schema),
+   sd_encode(PromptFile,OldDoc),sd_encode(Observations,ObservationDoc),
+   with_output_to(string(User),json_write_dict(current_output,_{design_id:DesignId,candidate_id:CandidateId,target:Part,prior_file:OldDoc,
+    observed_consequences:ObservationDoc,unchanged_contract:_{module:"miter_mattermost_bridge",exports:["surface_ingest/5","surface_effect/5","surface_reconnect/4","surface_panic/2"],network:"none",credentials:[]}},[width(0)])),
+   Template=_{schema:"miter-schema-request-v1",request_id:Id,endpoint:"http://127.0.0.1:1234/v1/chat/completions",
+    body:_{messages:[_{role:"system",content:Instructions},_{role:"user",content:User}],response_format:_{type:"json_schema",json_schema:_{name:"miter_mattermost_repair_part",strict:true,schema:Schema}},
+     temperature:0,top_p:1,reasoning_effort:"none",max_tokens:2048,seed:2904,stream:true,ttl:300}},
+   sx_named(R,Id,template,TP),sd_durable_json(TP,Template),miter_lm_prepare_request('/Users/claritymiter/miter/config/local/g03-model-profiles.json','nemotron-local',TP,RP,'model-request-prepared'),
+   ms_capture(RP,Wire,Header,300,2097152,TR),sd_durable_json(Timing,TR)),
+  sx_part_observation(Id,DesignId,Part,Wire,TR,Observation),sd_encode(Observation,EO),sd_durable_json(OP,_{native:Observation,term:EO})).
 sx_manifest(M,['mattermost-manifest',Schema,Kind,Modality,Role,Source,Target,['permissions',Network,M.permissions.credentials,Live],Inbound,
  Idempotency,Reconnect,Credentials,Memory,Failure,Panic,Rollback,Tests]) :-
  maplist(miter_store_nonempty_atom,
@@ -159,7 +185,7 @@ sx_manifest(M,['mattermost-manifest',Schema,Kind,Modality,Role,Source,Target,['p
   [Schema,Kind,Modality,Role,Source,Target,Network,Live,Idempotency,Reconnect,Credentials,Memory,Failure,Panic,Rollback]),
  maplist(miter_store_nonempty_atom,M.inbound_ids,Inbound),maplist(miter_store_nonempty_atom,M.tests,Tests).
 
-sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-([1-4]|r1|r2|r3)$',A),
+sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-([1-4]|r1|r2|r3|r4)$',A),
  atom_concat('/Users/claritymiter/miter/runtime/g29/candidates/',A,P).
 sx_rel("extension/mattermost_bridge.pl").
 sx_rel("candidate_tests/mattermost_contract_tests.pl").
@@ -195,6 +221,34 @@ sx_trial(R,C,['surface-candidate-trial',Code,ErrorCount,FailureCount,Truncated,O
  sx_exec('/opt/homebrew/bin/swipl',['-q','-f','none','-s',Bridge,'-s',Tests,'-g','run_tests','-t','halt'],Cwd,30,2097152,Status,Out,Err,Truncated),
  (Status=exit(Code)->true;Code=255),sx_occurrences(Err,"ERROR:",ErrorCount),sx_occurrences(Err,"failed",FailureCount),term_to_atom(Status,StatusAtom).
 sx_occurrences(Text,Needle,Count) :- findall(B,sub_string(Text,B,_,_,Needle),Bs),length(Bs,Count).
+
+sx_preload(R,Selection,['model-load-observation','nemotron-explicit-load',Code,Loaded,Truncated,Out,Err,State]) :-
+ sd_verify(R),Selection=['runtime-recovery-selected','nemotron-explicit-load','nemotron-local',_],
+ sx_lms_exec([ps],30,1048576,BeforeStatus,BeforeOut,BeforeErr,BeforeTruncated),
+ BeforeStatus=exit(0),string_concat(BeforeOut,BeforeErr,Before),sub_string(Before,_,_,_,"No models are currently loaded"),BeforeTruncated==false,
+ sx_lms_exec([load,'nemotron-3.5-30b-a3b-antislop-ftpo-i1','--gpu',max,'--context-length','8192','--ttl','900','--no-speculative-draft-mtp','--yes'],180,4194304,Status,Out,Err,LoadTruncated),
+ sx_status_code(Status,Code),sx_lms_exec([ps],30,1048576,_,PsOut,PsErr,PsTruncated),string_concat(PsOut,PsErr,State),
+ ((sub_string(State,_,_,_,"nemotron-3.5-30b-a3b-antislop-ftpo-i1"),Code=:=0)->Loaded=true;Loaded=false),
+ ((LoadTruncated==true;PsTruncated==true)->Truncated=true;Truncated=false),!.
+sx_preload(_,_,['model-load-observation','nemotron-explicit-load',255,false,false,"","precondition-failed",""]).
+sx_unload(R,Selection,['model-unload-observation','nemotron-explicit-load',Code,Unloaded,Truncated,Out,Err,State]) :-
+ sd_verify(R),Selection=['runtime-recovery-selected','nemotron-explicit-load','nemotron-local',_],
+ sx_lms_exec([unload,'nemotron-3.5-30b-a3b-antislop-ftpo-i1'],60,1048576,Status,Out,Err,UnloadTruncated),sx_status_code(Status,Code0),
+ sx_lms_exec([ps],30,1048576,PsStatus,PsOut,PsErr,PsTruncated),string_concat(PsOut,PsErr,State),
+ ((sub_string(State,_,_,_,"No models are currently loaded"),PsStatus=exit(0))->Unloaded=true;Unloaded=false),
+ (Unloaded==true->Code=0;Code=Code0),((UnloadTruncated==true;PsTruncated==true)->Truncated=true;Truncated=false),!.
+sx_unload(_,_,['model-unload-observation','nemotron-explicit-load',255,false,false,"","unload-precondition-failed",""]).
+sx_force_unload :- sx_lms_exec([ps],30,1048576,_,Out,Err,_),string_concat(Out,Err,State),
+ (sub_string(State,_,_,_,"nemotron-3.5-30b-a3b-antislop-ftpo-i1")->sx_lms_exec([unload,'nemotron-3.5-30b-a3b-antislop-ftpo-i1'],60,1048576,_,_,_,_);true).
+sx_status_code(exit(Code),Code) :- !.
+sx_status_code(_,255).
+sx_lms_exec(Args,Seconds,Limit,Status,Out,Err,Truncated) :-
+ sx_exec_env('/Users/bcb/.lmstudio/bin/lms',Args,'/Users/bcb',Seconds,Limit,Status,Out,Err,Truncated).
+sx_exec_env(P,A,C,S,L,Status,Out,Err,Truncated) :- message_queue_create(Q),setup_call_cleanup(true,
+ (process_create(P,A,[cwd(C),stdin(null),stdout(pipe(O)),stderr(pipe(E)),process(Pid),environment(['HOME'='/Users/bcb','PATH'='/Users/bcb/.lmstudio/bin:/opt/homebrew/bin:/usr/bin:/bin'])]),
+  thread_create(sx_read(O,L,Q,stdout),TO,[]),thread_create(sx_read(E,L,Q,stderr),TE,[]),miter_process_wait_deadline(Pid,S,Status),
+  thread_get_message(Q,out(stdout,Out,OT)),thread_get_message(Q,out(stderr,Err,ET)),thread_join(TO,_),thread_join(TE,_),
+  ((OT==true;ET==true)->Truncated=true;Truncated=false)),message_queue_destroy(Q)).
 sx_read(S,Limit,Q,K) :- catch(read_string(S,Limit,T),_,T=""),catch(close(S),_,true),string_length(T,N),(N>=Limit->Tr=true;Tr=false),thread_send_message(Q,out(K,T,Tr)).
 sx_exec(P,A,C,S,L,Status,Out,Err,Truncated) :- message_queue_create(Q),setup_call_cleanup(true,
  (process_create(P,A,[cwd(C),stdin(null),stdout(pipe(O)),stderr(pipe(E)),process(Pid),environment(['HOME'='/nonexistent','PATH'='/usr/bin:/bin'])]),

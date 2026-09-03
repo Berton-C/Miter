@@ -1,0 +1,8 @@
+true
+(result recovery (runtime-recovery-selected nemotron-explicit-load nemotron-local (nemotron-explicit-load)))
+(result recovery-reordered (runtime-recovery-selected nemotron-explicit-load nemotron-local (nemotron-explicit-load)))
+(result recovery-removed (runtime-recovery-unresolved ()))
+(result recovery-ambiguous (runtime-recovery-unresolved (nemotron-explicit-load nemotron-on-demand)))
+(result targets (tests bridge))
+(result bridge-file-valid true)
+(result tests-file-valid true)
