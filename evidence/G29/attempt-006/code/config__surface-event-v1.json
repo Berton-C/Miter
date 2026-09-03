@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "miter:surface-event:v1",
+  "title": "Miter SurfaceEvent v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "surface_id", "server_id", "team_id", "channel_id",
+    "user_id", "message_id", "thread_id", "event_kind", "occurred_at",
+    "cursor", "payload", "authorization_ref", "correlation_id"
+  ],
+  "properties": {
+    "schema": {"const": "miter-surface-event-v1"},
+    "surface_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "server_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "team_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "channel_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "user_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "message_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "thread_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "event_kind": {"enum": ["message-created", "message-edited"]},
+    "occurred_at": {"type": "integer", "minimum": 0},
+    "cursor": {"type": "integer", "minimum": 0},
+    "payload": {"type": "object"},
+    "authorization_ref": {"type": "string", "minLength": 1, "maxLength": 256},
+    "correlation_id": {"type": "string", "minLength": 1, "maxLength": 256}
+  }
+}

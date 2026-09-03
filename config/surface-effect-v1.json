@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "miter:surface-effect:v1",
+  "title": "Miter SurfaceEffect v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "effect_id", "idempotency_key", "surface_id", "server_id",
+    "team_id", "channel_id", "thread_id", "effect_kind", "payload",
+    "authority_ref", "correlation_id"
+  ],
+  "properties": {
+    "schema": {"const": "miter-surface-effect-v1"},
+    "effect_id": {"type": "string", "minLength": 1, "maxLength": 256},
+    "idempotency_key": {"type": "string", "minLength": 1, "maxLength": 256},
+    "surface_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "server_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "team_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "channel_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "thread_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "effect_kind": {"const": "message-send"},
+    "payload": {"type": "object"},
+    "authority_ref": {"type": "string", "minLength": 1, "maxLength": 256},
+    "correlation_id": {"type": "string", "minLength": 1, "maxLength": 256}
+  }
+}

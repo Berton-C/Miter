@@ -1,0 +1,1 @@
+ERROR: [Thread main] /private/tmp/miter-g06-petta-ae66fa8/src/main.pl:36: user:main sd_verify/1: Unknown procedure: rv_json/2

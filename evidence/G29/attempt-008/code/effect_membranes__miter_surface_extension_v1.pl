@@ -1,0 +1,101 @@
+% G29 local-model transport, inert materialization and mechanical inspection.
+% No candidate is executed against a service and no semantic verdict is made here.
+:- ensure_loaded('miter_surface_design_v1.pl').
+:- ensure_loaded('miter_model_stream_v1.pl').
+:- ensure_loaded('miter_llm.pl').
+:- ensure_loaded('miter_process.pl').
+:- use_module(library(http/json)).
+:- use_module(library(readutil)).
+:- use_module(library(utf8)).
+
+% Compatibility names required by the already-pinned generic stream capturer.
+% They delegate only JSON/durable-file mechanics; no voice semantics are loaded.
+rv_json(P,D) :- sd_json(P,D).
+tv_durable_json(P,D) :- sd_durable_json(P,D).
+
+sx_name(Prefix,N,Name) :- atom(Prefix),integer(N),N>=0,N=<1024,format(atom(Name),'~w-~d',[Prefix,N]).
+sx_save(R,N,V,S) :- sd_save(R,N,V,S).
+sx_named(R,Id,Suffix,P) :- miter_store_nonempty_atom(Id,A),re_match('^[a-zA-Z0-9_-]+$',A),
+ format(atom(F),'~w-~w.json',[A,Suffix]),sd_path(R,F,P).
+sx_spend(R,Id) :- once((member(Slot,[1,2,3,4]),format(atom(P),'/Users/claritymiter/miter/evidence/G29/call-~d.claim',[Slot]),
+ \+exists_directory(P),catch(make_directory(P),_,fail))),directory_file_path(P,'owner.json',O),
+ sd_durable_json(O,_{root:R,request:Id,slot:Slot}).
+
+sx_model(R,Q,Observation) :- catch((sx_model_checked(R,Q,Observation)->true;Observation=['surface-model-unavailable',unstaged_or_invalid]),E,
+ (term_string(E,S),Observation=['surface-model-unavailable',S])),!.
+sx_model_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&derived'('surface-generation-pending',R,Q),true),
+ Q=['surface-generation',Id,DesignId,Design,Attempt,'qwen-local',Instructions,Feedback],
+ atom(Id),atom(DesignId),integer(Attempt),Attempt>=1,Attempt=<4,string(Instructions),Design=['surface-design',DesignId|_],
+ sx_named(R,Id,generation,GP),(exists_file(GP)->sd_json(GP,G),sd_document_native(G,Q);sd_encode(Q,Enc),sd_durable_json(GP,_{native:Q,term:Enc})),
+ sx_named(R,Id,observation,OP),
+ (exists_file(OP)->sd_json(OP,Stored),sd_document_native(Stored,Observation);
+  sx_named(R,Id,request,RP),sx_named(R,Id,wire,Wire),sx_named(R,Id,header,Header),sx_named(R,Id,timing,Timing),
+  (exists_file(RP)->
+    (exists_file(Timing)->sd_json(Timing,TR);
+     ms_capture(RP,Wire,Header,300,4194304,TR),sd_durable_json(Timing,TR)),
+    sx_observation(Id,DesignId,Wire,TR,Observation);
+   sx_named(R,Id,claim,Claim),make_directory(Claim),sx_spend(R,Id),
+   sd_json('/Users/claritymiter/miter/config/mattermost-design-candidate-v1.json',Schema),
+   sd_encode(Design,DesignDoc),sd_encode(Feedback,FeedbackDoc),
+   with_output_to(string(User),json_write_dict(current_output,_{native_design:DesignDoc,observed_feedback:FeedbackDoc,
+    official_interface:_{rest_base:"/api/v4",websocket:"/api/v4/websocket",websocket_event_fields:["event","data","broadcast","seq"],create_post:"POST /api/v4/posts"}},[width(0)])),
+   Template=_{schema:"miter-schema-request-v1",request_id:Id,endpoint:"http://127.0.0.1:1234/v1/chat/completions",
+    body:_{messages:[_{role:"system",content:Instructions},_{role:"user",content:User}],
+     response_format:_{type:"json_schema",json_schema:_{name:"miter_mattermost_candidate",strict:true,schema:Schema}},
+     temperature:0,top_p:1,reasoning_effort:"none",max_tokens:4096,seed:2901,stream:true,ttl:300}},
+   sx_named(R,Id,template,TP),sd_durable_json(TP,Template),
+   miter_lm_prepare_request('/Users/claritymiter/miter/config/local/g03-model-profiles.json','qwen-local',TP,RP,'model-request-prepared'),
+   ms_capture(RP,Wire,Header,300,4194304,TR),sd_durable_json(Timing,TR),sx_observation(Id,DesignId,Wire,TR,Observation)),
+  sd_encode(Observation,EObs),sd_durable_json(OP,_{native:Observation,term:EObs})).
+
+sx_observation(Id,DesignId,Wire,T,['surface-model-observation',Id,Transport,T.http_status,T.elapsed_ms,Done,Finish,Parse,T.bytes,Content,Candidate]) :-
+ miter_store_nonempty_atom(T.transport,Transport),
+ (exists_file(Wire)->ms_decode(Wire,Done,Finish,StreamParse,Content,_,_),
+  (StreamParse=='malformed-stream'->Parse='malformed-stream',Candidate=[];
+   catch(atom_json_dict(Content,Product,[]),_,fail),sx_product(Id,DesignId,Product,Candidate)
+   ->Parse='artifact-shaped';Parse='schema-mismatch',Candidate=[])
+ ;Done=false,Finish=unknown,Parse='missing-response',Content="",Candidate=[]).
+sx_product(Id,DesignId,D,['surface-extension-candidate',DesignId,Id,D.rationale,D.plan,Manifest,Files,['model-product',Id]]) :-
+ is_dict(D),dict_pairs(D,_,Pairs),pairs_keys(Pairs,[files,manifest,plan,rationale]),string(D.rationale),string(D.plan),
+ M=D.manifest,maplist(miter_store_nonempty_atom,
+  [M.schema,M.kind,M.modality,M.role,M.source_interface,M.target_interface,M.permissions.network,M.permissions.live_activation,
+   M.outbound_idempotency,M.cursor_reconnect,M.credential_isolation,M.memory_scope,M.failure_witness,M.panic,M.rollback],
+  [Schema,Kind,Modality,Role,Source,Target,Network,Live,Idempotency,Reconnect,Credentials,Memory,Failure,Panic,Rollback]),
+ maplist(miter_store_nonempty_atom,M.inbound_ids,Inbound),maplist(miter_store_nonempty_atom,M.tests,Tests),
+ Manifest=['mattermost-manifest',Schema,Kind,Modality,Role,Source,Target,
+  ['permissions',Network,M.permissions.credentials,Live],Inbound,Idempotency,Reconnect,Credentials,Memory,Failure,Panic,Rollback,Tests],
+ is_list(D.files),maplist(sx_file,D.files,Files).
+sx_file(D,['surface-candidate-file',D.path,D.content,H]) :- is_dict(D),string(D.path),string(D.content),
+ crypto_data_hash(D.content,H,[algorithm(sha256),encoding(utf8)]).
+
+sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-[1-4]$',A),
+ atom_concat('/Users/claritymiter/miter/runtime/g29/candidates/',A,P).
+sx_rel("extension/mattermost_bridge.pl").
+sx_rel("candidate_tests/mattermost_contract_tests.pl").
+sx_materialize(R,C,Result) :- catch(
+ (sd_verify(R),C=['surface-extension-candidate',_,Id,_,_,_,Files,_],
+  sx_candidate_root(R,Id,Base),\+exists_directory(Base),make_directory_path(Base),
+  forall(member(['surface-candidate-file',Rel,Text,H],Files),
+   (sx_rel(Rel),directory_file_path(Base,Rel,P),file_directory_name(P,D),make_directory_path(D),
+    setup_call_cleanup(open(P,write,S,[encoding(utf8)]),
+     (write(S,Text),flush_output(S),miter_store_fsync_stream(S)),close(S)),
+    crypto_file_hash(P,H,[algorithm(sha256),encoding(octet)]))),
+  Result=['surface-candidate-materialized',Id]),_,Result=['surface-candidate-materialization-incomplete']),!.
+sx_scan(R,C,['surface-candidate-scan',Id,Forbidden,Credential,FileStanding]) :- C=['surface-extension-candidate',_,Id,_,_,_,Files,_],
+ (length(Files,2),findall(P,(member(['surface-candidate-file',P,_,_],Files),sx_rel(P)),Ps),sort(Ps,Sorted),
+  Sorted==["candidate_tests/mattermost_contract_tests.pl","extension/mattermost_bridge.pl"]->FileStanding='exact-files';FileStanding='foreign-or-missing-files'),
+ findall(['forbidden-core-access',Path,Token],(member(['surface-candidate-file',Path,Text,_],Files),string_lower(Text,L),
+  member(Token,["chroma","miter_soul","src/soul","&soul","direct_memory"]),sub_string(L,_,_,_,Token)),F0),sort(F0,Forbidden),
+ findall(['credential-literal',Path],(member(['surface-candidate-file',Path,Text,_],Files),
+  re_match('(?i)(bearer[[:space:]]+[a-z0-9_-]{12,}|api[_-]?key[[:space:]]*[:=][[:space:]]*["''][^"'']{8,})',Text)),C0),sort(C0,Credential),
+ sd_verify(R).
+sx_syntax(R,C,['surface-candidate-syntax',Code,Truncated]) :- C=['surface-extension-candidate',_,Id|_],sx_candidate_root(R,Id,Base),
+ directory_file_path(Base,'extension/mattermost_bridge.pl',Bridge),directory_file_path(Base,'candidate_tests/mattermost_contract_tests.pl',Tests),
+ sx_exec('/opt/homebrew/bin/swipl',['-q','-g','halt','-s',Bridge,'-s',Tests],Base,20,1048576,Status,_,_,Truncated),
+ (Status=exit(Code)->true;Code=255).
+sx_read(S,Limit,Q,K) :- catch(read_string(S,Limit,T),_,T=""),catch(close(S),_,true),string_length(T,N),(N>=Limit->Tr=true;Tr=false),thread_send_message(Q,out(K,T,Tr)).
+sx_exec(P,A,C,S,L,Status,Out,Err,Truncated) :- message_queue_create(Q),setup_call_cleanup(true,
+ (process_create(P,A,[cwd(C),stdin(null),stdout(pipe(O)),stderr(pipe(E)),process(Pid),environment(['HOME'='/nonexistent','PATH'='/usr/bin:/bin'])]),
+  thread_create(sx_read(O,L,Q,stdout),TO,[]),thread_create(sx_read(E,L,Q,stderr),TE,[]),miter_process_wait_deadline(Pid,S,Status),
+  thread_get_message(Q,out(stdout,Out,OT)),thread_get_message(Q,out(stderr,Err,ET)),thread_join(TO,_),thread_join(TE,_),
+  ((OT==true;ET==true)->Truncated=true;Truncated=false)),message_queue_destroy(Q)).

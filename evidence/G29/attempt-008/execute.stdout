@@ -1,0 +1,4 @@
+true
+true
+(result outcome (surface-extension-incomplete (surface-model-unavailable unstaged_or_invalid)))
+(result state (() ((protected-canary Soul))))

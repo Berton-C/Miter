@@ -1,0 +1,133 @@
+{
+  "alias":"qwen-local",
+  "body": {
+    "max_tokens":4096,
+    "messages": [
+      {
+	"content":"Produce a compact, inert Mattermost bridge candidate in SWI-Prolog. Return only the required JSON. Implement the generic public predicates surface_ingest/5, surface_effect/5, surface_reconnect/2, and surface_panic/2. The bridge only transports and maps authenticated identity; it never reasons about values, Soul, memory, or Chroma. Authorization must precede event construction. Stable server/team/channel/user/post/root/timestamp/cursor identities must be preserved. State must support duplicate suppression, edits, monotone cursor/reconnect, outbound effect-id/idempotency suppression, typed send failures, and panic denial. Credentials may only arrive later through a bridge environment and must never be embedded, returned, logged, or placed in events. G29 has no network and no credentials. Keep code and plunit tests small and dependency-light. Use the supplied official Mattermost facts and native design. Do not alter the core or the acceptance contract.",
+	"role":"system"
+      },
+      {
+	"content":"{\"native_design\": {\"list\": [ {\"atom\":\"surface-design\"},  {\"atom\":\"mattermost-g29-design\"},  {\"list\": [ {\"atom\":\"scope\"},  {\"atom\":\"g29-design\"},  {\"atom\":\"builder\"},  {\"atom\":\"Miter\"},  {\"atom\":\"v1\"} ]},  {\"list\": [ {\"atom\":\"surface-request\"},  {\"atom\":\"Mattermost\"},  {\"atom\":\"first-omitted-tentacle\"},  {\"atom\":\"user-requested\"} ]},  {\"list\": [ {\"atom\":\"surface-contract\"},  {\"atom\":\"surface-event-v1\"},  {\"atom\":\"surface-effect-v1\"},  {\"list\": [ {\"atom\":\"http-client\"},  {\"atom\":\"json-codec\"},  {\"atom\":\"websocket-client\"},  {\"atom\":\"durable-files\"},  {\"atom\":\"hashing\"},  {\"atom\":\"process-control\"} ]},  {\"list\": [ {\"list\": [ {\"atom\":\"stable-identity\"},  {\"list\": [ {\"atom\":\"server_id\"},  {\"atom\":\"team_id\"},  {\"atom\":\"channel_id\"},  {\"atom\":\"user_id\"},  {\"atom\":\"post_id\"},  {\"atom\":\"root_id\"},  {\"atom\":\"event_timestamp\"},  {\"atom\":\"cursor\"} ]} ]},  {\"list\": [ {\"atom\":\"authorization-before-cognition\"} ]},  {\"list\": [ {\"atom\":\"outbound-idempotency\"} ]},  {\"list\": [ {\"atom\":\"durable-cursor-and-reconnect\"} ]},  {\"list\": [ {\"atom\":\"credential-isolation\"} ]},  {\"list\": [ {\"atom\":\"core-derived-memory-scope\"} ]},  {\"list\": [ {\"atom\":\"typed-failure-witness\"} ]},  {\"list\": [ {\"atom\":\"fixed-local-panic\"} ]},  {\"list\": [ {\"atom\":\"no-direct-soul-or-chroma-access\"} ]},  {\"list\": [ {\"atom\":\"versioned-rollback\"} ]} ]} ]},  {\"list\": [ {\"atom\":\"surface-api\"},  {\"atom\":\"Mattermost\"},  {\"atom\":\"24e436e7ae2a6a45866c9612da3981ea21b2b540\"},  {\"atom\":\"580696df1c4ce5e2e78b1f0a66e68825ad7a73405da2d64b2aafb3f8e1eb6b68\"},  {\"atom\":\"26180adbeaf55681bac94c5735cad76538b7cf99f0c3689742edb1f79a67af8d\"},  {\"list\": [ {\"list\": [ {\"atom\":\"rest-base\"},  {\"atom\":\"/api/v4\"} ]},  {\"list\": [ {\"atom\":\"websocket-endpoint\"},  {\"atom\":\"/api/v4/websocket\"} ]},  {\"list\": [ {\"atom\":\"websocket-fields\"},  {\"list\": [ {\"atom\":\"event\"},  {\"atom\":\"data\"},  {\"atom\":\"broadcast\"},  {\"atom\":\"seq\"} ]} ]},  {\"list\": [ {\"atom\":\"create-post\"},  {\"atom\":\"POST /api/v4/posts\"} ]} ]} ]},  {\"list\": [ {\"atom\":\"extension-consequence\"},  {\"atom\":\"G28\"},  {\"atom\":\"complete\"},  {\"list\": [ {\"atom\":\"fork-test-merge\"},  {\"atom\":\"later-use\"} ]},  {\"list\": [ {\"atom\":\"model-consequence\"},  {\"atom\":\"qwen-local\"},  {\"atom\":\"qualified-after-specific-repair\"} ]} ]},  {\"list\": [ {\"atom\":\"surface-design-grant\"},  {\"atom\":\"G29\"},  {\"atom\":\"no-live\"},  {\"atom\":\"no-credentials\"},  {\"number\":4},  {\"number\":4096},  {\"number\":300},  {\"list\": [ {\"atom\":\"swi-prolog\"} ]} ]},  {\"list\": [ {\"atom\":\"modality-selected\"},  {\"list\": [ {\"atom\":\"modality-capability\"},  {\"atom\":\"swi-prolog\"},  {\"list\": [ {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"http-client\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"json-codec\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"websocket-client\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"durable-files\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"hashing\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"process-control\"} ]} ]},  {\"atom\":\"non-cognitive-effect-membrane\"},  {\"atom\":\"runtime-authorized\"},  {\"atom\":\"no-new-runtime-dependency\"} ]},  {\"list\": [ {\"atom\":\"eligible\"},  {\"list\": [ {\"list\": [ {\"atom\":\"modality-capability\"},  {\"atom\":\"swi-prolog\"},  {\"list\": [ {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"http-client\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"json-codec\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"websocket-client\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"durable-files\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"hashing\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"process-control\"} ]} ]},  {\"atom\":\"non-cognitive-effect-membrane\"},  {\"atom\":\"runtime-authorized\"},  {\"atom\":\"no-new-runtime-dependency\"} ]} ]} ]} ]},  {\"list\": [ {\"atom\":\"design-obligations\"},  {\"list\": [ {\"list\": [ {\"atom\":\"stable-identity\"},  {\"list\": [ {\"atom\":\"server_id\"},  {\"atom\":\"team_id\"},  {\"atom\":\"channel_id\"},  {\"atom\":\"user_id\"},  {\"atom\":\"post_id\"},  {\"atom\":\"root_id\"},  {\"atom\":\"event_timestamp\"},  {\"atom\":\"cursor\"} ]} ]},  {\"list\": [ {\"atom\":\"authorization-before-cognition\"} ]},  {\"list\": [ {\"atom\":\"outbound-idempotency\"} ]},  {\"list\": [ {\"atom\":\"durable-cursor-and-reconnect\"} ]},  {\"list\": [ {\"atom\":\"credential-isolation\"} ]},  {\"list\": [ {\"atom\":\"core-derived-memory-scope\"} ]},  {\"list\": [ {\"atom\":\"typed-failure-witness\"} ]},  {\"list\": [ {\"atom\":\"fixed-local-panic\"} ]},  {\"list\": [ {\"atom\":\"no-direct-soul-or-chroma-access\"} ]},  {\"list\": [ {\"atom\":\"versioned-rollback\"} ]} ]} ]},  {\"list\": [ {\"atom\":\"design-basis\"},  {\"list\": [ {\"atom\":\"source-basis\"},  {\"list\": [ {\"atom\":\"supported\"},  {\"list\": [ {\"atom\":\"surface-request\"},  {\"atom\":\"Mattermost\"},  {\"atom\":\"first-omitted-tentacle\"},  {\"atom\":\"user-requested\"} ]},  {\"list\": [ {\"atom\":\"origin\"},  {\"atom\":\"request-source\"},  {\"atom\":\"human-confirmation\"},  {\"atom\":\"v1\"} ]},  {\"list\": [ {\"list\": [ {\"atom\":\"root\"},  {\"atom\":\"request-source\"},  {\"atom\":\"v1\"},  {\"atom\":\"human-confirmation\"} ]} ]} ]},  {\"list\": [ {\"atom\":\"supported\"},  {\"list\": [ {\"atom\":\"surface-contract\"},  {\"atom\":\"surface-event-v1\"},  {\"atom\":\"surface-effect-v1\"},  {\"list\": [ {\"atom\":\"http-client\"},  {\"atom\":\"json-codec\"},  {\"atom\":\"websocket-client\"},  {\"atom\":\"durable-files\"},  {\"atom\":\"hashing\"},  {\"atom\":\"process-control\"} ]},  {\"list\": [ {\"list\": [ {\"atom\":\"stable-identity\"},  {\"list\": [ {\"atom\":\"server_id\"},  {\"atom\":\"team_id\"},  {\"atom\":\"channel_id\"},  {\"atom\":\"user_id\"},  {\"atom\":\"post_id\"},  {\"atom\":\"root_id\"},  {\"atom\":\"event_timestamp\"},  {\"atom\":\"cursor\"} ]} ]},  {\"list\": [ {\"atom\":\"authorization-before-cognition\"} ]},  {\"list\": [ {\"atom\":\"outbound-idempotency\"} ]},  {\"list\": [ {\"atom\":\"durable-cursor-and-reconnect\"} ]},  {\"list\": [ {\"atom\":\"credential-isolation\"} ]},  {\"list\": [ {\"atom\":\"core-derived-memory-scope\"} ]},  {\"list\": [ {\"atom\":\"typed-failure-witness\"} ]},  {\"list\": [ {\"atom\":\"fixed-local-panic\"} ]},  {\"list\": [ {\"atom\":\"no-direct-soul-or-chroma-access\"} ]},  {\"list\": [ {\"atom\":\"versioned-rollback\"} ]} ]} ]},  {\"list\": [ {\"atom\":\"origin\"},  {\"atom\":\"contract-source\"},  {\"atom\":\"testimony\"},  {\"atom\":\"v1\"} ]},  {\"list\": [ {\"list\": [ {\"atom\":\"root\"},  {\"atom\":\"contract-source\"},  {\"atom\":\"v1\"},  {\"atom\":\"testimony\"} ]} ]} ]},  {\"list\": [ {\"atom\":\"supported\"},  {\"list\": [ {\"atom\":\"surface-api\"},  {\"atom\":\"Mattermost\"},  {\"atom\":\"24e436e7ae2a6a45866c9612da3981ea21b2b540\"},  {\"atom\":\"580696df1c4ce5e2e78b1f0a66e68825ad7a73405da2d64b2aafb3f8e1eb6b68\"},  {\"atom\":\"26180adbeaf55681bac94c5735cad76538b7cf99f0c3689742edb1f79a67af8d\"},  {\"list\": [ {\"list\": [ {\"atom\":\"rest-base\"},  {\"atom\":\"/api/v4\"} ]},  {\"list\": [ {\"atom\":\"websocket-endpoint\"},  {\"atom\":\"/api/v4/websocket\"} ]},  {\"list\": [ {\"atom\":\"websocket-fields\"},  {\"list\": [ {\"atom\":\"event\"},  {\"atom\":\"data\"},  {\"atom\":\"broadcast\"},  {\"atom\":\"seq\"} ]} ]},  {\"list\": [ {\"atom\":\"create-post\"},  {\"atom\":\"POST /api/v4/posts\"} ]} ]} ]},  {\"list\": [ {\"atom\":\"origin\"},  {\"atom\":\"api-source\"},  {\"atom\":\"action-result\"},  {\"atom\":\"v1\"} ]},  {\"list\": [ {\"list\": [ {\"atom\":\"root\"},  {\"atom\":\"api-source\"},  {\"atom\":\"v1\"},  {\"atom\":\"action-result\"} ]} ]} ]},  {\"list\": [ {\"atom\":\"supported\"},  {\"list\": [ {\"atom\":\"extension-consequence\"},  {\"atom\":\"G28\"},  {\"atom\":\"complete\"},  {\"list\": [ {\"atom\":\"fork-test-merge\"},  {\"atom\":\"later-use\"} ]},  {\"list\": [ {\"atom\":\"model-consequence\"},  {\"atom\":\"qwen-local\"},  {\"atom\":\"qualified-after-specific-repair\"} ]} ]},  {\"list\": [ {\"atom\":\"origin\"},  {\"atom\":\"prior-source\"},  {\"atom\":\"action-result\"},  {\"atom\":\"v1\"} ]},  {\"list\": [ {\"list\": [ {\"atom\":\"root\"},  {\"atom\":\"prior-source\"},  {\"atom\":\"v1\"},  {\"atom\":\"action-result\"} ]} ]} ]},  {\"list\": [ {\"atom\":\"supported\"},  {\"list\": [ {\"atom\":\"surface-design-grant\"},  {\"atom\":\"G29\"},  {\"atom\":\"no-live\"},  {\"atom\":\"no-credentials\"},  {\"number\":4},  {\"number\":4096},  {\"number\":300},  {\"list\": [ {\"atom\":\"swi-prolog\"} ]} ]},  {\"list\": [ {\"atom\":\"origin\"},  {\"atom\":\"grant-source\"},  {\"atom\":\"human-confirmation\"},  {\"atom\":\"v1\"} ]},  {\"list\": [ {\"list\": [ {\"atom\":\"root\"},  {\"atom\":\"grant-source\"},  {\"atom\":\"v1\"},  {\"atom\":\"human-confirmation\"} ]} ]} ]} ]},  {\"list\": [ {\"atom\":\"runtime-inventory\"},  {\"list\": [ {\"list\": [ {\"atom\":\"modality-capability\"},  {\"atom\":\"swi-prolog\"},  {\"list\": [ {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"http-client\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"json-codec\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"websocket-client\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"durable-files\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"hashing\"} ]},  {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"process-control\"} ]} ]},  {\"atom\":\"non-cognitive-effect-membrane\"},  {\"atom\":\"runtime-authorized\"},  {\"atom\":\"no-new-runtime-dependency\"} ]},  {\"list\": [ {\"atom\":\"modality-capability\"},  {\"atom\":\"nodejs\"},  {\"list\": [ {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"process-control\"} ]} ]},  {\"atom\":\"offline-evidence-tooling\"},  {\"atom\":\"runtime-not-authorized\"},  {\"atom\":\"new-runtime-boundary\"} ]},  {\"list\": [ {\"atom\":\"modality-capability\"},  {\"atom\":\"rust\"},  {\"list\": [ {\"list\": [ {\"atom\":\"capability\"},  {\"atom\":\"process-control\"} ]} ]},  {\"atom\":\"candidate-language\"},  {\"atom\":\"runtime-not-authorized\"},  {\"atom\":\"new-runtime-dependencies\"} ]} ]} ]} ]} ]},\"observed_feedback\": {\"list\": [ {\"atom\":\"surface-model-unavailable\"},  {\"string\":\"error(existence_error(procedure,rv_json/2),context(ms_capture/6,_33206))\"} ]},\"official_interface\": {\"create_post\":\"POST /api/v4/posts\",\"rest_base\":\"/api/v4\",\"websocket\":\"/api/v4/websocket\",\"websocket_event_fields\": [\"event\", \"data\", \"broadcast\", \"seq\" ]}}",
+	"role":"user"
+      }
+    ],
+    "model":"qwen/qwen3.8-27b",
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_mattermost_candidate",
+	"schema": {
+	  "$schema":"https://json-schema.org/draft/2020-12/schema",
+	  "additionalProperties":false,
+	  "properties": {
+	    "files": {
+	      "items": {
+		"additionalProperties":false,
+		"properties": {
+		  "content": {"maxLength":65536,"minLength":120,"type":"string"},
+		  "path": {
+		    "enum": [
+		      "extension/mattermost_bridge.pl",
+		      "candidate_tests/mattermost_contract_tests.pl"
+		    ]
+		  }
+		},
+		"required": ["path", "content" ],
+		"type":"object"
+	      },
+	      "maxItems":2,
+	      "minItems":2,
+	      "type":"array"
+	    },
+	    "manifest": {
+	      "additionalProperties":false,
+	      "properties": {
+		"credential_isolation": {"const":"bridge-environment-only-never-returned"},
+		"cursor_reconnect": {"const":"durable-monotone-cursor-with-duplicate-suppression"},
+		"failure_witness": {"const":"typed-surface-failure-event"},
+		"inbound_ids": {
+		  "const": [
+		    "server_id",
+		    "team_id",
+		    "channel_id",
+		    "user_id",
+		    "post_id",
+		    "root_id",
+		    "event_timestamp",
+		    "cursor"
+		  ]
+		},
+		"kind": {"const":"mattermost-surface-bridge"},
+		"memory_scope": {"const":"core-derived-from-authenticated-surface-and-channel"},
+		"modality": {"const":"swi-prolog"},
+		"outbound_idempotency": {"const":"stable-effect-id-and-idempotency-key"},
+		"panic": {"const":"fixed-local-stop-denies-new-effects"},
+		"permissions": {
+		  "additionalProperties":false,
+		  "properties": {
+		    "credentials": {"maxItems":0,"type":"array"},
+		    "live_activation": {"const":"human-gated-after-g30"},
+		    "network": {"const":"none-in-g29"}
+		  },
+		  "required": ["network", "credentials", "live_activation" ],
+		  "type":"object"
+		},
+		"role": {"const":"transport-and-identity-mapping-only"},
+		"rollback": {"const":"versioned-projection-preserves-history"},
+		"schema": {"const":"miter-mattermost-extension-manifest-v1"},
+		"source_interface": {"const":"mattermost-rest-v4-and-websocket"},
+		"target_interface": {"const":"surface-event-effect-v1"},
+		"tests": {
+		  "const": [
+		    "authorized",
+		    "duplicate",
+		    "edited",
+		    "unauthorized",
+		    "send-failure",
+		    "reconnect",
+		    "cursor-resume",
+		    "panic"
+		  ]
+		}
+	      },
+	      "required": [
+		"schema",
+		"kind",
+		"modality",
+		"role",
+		"source_interface",
+		"target_interface",
+		"permissions",
+		"inbound_ids",
+		"outbound_idempotency",
+		"cursor_reconnect",
+		"credential_isolation",
+		"memory_scope",
+		"failure_witness",
+		"panic",
+		"rollback",
+		"tests"
+	      ],
+	      "type":"object"
+	    },
+	    "plan": {"maxLength":8000,"minLength":80,"type":"string"},
+	    "rationale": {"maxLength":5000,"minLength":80,"type":"string"}
+	  },
+	  "required": ["rationale", "plan", "manifest", "files" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":2901,
+    "stream":true,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"mattermost-4",
+  "schema":"miter-prepared-model-request-v1"
+}
