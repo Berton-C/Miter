@@ -1,0 +1,21 @@
+{
+  "status": "FAIL-EVIDENCE",
+  "phase": "native-question-preflight",
+  "failure_kind": "builder-multiline-term-parser",
+  "native_question_constructed": true,
+  "native_process_status": 0,
+  "native_stderr_empty": true,
+  "cause": "The builder split native stdout by physical lines before parsing; the valid question contained a multiline source string and therefore could not be decoded as one term.",
+  "source_candidate_changed": false,
+  "model_call_claim_created": false,
+  "model_requests_created": 0,
+  "actual_model_calls": 0,
+  "local_mattermost_requests": 0,
+  "mattermost_credential_lookups": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "candidate_created": false,
+  "activated": false,
+  "promoted": false,
+  "recovery": "Return only a compact native readiness/observation summary across stdout and read multiline model content from the already-durable JSON observation artifact; do not spend or enlarge the original one-call grant."
+}
