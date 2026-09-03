@@ -1,0 +1,160 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G28",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G28-R2: native source-bound partial repair preserves independently passing files, selects revision targets from file/obligation/observation relations, independently tests the assembled model candidate including test sensitivity, and constructs an exact promotion package; complete G28 only after explicit concrete approval and additive merge/later-use evidence.",
+  "claim_ids": [
+    "G28-R2-targeted-repair",
+    "G28-R2-independent-trial"
+  ],
+  "non_claims": "Finite executable repair and laboratory fork/test preparation, not full situated Soul cognition, general semantic diagnosis, Mattermost authorship, or approval obtained by generation. G28 remains incomplete until explicit approval and additive merge/later-use proof. No live access is implied.",
+  "rationale": "User authorizes continued G28 repair until tests pass and then controlled build progression. R1 two real calls returned identical adapter and defective smoke. Six independent adapter tests pass, smoke exits 1; preserve those consequences and passing artifact instead of regenerating everything.",
+  "requirements": [
+    "C-004",
+    "C-006",
+    "C-007",
+    "C-008",
+    "C-009",
+    "C-020",
+    "C-021",
+    "C-023",
+    "C-024",
+    "C-060",
+    "C-061",
+    "C-062",
+    "C-064",
+    "C-065",
+    "C-066",
+    "C-090",
+    "C-091",
+    "C-093",
+    "C-094",
+    "C-095",
+    "C-096",
+    "C-097",
+    "C-098",
+    "C-099",
+    "C-100",
+    "C-101",
+    "C-102",
+    "C-103",
+    "C-104",
+    "S-501",
+    "S-502",
+    "S-504",
+    "S-601",
+    "S-605",
+    "S-607",
+    "S-901",
+    "S-903",
+    "S-904",
+    "S-905",
+    "S-1001",
+    "S-1004",
+    "S-1005",
+    "S-1102",
+    "S-1103",
+    "S-1104",
+    "S-1105",
+    "T-14",
+    "T-16",
+    "T-23",
+    "T-24",
+    "T-26",
+    "T-27",
+    "T-28",
+    "T-30",
+    "T-32",
+    "T-36",
+    "S-102",
+    "S-106",
+    "S-503",
+    "S-606"
+  ],
+  "reading": "Both unchanged controls and whole ledger retained from alignment cycle; reread full C-004–025, C-060–067, C-090–105; S-501–504, S-605–607, S-901–905, S-1001–1005, S-1101–1105; BUILD_FIDELITY_PROTOCOL F-01–07; WORK_PROTOCOL W-100–109; ACCEPTANCE G28 and subsequent dependencies.",
+  "representation": "File-obligation dependency rows, known passed/failed/unknown observations and lineage-bound candidate files feed native target construction. Retained passing files and generated replacement files have separate origins. Native composition compares request/trial/resource affordances; full candidate manifests and independent sensitivity observations remain distinct from proposed approval.",
+  "consumer": "Versioned v3 MeTTa consumes mechanically validated prior records, constructs partial revision and manifest, compares exact independent I/O and test sensitivity, then proposes promotion. Versioned Prolog captures typed transport and restricts file/receipt/source identity; it cannot choose repair targets or promotion. JavaScript only prepares frozen fixtures and verifies raw evidence offline.",
+  "falsifiers": "Passed and failed obligations reversed must reverse targets; unknown must not become failure; renaming/reordering unrelated identifiers must preserve selection; severed evidence reader changes result, restored recovers; tampered retained file, response, manifest or lineage fails. Real candidate must pass all six unchanged tests, and its own smoke must fail against missing-output and missing-final-LF mutants. Missing parent and direct-main-write controls retained. Complete/partial/truncated responses stay distinct. Replay must not spend or repeat uncertain effects.",
+  "scope_review": "New v3 native/membrane plus new R2 fixtures/evidence, isolated runtime/g27/attempt-282xx. First finite slice up to four qwen-local calls, 2048 output tokens and 300 seconds each, 2 MiB capture each. Actual changed evidence must justify continuation; no blind identical retry. User's continuing authority permits a later newly frozen slice with preserved accounting if material repair remains, not unbounded hidden spending. No persistent model setting changes, remote provider, credentials or user-service stop. No candidate-written acceptance tests counted as independent.",
+  "rollback": "All previous versions/raw attempts preserved. R1 completion working-copy user insertion is preserved exactly and excluded from commits. Candidate code stays in no-network isolated workshop; a concrete promotion requires explicit candidate-bound approval. Do not push or activate live services. Preserve old branch history and failed candidates.",
+  "predecessor": "docs/gates/G28/R1/closure.json BLOCKED at 2c5d944; user now authorizes continued repair and later build after real G28 pass.",
+  "allowed_paths": [
+    "src/executable_development_v3.metta",
+    "src/bootstrap_executable_development_v3.metta",
+    "src/executable_partial_revision_v1.metta",
+    "effect_membranes/miter_executable_development_v3.pl",
+    "config/executable-candidate-schema-v3.json",
+    "scripts/g28_r2/",
+    "tests/fixtures/g28_r2/",
+    "evidence/G28-R2/",
+    "docs/gates/G28/R2/",
+    "docs/gates/G28/R3/",
+    "docs/gates/G29/",
+    "runtime/g27/attempt-28200/",
+    "runtime/g27/attempt-28201/",
+    "runtime/g27/attempt-28202/",
+    "runtime/g27/attempt-28203/",
+    "runtime/g27/attempt-28204/"
+  ],
+  "preserved": [
+    {
+      "path": "effect_membranes/miter_trials.pl",
+      "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256",
+      "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/inputs/plan.txt",
+      "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/preflight.txt",
+      "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stderr",
+      "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/g22/prepare.pl",
+      "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"
+    },
+    {
+      "path": "src/bootstrap_trials.metta",
+      "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"
+    },
+    {
+      "path": "src/trials.metta",
+      "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"
+    },
+    {
+      "path": "tests/fixtures/g22_canonical.metta",
+      "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"
+    },
+    {
+      "path": "tests/fixtures/g22_cases.json",
+      "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"
+    },
+    {
+      "path": "tests/fixtures/g22_parent.metta",
+      "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"
+    },
+    {
+      "path": "tests/fixtures/g22_severed.metta",
+      "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"
+    },
+    {
+      "path": "docs/gates/G28/R1/completion.md",
+      "sha256": "d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"
+    }
+  ]
+}
