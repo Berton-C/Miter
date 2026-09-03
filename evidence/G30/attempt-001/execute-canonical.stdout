@@ -1,0 +1,2 @@
+true
+(result outcome (g30-trial-result (g30-trial-ready dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34) (g30-mock-unqualified (g30-mock-failure "error(type_error(json_term,@null),_14850)") ((obligation mock-observation-shape unresolved)))))

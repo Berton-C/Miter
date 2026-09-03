@@ -1,0 +1,18 @@
+{
+  "status": "FAIL-HARNESS",
+  "failure_kind": "mock-json-null-serialization",
+  "native_standing": "g30-mock-unqualified",
+  "exact_error": "error(type_error(json_term,@null),_)",
+  "candidate_behavior_reached": false,
+  "candidate_modified": false,
+  "remote_model_calls": 0,
+  "network_calls": 0,
+  "credentials_used": 0,
+  "activated": false,
+  "promoted": false,
+  "repair_scope": [
+    "Replace only the mock evidence null sentinel with the JSON-supported null atom.",
+    "Update the attempt driver to open the separately frozen G30 R1 plan.",
+    "Rerun the unchanged frozen candidate and unchanged acceptance relations under a fresh attempt identity."
+  ]
+}
