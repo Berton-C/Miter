@@ -1,0 +1,2 @@
+true
+(result canonical (p4-trial-failure "error(type_error(json_term,'effect-1'-'stable-key-1'),_6956)") (g31-p4-transport-held cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3 d58abf6f3e28dc53f27d198d0e86ebc0f68716da65c2e3e707736755b4b996d2 (p4-trial-failure "error(type_error(json_term,'effect-1'-'stable-key-1'),_6956)")))

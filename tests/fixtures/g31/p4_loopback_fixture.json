@@ -1,0 +1,39 @@
+{
+  "schema": "miter-surface-transport-loopback-fixture-v1",
+  "candidate_config": {
+    "server_id": "server-test",
+    "team_id": "team-test",
+    "channel_id": "channel-test",
+    "user_id": "source-user-test",
+    "auth_ref": "fixture-authority"
+  },
+  "authorized_frame": {
+    "server_id": "server-test",
+    "team_id": "team-test",
+    "channel_id": "channel-test",
+    "user_id": "source-user-test",
+    "event": "posted",
+    "data": {"id":"post-1","root_id":"root-1","create_at":100},
+    "seq": 1
+  },
+  "unauthorized_frame": {
+    "server_id": "server-test",
+    "team_id": "team-test",
+    "channel_id": "foreign-channel",
+    "user_id": "foreign-user"
+  },
+  "effect": {
+    "schema": "miter-surface-effect-v1",
+    "id": "effect-1",
+    "idempotency_key": "stable-key-1",
+    "channel_id": "channel-test",
+    "message": "offline-canary"
+  },
+  "capability": {
+    "method": "post",
+    "allowed_path": "/api/v4/posts",
+    "principal": "bot-test",
+    "identity_field": "pending_post_id",
+    "retry_window_seconds": 30
+  }
+}
