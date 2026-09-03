@@ -1,0 +1,14 @@
+{
+  "status": "PASS-BOUNDED",
+  "cases": 28,
+  "native_arms": 5,
+  "transport_checks": 10,
+  "actual_model_requests": 3,
+  "original_allocation": 2,
+  "extra_allocation": "evidence/SC05/cancellation-allocation.md",
+  "stop_observation_ms": 15.105962753295898,
+  "native_cancel_disposition_ms": 16.05701446533203,
+  "live_output": "Original incomplete interpretation preserved; explicit seen-text reinterpretation is faithful",
+  "runtime_boundary": "PeTTa/MeTTa plus Prolog; JS offline",
+  "limitations": "Finite training/counterfactual semantics; no external emission, promotion or server-side inference cancellation claim."
+}

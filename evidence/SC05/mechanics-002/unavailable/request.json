@@ -1,0 +1,7 @@
+{
+  "alias":"qwen-local",
+  "body": {"messages": [],"model":"mechanical-fake-endpoint"},
+  "endpoint":"http://127.0.0.1:61982/v1/chat/completions",
+  "request_id":"probe",
+  "schema":"miter-prepared-model-request-v1"
+}

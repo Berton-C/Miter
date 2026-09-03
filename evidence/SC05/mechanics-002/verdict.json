@@ -1,0 +1,8 @@
+{
+  "checks":10,
+  "integrity":"intention-storage-or-integrity-failed",
+  "qualification":"Real local HTTP timeout/disconnection and schema mechanics; fake endpoint is not model semantics.",
+  "status":"PASS-BOUNDED",
+  "timeout":"model-timeout",
+  "unavailable":"provider-unavailable"
+}

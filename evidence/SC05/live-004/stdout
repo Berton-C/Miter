@@ -1,0 +1,2 @@
+true
+(expression-cancellation-requested worker-cancel-requested native-result-stored no-completion-claim)

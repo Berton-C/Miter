@@ -1,0 +1,8 @@
+{
+  "choices": [
+    {
+      "finish_reason":"stop",
+      "message": {"content":"{\"request_id\":\"voice\",\"clauses\":[\"You requested revision of ledger.\"]}"}
+    }
+  ]
+}

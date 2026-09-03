@@ -1,0 +1,107 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "SC05",
+  "plan": "docs/gates/SC05/plan.json",
+  "plan_commit": "15ed457f2094e93b177889648690e5cb9d61ddbe",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "src/relational_voice.metta",
+      "sha256": "ac26b0fc44f30c00ae7abdfc85953a78a4d569a716531bb04e93e3aeaab78b4e"
+    },
+    {
+      "path": "src/bootstrap_relational_voice.metta",
+      "sha256": "cc7fa945fa5b142fd3f0408cbd0ef85d817688c7a5298bc1a36bc4e5bfc3ad34"
+    },
+    {
+      "path": "effect_membranes/miter_relational_voice.pl",
+      "sha256": "dc60b950bf1e95add7c006125a02fa686d736d0cce04a4b2305e439872287588"
+    },
+    {
+      "path": "tests/fixtures/sc05/contract.md",
+      "sha256": "ff1e4042037ed6599d17fd3cb0de8645c655378eae7a2a262a43d87afe69f727"
+    },
+    {
+      "path": "docs/gates/SC05/completion.md",
+      "sha256": "f74c4a3279f56f75c19ed1c63e163a948e128a82518a0c9dd99e4d44b43482c2"
+    },
+    {
+      "path": "docs/gates/SC06/plan.json",
+      "sha256": "a9a1b186a309ce51061f19d9c979c5d50ace1065083b1cce60cabe9d2e61a8c5"
+    },
+    {
+      "path": "docs/gates/SC06/plan.md",
+      "sha256": "0a3f3b2464e11de331a14590b08e8d6ad88b624df7b290132fca73c3c5916b65"
+    },
+    {
+      "path": "evidence/SC05/raw-inventory.json",
+      "sha256": "7ef6c3dabb399496eb8875faa46f689bf97ea8fa25b5026f335a0462f6fafc96"
+    },
+    {
+      "path": "evidence/SC05/package-verdict.json",
+      "sha256": "e29c5f56460df9061f0c0f78b722330ef657a72946a1b7f887a8e564dbd7f535"
+    },
+    {
+      "path": "scripts/sc05/cases.mjs",
+      "sha256": "149b96c6c471146be9c29c5f2c8abf6eeb8dffa16322b80dd1d34ba485494854"
+    },
+    {
+      "path": "scripts/sc05/check-package.mjs",
+      "sha256": "7123fe2f8639ca05bc3be451308a16236fcbddb467ce64e71b46a84c06dfeb12"
+    },
+    {
+      "path": "scripts/sc05/inventory.mjs",
+      "sha256": "bc8183a8674be8a8c183f833d2262c288d2832e40fe7d4b5a206b6d556ca6563"
+    },
+    {
+      "path": "scripts/sc05/live.mjs",
+      "sha256": "9c42fdbe197c15a3103c68960f1b642d5bf32bba27c8558f7e8cc595aff0432c"
+    },
+    {
+      "path": "scripts/sc05/mechanics.mjs",
+      "sha256": "e45dd0aef962327252ac8f4d52c722bd6e416dd24fc99b8d7cfe45ffd21aac70"
+    },
+    {
+      "path": "scripts/sc05/mechanics.pl",
+      "sha256": "7b3e6250266010f17e4dff74e168fe369036387fd06abdd9603937ddbb5a3c91"
+    },
+    {
+      "path": "scripts/sc05/probe.mjs",
+      "sha256": "d0b5dd80c4455063a83aef9ab0b22d773e707b1b46b887ee67d4789411df9ed2"
+    },
+    {
+      "path": "scripts/sc05/replay.mjs",
+      "sha256": "74e6c331ecb8e12d1ae4a83db4d2cb0abba94b59bccdbc525ea9c6205e925bf1"
+    },
+    {
+      "path": "scripts/sc05/run.mjs",
+      "sha256": "3fa833dc3afc7346257a3410a9f84f4a8c8b667bde2aae8b279ab3aa402b87cd"
+    },
+    {
+      "path": "scripts/sc05/verify.mjs",
+      "sha256": "fef765140ce157e4319829dfd95d826a5765b9f35a43137a637dcca6850e2173"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "SC05-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "28 finite technical-expression cases/five arms; native intention, exact relational alterations and source/span provenance. Not broad semantic or human-contact capability."
+    },
+    {
+      "id": "SC05-B",
+      "status": "PROVEN-HARNESS",
+      "limit": "Actual localhost model candidate and native audit; useful seen-text reinterpretation under disclosed grammar revision, typed repair/incomplete outcomes, interruptible waiting. No emission/promotion or provider-side cancellation guarantee."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/020/023/054–064 and S-501–504/901–905 require native source-bound intention and non-sovereign expression. MeTTa owns meaning, candidate audit and disposition; Prolog owns transport/storage. Applicable full clauses and whole ledger reread; immutable controls preserved.",
+    "causal_evidence": "Final 28-case five-arm readback shows material intention retention/comparison; severed consumers accept false completion or misread faithful retention, always-reject fails useful expression, restored outputs match. Actual model lineage persisted before request. Unknown grammar is unverified meaning, not fabricated defect evidence. Native stop disposition persisted 16.057 ms after stop in live-004.",
+    "substitution_audit": "No fixture ID, expected semantic answer or JavaScript decision enters native arguments. Finite human-declared grammar/meaning registry and laboratory observations are explicit premises, not general Soul. Original model text was seen before generic grammar expansion; replay is explicitly versioned, not claimed held-out. Reviewer and independent checker are distinct roles of the same builder, not two minds.",
+    "capability_and_constraint_audit": "Useful faithful expression succeeds; inquiry and no-plan states do not authorize effects. Repair budget and transport limits are bounded laboratory resources, not runtime behavioral quotas. No forced cheerful style, physiological claim, model self-certification, core JS/Python seam, production service change or external emission. Original blocking worker join was caught, retained and repaired; cancellation remains requested, not server-confirmed.",
+    "remaining_gaps": "Only three finite flourishing interface projections; no general language/full nine enactors. G20/G21 still need independently sourced native opportunity and actual VoicePolicy quarantine; SC06 targets that gap. No G22, historical mechanical requalification, NACE/promotion, full production memory or Mattermost proof. Raw inventory is verified by its dedicated checker; generic closure pins but does not recurse it."
+  },
+  "reviewer": "Codex builder; separate deterministic native evidence verifier, no independent agent or human semantic review.",
+  "review_limits": "Packaging hashes and finite tests do not certify the completeness of the Soul. Full history of failed/seen-text experiments and interruption qualification preserved in completion.md.",
+  "next_plan": "docs/gates/SC06/plan.json"
+}

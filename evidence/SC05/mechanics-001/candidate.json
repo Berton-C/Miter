@@ -1,0 +1,7 @@
+{
+  "clauses": ["You requested revision of ledger." ],
+  "origin":"model-rendering",
+  "raw_ref":"/Users/claritymiter/miter/evidence/SC05/mechanics-001/valid.json",
+  "request_id":"voice",
+  "scope": ["scope", "cut", "p", "project", "surface" ]
+}

@@ -1,0 +1,45 @@
+{
+  "body": {
+    "max_tokens":1024,
+    "messages": [
+      {
+	"content":"Render the native intended relations, without adding a decision, promise, permission or completion claim. Return the supplied JSON schema only. Use the declared lexical names instead of internal entity IDs. Express a reported-request with 'You requested revision of A.' or 'The requested change is to revise A.' Express retain relations with 'P must remain able to V A.' or 'The change must keep P able to V A.' Coordinate multiple verbs with 'and'. Roles choice, inspection and recovery use verbs choose, inspect and restore respectively. Only when a completion relation is explicitly present, also say 'The revision of A is complete.' Account for every intended relation. Do not add politeness, advice or other clauses outside this finite experimental grammar. These are expression candidates, never authority. Copy request_id exactly.",
+	"role":"system"
+      },
+      {
+	"content":"{\"intended_relations\": [ [\"retain\", \"artifact\", \"person\", \"recovery\", \"recover\" ],  [\"retain\", \"artifact\", \"person\", \"inspection\", \"inspect\" ],  [\"retain\", \"artifact\", \"person\", \"choice\", \"choose\" ],  [\"reported-request\",  [\"path\", \"artifact\", \"revised\" ] ] ],\"names\": [ [\"named\", \"ledger\", \"artifact\", \"artifact\" ],  [\"named\", \"mara\", \"person\", \"person\" ] ],\"request_id\":\"voice-local\",\"standing\":\"candidate-available\"}",
+	"role":"user"
+      }
+    ],
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_relational_expression",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "clauses": {
+	      "items": {"maxLength":512,"minLength":1,"type":"string"},
+	      "maxItems":8,
+	      "minItems":1,
+	      "type":"array"
+	    },
+	    "request_id": {"const":"voice-local","type":"string"}
+	  },
+	  "required": ["request_id", "clauses" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":5050,
+    "stream":false,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"voice-local",
+  "schema":"miter-schema-request-v1"
+}

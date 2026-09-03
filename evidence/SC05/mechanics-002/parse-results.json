@@ -1,0 +1,14 @@
+{
+  "empty":"malformed-model-output",
+  "malformed":"malformed-model-output",
+  "refusal":"model-refusal",
+  "truncated":"model-truncated",
+  "valid": [
+    "rendered",
+    "voice",
+    ["scope", "cut", "p", "project", "surface" ],
+    ["You requested revision of ledger." ],
+    "/Users/claritymiter/miter/evidence/SC05/mechanics-002/valid.json"
+  ],
+  "wrong_id":"malformed-model-output"
+}
