@@ -1,0 +1,5 @@
+(import_prolog_functions_from_file "/Users/claritymiter/miter/effect_membranes/miter_continuity.pl" (miter_continuity_write_capsule miter_continuity_set_current))
+true
+(result prior (miter_continuity_write_capsule "/Users/claritymiter/miter/evidence/G24/g26-001/continuity" "/Users/claritymiter/miter/runtime/g07/libmiter_store_posix.dylib" "/Users/claritymiter/miter/evidence/G24/g26-001/prior-fixture.json"))
+(result current (miter_continuity_write_capsule "/Users/claritymiter/miter/evidence/G24/g26-001/continuity" "/Users/claritymiter/miter/runtime/g07/libmiter_store_posix.dylib" "/Users/claritymiter/miter/evidence/G24/g26-001/current-fixture.json"))
+(result select (miter_continuity_set_current "/Users/claritymiter/miter/evidence/G24/g26-001/continuity" "/Users/claritymiter/miter/runtime/g07/libmiter_store_posix.dylib" "project-fixture" "checkpoint-current"))

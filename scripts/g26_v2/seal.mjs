@@ -1,0 +1,7 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {root,hash} from '../fidelity/check.mjs';import {read,save} from '../g22_v2/common.mjs';
+const dir=root+'/evidence/G24/g26-003/repair-003';assert.equal(read(dir+'/verdict.json').status,'PASS-BOUNDED');for(const f of [...read(dir+'/freeze.json').files,...read(dir+'/history-before.json')])assert.equal(hash(fs.readFileSync(f.path)),f.sha256,f.path);
+const lines=fs.readFileSync(dir+'/restart-store/trajectory.jsonl','utf8').trim().split('\n').map(JSON.parse);let prior=null;for(const e of lines){assert.deepEqual(e.parent_event_ids,prior?[prior]:[]);prior=e.event_id}assert.equal(lines.length,6);
+const decode=t=>t.list?t.list.map(decode):Object.values(t)[0];for(const f of fs.readdirSync(dir).filter(f=>f.endsWith('-native.json'))){const d=read(dir+'/'+f);assert.deepEqual(decode(d.term),d.native)}
+function walk(d){return fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>{assert(!e.isSymbolicLink());return e.isDirectory()?walk(d+'/'+e.name):[d+'/'+e.name]})}
+const files=['G22','G24'].flatMap(g=>fs.readdirSync(root+'/evidence/'+g).filter(x=>/^g26-\d{3}$/.test(x)).flatMap(x=>walk(root+'/evidence/'+g+'/'+x))).filter(p=>!p.endsWith('/all-attempts.json'));
+save(dir+'/all-attempts.json',{status:'INVENTORIED',files:files.map(path=>({path:path.slice(root.length+1),sha256:hash(fs.readFileSync(path)),bytes:fs.statSync(path).size}))});console.log(JSON.stringify({status:'PASS-BOUNDED',restart_parent_chain:lines.length,files:files.length}));

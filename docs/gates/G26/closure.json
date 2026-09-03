@@ -1,0 +1,62 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G26",
+  "plan": "docs/gates/G26/plan.json",
+  "plan_commit": "ee8f97c789dbf1c58093a08016abd32b9a4defa7",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "docs/gates/G26/completion.md",
+      "sha256": "19ad77f4a68c02281ee512ac5ea6fc0d2666f7f5d23fd15a20c78eb5f8d81563"
+    },
+    {
+      "path": "src/development_resume_v1.metta",
+      "sha256": "90a45445e0a3e17f661e0c7f39d60eae3119bb370ad90038ece34928c73776ba"
+    },
+    {
+      "path": "src/bootstrap_development_resume_v1.metta",
+      "sha256": "0424e984d0c00838a742c66838fc320aff2ec4569175773fd86f40eff6a1f524"
+    },
+    {
+      "path": "effect_membranes/miter_development_resume_v1.pl",
+      "sha256": "0aa9fd676dff12a9e1a7056494d127ee056a89f30fb48e5bea51c738ffef16db"
+    },
+    {
+      "path": "scripts/g26_v2/run.mjs",
+      "sha256": "ade155644e0104892c27ea2fc8cbf7a1381d731f758b52f1c25e58a8e42e98c1"
+    },
+    {
+      "path": "scripts/g26_v2/seal.mjs",
+      "sha256": "ecccb74294022646283d462ec7c459fbdb5bf00cca0d1da01da042861baf5104"
+    },
+    {
+      "path": "evidence/G24/g26-003/repair-003/verdict.json",
+      "sha256": "b6445dbac8b807f1da6bd008a9eb3f7fd1dd525e9f4f3b3515e0362cf65306d9"
+    },
+    {
+      "path": "evidence/G24/g26-003/repair-003/inventory.json",
+      "sha256": "03fc681a33b77cacf1443575ba376e2784d1f8e93c7e3b609ae1897bc67aedcf"
+    },
+    {
+      "path": "evidence/G24/g26-003/repair-003/all-attempts.json",
+      "sha256": "cc57a77d5f3a8f813e99373b9e66cf74008aab4b50335c3c9e90babc7e437661"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G26-A",
+      "status": "PROVEN-HARNESS",
+      "limit": "Nine instrumented fresh workers, three removed/restored projections, native accepted-module/efficacy/capsule composition, fifteen verified events, explicit empty context. Not full production daemon or arbitrary relocation."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-030–045/083/097 and S-801/803/1003/1102 reread with the entire ledger. Continuity restores linked accepted development and actual current checkpoint, not fuzzy recall or prompt state.",
+    "causal_evidence": "New native composition checks capsule scope/frame and byte-bound admitted module, invokes existing hydration and learned ranking, records restart. Worker/descendant exit verified, useful result returns in fresh process. Missing active, efficacy or current-capsule projections require recovery, restored bytes recover.",
+    "substitution_audit": "Prolog projects exact identity/fields and persistence only. No book-phrase dispatch, model memory, guessed hash identity or host ranking. Exact parsed-JSON equivalence bridges separately retained raw module hashes; native module equality remains required. Typed capture protects multiword atoms.",
+    "capability_and_constraint_audit": "Original sources/evidence and running services unchanged. Full copies retained before temporary test-only projection removal and restored. Prior source/candidate/trial/rejection/acceptance/consequence records accessible, no effects replayed.",
+    "remaining_gaps": "Finite laboratory integration, not broad natural-language recall, all-nine cognition, Chroma recovery, arbitrary relocation or unified production lifecycle. Initial import, permission, history-binding, byte-identity and printer defects retained and corrected. G27 mechanical workshop still absent."
+  },
+  "reviewer": "Codex builder, with separate deterministic process/hash/state verification; no independent human reviewer claimed.",
+  "review_limits": "Path-preserving restart and typed missing-state detection for the finite source-framed capability experiment.",
+  "next_plan": "docs/gates/G27/plan.json"
+}

@@ -1,0 +1,131 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G27",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G27-A: a typed, idempotent mechanical workshop broker permits bounded candidate worktree/write/test/diff/discard operations inside a fixed Docker sandbox while denying undeclared host/filesystem/network reach; an intentionally permissive synthetic profile is detected.",
+  "claim_ids": [
+    "G27-A"
+  ],
+  "non_claims": "Containment for the tested Docker boundary, not a kernel security proof, Soul's project formation, executable candidate authorship/promotion, Mattermost or live service reach.",
+  "rationale": "C-093–096/S-1004 require construction hands with no unrestricted host authority. G26 closes the finite developmental restart dependency; executable extension mechanics are still absent. G13/G18 historical boundary evidence is context, not a substitute for sandbox proof.",
+  "requirements": [
+    "C-004",
+    "C-007",
+    "C-008",
+    "C-060",
+    "C-061",
+    "C-062",
+    "C-063",
+    "C-064",
+    "C-065",
+    "C-066",
+    "C-090",
+    "C-091",
+    "C-093",
+    "C-094",
+    "C-095",
+    "C-096",
+    "C-097",
+    "C-098",
+    "C-099",
+    "C-100",
+    "C-101",
+    "C-102",
+    "C-103",
+    "C-104",
+    "S-401",
+    "S-405",
+    "S-607",
+    "S-903",
+    "S-904",
+    "S-905",
+    "S-1004",
+    "S-1005",
+    "S-1102",
+    "S-1103",
+    "S-1104",
+    "S-1105",
+    "T-24",
+    "T-26",
+    "T-27",
+    "T-30",
+    "T-32"
+  ],
+  "reading": "Constitution C-060–067/090–105, Soul Parts 6.7/9/10.4–10.5/11 and complete ledger; POC_SPEC §15; WORK_PROTOCOL W-100–109; ACCEPTANCE G27. Applicable clauses reread at closure.",
+  "representation": "Fixed builder-owned workshop grant and typed request/result envelopes with IDs, idempotency keys, pinned base revision, safe workspace paths, declared test profile, hashes and additive operation records.",
+  "consumer": "Prolog mechanical broker creates isolated worktrees, transports files, invokes a fixed resource-limited Docker runner and returns typed observations. Native wrapper retains the request/result contract; no moral adjudication, project choice or promotion in broker.",
+  "falsifiers": "plan.md freezes successful create/write/read/test/diff/discard; missing IDs, replay/conflict, path/symlink escape, forbidden authority targets, forged runner/network settings, synthetic-secret/socket/host reach tests, output/time limits and permissive synthetic profile detection.",
+  "scope_review": "New broker, schema/profile and native wrapper; offline builder harness. Docker already available at server 29.6.2. Use existing local pinned image with explicit shell entrypoint; no new image pull, real secret mount, user service stop or live network. Only runtime/g27 new test roots and evidence/G27 may be mutated.",
+  "rollback": "Worktrees/containers belong only to new isolated laboratory repository. Discard is recoverable relocation to retained archive after evidence capture; immutable base/control files and existing services remain. No promotion path in G27.",
+  "predecessor": "docs/gates/G26/closure.json",
+  "allowed_paths": [
+    "src/workshop_boundary_v1.metta",
+    "src/bootstrap_workshop_boundary_v1.metta",
+    "effect_membranes/miter_workshop_v1.pl",
+    "config/workshop-contract-v1.json",
+    "scripts/g27/",
+    "tests/fixtures/g27/",
+    "runtime/g27/",
+    "evidence/G27/",
+    "docs/gates/G27/completion.md",
+    "docs/gates/G27/closure.json",
+    "docs/gates/G28/"
+  ],
+  "preserved": [
+    {
+      "path": "effect_membranes/miter_trials.pl",
+      "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256",
+      "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/inputs/plan.txt",
+      "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/preflight.txt",
+      "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stderr",
+      "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/g22/prepare.pl",
+      "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"
+    },
+    {
+      "path": "src/bootstrap_trials.metta",
+      "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"
+    },
+    {
+      "path": "src/trials.metta",
+      "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"
+    },
+    {
+      "path": "tests/fixtures/g22_canonical.metta",
+      "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"
+    },
+    {
+      "path": "tests/fixtures/g22_cases.json",
+      "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"
+    },
+    {
+      "path": "tests/fixtures/g22_parent.metta",
+      "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"
+    },
+    {
+      "path": "tests/fixtures/g22_severed.metta",
+      "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"
+    }
+  ]
+}

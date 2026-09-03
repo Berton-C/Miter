@@ -1,0 +1,6 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_development_resume_v1.metta")
+!(add-atom &soul (protected-canary Soul))
+!(add-atom &history (protected-canary adverse-history))
+!(result before (dr_capture "/Users/claritymiter/miter/evidence/G24/g26-003/repair-003" "neutral-before" (state (collapse (match &derived (active-voice-v2 $r $p $c $pins) (active $r $p $c $pins))) (collapse (match &derived (nace-efficacy $s $c $p $id $t $u $roots) (belief $s $c $p $id $t $u $roots))) (collapse (match &soul $a $a)) (collapse (match &compass $a $a)))))
+!(result resume (dr_capture "/Users/claritymiter/miter/evidence/G24/g26-003/repair-003" "neutral-resume" (DRResume "/Users/claritymiter/miter/evidence/G24/g26-003/repair-003")))
+!(result after (dr_capture "/Users/claritymiter/miter/evidence/G24/g26-003/repair-003" "neutral-after" (state (collapse (match &derived (active-voice-v2 $r $p $c $pins) (active $r $p $c $pins))) (collapse (match &derived (nace-efficacy $s $c $p $id $t $u $roots) (belief $s $c $p $id $t $u $roots))) (collapse (match &soul $a $a)) (collapse (match &compass $a $a)))))

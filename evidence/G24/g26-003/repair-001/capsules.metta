@@ -1,0 +1,6 @@
+!(import! &self (library lib_import))
+!(import_prolog_functions_from_file "/Users/claritymiter/miter/effect_membranes/miter_continuity.pl" (miter_continuity_write_capsule miter_continuity_set_current))
+!(import! &self "/Users/claritymiter/miter/src/continuity.metta")
+!(result prior (AppendContinuityCapsule "/Users/claritymiter/miter/evidence/G24/g26-003/repair-001/continuity" "/Users/claritymiter/miter/runtime/g07/libmiter_store_posix.dylib" "/Users/claritymiter/miter/evidence/G24/g26-003/repair-001/prior-fixture.json"))
+!(result current (AppendContinuityCapsule "/Users/claritymiter/miter/evidence/G24/g26-003/repair-001/continuity" "/Users/claritymiter/miter/runtime/g07/libmiter_store_posix.dylib" "/Users/claritymiter/miter/evidence/G24/g26-003/repair-001/current-fixture.json"))
+!(result select (SelectCurrentCapsule "/Users/claritymiter/miter/evidence/G24/g26-003/repair-001/continuity" "/Users/claritymiter/miter/runtime/g07/libmiter_store_posix.dylib" "project-fixture" "checkpoint-current"))

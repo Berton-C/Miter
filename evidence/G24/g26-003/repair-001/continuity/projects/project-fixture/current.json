@@ -1,0 +1,9 @@
+{
+  "capsule_content_hash":"ca208529db7f3abdc484acdd7bc08e5d30a7325d877e05923e3ff7fa653fd9ba",
+  "capsule_id":"checkpoint-current",
+  "project_id":"project-fixture",
+  "schema":"miter-continuity-current-index-v1",
+  "selected_at":"2026-09-03T13:44:59.030Z",
+  "selected_by":"explicit-metta-decision",
+  "timestamp_fallback":false
+}
