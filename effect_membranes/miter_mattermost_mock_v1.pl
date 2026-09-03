@@ -314,7 +314,7 @@ g30_status_reason(Outcome, Status, Reason, Result) :-
 g30_event_or_null(Outcome, Event) :-
     ( is_dict(Outcome), get_dict(event, Outcome, Event0)
     -> Event = Event0
-    ; Event = @(null)
+    ; Event = null
     ).
 
 g30_stable_identity(Event, Result) :-

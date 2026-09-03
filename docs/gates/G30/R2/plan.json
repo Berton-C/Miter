@@ -1,0 +1,57 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G30",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G30 R2: explicit JSON-string-to-contract-atom normalization at the durable-state membrane permits the unchanged candidate and unchanged mock trial to cross a real process restart without changing behavioral expectations.",
+  "claim_ids": [
+    "G30-R2-durable-type-rehydration",
+    "G30-R2-canonical-authorized-inbound",
+    "G30-R2-authorization-before-cognition",
+    "G30-R2-idempotent-failure-recovery",
+    "G30-R2-durable-restart-cursor",
+    "G30-R2-severed-contract-dependence"
+  ],
+  "non_claims": "No candidate byte, scenario, obligation, severed transform, or acceptance change; no candidate repair; no live Mattermost, credential, model, activation, promotion, production readiness, unconditional external exactly-once guarantee, G31 result, or complete Soul cognition.",
+  "rationale": "R1 proved phase-one behavior and durable write, then the fresh worker exited before candidate re-entry because JSON identifiers were strings while the explicit surface contract uses atoms. The correction belongs at the typed mechanical membrane and must not be hidden as a behavioral candidate change.",
+  "requirements": [
+    "C-004", "C-005", "C-007", "C-008", "C-020", "C-023", "C-024",
+    "C-060", "C-062", "C-064", "C-065", "C-066", "C-090", "C-091",
+    "C-093", "C-096", "C-097", "C-098", "C-099", "C-100", "C-102",
+    "C-103", "C-104", "S-103", "S-501", "S-504", "S-607", "S-804",
+    "S-903", "S-904", "S-905", "S-1003", "S-1004", "S-1005", "S-1101",
+    "S-1102", "S-1104", "S-1105", "T-30", "T-36"
+  ],
+  "reading": "Retain both controls and the complete ledger. Reread base G30/R1 plans, attempt-001/101 outcomes and raw evidence, especially phase-one durable state and child exit; G29 candidate hash; ACCEPTANCE G30; typed boundaries C-064/C-066; and S-904/S-905/S-1102/S-1104.",
+  "representation": "Preserve JSON strings as raw stored evidence, then explicitly normalize only schema, event ID, effect ID and idempotency key at the Prolog read boundary into the atom-valued candidate contract. Retain phase-one and restart failure as distinct consequences.",
+  "consumer": "PeTTa/MeTTa retains admission and assessment. Prolog performs bounded type normalization and mock/restart mechanics. JavaScript selects this frozen plan and launches a fresh attempt. Neither membrane nor builder changes candidate logic or semantic criteria.",
+  "falsifiers": "Candidate/scenario/obligation/severed bytes change; non-identity values are coerced; attempt 101 is overwritten; restart still fails; canonical/severed behavior fails; credential/network/model/live service participates; or candidate activates/promotes.",
+  "scope_review": "Normalize only JSON schema, seen-event ID, effect ID and idempotency key strings to atoms in the durable-state reader; update preparation to this frozen R2 identity; run one fresh offline canonical and two severed trials with all prior evidence retained. No other repair, model, network, credential, live service, activation, promotion, push or control change.",
+  "rollback": "Attempts 001 and 101 remain immutable. Removing R2 evidence and reverting the reader normalization plus plan-selection update restores R1. No promoted/live state exists.",
+  "predecessor": "docs/gates/G30/R1/outcome.md",
+  "allowed_paths": [
+    "src/mattermost_mock_trial_v1.metta",
+    "src/bootstrap_mattermost_mock_trial_v1.metta",
+    "effect_membranes/miter_mattermost_mock_v1.pl",
+    "scripts/g30/", "tests/fixtures/g30/", "evidence/G30/",
+    "docs/gates/G30/", "docs/gates/G31/", "runtime/g30/"
+  ],
+  "preserved": [
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"}
+  ]
+}

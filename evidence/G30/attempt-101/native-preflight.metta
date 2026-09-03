@@ -1,0 +1,4 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_mattermost_mock_trial_v1.metta")
+!(result standing (G30TrialStanding dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 quarantined none none))
+!(result wrong-hash (G30TrialStanding dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 0000000000000000000000000000000000000000000000000000000000000000 quarantined none none))
+!(result live-network (G30TrialStanding dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 quarantined granted none))

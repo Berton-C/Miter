@@ -1,0 +1,2 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_mattermost_mock_trial_v1.metta")
+!(result outcome (G30Run "/Users/claritymiter/miter/evidence/G30/attempt-101/canonical" "/Users/claritymiter/miter/evidence/G30/attempt-101/candidate/extension/mattermost_bridge.pl" dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 quarantined none none))

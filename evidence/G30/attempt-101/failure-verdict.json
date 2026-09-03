@@ -1,0 +1,21 @@
+{
+  "status": "FAIL-HARNESS",
+  "failure_kind": "durable-json-identity-type-mismatch",
+  "native_result_emitted": false,
+  "phase_one_completed": true,
+  "phase_one_authorized_event_count": 1,
+  "phase_one_duplicate_event_count": 0,
+  "phase_one_edited_event_count": 1,
+  "phase_one_unauthorized_event_count": 0,
+  "phase_one_authorization_preceded_payload": true,
+  "restart_process_status": "exit(1)",
+  "restart_stderr": "",
+  "cause": "json_read_dict/2 restored identity strings that were compared directly with atom-valued contract identities",
+  "candidate_behavior_after_restart_reached": false,
+  "candidate_modified": false,
+  "remote_model_calls": 0,
+  "network_calls": 0,
+  "credentials_used": 0,
+  "activated": false,
+  "promoted": false
+}

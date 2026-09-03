@@ -1,0 +1,4 @@
+true
+(result standing (g30-trial-ready dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34))
+(result wrong-hash (g30-trial-held dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 0 quarantined none none))
+(result live-network (g30-trial-held dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 quarantined granted none))

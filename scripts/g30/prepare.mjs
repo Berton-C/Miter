@@ -8,7 +8,7 @@ import {native, save, read, pins, sexp, petta} from '../g22_v2/common.mjs';
 import {buildSevered} from './sever.mjs';
 
 process.chdir(root);
-const tag = process.argv[2] ?? '001';
+const tag = process.argv[2] ?? '101';
 assert.match(tag, /^\d{3}$/);
 const dir = `${root}/evidence/G30/attempt-${tag}`;
 assert(!fs.existsSync(dir), `attempt already exists: ${dir}`);
@@ -19,9 +19,9 @@ process.on('uncaughtException', error => {
   process.exitCode = 1;
 });
 
-const opening = checkOpen('docs/gates/G30/plan.json');
+const opening = checkOpen('docs/gates/G30/R1/plan.json');
 assert.equal(opening.plan_commit,
-  '05abb0ee61413b245dbb473462f93c3902eaf457');
+  '379f69d1817d8ee516480e54b04b24256b7b8fcc');
 save(`${dir}/opening.json`, opening);
 assert.equal(execFileSync('/usr/bin/git', ['-C', petta, 'rev-parse', 'HEAD'],
   {encoding:'utf8'}).trim(),
@@ -68,6 +68,9 @@ const sources = [
   'BUILD_FIDELITY_PROTOCOL.md', 'WORK_PROTOCOL.md', 'ACCEPTANCE.md',
   'docs/gates/G29/R9/closure.json', 'docs/gates/G29/R9/outcome.md',
   'docs/gates/G30/plan.json', 'docs/gates/G30/plan.md',
+  'docs/gates/G30/attempt-001-outcome.md',
+  'docs/gates/G30/R1/plan.json', 'docs/gates/G30/R1/plan.md',
+  'evidence/G30/attempt-001/failure-verdict.json',
   'src/mattermost_mock_trial_v1.metta',
   'src/bootstrap_mattermost_mock_trial_v1.metta',
   'src/participation.metta', 'src/participation_support.metta',
@@ -81,7 +84,7 @@ const artifacts = [candidateSource, candidateTests, copiedSource, copiedTests,
   `${dir}/preflight-verdict.json`];
 save(`${dir}/manifest.json`, {
   schema:'miter-g30-freeze-v1',
-  plan:'docs/gates/G30/plan.json',
+  plan:'docs/gates/G30/R1/plan.json',
   plan_commit:opening.plan_commit,
   files:pins([...sources.map(file => `${root}/${file}`), ...artifacts]),
   candidate:{id:'mattermost-r9', sha256:candidateHash,
