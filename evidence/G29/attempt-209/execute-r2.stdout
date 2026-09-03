@@ -1,0 +1,4 @@
+true
+true
+(result outcome (surface-extension-incomplete-r2 (surface-candidate-incomplete (surface-part-unavailable unstaged_or_invalid) (surface-part-unavailable unstaged_or_invalid))))
+(result state (() ((protected-canary Soul))))

@@ -1,0 +1,8 @@
+true
+(result canonical (tests bridge))
+(result reordered (bridge tests))
+(result bridge-only (bridge))
+(result tests-only (tests))
+(result unknown ())
+(result severed (bridge))
+(result ready true)

@@ -1,0 +1,1 @@
+{"status":"PASS-BOUNDED","canonical":["tests","bridge"],"reordering_neutral":true,"bridge_evidence_selects_bridge":true,"tests_evidence_selects_tests":true,"unknown_not_violation":true,"severed_dependency_defeats_tests_target":true}

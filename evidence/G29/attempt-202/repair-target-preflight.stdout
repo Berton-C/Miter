@@ -1,0 +1,3 @@
+true
+(result targets (tests bridge))
+(result ready true)
