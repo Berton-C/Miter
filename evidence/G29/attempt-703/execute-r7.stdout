@@ -1,0 +1,4 @@
+true
+true
+(result outcome (surface-extension-incomplete-r7 (remote-model-resource-selected openrouter-glm53 z-ai/glm-5.3 (openrouter-glm53)) (openrouter-observation openrouter-probe-r7-1 diagnostic eof 200 1750 true length provider-response 1440 "MITER_OPENROUT" z-ai/glm-5.3 Modal (usage 44 64 108 0.0003432)) (surface-extension-held-r7 (openrouter-observation openrouter-probe-r7-1 diagnostic eof 200 1750 true length provider-response 1440 "MITER_OPENROUT" z-ai/glm-5.3 Modal (usage 44 64 108 0.0003432)))))
+(result state (() ((protected-canary Soul))))

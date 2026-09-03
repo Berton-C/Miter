@@ -3,6 +3,7 @@
 :- ensure_loaded('miter_surface_design_v1.pl').
 :- ensure_loaded('miter_model_stream_v1.pl').
 :- ensure_loaded('miter_llm.pl').
+:- ensure_loaded('miter_openrouter.pl').
 :- ensure_loaded('miter_process.pl').
 :- use_module(library(http/json)).
 :- use_module(library(readutil)).
@@ -249,6 +250,13 @@ sx_r6_template_probe(Kind,['request-template-probe',Kind,true,false,MessageCount
  with_output_to(string(Rendered),json_write_dict(current_output,Template,[width(0)])),atom_json_dict(Rendered,Parsed,[]),is_dict(Parsed),
  get_dict(body,Parsed,Body),is_dict(Body),\+get_dict(response_format,Body,_),get_dict(messages,Body,Messages),maplist(is_dict,Messages),length(Messages,MessageCount),
  string_length(Rendered,Bytes),crypto_data_hash(Rendered,Hash,[algorithm(sha256),encoding(utf8)]).
+sx_r7_part_product(DesignId,Part,Observation,Product) :- catch(sx_r7_part_product_checked(DesignId,Part,Observation,Product),_,fail),!.
+sx_r7_part_product(_,_,_,[]).
+sx_r7_part_product_checked(DesignId,Part,Observation,['surface-code-part',DesignId,Id,File,['model-product',Id]]) :-
+ Observation=['openrouter-observation',Id,Part,eof,200,_,true,_, 'provider-response',_,Content,'z-ai/glm-5.3',_,_],
+ memberchk(Part,[bridge,tests]),sx_single_source_envelope(Content,Source),
+ (Part==bridge->Path="extension/mattermost_bridge.pl";Path="candidate_tests/mattermost_contract_tests.pl"),
+ crypto_data_hash(Source,H,[algorithm(sha256),encoding(utf8)]),File=['surface-candidate-file',Path,Source,H].
 sx_r5_part_observation(Id,DesignId,Part,Wire,T,['surface-r5-part-observation',Id,Part,Transport,T.http_status,T.elapsed_ms,Done,Finish,Parse,T.bytes,Content,Product]) :-
  miter_store_nonempty_atom(T.transport,Transport),
  (exists_file(Wire)->ms_decode(Wire,Done,Finish,StreamParse,Content,_,_),
@@ -269,7 +277,7 @@ sx_manifest(M,['mattermost-manifest',Schema,Kind,Modality,Role,Source,Target,['p
   [Schema,Kind,Modality,Role,Source,Target,Network,Live,Idempotency,Reconnect,Credentials,Memory,Failure,Panic,Rollback]),
  maplist(miter_store_nonempty_atom,M.inbound_ids,Inbound),maplist(miter_store_nonempty_atom,M.tests,Tests).
 
-sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-([1-6]|r1|r2|r3|r4|r5|r6)$',A),
+sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-([1-7]|r1|r2|r3|r4|r5|r6|r7)$',A),
  atom_concat('/Users/claritymiter/miter/runtime/g29/candidates/',A,P).
 sx_rel("extension/mattermost_bridge.pl").
 sx_rel("candidate_tests/mattermost_contract_tests.pl").
@@ -279,7 +287,7 @@ sx_materialize(R,C,Result) :- catch(
   forall(member(['surface-candidate-file',Rel,Text,H],Files),
    (sx_rel(Rel),directory_file_path(Base,Rel,P),file_directory_name(P,D),make_directory_path(D),
     setup_call_cleanup(open(P,write,S,[encoding(utf8)]),
-     (write(S,Text),flush_output(S),miter_store_fsync_stream(S)),close(S)),
+     (format(S,'~s',[Text]),flush_output(S),miter_store_fsync_stream(S)),close(S)),
     crypto_file_hash(P,H,[algorithm(sha256),encoding(octet)]))),
   Result=['surface-candidate-materialized',Id]),_,Result=['surface-candidate-materialization-incomplete']),!.
 sx_scan(R,C,['surface-candidate-scan',Id,Forbidden,Credential,FileStanding]) :- C=['surface-extension-candidate',_,Id,_,_,_,Files,_],

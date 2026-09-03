@@ -1,0 +1,1 @@
+{"native": ["remote-model-resource-selected", "openrouter-glm53", "z-ai/glm-5.3",  ["openrouter-glm53" ] ],"term": {"list": [ {"atom":"remote-model-resource-selected"},  {"atom":"openrouter-glm53"},  {"atom":"z-ai/glm-5.3"},  {"list": [ {"atom":"openrouter-glm53"} ]} ]}}

@@ -1,0 +1,21 @@
+// Repeat native causal controls and candidate admission counterfactuals.
+import assert from 'node:assert/strict';
+import {root,read,save,native,sexp} from '../g22_v2/common.mjs';
+
+const tag=process.argv[2]??'703',dir=`${root}/evidence/G29/attempt-${tag}`;
+assert.equal(read(`${dir}/run-verdict.json`).status,'PASS-BOUNDED');const final=read(`${dir}/final-r7.json`).native,input=read(`${dir}/input.json`).native;
+const resources=input[6],removed=resources.filter(x=>x[1]!=='openrouter-glm53'),ambiguous=[...resources,['remote-model-resource','peer','z-ai/glm-5.3','openrouter-profile','operator-authorized','zdr-deny','failure-differentiating','supported','available']];
+const exact='(openrouter-observation probe diagnostic eof 200 10 true stop provider-response 22 "MITER_OPENROUTER_READY" z-ai/glm-5.3 provider (usage 1 1 2 0))',mismatch='(openrouter-observation probe diagnostic eof 200 10 true stop provider-response 5 "READY" z-ai/glm-5.3 provider (usage 1 1 2 0))';
+const boot=`!(import! &self "${root}/src/bootstrap_surface_extension_v1.metta")\n`,rows=native(dir,'r7-quality-controls',
+ `!(result canonical (SXSelectRemoteResource ${sexp(resources)}))\n!(result reordered (SXSelectRemoteResource ${sexp([...resources].reverse())}))\n!(result removed (SXSelectRemoteResource ${sexp(removed)}))\n!(result ambiguous (SXSelectRemoteResource ${sexp(ambiguous)}))\n!(result exact (SXRemoteDiagnosticValid ${exact}))\n!(result mismatch (SXRemoteDiagnosticValid ${mismatch}))`,boot),map=Object.fromEntries(rows.map(x=>[x[1],x[2]]));
+assert.equal(map.canonical[1],'openrouter-glm53');assert.deepEqual(map.reordered,map.canonical);assert.equal(map.removed[0],'remote-model-resource-unresolved');assert.equal(map.ambiguous[0],'remote-model-resource-unresolved');assert.equal(map.exact,'true');assert.equal(map.mismatch,'false');
+const design=final[1],assessment=final[3],candidate=assessment[1],syntax=assessment[4],trial=assessment[5],targets=assessment[6],compactDesign=['surface-design',design[1],'scope','request','contract','api','prior','grant',design[8],'obligations','basis'],compact=structuredClone(candidate);compact[3]='rationale';compact[4]='plan';compact[6][0][2]='bridge-source';compact[6][0][3]='bridge-hash';compact[6][1][2]='tests-source';compact[6][1][3]='tests-hash';
+const scan=['surface-candidate-scan','mattermost-r7',[],[],'exact-files'],badScan=['surface-candidate-scan','mattermost-r7',[['forbidden-core-access','extension/mattermost_bridge.pl','chroma']],[],'exact-files'],okTrial=['surface-candidate-trial',0,0,0,'false','','','exit-zero'],reordered=structuredClone(compact);reordered[6]=[...reordered[6]].reverse();
+const controls=native(dir,'r7-admission-controls',
+ `!(result canonical (SXAssessR2 ${sexp(compactDesign)} ${sexp(compact)} ${sexp(scan)} ${sexp(syntax)} ${sexp(okTrial)} ${sexp(targets)}))\n`+
+ `!(result reordered (SXAssessR2 ${sexp(compactDesign)} ${sexp(reordered)} ${sexp(scan)} ${sexp(syntax)} ${sexp(okTrial)} (tests bridge)))\n`+
+ `!(result direct-core (SXAssessR2 ${sexp(compactDesign)} ${sexp(compact)} ${sexp(badScan)} ${sexp(syntax)} ${sexp(okTrial)} ${sexp(targets)}))\n`+
+ `!(result syntax-failure (SXAssessR2 ${sexp(compactDesign)} ${sexp(compact)} ${sexp(scan)} (surface-candidate-syntax 1 0 false) ${sexp(okTrial)} ${sexp(targets)}))\n`+
+ `!(result test-failure (SXAssessR2 ${sexp(compactDesign)} ${sexp(compact)} ${sexp(scan)} ${sexp(syntax)} (surface-candidate-trial 1 1 1 false "" "error" exit-one) ${sexp(targets)}))`,boot),cm=Object.fromEntries(controls.map(x=>[x[1],x[2]]));
+for(const key of ['canonical','reordered'])assert.equal(cm[key][0],'surface-candidate-qualified-r2',key);for(const key of ['direct-core','syntax-failure','test-failure'])assert.equal(cm[key][0],'surface-candidate-unqualified-r2',key);
+save(`${dir}/quality-verdict.json`,{status:'PASS-BOUNDED',native_resource_selection:true,reordering_neutral:true,removal_holds:true,ambiguity_unresolved:true,diagnostic_consequence_sensitive:true,restored_targets:true,direct_core_rejected:true,syntax_failure_rejected:true,test_failure_rejected:true,model_calls_added:0,limits:'G29 authored-candidate qualification only; G30 mock behavior remains separate'});console.log(JSON.stringify(read(`${dir}/quality-verdict.json`)));

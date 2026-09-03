@@ -1,0 +1,78 @@
+{
+  "schema": "miter-model-resource-registry-v1",
+  "human_editable": true,
+  "selection": {
+    "mode": "native-relational",
+    "operator_preference": "openrouter-glm53",
+    "preference_standing": "evidence-not-authority",
+    "fallback_policy": "explicit-native-comparison-only",
+    "silent_model_substitution": false
+  },
+  "resources": [
+    {
+      "id": "embedding-local",
+      "kind": "local",
+      "enabled": true,
+      "adapter": "lm-studio",
+      "model": "text-embedding-nomic-embed-text-v1.5",
+      "discovery_endpoint": "http://127.0.0.1:1234/api/v0/models",
+      "inference_endpoint": "http://127.0.0.1:1234/v1/embeddings",
+      "roles": ["embedding"],
+      "credential_reference": null
+    },
+    {
+      "id": "qwen-local",
+      "kind": "local",
+      "enabled": true,
+      "adapter": "lm-studio",
+      "model": "qwen/qwen3.8-27b",
+      "discovery_endpoint": "http://127.0.0.1:1234/api/v0/models",
+      "inference_endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+      "roles": ["semantic-reading", "voice-rendering", "extension-implementation"],
+      "credential_reference": null
+    },
+    {
+      "id": "nemotron-local",
+      "kind": "local",
+      "enabled": true,
+      "adapter": "lm-studio",
+      "model": "nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+      "discovery_endpoint": "http://127.0.0.1:1234/api/v0/models",
+      "inference_endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+      "roles": ["semantic-reading", "voice-rendering", "extension-implementation"],
+      "credential_reference": null
+    },
+    {
+      "id": "openrouter-glm53",
+      "kind": "remote",
+      "enabled": true,
+      "adapter": "openrouter-chat-completions",
+      "model": "z-ai/glm-5.3",
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "roles": ["semantic-reading", "voice-rendering", "extension-implementation"],
+      "reasoning_effort": "high",
+      "limits": {
+        "max_output_tokens": 2048,
+        "deadline_seconds": 300,
+        "capture_bytes": 2097152
+      },
+      "provider": {
+        "zdr": true,
+        "data_collection": "deny",
+        "require_parameters": true,
+        "allow_fallbacks": true
+      },
+      "credential_reference": {
+        "source": "macos-keychain",
+        "account": "bcb",
+        "service": "ai.bgi.miter.openrouter"
+      }
+    }
+  ],
+  "operator_notes": [
+    "Edit this file to add, disable, or express a preference among model resources.",
+    "Store secret values outside this file; credential_reference contains only a lookup location.",
+    "Operator preference participates in native comparison but never grants model text authority or executable standing.",
+    "config/local/g03-model-profiles.json is a compatibility artifact for already-certified gates pending tested migration."
+  ]
+}
