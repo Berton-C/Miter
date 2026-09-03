@@ -1,0 +1,2 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {root,hash,save} from '../g22_v2/common.mjs';
+const E=root+'/evidence/G28-R3';assert(!fs.existsSync(E+'/all-attempts.json'));const walk=p=>fs.readdirSync(p,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(p+'/'+e.name):[p+'/'+e.name]);const files=walk(E).sort().map(path=>({path:path.slice(root.length+1),sha256:hash(fs.readFileSync(path))}));save(E+'/all-attempts.json',{files});console.log(JSON.stringify({status:'INVENTORIED',files:files.length}));

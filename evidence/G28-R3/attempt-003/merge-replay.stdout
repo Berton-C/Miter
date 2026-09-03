@@ -1,0 +1,2 @@
+true
+(result merge (promotion-incomplete "error(instantiation_error,context(system:open/4,_122852))"))

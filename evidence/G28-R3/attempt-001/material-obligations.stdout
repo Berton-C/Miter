@@ -1,0 +1,6 @@
+true
+true
+(result broken-trial promotion-held)
+(result changed-cut promotion-held)
+(result changed-bytes promotion-held)
+(result unstaged (promotion-denied))

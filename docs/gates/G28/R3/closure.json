@@ -1,0 +1,71 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G28",
+  "plan": "docs/gates/G28/R3/plan.json",
+  "plan_commit": "ec09819939778fd7c48c41d90e4257528bd55be5",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "docs/gates/G28/R3/completion.md",
+      "sha256": "5c7f117655ba79cf15ecdf8ea54628be7962f5515bb55e4ddcb1115022da6622"
+    },
+    {
+      "path": "evidence/G28-R3/all-attempts.json",
+      "sha256": "9c14b9813d682730d680513ff35fa042413f823b22266b21247bee9a509ced4a"
+    },
+    {
+      "path": "evidence/G28-R3/verification.json",
+      "sha256": "8436da4e35f7dccb64d327ec60ae95d4881a527a32f38eed977c07dc6e537cee"
+    },
+    {
+      "path": "evidence/G28-R3/attempt-002/verdict.json",
+      "sha256": "76881401eed09aeff62c1d576cbdb9aedfdc65fde25028aafe91b843eddaa712"
+    },
+    {
+      "path": "evidence/G28-R3/attempt-002/quality-verdict.json",
+      "sha256": "242d3efbcd158d0944b808de92f154041e45f92714c42cf8e52e17bf1b31dcdc"
+    },
+    {
+      "path": "evidence/G28-R3/attempt-005/verdict.json",
+      "sha256": "7469b2a539571d5fa8d4d72b362e7996c00f4fa628f3b97ca51fa24cb5162fb4"
+    },
+    {
+      "path": "src/executable_promotion_v1.metta",
+      "sha256": "103a898cca9cfe2c7671bfcb83718b114f894907aa51ee6e298c0101e6037aab"
+    },
+    {
+      "path": "src/bootstrap_executable_promotion_v1.metta",
+      "sha256": "ba7e6e9a2fdb208e44d3c441c849d1ed4cfc9982033e657d9bdb2c61949dc944"
+    },
+    {
+      "path": "effect_membranes/miter_workshop_promotion_v1.pl",
+      "sha256": "c2446dd91634dec3b6a4882d16901626756e61779b82c3c02c028a200df0634e"
+    },
+    {
+      "path": "config/workshop-promotion-v1.json",
+      "sha256": "0a357219a8ba3cadc4535c3347a17778a54fb41906c730e15e2cd1a266a2b7fc"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G28-R3-approved-merge",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Exact user-approved candidate merged additively only inside the non-networked G28 laboratory. Native approval/trial admission and interrupted-effect reconciliation are proven for this finite candidate and scope, not for live or distributed promotion."
+    },
+    {
+      "id": "G28-R3-later-uptake",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Accepted, parent rollback and restored projections produced the expected independent contract result in disposable worktrees. This proves finite version uptake and recovery, not general self-programming or production activation."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/007/093/095/097 and S-903/904/1003/1004 require user authority, native admissibility, independent trial, distinct promotion and later uptake. Both controls and the whole ledger were retained; closure reread and exact clause inheritance are recorded in plan and completion.",
+    "causal_evidence": "Missing/generated/foreign/stale/wrong-candidate approval and broken-trial variants are held; severing approval or trial readers admits a forbidden case and restoration rejects it. The exact merge was interrupted after Git state change and recovered without a duplicate. Active, rollback and restored projections change independent later-use results as expected, and replay adds no events.",
+    "substitution_audit": "The builder supplied the finite contract, candidate identity, laboratory scope and approval fixture; native MeTTa admitted those relations before the Prolog membrane performed mechanics. No model verdict, Prolog goal choice, JavaScript behavior table, PLN/NAL quantity or candidate-owned test was treated as Soul authority. Complete Soul cognition is not claimed.",
+    "capability_and_constraint_audit": "One exact two-parent additive merge occurred only in the isolated seed. No model call, network, credential, live service, production installation or push occurred. Failed branches and all event lineage survive. Cached receipts were requalified against original payload/hash and the complete journal. Controls and unrelated G22/user R1 work remain preserved.",
+    "remaining_gaps": "G29 must prove native construction and Miter authorship of an implementation-empty Mattermost design candidate; G30 must independently execute adversarial mock behavior; G31 alone may receive separately granted live authority. Whole-Soul and general self-extension claims remain open."
+  },
+  "reviewer": "Codex builder with independent deterministic ancestry, tree, event-ledger, replay and later-use checks; no separate model or human code review invented.",
+  "review_limits": "Packaging verifies structural fidelity and the finite laboratory claim only. It does not expand approval beyond candidate fb2022d36f7d84e52c26be3906f06c67a73d3028 or beyond the isolated non-networked G28 laboratory.",
+  "next_plan": "docs/gates/G29/plan.json"
+}

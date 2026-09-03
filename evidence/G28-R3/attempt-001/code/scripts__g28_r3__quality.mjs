@@ -1,0 +1,22 @@
+// Finite causal tests, before promotion. No candidate code or authority invented.
+import fs from 'node:fs';import assert from 'node:assert/strict';import {execFileSync} from 'node:child_process';
+import {root,read,save,native} from '../g22_v2/common.mjs';
+const n=process.argv[2],d=root+'/evidence/G28-R3/attempt-'+n;assert.equal(read(d+'/prepared.json').status,'PREPARED');assert(!fs.existsSync(d+'/quality-verdict.json'));
+const input=read(d+'/input.json').native,snap=read(d+'/snapshot.json'),cases=[];
+const add=(name,edit)=>{const c={name,input:structuredClone(input),snapshot:structuredClone(snap)};edit?.(c);cases.push(c)};
+add('canonical');add('neutral',c=>c.input[1]='unrelated-request-label');add('missing',c=>c.input[3]=[]);
+add('generated',c=>{c.input[3][0][2]='generation';c.input[4][0][2]='generation'});
+add('foreign',c=>{c.input[3][0][3]=['another-principal'];c.input[4][0][3]=['another-principal']});
+add('stale',c=>c.input[5][0][2]='v2');add('wrong-candidate',c=>{c.input[3][0][6][1]='not-approved';c.input[4][0][6][1]='not-approved'});
+save(d+'/fixtures.json',{cases});
+const b=`!(import! &self "${root}/src/bootstrap_executable_promotion_v1.metta")\n!(import_prolog_functions_from_file "${root}/scripts/g28_r3/fixtures.pl" (ef_pair))\n`;
+const body=cases.map(c=>`!(result ${c.name} (let* (($p (ef_pair "${d}" ${c.name})) ($a (EPAdmission (index-atom $p 0) (index-atom $p 1)))) (index-atom $a 0)))`).join('\n');
+const results=native(d,'admission-cases',body,b);assert.equal(results.length,cases.length);for(const r of results)assert.equal(r[2],['canonical','neutral'].includes(r[1])?'promotion-admitted':'promotion-held');
+const src=fs.readFileSync(root+'/src/executable_promotion_v1.metta','utf8'),start=src.indexOf('(= (EPApproval '),end=src.indexOf('(= (EPTrial ',start);
+save(d+'/approval-severed-code.metta',src.slice(0,start)+'(= (EPApproval $input $snapshot) (promotion-authorized severed))\n'+src.slice(end));
+const sever=`!(import! &self "${root}/src/bootstrap_executable_development_v3.metta")\n!(import_prolog_functions_from_file "${root}/scripts/g28_r3/fixtures.pl" (ef_pair))\n!(import! &self "${d}/approval-severed-code.metta")\n`;
+const out=native(d,'approval-severed',body,sever);assert.equal(out.find(x=>x[1]==='generated')[2],'promotion-admitted');assert.deepEqual(native(d,'restored',body,b),results);
+const material=native(d,'material-obligations',['broken-trial','changed-cut','changed-bytes'].map(name=>`!(result ${name} (let* (($p (ef_pair "${d}" ${name})) ($a (EPAdmission (index-atom $p 0) (index-atom $p 1)))) (index-atom $a 0)))`).join('\n')+`\n!(result unstaged (wp_merge "${d}" fake))`,b);
+for(const r of material.slice(0,3))assert.equal(r[2],'promotion-held');assert.deepEqual(material[3][2],['promotion-denied']);
+const G=read(root+'/config/workshop-promotion-v1.json');assert.equal(execFileSync('/usr/bin/git',['-C',G.workshop_root+'/seed','rev-parse','main'],{encoding:'utf8'}).trim(),G.parent);
+save(d+'/quality-verdict.json',{status:'PASS-BOUNDED',approval_cases:results,severed_and_restored:true,material,not_promoted:true,limits:'Finite candidate-bound approval and immutable trial comparison, not live identity-ingress proof'});console.log(JSON.stringify(read(d+'/quality-verdict.json')));

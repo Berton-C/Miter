@@ -1,0 +1,2 @@
+true
+(result merge (promotion-incomplete injected-after-git-before-receipt))

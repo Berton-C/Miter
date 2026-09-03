@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "adapter",
+    "smoke"
+  ],
+  "properties": {
+    "adapter": {
+      "type": "string"
+    },
+    "smoke": {
+      "type": "string"
+    }
+  }
+}

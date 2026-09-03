@@ -1,0 +1,157 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G29",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G29: from a user-requested Mattermost capability gap, generic SurfaceEvent/SurfaceEffect requirements, actual runtime modality capabilities, official API material and prior extension consequences, native MeTTa constructs a bounded design undertaking and modality; Miter then uses a semantic oracle/workshop to produce an inert complete Mattermost manifest, plan, code and tests without changing cognitive core or prebuilding the seed.",
+  "claim_ids": [
+    "G29-native-design",
+    "G29-miter-authored-candidate"
+  ],
+  "non_claims": "No credential use, live Mattermost contact, activation, successful mock round trip, production readiness or universal interface design. G30 independently executes adversarial mock cases; G31 alone may receive explicit live credentials/channel authority.",
+  "rationale": "G28 now proves an approved additive executable lifecycle and later uptake. C-099/S-1005 make the intentionally omitted Mattermost tentacle the next dependency. Building mock runtime behavior before Miter authors the design would erase the omitted-part proof.",
+  "requirements": [
+    "C-004",
+    "C-005",
+    "C-006",
+    "C-007",
+    "C-008",
+    "C-015",
+    "C-020",
+    "C-021",
+    "C-023",
+    "C-024",
+    "C-060",
+    "C-061",
+    "C-062",
+    "C-063",
+    "C-064",
+    "C-065",
+    "C-066",
+    "C-067",
+    "C-090",
+    "C-091",
+    "C-093",
+    "C-094",
+    "C-095",
+    "C-096",
+    "C-097",
+    "C-098",
+    "C-099",
+    "C-100",
+    "C-102",
+    "C-103",
+    "C-104",
+    "S-103",
+    "S-106",
+    "S-501",
+    "S-502",
+    "S-503",
+    "S-504",
+    "S-601",
+    "S-607",
+    "S-801",
+    "S-804",
+    "S-901",
+    "S-903",
+    "S-904",
+    "S-905",
+    "S-1003",
+    "S-1004",
+    "S-1005",
+    "S-1101",
+    "S-1102",
+    "S-1103",
+    "S-1104",
+    "S-1105",
+    "T-27",
+    "T-28",
+    "T-30",
+    "T-36"
+  ],
+  "reading": "Both unchanged controls and complete ledger retained; closure reread C-004–025/060–067/090–105; S-103/106/501–504/601/607/801/804/901–905/1003–1005/1101–1105; WORK_PROTOCOL W-100–109/W-120 onward; ACCEPTANCE G29 and G30 boundary. Official Mattermost REST/OpenAPI/WebSocket primary sources inspected 2026-09-03; exact downloaded references will be hashed before implementation.",
+  "representation": "A surface capability gap and user undertaking bind generic input/output identity, authorization, memory-scope, idempotency, reconnect/cursor, failure and secret-capability obligations. Runtime-language capabilities and required relations yield eligible modalities and explicit missing dependencies; no model vote or scenario response chooses. An oracle renders design/code candidates; native schema/source/admission retains questions, rationale and ancestry.",
+  "consumer": "New MeTTa surface-design/extension continuation, versioned mechanical model/workshop membrane able to carry schema-limited multi-file candidates, and independent offline design/contract verifier. Seed remains implementation-free until the Miter-origin candidate appears. JavaScript builds mock references/checks only and cannot author Mattermost candidate code or decide modality.",
+  "falsifiers": "Seed scan finds preexisting builder Mattermost implementation; rename/ordering changes modality; sever runtime capability or required relation without changing construction; generated rationale alone selects; incomplete/foreign/user-unconfirmed source admitted; missing stable IDs, authenticated scope, idempotency, cursor, reconnect, failure witness, secret isolation or rollback still passes; candidate imports Soul/Chroma/private paths or embeds credential; candidate alters core/tests. Sever/restored dependency evidence required. Failed generations/iterations retained.",
+  "scope_review": "Up to four local model calls in finite 4096-output-token/300-second slices, only after native design construction; qwen may be selected only from its retained successful G28 consequence plus fresh-context fitness, not assumed superiority. No remote provider, persistent model change, credentials or live Mattermost HTTP/WebSocket. Read-only official public API references only. Candidate stays quarantined/unpromoted for G30.",
+  "rollback": "No seed implementation exists before generation. All artifacts stay in new G29 evidence and isolated worktrees; no main merge/activation. Retain raw requests, rejected candidates and design alternatives. Do not modify controls, G28 laboratory state, user services or root repository history beyond normal evidence commits.",
+  "predecessor": "docs/gates/G28/R3/closure.json",
+  "allowed_paths": [
+    "src/surface_design_v1.metta",
+    "src/bootstrap_surface_design_v1.metta",
+    "src/surface_extension_v1.metta",
+    "src/bootstrap_surface_extension_v1.metta",
+    "effect_membranes/miter_surface_design_v1.pl",
+    "effect_membranes/miter_surface_extension_v1.pl",
+    "config/surface-event-v1.json",
+    "config/surface-effect-v1.json",
+    "config/mattermost-design-candidate-v1.json",
+    "config/mattermost-candidate-v1.json",
+    "scripts/g29/",
+    "tests/fixtures/g29/",
+    "evidence/G29/",
+    "docs/gates/G29/",
+    "docs/gates/G30/",
+    "runtime/g29/"
+  ],
+  "preserved": [
+    {
+      "path": "effect_membranes/miter_trials.pl",
+      "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256",
+      "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/inputs/plan.txt",
+      "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/preflight.txt",
+      "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stderr",
+      "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"
+    },
+    {
+      "path": "evidence/20260902T090100Z-G22/raw/prepare.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/g22/prepare.pl",
+      "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"
+    },
+    {
+      "path": "src/bootstrap_trials.metta",
+      "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"
+    },
+    {
+      "path": "src/trials.metta",
+      "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"
+    },
+    {
+      "path": "tests/fixtures/g22_canonical.metta",
+      "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"
+    },
+    {
+      "path": "tests/fixtures/g22_cases.json",
+      "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"
+    },
+    {
+      "path": "tests/fixtures/g22_parent.metta",
+      "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"
+    },
+    {
+      "path": "tests/fixtures/g22_severed.metta",
+      "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"
+    },
+    {
+      "path": "docs/gates/G28/R1/completion.md",
+      "sha256": "d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"
+    }
+  ]
+}

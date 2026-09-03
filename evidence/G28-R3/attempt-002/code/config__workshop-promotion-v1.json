@@ -1,0 +1,15 @@
+{
+  "schema": "miter-workshop-promotion-v1",
+  "workshop_root": "/Users/claritymiter/miter/runtime/g27/attempt-28204",
+  "candidate": "fresh-1",
+  "target": "fb2022d36f7d84e52c26be3906f06c67a73d3028",
+  "parent": "182361b56dad9fd82b6cd557bea5539574cbac89",
+  "evidence_root": "/Users/claritymiter/miter/evidence/G28-R2/attempt-004",
+  "scope": "isolated-builder-lab",
+  "network": "none",
+  "credentials": [],
+  "test_interrupt_after_git": true,
+  "test_interrupt_after_projection_write": true,
+  "approval": "Berton: please continue. After the exact candidate/scope request and clarification in this conversation.",
+  "standing": "Candidate-specific local grant. No live services, production installation or push."
+}

@@ -1,0 +1,9 @@
+true
+true
+(result canonical promotion-admitted)
+(result neutral promotion-admitted)
+(result missing promotion-held)
+(result generated promotion-held)
+(result foreign promotion-held)
+(result stale promotion-held)
+(result wrong-candidate promotion-held)

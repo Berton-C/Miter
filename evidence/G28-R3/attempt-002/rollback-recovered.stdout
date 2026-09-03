@@ -1,0 +1,2 @@
+true
+(result projection (projection-selected (active-projection 182361b56dad9fd82b6cd557bea5539574cbac89 rollback) (workshop-result projection-rollback projection-selected workshop-7d388fe8304bbee99afe7b92924451f9ebef88eb367dd782504c1bab1b5587ca 7d388fe8304bbee99afe7b92924451f9ebef88eb367dd782504c1bab1b5587ca)))

@@ -1,0 +1,15 @@
+{
+  "schema": "miter-workshop-contract-v1",
+  "image": "sha256:de3a4eab8fdfa507ea92aac488b916b08089e515db49b055fe71dfa271ba3a28",
+  "platform": "linux/amd64",
+  "user": "501:20",
+  "network": "none",
+  "memory": "128m",
+  "cpus": "0.5",
+  "pids_limit": 32,
+  "timeout_seconds": 6,
+  "output_limit": 16384,
+  "file_limit": 131072,
+  "writable_roots": ["extension", "candidate_tests"],
+  "standing": "Fixed laboratory mechanical grant; no semantic adjudication or promotion"
+}

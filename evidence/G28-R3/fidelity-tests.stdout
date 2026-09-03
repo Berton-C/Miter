@@ -1,0 +1,60 @@
+TAP version 13
+# Subtest: valid plan is packaging, not semantic certification
+ok 1 - valid plan is packaging, not semantic certification
+  ---
+  duration_ms: 3.012792
+  ...
+# Subtest: changed control is rejected
+ok 2 - changed control is rejected
+  ---
+  duration_ms: 0.529792
+  ...
+# Subtest: unknown requirement rejected
+ok 3 - unknown requirement rejected
+  ---
+  duration_ms: 1.058791
+  ...
+# Subtest: both controls required
+ok 4 - both controls required
+  ---
+  duration_ms: 0.762708
+  ...
+# Subtest: missing falsifiers rejected
+ok 5 - missing falsifiers rejected
+  ---
+  duration_ms: 1.115625
+  ...
+# Subtest: preserved-work tampering rejected
+ok 6 - preserved-work tampering rejected
+  ---
+  duration_ms: 0.811917
+  ...
+# Subtest: path escape rejected
+ok 7 - path escape rejected
+  ---
+  duration_ms: 0.079167
+  ...
+# Subtest: duplicate claim IDs rejected
+ok 8 - duplicate claim IDs rejected
+  ---
+  duration_ms: 0.612125
+  ...
+# Subtest: original acceptance gate IDs retain the same package requirements
+ok 9 - original acceptance gate IDs retain the same package requirements
+  ---
+  duration_ms: 4.123041
+  ...
+# Subtest: unknown or malformed gate IDs rejected
+ok 10 - unknown or malformed gate IDs rejected
+  ---
+  duration_ms: 0.295875
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 63.6775
