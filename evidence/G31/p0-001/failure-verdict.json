@@ -1,0 +1,26 @@
+{
+  "status": "FAIL-REPRESENTATION",
+  "failure_kind": "inbound-source-and-credentialed-bot-identity-conflation",
+  "read_only_inventory_passed": true,
+  "possible_container": "clarityclaw_mattermost",
+  "live_grant_held": true,
+  "false_live_ready_detected_in_synthetic_control": true,
+  "missing_distinction": {
+    "authorized_inbound_source_user_ids": "not represented separately",
+    "credentialed_outbound_bot_user_id": "represented",
+    "why_material": "The candidate authorizes inbound Frame.user_id; the credential principal sends outbound effects. They are different authority roles."
+  },
+  "additional_required_standing": [
+    "VoiceRNA/certified-movement route before outbound effect",
+    "qualified live transport version and candidate binding",
+    "destination-specific uncertain-outcome reconciliation standing"
+  ],
+  "credential_lookups": 0,
+  "network_requests": 0,
+  "docker_mutations": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "model_calls": 0,
+  "activated": false,
+  "promoted": false
+}

@@ -1,0 +1,3 @@
+62c05683b8c6 miter-chroma chromadb/chroma:1.5.9 127.0.0.1:8001->8000/tcp
+2ca9f5b075ee clarityclaw_mattermost mattermost/mattermost-team-edition:11.7.7 0.0.0.0:8065->8065/tcp, [::]:8065->8065/tcp
+949148d891f2 clarityclaw_db postgres:16-alpine 5432/tcp
