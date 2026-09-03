@@ -1,0 +1,65 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G29",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G29 R2: native artifact-obligation comparison uses retained R1 failure evidence to select bridge and test repair targets, preserves the passing design product, and qualifies only an exact, quarantined, model-rendered two-file replacement after syntax, candidate-test, boundary, lineage and causal checks pass.",
+  "claim_ids": [
+    "G29-R2-evidence-selected-repair",
+    "G29-R2-qualified-authored-candidate"
+  ],
+  "non_claims": "No live Mattermost contact, credentials, adapter activation, production readiness, promotion, G30 mock-service result, or complete Soul cognition. The local model cannot choose repair scope, alter the design or grant, certify its output, or write the cognitive core.",
+  "rationale": "R1 preserved three complete model products, but actual SWI-Prolog execution exposed independent bridge syntax/export and PLUnit-structure defects. It also proved exit status alone was an unsound syntax witness. Both affected artifacts must be repaired from the observed consequences; the source-grounded design, manifest and rationale remain undefeated and must not be regenerated.",
+  "requirements": [
+    "C-004", "C-005", "C-006", "C-007", "C-008", "C-020", "C-021", "C-023", "C-024",
+    "C-060", "C-061", "C-062", "C-063", "C-064", "C-065", "C-066", "C-067",
+    "C-090", "C-091", "C-093", "C-094", "C-095", "C-096", "C-097", "C-098", "C-099", "C-100", "C-102", "C-103", "C-104",
+    "S-103", "S-106", "S-501", "S-502", "S-503", "S-504", "S-601", "S-607", "S-801", "S-804",
+    "S-901", "S-903", "S-904", "S-905", "S-1003", "S-1004", "S-1005", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105",
+    "T-27", "T-28", "T-30", "T-36"
+  ],
+  "reading": "Unchanged controls and the full ledger remain authoritative. Reread C-004–024, C-060–067 and C-090–104; S-501–504, S-607, S-801/804, S-901–905, S-1003–1005 and S-1101–1105; WORK_PROTOCOL W-100–109/W-120–127; ACCEPTANCE G29/G30; the frozen G29 R1 plan; and evidence/G29/attempt-107 including exact candidate bytes, stderr and corrected native syntax verdict.",
+  "representation": "Typed artifact, obligation, and observation atoms connect each violated consequence to the files capable of satisfying it. Native comparison constructs the repair target set without first-match rules. Two lineage-bound model observations contain replacement bridge and test source; the prior design product remains distinct. Native assembly and qualification consume exact hashes, scans, syntax and test observations.",
+  "consumer": "Revised G29 MeTTa constructs repair targets, prompts, assembly and standing. The G29 Prolog membrane only transports local model requests, materializes quarantined files, scans boundaries, runs SWI-Prolog, and durably records observations. Offline JavaScript freezes inputs and independently verifies evidence; it does not author candidate source or choose runtime continuation.",
+  "falsifiers": "Reversing bridge/test evidence does not reverse targets; unknown evidence becomes violation; reordering relations changes selection; severing dependencies still selects; a missing, foreign, truncated, credential-bearing, direct-Soul/Chroma, syntactically invalid, test-failing or lineage-mismatched product qualifies; SWI stderr ERROR with exit zero passes; model output changes design/grant/core; or the R1 candidate is promoted despite the retained failure.",
+  "scope_review": "At most two new qwen-local claims, one bridge repair and one test repair, each capped at 2048 output tokens, 300 seconds and 2 MiB capture. No persistent model setting, remote model, credential, live Mattermost network, production activation, push, user-service stop, or hand-authored candidate repair. G30 remains independently planned and executed after G29 closure.",
+  "rollback": "All initial, R1, harness-failure and definitive attempt-107 evidence remains immutable. The unused fourth R1 claim remains unspent. R2 writes only new G29 evidence/runtime quarantine and versioned G29 source revisions. Failure preserves candidates and stops for a newly composed bounded plan; no adapter is promoted or activated.",
+  "predecessor": "docs/gates/G29/R1/outcome.md and evidence/G29/attempt-107/candidate-trial.json: retained two-artifact failure after corrected native syntax verification",
+  "allowed_paths": [
+    "src/surface_design_v1.metta",
+    "src/bootstrap_surface_design_v1.metta",
+    "src/surface_extension_v1.metta",
+    "src/bootstrap_surface_extension_v1.metta",
+    "effect_membranes/miter_surface_design_v1.pl",
+    "effect_membranes/miter_surface_extension_v1.pl",
+    "config/surface-event-v1.json",
+    "config/surface-effect-v1.json",
+    "config/mattermost-design-candidate-v1.json",
+    "config/mattermost-design-part-v1.json",
+    "config/mattermost-code-part-v1.json",
+    "scripts/g29/",
+    "tests/fixtures/g29/",
+    "evidence/G29/",
+    "docs/gates/G29/",
+    "docs/gates/G30/",
+    "runtime/g29/"
+  ],
+  "preserved": [
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"}
+  ]
+}

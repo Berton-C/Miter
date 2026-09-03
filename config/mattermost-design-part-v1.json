@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["rationale", "plan", "manifest"],
+  "properties": {
+    "rationale": {"type": "string", "minLength": 80, "maxLength": 3000},
+    "plan": {"type": "string", "minLength": 80, "maxLength": 4000},
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema", "kind", "modality", "role", "source_interface",
+        "target_interface", "permissions", "inbound_ids", "outbound_idempotency",
+        "cursor_reconnect", "credential_isolation", "memory_scope",
+        "failure_witness", "panic", "rollback", "tests"
+      ],
+      "properties": {
+        "schema": {"const": "miter-mattermost-extension-manifest-v1"},
+        "kind": {"const": "mattermost-surface-bridge"},
+        "modality": {"const": "swi-prolog"},
+        "role": {"const": "transport-and-identity-mapping-only"},
+        "source_interface": {"const": "mattermost-rest-v4-and-websocket"},
+        "target_interface": {"const": "surface-event-effect-v1"},
+        "permissions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["network", "credentials", "live_activation"],
+          "properties": {
+            "network": {"const": "none-in-g29"},
+            "credentials": {"type": "array", "maxItems": 0},
+            "live_activation": {"const": "human-gated-after-g30"}
+          }
+        },
+        "inbound_ids": {"const": ["server_id", "team_id", "channel_id", "user_id", "post_id", "root_id", "event_timestamp", "cursor"]},
+        "outbound_idempotency": {"const": "stable-effect-id-and-idempotency-key"},
+        "cursor_reconnect": {"const": "durable-monotone-cursor-with-duplicate-suppression"},
+        "credential_isolation": {"const": "bridge-environment-only-never-returned"},
+        "memory_scope": {"const": "core-derived-from-authenticated-surface-and-channel"},
+        "failure_witness": {"const": "typed-surface-failure-event"},
+        "panic": {"const": "fixed-local-stop-denies-new-effects"},
+        "rollback": {"const": "versioned-projection-preserves-history"},
+        "tests": {"const": ["authorized", "duplicate", "edited", "unauthorized", "send-failure", "reconnect", "cursor-resume", "panic"]}
+      }
+    }
+  }
+}

@@ -14,12 +14,16 @@ rv_json(P,D) :- sd_json(P,D).
 tv_durable_json(P,D) :- sd_durable_json(P,D).
 
 sx_name(Prefix,N,Name) :- atom(Prefix),integer(N),N>=0,N=<1024,format(atom(Name),'~w-~d',[Prefix,N]).
+sx_part_name(Part,N,Name) :- memberchk(Part,[design,bridge,tests]),integer(N),N>=1,N=<4,format(atom(Name),'~w-~d',[Part,N]).
 sx_save(R,N,V,S) :- sd_save(R,N,V,S).
 sx_named(R,Id,Suffix,P) :- miter_store_nonempty_atom(Id,A),re_match('^[a-zA-Z0-9_-]+$',A),
  format(atom(F),'~w-~w.json',[A,Suffix]),sd_path(R,F,P).
 sx_spend(R,Id) :- once((member(Slot,[1,2,3,4]),format(atom(P),'/Users/claritymiter/miter/evidence/G29/call-~d.claim',[Slot]),
  \+exists_directory(P),catch(make_directory(P),_,fail))),directory_file_path(P,'owner.json',O),
  sd_durable_json(O,_{root:R,request:Id,slot:Slot}).
+sx_r1_spend(R,Id) :- once((member(Slot,[1,2,3,4]),format(atom(P),'/Users/claritymiter/miter/evidence/G29/R1-call-~d.claim',[Slot]),
+ \+exists_directory(P),catch(make_directory(P),_,fail))),directory_file_path(P,'owner.json',O),
+ sd_durable_json(O,_{root:R,request:Id,slot:Slot,grant:"G29-R1"}).
 
 sx_model(R,Q,Observation) :- catch((sx_model_checked(R,Q,Observation)->true;Observation=['surface-model-unavailable',unstaged_or_invalid]),E,
  (term_string(E,S),Observation=['surface-model-unavailable',S])),!.
@@ -68,7 +72,51 @@ sx_product(Id,DesignId,D,['surface-extension-candidate',DesignId,Id,D.rationale,
 sx_file(D,['surface-candidate-file',D.path,D.content,H]) :- is_dict(D),string(D.path),string(D.content),
  crypto_data_hash(D.content,H,[algorithm(sha256),encoding(utf8)]).
 
-sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-[1-4]$',A),
+sx_part_model(R,Q,Observation) :- catch((sx_part_model_checked(R,Q,Observation)->true;Observation=['surface-part-unavailable',unstaged_or_invalid]),E,
+ (term_string(E,S),Observation=['surface-part-unavailable',S])),!.
+sx_part_model_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&derived'('surface-part-generation-pending',R,Q),true),
+ Q=['surface-part-generation',Id,DesignId,Context,Slot,Part,'qwen-local',Instructions,Feedback],
+ atom(Id),atom(DesignId),memberchk(Part,[design,bridge,tests]),integer(Slot),Slot>=1,Slot=<4,string(Instructions),
+ Context=['surface-render-context',DesignId|_],sx_named(R,Id,generation,GP),
+ (exists_file(GP)->sd_json(GP,G),sd_document_native(G,Q);sd_encode(Q,Enc),sd_durable_json(GP,_{native:Q,term:Enc})),
+ sx_named(R,Id,observation,OP),
+ (exists_file(OP)->sd_json(OP,Stored),sd_document_native(Stored,Observation);
+  sx_named(R,Id,request,RP),sx_named(R,Id,wire,Wire),sx_named(R,Id,header,Header),sx_named(R,Id,timing,Timing),
+  sx_named(R,Id,claim,Claim),make_directory(Claim),sx_r1_spend(R,Id),
+  (Part==design->SchemaPath='/Users/claritymiter/miter/config/mattermost-design-part-v1.json';SchemaPath='/Users/claritymiter/miter/config/mattermost-code-part-v1.json'),
+  sd_json(SchemaPath,Schema),sd_encode(Context,ContextDoc),sd_encode(Feedback,FeedbackDoc),
+  with_output_to(string(User),json_write_dict(current_output,_{native_design:ContextDoc,observed_prior:FeedbackDoc,
+   official_interface:_{rest_base:"/api/v4",websocket:"/api/v4/websocket",fields:["event","data","broadcast","seq"],create_post:"POST /api/v4/posts"}},[width(0)])),
+  Template=_{schema:"miter-schema-request-v1",request_id:Id,endpoint:"http://127.0.0.1:1234/v1/chat/completions",
+   body:_{messages:[_{role:"system",content:Instructions},_{role:"user",content:User}],
+    response_format:_{type:"json_schema",json_schema:_{name:"miter_mattermost_part",strict:true,schema:Schema}},
+    temperature:0,top_p:1,reasoning_effort:"none",max_tokens:2048,seed:2902,stream:true,ttl:300}},
+  sx_named(R,Id,template,TP),sd_durable_json(TP,Template),
+  miter_lm_prepare_request('/Users/claritymiter/miter/config/local/g03-model-profiles.json','qwen-local',TP,RP,'model-request-prepared'),
+  ms_capture(RP,Wire,Header,300,2097152,TR),sd_durable_json(Timing,TR),
+  sx_part_observation(Id,DesignId,Part,Wire,TR,Observation),sd_encode(Observation,EO),sd_durable_json(OP,_{native:Observation,term:EO})).
+sx_part_observation(Id,DesignId,Part,Wire,T,['surface-part-observation',Id,Part,Transport,T.http_status,T.elapsed_ms,Done,Finish,Parse,T.bytes,Content,Product]) :-
+ miter_store_nonempty_atom(T.transport,Transport),
+ (exists_file(Wire)->ms_decode(Wire,Done,Finish,StreamParse,Content,_,_),
+  (StreamParse=='malformed-stream'->Parse='malformed-stream',Product=[];
+   catch(atom_json_dict(Content,D,[]),_,fail),sx_part_product(Id,DesignId,Part,D,Product)
+   ->Parse='artifact-shaped';Parse='schema-mismatch',Product=[])
+ ;Done=false,Finish=unknown,Parse='missing-response',Content="",Product=[]).
+sx_part_product(Id,DesignId,design,D,['surface-design-part',DesignId,Id,D.rationale,D.plan,Manifest,['model-product',Id]]) :-
+ is_dict(D),string(D.rationale),string(D.plan),sx_manifest(D.manifest,Manifest).
+sx_part_product(Id,DesignId,bridge,D,['surface-code-part',DesignId,Id,File,['model-product',Id]]) :-
+ is_dict(D),string(D.content),crypto_data_hash(D.content,H,[algorithm(sha256),encoding(utf8)]),File=['surface-candidate-file',"extension/mattermost_bridge.pl",D.content,H].
+sx_part_product(Id,DesignId,tests,D,['surface-code-part',DesignId,Id,File,['model-product',Id]]) :-
+ is_dict(D),string(D.content),crypto_data_hash(D.content,H,[algorithm(sha256),encoding(utf8)]),File=['surface-candidate-file',"candidate_tests/mattermost_contract_tests.pl",D.content,H].
+sx_manifest(M,['mattermost-manifest',Schema,Kind,Modality,Role,Source,Target,['permissions',Network,M.permissions.credentials,Live],Inbound,
+ Idempotency,Reconnect,Credentials,Memory,Failure,Panic,Rollback,Tests]) :-
+ maplist(miter_store_nonempty_atom,
+  [M.schema,M.kind,M.modality,M.role,M.source_interface,M.target_interface,M.permissions.network,M.permissions.live_activation,
+   M.outbound_idempotency,M.cursor_reconnect,M.credential_isolation,M.memory_scope,M.failure_witness,M.panic,M.rollback],
+  [Schema,Kind,Modality,Role,Source,Target,Network,Live,Idempotency,Reconnect,Credentials,Memory,Failure,Panic,Rollback]),
+ maplist(miter_store_nonempty_atom,M.inbound_ids,Inbound),maplist(miter_store_nonempty_atom,M.tests,Tests).
+
+sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-([1-4]|r1)$',A),
  atom_concat('/Users/claritymiter/miter/runtime/g29/candidates/',A,P).
 sx_rel("extension/mattermost_bridge.pl").
 sx_rel("candidate_tests/mattermost_contract_tests.pl").
@@ -89,10 +137,14 @@ sx_scan(R,C,['surface-candidate-scan',Id,Forbidden,Credential,FileStanding]) :- 
  findall(['credential-literal',Path],(member(['surface-candidate-file',Path,Text,_],Files),
   re_match('(?i)(bearer[[:space:]]+[a-z0-9_-]{12,}|api[_-]?key[[:space:]]*[:=][[:space:]]*["''][^"'']{8,})',Text)),C0),sort(C0,Credential),
  sd_verify(R).
-sx_syntax(R,C,['surface-candidate-syntax',Code,Truncated]) :- C=['surface-extension-candidate',_,Id|_],sx_candidate_root(R,Id,Base),
+sx_syntax(R,C,['surface-candidate-syntax',BridgeCode,TestsCode,Truncated]) :- C=['surface-extension-candidate',_,Id|_],sx_candidate_root(R,Id,Base),
  directory_file_path(Base,'extension/mattermost_bridge.pl',Bridge),directory_file_path(Base,'candidate_tests/mattermost_contract_tests.pl',Tests),
- sx_exec('/opt/homebrew/bin/swipl',['-q','-g','halt','-s',Bridge,'-s',Tests],Base,20,1048576,Status,_,_,Truncated),
- (Status=exit(Code)->true;Code=255).
+ sx_exec('/opt/homebrew/bin/swipl',['-q','-g','halt','-s',Bridge],Base,20,1048576,BStatus,_,BErr,BT),
+ sx_exec('/opt/homebrew/bin/swipl',['-q','-g','halt','-s',Bridge,'-s',Tests],Base,20,1048576,TStatus,_,TErr,TT),
+ sx_validation_code(BStatus,BErr,BridgeCode),sx_validation_code(TStatus,TErr,TestsCode),
+ ((BT==true;TT==true)->Truncated=true;Truncated=false).
+sx_validation_code(exit(0),Err,0) :- \+sub_string(Err,_,_,_,"ERROR:"),!.
+sx_validation_code(_,_,1).
 sx_read(S,Limit,Q,K) :- catch(read_string(S,Limit,T),_,T=""),catch(close(S),_,true),string_length(T,N),(N>=Limit->Tr=true;Tr=false),thread_send_message(Q,out(K,T,Tr)).
 sx_exec(P,A,C,S,L,Status,Out,Err,Truncated) :- message_queue_create(Q),setup_call_cleanup(true,
  (process_create(P,A,[cwd(C),stdin(null),stdout(pipe(O)),stderr(pipe(E)),process(Pid),environment(['HOME'='/nonexistent','PATH'='/usr/bin:/bin'])]),

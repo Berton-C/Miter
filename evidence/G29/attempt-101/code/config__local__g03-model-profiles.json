@@ -1,0 +1,9 @@
+{
+  "endpoint":"http://127.0.0.1:1234/api/v0/models",
+  "profiles": [
+    {"alias":"embedding-local","id":"text-embedding-nomic-embed-text-v1.5"},
+    {"alias":"nemotron-local","id":"nemotron-3.5-30b-a3b-antislop-ftpo-i1"},
+    {"alias":"qwen-local","id":"qwen/qwen3.8-27b"}
+  ],
+  "schema":"miter-local-model-profiles-v1"
+}

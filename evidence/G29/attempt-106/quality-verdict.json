@@ -1,0 +1,1 @@
+{"status":"PASS-BOUNDED","canonical_qualified":true,"neutral_part_order_preserved":true,"missing_product_defeats_assembly":true,"missing_identity_rejected":true,"direct_core_access_rejected":true,"syntax_failure_rejected":true,"restored_products_qualified":true,"model_calls_added":0,"limits":"Finite source/manifest/syntax qualification; runtime behavior awaits G30"}

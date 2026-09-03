@@ -1,0 +1,1 @@
+{"status":"PREPARED","design_id":"mattermost-g29-design","native_modality":"swi-prolog","model_calls":0,"seed_implementation_empty":true,"prior_failure_retained":true,"parts":["design","bridge","tests"]}

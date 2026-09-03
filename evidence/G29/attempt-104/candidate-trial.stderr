@@ -1,0 +1,51 @@
+ERROR: [Thread main] /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/extension/mattermost_bridge.pl:40:64: Syntax error: Operator expected
+Warning: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/extension/mattermost_bridge.pl:44:
+Warning:    Singleton variables: [Config]
+ERROR: [Thread main] Exported procedure miter_mattermost_bridge:surface_effect/5 is not defined
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:7:
+ERROR:    catch/3: Unknown procedure: plunit_mattermost_bridge:test/1
+Warning: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:7:
+Warning:    Goal (directive) failed: plunit_mattermost_bridge:test(authorized_stable_event_mapping)
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:8:
+ERROR:    Full stop in clause-body?  Cannot redefine ,/2
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:17:
+ERROR:    catch/3: Unknown procedure: plunit_mattermost_bridge:test/1
+Warning: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:17:
+Warning:    Goal (directive) failed: plunit_mattermost_bridge:test(duplicate_suppression)
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:18:
+ERROR:    Full stop in clause-body?  Cannot redefine ,/2
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:26:
+ERROR:    catch/3: Unknown procedure: plunit_mattermost_bridge:test/1
+Warning: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:26:
+Warning:    Goal (directive) failed: plunit_mattermost_bridge:test(edited_post_distinction)
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:27:
+ERROR:    Full stop in clause-body?  Cannot redefine ,/2
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:36:
+ERROR:    catch/3: Unknown procedure: plunit_mattermost_bridge:test/1
+Warning: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:36:
+Warning:    Goal (directive) failed: plunit_mattermost_bridge:test(unauthorized_channel_user_before_payload)
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:37:
+ERROR:    Full stop in clause-body?  Cannot redefine ,/2
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:45:
+ERROR:    catch/3: Unknown procedure: plunit_mattermost_bridge:test/1
+Warning: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:45:
+Warning:    Goal (directive) failed: plunit_mattermost_bridge:test(idempotent_outbound_request)
+ERROR: [Thread main] /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:51:29: Syntax error: Operator expected
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:58:
+ERROR:    catch/3: Unknown procedure: plunit_mattermost_bridge:test/1
+Warning: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:58:
+Warning:    Goal (directive) failed: plunit_mattermost_bridge:test(malformed_send_failure_rejection)
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:59:
+ERROR:    Full stop in clause-body?  Cannot redefine ,/2
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:67:
+ERROR:    catch/3: Unknown procedure: plunit_mattermost_bridge:test/1
+Warning: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:67:
+Warning:    Goal (directive) failed: plunit_mattermost_bridge:test(reconnect_and_cursor_resume)
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:68:
+ERROR:    Full stop in clause-body?  Cannot redefine ,/2
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:76:
+ERROR:    catch/3: Unknown procedure: plunit_mattermost_bridge:test/1
+Warning: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:76:
+Warning:    Goal (directive) failed: plunit_mattermost_bridge:test(panic_denial)
+ERROR: /Users/claritymiter/miter/evidence/G29/attempt-104/candidate/candidate_tests/mattermost_contract_tests.pl:77:
+ERROR:    Full stop in clause-body?  Cannot redefine ,/2
