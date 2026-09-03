@@ -1,0 +1,9 @@
+# G31 P2 outcome — a usable bounded mechanism exists, but the candidate cannot invoke it
+
+The exact official Mattermost `v11.7.7` source at commit `2045acd92c40353abfc5ffff8ae1e0dd9d2e6737` establishes a real duplicate-handling path. A client-supplied `pending_post_id` is cached before post creation; a completed duplicate within the cache window can return the already-created post, while an in-flight duplicate receives a typed pending error. The window is 30 seconds. Mattermost's own test also establishes the decisive limit: after expiry, the same identifier can create another post. The default cache provider is in-process LRU, so restart, eviction, expiry, and deployment configuration remain material boundaries.
+
+Native comparison therefore retained the mechanism as `supported-qualified`, never as universal exactly-once. A retry is potentially safe only with the same authorized principal, the identical `pending_post_id`, a durable local in-flight journal, and a retry within the retained cache window; an unresolved outcome outside that envelope must remain unresolved rather than trigger a fresh send.
+
+The current G29 candidate cannot use this mechanism. Its descriptor places `idempotency_key` beside the HTTP descriptor but sends a body containing only `channel_id` and `message`. It does not map the stable effect key into Mattermost's `pending_post_id`. Native comparison returned `revision-required` and `hold-before-live`. A projected structure with that exact mapping became eligible only for a bounded mock trial.
+
+P2 passes its source-audit claims with those limits. It made one read-only fetch of official public source and made zero local Mattermost, Docker, credential, message, model, candidate-edit, activation, or promotion effects. P3 must let Miter form a narrowly source-grounded candidate revision, retain the prior G29/G30 contract, and causally test the 30-second recovery envelope before any transport or live canary work.

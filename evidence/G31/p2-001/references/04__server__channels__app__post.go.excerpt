@@ -1,0 +1,15 @@
+	// If we get this far, we've recorded the client-provided pending post id to the cache.
+	// Remove it if we fail below, allowing a proper retry by the client.
+	defer func() {
+		if post.PendingPostId == "" {
+			return
+		}
+
+		if err != nil {
+			if appErr := a.Srv().seenPendingPostIdsCache.Remove(post.PendingPostId); appErr != nil {
+				err = model.NewAppError("CreatePost", "api.post.deduplicate_create_post.cache_error", nil, "", http.StatusInternalServerError).Wrap(appErr)
+			}
+			return
+		}
+
+		if appErr := a.Srv().seenPendingPostIdsCache.SetWithExpiry(post.PendingPostId, savedPost.Id, pendingPostIDsCacheTTL); appErr != nil {

@@ -1,0 +1,1 @@
+{"schema":"miter-g31-candidate-effect-observation-v1","candidate_sha256":"dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34","request_body_fields":["channel-id","message"],"descriptor_envelope_fields":["idempotency-key"],"request_field_maps":[],"pending_post_id_in_request_body":false,"observed_only_no_candidate_edit":true}

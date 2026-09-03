@@ -1,0 +1,7 @@
+type LRU struct {
+	lock                   sync.RWMutex
+	size                   int
+	len                    int
+	currentGeneration      int64
+	evictList              *list.List
+	items                  map[string]*list.Element

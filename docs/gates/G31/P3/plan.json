@@ -1,0 +1,58 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G31",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G31 P3: Miter can form, through native source-grounded construction with a bounded LLM semantic contribution, a quarantined Mattermost candidate that maps the stable effect key to pending_post_id, retains the proven G29/G30 bridge contract, and passes causal controls for Mattermost 11.7.7's qualified 30-second reconciliation envelope.",
+  "claim_ids": [
+    "G31-P3-source-grounded-candidate-revision",
+    "G31-P3-prior-bridge-contract-retained",
+    "G31-P3-qualified-reconciliation-trial"
+  ],
+  "non_claims": "No live Mattermost contact, Mattermost credential lookup/use, message read/send, generic HTTP transport, candidate promotion or activation, universal exactly-once, recovery after cache expiry/eviction/restart, production readiness, control change, or complete Soul cognition.",
+  "rationale": "P2 established that Mattermost 11.7.7 has a bounded pending_post_id deduplication path and that candidate dff6f402bab8089cf42799c5e0b731e03c73f42d7be2b676cea24039af53cb34 cannot invoke it because the key is not in the request body. The repair must be formed from that returned source consequence, not silently hand-edited or converted into an unqualified retry rule.",
+  "requirements": [
+    "C-004", "C-005", "C-006", "C-007", "C-020", "C-021", "C-023", "C-024",
+    "C-050", "C-054", "C-055", "C-060", "C-062", "C-064", "C-065", "C-066",
+    "C-090", "C-091", "C-093", "C-095", "C-096", "C-097", "C-098", "C-099",
+    "C-100", "C-102", "C-103", "C-104",
+    "S-103", "S-501", "S-502", "S-503", "S-504", "S-702", "S-804", "S-901",
+    "S-902", "S-903", "S-904", "S-905", "S-1001", "S-1003", "S-1004", "S-1005",
+    "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "T-30", "T-36"
+  ],
+  "reading": "Retain both controls and the full ledger. Reread G29 closure/candidate/tests, G30 R2 closure and all failure evidence, G31 P2 official-source index/native result/outcome, the central model-resource configuration, C-020-C-024/C-050-C-055/C-064-C-066/C-095-C-104, and S-501-S-504/S-702/S-804/S-901-S-905/S-1001/S-1003-S-1005/S-1101-S-1105.",
+  "representation": "Native MeTTa constructs a candidate-revision request from the exact P2 discrepancy, source commit, candidate hash, retained obligations, and bounded limits. The OpenRouter model returns a full candidate as an untrusted semantic proposal into a fresh quarantine. Record request/response lineage without key material. Represent pending_post_id body mapping, same-principal identity, retry deadline, durable in-flight journal, cache-loss boundaries, and exactly-once non-claim explicitly.",
+  "consumer": "PeTTa/MeTTa owns the discrepancy reading, request construction, source/candidate comparison, and trial interpretation. The LLM only renders candidate source. SWI-Prolog executes the quarantined candidate and a non-cognitive Mattermost-11.7.7 mock. JavaScript performs bounded transport to the already-configured Miter OpenRouter membrane, freezes evidence, and independently checks identities and effects; it does not decide Soul meaning or live authority.",
+  "falsifiers": "The candidate is hand-repaired; pending_post_id is absent or does not equal the stable idempotency key; a prior G29/G30 behavior regresses; a second model call silently replaces a failed first attempt; changed principal, missing journal, response loss after 30 seconds, cache loss, or an unmapped key is called safe; duplicate creates occur within the qualified fixture; model output is admitted as authority; or any local Mattermost/credential/message/promotion/activation effect occurs.",
+  "scope_review": "One bounded OpenRouter semantic call through Miter's existing central model configuration and Keychain reference; fresh quarantined candidate only; native comparison; existing independent candidate tests; a version-shaped non-network mock and severed controls; evidence and next plan. No local Mattermost HTTP/WebSocket, Mattermost credential, Docker call, live message, generic transport, promotion, activation, push, or control change.",
+  "rollback": "P3 adds only native construction code, a mock, scripts, quarantined candidate/evidence and documentation. Removing them restores the P2-held state. The G29 candidate and every G30/P2 artifact remain immutable; no live or promoted state changes.",
+  "predecessor": "docs/gates/G31/P2/outcome.md",
+  "allowed_paths": [
+    "src/mattermost_candidate_revision_v1.metta",
+    "src/bootstrap_mattermost_candidate_revision_v1.metta",
+    "effect_membranes/miter_mattermost_mock_v2.pl",
+    "scripts/g31/",
+    "tests/fixtures/g31/",
+    "evidence/G31/",
+    "docs/gates/G31/",
+    "runtime/g31/"
+  ],
+  "preserved": [
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"}
+  ]
+}

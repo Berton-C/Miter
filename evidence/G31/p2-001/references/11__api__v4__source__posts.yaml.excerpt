@@ -1,0 +1,52 @@
+      operationId: CreatePost
+      parameters:
+        - name: set_online
+          in: query
+          description: Whether to set the user status as online or not.
+          required: false
+          schema:
+            type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - channel_id
+                - message
+              properties:
+                channel_id:
+                  type: string
+                  description: The channel ID to post in
+                message:
+                  type: string
+                  description: The message contents, can be formatted with Markdown
+                root_id:
+                  type: string
+                  description: The post ID to comment on
+                file_ids:
+                  type: array
+                  description: A list of file IDs to associate with the post. Note that
+                    posts are limited to 5 files maximum. Please use additional
+                    posts for more files.
+                  items:
+                    type: string
+                props:
+                  description: A general JSON property bag to attach to the post
+                  type: object
+                metadata:
+                  description: A JSON object to add post metadata, e.g the post's priority
+                  type: object
+                  properties:
+                    priority:
+                      type: object
+                      description: An object containing the post's priority properties
+                      properties:
+                        priority:
+                          type: string
+                          description: The priority label of the post, could empty, important, or urgent
+                        requested_ack:
+                          type: boolean
+                          description: Set to true to request for acknowledgements
+        description: Post object to create
+        required: true

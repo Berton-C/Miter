@@ -1,0 +1,3 @@
+func (s *CacheSettings) SetDefaults() {
+	if s.CacheType == nil {
+		s.CacheType = NewPointer(CacheTypeLRU)

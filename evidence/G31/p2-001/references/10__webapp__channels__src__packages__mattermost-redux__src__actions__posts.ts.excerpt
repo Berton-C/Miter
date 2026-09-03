@@ -1,0 +1,10 @@
+        const pendingPostId = post.pending_post_id || `${currentUserId}:${timestamp}`;
+        let actions: AnyAction[] = [];
+
+        if (PostSelectors.isPostIdSending(state, pendingPostId)) {
+            return {data: {pending: pendingPostId}};
+        }
+
+        let newPost = {
+            ...post,
+            pending_post_id: pendingPostId,

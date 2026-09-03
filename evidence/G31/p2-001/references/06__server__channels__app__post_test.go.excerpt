@@ -1,0 +1,34 @@
+	t.Run("duplicate create post after cache expires is not idempotent", func(t *testing.T) {
+		originalCacheTTL := pendingPostIDsCacheTTL
+		pendingPostIDsCacheTTL = time.Second
+		t.Cleanup(func() {
+			pendingPostIDsCacheTTL = originalCacheTTL
+		})
+
+		session := &model.Session{
+			UserId: th.BasicUser.Id,
+		}
+		session, err := th.App.CreateSession(th.Context, session)
+		require.Nil(t, err)
+
+		pendingPostId := makePendingPostId(th.BasicUser)
+
+		post, _, err := th.App.CreatePostAsUser(th.Context.WithSession(session), &model.Post{
+			UserId:        th.BasicUser.Id,
+			ChannelId:     th.BasicChannel.Id,
+			Message:       "message",
+			PendingPostId: pendingPostId,
+		}, session.Id, true)
+		require.Nil(t, err)
+		require.Equal(t, "message", post.Message)
+
+		time.Sleep(pendingPostIDsCacheTTL)
+
+		duplicatePost, _, err := th.App.CreatePostAsUser(th.Context.WithSession(session), &model.Post{
+			UserId:        th.BasicUser.Id,
+			ChannelId:     th.BasicChannel.Id,
+			Message:       "message",
+			PendingPostId: pendingPostId,
+		}, session.Id, true)
+		require.Nil(t, err)
+		require.NotEqual(t, post.Id, duplicatePost.Id, "should have created new post id")

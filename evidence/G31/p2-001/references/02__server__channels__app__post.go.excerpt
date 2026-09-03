@@ -1,0 +1,4 @@
+var pendingPostIDsCacheTTL = 30 * time.Second
+
+const (
+	PendingPostIDsCacheSize = 25000

@@ -1,0 +1,1 @@
+	PendingPostId string          `json:"pending_post_id" xml:"PendingPostId"`

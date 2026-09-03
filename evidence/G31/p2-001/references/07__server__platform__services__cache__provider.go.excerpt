@@ -1,0 +1,11 @@
+// NewProvider creates a new CacheProvider
+func NewProvider() Provider {
+	return &cacheProvider{}
+}
+
+// NewCache creates a new cache with given opts
+func (c *cacheProvider) NewCache(opts *CacheOptions) (Cache, error) {
+	if opts.Striped {
+		return NewLRUStriped(opts)
+	}
+	return NewLRU(opts), nil

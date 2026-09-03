@@ -1,0 +1,26 @@
+	t.Run("duplicate create post is idempotent", func(t *testing.T) {
+		session := &model.Session{
+			UserId: th.BasicUser.Id,
+		}
+		session, err := th.App.CreateSession(th.Context, session)
+		require.Nil(t, err)
+
+		pendingPostId := makePendingPostId(th.BasicUser)
+
+		post, _, err := th.App.CreatePostAsUser(th.Context.WithSession(session), &model.Post{
+			UserId:        th.BasicUser.Id,
+			ChannelId:     th.BasicChannel.Id,
+			Message:       "message",
+			PendingPostId: pendingPostId,
+		}, session.Id, true)
+		require.Nil(t, err)
+		require.Equal(t, "message", post.Message)
+
+		duplicatePost, _, err := th.App.CreatePostAsUser(th.Context.WithSession(session), &model.Post{
+			UserId:        th.BasicUser.Id,
+			ChannelId:     th.BasicChannel.Id,
+			Message:       "message",
+			PendingPostId: pendingPostId,
+		}, session.Id, true)
+		require.Nil(t, err)
+		require.Equal(t, post.Id, duplicatePost.Id, "should have returned previously created post id")
