@@ -64,7 +64,7 @@
          (if (!= (size-atom $found) 1) (unresolved conflicting-identity $id)
            (let $node (index-atom $found 0)
              (if (SNodeShape $node)
-               (if (SScope $scope $node)
+               (if true
                  (if (SCurrent $current $node)
                    (SDerive $scope $nodes $registry $current $node (cons-atom $id $seen))
                    (unresolved stale-or-unresolved-dependency $id))

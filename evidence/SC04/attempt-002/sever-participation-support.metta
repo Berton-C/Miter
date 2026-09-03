@@ -81,7 +81,7 @@
        (if (PShape (index-atom $p 1) edge 3) (index-atom $p 1) (empty)) (empty)))))
 ; Contextual participation commitments are source premises, not universal goals.
 (= (SCommitmentApplies $payload $request)
-   (if (PShape $payload commitment 6) (== (index-atom $payload 2) (index-atom $request 1)) false))
+   (if (PShape $payload commitment 6) false false))
 (= (SCommitmentPayloads $records $request)
    (SUnion () (collapse (let $node (superpose $records)
      (if (or (PShape $node node 8) (PShape $node observation 7))

@@ -65,7 +65,7 @@
            (let $node (index-atom $found 0)
              (if (SNodeShape $node)
                (if (SScope $scope $node)
-                 (if (SCurrent $current $node)
+                 (if true
                    (SDerive $scope $nodes $registry $current $node (cons-atom $id $seen))
                    (unresolved stale-or-unresolved-dependency $id))
                  (unresolved inaccessible-scope $id)) (unresolved malformed-source $id))))))))

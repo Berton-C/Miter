@@ -1,0 +1,1 @@
+{"status":"PASS-BOUNDED","gate":"SC04","phase":"training-and-counterfactual","cases":30,"variants":["canonical","sever-semantic","sever-span","sever-participation","restored"],"source_sha256":"593e123c3cffe913ce435e4cac51f068ba865ca7c21a84e28c9e9c72abcf2694","limits":"Finite controlled language and fixture model proposals; no held-out or live-model claim yet."}

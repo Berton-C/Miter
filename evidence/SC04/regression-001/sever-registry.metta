@@ -46,7 +46,7 @@
    (let* (($id (index-atom $node 1)) ($kind (index-atom $node 2))
           ($payload (index-atom $node 6)) ($parents (index-atom $node 7)))
      (if (PHas $kind (external-contact human-confirmation testimony action-result) 0)
-       (if (and (== (size-atom $parents) 0) (SObserved $registry $node))
+       (if (and (== (size-atom $parents) 0) true)
          (supported $payload (origin $id $kind (index-atom $node 5))
            ((root $id (index-atom $node 5) $kind))) (unresolved registry-mismatch $id))
        (let $proofs (SParentProofs $scope $nodes $registry $current $parents $seen 0)
