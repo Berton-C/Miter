@@ -1,0 +1,10 @@
+true
+(result experiment (request-shape-selected plain-sentinel nemotron-local (plain-sentinel)))
+(result experiment-reordered (request-shape-selected plain-sentinel nemotron-local (plain-sentinel)))
+(result experiment-removed (request-shape-unresolved ()))
+(result experiment-ambiguous (request-shape-unresolved (remote-sentinel plain-sentinel)))
+(result diagnostic-template (request-template-probe diagnostic true false 2 420 2112c054deb06ba11f4e45903e9cd31f6e1388b11e515b39dcc92b613b19f51f))
+(result artifact-template (request-template-probe artifact true false 2 342 bc283c73a35b1362fb4f8a1e769c49b58fc521f0a88859f62658ff261c7f0beb))
+(result exact-diagnostic true)
+(result mismatch-diagnostic false)
+(result targets (tests bridge))

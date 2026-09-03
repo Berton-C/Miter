@@ -44,6 +44,18 @@ sx_r5_spend(R,tests,Id) :- sx_r5_spend_slot(R,tests,Id,3).
 sx_r5_spend_slot(R,Kind,Id,Slot) :- format(atom(P),'/Users/claritymiter/miter/evidence/G29/R5-call-~d.claim',[Slot]),
  \+exists_directory(P),make_directory(P),directory_file_path(P,'owner.json',O),
  sd_durable_json(O,_{root:R,request:Id,kind:Kind,slot:Slot,grant:"G29-R5"}).
+sx_r6_spend(R,diagnostic,Id) :- sx_r6_spend_slot(R,diagnostic,Id,1).
+sx_r6_spend(R,bridge,Id) :- sx_r6_spend_slot(R,bridge,Id,2).
+sx_r6_spend(R,tests,Id) :- sx_r6_spend_slot(R,tests,Id,3).
+sx_r6_spend_slot(R,Kind,Id,Slot) :- format(atom(P),'/Users/claritymiter/miter/evidence/G29/R6-call-~d.claim',[Slot]),
+ \+exists_directory(P),make_directory(P),directory_file_path(P,'owner.json',O),
+ sd_durable_json(O,_{root:R,request:Id,kind:Kind,slot:Slot,grant:"G29-R6"}).
+sx_plain_spend(R,diagnostic,'inference-probe-1') :- sx_r5_spend(R,diagnostic,'inference-probe-1').
+sx_plain_spend(R,bridge,'sentinel-bridge-2') :- sx_r5_spend(R,bridge,'sentinel-bridge-2').
+sx_plain_spend(R,tests,'sentinel-tests-3') :- sx_r5_spend(R,tests,'sentinel-tests-3').
+sx_plain_spend(R,diagnostic,'inference-probe-r6-1') :- sx_r6_spend(R,diagnostic,'inference-probe-r6-1').
+sx_plain_spend(R,bridge,'sentinel-r6-bridge-2') :- sx_r6_spend(R,bridge,'sentinel-r6-bridge-2').
+sx_plain_spend(R,tests,'sentinel-r6-tests-3') :- sx_r6_spend(R,tests,'sentinel-r6-tests-3').
 
 sx_model(R,Q,Observation) :- catch((sx_model_checked(R,Q,Observation)->true;Observation=['surface-model-unavailable',unstaged_or_invalid]),E,
  (term_string(E,S),Observation=['surface-model-unavailable',S])),!.
@@ -188,16 +200,15 @@ sx_repair_model_r4_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&d
 % shaping; malformed or embellished envelopes are never repaired.
 sx_r5_diagnostic(R,Q,Observation) :- catch((sx_r5_diagnostic_checked(R,Q,Observation)->true;Observation=['surface-diagnostic-unavailable',unstaged_or_invalid]),E,
  (term_string(E,S),Observation=['surface-diagnostic-unavailable',S])),!.
-sx_r5_diagnostic_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&derived'('surface-r5-diagnostic-pending',R,Q),true),
+sx_r5_diagnostic_checked(R,Q,Observation) :- sd_verify(R),ground(Q),
+ (clause('&derived'('surface-r5-diagnostic-pending',R,Q),true);clause('&derived'('surface-r6-diagnostic-pending',R,Q),true)),
  Q=['surface-r5-diagnostic',Id,'nemotron-local',Prompt],atom(Id),string(Prompt),
  sx_named(R,Id,generation,GP),(exists_file(GP)->sd_json(GP,G),sd_document_native(G,Q);sd_encode(Q,Enc),sd_durable_json(GP,_{native:Q,term:Enc})),
  sx_named(R,Id,observation,OP),
  (exists_file(OP)->sd_json(OP,Stored),sd_document_native(Stored,Observation);
   sx_named(R,Id,request,RP),sx_named(R,Id,wire,Wire),sx_named(R,Id,header,Header),sx_named(R,Id,timing,Timing),
-  sx_named(R,Id,claim,Claim),make_directory(Claim),sx_r5_spend(R,diagnostic,Id),
-  Template=_{schema:"miter-unconstrained-request-v1",request_id:Id,endpoint:"http://127.0.0.1:1234/v1/chat/completions",
-   body:_{messages:[_{role:"system",content:"Return only the exact text requested by the user. Do not explain, quote, punctuate, or use a code fence."},{role:"user",content:Prompt}],
-    temperature:0,top_p:1,max_tokens:64,seed:2905,stream:true,ttl:300}},
+  sx_named(R,Id,claim,Claim),make_directory(Claim),sx_plain_spend(R,diagnostic,Id),
+  sx_plain_template(diagnostic,Id,Prompt,Template),
   sx_named(R,Id,template,TP),sd_durable_json(TP,Template),miter_lm_prepare_request('/Users/claritymiter/miter/config/local/g03-model-profiles.json','nemotron-local',TP,RP,'model-request-prepared'),
   ms_capture(RP,Wire,Header,120,262144,TR),sd_durable_json(Timing,TR),sx_r5_diagnostic_observation(Id,Wire,TR,Observation),
   sd_encode(Observation,EO),sd_durable_json(OP,_{native:Observation,term:EO})).
@@ -210,7 +221,8 @@ sx_r5_diagnostic_observation(Id,Wire,T,['surface-diagnostic-observation',Id,Tran
 
 sx_r5_model(R,Q,Observation) :- catch((sx_r5_model_checked(R,Q,Observation)->true;Observation=['surface-r5-part-unavailable',unstaged_or_invalid]),E,
  (term_string(E,S),Observation=['surface-r5-part-unavailable',S])),!.
-sx_r5_model_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&derived'('surface-r5-generation-pending',R,Q),true),
+sx_r5_model_checked(R,Q,Observation) :- sd_verify(R),ground(Q),
+ (clause('&derived'('surface-r5-generation-pending',R,Q),true);clause('&derived'('surface-r6-generation-pending',R,Q),true)),
  Q=['surface-r5-generation',Id,DesignId,CandidateId,Part,'nemotron-local',Instructions,OldFile,Observations],
  atom(Id),atom(DesignId),atom(CandidateId),memberchk(Part,[bridge,tests]),string(Instructions),
  OldFile=['surface-candidate-file',OldPath0,OldSource0,OldHash],miter_store_nonempty_atom(OldPath0,OldPathAtom),atom_string(OldPathAtom,OldPath),
@@ -219,14 +231,24 @@ sx_r5_model_checked(R,Q,Observation) :- sd_verify(R),ground(Q),clause('&derived'
  sx_named(R,Id,observation,OP),
  (exists_file(OP)->sd_json(OP,Stored),sd_document_native(Stored,Observation);
   sx_named(R,Id,request,RP),sx_named(R,Id,wire,Wire),sx_named(R,Id,header,Header),sx_named(R,Id,timing,Timing),
-  sx_named(R,Id,claim,Claim),make_directory(Claim),sx_r5_spend(R,Part,Id),sd_encode(PromptFile,OldDoc),sd_encode(Observations,ObservationDoc),
+  sx_named(R,Id,claim,Claim),make_directory(Claim),sx_plain_spend(R,Part,Id),sd_encode(PromptFile,OldDoc),sd_encode(Observations,ObservationDoc),
   with_output_to(string(User),json_write_dict(current_output,_{design_id:DesignId,candidate_id:CandidateId,target:Part,prior_file:OldDoc,
    observed_consequences:ObservationDoc,unchanged_contract:_{module:"miter_mattermost_bridge",exports:["surface_ingest/5","surface_effect/5","surface_reconnect/4","surface_panic/2"],network:"none",credentials:[]}},[width(0)])),
-  Template=_{schema:"miter-unconstrained-source-request-v1",request_id:Id,endpoint:"http://127.0.0.1:1234/v1/chat/completions",
-   body:_{messages:[_{role:"system",content:Instructions},{role:"user",content:User}],temperature:0,top_p:1,max_tokens:2048,seed:2906,stream:true,ttl:300}},
+  sx_plain_template(artifact,Id,[Instructions,User],Template),
   sx_named(R,Id,template,TP),sd_durable_json(TP,Template),miter_lm_prepare_request('/Users/claritymiter/miter/config/local/g03-model-profiles.json','nemotron-local',TP,RP,'model-request-prepared'),
   ms_capture(RP,Wire,Header,300,2097152,TR),sd_durable_json(Timing,TR),sx_r5_part_observation(Id,DesignId,Part,Wire,TR,Observation),
   sd_encode(Observation,EO),sd_durable_json(OP,_{native:Observation,term:EO})).
+sx_plain_template(diagnostic,Id,Prompt,_{schema:"miter-unconstrained-request-v1",request_id:Id,endpoint:"http://127.0.0.1:1234/v1/chat/completions",
+ body:_{messages:[_{role:"system",content:"Return only the exact text requested by the user. Do not explain, quote, punctuate, or use a code fence."},_{role:"user",content:Prompt}],
+  temperature:0,top_p:1,max_tokens:64,seed:2905,stream:true,ttl:300}}).
+sx_plain_template(artifact,Id,[Instructions,User],_{schema:"miter-unconstrained-source-request-v1",request_id:Id,endpoint:"http://127.0.0.1:1234/v1/chat/completions",
+ body:_{messages:[_{role:"system",content:Instructions},_{role:"user",content:User}],temperature:0,top_p:1,max_tokens:2048,seed:2906,stream:true,ttl:300}}).
+sx_r6_template_probe(Kind,['request-template-probe',Kind,true,false,MessageCount,Bytes,Hash]) :-
+ (Kind==diagnostic->sx_plain_template(diagnostic,'probe-diagnostic',"MITER_NEMOTRON_READY",Template);
+  Kind==artifact->sx_plain_template(artifact,'probe-artifact',["BEGIN_SOURCE only","representative context"],Template)),
+ with_output_to(string(Rendered),json_write_dict(current_output,Template,[width(0)])),atom_json_dict(Rendered,Parsed,[]),is_dict(Parsed),
+ get_dict(body,Parsed,Body),is_dict(Body),\+get_dict(response_format,Body,_),get_dict(messages,Body,Messages),maplist(is_dict,Messages),length(Messages,MessageCount),
+ string_length(Rendered,Bytes),crypto_data_hash(Rendered,Hash,[algorithm(sha256),encoding(utf8)]).
 sx_r5_part_observation(Id,DesignId,Part,Wire,T,['surface-r5-part-observation',Id,Part,Transport,T.http_status,T.elapsed_ms,Done,Finish,Parse,T.bytes,Content,Product]) :-
  miter_store_nonempty_atom(T.transport,Transport),
  (exists_file(Wire)->ms_decode(Wire,Done,Finish,StreamParse,Content,_,_),
@@ -247,7 +269,7 @@ sx_manifest(M,['mattermost-manifest',Schema,Kind,Modality,Role,Source,Target,['p
   [Schema,Kind,Modality,Role,Source,Target,Network,Live,Idempotency,Reconnect,Credentials,Memory,Failure,Panic,Rollback]),
  maplist(miter_store_nonempty_atom,M.inbound_ids,Inbound),maplist(miter_store_nonempty_atom,M.tests,Tests).
 
-sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-([1-5]|r1|r2|r3|r4|r5)$',A),
+sx_candidate_root(R,Id,P) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^mattermost-([1-6]|r1|r2|r3|r4|r5|r6)$',A),
  atom_concat('/Users/claritymiter/miter/runtime/g29/candidates/',A,P).
 sx_rel("extension/mattermost_bridge.pl").
 sx_rel("candidate_tests/mattermost_contract_tests.pl").
