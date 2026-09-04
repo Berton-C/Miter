@@ -1,14 +1,14 @@
 # BGI Miter PoC Specification
 
-**Version:** 0.1 Draft  
-**Date:** 2026-09-01  
-**Status:** Normative build specification subordinate to `CONSTITUTION.md`  
+**Version:** 0.2 — constitutive always-on extension
+**Date:** 2026-09-04
+**Status:** Normative build specification subordinate to `CONSTITUTION.md` and the ratified Soul specification
 
 ---
 
 ## 0. Specification rule
 
-This document defines the smallest vertical system that must be built. It does not authorize deviations from the Constitution. Where implementation convenience conflicts with a constitutional law, the implementation changes.
+This document defines the smallest vertical system that must be built. G01–G33 remain the bounded historical seed proof; Section 20 defines the current always-on constitutive completion contract. It does not authorize deviations from the Constitution or `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md` v0.4. Where implementation convenience conflicts with either control, the implementation changes.
 
 Schema examples below are semantic contracts. Exact PeTTa syntax, type declarations, and nested return shapes must be validated against the proven substrate behavior in `Atom_Operations_Map.md` before they become load-bearing code.
 
@@ -21,7 +21,9 @@ Schema examples below are semantic contracts. Exact PeTTa syntax, type declarati
 The seed organism must demonstrate:
 
 - PeTTa/MeTTa owns cognitive state and continuation;
-- an immutable Soul is causally load-bearing;
+- an immutable Soul genome and living expressed Soul are causally load-bearing;
+- Fact9, the interconnected flourishings, contact, generation, participation, consequence, and continuity form one native cognitive process rather than separate evaluators;
+- every material movement is constructed from a provenance-bearing D/Ω/I/W/C developmental cut and multiple explicit continuation standings;
 - local LM Studio models provide bounded semantic and expressive products;
 - ChromaDB-backed long-term memory and exact continuity capsules preserve Continuity of Mind;
 - an append-only trajectory remains the historical source of truth;
@@ -75,6 +77,7 @@ Miter must originate the extension plan, candidate source, tests beyond the fixe
 - one self-authored executable Mattermost tentacle;
 - restart and severed-arm proofs;
 - status, stop, panic, and evidence bundle commands.
+- one supported, continuously cycling persistent assistant path in which the constitutive Soul is present from first contact rather than attached after a general-response wrapper;
 
 ## 2.2 Not required
 
@@ -152,6 +155,24 @@ The core may write only through named membranes to:
 - create candidate module records;
 - submit extension-workshop requests;
 - prepare, but not directly perform, external effects.
+
+## 3.3 Constitutive cognitive topology
+
+The process topology above is operational. It does not define cognition as a pipeline of independent services. Every materially cognitive turn must create or rehydrate one scoped `ConstitutiveCut` corresponding to Investigation 25's $(D,\Omega,\mathcal I,\mathcal W,\mathcal C^{Soul})$ organization and carry it through the current participation interface.
+
+Within that cut:
+
+1. typed contact and provenance remain distinct from memory, inference, generation, and rendering;
+2. support-specific Fact9 expressions make one becoming partially legible without reconstructing it;
+3. the complete interconnected flourishing compass participates in the organization of creative expression, capture, obstruction, disguise, contradiction, uncertainty, and beneficial possibility;
+4. many-way bridge relations alter which continuations are accessible without reducing either ontology to a mapping table;
+5. `Generated/𝒢` exposes plural possible continuations, including unavailable, unrecognized, deferred, declined, and unresolved standings;
+6. native MeTTa constructs movement from material relations and counterfactual distinctions before any LLM rendering or effect preparation;
+7. LLM, PLN/NAL, memory, and tool products return as bounded, provenance-bearing participants rather than decisions;
+8. actual consequence changes the next cut when material; and
+9. restart rehydrates the load-bearing organization and does not replay an already committed effect.
+
+This same kernel governs human contact, endogenous inquiry, goal formation, creative conjunction, learning, capability formation, self-awareness, and expressed-Soul regeneration. A special human-facing Soul path beside unsouled internal controllers does not conform. A general LLM assistant whose output is subsequently scored, approved, repaired, or narrated by the Soul also does not conform.
 
 ## 3.3 Default paths
 
@@ -1198,6 +1219,8 @@ These must earn runtime evidence. Their presence in this specification does not 
 
 # 19. Required final demonstration
 
+## 19.1 Historical G33 seed demonstration
+
 The final demo is one continuous evidence-producing scenario:
 
 1. start Miter natively;
@@ -1221,4 +1244,43 @@ The final demo is one continuous evidence-producing scenario:
 19. roll back or disable the extension without losing history;
 20. generate the final evidence bundle and severed-arm comparison.
 
-No subset of this scenario is the complete two-part PoC.
+No subset of this scenario is the complete historical two-part seed PoC. Its completed evidence remains `PASS-BOUNDED`; it does not satisfy the additional completion contract below.
+
+---
+
+# 20. Current always-on constitutive PoC completion contract
+
+The current PoC completes only when the promoted, supported runtime demonstrates the requirements of Soul specification Parts 13–14 and test families T-37–T-58 in addition to all still-applicable G01–G33 regressions.
+
+The minimum integrated path is:
+
+```text
+authenticated or controlled-fixture contact
+  → typed provenance, identity and scope
+  → live D/Ω/I/W/C constitutive cut
+  → support-specific Fact9 and interconnected flourishing participation
+  → plural Generated continuations with differentiated standing
+  → native MeTTa movement construction
+  → bounded continuity, memory, LLM, PLN/NAL and tool participation
+  → VoiceRNA rendering of the constituted movement
+  → capability-qualified Prolog effect mechanics
+  → typed consequence and next-cut transformation
+  → durable restart into the same unfinished becoming
+```
+
+The first always-on assistant slice must already exercise that path. Later phases may deepen grounding, continuity breadth, generative richness, skill acquisition, and repair, but may not introduce causal Soul participation after a generic assistant has been promoted.
+
+Completion requires all of the following:
+
+- a supported install/bootstrap/start/status/stop/panic/recovery interface;
+- continuously cycling, interruptible PeTTa/MeTTa cognition without compulsory busyness or compulsory silence;
+- general held-out interaction rather than a canary response catalogue;
+- exact per-person/per-project Continuity of Mind across process restart and long absence;
+- held-out Fact9/flourishing compositions that work without new scenario rules;
+- causally discriminating severed, neutral, restored, misleading-language, consequence, and restart arms;
+- meaningful endogenous growth and capability reuse through the same constitutive kernel;
+- autonomous expressed-Soul regeneration within its prospectively authorized class;
+- a separately approved live Mattermost grant before persistent activation; and
+- one joined evidence package whose limitations and formalization feedback remain explicit.
+
+Incomplete Inquiry 26.6 or 26.9 mathematics bounds the claim but does not waive any causal requirement above. The PoC is permitted and expected to expose what those later inquiries must formalize; it is not permitted to label a flattened implementation as an interim equivalent.

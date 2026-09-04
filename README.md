@@ -1,6 +1,6 @@
 # BGI Miter — PoC Build Packet
 
-**Version:** 0.1 Draft  
+**Version:** 0.2 — constitutive always-on control alignment
 **Date:** 2026-09-01  
 **Project:** BGI Miter  
 **Program name:** Miter  
@@ -11,7 +11,7 @@
 
 ## 1. What this packet is
 
-**Current build control (2026-09-04):** Berton has ratified the [Soul constitutive specification v0.3](MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md) alongside the [Constitution](CONSTITUTION.md). Version 0.3 makes Continuity of Mind as organized becoming, endogenous flourishing, meaningful AtomSpace growth, causal unfamiliar-encounter navigation, autonomous expressed-Soul regeneration, integrated usability, and additive campaign progression explicit. Every new phase follows the [build-fidelity protocol v1.1](BUILD_FIDELITY_PROTOCOL.md). The first post-PoC program is the [Always-On Miter Assistant campaign](docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md). The G33 seed-PoC result remains bounded historical evidence, not a declaration that the final Soul or usable assistant already exists, and the campaign plan does not itself authorize ongoing Mattermost reach.
+**Current build control (2026-09-04):** Berton has ratified the [Soul constitutive specification v0.4](MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md) alongside the [Constitution](CONSTITUTION.md). Version 0.4 makes the Fact9–Flourishing Constitutive Participation Bridge the cognitive joint through which contact, generation, participation, consequence, and Continuity of Mind become one process at every developmental cut. It prohibits building a generic assistant first and attaching the Soul afterward. Every new phase follows the [build-fidelity protocol v1.2](BUILD_FIDELITY_PROTOCOL.md). The first post-PoC program is the [Always-On Miter Assistant campaign v1.1](docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md). The G33 seed-PoC result remains bounded historical evidence, not a declaration that the constitutive always-on assistant already exists, and the campaign plan does not itself authorize ongoing Mattermost reach.
 
 It is deliberately smaller than the eventual Miter architecture, but it is not a toy agent. The PoC is required to prove two things:
 
@@ -27,7 +27,9 @@ The second proof is essential. A PoC that can only run what humans prebuilt prov
 
 The Miter PoC succeeds only when one recorded, reproducible evidence package demonstrates all of the following:
 
-> A native PeTTa/MeTTa process, using narrow non-cognitive service membranes, can receive human contact; recover durable project and relationship context after restart and long temporal absence; construct a Soul-grounded communicative intention; obtain candidate semantic products from a local LM Studio model; reject and repair Soul-absent or intention-distorting language before emission; become quiescent when no movement is warranted; originate Soul-grounded developmental work during available idle capacity; generate and hot-load a bounded derived capability; trial it without granting it constitutional authority; retain or reject it from witnessed consequence; revise contextual capability efficacy through native NAL revision; change a later selection because of that learning; preserve immutable developmental history across restart; and then use the same governed extension physiology to build and integrate a working Mattermost tentacle whose credentials, effects, and memory access remain outside candidate sovereignty.
+> A native, continuously cycling PeTTa/MeTTa process, using narrow non-cognitive service membranes, can receive human or endogenous contact; construct a provenance-bearing D/Ω/I/W/C developmental cut in which support-specific Fact9 and the complete interconnected flourishing compass materially organize plural lawful continuations; natively construct, compare, join, inquire, undertake, defer, or decline movement; use Continuity of Mind, LLM, PLN/NAL, memory, and tools only as bounded participants; render and certify expression; receive consequence into the next cut; preserve the unfinished organization across restart and long temporal absence; develop and regenerate expressed capacity without mutating its germline; and extend governed external participation while credentials, effects, and memory access remain outside candidate sovereignty.
+
+The first always-on slice may be bounded in external reach, deployment scale, and initially earned effect capabilities, but it must be complete in constitutive organization and open to general unfamiliar conversation, undertakings, endogenous participation, consequence, and continuity.
 
 This is a mechanism proof. It does not claim a final Soul, complete open-ended-intelligence mathematics, final 26.9 kernel authority, universal autopoiesis, or unrestricted safe self-programming.
 
@@ -138,30 +140,36 @@ Headlong is an engineering inspiration, not architectural authority. Miter takes
 ChatGPT Work must read these documents in this order:
 
 1. `CONSTITUTION.md`
-2. `AUTHORITY_MAP.md`
-3. `POC_SPEC.md`
-4. `ACCEPTANCE.md`
-5. `WORK_PROTOCOL.md`
-6. `FAST_PATH.md`
-7. `SOURCE_MATERIALS_CHECKLIST.md`
-8. `DECISIONS.md`
-9. `HEADLONG_INHERITANCE.md`
-10. `GPT_WORK_KICKOFF_PROMPT.md`
+2. `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md`
+3. `AUTHORITY_MAP.md`
+4. `POC_SPEC.md`
+5. `ACCEPTANCE.md`
+6. `BUILD_FIDELITY_PROTOCOL.md`
+7. `docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md` and `plan.json`
+8. `WORK_PROTOCOL.md`
+9. `FAST_PATH.md`
+10. `DECISIONS.md`
+11. `SOURCE_MATERIALS_CHECKLIST.md`
+12. `HEADLONG_INHERITANCE.md`
 
 The order means:
 
 - Ratified source authorities govern the bounded constitutional projection.
 - `CONSTITUTION.md` governs the PoC implementation.
+- The ratified Soul specification gives that constitution its complete constitutive implementation meaning and falsifiers.
 - `POC_SPEC.md` defines what to build.
 - `ACCEPTANCE.md` defines what counts as built.
+- The build-fidelity protocol and active campaign govern additive construction without becoming Miter's cognition.
 - `WORK_PROTOCOL.md` defines how Work may construct it.
 - Conversation, comments, model output, implementation convenience, and passing a weaker substitute test cannot override those surfaces.
 
-No implementation agent may edit `CONSTITUTION.md` or weaken `ACCEPTANCE.md` during a build gate. Any required change stops the build and becomes an explicit human-reviewed decision in `DECISIONS.md`.
+No implementation agent may edit a protected control or weaken acceptance during an active build gate or phase. Any required change stops the build and becomes an explicit human-reviewed decision in `DECISIONS.md`. D-043 authorizes this v0.4 synchronization only; it is not standing permission for later control drift. `GPT_WORK_KICKOFF_PROMPT.md` is a historical G00 prompt and is not current build control.
 
 ---
 
-## 8. Planned repository layout
+## 8. Historical seed layout
+
+The following was the initial packet layout and remains useful orientation. It is not a current file-creation plan and does not authorize a runtime root. The active campaign must inventory actual promoted files and freeze its runtime-root decision before creating persistent state.
 
 ```text
 miter/
@@ -241,7 +249,7 @@ miter/
     └── .gitkeep
 ```
 
-Runtime state does not belong in git. The default external runtime root is `~/.miter/`:
+Runtime state does not belong in git. The seed packet proposed `~/.miter/` as the following external layout, but that proposal is not active authority: do not create, populate, migrate, or chown it until AMA-1.1 freezes and authorizes the actual runtime root.
 
 ```text
 ~/.miter/
@@ -259,9 +267,9 @@ Runtime state does not belong in git. The default external runtime root is `~/.m
 
 ---
 
-## 9. Build sequence
+## 9. Current build sequence
 
-ChatGPT Work must execute one bounded gate at a time.
+The numbered list below is the completed historical G01–G33 sequence. Current work follows the additive AMA-1 dependency graph rather than rerunning or extending it by gate-number momentum.
 
 1. **Environment freeze and source pinning**
 2. **PeTTa-to-Prolog native call proof**
@@ -280,6 +288,15 @@ ChatGPT Work must execute one bounded gate at a time.
 15. **Live Mattermost exchange, rollback control, and final evidence package**
 
 A gate does not pass because code exists. It passes only through the exact positive and negative controls in `ACCEPTANCE.md` with raw evidence saved under `evidence/`.
+
+The current progression is:
+
+1. **AMA-1.1 — Constitutive always-on vertical slice and operator plane.** Build the supported service and the complete finite Fact9–flourishing–movement–consequence–continuity kernel together.
+2. **AMA-1.2 — General contact, Continuity of Mind, and constitutive breadth.** Broaden people, projects, language, memory, and held-out composition through that same kernel.
+3. **AMA-1.3 — Constitutive hardening and unfamiliar navigation.** Strengthen the existing causal organization against severance, disguise, contradiction, model substitution, and restart loss.
+4. **AMA-1.4–1.7.** Grow capabilities, prove autonomous expressed-Soul repair, package the SNET evaluation release, then build the Local Surface Protocol and composable workbench.
+
+No phase is complete from an isolated harness; its promoted result must participate through the supported running organism and unlock its named successor.
 
 ---
 

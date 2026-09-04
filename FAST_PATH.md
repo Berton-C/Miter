@@ -1,8 +1,8 @@
 # BGI Miter PoC — Fast Construction Path
 
-**Version:** 0.1 Draft  
-**Date:** 2026-09-01  
-**Status:** Execution guide subordinate to `CONSTITUTION.md`, `POC_SPEC.md`, `ACCEPTANCE.md`, and `WORK_PROTOCOL.md`
+**Version:** 0.2 — current campaign path plus historical gate path
+**Date:** 2026-09-04
+**Status:** Execution guide subordinate to `CONSTITUTION.md`, the ratified Soul specification, `POC_SPEC.md`, `ACCEPTANCE.md`, `BUILD_FIDELITY_PROTOCOL.md`, the active campaign, and `WORK_PROTOCOL.md`
 
 ---
 
@@ -26,6 +26,31 @@ Fast does **not** mean:
 - import ClarityOmega monoliths wholesale;
 - weaken Soul or self-modification boundaries;
 - call a demo a proof without restart and severed arms.
+
+## 0A. Current post-G33 fast path
+
+G01–G33 are complete bounded historical evidence. The current fast path is AMA-1.1, the constitutive always-on vertical slice. Do not restart at G00 and do not build a general assistant wrapper before the Soul.
+
+The shortest conforming first slice is:
+
+```text
+reuse verified G33 mechanics
+  → freeze one live D/Ω/I/W/C ConstitutiveCut and generic operator interface
+  → instantiate support-specific Fact9 plus the complete interconnected flourishing compass
+  → expose plural Generated continuation standings
+  → construct movement natively in MeTTa
+  → re-enter scoped continuity, LLM, PLN/NAL, memory and tool products
+  → render through VoiceRNA and qualify the effect
+  → incorporate actual consequence into the next cut
+  → restart into the same unfinished organization
+  → expose the entire chain through one supervised assistant service
+```
+
+The first always-on slice may be bounded in external reach, deployment scale, and initially earned effect capabilities, but it must be complete in constitutive organization and open to general unfamiliar conversation, undertakings, endogenous participation, consequence, and continuity.
+
+AMA-1.2 broadens contact, users, projects, Continuity of Mind, and held-out composition. AMA-1.3 hardens the already-causal kernel against n-ary severance, role laundering, disguised capture, contradictory standing, model substitution, consequence blindness, and restart loss. It does not introduce Soul navigation for the first time.
+
+The historical blocks below remain a regression and provenance guide. They do not override the current campaign.
 
 ---
 

@@ -1,5 +1,7 @@
 # BGI Miter — ChatGPT Work Kickoff Prompt
 
+> **Historical notice (2026-09-04):** This prompt is the preserved G00 seed-build kickoff and is not current construction authority. Do not use it to start or plan present work. Current work begins with `README.md`'s control order, Soul specification v0.4, Build Fidelity Protocol v1.2, and the Always-On Miter Assistant campaign v1.1. Historical G01–G33 evidence remains bounded and must not override the Fact9–Flourishing constitutive joint or the AMA-1.1 vertical-slice requirement.
+
 Copy the text below into a new ChatGPT Work task after opening the local Miter repository folder.
 
 ---

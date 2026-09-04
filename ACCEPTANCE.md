@@ -1,15 +1,15 @@
 # BGI Miter PoC Acceptance Contract
 
-**Version:** 0.1 Draft  
-**Date:** 2026-09-01  
-**Status:** Normative proof contract subordinate to `CONSTITUTION.md`  
+**Version:** 0.2 — constitutive always-on extension
+**Date:** 2026-09-04
+**Status:** Normative proof contract subordinate to `CONSTITUTION.md` and the ratified Soul specification
 **Rule:** Code, comments, plans, demos, and model claims do not satisfy a gate. Only the evidence specified here satisfies a gate.
 
 ---
 
 ## 0. How this contract is used
 
-ChatGPT Work executes exactly one acceptance gate at a time. Every gate has:
+G00–G33 retain their bounded historical meanings. New work follows the active campaign and the post-G33 acceptance families in Section IX-A; no old pass is retroactively enlarged. Within a gate or campaign phase, every acceptance claim has:
 
 - **Purpose** — the architectural claim being tested.
 - **Prerequisites** — earlier gates that must already be green.
@@ -28,7 +28,7 @@ A gate is `PASS` only when:
 4. an independent verifier script reads those raw artifacts and reports the verdict;
 5. no test, threshold, fixture, or expected result was weakened during the attempt.
 
-If the implementation reveals that this contract is wrong, Work must stop. A human records a proposed amendment in `DECISIONS.md`; Work may not edit this file during an active gate.
+If the implementation reveals that this contract is wrong, Work must stop. A human records a proposed amendment in `DECISIONS.md`; Work may not edit this file during an active gate or phase. Campaign-level checkpoints may exercise several interdependent test families in one integrated runtime, but none may be merged into a vague aggregate pass.
 
 ---
 
@@ -1024,26 +1024,90 @@ Run identical discriminating fixtures through these arms:
 
 ---
 
+# IX-A. Post-G33 constitutive always-on acceptance
+
+The completed G33 result is seed-mechanism evidence. The current PoC is not accepted as the requested always-on three-dimensional organism until the following families pass through the supported persistent assistant path. An isolated AtomSpace fixture may qualify a primitive in quarantine; it cannot close an integrated family by itself.
+
+The first always-on slice may be bounded in external reach, deployment scale, and initially earned effect capabilities, but it must be complete in constitutive organization and open to general unfamiliar conversation, undertakings, endogenous participation, consequence, and continuity. Acceptance therefore constrains cognitive kind independently of authorized reach or the number of already-earned tools.
+
+## CA-01 — Live developmental-cut causality
+
+**Requirements:** C-016; S-1401/S-1402/S-1411; T-47.
+
+For matched controlled contacts, construct the full provenance-bearing D/Ω/I/W/C cut and vary each component independently. The relevant component must be consumed by native movement construction, and a material severance must change an expected continuation or standing. A populated record, prompt, log, or post-hoc explanation with no causal consumer fails.
+
+## CA-02 — Fact9 whole-coupled recognition
+
+**Requirements:** C-017; S-1403/S-1405/S-1406; T-48/T-49.
+
+Exercise pairwise-complete but n-arily wrong relations, role laundering, dynamic severance and restoration, unseen first-eight supports, Present asymmetry, non-reconstruction, and `CanCompose` without fabricated `RecognizedCompose`. Static powerset membership, one full-support label, or pairwise success may not certify the whole.
+
+## CA-03 — Interconnected flourishing participation
+
+**Requirements:** C-016/C-017; S-1404/S-1405; T-50/T-51.
+
+Hold wording, valence, and nominal action constant while varying capture, disguise, reversibility, dependency, affected participation, and consequence. The complete compass must alter inquiry, accessible continuation, movement, or warranted uncertainty before rendering. Preserve simultaneous flourishing, capture, obstruction, disguise, contradiction, unresolved, unknown, and beneficial-direction standings without scalar compensation.
+
+## CA-04 — Generic generation and native movement
+
+**Requirements:** S-1406/S-1407; T-52/T-53.
+
+After the primitive/operator vocabulary freezes, introduce unseen Fact9/flourishing organizations across human contact, memory, tools, and endogenous development. Expose plural lawful, unavailable, unrecognized, deferred, and unresolved possibilities. Native MeTTa must construct, compare, join, inquire, undertake, defer, or decline without a scenario identifier, response catalogue, new RNA species per case, first-match rule, argmax, model preference, or host-language choice.
+
+## CA-05 — Bounded epistemic participants
+
+**Requirements:** C-004/C-020; S-1408; T-54.
+
+Give LLM, PLN/NAL, memory, and tool results plausible conflicting contributions, including repeated same-lineage agreement and independently grounded consequence. Each must re-enter with actual provenance and bounded standing. None becomes direct contact, constitutional authority, or executable movement.
+
+## CA-06 — Consequence-bearing Continuity of Mind
+
+**Requirements:** C-015/C-024/C-030–045; S-1409/S-1410; T-55/T-56.
+
+Different material consequences must produce the predicted difference in the next cut. Restart from empty model context with unfinished alternatives, bridge standings, changed interfaces, and an already committed effect. Miter must rehydrate the load-bearing organization, not merely the transcript, and must neither invent certainty nor replay the effect.
+
+## CA-07 — One Soul for endogenous and exogenous life
+
+**Requirements:** C-016; S-1303/S-1404/S-1411; T-57.
+
+Matched endogenous and exogenous contacts must use the same constitutive kernel. Sever only endogenous participation. An unsouled goal generator, genesis engine, scheduler, meta-awareness path, learning selector, or self-development controller fails even if human-facing language remains favorable.
+
+## CA-08 — Experimental standing and formalization return
+
+**Requirements:** C-018; S-1412; T-58.
+
+The evidence must preserve hypotheses, counterexamples, unsupported or contradicted bridge relations, newly disclosed compositions, and present formal-object insufficiencies. A machine-readable and human-readable projection identifies concrete Inquiry 26.6/26.9 questions. PoC success cannot become ratified mathematics, and incomplete mathematics cannot waive a failed causal test.
+
+## CA-09 — Joined always-on closure
+
+CA-01–CA-08 must be exercised through the same supported, continuously cycling and recoverable assistant used for installation, status, stop, panic, continuity, model participation, VoiceRNA, effects, consequence, and restart. Closure must trace one material event from authenticated or controlled-fixture contact through the next rehydrated developmental cut. If the constitutive kernel exists only in a harness while the usable assistant follows a fixed or model-selected route, the PoC fails.
+
+The active campaign may close a phase only when its promoted result contributes to this joined path and unlocks the recorded successor dependency. Tests T-37–T-58 and all applicable historical regressions retain their individual evidence and falsifiers.
+
+---
+
 # X. Required acceptance runner behavior
 
-`scripts/run-acceptance.sh` must:
+`scripts/run-acceptance.sh`, or the campaign runner that supersedes it without weakening its guarantees, must:
 
-1. accept one gate ID or `--all-eligible`;
-2. refuse a gate whose prerequisites are not green;
+1. accept one historical gate ID, one campaign phase ID, or `--all-eligible` within the selected control generation;
+2. refuse a gate or phase whose prerequisites are not green;
 3. create the evidence directory before executing code;
 4. capture stdout and stderr unfiltered;
 5. record service/process snapshots;
 6. run the positive arm and the specified negative control;
 7. invoke a separate verifier;
 8. write `verdict.json` atomically;
-9. never modify this contract;
+9. never modify this contract, the Soul specification, or the active campaign;
 10. return nonzero on `FAIL`, `BLOCKED`, or missing evidence.
+11. for AMA-1, validate and preserve the F-09 constitutive trace matrix rather than collapsing CA-01–CA-09 into one overall Boolean.
 
 The final summary format is:
 
 ```json
 {
-  "gate_id": "Gxx",
+  "target_id": "Gxx|AMA-1.x",
+  "target_kind": "historical_gate|campaign_phase",
   "status": "PASS|FAIL|BLOCKED",
   "claims": [
     {
@@ -1066,16 +1130,19 @@ Miter is not accepted because she sounds alive, writes code, remembers something
 Miter is accepted as this PoC only when the evidence demonstrates:
 
 ```text
-Soul constitution
+Fact9–Flourishing constitutive participation at every cognitive cut
++ complete D/Ω/I/W/C cut causality and native movement construction
++ plural Generated continuations without fixed behavioral selection
 + exact Continuity of Mind
-+ bounded local semantic rendering
++ bounded local or approved remote semantic participation
 + certified Soul voice
-+ persistent readiness and endogenous development
++ persistent supported operation and endogenous development through the same Soul
 + governed hot loading
 + consequence-sensitive learning with causal bite
 + restart-preserved lineage
 + Miter-authored omitted-part extension
 + live surface fidelity under scoped authority
++ autonomous expressed-Soul regeneration and honest formalization feedback
 ```
 
-with the required severed-arm differences and without granting model output, ChromaDB, VAD, NACE, generated code, or an external bridge constitutional sovereignty.
+with the required severed, neutral, restored, held-out, consequence, and restart differences; through one supported always-on runtime; and without granting model output, ChromaDB, VAD, PLN/NAL, NACE, generated code, or an external bridge constitutional sovereignty. Friendly output, nine labels, a mapping table, or a generic assistant later checked by the Soul cannot satisfy this law.

@@ -1,7 +1,7 @@
 # BGI Miter PoC — Authority and Traceability Map
 
-**Version:** 0.1 Draft  
-**Date:** 2026-09-01  
+**Version:** 0.2 — constitutive participation amendment
+**Date:** 2026-09-04
 **Status:** Normative provenance map subordinate only to the ratified authorities themselves
 
 ---
@@ -77,6 +77,14 @@ They do not acquire authority merely because they ran or existed earlier.
 Iter and Headlong are engineering witnesses and design-pressure sources. They are not constitutional authority.
 
 Their patterns survive only when translated into Miter's own law and acceptance tests.
+
+## A-005 — Soul specification and living-PoC standing
+
+`MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md` v0.4 is the ratified constitutive design and build specification subordinate to the five mathematical authorities and `CONSTITUTION.md`. It binds inherited authority, attributed Soul ancestry, provisional computational construction, runtime consumers, evidence, and falsifiers into one implementation control. It does not create new mathematical authority.
+
+The absence of completed Inquiry 26.6 or 26.9 formalization neither blocks a faithful finite PoC nor authorizes a simpler substitute. The PoC must preserve the exact standing of every bridge relation and developmental claim, test causal consequences, and return counterexamples and insufficiencies as formalization feedback. A working projection remains a projection until later mathematical work separately ratifies it.
+
+The ratified first-slice boundary is exact: external reach, deployment scale, and initially earned effect capabilities may be bounded; constitutive organization and openness to general unfamiliar conversation, undertakings, endogenous participation, consequence, and continuity may not be reduced.
 
 ---
 
@@ -462,12 +470,30 @@ External engineering inspiration only.
 
 ---
 
+# XII-A. Fact9–Flourishing constitutive joint
+
+The bridge is not a crosswalk between two complete engines. It is the finite constitutive joint through which the inherited objects and the interconnected flourishing compass participate in one live developmental cut.
+
+| Source surface | Contribution to the live cut | Forbidden substitution | Current PoC evidence |
+|---|---|---|---|
+| Inquiry 24 | typed contact, proto-time, provenance, attachment standing, immutable history | context, retrieval, or repetition treated as contact or authority | T-47/54/58 |
+| Investigation 25 | $D/\Omega/\mathcal I/\mathcal W/\mathcal C^{Soul}$ organization, movement primacy, materiality, non-compensation, consequence | score, favorable label, or post-hoc Soul verdict selecting movement | T-47/50/53/55 |
+| Inquiry 25.5 | `Generated/\mathcal G`, carrier translation, lawful access, non-sovereign computational shadow | generated candidate, model preference, or availability treated as actuality or choice | T-52–54 |
+| Inquiry 26.0 | partial participation, `SameBecoming`, non-reconstruction, persistent finite form | global self/world reconstruction or copied records treated as continuity | T-49/56 |
+| Inquiry 26.3 | simultaneous Fact9 roles, support-specific composition, Present asymmetry, n-ary whole-coupling | pairwise checks, powerset membership, one global joint, or one-to-one mapping | T-48/49 |
+| Ratified Soul specification and attributed ClarityOmega ancestry | complete interconnected flourishing/capture meanings, disguise, gap, relational tension, generative direction, endogenous participation | nine independent filters, positive wording, scenario rules, or a final favorable scalar | T-50–52/57 |
+
+The current finite bridge is governed by C-016–C-018 and S-1401–S-1412. It must expose multiple possible continuations, preserve unresolved and contradictory standings, construct movement natively, accept bounded model/memory/tool/reasoner participation, incorporate consequence into the next cut, and survive restart. New Fact9/flourishing compositions must remain usable without a new behavior entry. These are implementation requirements and falsifiable hypotheses, not claims that the PoC reconstructs actuality or completes later mathematics.
+
+---
+
 # XIII. Constitutional law-to-authority matrix
 
 | Constitution range | Primary source | Secondary evidence | Status in PoC |
 |---|---|---|---|
 | C-001–C-008 Identity/Soul/authority | 24, 25, 26.3 bounds | Original Soul | Bounded projection |
 | C-009–C-015 non-scalar/movement/representation/continuity | 25, 25.5, 26.0, 26.3 | Lean packages and Iter guidance | Inherited/specialized |
+| C-016–C-018 constitutive participation/formalization standing | 24, 25, 25.5, 26.0, 26.3 | Ratified Soul spec v0.4; complete flourishing ancestry | Bounded falsifiable projection |
 | C-020–C-025 contact/provenance | 24, 25.5, 26.0 | quantale source distinctions | Inherited/specialized |
 | C-030–C-045 Continuity of Mind | 24 immutable history/recovery; 26.0 SameBecoming | Original Chroma memory; Headlong trajectory | New engineering specialization |
 | C-050–C-057 human/VAD/voice | 25/26 non-sovereignty; 26.3 tension | Original Soul and VAD corpus | Provisional computational projection |
@@ -483,7 +509,7 @@ External engineering inspiration only.
 
 These questions remain open and must not be silently answered by implementation:
 
-1. Final Soul and flourishing mathematics after 26.3.
+1. Final Soul, Fact9–flourishing bridge, and developmental mathematics in Inquiry 26.6/26.9. The current PoC projection is mandatory but remains explicitly provisional.
 2. Final non-self-certifying recursive revision authority from later inquiries.
 3. Exact mathematical status of the current quantale/p-bit operations.
 4. Final developmental semantics of the helix metaphor.
@@ -492,7 +518,8 @@ These questions remain open and must not be silently answered by implementation:
 7. Final long-term multi-user/relationship memory governance.
 8. Final ontology/grammar self-revision law.
 9. Whether the PoC's declarative self-modification generalizes beyond VoicePolicy.
-10. Whether the Miter-authored Mattermost tentacle can pass live canary without human code repair.
+10. Whether the constitutive kernel can generalize across held-out endogenous and exogenous contacts without scenario-specific behavior entries.
+11. Which counterexamples and representational insufficiencies from the living PoC should become formal objects in Inquiry 26.6 and 26.9.
 
 The PoC exists to produce evidence about these questions, not to presuppose their answers.
 
@@ -500,6 +527,6 @@ The PoC exists to produce evidence about these questions, not to presuppose thei
 
 # Final authority statement
 
-The Miter PoC is authorized to construct a finite, non-sovereign, witness-first computational organism that preserves the inherited distinctions and experimentally projects Continuity of Mind, Soul-bound expression, endogenous development, bounded self-modification, consequence-sensitive learning, and governed external extension.
+The Miter PoC is authorized to construct a finite, non-sovereign, witness-first computational organism in which Fact9, the interconnected flourishings, contact, generation, participation, consequence, and continuity form one constitutive PeTTa/MeTTa cognitive process at every developmental cut. That process experimentally projects Continuity of Mind, endogenous development, bounded self-modification, consequence-sensitive learning, autonomous expressed-Soul repair, and governed external extension.
 
-It is not authorized to call that projection the final mathematics of Miter, to treat a local model or memory index as Miter's mind, or to convert successful engineering into retrospective mathematical canon.
+It is not authorized to call that projection the final mathematics of Miter, to treat a local model or memory index as Miter's mind, to reduce the bridge to a mapping/checklist layer, to postpone causal Soul organization behind a generic assistant wrapper, or to convert successful engineering into retrospective mathematical canon.

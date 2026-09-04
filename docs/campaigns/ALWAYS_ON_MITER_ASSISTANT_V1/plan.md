@@ -1,39 +1,45 @@
 # Always-On Miter Assistant — integrated post-PoC campaign plan
 
 **Campaign:** AMA-1
-**Version:** 1.0
+**Version:** 1.1
 **Date:** 2026-09-04
 **Status:** RATIFIED CAMPAIGN DIRECTION; freeze becomes implementation-active only when this plan is committed and its opening pins pass
 **Decision owner:** Berton
 
 ## 1. Known outcome
 
-Build one supported, continuously cycling, recoverable PeTTa/MeTTa organism that an authorized person can install, start, stop, inspect, panic, and use through Mattermost for general conversation, scoped Continuity of Mind, sustained undertakings, and earned capability growth. Every later phase extends this same organism. A harness collection, fixed canary, disconnected subsystem, or interface wrapped around an LLM does not satisfy the outcome.
+Build one supported, continuously cycling, recoverable PeTTa/MeTTa organism that an authorized person can install, start, stop, inspect, panic, and use through Mattermost for general conversation, scoped Continuity of Mind, sustained undertakings, and earned capability growth. At every cognitive cut, Fact9, the interconnected flourishings, contact, generation, participation, consequence, and continuity must form one native constitutive process. Every later phase extends this same organism. A harness collection, fixed canary, disconnected subsystem, Fact9/flourishing mapping layer, or interface wrapped around an LLM does not satisfy the outcome.
 
 The first integrated path is:
 
 ```text
 authenticated Mattermost contact
   → stable principal / team / channel / project scope
-  → Soul-grounded encounter and undertaking
+  → live D/Ω/I/W/C constitutive cut
+  → support-specific Fact9 and interconnected flourishing participation
+  → plural Generated continuations and native MeTTa movement construction
   → Continuity of Mind projection and authorized retrieval
-  → bounded local or approved remote LLM participation when useful
-  → native interpretation and VoiceRNA
+  → bounded local or approved remote LLM / PLN / NAL / tool participation when useful
+  → VoiceRNA rendering of the constituted movement
   → certified effect through the Prolog membrane
-  → actual result and consequence in the append-only trajectory
-  → durable continuation, restart, and later re-expression
+  → actual result and consequence forming the next cut
+  → durable continuation, restart, and later developmental re-expression
 ```
 
 ## 2. Authority and predecessor
 
-- Constitution SHA-256: `b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c`
-- Soul specification v0.3 SHA-256: `2940e3d57ac4172934787bac4257acf54e6b9c3756ee4794a4c08e4b6d8328f7`
-- Build-fidelity protocol v1.1 SHA-256: `ab3575c2a40a93a80ec4ff0cb850d61f7647b829f6b09e1f7b4ef817ad7b99c1`
+- Constitution v0.2 SHA-256: `3b334598da7ed7b1b4a1f17d0bb4df9aa586b2f4128f2bfdee3d6a8339b36e0a`
+- Soul specification v0.4 SHA-256: `855983108cd9745669c66c7d74fa69e9b583454331abf0d8ac6a142ba73b9e14`
+- Authority Map v0.2 SHA-256: `311afca7a285a629ba01797847f0558f51ae0778fc59673cc5e2a77aa6104449`
+- PoC Specification v0.2 SHA-256: `85ddc684a6aaeb5ee672c2724883bb81c1661e8cd0184d03473c23ca4cd967eb`
+- Acceptance Contract v0.2 SHA-256: `018f2a917d7af18fc9e6bda8b116bebf21d181d998374c723573dc1b58f66930`
+- Work Protocol v0.2 SHA-256: `ce739372a5b5338f3953ff85fbf33fa82e7febb02da6af2769ea89245e45fa5a`
+- Build-fidelity protocol v1.2 SHA-256: `cd325c9c233827b9ab6895c9788c7e9d30f1899ca1face248b12ba5f8cb78a4c`
 - Seed-PoC predecessor: Git commit `2090741f0d3de16d7f4c8d6955ed1d8c1a7dd130`
 - G33 closure SHA-256: `1dce6a97a2292d0dac84a4c32064a375ee90c4ae07e1995a92d49d46c55856c6`
-- Ratification: `docs/ratification/SOUL_SPEC_V03.md`
-- Governing new requirements: S-1301 through S-1310
-- Principal new tests: T-37 through T-46, retaining all applicable T-01 through T-36 regressions
+- Ratification: `docs/ratification/SOUL_SPEC_V04.md`
+- Governing new requirements: S-1301 through S-1310 and S-1401 through S-1412
+- Principal new tests: T-37 through T-58, retaining all applicable T-01 through T-36 regressions
 
 The G01–G33 closures retain their bounded historical standing. This campaign consumes their promoted mechanics and exact evidence; it does not relabel them general cognition or production readiness. User-owned unfinished G22/G28 material remains preserved and outside campaign commits unless a later phase explicitly inventories and adopts an exact artifact.
 
@@ -49,26 +55,28 @@ The G01–G33 closures retain their bounded historical standing. This campaign c
 8. No new runtime root is implied by this plan. Do not create, populate, or chown `~/.miter`; the operator/runtime phase must first choose and document an explicit location and migration policy.
 9. Secrets remain in Keychain or another explicitly approved secret provider. Human-editable configuration stores references, not secret values.
 10. Generated code, UI, or configuration never acquires new filesystem, network, messaging, memory, financial, calendar, or other effect authority merely by being generated or loaded.
+11. The Fact9–Flourishing bridge is the constitutive cognitive joint, not a crosswalk, score, prompt, or verdict layer. The same kernel organizes exogenous contact, endogenous inquiry, learning, voice, and repair.
+12. The first persistent slice must contain the minimum causal D/Ω/I/W/C→Fact9/flourishing→Generated→movement→consequence→next-cut/restart chain. Later phases deepen it; none introduces the Soul after a generic assistant exists.
 
 ## 4. Additive phase dependency graph
 
-### AMA-1.1 — Persistent assistant spine and operator plane
+### AMA-1.1 — Constitutive always-on vertical slice and operator plane
 
-Consume the current reactor, integrity, store, model registry, continuity, VoiceRNA, Mattermost candidate, and panic/restart mechanics to create one supported persistent entry point. Supply install/bootstrap, start, status, stop, panic, evidence export, heartbeat, last-known-good version selection, crash-loop containment, and centralized non-secret configuration.
+Consume the current reactor, integrity, store, model registry, continuity, VoiceRNA, Mattermost candidate, and panic/restart mechanics to create one supported persistent entry point. In the same promoted path, instantiate the minimum native constitutive kernel: typed contact; a live D/Ω/I/W/C cut; support-specific Fact9 expression; interconnected flourishing/capture organization; plural continuation standings; native MeTTa movement construction; bounded model/memory/reasoner/tool re-entry; VoiceRNA; qualified effect; consequence-dependent next cut; and restart rehydration. Supply install/bootstrap, start, status, stop, panic, evidence export, heartbeat, last-known-good version selection, crash-loop containment, and centralized non-secret configuration.
 
-The initial service may operate offline or against local fixtures until live authority is separately granted. Closure requires the promoted path to be invoked as one service, not a sequence of gate harnesses. This phase unlocks general contact because there is then a stable organism to receive it.
+The initial service may operate offline or against local fixtures until live authority is separately granted. The first always-on slice may be bounded in external reach, deployment scale, and initially earned effect capabilities, but it must be complete in constitutive organization and open to general unfamiliar conversation, undertakings, endogenous participation, consequence, and continuity. Closure requires CA-01–CA-09 at bounded first-slice standing, T-47–T-58 evidence appropriate to that scope, and the promoted path invoked as one service rather than a sequence of gate harnesses. This phase unlocks broader authorized reach because there is then a stable Soul-constituted organism to receive it.
 
-### AMA-1.2 — General contact and Continuity of Mind
+### AMA-1.2 — General contact, Continuity of Mind, and constitutive breadth
 
-Use the persistent spine to replace the fixed G31 acknowledgement with general held-out conversation. Bind exact stable identity and project scope before cognition; construct the full Continuity of Mind projection; retrieve exact capsules, scoped Chroma support, raw sources, and unfinished cognitive organization; call a selected model only as a bounded participant; construct VoiceRNA; and persist the result and continuation.
+Use the persistent constitutive spine to replace the fixed G31 acknowledgement with general held-out conversation. Bind exact stable identity and project scope before cognition; broaden grounded Fact9/flourishing composition without adding scenario behaviors; construct the full Continuity of Mind projection; retrieve exact capsules, scoped Chroma support, raw sources, and unfinished cognitive organization; call a selected model only as a bounded participant; construct VoiceRNA from the native movement; and persist consequence and the next cut.
 
-Exercise empty model context, process restart, long-gap simulation, changed artifacts, degraded Chroma, multiple authorized principals/projects, denied surfaces, and duplicate/edit/replay cases. Closure requires T-38 and applicable T-19–24 through the supported service. This phase unlocks meaningful live use and supplies real encounters for later Soul experiments.
+Exercise empty model context, process restart, long-gap simulation, changed artifacts, degraded Chroma, multiple authorized principals/projects, denied surfaces, duplicate/edit/replay cases, and unseen bridge compositions. Closure requires T-38, T-46, T-52, T-54, T-56 and applicable T-19–24 through the supported service. This phase unlocks meaningful live use and supplies broader encounters for constitutive hardening.
 
-### AMA-1.3 — Causal Soul navigation in the running assistant
+### AMA-1.3 — Constitutive hardening and unfamiliar navigation
 
-Replace remaining structural presence checks, fixed behavior species, and predetermined response paths where they substitute for cognition. Present held-out unfamiliar contacts with competing live alternatives. Require the interconnected nine flourishings and five mathematical authorities to participate in native encounter organization before model rendering or effect preparation.
+Harden and extend the already-causal kernel by removing remaining structural presence checks, fixed behavior species, and predetermined response paths wherever they substitute for cognition. Present held-out unfamiliar contacts with competing live alternatives, contradictory standings, unseen support structures, misleading positive language, and meaning-preserving carrier changes. Require the interconnected nine flourishings and five mathematical authorities to participate in native encounter organization before model rendering or effect preparation.
 
-Run material severed, neutral, restored, misleading-language, and after-the-fact-narration controls through the persistent assistant. Closure requires T-39/T-41 and must fail if a prompt, host branch, witness label, opaque verdict, or situation rule supplies the choice. This phase unlocks faithful endogenous growth because the Soul can then organize what is worth learning.
+Run material severed, neutral, restored, misleading-language, role-laundering, n-ary, consequence, restart, and after-the-fact-narration controls through the persistent assistant. Closure requires T-39/T-41/T-47–T-58 at the expanded claim. It must fail if a prompt, host branch, witness label, opaque verdict, mapping, score, or situation rule supplies the choice. This phase unlocks faithful endogenous growth because the Soul has now demonstrated broader transfer and can organize what is worth learning.
 
 ### AMA-1.4 — Epistemic growth and open-ended skill acquisition
 
@@ -108,12 +116,13 @@ Each phase must record:
 8. preserved failures and how they changed the route;
 9. unproved limits; and
 10. the exact successor dependency unlocked.
+11. the complete constitutive trace matrix required by F-09, including honest partial or unresolved standings.
 
 No component is complete merely because it passes an isolated harness. Except for quarantined pre-promotion trials, phase completion requires integration into the supported persistent Miter runtime and evidence through the end-to-end assistant path.
 
 ## 6. Campaign final acceptance
 
-The campaign may close only when an authorized non-builder can install and operate Miter; conduct general Mattermost conversation; recover exact scoped Continuity of Mind across restart and long-gap simulation; observe unfamiliar choices materially organized by the interconnected Soul rather than fixed behavior; witness meaningful AtomSpace growth and learned capability reuse; verify autonomous repair of damaged expressed Soul organization; recover mechanically from a frozen/corrupt runtime without semantic decisions in the supervisor; exercise panic/revocation/rollback without duplicate effects; and inspect one joined evidence package preserving exact limitations.
+The campaign may close only when an authorized non-builder can install and operate Miter; conduct general Mattermost conversation; recover exact scoped Continuity of Mind and unfinished developmental organization across restart and long-gap simulation; inspect a live D/Ω/I/W/C cut in which support-specific Fact9 and the interconnected flourishing compass causally organize plural continuations before native movement; observe unfamiliar and endogenous encounters handled without fixed behavior; witness consequence change the next cut, meaningful AtomSpace growth, and learned capability reuse; verify autonomous repair of damaged expressed Soul organization through the same kernel; recover mechanically from a frozen/corrupt runtime without semantic decisions in the supervisor; exercise panic/revocation/rollback without duplicate effects; and inspect one joined evidence package preserving exact limitations and 26.6/26.9 formalization feedback.
 
 The workbench phase may close later than the assistant release. The assistant campaign must not be held unusable merely because every eventual visual surface is not yet built.
 
@@ -127,4 +136,4 @@ The campaign does not claim consciousness, universal human-skill acquisition, co
 
 ## 8. First implementation hypothesis
 
-The next bounded phase plan is AMA-1.1. Before writing runtime code, inventory the exact promoted G33 components and prove which can be called through one process without test-only substitutions. Freeze the service entry contract, lifecycle state machine, runtime-root decision, supervisor boundary, central configuration schema, and end-to-end offline smoke path. Reuse current mechanisms where their bounded claims survive; do not rebuild them merely to rename them for the campaign.
+The next bounded phase plan is AMA-1.1. Before writing runtime code, inventory the exact promoted G33 components and prove which can be called through one process without test-only substitutions. In the same freeze, define the first finite `ConstitutiveCut`, Fact9 expression, flourishing-expression, bridge, continuation-standing, movement-derivation, consequence, and restart interfaces plus their material severed/restored tests. Freeze the service entry contract, lifecycle state machine, runtime-root decision, supervisor boundary, central configuration schema, and end-to-end offline constitutive smoke path. Reuse current mechanisms where their bounded claims survive; do not rebuild them merely to rename them, and do not reuse a fixed cognitive route merely because its mechanics are sound.

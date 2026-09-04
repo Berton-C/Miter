@@ -1,6 +1,7 @@
 # BGI Miter PoC — Final Evidence Report Template
 
 **Status:** TEMPLATE ONLY — not evidence and not a PoC verdict  
+**Control generation:** Soul specification v0.4 / Always-On Miter Assistant campaign v1.1
 **Generated for run:** `<run-id>`  
 **Git commit:** `<commit>`  
 **Date:** `<UTC>`
@@ -12,7 +13,9 @@
 ```text
 Proof A — Seed organism: PASS | FAIL | INCOMPLETE
 Proof B — Miter-authored Mattermost extension: PASS | FAIL | INCOMPLETE
-Overall PoC: PASS | FAIL | INCOMPLETE
+Historical G33 seed PoC: PASS-BOUNDED | FAIL | INCOMPLETE
+Constitutive always-on extension (CA-01–CA-09): PASS | FAIL | INCOMPLETE
+Current overall PoC: PASS | FAIL | INCOMPLETE
 ```
 
 A result is `PASS` only when every required clause links to raw gate evidence and all mandatory severed arms differ as predicted.
@@ -38,6 +41,15 @@ A result is `PASS` only when every required clause links to raw gate evidence an
 | Mattermost mock/live round trip | G30–G31 | | | |
 | Integrated severed-arm differences | G32 | | | |
 | Complete recorded demonstration | G33 | | | |
+| Live D/Ω/I/W/C cut causally consumed | CA-01 / T-47 | | | |
+| Fact9 n-ary/support-specific/Present discrimination | CA-02 / T-48–49 | | | |
+| Interconnected flourishing/capture participation before selection | CA-03 / T-50–51 | | | |
+| Unseen composition, plural Generated standings, native movement | CA-04 / T-52–53 | | | |
+| Bounded LLM/PLN/NAL/memory/tool re-entry | CA-05 / T-54 | | | |
+| Consequence changes next cut; organization survives restart | CA-06 / T-55–56 | | | |
+| Same Soul kernel for endogenous and exogenous contact | CA-07 / T-57 | | | |
+| Honest experimental standing and 26.6/26.9 feedback | CA-08 / T-58 | | | |
+| One joined supported always-on path | CA-09 / AMA-1 | | | |
 
 ---
 
@@ -189,6 +201,8 @@ Evidence:
 
 ## 5. Integrated severed-arm matrix
 
+Before the historical arms, attach the completed F-09 constitutive trace matrix for typed contact; D/Ω/I/W/C; Fact9; flourishing/capture; Generated continuations; native movement; bounded participant re-entry; VoiceRNA/effect; consequence/next cut; and restart continuity. Each row must identify its positive, material severance, neutral perturbation, restoration, runtime consumer, current standing, and successor dependency.
+
 | Arm | Discriminating case | Expected loss | Observed loss | Evidence | Verdict |
 |---|---|---|---|---|---|
 | Soul-severed | | | | | |
@@ -205,6 +219,15 @@ Evidence:
 | non-recursive | | | | | |
 | zero-pitch perpetual-loop | | | | | |
 | decorative-control component | no loss expected | none | | | |
+| Fact9 n-ary relation severed | | | | | |
+| Fact9 role laundered/shared carrier | | | | | |
+| flourishing/capture relation severed | | | | | |
+| bridge relation severed | | | | | |
+| Generated plurality collapsed | | | | | |
+| model/memory/reasoner standing elevated | | | | | |
+| next-cut consequence severed | | | | | |
+| endogenous Soul path severed | | | | | |
+| restart cut-organization severed | | | | | |
 
 ---
 
@@ -219,7 +242,7 @@ Record every failed gate, surprising runtime behavior, rejected candidate, and u
 At minimum, state that the PoC does not prove:
 
 - final Soul/flourishing mathematics;
-- final 26.6 or 26.9 authority;
+- final Fact9–flourishing bridge mathematics or final 26.6/26.9 authority;
 - universal open-ended intelligence;
 - unrestricted safe self-programming;
 - hidden access to a person's inner state;

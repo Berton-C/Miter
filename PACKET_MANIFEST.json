@@ -1,43 +1,55 @@
 {
-  "packet": "BGI Miter PoC Build Packet",
-  "version": "0.1.1 Alignment Clarification",
-  "generated_at_utc": "2026-09-01T17:10:23Z",
-  "file_count": 12,
+  "packet": "BGI Miter Constitutive Always-On Control Set",
+  "version": "0.2",
+  "generated_at_utc": "2026-09-04T20:09:23Z",
+  "standing": "Ratified design identities; implementation acceptance remains unproven",
+  "historical_packet": "initial_canon/BGI_Miter_PoC_Build_Packet_v0_1/PACKET_MANIFEST.json",
+  "file_count": 20,
   "files": [
     {
       "name": "ACCEPTANCE.md",
-      "size_bytes": 42561,
-      "sha256": "1e33440a223c63c4b527974e8d4ad12040f1e56576f31722c7603997f8d8ca59"
+      "size_bytes": 49306,
+      "sha256": "018f2a917d7af18fc9e6bda8b116bebf21d181d998374c723573dc1b58f66930"
+    },
+    {
+      "name": "AGENTS.md",
+      "size_bytes": 2697,
+      "sha256": "559f9fdae7cc87c14c762bdd0d68676220aadf89ecf462f9e8f77bc6b2c3ea37"
     },
     {
       "name": "AUTHORITY_MAP.md",
-      "size_bytes": 24876,
-      "sha256": "a57c93571212b0917fcd0041070cf95eb96e6ef0da59d6aea387450f186b4840"
+      "size_bytes": 29135,
+      "sha256": "311afca7a285a629ba01797847f0558f51ae0778fc59673cc5e2a77aa6104449"
+    },
+    {
+      "name": "BUILD_FIDELITY_PROTOCOL.md",
+      "size_bytes": 15243,
+      "sha256": "cd325c9c233827b9ab6895c9788c7e9d30f1899ca1face248b12ba5f8cb78a4c"
     },
     {
       "name": "CONSTITUTION.md",
-      "size_bytes": 28942,
-      "sha256": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c"
+      "size_bytes": 33388,
+      "sha256": "3b334598da7ed7b1b4a1f17d0bb4df9aa586b2f4128f2bfdee3d6a8339b36e0a"
     },
     {
       "name": "DECISIONS.md",
-      "size_bytes": 19829,
-      "sha256": "239249935c399b92118452be972351490288cb2e96f6e001484f1980bea2ab7f"
+      "size_bytes": 27448,
+      "sha256": "c3f2fed0fafe9a98690fada8c9778eeabf4fd2fd96ea55dfcc85dde81137b359"
     },
     {
       "name": "FAST_PATH.md",
-      "size_bytes": 13140,
-      "sha256": "d751f3a3b402a6a116c76bdd61b4039d5439cb7c0a4bf4befcb33471caf81d87"
+      "size_bytes": 14910,
+      "sha256": "3e1e4e99b8d3a785d5f5b4c813711991ac4732e06ca4104c905cca5db64c2726"
     },
     {
       "name": "FINAL_POC_REPORT_TEMPLATE.md",
-      "size_bytes": 6354,
-      "sha256": "e379088450344c2dc21bc1f48663f603069c3bb27a382b85529bc27ae2fbe717"
+      "size_bytes": 8181,
+      "sha256": "5aa90c0ea9990101db742153bcee828e428e32c83b8f4c8616db151d17ecc2ee"
     },
     {
       "name": "GPT_WORK_KICKOFF_PROMPT.md",
-      "size_bytes": 7422,
-      "sha256": "6e4e265460ee05d9759530a410833f9d9ceae32159b609526ceda0927264221b"
+      "size_bytes": 7913,
+      "sha256": "6ab88ac2ef8387b97da278ae0e27e850341799d295b8a21757c40ca9450906d9"
     },
     {
       "name": "HEADLONG_INHERITANCE.md",
@@ -45,24 +57,54 @@
       "sha256": "d3d34dabb5ed922d6706c5b33091ec97b738bb21d7741a0d82582c1e95772f63"
     },
     {
+      "name": "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md",
+      "size_bytes": 248718,
+      "sha256": "855983108cd9745669c66c7d74fa69e9b583454331abf0d8ac6a142ba73b9e14"
+    },
+    {
       "name": "POC_SPEC.md",
-      "size_bytes": 34827,
-      "sha256": "d217f1972d0c081e57dce3cf1baf6655d08257200c6c792414518b743e855381"
+      "size_bytes": 40050,
+      "sha256": "85ddc684a6aaeb5ee672c2724883bb81c1661e8cd0184d03473c23ca4cd967eb"
     },
     {
       "name": "README.md",
-      "size_bytes": 16020,
-      "sha256": "9e2c5210395823126349265f6764818220da48240b2299443412c09033f21b0d"
+      "size_bytes": 19200,
+      "sha256": "270ccbcba0af35be27e2887dc2c10433a62d3cb251c511bd68f839dc98add343"
     },
     {
       "name": "SOURCE_MATERIALS_CHECKLIST.md",
-      "size_bytes": 7514,
-      "sha256": "8a0328f54b4a7e9e057ee2bd682a90394ad31a3ea68379eeac7a964ea047a8ae"
+      "size_bytes": 7879,
+      "sha256": "8879186a7e4a82beb10caca5cc255f9ad3441694cfa064d5ce9d23ffa936aa29"
     },
     {
       "name": "WORK_PROTOCOL.md",
-      "size_bytes": 27397,
-      "sha256": "a801619d661a2af4d88cd53d821b321c7c012ca12e104a9418d40edd63140403"
+      "size_bytes": 31044,
+      "sha256": "ce739372a5b5338f3953ff85fbf33fa82e7febb02da6af2769ea89245e45fa5a"
+    },
+    {
+      "name": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md",
+      "size_bytes": 16395,
+      "sha256": "65dde851c93b1833bc48e0a16d1665b9c73d9b6d9118728a8b269771a09b55c4"
+    },
+    {
+      "name": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.json",
+      "size_bytes": 11634,
+      "sha256": "f40291f763d982d52ef64027307caafcdb17ad3458f53c7e3315cd20e7832acb"
+    },
+    {
+      "name": "docs/ratification/SOUL_SPEC_V04.md",
+      "size_bytes": 4847,
+      "sha256": "94e90cd2d5e05ce110e1417b1deb94156065543af463aed93060d035c6837f2d"
+    },
+    {
+      "name": "scripts/fidelity/check.mjs",
+      "size_bytes": 10635,
+      "sha256": "17fb9dde7a0a7b1c39ab3e43a77777e8a2f31b08fd30bffb11748b9d501446df"
+    },
+    {
+      "name": "scripts/fidelity/check.test.mjs",
+      "size_bytes": 4719,
+      "sha256": "19b06c98d2580fb42685c36ce1bc9e18cf87209bbc085f562d43e0ba12b77751"
     }
   ]
 }

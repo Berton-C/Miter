@@ -1,5 +1,7 @@
 # Miter — Soul build reassessment
 
+> **Historical baseline notice (2026-09-04):** This reassessment records the pre-v0.4 diagnosis and remains useful provenance. Soul specification Part 14, D-043, Acceptance CA-01–CA-09, Build Fidelity Protocol F-09, and campaign AMA-1 v1.1 now control the correction. Where this document proposes a later introduction of causal Soul navigation, the current controls supersede it: the first always-on slice must already be constitutively complete.
+
 **Date:** 2026-09-02  
 **Standing:** inspection and proposed correction plan; not a gate verdict, ratification, or implementation authorization  
 **Baseline:** `main` at `dcd84bad1ed997d87121fb46845cb47a26eecb86`, plus separately identified unfinished G22 files  

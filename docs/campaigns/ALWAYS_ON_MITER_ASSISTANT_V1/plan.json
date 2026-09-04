@@ -2,25 +2,41 @@
   "schema": "miter-integrated-campaign-plan-v1",
   "campaign": "AMA-1",
   "name": "Always-On Miter Assistant",
-  "version": "1.0",
+  "version": "1.1",
   "date": "2026-09-04",
   "status": "ratified-direction-awaiting-committed-opening",
   "decision_owner": "Berton",
-  "objective": "Build one supported, continuously cycling and recoverable PeTTa/MeTTa organism usable through Mattermost for general conversation, scoped Continuity of Mind, sustained undertakings, meaningful epistemic growth, earned skill acquisition and autonomous expressed-Soul repair, with every phase extending the same persistent runtime.",
+  "objective": "Build one supported, continuously cycling and recoverable PeTTa/MeTTa organism usable through Mattermost for general conversation, scoped Continuity of Mind, sustained undertakings, meaningful epistemic growth, earned skill acquisition and autonomous expressed-Soul repair, with Fact9, the interconnected flourishings, contact, generation, participation, consequence and continuity forming one native constitutive process at every cognitive cut and every phase extending the same persistent runtime.",
   "authority": {
     "constitution": {
       "path": "CONSTITUTION.md",
-      "sha256": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c"
+      "sha256": "3b334598da7ed7b1b4a1f17d0bb4df9aa586b2f4128f2bfdee3d6a8339b36e0a"
     },
-    "soul_specification_v03": {
+    "soul_specification_v04": {
       "path": "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md",
-      "sha256": "2940e3d57ac4172934787bac4257acf54e6b9c3756ee4794a4c08e4b6d8328f7"
+      "sha256": "855983108cd9745669c66c7d74fa69e9b583454331abf0d8ac6a142ba73b9e14"
     },
-    "build_fidelity_protocol_v11": {
+    "build_fidelity_protocol_v12": {
       "path": "BUILD_FIDELITY_PROTOCOL.md",
-      "sha256": "ab3575c2a40a93a80ec4ff0cb850d61f7647b829f6b09e1f7b4ef817ad7b99c1"
+      "sha256": "cd325c9c233827b9ab6895c9788c7e9d30f1899ca1face248b12ba5f8cb78a4c"
     },
-    "ratification": "docs/ratification/SOUL_SPEC_V03.md"
+    "authority_map_v02": {
+      "path": "AUTHORITY_MAP.md",
+      "sha256": "311afca7a285a629ba01797847f0558f51ae0778fc59673cc5e2a77aa6104449"
+    },
+    "poc_specification_v02": {
+      "path": "POC_SPEC.md",
+      "sha256": "85ddc684a6aaeb5ee672c2724883bb81c1661e8cd0184d03473c23ca4cd967eb"
+    },
+    "acceptance_contract_v02": {
+      "path": "ACCEPTANCE.md",
+      "sha256": "018f2a917d7af18fc9e6bda8b116bebf21d181d998374c723573dc1b58f66930"
+    },
+    "work_protocol_v02": {
+      "path": "WORK_PROTOCOL.md",
+      "sha256": "ce739372a5b5338f3953ff85fbf33fa82e7febb02da6af2769ea89245e45fa5a"
+    },
+    "ratification": "docs/ratification/SOUL_SPEC_V04.md"
   },
   "predecessor": {
     "git_commit": "2090741f0d3de16d7f4c8d6955ed1d8c1a7dd130",
@@ -39,7 +55,19 @@
     "S-1307",
     "S-1308",
     "S-1309",
-    "S-1310"
+    "S-1310",
+    "S-1401",
+    "S-1402",
+    "S-1403",
+    "S-1404",
+    "S-1405",
+    "S-1406",
+    "S-1407",
+    "S-1408",
+    "S-1409",
+    "S-1410",
+    "S-1411",
+    "S-1412"
   ],
   "principal_test_ids": [
     "T-37",
@@ -51,18 +79,43 @@
     "T-43",
     "T-44",
     "T-45",
-    "T-46"
+    "T-46",
+    "T-47",
+    "T-48",
+    "T-49",
+    "T-50",
+    "T-51",
+    "T-52",
+    "T-53",
+    "T-54",
+    "T-55",
+    "T-56",
+    "T-57",
+    "T-58"
+  ],
+  "acceptance_families": [
+    "CA-01",
+    "CA-02",
+    "CA-03",
+    "CA-04",
+    "CA-05",
+    "CA-06",
+    "CA-07",
+    "CA-08",
+    "CA-09"
   ],
   "end_to_end_spine": [
     "authenticated Mattermost contact",
     "stable principal/team/channel/project scope",
-    "Soul-grounded encounter and undertaking",
+    "live D/Omega/I/W/C constitutive cut",
+    "support-specific Fact9 and interconnected flourishing participation",
+    "plural Generated continuations and native MeTTa movement construction",
     "Continuity of Mind projection and authorized retrieval",
-    "bounded model participation when useful",
-    "native interpretation and VoiceRNA",
+    "bounded model, PLN/NAL, memory and tool participation when useful",
+    "VoiceRNA rendering of the constituted movement",
     "certified Prolog-mediated effect",
-    "actual result and consequence in append-only trajectory",
-    "durable continuation, restart and later re-expression"
+    "actual result and consequence forming the next cut",
+    "durable continuation, restart and later developmental re-expression"
   ],
   "language_and_authority_boundaries": {
     "cognition": "PeTTa/MeTTa",
@@ -73,28 +126,33 @@
     "outer_recovery": "mechanical liveness only",
     "inner_recovery": "Soul-owned semantic diagnosis and regeneration",
     "runtime_root_selected": false,
-    "create_or_chown_home_miter": false
+    "create_or_chown_home_miter": false,
+    "fact9_flourishing_bridge": "one constitutive cognitive joint, never a mapping, score, prompt or post-selection verdict layer",
+    "first_slice_soul_constituted": true,
+    "same_kernel_for_endogenous_and_exogenous_contact": true,
+    "first_slice_scope": "bounded in external reach, deployment scale and initially earned effect capabilities; complete in constitutive organization and open to general unfamiliar conversation, undertakings, endogenous participation, consequence and continuity"
   },
   "phases": [
     {
       "id": "AMA-1.1",
-      "name": "Persistent assistant spine and operator plane",
-      "depends_on": ["G33-R14", "SOUL-SPEC-V0.3", "F-08"],
-      "integrated_delta": "One supported service entry point with install/bootstrap, start, status, stop, panic, evidence export, heartbeat, last-known-good recovery, crash-loop containment and central non-secret configuration.",
-      "successor_unlocked": "AMA-1.2 general contact and Continuity of Mind"
+      "name": "Constitutive always-on vertical slice and operator plane",
+      "depends_on": ["G33-R14", "SOUL-SPEC-V0.4", "F-09"],
+      "integrated_delta": "One supported service entry point containing the minimum causal contact-to-D/Omega/I/W/C-to-Fact9/flourishing-to-Generated-to-native-movement-to-bounded-participation-to-VoiceRNA/effect-to-consequence/next-cut/restart chain, plus install/bootstrap, start, status, stop, panic, evidence export, heartbeat, last-known-good recovery, crash-loop containment and central non-secret configuration. External reach, deployment scale and initially earned effects may be bounded; constitutive organization and openness to general unfamiliar conversation, undertakings, endogenous participation, consequence and continuity may not be reduced.",
+      "closure_requires": ["CA-01", "CA-02", "CA-03", "CA-04", "CA-05", "CA-06", "CA-07", "CA-08", "CA-09", "T-47", "T-48", "T-49", "T-50", "T-51", "T-52", "T-53", "T-54", "T-55", "T-56", "T-57", "T-58"],
+      "successor_unlocked": "AMA-1.2 general contact, Continuity of Mind and constitutive breadth"
     },
     {
       "id": "AMA-1.2",
-      "name": "General contact and Continuity of Mind",
+      "name": "General contact, Continuity of Mind and constitutive breadth",
       "depends_on": ["AMA-1.1"],
-      "integrated_delta": "General held-out dialog and full scoped continuity through the persistent runtime across restart, long gaps, service degradation, principals, projects, duplicates and edits.",
-      "successor_unlocked": "AMA-1.3 causal Soul navigation using real integrated encounters"
+      "integrated_delta": "General held-out dialog, broader unseen Fact9/flourishing composition and full scoped continuity through the constitutive persistent runtime across restart, long gaps, service degradation, principals, projects, duplicates and edits.",
+      "successor_unlocked": "AMA-1.3 constitutive hardening using broader integrated encounters"
     },
     {
       "id": "AMA-1.3",
-      "name": "Causal Soul navigation in the running assistant",
+      "name": "Constitutive hardening and unfamiliar navigation",
       "depends_on": ["AMA-1.2"],
-      "integrated_delta": "Interconnected flourishings and inherited mathematics construct and compare live alternatives in unfamiliar encounters without situation rules, prompt answers or host-selected behavior.",
+      "integrated_delta": "The already-causal Fact9/flourishing kernel survives n-ary severance, role laundering, misleading positive language, contradictory standings, consequence, restart and unseen unfamiliar encounters without situation rules, mapping layers, prompt answers or host-selected behavior.",
       "successor_unlocked": "AMA-1.4 faithful endogenous growth and skill acquisition"
     },
     {
@@ -136,12 +194,14 @@
     "raw observations before verdict",
     "preserved failures and route change",
     "remaining limits",
-    "successor dependency unlocked"
+    "successor dependency unlocked",
+    "F-09 constitutive trace matrix with honest partial and unresolved standings"
   ],
   "integrated_closure_law": "Except for quarantined pre-promotion trials, no component or phase is complete until its promoted form is reachable through the supported persistent Miter runtime and is exercised through the end-to-end assistant path.",
+  "constitutive_closure_law": "The first always-on slice may be bounded in external reach, deployment scale and initially earned effect capabilities, but it must be complete in constitutive organization and open to general unfamiliar conversation, undertakings, endogenous participation, consequence and continuity. No supported path may interpret contact, form an undertaking, select a response or prepare an effect outside the Part-14 constitutive kernel.",
   "initial_phase": {
     "id": "AMA-1.1",
-    "next_action": "Inventory exact promoted G33 components, then freeze the service entry contract, lifecycle state machine, runtime-root decision, supervisor boundary, central configuration schema and offline end-to-end smoke path before runtime implementation.",
+    "next_action": "Inventory exact promoted G33 components, then jointly freeze the first finite ConstitutiveCut, Fact9, flourishing-expression, bridge, continuation-standing, movement-derivation, consequence and restart interfaces with their material severed/restored tests, plus the service entry contract, lifecycle state machine, runtime-root decision, supervisor boundary, central configuration schema and offline end-to-end constitutive smoke path before runtime implementation.",
     "implementation_started": false
   },
   "live_authority": {
@@ -164,7 +224,7 @@
   "non_claims": [
     "No live or ongoing Mattermost authority is granted by this plan.",
     "No finite test proves universal human-skill acquisition.",
-    "No current evidence proves a final Soul or complete flourishing mathematics.",
+    "No current evidence proves a final Soul, complete flourishing mathematics or final Inquiry 26.6/26.9 bridge mathematics; the finite causal PoC remains mandatory and explicitly provisional.",
     "No system can regenerate information after destruction of every authoritative source and recoverable weave.",
     "No unrestricted generated-code, filesystem, network, credential, memory or external-effect authority is granted.",
     "No new runtime root or ~/.miter creation/chown is authorized.",

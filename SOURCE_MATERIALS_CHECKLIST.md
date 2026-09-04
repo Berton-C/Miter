@@ -1,5 +1,7 @@
 # BGI Miter PoC — Source Materials Checklist
 
+> **Historical bootstrap notice (2026-09-04):** This checklist preserves the G00 source-intake contract. The required sources are now repository provenance under `docs/sources/`. Current implementation starts from the control order in `README.md`, Soul specification v0.4, and campaign AMA-1 v1.1; it does not repeat Task 00 or alter the immutable source archive.
+
 **Version:** 0.1 Draft  
 **Date:** 2026-09-01  
 **Purpose:** Tell the human and ChatGPT Work exactly which source materials must be locally available before Task 00, which are private runtime assets, and which are references only.

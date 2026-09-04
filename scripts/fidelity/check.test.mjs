@@ -1,9 +1,21 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {validatePlan,local} from './check.mjs';
+import crypto from 'node:crypto';
+import {validatePlan,local,constitutiveStages,firstSliceBoundary} from './check.mjs';
 const source=JSON.parse(fs.readFileSync(local('docs/gates/SC01/plan.json')));
-const fresh=()=>structuredClone(source);
+const digest=p=>crypto.createHash('sha256').update(fs.readFileSync(local(p))).digest('hex');
+const fresh=()=>{const p=structuredClone(source);for(const name of Object.keys(p.controls))p.controls[name]=digest(name);return p};
+const campaignControlPaths=['CONSTITUTION.md','MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md','AUTHORITY_MAP.md','POC_SPEC.md','ACCEPTANCE.md','BUILD_FIDELITY_PROTOCOL.md','WORK_PROTOCOL.md','docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md','docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.json'];
+const campaignFresh=()=>{
+  const p=fresh(); p.schema='miter-campaign-phase-plan-v1'; p.phase='AMA-1.1'; delete p.gate;
+  p.controls=Object.fromEntries(campaignControlPaths.map(x=>[x,digest(x)]));
+  p.requirements=['C-016','C-017','C-018',...Array.from({length:12},(_,i)=>'S-'+(1401+i)),...Array.from({length:12},(_,i)=>'T-'+(47+i)),...Array.from({length:9},(_,i)=>'CA-'+String(i+1).padStart(2,'0'))];
+  p.first_slice_boundary=firstSliceBoundary;
+  p.fidelity_checker={path:'scripts/fidelity/check.mjs',sha256:digest('scripts/fidelity/check.mjs'),test_path:'scripts/fidelity/check.test.mjs',test_sha256:digest('scripts/fidelity/check.test.mjs')};
+  p.constitutive_trace=constitutiveStages.map(stage=>({stage,requirements:['C-016','S-1401'],representation:'typed native representation',consumer:'supported runtime consumer',expected_positive:'predicted positive observation',material_severance:'predicted causal loss',neutral:'meaning-preserving perturbation',restoration:'predicted restored capacity',standing:'GAP before implementation',successor_dependency:'named AMA-1.2 dependency'}));
+  return p;
+};
 test('valid plan is packaging, not semantic certification',()=>assert.equal(validatePlan(fresh()).gate,'SC01'));
 test('changed control is rejected',()=>assert.throws(()=>validatePlan(fresh(),p=>p==='CONSTITUTION.md'?Buffer.from('changed'):fs.readFileSync(local(p))),/control changed/));
 test('unknown requirement rejected',()=>{const p=fresh();p.requirements.push('S-9999');assert.throws(()=>validatePlan(p),/unknown requirement/)});
@@ -14,3 +26,10 @@ test('path escape rejected',()=>assert.throws(()=>local('../elsewhere'),/escapes
 test('duplicate claim IDs rejected',()=>{const p=fresh();p.claim_ids.push(p.claim_ids[0]);assert.throws(()=>validatePlan(p),/unique claim/)});
 test('original acceptance gate IDs retain the same package requirements',()=>{for(const gate of ['G00','G22','G33']){const p=fresh();p.gate=gate;assert.equal(validatePlan(p).gate,gate)}});
 test('unknown or malformed gate IDs rejected',()=>{for(const gate of ['G34','G99','G2','G022','SC2','G22\n']){const p=fresh();p.gate=gate;assert.throws(()=>validatePlan(p),/schema\/gate/)}});
+test('AMA-1.1 requires the complete campaign controls and F-09 trace',()=>assert.equal(validatePlan(campaignFresh()).phase,'AMA-1.1'));
+test('campaign phase without one constitutive stage is rejected',()=>{const p=campaignFresh();p.constitutive_trace.pop();assert.throws(()=>validatePlan(p),/complete F-09/) });
+test('campaign phase with reordered constitutive stages is rejected',()=>{const p=campaignFresh();p.constitutive_trace.reverse();assert.throws(()=>validatePlan(p),/stages\/order/) });
+test('AMA-1.1 scope cannot be weakened through the phase plan',()=>{const p=campaignFresh();p.first_slice_boundary='general wrapper first';assert.throws(()=>validatePlan(p),/first-slice boundary/) });
+test('AMA-1.1 cannot omit a constitutive requirement',()=>{const p=campaignFresh();p.requirements=p.requirements.filter(x=>x!=='T-57');assert.throws(()=>validatePlan(p),/missing constitutive requirement/) });
+test('campaign phase cannot silently change its fidelity checker',()=>{const p=campaignFresh();p.fidelity_checker.sha256='0'.repeat(64);assert.throws(()=>validatePlan(p),/fidelity checker changed/) });
+test('unknown or malformed campaign phase IDs rejected',()=>{for(const phase of ['AMA-1.0','AMA-1.8','AMA-2.1','AMA-1','AMA-1.1\n']){const p=campaignFresh();p.phase=phase;assert.throws(()=>validatePlan(p),/schema\/gate/)}});

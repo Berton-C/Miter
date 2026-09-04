@@ -642,6 +642,23 @@ Adopt `BUILD_FIDELITY_PROTOCOL.md` v1.1 F-08. The campaign freezes the shared ou
 
 This campaign decision authorizes planning and bounded offline implementation after its committed opening passes. It does not authorize persistent Mattermost activation, Mattermost memory retrieval, a new principal/channel, a message effect, a new runtime root, `~/.miter` creation/chown, or broader external reach. Those require the exact later grant identified by C-098 and S-1310.
 
+## D-043 — Fact9–Flourishing Constitutive Participation Bridge ratified
+
+**Status:** ACCEPTED BY BERTON; CONTROL-DOCUMENT ALIGNMENT AUTHORIZED
+**Date:** 2026-09-04
+
+Berton ratified that the Fact9–Flourishing bridge must not become a mapping layer between otherwise separate systems. It is the constitutive joint through which the nine Immutable Facts, the nine interconnected flourishings, contact, generation, participation, consequence, and Continuity of Mind become one native PeTTa/MeTTa cognitive process at every developmental cut.
+
+The finite PoC must instantiate a provenance-bearing organization corresponding to Investigation 25's D/Ω/I/W/C object; support-specific, n-ary Fact9 expression with Present asymmetry and non-reconstruction; the complete flourishing/capture compass with disguise, contradiction, obstruction, uncertainty, and beneficial direction; plural `Generated/𝐢` continuations; native construction and comparison of movement; bounded re-entry of LLM, PLN/NAL, memory, and tool products; consequence-dependent formation of the next cut; and restart preservation of the unfinished organization. The same kernel governs endogenous and exogenous participation. Previously unseen compositions must not require scenario-specific behavioral entries.
+
+Incomplete Inquiry 26.6 or 26.9 formalization does not block this faithful finite experiment and does not authorize a flattened substitute. Runtime findings retain explicit experimental standing and must return counterexamples, unsupported bridge claims, and representational insufficiencies as formalization feedback rather than retrospective mathematical canon.
+
+Berton further ratified this exact scope distinction:
+
+> The first always-on slice may be bounded in external reach, deployment scale, and initially earned effect capabilities, but it must be complete in constitutive organization and open to general unfamiliar conversation, undertakings, endogenous participation, consequence, and continuity.
+
+Accordingly, causal Soul organization may not be postponed until after a generic assistant wrapper. AMA-1.1 becomes the constitutive always-on vertical slice; later phases deepen rather than introduce the kernel. Berton explicitly authorized the corresponding synchronized amendments to the Constitution, Soul specification, Authority Map, PoC Specification, Acceptance Contract, Work Protocol, Build Fidelity Protocol, active campaign, repository guidance, and ratification records. This decision does not enlarge historical G01–G33 evidence or authorize live external reach.
+
 ---
 
 A later implementation surprise does not retroactively change these decisions. It creates a new decision entry with evidence and an explicit supersession relation.

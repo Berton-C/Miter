@@ -1,10 +1,10 @@
 # Miter — gate-to-gate build fidelity
 
-Version 1.1, 2026-09-04. Implements Berton's requested methodology (D-040) and the additive integrated-campaign correction ratified with Soul specification v0.3.
+Version 1.2, 2026-09-04. Implements Berton's requested methodology (D-040), the additive integrated-campaign correction ratified with Soul specification v0.3, and the indivisible constitutive vertical-slice correction ratified in D-043 and Soul specification v0.4.
 
 ## Purpose and authority
 
-Every gate must advance what `CONSTITUTION.md` and the ratified `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md` actually require. This protocol governs the builders. It is not a runtime checklist, scheduler, approval ritual, or substitute for the Soul's cognition. The two controls and their mathematical inheritance determine fidelity; neither this process nor a green test can redefine them.
+Every gate or campaign phase must advance what `CONSTITUTION.md` and the ratified `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md` actually require. This protocol governs the builders. It is not a runtime checklist, scheduler, approval ritual, or substitute for the Soul's cognition. The two controls and their mathematical inheritance determine fidelity; neither this process nor a green test can redefine them.
 
 The improvement over review only at completion is to bind the interpretation **before** implementation, test it, and review it again afterward. Preserve a chain: control meaning → bounded claim → native representation and consumer → discriminating evidence → fidelity assessment → unmet dependency → next plan. Numbers and hashes make drift visible; they do not establish semantic truth.
 
@@ -12,7 +12,7 @@ The improvement over review only at completion is to bind the interpretation **b
 
 Read both controls at the start of an alignment cycle. At every gate opening and closure, verify the exact control hashes, re-read the applicable full clauses/sections (not merely their titles), and inspect the whole requirement ledger for affected or overlooked interfaces. Unchanged material already read remains context; a changed control requires reading the change and its dependent meanings before proceeding. Never claim reading from a hash check alone.
 
-The plan records reading paths/IDs, a plain-language interpretation, source connections, and why the gate is the next unmet dependency. Include both constructive capability and its bounds. Consider the whole architecture: movement at contact; interconnected flourishings; native cognition; LLM participation; continuous RNA/undertakings; memory/scopes; effects; learning; self-extension. For each, state material involvement or a reasoned out-of-scope status—absence is not completion.
+The plan records reading paths/IDs, a plain-language interpretation, source connections, and why the gate or phase is the next unmet dependency. Include both constructive capability and its bounds. Consider the whole architecture: contact and provenance; live D/Ω/I/W/C organization; support-specific Fact9; interconnected flourishing/capture; `Generated/𝒢` and native movement construction; bounded LLM/PLN/NAL/memory/tool participation; continuous RNA/undertakings; effects and consequence; next-cut Continuity of Mind; learning, regeneration, and self-extension. For each, state material involvement or a reasoned out-of-scope status—absence is not completion. AMA-1.1 has no out-of-scope option for the minimum S-1401–S-1411 causal chain.
 
 ## F-02 — Freeze the gate before code
 
@@ -23,6 +23,7 @@ Save `docs/gates/<gate>/plan.json` and `plan.md` with:
 - Authorized change paths, preserved work, forbidden surfaces, rollback and environment/resource assumptions.
 - Positive, severed, neutral and restored cases; held-out claim and its limits; unknown/malformed cases and regression obligations where relevant.
 - Remaining questions and a next-step hypothesis grounded in the controls, not a preapproved implementation of the next gate.
+- For every material cut, the exact contact→Fact9/flourishing→possibilities→movement→participant re-entry→consequence→next-cut/restart trace, or an explicit bounded reason why a named link is outside this particular claim. A reason may scope a quarantine trial; it may not authorize a promoted assistant bypass.
 
 Commit the plan before implementation. Opening evidence pins its committed hash and the control versions. Code may be repaired generically, but the frozen expectation must not be edited to pass it. A changed hypothesis or fixture meaning starts an explicitly recorded new attempt/version and retains failed evidence. A true authority conflict stops for Berton; an ordinary scoped implementation bug does not.
 
@@ -32,7 +33,7 @@ Use the pinned native PeTTa runtime. Keep fixtures, interpreter and independent 
 
 No claim of unseen held-out performance is allowed when the builder has inspected the cases. Use honest terms such as frozen-operator transfer/renaming tests. Genuine held-out evaluation requires separating case disclosure from implementation freeze and preserving that timing. Do not invent an independent reviewer when the same builder performed the review.
 
-Each new consumer has a material severing test; useful positive behavior must survive neutral changes and return under restoration. Refusal-only success, fixed response tables, arbitrary quotas and artificial silence fail fidelity even if they satisfy a narrow assertion. Non-compensatory constraints are not replaced by a total score. Keep the exact finite claim distinct from complete M25 realization, all nine semantics, or the whole Soul.
+Each new consumer has a material severing test; useful positive behavior must survive neutral changes and return under restoration. Refusal-only success, fixed response tables, arbitrary quotas and artificial silence fail fidelity even if they satisfy a narrow assertion. Non-compensatory constraints are not replaced by a total score. Fact9 and flourishings may not be implemented as two mappings, eighteen independent checks, a scalar joint score, or a required nine-item ritual. Held-out combinations must flow through generic relation operators without new scenario-specific behavior entries. Keep the exact finite claim distinct from final 26.6/26.9 mathematics while still testing the full finite causal projection required by S-1401–S-1412.
 
 ## F-04 — Two closure judgments
 
@@ -43,6 +44,8 @@ First, a deterministic verifier checks raw evidence against the frozen experimen
 3. Whether the implementation narrowed the intended capability, forced behavior, or imported a new constraint without source support.
 4. Whether any scope, provenance, dependency, constitutional meaning or future build obligation disappeared between plan and implementation.
 5. What the experiment cannot show, what failed, and what remains unproved.
+6. Whether Fact9/flourishing relations participated before movement construction or merely labeled, filtered, repaired, or explained a choice made elsewhere.
+7. Whether materially different consequence changed the next cut and whether restart preserved that organization rather than only its transcript.
 
 This is qualitative reasoning with citations, not five runtime booleans or an aggregate score. Deterministic checks can reject incomplete packaging or tampered evidence, but cannot attest to the honesty or adequacy of the builder's interpretation. Berton can inspect the trace and challenge the conclusion. Where an independent reviewer is used, identify its actual role; this protocol does not silently spawn agents or authorize external services.
 
@@ -88,4 +91,25 @@ Except for quarantined pre-promotion trials, a component is not complete merely 
 
 Efficiency does not mean concealing failed attempts or skipping necessary isolation. A preserved failure is purposeful when it falsifies a hypothesis, exposes a missing dependency, or changes the next movement. Repeated work that neither integrates capability nor changes the evidenced route is drift and must be stopped or reframed.
 
-The first active post-PoC campaign is the Always-On Miter Assistant. Its initial integrated path is Mattermost contact → stable identity and scope → Soul encounter → Continuity of Mind → bounded model participation → VoiceRNA → certified effect → trajectory and consequence → restart recovery. Campaign planning and implementation do not themselves authorize live or ongoing Mattermost access; C-098 and S-1310 require a separately explicit grant.
+The first active post-PoC campaign is the Always-On Miter Assistant. Its initial integrated path is contact and stable scope → live D/Ω/I/W/C cut → support-specific Fact9 and interconnected flourishing participation → plural Generated continuations → native MeTTa movement construction → scoped Continuity of Mind and bounded model/reasoner/tool participation → VoiceRNA → certified effect → consequence and next cut → restart recovery. Campaign planning and implementation do not themselves authorize live or ongoing Mattermost access; C-098 and S-1310 require a separately explicit grant.
+
+## F-09 — Constitutive vertical-slice enforcement
+
+No always-on assistant phase may close if its supported conversational path can interpret contact, form an undertaking, select a response, or prepare an effect without the Part-14 constitutive kernel. The first always-on slice may be bounded in external reach, deployment scale, and initially earned effect capabilities, but it must be complete in constitutive organization and open to general unfamiliar conversation, undertakings, endogenous participation, consequence, and continuity. It must demonstrate the causal joint named in S-1401–S-1411 and the differentiated standing required by C-018.
+
+Every opening and closure must supply a constitutive trace matrix with these rows:
+
+1. typed contact, identity, scope, and provenance;
+2. D/Ω/I/W/C cut fields actually consumed;
+3. support-specific Fact9 expression and n-ary relations;
+4. interconnected flourishing/capture/disguise/contradiction/unknown organization;
+5. plural continuation standings under `Generated/𝒢`;
+6. retained native movement derivation and live alternatives;
+7. bounded LLM, PLN/NAL, memory, and tool re-entry;
+8. VoiceRNA and effect qualification;
+9. consequence-dependent K→K' change; and
+10. restart rehydration of unfinished organization without effect replay.
+
+For each row, name source requirements, representation, runtime consumer, positive observation, material severance, neutral perturbation, restoration, current standing, and successor dependency. Missing evidence remains `GAP`, `PARTIAL`, `UNRESOLVED`, or `FAIL`; it cannot be hidden in an overall phase pass.
+
+G01–G33 mechanisms and SC work may be credited for the exact mechanical or semantic distinctions they proved. They do not become constitutive evidence merely because they can be called by the new service. Where old machinery bypasses or fixes a cognitive decision, reuse its valid mechanics and replace the cognitive path before promotion. This is how the campaign avoids both needless reconstruction and the equally costly mistake of integrating the wrong species more efficiently.

@@ -1,8 +1,8 @@
 # BGI Miter PoC — ChatGPT Work Construction Protocol
 
-**Version:** 0.1 Draft  
-**Date:** 2026-09-01  
-**Status:** Normative construction discipline  
+**Version:** 0.2 — constitutive campaign discipline
+**Date:** 2026-09-04
+**Status:** Normative construction discipline for historical gates and integrated campaigns
 **Applies to:** ChatGPT Work, Codex, human collaborators, and any model-assisted implementation process operating in the Miter repository
 
 ---
@@ -23,26 +23,30 @@ The governing maxim is:
 
 ## W-001 — Required reading order
 
-**2026-09-03 ratified supplement:** `BUILD_FIDELITY_PROTOCOL.md` governs opening, closure, and next-plan derivation for every subsequent gate. Read both `CONSTITUTION.md` and the ratified `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md`, including applicable source meanings and falsifiers, before planning and again during closure review. A gate number or a passing fixture cannot replace that review. The supplement strengthens this protocol without weakening any existing acceptance criterion.
+**2026-09-04 ratified supplement:** `BUILD_FIDELITY_PROTOCOL.md` v1.2 governs opening, closure, and next-plan derivation for every subsequent gate or campaign phase. Read both `CONSTITUTION.md` and the ratified `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md` v0.4, including Part 14, applicable source meanings, and falsifiers, before planning and again during closure review. Read the active campaign plan before any campaign work. A gate number, service wrapper, or passing fixture cannot replace that review. The supplement strengthens this protocol without weakening any existing acceptance criterion.
 
-Before Task 00, read in this order:
+Before historical Task 00, read the packet in its recorded order. For current work, read in this controlling order:
 
 1. `CONSTITUTION.md`
-2. `AUTHORITY_MAP.md`
-3. `POC_SPEC.md`
-4. `ACCEPTANCE.md`
-5. `WORK_PROTOCOL.md`
-6. `FAST_PATH.md`
-7. `SOURCE_MATERIALS_CHECKLIST.md`
-8. `DECISIONS.md`
-9. `HEADLONG_INHERITANCE.md`
-10. `README.md`
+2. `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md`
+3. `AUTHORITY_MAP.md`
+4. `POC_SPEC.md`
+5. `ACCEPTANCE.md`
+6. `BUILD_FIDELITY_PROTOCOL.md`
+7. the active campaign plan and JSON companion
+8. `WORK_PROTOCOL.md`
+9. `FAST_PATH.md`
+10. `DECISIONS.md`
+11. `SOURCE_MATERIALS_CHECKLIST.md`
+12. `HEADLONG_INHERITANCE.md`
+13. `README.md`
 
 Before each gate, reread:
 
 - the gate in `ACCEPTANCE.md`;
 - every `C-` law referenced by that gate;
-- the relevant `P-` specification sections;
+- every relevant `S-` requirement and `T-` falsifier in the Soul specification;
+- the relevant PoC and active-campaign sections;
 - the relevant proven substrate constraints in this document.
 
 ## W-002 — Human-controlled files
@@ -55,7 +59,7 @@ ACCEPTANCE.md
 AUTHORITY_MAP.md
 ```
 
-It may not silently edit `POC_SPEC.md` to fit an implementation. If the specification proves wrong or underspecified, stop and create a proposed decision entry under `proposals/` or present the issue to the human.
+It may not silently edit `POC_SPEC.md`, `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md`, `BUILD_FIDELITY_PROTOCOL.md`, or an active campaign plan to fit an implementation. If a control proves wrong or underspecified, stop and create a proposed decision entry under `proposals/` or present the issue to the human. D-043 records Berton's explicit authorization for the 2026-09-04 control-document amendment; it is not standing permission for later silent changes.
 
 ## W-003 — Decision changes
 
@@ -74,6 +78,8 @@ A design change requires:
 A Work task implements one gate or one explicitly named prerequisite nugget. It must not opportunistically build later subsystems.
 
 Berton's 2026-09-03 instruction authorizes sequential bounded gate work in the current task: each gate still has a separate frozen plan, evidence, fidelity closure, and source-derived next plan before the next implementation begins. This is not permission to merge claims or skip gate boundaries.
+
+For the ratified Always-On Miter Assistant campaign, the unit of work is one bounded additive phase or explicitly named phase delta under the shared campaign freeze. Interdependent constitutive mechanisms may be developed and tested together when separating them would create a false wrapper or orphan scaffold. Individual test-family evidence and falsifiers remain distinct. A phase may deepen a causal kernel already present in its predecessor; it may not postpone Soul constitution behind a general assistant path.
 
 ## W-005 — No acceptance by narration
 
@@ -846,6 +852,25 @@ External failures normalize to typed errors. No exception, empty response, timeo
 
 Logs must be useful for reconstruction but exclude secrets and avoid dumping private long-term memory content unnecessarily.
 
+## W-139 — The constitutive vertical slice is indivisible
+
+The first persistent assistant slice must contain a minimally causal implementation of the full chain:
+
+```text
+contact and provenance
+  → D/Ω/I/W/C constitutive cut
+  → support-specific Fact9 and interconnected flourishing participation
+  → plural Generated continuation standings
+  → native MeTTa movement construction
+  → bounded model/memory/reasoner/tool participation
+  → VoiceRNA and capability-qualified effect
+  → consequence, next cut, and restart continuity
+```
+
+Operational supervision and interfaces may be implemented incrementally, but no general conversational path may be promoted while bypassing this chain. The bridge may not be reduced to a Fact9/flourishing crosswalk, independent checklist, scalar score, prompt, or post-selection verdict. Every material relation names its native consumer and predicted severed/restored difference. Previously unseen compositions must be processed by generic operators rather than new scenario-specific behavior entries.
+
+This requirement does not demand final Inquiry 26.6/26.9 mathematics. It demands explicit experimental standing and preserves failures as formalization feedback rather than using incompleteness to excuse a two-dimensional substitute.
+
 ---
 
 # XIII. Stop conditions
@@ -925,7 +950,10 @@ The build must preserve this sequence:
 
 ```text
 human-ratified constitution
-→ fixed seed mechanisms
+→ live D/Ω/I/W/C cut with Fact9–flourishing constitutive participation
+→ native construction among plural lawful continuations
+→ bounded semantic participation and capability-qualified expression/effect
+→ consequence and next-cut continuity
 → witnessed deficiency or requested extension
 → Miter-authored candidate
 → isolated trial
@@ -935,4 +963,4 @@ human-ratified constitution
 → durable lineage
 ```
 
-A faster route that collapses these distinctions does not build Miter. It builds an LLM-driven automation system wearing Miter's vocabulary.
+A faster route that collapses these distinctions does not build Miter. It builds an LLM-driven automation system wearing Miter's vocabulary. For the always-on PoC, a generic assistant wrapper followed later by causal Soul integration is one such collapse.
