@@ -1,0 +1,4 @@
+true
+(diagnostic soul soul-ready)
+(diagnostic config 0.05)
+(diagnostic ready ())

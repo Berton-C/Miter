@@ -1,0 +1,57 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R11 R2: a narrowly generalized mechanical root guard lets the corrected source-grounded development membrane serve the default module bootstrap across repository-owned G33 evidence and runtime roots while rejecting traversal/outside roots; the default path then preserves the R1 hook, causal, neutral, restart, containment, and zero-effect claims.",
+  "claim_ids": [
+    "G33-R11-R2-development-membrane-admits-only-qualified-repository-roots",
+    "G33-R11-R2-default-bootstrap-activates-only-source-grounded-development-hooks",
+    "G33-R11-R2-default-bootstrap-preserves-causal-neutral-and-restart-behavior",
+    "G33-R11-R2-module-containment-remains-loadable-without-behavioral-selection"
+  ],
+  "non_claims": "No arbitrary path authority, home-directory state, deletion of historical files/evidence, v1 behavioral-selector rehabilitation, candidate generation, model call, trial quality, promotion, accepted development, consequence/NACE revision, changed later selection, general purpose formation, complete S-602/S-606/S-607/S-702/S-705, live/private-memory/Chroma/Mattermost reach, human emission, external effect, final G33, or whole-PoC acceptance.",
+  "rationale": "R1 attempt 002 localized the first discontinuity to dr_root/2's R10-only prefix after proving the corrected hook registry. C-060-C-064 and S-603/S-905 permit Prolog path mechanics but not semantic choice; C-004/C-011/C-012 and S-501-S-504/S-602/S-606 require native undertaking formation. The smallest honest repair generalizes the mechanical carrier only to named repository root classes and tests negative paths before repeating the unchanged semantic claim.",
+  "requirements": [
+    "C-003", "C-004", "C-005", "C-006", "C-007", "C-008", "C-009", "C-010", "C-011", "C-012", "C-013", "C-020", "C-021", "C-022", "C-023", "C-025", "C-030", "C-031", "C-032", "C-040", "C-041", "C-044", "C-045", "C-054", "C-055", "C-056", "C-057", "C-060", "C-061", "C-062", "C-064", "C-065", "C-067", "C-070", "C-071", "C-072", "C-073", "C-074", "C-075", "C-090", "C-091", "C-092", "C-094", "C-095", "C-096", "C-097", "C-100", "C-102", "C-103", "C-104", "C-105",
+    "S-103", "S-202", "S-203", "S-205", "S-301", "S-302", "S-303", "S-304", "S-305", "S-401", "S-402", "S-403", "S-404", "S-501", "S-502", "S-503", "S-504", "S-505", "S-601", "S-602", "S-603", "S-604", "S-605", "S-606", "S-607", "S-701", "S-702", "S-704", "S-705", "S-901", "S-902", "S-903", "S-905", "S-1004", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202", "S-1203",
+    "T-10", "T-12", "T-14", "T-16", "T-18", "T-20", "T-21", "T-22", "T-23", "T-28", "T-30", "T-33", "T-34"
+  ],
+  "reading": "Read both controls; fidelity protocol; SC07 correction and SC08 closure; G33 R10 closure; R11/R1 plans and attempts 001-002 including diagnostic output; bootstrap_modules, bootstrap_development_reactor_v1, development_reactor_v1, its membrane, reactor path usage, modules, and G21 containment consumers. The root repair is mechanical and cannot widen semantic/effect authority.",
+  "representation": "Replace the R10-only dr_root prefix with an explicit qualified-root relation accepting canonical-looking absolute paths beneath /Users/claritymiter/miter/evidence/G33/ or /Users/claritymiter/miter/runtime/ and rejecting '..', the roots themselves, relative paths, other evidence gates, neighboring repository directories, ~/.miter, and external paths. Then replace bootstrap_modules' historical bootstrap import with bootstrap_development_reactor_v1. No other semantics change.",
+  "consumer": "Prolog root qualification is consumed only by typed contact/persistence operations. Claim-bearing cognition remains ReactorStart -> ReactorIdleOpportunity -> SourceGroundedDevelopmentIdle -> current native graph -> SourceGroundedDevelopmentBoundary. A separate probe checks accepted/rejected roots. Module containment probe calls validation/quarantine only, never TrialVoicePlan/ModuleGenerationRNA/generation.",
+  "falsifiers": "A relative/traversal/outside/other-gate/home path qualifies; R10 compatibility is lost; R11 qualified root fails; root mechanics choose purpose; old hooks remain active; corrected hooks absent; same-family transcribes; neutral ordering changes material undertaking; restart changes/replays; module containment breaks or invokes behavioral selection; forbidden effects enter trial space; model/network/credential/Chroma/Mattermost/memory/human emission/registry/promotion/external effect occurs; historical or unrelated G22/G28 work changes.",
+  "scope_review": "R2 may edit src/bootstrap_modules.metta and effect_membranes/miter_development_reactor_v1.pl and add docs/gates/G33/R11, tests/fixtures/g33_r11, scripts/g33_r11, evidence/G33/R11. It may run pinned local PeTTa/SWI in isolated evidence roots. It may not change controls, native development/voice meanings, historical interest/module semantics/evidence, config, registries, private state, live services, or unrelated G22/G28 work.",
+  "rollback": "Restore bootstrap_modules SHA-256 14ead2846c457ae155213b40f76deb67cbf015403a6329a8b0fcb3cd32695b6a and membrane SHA-256 112bcc673c2391abac5fb9416c865ca03dfd9a5db3cab01c4944e560bb9ce1be if R2 fails; retain append-only R11 evidence.",
+  "predecessor": "docs/gates/G33/R10/closure.json",
+  "allowed_paths": ["src/bootstrap_modules.metta", "effect_membranes/miter_development_reactor_v1.pl", "docs/gates/G33/R11/", "tests/fixtures/g33_r11/", "scripts/g33_r11/", "evidence/G33/R11/"],
+  "preserved": [
+    {"path":"docs/gates/G33/R10/closure.json","sha256":"17a9c79d7aaa94cedb4d11c67221bdee8c9a584c94f497f7c3c029255a78dbbf"},
+    {"path":"docs/gates/G33/R11/R1/plan.json","sha256":"0c244d549772397f0ee5e12b3a16fad38146b622daafb8bb2a2245e3a02a6566"},
+    {"path":"src/bootstrap_interests.metta","sha256":"fb14ff26d25af01e9326609b19ca4fc5e251de343317e682fbc6d22d6b0dc253"},
+    {"path":"src/interests.metta","sha256":"4f463d92877aef2abc4769ba9c889cd80a3a8e8d4eb5a9d16b6c171d44b0ed0e"},
+    {"path":"src/bootstrap_development_reactor_v1.metta","sha256":"a9195d3ff25a43a0379af096cba2a12018203f59214b32d0aeba0966e8d042d4"},
+    {"path":"src/development_reactor_v1.metta","sha256":"e20ab27412815ddd2cc54a192bec160faad5e42fa66283e476a2e64bae2236cb"},
+    {"path":"src/modules.metta","sha256":"d687cbcd2ff6df905001741bcde24a7786ca3ac00b095b574d46f3957812b528"},
+    {"path":"effect_membranes/miter_module_transport.pl","sha256":"7e74307b5c1d6264dc4084a9bcfbdc994abde84b35fd3cef77e3b9302fe75b18"},
+    {"path":"docs/gates/SC07/CONTRACT_CORRECTION.md","sha256":"1fcf9bce014a71c87a3ade3ed5c7440db61cdbc4996073946447b950d3162526"},
+    {"path":"docs/gates/SC08/closure.json","sha256":"406a41802a38e939fe8d47e806c6da18747e38ec4cc3988e2b107f296ea60610"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"}
+  ],
+  "cases": {
+    "positive": "R10 and R11 evidence roots qualify mechanically; default import forms canonical waiting undertaking with corrected hooks.",
+    "severed": "Traversal, relative, other-gate, neighboring, home, external roots reject; same-family forms no RNA; dependency removal loses current hook standing; forbidden module effect rejects.",
+    "neutral": "Source-order reversal preserves material undertaking; qualified R10 and R11 root classes have identical path-mechanical standing.",
+    "restored": "Restoring qualified R11 root/dependency restores formation; fresh process preserves checkpoint without replay.",
+    "held_out": "Repository runtime root qualifies structurally but no live runtime/effect is opened; arbitrary paths and general purpose remain unclaimed.",
+    "unknown_malformed": "Empty/non-atom/traversal/schema/provenance/storage/process failures remain typed/held without external effects."
+  },
+  "environment": "Pinned native PeTTa ae66fa8e41dcd5539d614706bd4e5cfb34f9608d through SWI-Prolog 10.0.2 arm64; isolated evidence roots; zero model/external reach.",
+  "next_step_hypothesis": "If R2 closes, freeze R12 around separately authorized corrected-v2 generation/trial/consequence and later changed selection. If it fails, preserve whether root qualification, default composition, restart, or containment is first discontinuity."
+}
