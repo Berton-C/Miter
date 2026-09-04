@@ -1,0 +1,70 @@
+; G33 R5 native repair continuation. The failed reading and the encounter's
+; relations determine construction. No defect/action table or fixed response
+; participates, and every certificate is recomputed with no emission authority.
+(= (RRInitial $frame $clauses)
+ (let* (($intention (RIntend expression-repair (DGround $frame)))
+        ($scope (index-atom $frame 1))
+        ($audit (RAudit $intention $scope $scope $clauses))
+        ($disposition (RDisposition $audit 1)))
+  (repair-initial $intention $clauses $audit $disposition)))
+
+(= (RRCapabilityValid $capability)
+ (if (PShape $capability accepted-expression-capability 4)
+  (if (== (index-atom $capability 3) no-emission-authority)
+   (== (VModuleValid (index-atom (index-atom $capability 1) 2)
+          (index-atom $capability 1)) module-valid) false) false))
+
+(= (RRSupportedOptions $eligible)
+ (if (PShape $eligible supported-expression-alternatives 3)
+  (index-atom $eligible 1) ()))
+
+(= (RRReAudit $intention $frame $option)
+ (if (PShape $option supported-expression 5)
+  (let $scope (index-atom $frame 1)
+   (voice-fault semantic-reaudit-severed))
+  (voice-fault unsupported-repair-option)))
+
+(= (RRCertifyOne $frame $initial $capability $construction $eligible)
+ (let $options (RRSupportedOptions $eligible)
+  (if (== (size-atom $options) 1)
+   (let* (($option (index-atom $options 0))
+          ($fresh (RRReAudit (index-atom $initial 1) $frame $option)))
+    (if (and (PShape $fresh voice-audit 7) (== (index-atom $fresh 3) faithful))
+     (expression-certificate-v1
+      (scope-cut (index-atom $frame 1))
+      (intention (index-atom $initial 1))
+      (first-candidate (index-atom $initial 2))
+      (first-audit (index-atom $initial 3))
+      (repair-request (index-atom $initial 4))
+      (accepted-capability (index-atom $capability 2) (index-atom $capability 1))
+      (construction $construction)
+      (selected-expression $option)
+      (fresh-audit $fresh)
+      no-emission-authority)
+     (expression-repair-incomplete (fresh-audit $fresh) no-emission-authority)))
+   (if (> (size-atom $options) 1)
+    (expression-repair-alternatives $options (source-comparison $eligible) no-emission-authority)
+    (expression-repair-incomplete (source-comparison $eligible) no-emission-authority)))))
+
+(= (RRConstruct $frame $initial $capability $fuel)
+ (let* (($module (index-atom $capability 1))
+        ($construction (VConstruct $frame $module $fuel))
+        ($eligible (VEligible $construction)))
+  (RRCertifyOne $frame $initial $capability $construction $eligible)))
+
+(= (RRContinue $frame $clauses $capability-path $fuel)
+ (let* (($initial (RRInitial $frame $clauses))
+        ($capability (rr_capability $capability-path)))
+  (if (PShape (index-atom $initial 4) repair-request 3)
+   (if (RRCapabilityValid $capability)
+    (RRConstruct $frame $initial $capability $fuel)
+    (expression-repair-incomplete (capability $capability) no-emission-authority))
+   (expression-repair-not-formed $initial no-emission-authority))))
+
+; Verification never trusts a supplied certificate. It recomputes the entire
+; continuation from the current frame, first candidate and accepted bytes.
+(= (RRVerify $frame $clauses $capability-path $fuel $supplied)
+ (let $current (RRContinue $frame $clauses $capability-path $fuel)
+  (if (and (PShape $current expression-certificate-v1 11) (== $current $supplied))
+   (certificate-valid $current)
+   (certificate-invalid (supplied $supplied) (recomputed $current) no-emission-authority))))

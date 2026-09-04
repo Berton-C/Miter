@@ -1,0 +1,8 @@
+{
+  "schema": "miter-g33-r5-cases-v1",
+  "controlled_first_candidate": ["I will revise ledger."],
+  "source_frame": "evidence/SC07/live-001/frame.json",
+  "accepted_capability": "evidence/G22/g26-001/accepted/candidate.json",
+  "construction_fuel": 256,
+  "standing": "disclosed finite integration stimuli; no repaired sentence, audit, certificate, or semantic winner supplied"
+}

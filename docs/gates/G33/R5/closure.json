@@ -1,0 +1,52 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G33",
+  "plan": "docs/gates/G33/R5/plan.json",
+  "plan_commit": "dc64f3a35e5681e2b421500238e1208ebedf6428",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G33/R5/attempts.md","sha256":"b82aefaa03a964619d9c243f9e600406cd7625d7c19ce654a9fa13bd04786887"},
+    {"path":"docs/gates/G33/R5/semantic-audit.md","sha256":"a69975ad6e4f89f48affd959294b90c50bceedd2700f84b82f098a8fe744c110"},
+    {"path":"docs/gates/G33/R5/outcome.md","sha256":"68b5e2dffa3896c1bbadd5409edd9b5d9b577cbc5d1a00c1286d0416ad4ab836"},
+    {"path":"evidence/G33/R5/attempt-001/diagnosis.md","sha256":"4dd17a3dcc899040ad0eb174e5bbcf1988c673d79e12c7486c15a08c6316d6b7"},
+    {"path":"evidence/G33/R5/attempt-002/diagnosis.md","sha256":"72cb5fe7aabe6161e2a394e24e21d0cb393f748feb8e14fc9ffb6296c94b7176"},
+    {"path":"evidence/G33/R5/attempt-003/verdict.json","sha256":"e6273efdeefaf4c33a3405dc658fe2419e127109b5ae3c35a4885745cabcfd1c"},
+    {"path":"evidence/G33/R5/attempt-003/native-products.json","sha256":"76b45dbee7fb6f189c84239f4cc522eb31abc905f55f32d72067fd79e5c7947c"},
+    {"path":"evidence/G33/R5/attempt-003/stale-certificate-products.json","sha256":"acd39a5a06c625a2de73ea23c489040b1f8453e4f4316a0d682c0594be5ab858"},
+    {"path":"evidence/G33/R5/attempt-003/sever-reaudit-products.json","sha256":"94eb4afc713d1558087a75e662dd302e7163223589d00fdfbb272d92b577a345"},
+    {"path":"evidence/G33/R5/attempt-003/freeze.json","sha256":"5df2659ae1894ab75745761de35ac98edec362671e767283523ad8141528883c"},
+    {"path":"evidence/G33/R5/attempt-003/raw-summary.json","sha256":"6f604d5e5e4e67e117bbef9c11bd58b2006bf5b6f30cf2e75291259d1107949b"}
+  ],
+  "claim_results": [
+    {
+      "id": "G33-R5-repair-request-consumed-by-native-construction",
+      "status": "PROVEN-RUNTIME",
+      "limit": "For the disclosed finite frame and controlled defective clause, current native RIntend/RAudit/RDisposition formed the specific repair-request and the new continuation consumed it through bounded VConstruct. This is not general language or public RWait integration."
+    },
+    {
+      "id": "G33-R5-source-joint-participation-determines-repaired-expression",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The human-confirmed three-relation co-expression source reduced the accepted grammar's supported compositions to one; removing that source left alternatives without certification. This finite relation does not prove every unique expression beneficial."
+    },
+    {
+      "id": "G33-R5-faithful-repair-carries-recomputable-certificate",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The sole supported expression was independently re-read and audited faithful, and RRVerify accepted only the exactly recomputed certificate bound to current scope, sources, failed candidate, construction, accepted lineage, and no-emission authority. No effect eligibility is claimed."
+    },
+    {
+      "id": "G33-R5-bypass-ambiguity-and-forged-capability-held",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Finite cuts of joint participation, material meaning, semantic re-audit, capability bytes, symlink identity, current cut, and certificate provenance all blocked the same certificate; neutral source and construction order preserved semantic content. This is not a production filesystem-race or arbitrary malformed-input proof."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/C-009/C-011/C-012 and S-501-S-505 allocate expression formation and semantic judgment to Soul-grounded native cognition; C-054-C-062 and S-902-S-905 deny model text direct authority; C-090-C-105 and S-1101-S-1105 require differentiated evidence and recovery. R5 therefore consumes the real native repair-request and lets the frame's material and joint relations organize construction, comparison, re-audit, and certification.",
+    "causal_evidence": "The exact canonical participants caused a unique faithful no-emission certificate. Removing the joint relation caused alternatives, removing semantic re-audit caused incomplete repair, tampering or aliasing the accepted module caused capability-incomplete standing, and changing the cut invalidated the stale certificate. Restoring the unchanged canonical participant set in attempt 003 restored the certificate; neutral order changes preserved its semantic content.",
+    "substitution_audit": "No response wording, faithful audit, certificate, defect/action mapping, scenario/response rule, list-order choice, or score entered the implementation or fixture. Prolog projected only hash-bound accepted grammar and lexical mechanics. JavaScript isolated and severed participants then inspected structure. MeTTa alone formed the intention, diagnosed alterations, constructed possibilities, honored the source joint, re-read meaning, and certified.",
+    "capability_and_constraint_audit": "The capability membrane required exact G22 candidate, active-receipt, and closure hashes and verified that the accepted-development receipt bound the same native module and trial pins. Canonical non-symlink files and bounded fuel were required. The certificate states no-emission authority. Attempts made zero model, network, credential, Chroma, Mattermost, human-emission, or external-effect calls and did not create or use ~/.miter.",
+    "remaining_gaps": "R5 is an offline finite native repair continuation. It does not wire current RRun/RWait to repair, make a fresh renderer call, emit to a human, establish effect eligibility, prove general semantics or flourishing, complete G16/G17/G33, integrate restart, demonstrate Mattermost lineage, perform NACE learning, or finish the PoC report. G33 R6 must separately freeze and test the smallest public-entry integration."
+  },
+  "reviewer": "Codex primary builder and fidelity reviewer, applying the committed Miter gate methodology",
+  "review_limits": "Single-reviewer source, native-runtime, and evidence audit over a disclosed finite frame and accepted capability. It establishes R5's bounded causal claim, not whole-Soul fidelity, independent replication, production security, general expression sufficiency, or G33 completion.",
+  "terminal_reason": "G33 R5 is a completed native cognitive repair revision, not terminal G33 acceptance. The fidelity checker does not permit a same-gate next_plan link; G33 R6 must be derived from this closure and frozen in a separate commit before public RRun/RWait integration."
+}
