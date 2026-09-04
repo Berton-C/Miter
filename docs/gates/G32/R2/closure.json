@@ -1,0 +1,86 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G32",
+  "plan": "docs/gates/G32/R2/plan.json",
+  "plan_commit": "596de65bd3a910686e36816bb8c87b3a346189c4",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "docs/gates/G32/R2/outcome.md",
+      "sha256": "d494bfd3b266f1ff0acc93308d269a0326fbeac16ee224075292d44e2f78ae81"
+    },
+    {
+      "path": "evidence/G32/R2/attempt-001/failure.json",
+      "sha256": "50fb16fcfe5550738ff5168022a3e57bc5124d8b24c4ffbc46d081d3a7ab5c65"
+    },
+    {
+      "path": "evidence/G32/R2/attempt-002/failure.json",
+      "sha256": "50fb16fcfe5550738ff5168022a3e57bc5124d8b24c4ffbc46d081d3a7ab5c65"
+    },
+    {
+      "path": "evidence/G32/R2/attempt-003/failure.json",
+      "sha256": "65e62cc5fcf63af99af623e8d0a3b9bca7c7c7ce9e5bbdb0fd443f3a450ba3d6"
+    },
+    {
+      "path": "evidence/G32/R2/attempt-004/verification-failure.json",
+      "sha256": "30899d4247c14b684063a8b3e274e02d5de6a32d1fd3f458d673a32698c23fd4"
+    },
+    {
+      "path": "evidence/G32/R2/attempt-005/verdict.json",
+      "sha256": "4cfea48d72607916c7291bc891957b7e34a190f0f9089b616147f83684060197"
+    },
+    {
+      "path": "evidence/G32/R2/attempt-005/arm-matrix.json",
+      "sha256": "a5776376fd939f5267ae1d7fce437463440c5d9fd2fd6843ae6660414af9e674"
+    },
+    {
+      "path": "evidence/G32/R2/attempt-005/observations.json",
+      "sha256": "6eb585ba1389dfbbc5b8c6baa0ba2365721717744022aef1ffe5654f2fc63c1a"
+    },
+    {
+      "path": "evidence/G32/R2/attempt-005/freeze.json",
+      "sha256": "33b6c05f16eb9d60561fb695805808b3384cd93f1cbece4765ae753495221904"
+    },
+    {
+      "path": "evidence/G32/R2/attempt-005/manifest.json",
+      "sha256": "01f02ef14df6b73fa53bad1dc20b626d06dc60150b6672cb144c26d4995b2493"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "G32-R2-actual-consumer-products-drive-matrix",
+      "status": "PROVEN-HARNESS",
+      "limit": "The matrix is constructed from raw products returned by eleven selected current consumers in isolated offline fixtures; this does not prove every runtime consumer or the G33 clean-start organism."
+    },
+    {
+      "id": "G32-R2-each-material-severance-has-bounded-causal-bite",
+      "status": "PROVEN-HARNESS",
+      "limit": "Each of the eleven predeclared material cuts changed its selected consumer product in the bounded fixture; this is not a universal necessity or sufficiency proof for the participant."
+    },
+    {
+      "id": "G32-R2-restoration-neutral-decorative-and-held-out-stability",
+      "status": "PROVEN-HARNESS",
+      "limit": "Exact restoration and the frozen meaning-preserving controls were stable for this case family; arbitrary structural equivalence is not proved."
+    },
+    {
+      "id": "G32-R2-nonrecursive-oracle-and-zero-pitch-clock-bounds",
+      "status": "PROVEN-HARNESS",
+      "limit": "A returned model-like product caused no recursive call and ReactorCycleWith waited for 32 bounded cycles without invented work, effects, or completion; no provider call or perpetual-duration claim is included."
+    },
+    {
+      "id": "G32-R2-independent-evidence-fidelity-and-scope",
+      "status": "PROVEN-HARNESS",
+      "limit": "The independent structural verifier, frozen expectations, retained raw products, preserved failures, and zero-effect accounting cover only this offline R2 scope."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "The Constitution and Soul specification require constitutive participants to make observable causal differences without replacing Soul navigation with host-selected behavior. ACCEPTANCE G32 requires an integrated severed-arm suite. R2 therefore moves the perturbations upstream of named current consumers and treats only their returned products as semantic evidence.",
+    "causal_evidence": "Attempt 005 invokes eleven selected current native consumers plus ReactorCycleWith. Each material cut changes its raw returned product; exact restoration returns it to canonical. NACE loss differs from consequence loss, exact continuity survives Chroma loss, identity denial occurs before body admission, and meaning-preserving controls remain stable.",
+    "substitution_audit": "R1's availability-record substitution is explicitly preserved as a failed closure. R2 arm labels remain builder metadata. JavaScript launches processes, records outputs, and compares frozen expectations; it does not create the native standing. Fixture adapters totalize unavailable products but cannot translate them into a pass. The CStep and DRResume fixture limits are disclosed rather than promoted to runtime claims.",
+    "capability_and_constraint_audit": "R2 made zero network requests, credential lookups, model calls, external effects, and persistent runtime mutations. It used synthetic Mattermost identities and did not access live Mattermost, Keychain, Chroma, private memory, or personal content. No Miter core source changed.",
+    "remaining_gaps": "G33 must still prove a clean-start end-to-end organism under a separately frozen plan. R2 does not prove complete enactment of all five mathematical authorities, all nine flourishings, arbitrary cognition, live multi-user operation, universal exactly-once behavior, provider cancellation, or kernel containment. DRResume uses fixture mechanical readbacks; CStep recomputes previously admitted synthetic SC08 input."
+  },
+  "reviewer": "Codex primary builder and fidelity reviewer, applying the committed Miter gate methodology",
+  "review_limits": "Single-reviewer repository and evidence audit. The review establishes bounded causal discrimination in the named offline fixtures, not philosophical truth, complete cognitive sufficiency, or independent third-party replication.",
+  "terminal_reason": "G32 is closed. G33 has not yet been planned; its control-derived plan must be drafted, frozen in a separate commit, and pass the opening check before any G33 implementation begins."
+}
