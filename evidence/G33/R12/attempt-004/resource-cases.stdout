@@ -1,0 +1,2 @@
+true
+(result canonical (resource-selection-unresolved malformed-input))

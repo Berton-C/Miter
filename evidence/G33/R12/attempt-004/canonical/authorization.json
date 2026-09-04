@@ -1,0 +1,18 @@
+{
+  "schema": "miter-provider-authorization-v1",
+  "source": "user-confirmation-2026-09-04",
+  "standing": "operator-authorized",
+  "resource_id": "openrouter-glm53",
+  "model": "z-ai/glm-5.3",
+  "request_id": "g33-r12-generation-1",
+  "max_calls": 1,
+  "max_output_tokens": 1024,
+  "deadline_seconds": 120,
+  "disclosure": [
+    "public-synthetic-fixture",
+    "no-secrets",
+    "no-mattermost-credential",
+    "no-private-memory",
+    "no-personal-content"
+  ]
+}

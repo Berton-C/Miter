@@ -1,7 +1,7 @@
 ; Current default: source-grounded recurring development. Historical v1
 ; InterestIdle/DevelopBoundary and ordered TrialVoicePlan files remain preserved
 ; for provenance, but are not registered or invoked by this bootstrap.
-!(import! &self "/Users/claritymiter/miter/src/bootstrap_development_reactor_v1.metta")
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_development_helix_v1.metta")
 !(import_prolog_functions_from_file "./effect_membranes/miter_module_transport.pl"
  (miter_module_source miter_module_source_field miter_module_requests_used miter_module_prior_rejections miter_module_field miter_module_rule
   miter_module_count miter_module_shape miter_module_intention miter_module_generate

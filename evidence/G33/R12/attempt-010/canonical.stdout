@@ -1,0 +1,2 @@
+true
+(case-result hooks ((idle-promoter SourceGroundedDevelopmentIdle) (idle-promoter DevelopmentHelixIdle) (rna-advancer SourceGroundedDevelopRNA SourceGroundedDevelopmentBoundary) (rna-advancer DevelopmentHelixRNA DevelopmentHelixBoundary)))

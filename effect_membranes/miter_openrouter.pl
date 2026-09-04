@@ -84,9 +84,21 @@ or_spend(R,bridge,'openrouter-bridge-r8-2') :- or_r8_spend(R,bridge,'openrouter-
 or_spend(R,tests,'openrouter-tests-r8-3') :- or_r8_spend(R,tests,'openrouter-tests-r8-3').
 or_spend(R,bridge,'openrouter-bridge-r9-1') :- or_r9_spend(R,bridge,'openrouter-bridge-r9-1').
 or_spend(R,tests,'openrouter-tests-r9-2') :- or_r9_spend(R,tests,'openrouter-tests-r9-2').
+% G33 R12 owns one separately frozen development-rendering slot.  This clause
+% widens transport mechanics only; the native helix module must stage and
+% authorize the exact request before or_execute/8 can be reached.
+or_spend(R,development,'g33-r12-generation-1') :-
+ format(atom(P),'/Users/claritymiter/miter/evidence/G33/R12/openrouter-call-1.claim',[]),
+ \+exists_directory(P),make_directory(P),directory_file_path(P,'owner.json',Owner),
+ sd_durable_json(Owner,_{root:R,request:"g33-r12-generation-1",kind:"development",slot:1,
+  grant:"G33-R12-R1",model:"z-ai/glm-5.3",max_output_tokens:1024,deadline_seconds:120}).
 
-or_named(R,Id,Suffix,Path) :- sd_root(R,_),miter_store_nonempty_atom(Id,A),re_match('^[a-zA-Z0-9_-]+$',A),
- format(atom(File),'~w-~w.json',[A,Suffix]),sd_path(R,File,Path).
+or_root(R) :- sd_root(R,_),!.
+or_root(R) :- current_predicate(dh_root/2),dh_root(R,_).
+or_path(R,F,P) :- sd_path(R,F,P),!.
+or_path(R,F,P) :- current_predicate(dh_path/3),dh_path(R,F,P).
+or_named(R,Id,Suffix,Path) :- or_root(R),miter_store_nonempty_atom(Id,A),re_match('^[a-zA-Z0-9_-]+$',A),
+ format(atom(File),'~w-~w.json',[A,Suffix]),or_path(R,File,Path).
 or_durable_text(Path,Text) :- miter_store_ensure_extension('/Users/claritymiter/miter/runtime/g07/libmiter_store_posix.dylib'),
  atom_concat(Path,'.tmp',Tmp),\+exists_file(Tmp),setup_call_cleanup(open(Tmp,write,S,[encoding(utf8)]),
  (chmod(Tmp,0o600),format(S,'~s',[Text]),flush_output(S),miter_store_fsync_stream(S)),close(S)),rename_file(Tmp,Path).

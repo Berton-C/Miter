@@ -1,0 +1,2 @@
+ERROR: [Thread main] /private/tmp/miter-g06-petta-ae66fa8/src/main.pl:36: user:main Syntax error: missing ')', starting at line 12:
+result wrong-model-product (let* (($i (dh_input "/Users/claritymiter/miter/evidence/G33/R12/attempt-002/canonical")) ($s (DHSelectResource $i))
