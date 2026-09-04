@@ -1,0 +1,60 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G31",
+  "plan": "docs/gates/G31/P7/R1/plan.json",
+  "plan_commit": "0d13d64bebdb40524b1e7af9d0676c553167d889",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G31/P7/R1/outcome.md","sha256":"9bd71c3c3d493d7270be6257878b59daaba4d5bb26ce3b70a1c340c0d53008ce"},
+    {"path":"evidence/G31/p7-701/native-grant-construction-process.json","sha256":"cff993d9f9bc510429f58adf857e0ad3347bb7f2f633d808dceb48638db24065"},
+    {"path":"evidence/G31/p7-701/native-grant-construction.stderr","sha256":"66c064a07e14322502b28111d1866edd0917a9d06997d81180db62b372b6df9b"},
+    {"path":"evidence/G31/p7-701/run-failure.json","sha256":"f3078594d9108d9afcedfa5c7971af3063a5442f17829de7987678b3f66c908b"},
+    {"path":"evidence/G31/p7-702/native-grant-construction-process.json","sha256":"94a3b5d9a7d5f6a125b4796608fe5b5af10a45f1fa9a392562805cbb5d367a76"},
+    {"path":"evidence/G31/p7-702/native-grant-construction.stderr","sha256":"66c064a07e14322502b28111d1866edd0917a9d06997d81180db62b372b6df9b"},
+    {"path":"evidence/G31/p7-702/run-failure.json","sha256":"5a029b69b93753498741bc4375c895d7dc8a926c32d61db405c44ce33d28a2db"},
+    {"path":"evidence/G31/p7-703/materialization-process.json","sha256":"339ec4fbd75e104e058ab6362131ed4c119438cb635221b7311690aa3f002751"},
+    {"path":"evidence/G31/p7-703/grant-materialization-redacted.json","sha256":"f816f3d16f5d4fe681835a0ca3d91465f7985c183e630af98461daec93d14314"},
+    {"path":"evidence/G31/p7-703/grant-materialization-observation.json","sha256":"86f063852644d9f519f85c0cbe6bf80bb84fa62677e81a8d2c2363a1dc299da3"},
+    {"path":"evidence/G31/p7-703/native-grant-trials.stdout","sha256":"d3ba2748a12ee242b6fc2b2fe329edb3b09345e87afed1a40db1c78d03bf083d"},
+    {"path":"evidence/G31/p7-703/run-failure.json","sha256":"4523e4df527afdbbfde65b780918598a39a9c0d7a98da5c422083307ac4afd52"},
+    {"path":"evidence/G31/p7-704/materialization-process.json","sha256":"da7a96b50d85850ec1cacf952c8405e392f6893e0f68c96f8bb3e7f6448c969b"},
+    {"path":"evidence/G31/p7-704/run-failure.json","sha256":"e437967d1e1bec26680b2b3906801d887b7b8ed9a30e35af20d41555c8e8f49c"},
+    {"path":"evidence/G31/p7-705/run-verdict.json","sha256":"ff44d0d69ffd10e6644e24446d22c26b7076430a18ed1731f5b14fe96ed46678"},
+    {"path":"evidence/G31/p7-707/run-verdict.json","sha256":"ff44d0d69ffd10e6644e24446d22c26b7076430a18ed1731f5b14fe96ed46678"},
+    {"path":"evidence/G31/p7-707/manifest.json","sha256":"100dbb1fd5cac7282fa2bdc1adf7b24ef2b53c2d2c1eac3642dfb51ab363233d"},
+    {"path":"evidence/G31/p7-707/grant-materialization-redacted.json","sha256":"f816f3d16f5d4fe681835a0ca3d91465f7985c183e630af98461daec93d14314"},
+    {"path":"evidence/G31/p7-707/grant-materialization-observation.json","sha256":"86f063852644d9f519f85c0cbe6bf80bb84fa62677e81a8d2c2363a1dc299da3"},
+    {"path":"evidence/G31/p7-707/native-construction-standing.json","sha256":"494a486ecdf86939c252b041bea257c476e52d569ab0bf4ff292f307060b1ab9"},
+    {"path":"evidence/G31/p7-707/native-trial-standings.json","sha256":"a8b43cefda1194fb3c616bf07ad1253b71f6c5102c7af4802a4283e1a244f491"},
+    {"path":"evidence/G31/p7-707/native-grant-construction-process.json","sha256":"2198dfabcdac66d4e57897634a0a3b223aba94a7e759219151fc1b72fe679422"},
+    {"path":"evidence/G31/p7-707/native-grant-trials-process.json","sha256":"3df7067e4fbe8c9de96cfa3baad8bc1cc493263a866298b57baa79b9cb22a29a"},
+    {"path":"evidence/G31/p7-707/materialization-process.json","sha256":"902b154126d1aa7760fcd87f26aa4a7bbfd8507cccfc8936cd6fac8819cbda79"}
+  ],
+  "claim_results": [
+    {
+      "id": "G31-P7-R1-complete-inactive-live-grant-v3",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Native PeTTa/MeTTa constructed and accepted the exact 27-field v3 grant, and Prolog joined its opaque references to a mode-0600 private record only while both active and network_allowed remained false. This proves this frozen grant representation and local materialization path, not future grants or any live effect."
+    },
+    {
+      "id": "G31-P7-R1-c098-human-review-surface",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The public proposal surfaces purpose, bounded event/content and effect reach, memory exclusion, VoiceRNA, persistence, reconciliation limits, duration, ongoing-access exclusion, panic, rollback, revocation and required evidence. The review surface uses private references rather than stable IDs; it does not itself prove the later live sequence."
+    },
+    {
+      "id": "G31-P7-R1-live-effect-approval-independent-and-unresolved",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Native standing was ready only with separately represented berton-explicit principal authority and live-effect approval unresolved; changing approval to approved inside the grant fixture was held. This phase records no live-effect approval and cannot authorize network activity."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004-C-008/C-020-C-024/C-050-C-055/C-060-C-066/C-090-C-104 and S-103/S-401-S-405/S-501-S-504/S-603/S-605/S-607/S-804/S-901-S-905/S-1004-S-1005/S-1101-S-1105/S-1201-S-1203 require explicit provenance, bounded reach, native authority, certified expression, private identity, consequence-readable persistence and separately informed human authorization. P7 makes those bounds one inspectable grant without treating the already confirmed principal as permission to speak.",
+    "causal_evidence": "Native MeTTa constructed the canonical grant and changed its standing to held when VoiceRNA, the allowlisted identity hash, source evidence, or the independent approval relation was severed. Neutral JSON transport preserved readiness and restoration recovered it. The Prolog membrane required exact candidate, transport, identity and binding hashes, restrictive source modes, exact private identity joins, unresolved approval and canonical-byte identity before creating or reusing the private grant.",
+    "substitution_audit": "MeTTa owns the grant's meaning, completeness and standing. Prolog only validates inputs, joins exact private identifiers, durably materializes an inactive record and emits redacted observations. JavaScript freezes lineage, launches the native and mechanical probes, checks privacy and exercises severed relations. No JavaScript policy, Prolog branch or LLM chooses a principal, approves an effect, creates an utterance or contacts Mattermost.",
+    "capability_and_constraint_audit": "Attempts 701-704 preserve ordinary representation and recovery failures. The private grant created in 703 was never overwritten; later attempts could reuse it only after mode, canonical bytes and hash identity matched. Attempt 707 passed with active false, network_allowed false, live approval unresolved, zero network/credential/post/message/model/effect activity, and no promotion or activation. A full public P7 scan found no private server/team/channel names or stable IDs, server URL, or human username; the private record is ignored and mode 0600.",
+    "remaining_gaps": "Berton has not yet separately approved this exact live-effect grant. The live runner/activation record is therefore not constructed or enabled. G31 still lacks the authorized-human allowlisted posts, certified responses, restart/no-replay evidence, denied-control pre-cognition rejection, panic containment and final closure. G32 severed-arm integration and G33 end-to-end proof remain open."
+  },
+  "reviewer": "Codex builder using the frozen controls and P7 plan, exact P3-P6 closure hashes, private P5/P6 records, independent mode/hash readback, native PeTTa/MeTTa construction and causal severance, Prolog materialization, public identity scan and preserved failed attempts.",
+  "review_limits": "This closes only G31 P7 R1 construction and review of an inactive grant. It does not convey human live-effect approval, read Mattermost content, send a message, activate the bridge, execute VoiceRNA, establish live restart/no-replay/panic behavior, or close G31.",
+  "terminal_reason": "P7 is complete and the exact inactive proposal is ready for Berton's separate review. Because the next phase remains within G31 and requires new live-effect authority, it must be frozen only after explicit approval; the checker also forbids a same-gate next_plan link."
+}
