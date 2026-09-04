@@ -1,0 +1,67 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G32",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G32 R2: the predeclared canonical and severed arms drive actual current native subsystem consumers from otherwise-identical admitted observations, and the integrated arm matrix is constructed from those returned products and derivation traces rather than availability declarations; each named constitutive participant makes its expected bounded downstream difference while restoration and irrelevant changes preserve meaning.",
+  "claim_ids": [
+    "G32-R2-actual-consumer-products-drive-matrix",
+    "G32-R2-each-material-severance-has-bounded-causal-bite",
+    "G32-R2-restoration-neutral-decorative-and-held-out-stability",
+    "G32-R2-nonrecursive-oracle-and-zero-pitch-clock-bounds",
+    "G32-R2-independent-evidence-fidelity-and-scope"
+  ],
+  "non_claims": "No universal proof of the five mathematical authorities, all nine flourishing enactments, arbitrary cognition, production multi-user operation, universal exactly-once behavior, kernel containment, or the complete G33 organism. No external network, credential, live Mattermost, Chroma mutation, model inference, candidate promotion, persistent runtime mutation, or new behavioral policy is included. A total test adapter may classify a missing native product as unavailable, but cannot select a desired semantic answer.",
+  "rationale": "R1 proved deterministic harness mechanics but failed closure because its arm composer consumed builder-assembled availability records instead of the products returned by the nine current consumers it probed. C-100/C-103 and S-504/S-1101/S-1201-S-1203 require the severance to reach the claimed mechanism. R2 retains the useful controls while moving every material perturbation upstream of an actual current consumer and making the returned product the only semantic input to the arm matrix.",
+  "requirements": [
+    "C-004", "C-005", "C-006", "C-007", "C-008", "C-020", "C-023", "C-024",
+    "C-030", "C-040", "C-050", "C-060", "C-064", "C-065", "C-066", "C-070",
+    "C-074", "C-080", "C-083", "C-090", "C-096", "C-097", "C-098", "C-099",
+    "C-100", "C-101", "C-102", "C-103", "C-104", "S-103", "S-305", "S-401",
+    "S-403", "S-404", "S-405", "S-501", "S-502", "S-503", "S-504", "S-505",
+    "S-603", "S-605", "S-607", "S-701", "S-804", "S-901", "S-902", "S-903",
+    "S-904", "S-905", "S-1001", "S-1002", "S-1003", "S-1004", "S-1005",
+    "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202",
+    "S-1203", "T-11", "T-12", "T-13", "T-16", "T-18", "T-19", "T-20",
+    "T-21", "T-22", "T-24", "T-25", "T-26", "T-27", "T-29", "T-31", "T-33"
+  ],
+  "reading": "Use the complete Constitution and Soul specification, ACCEPTANCE G32, W-013-W-017/W-027-W-032, G31 closure, G32 R1 plan/outcome/raw evidence, and the frozen R2 expected-consumer matrix. R1's native products and harness behavior are development evidence, not an inherited G32 pass. Each consumer's current source and last bounded evidence must be pinned before execution.",
+  "representation": "A common test-only native observation vocabulary carries raw current-consumer products, standing, derivation participants, source hash, and exact perturbation. Each arm supplies the same case content and changes one admitted upstream observation, import reach, or existing mode named in the expected-consumer matrix. The integrated comparison reads those products directly. Arm labels remain builder metadata and never enter native semantic evaluation. Missing or unreduced products become an explicit typed unavailable observation through a total test adapter and cannot be translated into a passing standing.",
+  "consumer": "Invoke the current public consumers themselves: SoulRationalityAudit; ContinuityRNA for exact capsule and Chroma support; G31CanaryVoiceCertificate/VoiceAudit lineage; VADCue; NRevision plus current consequence/application selection; CStep or the current endogenous development consumer; DRResume; current workshop trial/containment standing; the exact current Mattermost identity admission predicate on synthetic local data; and ReactorCycleWith. PeTTa/MeTTa owns meaning-bearing results. Prolog may execute the existing Mattermost identity predicate and mechanical process/hash boundaries without network or credentials. JavaScript only launches isolated processes, captures unfiltered products, validates one-variable diffs, and independently compares the frozen expectations.",
+  "falsifiers": "A matrix row is derived from a builder availability flag rather than a returned current-consumer product; an arm does not invoke the claimed consumer or transparently prove its import is absent; more than its declared upstream variable changes; a severance lacks its named downstream difference; Chroma loss erases exact capsule authority; NACE and consequence loss collapse to the same returned evidence; workshop loss erases ordinary cognition; identity denial reaches native cognition; VoiceAudit rejection can still effect; VAD absence fabricates affect; restoration fails; decorative/reorder/held-out meaning changes; a model product recursively invokes another model call; zero pitch invents work/effects/completion or forces permanent silence; host code chooses a semantic result; raw output is missing; or public evidence contains a secret/private identity.",
+  "scope_review": "Add only the G32 R2 plan/expectations, test-only fixtures/adapters, builder launch/verifier scripts, and G32 R2 evidence/outcome/closure. Read existing committed runtime and redacted evidence. Do not modify Miter core or the R1 record. If a current consumer lacks a total observable seam or the integrated product flow is genuinely absent, preserve the failure and freeze a separately bounded repair revision before changing core. No network, Keychain, model, Docker, live Chroma/Mattermost operation, candidate promotion, persistent runtime state, or G33 work is authorized.",
+  "rollback": "R2 has no external effect or persistent runtime mutation. Before closure, discard only disposable R2 generated files or retain them as failed evidence. Existing runtime, R1, controls, and user-owned changes remain untouched. No failed arm may be rewritten as a pass; a required core repair receives a new frozen plan.",
+  "predecessor": "docs/gates/G32/R1/outcome.md",
+  "allowed_paths": [
+    "docs/gates/G32/R2/",
+    "tests/fixtures/g32_r2/",
+    "scripts/g32_r2/",
+    "evidence/G32/R2/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G32/R1/plan.json","sha256":"3c35a156b50635622bc7507be3c54cab440aa1b37496aad7d9e2be6705ff6e23"},
+    {"path":"docs/gates/G32/R1/expected-arm-matrix.json","sha256":"6e608c9bf6e77c8e4437972276f6d12b0bbeb4d9a8be10233a540409a72867c8"},
+    {"path":"docs/gates/G32/R1/outcome.md","sha256":"9fed4f3035ea39cf55c0c5e1ac9ddfd7c1448a5e2a66ec3e0debd36197e74e68"},
+    {"path":"evidence/G32/attempt-004/fidelity-review.json","sha256":"e703c38e8904daa0f9b9ae8192dfd0adbcb8bfe4e36cf71939b7ed2df7171da9"},
+    {"path":"evidence/G32/attempt-004/verdict.json","sha256":"9799ea391ff768e7c845f21c38d2b010cb1f92be284cc2265258f5409a4e63f1"},
+    {"path":"tests/fixtures/g32/integrated_fixture.metta","sha256":"f0caa7b1225a77ee13b1f76d8e0d7e6b3a9a95170b738c0b09a19c4beceb9db3"},
+    {"path":"scripts/g32/run.mjs","sha256":"d852d7fa5da91c0172324e50619ba04a6a1a7a7980be49fdaa562d3806639425"},
+    {"path":"scripts/g32/verify.mjs","sha256":"5a8bb265e96b544f2d34b94b5dcd1382017fd4bf86d6edf8bf40f40e9c762792"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"}
+  ]
+}

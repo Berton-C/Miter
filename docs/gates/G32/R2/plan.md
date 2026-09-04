@@ -1,0 +1,9 @@
+# G32 R2 — consumer-product-driven severed arms
+
+R1 is not being relabeled. Its green harness verdict remains useful evidence that PeTTa can express differentiated missing relations, restoration, irrelevant controls, a bounded oracle product, and a no-pitch recurring cycle. Its closure review also proved that provenance-rich declarations can still become theater when the runtime consumer they describe does not causally feed the result.
+
+R2 moves the experimental cut upstream. The same admitted case material is presented to the current public subsystem consumers. Each material arm changes exactly one observation, current mode, or import reach before that consumer runs. The native integration trace then receives the consumer's actual returned product, source pin, perturbation, and participation standing. A test adapter may totalize a genuinely missing product as `unavailable`; it may not convert absence into success or choose an undertaking.
+
+The expected-consumer matrix is frozen with this plan. It names the exact consumer, perturbation, canonical product property, severed product property, preserved property, and downstream consequence for every arm. The separate verifier must reject any row lacking raw invocation output or whose observed matrix was constructed from a builder-written availability field. Neutral reordering, a decorative observation, restoration, and a meaning-preserving held-out form must remain stable.
+
+The test remains offline. No model, Keychain, live Mattermost, Chroma mutation, or other effect is permitted. Mattermost identity is tested through the current admission predicate using synthetic structured metadata only. If an actual current consumer cannot expose the required canonical/severed distinction without a core seam or repair, R2 stops with that raw failure; it does not insert a test answer.

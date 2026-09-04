@@ -1,0 +1,42 @@
+{
+  "schema": "miter-g32-r2-expected-consumer-matrix-v1",
+  "frozen_before_execution": true,
+  "matrix_rule": "Every material row must be derived from the named current consumer's raw returned product. A source hash or builder availability declaration may accompany but never replace that product.",
+  "shared_cases": [
+    "authenticated project continuity",
+    "certified expression",
+    "consequence-sensitive development",
+    "contained extension",
+    "restart-preserved undertaking",
+    "contact-free recurring readiness"
+  ],
+  "arms": [
+    {"id":"soul-severed","consumer":"SoulRationalityAudit and constitutional standing consumer","perturbation":"withhold the protected Soul import or its exact governing version from the otherwise-identical process","canonical":"native rationality audit and constitutional participation are present","severed":"constitutional standing is unavailable or rejected","preserved":"contact remains represented but cannot become a Soul-certified movement","downstream":"movement/expression certification is held"},
+    {"id":"memory-capsule-severed","consumer":"ContinuityRNA","perturbation":"capsule reconstruction observation unavailable","canonical":"exact-continuity with optional semantic support","severed":"non-authoritative recall even if semantic material remains","preserved":"the question and project scope are unchanged","downstream":"exact operational continuation is unavailable"},
+    {"id":"chroma-severed","consumer":"ContinuityRNA","perturbation":"semantic-memory service observation unavailable","canonical":"exact-continuity plus semantic-support","severed":"exact-continuity plus semantic-unavailable","preserved":"capsule authority and exact next movement remain","downstream":"associative enrichment changes without erasing continuity"},
+    {"id":"voiceaudit-severed","consumer":"G31CanaryVoiceCertificate or current VoiceAudit certificate consumer","perturbation":"semantic-preservation witness unavailable or mismatched","canonical":"CertifiedUtterance","severed":"no effect-eligible certificate","preserved":"candidate text remains derived material","downstream":"external expression effect is held"},
+    {"id":"vad-severed","consumer":"VADCue","perturbation":"lexical/trajectory coverage unavailable","canonical":"qualified affect-cue with coverage provenance","severed":"affect unavailable or unknown","preserved":"no biological-state or flourishing verdict is inferred","downstream":"voice reasoning loses only this qualified cue"},
+    {"id":"nace-severed","consumer":"NRevision and later-selection consumer","perturbation":"revision operator/output unavailable while returned consequence remains","canonical":"evidence-bound revised truth changes later eligible selection","severed":"consequence is present but no revised efficacy participates","preserved":"raw consequence remains recorded","downstream":"later ranking does not acquire the learned difference"},
+    {"id":"consequence-severed","consumer":"current consequence application plus NRevision","perturbation":"returned consequence unavailable while prior belief and NACE capability remain","canonical":"typed consequence supports one evidence-bound revision","severed":"no new revision and prior uncertainty remains","preserved":"NACE capability remains available","downstream":"no learned later-selection difference is claimed"},
+    {"id":"endogenous-curiosity-severed","consumer":"CStep or current endogenous development continuation consumer","perturbation":"witnessed defect/opportunity observation unavailable","canonical":"a source-grounded development continuation forms","severed":"no endogenous continuation forms from that absent pitch","preserved":"human-contact work and recurring readiness remain possible","downstream":"development undertaking is absent without forced quiescence"},
+    {"id":"continuity-lineage-severed","consumer":"DRResume","perturbation":"accepted-module/undertaking/capsule lineage link unavailable or mismatched","canonical":"fresh process resumes the exact accepted development and unfinished purpose","severed":"resume rejects or reports lineage unavailable","preserved":"stored artifacts are not reinterpreted as authoritative lineage","downstream":"restart continuation is held"},
+    {"id":"workshop-containment-severed","consumer":"current workshop request/trial standing consumer","perturbation":"isolated trial/capability boundary unavailable","canonical":"candidate may enter bounded trial with no automatic promotion","severed":"candidate execution/promotion standing is held","preserved":"ordinary native contact reasoning remains available","downstream":"only extension execution is blocked"},
+    {"id":"mattermost-identity-severed","consumer":"current Mattermost stable-identity admission predicate and native ingress certificate consumer","perturbation":"synthetic channel/principal stable identity differs outside the frozen allowlist","canonical":"typed current-contact event may reach native certification","severed":"rejected before cognition with body uninspected","preserved":"no network, credential, private ID, or response effect is used","downstream":"identity-denied event cannot inherit memory or effect authority"},
+    {"id":"non-recursive","consumer":"bounded oracle product admission","perturbation":"returned candidate text requests another oracle call","canonical":"one derived candidate product","severed":"request remains data and no second call occurs","preserved":"native authority remains unchanged","downstream":"total oracle calls remain one"},
+    {"id":"zero-pitch-perpetual-loop","consumer":"ReactorCycleWith","perturbation":"no material contact, obligation, opportunity, or consequence for the bounded observation interval","canonical":"recurring readiness is available","severed":"bounded waits occur with no fabricated movement","preserved":"interruptibility and future re-entry remain","downstream":"zero model calls/effects/completion claims and no forced permanent silence"},
+    {"id":"decorative-control","consumer":"all applicable consumers","perturbation":"add an unconsumed decorative observation","canonical":"baseline products","severed":"identical semantic products","preserved":"all meanings","downstream":"no difference"},
+    {"id":"neutral-reordering","consumer":"all applicable consumers","perturbation":"reorder meaning-equivalent admitted observations","canonical":"baseline products","severed":"identical semantic products","preserved":"all meanings","downstream":"no difference"}
+  ],
+  "restoration": "Restore the exact upstream observation/import and rerun the same consumer in a fresh process; its bounded semantic product must match canonical.",
+  "held_out": "A meaning-preserving structural variant not named in the evaluator must retain its canonical standing without a new behavior entry.",
+  "failure_conditions": [
+    "consumer output is not captured raw",
+    "builder availability data determines a semantic standing",
+    "arm labels enter the native evaluator",
+    "the declared one-variable perturbation is not the only material difference",
+    "a required actual consumer difference is absent",
+    "irrelevant, restored, or held-out meaning-preserving input changes standing",
+    "the non-recursive arm performs another model invocation",
+    "the zero-pitch arm fabricates work, effect, or completion"
+  ]
+}
