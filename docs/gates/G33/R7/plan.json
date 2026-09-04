@@ -1,0 +1,66 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R7: one new evidence-owned clean-start lineage crosses the current exact-continuity consumer and the exact current source-grounded relational-voice repair consumer, then the current native reactor records receptive readiness for an empty lawful ready set, remains mechanically available without model inference, wakes on fresh direct contact, completes its bounded RNA, returns to readiness, and stops explicitly; no prior PASS, host-selected semantic standing, or core source change supplies these products.",
+  "claim_ids": [
+    "G33-R7-clean-lineage-crosses-current-continuity-and-repaired-voice",
+    "G33-R7-current-reactor-records-receptive-readiness-without-inference",
+    "G33-R7-fresh-contact-wakes-bounded-rna-and-explicit-stop-terminates",
+    "G33-R7-provenance-severance-blocks-synthetic-perpetual-work"
+  ],
+  "non_claims": "No claim of fresh voice-model performance, arbitrary language, complete S-606/S-705 cognition, reasoned purpose formation, general flourishing, effect eligibility, human emission, G33 development/capability/learning/restart/Mattermost completion, new live canary, full integrated severance, final report, production deployment, or whole-PoC acceptance. Historical fixed reactor event species, supplied step count and hash witness remain scheduling mechanics, not Soul navigation. The disclosed meaning-altered rendering is diagnostic data and is not represented as a fresh model product.",
+  "rationale": "ACCEPTANCE G33 orders continuity and repaired voice before quiescence and witnessed development. R2/R3 crossed continuity; R4-R6 repaired and integrated voice, but no clean G33 run has crossed that repaired consumer into readiness. C-070-C-075 and S-606/S-705 require continuing availability without compulsory inference or compulsory silence. The narrow next test therefore composes today's consumers without core edits, preserves the current reactor's known semantic limits, and stops before development.",
+  "requirements": [
+    "C-003", "C-004", "C-005", "C-006", "C-007", "C-008", "C-009", "C-010", "C-011", "C-012", "C-013", "C-020", "C-021", "C-022", "C-023", "C-030", "C-031", "C-032", "C-033", "C-034", "C-040", "C-041", "C-042", "C-043", "C-044", "C-045", "C-050", "C-051", "C-052", "C-053", "C-054", "C-055", "C-056", "C-057", "C-060", "C-061", "C-062", "C-063", "C-064", "C-065", "C-066", "C-067", "C-070", "C-071", "C-072", "C-073", "C-074", "C-075", "C-090", "C-091", "C-092", "C-093", "C-094", "C-095", "C-096", "C-097", "C-098", "C-099", "C-100", "C-101", "C-102", "C-103", "C-104", "C-105",
+    "S-103", "S-202", "S-203", "S-205", "S-301", "S-302", "S-303", "S-304", "S-305", "S-501", "S-502", "S-503", "S-504", "S-505", "S-601", "S-602", "S-603", "S-604", "S-605", "S-606", "S-705", "S-801", "S-802", "S-803", "S-804", "S-901", "S-902", "S-903", "S-904", "S-905", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202", "S-1203",
+    "T-14", "T-16", "T-18", "T-19", "T-22", "T-23", "T-29", "T-30", "T-31", "T-33"
+  ],
+  "reading": "Read both complete controls and reread Constitution C-070-C-075 plus Soul S-601-S-607 and S-705; ACCEPTANCE G18-G20 and G33; POC_SPEC final demonstration; BUILD_FIDELITY_PROTOCOL F-01-F-07; G33 R1 expected-run contract and R1-R6 outcomes/closures; G18/G19 historical mechanics; SC08 rejoin assessment. The post-R6 matrix is recorded in reassessment.md and identifies receptive readiness as the first unmet integrated phase.",
+  "representation": "A single top-level R7 launcher creates one evidence-owned runtime identity and retains exact hashes between ordered native products. Current ContinuityRNA supplies exact recall. Current RWaitReturned/RRenderedContinuation plus R5 repair supplies the no-emission certificate from a frozen returned rendering and source frame. Current ReactorCycleWith receives an initially empty inbox, then mechanically materialized direct-contact and explicit-stop ingress at observed boundaries. Native trace products, not launcher labels, must establish quiescent-ready, wake, RNA lifecycle and stop. A separate arm replaces direct-contact provenance with self-authored perpetual-work provenance.",
+  "consumer": "Actual current native consumers are ContinuityRNA, RWaitReturned/RRenderedContinuation/RRContinueRuntime, and ReactorCycleWith/ReactorSelect/ReactorAdvanceRegistered. Prolog performs existing bounded model transport, storage, clock/wait, hashing, ingress reading and append mechanics. JavaScript launches processes, materializes frozen fixture events, records hashes, and independently verifies products; it cannot supply continuity content, audit, repair, certificate, readiness, wake, lifecycle, or stop standing.",
+  "falsifiers": "Any ordered product is copied from prior evidence or supplied by JavaScript; the repaired voice path differs from RWaitReturned's actual handler; a missing frame or unavailable accepted capability still certifies; empty readiness invokes a model; the process exits merely because the queue is empty; a timeout/crash is called quiescence; self-authored perpetual-work provenance creates RNA or wake; contact does not wake; explicit stop does not terminate; a stage label chooses the next semantic state; the runner continues after the first discontinuity; any OpenRouter, external network, credential, Chroma mutation, Mattermost, human-emission, or external-effect operation occurs; or core source changes before this diagnostic closes.",
+  "scope_review": "R7 may add only docs/gates/G33/R7, tests/fixtures/g33_r7, scripts/g33_r7, and evidence/G33/R7. It may read committed current source and prior public/synthetic evidence, use one disposable evidence-owned runtime root, and make at most one localhost continuity-reading model call. It may not modify core, controls, config, historical evidence, accepted registries, live Mattermost/private state, credentials, Chroma state, model selection, or unrelated G22/G28 work.",
+  "rollback": "R7 adds only a plan, diagnostic fixtures/scripts, and append-only evidence under its own directory. Removing it would not change runtime source or accepted state; evidence is retained rather than rewritten if the diagnostic fails.",
+  "predecessor": "docs/gates/G33/R6/closure.json",
+  "allowed_paths": [
+    "docs/gates/G33/R7/",
+    "tests/fixtures/g33_r7/",
+    "scripts/g33_r7/",
+    "evidence/G33/R7/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G33/R6/closure.json","sha256":"62163f300b8af3e039ecf22d590ca5689cb4dd1d12012da84cd557ec3b2943d7"},
+    {"path":"docs/gates/G33/R6/outcome.md","sha256":"ae9290992164add00191d1d7647ddadad28df944141af4f96d67023c6e32a7c1"},
+    {"path":"docs/gates/G33/R1/expected-run-contract.json","sha256":"3b514e62340229fd6af37339166931b70d6a9989c2f4cd7e251d1afd4db376ca"},
+    {"path":"src/reactor.metta","sha256":"a22cdd4d06c1979f4f35e618eb1dc52914dd0758e8c840d0250c39a1b1f728a6"},
+    {"path":"effect_membranes/miter_reactor.pl","sha256":"25e3b3dd83d8661dcdee10d0bc1b80f3928eff88b7c6ed9745fd5c2baaa1a69b"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
+  "cases": {
+    "positive": "Cross exact continuity and deterministic native voice repair, then observe empty readiness, bounded wait, direct-contact wake, RNA completion, renewed readiness and explicit stop from current consumers.",
+    "severed": "Remove the voice frame or accepted repair capability separately; replace direct-contact with self-authored perpetual-work provenance; the corresponding certificate or admitted wake/RNA must disappear.",
+    "neutral": "Reorder meaning-equivalent source records and vary a decorative launcher label without changing native semantic products.",
+    "restored": "Restore each exact participant in a fresh isolated arm and recover the canonical current-consumer product.",
+    "held_out": "No new held-out language claim. Continuity wording is the disclosed R1 transfer case; voice frame/rendering and reactor ingress are disclosed finite stimuli frozen before implementation.",
+    "unknown_malformed": "Malformed renderer state, absent source frame, unavailable accepted capability, malformed ingress, storage fault, service failure and watchdog timeout remain differentiated failures, never successful cognition."
+  },
+  "environment": "Pinned native PeTTa ae66fa8e41dcd5539d614706bd4e5cfb34f9608d through SWI-Prolog 10.0.2 arm64; one optional localhost qwen continuity reading; current reactor wait profile; zero external reach.",
+  "next_step_hypothesis": "If R7 closes, freeze R8 around the first remaining G33 semantic question: whether the current recurring path can consume independently witnessed deficiency from this same live lineage and form a durable developmental undertaking without a builder stage command. If R7 fails, preserve the exact failure and freeze a repair limited to that consumer boundary."
+}
