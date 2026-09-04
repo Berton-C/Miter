@@ -1,0 +1,72 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R8: in one new evidence-owned continuation of the R7 lineage, two fresh disclosed contacts become independently recomputed source-grounded audit observations; without a builder calling a development stage or naming target/purpose, the current recurring reactor consumes those observations through the corrected DOpportunity/DDevelop path and persists a typed developmental undertaking, while same-family repetition and self-authored evidence do not.",
+  "claim_ids": [
+    "G33-R8-current-contact-audits-have-native-developmental-bite",
+    "G33-R8-recurring-reactor-reaches-corrected-development-without-stage-command",
+    "G33-R8-developmental-undertaking-preserves-material-source-and-soul-relations",
+    "G33-R8-duplicate-and-self-authored-support-do-not-originate-development"
+  ],
+  "non_claims": "No claim of natural incident prevalence, unrestricted purpose formation, all-surface development, candidate generation, model performance, trial, promotion, consequence learning, accepted development, restart-preserved changed selection, general flourishing, complete S-602/S-606/S-607/S-702/S-705, Mattermost activity, human emission, external effects, final G33 completion, or whole-PoC acceptance. The disclosed finite VoicePolicy surface and synthetic source contacts remain fixture premises. Native calibration is not itself the claimed recurring undertaking. Historical InterestIdle output cannot substitute for the corrected DOpportunity/DDevelop consumer.",
+  "rationale": "R7 closed the first previously unmet integrated phase, receptive readiness. ACCEPTANCE G20 and G33 next require witnessed deficiency to originate typed development without a repair prompt. SC08 has the corrected source-grounded native construction but only a dedicated driver; G20 has general reactor integration but an older seed-derived proposal path. C-004/C-011/C-012 and S-602/S-607/S-702 require the encounter's material organization, rather than a builder stage command or preselected behavior, to form the undertaking. R8 tests this exact reachability boundary before authorizing a repair.",
+  "requirements": [
+    "C-003", "C-004", "C-005", "C-006", "C-007", "C-008", "C-009", "C-010", "C-011", "C-012", "C-013", "C-020", "C-021", "C-022", "C-023", "C-030", "C-031", "C-032", "C-033", "C-034", "C-040", "C-041", "C-042", "C-043", "C-044", "C-045", "C-054", "C-055", "C-056", "C-057", "C-060", "C-061", "C-062", "C-064", "C-065", "C-067", "C-070", "C-071", "C-072", "C-073", "C-074", "C-075", "C-090", "C-091", "C-094", "C-096", "C-100", "C-102", "C-104", "C-105",
+    "S-103", "S-202", "S-203", "S-205", "S-301", "S-302", "S-303", "S-304", "S-305", "S-501", "S-502", "S-503", "S-504", "S-505", "S-601", "S-602", "S-603", "S-604", "S-605", "S-606", "S-607", "S-701", "S-702", "S-704", "S-705", "S-901", "S-902", "S-903", "S-905", "S-1001", "S-1002", "S-1003", "S-1004", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202", "S-1203",
+    "T-10", "T-12", "T-14", "T-16", "T-18", "T-20", "T-21", "T-22", "T-23", "T-25", "T-33"
+  ],
+  "reading": "Read both complete controls and reread Constitution C-003-C-013, C-020-C-023, C-070-C-075 and C-090-C-105; Soul S-501-S-505, S-601-S-607, S-701-S-705, S-901-S-905 and S-1101-S-1105; ACCEPTANCE G18-G21 and G33; POC_SPEC final demonstration; BUILD_FIDELITY_PROTOCOL F-01-F-07; G33 R1 expected-run contract and R7 closure; SC08 closure/rejoin assessment; and current reactor, interests, development-evidence, development-cycle, bootstraps, and Prolog membranes. The route distinction is recorded in reassessment.md.",
+  "representation": "A single R8 package carries the R7 predecessor hashes and a copied evidence-owned runtime. Two disclosed source frames become current DObserve audit-observation atoms with distinct material input families; same-family and self-authored variants are frozen controls. The canonical observations are admitted into a process AtomSpace and the actual recurring reactor is launched with current modules. The launcher never invokes CStep/DOpportunity/DDevelop as the transition. Native calibration separately proves input sufficiency so missing integration cannot be misreported as weak source evidence.",
+  "consumer": "Current native semantic consumers are DObserve/DRead/DRepeated/DOpportunity/DDevelop and CStep. The claimed recurring consumer must be reachable through ReactorIdleOpportunity/ReactorIdlePromoters and ReactorAdvanceRegistered using a registered current hook, not a direct builder call. Historical InterestIdle/DevelopBoundary is observed but cannot substitute for the corrected route. Prolog supplies existing store/integrity/reactor mechanics only. JavaScript supplies fixtures, process control, evidence capture, and independent verification only.",
+  "falsifiers": "Current DObserve/DOpportunity cannot distinguish the canonical, same-family, and self-authored arms; calibration output is supplied by JavaScript; the reactor requires a direct CStep/DOpportunity/DDevelop call; no registered hook consumes the corrected observations; historical seed-derived InterestIdle output is labeled as corrected development; target/purpose/question/disposition is selected by the launcher; the undertaking omits any required source-event/Soul-ground/target/resource/effect/progress/stop participant; repeated same-family or self-authored support originates development; a timeout/crash is called quiescence; explicit stop fails; execution continues after the first discontinuity; any model, OpenRouter, external network, credential, Chroma mutation, Mattermost operation, human emission, or external effect occurs; or core source changes before this diagnostic closes.",
+  "scope_review": "R8 may add only docs/gates/G33/R8, tests/fixtures/g33_r8, scripts/g33_r8, and evidence/G33/R8. It may read committed current source and prior public/synthetic evidence, copy the R7 evidence-owned runtime into an isolated R8 root, and execute pinned local PeTTa/SWI-Prolog with zero model calls. It may not modify core, controls, config, historical evidence, accepted registries, live Mattermost/private state, credentials, Chroma state, model selection, or unrelated G22/G28 work.",
+  "rollback": "R8 adds only a frozen plan, diagnostic fixtures/scripts, and append-only evidence under its own directory. Removing it would not alter runtime source or accepted state. If it fails, retain the evidence and freeze a separately scoped repair; do not rewrite the failed attempt.",
+  "predecessor": "docs/gates/G33/R7/closure.json",
+  "allowed_paths": [
+    "docs/gates/G33/R8/",
+    "tests/fixtures/g33_r8/",
+    "scripts/g33_r8/",
+    "evidence/G33/R8/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G33/R7/closure.json","sha256":"2b810dce4f071fbedc38ee1d88b8d53485644c9e340ddc5eb205e3a26863df6d"},
+    {"path":"docs/gates/G33/R7/outcome.md","sha256":"d2bf2cc0c55f5ce1a927ed924a84c35293076e4eed59fe77f0fb38b2d253d22f"},
+    {"path":"docs/gates/G33/R1/expected-run-contract.json","sha256":"3b514e62340229fd6af37339166931b70d6a9989c2f4cd7e251d1afd4db376ca"},
+    {"path":"docs/gates/SC08/closure.json","sha256":"406a41802a38e939fe8d47e806c6da18747e38ec4cc3988e2b107f296ea60610"},
+    {"path":"docs/gates/SC08/rejoin-assessment.md","sha256":"fefae8af30c91d56bb0e0ede2295348f06e248e873545026dec6758e754a8a0a"},
+    {"path":"src/reactor.metta","sha256":"a22cdd4d06c1979f4f35e618eb1dc52914dd0758e8c840d0250c39a1b1f728a6"},
+    {"path":"effect_membranes/miter_reactor.pl","sha256":"25e3b3dd83d8661dcdee10d0bc1b80f3928eff88b7c6ed9745fd5c2baaa1a69b"},
+    {"path":"src/development_cycle.metta","sha256":"8a868046c6d26ccbe60b00a9b52ee67a948f00db10fc2f8817977a65ddef396d"},
+    {"path":"src/development_evidence.metta","sha256":"3c294d2aa47f4068a7aa46b59bef36ecd6007a398e308acc9dbcb0e15b6df112"},
+    {"path":"src/bootstrap_development_cycle.metta","sha256":"13990150c553889207e70e3e443076878f49e04aae7ba241216837d5fd514730"},
+    {"path":"effect_membranes/miter_development_cycle.pl","sha256":"f709078873c62a2fae4e2e4477cee1e6ae6c4931e85bd1afe3e2552384423d5e"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
+  "cases": {
+    "positive": "Two new distinct source frames are recomputed into qualifying independent audit observations; without direct stage invocation the recurring reactor persists the corrected native development opportunity and continuation.",
+    "severed": "Replace the admitted observations with self-authored provenance while preserving content; corrected opportunity and RNA must not appear.",
+    "neutral": "Reorder meaning-equivalent source clauses and decorative fixture labels; the native opportunity's material projection remains equivalent.",
+    "restored": "Restore exact independent provenance and the distinct material source family in a fresh isolated arm and recover the canonical product.",
+    "held_out": "A second disclosed source relation family not used in R7's repair stimulus supplies the fresh-contact variation; no general language claim follows.",
+    "unknown_malformed": "Malformed frame, mismatched receipt, absent capability, invalid grant, source-integrity failure, missing hook, storage failure, crash, timeout, and explicit stop remain distinct outcomes. None is successful development."
+  },
+  "environment": "Pinned native PeTTa ae66fa8e41dcd5539d614706bd4e5cfb34f9608d through SWI-Prolog 10.0.2 arm64; copied R7 evidence-owned runtime; zero model calls and zero external reach.",
+  "next_step_hypothesis": "If R8 closes, freeze the next G33 experiment around candidate generation/trial from the same durable undertaking. If native calibration passes but the recurring reactor cannot reach the corrected consumer, preserve the failure and freeze R9 to add the narrow native ingress/promoter/advancer and generalize only the required mechanical evidence-root boundary without giving Prolog or the launcher semantic choice."
+}
