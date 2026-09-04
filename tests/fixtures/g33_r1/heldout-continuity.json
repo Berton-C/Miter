@@ -1,0 +1,9 @@
+{
+  "schema": "miter-g33-r1-heldout-continuity-v1",
+  "text": "Can you remind me exactly where we paused in my book and what I should work on next?",
+  "disclosed_after_implementation_freeze": false,
+  "case_specific_behavior_entry_permitted": false,
+  "expected_intent": "resume-exact-project-continuity",
+  "expected_authority": "trajectory-and-current-capsule",
+  "synthetic_fixture": true
+}
