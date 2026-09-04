@@ -1,0 +1,2 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_mattermost_live_grant_v1.metta")
+!(result standing (G31IdentityResolutionStanding (g31-identity-resolution-observation cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3 81d2ee5d219e2cdadeb231202d698f0a5cf10a6f50a633cbcf7ccd21e40da4d6 true true false false true true true true true true 1 0 0 0 true true unresolved) cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3 81d2ee5d219e2cdadeb231202d698f0a5cf10a6f50a633cbcf7ccd21e40da4d6))

@@ -1,0 +1,45 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G31",
+  "plan": "docs/gates/G31/P5/R1/plan.json",
+  "plan_commit": "3c64d18ad23166fe272fd9e40958209e4be91414",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G31/P5/R1/outcome.md","sha256":"074f2bd0c6d19d51b3ddd604a22ac2c499040e8f604d847802c1f0e1d5511610"},
+    {"path":"evidence/G31/p5-501/probe-process.json","sha256":"a1cdf15dd70f0a92f9aff28e02c14c91d0fcf803533bd89a59730f4b2dbbd6b9"},
+    {"path":"evidence/G31/p5-501/run-failure.json","sha256":"d10f522cb3381932fa029ed460607177c4f7354eab04bf6b152c567bdcaa09b5"},
+    {"path":"evidence/G31/p5-502/run-verdict.json","sha256":"012eea8593a77167d4f874b11ec59ec033f3d05e06ab098dd5e410bb05c71fe6"},
+    {"path":"evidence/G31/p5-502/manifest.json","sha256":"3cb88b58724800cfe7387c281af9eb1a966a337583ae26523f5e794140152036"},
+    {"path":"evidence/G31/p5-502/identity-redacted.json","sha256":"f3c5c2be0aeae692d6f1487b4f0237d68af5875d4f70c13dc6a16d51148059b7"},
+    {"path":"evidence/G31/p5-502/identity-observation.json","sha256":"e3e3cebd664f33a8031f5ee16201aa452405b96937dea71a913c978aedbe04b1"},
+    {"path":"evidence/G31/p5-502/native-standing-repair.json","sha256":"10fdbe60dc8262d6f99535af0b83b7d42c835337d239403d5637ff5cce73ce89"},
+    {"path":"evidence/G31/p5-502/run-failure.json","sha256":"352e275f390c235852b089b20ffb2cbaddacb47ba9c2f84b94e9671fdca88265"}
+  ],
+  "claim_results": [
+    {
+      "id": "G31-P5-R1-read-only-identity-resolution",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The dedicated bot resolved the exact loopback server, team, two private channels, and both channel memberships through eight authenticated GET responses. This proves only the named local identities at the observed time; it does not read posts, subscribe to events, or authorize future reach."
+    },
+    {
+      "id": "G31-P5-R1-credential-and-private-identity-isolation",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The credential was read once from the named Keychain reference without being returned, actual IDs were written only to an ignored mode-0600 record, and public evidence retained hashes, counts and relations. This does not prove every future consumer will preserve the same isolation."
+    },
+    {
+      "id": "G31-P5-R1-no-effect-authority-hold",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The fixed probe exposed only GET transport, recorded zero post-content reads, messages, mutations, model calls, promotions and activations, and native standing retained the human principal unresolved with live effects held. This is not a live-message or ongoing-adapter qualification."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004-C-008/C-020-C-024/C-050/C-054-C-055/C-060/C-062-C-066/C-090-C-104 and S-103/S-501-S-504/S-804/S-901-S-905/S-1001/S-1003-S-1005/S-1101-S-1105 require exact authority, provenance, bounded effects, native interpretation, secret isolation, and truthful failure evidence. P5 resolved only the identities necessary to form a later exact grant and did not treat discovery as permission.",
+    "causal_evidence": "The fixed Prolog membrane required the exact origin, team and channel slugs, exact credentialed bot identity, 26-character stable IDs, successful memberships and source hashes before writing evidence. The corrected native MeTTa relation required every redacted presence/membership field, zero effects, complete evidence and an unresolved human principal to produce the awaiting-human standing. Attempt 501 changed from 404 to 200 only after external membership changed.",
+    "substitution_audit": "Prolog performed credential lookup, HTTP/JSON mechanics and exact comparisons but did not choose the human or grant reach. MeTTa consumed the typed redacted observation and owned readiness standing. JavaScript rejected an unexecuted native expression and verified redaction, file mode and evidence shape; it did not make a cognitive or live-effect decision. No LLM, fixed behavioral response or message content participated.",
+    "capability_and_constraint_audit": "Both failed conditions were preserved: attempt 501 captured missing bot visibility, and attempt 502 captured the initial unexecuted MeTTa expression. The ordinary one-character syntax repair did not alter the frozen claim or expected result. All eight successful calls were GET-only; there were no post endpoints, post-content reads, messages, API mutations, model calls, promotions or activations. Actual IDs remain ignored and private.",
+    "remaining_gaps": "Berton has now explicitly selected the sole observed human account, but that later authority has not yet been bound to the private stable ID or incorporated into a versioned live grant. Exact canary payload, one-shot duration, event/effect scopes, credential reference, journals, panic, rollback, revocation and VoiceRNA route must be assembled and natively checked before any live request. No message authority has been granted. G31 canary/restart evidence, G32 and G33 remain open."
+  },
+  "reviewer": "Codex builder using the frozen controls and P5 plan, fixed SWI-Prolog request surface, exact HTTP statuses and membership relations, private/public separation checks, preserved failure evidence, and native PeTTa/MeTTa standing.",
+  "review_limits": "This closes only G31 P5 R1 read-only identity resolution. It does not bind the subsequently confirmed human principal, construct or approve a live grant, read a post, send a canary, activate the adapter, or close G31.",
+  "terminal_reason": "P5 identity resolution is complete. Because the next bounded phase remains within G31, the checker forbids a same-gate next_plan link; G31 P6 will be frozen separately from Berton's explicit principal selection before any private binding or grant construction."
+}
