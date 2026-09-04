@@ -1,0 +1,64 @@
+{
+  "schema": "miter-ama11-constitutive-convergence-v2-cases-v1",
+  "base_fixture": "tests/fixtures/ama1_1/constitutive-chain-v2-base.json",
+  "support_consequence": "tests/fixtures/ama1_1/constitutive-chain-v2-consequence-support.json",
+  "cases": [
+    {
+      "id": "typed-contact-neutral-and-restored",
+      "special": "typed-contact-neutral-and-restored",
+      "prediction": "Changing only the transport input_id and JSON member order leaves the native checkpoint identical; an empty project is rejected before cognition; restoring the exact project recovers the original checkpoint."
+    },
+    {
+      "id": "raw-five-field-severance-restoration",
+      "special": "raw-five-field-severance-restoration",
+      "arms": [
+        {"field": "D", "path": "/contact/configuration/d_relations", "value": [], "require": "movement-unresolved"},
+        {"field": "Omega", "path": "/contact/configuration/omega_relations", "value": [], "require": "movement-formed.inquiry"},
+        {"field": "I", "path": "/contact/configuration/interfaces", "value": [], "require": "movement-formed.defer"},
+        {"field": "W", "path": "/contact/configuration/weave", "value": [], "require": "movement-formed.inquiry"},
+        {"field": "C", "path": "/contact/configuration/soul_relations", "value": [], "require": "movement-unresolved"}
+      ],
+      "prediction": "Each severed D/Omega/I/W/C field leaves a raw checkpoint with its predicted standing; restoring the exact field recovers the base checkpoint. Reversing carrier rows without changing their relations preserves the movement topology."
+    },
+    {
+      "id": "fact9-full-support-order-neutral",
+      "special": "fact9-full-support-order-neutral",
+      "prediction": "A full first-eight support with one exact n-ary whole forms a finite non-reconstructive Fact9 expression; reversing support order produces the same native checkpoint while Present remains separate."
+    },
+    {
+      "id": "native-plural-generated-isolated-restoration",
+      "special": "native-plural-generated-isolated-restoration",
+      "prediction": "Two open weave relations disclose two simultaneously Generated native undertakings plus unrecognized inquiry and unavailable defer. Closing only the second weave removes only its Generated continuation; restoration recovers the plural-live topology without a new operator."
+    },
+    {
+      "id": "participant-local-quarantine-restoration",
+      "special": "participant-local-quarantine-restoration",
+      "prediction": "A participant missing lineage is retained as participant-local unresolved material and opens inquiry without rejecting the human contact. Restoring its typed lineage recovers bounded derived support and the undertaking."
+    },
+    {
+      "id": "participant-source-coverage",
+      "special": "participant-source-coverage",
+      "prediction": "Model, memory, PLN, NAL, and tool contributions with distinct lineages remain source-identifiable, produce bounded derived relations, and retain no-contact/no-movement-authority."
+    },
+    {
+      "id": "consequence-detached-neutral-restored",
+      "special": "consequence-detached-neutral-restored",
+      "prediction": "A consequence with a detached movement identifier cannot change the active organization. Meaning-preserving JSON member reordering of the exact linked consequence yields the same next checkpoint in matched roots. Restoring the exact link reconstructs the supported next undertaking."
+    },
+    {
+      "id": "semantic-checkpoint-severance-restoration",
+      "special": "semantic-checkpoint-severance-restoration",
+      "prediction": "A mechanically rehashed but semantically inconsistent checkpoint whose active D relation was severed while the retained movement still depends on it is rejected by native restoration. Restoring the exact checkpoint bytes and hash rehydrates the original organization without effect replay."
+    },
+    {
+      "id": "endogenous-severance-restoration",
+      "special": "endogenous-severance-restoration",
+      "prediction": "An endogenous contact with its weave severed forms inquiry; restoring the exact open weave through the same kernel recovers the undertaking while endogenous provenance remains explicit."
+    },
+    {
+      "id": "joined-convergence-regression",
+      "special": "joined-convergence-regression",
+      "prediction": "All RR-002 cases and preserved v1 cases remain passing after the convergence repair; no live/private reach or implicit runtime root is introduced."
+    }
+  ]
+}

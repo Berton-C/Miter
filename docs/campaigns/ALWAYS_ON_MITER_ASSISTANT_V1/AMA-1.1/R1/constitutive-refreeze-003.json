@@ -1,0 +1,79 @@
+{
+  "schema": "miter-campaign-constitutive-refreeze-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "repair": "RR-003",
+  "date": "2026-09-05",
+  "authority": {
+    "plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/plan.json",
+    "plan_sha256": "28ea805b824702cac7dcc827b6d2e8d1fc1120bcbd2d74358932c0c3fd2294fd",
+    "constitution": "CONSTITUTION.md",
+    "soul_specification": "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md",
+    "controls_unchanged": true,
+    "acceptance_not_weakened": true,
+    "external_scope_unchanged": true
+  },
+  "predecessor": {
+    "commit": "91bc7e93f57b46e6c822ac45717bb0367801ee7e",
+    "review": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/f09-review-002.json",
+    "review_sha256": "ec492eda2269e5c0efbf30e0e4320e257588e484dcdff18c105a8a6a9b2d2e9c",
+    "evidence": "evidence/AMA-1.1/R1/constitutive-chain-v2-001/verdict.json",
+    "evidence_sha256": "bddceb7e062d825bcc1d9bb42b3af3567962eb0c9eb4c346969a463f0827094b",
+    "standing": "PASS-BOUNDED-OPEN-CONVERGENCE-GAPS"
+  },
+  "source_baseline": [
+    {"path": "src/constitutive_participation_v1.metta", "sha256": "b4a9c8b8e7a8a31f86c09368368a03d07907ca6ab8ba0e86aeadc671a02404ef"},
+    {"path": "src/assistant_reactor_v1.metta", "sha256": "2bb30bb487c0c6e753cc64b82421c6db3e411ecb1ff40736c2a8fd648aecae1b"},
+    {"path": "src/bootstrap_assistant_v1.metta", "sha256": "ba3fc8030070f9e24ac651cd9167994e5cc8132b2c06af71675e654c91d5c0d1"},
+    {"path": "effect_membranes/miter_assistant_service_v1.pl", "sha256": "fc4fb5606e94f60993515af6c1d0ed942215424b11ab0958d2f7c9d948688bd9"},
+    {"path": "effect_membranes/miter_assistant_operator_v1.pl", "sha256": "e77ff9c75f87447b74822d13b673238f4786f4141c3afbfb0c882b599da32902"}
+  ],
+  "frozen_inputs": [
+    {"path": "tests/fixtures/ama1_1/constitutive-chain-v2-base.json", "sha256": "0c498594ea9da6a8e01210160ad1b15906b92c6c75754f8bfb5d49fcacb9b64b"},
+    {"path": "tests/fixtures/ama1_1/constitutive-chain-v2-consequence-support.json", "sha256": "b553562ba5a8591f1729f086abd713a82c9187da07c2f51aecacdeb86e9d05cf"},
+    {"path": "tests/fixtures/ama1_1/constitutive-chain-v2-consequence-capture.json", "sha256": "127a027f3e36a52852f35bf0bb95bd1401e40c211904def50d8ee3397e8fedad"},
+    {"path": "tests/fixtures/ama1_1/constitutive-convergence-v2-cases.json", "sha256": "5a6310d0c835f7c22b6d90c03279ab43ef37a6455bcb1bbe00bd5ae03bb17af8"}
+  ],
+  "repair_hypotheses": [
+    {
+      "id": "RR003-participant-local-containment",
+      "observation": "The v2 Prolog carrier currently rejects the entire contact when one participant contribution lacks required lineage or typed claim structure.",
+      "required_correction": "Retain the contact and translate only that participant into a mechanically sourced participant-unresolved record. Native MeTTa must keep it explicit, prevent it from becoming corroboration, and make discriminating inquiry available. The membrane may identify invalid carrier structure but may not choose the cognitive response."
+    },
+    {
+      "id": "RR003-semantic-restore-consistency",
+      "observation": "Checkpoint hashing detects changed bytes, but a mechanically rehashed parseable snapshot can currently restore a stale movement whose retained material derivation no longer agrees with its active cut.",
+      "required_correction": "During native restore, reconstruct the v2 movement from the preserved continuation basis and active cut and require exact constitutive agreement. Mechanical hashing remains necessary but cannot declare semantic consistency. V1 historical snapshots remain governed by their existing bounded validator."
+    }
+  ],
+  "architectural_constraints": [
+    "Balance remains the movement-primary unfolding at contact; R/A/P remain heterogeneous readings of that same forming movement.",
+    "The Fact9/Flourishing bridge remains a many-way constitutive joint, never a mapping or post-hoc verdict.",
+    "No new situation entry, behavior table, first-match order, scalar score, argmax, prompt verdict, or host semantic selector is permitted.",
+    "The participant carrier may preserve structural invalidity but cannot decide inquiry, movement, authority, or semantic truth.",
+    "The checkpoint membrane verifies bytes; native MeTTa verifies constitutive agreement. Neither may impersonate the other.",
+    "Every convergence arm must retain its raw stimulus, active checkpoint where one exists, and relevant service output. A result hash alone is insufficient.",
+    "No live server, model, Chroma, private memory, credential, Mattermost, or external effect is authorized."
+  ],
+  "allowed_changes": [
+    "effect_membranes/miter_assistant_service_v1.pl",
+    "src/constitutive_participation_v1.metta",
+    "src/assistant_reactor_v1.metta",
+    "scripts/ama1_1/constitutive_convergence_v2.mjs",
+    "evidence/AMA-1.1/R1/constitutive-convergence-v2-001/",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/constitutive-repair-outcome-003.json",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/f09-review-003.json",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/f09-review-003.md",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/formalization-feedback-003.json",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/closure.json"
+  ],
+  "preserve": [
+    "all RR-001 and RR-002 evidence and fixtures",
+    "effect_membranes/miter_assistant_operator_v1.pl",
+    "src/bootstrap_assistant_v1.metta",
+    "all promoted G31, G32, and G33 evidence",
+    "all user-owned work outside AMA-1.1 RR-003"
+  ],
+  "success": "All ten frozen convergence trials pass with raw evidence, all fourteen RR-002 and twelve v1 regression cases remain passing, active fidelity and syntax checks pass, and an independent F-09 review can assign each row from evidence. Closure may be written only if every row and CA-01 through CA-09 is genuinely PROVEN-RUNTIME; otherwise the remaining row stays open.",
+  "non_claims": "RR-003 does not establish general natural-language understanding, universal Flourishing recognition, live participant inference, live memory, Mattermost authorization, production reliability, or unrestricted Continuity of Mind."
+}
