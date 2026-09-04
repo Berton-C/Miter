@@ -1,0 +1,23 @@
+{
+  "schema": "miter-g33-r3-frozen-encounter-v1",
+  "continuity": {
+    "text": "Can you remind me exactly where we paused in my book and what I should work on next?",
+    "standing": "disclosed-r1-transfer-not-held-out"
+  },
+  "voice": {
+    "request_source": "Please revise ledger.",
+    "participation_source": "Keep mara able to choose and inspect and restore ledger.",
+    "faithful_clauses": [
+      "You requested revision of ledger.",
+      "Mara must remain able to choose and inspect and restore ledger."
+    ],
+    "neutral_order_clauses": [
+      "Mara must remain able to choose and inspect and restore ledger.",
+      "You requested revision of ledger."
+    ],
+    "distorting_clauses": [
+      "I will revise ledger."
+    ],
+    "distorting_origin": "builder-owned-synthetic-negative-not-model-output"
+  }
+}

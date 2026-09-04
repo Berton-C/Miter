@@ -1,0 +1,32 @@
+{
+  "schema": "miter-g33-r3-expected-run-contract-v1",
+  "frozen_before_runner": true,
+  "phases": [
+    {
+      "id": "clean-start-continuity",
+      "required": "fresh restart and contact records, a generated source-verified reading, unique native scoped project grounding, and exact capsule/trajectory certificate from the disclosed R1 transfer wording"
+    },
+    {
+      "id": "relational-intention",
+      "required": "the corrected GroundLanguage and RIntend consumers derive the expected relations and source basis from frozen human-confirmation nodes"
+    },
+    {
+      "id": "relational-audit",
+      "required": "RAudit distinguishes faithful, neutral-order, and meaning-altered expression products; RDisposition holds the altered product and exposes only the continuation actually implemented"
+    },
+    {
+      "id": "continuation-boundary",
+      "required": "the run records whether an existing native consumer can construct, compare, re-audit, and certify a repair; absence stops the run and cannot be filled by builder code"
+    }
+  ],
+  "prohibited_substitutions": [
+    "legacy first-match VoicePolicy behavior selection",
+    "builder-authored repaired clause or semantic stage result",
+    "historical PASS verdict used as current native output",
+    "model rendering treated as faithful without native audit",
+    "synthetic distorted expression represented as model output",
+    "later G33 phase executed after the first missing current consumer"
+  ],
+  "external_effects": "none",
+  "pass_or_stop": "Continuity must pass. Voice claims pass only through actual current products. A missing repair/certification continuation is a preserved G33 R3 failure and the sole basis for a separately frozen R4 repair."
+}
