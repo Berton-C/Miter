@@ -1,0 +1,58 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G31",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G31 P7 R1: Miter can construct and natively assess a complete, source-bound, human-reviewable but inactive Mattermost live-grant proposal that surfaces every C-098 permission and lifecycle boundary, retains actual identities privately, and cannot become live while its independent live-effect approval remains unresolved.",
+  "claim_ids": [
+    "G31-P7-R1-complete-inactive-live-grant-v3",
+    "G31-P7-R1-c098-human-review-surface",
+    "G31-P7-R1-live-effect-approval-independent-and-unresolved"
+  ],
+  "non_claims": "No Mattermost network request, WebSocket, post/content read, message effect, live-effect approval, VoiceRNA execution, adapter activation/promotion, live canary, restart/panic proof, production readiness, model call, or G31 closure.",
+  "rationale": "C-098 requires explicit human approval only after purpose, scope, permissions, persistence, ongoing access, reversibility and test evidence are surfaced. P5 and P6 establish exact identities and principal-selection authority but do not supply message authority. A versioned v3 representation must separate those facts before Berton can meaningfully approve, narrow or reject the live experiment.",
+  "requirements": [
+    "C-004", "C-005", "C-006", "C-007", "C-008", "C-020", "C-023", "C-024",
+    "C-050", "C-052", "C-054", "C-055", "C-060", "C-062", "C-064", "C-065",
+    "C-066", "C-090", "C-091", "C-095", "C-096", "C-097", "C-098", "C-099",
+    "C-100", "C-101", "C-102", "C-103", "C-104", "S-103", "S-401", "S-402",
+    "S-403", "S-404", "S-405", "S-501", "S-502", "S-504", "S-603", "S-605",
+    "S-607", "S-804", "S-901", "S-902", "S-903", "S-904", "S-905", "S-1004",
+    "S-1005", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201",
+    "S-1202", "S-1203", "T-21", "T-24", "T-26", "T-28", "T-29", "T-30", "T-31"
+  ],
+  "reading": "Retain both controls and the full G29-G31 lineage. Reread C-004-C-008/C-020-C-024/C-050-C-055/C-060-C-066/C-090-C-104; S-103/S-401-S-405/S-501-S-504/S-603/S-605/S-607/S-804/S-901-S-905/S-1004-S-1005/S-1101-S-1105/S-1201-S-1203; ACCEPTANCE G31; POC_SPEC 16-17; D-024-D-026/D-033-D-037; W-120-W-127; the exact P3 candidate, P4 transport closure, P5 identity closure, and P6 principal closure. Honor the user's standing instruction that no message be sent yet.",
+  "representation": "Introduce `live-grant-v3` with distinct principal-selection-authority and live-effect-approval fields. Construct a private mode-0600 grant containing exact IDs and a public redacted proposal containing only hashes and opaque private references. Required fields include candidate/transport versions; purpose; server/team/allowlisted and denied-control scopes; authorized inbound principal; bot; Keychain capability; event/content exposure; outbound effect class and exact target; fixed canary text and bounded sequence; memory scope; VoiceRNA certificate route; reconciliation limits; cursor/effect journals; activation-relative expiry; no ongoing access beyond the experiment; panic; rollback; revocation; source evidence; principal authority; and unresolved live approval.",
+  "consumer": "PeTTa/MeTTa owns grant construction meaning, completeness and held standing. A Prolog membrane may only materialize exact private references, hash/read back files and enforce restrictive storage; it cannot approve or activate. JavaScript freezes inputs, verifies private/public separation and exercises positive, severed, neutral and restored grant forms; it cannot contact Mattermost or grant reach.",
+  "falsifiers": "Any required permission or lifecycle field is absent; v2 conflation of human identity and live-effect approval remains; actual IDs, username or credential enter Git; the inactive grant authorizes a network call; post-content exposure is hidden; denied-channel observation can enter cognition; memory scope is unspecified; VoiceRNA can be bypassed; expiry/ongoing access/panic/rollback/revocation is vague; a severed source or field passes; an unexecuted native expression passes; or any network, post, message, model, promotion or activation occurs.",
+  "scope_review": "Add only the v3 inactive-grant ontology, private materialization mechanics, public review proposal, native causal trials, evidence, closure and next separately frozen plan. No Mattermost/Keychain call, message/content, candidate/transport edit, model, Docker mutation, promotion, activation, push or control change.",
+  "rollback": "Delete the ignored P7 grant proposal and remove P7 ontology/probe/evidence additions. P5 identities, P6 principal binding, Keychain, Mattermost state, candidate and transport remain unchanged; no live effect exists.",
+  "predecessor": "docs/gates/G31/P6/R1/closure.json",
+  "allowed_paths": [
+    "src/mattermost_live_grant_v1.metta",
+    "src/bootstrap_mattermost_live_grant_v1.metta",
+    "effect_membranes/miter_mattermost_grant_materialize_v1.pl",
+    "scripts/g31/",
+    "config/local/",
+    "evidence/G31/",
+    "docs/gates/G31/"
+  ],
+  "preserved": [
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"}
+  ]
+}
