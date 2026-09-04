@@ -1,0 +1,70 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R13: the exact admitted R12 development can be recomputed by native PeTTa/MeTTa while material trial, NAL/NACE and restart meanings are retained as compact content-addressed proof projections, allowing the continuously cycling reactor to consume an explicit stop and exit cleanly in the same process without generation replay or external effects.",
+  "claim_ids": [
+    "G33-R13-native-semantics-produce-compact-hash-bound-proofs",
+    "G33-R13-compact-proof-retains-trial-and-consequence-causality",
+    "G33-R13-same-process-stop-exits-cleanly-after-final-proof",
+    "G33-R13-restart-rehydrates-changed-ranking-without-generation-replay"
+  ],
+  "non_claims": "No new model call or candidate, no general-purpose formation, no final G33 integration, no new live Mattermost activity, no Chroma/history/private-memory access, no production promotion, no universal proof compression, no complete T-33/T-36, and no whole-PoC acceptance. A content hash proves byte identity, not semantic truth; the native consumer and causal arms supply the bounded meaning claim.",
+  "rationale": "R12 proved one bounded developmental re-expression but duplicated large native report and ranking terms into trial, final and restart documents. The resulting 96 MiB final projection delayed return until the harness sent SIGTERM, although a fresh process later consumed stop correctly. Before final G33 integration, remove this accidental serialization coupling without changing the candidate, trial standard, NAL operator, consequence evidence or later ranking. Native MeTTa will still construct and adjudicate the full ephemeral relations; Prolog will only canonicalize, hash and durably store the compact witness MeTTa constructs. This directly addresses the first disclosed R12 discontinuity and makes the final clean-start run feasible.",
+  "requirements": ["C-004", "C-005", "C-006", "C-007", "C-021", "C-023", "C-032", "C-043", "C-060", "C-061", "C-062", "C-066", "C-073", "C-074", "C-075", "C-080", "C-082", "C-083", "C-084", "C-090", "C-094", "C-100", "C-101", "C-102", "C-103", "C-104", "S-504", "S-606", "S-607", "S-1001", "S-1002", "S-1003", "S-1004", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202", "S-1203", "T-13", "T-25", "T-29", "T-33"],
+  "reading": "Read both control documents in full-context continuity; BUILD_FIDELITY_PROTOCOL F-01 through F-07; ACCEPTANCE G33; POC_SPEC section 19; the frozen G33 expected-run contract; R12 R1-R3 plans, evidence, outcome, semantic audits and closure; current reactor, development-helix, v2 trial and NAL/NACE sources; and the exact R12 candidate, trial, ranking, restart and process-size observations. The next unmet dependency is efficient proof projection plus clean same-process termination, not another semantic oracle call.",
+  "representation": "Introduce a versioned development-helix v2 bootstrap and native relations. Full trial reports and rankings remain ephemeral native computation. Native MeTTa extracts the decision, material counts, maxima and consequence standings and invokes a Prolog hashing primitive only for canonical SHA-256 identity. It then constructs compact proof atoms containing semantic fields plus hashes of the full ephemeral products and source pins. Existing durable candidate, accepted-development and efficacy records remain separately readable. The final and restart files contain only these compact witnesses. The default bootstrap changes to v2 only after the isolated path passes. Extend the existing exact G33 development-root membrane qualification only to G33/R13 and requalify its rejection controls.",
+  "consumer": "The continuously recurring ReactorStart path consumes DevelopmentHelixIdleV2 and DevelopmentHelixBoundaryV2. Native TVReport/TVAdjudicate, NAL revision and ERank still determine trial and later ranking. Native projection relations select which material facts enter the compact witness. Prolog performs path qualification, canonical hashing, durable JSON/fsync and trajectory mechanics only. JavaScript prepares a public synthetic isolated root, requests stop after final appears, captures raw process output and independently verifies hashes, sizes, causal differences and readbacks.",
+  "falsifiers": "Any new provider claim, model call, credential lookup, Mattermost or Chroma request occurs; the exact R12 candidate or frozen v2 cases change; Prolog or JavaScript selects trial/admission/ranking meaning; a material full-product hash or compact semantic field is absent; canonical and consequence-severed rankings do not differ; neutral ordering changes standing; malformed hash/source qualifies; the initial process needs SIGTERM after final; stop is not observed in the same process; final/trial/restart projections exceed frozen bounds; restart loses sole changed maximum or replays generation; R12 offline evidence no longer verifies; root broadening admits another gate/path; or preserved G22/G28 work changes.",
+  "scope_review": "R13 may add versioned development-helix v2 MeTTa/bootstrap, a compact-proof Prolog membrane, R13 fixtures/scripts/docs/evidence, change only the exact G33 root predicate in the v1 helix membrane, and switch src/bootstrap_modules.metta to v2 after passing isolation tests. It may execute pinned local PeTTa/SWI over public synthetic evidence and read exact committed R12 candidate/source artifacts. It may not change controls, acceptance, trial cases, candidate bytes, model registry, credentials, live services, prior evidence, historical v1 semantics beyond root qualification, or user-owned G22/G28 work.",
+  "rollback": "Restore effect_membranes/miter_development_helix_v1.pl SHA-256 c140b1a0eafa961f2834c4ea9b5bbb752c254ea7718080b4efe141f2aa188e6d and src/bootstrap_modules.metta SHA-256 e09030b0da181e8abbaf00fbf8f146949103a8d5f98f7f737d6498bb03dd8bbf, remove only new R13 v2/proof files, and retain append-only R13 failure evidence. No external state or provider call exists to undo.",
+  "predecessor": "docs/gates/G33/R12/R3/closure.json",
+  "allowed_paths": [
+    "effect_membranes/miter_development_helix_v1.pl",
+    "effect_membranes/miter_development_proof_v1.pl",
+    "src/bootstrap_modules.metta",
+    "src/bootstrap_development_helix_v2.metta",
+    "src/development_helix_v2.metta",
+    "docs/gates/G33/R13/",
+    "tests/fixtures/g33_r13/",
+    "scripts/g33_r13/",
+    "evidence/G33/R13/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G33/R12/R3/closure.json","sha256":"1b3c3d498c642c61ef779c4a3cf88dec31f1331f3f47468a99c2989f09826991"},
+    {"path":"docs/gates/G33/R1/expected-run-contract.json","sha256":"3b514e62340229fd6af37339166931b70d6a9989c2f4cd7e251d1afd4db376ca"},
+    {"path":"BUILD_FIDELITY_PROTOCOL.md","sha256":"6ddbaf2167d0f717fffe71bfba919fbf6b860b7278f174fd7e0c2e5da119236b"},
+    {"path":"src/development_helix_v1.metta","sha256":"82eb5e90eaab74ab52b925a509d2614dce2300e8d0add2bddcd10c7f05bd9041"},
+    {"path":"src/bootstrap_development_helix_v1.metta","sha256":"05beff6025f1788b9e1ff46c25473f117263e70d8b28f9699523cd80e41a45c1"},
+    {"path":"evidence/G33/R12/attempt-016/canonical/candidate.json","sha256":"34314c0e9e89c300767d2c2b366c1dfbf14289e4cc910424a05cce178e43973e"},
+    {"path":"evidence/G33/R12/attempt-016/canonical/candidate-lineage.json","sha256":"1496215c11948b19c6d9737ee6d6361e5dc547c907c166254b0ce6bbf939d15c"},
+    {"path":"evidence/G33/R12/attempt-016/verdict.json","sha256":"3c6d0523f3bb2130b967b0a9636bc5aa13f2726e33586d931f0d80333dcb810c"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
+  "cases": {
+    "positive": "From a fresh R13 root, native v2 recomputes the exact admitted candidate's independent trial and consequence-earned ranking, saves only compact final/trial/ranking projections, then consumes stop and exits status 0 in the original reactor process.",
+    "severed": "With consequence consumption severed but identical candidate, cases and source pins, the compact ranking retains both maxima instead of the candidate-only maximum.",
+    "neutral": "Reversed manifest/resource presentation and an unconsumed decorative observation preserve candidate identity, trial decision and later maxima.",
+    "restored": "Restoring exact consequence and source hashes restores the candidate-only maximum; a fresh process rehydrates its proof and exits without generation replay.",
+    "held_out": "R13 tests representation transfer over the exact previously admitted R12 case; it makes no new held-out semantic or general cognition claim.",
+    "unknown_malformed": "Wrong candidate/source hash, missing proof input, malformed root and other-gate/traversal paths remain typed held/rejected and create no final proof or effect."
+  },
+  "environment": "Pinned native PeTTa ae66fa8e41dcd5539d614706bd4e5cfb34f9608d through SWI-Prolog 10.0.2 arm64; exact committed R12 candidate and public synthetic fixtures; isolated evidence/G33/R13 roots; zero model, credential, Mattermost, Chroma, private-memory or human-output access.",
+  "next_step_hypothesis": "If R13 passes, freeze R14 as the final clean-start integrated G33 run and clause-mapped report using compact current-consumer witnesses and hashed prior G31 live evidence without replay. If R13 fails, preserve the first semantic, persistence, size or same-process-stop discontinuity and repair only that evidence-specific cause."
+}
