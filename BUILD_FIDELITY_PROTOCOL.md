@@ -1,6 +1,6 @@
 # Miter — gate-to-gate build fidelity
 
-Version 1.0, 2026-09-03. Implements Berton's requested methodology (D-040).
+Version 1.1, 2026-09-04. Implements Berton's requested methodology (D-040) and the additive integrated-campaign correction ratified with Soul specification v0.3.
 
 ## Purpose and authority
 
@@ -65,3 +65,27 @@ Each gate has a plan, evidence directory, independent verifier result, fidelity 
 SC01 and subsequent SC identifiers denote explicit alignment prerequisites, not renumbering or bypassing the existing acceptance gates. Rejoin G22 and later progression when their actual constitutive prerequisites are established, and repeat any affected mechanical evidence. Mattermost remains the omitted-part proof. Comprehensive erasure, public-source packaging, a new theorem prover, and live service changes are not prerequisites silently added by this methodology.
 
 The method succeeds only if it catches drift in actual implementation—not because every report repeats the right words. A failed fidelity review is useful evidence: repair the mechanism or scope the claim honestly before continuing.
+
+## F-08 — Campaign-level freeze and additive integration
+
+Post-PoC product work proceeds beneath one active campaign plan. The campaign freezes the exact control hashes, governing requirements, known integrated outcome, architecture and language boundaries, persistent-runtime path, interface contracts, capability and privacy envelope, final acceptance and falsifiers, non-claims, phase dependency graph, and terminal conditions. A campaign is implementation process beneath the two controls; it is not a third cognitive constitution.
+
+Each phase receives a bounded delta plan that references rather than restates unchanged campaign material. Re-freeze the campaign only when source meaning, authority, architecture, an interface contract, final acceptance, or phase dependency changes materially. Ordinary implementation repair preserves the same frozen meaning and records a new attempt. This retains precommitment without repeatedly rebuilding planning scaffolds.
+
+Every phase records an additive movement ledger:
+
+- governing C/S/T requirements and inherited mathematical meaning;
+- promoted predecessor artifacts actually reused;
+- the persistent-runtime consumer through which the new work participates;
+- the user-visible capability or material reliability change;
+- positive, severed, neutral, restored, held-out, failure, and regression evidence appropriate to the claim;
+- what the result still cannot establish;
+- the exact successor dependency the phase now makes possible.
+
+Reuse precedes new construction. A phase may create foundational machinery that is not directly visible to a user only when it is necessary for the integrated outcome and the next phase actually consumes it. No orphan artifact, duplicate proof scaffold, fixture-only production substitute, favorable report, or gate-number progression earns closure.
+
+Except for quarantined pre-promotion trials, a component is not complete merely because it passes an isolated harness. Phase closure requires its promoted form to be reachable through the supported persistent Miter runtime and exercised through the campaign's end-to-end acceptance spine. The old gate suites remain regression evidence around that spine; they do not become separate product implementations.
+
+Efficiency does not mean concealing failed attempts or skipping necessary isolation. A preserved failure is purposeful when it falsifies a hypothesis, exposes a missing dependency, or changes the next movement. Repeated work that neither integrates capability nor changes the evidenced route is drift and must be stopped or reframed.
+
+The first active post-PoC campaign is the Always-On Miter Assistant. Its initial integrated path is Mattermost contact → stable identity and scope → Soul encounter → Continuity of Mind → bounded model participation → VoiceRNA → certified effect → trajectory and consequence → restart recovery. Campaign planning and implementation do not themselves authorize live or ongoing Mattermost access; C-098 and S-1310 require a separately explicit grant.

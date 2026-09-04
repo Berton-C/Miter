@@ -11,7 +11,7 @@
 
 ## 1. What this packet is
 
-**Current build control (2026-09-03):** Berton has ratified the [Soul constitutive specification](MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md) alongside the [Constitution](CONSTITUTION.md). Every new gate must follow the [build-fidelity protocol](BUILD_FIDELITY_PROTOCOL.md). The [reassessment](docs/MITER_SOUL_BUILD_REASSESSMENT.md) identifies the historical mechanical evidence and cognitive corrections; it is not a declaration that the Soul is already implemented. The historical packet remains provenance, not permission to ignore the ratified specification.
+**Current build control (2026-09-04):** Berton has ratified the [Soul constitutive specification v0.3](MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md) alongside the [Constitution](CONSTITUTION.md). Version 0.3 makes Continuity of Mind as organized becoming, endogenous flourishing, meaningful AtomSpace growth, causal unfamiliar-encounter navigation, autonomous expressed-Soul regeneration, integrated usability, and additive campaign progression explicit. Every new phase follows the [build-fidelity protocol v1.1](BUILD_FIDELITY_PROTOCOL.md). The first post-PoC program is the [Always-On Miter Assistant campaign](docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md). The G33 seed-PoC result remains bounded historical evidence, not a declaration that the final Soul or usable assistant already exists, and the campaign plan does not itself authorize ongoing Mattermost reach.
 
 It is deliberately smaller than the eventual Miter architecture, but it is not a toy agent. The PoC is required to prove two things:
 

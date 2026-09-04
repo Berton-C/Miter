@@ -1,0 +1,173 @@
+{
+  "schema": "miter-integrated-campaign-plan-v1",
+  "campaign": "AMA-1",
+  "name": "Always-On Miter Assistant",
+  "version": "1.0",
+  "date": "2026-09-04",
+  "status": "ratified-direction-awaiting-committed-opening",
+  "decision_owner": "Berton",
+  "objective": "Build one supported, continuously cycling and recoverable PeTTa/MeTTa organism usable through Mattermost for general conversation, scoped Continuity of Mind, sustained undertakings, meaningful epistemic growth, earned skill acquisition and autonomous expressed-Soul repair, with every phase extending the same persistent runtime.",
+  "authority": {
+    "constitution": {
+      "path": "CONSTITUTION.md",
+      "sha256": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c"
+    },
+    "soul_specification_v03": {
+      "path": "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md",
+      "sha256": "2940e3d57ac4172934787bac4257acf54e6b9c3756ee4794a4c08e4b6d8328f7"
+    },
+    "build_fidelity_protocol_v11": {
+      "path": "BUILD_FIDELITY_PROTOCOL.md",
+      "sha256": "ab3575c2a40a93a80ec4ff0cb850d61f7647b829f6b09e1f7b4ef817ad7b99c1"
+    },
+    "ratification": "docs/ratification/SOUL_SPEC_V03.md"
+  },
+  "predecessor": {
+    "git_commit": "2090741f0d3de16d7f4c8d6955ed1d8c1a7dd130",
+    "gate": "G33-R14",
+    "closure": "docs/gates/G33/R14/closure.json",
+    "closure_sha256": "1dce6a97a2292d0dac84a4c32064a375ee90c4ae07e1995a92d49d46c55856c6",
+    "standing": "PASS-BOUNDED"
+  },
+  "requirement_ids": [
+    "S-1301",
+    "S-1302",
+    "S-1303",
+    "S-1304",
+    "S-1305",
+    "S-1306",
+    "S-1307",
+    "S-1308",
+    "S-1309",
+    "S-1310"
+  ],
+  "principal_test_ids": [
+    "T-37",
+    "T-38",
+    "T-39",
+    "T-40",
+    "T-41",
+    "T-42",
+    "T-43",
+    "T-44",
+    "T-45",
+    "T-46"
+  ],
+  "end_to_end_spine": [
+    "authenticated Mattermost contact",
+    "stable principal/team/channel/project scope",
+    "Soul-grounded encounter and undertaking",
+    "Continuity of Mind projection and authorized retrieval",
+    "bounded model participation when useful",
+    "native interpretation and VoiceRNA",
+    "certified Prolog-mediated effect",
+    "actual result and consequence in append-only trajectory",
+    "durable continuation, restart and later re-expression"
+  ],
+  "language_and_authority_boundaries": {
+    "cognition": "PeTTa/MeTTa",
+    "mechanics": "narrow typed Prolog effect membranes",
+    "python_core_seam": false,
+    "javascript_runtime_cognition": false,
+    "llm_authority": "derived candidate participation only",
+    "outer_recovery": "mechanical liveness only",
+    "inner_recovery": "Soul-owned semantic diagnosis and regeneration",
+    "runtime_root_selected": false,
+    "create_or_chown_home_miter": false
+  },
+  "phases": [
+    {
+      "id": "AMA-1.1",
+      "name": "Persistent assistant spine and operator plane",
+      "depends_on": ["G33-R14", "SOUL-SPEC-V0.3", "F-08"],
+      "integrated_delta": "One supported service entry point with install/bootstrap, start, status, stop, panic, evidence export, heartbeat, last-known-good recovery, crash-loop containment and central non-secret configuration.",
+      "successor_unlocked": "AMA-1.2 general contact and Continuity of Mind"
+    },
+    {
+      "id": "AMA-1.2",
+      "name": "General contact and Continuity of Mind",
+      "depends_on": ["AMA-1.1"],
+      "integrated_delta": "General held-out dialog and full scoped continuity through the persistent runtime across restart, long gaps, service degradation, principals, projects, duplicates and edits.",
+      "successor_unlocked": "AMA-1.3 causal Soul navigation using real integrated encounters"
+    },
+    {
+      "id": "AMA-1.3",
+      "name": "Causal Soul navigation in the running assistant",
+      "depends_on": ["AMA-1.2"],
+      "integrated_delta": "Interconnected flourishings and inherited mathematics construct and compare live alternatives in unfamiliar encounters without situation rules, prompt answers or host-selected behavior.",
+      "successor_unlocked": "AMA-1.4 faithful endogenous growth and skill acquisition"
+    },
+    {
+      "id": "AMA-1.4",
+      "name": "Epistemic growth and open-ended skill acquisition",
+      "depends_on": ["AMA-1.3"],
+      "integrated_delta": "Provenance-qualified new relations change later cognition, and multiple held-out missing skills are learned/built, trialed, reused and transferred through the same organism.",
+      "successor_unlocked": "AMA-1.5 substantive weave and plasticity for regeneration"
+    },
+    {
+      "id": "AMA-1.5",
+      "name": "Autonomous regenerative Soul and catastrophic recovery",
+      "depends_on": ["AMA-1.4"],
+      "integrated_delta": "No-human semantic recovery of damaged expressed Soul plus independent mechanical recovery from freeze, corrupt activation and crash loops.",
+      "successor_unlocked": "AMA-1.6 SNET evaluation release"
+    },
+    {
+      "id": "AMA-1.6",
+      "name": "SNET evaluation release",
+      "depends_on": ["AMA-1.5"],
+      "integrated_delta": "A non-builder can install, configure, operate, evaluate, stop, recover and inspect the same Miter organism with honest limits.",
+      "successor_unlocked": "AMA-1.7 Local Surface Protocol and workbench"
+    },
+    {
+      "id": "AMA-1.7",
+      "name": "Local Surface Protocol and composable web workbench",
+      "depends_on": ["AMA-1.6"],
+      "integrated_delta": "Versioned declarative surfaces compose around the same undertakings and Soul without acquiring ungranted capabilities or creating another cognitive sovereign.",
+      "successor_unlocked": "campaign final acceptance"
+    }
+  ],
+  "phase_closure_required_fields": [
+    "exact authority and campaign pins",
+    "promoted predecessors actually reused",
+    "bounded claim and non-claims",
+    "actual persistent-runtime consumer",
+    "user-visible or material reliability delta",
+    "discriminating evidence and regressions",
+    "raw observations before verdict",
+    "preserved failures and route change",
+    "remaining limits",
+    "successor dependency unlocked"
+  ],
+  "integrated_closure_law": "Except for quarantined pre-promotion trials, no component or phase is complete until its promoted form is reachable through the supported persistent Miter runtime and is exercised through the end-to-end assistant path.",
+  "initial_phase": {
+    "id": "AMA-1.1",
+    "next_action": "Inventory exact promoted G33 components, then freeze the service entry contract, lifecycle state machine, runtime-root decision, supervisor boundary, central configuration schema and offline end-to-end smoke path before runtime implementation.",
+    "implementation_started": false
+  },
+  "live_authority": {
+    "persistent_mattermost_approved": false,
+    "memory_retrieval_through_mattermost_approved": false,
+    "required_before_activation": "A separate C-098/S-1310 grant with exact principals, surfaces, information exposure, effects, model disclosure, persistence, lifetime, renewal, panic, rollback, revocation and evidence handling."
+  },
+  "preserve_unrelated_work": [
+    "docs/gates/G28/R1/completion.md",
+    "effect_membranes/miter_trials.pl",
+    "evidence/20260902T090100Z-G22/",
+    "scripts/g22/",
+    "src/bootstrap_trials.metta",
+    "src/trials.metta",
+    "tests/fixtures/g22_canonical.metta",
+    "tests/fixtures/g22_cases.json",
+    "tests/fixtures/g22_parent.metta",
+    "tests/fixtures/g22_severed.metta"
+  ],
+  "non_claims": [
+    "No live or ongoing Mattermost authority is granted by this plan.",
+    "No finite test proves universal human-skill acquisition.",
+    "No current evidence proves a final Soul or complete flourishing mathematics.",
+    "No system can regenerate information after destruction of every authoritative source and recoverable weave.",
+    "No unrestricted generated-code, filesystem, network, credential, memory or external-effect authority is granted.",
+    "No new runtime root or ~/.miter creation/chown is authorized.",
+    "No historical G01-G33 claim is retroactively enlarged."
+  ]
+}

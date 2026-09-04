@@ -620,4 +620,28 @@ Preserve the bounded G01–G21 evidence and unfinished G22 work. Begin alignment
 
 ---
 
+## D-041 — Soul specification v0.3 constitutive expansion ratified
+
+**Status:** ACCEPTED BY BERTON
+**Date:** 2026-09-04
+
+Berton ratified the v0.3 expansion requiring a usable integrated organism; Continuity of Mind across identity, relationships, undertakings, attention, capabilities and development; endogenous flourishing through the interconnected nine-pattern Soul; meaningful AtomSpace growth; causal Soul navigation on unfamiliar encounters; open-ended skill acquisition; and autonomous regeneration of damaged expressed-Soul organization.
+
+After an expressed-Soul injury is introduced, the Soul must detect, understand, undertake, reconstruct, compare, trial, adjudicate and decide the repair without a human, LLM, harness, candidate or membrane supplying its semantic choice. Human authority prospectively fixes the constitutional germline, acceptance authority and autonomous repair class. A non-cognitive supervisor may restore process responsiveness but cannot decide what the injury means. Changes to germline or protected acceptance remain governed by C-105 and are not repair.
+
+The exact adopted wording is Part 13, S-1301–S-1310 and T-37–T-46 of `MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md` v0.3. See `docs/ratification/SOUL_SPEC_V03.md`. This decision does not enlarge G33's bounded evidence or authorize a live external effect.
+
+## D-042 — Always-On Miter Assistant integrated campaign
+
+**Status:** AUTHORIZED CAMPAIGN DIRECTION; IMPLEMENTATION REQUIRES COMMITTED OPENING
+**Date:** 2026-09-04
+
+Adopt `docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md` and its JSON companion as the first post-PoC campaign plan. Always-on Mattermost moves to the first integrated product milestone. The campaign then deepens general continuity, causal Soul navigation, epistemic/skill growth, autonomous regeneration, SNET packaging, and finally the Local Surface Protocol/workbench in the same running organism.
+
+Adopt `BUILD_FIDELITY_PROTOCOL.md` v1.1 F-08. The campaign freezes the shared outcome, authority, architecture, interfaces, acceptance and dependency graph once; bounded phase plans specify only the changed delta. Re-freeze only for material meaning, authority, interface, acceptance or dependency changes. No component closes from an isolated harness except as a quarantined pre-promotion trial; its promoted form must participate through the supported persistent runtime.
+
+This campaign decision authorizes planning and bounded offline implementation after its committed opening passes. It does not authorize persistent Mattermost activation, Mattermost memory retrieval, a new principal/channel, a message effect, a new runtime root, `~/.miter` creation/chown, or broader external reach. Those require the exact later grant identified by C-098 and S-1310.
+
+---
+
 A later implementation surprise does not retroactively change these decisions. It creates a new decision entry with evidence and an explicit supersession relation.
