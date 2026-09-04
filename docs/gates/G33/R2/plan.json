@@ -1,0 +1,71 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R2: after authenticated restart contact, Miter can request a bounded local-model reading of unfamiliar continuity language, preserve that product as generated and fallible, mechanically verify its cited source spans, and natively compose the supported requested facets with exactly one in-scope project-kind relation before the existing capsule/trajectory path reconstructs the authoritative answer; ambiguity, insufficiency, malformed output, stale evidence, or provider loss remain distinct non-authoritative outcomes.",
+  "claim_ids": [
+    "G33-R2-derived-reading-separated-from-authority",
+    "G33-R2-native-scoped-project-grounding",
+    "G33-R2-exact-capsule-trajectory-authority-preserved",
+    "G33-R2-ambiguity-malformed-and-unavailable-held",
+    "G33-R2-exact-regression-and-transfer-paraphrases"
+  ],
+  "non_claims": "No claim of general natural-language understanding, genuine unseen held-out performance, complete T-19/T-20/T-21, complete S-502/S-803, a whole G33 organism, final Soul semantics, autonomous undertaking formation, arbitrary-project discovery, or external effect authority. The R1 sentence has been inspected by the builder and is only a frozen transfer/regression case in R2. A local model reading cannot establish principal, audience, permission, project identity, capsule truth, exact location, or authority, and cannot directly cause an effect.",
+  "rationale": "G33 R1 preserved the first clean-start discontinuity: the current ContinuityRNA accepts only one exact sentence before reaching otherwise valid exact capsule and trajectory reconstruction. C-004-C-013, S-502, S-801-S-803, and T-19 reject both exact-string dispatch and model sovereignty. The smallest constitutive repair is therefore a source-bearing semantic seam whose generated reading is verified and then used by native relation composition, while the proven exact continuity authority remains unchanged.",
+  "requirements": [
+    "C-004", "C-005", "C-006", "C-007", "C-008", "C-009", "C-010", "C-011", "C-012", "C-013", "C-020", "C-021", "C-022", "C-023", "C-030", "C-031", "C-032", "C-033", "C-034", "C-035", "C-036", "C-037", "C-038", "C-039", "C-040", "C-041", "C-042", "C-043", "C-044", "C-045", "C-050", "C-060", "C-061", "C-062", "C-063", "C-064", "C-065", "C-066", "C-067", "C-100", "C-101", "C-102", "C-103", "C-104", "S-103", "S-301", "S-302", "S-303", "S-304", "S-305", "S-401", "S-402", "S-403", "S-404", "S-405", "S-501", "S-502", "S-503", "S-504", "S-505", "S-601", "S-602", "S-603", "S-604", "S-607", "S-701", "S-702", "S-703", "S-704", "S-705", "S-801", "S-802", "S-803", "S-804", "S-901", "S-1101", "S-1102", "S-1103", "S-1104", "S-1201", "S-1202", "S-1203", "T-01", "T-03", "T-05", "T-09", "T-11", "T-12", "T-14", "T-19", "T-20", "T-21", "T-23", "T-28", "T-29", "T-30", "T-31", "T-35"
+  ],
+  "reading": "Use both complete controls; Soul specification S-502/S-503, S-601-S-607, S-701-S-705, S-801-S-804, S-901, S-1101-S-1104, S-1201-S-1203 and T-19/T-20/T-21/T-23/T-28/T-29/T-30/T-31/T-35; ACCEPTANCE G11 and G33; BUILD_FIDELITY_PROTOCOL F-01-F-07; G11 exact continuity evidence; G32 R2 closure; G33 R1 plan, raw evidence, verdict, and outcome. R1's failure and wording remain disclosed development evidence, not unseen evaluation.",
+  "representation": "Authenticated source contact remains the direct observation. A bounded local LLM call returns a generated continuity-reading candidate containing a request identity, project-kind reference, requested continuity facets, exact quoted source spans, uncertainty, alternatives, and completion standing. Prolog performs only localhost transport, strict JSON/schema checks, exact source-substring/span verification, scalar field access, and durable raw recording. Native MeTTa constructs a supported reading from the verified spans, requires at least one recognized continuity facet, compares the generated kind relation with the authenticated in-scope registry, and admits a project only when exactly one native match exists. It then invokes the unchanged capsule/trajectory certificate path. No numerical semantic score, phrase list, first-match policy, or model-selected project identifier is used.",
+  "consumer": "The actual consumer is the revised ContinuityRNA plus a new native continuity-reading module. It decides whether to request the local semantic ribosome, whether verified generated relations are sufficient, whether the in-scope project-kind relation is unique, and whether to invoke BookContinuityRNA/the generic exact continuity path. The existing miter_resume registry, witness, answer, store, memory, and capsule consumers retain authority. The new Prolog membrane has no project selection or answer-writing predicate and returns typed mechanical observations only.",
+  "falsifiers": "Adding the R1 paraphrase or synonyms to a dispatch table; host or Prolog code choosing continuity intent or project; the model supplying project_id, principal, audience, permission, capsule fields, or an answer; an uncited or non-matching span being accepted; a completion label alone authorizing reconstruction; zero or multiple scoped projects selecting one anyway; changing the model text changing exact capsule facts; exact G11 regression failing; a non-continuity or insufficient contact being coerced into continuity; malformed/stale/provider-unavailable outcomes collapsing together; raw request/response being absent; any model output being evaluated as MeTTa/code; any external network/credential/Mattermost/Chroma mutation; or an R2 result being reported as genuine held-out T-19 or whole-G33 completion.",
+  "scope_review": "R2 may add its plan, frozen cases, local builder/verifier scripts, G33 R2 evidence, one native continuity-reading module/bootstrap, one non-cognitive continuity-reading Prolog membrane, and a minimal revision to src/continuity.metta. It may read the committed local-model registry/profile, invoke only qwen-local on 127.0.0.1 with synthetic public fixture text, and create evidence-owned temporary request products. At most two successful model calls are allowed per attempt, each capped at 512 output tokens and 120 seconds. It may not call OpenRouter, Keychain, Mattermost, or external network; mutate Chroma/canonical memories; edit controls, G33 R1, historical evidence, model registry, accepted capsules, or user-owned G22/G28 work; or proceed into later G33 phases before this repair closes.",
+  "rollback": "No external effect or canonical state mutation is permitted. Failed attempts remain immutable evidence. Revert only the R2 native/module/membrane changes through a later explicit commit if necessary; evidence-owned runtime roots can be retained. Existing G11/R1 capsules, trajectory, controls, local-model configuration, and user work are never rewritten. A semantic design change requires R3 rather than editing this frozen plan.",
+  "predecessor": "docs/gates/G33/R1/outcome.md",
+  "allowed_paths": [
+    "docs/gates/G33/R2/",
+    "config/continuity-reading-schema-v1.json",
+    "src/continuity_intent_v1.metta",
+    "src/bootstrap_continuity_intent_v1.metta",
+    "src/continuity.metta",
+    "effect_membranes/miter_continuity_intent_v1.pl",
+    "tests/fixtures/g33_r2/",
+    "scripts/g33_r2/",
+    "evidence/G33/R2/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G33/R1/outcome.md","sha256":"34fc253d1c82607c7004063e4148b2589cb2bee4f092a960edc9b38375abd65f"},
+    {"path":"evidence/G33/R1/attempt-001/verdict.json","sha256":"ffb132a9f297da93fea2607d26fe840edc3832554eb7d4959e74b1ace82f1416"},
+    {"path":"docs/gates/G32/R2/closure.json","sha256":"9c4c00bc2d5605f3ecaf8bee1bc3993be9afaf50d53037184d3847fb06d2fce0"},
+    {"path":"effect_membranes/miter_resume.pl","sha256":"09a11846959e1dda741da597b1c5654e26bddffd5ae5bd345824a7f2c9a17f27"},
+    {"path":"effect_membranes/miter_llm.pl","sha256":"ebd2cf4d9c513954496089a30ebdfffe87f57577f4b455b637246d8bd14f1440"},
+    {"path":"src/memory.metta","sha256":"d45c7dacf2217a295365fc5c2bb1f26df46ff598ad26cb0d46e6ce727dab7640"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
+  "cases": {
+    "positive": "Several meaning-diverse unfamiliar continuity requests must produce source-verified generated readings, native unique scoped project grounding, and the same exact capsule/trajectory-authorized state.",
+    "severed": "Remove source-span verification, requested facets, project-kind support, unique registry cardinality, capsule resolver, or trajectory witness separately; each cut must change only its named downstream standing and no cut may be compensated by fluent model text.",
+    "neutral": "Punctuation, politeness, word order, and an irrelevant generated alternative may change while authenticated scope and requested relations remain equivalent; exact authority and checkpoint must remain stable.",
+    "restored": "Restore each severed participant on a fresh branch and recover the canonical native product and exact answer.",
+    "held_out": "No genuine unseen claim in R2. The already inspected R1 request is a frozen transfer/regression case. A truly held-out user wording is deferred until this implementation is frozen and can be disclosed afterward.",
+    "unknown_malformed": "Non-continuity contact, insufficient evidence, unsupported project kind, malformed JSON, wrong request ID, nonexistent quoted span, stale reading/source hash, local provider unavailable, ambiguous project registry, stale capsule, and Chroma-off exact reconstruction are differentiated."
+  },
+  "environment": "Pinned native PeTTa commit ae66fa8e41dcd5539d614706bd4e5cfb34f9608d through SWI-Prolog 10.0.2 arm64. LM Studio qwen-local is an optional bounded semantic translator on localhost. The dedicated Miter Chroma endpoint may be health-checked but is not mutated and cannot supply exact continuity. All case data is synthetic and public-safe.",
+  "next_step_hypothesis": "If R2 closes, a new G33 integration revision should restart the clean-start run from phase one using this repaired continuity seam and stop at the next actual semantic discontinuity. If R2 cannot distinguish readings without a phrase table or model sovereignty, preserve the failure and redesign the native grounding relation before resuming G33."
+}

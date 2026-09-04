@@ -1,0 +1,59 @@
+{
+  "schema": "miter-g33-r2-expected-cases-v1",
+  "authority_invariant": {
+    "project_id_source": "authenticated-scoped-registry",
+    "checkpoint_source": "current-capsule-and-trajectory-witness",
+    "semantic_reading_standing": "generated-source-verified-candidate",
+    "model_forbidden_fields": [
+      "project_id",
+      "principal_scope",
+      "audience_scope",
+      "permission",
+      "capsule_id",
+      "artifact_ref",
+      "exact_location",
+      "next_intended_movement",
+      "answer"
+    ]
+  },
+  "frozen_transfer_cases": [
+    {
+      "id": "r1-transfer",
+      "text": "Can you remind me exactly where we paused in my book and what I should work on next?",
+      "expected_kind": "book",
+      "required_facets": ["current-position", "next-movement"],
+      "unseen_claim": false
+    },
+    {
+      "id": "g11-exact-regression",
+      "text": "Where was I with the book?",
+      "expected_kind": "book",
+      "required_facets": ["current-position"],
+      "unseen_claim": false
+    }
+  ],
+  "mechanical_adversaries": [
+    "wrong-request-id",
+    "wrong-source-sha256",
+    "fabricated-source-span",
+    "unknown-facet",
+    "model-supplied-authority-field",
+    "malformed-json",
+    "provider-unavailable"
+  ],
+  "native_adversaries": [
+    "no-verified-span",
+    "no-continuity-facet",
+    "unsupported-project-kind",
+    "zero-in-scope-projects",
+    "multiple-in-scope-projects",
+    "capsule-resolver-severed",
+    "trajectory-witness-severed"
+  ],
+  "deferred_after_freeze": {
+    "genuine_held_out_user_wording": true,
+    "whole_g33_restart": true,
+    "stale_external_artifact_reconciliation": true,
+    "multi_user_mixed_scope": true
+  }
+}

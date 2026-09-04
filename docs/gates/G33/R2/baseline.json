@@ -1,0 +1,23 @@
+{
+  "schema": "miter-g33-r2-baseline-v1",
+  "predecessor": {
+    "path": "docs/gates/G33/R1/outcome.md",
+    "sha256": "34fc253d1c82607c7004063e4148b2589cb2bee4f092a960edc9b38375abd65f",
+    "status": "FAIL"
+  },
+  "failure_evidence": {
+    "path": "evidence/G33/R1/attempt-001/verdict.json",
+    "sha256": "ffb132a9f297da93fea2607d26fe840edc3832554eb7d4959e74b1ace82f1416",
+    "native_product": "continuity-intent-unsupported"
+  },
+  "protected_implementation": [
+    {"path": "effect_membranes/miter_resume.pl", "sha256": "09a11846959e1dda741da597b1c5654e26bddffd5ae5bd345824a7f2c9a17f27"},
+    {"path": "effect_membranes/miter_llm.pl", "sha256": "ebd2cf4d9c513954496089a30ebdfffe87f57577f4b455b637246d8bd14f1440"},
+    {"path": "src/memory.metta", "sha256": "d45c7dacf2217a295365fc5c2bb1f26df46ff598ad26cb0d46e6ce727dab7640"}
+  ],
+  "repair_target": {
+    "path": "src/continuity.metta",
+    "sha256": "7cc0378d131e11d51316e9becb5b2e98fac739259a615db60b97987401234a4f",
+    "defect": "exact-string builder-selected continuity dispatch"
+  }
+}
