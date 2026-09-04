@@ -1,0 +1,640 @@
+[
+  {
+    "name": "human-positive-and-restart:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-human-positive-and-restart-JRxJjX"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"fa01fd937873dd6bf2cc051fb2c6837bd15b13ca525cb50bb59c418eb23dd8f4\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-human-positive-and-restart-JRxJjX\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-human-positive-and-restart-JRxJjX"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":78731,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-human-positive-and-restart-JRxJjX",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-human-positive-and-restart-8qocnD/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:stop",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-human-positive-and-restart-JRxJjX"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":78731,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:restart",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-human-positive-and-restart-JRxJjX"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":78756,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:consequence",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-human-positive-and-restart-JRxJjX",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_1/consequence-unfamiliar.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-consequence-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-human-positive-and-restart-JRxJjX"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":78756,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-severed:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-material-relation-severed-n48n4S"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"55218cf4c6b72cd08239bb9c44206e3f88c31a4239ec26f87441ab1707756ba4\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-material-relation-severed-n48n4S\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-severed:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-material-relation-severed-n48n4S"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":78791,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-severed:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-material-relation-severed-n48n4S",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-material-relation-severed-gDXz8I/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-severed:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-material-relation-severed-n48n4S"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":0,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-restored:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-material-relation-restored-kalI7f"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"ad58eb1d95a24e53f194f6dfaf7351e077edfca0bd4353dfd52784b82feb5f06\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-material-relation-restored-kalI7f\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-restored:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-material-relation-restored-kalI7f"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":78833,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-restored:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-material-relation-restored-kalI7f",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-material-relation-restored-fsKu7j/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-restored:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-material-relation-restored-kalI7f"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":78833,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "carrier-order-neutral:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-carrier-order-neutral-jAYDFJ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"2efc584abb8dcef9206442e996aeb82a499b687bc5e746aeffc5f5c51529d292\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-carrier-order-neutral-jAYDFJ\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "carrier-order-neutral:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-carrier-order-neutral-jAYDFJ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":78868,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "carrier-order-neutral:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-carrier-order-neutral-jAYDFJ",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-carrier-order-neutral-yHg82U/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "carrier-order-neutral:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-carrier-order-neutral-jAYDFJ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":78868,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "pairwise-complete-whole-wrong:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-pairwise-complete-whole-wrong-MydPXW"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f7fb7724c0b410fdc6941c1332e665ecf25fe4efbaeb64dc6eb9fc6df596bd2d\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-pairwise-complete-whole-wrong-MydPXW\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "pairwise-complete-whole-wrong:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-pairwise-complete-whole-wrong-MydPXW"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":78902,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "pairwise-complete-whole-wrong:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-pairwise-complete-whole-wrong-MydPXW",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-pairwise-complete-whole-wrong-Fcv2xF/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "pairwise-complete-whole-wrong:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-pairwise-complete-whole-wrong-MydPXW"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":78902,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "fact9-role-laundered:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-fact9-role-laundered-qBjNkf"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"2fa0613d90000ca312270e123097f69c1725a47dfaafa10a7b4bb363f9df9e9e\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-fact9-role-laundered-qBjNkf\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "fact9-role-laundered:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-fact9-role-laundered-qBjNkf"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":78937,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "fact9-role-laundered:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-fact9-role-laundered-qBjNkf",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-fact9-role-laundered-9TXh2l/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "fact9-role-laundered:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-fact9-role-laundered-qBjNkf"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":78937,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "present-as-support-rejected:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-present-as-support-rejected-Wmp6EU"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"63c7a5ea45e4b346395d5a87f1f7f8b8f74b11c83c64f9dab978da5e43489aa8\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-present-as-support-rejected-Wmp6EU\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "present-as-support-rejected:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-present-as-support-rejected-Wmp6EU"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":78972,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "present-as-support-rejected:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-present-as-support-rejected-Wmp6EU",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-present-as-support-rejected-nDLTDT/stimulus.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "present-as-support-rejected:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-present-as-support-rejected-Wmp6EU"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":78972,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "can-compose-without-recognition:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-can-compose-without-recognition-wCotuQ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"62e805620997de707f4b751535483805efaebe1977c9ee92af14a1e8c23ef64e\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-can-compose-without-recognition-wCotuQ\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "can-compose-without-recognition:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-can-compose-without-recognition-wCotuQ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":79006,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "can-compose-without-recognition:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-can-compose-without-recognition-wCotuQ",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-can-compose-without-recognition-cBKEfY/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "can-compose-without-recognition:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-can-compose-without-recognition-wCotuQ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":79006,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "flourishing-capture-withholds-undertaking:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-flourishing-capture-withholds-undertaking-wPGia7"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"421ae2ebb2d15c9c72353c32fed88a8b39519dc719b650b26dbc6e3af28b190f\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-flourishing-capture-withholds-undertaking-wPGia7\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "flourishing-capture-withholds-undertaking:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-flourishing-capture-withholds-undertaking-wPGia7"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":79041,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "flourishing-capture-withholds-undertaking:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-flourishing-capture-withholds-undertaking-wPGia7",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-flourishing-capture-withholds-undertaking-5p9pOa/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "flourishing-capture-withholds-undertaking:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-flourishing-capture-withholds-undertaking-wPGia7"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":79041,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "plural-generated-remains-live:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-plural-generated-remains-live-ogH4ks"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"c82b94aa6e80e9e9606e7a1fe20ddd499220c7f936fbe5cb935bc6fc23d81f66\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-plural-generated-remains-live-ogH4ks\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "plural-generated-remains-live:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-plural-generated-remains-live-ogH4ks"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":79079,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "plural-generated-remains-live:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-plural-generated-remains-live-ogH4ks",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-plural-generated-remains-live-Nm0WTz/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "plural-generated-remains-live:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-plural-generated-remains-live-ogH4ks"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":79079,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "participant-conflict-retained:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-participant-conflict-retained-jzbirP"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"9c603b8c0564b36cf19ebe66b38e406b82237416ffac75d6338cc6c97a64a8be\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-participant-conflict-retained-jzbirP\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "participant-conflict-retained:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-participant-conflict-retained-jzbirP"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":79114,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "participant-conflict-retained:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-participant-conflict-retained-jzbirP",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-participant-conflict-retained-RlabZa/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "participant-conflict-retained:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-participant-conflict-retained-jzbirP"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":79114,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "endogenous-contact-same-kernel:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-endogenous-contact-same-kernel-OKiQwY"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"807697ff7e88eb8fbf73c45b9c98bd6af5d74cdc74ee54a678dd86c90895a4c0\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-endogenous-contact-same-kernel-OKiQwY\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "endogenous-contact-same-kernel:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-endogenous-contact-same-kernel-OKiQwY"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":79148,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "endogenous-contact-same-kernel:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-endogenous-contact-same-kernel-OKiQwY",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-stimulus-endogenous-contact-same-kernel-rI9z4Z/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "endogenous-contact-same-kernel:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-matrix-endogenous-contact-same-kernel-OKiQwY"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":79148,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  }
+]

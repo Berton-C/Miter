@@ -1,0 +1,45 @@
+{
+  "schema": "miter-ama11-post-operator-verdict-v1",
+  "status": "FAIL-CONSTITUTIVE",
+  "passed": [
+    "human-positive-and-restart",
+    "material-relation-restored",
+    "carrier-order-neutral",
+    "pairwise-complete-whole-wrong",
+    "fact9-role-laundered",
+    "present-as-support-rejected",
+    "plural-generated-remains-live",
+    "participant-conflict-retained",
+    "endogenous-contact-same-kernel"
+  ],
+  "failed": [
+    {
+      "id": "material-relation-severed",
+      "failures": [
+        "native checkpoint not reached",
+        "outbox count 0 != 1",
+        "missing fact9-unresolved",
+        "missing missing-nary-materiality-or-role-essentiality",
+        "missing unavailable-or-unresolved",
+        "missing movement-unresolved"
+      ]
+    },
+    {
+      "id": "can-compose-without-recognition",
+      "failures": [
+        "missing generated-standing.movement-unfamiliar-inquiry.unrecognized",
+        "missing movement-unresolved",
+        "forbidden movement-formed"
+      ]
+    },
+    {
+      "id": "flourishing-capture-withholds-undertaking",
+      "failures": [
+        "missing movement-unresolved",
+        "forbidden movement-formed.undertaking"
+      ]
+    }
+  ],
+  "standing": "The disclosed matrix found a constitutive mismatch. No AMA-1.1 closure or semantic fidelity is claimed; operator meaning must not be changed under this frozen case set without preserving this result and opening an explicit repair plan.",
+  "no_live_or_private_reach": true
+}

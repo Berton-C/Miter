@@ -1,0 +1,17 @@
+{
+  "schema": "miter-ama11-post-operator-runtime-v1",
+  "swipl": "SWI-Prolog version 10.0.2 for arm64-darwin",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "manifest_sha256": "6d2033ae3cd4c63faee2f614c4c5bbc6fd3ff8a755d234fd0039fb422b3661d1",
+  "implementation_pins": {
+    "src/constitutive_participation_v1.metta": "6ccf0a3478120ccb51ab8555d5a538a28f9f59a196c5bedcef77a131f9f2fb9b",
+    "src/assistant_reactor_v1.metta": "3b769512a0a9e38e2a00b8b56f124ab17c895f7985b2999105ad4018dc06e528",
+    "src/bootstrap_assistant_v1.metta": "ba3fc8030070f9e24ac651cd9167994e5cc8132b2c06af71675e654c91d5c0d1",
+    "effect_membranes/miter_assistant_service_v1.pl": "3b3e89645c66e054e85905183b2116a993ea8967581de68f1d426998bf5b4c41",
+    "effect_membranes/miter_assistant_operator_v1.pl": "e77ff9c75f87447b74822d13b673238f4786f4141c3afbfb0c882b599da32902"
+  },
+  "external_network_calls": 0,
+  "model_calls": 0,
+  "private_memory_reads": 0,
+  "external_effects": 0
+}
