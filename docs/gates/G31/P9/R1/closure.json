@@ -1,0 +1,67 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G31",
+  "plan": "docs/gates/G31/P9/R1/plan.json",
+  "plan_commit": "4f81d42e53ce8985238a2a56927778689e9628f4",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G31/P9/R1/outcome.md","sha256":"838fa4c269362842602f6fd60f973750f83d230d826e12c944fc074ccdaf7151"},
+    {"path":"evidence/G31/p9-901/preflight-failure.json","sha256":"31609f70f93e0a1e0013f4905661f60157ef69300de03ecc8d7347bdb7ba8f1c"},
+    {"path":"evidence/G31/p9-912/preflight-failure.json","sha256":"eb3b0d6dd6231f4b71e82edaa2bf7e2d416a6b7a14e42b47b1f53e89c74c5570"},
+    {"path":"evidence/G31/p9-913/activation-redacted.json","sha256":"cf38eda18602932ca19656e301ef501704a2b52a7d02832dd4f2cc9a24774b8d"},
+    {"path":"evidence/G31/p9-913/slot-1-event-redacted.json","sha256":"3035eab9d4bb426a1449122b05084afc3bc76d4ad2d934ebb3c8f9d2c1004611"},
+    {"path":"evidence/G31/p9-913/native-certificate-1.json","sha256":"4b7d652eb30b6943b01bf3240e07f7fcdc5fe7ead946509d59155d7329748b92"},
+    {"path":"evidence/G31/p9-913/slot-1-prepare-redacted.json","sha256":"284c11db66cc9e56dd9a852db3203be3153643476f541a3704e402e51544d360"},
+    {"path":"evidence/G31/p9-913/slot-1-witness-redacted.json","sha256":"9e8ab1220dea9656bafde5915bf247a024aac63439f0b8c6abab15dc34842a0e"},
+    {"path":"evidence/G31/p9-913/restart-redacted.json","sha256":"abdc977efa8b6d618467b932ff6da33a249bdc1f79bf995806a948d33c8c0c08"},
+    {"path":"evidence/G31/p9-913/slot-2-event-redacted.json","sha256":"cab03e124c900a7af4f6fc8b5533d622a6360cc9df7a8737a10a81561c4201ac"},
+    {"path":"evidence/G31/p9-913/native-certificate-2.json","sha256":"15019a3b06977948a063317aa10a6bee279b31ef9064bd1712df5f1075b24ecf"},
+    {"path":"evidence/G31/p9-913/slot-2-prepare-redacted.json","sha256":"a26b6fc71d169eeecbece6fb4fc4f3d543d5ccdf2c9de16627b9db40f6c3c001"},
+    {"path":"evidence/G31/p9-913/slot-2-witness-redacted.json","sha256":"d5c8b45abb6e95c141d437b228b5e9dec5bd696f9bf140b6393ddcbe07d0f1c5"},
+    {"path":"evidence/G31/p9-913/denied-redacted.json","sha256":"3da59fb84db0d866242dcd5945928a8f5e59480a59cf3ad5955843c160ce97a3"},
+    {"path":"evidence/G31/p9-913/panic-redacted.json","sha256":"ff309fb352cfd5341975eddde74ab1726d5e3929332f24e540d7ecf5bef86e81"},
+    {"path":"evidence/G31/p9-913/request-reconciliation-redacted.json","sha256":"5e1e2dfbd69d4cb93ae190dd456e15b775ce736023b6756a80f9fd33ddba89b8"},
+    {"path":"evidence/G31/p9-914/preflight-verdict.json","sha256":"5c46bf486ba39215a5fff56eec9dd470ad8ad2b03fb6d83d6863a1513d83e2ad"},
+    {"path":"evidence/G31/p9-914/preflight-manifest.json","sha256":"e4cdd2c9b3824dcdfb95f7765eccc99f57d62c6a91dd7f9e5a16416d2dcdb25f"},
+    {"path":"evidence/G31/p9-915/closure-failure.json","sha256":"dc8f3f54bfe31ab6babd4668a35ac313b4eb5afc0483c9ab220c136ec0f4e00a"},
+    {"path":"evidence/G31/p9-916/run-verdict.json","sha256":"57958538ee431353e144582d6c0a597207b9da21b748c481710555054e1fa87d"},
+    {"path":"evidence/G31/p9-916/manifest.json","sha256":"da37cca9f3d73d5a438bf15537a78b49d7d285022e18b17e1adde973d03240c3"}
+  ],
+  "claim_results": [
+    {
+      "id": "G31-P9-R1-live-authorized-ingress-certified-effects",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Two activation-new contacts from the exact privately bound local principal and allowlisted channel passed candidate identity mapping and native VoiceRNA certification before exactly two confirmed Mattermost POST effects. This proves only the fixed G31 canary utterance under the explicit P8 approval, not general conversation, memory use, ongoing access, or another identity/surface."
+    },
+    {
+      "id": "G31-P9-R1-durable-restart-zero-replay",
+      "status": "PROVEN-RUNTIME",
+      "limit": "A fresh Prolog process rehydrated the durable cursor and confirmed effect, received duplicate-effect standing from the exact candidate, verified the external receipt, and made zero replay requests or writes before accepting the second new contact. This is the bounded tested restart path, not a universal exactly-once guarantee."
+    },
+    {
+      "id": "G31-P9-R1-denied-before-cognition-zero-effect",
+      "status": "PROVEN-RUNTIME",
+      "limit": "One activation-new event in the exact denied-control channel was rejected by stable identity metadata before the bridge inspected or persisted its body; recorded native/cognition invocations and response effects were zero. This proves this negative control and not every possible unauthorized ingress."
+    },
+    {
+      "id": "G31-P9-R1-panic-revocation-expiry-containment",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The run ended in terminal panic after 816,832 of 1,800,000 permitted milliseconds; active and network_allowed became false, and a hypothetical later effect received panic-active rejection. Revocation and expiry share the same fail-closed state transition but were not separately allowed to replace this run's required panic proof."
+    },
+    {
+      "id": "G31-P9-R1-credential-and-memory-scope-isolation",
+      "status": "PROVEN-RUNTIME",
+      "limit": "All 104 bot-scoped local requests were reconciled to four approved route classes, no other bot route occurred, public evidence contains no stable identity or credential, and both live certificates bind history, Chroma, and prior-memory access false. Additional diagnostic Keychain lookup count is not exactly reconstructable; no credential value was returned or persisted."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004-C-008/C-020-C-024/C-050-C-055/C-060-C-066/C-090-C-104 and S-103/S-401-S-405/S-501-S-504/S-603/S-605/S-607/S-804/S-901-S-905/S-1004-S-1005/S-1101-S-1105/S-1201-S-1203 require explicit human authority, native meaning/certification, bounded mechanics, durable consequence evidence, identity-first admission, credential isolation and finite revocation. The experiment preserved that allocation: the human approval bounded the live reach; native MeTTa certified current-contact meaning; the Miter-authored candidate mapped identity and effects; Prolog alone touched Keychain, HTTP and durable journals.",
+    "causal_evidence": "Both effects required exact approval lineage, private binding hashes, authenticated current-contact hashes, native CertifiedUtterance payloads, pending-before-send journals and observed receipts. Process restart severed transient state but preserved cursor/effect lineage and suppressed replay. Moving the event to the denied identity surface changed participation to rejected before cognition. Panic changed a hypothetical valid effect from eligible to panic-active rejected.",
+    "substitution_audit": "The fixed canary utterance is a disclosed protocol acknowledgement previously approved and natively certified, not evidence of general Soul navigation. Prolog did not select a behavioral response, query memory, or replace the certificate; it validated exact hashes, performed bounded transport and stored witnesses. JavaScript performed only offline preflight/closure checks and no credential or HTTP operation. Mechanical recovery reconstructed already-certified state and explicitly issued no additional POST.",
+    "capability_and_constraint_audit": "The run used only loopback Mattermost and ended 983,168 milliseconds before expiry with two allowlisted inputs, two confirmed output effects, one denied input, one fresh-process restart, zero replay writes, zero denied cognition/effects, and terminal panic. A counts-only server-log audit reconciled 104 bot requests to one identity GET, 95 bounded polls, six exact-post reads and two effect POSTs. The durable counter's 35-request shortfall and non-reconstructable extra diagnostic Keychain lookup count are retained as qualifications, not concealed. Public scans found no stable identities, username, token, private body or raw API response.",
+    "remaining_gaps": "G31 proves the bounded live omitted-part contact only. The bridge is not promoted as an always-on service; general dialog, relationship-scoped memory, WebSocket operation, universal crash recovery and multi-user deployment remain unproved. G32 must integrate the severed-arm suite across Soul, continuity, VoiceAudit, NACE and Mattermost identity; G33 must establish the final end-to-end proof before any post-PoC workbench protocol."
+  },
+  "reviewer": "Codex builder using the frozen Constitution and Soul control hashes, P9 plan and P8 closure, mode-0600 private state readback, exact Miter-authored candidate, native PeTTa/MeTTa certificates, durable Prolog journals, fresh-process restart, local server counts-only reconciliation, final offline preflight, stable-identity/credential scan and preserved failed attempts.",
+  "review_limits": "This closes only G31 P9 R1 and therefore G31's bounded local live canary. It does not authorize ongoing Mattermost access, another channel/principal/server, history or Chroma retrieval, general LLM participation, production promotion, G32, G33, or the post-PoC web workbench.",
+  "terminal_reason": "G31 is complete. The next gate is G32, whose aligned plan must be separately composed from the two control documents and this committed closure before any integrated severed-arm implementation begins."
+}

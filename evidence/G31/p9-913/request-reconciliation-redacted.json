@@ -1,0 +1,23 @@
+{
+  "schema": "miter-g31-live-request-reconciliation-v1",
+  "source": "counts-only local Mattermost debug-log audit over the exact activation-to-panic interval",
+  "activated_at_ms": 1788516330088,
+  "ended_at_ms": 1788517146920,
+  "duration_ms": 816832,
+  "maximum_duration_ms": 1800000,
+  "bot_scoped_http_requests": 104,
+  "bot_identity_gets": 1,
+  "channel_post_polls": 95,
+  "exact_post_receipt_or_recovery_gets": 6,
+  "effect_posts": 2,
+  "other_bot_routes": 0,
+  "durable_state_recorded_http_requests": 69,
+  "diagnostic_and_recovery_delta": 35,
+  "explanation": "The first confirmed effect exposed a state-serialization defect after its receipt was durable. Its poll count and subsequent bounded repair probes could not enter the original state counter. The local server log reconciles the full bot-scoped route count without preserving request IDs, stable IDs, content, responses, or credentials in public evidence.",
+  "durable_state_recorded_credential_lookups": 5,
+  "additional_diagnostic_credential_lookups": "not durably reconstructable",
+  "credential_values_returned": false,
+  "stable_ids_public": false,
+  "content_public": false,
+  "raw_server_log_public": false
+}
