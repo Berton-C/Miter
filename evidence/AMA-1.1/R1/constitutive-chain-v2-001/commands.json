@@ -1,0 +1,2259 @@
+[
+  {
+    "name": "v2-native-undertaking-without-supplied-possibility:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-native-undertaking-without-supplied-possibility-dGBQ5l"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"636fd7509793fcf78f2bea94149e5993a94181bb3562eb52e7537fbb62873f87\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-native-undertaking-without-supplied-possibility-dGBQ5l\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "636fd7509793fcf78f2bea94149e5993a94181bb3562eb52e7537fbb62873f87",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-native-undertaking-without-supplied-possibility-dGBQ5l",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-native-undertaking-without-supplied-possibility:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-native-undertaking-without-supplied-possibility-dGBQ5l"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91147,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91147,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-native-undertaking-without-supplied-possibility:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-native-undertaking-without-supplied-possibility-dGBQ5l",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-native-undertaking-without-supplied-possibility-JtSyQu/v2-native-undertaking-without-supplied-possibility.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-native-undertaking-without-supplied-possibility:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-native-undertaking-without-supplied-possibility-dGBQ5l"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91147,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91147,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-same-surface-capture-forms-inquiry:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-surface-capture-forms-inquiry-TFad92"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"bc553f9d7245d8f24c09cb1b5054bbaee67f0df3ba0f4952d0c6c41981f0cdd7\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-same-surface-capture-forms-inquiry-TFad92\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "bc553f9d7245d8f24c09cb1b5054bbaee67f0df3ba0f4952d0c6c41981f0cdd7",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-same-surface-capture-forms-inquiry-TFad92",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-same-surface-capture-forms-inquiry:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-surface-capture-forms-inquiry-TFad92"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91182,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91182,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-same-surface-capture-forms-inquiry:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-surface-capture-forms-inquiry-TFad92",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-same-surface-capture-forms-inquiry-1XcnwL/v2-same-surface-capture-forms-inquiry.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-same-surface-capture-forms-inquiry:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-surface-capture-forms-inquiry-TFad92"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91182,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91182,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-same-surface-disguise-forms-inquiry:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-surface-disguise-forms-inquiry-TWzAsh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"0b3f76eb46514b2c49b4f9dcb1ca2124f0e758ca6fc505ff6aaeda3cb234798f\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-same-surface-disguise-forms-inquiry-TWzAsh\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "0b3f76eb46514b2c49b4f9dcb1ca2124f0e758ca6fc505ff6aaeda3cb234798f",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-same-surface-disguise-forms-inquiry-TWzAsh",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-same-surface-disguise-forms-inquiry:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-surface-disguise-forms-inquiry-TWzAsh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91221,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91221,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-same-surface-disguise-forms-inquiry:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-surface-disguise-forms-inquiry-TWzAsh",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-same-surface-disguise-forms-inquiry-SOcKdO/v2-same-surface-disguise-forms-inquiry.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-same-surface-disguise-forms-inquiry:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-surface-disguise-forms-inquiry-TWzAsh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91221,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91221,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-d-severance-changes-movement:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-d-severance-changes-movement-64e68C"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"eabace099b5837122791bbee47611e7239a55b6d2a32bb0dd8ab7f33da0a7c91\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-d-severance-changes-movement-64e68C\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "eabace099b5837122791bbee47611e7239a55b6d2a32bb0dd8ab7f33da0a7c91",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-d-severance-changes-movement-64e68C",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-d-severance-changes-movement:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-d-severance-changes-movement-64e68C"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91256,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91256,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-d-severance-changes-movement:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-d-severance-changes-movement-64e68C",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-d-severance-changes-movement-zE6PY8/v2-d-severance-changes-movement.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-d-severance-changes-movement:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-d-severance-changes-movement-64e68C"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91256,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91256,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-omega-severance-forms-inquiry:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-omega-severance-forms-inquiry-0PILgf"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"aeac3a157ecbf494ff02ba233b97d8d2386808ba1a3ae2eb3cdfb61a1432a7d9\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-omega-severance-forms-inquiry-0PILgf\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "aeac3a157ecbf494ff02ba233b97d8d2386808ba1a3ae2eb3cdfb61a1432a7d9",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-omega-severance-forms-inquiry-0PILgf",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-omega-severance-forms-inquiry:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-omega-severance-forms-inquiry-0PILgf"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91291,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91291,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-omega-severance-forms-inquiry:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-omega-severance-forms-inquiry-0PILgf",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-omega-severance-forms-inquiry-heTdDM/v2-omega-severance-forms-inquiry.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-omega-severance-forms-inquiry:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-omega-severance-forms-inquiry-0PILgf"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91291,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91291,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-interface-severance-forms-defer:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-interface-severance-forms-defer-eNvfAr"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"077f5f427a275ae6955b3cd0a854b0749fe1451db83609378fa18b2e631a493b\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-interface-severance-forms-defer-eNvfAr\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "077f5f427a275ae6955b3cd0a854b0749fe1451db83609378fa18b2e631a493b",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-interface-severance-forms-defer-eNvfAr",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-interface-severance-forms-defer:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-interface-severance-forms-defer-eNvfAr"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91326,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91326,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-interface-severance-forms-defer:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-interface-severance-forms-defer-eNvfAr",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-interface-severance-forms-defer-bhTgLT/v2-interface-severance-forms-defer.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-interface-severance-forms-defer:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-interface-severance-forms-defer-eNvfAr"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91326,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91326,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-weave-severance-forms-inquiry:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-weave-severance-forms-inquiry-B5Y3Jd"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"93c04531a1741cff750bbca758bd3d962c1a047a12007a7020f976a2a59a2409\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-weave-severance-forms-inquiry-B5Y3Jd\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "93c04531a1741cff750bbca758bd3d962c1a047a12007a7020f976a2a59a2409",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-weave-severance-forms-inquiry-B5Y3Jd",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-weave-severance-forms-inquiry:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-weave-severance-forms-inquiry-B5Y3Jd"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91361,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91361,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-weave-severance-forms-inquiry:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-weave-severance-forms-inquiry-B5Y3Jd",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-weave-severance-forms-inquiry-H5m1Ly/v2-weave-severance-forms-inquiry.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-weave-severance-forms-inquiry:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-weave-severance-forms-inquiry-B5Y3Jd"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91361,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91361,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-soul-relation-severance-holds-movement:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-soul-relation-severance-holds-movement-puM9wM"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"00a2b035efe52b32b967aaf6bbce069eb43526f069bdc70b82ddba1dae62bbff\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-soul-relation-severance-holds-movement-puM9wM\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "00a2b035efe52b32b967aaf6bbce069eb43526f069bdc70b82ddba1dae62bbff",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-soul-relation-severance-holds-movement-puM9wM",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-soul-relation-severance-holds-movement:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-soul-relation-severance-holds-movement-puM9wM"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91395,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91395,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-soul-relation-severance-holds-movement:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-soul-relation-severance-holds-movement-puM9wM",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-soul-relation-severance-holds-movement-JCgJWb/v2-soul-relation-severance-holds-movement.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-soul-relation-severance-holds-movement:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-soul-relation-severance-holds-movement-puM9wM"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91395,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91395,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-same-lineage-participant-not-independent:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-lineage-participant-not-independent-akYKIL"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"d22e509903b45941d7ae7b4d00ffa3063b1e33885c17d70ef6b333c2848d52af\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-same-lineage-participant-not-independent-akYKIL\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "d22e509903b45941d7ae7b4d00ffa3063b1e33885c17d70ef6b333c2848d52af",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-same-lineage-participant-not-independent-akYKIL",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-same-lineage-participant-not-independent:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-lineage-participant-not-independent-akYKIL"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91432,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91432,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-same-lineage-participant-not-independent:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-lineage-participant-not-independent-akYKIL",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-same-lineage-participant-not-independent-8gaVTI/v2-same-lineage-participant-not-independent.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-same-lineage-participant-not-independent:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-same-lineage-participant-not-independent-akYKIL"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91432,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91432,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-independent-participants-support-relation:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-independent-participants-support-relation-BrCAZj"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"4067816113419d03d33f5ad61cea621451544d6c422eb76f8ffdf83664bd86a2\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-independent-participants-support-relation-BrCAZj\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "4067816113419d03d33f5ad61cea621451544d6c422eb76f8ffdf83664bd86a2",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-independent-participants-support-relation-BrCAZj",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-independent-participants-support-relation:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-independent-participants-support-relation-BrCAZj"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91466,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91466,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-independent-participants-support-relation:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-independent-participants-support-relation-BrCAZj",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-independent-participants-support-relation-9Dpg5N/v2-independent-participants-support-relation.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-independent-participants-support-relation:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-independent-participants-support-relation-BrCAZj"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91466,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91466,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-participant-conflict-forms-inquiry:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-participant-conflict-forms-inquiry-l0QFhl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"1130ddd60bd1538e32a26938fe97dc645e2e01aaf38bf3f81181754a7881fec6\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-participant-conflict-forms-inquiry-l0QFhl\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "1130ddd60bd1538e32a26938fe97dc645e2e01aaf38bf3f81181754a7881fec6",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-participant-conflict-forms-inquiry-l0QFhl",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-participant-conflict-forms-inquiry:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-participant-conflict-forms-inquiry-l0QFhl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91501,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91501,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-participant-conflict-forms-inquiry:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-participant-conflict-forms-inquiry-l0QFhl",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-participant-conflict-forms-inquiry-bVYp3S/v2-participant-conflict-forms-inquiry.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-participant-conflict-forms-inquiry:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-participant-conflict-forms-inquiry-l0QFhl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91501,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91501,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-endogenous-same-kernel:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-endogenous-same-kernel-Pq3c1u"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"bd54ecd6b5fb5ac9333a3185460989ecc72eaed1f177ac38746c2f762b49e84c\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-endogenous-same-kernel-Pq3c1u\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "bd54ecd6b5fb5ac9333a3185460989ecc72eaed1f177ac38746c2f762b49e84c",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-endogenous-same-kernel-Pq3c1u",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-endogenous-same-kernel:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-endogenous-same-kernel-Pq3c1u"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91535,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91535,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-endogenous-same-kernel:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-endogenous-same-kernel-Pq3c1u",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-endogenous-same-kernel-Kozz1H/v2-endogenous-same-kernel.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-endogenous-same-kernel:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-endogenous-same-kernel-Pq3c1u"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91535,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91535,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-identity-severed-before-cognition:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-identity-severed-before-cognition-h2ea0Q"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"d97cb746be7c2e8138761d73510c19747ff2b2eb59c803932f116da86e153b71\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-identity-severed-before-cognition-h2ea0Q\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "d97cb746be7c2e8138761d73510c19747ff2b2eb59c803932f116da86e153b71",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-identity-severed-before-cognition-h2ea0Q",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-identity-severed-before-cognition:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-identity-severed-before-cognition-h2ea0Q"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91570,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91570,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-identity-severed-before-cognition:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-identity-severed-before-cognition-h2ea0Q",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-identity-severed-before-cognition-2jvoio/v2-identity-severed-before-cognition.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": "",
+    "reply": {
+      "reason": "strict-input-schema-runtime-or-size-boundary",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "rejected"
+    }
+  },
+  {
+    "name": "v2-identity-severed-before-cognition:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-identity-severed-before-cognition-h2ea0Q"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91570,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91570,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-consequence-support:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"b104b08e450366eac39d9c40add52a7136e3e926495b73baec2fafbb41f6533f\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "b104b08e450366eac39d9c40add52a7136e3e926495b73baec2fafbb41f6533f",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-consequence-support:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91604,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91604,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-consequence-support:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-consequence-support-eOSwHU/v2-consequence-support.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-consequence-support:stop-before-restart",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91604,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91604,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "v2-consequence-support:restart-before-consequence",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91632,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91632,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-consequence-support:submit-consequence",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_1/constitutive-chain-v2-consequence-support.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-consequence-support\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-consequence-support",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-consequence-support:stop-after-consequence",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91632,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91632,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "v2-consequence-support:restart-after-consequence",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91658,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91658,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-consequence-support:final-terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-support-ux5Wmw"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91658,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91658,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v2-consequence-capture:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"3e004b9696b0d54fccb5b13605842e00bc5d1a6899384279413cefd64f12c4ff\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "3e004b9696b0d54fccb5b13605842e00bc5d1a6899384279413cefd64f12c4ff",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v2-consequence-capture:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91687,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91687,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-consequence-capture:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v2-consequence-capture-j8s6VI/v2-consequence-capture.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-consequence-capture:stop-before-restart",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91687,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91687,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "v2-consequence-capture:restart-before-consequence",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91714,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91714,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-consequence-capture:submit-consequence",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_1/constitutive-chain-v2-consequence-capture.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-consequence-capture\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-consequence-capture",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v2-consequence-capture:stop-after-consequence",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91714,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91714,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "v2-consequence-capture:restart-after-consequence",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91739,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91739,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v2-consequence-capture:final-terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v2-consequence-capture-nNiryO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91739,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91739,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-human-positive-and-restart:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-human-positive-and-restart-l1bwdO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"1c727978d46244d7731b9989dc5a7f3951e188432ae272e32b9682d99b57464d\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-human-positive-and-restart-l1bwdO\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "1c727978d46244d7731b9989dc5a7f3951e188432ae272e32b9682d99b57464d",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-human-positive-and-restart-l1bwdO",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-human-positive-and-restart:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-human-positive-and-restart-l1bwdO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91771,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91771,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-human-positive-and-restart:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-human-positive-and-restart-l1bwdO",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-human-positive-and-restart-MQnIz1/v1-human-positive-and-restart.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-human-positive-and-restart:stop-before-restart",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-human-positive-and-restart-l1bwdO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91771,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91771,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "v1-human-positive-and-restart:restart",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-human-positive-and-restart-l1bwdO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91796,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91796,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-human-positive-and-restart:consequence",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-human-positive-and-restart-l1bwdO",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_1/consequence-unfamiliar.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-consequence-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-consequence-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-human-positive-and-restart:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-human-positive-and-restart-l1bwdO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91796,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91796,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-material-relation-severed:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-material-relation-severed-K1H4qN"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"a5fb9ceb8c132b43c5f18b3224089f8377cd44ffed00c17daf5220314a272738\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-material-relation-severed-K1H4qN\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "a5fb9ceb8c132b43c5f18b3224089f8377cd44ffed00c17daf5220314a272738",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-material-relation-severed-K1H4qN",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-material-relation-severed:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-material-relation-severed-K1H4qN"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91831,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91831,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-material-relation-severed:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-material-relation-severed-K1H4qN",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-material-relation-severed-2oMWHS/v1-material-relation-severed.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-material-relation-severed:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-material-relation-severed-K1H4qN"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91831,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91831,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-material-relation-restored:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-material-relation-restored-4rakUI"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"d67f7d24ee9e1474f82e97bc3d25f91b614212a6ab615967b97005771e661693\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-material-relation-restored-4rakUI\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "d67f7d24ee9e1474f82e97bc3d25f91b614212a6ab615967b97005771e661693",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-material-relation-restored-4rakUI",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-material-relation-restored:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-material-relation-restored-4rakUI"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91865,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91865,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-material-relation-restored:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-material-relation-restored-4rakUI",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-material-relation-restored-TpCA8U/v1-material-relation-restored.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-material-relation-restored:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-material-relation-restored-4rakUI"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91865,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91865,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-carrier-order-neutral:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-carrier-order-neutral-lWp2z8"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f129587f2e950841fd25137b9228f10cbe1dd1994fe2a707902a484d50b2aaa4\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-carrier-order-neutral-lWp2z8\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "f129587f2e950841fd25137b9228f10cbe1dd1994fe2a707902a484d50b2aaa4",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-carrier-order-neutral-lWp2z8",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-carrier-order-neutral:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-carrier-order-neutral-lWp2z8"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91900,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91900,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-carrier-order-neutral:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-carrier-order-neutral-lWp2z8",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-carrier-order-neutral-OOMtdr/v1-carrier-order-neutral.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-carrier-order-neutral:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-carrier-order-neutral-lWp2z8"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91900,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91900,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-pairwise-complete-whole-wrong:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-pairwise-complete-whole-wrong-JhCR2Y"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f4c12bbfa8e97bd209d0d462330eb805a72844f2ed02a46805b051e192231157\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-pairwise-complete-whole-wrong-JhCR2Y\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "f4c12bbfa8e97bd209d0d462330eb805a72844f2ed02a46805b051e192231157",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-pairwise-complete-whole-wrong-JhCR2Y",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-pairwise-complete-whole-wrong:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-pairwise-complete-whole-wrong-JhCR2Y"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91934,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91934,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-pairwise-complete-whole-wrong:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-pairwise-complete-whole-wrong-JhCR2Y",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-pairwise-complete-whole-wrong-Uz9GaW/v1-pairwise-complete-whole-wrong.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-pairwise-complete-whole-wrong:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-pairwise-complete-whole-wrong-JhCR2Y"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91934,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91934,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-fact9-role-laundered:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-fact9-role-laundered-JfTe18"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"c9d25596ff95a0b844ebb555f7716aff7b40bda0c10a51ec1d4a0cb45ec4ab37\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-fact9-role-laundered-JfTe18\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "c9d25596ff95a0b844ebb555f7716aff7b40bda0c10a51ec1d4a0cb45ec4ab37",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-fact9-role-laundered-JfTe18",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-fact9-role-laundered:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-fact9-role-laundered-JfTe18"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":91973,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 91973,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-fact9-role-laundered:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-fact9-role-laundered-JfTe18",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-fact9-role-laundered-jUbHAO/v1-fact9-role-laundered.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-fact9-role-laundered:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-fact9-role-laundered-JfTe18"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":91973,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 91973,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-present-as-support-rejected:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-present-as-support-rejected-RZPwkO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"eb8e0ff17c01a6db418740a18b26c96de19a12a432ad043438ac5a439aff51dc\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-present-as-support-rejected-RZPwkO\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "eb8e0ff17c01a6db418740a18b26c96de19a12a432ad043438ac5a439aff51dc",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-present-as-support-rejected-RZPwkO",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-present-as-support-rejected:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-present-as-support-rejected-RZPwkO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":92008,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 92008,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-present-as-support-rejected:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-present-as-support-rejected-RZPwkO",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-present-as-support-rejected-oGl5MR/v1-present-as-support-rejected.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": "",
+    "reply": {
+      "reason": "strict-input-schema-runtime-or-size-boundary",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "rejected"
+    }
+  },
+  {
+    "name": "v1-present-as-support-rejected:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-present-as-support-rejected-RZPwkO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":92008,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 92008,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-can-compose-without-recognition:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-can-compose-without-recognition-WScyIK"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"c56f92f48ac0427a6bb6da0bc20101ebe4b54eba7b0719664715d854de1aa962\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-can-compose-without-recognition-WScyIK\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "c56f92f48ac0427a6bb6da0bc20101ebe4b54eba7b0719664715d854de1aa962",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-can-compose-without-recognition-WScyIK",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-can-compose-without-recognition:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-can-compose-without-recognition-WScyIK"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":92042,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 92042,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-can-compose-without-recognition:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-can-compose-without-recognition-WScyIK",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-can-compose-without-recognition-gbxiFu/v1-can-compose-without-recognition.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-can-compose-without-recognition:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-can-compose-without-recognition-WScyIK"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":92042,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 92042,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-flourishing-capture-withholds-undertaking:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-flourishing-capture-withholds-undertaking-O6V48M"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"92f65fe5deb172abab06cbd3b6753b5425a958a7e238997d4c29dd7847528394\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-flourishing-capture-withholds-undertaking-O6V48M\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "92f65fe5deb172abab06cbd3b6753b5425a958a7e238997d4c29dd7847528394",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-flourishing-capture-withholds-undertaking-O6V48M",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-flourishing-capture-withholds-undertaking:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-flourishing-capture-withholds-undertaking-O6V48M"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":92078,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 92078,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-flourishing-capture-withholds-undertaking:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-flourishing-capture-withholds-undertaking-O6V48M",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-flourishing-capture-withholds-undertaking-tcdA1J/v1-flourishing-capture-withholds-undertaking.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-flourishing-capture-withholds-undertaking:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-flourishing-capture-withholds-undertaking-O6V48M"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":92078,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 92078,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-plural-generated-remains-live:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-plural-generated-remains-live-zcsTsC"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"76878af81400b6f3333ea4f387e953293085daba0308b9bf453807b5661ea1d1\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-plural-generated-remains-live-zcsTsC\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "76878af81400b6f3333ea4f387e953293085daba0308b9bf453807b5661ea1d1",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-plural-generated-remains-live-zcsTsC",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-plural-generated-remains-live:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-plural-generated-remains-live-zcsTsC"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":92112,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 92112,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-plural-generated-remains-live:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-plural-generated-remains-live-zcsTsC",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-plural-generated-remains-live-RubA1V/v1-plural-generated-remains-live.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-plural-generated-remains-live:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-plural-generated-remains-live-zcsTsC"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":92112,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 92112,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-participant-conflict-retained:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-participant-conflict-retained-kILnNh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"b65982538606ebdf3a971e9057a907fbd47fbe379580f4e512d469ad0eee8ea7\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-participant-conflict-retained-kILnNh\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "b65982538606ebdf3a971e9057a907fbd47fbe379580f4e512d469ad0eee8ea7",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-participant-conflict-retained-kILnNh",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-participant-conflict-retained:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-participant-conflict-retained-kILnNh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":92147,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 92147,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-participant-conflict-retained:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-participant-conflict-retained-kILnNh",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-participant-conflict-retained-X6iKip/v1-participant-conflict-retained.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-participant-conflict-retained:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-participant-conflict-retained-kILnNh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":92147,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 92147,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "v1-endogenous-contact-same-kernel:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-endogenous-contact-same-kernel-BHU2BN"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"44688aa511b291269819a8bd7e5f07adca94e9fab6df249815b4fa06148d78de\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr002-v1-endogenous-contact-same-kernel-BHU2BN\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "44688aa511b291269819a8bd7e5f07adca94e9fab6df249815b4fa06148d78de",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr002-v1-endogenous-contact-same-kernel-BHU2BN",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "v1-endogenous-contact-same-kernel:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-endogenous-contact-same-kernel-BHU2BN"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":92183,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 92183,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "v1-endogenous-contact-same-kernel:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-endogenous-contact-same-kernel-BHU2BN",
+      "--event",
+      "/private/tmp/miter-ama11-rr002-input-v1-endogenous-contact-same-kernel-jhkUZy/v1-endogenous-contact-same-kernel.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-unfamiliar-one",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "v1-endogenous-contact-same-kernel:terminate",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr002-v1-endogenous-contact-same-kernel-BHU2BN"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":92183,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 92183,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  }
+]

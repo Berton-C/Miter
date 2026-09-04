@@ -1,0 +1,73 @@
+{
+  "schema": "miter-campaign-constitutive-repair-outcome-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "repair": "RR-002",
+  "date": "2026-09-05",
+  "status": "PASS-BOUNDED-REVIEW-REMAINS-OPEN",
+  "freeze": {
+    "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/constitutive-refreeze-002.json",
+    "commit": "e4ac94aad7ac77c19d47cea31ffd6ec36a47642e"
+  },
+  "implementation": [
+    {
+      "path": "src/constitutive_participation_v1.metta",
+      "sha256": "b4a9c8b8e7a8a31f86c09368368a03d07907ca6ab8ba0e86aeadc671a02404ef",
+      "standing": "Native v2 contact/cut, complete compass projection, participant-derived relations, many-way bridge, relation-sensitive possibility topology, causal R/A/P participation, movement formation, and next-cut reconstruction."
+    },
+    {
+      "path": "src/assistant_reactor_v1.metta",
+      "sha256": "2bb30bb487c0c6e753cc64b82421c6db3e411ecb1ff40736c2a8fd648aecae1b",
+      "standing": "V2 consequence incorporation reconstructs and persists the next constitutive organization; v1 behavior remains available."
+    },
+    {
+      "path": "effect_membranes/miter_assistant_service_v1.pl",
+      "sha256": "fc4fb5606e94f60993515af6c1d0ed942215424b11ab0958d2f7c9d948688bd9",
+      "standing": "Strict non-cognitive v2 JSON carrier for payload references, typed participant relation claims, and D/Omega/I/W/C/flourishing consequence deltas."
+    },
+    {
+      "path": "scripts/ama1_1/constitutive_chain_v2.mjs",
+      "sha256": "f112b27a46aa9e02d8a34b9f0a83f33bd816239cc7d5ae045d1237e7fe6f8e2b",
+      "standing": "Builder-only frozen case runner; never imported by Miter."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json",
+      "sha256": "c577e8d29a75ce69ed44446eeb736ad5fcbb6a5cd3c8b15b554f2d4cc1195272"
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-chain-v2-001/verdict.json",
+      "sha256": "bddceb7e062d825bcc1d9bb42b3af3567962eb0c9eb4c346969a463f0827094b"
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-chain-v2-001/runtime.json",
+      "sha256": "53a3c96532465f515884d22c4a665c3943f38362356a2bad05565de5090d6fa8"
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-chain-v2-001/commands.json",
+      "sha256": "da406afb4d316e636ed682f9faec7bd42b4f46776ee0bb59ca9c242b4855df89"
+    }
+  ],
+  "results": {
+    "frozen_v2_cases": 14,
+    "frozen_v2_passed": 14,
+    "preserved_v1_cases": 12,
+    "preserved_v1_passed": 12,
+    "external_network_calls": 0,
+    "model_calls": 0,
+    "private_memory_reads": 0,
+    "external_effects": 0,
+    "implicit_runtime_roots": 0
+  },
+  "causal_findings": [
+    "A contact carrying no possible-movement forms a native undertaking from its D/Omega/I/W/C, Fact9, flourishing, interface, weave, and Soul relations.",
+    "The retained topology contains a generated undertaking, an unrecognized inquiry, and an unavailable defer; no carrier position selects the movement.",
+    "With the same payload reference, AgencyBalance capture or disguise changes the formed continuation from undertaking to inquiry.",
+    "D, Omega, I, W, and C severances independently change movement or standing as frozen.",
+    "Same-lineage repetition, independent participant support, and participant conflict create different bounded derived-relation standings without contact or movement authority.",
+    "Matched supportive and capture-bearing consequences reconstruct different next movements; each exact next organization survives a fresh process restart without effect replay."
+  ],
+  "review_disposition": "The mechanical RR-002 experiment passes, but AMA-1.1 remains open under F-09. The post-repair qualitative review is f09-review-002.json; it must not be replaced by this scripted verdict.",
+  "non_claims": "This outcome does not establish general natural-language grounding, universal flourishing interpretation, unrestricted cognition, live model/PLN/NAL/memory participation, live Mattermost reach, complete Continuity of Mind, or AMA-1.1 closure."
+}

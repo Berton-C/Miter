@@ -1,0 +1,19 @@
+{
+  "schema": "miter-ama11-constitutive-chain-v2-runtime-v1",
+  "repair": "RR-002",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "swipl": "SWI-Prolog version 10.0.2 for arm64-darwin",
+  "freeze_sha256": "a8c1129d3ecf08a2c0e7b568deac36a3f672351753ed60f556d03fdf4804ed3f",
+  "cases_sha256": "3cb6110d5cb881bc7014533cf1d23b46a71d5a685ef53a03f9dc6ff8b7749212",
+  "implementation": {
+    "src/constitutive_participation_v1.metta": "b4a9c8b8e7a8a31f86c09368368a03d07907ca6ab8ba0e86aeadc671a02404ef",
+    "src/assistant_reactor_v1.metta": "2bb30bb487c0c6e753cc64b82421c6db3e411ecb1ff40736c2a8fd648aecae1b",
+    "src/bootstrap_assistant_v1.metta": "ba3fc8030070f9e24ac651cd9167994e5cc8132b2c06af71675e654c91d5c0d1",
+    "effect_membranes/miter_assistant_service_v1.pl": "fc4fb5606e94f60993515af6c1d0ed942215424b11ab0958d2f7c9d948688bd9",
+    "effect_membranes/miter_assistant_operator_v1.pl": "e77ff9c75f87447b74822d13b673238f4786f4141c3afbfb0c882b599da32902"
+  },
+  "external_network_calls": 0,
+  "model_calls": 0,
+  "private_memory_reads": 0,
+  "external_effects": 0
+}

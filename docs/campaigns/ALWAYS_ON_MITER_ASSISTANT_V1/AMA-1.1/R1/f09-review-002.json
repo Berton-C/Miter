@@ -1,0 +1,154 @@
+{
+  "schema": "miter-ama11-f09-review-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "repair": "RR-002",
+  "date": "2026-09-05",
+  "status": "OPEN-CONVERGENCE-GAPS",
+  "semantic_fidelity_certified": false,
+  "closure_written": false,
+  "review_basis": {
+    "control_plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/plan.json",
+    "repair_freeze": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/constitutive-refreeze-002.json",
+    "repair_outcome": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/constitutive-repair-outcome-002.json",
+    "runtime_results": "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json",
+    "runtime_verdict": "evidence/AMA-1.1/R1/constitutive-chain-v2-001/verdict.json",
+    "runtime_status": "PASS-BOUNDED",
+    "prior_review": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/f09-review-001.json"
+  },
+  "central_finding": "RR-002 removes the principal 2D defect identified by the prior review. The v2 carrier supplies no possible movement; native MeTTa forms a plural standing topology, derives R/A/P over the same forming movement, consumes those witnesses in Generated standing, and constructs the movement. The full fourteen-field semantic record of all nine Flourishings and the Fact9/Flourishing many-way bridge remain in the causal derivation. Consequence now reconstructs a different next organization and survives restart. AMA-1.1 still lacks several exact neutral, restoration, severance, plural-live, participant-quarantine, and checkpoint-repair observations required by its frozen F-09 rows, so closure remains forbidden.",
+  "balance_contact_rap_finding": "Balance is now represented as the movement-primary organization at the contact locus. R/A/P are computed for every natively disclosed continuation and materially determine whether that continuation receives generated or non-live standing; they are neither a scalar nor a post-selection narration. The retained base topology distinguishes one generated undertaking, one unrecognized inquiry, and one unavailable defer. This is a finite computational projection of Balance unfolding through contact, not a reconstruction of actuality or a completed general theory of appropriateness.",
+  "constitutive_trace_results": [
+    {
+      "stage": "typed-contact",
+      "status": "PARTIAL",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-native-undertaking-without-supplied-possibility/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-identity-severed-before-cognition/stimulus.json"
+      ],
+      "earned": "The payload reference, source kind, principal/audience/project, occurrence, proto-time, parents, and contact provenance enter the cut before movement. A missing project identity is rejected before cognition; human and endogenous source kinds use the same kernel.",
+      "remaining": "The frozen row also requires an explicit neutral carrier-identity perturbation and exact identity/provenance restoration observation through v2. General authenticated language grounding remains AMA-1.2 scope.",
+      "successor_dependency": "Authenticated Mattermost identity and scoped language contact may only enter after the remaining v2 carrier proof is recorded."
+    },
+    {
+      "stage": "constitutive-cut",
+      "status": "PARTIAL",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-native-undertaking-without-supplied-possibility/checkpoint.term"
+      ],
+      "earned": "D, Omega, I, W, and C are consumed in one cut. The frozen independent severance cases all change movement or standing as predicted.",
+      "remaining": "The immutable evidence retains stimuli and asserted results for most severances but not each raw severed checkpoint. One explicit v2 neutral relation-order trial and matched restoration trace are still required by F-09.",
+      "successor_dependency": "A raw complete causal matrix will make the cut safe to enrich with live contact."
+    },
+    {
+      "stage": "fact9-expression",
+      "status": "PARTIAL",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/post-operator-repair-001/results.json",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-native-undertaking-without-supplied-possibility/checkpoint.term"
+      ],
+      "earned": "Support-specific n-ary Fourthness, role essentiality, Present asymmetry, CanCompose/RecognizedCompose distinction, non-reconstruction, and material use inside the many-way bridge are live. Omega severance now forms native inquiry rather than only withholding a supplied movement.",
+      "remaining": "The F-09 row still lacks a v2 raw full-first-eight/non-reconstruction case and a v2 neutral support-order trace. Fact views remain finite supplied readings, not raw-language disclosures.",
+      "successor_dependency": "The bounded generic Fact9 projection must be closed before language, memory, or tool evidence can populate it."
+    },
+    {
+      "stage": "flourishing-organization",
+      "status": "PROVEN-RUNTIME",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-native-undertaking-without-supplied-possibility/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-same-surface-capture-forms-inquiry/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json"
+      ],
+      "earned": "All fourteen semantic fields for all nine interconnected Flourishings are loaded from the read-only compass before movement. With the same payload reference, flourishing, capture, and disguise produce different native continuation standings; adverse standing cannot be compensated by favorable rows. The original flourishing contact restores the undertaking without a scenario entry.",
+      "bounded_limit": "The carrier supplies grounded standing and evidence identifiers; natural-language interpretation of those standings remains a later bounded participant task. This row proves the native consumer and causal organization, not universal semantic recognition.",
+      "successor_dependency": "AMA-1.2 may ground language into these explicit readings but may not replace them with an LLM verdict."
+    },
+    {
+      "stage": "generated-continuations",
+      "status": "PARTIAL",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-native-undertaking-without-supplied-possibility/checkpoint.term",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/plural-generated-remains-live/checkpoint.term"
+      ],
+      "earned": "The carrier supplies no possibility. Native MeTTa discloses undertaking, inquiry, and defer neighbors with distinct generated, unrecognized, unavailable, contradicted, deferred, or unresolved standings and R-star/A-star/P-star/O-star carriers.",
+      "remaining": "The exact row requires at least two simultaneously Generated native continuations plus unavailable and unrecognized neighbors, causal severance of only one dependent native possibility, neutral ordering, and restoration in one retained v2 trial. The prior two-live case used carrier-supplied possibilities.",
+      "successor_dependency": "A native plural-live trial is required before broad unfamiliar conversation."
+    },
+    {
+      "stage": "native-movement",
+      "status": "PROVEN-RUNTIME",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-native-undertaking-without-supplied-possibility/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-same-surface-capture-forms-inquiry/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json"
+      ],
+      "earned": "Native MeTTa forms undertaking, inquiry, defer, or explicit unresolved standing from material organization with no supplied movement. Balance, the many-way bridge, R/A/P, Generated neighbors, flourishing requirements, participant relations, answerability, and continuation basis remain in its derivation. Material D/Omega/I/W/C and flourishing changes alter the movement while the preserved v1 order trial remains stable.",
+      "bounded_limit": "This proves the finite composable operator grammar exercised here, not every future movement kind or general appropriateness.",
+      "successor_dependency": "Later semantic participants must serve this native center and cannot take its place."
+    },
+    {
+      "stage": "bounded-participant-reentry",
+      "status": "PARTIAL",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-participant-conflict-forms-inquiry/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json",
+        "evidence/AMA-1.1/R1/participant-voice-freeze-001/verdict.json"
+      ],
+      "earned": "Same-lineage model repetition remains one unresolved proposal; independent model/tool lineages form a provenance-bearing derived D relation; model/NAL conflict remains explicit and changes movement to inquiry. All retain no-contact/no-movement-authority.",
+      "remaining": "The supported v2 carrier still rejects a malformed participant with the whole contact rather than retaining a participant-local unresolved/quarantine standing. Memory and PLN source kinds are accepted but not exercised through this chain. Exact scope/provenance severance and restoration need a raw v2 trial.",
+      "successor_dependency": "Live model, memory, PLN, NAL, and tool use must wait for participant-local failure containment."
+    },
+    {
+      "stage": "voice-and-effect",
+      "status": "PROVEN-RUNTIME",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/participant-voice-freeze-001/verdict.json",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-native-undertaking-without-supplied-possibility/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json"
+      ],
+      "earned": "VoiceRNA receives the native movement and cannot add authority. The capability-limited Prolog membrane commits one no-network local effect; restart and duplicate handling do not replay it.",
+      "bounded_limit": "No natural-language quality, live network, or ongoing grant is claimed.",
+      "successor_dependency": "AMA-1.2 can attach a separately authorized transport only after its identity, memory, and failure tests pass."
+    },
+    {
+      "stage": "consequence-next-cut",
+      "status": "PARTIAL",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-consequence-support/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-consequence-capture/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json"
+      ],
+      "earned": "A typed return can change D, Omega, I, W, C, Flourishing standing, and Present. Matched supportive and capture-bearing consequences reconstruct different next movements, preserve prior lineage, and do not fabricate another effect.",
+      "remaining": "A detached-success-label severance, meaning-preserving serialization/time neutral case, and exact restored-link case are still required by the frozen row.",
+      "successor_dependency": "These controls must be explicit before live human or tool returns become learning input."
+    },
+    {
+      "stage": "restart-continuity",
+      "status": "PARTIAL",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-consequence-support/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/raw/v2-consequence-capture/checkpoint.term",
+        "evidence/AMA-1.1/R1/constitutive-chain-v2-001/results.json",
+        "evidence/AMA-1.1/R1/service-freeze-001/verdict.json"
+      ],
+      "earned": "The active cut, full compass expressions, bridge, plural standing topology, R/A/P, movement, participant boundaries, consequence-updated relations, prior history, and one committed effect survive fresh PeTTa process restart exactly; the effect is not replayed.",
+      "remaining": "The frozen row requires semantic severance of one load-bearing relation inside an otherwise valid v2 checkpoint, native incomplete standing, and exact verified restoration. Existing service evidence proves whole-checkpoint mechanical integrity failure, not that finer constitutive repair distinction. Exact long-gap project capsules and Chroma are later Continuity-of-Mind scope.",
+      "successor_dependency": "The remaining severed-state discrimination is required before persistent user/project continuity broadens."
+    }
+  ],
+  "acceptance_family_results": [
+    {"id": "CA-01", "status": "PARTIAL", "reason": "All five cut fields now change movement, but raw neutral/restoration and typed-contact evidence remain incomplete."},
+    {"id": "CA-02", "status": "PARTIAL", "reason": "Fact9 is causally bridged; the exact v2 full-support and neutral trace remains absent."},
+    {"id": "CA-03", "status": "PROVEN-RUNTIME", "reason": "Complete compass semantics and matched flourishing/capture/disguise causal movement changes pass through the supported runtime."},
+    {"id": "CA-04", "status": "PARTIAL", "reason": "Native many-valued neighbors exist, but two simultaneously Generated native alternatives and their isolated severance/restoration are unproved."},
+    {"id": "CA-05", "status": "PARTIAL", "reason": "Participant claims now alter D and movement, but participant-local malformed/scope containment and all planned source kinds are unproved."},
+    {"id": "CA-06", "status": "PARTIAL", "reason": "Matched consequences and exact restart pass; detached/neutral/restored consequence and semantic checkpoint severance remain."},
+    {"id": "CA-07", "status": "PARTIAL", "reason": "Human and endogenous contacts share the kernel; a distinct endogenous-only causal restoration is not recorded."},
+    {"id": "CA-08", "status": "PARTIAL", "reason": "New compositions and limits are preserved, but the remaining convergence matrix is not complete."},
+    {"id": "CA-09", "status": "FAIL", "reason": "Only flourishing organization, native movement, and voice/effect are presently PROVEN-RUNTIME; seven F-09 rows remain partial."}
+  ],
+  "next_action": "Do not close AMA-1.1 or begin live reach. Freeze one convergence repair/evidence matrix that records raw v2 artifacts for typed-contact neutral/restoration, all five cut severance/restoration arms, full-support Fact9 and order neutrality, two simultaneously Generated native continuations with isolated dependency loss/restoration, participant-local quarantine plus model/memory/PLN/NAL/tool source coverage, detached/neutral/restored consequence, and semantic checkpoint severance/restoration. Change native or membrane code only where those frozen trials expose an actual causal gap."
+}

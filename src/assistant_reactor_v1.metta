@@ -152,6 +152,38 @@
    (and (CPShape $movement movement-formed 7)
         (== (index-atom $movement 2) (index-atom $consequence 2))))
 
+(= (ARIncorporateConsequenceV1 $id $scope $cut $movement $consequence)
+   (let* (($next (CPNextCut $cut $consequence))
+          ($state (ARReplaceActive $scope $next
+            (no-current-movement consequence-incorporated)))
+          ($history (if (== $state assistant-active-replaced)
+            (ARRecord consequence $id $scope
+              (consequence-incorporation (index-atom $next 1)
+                (index-atom $consequence 2) (index-atom $consequence 9)))
+            state-not-recorded)))
+     (if (== $history assistant-history-recorded)
+       (assistant-consequence-incorporated $id $next)
+       (assistant-consequence-held $id $history))))
+
+(= (ARIncorporateConsequenceV2 $id $scope $cut $movement $consequence)
+   (let $next-organization
+     (CPReconstituteAfterConsequenceV2 $cut $movement $consequence)
+     (if (CPShape $next-organization next-constitutive-organization 2)
+       (let* (($encounter (index-atom $next-organization 1))
+              ($next-cut (index-atom $encounter 1))
+              ($next-movement (AREncounterMovement $encounter))
+              ($state (ARReplaceActive $scope $next-cut $next-movement))
+              ($history (if (== $state assistant-active-replaced)
+                (ARRecord consequence $id $scope
+                  (consequence-incorporation-v2 $next-organization
+                    (prior-movement (index-atom $consequence 2))
+                    (returned-evidence (index-atom $consequence 12))))
+                state-not-recorded)))
+         (if (== $history assistant-history-recorded)
+           (assistant-consequence-incorporated $id $next-organization)
+           (assistant-consequence-held $id $history)))
+       (assistant-consequence-held $id $next-organization))))
+
 (= (AssistantConsequence $scope $consequence)
    (if (and (CPShape $scope scope 4) (CPConsequenceValid $consequence))
      (let* (($id (index-atom $consequence 1))
@@ -162,17 +194,9 @@
                   ($cut (index-atom $organization 2))
                   ($movement (index-atom $organization 3)))
              (if (ARConsequenceMovementMatches $movement $consequence)
-               (let* (($next (CPNextCut $cut $consequence))
-                      ($state (ARReplaceActive $scope $next
-                        (no-current-movement consequence-incorporated)))
-                      ($history (if (== $state assistant-active-replaced)
-                        (ARRecord consequence $id $scope
-                          (consequence-incorporation (index-atom $next 1)
-                            (index-atom $consequence 2) (index-atom $consequence 9)))
-                        state-not-recorded)))
-                 (if (== $history assistant-history-recorded)
-                   (assistant-consequence-incorporated $id $next)
-                   (assistant-consequence-held $id $history)))
+               (if (CPConsequenceV2Valid $consequence)
+                 (ARIncorporateConsequenceV2 $id $scope $cut $movement $consequence)
+                 (ARIncorporateConsequenceV1 $id $scope $cut $movement $consequence))
                (assistant-consequence-held $id movement-link-mismatch))))))
      (assistant-consequence-rejected malformed-scope-or-consequence)))
 

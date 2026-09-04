@@ -1,0 +1,306 @@
+{
+  "schema": "miter-ama11-constitutive-chain-v2-results-v1",
+  "repair": "RR-002",
+  "status": "PASS-BOUNDED",
+  "v2_results": [
+    {
+      "id": "native-undertaking-without-supplied-possibility",
+      "family": "v2",
+      "claim": "A supported open thread forms a native undertaking even though the contact supplies no possible-movement.",
+      "stimulus_sha256": "a6c9c5d734dff96cb8b5f66041b618ae65324ffa774eb9f2cf9b0128785c4858",
+      "checkpoint_sha256": "bef5e10c1342952e7b112fa98974fb4462fd01dc6af9e9abfd1cd265932b54d1",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "same-surface-capture-forms-inquiry",
+      "family": "v2",
+      "claim": "With identical surface contact, capture changes native continuation from undertaking to inquiry.",
+      "stimulus_sha256": "f4abcf6a1741ec270dce392a2c7fa10716cb6696bb997caeead206550353f2b4",
+      "checkpoint_sha256": "6252107fdcf21fe3c9c6993a257d838c2e84dff3102191f1b62fb7e2a762831c",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "same-surface-disguise-forms-inquiry",
+      "family": "v2",
+      "claim": "Disguise remains material before rendering and opens inquiry rather than passing favorable surface wording.",
+      "stimulus_sha256": "aff8faba7fc4957aa79b13206e90469a262d4e4b1c3b30be9fbd93c3637b5828",
+      "checkpoint_sha256": "1be9e264d7a526806e191fd3c54e58962f628e34965f24187309133f812a82ed",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "d-severance-changes-movement",
+      "family": "v2",
+      "claim": "D severance changes the continuation while other fields and surface identity remain fixed.",
+      "stimulus_sha256": "d19f1bc972f281e6048faa8aeb315d40506989e6489ada81f7e98f438ba843e3",
+      "checkpoint_sha256": "810f98d7458570cb0dab6a334c67f768978ad2059fed069c9712b25d45e0c23e",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "omega-severance-forms-inquiry",
+      "family": "v2",
+      "claim": "Omega severance preserves the gap and makes inquiry available.",
+      "stimulus_sha256": "9631f36c8632d89549bfbcceeb48678294c2d072cc8e7719b28e4ce9676b6360",
+      "checkpoint_sha256": "aa379db50c1226d4830157edad30b337c491a99f20bc70b7fc27935c7e30599f",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "interface-severance-forms-defer",
+      "family": "v2",
+      "claim": "Missing current participation interface forms a bounded defer without forced action or completion.",
+      "stimulus_sha256": "d2e4d3fc1540044ba8b90b3be1ed4f749f6ed077decb282973a2fe491c8d77cd",
+      "checkpoint_sha256": "bf4c4d866a2173b9143ad0e12e4d2e35477f9416e2d8099f45c4aa7d1ce2bfa4",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "weave-severance-forms-inquiry",
+      "family": "v2",
+      "claim": "Missing path/undertaking weave changes the form instead of leaving W decorative.",
+      "stimulus_sha256": "fbe8f801196776140331c26a69a17e5c322345f04637fa0d06b33cde88196cf0",
+      "checkpoint_sha256": "7617a1b8d96eff4544e9c5b1e24e8a3f3cd142b75336f34911cafd6f6c63c7f7",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "soul-relation-severance-holds-movement",
+      "family": "v2",
+      "claim": "A cut without live Soul relation cannot form movement merely because other carriers are favorable.",
+      "stimulus_sha256": "ccf34008e29def5c2159ecfdc390db573488638e6c8b1ae6e1940720e83e374c",
+      "checkpoint_sha256": "f41a0b06cdb2431952bcb10d16a9f319d0861ff8fbc3bdb2131805d8e2a8cc8d",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "same-lineage-participant-not-independent",
+      "family": "v2",
+      "claim": "Repeated same-lineage model support becomes one unresolved proposal and changes inquiry without becoming corroboration.",
+      "stimulus_sha256": "e702f850ce3671da1b143a839bd08e49224436842f0130323820ef43a85c4c68",
+      "checkpoint_sha256": "878419dbcea5815ed58cefb5a23ccda47f157be2cc8cb309ddd83efb690b1879",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "independent-participants-support-relation",
+      "family": "v2",
+      "claim": "Independent bounded participants create a provenance-bearing supported relation without becoming contact or authority.",
+      "stimulus_sha256": "109f6aec5d73a09a4480186447ca165123344ae6f5561490daf90df6f26d7166",
+      "checkpoint_sha256": "6274616560f041bab6a899bd8036b1d0d4fab9caed4ae6ef9415ed6eff2f4c5e",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "participant-conflict-forms-inquiry",
+      "family": "v2",
+      "claim": "Conflicting participant readings remain explicit and form inquiry rather than being collapsed or selected.",
+      "stimulus_sha256": "98c8d9686367239f36560b9311fa5c7a42f8dbd3378928d6dc4252eec72fb85d",
+      "checkpoint_sha256": "560ba564494caf9da3c6e805d61f4da6eda9ca5282efb8a1f84f5a7956d0199b",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "endogenous-same-kernel",
+      "family": "v2",
+      "claim": "The same material organization uses the same native constructor for endogenous contact with distinct provenance.",
+      "stimulus_sha256": "ac6e78d2c2098b6a2ba0effc936da54fa0c568ef8b210bbe1ee0934247809d5e",
+      "checkpoint_sha256": "f5d6e01e4c1507b5abd79b0902def5c9956d0acc5a62840f48d4c9dca2079270",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "identity-severed-before-cognition",
+      "family": "v2",
+      "claim": "Severed project identity is rejected by the carrier before cognition and creates no checkpoint or effect.",
+      "stimulus_sha256": "a0304f26eab2734103267c68fb26c1519ea848f791f17f484887e8d0a1fab03c",
+      "checkpoint_sha256": null,
+      "outbox_count": 0,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "matched-consequences-reconstruct-and-restart",
+      "family": "v2",
+      "claim": "Matched initial movements plus materially different returned consequences reconstruct different next movements and each branch survives restart without effect replay.",
+      "status": "PASS",
+      "failures": [],
+      "support": {
+        "initial_checkpoint": "bef5e10c1342952e7b112fa98974fb4462fd01dc6af9e9abfd1cd265932b54d1",
+        "after_checkpoint": "2115a2be3d65250306834b7d7bc3495d0c98219741e3eb5cf4fcb09a3c2220c4",
+        "restart_checkpoint": "2115a2be3d65250306834b7d7bc3495d0c98219741e3eb5cf4fcb09a3c2220c4"
+      },
+      "capture": {
+        "initial_checkpoint": "bef5e10c1342952e7b112fa98974fb4462fd01dc6af9e9abfd1cd265932b54d1",
+        "after_checkpoint": "3615d2c41c9c9a63256a1d06f33ceb42e5624373c0d093c0c8fc2794058bb846",
+        "restart_checkpoint": "3615d2c41c9c9a63256a1d06f33ceb42e5624373c0d093c0c8fc2794058bb846"
+      }
+    }
+  ],
+  "v1_regression": [
+    {
+      "id": "human-positive-and-restart",
+      "family": "v1",
+      "claim": "Human contact forms the finite constitutive movement; restart preserves it without replay; linked consequence changes the next cut.",
+      "stimulus_sha256": "5e1a97b27079886596bb0e68470915089e2b7372c809b2a365a74b0e73307c5a",
+      "checkpoint_sha256": "81e657ef7055528863de93c555cdebb614b44056083e1a49e20a6333db07f8d9",
+      "outbox_count": 1,
+      "sequence": {
+        "before": "81e657ef7055528863de93c555cdebb614b44056083e1a49e20a6333db07f8d9",
+        "after_restart": "81e657ef7055528863de93c555cdebb614b44056083e1a49e20a6333db07f8d9",
+        "after_consequence": "6dcfbde9b7a0bd6b93cc66134ca6d377f0e1341a35408d6146edaa817c5aad83"
+      },
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "material-relation-severed",
+      "family": "v1",
+      "claim": "Removing the n-ary material relation changes the fact standing and withholds the previously formed movement.",
+      "stimulus_sha256": "4c55de1fdaac9f4139dfd66c140c9431a01bb5dc0b6a872a878b967844b67b53",
+      "checkpoint_sha256": "fa0bc26b2c1d3257d3f3a3458dee61c5ede6c804eadcaec97132a6691d4ac437",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "material-relation-restored",
+      "family": "v1",
+      "claim": "Restoring the exact n-ary relation recovers formation without adding a behavioral branch.",
+      "stimulus_sha256": "d5aca3bb7e595689aa8102d7f5938d1c35d6afda79a5c675aae3f04b35d921e8",
+      "checkpoint_sha256": "426b96bab59f3fbc71e3c06074093ad4bd669701592a4b8897b6c70aa8b8e378",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "carrier-order-neutral",
+      "family": "v1",
+      "claim": "Permuting support, relation, flourishing, and participant carrier order does not create first-position selection.",
+      "stimulus_sha256": "07e5738084ab9bdcafbde1e177ddc63cd24cdd4a30d50ea3d8f0d5ce6f54ccfc",
+      "checkpoint_sha256": "6d3a1c2a458945ae98a523a1e5e4575df02fff4405f4c7c1dfa0905647841c26",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "pairwise-complete-whole-wrong",
+      "family": "v1",
+      "claim": "Pairwise coverage cannot certify a missing triadic whole.",
+      "stimulus_sha256": "a2058ee8b97af573f66f5bbb86c7a57a2016aaf435c542f61fc5887716c3f829",
+      "checkpoint_sha256": "9e16450d86b4d0e502b449b4e161608295d4b0513fb615664bab6dea19b6633f",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "fact9-role-laundered",
+      "family": "v1",
+      "claim": "A material relation containing a role outside the declared support remains unresolved.",
+      "stimulus_sha256": "b47d364e70ecc216ff7be850a860e368366856cc8df5ac63c662e6eb30289f9c",
+      "checkpoint_sha256": "35360fbfc9e83336323faaec7aefac5e56ef62042e33756975d2025f41a74344",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "present-as-support-rejected",
+      "family": "v1",
+      "claim": "Present cannot be laundered into the first-eight support vocabulary.",
+      "stimulus_sha256": "586a829b5dcad8d41f8447341a53c65e073cb82ab2a3d9ef23c1864c772e5480",
+      "checkpoint_sha256": null,
+      "outbox_count": 0,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "can-compose-without-recognition",
+      "family": "v1",
+      "claim": "Lawful composability without recognition must retain an unrecognized continuation standing rather than silently forming the recognized movement.",
+      "stimulus_sha256": "c63b949a79082f53ceb56945064cda12f0dfe790b388e55e09e114b93e0a9fa9",
+      "checkpoint_sha256": "b544b4a6a35ca92fa2ef0d63c152188e9da29d926ea74f955c2ae5b008f4cc6f",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "flourishing-capture-withholds-undertaking",
+      "family": "v1",
+      "claim": "A sole undertaking requiring AgencyBalance cannot treat an explicit AgencyBalance capture standing as satisfaction of that flourishing requirement.",
+      "stimulus_sha256": "d085a92ab2b4d6520fc61edd13f55021b34659b72825df6f2b11c92f2ca82adb",
+      "checkpoint_sha256": "a45b01f66b7cb9bf316a1090ec04f7dcd425cc3d9581406c5e5d282e66202631",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "plural-generated-remains-live",
+      "family": "v1",
+      "claim": "Two warranted continuations remain plural instead of being selected by carrier position.",
+      "stimulus_sha256": "6867a7729fd8467ec808281408f04883606e731b52b1d380610254b00e56f3cf",
+      "checkpoint_sha256": "8fb6b9d2a5e6c93d5de8880e1d093d504c2fe538930a014ebffa0a0e0b106c6a",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "participant-conflict-retained",
+      "family": "v1",
+      "claim": "Conflicting and same-lineage participant readings remain differentiated and never become contact or movement authority.",
+      "stimulus_sha256": "729779562c0ddb4d7163eb343508f5d1aa7386af2cc4d33dcce3b80de6207a69",
+      "checkpoint_sha256": "4955acf484ba60b4c821e4db0133ecf48ff9f961117a884732d68bd87c4d9302",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "endogenous-contact-same-kernel",
+      "family": "v1",
+      "claim": "Endogenous contact uses the same constitutive path while retaining its distinct provenance.",
+      "stimulus_sha256": "e2ec699ae82b090e7fbe6135d14d0125abe6b7fb38c8ea5fb77a18979a2e2e1f",
+      "checkpoint_sha256": "c40e41e397690020fab369b6fd006ad9649216a4639c22e81e7f6c6c418b68d3",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    }
+  ],
+  "failures": []
+}

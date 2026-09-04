@@ -1,0 +1,25 @@
+{
+  "schema": "miter-ama11-constitutive-chain-v2-verdict-v1",
+  "repair": "RR-002",
+  "status": "PASS-BOUNDED",
+  "v2_passed": [
+    "native-undertaking-without-supplied-possibility",
+    "same-surface-capture-forms-inquiry",
+    "same-surface-disguise-forms-inquiry",
+    "d-severance-changes-movement",
+    "omega-severance-forms-inquiry",
+    "interface-severance-forms-defer",
+    "weave-severance-forms-inquiry",
+    "soul-relation-severance-holds-movement",
+    "same-lineage-participant-not-independent",
+    "independent-participants-support-relation",
+    "participant-conflict-forms-inquiry",
+    "endogenous-same-kernel",
+    "identity-severed-before-cognition",
+    "matched-consequences-reconstruct-and-restart"
+  ],
+  "v2_failed": [],
+  "v1_regression_passed": true,
+  "standing": "All fourteen frozen RR-002 cases and all twelve preserved v1 regression cases pass through the supported persistent assistant. Qualitative F-09 review remains separately required and this verdict does not close AMA-1.1.",
+  "no_live_or_private_reach": true
+}

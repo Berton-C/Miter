@@ -15,6 +15,7 @@
 
 as_schema('miter-assistant-runtime-v1').
 as_input_schema('miter-assistant-input-v1').
+as_input_schema('miter-assistant-input-v2').
 as_config_schema('miter-assistant-config-v1').
 
 as_config_value(idle_base_seconds, Value) :-
@@ -171,6 +172,32 @@ as_participant(Scope, Dict,
     as_member(Standing, [candidate,supported,contradicted,unresolved]),
     as_dict_atom(Dict, authority, 'no-contact-no-movement-authority').
 
+% V2 admits a typed relational claim without interpreting whether it should
+% participate. Native MeTTa retains lineage, standing, conflict and authority.
+as_participant_claim(Dict,
+    ['participant-relation-claim',Target,Proposed,Evidence]) :-
+    is_dict(Dict),
+    as_dict_atom(Dict, kind, relation),
+    as_dict_atom(Dict, target, Target),
+    as_dict_atom(Dict, proposed_standing, Proposed),
+    as_member(Proposed, [support,contradiction,unresolved]),
+    as_dict_atom(Dict, evidence, Evidence).
+
+as_participant_v2(Scope, Dict,
+                  ['participant-contribution', Id, Kind, Scope, Lineage,
+                   Claim, Standing, 'no-contact-no-movement-authority']) :-
+    is_dict(Dict),
+    as_dict_atom(Dict, id, Id),
+    as_dict_atom(Dict, kind, Kind),
+    as_member(Kind, [human,model,memory,pln,nal,tool]),
+    get_dict(lineage, Dict, LineageValues),
+    as_nonempty_symbol_list(LineageValues, LineageAtoms),
+    Lineage = [lineage|LineageAtoms],
+    get_dict(claim, Dict, ClaimValue), as_participant_claim(ClaimValue, Claim),
+    as_dict_atom(Dict, standing, Standing),
+    as_member(Standing, [candidate,supported,contradicted,unresolved]),
+    as_dict_atom(Dict, authority, 'no-contact-no-movement-authority').
+
 as_present(Dict, ['present-context', Context, Evidence]) :-
     is_dict(Dict),
     as_dict_atom(Dict, context, Context),
@@ -217,6 +244,49 @@ as_contact(Dict,
     is_list(ParticipantValues),
     maplist(as_participant(Scope), ParticipantValues, Participants).
 
+as_contact_v2(Dict,
+              ['contact-v2', Id, Source, Principal, Audience, Project, Occurrence,
+               Proto, PayloadRef,
+               ['encounter-configuration', ['D', Relations, Distinctions],
+                ['Omega', Omega], ['I', Interfaces], ['W', Weave], ['C', Soul],
+                Present, Facts, Flourishings, Possibilities, Participants], Parents]) :-
+    is_dict(Dict),
+    as_dict_atom(Dict, id, Id),
+    as_dict_atom(Dict, source_kind, Source),
+    as_member(Source, ['human-contact','endogenous-contact']),
+    as_dict_atom(Dict, principal, Principal),
+    as_dict_atom(Dict, audience, Audience),
+    as_dict_atom(Dict, project, Project),
+    as_dict_atom(Dict, occurrence, Occurrence),
+    as_dict_atom(Dict, proto, Proto),
+    as_dict_atom(Dict, payload_ref, PayloadRef),
+    Scope = [scope,Principal,Audience,Project],
+    get_dict(parents, Dict, ParentValues), as_symbol_list(ParentValues, Parents),
+    get_dict(configuration, Dict, Configuration), is_dict(Configuration),
+    get_dict(d_relations, Configuration, RelationValues),
+    is_list(RelationValues), maplist(as_relation, RelationValues, Relations),
+    get_dict(d_distinctions, Configuration, DistinctionValues),
+    is_list(DistinctionValues), maplist(as_distinction, DistinctionValues, Distinctions),
+    get_dict(omega_relations, Configuration, OmegaValues),
+    is_list(OmegaValues), maplist(as_omega_relation, OmegaValues, Omega),
+    get_dict(interfaces, Configuration, InterfaceValues),
+    is_list(InterfaceValues), maplist(as_interface, InterfaceValues, Interfaces),
+    get_dict(weave, Configuration, WeaveValues),
+    is_list(WeaveValues), maplist(as_thread, WeaveValues, Weave),
+    get_dict(soul_relations, Configuration, SoulValues),
+    is_list(SoulValues), maplist(as_soul_relation, SoulValues, Soul),
+    get_dict(present, Configuration, PresentValue), as_present(PresentValue, Present),
+    get_dict(fact_views, Configuration, FactValues),
+    is_list(FactValues), maplist(as_fact_view, FactValues, Facts),
+    get_dict(flourishing_views, Configuration, FlourishingViewValues),
+    is_list(FlourishingViewValues),
+    maplist(as_flourishing_view, FlourishingViewValues, Flourishings),
+    get_dict(possibilities, Configuration, PossibilityValues),
+    is_list(PossibilityValues), maplist(as_possibility, PossibilityValues, Possibilities),
+    get_dict(participants, Configuration, ParticipantValues),
+    is_list(ParticipantValues),
+    maplist(as_participant_v2(Scope), ParticipantValues, Participants).
+
 as_scope(Dict, [scope,Principal,Audience,Project]) :-
     is_dict(Dict),
     as_dict_atom(Dict, principal, Principal),
@@ -243,9 +313,37 @@ as_consequence(Dict,
     get_dict(present, Dict, PresentValue), as_present(PresentValue, Present),
     as_dict_atom(Dict, evidence, Evidence).
 
-as_input_dict(Dict, Input, InputId) :-
+as_consequence_v2(Dict,
+                  ['consequence-v2', Id, Movement, Effect, Result,
+                   ['D-delta', Relations, Distinctions], ['Omega-delta', Omega],
+                   ['I-delta', Interfaces], ['W-delta', Weave], ['C-delta', Soul],
+                   ['flourishing-delta', Flourishings], Present, Evidence]) :-
     is_dict(Dict),
-    as_dict_atom(Dict, schema, Schema), as_input_schema(Schema),
+    as_dict_atom(Dict, id, Id),
+    as_dict_atom(Dict, movement_id, Movement),
+    as_dict_atom(Dict, effect_key, Effect),
+    as_dict_atom(Dict, result, Result),
+    get_dict(d_relations, Dict, RelationValues),
+    is_list(RelationValues), maplist(as_relation, RelationValues, Relations),
+    get_dict(d_distinctions, Dict, DistinctionValues),
+    is_list(DistinctionValues), maplist(as_distinction, DistinctionValues, Distinctions),
+    get_dict(omega_relations, Dict, OmegaValues),
+    is_list(OmegaValues), maplist(as_omega_relation, OmegaValues, Omega),
+    get_dict(interfaces, Dict, InterfaceValues),
+    is_list(InterfaceValues), maplist(as_interface, InterfaceValues, Interfaces),
+    get_dict(weave, Dict, WeaveValues),
+    is_list(WeaveValues), maplist(as_thread, WeaveValues, Weave),
+    get_dict(soul_relations, Dict, SoulValues),
+    is_list(SoulValues), maplist(as_soul_relation, SoulValues, Soul),
+    get_dict(flourishing_views, Dict, FlourishingViewValues),
+    is_list(FlourishingViewValues),
+    maplist(as_flourishing_view, FlourishingViewValues, Flourishings),
+    get_dict(present, Dict, PresentValue), as_present(PresentValue, Present),
+    as_dict_atom(Dict, evidence, Evidence).
+
+as_input_dict_v1(Dict, Input, InputId) :-
+    is_dict(Dict),
+    as_dict_atom(Dict, schema, 'miter-assistant-input-v1'),
     as_dict_atom(Dict, input_id, InputId),
     as_dict_atom(Dict, input_kind, Kind),
     ( Kind == contact -> get_dict(contact, Dict, ContactValue),
@@ -254,6 +352,26 @@ as_input_dict(Dict, Input, InputId) :-
       get_dict(consequence, Dict, ConsequenceValue),
       as_scope(ScopeValue, Scope), as_consequence(ConsequenceValue, Consequence),
       Input = ['assistant-input',consequence,Scope,Consequence]
+    ).
+
+as_input_dict_v2(Dict, Input, InputId) :-
+    is_dict(Dict),
+    as_dict_atom(Dict, schema, 'miter-assistant-input-v2'),
+    as_dict_atom(Dict, input_id, InputId),
+    as_dict_atom(Dict, input_kind, Kind),
+    ( Kind == contact -> get_dict(contact, Dict, ContactValue),
+      as_contact_v2(ContactValue, Contact), Input = ['assistant-input',contact,Contact]
+    ; Kind == consequence -> get_dict(scope, Dict, ScopeValue),
+      get_dict(consequence, Dict, ConsequenceValue),
+      as_scope(ScopeValue, Scope), as_consequence_v2(ConsequenceValue, Consequence),
+      Input = ['assistant-input',consequence,Scope,Consequence]
+    ).
+
+as_input_dict(Dict, Input, InputId) :-
+    is_dict(Dict), get_dict(schema, Dict, Schema0), as_symbol(Schema0, Schema),
+    as_input_schema(Schema),
+    ( Schema == 'miter-assistant-input-v1' -> as_input_dict_v1(Dict, Input, InputId)
+    ; Schema == 'miter-assistant-input-v2' -> as_input_dict_v2(Dict, Input, InputId)
     ).
 
 as_config(Root0, Key, Value) :-
