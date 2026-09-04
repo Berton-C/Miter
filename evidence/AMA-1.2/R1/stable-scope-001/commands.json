@@ -1,0 +1,635 @@
+[
+  {
+    "name": "authorized-primary:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-primary-sx4Q4B"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"67232b3196fd49287d03101e535d2372461ff2652c8c06385949a860d8c0f035\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-primary-sx4Q4B\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "67232b3196fd49287d03101e535d2372461ff2652c8c06385949a860d8c0f035",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-primary-sx4Q4B",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "authorized-primary:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-primary-sx4Q4B"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7006,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7006,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "authorized-primary:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-primary-sx4Q4B",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-input-authorized-primary-sUFEkf/authorized-primary.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-scope-contact-alpha\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-scope-contact-alpha",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "authorized-primary:duplicate",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-primary-sx4Q4B",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-input-authorized-primary-sUFEkf/authorized-primary.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-scope-contact-alpha\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"duplicate\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-scope-contact-alpha",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "duplicate"
+    }
+  },
+  {
+    "name": "authorized-primary:stop",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-primary-sx4Q4B"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7006,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7006,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "authorized-primary:restart",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-primary-sx4Q4B"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7036,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7036,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "authorized-primary:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-primary-sx4Q4B"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":7036,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 7036,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "authorized-new-event:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-new-event-UNThAq"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"d49d735e5fa0e91286b37d2744b9573cf272ce3567d713d003d0ce535a11de36\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-new-event-UNThAq\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "d49d735e5fa0e91286b37d2744b9573cf272ce3567d713d003d0ce535a11de36",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-new-event-UNThAq",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "authorized-new-event:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-new-event-UNThAq"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7066,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7066,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "authorized-new-event:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-new-event-UNThAq",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-input-authorized-new-event-fbR8q8/authorized-new-event.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-scope-contact-beta\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-scope-contact-beta",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "authorized-new-event:duplicate",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-new-event-UNThAq",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-input-authorized-new-event-fbR8q8/authorized-new-event.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-scope-contact-beta\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"duplicate\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-scope-contact-beta",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "duplicate"
+    }
+  },
+  {
+    "name": "authorized-new-event:stop",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-new-event-UNThAq"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7066,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7066,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "authorized-new-event:restart",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-new-event-UNThAq"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7096,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7096,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "authorized-new-event:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-authorized-new-event-UNThAq"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":7096,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 7096,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "stable-principal-mismatch:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-stable-principal-mismatch-KZNIMu"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"c910d2f5303ae0301f9687c1c3d42b911c8895fcaa661deb691fba9310124a97\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-stable-principal-mismatch-KZNIMu\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "c910d2f5303ae0301f9687c1c3d42b911c8895fcaa661deb691fba9310124a97",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-stable-principal-mismatch-KZNIMu",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "stable-principal-mismatch:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-stable-principal-mismatch-KZNIMu"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7127,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7127,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "stable-principal-mismatch:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-stable-principal-mismatch-KZNIMu",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-input-stable-principal-mismatch-Ivk6mN/stable-principal-mismatch.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": "",
+    "reply": {
+      "reason": "strict-input-schema-runtime-or-size-boundary",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "rejected"
+    }
+  },
+  {
+    "name": "stable-principal-mismatch:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-stable-principal-mismatch-KZNIMu"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":7127,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 7127,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "declared-project-mismatch:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-declared-project-mismatch-6iVVmb"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"5f1bb4804ef57a2993deb4f0b99e08e228f3ab04f1c322c1955644ec142d9343\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-declared-project-mismatch-6iVVmb\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "5f1bb4804ef57a2993deb4f0b99e08e228f3ab04f1c322c1955644ec142d9343",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-declared-project-mismatch-6iVVmb",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "declared-project-mismatch:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-declared-project-mismatch-6iVVmb"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7163,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7163,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "declared-project-mismatch:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-declared-project-mismatch-6iVVmb",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-input-declared-project-mismatch-grgyeP/declared-project-mismatch.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": "",
+    "reply": {
+      "reason": "strict-input-schema-runtime-or-size-boundary",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "rejected"
+    }
+  },
+  {
+    "name": "declared-project-mismatch:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-declared-project-mismatch-6iVVmb"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":7163,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 7163,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "post-contact-mismatch:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-post-contact-mismatch-AfPmI5"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"00f9689e9aca3955c3458bc41e4a3ca28c1ab2cc4a29891ab5ba99340dcbf52a\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-post-contact-mismatch-AfPmI5\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "00f9689e9aca3955c3458bc41e4a3ca28c1ab2cc4a29891ab5ba99340dcbf52a",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-post-contact-mismatch-AfPmI5",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "post-contact-mismatch:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-post-contact-mismatch-AfPmI5"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7197,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7197,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "post-contact-mismatch:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-post-contact-mismatch-AfPmI5",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-input-post-contact-mismatch-JR5zwP/post-contact-mismatch.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": "",
+    "reply": {
+      "reason": "strict-input-schema-runtime-or-size-boundary",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "rejected"
+    }
+  },
+  {
+    "name": "post-contact-mismatch:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-post-contact-mismatch-AfPmI5"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":7197,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 7197,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "ambiguous-binding:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-ambiguous-binding-8PT2lZ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"4e42d494068848e08627623a08b44f937f9eef03b1e57a2509987345fc2241da\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-ambiguous-binding-8PT2lZ\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "4e42d494068848e08627623a08b44f937f9eef03b1e57a2509987345fc2241da",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-ambiguous-binding-8PT2lZ",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "ambiguous-binding:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-ambiguous-binding-8PT2lZ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7233,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7233,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "ambiguous-binding:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-ambiguous-binding-8PT2lZ",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-input-ambiguous-binding-92XFai/ambiguous-binding.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": "",
+    "reply": {
+      "reason": "strict-input-schema-runtime-or-size-boundary",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "rejected"
+    }
+  },
+  {
+    "name": "ambiguous-binding:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-ambiguous-binding-8PT2lZ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":7233,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 7233,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "legacy-contact-bypass:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-legacy-contact-bypass-XIO5lA"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f1858f92f5d671ff79f48c3e7a8065d078aea25f573f681f209887c3de2d1ebd\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-legacy-contact-bypass-XIO5lA\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "f1858f92f5d671ff79f48c3e7a8065d078aea25f573f681f209887c3de2d1ebd",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-legacy-contact-bypass-XIO5lA",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "legacy-contact-bypass:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-legacy-contact-bypass-XIO5lA"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":7272,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 7272,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "legacy-contact-bypass:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-legacy-contact-bypass-XIO5lA",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_1/constitutive-chain-v2-base.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": "",
+    "reply": {
+      "reason": "strict-input-schema-runtime-or-size-boundary",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "rejected"
+    }
+  },
+  {
+    "name": "legacy-contact-bypass:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-scope-legacy-contact-bypass-XIO5lA"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":7272,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 7272,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  }
+]

@@ -1,10 +1,12 @@
-% AMA-1.1 non-cognitive persistent-service membrane.
+% AMA-1.2 non-cognitive persistent-service membrane, extending the promoted
+% AMA-1.1 process with stable-scope and Continuity of Mind mechanics.
 % Owns strict transport schemas, leases, durable bytes, waits and heartbeat.
 % It never interprets contact meaning, classifies a flourishing, constructs a
 % movement, calls a model, reads private memory, or grants an external effect.
 
 :- ensure_loaded('miter_store.pl').
 :- ensure_loaded('miter_integrity.pl').
+:- ensure_loaded('miter_assistant_continuity_v1.pl').
 :- use_module(library(crypto)).
 :- use_module(library(filesex)).
 :- use_module(library(http/json)).
@@ -16,6 +18,7 @@
 as_schema('miter-assistant-runtime-v1').
 as_input_schema('miter-assistant-input-v1').
 as_input_schema('miter-assistant-input-v2').
+as_input_schema('miter-assistant-input-v3').
 as_config_schema('miter-assistant-config-v1').
 
 as_config_value(idle_base_seconds, Value) :-
@@ -386,11 +389,41 @@ as_input_dict_v2(Dict, Input, InputId) :-
       Input = ['assistant-input',consequence,Scope,Consequence]
     ).
 
+% V3 binds stable carrier identity to configured principal/audience/project
+% scope before the contact configuration is converted into a native atom.
+as_input_dict_v3(Root, Dict, Input, InputId) :-
+    is_dict(Dict),
+    as_dict_atom(Dict, schema, 'miter-assistant-input-v3'),
+    as_dict_atom(Dict, input_id, InputId),
+    as_dict_atom(Dict, input_kind, 'surface-contact'),
+    get_dict(surface, Dict, Surface),
+    get_dict(contact, Dict, ContactValue), is_dict(ContactValue),
+    get_dict(principal, ContactValue, DeclaredPrincipal),
+    get_dict(audience, ContactValue, DeclaredAudience),
+    get_dict(project, ContactValue, DeclaredProject),
+    DeclaredScope=_{principal:DeclaredPrincipal,
+      audience:DeclaredAudience,project:DeclaredProject},
+    miter_assistant_scope_bind(Root, Surface, DeclaredScope, Binding),
+    Binding=['scope-binding-v1',_,_,['surface-event',PostId,_,_],
+      'authorized-before-payload-cognition',_],
+    as_contact_v2(ContactValue, Contact),
+    Contact=['contact-v2',PostId|_],
+    Input=['assistant-input',contact,Binding,Contact].
+
 as_input_dict(Dict, Input, InputId) :-
     is_dict(Dict), get_dict(schema, Dict, Schema0), as_symbol(Schema0, Schema),
     as_input_schema(Schema),
     ( Schema == 'miter-assistant-input-v1' -> as_input_dict_v1(Dict, Input, InputId)
     ; Schema == 'miter-assistant-input-v2' -> as_input_dict_v2(Dict, Input, InputId)
+    ).
+
+as_input_dict(Root, Dict, Input, InputId) :-
+    is_dict(Dict), get_dict(schema, Dict, Schema0), as_symbol(Schema0, Schema),
+    as_input_schema(Schema),
+    ( Schema == 'miter-assistant-input-v3' ->
+        as_input_dict_v3(Root, Dict, Input, InputId)
+    ; as_input_dict(Dict, Input, InputId),
+      Input=['assistant-input',consequence,_,_]
     ).
 
 as_config(Root0, Key, Value) :-
@@ -445,13 +478,13 @@ as_take_inputs(Root, [Name|Rest], Inputs) :-
 as_take_input(Root, carrier(leased,Name), Outcome) :-
     as_path(Root, leased, Leased), directory_file_path(Leased, Name, Source),
     ( catch((size_file(Source, Size), as_config(Root, max_input_bytes, Max), Size =< Max,
-      miter_store_read_json(Source, Dict), as_input_dict(Dict, Input, InputId),
+      miter_store_read_json(Source, Dict), as_input_dict(Root, Dict, Input, InputId),
       Outcome=accepted(Input), as_receipt(Root, InputId, leased, Name)), _,fail)
     -> true ; as_reject_input(Root, Name, Source, Outcome) ), !.
 as_take_input(Root, carrier(inbox,Name), Outcome) :-
     as_path(Root, inbox, Inbox), directory_file_path(Inbox, Name, Source),
     ( catch((size_file(Source, Size), as_config(Root, max_input_bytes, Max), Size =< Max,
-      miter_store_read_json(Source, Dict), as_input_dict(Dict, Input, InputId),
+      miter_store_read_json(Source, Dict), as_input_dict(Root, Dict, Input, InputId),
       as_path(Root, leased, Leased), directory_file_path(Leased, Name, Destination),
       \+ exists_file(Destination), rename_file(Source, Destination),
       Outcome=accepted(Input), as_receipt(Root, InputId, leased, Name)), _,fail)
@@ -521,7 +554,7 @@ as_record(Root0, Kind0, Payload, Result) :-
       Intent=_{schema:"miter-event-intent-v1",event_id:EventId,event_kind:Kind,
         occurred_at:Time,recorded_at:Time,source_surface:"assistant-service",
         source_principal:"miter:assistant",audience_scope:"scope:assistant-local",
-        project_scope:"ama-1.1",provenance_kind:"native-control",
+        project_scope:"ama-1.2",provenance_kind:"native-control",
         parent_event_ids:[],correlation_id:"assistant-service",
         payload:_{native_term:PayloadText}},
       atomic_list_concat(['intents/',EventId,'.json'], IntentRelative),

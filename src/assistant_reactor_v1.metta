@@ -44,7 +44,8 @@
 
 (= (ARHistoryValid $row)
    (and (CPShape $row assistant-history 5)
-     (and (CPHas (index-atom $row 1) (encounter consequence restoration effect) 0)
+     (and (CPHas (index-atom $row 1)
+            (encounter consequence restoration effect scope-binding) 0)
           (CPShape (index-atom $row 3) scope 4))))
 
 (= (ARAllValid $rows $validator $i)
@@ -217,6 +218,23 @@
                (assistant-consequence-held $id movement-link-mismatch))))))
      (assistant-consequence-rejected malformed-scope-or-consequence)))
 
+; Stable carrier identity and configured scope are mechanical observations.
+; Native cognition admits the contact and preserves that exact binding in its
+; developmental history; the binding never chooses or renders movement.
+(= (ACBoundEncounter $binding $contact)
+   (if (ACScopeBindingValid $binding $contact)
+     (let $result (AssistantEncounter $contact)
+       (if (CPShape $result assistant-contact-incorporated 3)
+         (let $history (ARRecord scope-binding (index-atom $contact 1)
+               (CPContactScope $contact) $binding)
+           (if (CPHas $history
+                 (assistant-history-recorded assistant-history-duplicate) 0)
+             $result
+             (assistant-contact-held (index-atom $contact 1)
+               scope-binding-history-failed)))
+         $result))
+     (assistant-contact-rejected stable-identity-scope-mismatch)))
+
 ; assistant-input contact Contact | assistant-input consequence Scope Consequence
 (= (AssistantInput $input)
    (if (CPShape $input assistant-input 3)
@@ -224,9 +242,11 @@
        (AssistantEncounter (index-atom $input 2))
        (assistant-input-rejected unknown-input-kind))
      (if (CPShape $input assistant-input 4)
-       (if (== (index-atom $input 1) consequence)
-         (AssistantConsequence (index-atom $input 2) (index-atom $input 3))
-         (assistant-input-rejected unknown-input-kind))
+       (if (== (index-atom $input 1) contact)
+         (ACBoundEncounter (index-atom $input 2) (index-atom $input 3))
+         (if (== (index-atom $input 1) consequence)
+           (AssistantConsequence (index-atom $input 2) (index-atom $input 3))
+           (assistant-input-rejected unknown-input-kind)))
        (assistant-input-rejected malformed-input))))
 
 (= (AssistantProcessAt $inputs $i)

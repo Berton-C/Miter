@@ -1,0 +1,17 @@
+{
+  "schema": "miter-ama12-stable-scope-verdict-v1",
+  "status": "PASS-BOUNDED",
+  "facts": {
+    "stable_identity_is_bound_before_native_contact": true,
+    "declared_scope_mismatch_is_rejected_before_cognition": true,
+    "ambiguous_binding_is_rejected_before_cognition": true,
+    "post_identity_must_bind_contact_identity": true,
+    "legacy_contact_schema_cannot_bypass_supported_ingress": true,
+    "binding_is_preserved_in_native_history": true,
+    "balance_fact9_flourishing_and_rap_remain_in_the_same_movement": true,
+    "duplicate_and_restart_do_not_replay_the_local_effect": true,
+    "no_live_or_private_reach_occurred": true
+  },
+  "standing": "Controlled-fixture proof of stable principal/audience/project binding through the supported persistent assistant. It does not prove live Mattermost identity, general language, four-plane Continuity of Mind, model or Chroma participation, multi-user privacy, or AMA-1.2 closure.",
+  "next_boundary": "Join exact four-plane continuity and unfinished constitutive organization at startup before ordinary cognition."
+}

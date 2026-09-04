@@ -147,6 +147,10 @@ as_bootstrap_new(Root, Reply) :-
     miter_store_read_json(ConfigSource,Config), as_validate_config(Config),
     directory_file_path(Root,'config.json',ConfigTarget),
     miter_store_write_json_atomic(ConfigTarget,Config),
+    directory_file_path(Repo,'config/miter-assistant-continuity-v1.json',BindingsSource),
+    miter_store_read_json(BindingsSource,Bindings),
+    directory_file_path(Root,'scope-bindings.json',BindingsTarget),
+    miter_store_write_json_atomic(BindingsTarget,Bindings),
     uuid(BootId),
     directory_file_path(Root,'runtime.json',Marker),
     miter_store_write_json_atomic(Marker,_{schema:"miter-assistant-runtime-v1",
@@ -202,14 +206,18 @@ as_lkg_relative_paths([
   'constitution/authority-manifest.json','constitution/soul.metta',
   'constitution/soul_compass_v02.metta','constitution/fact9_projection_v1.metta',
   'src/soul.metta','src/constitutive_participation_v1.metta',
-  'src/assistant_reactor_v1.metta','src/bootstrap_assistant_v1.metta',
+  'src/assistant_reactor_v1.metta','src/assistant_scope_continuity_v1.metta',
+  'src/bootstrap_assistant_v1.metta',
   'effect_membranes/miter_integrity.pl','effect_membranes/miter_store.pl',
   'effect_membranes/miter_assistant_service_v1.pl',
+  'effect_membranes/miter_assistant_continuity_v1.pl',
   'effect_membranes/miter_assistant_operator_v1.pl',
   'effect_membranes/runtime_extensions/miter_store_posix.c',
   'config/constitutive-projection-v1.json','config/miter-assistant-v1.json',
+  'config/miter-assistant-continuity-v1.json',
   'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.json',
-  'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/plan.json'
+  'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/plan.json',
+  'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R1/plan.json'
 ]).
 
 as_write_lkg(Root, LkgHash) :-
@@ -369,7 +377,7 @@ as_status_heartbeat(Root, Heartbeat) :-
 as_submit(Root, Event, Reply) :-
     ( catch((as_root(Root,_),as_verify_lkg(Root,verified),
         size_file(Event,Size),as_config(Root,max_input_bytes,Max),Size=<Max,
-        miter_store_read_json(Event,Dict),as_input_dict(Dict,_,InputId)),_,fail)
+        miter_store_read_json(Event,Dict),as_input_dict(Root,Dict,_,InputId)),_,fail)
     -> atom_concat(InputId,'.json',Name),
        ( as_existing_input(Root,Name,Existing) ->
            miter_store_read_json(Existing,Prior),

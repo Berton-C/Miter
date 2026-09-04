@@ -1,0 +1,57 @@
+{
+  "schema": "miter-ama12-stable-scope-results-v1",
+  "status": "PASS-BOUNDED",
+  "results": [
+    {
+      "id": "authorized-primary",
+      "expected": "accepted",
+      "observed": "accepted",
+      "checkpoint_sha256": "7224f1f53da8ddad03dba95158e0d6b9817de421e223d5be6c905fa13e508f54",
+      "local_effects": 1,
+      "restart_stable": true
+    },
+    {
+      "id": "authorized-new-event",
+      "expected": "accepted",
+      "observed": "accepted",
+      "checkpoint_sha256": "43af552bac6a0f68dfaf1e6085bd7e3df268f44233545872972ae3a588038800",
+      "local_effects": 1,
+      "restart_stable": true
+    },
+    {
+      "id": "stable-principal-mismatch",
+      "expected": "rejected",
+      "observed": "rejected",
+      "native_checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "declared-project-mismatch",
+      "expected": "rejected",
+      "observed": "rejected",
+      "native_checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "post-contact-mismatch",
+      "expected": "rejected",
+      "observed": "rejected",
+      "native_checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "ambiguous-binding",
+      "expected": "rejected",
+      "observed": "rejected",
+      "native_checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "legacy-contact-bypass",
+      "expected": "rejected",
+      "observed": "rejected",
+      "native_checkpoint": false,
+      "local_effects": 0
+    }
+  ]
+}

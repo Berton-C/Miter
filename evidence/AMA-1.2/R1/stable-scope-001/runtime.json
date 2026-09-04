@@ -1,0 +1,53 @@
+{
+  "schema": "miter-ama12-stable-scope-runtime-v1",
+  "swipl": "SWI-Prolog version 10.0.2 for arm64-darwin",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "plan_commit": "61c1c21fc19b0b1d8bb84b46e717be2642c52499",
+  "external_network_calls": 0,
+  "model_calls": 0,
+  "chroma_calls": 0,
+  "private_memory_reads": 0,
+  "external_effects": 0,
+  "sources": [
+    {
+      "path": "config/miter-assistant-continuity-v1.json",
+      "sha256": "f56a2df921ece251a14de58c481525475f603c991bdd894409a01085b07fe6f9"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_continuity_v1.pl",
+      "sha256": "54b6a1874953edc8deccafb3a5ba6666487e0661447c468e12605d1fde4e4e37"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_service_v1.pl",
+      "sha256": "eec033dd960cd47c81abd00e9ed57f0de405aec577d978481d6536e2997f781c"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_operator_v1.pl",
+      "sha256": "d45beea0f07bd9740937bfe5114a9b5e58a82a4a5035f5cca4fabe643dec4775"
+    },
+    {
+      "path": "src/assistant_scope_continuity_v1.metta",
+      "sha256": "0482389bf219683fc3c175e9077bb0f88306413e709b51ebf3e39eca21f736a6"
+    },
+    {
+      "path": "src/assistant_reactor_v1.metta",
+      "sha256": "b6f6fe42fa583094ca33d5298601356fdcfacf768514258acb3d405938881ac9"
+    },
+    {
+      "path": "src/bootstrap_assistant_v1.metta",
+      "sha256": "2e42876d0c0919721eca952c29762fd596f1d4081011cd1f86763e78f0327369"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/scope-bindings.json",
+      "sha256": "75b491ffee62e60189c64ee9048668fb6c7c85728f99febd9f767992a7e9045a"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/scope-contact-v3.json",
+      "sha256": "9dc2fcc16be4151b8ac2576bf529f903d1d168d6df8c630f4cd63eeb03b44177"
+    },
+    {
+      "path": "scripts/ama1_2/stable_scope_boundary.mjs",
+      "sha256": "9b6cfbc00124635f6be515958003d448d2b3d48ce8213696066e7c86b4fffce1"
+    }
+  ]
+}

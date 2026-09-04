@@ -13,4 +13,5 @@
 !(import! &compass "./constitution/soul_compass_v02.metta")
 !(import! &self "./src/soul.metta")
 !(import! &self "./src/constitutive_participation_v1.metta")
+!(import! &self "./src/assistant_scope_continuity_v1.metta")
 !(import! &self "./src/assistant_reactor_v1.metta")

@@ -1,0 +1,18 @@
+{
+  "schema": "miter-assistant-scope-bindings-v1",
+  "authority_mode": "controlled-fixture-only",
+  "bindings": [
+    {
+      "binding_id": "binding-fixture-alpha",
+      "carrier_kind": "controlled-fixture",
+      "server_id": "fixture-server-alpha",
+      "team_id": "fixture-team-alpha",
+      "channel_id": "fixture-channel-alpha",
+      "principal_id": "fixture-user-alpha",
+      "principal": "principal-alpha",
+      "audience": "audience-alpha",
+      "project": "project-alpha",
+      "standing": "authorized"
+    }
+  ]
+}
