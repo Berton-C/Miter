@@ -1,0 +1,76 @@
+{
+  "consequence": {
+    "evidence": "controlled-consequence-support",
+    "present": {
+      "evidence": "observed-return",
+      "context": "present-after-supported-return"
+    },
+    "flourishing_views": [
+      {
+        "evidence": "consequence-carried-forward",
+        "standing": "beneficial-direction",
+        "relation_id": "relation-return",
+        "value": "TimeCoherence"
+      }
+    ],
+    "soul_relations": [
+      {
+        "evidence": "observed-return",
+        "standing": "material",
+        "id": "relation-developmental-uptake"
+      }
+    ],
+    "weave": [
+      {
+        "evidence": "observed-return",
+        "standing": "continued",
+        "id": "thread-undertaking-alpha"
+      }
+    ],
+    "interfaces": [
+      {
+        "evidence": "observed-return",
+        "standing": "revisable",
+        "id": "interface-conversation"
+      }
+    ],
+    "omega_relations": [
+      {
+        "evidence": "observed-return",
+        "standing": "support",
+        "roles": [
+          "Connection",
+          "Transformation"
+        ],
+        "id": "relation-return-whole"
+      }
+    ],
+    "d_distinctions": [
+      {
+        "evidence": "observed-return",
+        "standing": "available",
+        "id": "distinction-return"
+      }
+    ],
+    "d_relations": [
+      {
+        "evidence": "observed-return",
+        "standing": "support",
+        "kind": "consequence",
+        "id": "relation-return"
+      }
+    ],
+    "result": "supported-return",
+    "effect_key": "contact-constitutive-v2-base",
+    "movement_id": "thread-undertaking-alpha",
+    "id": "consequence-rr003-linked-neutral"
+  },
+  "scope": {
+    "project": "project-alpha",
+    "audience": "audience-alpha",
+    "principal": "principal-alpha"
+  },
+  "input_kind": "consequence",
+  "input_id": "input-rr003-consequence-linked-neutral",
+  "schema": "miter-assistant-input-v2"
+}

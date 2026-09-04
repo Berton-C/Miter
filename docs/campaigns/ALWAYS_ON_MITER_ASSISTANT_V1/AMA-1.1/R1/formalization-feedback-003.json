@@ -1,0 +1,48 @@
+{
+  "schema": "miter-ama11-formalization-feedback-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "repair": "RR-003",
+  "date": "2026-09-05",
+  "experimental_standing_only": true,
+  "observations_for_later_26_6_and_26_9": [
+    {
+      "id": "FF-003-01",
+      "observation": "Equivalent first-eight support order can be canonicalized mechanically without deciding its Fact9 meaning, while a changed n-ary relation remains materially visible to native cognition.",
+      "formalization_question": "Which equivalence class should identify support presentations while preserving role-essential n-ary organization, Present asymmetry, and support-specific Fourthness?"
+    },
+    {
+      "id": "FF-003-02",
+      "observation": "Two weave relations can disclose plural Generated undertakings without selection; severing one relation removes only its dependent continuation while other live and non-live neighbors remain.",
+      "formalization_question": "What exact relation characterizes local dependency and neutral reordering in a many-valued Generated topology without turning Generated into a chooser?"
+    },
+    {
+      "id": "FF-003-03",
+      "observation": "Malformed participant structure can remain a local unresolved term that changes inquiry accessibility without erasing the surrounding contact or acquiring negative authority.",
+      "formalization_question": "How should partial participant morphisms and quarantine compose with D so that missing lineage remains causally legible but cannot become evidence through absence, repetition, or source prestige?"
+    },
+    {
+      "id": "FF-003-04",
+      "observation": "Hash validity and parseability do not establish developmental consistency. Re-forming the movement from retained basis and active cut distinguishes exact restoration from a semantically stale snapshot.",
+      "formalization_question": "What preservation witness should define constitutive checkpoint equivalence across K to K-prime when participant-derived relations, consequences, and open alternatives can all change?"
+    },
+    {
+      "id": "FF-003-05",
+      "observation": "D, Omega, I, W, and C severances yield heterogeneous movement differences rather than one failure scalar: unresolved, inquiry, defer, and continued availability remain distinct.",
+      "formalization_question": "How should R/A/P express these heterogeneous losses as readings of Balance unfolding at contact without becoming independent vetoes, compensatory scores, or retrospective labels?"
+    },
+    {
+      "id": "FF-003-06",
+      "observation": "The finite kernel can carry the complete Flourishing semantics and many-way Fact9 joint while structured contact supplies present standings; language grounding is still unproved.",
+      "formalization_question": "Which warrants, defeaters, and relational transformations are required for raw language, memory, PLN/NAL, model, and tool material to disclose a flourishing or capture standing without participant sovereignty?"
+    }
+  ],
+  "counterexamples_preserved": [
+    "Byte-valid rehashing can conceal a stale movement and therefore cannot constitute native semantic restoration.",
+    "Rejecting a whole contact because one participant is malformed destroys contact rather than containing participant-local uncertainty.",
+    "Two Generated alternatives are not evidence of native plurality if a carrier supplied them or their order silently selects one.",
+    "Canonicalizing carrier order is lawful only for a declared relation-set presentation; it cannot erase sequence where chronology itself is material.",
+    "A passing finite structured projection is not general natural-language recognition or final 26.6/26.9 mathematics."
+  ],
+  "non_claim": "These observations are PoC feedback. They do not amend, complete, prove, or supersede Inquiry 25, 25.5, 26.0, 26.3, or future Inquiry 26.6/26.9."
+}

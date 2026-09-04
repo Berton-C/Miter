@@ -1,0 +1,109 @@
+{
+  "schema": "miter-assistant-input-v2",
+  "input_id": "input-rr003-d-restored",
+  "input_kind": "contact",
+  "contact": {
+    "id": "contact-constitutive-v2-base",
+    "source_kind": "human-contact",
+    "principal": "principal-alpha",
+    "audience": "audience-alpha",
+    "project": "project-alpha",
+    "occurrence": "occurrence-constitutive-v2-base",
+    "proto": "proto-constitutive-v2-base",
+    "payload_ref": "same-surface-contact-alpha",
+    "parents": [],
+    "configuration": {
+      "d_relations": [
+        {
+          "id": "relation-request",
+          "kind": "contact",
+          "standing": "support",
+          "evidence": "controlled-contact"
+        }
+      ],
+      "d_distinctions": [
+        {
+          "id": "distinction-authorship",
+          "standing": "available",
+          "evidence": "controlled-contact"
+        }
+      ],
+      "omega_relations": [
+        {
+          "id": "relation-whole",
+          "roles": [
+            "Gravity",
+            "Balance",
+            "Connection",
+            "Love"
+          ],
+          "standing": "support",
+          "evidence": "nary-contact-witness"
+        }
+      ],
+      "interfaces": [
+        {
+          "id": "interface-conversation",
+          "standing": "open",
+          "evidence": "authorized-local-contact"
+        }
+      ],
+      "weave": [
+        {
+          "id": "thread-undertaking-alpha",
+          "standing": "open",
+          "evidence": "contact-lineage"
+        }
+      ],
+      "soul_relations": [
+        {
+          "id": "relation-soul-participation",
+          "standing": "material",
+          "evidence": "constitutional-weave"
+        }
+      ],
+      "present": {
+        "context": "present-constitutive-v2-base",
+        "evidence": "occurrence-bound"
+      },
+      "fact_views": [
+        {
+          "id": "fact-view-constitutive-v2",
+          "support": [
+            "Gravity",
+            "Balance",
+            "Connection",
+            "Love"
+          ],
+          "relation_ids": [
+            "relation-whole"
+          ],
+          "recognition": "recognized",
+          "evidence": "finite-contact-reading"
+        }
+      ],
+      "flourishing_views": [
+        {
+          "value": "AgencyBalance",
+          "relation_id": "relation-request",
+          "standing": "flourishing",
+          "evidence": "choice-remains-open"
+        },
+        {
+          "value": "SharedUnderstanding",
+          "relation_id": "relation-request",
+          "standing": "beneficial-direction",
+          "evidence": "request-distinction-live"
+        },
+        {
+          "value": "ConnectionDepth",
+          "relation_id": "relation-whole",
+          "standing": "flourishing",
+          "evidence": "contact-remains-relational"
+        }
+      ],
+      "possibilities": [],
+      "participants": []
+    }
+  }
+}

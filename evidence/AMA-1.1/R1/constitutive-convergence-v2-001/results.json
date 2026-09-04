@@ -1,0 +1,148 @@
+{
+  "schema": "miter-ama11-constitutive-convergence-v2-results-v1",
+  "phase": "AMA-1.1",
+  "repair": "RR-003",
+  "status": "PASS-BOUNDED",
+  "results": [
+    {
+      "id": "typed-contact-neutral-and-restored",
+      "claim": "Typed carrier neutrality, rejection before cognition, and exact restoration",
+      "status": "PASS",
+      "failures": [],
+      "observations": {
+        "reference": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb",
+        "neutral": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb",
+        "severed_submit": "rejected",
+        "restored": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb"
+      }
+    },
+    {
+      "id": "raw-five-field-severance-restoration",
+      "claim": "D/Omega/I/W/C material severance, restoration, and relation-order neutrality",
+      "status": "PASS",
+      "failures": [],
+      "observations": {
+        "D": {
+          "severed": "2a8270957f3d3e5997ce2bc1f3350b2c98fc9f5ee90d111e8c37bfba551a1a15",
+          "restored": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb",
+          "standing": "movement-unresolved"
+        },
+        "Omega": {
+          "severed": "9870a3fd6ff8d295f3d4ff65c01aad87424e024e4aeea25543ad6b8b900c35bf",
+          "restored": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb",
+          "standing": "movement-formed.inquiry"
+        },
+        "I": {
+          "severed": "0db579ded718ef61e4865e6d24c3824ff8a2dd41f113484091e1888c8e3e8e08",
+          "restored": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb",
+          "standing": "movement-formed.defer"
+        },
+        "W": {
+          "severed": "a97df20f4c26216b844b15018d149b16c2ebf10f93d1fb17501a1b9a03c11695",
+          "restored": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb",
+          "standing": "movement-formed.inquiry"
+        },
+        "C": {
+          "severed": "35a23ed9c1411a9c38be9ffece92b57a4d598f06c51b941b78171fa224a90b75",
+          "restored": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb",
+          "standing": "movement-unresolved"
+        },
+        "relation_order": {
+          "a": "eaff6de8cb3d7ebbc0f1255a6b60951eaf7c139debd5f8318b259d1348220ce3",
+          "b": "45cfe2cb1810f943c3a761fd2405407f5e00786ec3a4c330d79e60f174f7a05d",
+          "semantic_topology_equal": true
+        }
+      }
+    },
+    {
+      "id": "fact9-full-support-order-neutral",
+      "claim": "Full first-eight support, Present asymmetry, and carrier-order neutrality",
+      "status": "PASS",
+      "failures": [],
+      "observations": {
+        "first": "48a818eb0f702f0447ec9bcec5e43c6d20afe88e6d63bef7402a30f356a55a34",
+        "reversed": "48a818eb0f702f0447ec9bcec5e43c6d20afe88e6d63bef7402a30f356a55a34"
+      }
+    },
+    {
+      "id": "native-plural-generated-isolated-restoration",
+      "claim": "Plural native Generated topology, isolated dependency loss, and restoration",
+      "status": "PASS",
+      "failures": [],
+      "observations": {
+        "plural": "da62a05ae4f92cbae3309ef8c4445c9d2d7388d73218dfafc2f7eab5f9d77d04",
+        "isolated": "7866a5691fb578fc10f680770b893bc9afc143a120ed0549b35703e91830450a",
+        "restored": "da62a05ae4f92cbae3309ef8c4445c9d2d7388d73218dfafc2f7eab5f9d77d04"
+      }
+    },
+    {
+      "id": "participant-local-quarantine-restoration",
+      "claim": "Participant-local carrier containment, native inquiry, and typed restoration",
+      "status": "PASS",
+      "failures": [],
+      "observations": {
+        "unresolved": "503b5cc9ee735571ca558d3cf9c85883c004618028af91d513ea22127b8a3dc2",
+        "restored": "ab8a19cc8cebd4c4a0a6b6b8bf50521c9a330948bcf757c573b29ec665f61bff"
+      }
+    },
+    {
+      "id": "participant-source-coverage",
+      "claim": "Model, memory, PLN, NAL, and tool source/lineage coverage without movement authority",
+      "status": "PASS",
+      "failures": [],
+      "observations": {
+        "checkpoint": "f50c8ffd2151bbb8d37093f0ae9743439f0661976c7f662ae69a82d671db2dc2"
+      }
+    },
+    {
+      "id": "consequence-detached-neutral-restored",
+      "claim": "Detached consequence containment, neutral carrier order, and linked reconstruction",
+      "status": "PASS",
+      "failures": [],
+      "observations": {
+        "detached_before": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb",
+        "detached_after": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb",
+        "linked_a": "c21638cf0e856c10d75f0bcb2bc568f03e6073509015b26ce1eb16befed32ab5",
+        "linked_b": "c21638cf0e856c10d75f0bcb2bc568f03e6073509015b26ce1eb16befed32ab5"
+      }
+    },
+    {
+      "id": "semantic-checkpoint-severance-restoration",
+      "claim": "Native semantic consistency rejection after mechanical rehash and exact recovery",
+      "status": "PASS",
+      "failures": [],
+      "observations": {
+        "original": "f70230c81d7375c1a4d136267241a2f1e9c46e12a74539a0401b319d363705cb",
+        "corrupt_rehashed": "fd8b2c991563acd9a90890d90c7314136eb5fcd620cc6adbf0dbb09e76fb527b",
+        "corrupt_start": "start-failed",
+        "restored_start": "started",
+        "effect_hashes": [
+          "e9ee3eb73695691a47937ce4be32f565795a54600ec8fec0c92f2490432f13b3"
+        ]
+      }
+    },
+    {
+      "id": "endogenous-severance-restoration",
+      "claim": "Endogenous contact uses the same kernel with causal W loss and restoration",
+      "status": "PASS",
+      "failures": [],
+      "observations": {
+        "severed": "5514433fd591e81cbc5d1f3ffc1157a9225d6f3e7882e183a398d16f3f6eb175",
+        "restored": "ba6af03bea637d3a17c3e7fb53baaaaf76e0e7d41eeac88c12f18baaecd61e01"
+      }
+    },
+    {
+      "id": "joined-convergence-regression",
+      "claim": "Fidelity 17/17, Prolog load, RR-002 14/14, v1 12/12, and no live/private reach",
+      "status": "PASS",
+      "failures": [],
+      "observations": {
+        "fidelity_passes": 17,
+        "rr002_v2_passes": 14,
+        "rr002_v1_passes": 12,
+        "external_matches": []
+      }
+    }
+  ],
+  "failures": []
+}

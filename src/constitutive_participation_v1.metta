@@ -553,7 +553,9 @@
          (index-atom $participant 5) (index-atom $participant 6)
          no-contact no-movement-authority)
        (participant-unresolved (index-atom $participant 1) scope-or-authority-mismatch))
-     (participant-unresolved unknown malformed-participant)))
+     (if (CPShape $participant participant-unresolved 3)
+       $participant
+       (participant-unresolved unknown malformed-participant))))
 
 (= (CPParticipantAt $cut $participants $i)
    (if (< $i (size-atom $participants))
@@ -665,8 +667,8 @@
 ; Participant products remain readings. This section derives a bounded relation
 ; organization while preserving source, scope, lineage and conflict.
 (= (CPParticipantRelationReading $reading)
-   (and (CPShape $reading derived-participant-reading 9)
-        (CPShape (index-atom $reading 5) participant-relation-claim 4)))
+   (if (CPShape $reading derived-participant-reading 9)
+     (CPShape (index-atom $reading 5) participant-relation-claim 4) false))
 
 (= (CPParticipantTargetsAt $readings $i $seen)
    (if (< $i (size-atom $readings))
@@ -742,11 +744,22 @@
      (cons-atom (CPParticipantRelationOne $readings (index-atom $targets $i))
        (CPParticipantRelationsAt $readings $targets (+ $i 1))) ()))
 
+(= (CPParticipantUnresolvedAt $readings $i)
+   (if (< $i (size-atom $readings))
+     (let $reading (index-atom $readings $i)
+       (if (CPShape $reading participant-unresolved 3)
+         (cons-atom (participant-reentry-unresolved
+           (index-atom $reading 1) (index-atom $reading 2))
+           (CPParticipantUnresolvedAt $readings (+ $i 1)))
+         (CPParticipantUnresolvedAt $readings (+ $i 1)))) ()))
+
 (= (CPParticipantRelationOrganization $participants)
    (let* (($readings (index-atom $participants 2))
           ($targets (CPParticipantTargetsAt $readings 0 ())))
      (participant-relation-organization
-       (CPParticipantRelationsAt $readings $targets 0))))
+       (CPListAppend
+         (CPParticipantRelationsAt $readings $targets 0)
+         (CPParticipantUnresolvedAt $readings 0)))))
 
 (= (CPParticipantRelationsHaveAt $organization $head $i)
    (let $relations (index-atom $organization 1)
@@ -774,13 +787,45 @@
 (= (CPParticipantDRelations $organization)
    (CPParticipantDRelationsAt (index-atom $organization 1) 0))
 
+(= (CPMergeNewRelationsAt $rows $derived $i)
+   (if (< $i (size-atom $derived))
+     (let $relation (index-atom $derived $i)
+       (if (and (CPShape $relation relation 5)
+                (== (size-atom (CPFind $rows (index-atom $relation 1))) 0))
+         (CPMergeNewRelationsAt (CPListAppend $rows ($relation)) $derived (+ $i 1))
+         (CPMergeNewRelationsAt $rows $derived (+ $i 1))))
+     $rows))
+
 (= (CPApplyParticipantRelations $cut $organization)
    (let* (($old-d (index-atom $cut 6))
           ($derived (CPParticipantDRelations $organization)))
      (constitutive-cut
        (index-atom $cut 1) (index-atom $cut 2) (index-atom $cut 3)
        (index-atom $cut 4) (index-atom $cut 5)
-       (D (CPListAppend (index-atom $old-d 1) $derived) (index-atom $old-d 2))
+       (D (CPMergeNewRelationsAt (index-atom $old-d 1) $derived 0)
+          (index-atom $old-d 2))
+       (index-atom $cut 7) (index-atom $cut 8) (index-atom $cut 9)
+       (index-atom $cut 10) (index-atom $cut 11) (index-atom $cut 12)
+       (index-atom $cut 13))))
+
+(= (CPNonParticipantDRelationsAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (and (CPShape $row relation 5)
+                (== (index-atom $row 2) participant-derived))
+         (CPNonParticipantDRelationsAt $rows (+ $i 1))
+         (cons-atom $row (CPNonParticipantDRelationsAt $rows (+ $i 1))))) ()))
+
+; Restoration reconstructs from the pre-participant material cut and lets the
+; retained participant basis re-form its bounded relations. This prevents both
+; duplication and mechanically rehashed, semantically stale movements.
+(= (CPBaseCutWithoutParticipantRelations $cut)
+   (let $old-d (index-atom $cut 6)
+     (constitutive-cut
+       (index-atom $cut 1) (index-atom $cut 2) (index-atom $cut 3)
+       (index-atom $cut 4) (index-atom $cut 5)
+       (D (CPNonParticipantDRelationsAt (index-atom $old-d 1) 0)
+          (index-atom $old-d 2))
        (index-atom $cut 7) (index-atom $cut 8) (index-atom $cut 9)
        (index-atom $cut 10) (index-atom $cut 11) (index-atom $cut 12)
        (index-atom $cut 13))))
@@ -858,7 +903,8 @@
 
 (= (CPParticipantNeedsInquiry $participant-relations)
    (or (CPParticipantRelationsHave $participant-relations participant-proposed-relation)
-       (CPParticipantRelationsHave $participant-relations participant-relation-conflict)))
+     (or (CPParticipantRelationsHave $participant-relations participant-relation-conflict)
+         (CPParticipantRelationsHave $participant-relations participant-reentry-unresolved))))
 
 (= (CPInquiryNeededV2 $cut $facts $flourishing $participant-relations)
    (or (CPFactExpressionsUnresolved $facts)

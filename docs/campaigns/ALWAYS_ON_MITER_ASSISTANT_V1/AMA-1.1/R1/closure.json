@@ -1,0 +1,94 @@
+{
+  "schema": "miter-campaign-phase-closure-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "date": "2026-09-05",
+  "plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/plan.json",
+  "plan_commit": "d6931ec381ec72a50aff20a35d94ca8d662cfa09",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-convergence-v2-001/results.json",
+      "sha256": "1682d7abe2fdd80d5e60df54f307b011f0454c81508abcd60d9016b3d139f798"
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-convergence-v2-001/verdict.json",
+      "sha256": "4ecc12e04204b75940c08e998b61867795a2ea5273a7d0167bc139fc425d6273"
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-chain-v2-001/verdict.json",
+      "sha256": "bddceb7e062d825bcc1d9bb42b3af3567962eb0c9eb4c346969a463f0827094b"
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/post-operator-repair-001/verdict.json",
+      "sha256": "ca970e0f4abdce5bd6d72d7cd93cc05ef279352ff95bd3d31fbd182894d2cad8"
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/participant-voice-freeze-001/verdict.json",
+      "sha256": "e3e64ca1b96a75f31556a3be1b054b2ca58126085bbdb5e01b6c60cc676f3eb8"
+    },
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/constitutive-repair-outcome-003.json",
+      "sha256": "96cfc31eff473dfe0f5e15a332603b909dc78c4db145d95721a6f225dee72d38"
+    },
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/f09-review-003.json",
+      "sha256": "85156835a4c877784b5b8bdfd80845d73b24ec7b31e180eb3ae6cec4879908fe"
+    },
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/formalization-feedback-003.json",
+      "sha256": "bfef8d35f0c5b9712fb0eef2ac45393a28b9849b0583d7411001d043f26687d3"
+    }
+  ],
+  "claim_results": [
+    {
+      "id": "AMA11-R1-supported-persistent-service-spine",
+      "status": "PROVEN-RUNTIME",
+      "limit": "One explicit isolated local runtime and controlled fixtures; no installed launchd service, durable user root, live server, or production deployment is claimed."
+    },
+    {
+      "id": "AMA11-R1-fact9-flourishing-constitutive-joint",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Finite structured projections establish the causal native consumer, not universal semantic recognition, metaphysical reconstruction, or final 26.6/26.9 mathematics."
+    },
+    {
+      "id": "AMA11-R1-generic-unfamiliar-and-endogenous-navigation",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Generic typed relations and frozen constructors handle controlled unenumerated compositions; general raw-language conversation remains AMA-1.2."
+    },
+    {
+      "id": "AMA11-R1-consequence-bearing-continuity",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Next-cut reconstruction and process restart are proven for the finite active organization; long-gap, n-user, Chroma, exact capsule and raw-artifact Continuity of Mind remain AMA-1.2."
+    },
+    {
+      "id": "AMA11-R1-bounded-participants-voice-effects-and-supervision",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Participant source classes and local VoiceRNA/effect boundaries use controlled no-network fixtures; no live model, memory, reasoner, tool, Mattermost, or credential access is claimed."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "The admitted slice preserves Balance as movement-primary unfolding at contact; Fact9 and the nine interconnected Flourishings form one many-way constitutive joint; Investigation-25 R/A/P read each same forming movement; Generated remains a relation of plural lawful possibility; consequence makes recurrence developmental.",
+    "causal_evidence": "Raw positive, material severance, neutral and restoration artifacts show that typed contact, every D/Omega/I/W/C field, Fact9 support, Flourishing standing, Generated dependencies, participant lineage, consequence linkage, and checkpoint consistency materially change or preserve native movement exactly where predicted.",
+    "substitution_audit": "The v2 carrier supplies no possible movement. No scenario identifier, response catalogue, first-match order, score, argmax, shortest-plan rule, supplied step count, model preference, prompt verdict, or host-language semantic selector determines the movement. Prolog contains mechanics only and JavaScript remains builder-side evidence code.",
+    "capability_and_constraint_audit": "The service is limited to explicit /private/tmp roots, no network, no private memory, no Chroma, no model call, and a local isolated outbox. VoiceRNA cannot grant effect authority; participants retain no-contact/no-movement-authority; status and heartbeat make no semantic-health claim; panic preserves history.",
+    "constitutive_participation": "All ten F-09 stages are PROVEN-RUNTIME at the finite AMA-1.1 scope through one continuously cycling PeTTa/MeTTa process. The complete semantic compass and Fact9 expressions remain in the movement derivation rather than appearing as labels after a choice.",
+    "next_cut_and_restart": "Matched consequence changes reconstruct different K-prime movements. Detached evidence cannot change the cut. Fresh-process restore rehydrates the active organization, natively rejects mechanically rehashed semantic inconsistency, accepts exact restoration, and does not replay the committed effect.",
+    "remaining_gaps": "General held-out natural-language grounding, authenticated multi-user/project identity, exact long-gap capsules, authorized Chroma/raw-artifact retrieval, live bounded model participation, live Mattermost effects, production supervision, developmental learning, regeneration, and evaluation packaging remain explicit successor work."
+  },
+  "constitutive_trace_results": [
+    {"stage": "typed-contact", "status": "PROVEN-RUNTIME", "evidence": "RR-003 typed reference/neutral/project-severed/restored raw arms.", "limit": "Structured controlled contact only; authenticated general language remains AMA-1.2."},
+    {"stage": "constitutive-cut", "status": "PROVEN-RUNTIME", "evidence": "RR-003 raw D/Omega/I/W/C severance/restoration and relation-order arms.", "limit": "Finite D/Omega/I/W/C projection, not a total model of actuality."},
+    {"stage": "fact9-expression", "status": "PROVEN-RUNTIME", "evidence": "RR-003 full-first-eight/order arms plus preserved adversarial whole, role, Present and recognition cases.", "limit": "Structured recognition standing; no universal language-to-Fact9 claim."},
+    {"stage": "flourishing-organization", "status": "PROVEN-RUNTIME", "evidence": "RR-002 complete compass and matched flourishing/capture/disguise branches.", "limit": "Structured standings; live semantic grounding remains successor work."},
+    {"stage": "generated-continuations", "status": "PROVEN-RUNTIME", "evidence": "RR-003 plural-live, isolated beta loss and exact restoration arms.", "limit": "Finite composable operator grammar, not every future continuation form."},
+    {"stage": "native-movement", "status": "PROVEN-RUNTIME", "evidence": "RR-002/RR-003 undertaking, inquiry, defer, plural and unresolved derivations with causal R/A/P.", "limit": "Bounded native construction, not universal appropriateness."},
+    {"stage": "bounded-participant-reentry", "status": "PROVEN-RUNTIME", "evidence": "RR-003 local quarantine/restoration and five-source coverage plus RR-002 conflict/lineage cases.", "limit": "Controlled participant terms, not live participant quality or reach."},
+    {"stage": "voice-and-effect", "status": "PROVEN-RUNTIME", "evidence": "Participant/VoiceRNA freeze and RR-002/RR-003 local descriptor, duplicate and no-replay observations.", "limit": "Local no-network effect only; no conversational rendering quality claim."},
+    {"stage": "consequence-next-cut", "status": "PROVEN-RUNTIME", "evidence": "RR-002 matched supportive/capture branches and RR-003 detached/neutral/restored linkage.", "limit": "Controlled consequence interpretation, not broad real-world consequence understanding."},
+    {"stage": "restart-continuity", "status": "PROVEN-RUNTIME", "evidence": "RR-002 next-organization restart and RR-003 semantic checkpoint severance/exact restoration.", "limit": "Finite active organization; long-gap, multi-user and full Continuity of Mind remain AMA-1.2."}
+  ],
+  "reviewer": "Independent qualitative F-09 review performed after the immutable RR-003 execution, distinct from the scripted mechanical verdict.",
+  "review_limits": "The review certifies only the frozen AMA-1.1 finite controlled-fixture claim. It does not certify consciousness, intelligence in general, biological state, universal flourishing, final mathematics, live service authority, general conversation, private memory, or production fitness.",
+  "terminal_reason": "AMA-1.1 terminates successfully at its bounded first-slice scope. AMA-1.2 is the recorded campaign successor, but its executable plan must be frozen separately from this closed phase before any broader or live authority is exercised."
+}

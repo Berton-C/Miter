@@ -1,0 +1,82 @@
+{
+  "schema": "miter-campaign-constitutive-repair-outcome-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "repair": "RR-003",
+  "date": "2026-09-05",
+  "status": "PASS-BOUNDED-READY-FOR-F09-CLOSURE",
+  "freeze": {
+    "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/constitutive-refreeze-003.json",
+    "commit": "75fddf2dfbc93d96ae79b3b3afc22d654b7bd791"
+  },
+  "implementation": [
+    {
+      "path": "src/constitutive_participation_v1.metta",
+      "sha256": "60a2d94ea58426c7d7cfbd6552250cf1772240fecf166208f555b8c836f2c890",
+      "standing": "Participant-local unresolved material remains explicit and inquiry-bearing; participant-derived D relations are idempotent; restoration can recover the pre-participant cut for exact constitutive reconstruction."
+    },
+    {
+      "path": "src/assistant_reactor_v1.metta",
+      "sha256": "dd1df7c78927935577e8105ea96c6b84fa900ee748d77fdb12ff1c6da593e9be",
+      "standing": "Native v2 restoration reconstructs a movement from its retained basis and active cut and rejects semantic inconsistency even when checkpoint bytes have a valid replacement hash."
+    },
+    {
+      "path": "effect_membranes/miter_assistant_service_v1.pl",
+      "sha256": "31beffc967ad8314ba35d35c503117bd37d20e08860cb890a62ec5cf864b2702",
+      "standing": "The non-cognitive carrier contains malformed participant structure locally and canonicalizes Fact9 role order; it does not select inquiry, movement, or repair."
+    },
+    {
+      "path": "scripts/ama1_1/constitutive_convergence_v2.mjs",
+      "sha256": "365965390912648331755a28757667309244432477bf59f35790cce53a32cc4a",
+      "standing": "Builder-only runner for the frozen ten-case convergence matrix; never imported by Miter."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-convergence-v2-001/results.json",
+      "sha256": "1682d7abe2fdd80d5e60df54f307b011f0454c81508abcd60d9016b3d139f798"
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-convergence-v2-001/verdict.json",
+      "sha256": "4ecc12e04204b75940c08e998b61867795a2ea5273a7d0167bc139fc425d6273"
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-convergence-v2-001/runtime.json",
+      "sha256": "6767f684d1924631a8a0d329ba3c327ad2ae3310945d81ea140454ad3cc5dff2"
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/constitutive-convergence-v2-001/commands.json",
+      "sha256": "c77bd1188638b307b173acc809077ab6aca92a0223f83bded576f746b6f29010"
+    }
+  ],
+  "results": {
+    "frozen_convergence_cases": 10,
+    "frozen_convergence_passed": 10,
+    "rr002_v2_regression_cases": 14,
+    "rr002_v2_regression_passed": 14,
+    "preserved_v1_cases": 12,
+    "preserved_v1_passed": 12,
+    "active_fidelity_checks": 17,
+    "active_fidelity_passed": 17,
+    "raw_evidence_directories": 30,
+    "external_network_calls": 0,
+    "model_calls": 0,
+    "chroma_reads": 0,
+    "private_memory_reads": 0,
+    "external_effects": 0,
+    "implicit_runtime_roots": 0
+  },
+  "causal_findings": [
+    "Transport-only input identity and JSON member order leave the native checkpoint unchanged; a missing project is rejected before cognition and exact restoration recovers the checkpoint.",
+    "Independent D, Omega, I, W, and C severances produce the frozen unresolved, inquiry, or defer differences, and exact restoration recovers the reference organization.",
+    "Full first-eight Fact9 support remains finite and non-reconstructive; reversed support and role order canonicalize to the same checkpoint while Present remains separate.",
+    "Two open weave relations disclose two simultaneously Generated native undertakings alongside unrecognized inquiry and unavailable defer; closing only one removes only its Generated standing and restoration recovers plural-live organization.",
+    "One malformed participant is retained as participant-local unresolved material and opens native inquiry without rejecting contact; restored independent lineage yields bounded participant-derived support and undertaking.",
+    "Model, memory, PLN, NAL, and tool products retain distinct source and lineage with no contact or movement authority.",
+    "A detached consequence cannot change the active organization; equivalent consequence serialization yields the same next checkpoint and an exact link reconstructs the next undertaking.",
+    "A semantically stale checkpoint with a mechanically valid replacement hash is rejected by native reconstruction; exact bytes restore the unfinished organization without replaying its effect.",
+    "Endogenous contact uses the same kernel; W severance forms inquiry and restoration recovers undertaking with endogenous provenance intact."
+  ],
+  "review_disposition": "The mechanical RR-003 experiment passes. The separately authored F-09 review is f09-review-003.json and is the only basis for bounded AMA-1.1 closure.",
+  "non_claims": "This outcome does not establish general natural-language grounding, universal Fact9 or flourishing interpretation, live model/PLN/NAL/memory use, live Mattermost reach, long-gap or multi-user Continuity of Mind, production reliability, autonomous regeneration, unrestricted cognition, or completed Inquiry 26.6/26.9 mathematics."
+}

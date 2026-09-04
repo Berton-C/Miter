@@ -1,0 +1,23 @@
+{
+  "schema": "miter-ama11-constitutive-convergence-v2-runtime-v1",
+  "phase": "AMA-1.1",
+  "repair": "RR-003",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "swipl": "SWI-Prolog version 10.0.2 for arm64-darwin",
+  "freeze_sha256": "4b4214bca08b6a29c816379c521f5e0bd6933de296c4e6f509350010ed126bad",
+  "matrix_sha256": "5a6310d0c835f7c22b6d90c03279ab43ef37a6455bcb1bbe00bd5ae03bb17af8",
+  "implementation": {
+    "src/constitutive_participation_v1.metta": "60a2d94ea58426c7d7cfbd6552250cf1772240fecf166208f555b8c836f2c890",
+    "src/assistant_reactor_v1.metta": "dd1df7c78927935577e8105ea96c6b84fa900ee748d77fdb12ff1c6da593e9be",
+    "src/bootstrap_assistant_v1.metta": "ba3fc8030070f9e24ac651cd9167994e5cc8132b2c06af71675e654c91d5c0d1",
+    "effect_membranes/miter_assistant_service_v1.pl": "31beffc967ad8314ba35d35c503117bd37d20e08860cb890a62ec5cf864b2702",
+    "effect_membranes/miter_assistant_operator_v1.pl": "e77ff9c75f87447b74822d13b673238f4786f4141c3afbfb0c882b599da32902",
+    "scripts/ama1_1/constitutive_convergence_v2.mjs": "365965390912648331755a28757667309244432477bf59f35790cce53a32cc4a"
+  },
+  "runtime_roots": "explicit-fresh-/private/tmp-only",
+  "external_network_calls": 0,
+  "model_calls": 0,
+  "chroma_reads": 0,
+  "private_memory_reads": 0,
+  "external_effects": 0
+}

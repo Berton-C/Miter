@@ -19,11 +19,28 @@
        (or (CPShape $movement movement-unresolved 3)
            (CPShape $movement no-current-movement 2)))))
 
+; Byte integrity belongs to the membrane. For a v2 movement, native restore
+; additionally re-forms the movement from its retained constitutive basis and
+; requires exact agreement with the active cut. V1 snapshots keep their prior
+; bounded validation because they carry no v2 continuation basis.
+(= (ARMovementConstitutivelyConsistent $cut $movement)
+   (let $basis (CPMovementBasisV2 $movement)
+     (if (CPShape $basis continuation-basis-v2 5)
+       (let* (($base-cut (CPBaseCutWithoutParticipantRelations $cut))
+              ($encounter (CPConstitutiveEncounterV2 $base-cut
+                (index-atom $basis 1) (index-atom $basis 2)
+                (index-atom $basis 3) (index-atom (index-atom $basis 4) 1))))
+         (and (CPShape $encounter constitutive-encounter 7)
+              (== (index-atom $encounter 5) $movement)))
+       true)))
+
 (= (ARActiveValid $active)
    (and (CPShape $active active-organization 4)
      (and (CPShape (index-atom $active 1) scope 4)
        (and (CPCutValid (index-atom $active 2))
-            (ARMovementValid (index-atom $active 3))))))
+        (and (ARMovementValid (index-atom $active 3))
+             (ARMovementConstitutivelyConsistent
+               (index-atom $active 2) (index-atom $active 3)))))))
 
 (= (ARHistoryValid $row)
    (and (CPShape $row assistant-history 5)

@@ -1,0 +1,109 @@
+{
+  "contact": {
+    "configuration": {
+      "participants": [],
+      "possibilities": [],
+      "flourishing_views": [
+        {
+          "evidence": "choice-remains-open",
+          "standing": "flourishing",
+          "relation_id": "relation-request",
+          "value": "AgencyBalance"
+        },
+        {
+          "evidence": "request-distinction-live",
+          "standing": "beneficial-direction",
+          "relation_id": "relation-request",
+          "value": "SharedUnderstanding"
+        },
+        {
+          "evidence": "contact-remains-relational",
+          "standing": "flourishing",
+          "relation_id": "relation-whole",
+          "value": "ConnectionDepth"
+        }
+      ],
+      "fact_views": [
+        {
+          "evidence": "finite-contact-reading",
+          "recognition": "recognized",
+          "relation_ids": [
+            "relation-whole"
+          ],
+          "support": [
+            "Gravity",
+            "Balance",
+            "Connection",
+            "Love"
+          ],
+          "id": "fact-view-constitutive-v2"
+        }
+      ],
+      "present": {
+        "evidence": "occurrence-bound",
+        "context": "present-constitutive-v2-base"
+      },
+      "soul_relations": [
+        {
+          "evidence": "constitutional-weave",
+          "standing": "material",
+          "id": "relation-soul-participation"
+        }
+      ],
+      "weave": [
+        {
+          "evidence": "contact-lineage",
+          "standing": "open",
+          "id": "thread-undertaking-alpha"
+        }
+      ],
+      "interfaces": [
+        {
+          "evidence": "authorized-local-contact",
+          "standing": "open",
+          "id": "interface-conversation"
+        }
+      ],
+      "omega_relations": [
+        {
+          "evidence": "nary-contact-witness",
+          "standing": "support",
+          "roles": [
+            "Gravity",
+            "Balance",
+            "Connection",
+            "Love"
+          ],
+          "id": "relation-whole"
+        }
+      ],
+      "d_distinctions": [
+        {
+          "evidence": "controlled-contact",
+          "standing": "available",
+          "id": "distinction-authorship"
+        }
+      ],
+      "d_relations": [
+        {
+          "evidence": "controlled-contact",
+          "standing": "support",
+          "kind": "contact",
+          "id": "relation-request"
+        }
+      ]
+    },
+    "parents": [],
+    "payload_ref": "same-surface-contact-alpha",
+    "proto": "proto-constitutive-v2-base",
+    "occurrence": "occurrence-constitutive-v2-base",
+    "project": "project-alpha",
+    "audience": "audience-alpha",
+    "principal": "principal-alpha",
+    "source_kind": "human-contact",
+    "id": "contact-constitutive-v2-base"
+  },
+  "input_kind": "contact",
+  "input_id": "input-constitutive-v2-neutral-transport",
+  "schema": "miter-assistant-input-v2"
+}

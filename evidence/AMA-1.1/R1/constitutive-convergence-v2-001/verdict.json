@@ -1,0 +1,23 @@
+{
+  "schema": "miter-ama11-constitutive-convergence-v2-verdict-v1",
+  "phase": "AMA-1.1",
+  "repair": "RR-003",
+  "status": "PASS-BOUNDED",
+  "passed": [
+    "typed-contact-neutral-and-restored",
+    "raw-five-field-severance-restoration",
+    "fact9-full-support-order-neutral",
+    "native-plural-generated-isolated-restoration",
+    "participant-local-quarantine-restoration",
+    "participant-source-coverage",
+    "consequence-detached-neutral-restored",
+    "semantic-checkpoint-severance-restoration",
+    "endogenous-severance-restoration",
+    "joined-convergence-regression"
+  ],
+  "failed": [],
+  "rr002_v2_regression_passed": true,
+  "v1_regression_passed": true,
+  "standing": "All ten frozen RR-003 convergence trials pass with raw artifacts, and all RR-002/v1 regression cases remain passing. Independent F-09 review is still required; this mechanical verdict does not close AMA-1.1.",
+  "no_live_or_private_reach": true
+}

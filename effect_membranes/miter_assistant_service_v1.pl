@@ -65,7 +65,8 @@ as_nonempty_symbol_list(Values, Atoms) :-
     as_symbol_list(Values, Atoms), Atoms = [_|_].
 
 as_roles(Values, Roles) :-
-    as_nonempty_symbol_list(Values, Roles),
+    as_nonempty_symbol_list(Values, Atoms),
+    sort(Atoms, Roles),
     maplist(as_fact9_role, Roles).
 
 as_fact9_role(Role) :-
@@ -198,6 +199,24 @@ as_participant_v2(Scope, Dict,
     as_member(Standing, [candidate,supported,contradicted,unresolved]),
     as_dict_atom(Dict, authority, 'no-contact-no-movement-authority').
 
+% A structurally invalid participant must not erase an otherwise valid contact.
+% The membrane preserves only the local carrier failure and a safe identifier;
+% native MeTTa remains responsible for how that unresolved material participates.
+as_participant_unresolved_v2(Dict,
+                             ['participant-unresolved', Id,
+                              'carrier-schema-or-provenance-invalid']) :-
+    ( is_dict(Dict), get_dict(id, Dict, Candidate),
+      catch(as_symbol(Candidate, Id0), _, fail)
+    -> Id = Id0
+    ;  Id = unknown
+    ).
+
+as_participant_v2_or_unresolved(Scope, Dict, Participant) :-
+    ( as_participant_v2(Scope, Dict, Valid)
+    -> Participant = Valid
+    ;  as_participant_unresolved_v2(Dict, Participant)
+    ).
+
 as_present(Dict, ['present-context', Context, Evidence]) :-
     is_dict(Dict),
     as_dict_atom(Dict, context, Context),
@@ -285,7 +304,7 @@ as_contact_v2(Dict,
     is_list(PossibilityValues), maplist(as_possibility, PossibilityValues, Possibilities),
     get_dict(participants, Configuration, ParticipantValues),
     is_list(ParticipantValues),
-    maplist(as_participant_v2(Scope), ParticipantValues, Participants).
+    maplist(as_participant_v2_or_unresolved(Scope), ParticipantValues, Participants).
 
 as_scope(Dict, [scope,Principal,Audience,Project]) :-
     is_dict(Dict),

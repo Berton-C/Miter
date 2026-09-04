@@ -1,0 +1,2532 @@
+[
+  {
+    "name": "typed-reference:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-reference-w0NUdi"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"b2348d18241bbe28e7254190f47a56e0e0f77a68913995f3f78c46e89caf95e1\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-typed-reference-w0NUdi\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "b2348d18241bbe28e7254190f47a56e0e0f77a68913995f3f78c46e89caf95e1",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-typed-reference-w0NUdi",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "typed-reference:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-reference-w0NUdi"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":99897,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 99897,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "typed-reference:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-reference-w0NUdi",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-typed-reference-H50pLS/typed-reference.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "typed-reference:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-reference-w0NUdi"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":99897,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 99897,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "typed-neutral:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-neutral-Os7miW"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"ba22792731c2e6ba3e86f200b1fd1817e6cde79472485e21981f70020d111284\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-typed-neutral-Os7miW\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "ba22792731c2e6ba3e86f200b1fd1817e6cde79472485e21981f70020d111284",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-typed-neutral-Os7miW",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "typed-neutral:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-neutral-Os7miW"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":99931,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 99931,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "typed-neutral:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-neutral-Os7miW",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-typed-neutral-lKzXVu/typed-neutral.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-neutral-transport\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-neutral-transport",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "typed-neutral:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-neutral-Os7miW"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":99931,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 99931,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "typed-severed:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-severed-dTcjyO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f518c430c3faa06811347931306fb570e4a85901c4917cd0b8b0e8fbebfa20fe\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-typed-severed-dTcjyO\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "f518c430c3faa06811347931306fb570e4a85901c4917cd0b8b0e8fbebfa20fe",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-typed-severed-dTcjyO",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "typed-severed:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-severed-dTcjyO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":99966,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 99966,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "typed-severed:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-severed-dTcjyO",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-typed-severed-6YeznB/typed-severed.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": "",
+    "reply": {
+      "reason": "strict-input-schema-runtime-or-size-boundary",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "rejected"
+    }
+  },
+  {
+    "name": "typed-severed:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-severed-dTcjyO"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":99966,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 99966,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "typed-restored:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-restored-HYLQ2C"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"4e1819499b2f1473d124fcc99dd59aa50ad715e5732865b2086752c62558f03a\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-typed-restored-HYLQ2C\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "4e1819499b2f1473d124fcc99dd59aa50ad715e5732865b2086752c62558f03a",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-typed-restored-HYLQ2C",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "typed-restored:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-restored-HYLQ2C"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":101,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 101,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "typed-restored:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-restored-HYLQ2C",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-typed-restored-oTKfJ5/typed-restored.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-project-restored\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-project-restored",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "typed-restored:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-typed-restored-HYLQ2C"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":101,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 101,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-D-severed:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-severed-v3ze7k"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"137a7977d62e6b99eb575e3b53919130a54a0862a4a24c85cee10ec40f9a8917\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-D-severed-v3ze7k\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "137a7977d62e6b99eb575e3b53919130a54a0862a4a24c85cee10ec40f9a8917",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-D-severed-v3ze7k",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-D-severed:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-severed-v3ze7k"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":136,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 136,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-D-severed:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-severed-v3ze7k",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-D-severed-CcOZhK/five-D-severed.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-d-severed\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-d-severed",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-D-severed:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-severed-v3ze7k"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":136,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 136,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-D-restored:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-restored-Q8K0Cb"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"3a33d5c61f6edad23cd9ebe3949f5973102361ee9cb03eb74361b6f46fe6f3eb\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-D-restored-Q8K0Cb\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "3a33d5c61f6edad23cd9ebe3949f5973102361ee9cb03eb74361b6f46fe6f3eb",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-D-restored-Q8K0Cb",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-D-restored:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-restored-Q8K0Cb"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":171,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 171,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-D-restored:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-restored-Q8K0Cb",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-D-restored-lcxlOA/five-D-restored.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-d-restored\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-d-restored",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-D-restored:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-restored-Q8K0Cb"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":171,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 171,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-Omega-severed:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-Omega-severed-m9PQsC"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"bd0869a9b0c55f90e749a05a282b89bee12410fbfbe3f33568a42151c4d52326\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-Omega-severed-m9PQsC\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "bd0869a9b0c55f90e749a05a282b89bee12410fbfbe3f33568a42151c4d52326",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-Omega-severed-m9PQsC",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-Omega-severed:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-Omega-severed-m9PQsC"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":207,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 207,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-Omega-severed:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-Omega-severed-m9PQsC",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-Omega-severed-pp8y1X/five-Omega-severed.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-omega-severed\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-omega-severed",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-Omega-severed:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-Omega-severed-m9PQsC"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":207,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 207,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-Omega-restored:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-Omega-restored-v6SmX6"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"c1a2f595dc769c99b596f75bda2e1f20f5d22ef9674f2168dc956f9ce989be4f\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-Omega-restored-v6SmX6\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "c1a2f595dc769c99b596f75bda2e1f20f5d22ef9674f2168dc956f9ce989be4f",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-Omega-restored-v6SmX6",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-Omega-restored:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-Omega-restored-v6SmX6"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":244,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 244,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-Omega-restored:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-Omega-restored-v6SmX6",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-Omega-restored-jap6lH/five-Omega-restored.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-omega-restored\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-omega-restored",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-Omega-restored:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-Omega-restored-v6SmX6"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":244,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 244,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-I-severed:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-I-severed-noVfBD"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"811e10cb71330ca45b462828484ffad8d60c0c9b4622e1a8b3d75562817e5d69\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-I-severed-noVfBD\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "811e10cb71330ca45b462828484ffad8d60c0c9b4622e1a8b3d75562817e5d69",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-I-severed-noVfBD",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-I-severed:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-I-severed-noVfBD"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":278,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 278,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-I-severed:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-I-severed-noVfBD",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-I-severed-ctrg6A/five-I-severed.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-i-severed\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-i-severed",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-I-severed:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-I-severed-noVfBD"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":278,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 278,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-I-restored:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-I-restored-xcQaJt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"e1c8747af92a333ca41e8ba5fc074419c4fa32c6b1d5a90bdad297beaa4c687c\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-I-restored-xcQaJt\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "e1c8747af92a333ca41e8ba5fc074419c4fa32c6b1d5a90bdad297beaa4c687c",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-I-restored-xcQaJt",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-I-restored:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-I-restored-xcQaJt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":313,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 313,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-I-restored:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-I-restored-xcQaJt",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-I-restored-vICxde/five-I-restored.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-i-restored\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-i-restored",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-I-restored:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-I-restored-xcQaJt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":313,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 313,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-W-severed:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-W-severed-Keq9e9"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"caf031253016010a0a767984d59a8b25722d05c052295ddb90f677077c6ec298\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-W-severed-Keq9e9\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "caf031253016010a0a767984d59a8b25722d05c052295ddb90f677077c6ec298",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-W-severed-Keq9e9",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-W-severed:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-W-severed-Keq9e9"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":361,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 361,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-W-severed:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-W-severed-Keq9e9",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-W-severed-cjsIKw/five-W-severed.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-w-severed\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-w-severed",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-W-severed:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-W-severed-Keq9e9"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":361,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 361,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-W-restored:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-W-restored-Ejczdc"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"82c683bad4b72a5dac51d41f4a5e24ba1aebdb10911e52e02696bade9daa343d\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-W-restored-Ejczdc\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "82c683bad4b72a5dac51d41f4a5e24ba1aebdb10911e52e02696bade9daa343d",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-W-restored-Ejczdc",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-W-restored:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-W-restored-Ejczdc"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":435,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 435,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-W-restored:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-W-restored-Ejczdc",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-W-restored-fxg9jR/five-W-restored.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-w-restored\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-w-restored",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-W-restored:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-W-restored-Ejczdc"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":435,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 435,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-C-severed:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-C-severed-fFGcNc"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"8b12199b52ba6f213b21381e8fe1a710cdcdb1a4a5147290ec934fcd2834fa61\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-C-severed-fFGcNc\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "8b12199b52ba6f213b21381e8fe1a710cdcdb1a4a5147290ec934fcd2834fa61",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-C-severed-fFGcNc",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-C-severed:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-C-severed-fFGcNc"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":473,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 473,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-C-severed:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-C-severed-fFGcNc",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-C-severed-TpeYnn/five-C-severed.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-c-severed\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-c-severed",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-C-severed:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-C-severed-fFGcNc"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":473,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 473,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-C-restored:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-C-restored-9Ig0Nt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"769aea80f05a263cd3f9b7c2219217b0db435ce0df2dcd573c34e56277a025e2\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-C-restored-9Ig0Nt\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "769aea80f05a263cd3f9b7c2219217b0db435ce0df2dcd573c34e56277a025e2",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-C-restored-9Ig0Nt",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-C-restored:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-C-restored-9Ig0Nt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":517,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 517,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-C-restored:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-C-restored-9Ig0Nt",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-C-restored-2NAM9X/five-C-restored.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-c-restored\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-c-restored",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-C-restored:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-C-restored-9Ig0Nt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":517,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 517,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-D-order-a:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-order-a-iWDMtU"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"727ab2468d706efd7fb02115693c3d673563867b4bad49035911ecd974f5395e\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-D-order-a-iWDMtU\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "727ab2468d706efd7fb02115693c3d673563867b4bad49035911ecd974f5395e",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-D-order-a-iWDMtU",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-D-order-a:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-order-a-iWDMtU"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":570,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 570,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-D-order-a:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-order-a-iWDMtU",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-D-order-a-RzNFbv/five-D-order-a.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-D-order-a\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-D-order-a",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-D-order-a:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-order-a-iWDMtU"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":570,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 570,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "five-D-order-b:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-order-b-2AuNY7"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"ecec7386894b3b210f20aa11062cc3d6674a1d70083051c30fa05e77b404aea3\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-five-D-order-b-2AuNY7\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "ecec7386894b3b210f20aa11062cc3d6674a1d70083051c30fa05e77b404aea3",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-five-D-order-b-2AuNY7",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "five-D-order-b:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-order-b-2AuNY7"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":620,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 620,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "five-D-order-b:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-order-b-2AuNY7",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-five-D-order-b-0SR2KJ/five-D-order-b.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-D-order-b\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-D-order-b",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "five-D-order-b:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-five-D-order-b-2AuNY7"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":620,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 620,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "fact9-full-a:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-fact9-full-a-fpJdme"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"3780bd45b3def61d866214c5a7a9c1c065d6b14817d41ab5a92b91ce46640fd8\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-fact9-full-a-fpJdme\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "3780bd45b3def61d866214c5a7a9c1c065d6b14817d41ab5a92b91ce46640fd8",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-fact9-full-a-fpJdme",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "fact9-full-a:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-fact9-full-a-fpJdme"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":684,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 684,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "fact9-full-a:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-fact9-full-a-fpJdme",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-fact9-full-a-sZm6R8/fact9-full-a.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-fact9-all-a\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-fact9-all-a",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "fact9-full-a:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-fact9-full-a-fpJdme"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":684,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 684,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "fact9-full-b:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-fact9-full-b-LwyDiD"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"237e385a228fc9323afbd7b09c49d0ad4faef0c7a88980a31053ea4355b09d2a\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-fact9-full-b-LwyDiD\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "237e385a228fc9323afbd7b09c49d0ad4faef0c7a88980a31053ea4355b09d2a",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-fact9-full-b-LwyDiD",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "fact9-full-b:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-fact9-full-b-LwyDiD"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":744,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 744,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "fact9-full-b:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-fact9-full-b-LwyDiD",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-fact9-full-b-n8QtEw/fact9-full-b.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-fact9-all-b\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-fact9-all-b",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "fact9-full-b:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-fact9-full-b-LwyDiD"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":744,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 744,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "plural-both-live:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-both-live-HGm3of"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f1b12ff8488ad895a62837a737f8627349a93ddd3085b1282ea924eccca8d963\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-plural-both-live-HGm3of\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "f1b12ff8488ad895a62837a737f8627349a93ddd3085b1282ea924eccca8d963",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-plural-both-live-HGm3of",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "plural-both-live:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-both-live-HGm3of"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":791,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 791,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "plural-both-live:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-both-live-HGm3of",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-plural-both-live-1YDByH/plural-both-live.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-native-plural\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-native-plural",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "plural-both-live:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-both-live-HGm3of"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":791,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 791,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "plural-beta-closed:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-beta-closed-zLciwa"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"4c6dcb5ebba839ad0f238687324c13400e7efc00687e8ea9b73ea1cac35db085\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-plural-beta-closed-zLciwa\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "4c6dcb5ebba839ad0f238687324c13400e7efc00687e8ea9b73ea1cac35db085",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-plural-beta-closed-zLciwa",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "plural-beta-closed:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-beta-closed-zLciwa"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":832,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 832,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "plural-beta-closed:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-beta-closed-zLciwa",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-plural-beta-closed-zeZzEl/plural-beta-closed.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-native-plural-beta-closed\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-native-plural-beta-closed",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "plural-beta-closed:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-beta-closed-zLciwa"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":832,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 832,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "plural-restored:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-restored-4gaaCh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"90928059c23ccd582384e5fe9486ff3efd88c0b7447ac682989d36397551a0aa\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-plural-restored-4gaaCh\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "90928059c23ccd582384e5fe9486ff3efd88c0b7447ac682989d36397551a0aa",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-plural-restored-4gaaCh",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "plural-restored:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-restored-4gaaCh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":876,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 876,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "plural-restored:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-restored-4gaaCh",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-plural-restored-263kDM/plural-restored.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-native-plural-restored\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-native-plural-restored",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "plural-restored:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-plural-restored-4gaaCh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":876,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 876,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "participant-local-unresolved:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-local-unresolved-i9rfJH"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"9b34177d9522871448f085f11851813907afa7f0fc7e1fe5c41099769b3a13ec\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-participant-local-unresolved-i9rfJH\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "9b34177d9522871448f085f11851813907afa7f0fc7e1fe5c41099769b3a13ec",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-participant-local-unresolved-i9rfJH",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "participant-local-unresolved:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-local-unresolved-i9rfJH"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":917,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 917,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "participant-local-unresolved:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-local-unresolved-i9rfJH",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-participant-local-unresolved-2GxUik/participant-local-unresolved.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-participant-local-unresolved\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-participant-local-unresolved",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "participant-local-unresolved:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-local-unresolved-i9rfJH"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":917,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 917,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "participant-local-restored:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-local-restored-EHJlrQ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"3658c2e90b8e75a0ff4b09a11fcf5e0e25e2d3c2fd98bdea5a19282ae0f1a412\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-participant-local-restored-EHJlrQ\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "3658c2e90b8e75a0ff4b09a11fcf5e0e25e2d3c2fd98bdea5a19282ae0f1a412",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-participant-local-restored-EHJlrQ",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "participant-local-restored:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-local-restored-EHJlrQ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":957,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 957,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "participant-local-restored:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-local-restored-EHJlrQ",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-participant-local-restored-wyZ1V2/participant-local-restored.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-participant-local-restored\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-participant-local-restored",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "participant-local-restored:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-local-restored-EHJlrQ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":957,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 957,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "participant-source-coverage:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-source-coverage-bmqPTu"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f7888174b309f046b7fcce01d68caff9eb6afbd2d0ce56615e74c1d0d02d46f6\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-participant-source-coverage-bmqPTu\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "f7888174b309f046b7fcce01d68caff9eb6afbd2d0ce56615e74c1d0d02d46f6",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-participant-source-coverage-bmqPTu",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "participant-source-coverage:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-source-coverage-bmqPTu"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":1005,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 1005,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "participant-source-coverage:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-source-coverage-bmqPTu",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-participant-source-coverage-sGwQ7u/participant-source-coverage.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-participant-source-coverage\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-participant-source-coverage",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "participant-source-coverage:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-participant-source-coverage-bmqPTu"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":1005,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 1005,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "consequence-detached:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-detached-Ko1LsA"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"ff330dfc5ac22ae62a6724d68701f3bd8f12ec2a7790c68fd97eb7d111e419d0\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-consequence-detached-Ko1LsA\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "ff330dfc5ac22ae62a6724d68701f3bd8f12ec2a7790c68fd97eb7d111e419d0",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-consequence-detached-Ko1LsA",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "consequence-detached:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-detached-Ko1LsA"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":1044,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 1044,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "consequence-detached-contact:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-detached-Ko1LsA",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-consequence-detached-GPkqls/consequence-detached-contact.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "consequence-detached-consequence:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-detached-Ko1LsA",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-consequence-detached-GPkqls/consequence-detached-consequence.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-consequence-detached\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-consequence-detached",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "consequence-detached:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-detached-Ko1LsA"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":1044,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 1044,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "consequence-linked-a:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-linked-a-dSiCr6"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"198f72ff2c6335b1da49205f16a314c4725b83a78281c7b1e4d31a0b35387f1a\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-consequence-linked-a-dSiCr6\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "198f72ff2c6335b1da49205f16a314c4725b83a78281c7b1e4d31a0b35387f1a",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-consequence-linked-a-dSiCr6",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "consequence-linked-a:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-linked-a-dSiCr6"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":1085,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 1085,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "consequence-linked-a-contact:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-linked-a-dSiCr6",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-consequence-linked-a-IPBwjg/consequence-linked-a-contact.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "consequence-linked-a-consequence:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-linked-a-dSiCr6",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-consequence-linked-a-IPBwjg/consequence-linked-a-consequence.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-consequence-linked-neutral\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-consequence-linked-neutral",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "consequence-linked-a:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-linked-a-dSiCr6"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":1085,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 1085,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "consequence-linked-b:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-linked-b-fZKxhk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"227a83b50c05a1868417f4b94fa94c1aff3c4e003b6159f4eefd1e71305d5e14\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-consequence-linked-b-fZKxhk\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "227a83b50c05a1868417f4b94fa94c1aff3c4e003b6159f4eefd1e71305d5e14",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-consequence-linked-b-fZKxhk",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "consequence-linked-b:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-linked-b-fZKxhk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":1124,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 1124,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "consequence-linked-b-contact:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-linked-b-fZKxhk",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-consequence-linked-b-ksWepq/consequence-linked-b-contact.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "consequence-linked-b-consequence:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-linked-b-fZKxhk",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-consequence-linked-b-ksWepq/consequence-linked-b-consequence.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-consequence-linked-neutral\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-consequence-linked-neutral",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "consequence-linked-b:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-consequence-linked-b-fZKxhk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":1124,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 1124,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "semantic-checkpoint:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-semantic-checkpoint-Mw0xF3"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"d18819d0e7a1a63194d09401aacce682b5b1c6c3ff6ffb1096b334bc53a0c18c\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-semantic-checkpoint-Mw0xF3\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "d18819d0e7a1a63194d09401aacce682b5b1c6c3ff6ffb1096b334bc53a0c18c",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-semantic-checkpoint-Mw0xF3",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "semantic-checkpoint:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-semantic-checkpoint-Mw0xF3"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":1165,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 1165,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "semantic-checkpoint-contact:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-semantic-checkpoint-Mw0xF3",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-semantic-checkpoint-JbWIoK/semantic-checkpoint-contact.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-constitutive-v2-base\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-constitutive-v2-base",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "semantic-checkpoint-before-corruption:stop",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-semantic-checkpoint-Mw0xF3"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":1165,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 1165,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "semantic-checkpoint:start-corrupt",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-semantic-checkpoint-Mw0xF3"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":1191,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 1191,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "semantic-checkpoint:start-restored",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-semantic-checkpoint-Mw0xF3"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":1285,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 1285,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "semantic-checkpoint-final:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-semantic-checkpoint-Mw0xF3"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":1285,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 1285,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "endogenous-severed:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-endogenous-severed-IKZ24T"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"a42a9cb459763ae444ac44fdb4ad79d672843facb4a633ce9d8e61f17d576077\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-endogenous-severed-IKZ24T\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "a42a9cb459763ae444ac44fdb4ad79d672843facb4a633ce9d8e61f17d576077",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-endogenous-severed-IKZ24T",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "endogenous-severed:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-endogenous-severed-IKZ24T"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":1321,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 1321,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "endogenous-severed:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-endogenous-severed-IKZ24T",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-endogenous-severed-li6QHk/endogenous-severed.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-endogenous-severed\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-endogenous-severed",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "endogenous-severed:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-endogenous-severed-IKZ24T"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":1321,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 1321,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "endogenous-restored:bootstrap",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-endogenous-restored-yOJ9bR"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f481c1c2caeaeb2d46d6c3b09c2d36cb5231c212e1ced21855105d30d0fc492d\",\"network_access\":\"none\",\"runtime_root\":\"/private/tmp/miter-ama11-rr003-endogenous-restored-yOJ9bR\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "f481c1c2caeaeb2d46d6c3b09c2d36cb5231c212e1ced21855105d30d0fc492d",
+      "network_access": "none",
+      "runtime_root": "/private/tmp/miter-ama11-rr003-endogenous-restored-yOJ9bR",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "endogenous-restored:start",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-endogenous-restored-yOJ9bR"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":1355,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 1355,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "endogenous-restored:submit",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-endogenous-restored-yOJ9bR",
+      "--event",
+      "/private/tmp/miter-ama11-rr003-input-endogenous-restored-8MygKw/endogenous-restored.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-rr003-endogenous-restored\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-rr003-endogenous-restored",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "endogenous-restored:panic",
+    "file": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/private/tmp/miter-ama11-rr003-endogenous-restored-yOJ9bR"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":1355,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 1355,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "joined:fidelity-tests",
+    "file": "node",
+    "args": [
+      "--test",
+      "scripts/fidelity/check.test.mjs"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "TAP version 13\n# Subtest: valid plan is packaging, not semantic certification\nok 1 - valid plan is packaging, not semantic certification\n  ---\n  duration_ms: 3.887667\n  ...\n# Subtest: changed control is rejected\nok 2 - changed control is rejected\n  ---\n  duration_ms: 0.502208\n  ...\n# Subtest: unknown requirement rejected\nok 3 - unknown requirement rejected\n  ---\n  duration_ms: 1.074708\n  ...\n# Subtest: both controls required\nok 4 - both controls required\n  ---\n  duration_ms: 0.989208\n  ...\n# Subtest: missing falsifiers rejected\nok 5 - missing falsifiers rejected\n  ---\n  duration_ms: 1.293791\n  ...\n# Subtest: preserved-work tampering rejected\nok 6 - preserved-work tampering rejected\n  ---\n  duration_ms: 1.088791\n  ...\n# Subtest: path escape rejected\nok 7 - path escape rejected\n  ---\n  duration_ms: 0.057083\n  ...\n# Subtest: duplicate claim IDs rejected\nok 8 - duplicate claim IDs rejected\n  ---\n  duration_ms: 0.998042\n  ...\n# Subtest: original acceptance gate IDs retain the same package requirements\nok 9 - original acceptance gate IDs retain the same package requirements\n  ---\n  duration_ms: 4.416833\n  ...\n# Subtest: unknown or malformed gate IDs rejected\nok 10 - unknown or malformed gate IDs rejected\n  ---\n  duration_ms: 1.444292\n  ...\n# Subtest: AMA-1.1 requires the complete campaign controls and F-09 trace\nok 11 - AMA-1.1 requires the complete campaign controls and F-09 trace\n  ---\n  duration_ms: 2.821916\n  ...\n# Subtest: campaign phase without one constitutive stage is rejected\nok 12 - campaign phase without one constitutive stage is rejected\n  ---\n  duration_ms: 2.598708\n  ...\n# Subtest: campaign phase with reordered constitutive stages is rejected\nok 13 - campaign phase with reordered constitutive stages is rejected\n  ---\n  duration_ms: 2.3925\n  ...\n# Subtest: AMA-1.1 scope cannot be weakened through the phase plan\nok 14 - AMA-1.1 scope cannot be weakened through the phase plan\n  ---\n  duration_ms: 2.632958\n  ...\n# Subtest: AMA-1.1 cannot omit a constitutive requirement\nok 15 - AMA-1.1 cannot omit a constitutive requirement\n  ---\n  duration_ms: 2.3855\n  ...\n# Subtest: campaign phase cannot silently change its fidelity checker\nok 16 - campaign phase cannot silently change its fidelity checker\n  ---\n  duration_ms: 2.479792\n  ...\n# Subtest: unknown or malformed campaign phase IDs rejected\nok 17 - unknown or malformed campaign phase IDs rejected\n  ---\n  duration_ms: 3.310875\n  ...\n1..17\n# tests 17\n# suites 0\n# pass 17\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 86.185333\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "joined:prolog-load",
+    "file": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-g",
+      "load_files('effect_membranes/miter_assistant_service_v1.pl',[silent(true)]),halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "joined:rr002-regression",
+    "file": "node",
+    "args": [
+      "scripts/ama1_1/constitutive_chain_v2.mjs"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"status\":\"PASS-BOUNDED\",\"mode\":\"preflight\",\"failures\":[],\"v2_passed\":14,\"v1_passed\":12}\n",
+    "stderr": "RR-002: validating frozen authority\nRR-002: v2 native-undertaking-without-supplied-possibility\nRR-002: v2 same-surface-capture-forms-inquiry\nRR-002: v2 same-surface-disguise-forms-inquiry\nRR-002: v2 d-severance-changes-movement\nRR-002: v2 omega-severance-forms-inquiry\nRR-002: v2 interface-severance-forms-defer\nRR-002: v2 weave-severance-forms-inquiry\nRR-002: v2 soul-relation-severance-holds-movement\nRR-002: v2 same-lineage-participant-not-independent\nRR-002: v2 independent-participants-support-relation\nRR-002: v2 participant-conflict-forms-inquiry\nRR-002: v2 endogenous-same-kernel\nRR-002: v2 identity-severed-before-cognition\nRR-002: v2 matched-consequences-reconstruct-and-restart\nRR-002: v1 regression human-positive-and-restart\nRR-002: v1 regression material-relation-severed\nRR-002: v1 regression material-relation-restored\nRR-002: v1 regression carrier-order-neutral\nRR-002: v1 regression pairwise-complete-whole-wrong\nRR-002: v1 regression fact9-role-laundered\nRR-002: v1 regression present-as-support-rejected\nRR-002: v1 regression can-compose-without-recognition\nRR-002: v1 regression flourishing-capture-withholds-undertaking\nRR-002: v1 regression plural-generated-remains-live\nRR-002: v1 regression participant-conflict-retained\nRR-002: v1 regression endogenous-contact-same-kernel\n",
+    "reply": {
+      "status": "PASS-BOUNDED",
+      "mode": "preflight",
+      "failures": [],
+      "v2_passed": 14,
+      "v1_passed": 12
+    }
+  }
+]
