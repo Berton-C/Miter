@@ -1,0 +1,51 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G31",
+  "plan": "docs/gates/G31/P8/R1/plan.json",
+  "plan_commit": "070e5ffbed1f82b5c19e6a625f40a501d3fdebc0",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G31/P8/R1/outcome.md","sha256":"8e9369f597b86ccc3e9d0b6f7a7c17cbb89724dba35ca738b8154832032497a8"},
+    {"path":"evidence/G31/p8-801/run-failure.json","sha256":"0af0e6af58a47e4b4fa8da5b0d1a77e8bf58e1332cca0e551897a532cc19a63f"},
+    {"path":"evidence/G31/p8-803/run-verdict.json","sha256":"ea08d2645fea6262dd5ee0580c91d764ae7a46c41a697cbb7fe732d76204618c"},
+    {"path":"evidence/G31/p8-803/manifest.json","sha256":"7a4755cb1536b6ba893ca365dbb943861b515106eef2fa056ae08b41543cbb86"},
+    {"path":"evidence/G31/p8-803/approval-materialization-redacted.json","sha256":"ffee8028501ee9467754865eb77b7f0e92c4b937c055d7bf69b171fb23e9757d"},
+    {"path":"evidence/G31/p8-803/approval-materialization-observation.json","sha256":"0c21d82a6c92d07eaa4bb93d25dbde1460b1081df23578f15c9c56b7723e7031"},
+    {"path":"evidence/G31/p8-803/native-approval.json","sha256":"eff376403272394b5f879798580752a965ca000d1bcfc288d581988bee551915"},
+    {"path":"evidence/G31/p8-803/native-approval-standing.json","sha256":"fb6791899de1b990528591987bd5b28686136fd3d4c2e769f5a51ef6db9c3b28"},
+    {"path":"evidence/G31/p8-803/native-approval-trial-standings.json","sha256":"95214c0093b85b00b7f95584ef0df2357058019ec8523fcf70f9aeb3c332b7ff"},
+    {"path":"evidence/G31/p8-803/native-canary-voice-trial-standings.json","sha256":"310a931bd4b45f2244b5bbc9055d9de98374e21e0f7a4c55fe00566c02ec39b1"},
+    {"path":"evidence/G31/p8-803/bounded-voice-artifact.json","sha256":"cf26f88ded62dda2d3ae5518c3eccf8e679dd18dff390845ac66028985166cb2"},
+    {"path":"evidence/G31/p8-803/native-approval-construction-process.json","sha256":"f076c43f1ee2aa8bb63a8f8e45446c2a3780476847acaea0c22dcb5c74172e10"},
+    {"path":"evidence/G31/p8-803/native-approval-trials-process.json","sha256":"d285e39bf973e29616e2410453264f8db99261b2c5d613946efb67cf69e678d9"},
+    {"path":"evidence/G31/p8-803/native-canary-voice-trials-process.json","sha256":"9dc32b52a4410ad9c396e632294d709520ba8afe854ccf266679091b27da97f3"},
+    {"path":"evidence/G31/p8-803/materialization-process.json","sha256":"232e3018db9166414f6880b21e60537f66d5226f924d07f2a0038bd4a85077f1"}
+  ],
+  "claim_results": [
+    {
+      "id": "G31-P8-R1-explicit-effect-approval-source-bound",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Native PeTTa/MeTTa accepted the exact explicit authority only while the approval-record, P7 proposal, P7 closure, private grant, candidate, transport and scope relations matched their frozen hashes. This proves this one approval overlay and not any other principal, surface, content, duration or future grant."
+    },
+    {
+      "id": "G31-P8-R1-approval-remains-activation-neutral",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The native standing and independent mode-0600 private materialization remained active false, network false and activation unresolved with no expiry instant. Zero credential, network, post, message, model or mutation activity occurred. This does not yet prove the later live activation or automatic stop."
+    },
+    {
+      "id": "G31-P8-R1-native-bounded-canary-voice-contract",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Native MeTTa constructed and causally held a fixed-protocol CertifiedUtterance against approval, authenticated current-contact, memory-exclusion, exact-utterance and effect-identity changes. This proves only the bounded canary acknowledgement contract, not general language understanding, generative voice quality, live ingress, effect commit or consequence."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004-C-008/C-020-C-024/C-050-C-055/C-060-C-066/C-090-C-104 and S-103/S-401-S-405/S-501-S-504/S-603/S-605/S-607/S-804/S-901-S-905/S-1004-S-1005/S-1101-S-1105/S-1201-S-1203 require the explicit human authority to remain bounded, inspectable, revocable and subordinate neither to builder inference nor transport convenience. P8 therefore preserves the approval as a distinct relation and gives the finite protocol utterance explicit intended meaning, disclosure, uncertainty and effect identity without pretending that this canary proves general cognition.",
+    "causal_evidence": "Native approval standing changed to held when authority, exact approval source, grant lineage, memory exclusion or separate activation was severed. Native VoiceRNA standing changed to held when approval, authenticated channel contact, no-history boundary, utterance bytes, utterance hash or intended effect identity was severed. Neutral JSON round trips preserved both standings and canonical restoration recovered them. Prolog required the exact frozen hashes and private source mode before materializing inactive state.",
+    "substitution_audit": "Berton supplied the approval. PeTTa/MeTTa owns its standing and the canary intention/certificate. Prolog only checks exact source bytes and modes and durably materializes a native overlay; its P8 module imports no HTTP or Keychain operation. JavaScript supplies finite fixtures, launches native evaluation and inspects results but cannot make an approval or certificate pass after a causal relation is severed. The fixed acknowledgement is explicitly scoped as a protocol artifact rather than substituted for general Soul navigation.",
+    "capability_and_constraint_audit": "Attempt 801 stopped before closure because a scanner treated the generic project/bot string `miter` as private; it made no live call. Attempt 802 passed after limiting non-disclosure checks to actual stable IDs and the human username. The P7 private grant remained unchanged, the new approval record is ignored and mode 0600, the approval cannot self-activate, and all network, credential, content, message, API, model, promotion and activation counts are zero.",
+    "remaining_gaps": "The live runner and activation record are not yet implemented or enabled. G31 still requires two new authorized-human allowlisted posts, at most two actually certified responses, a process restart with durable cursor/effect readback and zero replay, one denied-control post rejected before cognition with no response, panic/expiry/revocation containment, redacted live evidence and final closure. G32 and G33 remain open."
+  },
+  "reviewer": "Codex builder using the frozen controls and P8 plan, exact P7 and approval-source hashes, private mode/hash readback, native PeTTa/MeTTa construction and causal severance, Prolog inactive materialization, public stable-ID scan and preserved failed attempt.",
+  "review_limits": "This closes only the G31 P8 R1 approval binding and offline bounded canary-voice contract. It does not activate the adapter, start the 30-minute interval, access Mattermost or Keychain, read or send a post, prove live VoiceRNA/effects/restart/panic, or close G31.",
+  "terminal_reason": "P8 is complete. The actual live experiment remains within G31 and must receive a separately frozen P9 plan against these committed implementation bytes before activation."
+}
