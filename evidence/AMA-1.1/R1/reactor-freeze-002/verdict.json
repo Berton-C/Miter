@@ -1,0 +1,17 @@
+{
+  "schema": "miter-ama11-reactor-freeze-verdict-v1",
+  "status": "PASS-BOUNDED",
+  "opening_status": "OPEN-PACKAGE-VALID",
+  "facts": {
+    "current_soul_integrity_identity_verified": true,
+    "one_petta_process_recurs_until_explicit_stop": true,
+    "typed_contact_uses_constitutive_encounter": true,
+    "empty_cycle_waits_without_inventing_work": true,
+    "no_supplied_step_count": true,
+    "compact_native_history_retained": true,
+    "linked_consequence_changes_active_cut": true,
+    "operator_panic_terminates_native_recurrence": true
+  },
+  "standing": "Native one-process recurrence and in-memory state only. No persistent service, external effect, process supervision, restart rehydration, model call, natural-language sufficiency, or full AMA-1.1 claim is certified.",
+  "next_boundary": "Add the explicit-root Prolog service membrane and operator surface without moving any semantic choice out of MeTTa."
+}

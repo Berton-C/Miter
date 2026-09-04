@@ -1,0 +1,17 @@
+{
+  "schema": "miter-ama11-reactor-freeze-verdict-v1",
+  "status": "SUPERSEDED-BEFORE-FREEZE",
+  "opening_status": "OPEN-PACKAGE-VALID",
+  "facts": {
+    "current_soul_integrity_identity_verified": true,
+    "one_petta_process_recurs_until_explicit_stop": true,
+    "typed_contact_uses_constitutive_encounter": true,
+    "empty_cycle_waits_without_inventing_work": true,
+    "no_supplied_step_count": true,
+    "compact_native_history_retained": true,
+    "linked_consequence_changes_active_cut": true,
+    "operator_panic_terminates_native_recurrence": true
+  },
+  "standing": "Developmental proof only. Subsequent pre-freeze review strengthened restart admission so a checkpoint cannot merge into nonempty state and duplicate active scopes or history keys are rejected. These source identities are therefore not frozen and certify no campaign claim.",
+  "next_boundary": "Retain this proof, rerun the one-process boundary against the strengthened source, then freeze the repaired reactor identity."
+}
