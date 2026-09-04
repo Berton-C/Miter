@@ -1,0 +1,30 @@
+Warning: /Users/claritymiter/miter/effect_membranes/miter_relational_voice.pl:21:
+Warning:    Redefined static procedure rv_save_intention/3
+Warning:    Previously defined at /Users/claritymiter/miter/effect_membranes/miter_relational_voice_v2.pl:131
+Warning: /Users/claritymiter/miter/effect_membranes/miter_relational_voice.pl:25:
+Warning:    Redefined static procedure rv_start/3
+Warning:    Previously defined at /Users/claritymiter/miter/effect_membranes/miter_relational_voice_v2.pl:146
+Warning: /Users/claritymiter/miter/effect_membranes/miter_relational_voice.pl:73:
+Warning:    Redefined static procedure rv_control/2
+Warning:    Previously defined at /Users/claritymiter/miter/effect_membranes/miter_relational_voice_v2.pl:242
+Warning: /Users/claritymiter/miter/effect_membranes/miter_relational_voice.pl:75:
+Warning:    Redefined static procedure rv_poll/2
+Warning:    Previously defined at /Users/claritymiter/miter/effect_membranes/miter_relational_voice_v2.pl:246
+Warning: /Users/claritymiter/miter/effect_membranes/miter_relational_voice.pl:76:
+Warning:    Redefined static procedure rv_pace/2
+Warning:    Previously defined at /Users/claritymiter/miter/effect_membranes/miter_relational_voice_v2.pl:247
+Warning: /Users/claritymiter/miter/effect_membranes/miter_relational_voice.pl:77:
+Warning:    Redefined static procedure rv_cancel/2
+Warning:    Previously defined at /Users/claritymiter/miter/effect_membranes/miter_relational_voice_v2.pl:248
+Warning: /Users/claritymiter/miter/effect_membranes/miter_relational_voice.pl:83:
+Warning:    Redefined static procedure rv_save_result/3
+Warning:    Previously defined at /Users/claritymiter/miter/effect_membranes/miter_relational_voice_v2.pl:255
+Warning: /Users/claritymiter/miter/effect_membranes/miter_voice_construction.pl:4:
+Warning:    Redefined static procedure vc_word/2
+Warning:    Previously defined at /Users/claritymiter/miter/effect_membranes/miter_relational_voice_repair_v1.pl:113
+Warning: /Users/claritymiter/miter/effect_membranes/miter_voice_construction.pl:6:
+Warning:    Redefined static procedure vc_budget/2
+Warning:    Previously defined at /Users/claritymiter/miter/effect_membranes/miter_relational_voice_repair_v1.pl:119
+Warning: /Users/claritymiter/miter/effect_membranes/miter_voice_construction.pl:9:
+Warning:    Redefined static procedure vc_sentence/2
+Warning:    Previously defined at /Users/claritymiter/miter/effect_membranes/miter_relational_voice_repair_v1.pl:122

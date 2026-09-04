@@ -1,0 +1,25 @@
+{
+  "schema": "miter-g33-r8-cases-v1",
+  "canonical": {
+    "first_id": "g33-r8-audit-a",
+    "second_id": "g33-r8-audit-b",
+    "source_kind": "independent-native-audit",
+    "expected_opportunity_head": "development-opportunity",
+    "expected_rna_head": "develop-rna"
+  },
+  "same_family": {
+    "second_id": "g33-r8-audit-a-repeated",
+    "expected_head": "development-held"
+  },
+  "self_authored": {
+    "first_id": "g33-r8-self-a",
+    "second_id": "g33-r8-self-b",
+    "source_kind": "self-trace",
+    "expected_head": "development-held"
+  },
+  "runtime": {
+    "minimum_idle_waits": 3,
+    "stop_id": "g33-r8-explicit-stop"
+  },
+  "standing": "Disclosed finite source contacts and expected product shapes; expectations are verifier data, never native inputs."
+}
