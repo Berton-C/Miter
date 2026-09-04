@@ -1,0 +1,146 @@
+{
+  "schema": "miter-ama11-post-operator-repair-results-v1",
+  "repair": "RR-001",
+  "status": "PASS-BOUNDED",
+  "results": [
+    {
+      "id": "human-positive-and-restart",
+      "claim": "Human contact forms the finite constitutive movement; restart preserves it without replay; linked consequence changes the next cut.",
+      "stimulus_sha256": "5e1a97b27079886596bb0e68470915089e2b7372c809b2a365a74b0e73307c5a",
+      "submit_status": "queued",
+      "checkpoint_sha256": "6dcfbde9b7a0bd6b93cc66134ca6d377f0e1341a35408d6146edaa817c5aad83",
+      "outbox_count": 1,
+      "sequence": {
+        "before": {
+          "checkpoint": "81e657ef7055528863de93c555cdebb614b44056083e1a49e20a6333db07f8d9",
+          "effect": "3b0f81ffb914c793927c37716c5d1cfd3001becaf091fa9ce45dc321ee6803d1"
+        },
+        "after_restart": "81e657ef7055528863de93c555cdebb614b44056083e1a49e20a6333db07f8d9",
+        "after_consequence": "6dcfbde9b7a0bd6b93cc66134ca6d377f0e1341a35408d6146edaa817c5aad83"
+      },
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "material-relation-severed",
+      "claim": "Removing the n-ary material relation changes the fact standing and withholds the previously formed movement.",
+      "stimulus_sha256": "4c55de1fdaac9f4139dfd66c140c9431a01bb5dc0b6a872a878b967844b67b53",
+      "submit_status": "queued",
+      "checkpoint_sha256": "fa0bc26b2c1d3257d3f3a3458dee61c5ede6c804eadcaec97132a6691d4ac437",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "material-relation-restored",
+      "claim": "Restoring the exact n-ary relation recovers formation without adding a behavioral branch.",
+      "stimulus_sha256": "d5aca3bb7e595689aa8102d7f5938d1c35d6afda79a5c675aae3f04b35d921e8",
+      "submit_status": "queued",
+      "checkpoint_sha256": "426b96bab59f3fbc71e3c06074093ad4bd669701592a4b8897b6c70aa8b8e378",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "carrier-order-neutral",
+      "claim": "Permuting support, relation, flourishing, and participant carrier order does not create first-position selection.",
+      "stimulus_sha256": "07e5738084ab9bdcafbde1e177ddc63cd24cdd4a30d50ea3d8f0d5ce6f54ccfc",
+      "submit_status": "queued",
+      "checkpoint_sha256": "6d3a1c2a458945ae98a523a1e5e4575df02fff4405f4c7c1dfa0905647841c26",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "pairwise-complete-whole-wrong",
+      "claim": "Pairwise coverage cannot certify a missing triadic whole.",
+      "stimulus_sha256": "a2058ee8b97af573f66f5bbb86c7a57a2016aaf435c542f61fc5887716c3f829",
+      "submit_status": "queued",
+      "checkpoint_sha256": "9e16450d86b4d0e502b449b4e161608295d4b0513fb615664bab6dea19b6633f",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "fact9-role-laundered",
+      "claim": "A material relation containing a role outside the declared support remains unresolved.",
+      "stimulus_sha256": "b47d364e70ecc216ff7be850a860e368366856cc8df5ac63c662e6eb30289f9c",
+      "submit_status": "queued",
+      "checkpoint_sha256": "35360fbfc9e83336323faaec7aefac5e56ef62042e33756975d2025f41a74344",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "present-as-support-rejected",
+      "claim": "Present cannot be laundered into the first-eight support vocabulary.",
+      "stimulus_sha256": "586a829b5dcad8d41f8447341a53c65e073cb82ab2a3d9ef23c1864c772e5480",
+      "submit_status": "rejected",
+      "checkpoint_sha256": null,
+      "outbox_count": 0,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "can-compose-without-recognition",
+      "claim": "Lawful composability without recognition must retain an unrecognized continuation standing rather than silently forming the recognized movement.",
+      "stimulus_sha256": "c63b949a79082f53ceb56945064cda12f0dfe790b388e55e09e114b93e0a9fa9",
+      "submit_status": "queued",
+      "checkpoint_sha256": "b544b4a6a35ca92fa2ef0d63c152188e9da29d926ea74f955c2ae5b008f4cc6f",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "flourishing-capture-withholds-undertaking",
+      "claim": "A sole undertaking requiring AgencyBalance cannot treat an explicit AgencyBalance capture standing as satisfaction of that flourishing requirement.",
+      "stimulus_sha256": "d085a92ab2b4d6520fc61edd13f55021b34659b72825df6f2b11c92f2ca82adb",
+      "submit_status": "queued",
+      "checkpoint_sha256": "a45b01f66b7cb9bf316a1090ec04f7dcd425cc3d9581406c5e5d282e66202631",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "plural-generated-remains-live",
+      "claim": "Two warranted continuations remain plural instead of being selected by carrier position.",
+      "stimulus_sha256": "6867a7729fd8467ec808281408f04883606e731b52b1d380610254b00e56f3cf",
+      "submit_status": "queued",
+      "checkpoint_sha256": "8fb6b9d2a5e6c93d5de8880e1d093d504c2fe538930a014ebffa0a0e0b106c6a",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "participant-conflict-retained",
+      "claim": "Conflicting and same-lineage participant readings remain differentiated and never become contact or movement authority.",
+      "stimulus_sha256": "729779562c0ddb4d7163eb343508f5d1aa7386af2cc4d33dcce3b80de6207a69",
+      "submit_status": "queued",
+      "checkpoint_sha256": "4955acf484ba60b4c821e4db0133ecf48ff9f961117a884732d68bd87c4d9302",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    },
+    {
+      "id": "endogenous-contact-same-kernel",
+      "claim": "Endogenous contact uses the same constitutive path while retaining its distinct provenance.",
+      "stimulus_sha256": "e2ec699ae82b090e7fbe6135d14d0125abe6b7fb38c8ea5fb77a18979a2e2e1f",
+      "submit_status": "queued",
+      "checkpoint_sha256": "c40e41e397690020fab369b6fd006ad9649216a4639c22e81e7f6c6c418b68d3",
+      "outbox_count": 1,
+      "sequence": null,
+      "status": "PASS",
+      "failures": []
+    }
+  ]
+}

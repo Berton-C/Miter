@@ -1,0 +1,75 @@
+{
+  "schema": "miter-campaign-repair-outcome-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "repair": "RR-001",
+  "date": "2026-09-05",
+  "status": "PASS-BOUNDED",
+  "authority": {
+    "repair_refreeze": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/repair-refreeze-001.json",
+    "repair_refreeze_sha256": "90ce6ea3bf665113fb901b10a823b1bf879b3c4404bf037bc62250678c65a8cf",
+    "frozen_case_matrix": "tests/fixtures/ama1_1/post-operator-cases.json",
+    "frozen_case_matrix_sha256": "6d2033ae3cd4c63faee2f614c4c5bbc6fd3ff8a755d234fd0039fb422b3661d1",
+    "controls_unchanged": true,
+    "acceptance_unchanged": true,
+    "scope_unchanged": true
+  },
+  "implementation": {
+    "source": "src/constitutive_participation_v1.metta",
+    "source_sha256": "c6a5b93ec64bcc18c88e920b1d8ff695deee2b2e2aa8333899707b1a3cada7a3",
+    "replay_harness": "scripts/ama1_1/post_operator_repair_matrix.mjs",
+    "replay_harness_sha256": "d25699e12c5cef8dfac037f0c0febab80698803119949d8ed4ec196a76703cdf",
+    "changes": [
+      "Relation lookup and material-role traversal are total over empty or unresolved relation configurations.",
+      "RecognizedCompose remains distinct from CanCompose; unrecognized composition remains explicit and cannot become movement-forming support.",
+      "Capture, obstruction, disguise, contradiction, unresolved standing, counterevidence, and positive-pole distortion cannot satisfy or compensate a beneficial flourishing requirement."
+    ],
+    "constitutive_continuity": "Balance unfolding as intelligence remains movement-primary at contact. Fact9 expressions, the nine interconnected flourishings, Generated, and R/A/P remain material readings inside the same movement derivation; no score, selector, scenario rule, or host-language semantic choice was added."
+  },
+  "evidence": {
+    "directory": "evidence/AMA-1.1/R1/post-operator-repair-001/",
+    "results": {
+      "path": "evidence/AMA-1.1/R1/post-operator-repair-001/results.json",
+      "sha256": "3831c8d2d304a253b945d913eaed5dd57d54c2901a3d9e8c368f492e41021102"
+    },
+    "verdict": {
+      "path": "evidence/AMA-1.1/R1/post-operator-repair-001/verdict.json",
+      "sha256": "ca970e0f4abdce5bd6d72d7cd93cc05ef279352ff95bd3d31fbd182894d2cad8"
+    },
+    "runtime": {
+      "path": "evidence/AMA-1.1/R1/post-operator-repair-001/runtime.json",
+      "sha256": "c289c1dd9d92468c0fe1e09716bc075d167b5b4295c9fc149c587dec3e21a5b4"
+    },
+    "commands": {
+      "path": "evidence/AMA-1.1/R1/post-operator-repair-001/commands.json",
+      "sha256": "d25e83195d40ce2c3d58fe78ca3148b97816c36d9575b2e5445a48e83bc44020"
+    },
+    "unchanged_predictions_passed": 12,
+    "unchanged_predictions_failed": 0,
+    "prior_passes_preserved": 9,
+    "disclosed_failures_repaired": [
+      "material-relation-severed",
+      "can-compose-without-recognition",
+      "flourishing-capture-withholds-undertaking"
+    ],
+    "restart_effect_replay_prevented": true,
+    "consequence_changed_next_cut": true,
+    "local_idempotency_preserved": true
+  },
+  "verification": {
+    "active_fidelity_tests": "17 of 17 passed",
+    "active_phase_package": "OPEN-PACKAGE-VALID",
+    "prolog_service_syntax": "passed",
+    "prolog_operator_syntax": "passed",
+    "native_metta_bootstrap": "parsed and imported successfully",
+    "git_diff_check": "passed",
+    "preserved_work": "all plan-pinned paths verified by the active fidelity checker",
+    "forbidden_implicit_runtime_root_absent": true,
+    "external_network_calls": 0,
+    "model_calls": 0,
+    "private_memory_reads": 0,
+    "external_effects": 0
+  },
+  "standing": "RR-001 is admitted as a bounded constitutive standing and totality repair. The original FAIL-CONSTITUTIVE evidence remains immutable. This outcome does not close AMA-1.1.",
+  "non_claims": "This repair does not establish general language understanding, complete Fact9 or flourishing semantics, automatic inquiry generation from every capture, independent live PLN/NAL reasoning, live model or memory participation, live Mattermost reach, or full AMA-1.1 closure."
+}

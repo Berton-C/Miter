@@ -1,0 +1,23 @@
+{
+  "schema": "miter-ama11-post-operator-repair-verdict-v1",
+  "repair": "RR-001",
+  "status": "PASS-BOUNDED",
+  "predecessor_status": "FAIL-CONSTITUTIVE",
+  "passed": [
+    "human-positive-and-restart",
+    "material-relation-severed",
+    "material-relation-restored",
+    "carrier-order-neutral",
+    "pairwise-complete-whole-wrong",
+    "fact9-role-laundered",
+    "present-as-support-rejected",
+    "can-compose-without-recognition",
+    "flourishing-capture-withholds-undertaking",
+    "plural-generated-remains-live",
+    "participant-conflict-retained",
+    "endogenous-contact-same-kernel"
+  ],
+  "failed": [],
+  "standing": "All twelve unchanged disclosed cases passed through the supported service after the explicitly re-frozen RR-001 standing and totality repair. This is bounded structured evidence, not general semantic sufficiency or full AMA-1.1 closure.",
+  "no_live_or_private_reach": true
+}

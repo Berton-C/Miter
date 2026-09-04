@@ -1,0 +1,640 @@
+[
+  {
+    "name": "human-positive-and-restart:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-human-positive-and-restart-NpzCta"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"cd18d3d950825b3cdb3776b7998f0c2261beb27fd9b234f975d4b46a13ac1ceb\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-human-positive-and-restart-NpzCta\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-human-positive-and-restart-NpzCta"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81048,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-human-positive-and-restart-NpzCta",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-human-positive-and-restart-SolA0c/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:stop",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-human-positive-and-restart-NpzCta"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81048,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:restart",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-human-positive-and-restart-NpzCta"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81073,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:consequence",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-human-positive-and-restart-NpzCta",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_1/consequence-unfamiliar.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-consequence-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "human-positive-and-restart:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-human-positive-and-restart-NpzCta"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81073,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-severed:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-material-relation-severed-Edut9r"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"1df6044bf46b0785970ebeb7e6f4ece680a085f96c024c00140e30b84900fb81\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-material-relation-severed-Edut9r\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-severed:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-material-relation-severed-Edut9r"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81108,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-severed:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-material-relation-severed-Edut9r",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-material-relation-severed-Hl1taK/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-severed:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-material-relation-severed-Edut9r"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81108,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-restored:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-material-relation-restored-YuxIL0"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"3f6ebe4bc4d3bee5af970026aa888c453b5ab0f8d49c8e2a1112b8dbb596d376\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-material-relation-restored-YuxIL0\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-restored:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-material-relation-restored-YuxIL0"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81142,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-restored:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-material-relation-restored-YuxIL0",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-material-relation-restored-tss6LX/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "material-relation-restored:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-material-relation-restored-YuxIL0"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81142,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "carrier-order-neutral:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-carrier-order-neutral-LareKw"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"be83df1e3c177e83115c341094c89a152682af60e48148ce99f0066d68663718\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-carrier-order-neutral-LareKw\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "carrier-order-neutral:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-carrier-order-neutral-LareKw"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81177,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "carrier-order-neutral:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-carrier-order-neutral-LareKw",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-carrier-order-neutral-V6X1uM/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "carrier-order-neutral:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-carrier-order-neutral-LareKw"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81177,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "pairwise-complete-whole-wrong:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-pairwise-complete-whole-wrong-OiRHtC"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"5410c56c1091a2d0f51088e62a635fdb52213f68a20c4b951ce792002d9d3f69\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-pairwise-complete-whole-wrong-OiRHtC\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "pairwise-complete-whole-wrong:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-pairwise-complete-whole-wrong-OiRHtC"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81211,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "pairwise-complete-whole-wrong:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-pairwise-complete-whole-wrong-OiRHtC",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-pairwise-complete-whole-wrong-gtC8Yk/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "pairwise-complete-whole-wrong:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-pairwise-complete-whole-wrong-OiRHtC"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81211,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "fact9-role-laundered:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-fact9-role-laundered-rQ2YM5"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"ffa18844692b667ed95d5666aedb38e63028277692cb7f62ae33b2c84b63632b\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-fact9-role-laundered-rQ2YM5\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "fact9-role-laundered:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-fact9-role-laundered-rQ2YM5"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81246,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "fact9-role-laundered:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-fact9-role-laundered-rQ2YM5",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-fact9-role-laundered-Cgp1V1/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "fact9-role-laundered:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-fact9-role-laundered-rQ2YM5"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81246,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "present-as-support-rejected:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-present-as-support-rejected-BRH5BF"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"bc971ebc2790b58903b607ee56d60c4bd36b7548dd1b0266663b244fbefdaaea\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-present-as-support-rejected-BRH5BF\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "present-as-support-rejected:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-present-as-support-rejected-BRH5BF"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81280,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "present-as-support-rejected:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-present-as-support-rejected-BRH5BF",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-present-as-support-rejected-JnV5wC/stimulus.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "present-as-support-rejected:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-present-as-support-rejected-BRH5BF"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81280,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "can-compose-without-recognition:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-can-compose-without-recognition-iL31gz"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"4382b1afa986105ca89767633c19fcd8324b55f7d67fda5d3b0e93c1a78d626b\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-can-compose-without-recognition-iL31gz\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "can-compose-without-recognition:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-can-compose-without-recognition-iL31gz"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81316,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "can-compose-without-recognition:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-can-compose-without-recognition-iL31gz",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-can-compose-without-recognition-oGtj3J/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "can-compose-without-recognition:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-can-compose-without-recognition-iL31gz"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81316,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "flourishing-capture-withholds-undertaking:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-flourishing-capture-withholds-undertaking-zGx6gh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"928e066a2912df27dc0c68cb0d568caed20c53f2f8795b9eae59542c77212043\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-flourishing-capture-withholds-undertaking-zGx6gh\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "flourishing-capture-withholds-undertaking:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-flourishing-capture-withholds-undertaking-zGx6gh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81350,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "flourishing-capture-withholds-undertaking:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-flourishing-capture-withholds-undertaking-zGx6gh",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-flourishing-capture-withholds-undertaking-IerWa9/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "flourishing-capture-withholds-undertaking:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-flourishing-capture-withholds-undertaking-zGx6gh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81350,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "plural-generated-remains-live:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-plural-generated-remains-live-3QhIii"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f7def42b6221b5a1c5ab6c32fcf0e4ba5c0676982dda9083039f43be78b14a16\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-plural-generated-remains-live-3QhIii\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "plural-generated-remains-live:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-plural-generated-remains-live-3QhIii"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81384,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "plural-generated-remains-live:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-plural-generated-remains-live-3QhIii",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-plural-generated-remains-live-ycOMbp/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "plural-generated-remains-live:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-plural-generated-remains-live-3QhIii"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81384,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "participant-conflict-retained:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-participant-conflict-retained-6s5P28"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"cbd7fab762c4c0a1e220d3151151d95a2cb318be28cbd98cf0c07a29bc79351a\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-participant-conflict-retained-6s5P28\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "participant-conflict-retained:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-participant-conflict-retained-6s5P28"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81422,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "participant-conflict-retained:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-participant-conflict-retained-6s5P28",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-participant-conflict-retained-YjCbwN/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "participant-conflict-retained:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-participant-conflict-retained-6s5P28"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81422,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "endogenous-contact-same-kernel:bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-endogenous-contact-same-kernel-hbZte9"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"11c55a9e817ba3f5813f7d3d75873fe5ca455743d6450c826a7ef816216bf956\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-endogenous-contact-same-kernel-hbZte9\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "endogenous-contact-same-kernel:start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-endogenous-contact-same-kernel-hbZte9"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":81456,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "endogenous-contact-same-kernel:submit",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-endogenous-contact-same-kernel-hbZte9",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-stimulus-endogenous-contact-same-kernel-XIQ2Pe/stimulus.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "endogenous-contact-same-kernel:panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-repair-endogenous-contact-same-kernel-hbZte9"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":81456,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  }
+]

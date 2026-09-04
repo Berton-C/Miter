@@ -32,10 +32,17 @@
    (and (CPUniq $a 0 ())
      (and (CPUniq $b 0 ()) (and (CPSubset $a $b 0) (CPSubset $b $a 0)))))
 
-(= (CPFind $rows $id)
-   (collapse (let $row (superpose $rows)
-     (if (and (is-expr $row) (> (size-atom $row) 1))
-       (if (== (index-atom $row 1) $id) $row (empty)) (empty)))))
+(= (CPFindAt $rows $id $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (and (is-expr $row) (> (size-atom $row) 1))
+         (if (== (index-atom $row 1) $id) ($row)
+           (CPFindAt $rows $id (+ $i 1)))
+         (CPFindAt $rows $id (+ $i 1)))) ()))
+
+; Lookup is total. Material absence remains an explicit empty result so that
+; unresolved standing survives instead of making the whole reduction vanish.
+(= (CPFind $rows $id) (CPFindAt $rows $id 0))
 
 (= (CPFirstEight $role)
    (let $rows (collapse (match &fact9 (fact9-role $role first-eight $meaning) $meaning))
@@ -159,9 +166,10 @@
 (= (CPRoleAppears $role $relations $i)
    (if (< $i (size-atom $relations))
      (let $relation (index-atom $relations $i)
-       (if (and (CPShape $relation material-relation 5)
-                (CPHas $role (index-atom $relation 2) 0))
-         true (CPRoleAppears $role $relations (+ $i 1)))) false))
+       (if (CPShape $relation material-relation 5)
+         (if (CPHas $role (index-atom $relation 2) 0)
+           true (CPRoleAppears $role $relations (+ $i 1)))
+         (CPRoleAppears $role $relations (+ $i 1)))) false))
 
 (= (CPAllSupportCovered $support $relations $i)
    (if (< $i (size-atom $support))
@@ -171,9 +179,10 @@
 (= (CPWholeRelationPresent $relations $support $i)
    (if (< $i (size-atom $relations))
      (let $relation (index-atom $relations $i)
-       (if (and (CPShape $relation material-relation 5)
-                (CPSetEqual (index-atom $relation 2) $support))
-         true (CPWholeRelationPresent $relations $support (+ $i 1)))) false))
+       (if (CPShape $relation material-relation 5)
+         (if (CPSetEqual (index-atom $relation 2) $support)
+           true (CPWholeRelationPresent $relations $support (+ $i 1)))
+         (CPWholeRelationPresent $relations $support (+ $i 1)))) false))
 
 (= (CPRecognitionValid $recognition)
    (CPHas $recognition (recognized unrecognized) 0))
@@ -284,9 +293,22 @@
 (= (CPFactCoversRelation $fact $id)
    (if (CPShape $fact fact9-expression 10)
      (let* (($fourthness (index-atom $fact 4))
-            ($relations (index-atom $fourthness 2)))
+            ($relations (index-atom $fourthness 2))
+            ($composition (index-atom $fact 6)))
        (and (CPShape $fourthness support-specific-fourthness 3)
-            (CPRelationIdPresent $relations $id 0))) false))
+         (and (CPShape $composition composition 3)
+          (and (== (index-atom $composition 2) recognized-compose)
+               (CPRelationIdPresent $relations $id 0))))) false))
+
+(= (CPFactUnrecognized $fact)
+   (if (CPShape $fact fact9-expression 10)
+     (let $composition (index-atom $fact 6)
+       (and (CPShape $composition composition 3)
+            (== (index-atom $composition 2) unrecognized-compose))) false))
+
+(= (CPFactsContainUnrecognized $facts)
+   (CPHas true (collapse (let $fact (superpose $facts)
+     (CPFactUnrecognized $fact))) 0))
 
 (= (CPFactRelationSupported $facts $id)
    (CPHas true (collapse (let $fact (superpose $facts)
@@ -294,7 +316,10 @@
 
 (= (CPFactExpressionsLive $facts)
    (CPHas true (collapse (let $fact (superpose $facts)
-     (CPShape $fact fact9-expression 10))) 0))
+     (if (CPShape $fact fact9-expression 10)
+       (let $composition (index-atom $fact 6)
+         (and (CPShape $composition composition 3)
+              (== (index-atom $composition 2) recognized-compose))) false))) 0))
 
 (= (CPRelationReady $cut $facts $id)
    (if (CPDRelationKnown $cut $id) true
@@ -329,12 +354,26 @@
 (= (CPFlourishingExpressionFor $organization $value)
    (CPFind (index-atom $organization 2) $value))
 
+(= (CPFlourishingStandingsContain $standings $kinds $i)
+   (if (< $i (size-atom $standings))
+     (let $standing (index-atom $standings $i)
+       (if (and (CPShape $standing flourishing-standing 4)
+                (CPHas (index-atom $standing 2) $kinds 0))
+         true (CPFlourishingStandingsContain $standings $kinds (+ $i 1)))) false))
+
+; A possible movement's flourishing requirement means beneficial expression is
+; materially supported. Capture or obstruction remains visible and may support
+; a separately formed inquiry, but it cannot certify the beneficial requirement
+; it contradicts and cannot be compensated by another favorable row.
 (= (CPFlourishingEngaged $organization $value)
    (let $rows (CPFlourishingExpressionFor $organization $value)
      (if (== (size-atom $rows) 1)
        (let $standings (index-atom (index-atom $rows 0) 3)
-         (CPHas true (collapse (let $standing (superpose $standings)
-           (!= (index-atom $standing 2) unknown))) 0)) false)))
+         (and (CPFlourishingStandingsContain $standings
+                (flourishing beneficial-direction) 0)
+              (== (CPFlourishingStandingsContain $standings
+                (capture obstruction disguise contradiction unresolved
+                  counterevidence positive-pole-distortion) 0) false))) false)))
 
 (= (CPAllFlourishings $organization $values $i)
    (if (< $i (size-atom $values))
@@ -388,10 +427,15 @@
          (generated-standing $id generated
            (r-star $relations) (a-star $interfaces) (p-star $distinctions)
            (o-star $consequence) (legality $legality) (source $possibility))
-         (generated-standing $id unavailable-or-unresolved
-           (required-relations $relations) (required-distinctions $distinctions)
-           (required-interfaces $interfaces) (required-flourishings $flourishings)
-           (required-consequence $consequence) (required-legality $legality))))
+         (if (CPFactsContainUnrecognized $facts)
+           (generated-standing $id unrecognized
+             (required-relations $relations) (required-distinctions $distinctions)
+             (required-interfaces $interfaces) (required-flourishings $flourishings)
+             (required-consequence $consequence) (required-legality $legality))
+           (generated-standing $id unavailable-or-unresolved
+             (required-relations $relations) (required-distinctions $distinctions)
+             (required-interfaces $interfaces) (required-flourishings $flourishings)
+             (required-consequence $consequence) (required-legality $legality)))))
      (generated-standing unknown malformed-possibility (source $possibility))))
 
 (= (CPGeneratedAt $cut $facts $organization $possibilities $i)
