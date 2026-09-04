@@ -2,7 +2,10 @@
 ; relations determine construction. No defect/action table or fixed response
 ; participates, and every certificate is recomputed with no emission authority.
 (= (RRInitial $frame $clauses)
- (let* (($intention (RIntend expression-repair (DGround $frame)))
+ (RRInitialFor expression-repair $frame $clauses))
+
+(= (RRInitialFor $id $frame $clauses)
+ (let* (($intention (RIntend $id (DGround $frame)))
         ($scope (index-atom $frame 1))
         ($audit (RAudit $intention $scope $scope $clauses))
         ($disposition (RDisposition $audit 1)))
@@ -53,13 +56,37 @@
   (RRCertifyOne $frame $initial $capability $construction $eligible)))
 
 (= (RRContinue $frame $clauses $capability-path $fuel)
- (let* (($initial (RRInitial $frame $clauses))
-        ($capability (rr_capability $capability-path)))
+ (let $initial (RRInitial $frame $clauses)
+  (RRContinueInitial $frame $initial $capability-path $fuel)))
+
+(= (RRContinueInitial $frame $initial $capability-path $fuel)
+ (let $capability (rr_capability $capability-path)
   (if (PShape (index-atom $initial 4) repair-request 3)
    (if (RRCapabilityValid $capability)
     (RRConstruct $frame $initial $capability $fuel)
     (expression-repair-incomplete (capability $capability) no-emission-authority))
    (expression-repair-not-formed $initial no-emission-authority))))
+
+; The public rendered-state handler supplies its actual native products. They
+; must equal a current recomputation before the R5 construction can participate.
+(= (RRContinueObserved $frame $intention $clauses $audit $disposition $capability-path $fuel)
+ (let $current (RRInitialFor (index-atom $intention 1) $frame $clauses)
+  (if (and (== (index-atom $current 1) $intention)
+       (and (== (index-atom $current 3) $audit)
+        (== (index-atom $current 4) $disposition)))
+   (RRContinueInitial $frame $current $capability-path $fuel)
+   (expression-revalidation-required
+    (observed $intention $audit $disposition)
+    (recomputed $current) no-emission-authority))))
+
+(= (RRContinueRuntime $frame $intention $clauses $audit $disposition)
+ (let $runtime (rr_runtime_capability relational-voice-repair)
+  (if (and (PShape $runtime repair-runtime-capability 5)
+       (and (== (index-atom $runtime 1) accepted)
+        (== (index-atom $runtime 4) no-emission-authority)))
+   (RRContinueObserved $frame $intention $clauses $audit $disposition
+    (index-atom $runtime 2) (index-atom $runtime 3))
+   (expression-repair-incomplete (runtime-capability $runtime) no-emission-authority))))
 
 ; Verification never trusts a supplied certificate. It recomputes the entire
 ; continuation from the current frame, first candidate and accepted bytes.
@@ -68,3 +95,53 @@
   (if (and (PShape $current expression-certificate-v1 11) (== $current $supplied))
    (certificate-valid $current)
    (certificate-invalid (supplied $supplied) (recomputed $current) no-emission-authority))))
+
+; Public integration is placed after relational intention/audit, construction,
+; and repair definitions so PeTTa has one acyclic reduction order.
+(= (RInputFrame $input)
+ (if (PShape $input voice-frame 9) $input source-frame-unavailable))
+(= (RInputLanguage $input)
+ (if (PShape $input voice-frame 9) (DGround $input) $input))
+(= (RRenderedContinuation $frame $i $state)
+ (if (PShape $state rendered 5)
+  (if (== (index-atom $state 1) (index-atom $i 1))
+   (let* (($audit (RAudit $i (index-atom $i 2) (index-atom $state 2) (index-atom $state 3)))
+          ($remaining (if (PShape $frame voice-frame 9) 1 0))
+          ($disposition (RDisposition $audit $remaining)))
+    (if (PShape $disposition repair-request 3)
+     (if (PShape $frame voice-frame 9)
+      (native-expression-result $audit
+       (RRContinueRuntime $frame $i (index-atom $state 3) $audit $disposition))
+      (native-expression-result $audit
+       (expression-incomplete $audit (needed-contact source-frame))))
+     (native-expression-result $audit $disposition)))
+   (expression-revalidation request-identity-mismatch))
+  (expression-transport-incomplete $state)))
+(= (RWaitReturned $root $i $frame $state)
+ (if (PShape $state rendered 5)
+  (let $handled (RRenderedContinuation $frame $i $state)
+   (if (PShape $handled native-expression-result 3)
+    (let $saved (rv_save_result $root $handled)
+     (voice-result $saved (index-atom $handled 2))) $handled))
+  (let $saved (rv_save_result $root (expression-transport-incomplete $state))
+   (expression-transport-incomplete $state $saved))))
+(= (RWait $root $i $frame)
+ (let $control (rv_control $root)
+  (if (== $control (control (index-atom $i 1) (index-atom $i 2) stop))
+   (let* (($cancel (rv_cancel $root))
+          ($saved (rv_save_result $root (expression-cancellation-requested $cancel no-completion-claim))))
+    (expression-cancellation-requested $cancel $saved no-completion-claim))
+   (let $state (rv_poll $root)
+    (if (== $state pending)
+     (let $wait (rv_pace 0.01) (RWait $root $i $frame))
+     (RWaitReturned $root $i $frame $state))))))
+(= (RRun $root $id $input)
+ (let* (($language (RInputLanguage $input)) ($frame (RInputFrame $input))
+        ($i (RIntend $id $language)))
+  (if (PShape $i voice-intention 7)
+   (let $stored (rv_save_intention $root $i)
+    (if (== $stored intention-stored)
+     (let $started (rv_start $root (RModelRequest $i))
+      (if (== $started worker-started) (RWait $root $i $frame)
+       (expression-transport-incomplete $started))) (expression-storage-fault $stored)))
+   $i)))

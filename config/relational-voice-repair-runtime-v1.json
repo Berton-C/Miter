@@ -1,0 +1,7 @@
+{
+  "schema": "miter-relational-voice-repair-runtime-v1",
+  "candidate_path": "/Users/claritymiter/miter/evidence/G22/g26-001/accepted/candidate.json",
+  "construction_fuel": 256,
+  "standing": "accepted-development-only",
+  "external_human_emission": false
+}

@@ -1,0 +1,32 @@
+{
+  "status": "PASS-BOUNDED",
+  "gate": "G33",
+  "revision": "R6",
+  "claims": {
+    "current_wait_path_delegates_to_single_native_handler": true,
+    "altered_rendering_crosses_r5_repair_continuation": true,
+    "faithful_and_uncertain_products_remain_differentiated": true,
+    "public_integration_retains_zero_emission_authority": true
+  },
+  "first_standing": "meaning-altered",
+  "fresh_standing": "faithful",
+  "authority": "no-emission-authority",
+  "faithful_control": "expression-ready",
+  "no_joint": "expression-repair-alternatives",
+  "missing_frame": "expression-incomplete",
+  "forged_observation": "expression-revalidation-required",
+  "severed_handler": "expression-repair-incomplete",
+  "severed_runtime_capability": "expression-repair-incomplete",
+  "neutral_source_order_invariant": true,
+  "exact_repaired_wording_absent_from_builder_inputs": true,
+  "legacy_voice_policy_loaded": false,
+  "builder_selected_semantic_winner": false,
+  "model_calls": 0,
+  "network_requests": 0,
+  "credential_lookups": 0,
+  "chroma_mutations": 0,
+  "mattermost_operations": 0,
+  "human_emissions": 0,
+  "external_effects": 0,
+  "limits": "Exact native handler called by RWait under disclosed rendered states; no fresh model, actual poll loop, human emission, effect eligibility, general semantics, or complete G33 claim."
+}

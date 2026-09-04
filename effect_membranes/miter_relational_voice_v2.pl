@@ -16,11 +16,16 @@ rv2_required('src/grounded_language.metta').
 rv2_required('src/bootstrap_grounded_language.metta').
 rv2_required('src/relational_voice.metta').
 rv2_required('src/bootstrap_relational_voice.metta').
+rv2_required('src/development_evidence.metta').
+rv2_required('src/voice_construction.metta').
+rv2_required('src/relational_voice_repair_v1.metta').
 rv2_required('effect_membranes/miter_language.pl').
 rv2_required('effect_membranes/miter_relational_voice_v2.pl').
+rv2_required('effect_membranes/miter_relational_voice_repair_v1.pl').
 rv2_required('effect_membranes/miter_store.pl').
 rv2_required('effect_membranes/miter_llm.pl').
 rv2_required('config/relational-voice-runtime-grant-v1.json').
+rv2_required('config/relational-voice-repair-runtime-v1.json').
 rv2_required('config/local/g03-model-profiles.json').
 
 rv2_no_links(Path) :-

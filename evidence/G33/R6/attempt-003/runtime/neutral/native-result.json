@@ -1,0 +1,5888 @@
+{
+  "native": [
+    "native-expression-result",
+    [
+      "voice-audit",
+      "g33-r6-rendered",
+      [
+	"scope",
+	"cut-fixture",
+	"principal-fixture",
+	"project-fixture",
+	"test-owner-structural-contact"
+      ],
+      "meaning-altered",
+      [
+	"intention",
+	[
+	  "voice-intention",
+	  "g33-r6-rendered",
+	  [
+	    "scope",
+	    "cut-fixture",
+	    "principal-fixture",
+	    "project-fixture",
+	    "test-owner-structural-contact"
+	  ],
+	  "artifact",
+	  [
+	    [
+	      "expected",
+	      ["reported-request",  ["path", "artifact", "revised" ] ],
+	      [
+		[
+		  "supported",
+		  ["purpose",  ["language-purpose", "artifact" ],  ["path", "artifact", "revised" ] ],
+		  [
+		    "language-derived",
+		    "request-source",
+		    ["span", 0, 21 ],
+		    ["syntax", "request", "ledger", "revised" ],
+		    [
+		      [
+			"supported",
+			["utterance", "artifact", "Please revise ledger." ],
+			["origin", "request-source", "human-confirmation", "v1" ],
+			[ ["root", "request-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "request-source", "v1", "human-confirmation" ]
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "expected",
+	      ["retain", "artifact", "person", "choice", "choose" ],
+	      [
+		[
+		  "supported",
+		  [
+		    "commitment",
+		    ["language-obligation", "artifact", "person", "choice" ],
+		    "artifact",
+		    "person",
+		    "choice",
+		    "choose"
+		  ],
+		  [
+		    "language-derived",
+		    "commitment-source",
+		    ["span", 0, 56 ],
+		    [
+		      "syntax",
+		      "ability",
+		      "obligation",
+		      "mara",
+		      "ledger",
+		      ["choice", "inspection", "recovery" ]
+		    ],
+		    [
+		      [
+			"supported",
+			[
+			  "utterance",
+			  "artifact",
+			  "Keep mara able to choose and inspect and restore ledger."
+			],
+			["origin", "commitment-source", "human-confirmation", "v1" ],
+			[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "choice", "choose" ],
+			["origin", "interface-choice", "human-confirmation", "v1" ],
+			[ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "mara", "person", "person" ],
+			["origin", "name-person", "human-confirmation", "v1" ],
+			[ ["root", "name-person", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "name-person", "v1", "human-confirmation" ],
+		    ["root", "interface-choice", "v1", "human-confirmation" ],
+		    ["root", "commitment-source", "v1", "human-confirmation" ]
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "expected",
+	      ["retain", "artifact", "person", "inspection", "inspect" ],
+	      [
+		[
+		  "supported",
+		  [
+		    "commitment",
+		    ["language-obligation", "artifact", "person", "inspection" ],
+		    "artifact",
+		    "person",
+		    "inspection",
+		    "inspect"
+		  ],
+		  [
+		    "language-derived",
+		    "commitment-source",
+		    ["span", 0, 56 ],
+		    [
+		      "syntax",
+		      "ability",
+		      "obligation",
+		      "mara",
+		      "ledger",
+		      ["choice", "inspection", "recovery" ]
+		    ],
+		    [
+		      [
+			"supported",
+			[
+			  "utterance",
+			  "artifact",
+			  "Keep mara able to choose and inspect and restore ledger."
+			],
+			["origin", "commitment-source", "human-confirmation", "v1" ],
+			[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "inspection", "inspect" ],
+			["origin", "interface-inspection", "human-confirmation", "v1" ],
+			[ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "mara", "person", "person" ],
+			["origin", "name-person", "human-confirmation", "v1" ],
+			[ ["root", "name-person", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "name-person", "v1", "human-confirmation" ],
+		    ["root", "interface-inspection", "v1", "human-confirmation" ],
+		    ["root", "commitment-source", "v1", "human-confirmation" ]
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "expected",
+	      ["retain", "artifact", "person", "recovery", "recover" ],
+	      [
+		[
+		  "supported",
+		  [
+		    "commitment",
+		    ["language-obligation", "artifact", "person", "recovery" ],
+		    "artifact",
+		    "person",
+		    "recovery",
+		    "recover"
+		  ],
+		  [
+		    "language-derived",
+		    "commitment-source",
+		    ["span", 0, 56 ],
+		    [
+		      "syntax",
+		      "ability",
+		      "obligation",
+		      "mara",
+		      "ledger",
+		      ["choice", "inspection", "recovery" ]
+		    ],
+		    [
+		      [
+			"supported",
+			[
+			  "utterance",
+			  "artifact",
+			  "Keep mara able to choose and inspect and restore ledger."
+			],
+			["origin", "commitment-source", "human-confirmation", "v1" ],
+			[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "recovery", "recover" ],
+			["origin", "interface-recovery", "human-confirmation", "v1" ],
+			[ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "mara", "person", "person" ],
+			["origin", "name-person", "human-confirmation", "v1" ],
+			[ ["root", "name-person", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "name-person", "v1", "human-confirmation" ],
+		    ["root", "interface-recovery", "v1", "human-confirmation" ],
+		    ["root", "commitment-source", "v1", "human-confirmation" ]
+		  ]
+		]
+	      ]
+	    ]
+	  ],
+	  [
+	    "native-basis",
+	    [
+	      "grounded-participation",
+	      [
+		"scope",
+		"cut-fixture",
+		"principal-fixture",
+		"project-fixture",
+		"test-owner-structural-contact"
+	      ],
+	      [
+		"readings",
+		[
+		  [
+		    "supported",
+		    [
+		      "commitment",
+		      ["language-obligation", "artifact", "person", "choice" ],
+		      "artifact",
+		      "person",
+		      "choice",
+		      "choose"
+		    ],
+		    [
+		      "language-derived",
+		      "commitment-source",
+		      ["span", 0, 56 ],
+		      [
+			"syntax",
+			"ability",
+			"obligation",
+			"mara",
+			"ledger",
+			["choice", "inspection", "recovery" ]
+		      ],
+		      [
+			[
+			  "supported",
+			  [
+			    "utterance",
+			    "artifact",
+			    "Keep mara able to choose and inspect and restore ledger."
+			  ],
+			  ["origin", "commitment-source", "human-confirmation", "v1" ],
+			  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["interface", "artifact", "choice", "choose" ],
+			  ["origin", "interface-choice", "human-confirmation", "v1" ],
+			  [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "mara", "person", "person" ],
+			  ["origin", "name-person", "human-confirmation", "v1" ],
+			  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "name-person", "v1", "human-confirmation" ],
+		      ["root", "interface-choice", "v1", "human-confirmation" ],
+		      ["root", "commitment-source", "v1", "human-confirmation" ]
+		    ]
+		  ],
+		  [
+		    "supported",
+		    [
+		      "commitment",
+		      ["language-obligation", "artifact", "person", "inspection" ],
+		      "artifact",
+		      "person",
+		      "inspection",
+		      "inspect"
+		    ],
+		    [
+		      "language-derived",
+		      "commitment-source",
+		      ["span", 0, 56 ],
+		      [
+			"syntax",
+			"ability",
+			"obligation",
+			"mara",
+			"ledger",
+			["choice", "inspection", "recovery" ]
+		      ],
+		      [
+			[
+			  "supported",
+			  [
+			    "utterance",
+			    "artifact",
+			    "Keep mara able to choose and inspect and restore ledger."
+			  ],
+			  ["origin", "commitment-source", "human-confirmation", "v1" ],
+			  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["interface", "artifact", "inspection", "inspect" ],
+			  ["origin", "interface-inspection", "human-confirmation", "v1" ],
+			  [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "mara", "person", "person" ],
+			  ["origin", "name-person", "human-confirmation", "v1" ],
+			  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "name-person", "v1", "human-confirmation" ],
+		      ["root", "interface-inspection", "v1", "human-confirmation" ],
+		      ["root", "commitment-source", "v1", "human-confirmation" ]
+		    ]
+		  ],
+		  [
+		    "supported",
+		    [
+		      "commitment",
+		      ["language-obligation", "artifact", "person", "recovery" ],
+		      "artifact",
+		      "person",
+		      "recovery",
+		      "recover"
+		    ],
+		    [
+		      "language-derived",
+		      "commitment-source",
+		      ["span", 0, 56 ],
+		      [
+			"syntax",
+			"ability",
+			"obligation",
+			"mara",
+			"ledger",
+			["choice", "inspection", "recovery" ]
+		      ],
+		      [
+			[
+			  "supported",
+			  [
+			    "utterance",
+			    "artifact",
+			    "Keep mara able to choose and inspect and restore ledger."
+			  ],
+			  ["origin", "commitment-source", "human-confirmation", "v1" ],
+			  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["interface", "artifact", "recovery", "recover" ],
+			  ["origin", "interface-recovery", "human-confirmation", "v1" ],
+			  [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "mara", "person", "person" ],
+			  ["origin", "name-person", "human-confirmation", "v1" ],
+			  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "name-person", "v1", "human-confirmation" ],
+		      ["root", "interface-recovery", "v1", "human-confirmation" ],
+		      ["root", "commitment-source", "v1", "human-confirmation" ]
+		    ]
+		  ],
+		  [
+		    "supported",
+		    ["purpose",  ["language-purpose", "artifact" ],  ["path", "artifact", "revised" ] ],
+		    [
+		      "language-derived",
+		      "request-source",
+		      ["span", 0, 21 ],
+		      ["syntax", "request", "ledger", "revised" ],
+		      [
+			[
+			  "supported",
+			  ["utterance", "artifact", "Please revise ledger." ],
+			  ["origin", "request-source", "human-confirmation", "v1" ],
+			  [ ["root", "request-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "request-source", "v1", "human-confirmation" ]
+		    ]
+		  ],
+		  [
+		    "supported",
+		    [
+		      "coexpress",
+		      "artifact",
+		      [
+			["retain", "artifact", "person", "choice", "choose" ],
+			["retain", "artifact", "person", "inspection", "inspect" ],
+			["retain", "artifact", "person", "recovery", "recover" ]
+		      ]
+		    ],
+		    ["origin", "joint-contact", "human-confirmation", "v1" ],
+		    [ ["root", "joint-contact", "v1", "human-confirmation" ] ]
+		  ],
+		  [
+		    "supported",
+		    [
+		      "utterance",
+		      "artifact",
+		      "Keep mara able to choose and inspect and restore ledger."
+		    ],
+		    ["origin", "commitment-source", "human-confirmation", "v1" ],
+		    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["utterance", "artifact", "Please revise ledger." ],
+		    ["origin", "request-source", "human-confirmation", "v1" ],
+		    [ ["root", "request-source", "v1", "human-confirmation" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["interface", "artifact", "recovery", "recover" ],
+		    ["origin", "interface-recovery", "human-confirmation", "v1" ],
+		    [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["interface", "artifact", "inspection", "inspect" ],
+		    ["origin", "interface-inspection", "human-confirmation", "v1" ],
+		    [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["interface", "artifact", "choice", "choose" ],
+		    ["origin", "interface-choice", "human-confirmation", "v1" ],
+		    [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["named", "journal", "artifact", "other-artifact" ],
+		    ["origin", "name-other", "human-confirmation", "v1" ],
+		    [ ["root", "name-other", "v1", "human-confirmation" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["named", "ledger", "artifact", "artifact" ],
+		    ["origin", "name-artifact", "human-confirmation", "v1" ],
+		    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["named", "mara", "person", "person" ],
+		    ["origin", "name-person", "human-confirmation", "v1" ],
+		    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["edge", "artifact", "original" ],
+		    ["origin", "edge-3", "external-contact", "v1" ],
+		    [ ["root", "edge-3", "v1", "external-contact" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["edge", "person", "recover" ],
+		    ["origin", "edge-2", "external-contact", "v1" ],
+		    [ ["root", "edge-2", "v1", "external-contact" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["edge", "person", "inspect" ],
+		    ["origin", "edge-1", "external-contact", "v1" ],
+		    [ ["root", "edge-1", "v1", "external-contact" ] ]
+		  ],
+		  [
+		    "supported",
+		    ["edge", "person", "choose" ],
+		    ["origin", "edge-0", "external-contact", "v1" ],
+		    [ ["root", "edge-0", "v1", "external-contact" ] ]
+		  ]
+		]
+	      ],
+	      [
+		"interface-derivations",
+		[
+		  [
+		    "material-interface",
+		    "AgencyBalance",
+		    "choice",
+		    "person",
+		    "choose",
+		    [
+		      "support-basis",
+		      [
+			[
+			  "supported",
+			  [
+			    "commitment",
+			    ["language-obligation", "artifact", "person", "choice" ],
+			    "artifact",
+			    "person",
+			    "choice",
+			    "choose"
+			  ],
+			  [
+			    "language-derived",
+			    "commitment-source",
+			    ["span", 0, 56 ],
+			    [
+			      "syntax",
+			      "ability",
+			      "obligation",
+			      "mara",
+			      "ledger",
+			      ["choice", "inspection", "recovery" ]
+			    ],
+			    [
+			      [
+				"supported",
+				[
+				  "utterance",
+				  "artifact",
+				  "Keep mara able to choose and inspect and restore ledger."
+				],
+				["origin", "commitment-source", "human-confirmation", "v1" ],
+				[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["interface", "artifact", "choice", "choose" ],
+				["origin", "interface-choice", "human-confirmation", "v1" ],
+				[ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "mara", "person", "person" ],
+				["origin", "name-person", "human-confirmation", "v1" ],
+				[ ["root", "name-person", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "ledger", "artifact", "artifact" ],
+				["origin", "name-artifact", "human-confirmation", "v1" ],
+				[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			      ]
+			    ]
+			  ],
+			  [
+			    ["root", "name-artifact", "v1", "human-confirmation" ],
+			    ["root", "name-person", "v1", "human-confirmation" ],
+			    ["root", "interface-choice", "v1", "human-confirmation" ],
+			    ["root", "commitment-source", "v1", "human-confirmation" ]
+			  ]
+			]
+		      ]
+		    ]
+		  ],
+		  [
+		    "material-interface",
+		    "SharedUnderstanding",
+		    "inspection",
+		    "person",
+		    "inspect",
+		    [
+		      "support-basis",
+		      [
+			[
+			  "supported",
+			  [
+			    "commitment",
+			    ["language-obligation", "artifact", "person", "inspection" ],
+			    "artifact",
+			    "person",
+			    "inspection",
+			    "inspect"
+			  ],
+			  [
+			    "language-derived",
+			    "commitment-source",
+			    ["span", 0, 56 ],
+			    [
+			      "syntax",
+			      "ability",
+			      "obligation",
+			      "mara",
+			      "ledger",
+			      ["choice", "inspection", "recovery" ]
+			    ],
+			    [
+			      [
+				"supported",
+				[
+				  "utterance",
+				  "artifact",
+				  "Keep mara able to choose and inspect and restore ledger."
+				],
+				["origin", "commitment-source", "human-confirmation", "v1" ],
+				[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["interface", "artifact", "inspection", "inspect" ],
+				["origin", "interface-inspection", "human-confirmation", "v1" ],
+				[ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "mara", "person", "person" ],
+				["origin", "name-person", "human-confirmation", "v1" ],
+				[ ["root", "name-person", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "ledger", "artifact", "artifact" ],
+				["origin", "name-artifact", "human-confirmation", "v1" ],
+				[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			      ]
+			    ]
+			  ],
+			  [
+			    ["root", "name-artifact", "v1", "human-confirmation" ],
+			    ["root", "name-person", "v1", "human-confirmation" ],
+			    ["root", "interface-inspection", "v1", "human-confirmation" ],
+			    ["root", "commitment-source", "v1", "human-confirmation" ]
+			  ]
+			]
+		      ]
+		    ]
+		  ],
+		  [
+		    "material-interface",
+		    "TimeCoherence",
+		    "recovery",
+		    "person",
+		    "recover",
+		    [
+		      "support-basis",
+		      [
+			[
+			  "supported",
+			  [
+			    "commitment",
+			    ["language-obligation", "artifact", "person", "recovery" ],
+			    "artifact",
+			    "person",
+			    "recovery",
+			    "recover"
+			  ],
+			  [
+			    "language-derived",
+			    "commitment-source",
+			    ["span", 0, 56 ],
+			    [
+			      "syntax",
+			      "ability",
+			      "obligation",
+			      "mara",
+			      "ledger",
+			      ["choice", "inspection", "recovery" ]
+			    ],
+			    [
+			      [
+				"supported",
+				[
+				  "utterance",
+				  "artifact",
+				  "Keep mara able to choose and inspect and restore ledger."
+				],
+				["origin", "commitment-source", "human-confirmation", "v1" ],
+				[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["interface", "artifact", "recovery", "recover" ],
+				["origin", "interface-recovery", "human-confirmation", "v1" ],
+				[ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "mara", "person", "person" ],
+				["origin", "name-person", "human-confirmation", "v1" ],
+				[ ["root", "name-person", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "ledger", "artifact", "artifact" ],
+				["origin", "name-artifact", "human-confirmation", "v1" ],
+				[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			      ]
+			    ]
+			  ],
+			  [
+			    ["root", "name-artifact", "v1", "human-confirmation" ],
+			    ["root", "name-person", "v1", "human-confirmation" ],
+			    ["root", "interface-recovery", "v1", "human-confirmation" ],
+			    ["root", "commitment-source", "v1", "human-confirmation" ]
+			  ]
+			]
+		      ]
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"scoped-search",
+		[
+		  "scope",
+		  "cut-fixture",
+		  "principal-fixture",
+		  "project-fixture",
+		  "test-owner-structural-contact"
+		],
+		[
+		  "basis",
+		  [
+		    [
+		      "material-interface",
+		      "AgencyBalance",
+		      "choice",
+		      "person",
+		      "choose",
+		      [
+			"support-basis",
+			[
+			  [
+			    "supported",
+			    [
+			      "commitment",
+			      ["language-obligation", "artifact", "person", "choice" ],
+			      "artifact",
+			      "person",
+			      "choice",
+			      "choose"
+			    ],
+			    [
+			      "language-derived",
+			      "commitment-source",
+			      ["span", 0, 56 ],
+			      [
+				"syntax",
+				"ability",
+				"obligation",
+				"mara",
+				"ledger",
+				["choice", "inspection", "recovery" ]
+			      ],
+			      [
+				[
+				  "supported",
+				  [
+				    "utterance",
+				    "artifact",
+				    "Keep mara able to choose and inspect and restore ledger."
+				  ],
+				  ["origin", "commitment-source", "human-confirmation", "v1" ],
+				  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["interface", "artifact", "choice", "choose" ],
+				  ["origin", "interface-choice", "human-confirmation", "v1" ],
+				  [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "mara", "person", "person" ],
+				  ["origin", "name-person", "human-confirmation", "v1" ],
+				  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "ledger", "artifact", "artifact" ],
+				  ["origin", "name-artifact", "human-confirmation", "v1" ],
+				  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				]
+			      ]
+			    ],
+			    [
+			      ["root", "name-artifact", "v1", "human-confirmation" ],
+			      ["root", "name-person", "v1", "human-confirmation" ],
+			      ["root", "interface-choice", "v1", "human-confirmation" ],
+			      ["root", "commitment-source", "v1", "human-confirmation" ]
+			    ]
+			  ]
+			]
+		      ]
+		    ],
+		    [
+		      "material-interface",
+		      "SharedUnderstanding",
+		      "inspection",
+		      "person",
+		      "inspect",
+		      [
+			"support-basis",
+			[
+			  [
+			    "supported",
+			    [
+			      "commitment",
+			      ["language-obligation", "artifact", "person", "inspection" ],
+			      "artifact",
+			      "person",
+			      "inspection",
+			      "inspect"
+			    ],
+			    [
+			      "language-derived",
+			      "commitment-source",
+			      ["span", 0, 56 ],
+			      [
+				"syntax",
+				"ability",
+				"obligation",
+				"mara",
+				"ledger",
+				["choice", "inspection", "recovery" ]
+			      ],
+			      [
+				[
+				  "supported",
+				  [
+				    "utterance",
+				    "artifact",
+				    "Keep mara able to choose and inspect and restore ledger."
+				  ],
+				  ["origin", "commitment-source", "human-confirmation", "v1" ],
+				  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["interface", "artifact", "inspection", "inspect" ],
+				  ["origin", "interface-inspection", "human-confirmation", "v1" ],
+				  [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "mara", "person", "person" ],
+				  ["origin", "name-person", "human-confirmation", "v1" ],
+				  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "ledger", "artifact", "artifact" ],
+				  ["origin", "name-artifact", "human-confirmation", "v1" ],
+				  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				]
+			      ]
+			    ],
+			    [
+			      ["root", "name-artifact", "v1", "human-confirmation" ],
+			      ["root", "name-person", "v1", "human-confirmation" ],
+			      ["root", "interface-inspection", "v1", "human-confirmation" ],
+			      ["root", "commitment-source", "v1", "human-confirmation" ]
+			    ]
+			  ]
+			]
+		      ]
+		    ],
+		    [
+		      "material-interface",
+		      "TimeCoherence",
+		      "recovery",
+		      "person",
+		      "recover",
+		      [
+			"support-basis",
+			[
+			  [
+			    "supported",
+			    [
+			      "commitment",
+			      ["language-obligation", "artifact", "person", "recovery" ],
+			      "artifact",
+			      "person",
+			      "recovery",
+			      "recover"
+			    ],
+			    [
+			      "language-derived",
+			      "commitment-source",
+			      ["span", 0, 56 ],
+			      [
+				"syntax",
+				"ability",
+				"obligation",
+				"mara",
+				"ledger",
+				["choice", "inspection", "recovery" ]
+			      ],
+			      [
+				[
+				  "supported",
+				  [
+				    "utterance",
+				    "artifact",
+				    "Keep mara able to choose and inspect and restore ledger."
+				  ],
+				  ["origin", "commitment-source", "human-confirmation", "v1" ],
+				  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["interface", "artifact", "recovery", "recover" ],
+				  ["origin", "interface-recovery", "human-confirmation", "v1" ],
+				  [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "mara", "person", "person" ],
+				  ["origin", "name-person", "human-confirmation", "v1" ],
+				  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "ledger", "artifact", "artifact" ],
+				  ["origin", "name-artifact", "human-confirmation", "v1" ],
+				  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				]
+			      ]
+			    ],
+			    [
+			      ["root", "name-artifact", "v1", "human-confirmation" ],
+			      ["root", "name-person", "v1", "human-confirmation" ],
+			      ["root", "interface-recovery", "v1", "human-confirmation" ],
+			      ["root", "commitment-source", "v1", "human-confirmation" ]
+			    ]
+			  ]
+			]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "derived-goals",
+		  [
+		    ["path", "artifact", "revised" ],
+		    ["path", "person", "choose" ],
+		    ["path", "person", "inspect" ],
+		    ["path", "person", "recover" ]
+		  ]
+		],
+		[
+		  "material-interface-lost",
+		  [
+		    "candidate-participation",
+		    [
+		      [
+			"transition",
+			"direct-change",
+			[
+			  ["edge", "delegate", "recover" ],
+			  ["edge", "delegate", "inspect" ],
+			  ["edge", "delegate", "choose" ],
+			  ["edge", "person", "delegate" ],
+			  ["edge", "person", "choose" ],
+			  ["edge", "person", "inspect" ],
+			  ["edge", "person", "recover" ],
+			  ["edge", "artifact", "original" ]
+			],
+			[
+			  ["edge", "artifact", "revised" ],
+			  ["edge", "delegate", "recover" ],
+			  ["edge", "delegate", "inspect" ],
+			  ["edge", "delegate", "choose" ],
+			  ["edge", "person", "delegate" ],
+			  ["edge", "artifact", "original" ]
+			]
+		      ],
+		      [
+			"transition",
+			"preserve-participation",
+			[
+			  ["edge", "person", "choose" ],
+			  ["edge", "person", "inspect" ],
+			  ["edge", "person", "recover" ],
+			  ["edge", "artifact", "original" ]
+			],
+			[
+			  ["edge", "delegate", "recover" ],
+			  ["edge", "delegate", "inspect" ],
+			  ["edge", "delegate", "choose" ],
+			  ["edge", "person", "delegate" ],
+			  ["edge", "person", "choose" ],
+			  ["edge", "person", "inspect" ],
+			  ["edge", "person", "recover" ],
+			  ["edge", "artifact", "original" ]
+			]
+		      ]
+		    ],
+		    [
+		      ["edge", "artifact", "revised" ],
+		      ["edge", "delegate", "recover" ],
+		      ["edge", "delegate", "inspect" ],
+		      ["edge", "delegate", "choose" ],
+		      ["edge", "person", "delegate" ],
+		      ["edge", "artifact", "original" ]
+		    ],
+		    [
+		      ["path", "artifact", "revised" ],
+		      ["path", "person", "choose" ],
+		      ["path", "person", "inspect" ],
+		      ["path", "person", "recover" ]
+		    ]
+		  ],
+		  "no-state-change"
+		]
+	      ]
+	    ]
+	  ],
+	  "candidate-available"
+	]
+      ],
+      [
+	"expression-readings",
+	[
+	  [
+	    "expression-reading",
+	    0,
+	    ["span", 0, 21 ],
+	    ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+	    [
+	      "expression-meanings",
+	      [ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+	      [
+		[
+		  "supported",
+		  ["named", "ledger", "artifact", "artifact" ],
+		  ["origin", "name-artifact", "human-confirmation", "v1" ],
+		  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		]
+	      ]
+	    ],
+	    "rendering-not-authority"
+	  ]
+	]
+      ],
+      [
+	"alterations",
+	[
+	  [
+	    "unsupported-alteration",
+	    ["system-promise",  ["path", "artifact", "revised" ] ],
+	    ["candidate-span", 0,  ["span", 0, 21 ] ],
+	    [
+	      "intended",
+	      [
+		["retain", "artifact", "person", "recovery", "recover" ],
+		["retain", "artifact", "person", "inspection", "inspect" ],
+		["retain", "artifact", "person", "choice", "choose" ],
+		["reported-request",  ["path", "artifact", "revised" ] ]
+	      ]
+	    ]
+	  ],
+	  [
+	    "omitted-meaning",
+	    ["reported-request",  ["path", "artifact", "revised" ] ],
+	    [
+	      "source-basis",
+	      [
+		[
+		  "supported",
+		  ["purpose",  ["language-purpose", "artifact" ],  ["path", "artifact", "revised" ] ],
+		  [
+		    "language-derived",
+		    "request-source",
+		    ["span", 0, 21 ],
+		    ["syntax", "request", "ledger", "revised" ],
+		    [
+		      [
+			"supported",
+			["utterance", "artifact", "Please revise ledger." ],
+			["origin", "request-source", "human-confirmation", "v1" ],
+			[ ["root", "request-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "request-source", "v1", "human-confirmation" ]
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "candidate-surface",
+	      [
+		[
+		  "expression-reading",
+		  0,
+		  ["span", 0, 21 ],
+		  ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		  [
+		    "expression-meanings",
+		    [ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+		    [
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  "rendering-not-authority"
+		]
+	      ]
+	    ]
+	  ],
+	  [
+	    "omitted-meaning",
+	    ["retain", "artifact", "person", "choice", "choose" ],
+	    [
+	      "source-basis",
+	      [
+		[
+		  "supported",
+		  [
+		    "commitment",
+		    ["language-obligation", "artifact", "person", "choice" ],
+		    "artifact",
+		    "person",
+		    "choice",
+		    "choose"
+		  ],
+		  [
+		    "language-derived",
+		    "commitment-source",
+		    ["span", 0, 56 ],
+		    [
+		      "syntax",
+		      "ability",
+		      "obligation",
+		      "mara",
+		      "ledger",
+		      ["choice", "inspection", "recovery" ]
+		    ],
+		    [
+		      [
+			"supported",
+			[
+			  "utterance",
+			  "artifact",
+			  "Keep mara able to choose and inspect and restore ledger."
+			],
+			["origin", "commitment-source", "human-confirmation", "v1" ],
+			[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "choice", "choose" ],
+			["origin", "interface-choice", "human-confirmation", "v1" ],
+			[ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "mara", "person", "person" ],
+			["origin", "name-person", "human-confirmation", "v1" ],
+			[ ["root", "name-person", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "name-person", "v1", "human-confirmation" ],
+		    ["root", "interface-choice", "v1", "human-confirmation" ],
+		    ["root", "commitment-source", "v1", "human-confirmation" ]
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "candidate-surface",
+	      [
+		[
+		  "expression-reading",
+		  0,
+		  ["span", 0, 21 ],
+		  ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		  [
+		    "expression-meanings",
+		    [ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+		    [
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  "rendering-not-authority"
+		]
+	      ]
+	    ]
+	  ],
+	  [
+	    "omitted-meaning",
+	    ["retain", "artifact", "person", "inspection", "inspect" ],
+	    [
+	      "source-basis",
+	      [
+		[
+		  "supported",
+		  [
+		    "commitment",
+		    ["language-obligation", "artifact", "person", "inspection" ],
+		    "artifact",
+		    "person",
+		    "inspection",
+		    "inspect"
+		  ],
+		  [
+		    "language-derived",
+		    "commitment-source",
+		    ["span", 0, 56 ],
+		    [
+		      "syntax",
+		      "ability",
+		      "obligation",
+		      "mara",
+		      "ledger",
+		      ["choice", "inspection", "recovery" ]
+		    ],
+		    [
+		      [
+			"supported",
+			[
+			  "utterance",
+			  "artifact",
+			  "Keep mara able to choose and inspect and restore ledger."
+			],
+			["origin", "commitment-source", "human-confirmation", "v1" ],
+			[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "inspection", "inspect" ],
+			["origin", "interface-inspection", "human-confirmation", "v1" ],
+			[ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "mara", "person", "person" ],
+			["origin", "name-person", "human-confirmation", "v1" ],
+			[ ["root", "name-person", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "name-person", "v1", "human-confirmation" ],
+		    ["root", "interface-inspection", "v1", "human-confirmation" ],
+		    ["root", "commitment-source", "v1", "human-confirmation" ]
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "candidate-surface",
+	      [
+		[
+		  "expression-reading",
+		  0,
+		  ["span", 0, 21 ],
+		  ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		  [
+		    "expression-meanings",
+		    [ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+		    [
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  "rendering-not-authority"
+		]
+	      ]
+	    ]
+	  ],
+	  [
+	    "omitted-meaning",
+	    ["retain", "artifact", "person", "recovery", "recover" ],
+	    [
+	      "source-basis",
+	      [
+		[
+		  "supported",
+		  [
+		    "commitment",
+		    ["language-obligation", "artifact", "person", "recovery" ],
+		    "artifact",
+		    "person",
+		    "recovery",
+		    "recover"
+		  ],
+		  [
+		    "language-derived",
+		    "commitment-source",
+		    ["span", 0, 56 ],
+		    [
+		      "syntax",
+		      "ability",
+		      "obligation",
+		      "mara",
+		      "ledger",
+		      ["choice", "inspection", "recovery" ]
+		    ],
+		    [
+		      [
+			"supported",
+			[
+			  "utterance",
+			  "artifact",
+			  "Keep mara able to choose and inspect and restore ledger."
+			],
+			["origin", "commitment-source", "human-confirmation", "v1" ],
+			[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "recovery", "recover" ],
+			["origin", "interface-recovery", "human-confirmation", "v1" ],
+			[ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "mara", "person", "person" ],
+			["origin", "name-person", "human-confirmation", "v1" ],
+			[ ["root", "name-person", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "name-person", "v1", "human-confirmation" ],
+		    ["root", "interface-recovery", "v1", "human-confirmation" ],
+		    ["root", "commitment-source", "v1", "human-confirmation" ]
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "candidate-surface",
+	      [
+		[
+		  "expression-reading",
+		  0,
+		  ["span", 0, 21 ],
+		  ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		  [
+		    "expression-meanings",
+		    [ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+		    [
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  "rendering-not-authority"
+		]
+	      ]
+	    ]
+	  ]
+	]
+      ]
+    ],
+    [
+      "RRContinueRuntime",
+      [
+	"voice-frame",
+	[
+	  "scope",
+	  "cut-fixture",
+	  "principal-fixture",
+	  "project-fixture",
+	  "test-owner-structural-contact"
+	],
+	[
+	  [
+	    "node",
+	    "joint-contact",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    [
+	      "coexpress",
+	      "artifact",
+	      [
+		["retain", "artifact", "person", "choice", "choose" ],
+		["retain", "artifact", "person", "inspection", "inspect" ],
+		["retain", "artifact", "person", "recovery", "recover" ]
+	      ]
+	    ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "commitment-source",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["utterance", "artifact", "Keep mara able to choose and inspect and restore ledger." ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "request-source",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["utterance", "artifact", "Please revise ledger." ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "interface-recovery",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["interface", "artifact", "recovery", "recover" ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "interface-inspection",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["interface", "artifact", "inspection", "inspect" ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "interface-choice",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["interface", "artifact", "choice", "choose" ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "name-other",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["named", "journal", "artifact", "other-artifact" ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "name-artifact",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["named", "ledger", "artifact", "artifact" ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "name-person",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["named", "mara", "person", "person" ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "edge-3",
+	    "external-contact",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["edge", "artifact", "original" ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "edge-2",
+	    "external-contact",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["edge", "person", "recover" ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "edge-1",
+	    "external-contact",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["edge", "person", "inspect" ],
+	    []
+	  ],
+	  [
+	    "node",
+	    "edge-0",
+	    "external-contact",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["edge", "person", "choose" ],
+	    []
+	  ]
+	],
+	[
+	  [
+	    "observation",
+	    "joint-contact",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    [
+	      "coexpress",
+	      "artifact",
+	      [
+		["retain", "artifact", "person", "choice", "choose" ],
+		["retain", "artifact", "person", "inspection", "inspect" ],
+		["retain", "artifact", "person", "recovery", "recover" ]
+	      ]
+	    ]
+	  ],
+	  [
+	    "observation",
+	    "commitment-source",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["utterance", "artifact", "Keep mara able to choose and inspect and restore ledger." ]
+	  ],
+	  [
+	    "observation",
+	    "request-source",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["utterance", "artifact", "Please revise ledger." ]
+	  ],
+	  [
+	    "observation",
+	    "interface-recovery",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["interface", "artifact", "recovery", "recover" ]
+	  ],
+	  [
+	    "observation",
+	    "interface-inspection",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["interface", "artifact", "inspection", "inspect" ]
+	  ],
+	  [
+	    "observation",
+	    "interface-choice",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["interface", "artifact", "choice", "choose" ]
+	  ],
+	  [
+	    "observation",
+	    "name-other",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["named", "journal", "artifact", "other-artifact" ]
+	  ],
+	  [
+	    "observation",
+	    "name-artifact",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["named", "ledger", "artifact", "artifact" ]
+	  ],
+	  [
+	    "observation",
+	    "name-person",
+	    "human-confirmation",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["named", "mara", "person", "person" ]
+	  ],
+	  [
+	    "observation",
+	    "edge-3",
+	    "external-contact",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["edge", "artifact", "original" ]
+	  ],
+	  [
+	    "observation",
+	    "edge-2",
+	    "external-contact",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["edge", "person", "recover" ]
+	  ],
+	  [
+	    "observation",
+	    "edge-1",
+	    "external-contact",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["edge", "person", "inspect" ]
+	  ],
+	  [
+	    "observation",
+	    "edge-0",
+	    "external-contact",
+	    ["principal-fixture" ],
+	    "project-fixture",
+	    "v1",
+	    ["edge", "person", "choose" ]
+	  ]
+	],
+	[
+	  ["at", "joint-contact", "v1" ],
+	  ["at", "commitment-source", "v1" ],
+	  ["at", "request-source", "v1" ],
+	  ["at", "interface-recovery", "v1" ],
+	  ["at", "interface-inspection", "v1" ],
+	  ["at", "interface-choice", "v1" ],
+	  ["at", "name-other", "v1" ],
+	  ["at", "name-artifact", "v1" ],
+	  ["at", "name-person", "v1" ],
+	  ["at", "edge-3", "v1" ],
+	  ["at", "edge-2", "v1" ],
+	  ["at", "edge-1", "v1" ],
+	  ["at", "edge-0", "v1" ]
+	],
+	[
+	  [
+	    "operation",
+	    "direct-change",
+	    [ ["edge", "artifact", "original" ] ],
+	    [ ["edge", "artifact", "revised" ] ],
+	    [
+	      ["edge", "person", "choose" ],
+	      ["edge", "person", "inspect" ],
+	      ["edge", "person", "recover" ]
+	    ]
+	  ],
+	  [
+	    "operation",
+	    "preserve-participation",
+	    [ ["edge", "artifact", "original" ] ],
+	    [
+	      ["edge", "person", "delegate" ],
+	      ["edge", "delegate", "choose" ],
+	      ["edge", "delegate", "inspect" ],
+	      ["edge", "delegate", "recover" ]
+	    ],
+	    []
+	  ]
+	],
+	"artifact",
+	2,
+	[]
+      ],
+      [
+	"voice-intention",
+	"g33-r6-rendered",
+	[
+	  "scope",
+	  "cut-fixture",
+	  "principal-fixture",
+	  "project-fixture",
+	  "test-owner-structural-contact"
+	],
+	"artifact",
+	[
+	  [
+	    "expected",
+	    ["reported-request",  ["path", "artifact", "revised" ] ],
+	    [
+	      [
+		"supported",
+		["purpose",  ["language-purpose", "artifact" ],  ["path", "artifact", "revised" ] ],
+		[
+		  "language-derived",
+		  "request-source",
+		  ["span", 0, 21 ],
+		  ["syntax", "request", "ledger", "revised" ],
+		  [
+		    [
+		      "supported",
+		      ["utterance", "artifact", "Please revise ledger." ],
+		      ["origin", "request-source", "human-confirmation", "v1" ],
+		      [ ["root", "request-source", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["named", "ledger", "artifact", "artifact" ],
+		      ["origin", "name-artifact", "human-confirmation", "v1" ],
+		      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		    ]
+		  ]
+		],
+		[
+		  ["root", "name-artifact", "v1", "human-confirmation" ],
+		  ["root", "request-source", "v1", "human-confirmation" ]
+		]
+	      ]
+	    ]
+	  ],
+	  [
+	    "expected",
+	    ["retain", "artifact", "person", "choice", "choose" ],
+	    [
+	      [
+		"supported",
+		[
+		  "commitment",
+		  ["language-obligation", "artifact", "person", "choice" ],
+		  "artifact",
+		  "person",
+		  "choice",
+		  "choose"
+		],
+		[
+		  "language-derived",
+		  "commitment-source",
+		  ["span", 0, 56 ],
+		  [
+		    "syntax",
+		    "ability",
+		    "obligation",
+		    "mara",
+		    "ledger",
+		    ["choice", "inspection", "recovery" ]
+		  ],
+		  [
+		    [
+		      "supported",
+		      [
+			"utterance",
+			"artifact",
+			"Keep mara able to choose and inspect and restore ledger."
+		      ],
+		      ["origin", "commitment-source", "human-confirmation", "v1" ],
+		      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["interface", "artifact", "choice", "choose" ],
+		      ["origin", "interface-choice", "human-confirmation", "v1" ],
+		      [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["named", "mara", "person", "person" ],
+		      ["origin", "name-person", "human-confirmation", "v1" ],
+		      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["named", "ledger", "artifact", "artifact" ],
+		      ["origin", "name-artifact", "human-confirmation", "v1" ],
+		      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		    ]
+		  ]
+		],
+		[
+		  ["root", "name-artifact", "v1", "human-confirmation" ],
+		  ["root", "name-person", "v1", "human-confirmation" ],
+		  ["root", "interface-choice", "v1", "human-confirmation" ],
+		  ["root", "commitment-source", "v1", "human-confirmation" ]
+		]
+	      ]
+	    ]
+	  ],
+	  [
+	    "expected",
+	    ["retain", "artifact", "person", "inspection", "inspect" ],
+	    [
+	      [
+		"supported",
+		[
+		  "commitment",
+		  ["language-obligation", "artifact", "person", "inspection" ],
+		  "artifact",
+		  "person",
+		  "inspection",
+		  "inspect"
+		],
+		[
+		  "language-derived",
+		  "commitment-source",
+		  ["span", 0, 56 ],
+		  [
+		    "syntax",
+		    "ability",
+		    "obligation",
+		    "mara",
+		    "ledger",
+		    ["choice", "inspection", "recovery" ]
+		  ],
+		  [
+		    [
+		      "supported",
+		      [
+			"utterance",
+			"artifact",
+			"Keep mara able to choose and inspect and restore ledger."
+		      ],
+		      ["origin", "commitment-source", "human-confirmation", "v1" ],
+		      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["interface", "artifact", "inspection", "inspect" ],
+		      ["origin", "interface-inspection", "human-confirmation", "v1" ],
+		      [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["named", "mara", "person", "person" ],
+		      ["origin", "name-person", "human-confirmation", "v1" ],
+		      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["named", "ledger", "artifact", "artifact" ],
+		      ["origin", "name-artifact", "human-confirmation", "v1" ],
+		      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		    ]
+		  ]
+		],
+		[
+		  ["root", "name-artifact", "v1", "human-confirmation" ],
+		  ["root", "name-person", "v1", "human-confirmation" ],
+		  ["root", "interface-inspection", "v1", "human-confirmation" ],
+		  ["root", "commitment-source", "v1", "human-confirmation" ]
+		]
+	      ]
+	    ]
+	  ],
+	  [
+	    "expected",
+	    ["retain", "artifact", "person", "recovery", "recover" ],
+	    [
+	      [
+		"supported",
+		[
+		  "commitment",
+		  ["language-obligation", "artifact", "person", "recovery" ],
+		  "artifact",
+		  "person",
+		  "recovery",
+		  "recover"
+		],
+		[
+		  "language-derived",
+		  "commitment-source",
+		  ["span", 0, 56 ],
+		  [
+		    "syntax",
+		    "ability",
+		    "obligation",
+		    "mara",
+		    "ledger",
+		    ["choice", "inspection", "recovery" ]
+		  ],
+		  [
+		    [
+		      "supported",
+		      [
+			"utterance",
+			"artifact",
+			"Keep mara able to choose and inspect and restore ledger."
+		      ],
+		      ["origin", "commitment-source", "human-confirmation", "v1" ],
+		      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["interface", "artifact", "recovery", "recover" ],
+		      ["origin", "interface-recovery", "human-confirmation", "v1" ],
+		      [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["named", "mara", "person", "person" ],
+		      ["origin", "name-person", "human-confirmation", "v1" ],
+		      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["named", "ledger", "artifact", "artifact" ],
+		      ["origin", "name-artifact", "human-confirmation", "v1" ],
+		      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		    ]
+		  ]
+		],
+		[
+		  ["root", "name-artifact", "v1", "human-confirmation" ],
+		  ["root", "name-person", "v1", "human-confirmation" ],
+		  ["root", "interface-recovery", "v1", "human-confirmation" ],
+		  ["root", "commitment-source", "v1", "human-confirmation" ]
+		]
+	      ]
+	    ]
+	  ]
+	],
+	[
+	  "native-basis",
+	  [
+	    "grounded-participation",
+	    [
+	      "scope",
+	      "cut-fixture",
+	      "principal-fixture",
+	      "project-fixture",
+	      "test-owner-structural-contact"
+	    ],
+	    [
+	      "readings",
+	      [
+		[
+		  "supported",
+		  [
+		    "commitment",
+		    ["language-obligation", "artifact", "person", "choice" ],
+		    "artifact",
+		    "person",
+		    "choice",
+		    "choose"
+		  ],
+		  [
+		    "language-derived",
+		    "commitment-source",
+		    ["span", 0, 56 ],
+		    [
+		      "syntax",
+		      "ability",
+		      "obligation",
+		      "mara",
+		      "ledger",
+		      ["choice", "inspection", "recovery" ]
+		    ],
+		    [
+		      [
+			"supported",
+			[
+			  "utterance",
+			  "artifact",
+			  "Keep mara able to choose and inspect and restore ledger."
+			],
+			["origin", "commitment-source", "human-confirmation", "v1" ],
+			[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "choice", "choose" ],
+			["origin", "interface-choice", "human-confirmation", "v1" ],
+			[ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "mara", "person", "person" ],
+			["origin", "name-person", "human-confirmation", "v1" ],
+			[ ["root", "name-person", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "name-person", "v1", "human-confirmation" ],
+		    ["root", "interface-choice", "v1", "human-confirmation" ],
+		    ["root", "commitment-source", "v1", "human-confirmation" ]
+		  ]
+		],
+		[
+		  "supported",
+		  [
+		    "commitment",
+		    ["language-obligation", "artifact", "person", "inspection" ],
+		    "artifact",
+		    "person",
+		    "inspection",
+		    "inspect"
+		  ],
+		  [
+		    "language-derived",
+		    "commitment-source",
+		    ["span", 0, 56 ],
+		    [
+		      "syntax",
+		      "ability",
+		      "obligation",
+		      "mara",
+		      "ledger",
+		      ["choice", "inspection", "recovery" ]
+		    ],
+		    [
+		      [
+			"supported",
+			[
+			  "utterance",
+			  "artifact",
+			  "Keep mara able to choose and inspect and restore ledger."
+			],
+			["origin", "commitment-source", "human-confirmation", "v1" ],
+			[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "inspection", "inspect" ],
+			["origin", "interface-inspection", "human-confirmation", "v1" ],
+			[ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "mara", "person", "person" ],
+			["origin", "name-person", "human-confirmation", "v1" ],
+			[ ["root", "name-person", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "name-person", "v1", "human-confirmation" ],
+		    ["root", "interface-inspection", "v1", "human-confirmation" ],
+		    ["root", "commitment-source", "v1", "human-confirmation" ]
+		  ]
+		],
+		[
+		  "supported",
+		  [
+		    "commitment",
+		    ["language-obligation", "artifact", "person", "recovery" ],
+		    "artifact",
+		    "person",
+		    "recovery",
+		    "recover"
+		  ],
+		  [
+		    "language-derived",
+		    "commitment-source",
+		    ["span", 0, 56 ],
+		    [
+		      "syntax",
+		      "ability",
+		      "obligation",
+		      "mara",
+		      "ledger",
+		      ["choice", "inspection", "recovery" ]
+		    ],
+		    [
+		      [
+			"supported",
+			[
+			  "utterance",
+			  "artifact",
+			  "Keep mara able to choose and inspect and restore ledger."
+			],
+			["origin", "commitment-source", "human-confirmation", "v1" ],
+			[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "recovery", "recover" ],
+			["origin", "interface-recovery", "human-confirmation", "v1" ],
+			[ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "mara", "person", "person" ],
+			["origin", "name-person", "human-confirmation", "v1" ],
+			[ ["root", "name-person", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "name-person", "v1", "human-confirmation" ],
+		    ["root", "interface-recovery", "v1", "human-confirmation" ],
+		    ["root", "commitment-source", "v1", "human-confirmation" ]
+		  ]
+		],
+		[
+		  "supported",
+		  ["purpose",  ["language-purpose", "artifact" ],  ["path", "artifact", "revised" ] ],
+		  [
+		    "language-derived",
+		    "request-source",
+		    ["span", 0, 21 ],
+		    ["syntax", "request", "ledger", "revised" ],
+		    [
+		      [
+			"supported",
+			["utterance", "artifact", "Please revise ledger." ],
+			["origin", "request-source", "human-confirmation", "v1" ],
+			[ ["root", "request-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["root", "name-artifact", "v1", "human-confirmation" ],
+		    ["root", "request-source", "v1", "human-confirmation" ]
+		  ]
+		],
+		[
+		  "supported",
+		  [
+		    "coexpress",
+		    "artifact",
+		    [
+		      ["retain", "artifact", "person", "choice", "choose" ],
+		      ["retain", "artifact", "person", "inspection", "inspect" ],
+		      ["retain", "artifact", "person", "recovery", "recover" ]
+		    ]
+		  ],
+		  ["origin", "joint-contact", "human-confirmation", "v1" ],
+		  [ ["root", "joint-contact", "v1", "human-confirmation" ] ]
+		],
+		[
+		  "supported",
+		  [
+		    "utterance",
+		    "artifact",
+		    "Keep mara able to choose and inspect and restore ledger."
+		  ],
+		  ["origin", "commitment-source", "human-confirmation", "v1" ],
+		  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		],
+		[
+		  "supported",
+		  ["utterance", "artifact", "Please revise ledger." ],
+		  ["origin", "request-source", "human-confirmation", "v1" ],
+		  [ ["root", "request-source", "v1", "human-confirmation" ] ]
+		],
+		[
+		  "supported",
+		  ["interface", "artifact", "recovery", "recover" ],
+		  ["origin", "interface-recovery", "human-confirmation", "v1" ],
+		  [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+		],
+		[
+		  "supported",
+		  ["interface", "artifact", "inspection", "inspect" ],
+		  ["origin", "interface-inspection", "human-confirmation", "v1" ],
+		  [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+		],
+		[
+		  "supported",
+		  ["interface", "artifact", "choice", "choose" ],
+		  ["origin", "interface-choice", "human-confirmation", "v1" ],
+		  [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+		],
+		[
+		  "supported",
+		  ["named", "journal", "artifact", "other-artifact" ],
+		  ["origin", "name-other", "human-confirmation", "v1" ],
+		  [ ["root", "name-other", "v1", "human-confirmation" ] ]
+		],
+		[
+		  "supported",
+		  ["named", "ledger", "artifact", "artifact" ],
+		  ["origin", "name-artifact", "human-confirmation", "v1" ],
+		  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		],
+		[
+		  "supported",
+		  ["named", "mara", "person", "person" ],
+		  ["origin", "name-person", "human-confirmation", "v1" ],
+		  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+		],
+		[
+		  "supported",
+		  ["edge", "artifact", "original" ],
+		  ["origin", "edge-3", "external-contact", "v1" ],
+		  [ ["root", "edge-3", "v1", "external-contact" ] ]
+		],
+		[
+		  "supported",
+		  ["edge", "person", "recover" ],
+		  ["origin", "edge-2", "external-contact", "v1" ],
+		  [ ["root", "edge-2", "v1", "external-contact" ] ]
+		],
+		[
+		  "supported",
+		  ["edge", "person", "inspect" ],
+		  ["origin", "edge-1", "external-contact", "v1" ],
+		  [ ["root", "edge-1", "v1", "external-contact" ] ]
+		],
+		[
+		  "supported",
+		  ["edge", "person", "choose" ],
+		  ["origin", "edge-0", "external-contact", "v1" ],
+		  [ ["root", "edge-0", "v1", "external-contact" ] ]
+		]
+	      ]
+	    ],
+	    [
+	      "interface-derivations",
+	      [
+		[
+		  "material-interface",
+		  "AgencyBalance",
+		  "choice",
+		  "person",
+		  "choose",
+		  [
+		    "support-basis",
+		    [
+		      [
+			"supported",
+			[
+			  "commitment",
+			  ["language-obligation", "artifact", "person", "choice" ],
+			  "artifact",
+			  "person",
+			  "choice",
+			  "choose"
+			],
+			[
+			  "language-derived",
+			  "commitment-source",
+			  ["span", 0, 56 ],
+			  [
+			    "syntax",
+			    "ability",
+			    "obligation",
+			    "mara",
+			    "ledger",
+			    ["choice", "inspection", "recovery" ]
+			  ],
+			  [
+			    [
+			      "supported",
+			      [
+				"utterance",
+				"artifact",
+				"Keep mara able to choose and inspect and restore ledger."
+			      ],
+			      ["origin", "commitment-source", "human-confirmation", "v1" ],
+			      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["interface", "artifact", "choice", "choose" ],
+			      ["origin", "interface-choice", "human-confirmation", "v1" ],
+			      [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "mara", "person", "person" ],
+			      ["origin", "name-person", "human-confirmation", "v1" ],
+			      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "ledger", "artifact", "artifact" ],
+			      ["origin", "name-artifact", "human-confirmation", "v1" ],
+			      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			    ]
+			  ]
+			],
+			[
+			  ["root", "name-artifact", "v1", "human-confirmation" ],
+			  ["root", "name-person", "v1", "human-confirmation" ],
+			  ["root", "interface-choice", "v1", "human-confirmation" ],
+			  ["root", "commitment-source", "v1", "human-confirmation" ]
+			]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "material-interface",
+		  "SharedUnderstanding",
+		  "inspection",
+		  "person",
+		  "inspect",
+		  [
+		    "support-basis",
+		    [
+		      [
+			"supported",
+			[
+			  "commitment",
+			  ["language-obligation", "artifact", "person", "inspection" ],
+			  "artifact",
+			  "person",
+			  "inspection",
+			  "inspect"
+			],
+			[
+			  "language-derived",
+			  "commitment-source",
+			  ["span", 0, 56 ],
+			  [
+			    "syntax",
+			    "ability",
+			    "obligation",
+			    "mara",
+			    "ledger",
+			    ["choice", "inspection", "recovery" ]
+			  ],
+			  [
+			    [
+			      "supported",
+			      [
+				"utterance",
+				"artifact",
+				"Keep mara able to choose and inspect and restore ledger."
+			      ],
+			      ["origin", "commitment-source", "human-confirmation", "v1" ],
+			      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["interface", "artifact", "inspection", "inspect" ],
+			      ["origin", "interface-inspection", "human-confirmation", "v1" ],
+			      [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "mara", "person", "person" ],
+			      ["origin", "name-person", "human-confirmation", "v1" ],
+			      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "ledger", "artifact", "artifact" ],
+			      ["origin", "name-artifact", "human-confirmation", "v1" ],
+			      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			    ]
+			  ]
+			],
+			[
+			  ["root", "name-artifact", "v1", "human-confirmation" ],
+			  ["root", "name-person", "v1", "human-confirmation" ],
+			  ["root", "interface-inspection", "v1", "human-confirmation" ],
+			  ["root", "commitment-source", "v1", "human-confirmation" ]
+			]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "material-interface",
+		  "TimeCoherence",
+		  "recovery",
+		  "person",
+		  "recover",
+		  [
+		    "support-basis",
+		    [
+		      [
+			"supported",
+			[
+			  "commitment",
+			  ["language-obligation", "artifact", "person", "recovery" ],
+			  "artifact",
+			  "person",
+			  "recovery",
+			  "recover"
+			],
+			[
+			  "language-derived",
+			  "commitment-source",
+			  ["span", 0, 56 ],
+			  [
+			    "syntax",
+			    "ability",
+			    "obligation",
+			    "mara",
+			    "ledger",
+			    ["choice", "inspection", "recovery" ]
+			  ],
+			  [
+			    [
+			      "supported",
+			      [
+				"utterance",
+				"artifact",
+				"Keep mara able to choose and inspect and restore ledger."
+			      ],
+			      ["origin", "commitment-source", "human-confirmation", "v1" ],
+			      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["interface", "artifact", "recovery", "recover" ],
+			      ["origin", "interface-recovery", "human-confirmation", "v1" ],
+			      [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "mara", "person", "person" ],
+			      ["origin", "name-person", "human-confirmation", "v1" ],
+			      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "ledger", "artifact", "artifact" ],
+			      ["origin", "name-artifact", "human-confirmation", "v1" ],
+			      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			    ]
+			  ]
+			],
+			[
+			  ["root", "name-artifact", "v1", "human-confirmation" ],
+			  ["root", "name-person", "v1", "human-confirmation" ],
+			  ["root", "interface-recovery", "v1", "human-confirmation" ],
+			  ["root", "commitment-source", "v1", "human-confirmation" ]
+			]
+		      ]
+		    ]
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "scoped-search",
+	      [
+		"scope",
+		"cut-fixture",
+		"principal-fixture",
+		"project-fixture",
+		"test-owner-structural-contact"
+	      ],
+	      [
+		"basis",
+		[
+		  [
+		    "material-interface",
+		    "AgencyBalance",
+		    "choice",
+		    "person",
+		    "choose",
+		    [
+		      "support-basis",
+		      [
+			[
+			  "supported",
+			  [
+			    "commitment",
+			    ["language-obligation", "artifact", "person", "choice" ],
+			    "artifact",
+			    "person",
+			    "choice",
+			    "choose"
+			  ],
+			  [
+			    "language-derived",
+			    "commitment-source",
+			    ["span", 0, 56 ],
+			    [
+			      "syntax",
+			      "ability",
+			      "obligation",
+			      "mara",
+			      "ledger",
+			      ["choice", "inspection", "recovery" ]
+			    ],
+			    [
+			      [
+				"supported",
+				[
+				  "utterance",
+				  "artifact",
+				  "Keep mara able to choose and inspect and restore ledger."
+				],
+				["origin", "commitment-source", "human-confirmation", "v1" ],
+				[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["interface", "artifact", "choice", "choose" ],
+				["origin", "interface-choice", "human-confirmation", "v1" ],
+				[ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "mara", "person", "person" ],
+				["origin", "name-person", "human-confirmation", "v1" ],
+				[ ["root", "name-person", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "ledger", "artifact", "artifact" ],
+				["origin", "name-artifact", "human-confirmation", "v1" ],
+				[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			      ]
+			    ]
+			  ],
+			  [
+			    ["root", "name-artifact", "v1", "human-confirmation" ],
+			    ["root", "name-person", "v1", "human-confirmation" ],
+			    ["root", "interface-choice", "v1", "human-confirmation" ],
+			    ["root", "commitment-source", "v1", "human-confirmation" ]
+			  ]
+			]
+		      ]
+		    ]
+		  ],
+		  [
+		    "material-interface",
+		    "SharedUnderstanding",
+		    "inspection",
+		    "person",
+		    "inspect",
+		    [
+		      "support-basis",
+		      [
+			[
+			  "supported",
+			  [
+			    "commitment",
+			    ["language-obligation", "artifact", "person", "inspection" ],
+			    "artifact",
+			    "person",
+			    "inspection",
+			    "inspect"
+			  ],
+			  [
+			    "language-derived",
+			    "commitment-source",
+			    ["span", 0, 56 ],
+			    [
+			      "syntax",
+			      "ability",
+			      "obligation",
+			      "mara",
+			      "ledger",
+			      ["choice", "inspection", "recovery" ]
+			    ],
+			    [
+			      [
+				"supported",
+				[
+				  "utterance",
+				  "artifact",
+				  "Keep mara able to choose and inspect and restore ledger."
+				],
+				["origin", "commitment-source", "human-confirmation", "v1" ],
+				[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["interface", "artifact", "inspection", "inspect" ],
+				["origin", "interface-inspection", "human-confirmation", "v1" ],
+				[ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "mara", "person", "person" ],
+				["origin", "name-person", "human-confirmation", "v1" ],
+				[ ["root", "name-person", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "ledger", "artifact", "artifact" ],
+				["origin", "name-artifact", "human-confirmation", "v1" ],
+				[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			      ]
+			    ]
+			  ],
+			  [
+			    ["root", "name-artifact", "v1", "human-confirmation" ],
+			    ["root", "name-person", "v1", "human-confirmation" ],
+			    ["root", "interface-inspection", "v1", "human-confirmation" ],
+			    ["root", "commitment-source", "v1", "human-confirmation" ]
+			  ]
+			]
+		      ]
+		    ]
+		  ],
+		  [
+		    "material-interface",
+		    "TimeCoherence",
+		    "recovery",
+		    "person",
+		    "recover",
+		    [
+		      "support-basis",
+		      [
+			[
+			  "supported",
+			  [
+			    "commitment",
+			    ["language-obligation", "artifact", "person", "recovery" ],
+			    "artifact",
+			    "person",
+			    "recovery",
+			    "recover"
+			  ],
+			  [
+			    "language-derived",
+			    "commitment-source",
+			    ["span", 0, 56 ],
+			    [
+			      "syntax",
+			      "ability",
+			      "obligation",
+			      "mara",
+			      "ledger",
+			      ["choice", "inspection", "recovery" ]
+			    ],
+			    [
+			      [
+				"supported",
+				[
+				  "utterance",
+				  "artifact",
+				  "Keep mara able to choose and inspect and restore ledger."
+				],
+				["origin", "commitment-source", "human-confirmation", "v1" ],
+				[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["interface", "artifact", "recovery", "recover" ],
+				["origin", "interface-recovery", "human-confirmation", "v1" ],
+				[ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "mara", "person", "person" ],
+				["origin", "name-person", "human-confirmation", "v1" ],
+				[ ["root", "name-person", "v1", "human-confirmation" ] ]
+			      ],
+			      [
+				"supported",
+				["named", "ledger", "artifact", "artifact" ],
+				["origin", "name-artifact", "human-confirmation", "v1" ],
+				[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			      ]
+			    ]
+			  ],
+			  [
+			    ["root", "name-artifact", "v1", "human-confirmation" ],
+			    ["root", "name-person", "v1", "human-confirmation" ],
+			    ["root", "interface-recovery", "v1", "human-confirmation" ],
+			    ["root", "commitment-source", "v1", "human-confirmation" ]
+			  ]
+			]
+		      ]
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"derived-goals",
+		[
+		  ["path", "artifact", "revised" ],
+		  ["path", "person", "choose" ],
+		  ["path", "person", "inspect" ],
+		  ["path", "person", "recover" ]
+		]
+	      ],
+	      [
+		"material-interface-lost",
+		[
+		  "candidate-participation",
+		  [
+		    [
+		      "transition",
+		      "direct-change",
+		      [
+			["edge", "delegate", "recover" ],
+			["edge", "delegate", "inspect" ],
+			["edge", "delegate", "choose" ],
+			["edge", "person", "delegate" ],
+			["edge", "person", "choose" ],
+			["edge", "person", "inspect" ],
+			["edge", "person", "recover" ],
+			["edge", "artifact", "original" ]
+		      ],
+		      [
+			["edge", "artifact", "revised" ],
+			["edge", "delegate", "recover" ],
+			["edge", "delegate", "inspect" ],
+			["edge", "delegate", "choose" ],
+			["edge", "person", "delegate" ],
+			["edge", "artifact", "original" ]
+		      ]
+		    ],
+		    [
+		      "transition",
+		      "preserve-participation",
+		      [
+			["edge", "person", "choose" ],
+			["edge", "person", "inspect" ],
+			["edge", "person", "recover" ],
+			["edge", "artifact", "original" ]
+		      ],
+		      [
+			["edge", "delegate", "recover" ],
+			["edge", "delegate", "inspect" ],
+			["edge", "delegate", "choose" ],
+			["edge", "person", "delegate" ],
+			["edge", "person", "choose" ],
+			["edge", "person", "inspect" ],
+			["edge", "person", "recover" ],
+			["edge", "artifact", "original" ]
+		      ]
+		    ]
+		  ],
+		  [
+		    ["edge", "artifact", "revised" ],
+		    ["edge", "delegate", "recover" ],
+		    ["edge", "delegate", "inspect" ],
+		    ["edge", "delegate", "choose" ],
+		    ["edge", "person", "delegate" ],
+		    ["edge", "artifact", "original" ]
+		  ],
+		  [
+		    ["path", "artifact", "revised" ],
+		    ["path", "person", "choose" ],
+		    ["path", "person", "inspect" ],
+		    ["path", "person", "recover" ]
+		  ]
+		],
+		"no-state-change"
+	      ]
+	    ]
+	  ]
+	],
+	"candidate-available"
+      ],
+      ["I will revise ledger." ],
+      [
+	"voice-audit",
+	"g33-r6-rendered",
+	[
+	  "scope",
+	  "cut-fixture",
+	  "principal-fixture",
+	  "project-fixture",
+	  "test-owner-structural-contact"
+	],
+	"meaning-altered",
+	[
+	  "intention",
+	  [
+	    "voice-intention",
+	    "g33-r6-rendered",
+	    [
+	      "scope",
+	      "cut-fixture",
+	      "principal-fixture",
+	      "project-fixture",
+	      "test-owner-structural-contact"
+	    ],
+	    "artifact",
+	    [
+	      [
+		"expected",
+		["reported-request",  ["path", "artifact", "revised" ] ],
+		[
+		  [
+		    "supported",
+		    ["purpose",  ["language-purpose", "artifact" ],  ["path", "artifact", "revised" ] ],
+		    [
+		      "language-derived",
+		      "request-source",
+		      ["span", 0, 21 ],
+		      ["syntax", "request", "ledger", "revised" ],
+		      [
+			[
+			  "supported",
+			  ["utterance", "artifact", "Please revise ledger." ],
+			  ["origin", "request-source", "human-confirmation", "v1" ],
+			  [ ["root", "request-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "request-source", "v1", "human-confirmation" ]
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"expected",
+		["retain", "artifact", "person", "choice", "choose" ],
+		[
+		  [
+		    "supported",
+		    [
+		      "commitment",
+		      ["language-obligation", "artifact", "person", "choice" ],
+		      "artifact",
+		      "person",
+		      "choice",
+		      "choose"
+		    ],
+		    [
+		      "language-derived",
+		      "commitment-source",
+		      ["span", 0, 56 ],
+		      [
+			"syntax",
+			"ability",
+			"obligation",
+			"mara",
+			"ledger",
+			["choice", "inspection", "recovery" ]
+		      ],
+		      [
+			[
+			  "supported",
+			  [
+			    "utterance",
+			    "artifact",
+			    "Keep mara able to choose and inspect and restore ledger."
+			  ],
+			  ["origin", "commitment-source", "human-confirmation", "v1" ],
+			  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["interface", "artifact", "choice", "choose" ],
+			  ["origin", "interface-choice", "human-confirmation", "v1" ],
+			  [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "mara", "person", "person" ],
+			  ["origin", "name-person", "human-confirmation", "v1" ],
+			  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "name-person", "v1", "human-confirmation" ],
+		      ["root", "interface-choice", "v1", "human-confirmation" ],
+		      ["root", "commitment-source", "v1", "human-confirmation" ]
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"expected",
+		["retain", "artifact", "person", "inspection", "inspect" ],
+		[
+		  [
+		    "supported",
+		    [
+		      "commitment",
+		      ["language-obligation", "artifact", "person", "inspection" ],
+		      "artifact",
+		      "person",
+		      "inspection",
+		      "inspect"
+		    ],
+		    [
+		      "language-derived",
+		      "commitment-source",
+		      ["span", 0, 56 ],
+		      [
+			"syntax",
+			"ability",
+			"obligation",
+			"mara",
+			"ledger",
+			["choice", "inspection", "recovery" ]
+		      ],
+		      [
+			[
+			  "supported",
+			  [
+			    "utterance",
+			    "artifact",
+			    "Keep mara able to choose and inspect and restore ledger."
+			  ],
+			  ["origin", "commitment-source", "human-confirmation", "v1" ],
+			  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["interface", "artifact", "inspection", "inspect" ],
+			  ["origin", "interface-inspection", "human-confirmation", "v1" ],
+			  [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "mara", "person", "person" ],
+			  ["origin", "name-person", "human-confirmation", "v1" ],
+			  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "name-person", "v1", "human-confirmation" ],
+		      ["root", "interface-inspection", "v1", "human-confirmation" ],
+		      ["root", "commitment-source", "v1", "human-confirmation" ]
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"expected",
+		["retain", "artifact", "person", "recovery", "recover" ],
+		[
+		  [
+		    "supported",
+		    [
+		      "commitment",
+		      ["language-obligation", "artifact", "person", "recovery" ],
+		      "artifact",
+		      "person",
+		      "recovery",
+		      "recover"
+		    ],
+		    [
+		      "language-derived",
+		      "commitment-source",
+		      ["span", 0, 56 ],
+		      [
+			"syntax",
+			"ability",
+			"obligation",
+			"mara",
+			"ledger",
+			["choice", "inspection", "recovery" ]
+		      ],
+		      [
+			[
+			  "supported",
+			  [
+			    "utterance",
+			    "artifact",
+			    "Keep mara able to choose and inspect and restore ledger."
+			  ],
+			  ["origin", "commitment-source", "human-confirmation", "v1" ],
+			  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["interface", "artifact", "recovery", "recover" ],
+			  ["origin", "interface-recovery", "human-confirmation", "v1" ],
+			  [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "mara", "person", "person" ],
+			  ["origin", "name-person", "human-confirmation", "v1" ],
+			  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "name-person", "v1", "human-confirmation" ],
+		      ["root", "interface-recovery", "v1", "human-confirmation" ],
+		      ["root", "commitment-source", "v1", "human-confirmation" ]
+		    ]
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "native-basis",
+	      [
+		"grounded-participation",
+		[
+		  "scope",
+		  "cut-fixture",
+		  "principal-fixture",
+		  "project-fixture",
+		  "test-owner-structural-contact"
+		],
+		[
+		  "readings",
+		  [
+		    [
+		      "supported",
+		      [
+			"commitment",
+			["language-obligation", "artifact", "person", "choice" ],
+			"artifact",
+			"person",
+			"choice",
+			"choose"
+		      ],
+		      [
+			"language-derived",
+			"commitment-source",
+			["span", 0, 56 ],
+			[
+			  "syntax",
+			  "ability",
+			  "obligation",
+			  "mara",
+			  "ledger",
+			  ["choice", "inspection", "recovery" ]
+			],
+			[
+			  [
+			    "supported",
+			    [
+			      "utterance",
+			      "artifact",
+			      "Keep mara able to choose and inspect and restore ledger."
+			    ],
+			    ["origin", "commitment-source", "human-confirmation", "v1" ],
+			    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["interface", "artifact", "choice", "choose" ],
+			    ["origin", "interface-choice", "human-confirmation", "v1" ],
+			    [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "mara", "person", "person" ],
+			    ["origin", "name-person", "human-confirmation", "v1" ],
+			    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "name-person", "v1", "human-confirmation" ],
+			["root", "interface-choice", "v1", "human-confirmation" ],
+			["root", "commitment-source", "v1", "human-confirmation" ]
+		      ]
+		    ],
+		    [
+		      "supported",
+		      [
+			"commitment",
+			["language-obligation", "artifact", "person", "inspection" ],
+			"artifact",
+			"person",
+			"inspection",
+			"inspect"
+		      ],
+		      [
+			"language-derived",
+			"commitment-source",
+			["span", 0, 56 ],
+			[
+			  "syntax",
+			  "ability",
+			  "obligation",
+			  "mara",
+			  "ledger",
+			  ["choice", "inspection", "recovery" ]
+			],
+			[
+			  [
+			    "supported",
+			    [
+			      "utterance",
+			      "artifact",
+			      "Keep mara able to choose and inspect and restore ledger."
+			    ],
+			    ["origin", "commitment-source", "human-confirmation", "v1" ],
+			    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["interface", "artifact", "inspection", "inspect" ],
+			    ["origin", "interface-inspection", "human-confirmation", "v1" ],
+			    [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "mara", "person", "person" ],
+			    ["origin", "name-person", "human-confirmation", "v1" ],
+			    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "name-person", "v1", "human-confirmation" ],
+			["root", "interface-inspection", "v1", "human-confirmation" ],
+			["root", "commitment-source", "v1", "human-confirmation" ]
+		      ]
+		    ],
+		    [
+		      "supported",
+		      [
+			"commitment",
+			["language-obligation", "artifact", "person", "recovery" ],
+			"artifact",
+			"person",
+			"recovery",
+			"recover"
+		      ],
+		      [
+			"language-derived",
+			"commitment-source",
+			["span", 0, 56 ],
+			[
+			  "syntax",
+			  "ability",
+			  "obligation",
+			  "mara",
+			  "ledger",
+			  ["choice", "inspection", "recovery" ]
+			],
+			[
+			  [
+			    "supported",
+			    [
+			      "utterance",
+			      "artifact",
+			      "Keep mara able to choose and inspect and restore ledger."
+			    ],
+			    ["origin", "commitment-source", "human-confirmation", "v1" ],
+			    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["interface", "artifact", "recovery", "recover" ],
+			    ["origin", "interface-recovery", "human-confirmation", "v1" ],
+			    [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "mara", "person", "person" ],
+			    ["origin", "name-person", "human-confirmation", "v1" ],
+			    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "name-person", "v1", "human-confirmation" ],
+			["root", "interface-recovery", "v1", "human-confirmation" ],
+			["root", "commitment-source", "v1", "human-confirmation" ]
+		      ]
+		    ],
+		    [
+		      "supported",
+		      ["purpose",  ["language-purpose", "artifact" ],  ["path", "artifact", "revised" ] ],
+		      [
+			"language-derived",
+			"request-source",
+			["span", 0, 21 ],
+			["syntax", "request", "ledger", "revised" ],
+			[
+			  [
+			    "supported",
+			    ["utterance", "artifact", "Please revise ledger." ],
+			    ["origin", "request-source", "human-confirmation", "v1" ],
+			    [ ["root", "request-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "request-source", "v1", "human-confirmation" ]
+		      ]
+		    ],
+		    [
+		      "supported",
+		      [
+			"coexpress",
+			"artifact",
+			[
+			  ["retain", "artifact", "person", "choice", "choose" ],
+			  ["retain", "artifact", "person", "inspection", "inspect" ],
+			  ["retain", "artifact", "person", "recovery", "recover" ]
+			]
+		      ],
+		      ["origin", "joint-contact", "human-confirmation", "v1" ],
+		      [ ["root", "joint-contact", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      [
+			"utterance",
+			"artifact",
+			"Keep mara able to choose and inspect and restore ledger."
+		      ],
+		      ["origin", "commitment-source", "human-confirmation", "v1" ],
+		      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["utterance", "artifact", "Please revise ledger." ],
+		      ["origin", "request-source", "human-confirmation", "v1" ],
+		      [ ["root", "request-source", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["interface", "artifact", "recovery", "recover" ],
+		      ["origin", "interface-recovery", "human-confirmation", "v1" ],
+		      [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["interface", "artifact", "inspection", "inspect" ],
+		      ["origin", "interface-inspection", "human-confirmation", "v1" ],
+		      [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["interface", "artifact", "choice", "choose" ],
+		      ["origin", "interface-choice", "human-confirmation", "v1" ],
+		      [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["named", "journal", "artifact", "other-artifact" ],
+		      ["origin", "name-other", "human-confirmation", "v1" ],
+		      [ ["root", "name-other", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["named", "ledger", "artifact", "artifact" ],
+		      ["origin", "name-artifact", "human-confirmation", "v1" ],
+		      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["named", "mara", "person", "person" ],
+		      ["origin", "name-person", "human-confirmation", "v1" ],
+		      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["edge", "artifact", "original" ],
+		      ["origin", "edge-3", "external-contact", "v1" ],
+		      [ ["root", "edge-3", "v1", "external-contact" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["edge", "person", "recover" ],
+		      ["origin", "edge-2", "external-contact", "v1" ],
+		      [ ["root", "edge-2", "v1", "external-contact" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["edge", "person", "inspect" ],
+		      ["origin", "edge-1", "external-contact", "v1" ],
+		      [ ["root", "edge-1", "v1", "external-contact" ] ]
+		    ],
+		    [
+		      "supported",
+		      ["edge", "person", "choose" ],
+		      ["origin", "edge-0", "external-contact", "v1" ],
+		      [ ["root", "edge-0", "v1", "external-contact" ] ]
+		    ]
+		  ]
+		],
+		[
+		  "interface-derivations",
+		  [
+		    [
+		      "material-interface",
+		      "AgencyBalance",
+		      "choice",
+		      "person",
+		      "choose",
+		      [
+			"support-basis",
+			[
+			  [
+			    "supported",
+			    [
+			      "commitment",
+			      ["language-obligation", "artifact", "person", "choice" ],
+			      "artifact",
+			      "person",
+			      "choice",
+			      "choose"
+			    ],
+			    [
+			      "language-derived",
+			      "commitment-source",
+			      ["span", 0, 56 ],
+			      [
+				"syntax",
+				"ability",
+				"obligation",
+				"mara",
+				"ledger",
+				["choice", "inspection", "recovery" ]
+			      ],
+			      [
+				[
+				  "supported",
+				  [
+				    "utterance",
+				    "artifact",
+				    "Keep mara able to choose and inspect and restore ledger."
+				  ],
+				  ["origin", "commitment-source", "human-confirmation", "v1" ],
+				  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["interface", "artifact", "choice", "choose" ],
+				  ["origin", "interface-choice", "human-confirmation", "v1" ],
+				  [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "mara", "person", "person" ],
+				  ["origin", "name-person", "human-confirmation", "v1" ],
+				  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "ledger", "artifact", "artifact" ],
+				  ["origin", "name-artifact", "human-confirmation", "v1" ],
+				  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				]
+			      ]
+			    ],
+			    [
+			      ["root", "name-artifact", "v1", "human-confirmation" ],
+			      ["root", "name-person", "v1", "human-confirmation" ],
+			      ["root", "interface-choice", "v1", "human-confirmation" ],
+			      ["root", "commitment-source", "v1", "human-confirmation" ]
+			    ]
+			  ]
+			]
+		      ]
+		    ],
+		    [
+		      "material-interface",
+		      "SharedUnderstanding",
+		      "inspection",
+		      "person",
+		      "inspect",
+		      [
+			"support-basis",
+			[
+			  [
+			    "supported",
+			    [
+			      "commitment",
+			      ["language-obligation", "artifact", "person", "inspection" ],
+			      "artifact",
+			      "person",
+			      "inspection",
+			      "inspect"
+			    ],
+			    [
+			      "language-derived",
+			      "commitment-source",
+			      ["span", 0, 56 ],
+			      [
+				"syntax",
+				"ability",
+				"obligation",
+				"mara",
+				"ledger",
+				["choice", "inspection", "recovery" ]
+			      ],
+			      [
+				[
+				  "supported",
+				  [
+				    "utterance",
+				    "artifact",
+				    "Keep mara able to choose and inspect and restore ledger."
+				  ],
+				  ["origin", "commitment-source", "human-confirmation", "v1" ],
+				  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["interface", "artifact", "inspection", "inspect" ],
+				  ["origin", "interface-inspection", "human-confirmation", "v1" ],
+				  [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "mara", "person", "person" ],
+				  ["origin", "name-person", "human-confirmation", "v1" ],
+				  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "ledger", "artifact", "artifact" ],
+				  ["origin", "name-artifact", "human-confirmation", "v1" ],
+				  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				]
+			      ]
+			    ],
+			    [
+			      ["root", "name-artifact", "v1", "human-confirmation" ],
+			      ["root", "name-person", "v1", "human-confirmation" ],
+			      ["root", "interface-inspection", "v1", "human-confirmation" ],
+			      ["root", "commitment-source", "v1", "human-confirmation" ]
+			    ]
+			  ]
+			]
+		      ]
+		    ],
+		    [
+		      "material-interface",
+		      "TimeCoherence",
+		      "recovery",
+		      "person",
+		      "recover",
+		      [
+			"support-basis",
+			[
+			  [
+			    "supported",
+			    [
+			      "commitment",
+			      ["language-obligation", "artifact", "person", "recovery" ],
+			      "artifact",
+			      "person",
+			      "recovery",
+			      "recover"
+			    ],
+			    [
+			      "language-derived",
+			      "commitment-source",
+			      ["span", 0, 56 ],
+			      [
+				"syntax",
+				"ability",
+				"obligation",
+				"mara",
+				"ledger",
+				["choice", "inspection", "recovery" ]
+			      ],
+			      [
+				[
+				  "supported",
+				  [
+				    "utterance",
+				    "artifact",
+				    "Keep mara able to choose and inspect and restore ledger."
+				  ],
+				  ["origin", "commitment-source", "human-confirmation", "v1" ],
+				  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["interface", "artifact", "recovery", "recover" ],
+				  ["origin", "interface-recovery", "human-confirmation", "v1" ],
+				  [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "mara", "person", "person" ],
+				  ["origin", "name-person", "human-confirmation", "v1" ],
+				  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				],
+				[
+				  "supported",
+				  ["named", "ledger", "artifact", "artifact" ],
+				  ["origin", "name-artifact", "human-confirmation", "v1" ],
+				  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				]
+			      ]
+			    ],
+			    [
+			      ["root", "name-artifact", "v1", "human-confirmation" ],
+			      ["root", "name-person", "v1", "human-confirmation" ],
+			      ["root", "interface-recovery", "v1", "human-confirmation" ],
+			      ["root", "commitment-source", "v1", "human-confirmation" ]
+			    ]
+			  ]
+			]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "scoped-search",
+		  [
+		    "scope",
+		    "cut-fixture",
+		    "principal-fixture",
+		    "project-fixture",
+		    "test-owner-structural-contact"
+		  ],
+		  [
+		    "basis",
+		    [
+		      [
+			"material-interface",
+			"AgencyBalance",
+			"choice",
+			"person",
+			"choose",
+			[
+			  "support-basis",
+			  [
+			    [
+			      "supported",
+			      [
+				"commitment",
+				["language-obligation", "artifact", "person", "choice" ],
+				"artifact",
+				"person",
+				"choice",
+				"choose"
+			      ],
+			      [
+				"language-derived",
+				"commitment-source",
+				["span", 0, 56 ],
+				[
+				  "syntax",
+				  "ability",
+				  "obligation",
+				  "mara",
+				  "ledger",
+				  ["choice", "inspection", "recovery" ]
+				],
+				[
+				  [
+				    "supported",
+				    [
+				      "utterance",
+				      "artifact",
+				      "Keep mara able to choose and inspect and restore ledger."
+				    ],
+				    ["origin", "commitment-source", "human-confirmation", "v1" ],
+				    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["interface", "artifact", "choice", "choose" ],
+				    ["origin", "interface-choice", "human-confirmation", "v1" ],
+				    [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "mara", "person", "person" ],
+				    ["origin", "name-person", "human-confirmation", "v1" ],
+				    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "ledger", "artifact", "artifact" ],
+				    ["origin", "name-artifact", "human-confirmation", "v1" ],
+				    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				  ]
+				]
+			      ],
+			      [
+				["root", "name-artifact", "v1", "human-confirmation" ],
+				["root", "name-person", "v1", "human-confirmation" ],
+				["root", "interface-choice", "v1", "human-confirmation" ],
+				["root", "commitment-source", "v1", "human-confirmation" ]
+			      ]
+			    ]
+			  ]
+			]
+		      ],
+		      [
+			"material-interface",
+			"SharedUnderstanding",
+			"inspection",
+			"person",
+			"inspect",
+			[
+			  "support-basis",
+			  [
+			    [
+			      "supported",
+			      [
+				"commitment",
+				["language-obligation", "artifact", "person", "inspection" ],
+				"artifact",
+				"person",
+				"inspection",
+				"inspect"
+			      ],
+			      [
+				"language-derived",
+				"commitment-source",
+				["span", 0, 56 ],
+				[
+				  "syntax",
+				  "ability",
+				  "obligation",
+				  "mara",
+				  "ledger",
+				  ["choice", "inspection", "recovery" ]
+				],
+				[
+				  [
+				    "supported",
+				    [
+				      "utterance",
+				      "artifact",
+				      "Keep mara able to choose and inspect and restore ledger."
+				    ],
+				    ["origin", "commitment-source", "human-confirmation", "v1" ],
+				    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["interface", "artifact", "inspection", "inspect" ],
+				    ["origin", "interface-inspection", "human-confirmation", "v1" ],
+				    [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "mara", "person", "person" ],
+				    ["origin", "name-person", "human-confirmation", "v1" ],
+				    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "ledger", "artifact", "artifact" ],
+				    ["origin", "name-artifact", "human-confirmation", "v1" ],
+				    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				  ]
+				]
+			      ],
+			      [
+				["root", "name-artifact", "v1", "human-confirmation" ],
+				["root", "name-person", "v1", "human-confirmation" ],
+				["root", "interface-inspection", "v1", "human-confirmation" ],
+				["root", "commitment-source", "v1", "human-confirmation" ]
+			      ]
+			    ]
+			  ]
+			]
+		      ],
+		      [
+			"material-interface",
+			"TimeCoherence",
+			"recovery",
+			"person",
+			"recover",
+			[
+			  "support-basis",
+			  [
+			    [
+			      "supported",
+			      [
+				"commitment",
+				["language-obligation", "artifact", "person", "recovery" ],
+				"artifact",
+				"person",
+				"recovery",
+				"recover"
+			      ],
+			      [
+				"language-derived",
+				"commitment-source",
+				["span", 0, 56 ],
+				[
+				  "syntax",
+				  "ability",
+				  "obligation",
+				  "mara",
+				  "ledger",
+				  ["choice", "inspection", "recovery" ]
+				],
+				[
+				  [
+				    "supported",
+				    [
+				      "utterance",
+				      "artifact",
+				      "Keep mara able to choose and inspect and restore ledger."
+				    ],
+				    ["origin", "commitment-source", "human-confirmation", "v1" ],
+				    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["interface", "artifact", "recovery", "recover" ],
+				    ["origin", "interface-recovery", "human-confirmation", "v1" ],
+				    [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "mara", "person", "person" ],
+				    ["origin", "name-person", "human-confirmation", "v1" ],
+				    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "ledger", "artifact", "artifact" ],
+				    ["origin", "name-artifact", "human-confirmation", "v1" ],
+				    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				  ]
+				]
+			      ],
+			      [
+				["root", "name-artifact", "v1", "human-confirmation" ],
+				["root", "name-person", "v1", "human-confirmation" ],
+				["root", "interface-recovery", "v1", "human-confirmation" ],
+				["root", "commitment-source", "v1", "human-confirmation" ]
+			      ]
+			    ]
+			  ]
+			]
+		      ]
+		    ]
+		  ],
+		  [
+		    "derived-goals",
+		    [
+		      ["path", "artifact", "revised" ],
+		      ["path", "person", "choose" ],
+		      ["path", "person", "inspect" ],
+		      ["path", "person", "recover" ]
+		    ]
+		  ],
+		  [
+		    "material-interface-lost",
+		    [
+		      "candidate-participation",
+		      [
+			[
+			  "transition",
+			  "direct-change",
+			  [
+			    ["edge", "delegate", "recover" ],
+			    ["edge", "delegate", "inspect" ],
+			    ["edge", "delegate", "choose" ],
+			    ["edge", "person", "delegate" ],
+			    ["edge", "person", "choose" ],
+			    ["edge", "person", "inspect" ],
+			    ["edge", "person", "recover" ],
+			    ["edge", "artifact", "original" ]
+			  ],
+			  [
+			    ["edge", "artifact", "revised" ],
+			    ["edge", "delegate", "recover" ],
+			    ["edge", "delegate", "inspect" ],
+			    ["edge", "delegate", "choose" ],
+			    ["edge", "person", "delegate" ],
+			    ["edge", "artifact", "original" ]
+			  ]
+			],
+			[
+			  "transition",
+			  "preserve-participation",
+			  [
+			    ["edge", "person", "choose" ],
+			    ["edge", "person", "inspect" ],
+			    ["edge", "person", "recover" ],
+			    ["edge", "artifact", "original" ]
+			  ],
+			  [
+			    ["edge", "delegate", "recover" ],
+			    ["edge", "delegate", "inspect" ],
+			    ["edge", "delegate", "choose" ],
+			    ["edge", "person", "delegate" ],
+			    ["edge", "person", "choose" ],
+			    ["edge", "person", "inspect" ],
+			    ["edge", "person", "recover" ],
+			    ["edge", "artifact", "original" ]
+			  ]
+			]
+		      ],
+		      [
+			["edge", "artifact", "revised" ],
+			["edge", "delegate", "recover" ],
+			["edge", "delegate", "inspect" ],
+			["edge", "delegate", "choose" ],
+			["edge", "person", "delegate" ],
+			["edge", "artifact", "original" ]
+		      ],
+		      [
+			["path", "artifact", "revised" ],
+			["path", "person", "choose" ],
+			["path", "person", "inspect" ],
+			["path", "person", "recover" ]
+		      ]
+		    ],
+		    "no-state-change"
+		  ]
+		]
+	      ]
+	    ],
+	    "candidate-available"
+	  ]
+	],
+	[
+	  "expression-readings",
+	  [
+	    [
+	      "expression-reading",
+	      0,
+	      ["span", 0, 21 ],
+	      ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+	      [
+		"expression-meanings",
+		[ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+		[
+		  [
+		    "supported",
+		    ["named", "ledger", "artifact", "artifact" ],
+		    ["origin", "name-artifact", "human-confirmation", "v1" ],
+		    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		  ]
+		]
+	      ],
+	      "rendering-not-authority"
+	    ]
+	  ]
+	],
+	[
+	  "alterations",
+	  [
+	    [
+	      "unsupported-alteration",
+	      ["system-promise",  ["path", "artifact", "revised" ] ],
+	      ["candidate-span", 0,  ["span", 0, 21 ] ],
+	      [
+		"intended",
+		[
+		  ["retain", "artifact", "person", "recovery", "recover" ],
+		  ["retain", "artifact", "person", "inspection", "inspect" ],
+		  ["retain", "artifact", "person", "choice", "choose" ],
+		  ["reported-request",  ["path", "artifact", "revised" ] ]
+		]
+	      ]
+	    ],
+	    [
+	      "omitted-meaning",
+	      ["reported-request",  ["path", "artifact", "revised" ] ],
+	      [
+		"source-basis",
+		[
+		  [
+		    "supported",
+		    ["purpose",  ["language-purpose", "artifact" ],  ["path", "artifact", "revised" ] ],
+		    [
+		      "language-derived",
+		      "request-source",
+		      ["span", 0, 21 ],
+		      ["syntax", "request", "ledger", "revised" ],
+		      [
+			[
+			  "supported",
+			  ["utterance", "artifact", "Please revise ledger." ],
+			  ["origin", "request-source", "human-confirmation", "v1" ],
+			  [ ["root", "request-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "request-source", "v1", "human-confirmation" ]
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"candidate-surface",
+		[
+		  [
+		    "expression-reading",
+		    0,
+		    ["span", 0, 21 ],
+		    ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		    [
+		      "expression-meanings",
+		      [ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+		      [
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    "rendering-not-authority"
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "omitted-meaning",
+	      ["retain", "artifact", "person", "choice", "choose" ],
+	      [
+		"source-basis",
+		[
+		  [
+		    "supported",
+		    [
+		      "commitment",
+		      ["language-obligation", "artifact", "person", "choice" ],
+		      "artifact",
+		      "person",
+		      "choice",
+		      "choose"
+		    ],
+		    [
+		      "language-derived",
+		      "commitment-source",
+		      ["span", 0, 56 ],
+		      [
+			"syntax",
+			"ability",
+			"obligation",
+			"mara",
+			"ledger",
+			["choice", "inspection", "recovery" ]
+		      ],
+		      [
+			[
+			  "supported",
+			  [
+			    "utterance",
+			    "artifact",
+			    "Keep mara able to choose and inspect and restore ledger."
+			  ],
+			  ["origin", "commitment-source", "human-confirmation", "v1" ],
+			  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["interface", "artifact", "choice", "choose" ],
+			  ["origin", "interface-choice", "human-confirmation", "v1" ],
+			  [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "mara", "person", "person" ],
+			  ["origin", "name-person", "human-confirmation", "v1" ],
+			  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "name-person", "v1", "human-confirmation" ],
+		      ["root", "interface-choice", "v1", "human-confirmation" ],
+		      ["root", "commitment-source", "v1", "human-confirmation" ]
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"candidate-surface",
+		[
+		  [
+		    "expression-reading",
+		    0,
+		    ["span", 0, 21 ],
+		    ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		    [
+		      "expression-meanings",
+		      [ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+		      [
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    "rendering-not-authority"
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "omitted-meaning",
+	      ["retain", "artifact", "person", "inspection", "inspect" ],
+	      [
+		"source-basis",
+		[
+		  [
+		    "supported",
+		    [
+		      "commitment",
+		      ["language-obligation", "artifact", "person", "inspection" ],
+		      "artifact",
+		      "person",
+		      "inspection",
+		      "inspect"
+		    ],
+		    [
+		      "language-derived",
+		      "commitment-source",
+		      ["span", 0, 56 ],
+		      [
+			"syntax",
+			"ability",
+			"obligation",
+			"mara",
+			"ledger",
+			["choice", "inspection", "recovery" ]
+		      ],
+		      [
+			[
+			  "supported",
+			  [
+			    "utterance",
+			    "artifact",
+			    "Keep mara able to choose and inspect and restore ledger."
+			  ],
+			  ["origin", "commitment-source", "human-confirmation", "v1" ],
+			  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["interface", "artifact", "inspection", "inspect" ],
+			  ["origin", "interface-inspection", "human-confirmation", "v1" ],
+			  [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "mara", "person", "person" ],
+			  ["origin", "name-person", "human-confirmation", "v1" ],
+			  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "name-person", "v1", "human-confirmation" ],
+		      ["root", "interface-inspection", "v1", "human-confirmation" ],
+		      ["root", "commitment-source", "v1", "human-confirmation" ]
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"candidate-surface",
+		[
+		  [
+		    "expression-reading",
+		    0,
+		    ["span", 0, 21 ],
+		    ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		    [
+		      "expression-meanings",
+		      [ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+		      [
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    "rendering-not-authority"
+		  ]
+		]
+	      ]
+	    ],
+	    [
+	      "omitted-meaning",
+	      ["retain", "artifact", "person", "recovery", "recover" ],
+	      [
+		"source-basis",
+		[
+		  [
+		    "supported",
+		    [
+		      "commitment",
+		      ["language-obligation", "artifact", "person", "recovery" ],
+		      "artifact",
+		      "person",
+		      "recovery",
+		      "recover"
+		    ],
+		    [
+		      "language-derived",
+		      "commitment-source",
+		      ["span", 0, 56 ],
+		      [
+			"syntax",
+			"ability",
+			"obligation",
+			"mara",
+			"ledger",
+			["choice", "inspection", "recovery" ]
+		      ],
+		      [
+			[
+			  "supported",
+			  [
+			    "utterance",
+			    "artifact",
+			    "Keep mara able to choose and inspect and restore ledger."
+			  ],
+			  ["origin", "commitment-source", "human-confirmation", "v1" ],
+			  [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["interface", "artifact", "recovery", "recover" ],
+			  ["origin", "interface-recovery", "human-confirmation", "v1" ],
+			  [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "mara", "person", "person" ],
+			  ["origin", "name-person", "human-confirmation", "v1" ],
+			  [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			],
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    [
+		      ["root", "name-artifact", "v1", "human-confirmation" ],
+		      ["root", "name-person", "v1", "human-confirmation" ],
+		      ["root", "interface-recovery", "v1", "human-confirmation" ],
+		      ["root", "commitment-source", "v1", "human-confirmation" ]
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"candidate-surface",
+		[
+		  [
+		    "expression-reading",
+		    0,
+		    ["span", 0, 21 ],
+		    ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		    [
+		      "expression-meanings",
+		      [ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+		      [
+			[
+			  "supported",
+			  ["named", "ledger", "artifact", "artifact" ],
+			  ["origin", "name-artifact", "human-confirmation", "v1" ],
+			  [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			]
+		      ]
+		    ],
+		    "rendering-not-authority"
+		  ]
+		]
+	      ]
+	    ]
+	  ]
+	]
+      ],
+      [
+	"repair-request",
+	[
+	  "voice-audit",
+	  "g33-r6-rendered",
+	  [
+	    "scope",
+	    "cut-fixture",
+	    "principal-fixture",
+	    "project-fixture",
+	    "test-owner-structural-contact"
+	  ],
+	  "meaning-altered",
+	  [
+	    "intention",
+	    [
+	      "voice-intention",
+	      "g33-r6-rendered",
+	      [
+		"scope",
+		"cut-fixture",
+		"principal-fixture",
+		"project-fixture",
+		"test-owner-structural-contact"
+	      ],
+	      "artifact",
+	      [
+		[
+		  "expected",
+		  ["reported-request",  ["path", "artifact", "revised" ] ],
+		  [
+		    [
+		      "supported",
+		      ["purpose",  ["language-purpose", "artifact" ],  ["path", "artifact", "revised" ] ],
+		      [
+			"language-derived",
+			"request-source",
+			["span", 0, 21 ],
+			["syntax", "request", "ledger", "revised" ],
+			[
+			  [
+			    "supported",
+			    ["utterance", "artifact", "Please revise ledger." ],
+			    ["origin", "request-source", "human-confirmation", "v1" ],
+			    [ ["root", "request-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "request-source", "v1", "human-confirmation" ]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "expected",
+		  ["retain", "artifact", "person", "choice", "choose" ],
+		  [
+		    [
+		      "supported",
+		      [
+			"commitment",
+			["language-obligation", "artifact", "person", "choice" ],
+			"artifact",
+			"person",
+			"choice",
+			"choose"
+		      ],
+		      [
+			"language-derived",
+			"commitment-source",
+			["span", 0, 56 ],
+			[
+			  "syntax",
+			  "ability",
+			  "obligation",
+			  "mara",
+			  "ledger",
+			  ["choice", "inspection", "recovery" ]
+			],
+			[
+			  [
+			    "supported",
+			    [
+			      "utterance",
+			      "artifact",
+			      "Keep mara able to choose and inspect and restore ledger."
+			    ],
+			    ["origin", "commitment-source", "human-confirmation", "v1" ],
+			    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["interface", "artifact", "choice", "choose" ],
+			    ["origin", "interface-choice", "human-confirmation", "v1" ],
+			    [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "mara", "person", "person" ],
+			    ["origin", "name-person", "human-confirmation", "v1" ],
+			    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "name-person", "v1", "human-confirmation" ],
+			["root", "interface-choice", "v1", "human-confirmation" ],
+			["root", "commitment-source", "v1", "human-confirmation" ]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "expected",
+		  ["retain", "artifact", "person", "inspection", "inspect" ],
+		  [
+		    [
+		      "supported",
+		      [
+			"commitment",
+			["language-obligation", "artifact", "person", "inspection" ],
+			"artifact",
+			"person",
+			"inspection",
+			"inspect"
+		      ],
+		      [
+			"language-derived",
+			"commitment-source",
+			["span", 0, 56 ],
+			[
+			  "syntax",
+			  "ability",
+			  "obligation",
+			  "mara",
+			  "ledger",
+			  ["choice", "inspection", "recovery" ]
+			],
+			[
+			  [
+			    "supported",
+			    [
+			      "utterance",
+			      "artifact",
+			      "Keep mara able to choose and inspect and restore ledger."
+			    ],
+			    ["origin", "commitment-source", "human-confirmation", "v1" ],
+			    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["interface", "artifact", "inspection", "inspect" ],
+			    ["origin", "interface-inspection", "human-confirmation", "v1" ],
+			    [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "mara", "person", "person" ],
+			    ["origin", "name-person", "human-confirmation", "v1" ],
+			    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "name-person", "v1", "human-confirmation" ],
+			["root", "interface-inspection", "v1", "human-confirmation" ],
+			["root", "commitment-source", "v1", "human-confirmation" ]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "expected",
+		  ["retain", "artifact", "person", "recovery", "recover" ],
+		  [
+		    [
+		      "supported",
+		      [
+			"commitment",
+			["language-obligation", "artifact", "person", "recovery" ],
+			"artifact",
+			"person",
+			"recovery",
+			"recover"
+		      ],
+		      [
+			"language-derived",
+			"commitment-source",
+			["span", 0, 56 ],
+			[
+			  "syntax",
+			  "ability",
+			  "obligation",
+			  "mara",
+			  "ledger",
+			  ["choice", "inspection", "recovery" ]
+			],
+			[
+			  [
+			    "supported",
+			    [
+			      "utterance",
+			      "artifact",
+			      "Keep mara able to choose and inspect and restore ledger."
+			    ],
+			    ["origin", "commitment-source", "human-confirmation", "v1" ],
+			    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["interface", "artifact", "recovery", "recover" ],
+			    ["origin", "interface-recovery", "human-confirmation", "v1" ],
+			    [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "mara", "person", "person" ],
+			    ["origin", "name-person", "human-confirmation", "v1" ],
+			    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "name-person", "v1", "human-confirmation" ],
+			["root", "interface-recovery", "v1", "human-confirmation" ],
+			["root", "commitment-source", "v1", "human-confirmation" ]
+		      ]
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"native-basis",
+		[
+		  "grounded-participation",
+		  [
+		    "scope",
+		    "cut-fixture",
+		    "principal-fixture",
+		    "project-fixture",
+		    "test-owner-structural-contact"
+		  ],
+		  [
+		    "readings",
+		    [
+		      [
+			"supported",
+			[
+			  "commitment",
+			  ["language-obligation", "artifact", "person", "choice" ],
+			  "artifact",
+			  "person",
+			  "choice",
+			  "choose"
+			],
+			[
+			  "language-derived",
+			  "commitment-source",
+			  ["span", 0, 56 ],
+			  [
+			    "syntax",
+			    "ability",
+			    "obligation",
+			    "mara",
+			    "ledger",
+			    ["choice", "inspection", "recovery" ]
+			  ],
+			  [
+			    [
+			      "supported",
+			      [
+				"utterance",
+				"artifact",
+				"Keep mara able to choose and inspect and restore ledger."
+			      ],
+			      ["origin", "commitment-source", "human-confirmation", "v1" ],
+			      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["interface", "artifact", "choice", "choose" ],
+			      ["origin", "interface-choice", "human-confirmation", "v1" ],
+			      [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "mara", "person", "person" ],
+			      ["origin", "name-person", "human-confirmation", "v1" ],
+			      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "ledger", "artifact", "artifact" ],
+			      ["origin", "name-artifact", "human-confirmation", "v1" ],
+			      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			    ]
+			  ]
+			],
+			[
+			  ["root", "name-artifact", "v1", "human-confirmation" ],
+			  ["root", "name-person", "v1", "human-confirmation" ],
+			  ["root", "interface-choice", "v1", "human-confirmation" ],
+			  ["root", "commitment-source", "v1", "human-confirmation" ]
+			]
+		      ],
+		      [
+			"supported",
+			[
+			  "commitment",
+			  ["language-obligation", "artifact", "person", "inspection" ],
+			  "artifact",
+			  "person",
+			  "inspection",
+			  "inspect"
+			],
+			[
+			  "language-derived",
+			  "commitment-source",
+			  ["span", 0, 56 ],
+			  [
+			    "syntax",
+			    "ability",
+			    "obligation",
+			    "mara",
+			    "ledger",
+			    ["choice", "inspection", "recovery" ]
+			  ],
+			  [
+			    [
+			      "supported",
+			      [
+				"utterance",
+				"artifact",
+				"Keep mara able to choose and inspect and restore ledger."
+			      ],
+			      ["origin", "commitment-source", "human-confirmation", "v1" ],
+			      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["interface", "artifact", "inspection", "inspect" ],
+			      ["origin", "interface-inspection", "human-confirmation", "v1" ],
+			      [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "mara", "person", "person" ],
+			      ["origin", "name-person", "human-confirmation", "v1" ],
+			      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "ledger", "artifact", "artifact" ],
+			      ["origin", "name-artifact", "human-confirmation", "v1" ],
+			      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			    ]
+			  ]
+			],
+			[
+			  ["root", "name-artifact", "v1", "human-confirmation" ],
+			  ["root", "name-person", "v1", "human-confirmation" ],
+			  ["root", "interface-inspection", "v1", "human-confirmation" ],
+			  ["root", "commitment-source", "v1", "human-confirmation" ]
+			]
+		      ],
+		      [
+			"supported",
+			[
+			  "commitment",
+			  ["language-obligation", "artifact", "person", "recovery" ],
+			  "artifact",
+			  "person",
+			  "recovery",
+			  "recover"
+			],
+			[
+			  "language-derived",
+			  "commitment-source",
+			  ["span", 0, 56 ],
+			  [
+			    "syntax",
+			    "ability",
+			    "obligation",
+			    "mara",
+			    "ledger",
+			    ["choice", "inspection", "recovery" ]
+			  ],
+			  [
+			    [
+			      "supported",
+			      [
+				"utterance",
+				"artifact",
+				"Keep mara able to choose and inspect and restore ledger."
+			      ],
+			      ["origin", "commitment-source", "human-confirmation", "v1" ],
+			      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["interface", "artifact", "recovery", "recover" ],
+			      ["origin", "interface-recovery", "human-confirmation", "v1" ],
+			      [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "mara", "person", "person" ],
+			      ["origin", "name-person", "human-confirmation", "v1" ],
+			      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "ledger", "artifact", "artifact" ],
+			      ["origin", "name-artifact", "human-confirmation", "v1" ],
+			      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			    ]
+			  ]
+			],
+			[
+			  ["root", "name-artifact", "v1", "human-confirmation" ],
+			  ["root", "name-person", "v1", "human-confirmation" ],
+			  ["root", "interface-recovery", "v1", "human-confirmation" ],
+			  ["root", "commitment-source", "v1", "human-confirmation" ]
+			]
+		      ],
+		      [
+			"supported",
+			[
+			  "purpose",
+			  ["language-purpose", "artifact" ],
+			  ["path", "artifact", "revised" ]
+			],
+			[
+			  "language-derived",
+			  "request-source",
+			  ["span", 0, 21 ],
+			  ["syntax", "request", "ledger", "revised" ],
+			  [
+			    [
+			      "supported",
+			      ["utterance", "artifact", "Please revise ledger." ],
+			      ["origin", "request-source", "human-confirmation", "v1" ],
+			      [ ["root", "request-source", "v1", "human-confirmation" ] ]
+			    ],
+			    [
+			      "supported",
+			      ["named", "ledger", "artifact", "artifact" ],
+			      ["origin", "name-artifact", "human-confirmation", "v1" ],
+			      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			    ]
+			  ]
+			],
+			[
+			  ["root", "name-artifact", "v1", "human-confirmation" ],
+			  ["root", "request-source", "v1", "human-confirmation" ]
+			]
+		      ],
+		      [
+			"supported",
+			[
+			  "coexpress",
+			  "artifact",
+			  [
+			    ["retain", "artifact", "person", "choice", "choose" ],
+			    ["retain", "artifact", "person", "inspection", "inspect" ],
+			    ["retain", "artifact", "person", "recovery", "recover" ]
+			  ]
+			],
+			["origin", "joint-contact", "human-confirmation", "v1" ],
+			[ ["root", "joint-contact", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			[
+			  "utterance",
+			  "artifact",
+			  "Keep mara able to choose and inspect and restore ledger."
+			],
+			["origin", "commitment-source", "human-confirmation", "v1" ],
+			[ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["utterance", "artifact", "Please revise ledger." ],
+			["origin", "request-source", "human-confirmation", "v1" ],
+			[ ["root", "request-source", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "recovery", "recover" ],
+			["origin", "interface-recovery", "human-confirmation", "v1" ],
+			[ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "inspection", "inspect" ],
+			["origin", "interface-inspection", "human-confirmation", "v1" ],
+			[ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["interface", "artifact", "choice", "choose" ],
+			["origin", "interface-choice", "human-confirmation", "v1" ],
+			[ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "journal", "artifact", "other-artifact" ],
+			["origin", "name-other", "human-confirmation", "v1" ],
+			[ ["root", "name-other", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "ledger", "artifact", "artifact" ],
+			["origin", "name-artifact", "human-confirmation", "v1" ],
+			[ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["named", "mara", "person", "person" ],
+			["origin", "name-person", "human-confirmation", "v1" ],
+			[ ["root", "name-person", "v1", "human-confirmation" ] ]
+		      ],
+		      [
+			"supported",
+			["edge", "artifact", "original" ],
+			["origin", "edge-3", "external-contact", "v1" ],
+			[ ["root", "edge-3", "v1", "external-contact" ] ]
+		      ],
+		      [
+			"supported",
+			["edge", "person", "recover" ],
+			["origin", "edge-2", "external-contact", "v1" ],
+			[ ["root", "edge-2", "v1", "external-contact" ] ]
+		      ],
+		      [
+			"supported",
+			["edge", "person", "inspect" ],
+			["origin", "edge-1", "external-contact", "v1" ],
+			[ ["root", "edge-1", "v1", "external-contact" ] ]
+		      ],
+		      [
+			"supported",
+			["edge", "person", "choose" ],
+			["origin", "edge-0", "external-contact", "v1" ],
+			[ ["root", "edge-0", "v1", "external-contact" ] ]
+		      ]
+		    ]
+		  ],
+		  [
+		    "interface-derivations",
+		    [
+		      [
+			"material-interface",
+			"AgencyBalance",
+			"choice",
+			"person",
+			"choose",
+			[
+			  "support-basis",
+			  [
+			    [
+			      "supported",
+			      [
+				"commitment",
+				["language-obligation", "artifact", "person", "choice" ],
+				"artifact",
+				"person",
+				"choice",
+				"choose"
+			      ],
+			      [
+				"language-derived",
+				"commitment-source",
+				["span", 0, 56 ],
+				[
+				  "syntax",
+				  "ability",
+				  "obligation",
+				  "mara",
+				  "ledger",
+				  ["choice", "inspection", "recovery" ]
+				],
+				[
+				  [
+				    "supported",
+				    [
+				      "utterance",
+				      "artifact",
+				      "Keep mara able to choose and inspect and restore ledger."
+				    ],
+				    ["origin", "commitment-source", "human-confirmation", "v1" ],
+				    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["interface", "artifact", "choice", "choose" ],
+				    ["origin", "interface-choice", "human-confirmation", "v1" ],
+				    [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "mara", "person", "person" ],
+				    ["origin", "name-person", "human-confirmation", "v1" ],
+				    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "ledger", "artifact", "artifact" ],
+				    ["origin", "name-artifact", "human-confirmation", "v1" ],
+				    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				  ]
+				]
+			      ],
+			      [
+				["root", "name-artifact", "v1", "human-confirmation" ],
+				["root", "name-person", "v1", "human-confirmation" ],
+				["root", "interface-choice", "v1", "human-confirmation" ],
+				["root", "commitment-source", "v1", "human-confirmation" ]
+			      ]
+			    ]
+			  ]
+			]
+		      ],
+		      [
+			"material-interface",
+			"SharedUnderstanding",
+			"inspection",
+			"person",
+			"inspect",
+			[
+			  "support-basis",
+			  [
+			    [
+			      "supported",
+			      [
+				"commitment",
+				["language-obligation", "artifact", "person", "inspection" ],
+				"artifact",
+				"person",
+				"inspection",
+				"inspect"
+			      ],
+			      [
+				"language-derived",
+				"commitment-source",
+				["span", 0, 56 ],
+				[
+				  "syntax",
+				  "ability",
+				  "obligation",
+				  "mara",
+				  "ledger",
+				  ["choice", "inspection", "recovery" ]
+				],
+				[
+				  [
+				    "supported",
+				    [
+				      "utterance",
+				      "artifact",
+				      "Keep mara able to choose and inspect and restore ledger."
+				    ],
+				    ["origin", "commitment-source", "human-confirmation", "v1" ],
+				    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["interface", "artifact", "inspection", "inspect" ],
+				    ["origin", "interface-inspection", "human-confirmation", "v1" ],
+				    [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "mara", "person", "person" ],
+				    ["origin", "name-person", "human-confirmation", "v1" ],
+				    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "ledger", "artifact", "artifact" ],
+				    ["origin", "name-artifact", "human-confirmation", "v1" ],
+				    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				  ]
+				]
+			      ],
+			      [
+				["root", "name-artifact", "v1", "human-confirmation" ],
+				["root", "name-person", "v1", "human-confirmation" ],
+				["root", "interface-inspection", "v1", "human-confirmation" ],
+				["root", "commitment-source", "v1", "human-confirmation" ]
+			      ]
+			    ]
+			  ]
+			]
+		      ],
+		      [
+			"material-interface",
+			"TimeCoherence",
+			"recovery",
+			"person",
+			"recover",
+			[
+			  "support-basis",
+			  [
+			    [
+			      "supported",
+			      [
+				"commitment",
+				["language-obligation", "artifact", "person", "recovery" ],
+				"artifact",
+				"person",
+				"recovery",
+				"recover"
+			      ],
+			      [
+				"language-derived",
+				"commitment-source",
+				["span", 0, 56 ],
+				[
+				  "syntax",
+				  "ability",
+				  "obligation",
+				  "mara",
+				  "ledger",
+				  ["choice", "inspection", "recovery" ]
+				],
+				[
+				  [
+				    "supported",
+				    [
+				      "utterance",
+				      "artifact",
+				      "Keep mara able to choose and inspect and restore ledger."
+				    ],
+				    ["origin", "commitment-source", "human-confirmation", "v1" ],
+				    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["interface", "artifact", "recovery", "recover" ],
+				    ["origin", "interface-recovery", "human-confirmation", "v1" ],
+				    [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "mara", "person", "person" ],
+				    ["origin", "name-person", "human-confirmation", "v1" ],
+				    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				  ],
+				  [
+				    "supported",
+				    ["named", "ledger", "artifact", "artifact" ],
+				    ["origin", "name-artifact", "human-confirmation", "v1" ],
+				    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				  ]
+				]
+			      ],
+			      [
+				["root", "name-artifact", "v1", "human-confirmation" ],
+				["root", "name-person", "v1", "human-confirmation" ],
+				["root", "interface-recovery", "v1", "human-confirmation" ],
+				["root", "commitment-source", "v1", "human-confirmation" ]
+			      ]
+			    ]
+			  ]
+			]
+		      ]
+		    ]
+		  ],
+		  [
+		    "scoped-search",
+		    [
+		      "scope",
+		      "cut-fixture",
+		      "principal-fixture",
+		      "project-fixture",
+		      "test-owner-structural-contact"
+		    ],
+		    [
+		      "basis",
+		      [
+			[
+			  "material-interface",
+			  "AgencyBalance",
+			  "choice",
+			  "person",
+			  "choose",
+			  [
+			    "support-basis",
+			    [
+			      [
+				"supported",
+				[
+				  "commitment",
+				  ["language-obligation", "artifact", "person", "choice" ],
+				  "artifact",
+				  "person",
+				  "choice",
+				  "choose"
+				],
+				[
+				  "language-derived",
+				  "commitment-source",
+				  ["span", 0, 56 ],
+				  [
+				    "syntax",
+				    "ability",
+				    "obligation",
+				    "mara",
+				    "ledger",
+				    ["choice", "inspection", "recovery" ]
+				  ],
+				  [
+				    [
+				      "supported",
+				      [
+					"utterance",
+					"artifact",
+					"Keep mara able to choose and inspect and restore ledger."
+				      ],
+				      ["origin", "commitment-source", "human-confirmation", "v1" ],
+				      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				    ],
+				    [
+				      "supported",
+				      ["interface", "artifact", "choice", "choose" ],
+				      ["origin", "interface-choice", "human-confirmation", "v1" ],
+				      [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+				    ],
+				    [
+				      "supported",
+				      ["named", "mara", "person", "person" ],
+				      ["origin", "name-person", "human-confirmation", "v1" ],
+				      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				    ],
+				    [
+				      "supported",
+				      ["named", "ledger", "artifact", "artifact" ],
+				      ["origin", "name-artifact", "human-confirmation", "v1" ],
+				      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				    ]
+				  ]
+				],
+				[
+				  ["root", "name-artifact", "v1", "human-confirmation" ],
+				  ["root", "name-person", "v1", "human-confirmation" ],
+				  ["root", "interface-choice", "v1", "human-confirmation" ],
+				  ["root", "commitment-source", "v1", "human-confirmation" ]
+				]
+			      ]
+			    ]
+			  ]
+			],
+			[
+			  "material-interface",
+			  "SharedUnderstanding",
+			  "inspection",
+			  "person",
+			  "inspect",
+			  [
+			    "support-basis",
+			    [
+			      [
+				"supported",
+				[
+				  "commitment",
+				  ["language-obligation", "artifact", "person", "inspection" ],
+				  "artifact",
+				  "person",
+				  "inspection",
+				  "inspect"
+				],
+				[
+				  "language-derived",
+				  "commitment-source",
+				  ["span", 0, 56 ],
+				  [
+				    "syntax",
+				    "ability",
+				    "obligation",
+				    "mara",
+				    "ledger",
+				    ["choice", "inspection", "recovery" ]
+				  ],
+				  [
+				    [
+				      "supported",
+				      [
+					"utterance",
+					"artifact",
+					"Keep mara able to choose and inspect and restore ledger."
+				      ],
+				      ["origin", "commitment-source", "human-confirmation", "v1" ],
+				      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				    ],
+				    [
+				      "supported",
+				      ["interface", "artifact", "inspection", "inspect" ],
+				      ["origin", "interface-inspection", "human-confirmation", "v1" ],
+				      [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+				    ],
+				    [
+				      "supported",
+				      ["named", "mara", "person", "person" ],
+				      ["origin", "name-person", "human-confirmation", "v1" ],
+				      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				    ],
+				    [
+				      "supported",
+				      ["named", "ledger", "artifact", "artifact" ],
+				      ["origin", "name-artifact", "human-confirmation", "v1" ],
+				      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				    ]
+				  ]
+				],
+				[
+				  ["root", "name-artifact", "v1", "human-confirmation" ],
+				  ["root", "name-person", "v1", "human-confirmation" ],
+				  ["root", "interface-inspection", "v1", "human-confirmation" ],
+				  ["root", "commitment-source", "v1", "human-confirmation" ]
+				]
+			      ]
+			    ]
+			  ]
+			],
+			[
+			  "material-interface",
+			  "TimeCoherence",
+			  "recovery",
+			  "person",
+			  "recover",
+			  [
+			    "support-basis",
+			    [
+			      [
+				"supported",
+				[
+				  "commitment",
+				  ["language-obligation", "artifact", "person", "recovery" ],
+				  "artifact",
+				  "person",
+				  "recovery",
+				  "recover"
+				],
+				[
+				  "language-derived",
+				  "commitment-source",
+				  ["span", 0, 56 ],
+				  [
+				    "syntax",
+				    "ability",
+				    "obligation",
+				    "mara",
+				    "ledger",
+				    ["choice", "inspection", "recovery" ]
+				  ],
+				  [
+				    [
+				      "supported",
+				      [
+					"utterance",
+					"artifact",
+					"Keep mara able to choose and inspect and restore ledger."
+				      ],
+				      ["origin", "commitment-source", "human-confirmation", "v1" ],
+				      [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+				    ],
+				    [
+				      "supported",
+				      ["interface", "artifact", "recovery", "recover" ],
+				      ["origin", "interface-recovery", "human-confirmation", "v1" ],
+				      [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+				    ],
+				    [
+				      "supported",
+				      ["named", "mara", "person", "person" ],
+				      ["origin", "name-person", "human-confirmation", "v1" ],
+				      [ ["root", "name-person", "v1", "human-confirmation" ] ]
+				    ],
+				    [
+				      "supported",
+				      ["named", "ledger", "artifact", "artifact" ],
+				      ["origin", "name-artifact", "human-confirmation", "v1" ],
+				      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+				    ]
+				  ]
+				],
+				[
+				  ["root", "name-artifact", "v1", "human-confirmation" ],
+				  ["root", "name-person", "v1", "human-confirmation" ],
+				  ["root", "interface-recovery", "v1", "human-confirmation" ],
+				  ["root", "commitment-source", "v1", "human-confirmation" ]
+				]
+			      ]
+			    ]
+			  ]
+			]
+		      ]
+		    ],
+		    [
+		      "derived-goals",
+		      [
+			["path", "artifact", "revised" ],
+			["path", "person", "choose" ],
+			["path", "person", "inspect" ],
+			["path", "person", "recover" ]
+		      ]
+		    ],
+		    [
+		      "material-interface-lost",
+		      [
+			"candidate-participation",
+			[
+			  [
+			    "transition",
+			    "direct-change",
+			    [
+			      ["edge", "delegate", "recover" ],
+			      ["edge", "delegate", "inspect" ],
+			      ["edge", "delegate", "choose" ],
+			      ["edge", "person", "delegate" ],
+			      ["edge", "person", "choose" ],
+			      ["edge", "person", "inspect" ],
+			      ["edge", "person", "recover" ],
+			      ["edge", "artifact", "original" ]
+			    ],
+			    [
+			      ["edge", "artifact", "revised" ],
+			      ["edge", "delegate", "recover" ],
+			      ["edge", "delegate", "inspect" ],
+			      ["edge", "delegate", "choose" ],
+			      ["edge", "person", "delegate" ],
+			      ["edge", "artifact", "original" ]
+			    ]
+			  ],
+			  [
+			    "transition",
+			    "preserve-participation",
+			    [
+			      ["edge", "person", "choose" ],
+			      ["edge", "person", "inspect" ],
+			      ["edge", "person", "recover" ],
+			      ["edge", "artifact", "original" ]
+			    ],
+			    [
+			      ["edge", "delegate", "recover" ],
+			      ["edge", "delegate", "inspect" ],
+			      ["edge", "delegate", "choose" ],
+			      ["edge", "person", "delegate" ],
+			      ["edge", "person", "choose" ],
+			      ["edge", "person", "inspect" ],
+			      ["edge", "person", "recover" ],
+			      ["edge", "artifact", "original" ]
+			    ]
+			  ]
+			],
+			[
+			  ["edge", "artifact", "revised" ],
+			  ["edge", "delegate", "recover" ],
+			  ["edge", "delegate", "inspect" ],
+			  ["edge", "delegate", "choose" ],
+			  ["edge", "person", "delegate" ],
+			  ["edge", "artifact", "original" ]
+			],
+			[
+			  ["path", "artifact", "revised" ],
+			  ["path", "person", "choose" ],
+			  ["path", "person", "inspect" ],
+			  ["path", "person", "recover" ]
+			]
+		      ],
+		      "no-state-change"
+		    ]
+		  ]
+		]
+	      ],
+	      "candidate-available"
+	    ]
+	  ],
+	  [
+	    "expression-readings",
+	    [
+	      [
+		"expression-reading",
+		0,
+		["span", 0, 21 ],
+		["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		[
+		  "expression-meanings",
+		  [ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+		  [
+		    [
+		      "supported",
+		      ["named", "ledger", "artifact", "artifact" ],
+		      ["origin", "name-artifact", "human-confirmation", "v1" ],
+		      [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+		    ]
+		  ]
+		],
+		"rendering-not-authority"
+	      ]
+	    ]
+	  ],
+	  [
+	    "alterations",
+	    [
+	      [
+		"unsupported-alteration",
+		["system-promise",  ["path", "artifact", "revised" ] ],
+		["candidate-span", 0,  ["span", 0, 21 ] ],
+		[
+		  "intended",
+		  [
+		    ["retain", "artifact", "person", "recovery", "recover" ],
+		    ["retain", "artifact", "person", "inspection", "inspect" ],
+		    ["retain", "artifact", "person", "choice", "choose" ],
+		    ["reported-request",  ["path", "artifact", "revised" ] ]
+		  ]
+		]
+	      ],
+	      [
+		"omitted-meaning",
+		["reported-request",  ["path", "artifact", "revised" ] ],
+		[
+		  "source-basis",
+		  [
+		    [
+		      "supported",
+		      ["purpose",  ["language-purpose", "artifact" ],  ["path", "artifact", "revised" ] ],
+		      [
+			"language-derived",
+			"request-source",
+			["span", 0, 21 ],
+			["syntax", "request", "ledger", "revised" ],
+			[
+			  [
+			    "supported",
+			    ["utterance", "artifact", "Please revise ledger." ],
+			    ["origin", "request-source", "human-confirmation", "v1" ],
+			    [ ["root", "request-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "request-source", "v1", "human-confirmation" ]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "candidate-surface",
+		  [
+		    [
+		      "expression-reading",
+		      0,
+		      ["span", 0, 21 ],
+		      ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		      [
+			"expression-meanings",
+			[ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+			[
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      "rendering-not-authority"
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"omitted-meaning",
+		["retain", "artifact", "person", "choice", "choose" ],
+		[
+		  "source-basis",
+		  [
+		    [
+		      "supported",
+		      [
+			"commitment",
+			["language-obligation", "artifact", "person", "choice" ],
+			"artifact",
+			"person",
+			"choice",
+			"choose"
+		      ],
+		      [
+			"language-derived",
+			"commitment-source",
+			["span", 0, 56 ],
+			[
+			  "syntax",
+			  "ability",
+			  "obligation",
+			  "mara",
+			  "ledger",
+			  ["choice", "inspection", "recovery" ]
+			],
+			[
+			  [
+			    "supported",
+			    [
+			      "utterance",
+			      "artifact",
+			      "Keep mara able to choose and inspect and restore ledger."
+			    ],
+			    ["origin", "commitment-source", "human-confirmation", "v1" ],
+			    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["interface", "artifact", "choice", "choose" ],
+			    ["origin", "interface-choice", "human-confirmation", "v1" ],
+			    [ ["root", "interface-choice", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "mara", "person", "person" ],
+			    ["origin", "name-person", "human-confirmation", "v1" ],
+			    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "name-person", "v1", "human-confirmation" ],
+			["root", "interface-choice", "v1", "human-confirmation" ],
+			["root", "commitment-source", "v1", "human-confirmation" ]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "candidate-surface",
+		  [
+		    [
+		      "expression-reading",
+		      0,
+		      ["span", 0, 21 ],
+		      ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		      [
+			"expression-meanings",
+			[ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+			[
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      "rendering-not-authority"
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"omitted-meaning",
+		["retain", "artifact", "person", "inspection", "inspect" ],
+		[
+		  "source-basis",
+		  [
+		    [
+		      "supported",
+		      [
+			"commitment",
+			["language-obligation", "artifact", "person", "inspection" ],
+			"artifact",
+			"person",
+			"inspection",
+			"inspect"
+		      ],
+		      [
+			"language-derived",
+			"commitment-source",
+			["span", 0, 56 ],
+			[
+			  "syntax",
+			  "ability",
+			  "obligation",
+			  "mara",
+			  "ledger",
+			  ["choice", "inspection", "recovery" ]
+			],
+			[
+			  [
+			    "supported",
+			    [
+			      "utterance",
+			      "artifact",
+			      "Keep mara able to choose and inspect and restore ledger."
+			    ],
+			    ["origin", "commitment-source", "human-confirmation", "v1" ],
+			    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["interface", "artifact", "inspection", "inspect" ],
+			    ["origin", "interface-inspection", "human-confirmation", "v1" ],
+			    [ ["root", "interface-inspection", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "mara", "person", "person" ],
+			    ["origin", "name-person", "human-confirmation", "v1" ],
+			    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "name-person", "v1", "human-confirmation" ],
+			["root", "interface-inspection", "v1", "human-confirmation" ],
+			["root", "commitment-source", "v1", "human-confirmation" ]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "candidate-surface",
+		  [
+		    [
+		      "expression-reading",
+		      0,
+		      ["span", 0, 21 ],
+		      ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		      [
+			"expression-meanings",
+			[ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+			[
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      "rendering-not-authority"
+		    ]
+		  ]
+		]
+	      ],
+	      [
+		"omitted-meaning",
+		["retain", "artifact", "person", "recovery", "recover" ],
+		[
+		  "source-basis",
+		  [
+		    [
+		      "supported",
+		      [
+			"commitment",
+			["language-obligation", "artifact", "person", "recovery" ],
+			"artifact",
+			"person",
+			"recovery",
+			"recover"
+		      ],
+		      [
+			"language-derived",
+			"commitment-source",
+			["span", 0, 56 ],
+			[
+			  "syntax",
+			  "ability",
+			  "obligation",
+			  "mara",
+			  "ledger",
+			  ["choice", "inspection", "recovery" ]
+			],
+			[
+			  [
+			    "supported",
+			    [
+			      "utterance",
+			      "artifact",
+			      "Keep mara able to choose and inspect and restore ledger."
+			    ],
+			    ["origin", "commitment-source", "human-confirmation", "v1" ],
+			    [ ["root", "commitment-source", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["interface", "artifact", "recovery", "recover" ],
+			    ["origin", "interface-recovery", "human-confirmation", "v1" ],
+			    [ ["root", "interface-recovery", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "mara", "person", "person" ],
+			    ["origin", "name-person", "human-confirmation", "v1" ],
+			    [ ["root", "name-person", "v1", "human-confirmation" ] ]
+			  ],
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      [
+			["root", "name-artifact", "v1", "human-confirmation" ],
+			["root", "name-person", "v1", "human-confirmation" ],
+			["root", "interface-recovery", "v1", "human-confirmation" ],
+			["root", "commitment-source", "v1", "human-confirmation" ]
+		      ]
+		    ]
+		  ]
+		],
+		[
+		  "candidate-surface",
+		  [
+		    [
+		      "expression-reading",
+		      0,
+		      ["span", 0, 21 ],
+		      ["voice-syntax", "system-promise",  ["syntax", "request", "ledger", "revised" ] ],
+		      [
+			"expression-meanings",
+			[ ["meaning",  ["system-promise",  ["path", "artifact", "revised" ] ],  [] ] ],
+			[
+			  [
+			    "supported",
+			    ["named", "ledger", "artifact", "artifact" ],
+			    ["origin", "name-artifact", "human-confirmation", "v1" ],
+			    [ ["root", "name-artifact", "v1", "human-confirmation" ] ]
+			  ]
+			]
+		      ],
+		      "rendering-not-authority"
+		    ]
+		  ]
+		]
+	      ]
+	    ]
+	  ]
+	],
+	["remaining-calls", 1 ]
+      ]
+    ]
+  ],
+  "stored_at":1788525999.800525
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "miter-g33-r6-cases-v1",
+  "request_id": "g33-r6-rendered",
+  "controlled_first_candidate": ["I will revise ledger."],
+  "source_frame": "evidence/SC07/live-001/frame.json",
+  "faithful_source": "evidence/G33/R5/attempt-003/native-products.json",
+  "standing": "finite boundary stimuli; no repaired sentence, audit, disposition, semantic winner, or certificate supplied"
+}

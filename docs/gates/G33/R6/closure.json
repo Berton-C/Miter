@@ -1,0 +1,58 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G33",
+  "plan": "docs/gates/G33/R6/plan.json",
+  "plan_commit": "3aba0601a078d4e87a43ee158421091a4193a2f9",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G33/R6/attempts.md","sha256":"ba3613829d6e729bcc536284754938f6ab3df55f93da5976511fa2705e6542bb"},
+    {"path":"docs/gates/G33/R6/semantic-audit.md","sha256":"ba35da73dfb110359e5b6e3cdc885dccf1fa343d57c2f6c3bbf89e2a291d534c"},
+    {"path":"docs/gates/G33/R6/outcome.md","sha256":"ae9290992164add00191d1d7647ddadad28df944141af4f96d67023c6e32a7c1"},
+    {"path":"evidence/G33/R6/attempt-001/diagnosis.md","sha256":"3792fa90733d18edccbc6c0d0810ff0c280c6ed7ac36afe4fa726186995de0c4"},
+    {"path":"evidence/G33/R6/attempt-002/diagnosis.md","sha256":"b121d3e652e4d88fead6f19097c68e0dfa725ef6c4e1215ef0f039ead560fb4a"},
+    {"path":"evidence/G33/R6/attempt-003/diagnosis.md","sha256":"2351f55927c099fe64fe04aa0c29e47a579acf35b3a7a7d85241766520a0b1b2"},
+    {"path":"evidence/G33/R6/attempt-004/diagnosis.md","sha256":"a64bb41e35d8212eea29c97a359358f22b3d104aee7cebb6b2874f684f32da37"},
+    {"path":"evidence/G33/R6/attempt-005/diagnosis.md","sha256":"22b3c4046bc89750a9aa86c4345a5fa14ef89224be5b5def6a4d6d5b4a1503bd"},
+    {"path":"evidence/G33/R6/attempt-006/diagnosis.md","sha256":"9d61af3201bf3d118c3c1c59d1d658e34ce0ebeb419bedfc7e88fad3efed816b"},
+    {"path":"evidence/G33/R6/attempt-007/diagnosis.md","sha256":"ad28a5f5aa306c83e6ec5dc101161af519fdec9bea65b77a549286a705ae0646"},
+    {"path":"evidence/G33/R6/attempt-009/verdict.json","sha256":"52f0f71ef30c7a0021d953b4da28c72c3d25039775b62f21a76a69bab6dac5f1"},
+    {"path":"evidence/G33/R6/attempt-009/native-products.json","sha256":"e7bff8ab0771de93e918a5975caabebac0a4adfac4b37386cf9413c746c7a41e"},
+    {"path":"evidence/G33/R6/attempt-009/public-bootstrap-products.json","sha256":"5c3f0857897b9a059c696d6ed2d6fa09107214ebc1ca0d1b6dbd77844afeb680"},
+    {"path":"evidence/G33/R6/attempt-009/sever-handler-products.json","sha256":"dc14b629b0771ee3fb1ca5b20b0c88ebc5af102a33ff7ffac18aca2374877b5b"},
+    {"path":"evidence/G33/R6/attempt-009/sever-runtime-products.json","sha256":"c9ba58c391ecc11c65b6f81e7c1f34738022294ab0c30793c3abe9e818446260"},
+    {"path":"evidence/G33/R6/attempt-009/freeze.json","sha256":"12dad54098f7d9b9261ededb90b90329a12a67a4a3dafd097f15f5a1e33b36d9"},
+    {"path":"evidence/G33/R6/attempt-009/raw-summary.json","sha256":"5b7a1ff4c85ab711771b580b6e3814a662acff622fd6081f44e2db308b563b00"}
+  ],
+  "claim_results": [
+    {
+      "id": "G33-R6-current-wait-path-delegates-to-single-native-handler",
+      "status": "PROVEN-RUNTIME",
+      "limit": "RWait delegates returned states to RWaitReturned, whose one call invokes RRenderedContinuation. The handler passed through the actual public bootstrap and its removal changed the product to typed incompletion. The asynchronous poll loop itself was not rerun."
+    },
+    {
+      "id": "G33-R6-altered-rendering-crosses-r5-repair-continuation",
+      "status": "PROVEN-RUNTIME",
+      "limit": "For the disclosed deterministic altered rendered state and current frame, the handler's actual audit/disposition agreed with native recomputation and crossed R5 to a faithful certificate. This is not a fresh model result or general language proof."
+    },
+    {
+      "id": "G33-R6-faithful-and-uncertain-products-remain-differentiated",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Faithful rendering bypassed repair; absent frame, missing joint, malformed state, request/scope mismatch, forged observation, removed handler and unavailable capability each retained differentiated non-certifying standing in the finite suite."
+    },
+    {
+      "id": "G33-R6-public-integration-retains-zero-emission-authority",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The public-bootstrap repair certificate and all runtime capability records retained no-emission authority, with zero service or effect calls. This does not establish later emission eligibility or Mattermost delivery."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/C-009/C-011/C-012 and S-501-S-505 require the Soul-grounded organization of contact to remain the semantic decision point; C-054-C-067 and S-902-S-905 deny model output authority; C-090-C-105 and S-1101-S-1105 require typed evidence and recovery. R6 therefore routes the actual current wait consumer through the one R5 continuation and requires current source-frame participation rather than inventing context.",
+    "causal_evidence": "The exact handler under the actual public bootstrap caused the altered rendered state to reach a faithful no-emission certificate. Removing the call or runtime capability caused typed incompletion; removing joint participation caused alternatives; removing the frame caused incompletion; changing identity/scope or supplied audit caused revalidation. A faithful rendered state bypassed repair, and neutral source order preserved semantic content.",
+    "substitution_audit": "The disclosed first rendered state contains only the frozen defective clause, not a repair or audit. Faithful control clauses came from the prior native R5 product and are hash-bound in stimulus lineage. No R6 code or fixture contains the repaired wording. JavaScript launches, severs, and inspects; Prolog authenticates configuration and accepted lineage. MeTTa alone audits, disposes, constructs, compares, re-audits and certifies. No legacy policy or second semantic handler is loaded.",
+    "capability_and_constraint_audit": "The runtime reference is public-safe and grants only accepted-development lookup, fuel 256 and false human emission. Candidate, active receipt and G22 closure are rehashed and structurally bound. Accepted and unavailable records use the same typed shape. Attempt 009 made zero model, network, credential, Chroma, Mattermost, human-emission or external-effect calls and did not create or use ~/.miter.",
+    "remaining_gaps": "R6 does not execute a fresh model or asynchronous poll, emit to Mattermost, establish effect eligibility, prove arbitrary language or flourishing, complete G16/G17/G33, integrate clean-start trajectory and memory with voice/effect lineage, prove restart/no-replay for the full demonstration, perform NACE learning, or produce the final PoC report. The complete G33 matrix must now be reassessed before another plan."
+  },
+  "reviewer": "Codex primary builder and fidelity reviewer, applying the committed Miter gate methodology",
+  "review_limits": "Single-reviewer source, pinned native-runtime, and evidence audit over disclosed rendered states. It establishes the bounded R6 consumer integration, not independent replication, production security, whole-Soul fidelity, general semantics, or G33 completion.",
+  "terminal_reason": "G33 R6 is a completed consumer-integration revision, not terminal G33 acceptance. The fidelity checker does not permit a same-gate next_plan link; the next G33 revision must be separately derived and frozen after reassessing the full acceptance matrix."
+}

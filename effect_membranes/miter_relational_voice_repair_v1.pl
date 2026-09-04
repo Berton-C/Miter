@@ -9,6 +9,7 @@ rr_active_hash('8ff2514c5274560cd7e5363376491fb74802ac5691ea3b31f6cf1939c2d02f03
 rr_closure_hash('9884bb7ebbac2e1f97e35073388af09c2f6619dd99ececa94120c900d99ec5f8').
 rr_active_path('/Users/claritymiter/miter/evidence/G22/g26-001/accepted/active.json').
 rr_closure_path('/Users/claritymiter/miter/docs/gates/G22/closure.json').
+rr_runtime_path('/Users/claritymiter/miter/config/relational-voice-repair-runtime-v1.json').
 
 rr_native(X, Y) :-
     ( string(X) -> atom_string(Y, X)
@@ -86,6 +87,27 @@ rr_capability(Path, Result) :-
              ['event-kind','accepted-development']],
           'no-emission-authority']
     ; Result = ['expression-capability-unaccepted',Path]
+    ), !.
+
+rr_runtime_capability(Purpose, Result) :-
+    Purpose == 'relational-voice-repair',
+    rr_runtime_path(ConfigPath),
+    ( catch((rr_regular_file(ConfigPath, Config), rr_json(Config, D),
+             is_dict(D), dict_pairs(D, _, Pairs),
+             pairs_keys(Pairs, [candidate_path,construction_fuel,
+                 external_human_emission,schema,standing]),
+             miter_store_nonempty_atom(D.schema,
+                 'miter-relational-voice-repair-runtime-v1'),
+             miter_store_nonempty_atom(D.standing, 'accepted-development-only'),
+             D.external_human_emission == false,
+             integer(D.construction_fuel), D.construction_fuel > 0,
+             D.construction_fuel =< 512,
+             miter_store_nonempty_atom(D.candidate_path, Candidate),
+             rr_accepted(Candidate, _, _)), _, fail)
+    -> Result = ['repair-runtime-capability','accepted',Candidate,
+                 D.construction_fuel,'no-emission-authority']
+    ;  Result = ['repair-runtime-capability','unavailable','no-candidate',0,
+                 'no-emission-authority']
     ), !.
 
 vc_word(W, true) :-
