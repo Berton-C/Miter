@@ -56,7 +56,7 @@
      (and (== (index-atom $checkpoint 8) (allowed-writes (trial-expression)))
       (== (index-atom $checkpoint 9) (allowed-effects ()))))))))
 (= (DHQuestion $checkpoint $selection)
- (development-generation-call g33-r12-generation-1
+ (development-generation-call g33-r12-generation-2
   (index-atom $checkpoint 1) (index-atom $checkpoint 2) (index-atom $checkpoint 3)
   $selection (index-atom $checkpoint 4) (index-atom $checkpoint 5)
   (index-atom $checkpoint 6) (index-atom $checkpoint 7) (index-atom $checkpoint 8)

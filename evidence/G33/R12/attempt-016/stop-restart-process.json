@@ -1,0 +1,16 @@
+{
+  "schema": "miter-g33-r12-stop-restart-observation-v1",
+  "command": "pinned PeTTa fresh process over attempt-016/canonical.metta",
+  "status": 0,
+  "signal": null,
+  "stderr": "",
+  "stdout": [
+    "true",
+    "(case-result hooks ((idle-promoter SourceGroundedDevelopmentIdle) (idle-promoter DevelopmentHelixIdle) (rna-advancer SourceGroundedDevelopRNA SourceGroundedDevelopmentBoundary) (rna-advancer DevelopmentHelixRNA DevelopmentHelixBoundary)))",
+    "reactor-recorded"
+  ],
+  "observed_trajectory_event": "reactor-stopped",
+  "generation_raw_sha256_after_restart": "55586f5dfe5b3c2cddc4ab4959bfd7f072af5af05f0613676668fd9a6b386420",
+  "call_claim_sha256_after_restart": "a35cc84abf0303f718baf42c5fb2a6ae12c237e6f1aa7ece05ac1fb28d559fb9",
+  "generation_replayed": false
+}

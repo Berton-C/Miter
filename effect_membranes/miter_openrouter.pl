@@ -92,6 +92,11 @@ or_spend(R,development,'g33-r12-generation-1') :-
  \+exists_directory(P),make_directory(P),directory_file_path(P,'owner.json',Owner),
  sd_durable_json(Owner,_{root:R,request:"g33-r12-generation-1",kind:"development",slot:1,
   grant:"G33-R12-R1",model:"z-ai/glm-5.3",max_output_tokens:1024,deadline_seconds:120}).
+or_spend(R,development,'g33-r12-generation-2') :-
+ format(atom(P),'/Users/claritymiter/miter/evidence/G33/R12/openrouter-call-2.claim',[]),
+ \+exists_directory(P),make_directory(P),directory_file_path(P,'owner.json',Owner),
+ sd_durable_json(Owner,_{root:R,request:"g33-r12-generation-2",kind:"development",slot:2,
+  grant:"G33-R12-R2",model:"z-ai/glm-5.3",max_output_tokens:4096,deadline_seconds:120}).
 
 or_root(R) :- sd_root(R,_),!.
 or_root(R) :- current_predicate(dh_root/2),dh_root(R,_).

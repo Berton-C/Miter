@@ -84,11 +84,11 @@ dh_request_valid(R,Q) :-
  dh_input(R,['development-helix-input',Checkpoint,_,_,Authorization]),
  Checkpoint=['waiting-checkpoint',Candidate,Scope,Old,Grant,Parent,Context,Instruction,Writes,Effects,
   pending,'awaiting-model-result',StateHash,RequestHash],
- Q=['development-generation-call','g33-r12-generation-1',Candidate,Scope,Old,Selection,Grant,
+ Q=['development-generation-call','g33-r12-generation-2',Candidate,Scope,Old,Selection,Grant,
   Parent,Context,Instruction,Writes,Effects,StateHash,RequestHash],
  Selection=['resource-selected','openrouter-glm53','z-ai/glm-5.3',_,
   ['preference-basis','operator-preference','evidence-not-authority']],
- Authorization=['provider-authorization','openrouter-glm53','z-ai/glm-5.3','g33-r12-generation-1',1,1024,120,
+ Authorization=['provider-authorization','openrouter-glm53','z-ai/glm-5.3','g33-r12-generation-2',1,4096,120,
   ['public-synthetic-fixture','no-secrets','no-mattermost-credential','no-private-memory','no-personal-content'],
   'operator-authorized'],Grant=['development-grant',Scope,1,1024,120].
 
@@ -102,14 +102,18 @@ dh_generation_fresh([Request,Raw,Timing,Observation]) :-
 dh_generation_payload(Q,Id,Profile,Body) :-
  Q=['development-generation-call',Id,Candidate,Scope,Old,Selection,Grant,Parent,Context,Instruction,
   Writes,Effects,_,_],miter_store_canonical_json(Context,ContextJSON),
+ dh_json('/Users/claritymiter/miter/config/voice-realization-schema-v2.json',Schema),
+ dh_sha('/Users/claritymiter/miter/config/voice-realization-schema-v2.json',SchemaHash),
+ SchemaHash="38bb7ccc1ce2e5d35db256114a7c1772817308d53be06d6090d69a1f26608427",
  with_output_to(string(User),json_write_dict(current_output,_{
   candidate_id:Candidate,parent_id:Parent,prior_resource:Old,selected_resource:Selection,
   scope:Scope,grant:Grant,constructive_context:ContextJSON,
-  required_schema:"miter-voice-realization-v2",allowed_writes:["trial-expression"],allowed_effects:[],
+  required_schema:Schema,required_schema_sha256:SchemaHash,
+  allowed_writes:["trial-expression"],allowed_effects:[],
   source_instruction:Instruction,transport_note:"Return only the JSON object; no markdown or explanation."
  },[width(0)])),
  System="Render one reusable grammar candidate from the supplied source-grounded context. You provide a candidate only: do not choose behavior, judge quality, claim authority, invoke effects, or alter the acceptance standard. Return strict JSON and nothing else.",
- or_profile(Profile),or_body(Profile,System,User,1024,Body),
+ or_profile(Profile),or_body(Profile,System,User,4096,Body),
  Writes=['allowed-writes',['trial-expression']],Effects=['allowed-effects',[]].
 dh_generation_audit(R,Q,['generation-preflight',Verified,Grounded,Staged,Contract,Payload,Names,Fresh,Spend]) :-
  dh_truth(dh_verify(R),Verified),dh_truth(ground(Q),Grounded),
@@ -127,19 +131,19 @@ dh_generate_checked(R,Q,Observation) :- dh_verify(R),ground(Q),
  dh_generation_payload(Q,Id,Profile,Body),
  or_execute(R,Id,development,Profile,Body,120,2097152,Observation).
 
-dh_observation_product(['openrouter-observation','g33-r12-generation-1',development,eof,200,_,true,_,
+dh_observation_product(['openrouter-observation','g33-r12-generation-2',development,eof,200,_,true,_,
  'provider-response',_,Content,'z-ai/glm-5.3',_,_],Content).
 dh_candidate(R,Q,Observation,Product) :- catch(((dh_request_valid(R,Q),dh_observation_product(Observation,Content),
  atom_json_dict(Content,D,[]),is_dict(D),vc_project(D,Module),
  Q=['development-generation-call',_,Candidate|_],Module=['voice-realization','miter-voice-realization-v2',Candidate|_],
  dh_path(R,'candidate.json',CP),(exists_file(CP)->dh_json(CP,Existing),miter_store_canonical_json(Existing,J),miter_store_canonical_json(D,J)
   ;tv_durable_json(CP,D)),dh_path(R,'candidate-lineage.json',LP),
- (exists_file(LP)->true;dh_path(R,'g33-r12-generation-1-request.json',Req),dh_path(R,'g33-r12-generation-1-raw.json',Raw),
+ (exists_file(LP)->true;dh_path(R,'g33-r12-generation-2-request.json',Req),dh_path(R,'g33-r12-generation-2-raw.json',Raw),
   dh_sha(Req,ReqHash),dh_sha(Raw,RawHash),dh_sha(CP,CandidateHash),
   tv_durable_json(LP,_{schema:"miter-model-candidate-lineage-v1",standing:"model-candidate-bound",
-   request_id:"g33-r12-generation-1",model:"z-ai/glm-5.3",request_sha256:ReqHash,
+   request_id:"g33-r12-generation-2",model:"z-ai/glm-5.3",request_sha256:ReqHash,
    raw_sha256:RawHash,candidate_sha256:CandidateHash})),
- Product=['model-candidate',Module,'model-candidate-bound',['generation-lineage','g33-r12-generation-1','z-ai/glm-5.3']])
+ Product=['model-candidate',Module,'model-candidate-bound',['generation-lineage','g33-r12-generation-2','z-ai/glm-5.3']])
  -> true ; Product=['model-candidate-unavailable']),_,Product=['model-candidate-unavailable']),!.
 
 dh_trial_material(R,N) :- catch((dh_verify(R),dh_path(R,'input.json',IP),dh_json(IP,D),

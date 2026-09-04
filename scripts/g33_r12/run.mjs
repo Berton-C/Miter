@@ -12,15 +12,15 @@ const tag=process.argv[2]??'001';assert.match(tag,/^\d{3}$/);
 const rel=`evidence/G33/R12/attempt-${tag}`,dir=`${root}/${rel}`;
 assert(!fs.existsSync(dir),`${rel} already exists`);fs.mkdirSync(dir,{recursive:true});
 const fixture=read(`${root}/tests/fixtures/g33_r12/cases.json`);
-const opening=checkOpen('docs/gates/G33/R12/R1/plan.json');
-assert.equal(opening.plan_commit,'2656e6acb4bbeac69b4f0ec24a4230f0a65aaf48');save(`${dir}/opening.json`,opening);
+const opening=checkOpen('docs/gates/G33/R12/R2/plan.json');
+assert.equal(opening.plan_commit,'17be857f2f0bd4a30bc5afd3c4ac2d98da63ebcb');save(`${dir}/opening.json`,opening);
 assert.equal(execFileSync('git',['-C',petta,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),
   'ae66fa8e41dcd5539d614706bd4e5cfb34f9608d');
 assert.equal(execFileSync('git',['-C',petta,'status','--porcelain'],{encoding:'utf8'}).trim(),'');
 
 const loadBearing=[
   'CONSTITUTION.md','MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md','ACCEPTANCE.md','BUILD_FIDELITY_PROTOCOL.md',
-  'docs/gates/G33/R12/R1/plan.json','docs/gates/G33/R11/R2/closure.json','docs/gates/G22/closure.json',
+  'docs/gates/G33/R12/R1/plan.json','docs/gates/G33/R12/R2/plan.json','docs/gates/G33/R11/R2/closure.json','docs/gates/G22/closure.json',
   'docs/gates/G24/closure.json','docs/gates/G25/closure.json','docs/gates/G26/closure.json','docs/gates/G29/R9/closure.json',
   'config/model-resources-v1.json','config/voice-realization-schema-v2.json',
   'constitution/soul.metta','constitution/soul_compass_v02.metta',
@@ -96,14 +96,14 @@ const selection=native(canonical,'resource-cases',
   ` (DHSelectResource (development-helix-input (index-atom $i 1) (model-resources (DHReverse $rs)) (index-atom $i 3) (index-atom $i 4)))))\n`+
   `!(result absent-authorization (let $i (dh_input "${canonical}")\n`+
   ` (DHSelectResource (development-helix-input (index-atom $i 1) (index-atom $i 2) (index-atom $i 3)\n`+
-  `  (provider-authorization openrouter-glm53 z-ai/glm-5.3 g33-r12-generation-1 1 1024 120\n`+
+  `  (provider-authorization openrouter-glm53 z-ai/glm-5.3 g33-r12-generation-2 1 4096 120\n`+
   `   (public-synthetic-fixture no-secrets no-mattermost-credential no-private-memory no-personal-content) denied)))))\n`+
   `!(result ambiguous (let* (($i (dh_input "${canonical}")) ($rs (index-atom (index-atom $i 2) 1))\n`+
   ` ($dup (cons-atom (index-atom $rs 3) $rs)))\n`+
   ` (DHSelectResource (development-helix-input (index-atom $i 1) (model-resources $dup) (index-atom $i 3) (index-atom $i 4)))))\n`+
   `!(result wrong-model-product (let* (($i (dh_input "${canonical}")) ($s (DHSelectResource $i))\n`+
   ` ($q (DHQuestion (index-atom $i 1) $s)))\n`+
-  ` (dh_candidate "${canonical}" $q (openrouter-observation g33-r12-generation-1 development eof 200 1 true stop provider-response 2 "{}" wrong-model none (usage 0 0 0 0)))))\n`+
+  ` (dh_candidate "${canonical}" $q (openrouter-observation g33-r12-generation-2 development eof 200 1 true stop provider-response 2 "{}" wrong-model none (usage 0 0 0 0)))))\n`+
   `!(result generation-preflight (let* (($i (dh_input "${canonical}")) ($s (DHSelectResource $i))\n`+
   ` ($q (DHQuestion (index-atom $i 1) $s)) ($pending (add-atom &derived (development-generation-pending "${canonical}" $q)))\n`+
   ` ($audit (dh_generation_audit "${canonical}" $q)) ($clear (remove-atom &derived (development-generation-pending "${canonical}" $q)))) $audit))`);
@@ -116,9 +116,16 @@ assert.equal(selection['absent-authorization'][0],'resource-selection-unresolved
 assert.equal(selection.ambiguous[0],'resource-selection-unresolved');assert.deepEqual(selection['wrong-model-product'],['model-candidate-unavailable']);
 assert.deepEqual(selection['generation-preflight'],['generation-preflight','true','true','true','true','true','true','true','true']);
 save(`${dir}/resource-observations.json`,selection);
-assert(!fs.existsSync(`${root}/evidence/G33/R12/openrouter-call-1.claim`));
+assert(fs.existsSync(`${root}/evidence/G33/R12/openrouter-call-1.claim/owner.json`));
+assert(!fs.existsSync(`${root}/evidence/G33/R12/openrouter-call-2.claim`));
 
 const reactorResult=await reactor(canonical);
+const requestDoc=read(`${canonical}/g33-r12-generation-2-request.json`);
+assert.equal(requestDoc.body.max_tokens,4096);
+assert.equal(requestDoc.body.messages[1].role,'user');
+const disclosed=JSON.parse(requestDoc.body.messages[1].content);
+assert.equal(disclosed.required_schema_sha256,hash(fs.readFileSync(`${root}/config/voice-realization-schema-v2.json`)));
+assert.deepEqual(disclosed.required_schema,read(`${root}/config/voice-realization-schema-v2.json`));
 const final=read(`${canonical}/final.json`).native;assert.equal(final[0],'development-helix-result');
 const selected=final[1],generation=final[2],product=final[3],quarantine=final[4],trial=final[5],efficacy=final[6];
 assert.equal(selected[0],'resource-selected');assert.equal(selected[1],fixture.expected.selected_resource);
@@ -152,15 +159,15 @@ assert.equal(severedResult.severed[0],'consequence-severed-result');assert.equal
 assert.equal(severedResult.severed[2][0],'trial-admissible');assert.equal(severedResult.severed[3][0],'efficacy-ranking');
 assert.equal(severedResult.severed[3][2].length,fixture.expected.before_maxima);
 
-const beforeRawHash=hash(fs.readFileSync(`${canonical}/g33-r12-generation-1-raw.json`));
+const beforeRawHash=hash(fs.readFileSync(`${canonical}/g33-r12-generation-2-raw.json`));
 const restart=native(canonical,'restart',`!(result restart (DHRestart "${canonical}"))`);
 assert.equal(restart.restart[0],'development-helix-rehydrated');assert.equal(restart.restart[2][0],'efficacy-ranking');
 assert.equal(restart.restart[2][2].length,1);assert.equal(restart.restart[2][2][0][2],fixture.expected.after_maximum);
 assert.equal(restart.restart[3],'no-generation-replay');
-assert.equal(hash(fs.readFileSync(`${canonical}/g33-r12-generation-1-raw.json`)),beforeRawHash);
+assert.equal(hash(fs.readFileSync(`${canonical}/g33-r12-generation-2-raw.json`)),beforeRawHash);
 
-const callClaim=`${root}/evidence/G33/R12/openrouter-call-1.claim/owner.json`;
-assert(fs.existsSync(callClaim));const claim=read(callClaim);assert.equal(claim.request,'g33-r12-generation-1');
+const callClaim=`${root}/evidence/G33/R12/openrouter-call-2.claim/owner.json`;
+assert(fs.existsSync(callClaim));const claim=read(callClaim);assert.equal(claim.request,'g33-r12-generation-2');
 const observations={schema:'miter-g33-r12-observations-v1',selection,reactor_hooks:reactorResult.products.hooks,
   final,consequence_severed:severedResult.severed,restart:restart.restart,
   call_claim:claim,raw_sha256:beforeRawHash,candidate_sha256:hash(fs.readFileSync(`${canonical}/candidate.json`)),
@@ -173,8 +180,8 @@ const freezeFiles=[...absoluteLoadBearing,`${canonical}/input.json`,`${canonical
 save(`${dir}/freeze.json`,{schema:'miter-g33-r12-freeze-v1',git_head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
   plan_commit:opening.plan_commit,petta_commit:'ae66fa8e41dcd5539d614706bd4e5cfb34f9608d',
   swi_version:execFileSync(swi,['--version'],{encoding:'utf8'}).trim(),files:pins([...new Set(freezeFiles)]),
-  model_calls:1,model:fixture.expected.model,max_output_tokens:1024,deadline_seconds:120,...fixture.resources});
-const verdict={status:'PASS-BOUNDED',gate:'G33',revision:'R12-R1',
+  model_calls:1,model:fixture.expected.model,max_output_tokens:4096,deadline_seconds:120,...fixture.resources});
+const verdict={status:'PASS-BOUNDED',gate:'G33',revision:'R12-R2',
   waiting_undertaking_resumes_through_native_resource_comparison:true,
   model_product_remains_quarantined_until_independent_v2_trial:true,
   native_consequence_and_nal_revision_change_later_ranking:true,
