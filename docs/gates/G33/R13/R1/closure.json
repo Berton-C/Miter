@@ -1,0 +1,55 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G33",
+  "plan": "docs/gates/G33/R13/R1/plan.json",
+  "plan_commit": "06fcfc406f3e9accbc2806e31d1c331fdd5c4727",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G33/R13/R1/recheck.json","sha256":"b803254b0b325215d3defacdd6f6838d7d2628f6885dbe14315e9006d2605719"},
+    {"path":"docs/gates/G33/R13/R1/outcome.md","sha256":"1eca9b20fff44b91c44a7d597039b614abb93093efb8cb6ef2bcc1c9c109e149"},
+    {"path":"docs/gates/G33/R13/R1/semantic-audit.md","sha256":"b1f551816f8eedb145cbff7182e44560bb049ca7752f560b6451316081764231"},
+    {"path":"docs/gates/G33/R13/outcome.md","sha256":"8a62a87b5ddfbb6edd5029ebd627d28083fd52bce9e5645950be3c9c16beb6d8"},
+    {"path":"docs/gates/G33/R13/semantic-audit.md","sha256":"8cace5bb62ccf63b57ef5463b2e94c7c1b9a146a0243efb2e326d942a1322053"},
+    {"path":"evidence/G33/R13/attempt-005/verdict.json","sha256":"c0d395799c7c7d696da82010f6f7b18e066f8cafc4602f98b92500fce338cf1c"},
+    {"path":"evidence/G33/R13/attempt-005/observations.json","sha256":"6dfab757dec9c54f5ffa1c218bbceabed88910fdd87756e1b1e3875914c26284"},
+    {"path":"evidence/G33/R13/attempt-005/freeze.json","sha256":"c5a2cae28538edb605b795b3572cc00febb4f9bb432fa2cb5616c97a41fb0658"},
+    {"path":"evidence/G33/R13/attempt-005/canonical/final.json","sha256":"2322378efceb70953f381724e0fe4fe82fea0a4bb2748c82dee697f62aa5278c"},
+    {"path":"evidence/G33/R13/attempt-005/canonical/trial.json","sha256":"21f72af736a709ae1db99d57ce5c21ca97f138f0f910a6a1f23ee0947a23ad3b"},
+    {"path":"evidence/G33/R13/attempt-005/canonical/restart.json","sha256":"5d4c7efdd4b0c23cda3baa1308fe4418937cf9bfedb09669425ec540faf1325e"},
+    {"path":"evidence/G33/R13/attempt-005/canonical-process.json","sha256":"f4501bffe216548b54c4cbbd98b92d36752c585e6672d3c795b64e4494fc06dc"},
+    {"path":"evidence/G33/R13/attempt-005/r12-current-tree-verifier-process.json","sha256":"8743b629b592cdee0678fb040ca561f6dff6ebafb843da06af70bbc56078e609"},
+    {"path":"docs/gates/G33/R12/R3/closure.json","sha256":"1b3c3d498c642c61ef779c4a3cf88dec31f1331f3f47468a99c2989f09826991"}
+  ],
+  "claim_results": [
+    {
+      "id": "G33-R13-R1-historical-r12-identity-and-evidence-remain-valid",
+      "status": "PROVEN-HARNESS",
+      "limit": "All 84 R12 frozen paths matched either unchanged current bytes or their exact Git bytes at the R12 evidence commit, and all 12 closure artifacts remain unchanged. This establishes versioned byte/evidence identity, not current v1 compatibility or semantic truth from hashes."
+    },
+    {
+      "id": "G33-R13-R1-current-v2-compact-causality-remains-valid",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The unchanged R13 attempt-005 evidence and independent verifier retain the exact bounded trial, candidate-only later maximum, consequence-severed tie and neutral stability. This is one synthetic v2 trial family, not general learning or proof compression."
+    },
+    {
+      "id": "G33-R13-R1-current-v2-same-process-stop-remains-valid",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The unchanged current evidence retains a 6,914-byte final proof and clean status-0 stop in the original recurring process. This does not establish universal T-33 latency, cancellation or resource behavior."
+    },
+    {
+      "id": "G33-R13-R1-current-v2-restart-nonreplay-remains-valid",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The unchanged current evidence rehydrates the sole later maximum with no generation replay. This is the exact R13 development root, not the still-open complete clean-start G33 organism."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "The Constitution and Soul specification require evidence and upgrades to remain answerable to the version that actually participated. R1 therefore preserves R12 as historical evidence, v2 as current evidence, and the mismatch between them as an explicit boundary rather than forcing a false current-equivalence claim.",
+    "causal_evidence": "R13 causality remains the current native trial/consequence/ranking result: restored consequence yields the candidate-only maximum while the severed arm retains the tie; neutral ordering is stable; compact serialization permits same-process stop; restart preserves the changed maximum. R1 only verifies that those artifacts and their predecessor lineage are intact.",
+    "substitution_audit": "The offline script does not create a native verdict. It checks Git objects, hashes, JSON fields and the independent R13 verifier. The old R12 verifier failure is retained. No expected label or host summary is relabelled as a new cognitive result, and matching hashes are not described as semantic proof.",
+    "capability_and_constraint_audit": "No PeTTa/Prolog runtime, model, credential, network, Mattermost, Chroma, private memory, human emission or external effect ran. The active default imports v2 exactly once; historical R12 bytes remain available at commit 1b6ffed6. User-owned G22/G28 files remain hash-preserved and unstaged.",
+    "remaining_gaps": "R13 is bounded to compact proof projection, one trial/consequence family, clean same-process stop and exact restart. G33 still requires one clean-start integrated trace joining Soul, continuity, Chroma standing, voice, quiescence, development, NACE, restart, workshop/Mattermost lineage, five integrated severances, final manifest and clause-mapped FINAL_POC_REPORT.md without replaying the G31 live effects."
+  },
+  "reviewer": "Codex primary builder and fidelity reviewer, applying the committed Miter gate methodology",
+  "review_limits": "Single-reviewer offline version-boundary audit over committed Git objects and already-produced R12/R13 evidence. It adds no new runtime generality and does not independently reproduce model generation or live effects.",
+  "terminal_reason": "G33 R13 is closed PASS-BOUNDED through the R1 version-aware correction. G33 itself remains open. A separately frozen R14 must now perform the final clean-start integrated canonical/severed trace and evidence-generated report using the current compact v2 path and hashed G31 live witness without replay."
+}

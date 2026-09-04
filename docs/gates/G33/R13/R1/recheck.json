@@ -1,0 +1,44 @@
+{
+  "schema": "miter-g33-r13-r1-recheck-v1",
+  "status": "PASS-BOUNDED",
+  "plan_commit": "06fcfc406f3e9accbc2806e31d1c331fdd5c4727",
+  "r12": {
+    "historical_commit": "1b6ffed65aacdca89437f4cc08a967ed0c79771e",
+    "frozen_paths": 84,
+    "current_matches": 82,
+    "historical_matches": 2,
+    "evolved_paths": [
+      "src/bootstrap_modules.metta",
+      "effect_membranes/miter_development_helix_v1.pl"
+    ],
+    "closure_evidence_files": 12,
+    "historical_semantic_claims": 4
+  },
+  "r13": {
+    "independent_verifier": {
+      "status": "PASS-BOUNDED",
+      "gate": "G33",
+      "revision": "R13",
+      "claims": 4,
+      "sizes": {
+        "final": 6914,
+        "trial": 1496,
+        "before": 1776,
+        "after": 1514,
+        "restart": 1818,
+        "stdout": 22,
+        "runtime": 1178109
+      },
+      "limit": "Exact R12 candidate/cases; compact projection and same-process stop only."
+    },
+    "default_v2_imports": 1,
+    "default_v1_imports": 0,
+    "expected_old_current_tree_mismatch_retained": true
+  },
+  "model_calls": 0,
+  "credential_lookups": 0,
+  "network_requests": 0,
+  "live_service_requests": 0,
+  "external_effects": 0,
+  "limit": "Version-aware offline closure review only; no new runtime or semantic claim."
+}
