@@ -1,0 +1,78 @@
+[
+  {
+    "name": "active-fidelity-tests",
+    "executable": "/Users/bcb/.nvm/versions/node/v20.11.1/bin/node",
+    "args": [
+      "--test",
+      "scripts/fidelity/check.test.mjs"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "TAP version 13\n# Subtest: valid plan is packaging, not semantic certification\nok 1 - valid plan is packaging, not semantic certification\n  ---\n  duration_ms: 4.001125\n  ...\n# Subtest: changed control is rejected\nok 2 - changed control is rejected\n  ---\n  duration_ms: 0.500333\n  ...\n# Subtest: unknown requirement rejected\nok 3 - unknown requirement rejected\n  ---\n  duration_ms: 1.096584\n  ...\n# Subtest: both controls required\nok 4 - both controls required\n  ---\n  duration_ms: 1.016375\n  ...\n# Subtest: missing falsifiers rejected\nok 5 - missing falsifiers rejected\n  ---\n  duration_ms: 1.427792\n  ...\n# Subtest: preserved-work tampering rejected\nok 6 - preserved-work tampering rejected\n  ---\n  duration_ms: 1.126708\n  ...\n# Subtest: path escape rejected\nok 7 - path escape rejected\n  ---\n  duration_ms: 0.069084\n  ...\n# Subtest: duplicate claim IDs rejected\nok 8 - duplicate claim IDs rejected\n  ---\n  duration_ms: 1.065125\n  ...\n# Subtest: original acceptance gate IDs retain the same package requirements\nok 9 - original acceptance gate IDs retain the same package requirements\n  ---\n  duration_ms: 4.415084\n  ...\n# Subtest: unknown or malformed gate IDs rejected\nok 10 - unknown or malformed gate IDs rejected\n  ---\n  duration_ms: 1.429166\n  ...\n# Subtest: AMA-1.1 requires the complete campaign controls and F-09 trace\nok 11 - AMA-1.1 requires the complete campaign controls and F-09 trace\n  ---\n  duration_ms: 2.837625\n  ...\n# Subtest: campaign phase without one constitutive stage is rejected\nok 12 - campaign phase without one constitutive stage is rejected\n  ---\n  duration_ms: 2.683375\n  ...\n# Subtest: campaign phase with reordered constitutive stages is rejected\nok 13 - campaign phase with reordered constitutive stages is rejected\n  ---\n  duration_ms: 2.505875\n  ...\n# Subtest: AMA-1.1 scope cannot be weakened through the phase plan\nok 14 - AMA-1.1 scope cannot be weakened through the phase plan\n  ---\n  duration_ms: 2.644667\n  ...\n# Subtest: AMA-1.1 cannot omit a constitutive requirement\nok 15 - AMA-1.1 cannot omit a constitutive requirement\n  ---\n  duration_ms: 2.303958\n  ...\n# Subtest: campaign phase cannot silently change its fidelity checker\nok 16 - campaign phase cannot silently change its fidelity checker\n  ---\n  duration_ms: 2.406167\n  ...\n# Subtest: unknown or malformed campaign phase IDs rejected\nok 17 - unknown or malformed campaign phase IDs rejected\n  ---\n  duration_ms: 3.303292\n  ...\n1..17\n# tests 17\n# suites 0\n# pass 17\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 91.363417\n",
+    "stderr": "",
+    "error": null
+  },
+  {
+    "name": "prolog-service-syntax",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-g",
+      "halt",
+      "-l",
+      "effect_membranes/miter_assistant_service_v1.pl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "",
+    "stderr": "",
+    "error": null
+  },
+  {
+    "name": "prolog-operator-syntax",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-g",
+      "halt",
+      "-l",
+      "effect_membranes/miter_assistant_operator_v1.pl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "",
+    "stderr": "",
+    "error": null
+  },
+  {
+    "name": "native-metta-bootstrap",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "--stack_limit=2g",
+      "-q",
+      "-s",
+      "/private/tmp/miter-g06-petta-ae66fa8/src/main.pl",
+      "--",
+      "src/bootstrap_assistant_v1.metta",
+      "silent"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "true\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\n",
+    "stderr": "",
+    "error": null
+  },
+  {
+    "name": "git-diff-check",
+    "executable": "/usr/bin/git",
+    "args": [
+      "diff",
+      "--check"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "",
+    "stderr": "",
+    "error": null
+  }
+]

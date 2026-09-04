@@ -1,0 +1,11 @@
+{
+  "schema": "miter-ama11-final-review-verdict-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "status": "PASS-REGRESSION-ONLY",
+  "package_and_regression_checks_passed": true,
+  "semantic_fidelity_certified": false,
+  "f09_review_required": true,
+  "no_live_or_private_reach": true,
+  "limit": "Independent offline verification of frozen packages, syntax, current bounded evidence and promoted predecessor evidence. It is not a qualitative constitutive review and cannot override an unresolved or partial F-09 row."
+}

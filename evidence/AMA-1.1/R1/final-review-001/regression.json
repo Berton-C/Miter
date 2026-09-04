@@ -1,0 +1,62 @@
+{
+  "schema": "miter-ama11-final-regression-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "status": "PASS-BOUNDED",
+  "opening": {
+    "status": "OPEN-PACKAGE-VALID",
+    "target": "AMA-1.1",
+    "phase": "AMA-1.1",
+    "plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/plan.json",
+    "plan_sha256": "28ea805b824702cac7dcc827b6d2e8d1fc1120bcbd2d74358932c0c3fd2294fd",
+    "plan_commit": "fea247eb5c36946c033ff8d309d20b4531216199",
+    "controls": {
+      "CONSTITUTION.md": "3b334598da7ed7b1b4a1f17d0bb4df9aa586b2f4128f2bfdee3d6a8339b36e0a",
+      "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "855983108cd9745669c66c7d74fa69e9b583454331abf0d8ac6a142ba73b9e14",
+      "AUTHORITY_MAP.md": "311afca7a285a629ba01797847f0558f51ae0778fc59673cc5e2a77aa6104449",
+      "POC_SPEC.md": "85ddc684a6aaeb5ee672c2724883bb81c1661e8cd0184d03473c23ca4cd967eb",
+      "ACCEPTANCE.md": "018f2a917d7af18fc9e6bda8b116bebf21d181d998374c723573dc1b58f66930",
+      "BUILD_FIDELITY_PROTOCOL.md": "cd325c9c233827b9ab6895c9788c7e9d30f1899ca1face248b12ba5f8cb78a4c",
+      "WORK_PROTOCOL.md": "ce739372a5b5338f3953ff85fbf33fa82e7febb02da6af2769ea89245e45fa5a",
+      "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md": "65dde851c93b1833bc48e0a16d1665b9c73d9b6d9118728a8b269771a09b55c4",
+      "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.json": "f40291f763d982d52ef64027307caafcdb17ad3458f53c7e3315cd20e7832acb"
+    },
+    "semantic_fidelity_certified": false
+  },
+  "current_evidence": {
+    "operator": "PASS-BOUNDED",
+    "reactor": "PASS-BOUNDED",
+    "service": "PASS-BOUNDED",
+    "participant_voice": "PASS-BOUNDED",
+    "post_operator_repair": "PASS-BOUNDED",
+    "disclosed_matrix_failure_preserved": true,
+    "unchanged_matrix_cases_passed": 12
+  },
+  "predecessor_closures": [
+    {
+      "path": "docs/gates/G31/P9/R1/closure.json",
+      "status": "PASS-BOUNDED",
+      "evidence_files_verified": 21
+    },
+    {
+      "path": "docs/gates/G32/R2/closure.json",
+      "status": "PASS-BOUNDED",
+      "evidence_files_verified": 10
+    },
+    {
+      "path": "docs/gates/G33/R14/closure.json",
+      "status": "PASS-BOUNDED",
+      "evidence_files_verified": 17
+    }
+  ],
+  "active_fidelity_tests": 17,
+  "native_metta_bootstrap": "passed",
+  "prolog_syntax": "passed",
+  "python_core_files": 0,
+  "forbidden_implicit_runtime_root_absent": true,
+  "external_network_calls": 0,
+  "model_calls": 0,
+  "private_memory_reads": 0,
+  "external_effects": 0,
+  "standing": "Applicable offline predecessor and current-package regressions passed. This mechanical result cannot assign F-09 semantic standing or close AMA-1.1."
+}

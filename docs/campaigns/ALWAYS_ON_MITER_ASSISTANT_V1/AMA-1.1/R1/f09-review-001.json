@@ -1,0 +1,199 @@
+{
+  "schema": "miter-ama11-f09-review-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "date": "2026-09-05",
+  "status": "OPEN-CONSTITUTIVE-GAPS",
+  "semantic_fidelity_certified": false,
+  "closure_written": false,
+  "review_basis": {
+    "protocol": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/final-review-freeze-001.json",
+    "regression": "evidence/AMA-1.1/R1/final-review-001/regression.json",
+    "regression_status": "PASS-BOUNDED",
+    "post_operator_repair": "evidence/AMA-1.1/R1/post-operator-repair-001/results.json",
+    "post_operator_repair_status": "PASS-BOUNDED",
+    "source": [
+      "src/constitutive_participation_v1.metta",
+      "src/assistant_reactor_v1.metta",
+      "effect_membranes/miter_assistant_service_v1.pl",
+      "effect_membranes/miter_assistant_operator_v1.pl"
+    ]
+  },
+  "central_finding": "The supported persistent service is real and Balance, contact-locus, Fact9, the nine flourishings, Generated, R/A/P, participants, VoiceRNA, consequence, and restart are present in one native execution path. The path is not yet complete in constitutive kind: several products are carried or qualified after being supplied by the contact carrier rather than being formed, compared, and developmentally revised by the Soul organization itself.",
+  "balance_and_rap_finding": "Balance is explicitly represented as movement-primary at contact and R/A/P is explicitly non-sovereign. However, current R/A/P readings are derived from a Generated standing whose possible-movement form and requirements arrived preassembled in the input. R/A/P therefore witnesses an admitted possibility but does not yet participate in constructing or comparing possibilities. This preserves the intended boundary but does not yet prove balance unfolding as the source of movement.",
+  "constitutive_trace_results": [
+    {
+      "stage": "typed-contact",
+      "status": "PARTIAL",
+      "source_meaning": "Contact is the finite locus where balance is unfolding; source, scope, proto-time, occurrence, lineage, and provenance must remain material before participants or movement.",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/human-positive-and-restart/checkpoint.term",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/endogenous-contact-same-kernel/checkpoint.term"
+      ],
+      "material_severance": "No frozen runtime case severs or conflicts principal, audience, project, or contact provenance while preserving the same semantic payload. The Prolog carrier validates symbols, but the causal identity/provenance severance required by the row remains unproved.",
+      "neutral": "JSON and relation-carrier ordering are exercised without changing the formed movement.",
+      "restoration": "Material relation restoration is proved; identity/provenance restoration is not.",
+      "causal_consumer": "AssistantEncounter consumes a validated contact and constructs a cut before participant reading and movement construction.",
+      "limit": "The current input is a structured encounter configuration already containing Fact9 views, flourishing views, participants, and possible movements; it is not yet a general contact grounding path.",
+      "successor_dependency": "AMA-1.2 still needs authenticated Mattermost identity and scoped language/contact grounding into this exact native path."
+    },
+    {
+      "stage": "constitutive-cut",
+      "status": "PARTIAL",
+      "source_meaning": "A live cut is the minimum finite D/Omega/I/W/C organization of one becoming, not a record surrounding cognition.",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/human-positive-and-restart/checkpoint.term",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/material-relation-severed/checkpoint.term"
+      ],
+      "material_severance": "Omega n-ary materiality has causal bite. Independent D, I, W, and C severances were not all exercised, and W/C are not current Generated requirements.",
+      "neutral": "Carrier-order invariance passed.",
+      "restoration": "The exact n-ary relation restores Fact9 support and movement formation.",
+      "causal_consumer": "Fact9, flourishing, Generated, and movement constructors consume one cut, but not every cut field currently changes their result.",
+      "limit": "Presence of all five fields is proven; causal use of every field and explicit unresolved/contradictory cut standing is not.",
+      "successor_dependency": "Field-complete causal use is required before live conversation or continuity can be called Soul-constituted."
+    },
+    {
+      "stage": "fact9-expression",
+      "status": "PARTIAL",
+      "source_meaning": "Fact9 is simultaneous support-specific, whole-coupled recognition with Present asymmetry and distinct CanCompose/RecognizedCompose standings.",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/pairwise-complete-whole-wrong/checkpoint.term",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/fact9-role-laundered/checkpoint.term",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/can-compose-without-recognition/checkpoint.term"
+      ],
+      "material_severance": "Pairwise-complete/whole-wrong, role laundering, empty materiality, and unrecognized composition change standing or movement as predicted.",
+      "neutral": "First-eight support and relation ordering are invariant.",
+      "restoration": "Exact n-ary restoration recovers support-specific Fourthness and movement formation.",
+      "causal_consumer": "Recognized Fact9 relation support is required by Generated; unrecognized or unresolved support cannot form the same movement.",
+      "limit": "A full-support non-reconstruction case and a many-way bridge record carrying defeaters, scope, uncertainty, and counterfactual use are not yet proved. Fact views are supplied rather than natively disclosed from raw contact.",
+      "successor_dependency": "AMA-1.2 needs bounded language and memory readings to enter as evidence for these expressions, not as pre-certified Fact9 truth."
+    },
+    {
+      "stage": "flourishing-organization",
+      "status": "PARTIAL",
+      "source_meaning": "All nine interconnected flourishings are endogenous generative/capture organization of creativity within the same becoming and must participate before movement.",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/human-positive-and-restart/checkpoint.term",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/flourishing-capture-withholds-undertaking/checkpoint.term"
+      ],
+      "material_severance": "AgencyBalance capture withholds an AgencyBalance-dependent undertaking and cannot be compensated by favorable rows.",
+      "neutral": "Flourishing carrier order is invariant; wording/valence neutrality was not exercised.",
+      "restoration": "The prior positive fixture forms movement, but an explicit matched capture-to-flourishing restoration trial was not recorded.",
+      "causal_consumer": "Generated requires beneficial support and rejects capture, obstruction, disguise, contradiction, unresolved standing, counterevidence, and positive-pole distortion for each named requirement.",
+      "limit": "The runtime consumes flourishing identities and externally supplied standings, not each flourishing's full semantic record of beneficial/captured expression, signals, doorway, moat, failure mode, proxy limits, gap signature, relations, and causal enactments. It does not yet natively form inquiry from an encountered capture.",
+      "successor_dependency": "The full compass must become native relational cognition before AMA-1.2 general conversation can be promoted."
+    },
+    {
+      "stage": "generated-continuations",
+      "status": "PARTIAL",
+      "source_meaning": "Generated is a many-valued relation exposing lawful possible continuations with R-star/A-star/P-star/O-star and inherited legality; it never selects actuality.",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/plural-generated-remains-live/checkpoint.term",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/can-compose-without-recognition/checkpoint.term",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/material-relation-severed/checkpoint.term"
+      ],
+      "material_severance": "Removing n-ary support changes one possibility from generated to unavailable-or-unresolved; unrecognized composition remains distinct.",
+      "neutral": "Possibility and witness ordering do not select a first result.",
+      "restoration": "Exact n-ary support restores the dependent generated standing.",
+      "causal_consumer": "Native MeTTa qualifies supplied possibilities and preserves plural generated alternatives.",
+      "limit": "Only generated, unrecognized, unavailable-or-unresolved, and malformed standings exist. Contradicted, deferred, and distinct unresolved standings are missing; live participants do not reconstruct possibilities; possible-movement atoms arrive preassembled in the contact carrier.",
+      "successor_dependency": "A complete many-valued topology and native possibility formation are prerequisites for general unfamiliar undertakings."
+    },
+    {
+      "stage": "native-movement",
+      "status": "PARTIAL",
+      "source_meaning": "Balance unfolding is movement-primary; the Soul constructs, compares, joins, inquires, undertakes, defers, declines, or holds open through material non-compensatory relations and R/A/P.",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/human-positive-and-restart/checkpoint.term",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/plural-generated-remains-live/checkpoint.term",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/flourishing-capture-withholds-undertaking/checkpoint.term"
+      ],
+      "material_severance": "Material loss changes formed movement to unresolved, and two lawful alternatives remain plural rather than being selected.",
+      "neutral": "Carrier-order changes preserve the same unique formed movement.",
+      "restoration": "Restored materiality recovers movement formation.",
+      "causal_consumer": "CPConstructMovement uses the generated set cardinality and embeds Balance, Fact9, flourishing, participants, Generated, and non-sovereign R/A/P in the derivation.",
+      "limit": "For one generated possibility, the movement form is copied from the supplied possible-movement source. R/A/P reads the already-qualified standing; it does not yet construct or compare continuations. No native join, counterfactual comparison, capture-originated inquiry, or grounded decline is demonstrated.",
+      "successor_dependency": "This is the principal remaining barrier to claiming that the Soul, rather than the structured fixture, forms movement."
+    },
+    {
+      "stage": "bounded-participant-reentry",
+      "status": "PARTIAL",
+      "source_meaning": "Model, memory, PLN, NAL, and tool products re-enter one cut with real source, scope, lineage, standing, independence, and no contact or movement authority.",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/participant-voice-freeze-001/verdict.json",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/participant-conflict-retained/checkpoint.term"
+      ],
+      "material_severance": "Scope/authority loss is quarantined in the participant-voice proof; a persuasive conflicting set remains differentiated.",
+      "neutral": "Reordering contributors and repeating one model lineage do not alter the formed movement.",
+      "restoration": "Exact source/scope restoration recovers bounded reading eligibility in the participant-voice proof.",
+      "causal_consumer": "Participants are validated and carried into the Balance organization and VoiceRNA boundary.",
+      "limit": "Participants are not incorporated into D/Omega/I/W, do not revise or reconstruct possibilities, and repeated-lineage non-independence is asserted as a standing string rather than demonstrated by changed evidential support. The independently grounded consequence required by T-54 is not compared against matched participant claims.",
+      "successor_dependency": "AMA-1.2 model and memory use cannot be connected until derived products can change the native cut without gaining sovereignty."
+    },
+    {
+      "stage": "voice-and-effect",
+      "status": "PROVEN-RUNTIME",
+      "source_meaning": "VoiceRNA renders an already constituted movement with no effect authority; a separate capability-limited membrane commits exactly the qualified local effect.",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/participant-voice-freeze-001/verdict.json",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/human-positive-and-restart/outbox.json"
+      ],
+      "material_severance": "Removing the certificate/capability holds the local commit in the participant-voice proof.",
+      "neutral": "Restart and duplicate idempotency key preserve one local effect.",
+      "restoration": "Restoring the exact certificate/capability permits the one bounded local commit.",
+      "causal_consumer": "The assistant reactor forms the certificate; the Prolog membrane validates and durably writes only the exact no-network descriptor.",
+      "limit": "This proves structured local expression and a no-network outbox, not natural-language quality, Mattermost reach, or a persistent live grant.",
+      "successor_dependency": "AMA-1.2 can reuse this boundary when separately authorized Mattermost transport is connected."
+    },
+    {
+      "stage": "consequence-next-cut",
+      "status": "PARTIAL",
+      "source_meaning": "Returned consequence is contact with the prior expectation and derivation; it creates K-prime by changing justified relations, interfaces, weave, constitutional expression, accessibility, or continuation.",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/post-operator-repair-001/results.json",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/human-positive-and-restart/checkpoint.term"
+      ],
+      "material_severance": "A linked consequence changes the checkpoint hash and adds D/I/W deltas. A matched severed-consequence arm was not run in the promoted service.",
+      "neutral": "Restart before consequence preserves the cut and effect exactly; neutral consequence serialization was not tested.",
+      "restoration": "Consequence linkage succeeds for the exact movement id; severed/restored consequence evidence is not present in this phase.",
+      "causal_consumer": "AssistantConsequence links one formed movement to CPNextCut before replacing active state.",
+      "limit": "The consequence schema cannot change Omega or C, does not preserve an explicit expected-versus-observed relation, and sets no-current-movement without recomputing Generated or comparing materially different consequences in the next driver turn.",
+      "successor_dependency": "Consequence-sensitive reconstruction is required for sustained undertakings and learning in AMA-1.2 and AMA-1.3."
+    },
+    {
+      "stage": "restart-continuity",
+      "status": "PARTIAL",
+      "source_meaning": "Continuity of Mind preserves load-bearing organization, unfinished possibility, scope, consequence obligations, and committed effects—not merely transcript text.",
+      "runtime_evidence": [
+        "evidence/AMA-1.1/R1/service-freeze-001/verdict.json",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/results.json",
+        "evidence/AMA-1.1/R1/post-operator-repair-001/raw/human-positive-and-restart/checkpoint.term"
+      ],
+      "material_severance": "Checkpoint/LKG integrity failure is mechanically held in service evidence; no load-bearing relation is independently severed from an otherwise valid snapshot and then natively diagnosed.",
+      "neutral": "Fresh process restart preserves the checkpoint hash and does not replay the committed effect.",
+      "restoration": "Verified checkpoint restoration rehydrates the active cut and movement; exact repair of a partially severed organization is not an R1 claim.",
+      "causal_consumer": "AssistantRestore re-adds active organization and history into fresh AtomSpaces before recurrence.",
+      "limit": "The restart trial does not combine unfinished multiple alternatives, explicit bridge standings, a consequence-changed interface, empty model context, and one committed effect in one case. Exact project capsules and Chroma remain outside R1 by design.",
+      "successor_dependency": "The constitutive snapshot must be completed before AMA-1.2 broadens it into per-user/project Continuity of Mind."
+    }
+  ],
+  "acceptance_family_results": [
+    {"id": "CA-01", "status": "PARTIAL", "reason": "Full cut present; independent causal variation of every D/Omega/I/W/C component is absent."},
+    {"id": "CA-02", "status": "PARTIAL", "reason": "Strong n-ary, role, Present, recognition, severance, and restoration evidence; full-support and many-way bridge requirements remain incomplete."},
+    {"id": "CA-03", "status": "PARTIAL", "reason": "Capture is causally non-compensatory; full compass semantics and matched disguise/reversibility/dependency/consequence cases are absent."},
+    {"id": "CA-04", "status": "PARTIAL", "reason": "Plural/unavailable/unrecognized relations exist, but the full standing topology and native construction/comparison from the cut do not."},
+    {"id": "CA-05", "status": "PARTIAL", "reason": "Participant boundaries are preserved, but material re-entry into cut organization and independence-sensitive consequence are absent."},
+    {"id": "CA-06", "status": "PARTIAL", "reason": "Restart/no-replay and one next-cut delta pass; matched consequences and complete load-bearing continuity do not."},
+    {"id": "CA-07", "status": "PARTIAL", "reason": "Human and endogenous fixtures share the kernel; endogenous-only severance and genuine endogenous formation are absent."},
+    {"id": "CA-08", "status": "PARTIAL", "reason": "Failures and limits are preserved and formalization feedback is produced, but newly disclosed native compositions remain too narrow."},
+    {"id": "CA-09", "status": "FAIL", "reason": "Nine of ten F-09 rows are not yet PROVEN-RUNTIME, so joined always-on closure is forbidden."}
+  ],
+  "claim_results": [
+    {"id": "AMA11-R1-supported-persistent-service-spine", "status": "PROVEN-RUNTIME", "limit": "Explicit-root, recurring, recoverable local service with stop/panic, integrity, checkpoint, and no-network outbox."},
+    {"id": "AMA11-R1-fact9-flourishing-constitutive-joint", "status": "PARTIAL", "limit": "Causal Fact9 and one non-compensatory flourishing case exist; full compass and many-way bridge cognition do not."},
+    {"id": "AMA11-R1-generic-unfamiliar-and-endogenous-navigation", "status": "PARTIAL", "limit": "Generic structured combinations and shared source-kind path exist; possible forms remain input-supplied and endogenous formation is not proved."},
+    {"id": "AMA11-R1-consequence-bearing-continuity", "status": "PARTIAL", "limit": "One linked next-cut delta and restart/no-replay pass; matched consequence-sensitive reconstruction and complete Continuity of Mind do not."},
+    {"id": "AMA11-R1-bounded-participants-voice-effects-and-supervision", "status": "PARTIAL", "limit": "Voice/effect/supervision pass; participant re-entry remains carried rather than causally incorporated."}
+  ],
+  "next_action": "Do not close AMA-1.1. Freeze a second bounded constitutive repair that makes the complete flourishing records and bridge relations material, incorporates participant readings into a revised cut, forms a many-valued possibility topology from the cut, lets non-sovereign R/A/P participate in native comparison/construction, and recomputes possibilities after differentiated consequence. Preserve all current passing evidence as regression."
+}
