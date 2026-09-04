@@ -1,0 +1,72 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R12 R2: the exact R11 waiting undertaking can resume through the same natively selected OpenRouter resource when the renderer receives the exact pinned v2 schema and a consequence-calibrated completion envelope; any returned product remains quarantined until candidate-independent v2 trial, and only trial-derived native NAL/NACE consequence may change a matched later ranking across restart.",
+  "claim_ids": [
+    "G33-R12-R2-waiting-undertaking-resumes-through-calibrated-native-resource-use",
+    "G33-R12-R2-model-product-remains-quarantined-until-independent-v2-trial",
+    "G33-R12-R2-native-consequence-and-nal-revision-change-later-ranking",
+    "G33-R12-R2-development-and-changed-possibility-survive-restart"
+  ],
+  "non_claims": "No erasure or replay of R1; general purpose formation; general voice quality; universal flourishing verdict; autonomous permission creation; unrestricted model access; automatic retry rule; provider-selected schema or acceptance standard; production promotion; executable extension; live Mattermost activity; Chroma/history/private-memory access; human emission; full T-33/T-36; final G33; or whole-PoC acceptance.",
+  "rationale": "R12 R1 reached exact z-ai/glm-5.3 once with HTTP 200 and no truncation, but all 1,024 completion tokens were reasoning tokens, finish_reason was length, and content was null. Its reasoning also stated that the exact v2 schema had not been supplied; the request carried only its name. Native handling correctly admitted nothing. R2 treats those facts as returned consequence: preserve the R1 claim and bytes, use a fresh one-call identity, include the exact hash-pinned schema already governing the independent trial, and raise only the completion allowance to 4,096 within the unchanged registry maximum. C-004-C-007 and S-901 keep the model non-sovereign; C-082-C-084 and S-1002-S-1003 require consequence to change what becomes possible; C-090-C-097 and S-1001-S-1004 keep generation, quarantine, trial, admission, learning, and later use distinct.",
+  "requirements": [
+    "C-004", "C-005", "C-006", "C-007", "C-021", "C-023",
+    "C-060", "C-061", "C-062", "C-063", "C-064", "C-065", "C-067",
+    "C-082", "C-083", "C-084", "C-090", "C-091", "C-092", "C-094", "C-095", "C-096", "C-097",
+    "C-100", "C-101", "C-102", "C-103", "C-104", "C-105",
+    "S-501", "S-502", "S-503", "S-504", "S-601", "S-602", "S-603", "S-606", "S-607",
+    "S-901", "S-902", "S-903", "S-904", "S-905", "S-1001", "S-1002", "S-1003", "S-1004",
+    "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202", "S-1203"
+  ],
+  "reading": "Read both complete controls; BUILD_FIDELITY_PROTOCOL; R11 R2 closure; R12 R1 plan, outcome, attempt ledger, and exact attempt-015 request/raw/timing/observation/final/claim; G22, G24, G25, G26, and G29 R9 closures; current helix, v2 schema/construction/trial, native NAL/NACE, resource registry, and OpenRouter membrane. M24 preserves evidence/derivation identity, M25 preserves non-compensatory participation, M255 prevents renderer output becoming native construction, M260 requires lineage, and M263 prevents proper-subset evidence standing in for the joint relation.",
+  "representation": "Retain the exact R11 state and request hashes and the R1 native comparison/helix design. Add a fresh authorization and spend identity g33-r12-generation-2. Serialize the exact config/voice-realization-schema-v2.json object and its SHA-256 into the renderer request rather than naming an absent schema. Keep z-ai/glm-5.3, high reasoning, 120 seconds, 2 MiB capture, one call, and all disclosure exclusions; raise max completion tokens from 1,024 to 4,096, within the existing 8,192 registry ceiling. Prolog transports and parses bytes only. VModuleValid/VQuarantine and TVReport/TVAdjudicate retain semantic standing; native NAL/NACE and ERank alone establish any later change.",
+  "consumer": "Default DevelopmentHelixRNA resumes the persisted undertaking. Native comparison consumes the registry, grant, and fresh authorization; the renderer receives source-grounded context plus the exact trial schema as non-authoritative construction material. VQuarantine consumes the returned product, TVAdjudicate recomputes reports over precommitted cases, native NAL/NACE consumes trial-derived consequences, and ERank consumes scoped efficacy. Prolog owns Keychain/HTTPS/JSON/file/hash/fsync mechanics; JavaScript prepares and independently verifies evidence only.",
+  "falsifiers": "R1 claim or evidence changes/replays; R11 hashes change; the exact schema/hash is absent or differs; resource order changes selected identity; absent/ambiguous/unauthorized provider calls; more than one fresh call or bounds exceed 4,096 tokens/120 seconds/2 MiB; provider identity changes; finish_reason length/null/malformed output is treated as a candidate; credential, personal/private/Mattermost data, history, or Chroma participates; candidate edits cases/judge or gains authority on parse; material v2 loss is compensated; consequence and trial collapse; NAL result is host-computed; severing consequence retains a changed ranking; restart replays generation or loses development/ranking; controls, R1 bytes, live services, or unrelated G22/G28 work changes.",
+  "scope_review": "R2 may edit the versioned helix/OpenRouter integration, R12 fixtures/scripts/verifier/docs, and append R12 evidence; it may execute pinned PeTTa/SWI and one fresh authorized OpenRouter request over public synthetic material. It may not mutate controls, R1 or prior evidence, the model registry, candidate-independent schema/cases after response, secrets, Chroma, Mattermost, private memory, live service configuration, historical semantics, or unrelated G22/G28 work.",
+  "rollback": "If R2 fails, remove the R12 default bootstrap import and restore the integration sources to commit af5f7dbb while retaining all R2 evidence and the fresh claim. Never delete/reuse either provider-call claim, edit a provider response, or change the trial standard to obtain a pass.",
+  "predecessor": "docs/gates/G33/R12/R1/outcome.md",
+  "allowed_paths": [
+    "src/bootstrap_modules.metta",
+    "src/bootstrap_development_helix_v1.metta",
+    "src/development_helix_v1.metta",
+    "effect_membranes/miter_openrouter.pl",
+    "effect_membranes/miter_development_helix_v1.pl",
+    "docs/gates/G33/R12/",
+    "tests/fixtures/g33_r12/",
+    "scripts/g33_r12/",
+    "evidence/G33/R12/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G33/R12/R1/plan.json","sha256":"dde06ba19da366c17dd4018ecb11b9d22dcb22d5b35954191e2084ca80df5b2b"},
+    {"path":"docs/gates/G33/R12/R1/outcome.md","sha256":"b9125120f95a030fb63bacabdc7f7a06af058918db0797109a1b282db016fe3b"},
+    {"path":"docs/gates/G33/R12/attempts.md","sha256":"d87e5cc07b656028d662bb3aa4a59500931cdbd7a840c4a31943bc167713e3d4"},
+    {"path":"evidence/G33/R12/openrouter-call-1.claim/owner.json","sha256":"6d4db811f0f3932e387c2628870286e77575a67c94f3a2ee0bb94bfce88610ca"},
+    {"path":"evidence/G33/R12/attempt-015/canonical/g33-r12-generation-1-raw.json","sha256":"1fa088f55b946e147ec9f9f568128e707724e0d6bcea7b101bb30d07fa9cd295"},
+    {"path":"evidence/G33/R12/attempt-015/canonical/g33-r12-generation-1-timing.json","sha256":"3bff65314f42d5ca8b51656e82313b3e23a88d286297da6d13d3ecfcd33effea"},
+    {"path":"evidence/G33/R12/attempt-015/canonical/g33-r12-generation-1-observation.json","sha256":"dacefb6849cacc58f73d115aee148931636902aae439893ff82dc77745c61ad9"},
+    {"path":"evidence/G33/R12/attempt-015/canonical/final.json","sha256":"01c1dd91bdb5aff61416cd01e531e7301c5704d45ecb2c5104174aede8de0c6d"},
+    {"path":"docs/gates/G33/R11/R2/closure.json","sha256":"50479cd4d3ef9364a18c13cdde2cecc3edfa0697f672889c3bf019a4bcbe38f4"},
+    {"path":"config/model-resources-v1.json","sha256":"90e5273c336211f962b06de004bd322d878b5838d6fa4b7314b19ba373f2b392"},
+    {"path":"config/voice-realization-schema-v2.json","sha256":"38bb7ccc1ce2e5d35db256114a7c1772817308d53be06d6090d69a1f26608427"},
+    {"path":"evidence/G33/R11/attempt-007/canonical/development/g33-r11-development/state.json","sha256":"08fe297a5c12f20da6c15ce50a0d48016b8740f319a0f33cd888d7d0c63c9786"},
+    {"path":"evidence/G33/R11/attempt-007/canonical/development/g33-r11-development/effect-request.json","sha256":"2d58a2925b92ce19e853f8b6275c58eacfd35e88c6693451391eb0588d38dac0"},
+    {"path":"derived/voice-realization-seed-v2.json","sha256":"e18142fdd6aef1bcada31af1b2dd9a9cb36780cedf0e616582557c069ed9be96"},
+    {"path":"evidence/G22/attempt-006/canonical/input.json","sha256":"dacf238763b54cac28fd1fe675daa7db06172f32870258a8efccdec26af15591"},
+    {"path":"evidence/G24/g25-002/canonical/input.json","sha256":"f86525bdf72e4ecac2ce19a583fae99bd415880b71c14332ba2e787268fd3d55"}
+  ],
+  "cases": {
+    "positive": "Exact R11 wait plus fresh authorization selects openrouter-glm53; exact pinned schema and calibrated envelope return one v2 candidate; independent trial admits without loss; opposite scoped consequences change a later matched ranking.",
+    "severed": "Absent/ambiguous authorization yields no call; length/null/malformed/wrong-model product stays unavailable; consequence/NACE severance retains the pre-consequence tie; schema or trial-standard severance blocks admission.",
+    "neutral": "Resource, construction, and case order plus nonsemantic identifiers vary without changing selected identity, trial meaning, or later ranking.",
+    "restored": "Exact authorization/schema/trial/consequence dependencies restore the finite capacities; a fresh process rehydrates admitted development and sole later maximum without replay.",
+    "held_out": "A precommitted v2 relation combination not enumerated as a response instance is recomputed by the generic construction consumer; this is frozen-operator transfer only.",
+    "unknown_malformed": "Provider unavailability, auth failure, timeout, truncation, length exhaustion, null content, malformed JSON/schema, wrong model, stale evidence, duplicate consequence, or persistence fault remains typed and cannot become success, retry authority, or completion."
+  },
+  "environment": "Pinned native PeTTa ae66fa8e41dcd5539d614706bd4e5cfb34f9608d through SWI-Prolog 10.0.2 arm64; public-safe registry; exact z-ai/glm-5.3 OpenRouter endpoint; Keychain inside Prolog only; one fresh call capped at 4,096 tokens/120 seconds/2 MiB; isolated evidence/G33/R12 root; no Mattermost, Chroma, private memory, or human-output surface.",
+  "next_step_hypothesis": "If R2 closes, derive the remaining G33 clean-start integration/report revision without replaying live effects. If it fails, preserve the first differentiated consequence and freeze only an evidence-specific repair; never edit the candidate or independent standard."
+}
