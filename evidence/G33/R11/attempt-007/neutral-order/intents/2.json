@@ -1,0 +1,22 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-development-rna-state-2",
+  "event_kind":"development-rna-state",
+  "occurred_at":"2026-09-04T14:33:06Z",
+  "parent_event_ids": [],
+  "payload": {
+    "data": [
+      "g33-r11-development",
+      "ready",
+      ["state-sha256", "1571d849e4baf77dae6ab35ac9a0de11de7f641482f4c388e7e1ef5b31d8bfba" ]
+    ],
+    "wall_time":1788532386.068383
+  },
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-04T14:33:06Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

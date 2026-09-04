@@ -1,0 +1,15 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-reactor-stopped-4",
+  "event_kind":"reactor-stopped",
+  "occurred_at":"2026-09-04T14:25:42Z",
+  "parent_event_ids": [],
+  "payload": {"data": ["explicit-stop" ],"wall_time":1788531942.421614},
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-04T14:25:42Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

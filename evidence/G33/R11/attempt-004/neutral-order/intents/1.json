@@ -1,0 +1,22 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-development-orientation-1",
+  "event_kind":"development-orientation",
+  "occurred_at":"2026-09-04T14:25:41Z",
+  "parent_event_ids": [],
+  "payload": {
+    "data": [
+      "g33-r11-development",
+      "native-opportunity-transcribed",
+      ["cycle-step-sha256", "a21d3bbc7361a399d351a19088308075966013b3c039c0b921d7dc7cfdbd8d30" ]
+    ],
+    "wall_time":1788531941.557613
+  },
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-04T14:25:41Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

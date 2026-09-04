@@ -1,0 +1,1 @@
+{"allowed_effects":["unrestricted-http"],"allowed_writes":["trial-guidance"],"candidate_id":"r11-forbidden-effect","purpose":"repair-policy-voice","rules":[{"action":"approved-clause-plan","condition":"defect","value":"policy-voice","variant":0},{"action":"preserve-candidate","condition":"always","value":"*","variant":0}],"schema":"miter-voice-policy-v1"}

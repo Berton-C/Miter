@@ -1,0 +1,58 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G33",
+  "plan": "docs/gates/G33/R11/R2/plan.json",
+  "plan_commit": "88b5fcd30a848ccb81a44f8ec878fc8a1c4ac11b",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G33/R11/attempts.md","sha256":"7c2a34a57da5df80369e65230196ba5e14118c96640c4b472310a95450bccf84"},
+    {"path":"docs/gates/G33/R11/R2/outcome.md","sha256":"100f095326de0b7519f1104102d03ad679698850ce50bfd5d42106507e8f1023"},
+    {"path":"docs/gates/G33/R11/R2/semantic-audit.md","sha256":"81767140ec81f9bb8559016a00204af25afb8133a4b51b382e1a6e0bd116b323"},
+    {"path":"evidence/G33/R11/attempt-003/runner-failure.json","sha256":"49a86c667fc049f277029df4d459f16627b49aac010e9bc5e4f9cfd2b285619c"},
+    {"path":"evidence/G33/R11/attempt-004/runner-failure.json","sha256":"5a02d121766a1ae7a6d65d6932fc89cc5037f1fe1cf143158959b9b7b87378fe"},
+    {"path":"evidence/G33/R11/attempt-005/verdict.json","sha256":"a7e40160ddc97e6d120c7fa74cd5cab1e29b2ddda7fbf69b12f12fa2303a56b8"},
+    {"path":"evidence/G33/R11/attempt-007/verdict.json","sha256":"a7e40160ddc97e6d120c7fa74cd5cab1e29b2ddda7fbf69b12f12fa2303a56b8"},
+    {"path":"evidence/G33/R11/attempt-007/observations.json","sha256":"b0ca48f326725f1ffbd7c7a3d66462c421406ca8d9d9eb074e8ab3ad0827ba46"},
+    {"path":"evidence/G33/R11/attempt-007/freeze.json","sha256":"9b27a280bcdca3d7c753c161401f4f9396f75f0c9cd40ebfd0476c110cde4011"},
+    {"path":"evidence/G33/R11/attempt-007/root-probe.json","sha256":"dfdb0a474e368d29307f3d286a0a45418c9ab7cace8955d83b08432571ac8bf5"},
+    {"path":"evidence/G33/R11/attempt-007/native-results.json","sha256":"3f9abae3331ede496084d87af760a4c4d218f3adef69fff38bebfd84c7eb23af"},
+    {"path":"evidence/G33/R11/attempt-007/canonical/development/g33-r11-development/state.json","sha256":"08fe297a5c12f20da6c15ce50a0d48016b8740f319a0f33cd888d7d0c63c9786"},
+    {"path":"evidence/G33/R11/attempt-007/canonical/development/g33-r11-development/effect-request.json","sha256":"2d58a2925b92ce19e853f8b6275c58eacfd35e88c6693451391eb0588d38dac0"},
+    {"path":"evidence/G33/R11/attempt-007/canonical/development/g33-r11-development/rna.json","sha256":"48be1078835dd611395bfba3b778b476a0ce922456c259f64c1b7d4519e345ef"},
+    {"path":"evidence/G33/R11/attempt-007/canonical/ledger-report-restart.json","sha256":"e3a82d496065602acbea89ddde7a09b1657239b1ea18e4b8c5d7c1f47782f2f6"},
+    {"path":"evidence/G33/R11/attempt-007/module-mechanics/modules/candidate-b/candidate.json","sha256":"f4584551e4a47139aa3b7c0e2bdde3a800bae4b3d42fcab61e39e2bac23bb6b6"},
+    {"path":"evidence/G33/R11/attempt-007/module-mechanics/modules/r11-forbidden-effect/decision.json","sha256":"5c4c073790d4a0e66c4da0f2f9df6587b1bbe3a764753bc3f9bb52951cfd9aee"}
+  ],
+  "claim_results": [
+    {
+      "id": "G33-R11-R2-development-membrane-admits-only-qualified-repository-roots",
+      "status": "PROVEN-RUNTIME",
+      "limit": "A finite structural probe admitted descendants of the named G33 evidence and repository runtime classes while rejecting the disclosed traversal, neighboring, relative, home, temporary, and bare-root cases. It is not a general filesystem-security proof."
+    },
+    {
+      "id": "G33-R11-R2-default-bootstrap-activates-only-source-grounded-development-hooks",
+      "status": "PROVEN-RUNTIME",
+      "limit": "One fresh default import registered the corrected promoter and advancer while registering neither historical InterestIdle nor DevelopBoundary. This does not prove every future composition or arbitrary runtime extension."
+    },
+    {
+      "id": "G33-R11-R2-default-bootstrap-preserves-causal-neutral-and-restart-behavior",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Canonical and neutral-order fixtures formed the same bounded waiting undertaking; same-family and dependency-severed fixtures did not; one immediate restart preserved four exact checkpoint hashes without replay. General purpose formation and long-duration recovery remain unproven."
+    },
+    {
+      "id": "G33-R11-R2-module-containment-remains-loadable-without-behavioral-selection",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The archived actual-model v1 candidate retained source/provenance/schema/quarantine standing and three trial-space data atoms; a forbidden-effect variant was rejected. No selector, generator, promotion, or quality claim was exercised."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/C-011/C-012 and S-501-S-504/S-602/S-606 require native cognition to form and carry undertakings. C-060-C-064 and S-603/S-905 permit Prolog to qualify paths and persist transport facts without choosing purpose or meaning. R11 therefore changes only default activation and the narrow repository-root carrier needed by the already-proven source-grounded call chain.",
+    "causal_evidence": "Corrected default hooks plus independently grounded source contact produced a waiting undertaking; same-family evidence and removal of the corrected bootstrap removed transcription. Reversing source order preserved material standing. Fresh-process restart preserved state/effect/step/RNA hashes and did not add a second orientation. Path and forbidden-effect variants changed only the predicted mechanical/native result.",
+    "substitution_audit": "The runner supplied disclosed raw fixtures and explicit stop contacts. It did not call native cognitive stages directly, invoke TrialVoicePlan or ModuleGenerationRNA, generate a model candidate, promote a module, or execute the waiting effect request. The historical v1 selector remains preserved but inactive. Failed attempts remain append-only and the entire experiment was rerun after each repair.",
+    "capability_and_constraint_audit": "The generalized membrane accepts only descendants of two explicit repository-owned root classes and rejects all disclosed alternatives. All passing processes had empty stderr and verified ledgers. Model calls, external-network requests, credential lookups, Chroma mutations, Mattermost operations, private-memory access, human emissions, registry changes, promotions, and external effects were zero. Controls and unrelated G22/G28 work were untouched.",
+    "remaining_gaps": "R11 proves default ingress, causal standing, immediate restart, and containment only. It does not prove current-v2 generation, isolated functional trial quality, promotion, returned-consequence interpretation, NACE/developmental revision, later changed possibility or selection, general purpose formation, complete S-602/S-606/S-607/S-702/S-705, final integrated severance/report, or whole-PoC acceptance."
+  },
+  "reviewer": "Codex primary builder and fidelity reviewer, applying the committed Miter gate methodology",
+  "review_limits": "Single-reviewer control/source/runtime/evidence audit over disclosed finite fixtures and one immediate restart. It establishes bounded default-path reconciliation, not independent replication, production filesystem security, general Soul cognition, or final G33 acceptance.",
+  "terminal_reason": "G33 R11 R2 is a completed default-bootstrap reconciliation, not terminal G33 acceptance. The fidelity checker forbids a same-gate next_plan link; R12 must be separately derived and frozen around authorized corrected-v2 generation, isolated trial, consequence return, and native developmental re-expression before execution."
+}

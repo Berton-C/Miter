@@ -1,0 +1,47 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"candidate-b",
+  "event_id":"candidate-b-module-quarantined",
+  "event_kind":"module-quarantined",
+  "occurred_at":"2026-09-04T14:27:00Z",
+  "parent_event_ids": ["interest-voice-expression-repair-77bdd77584da-candidate-request" ],
+  "payload": {
+    "allowed_effects": [],
+    "allowed_writes": ["trial-guidance" ],
+    "input_schema":"voice-repair-context-v1",
+    "module_id":"candidate-b",
+    "module_version":"trial-v1",
+    "output_schema":"voice-renderer-plan-v1",
+    "parent_version":"voice-policy-seed-v1",
+    "provenance": {
+      "candidate_hash":"f4584551e4a47139aa3b7c0e2bdde3a800bae4b3d42fcab61e39e2bac23bb6b6",
+      "generator":"local-model",
+      "parent_hash":"4f3dc1e5933083d20c3641ce0bc5ec6bf7d86c7f0f8e816ecedfb76762b8ad87",
+      "proposer":"Miter",
+      "raw_response_hash":"c6427f997ac25fc959a1b79daf9adce456524d1ee49ad77c09d7f25a542ca03a",
+      "request_hash":"42ef99af652c3a84aab8a2445c21eb1811e188decc79615d43f00dcff2216f11"
+    },
+    "purpose":"repair-policy-voice",
+    "rollback_target":"voice-policy-seed-v1",
+    "rules": [
+      {
+	"action":"approved-clause-plan",
+	"condition":"defect",
+	"value":"policy-voice",
+	"variant":0
+      },
+      {"action":"preserve-candidate","condition":"always","value":"*","variant":0}
+    ],
+    "serves_soul_relations": ["CreativeTranscendence", "SharedUnderstanding", "CandidateBoundary" ],
+    "source_event_ids": ["g16-voice-audit-exhaustion-0", "g16-voice-audit-exhaustion-1" ],
+    "source_pressure":"interest-voice-expression-repair-77bdd77584da",
+    "status":"quarantined",
+    "tests": ["target-policy-voice", "regression-valid", "boundary-authority", "schema-and-scope-attacks" ]
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-04T14:27:00Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:modules",
+  "source_surface":"native-ModuleRNA"
+}

@@ -1,0 +1,20 @@
+{
+  "audience_scope":"scope:g16-private",
+  "correlation_id":"r11-forbidden-effect",
+  "event_id":"r11-forbidden-effect-candidate-rejected",
+  "event_kind":"candidate-rejected",
+  "occurred_at":"2026-09-04T14:26:16Z",
+  "parent_event_ids": ["interest-voice-expression-repair-77bdd77584da-candidate-request" ],
+  "payload": {
+    "candidate_hash":"d00e568378672f9a5afd67243c9f20b342438914b956a2af17873d35deda6f9d",
+    "executed":false,
+    "reason":"forbidden-effect",
+    "status":"rejected"
+  },
+  "project_scope":"g16-voice",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-04T14:26:16Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:modules",
+  "source_surface":"native-ModuleRNA"
+}

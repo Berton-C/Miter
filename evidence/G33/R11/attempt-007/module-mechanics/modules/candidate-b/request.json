@@ -1,0 +1,79 @@
+{
+  "alias":"qwen-local",
+  "body": {
+    "max_tokens":2048,
+    "messages": [
+      {
+	"content":"Produce a declarative JSON candidate for the supplied native Miter intention. Your output is untrusted data, not approval or executable code.",
+	"role":"system"
+      },
+      {
+	"content":"{\"action_meanings\":\"preserve-candidate leaves text unchanged; approved-clause-plan selects one approved variant per required group from the existing native intention. variant is 0 or 1.\",\"actions\": [\"preserve-candidate\", \"approved-clause-plan\" ],\"allowed_effects\": [],\"allowed_writes\": [\"trial-guidance\" ],\"candidate_id\":\"candidate-b\",\"conditions\": [\"defect\", \"always\" ],\"defect_vocabulary\": [\"schema-failure\", \"semantic-drift\", \"soul-absence\", \"person-not-seen\", \"task-smearing\", \"unsupported-certainty\", \"authority-inflation\", \"coercive-dominance\", \"affect-register-mismatch\", \"hidden-scope\", \"unacknowledged-tension\", \"policy-voice\", \"excessive-length\" ],\"instruction\":\"Propose ordered rules to address the witnessed policy-voice defect while preserving unrelated already-valid candidates. End with an always/* default. You may propose use of approved clauses but cannot invent new clauses or change task meaning.\",\"judgment\":\"This is a candidate, not success. Independent native tests and promotion remain outside the module.\",\"living_question\":\"How could a derived rendering policy preserve relational expression without policy slogans?\",\"opportunity_id\":\"interest-voice-expression-repair-77bdd77584da\",\"parent_behavior\":\"Preserve every input candidate; its defects remain for independent audit.\",\"parent_module\":\"voice-policy-seed-v1\",\"prior_rejections\": [ [\"rejected\", \"candidate-a\", \"forbidden-vocabulary\" ] ],\"rule_fields\":\"Each rule has condition, value, action, variant. With condition defect, value must be one exact defect name from defect_vocabulary, never JSON or prose. With condition always, value must be exactly the single character *. End with this always/* rule. Copy the supplied candidate_id exactly.\",\"schema\":\"miter-voice-policy-v1\",\"source_event_ids\": [\"g16-voice-audit-exhaustion-0\", \"g16-voice-audit-exhaustion-1\" ]}",
+	"role":"user"
+      }
+    ],
+    "model":"qwen/qwen3.8-27b",
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_module",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "allowed_effects": {"items": {"type":"string"},"type":"array"},
+	    "allowed_writes": {"items": {"type":"string"},"type":"array"},
+	    "candidate_id": {"type":"string"},
+	    "purpose": {"maxLength":500,"minLength":1,"type":"string"},
+	    "rules": {
+	      "items": {
+		"additionalProperties":false,
+		"properties": {
+		  "action": {"enum": ["preserve-candidate", "approved-clause-plan" ],"type":"string"},
+		  "condition": {"enum": ["defect", "always" ],"type":"string"},
+		  "value": {
+		    "enum": [
+		      "schema-failure",
+		      "semantic-drift",
+		      "soul-absence",
+		      "person-not-seen",
+		      "task-smearing",
+		      "unsupported-certainty",
+		      "authority-inflation",
+		      "coercive-dominance",
+		      "affect-register-mismatch",
+		      "hidden-scope",
+		      "unacknowledged-tension",
+		      "policy-voice",
+		      "excessive-length",
+		      "*"
+		    ],
+		    "type":"string"
+		  },
+		  "variant": {"maximum":1,"minimum":0,"type":"integer"}
+		},
+		"required": ["condition", "value", "action", "variant" ],
+		"type":"object"
+	      },
+	      "maxItems":8,
+	      "minItems":1,
+	      "type":"array"
+	    },
+	    "schema": {"const":"miter-voice-policy-v1","type":"string"}
+	  },
+	  "required": ["schema", "candidate_id", "purpose", "rules", "allowed_writes", "allowed_effects" ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":2100,
+    "stream":false,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"candidate-b",
+  "schema":"miter-prepared-model-request-v1"
+}

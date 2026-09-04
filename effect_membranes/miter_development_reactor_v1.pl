@@ -6,8 +6,14 @@
 
 dr_root(Root0,Root) :-
  miter_store_nonempty_atom(Root0,Root),
- sub_atom(Root,0,_,_,'/Users/claritymiter/miter/evidence/G33/R10/'),
- \+sub_atom(Root,_,_,_,'..').
+ \+sub_atom(Root,_,_,_,'..'),
+ \+sub_atom(Root,_,_,_,'//'),
+ dr_qualified_root_prefix(Prefix),
+ sub_atom(Root,0,_,_,Prefix),
+ atom_length(Root,RootLength),atom_length(Prefix,PrefixLength),
+ RootLength>PrefixLength,!.
+dr_qualified_root_prefix('/Users/claritymiter/miter/evidence/G33/').
+dr_qualified_root_prefix('/Users/claritymiter/miter/runtime/').
 dr_path(Root0,Relative,Path) :-
  dr_root(Root0,Root),atom(Relative),\+sub_atom(Relative,_,_,_,'..'),
  \+sub_atom(Relative,0,_,_,'/'),directory_file_path(Root,Relative,Path).

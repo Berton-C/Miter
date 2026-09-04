@@ -1,0 +1,3 @@
+{"data": ["empty-lawful-ready-set", "no-model-call" ],"kind":"quiescent-ready","wall_time":1788531975.755453}
+{"data": ["wait", 0.05, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788531975.757201}
+{"data": ["explicit-stop" ],"kind":"reactor-stopped","wall_time":1788531975.784869}

@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-a7jh079nslb8r7077wery",
+  "object": "chat.completion",
+  "created": 1788339280,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"allowed_effects\": [],\n  \"allowed_writes\": [\n    \"trial-guidance\"\n  ],\n  \"candidate_id\": \"candidate-b\",\n  \"purpose\": \"repair-policy-voice\",\n  \"rules\": [\n    {\n      \"action\": \"approved-clause-plan\",\n      \"condition\": \"defect\",\n      \"value\": \"policy-voice\",\n      \"variant\": 0\n    },\n    {\n      \"action\": \"preserve-candidate\",\n      \"condition\": \"always\",\n      \"value\": \"*\",\n      \"variant\": 0\n    }\n  ],\n  \"schema\": \"miter-voice-policy-v1\"\n}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 468,
+    "completion_tokens": 154,
+    "total_tokens": 622,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 120,
+    "accepted_draft_tokens_count": 114,
+    "rejected_draft_tokens_count": 6
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

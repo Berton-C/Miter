@@ -1,0 +1,25 @@
+{
+  "schema": "miter-g33-r11-cases-v1",
+  "undertaking_id": "g33-r11-development",
+  "recurring_variants": ["canonical", "neutral-order", "same-family"],
+  "expected": {
+    "canonical_phase": "pending",
+    "canonical_result": "awaiting-model-result",
+    "canonical_rna_status": "awaiting-authorized-generation",
+    "same_family_result": "development-held"
+  },
+  "module_fixture": {
+    "source": "evidence/20260902T084500Z-G21/runtime/modules/candidate-b",
+    "standing": "Archived actual-model v1 candidate reused byte-for-byte only to requalify containment mechanics; its ordered behavioral interpretation is not invoked or credited.",
+    "forbidden_id": "r11-forbidden-effect"
+  },
+  "resources": {
+    "model_calls": 0,
+    "external_network_requests": 0,
+    "credential_lookups": 0,
+    "chroma_mutations": 0,
+    "mattermost_operations": 0,
+    "human_emissions": 0,
+    "external_effects": 0
+  }
+}
