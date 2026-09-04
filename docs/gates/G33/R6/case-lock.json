@@ -1,0 +1,11 @@
+{
+  "schema": "miter-g33-r6-case-lock-v1",
+  "source_frame": {"path":"evidence/SC07/live-001/frame.json","sha256":"3af77056b5e276f8a33553ac8e820969c1bf10f95e2d7053afa725a584c8cd1f"},
+  "controlled_rendered_state": {
+    "request_id": "g33-r6-rendered",
+    "clauses": ["I will revise ledger."],
+    "standing": "builder-owned deterministic boundary stimulus; not a model product"
+  },
+  "accepted_capability": {"path":"evidence/G22/g26-001/accepted/candidate.json","sha256":"5c22eaadab79625bf9602e8ed553405a4774e83a1c19a46fe8226d4fa8f58356"},
+  "forbidden_fixture_content": ["an exact repaired sentence","a faithful audit","a repair disposition","a certificate","a defect-to-action mapping","a scenario-to-response rule"]
+}

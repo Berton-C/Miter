@@ -1,0 +1,73 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R6: the current public relational-voice wait path delegates every returned rendered product to one native handler; when an expression is meaning-altered and the originating source frame remains current, that same handler consumes the actual audit and repair-request through the R5 source-grounded continuation and returns a recomputable no-emission certificate, while faithful products retain their direct disposition and missing frame, changed identity, ambiguity, stale scope, or unavailable accepted capability remain explicitly uncertified.",
+  "claim_ids": [
+    "G33-R6-current-wait-path-delegates-to-single-native-handler",
+    "G33-R6-altered-rendering-crosses-r5-repair-continuation",
+    "G33-R6-faithful-and-uncertain-products-remain-differentiated",
+    "G33-R6-public-integration-retains-zero-emission-authority"
+  ],
+  "non_claims": "No claim of a fresh model response, arbitrary language, human emission, effect eligibility, complete live RRun polling, general benefit, complete G16/G17/G33, Mattermost activity, Chroma or memory use, restart, NACE learning, governed self-extension, quiescence, final PoC acceptance, production deployment, or final report. The deterministic rendered state is a disclosed finite acceptance stimulus, not represented as model output. R6 does not add a retry policy or a second repair implementation.",
+  "rationale": "R5 proved native construction, source-joint comparison, re-audit, and certification but remained outside RWait. C-004/C-009/C-011/C-012, C-054-C-067, S-501-S-505, S-902-S-905 and ACCEPTANCE G16 require the current renderer consumer to preserve Soul authority across the actual boundary. The smallest correction factors one native rendered-state handler, makes RWait call it, carries the originating frame only when present, and obtains the already-accepted expressive capability through a versioned no-emission runtime reference. This tests integration without another model sample or behavioral branch table.",
+  "requirements": [
+    "C-003", "C-004", "C-005", "C-006", "C-007", "C-008", "C-009", "C-010", "C-011", "C-012", "C-013", "C-020", "C-021", "C-022", "C-023", "C-040", "C-041", "C-042", "C-044", "C-045", "C-050", "C-051", "C-052", "C-053", "C-054", "C-055", "C-056", "C-057", "C-060", "C-061", "C-062", "C-063", "C-064", "C-065", "C-066", "C-067", "C-090", "C-091", "C-092", "C-093", "C-094", "C-095", "C-096", "C-097", "C-098", "C-099", "C-100", "C-101", "C-102", "C-103", "C-104", "C-105",
+    "S-103", "S-202", "S-203", "S-205", "S-301", "S-302", "S-303", "S-304", "S-305", "S-401", "S-402", "S-403", "S-404", "S-405", "S-501", "S-502", "S-503", "S-504", "S-505", "S-601", "S-603", "S-604", "S-605", "S-801", "S-802", "S-803", "S-804", "S-901", "S-902", "S-903", "S-904", "S-905", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202", "S-1203",
+    "T-01", "T-03", "T-05", "T-09", "T-14", "T-22", "T-23", "T-28", "T-29", "T-30", "T-31"
+  ],
+  "reading": "Read both complete controls; C-004/C-009/C-011/C-012/C-054-C-067/C-090-C-105; Soul S-501-S-505, S-601-S-605, S-801-S-804, S-901-S-905, S-1101-S-1105, S-1201-S-1203; T-14/T-22/T-23/T-30/T-31; ACCEPTANCE G16/G17/G33; POC_SPEC VoiceRNA and final demonstration; BUILD_FIDELITY_PROTOCOL F-01-F-07; G33 R3, R4, and R5 outcomes and closures. R5's public-entry limit is the first discontinuity and bounds this revision.",
+  "representation": "RRun preserves its existing language-grounding input and additionally recognizes a source voice-frame by deriving DGround while retaining the exact frame for later comparison. RWait delegates a rendered state to one factored native handler. That handler validates request identity and scope, forms one current RAudit/RDisposition pair, returns faithful products directly, and hands meaning-altered products plus their exact frame and native products to an R5 continuation that recomputes agreement before construction. A versioned public-safe runtime reference identifies the exact accepted capability and bounded fuel; Prolog verifies it and never chooses content. Every repair result remains no-emission.",
+  "consumer": "The actual consumers are current RRun and RWait, a single new native rendered-state handler in relational_voice.metta, and an R5 continuation that verifies the handler's intention/audit/disposition before VConstruct, VEligible, fresh RAudit and RRVerify-compatible certification. Builder JavaScript calls the exact handler used by RWait with frozen rendered-state products, severs one participant per arm, and checks structural outcomes. It cannot contain repaired wording, a defect/action mapping, a faithful audit, or a certificate.",
+  "falsifiers": "RWait retains a separate audit/repair branch; public and test paths use different semantic handlers; a scenario/response or defect/action table selects repair; the builder supplies repaired wording, audit, disposition, or certificate; a supplied handler product is trusted without recomputation; a language-only invocation fabricates a source frame; request/scope mismatch crosses repair; ambiguity becomes a winner; the accepted capability reference is stale, changed, overbroad, or emission-authorized; a faithful product is unnecessarily repaired; Prolog/JavaScript chooses semantic content; any model, network, credential, Chroma, Mattermost, human-emission, or external-effect operation occurs; or legacy first-match VoicePolicy is imported.",
+  "scope_review": "R6 may minimally revise the current relational voice module/bootstrap, R5 repair module/bootstrap, the v2 and R5 relational voice membranes, and add one versioned runtime capability reference. It may add only R6 fixtures, builder run/verify code, evidence and closure docs. Existing R4 runtime behavior must remain compatible for language-grounding input; old policy code, controls, accepted G22 state, historical evidence, model selection, Mattermost, Chroma, credentials, and unrelated G22/G28 work remain untouched. No model or external effect is authorized.",
+  "rollback": "The changes remain no-emission. Reverting R6 restores R4's direct audit/disposition wait behavior and leaves the independently proven R5 module, all accepted development, and all evidence intact. The runtime reference grants no model, filesystem-write, network, messaging, or emission capability.",
+  "predecessor": "docs/gates/G33/R5/closure.json",
+  "allowed_paths": [
+    "docs/gates/G33/R6/",
+    "src/relational_voice.metta",
+    "src/bootstrap_relational_voice.metta",
+    "src/relational_voice_repair_v1.metta",
+    "src/bootstrap_relational_voice_repair_v1.metta",
+    "effect_membranes/miter_relational_voice_v2.pl",
+    "effect_membranes/miter_relational_voice_repair_v1.pl",
+    "config/relational-voice-repair-runtime-v1.json",
+    "tests/fixtures/g33_r6/",
+    "scripts/g33_r6/",
+    "evidence/G33/R6/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G33/R5/closure.json","sha256":"059b60fa89ad5583e12056a26a7aa6ab077727722a288c6cf270810c6fd11295"},
+    {"path":"docs/gates/G33/R5/outcome.md","sha256":"68b5e2dffa3896c1bbadd5409edd9b5d9b577cbc5d1a00c1286d0416ad4ab836"},
+    {"path":"docs/gates/G33/R5/semantic-audit.md","sha256":"a69975ad6e4f89f48affd959294b90c50bceedd2700f84b82f098a8fe744c110"},
+    {"path":"src/voice_construction.metta","sha256":"57a68c16d5658ebd04d2e4119e9a2f1f0fc634a2ba1871548ff4ce86eaee50f2"},
+    {"path":"config/relational-voice-runtime-grant-v1.json","sha256":"a7ffae81c68a3204e05bc6c01c5ae4b8d81f4342322f6b3c90f50bcb5cda4ca2"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
+  "cases": {
+    "positive": "The exact current rendered-state handler receives a deterministic meaning-altered rendered product and current frame, recomputes agreement with its actual audit/disposition, crosses R5 construction, and returns a faithful no-emission certificate.",
+    "severed": "Remove handler delegation from an isolated RWait source, the source frame, joint participation, matching request identity, matching scope, fresh audit, accepted runtime capability standing, or capability bytes separately; the same public repair result must disappear.",
+    "neutral": "A faithful rendered product remains expression-ready without repair; reordered source records preserve repaired semantic content; language-grounding input remains compatible and never fabricates a frame.",
+    "restored": "Restore each exact participant and recover the canonical handler result.",
+    "held_out": "No held-out language claim. Rendered clauses and frame are disclosed finite stimuli frozen before implementation.",
+    "unknown_malformed": "Malformed rendered state, missing frame, ambiguous construction, stale scope/cut, and unavailable capability remain revalidation, alternatives, or incomplete and never become a certificate or effect."
+  },
+  "environment": "Pinned native PeTTa ae66fa8e41dcd5539d614706bd4e5cfb34f9608d through SWI-Prolog 10.0.2 arm64. Deterministic native rendered-state integration only, with zero model or external-service calls.",
+  "next_step_hypothesis": "If R6 closes, reassess G33 against its complete acceptance matrix and freeze only the first remaining constitutive discontinuity—likely end-to-end clean-start trajectory/memory/voice/effect lineage or final restart/no-replay evidence. If current handler factoring cannot preserve R4 compatibility or exact R5 products, preserve the failure and repair R6 without adding a second semantic implementation."
+}
