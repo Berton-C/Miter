@@ -1,0 +1,82 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R10: connect the R9-qualified source-grounded development graph to the continuously recurring native reactor through a dedicated bootstrap; native MeTTa must form or decline a durable undertaking from raw contact, advance a qualifying transcript to an explicit waiting boundary without executing its effect request, survive restart without replay or duplication, and terminate on explicit stop.",
+  "claim_ids": [
+    "G33-R10-recurring-native-contact-forms-durable-source-grounded-undertaking",
+    "G33-R10-causal-severances-block-transcription-with-distinct-native-standing",
+    "G33-R10-restart-preserves-waiting-undertaking-without-replay-or-duplication",
+    "G33-R10-explicit-stop-terminates-with-zero-model-or-external-effects"
+  ],
+  "non_claims": "No claim of general purpose formation, unrestricted native development, default bootstrap replacement, retirement of historical InterestIdle, candidate generation, model performance, trial, promotion, accepted development, consequence learning, changed later selection, full hot reload, complete S-602/S-606/S-607/S-702/S-705, Mattermost activity, Chroma or history retrieval, private-memory access, human emission, external effect, final G33 completion, or whole-PoC acceptance.",
+  "rationale": "R8 preserved a recurring-integration failure after current native calibration succeeded. R9 R1 repaired and qualified the public semantic import graph. C-004/C-011/C-012/C-060-C-064/C-070-C-075 and S-602/S-604/S-606/S-607/S-705 now require the next evidence to cross the actual recurring boundary without allowing the builder, a fixed proposal, Prolog, or an LLM to originate the undertaking.",
+  "requirements": [
+    "C-003", "C-004", "C-005", "C-006", "C-007", "C-008", "C-009", "C-010", "C-011", "C-012", "C-013", "C-020", "C-021", "C-022", "C-023", "C-025", "C-030", "C-031", "C-032", "C-040", "C-041", "C-044", "C-045", "C-054", "C-055", "C-056", "C-057", "C-060", "C-061", "C-062", "C-064", "C-065", "C-067", "C-070", "C-071", "C-072", "C-073", "C-074", "C-075", "C-090", "C-091", "C-094", "C-096", "C-100", "C-102", "C-103", "C-104", "C-105",
+    "S-103", "S-202", "S-203", "S-205", "S-301", "S-302", "S-303", "S-304", "S-305", "S-401", "S-402", "S-403", "S-404", "S-501", "S-502", "S-503", "S-504", "S-505", "S-601", "S-602", "S-603", "S-604", "S-605", "S-606", "S-607", "S-701", "S-702", "S-704", "S-705", "S-901", "S-902", "S-903", "S-905", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202", "S-1203",
+    "T-10", "T-12", "T-14", "T-16", "T-18", "T-20", "T-21", "T-22", "T-23", "T-25", "T-28", "T-30", "T-33", "T-34"
+  ],
+  "reading": "Read both complete controls; R8 outcome, failure verdict, source contacts, and hook isolation; R9 R1 plan, closure, outcome, semantic audit, passing products, and repaired bootstraps; current reactor, development cycle, historical interests, mechanical membranes, Soul startup, authority manifest, and reactor profile. Reassess the exact consumer and causal cuts before implementation.",
+  "representation": "A new dedicated bootstrap loads bootstrap_reactor and bootstrap_development_cycle, then one narrow development-reactor membrane and MeTTa module. The membrane exposes typed raw contact read, stable hash, write-once native state/effect persistence, lifecycle persistence, and readback. A native idle promoter maps raw contacts through DObserve and CStep; only native-opportunity-transcribed may add SourceGroundedDevelopRNA. Its registered advancer moves that transcript to awaiting-authorized-generation and removes it from the ready set without executing the inert dispatch request.",
+  "consumer": "The claim-bearing consumer is ReactorStart -> ReactorIdleOpportunity -> the new native promoter -> DObserve/DOpportunity/DDevelop/CStep -> a registered SourceGroundedDevelopRNA advancer. Prolog reads and persists terms already formed by MeTTa. JavaScript supplies disclosed JSON inputs, starts/stops isolated processes, and verifies durable/readback evidence; it never calls the cognitive functions or writes their products.",
+  "falsifiers": "The runner invokes DObserve, DOpportunity, DDevelop, or CStep directly; the historical fixed proposal or InterestIdle participates; Prolog selects purpose or decides qualification; a qualifying contact fails to create one durable native state and inert effect request; any severed arm transcribes RNA; held reasons collapse; restart changes the persisted state/request, repeats the development decision, or replays waiting work; the reactor cannot return to readiness or stop explicitly; an effect request is executed; a model, credential, network, Chroma, Mattermost, private-memory, history-retrieval, or human-emission operation occurs; tests are weakened after observing source behavior; unrelated work changes; or a prior PASS supplies native standing.",
+  "scope_review": "R10 may add only src/development_reactor_v1.metta, src/bootstrap_development_reactor_v1.metta, effect_membranes/miter_development_reactor_v1.pl, docs/gates/G33/R10, tests/fixtures/g33_r10, scripts/g33_r10, and evidence/G33/R10. It may execute pinned local PeTTa/SWI-Prolog over isolated evidence roots. It may not change controls, current reactor/development/voice meanings, current bootstraps, default bootstrap_modules, historical interests, configuration, accepted registries, live services, private state, credentials, Chroma, Mattermost, historical evidence, or unrelated G22/G28 work.",
+  "rollback": "Remove the three new uncommitted implementation files if the experiment fails; retain append-only R10 evidence. No existing source, accepted registry, runtime service, model setting, or external system is changed.",
+  "predecessor": "docs/gates/G33/R9/R1/closure.json",
+  "allowed_paths": [
+    "src/development_reactor_v1.metta",
+    "src/bootstrap_development_reactor_v1.metta",
+    "effect_membranes/miter_development_reactor_v1.pl",
+    "docs/gates/G33/R10/",
+    "tests/fixtures/g33_r10/",
+    "scripts/g33_r10/",
+    "evidence/G33/R10/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G33/R9/R1/closure.json","sha256":"1474818922ad7491a79618449f65d173bc5aac6a07a5334b9d3eadd955de29c0"},
+    {"path":"docs/gates/G33/R9/R1/outcome.md","sha256":"7ddf55d54d60564713d8a7f625ff922832c152b805f820308869ea8cd11afe0b"},
+    {"path":"evidence/G33/R9/attempt-003/verdict.json","sha256":"7d5362f9618e9f5fd8742a1ddea19ecdd2d3ddc896280fcc6db3a8caa75482c1"},
+    {"path":"docs/gates/G33/R8/outcome.md","sha256":"106c89847c1d292d4322714e4bd605900774e10dc2048488c7cb1ee8a7cb98d4"},
+    {"path":"evidence/G33/R8/attempt-001/verdict.json","sha256":"ce23f04bcf4b9d90835cca212a6964d9746dc7dc2878f62180d7058def486472"},
+    {"path":"src/bootstrap_reactor.metta","sha256":"497dc11cccbfb716324ddd6ddb76b9acd2c6ad7970f5fd3e4b1a31432c7877fb"},
+    {"path":"src/reactor.metta","sha256":"a22cdd4d06c1979f4f35e618eb1dc52914dd0758e8c840d0250c39a1b1f728a6"},
+    {"path":"effect_membranes/miter_reactor.pl","sha256":"25e3b3dd83d8661dcdee10d0bc1b80f3928eff88b7c6ed9745fd5c2baaa1a69b"},
+    {"path":"src/bootstrap_development_cycle.metta","sha256":"13990150c553889207e70e3e443076878f49e04aae7ba241216837d5fd514730"},
+    {"path":"src/development_cycle.metta","sha256":"8a868046c6d26ccbe60b00a9b52ee67a948f00db10fc2f8817977a65ddef396d"},
+    {"path":"src/development_evidence.metta","sha256":"3c294d2aa47f4068a7aa46b59bef36ecd6007a398e308acc9dbcb0e15b6df112"},
+    {"path":"src/bootstrap_voice_construction.metta","sha256":"d0c9ab560d056f3a792c384a3d50b24b6abf08db4065459996d36a7e140fc23e"},
+    {"path":"src/bootstrap_modules.metta","sha256":"14ead2846c457ae155213b40f76deb67cbf015403a6329a8b0fcb3cd32695b6a"},
+    {"path":"src/bootstrap_interests.metta","sha256":"fb14ff26d25af01e9326609b19ca4fc5e251de343317e682fbc6d22d6b0dc253"},
+    {"path":"src/interests.metta","sha256":"4f463d92877aef2abc4769ba9c889cd80a3a8e8d4eb5a9d16b6c171d44b0ed0e"},
+    {"path":"effect_membranes/miter_interests.pl","sha256":"cad18732368ea38b0587bd5a8508a4a8b196fec2fa5a6df8618fe08fe47097b9"},
+    {"path":"constitution/authority-manifest.json","sha256":"2dbd08e9f2bc642b325a30349cd9aa39b1ec0e4c19ca1cb53fc0d1f45038beef"},
+    {"path":"config/reactor-profile.json","sha256":"4f0fd59730f3f5cc596d8b660899e8b743d9593162d82e08c762bade43e1c018"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
+  "cases": {
+    "positive": "From empty &rna, ReactorStart consumes a typed raw canonical contact bundle and current native cognition stores exactly one pending undertaking/effect request, transcribes one SourceGroundedDevelopRNA, advances it to awaiting-authorized-generation, returns to readiness, and stops explicitly.",
+    "severed": "Same-family or self-authored records, missing surface capability, and exhausted grant cannot transcribe RNA; their persisted native reasons remain distinct.",
+    "neutral": "Meaning-equivalent source-record ordering preserves the material undertaking projection and lifecycle, without requiring byte-identical provenance presentation.",
+    "restored": "Restoring qualifying independent source contact restores the durable undertaking; restarting its root preserves exact state/request bytes and produces no duplicate decision, transcript, or replay.",
+    "held_out": "Use the second R8 material family and one source-order variation; no arbitrary-language or general development claim follows.",
+    "unknown_malformed": "Malformed JSON/schema, foreign scope, unresolved native function, invalid lifecycle, storage conflict, integrity failure, process failure, timeout, and explicit stop remain distinct and fail without an external effect."
+  },
+  "environment": "Pinned native PeTTa ae66fa8e41dcd5539d614706bd4e5cfb34f9608d through SWI-Prolog 10.0.2 arm64; isolated evidence-owned roots; zero model calls and zero external reach.",
+  "next_step_hypothesis": "If R10 closes, freeze R11 to reconcile the default bootstrap and replace the fixed-proposal idle path with the corrected source-grounded transcript without erasing historical mechanics, then requalify affected module consumers. If R10 fails, preserve the first recurring/persistence discontinuity and repair only that boundary."
+}
