@@ -1,0 +1,54 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G33",
+  "plan": "docs/gates/G33/R9/R1/plan.json",
+  "plan_commit": "bdb6823675748ba7e6d8bc2d181ce35b8b741748",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G33/R9/R1/attempts.md","sha256":"456de12647ff272148bd30ae2f5c21e3a76a8480a7be783f6ba26dadcd57a2a3"},
+    {"path":"docs/gates/G33/R9/R1/outcome.md","sha256":"7ddf55d54d60564713d8a7f625ff922832c152b805f820308869ea8cd11afe0b"},
+    {"path":"docs/gates/G33/R9/R1/semantic-audit.md","sha256":"c1601ea3761df02cd3b4fcc05c3927c4b6e5fdb275e90d96d09c19c050083b82"},
+    {"path":"evidence/G33/R9/attempt-001/diagnosis.md","sha256":"d01280bfda057f5f4492a4f9cc759b4a72ff0e96502b5a8b3b497de02186152d"},
+    {"path":"evidence/G33/R9/attempt-002/diagnosis.md","sha256":"e416b797dbf54e381155a2cb8ed66eba89b29f662f4bc5e1439814a61fa2a320"},
+    {"path":"evidence/G33/R9/attempt-003/verdict.json","sha256":"7d5362f9618e9f5fd8742a1ddea19ecdd2d3ddc896280fcc6db3a8caa75482c1"},
+    {"path":"evidence/G33/R9/attempt-003/observations.json","sha256":"1012925e516dcbe6e04d6132cea55c82bdf69d9b4c2fde96a14d4139c5dc7bd8"},
+    {"path":"evidence/G33/R9/attempt-003/freeze.json","sha256":"363c22f244ec336d4d81af19c8855f5773a8810a12664063e3ae506d2c2c75ac"},
+    {"path":"evidence/G33/R9/attempt-003/relational-voice-products.json","sha256":"a2e737b2ff171914081aa8348392cc4466e1de515be0ad5735b2491ad2462e20"},
+    {"path":"evidence/G33/R9/attempt-003/voice-construction-products.json","sha256":"a2e737b2ff171914081aa8348392cc4466e1de515be0ad5735b2491ad2462e20"},
+    {"path":"evidence/G33/R9/attempt-003/development-cycle-products.json","sha256":"a2e737b2ff171914081aa8348392cc4466e1de515be0ad5735b2491ad2462e20"},
+    {"path":"evidence/G33/R9/attempt-003/minimal-reference-products.json","sha256":"a2e737b2ff171914081aa8348392cc4466e1de515be0ad5735b2491ad2462e20"},
+    {"path":"evidence/G33/R9/attempt-003/voice-consumer-products.json","sha256":"ffb2b757a525bd6ad0f959650df6430d748c8e47ef2713bb74e232fec23e882c"}
+  ],
+  "claim_results": [
+    {
+      "id": "G33-R9-R1-public-bootstraps-preserve-current-source-grounded-development-meaning",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Three current public bootstraps matched the dependency-ordered reference for the exact finite R8 source pair. This is not recurring-reactor reachability or general development cognition."
+    },
+    {
+      "id": "G33-R9-R1-causal-development-controls-remain-distinct",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Same-family, self-authored, missing-capability, and exhausted-grant cuts produced distinct bounded native outcomes. This finite fixture does not establish coverage of every evidential or capability failure."
+    },
+    {
+      "id": "G33-R9-R1-current-relational-voice-repair-consumer-remains-intact",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The current consumer preserved one exact repaired no-emission certificate under source-order-neutral presentation and blocked it when the source frame was removed. No general language or emission claim follows."
+    },
+    {
+      "id": "G33-R9-R1-construction-mechanics-load-without-legacy-v2-collision",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Fresh bootstrap processes emitted no load stderr and the construction membrane no longer imports the legacy relational-voice membrane. Candidate generation and live transport were not exercised."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004/C-011/C-012 and S-602/S-905 require current consumers to preserve source-grounded meaning rather than inherit an import-order accident. R9 R1 repaired only semantic dependency order and mechanical helper ownership; the development and voice meanings and fixtures remained unchanged.",
+    "causal_evidence": "Each public bootstrap formed the same material opportunity from two independent current native audits. Family collapse, self-authorship, missing capability, and grant exhaustion changed the product distinctly. Source-frame removal blocked the repaired voice certificate; restored source restored it.",
+    "substitution_audit": "The runner supplied disclosed source frames and mechanical launch/capture only. It did not supply audit, opportunity, repair, or certificate standing. Material projections normalize unordered provenance presentation while retaining all claim-bearing opportunity and expression fields. Failed attempts were preserved and rerun rather than relabeled.",
+    "capability_and_constraint_audit": "The passing attempt used pinned local PeTTa/SWI-Prolog and made zero model calls, external-network requests, credential lookups, Chroma mutations, Mattermost operations, human emissions, or external effects. The voice certificate retained no-emission-authority. Controls, registries, historical evidence, private state, unrelated G22/G28 work, and ~/.miter were untouched.",
+    "remaining_gaps": "Corrected development is still not connected to recurring cognition. R9 R1 proves no durable undertaking, candidate generation, trial, promotion, consequence interpretation, developmental re-expression, restart-preserved changed selection, complete S-606/S-607/S-705, final integrated severance, or whole-PoC acceptance."
+  },
+  "reviewer": "Codex primary builder and fidelity reviewer, applying the committed Miter gate methodology",
+  "review_limits": "Single-reviewer source, native-runtime, and evidence audit over disclosed finite fixtures. It establishes the repaired public semantic prerequisite, not independent replication, recurring cognition, production security, or final G33 acceptance.",
+  "terminal_reason": "G33 R9 R1 is a completed prerequisite repair, not terminal G33 acceptance. The fidelity checker forbids a same-gate next_plan link; R10 must be separately derived and frozen from this closure before recurring-reactor ingress is implemented."
+}

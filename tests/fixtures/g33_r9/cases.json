@@ -1,0 +1,15 @@
+{
+  "schema": "miter-g33-r9-cases-v1",
+  "bootstrap_variants": ["relational-voice", "voice-construction", "development-cycle", "minimal-reference"],
+  "expected": {
+    "canonical": "development-opportunity",
+    "neutral": "development-opportunity",
+    "same_family": "development-held",
+    "self_authored": "development-held",
+    "missing_capability": "development-inquiry",
+    "exhausted_grant": "development-incomplete",
+    "voice_canonical": "expression-certificate-v1",
+    "voice_missing_frame": "expression-incomplete"
+  },
+  "standing": "Frozen product shapes for current source-grounded semantics; never imported as native standing."
+}

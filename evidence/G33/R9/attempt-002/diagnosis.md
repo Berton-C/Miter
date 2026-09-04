@@ -1,0 +1,9 @@
+# G33 R9 R1 — Attempt 002 diagnosis
+
+Attempt 002 is retained as failed qualification evidence. The native repair itself reached every expected product: all four bootstrap variants exited cleanly with no stderr, produced byte-identical product sets, returned `development-opportunity` for the qualifying and record-order-neutral arms, and preserved the distinct same-family, self-authored, missing-capability, and exhausted-grant outcomes. The independent repaired-voice consumer also passed.
+
+The runner nevertheless issued `FAIL` because its neutral assertion compared the entire provenance-bearing opportunity atom byte-for-byte. Reversing the two source records legitimately reversed ordered provenance fields such as `source-events`; the frozen plan requires an equivalent **material opportunity projection**, not identical evidence presentation order. This qualification assertion therefore exceeded and contradicted the plan's stated evidence standard.
+
+Attempt 003 replaces only that over-strong harness assertion with an explicit projection. The projection preserves the opportunity kind, scope, target, Soul ground, source-event set, repeated-relation kinds and participant families, continuation question, grant, allowed effects, progress witness, and stop condition while normalizing only unordered evidence presentation. The independent verifier implements the same projection separately. The analogous repaired-voice neutral check preserves the selected expression, source-grounded fragment, joint basis, accepted capability, faithful disposition, and no-emission boundary while excluding nonsemantic source-list ordering.
+
+No native cognitive source, source fixture, expected semantic outcome, model setting, external service, or capability is changed. No model call, credential lookup, network request, Chroma mutation, Mattermost operation, human emission, or external effect occurred.
