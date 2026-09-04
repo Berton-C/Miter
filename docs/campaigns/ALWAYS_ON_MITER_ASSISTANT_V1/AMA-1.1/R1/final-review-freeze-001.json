@@ -24,7 +24,7 @@
     {"path": "evidence/AMA-1.1/R1/post-operator-repair-001/results.json", "sha256": "3831c8d2d304a253b945d913eaed5dd57d54c2901a3d9e8c368f492e41021102"},
     {"path": "evidence/AMA-1.1/R1/post-operator-repair-001/verdict.json", "sha256": "ca970e0f4abdce5bd6d72d7cd93cc05ef279352ff95bd3d31fbd182894d2cad8"},
     {"path": "docs/gates/G31/P9/R1/closure.json", "sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1"},
-    {"path": "docs/gates/G32/R2/closure.json", "sha256": "9c4c00bc2d5605f3ecaf8bee1bc3993be9af50d53037184d3847fb06d2fce0"},
+    {"path": "docs/gates/G32/R2/closure.json", "sha256": "9c4c00bc2d5605f3ecaf8bee1bc3993be9afaf50d53037184d3847fb06d2fce0"},
     {"path": "docs/gates/G33/R14/closure.json", "sha256": "1dce6a97a2292d0dac84a4c32064a375ee90c4ae07e1995a92d49d46c55856c6"}
   ],
   "public_scan_paths": [

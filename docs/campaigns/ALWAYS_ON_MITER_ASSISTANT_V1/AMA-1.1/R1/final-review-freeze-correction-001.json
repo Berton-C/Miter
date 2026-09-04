@@ -1,0 +1,18 @@
+{
+  "schema": "miter-ama11-final-review-freeze-correction-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "date": "2026-09-05",
+  "corrected_file": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/final-review-freeze-001.json",
+  "original_commit": "f0edeb09",
+  "original_freeze_sha256": "40e9e50cd28d91663547275d2534aea9967d58997376b9271431218eb841fb35",
+  "pre_execution_failure": "The verifier stopped at the pinned G32 R2 closure identity before creating the final-review evidence directory.",
+  "incorrect_transcription": "9c4c00bc2d5605f3ecaf8bee1bc3993be9af50d53037184d3847fb06d2fce0",
+  "verified_identity": "9c4c00bc2d5605f3ecaf8bee1bc3993be9afaf50d53037184d3847fb06d2fce0",
+  "closure_evidence_files_verified_before_correction": 10,
+  "verifier_changed": false,
+  "source_changed": false,
+  "test_meaning_changed": false,
+  "evidence_created_by_failed_preflight": false,
+  "standing": "Freeze metadata transcription correction only; no runtime or semantic result was produced by the failed preflight."
+}
