@@ -21,6 +21,7 @@ const normalize = text => text.replace(/[^A-Za-z0-9_-]+/g, '.');
 const results = [];
 const commands = [];
 const roots = new Map();
+const stimuli = new Map();
 
 function writeJson(file, value) { fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`); }
 function clone(value) { return JSON.parse(JSON.stringify(value)); }
@@ -92,11 +93,13 @@ const consequence = path.join(repo, manifest.consequence_fixture.path);
 for (const testCase of manifest.cases) {
   const failures = [];
   const root = fs.mkdtempSync(path.join(os.tmpdir(), `miter-ama11-matrix-${testCase.id}-`));
+  const stimulusRoot = fs.mkdtempSync(path.join(os.tmpdir(), `miter-ama11-stimulus-${testCase.id}-`));
   roots.set(testCase.id, root);
   const stimulus = clone(base);
   for (const operation of testCase.operations) apply(stimulus, operation);
-  const stimulusPath = path.join(root, 'stimulus.json');
+  const stimulusPath = path.join(stimulusRoot, 'stimulus.json');
   writeJson(stimulusPath, stimulus);
+  stimuli.set(testCase.id, stimulusPath);
 
   const bootstrap = run(`${testCase.id}:bootstrap`, ['bootstrap', '--runtime-root', root]);
   if (bootstrap.code !== 0 || bootstrap.reply?.status !== 'bootstrapped') failures.push('bootstrap failed');
@@ -161,7 +164,7 @@ fs.mkdirSync(path.join(evidence, 'raw'), {recursive: true});
 for (const result of results) {
   const root = roots.get(result.id); const target = path.join(evidence, 'raw', result.id);
   fs.mkdirSync(target, {recursive: true});
-  fs.copyFileSync(path.join(root, 'stimulus.json'), path.join(target, 'stimulus.json'));
+  fs.copyFileSync(stimuli.get(result.id), path.join(target, 'stimulus.json'));
   for (const [source, name] of [
     ['checkpoints/active.term', 'checkpoint.term'],
     ['checkpoints/active.json', 'checkpoint.json'],
