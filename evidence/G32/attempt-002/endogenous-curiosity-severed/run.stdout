@@ -1,0 +1,3 @@
+true
+(result oracle (oracle-bounded (calls 1) (product-standing derived-candidate) (product ordinary-derived-reading) (recursive-authority none)))
+(result clock (clock-available (movement possible) (completion not-implied)))

@@ -1,0 +1,21 @@
+{
+  "status": "FAIL",
+  "phase": "control-document-fidelity-review",
+  "native_harness_verdict": "PASS-BOUNDED",
+  "failed_claim": "G32-R1-integrated-current-consumers-causal",
+  "reason": "The canonical probe invoked nine current native consumers, but the 28-arm composer consumed source/evidence-bound availability records rather than those consumers' returned products. Removing a record therefore proved the generic dependency harness, not causal severance of every actual subsystem consumer.",
+  "affected_requirements": ["C-100", "C-103", "S-504", "S-1101", "S-1201", "S-1202", "S-1203"],
+  "useful_evidence_retained": [
+    "deterministic native missing-participant representation",
+    "predeclared differentiated arm expectations",
+    "neutral, decorative, restoration, held-out, non-recursive, and zero-pitch harness behavior",
+    "raw outputs from nine current native consumer probes"
+  ],
+  "core_changed": false,
+  "network_requests": 0,
+  "credential_lookups": 0,
+  "model_calls": 0,
+  "external_effects": 0,
+  "persistent_runtime_mutations": 0,
+  "next": "Freeze G32 R2 so each material arm perturbs an admitted fixture observation or module boundary upstream of an actual native consumer and derives the arm matrix from that returned product."
+}
