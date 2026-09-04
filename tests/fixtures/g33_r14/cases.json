@@ -1,0 +1,55 @@
+{
+  "schema": "miter-g33-r14-cases-v1",
+  "continuity": {
+    "text": "Can you remind me exactly where we paused in my book and what I should work on next?",
+    "project_id": "project-g08-glass-archive",
+    "project_name": "The Glass Archive",
+    "artifact_ref": "tests/fixtures/g08_manuscript.md",
+    "artifact_hash": "5a8433e2d94034aa79c3098353acd1d5e55db6e54d8e9edab969261a4d4e34a3",
+    "anchor": "Chapter 3 / The Observatory / paragraph 4 decision beat",
+    "unresolved_question": "Should Mara reveal the archive key to Jonas before the storm breaks?",
+    "next_move": "Draft Mara's decision beat, then test the reveal against chapter-one foreshadowing."
+  },
+  "voice": {
+    "request_id": "g33-r14-voice",
+    "returned_clauses": ["I will revise ledger."],
+    "standing": "disclosed-meaning-distorting-returned-state"
+  },
+  "reactor": {
+    "contact": {"id":"g33-r14-contact","kind":"human","provenance":"direct-contact","obligation":"none","steps":1},
+    "severed": {"id":"g33-r14-perpetual","kind":"continue-autonomous-work","provenance":"self-authored","obligation":"none","steps":1},
+    "stop": {"id":"g33-r14-stop","kind":"stop","provenance":"direct-contact","obligation":"none","steps":1}
+  },
+  "mattermost": {
+    "candidate_path": "/Users/claritymiter/miter/evidence/G31/p3-351/candidate/extension/mattermost_bridge.pl",
+    "candidate_sha256": "cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3",
+    "input_path": "/Users/claritymiter/miter/evidence/G31/p3-371/input.json",
+    "live_closure_sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1"
+  },
+  "development_sources": {
+    "r11_state": {"path":"/Users/claritymiter/miter/evidence/G33/R11/attempt-007/canonical/development/g33-r11-development/state.json","sha256":"08fe297a5c12f20da6c15ce50a0d48016b8740f319a0f33cd888d7d0c63c9786"},
+    "r11_request": {"path":"/Users/claritymiter/miter/evidence/G33/R11/attempt-007/canonical/development/g33-r11-development/effect-request.json","sha256":"2d58a2925b92ce19e853f8b6275c58eacfd35e88c6693451391eb0588d38dac0"},
+    "parent_module": {"path":"/Users/claritymiter/miter/derived/voice-realization-seed-v2.json","sha256":"e18142fdd6aef1bcada31af1b2dd9a9cb36780cedf0e616582557c069ed9be96"},
+    "trial_cases": {"path":"/Users/claritymiter/miter/evidence/G22/attempt-006/canonical/input.json","sha256":"dacf238763b54cac28fd1fe675daa7db06172f32870258a8efccdec26af15591"},
+    "efficacy_fixture": {"path":"/Users/claritymiter/miter/evidence/G24/g25-002/canonical/input.json","sha256":"f86525bdf72e4ecac2ce19a583fae99bd415880b71c14332ba2e787268fd3d55"},
+    "candidate_source": {"path":"/Users/claritymiter/miter/evidence/G33/R12/attempt-016/canonical/candidate.json","sha256":"34314c0e9e89c300767d2c2b366c1dfbf14289e4cc910424a05cce178e43973e","standing":"model-candidate-bound","model":"z-ai/glm-5.3"},
+    "candidate_lineage": {"path":"/Users/claritymiter/miter/evidence/G33/R12/attempt-016/canonical/candidate-lineage.json","sha256":"1496215c11948b19c6d9737ee6d6361e5dc547c907c166254b0ce6bbf939d15c"}
+  },
+  "expected": {
+    "development_candidate_sha256": "34314c0e9e89c300767d2c2b366c1dfbf14289e4cc910424a05cce178e43973e",
+    "trial_standing": "trial-admissible",
+    "trial_cases": 13,
+    "expansions": 4,
+    "before_maxima": 2,
+    "after_maximum": "g33-r11-development"
+  },
+  "resource_bounds": {
+    "openrouter_calls": 0,
+    "mattermost_requests": 0,
+    "credential_lookups": 0,
+    "chroma_mutations": 0,
+    "human_emissions": 0,
+    "external_effects": 0,
+    "maximum_local_model_calls": 1
+  }
+}

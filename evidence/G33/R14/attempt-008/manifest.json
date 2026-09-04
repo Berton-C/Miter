@@ -1,0 +1,1644 @@
+{
+  "schema": "miter-g33-r14-final-manifest-v1",
+  "run": "g33-r14-008",
+  "plan_commit": "32e8b7153387491007818038513fb91848ebe61f",
+  "status": "PASS-BOUNDED",
+  "files": [
+    {
+      "path": "/Users/claritymiter/miter/FINAL_POC_REPORT.md",
+      "sha256": "0616f5703f1a0dddcf57c927f792c36083991d69f0006c4f0f135e731ac8b05a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-capsule-severed-process.json",
+      "sha256": "c9203e8d4e27e65226d74d5924af069a2b7566627eca8f8a6f5193a1aad53128"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-capsule-severed-products.json",
+      "sha256": "f8088869f0a0fd9ea49f1cd6ae89be875fadbe4d8adee68e7f7998538f2e9e35"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-capsule-severed.metta",
+      "sha256": "bff669edc0fe89f09a240b3d2458662ee5535837be15de103e7b088acce8cc40"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-capsule-severed.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-capsule-severed.stdout",
+      "sha256": "ae5948551cc9ed26cede37ed16e946fbb63c597d2ea92e38dccc3723fa1b31ae"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-chroma-severed-process.json",
+      "sha256": "5d306d442cc444b8893bbfcd1f6280bd10acdc6665b0c9058ce35e2b59d04c6c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-chroma-severed-products.json",
+      "sha256": "f8088869f0a0fd9ea49f1cd6ae89be875fadbe4d8adee68e7f7998538f2e9e35"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-chroma-severed.metta",
+      "sha256": "a2f3b4b10d3b30642e2ceecc8b52f18201e75e104d421a6869bd282aa555b236"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-chroma-severed.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-chroma-severed.stdout",
+      "sha256": "ae5948551cc9ed26cede37ed16e946fbb63c597d2ea92e38dccc3723fa1b31ae"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-process.json",
+      "sha256": "c12e80895f846520101e70890d173a6a7bcc07c4bd6b1f0b92daac957a976734"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-products.json",
+      "sha256": "c5a0241387552444499bc2223fdda62ad60dc6b0f9cb6d4d882549d350d5b2e0"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-restored-process.json",
+      "sha256": "981f3d53dbbc1ecbb272216bee26173e76d00ccfa4747b321fc52a6cad58f20c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-restored-products.json",
+      "sha256": "f8088869f0a0fd9ea49f1cd6ae89be875fadbe4d8adee68e7f7998538f2e9e35"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-restored.metta",
+      "sha256": "d0862be2930a56579560193b7274b68e1202091f3111b7bbe1effde47ec897bb"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-restored.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity-restored.stdout",
+      "sha256": "ae5948551cc9ed26cede37ed16e946fbb63c597d2ea92e38dccc3723fa1b31ae"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity.metta",
+      "sha256": "b90f2f771b32792cee179061a49a060891adc97db64abf97c522206d89be650e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/continuity.stdout",
+      "sha256": "fea06e51df784b85297621608350ef5b57f68bba3db054e8ba30b1828eb0174f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-neutral-process.json",
+      "sha256": "b08963e948d7e9d2341d324036612af718afe7d353cd4639645051bc756900c7"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-neutral-products.json",
+      "sha256": "a6744dbc720c61cf2fc73f73f7a40f1dfba617f7bd2a17ab4e8dcc3c144c1956"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-neutral.metta",
+      "sha256": "fc6d57eccca9acb686016b2a2f0c38ef1633a282c831994d38fc6a931ac24781"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-neutral.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-neutral.stdout",
+      "sha256": "2cf4fe12ddfaa6d6424538c48b3603a2a91df35175efb22ca371db279e30d416"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-preflight-process.json",
+      "sha256": "4ad0a6e7fe6134d5dfd2750d73768334f409f2f8758e34b2c8a52ae9b9bc341d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-preflight-products.json",
+      "sha256": "2f784e85156d27080a8c9be5d884178e53f503e193f37e5b13fa7ece25122b11"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-preflight.metta",
+      "sha256": "2f27478fd1c1772bf9758feadea5d3ec88f0aceb0556bf9677eca11a59b1e962"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-preflight.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-preflight.stdout",
+      "sha256": "42d4a72ab3cb66148f9babf00d756ca7ba7c080d89512576f94b49a1db7e995d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-reactor-process.json",
+      "sha256": "e769809a2db4132929a90c2161d9a47d9b630ae90e6e9d893c0e9545994c6b1d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-reactor.metta",
+      "sha256": "3886f25d2f0fcfc4f30ee7af8d4fefab0f2ca4ea3452e0075370cbf3de566eb1"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-reactor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-reactor.stdout",
+      "sha256": "4eac5c7658c73cf4d50a8481943673509162ed17c69bc0e205b2903d588b65dd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-restart-process.json",
+      "sha256": "0dfaf69aca80ce549db46bf5b4616f9e2043e166796f53c74f23d121b25260cd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-restart-products.json",
+      "sha256": "3e436504af686507726375e832354c6ccd30460c70ae7781bc1077ae96752684"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-restart.metta",
+      "sha256": "10ccb2e138578323549c34f56ea476d5e824a073371a2a9b9f7df98b7706cc52"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-restart.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development-restart.stdout",
+      "sha256": "2a3f5e7d295aecab766a9ee9ab82fa0eaddd2619ea7d43a36ac43040b8b256e8"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/accepted-development-v2-fe546487af697739e0b01daeecb12baed7f3d63a2db736f53c81fdea8b05edef.json",
+      "sha256": "40fa945490106f0e9c6cc6bbe1a3e6d2de11257263f94bf0d0ac98c253f28496"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/active-v2.json",
+      "sha256": "bf11b8288ef9d658790ab1c24558103a75b2a0f66d255ee5507dd963a7d4df4a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/authorization.json",
+      "sha256": "f29f51dcdc5647502fd9be97576c661d44b8ef377e09f3d0ffccff851c5389cd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/candidate-lineage.json",
+      "sha256": "1496215c11948b19c6d9737ee6d6361e5dc547c907c166254b0ce6bbf939d15c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/candidate.json",
+      "sha256": "34314c0e9e89c300767d2c2b366c1dfbf14289e4cc910424a05cce178e43973e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/development-intent-v2.json",
+      "sha256": "bf11b8288ef9d658790ab1c24558103a75b2a0f66d255ee5507dd963a7d4df4a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/efficacy-8ca062627f3c6426eefa964f2ee0a496e3b15da15c1f4adf35aa62524f7b6101.json",
+      "sha256": "e10076b1f163d89be83d0e140a1a12d5063c9591c04d0d22a6f37469cf69a5c2"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/efficacy-after.json",
+      "sha256": "fa28444b8a1eddda8e5e7a030dcfdb1c676e8763cf70e39bb23a5308a2cb8ef4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/efficacy-before.json",
+      "sha256": "bffe2cc6e1b37dccad2831c64c3bc6b8ff879291be30787faa7a6c55c6cf38e4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/efficacy-consequence-v2-4bbdad452f73a0f22a6834801d165c7ba52669bebc83c1e36b0be47e3d2c31a2.json",
+      "sha256": "0af6b69af6273a3016258517d93c7144b1aa4881529a568215a56b2e596e13ed"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/efficacy-consequence-v2-99e85c6e3c4439052c88eb8b1500e15cc31dbfec173f89e0697f8af3b3643d0a.json",
+      "sha256": "28221e6c290bdf0f8a6c37d8f5580ce7a279d0e34170f5fcada0527bddb8802e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/efficacy-d9c078c2954bd82ae41da094ee252d6dcd604d095a9f2c7477d5947a997ec672.json",
+      "sha256": "f39c552e680f168d6dfc77df25a9dd258671d5c5d380400481580272485d744a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/final.json",
+      "sha256": "2322378efceb70953f381724e0fe4fe82fea0a4bb2748c82dee697f62aa5278c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/inbox/g33-r14-development-stop.json",
+      "sha256": "c5053f53979adafeeb1554cf60de82e674b9eb7cdae8de544641b70562fe2488"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/input.json",
+      "sha256": "c2bc48412c552adc5c50ab96fd5dc90655618e84cf68af02193291b51afb7aec"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/integrity-report.json",
+      "sha256": "33778237a154e6abbc078a76b5bd77a7a41de00823901190604fe2f2c4e899f4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/intents/1.json",
+      "sha256": "8b9101a31356998dae795201df4a422f8d956e7965f79c5108fb70098dcf3dd0"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/intents/2.json",
+      "sha256": "da0d50c9ae1d7a6d0affa66536cb560b628b7efb9ac8ee8c8e92262fba9a0bc4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/intents/3.json",
+      "sha256": "1f91cdafe946286858a6e4121132681577bf1bd75b4b14a97f2254bf5fcf897b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/manifest.json",
+      "sha256": "f9ffc08a173d304ec6cd8c3902b9e5f613175efcb39370eac9f0f6800b512fe4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/quarantine.json",
+      "sha256": "c93f8e70445461fbabceac586a354d511a4087ab9e21ea45d777fa36557f4a08"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/restart.json",
+      "sha256": "14c91078979390aa843f3ca42937108cf2687cd1f3a88086d68f3b364daca9ad"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/store/objects/sha256/02e1df0d14f596cebc0427fb20bba0730a384779c8be3e4303873d0dce301d06.json",
+      "sha256": "02e1df0d14f596cebc0427fb20bba0730a384779c8be3e4303873d0dce301d06"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/store/objects/sha256/76e76c187dfbff37e597f33e1f6291a0d151707d7807a8e27f2bafd5e5e659cc.json",
+      "sha256": "76e76c187dfbff37e597f33e1f6291a0d151707d7807a8e27f2bafd5e5e659cc"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/store/objects/sha256/7cb2bccaeaf0733b5e27585642b56dbf0f3796b077a6fcd83e76cf0c95d5f908.json",
+      "sha256": "7cb2bccaeaf0733b5e27585642b56dbf0f3796b077a6fcd83e76cf0c95d5f908"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/store/objects/sha256/8d11f24dabb06037712c1598a13ef44d1025dedb33e467f7dae40ecc0b4641b4.json",
+      "sha256": "8d11f24dabb06037712c1598a13ef44d1025dedb33e467f7dae40ecc0b4641b4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/store/objects/sha256/da569bca2d2bb8e3ea08889d0dbaf847b9876b1f0749602bb56f84e502d47225.json",
+      "sha256": "da569bca2d2bb8e3ea08889d0dbaf847b9876b1f0749602bb56f84e502d47225"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/store/objects/sha256/dd1082371620ef0c1b8cb755c2f6583ac7eb4a5a33caa50b0eb72c6587e9d77c.json",
+      "sha256": "dd1082371620ef0c1b8cb755c2f6583ac7eb4a5a33caa50b0eb72c6587e9d77c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/store/trajectory.jsonl",
+      "sha256": "c7c061ab9f8e875a842e5825403106e70d0f5edf7e02c77d593497a3fd449ea6"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/store/trajectory.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/trace.jsonl",
+      "sha256": "e84ac0450b73893809b5e97ea71f96c606c1b014954d2acb0b0fa1f10dd626e6"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/development/trial.json",
+      "sha256": "21f72af736a709ae1db99d57ce5c21ca97f138f0f910a6a1f23ee0947a23ad3b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/final-trace-process.json",
+      "sha256": "4c6e49ef8f103b691f5c413a7f0284316c63c9f59dda96f90dcaa7484f5ed7b5"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/final-trace-products.json",
+      "sha256": "fc47f585971ea92a12fbacdc8a86b112ce38770aa31520ae7e82b68000c1f8bb"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/final-trace.metta",
+      "sha256": "c025ae667401812e215140eb5e0ac92c231a2e7730a9deef590a190962c51b42"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/final-trace.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/final-trace.stdout",
+      "sha256": "c54e7ae8540bdc6f92f72c4e73a537b58b72f594d30400be6a635a522f52c944"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/freeze.json",
+      "sha256": "1e5b1d3f9d7e5d5a452f7b7ebfc66c101af974b09434c79cf2c49e9bfead6650"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-current-process.json",
+      "sha256": "91ea0fea0129ed5c3b517d0b4b482a64f0bcda79b6fb736312a89eeef2013015"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-current-products.json",
+      "sha256": "1fc91788e363b8dbee857052269081f77cf7c563f7d75fd0a657f8ed00624f29"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-current.metta",
+      "sha256": "d2900463f244929f0af70a38bb5734d74c5325b27367305854a178d98cfdb412"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-current.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-current.stdout",
+      "sha256": "4abe35156a08d19e6b2f9f1571031cd8d8366716b7d7ba97950378a172285a21"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-mechanical-process.json",
+      "sha256": "06c62512e44b87b9acff272ffe6697e2bc34776acecb6a2efbe0bf696eaf88f4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-mechanical-products.json",
+      "sha256": "7a18fbe49de6b42f34573b8e742e953c48db9f3f9abee81173d591b5761d179c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-mechanical.metta",
+      "sha256": "01fc5ca20c718449fa577f4e2bc6b6bb6d4cde9c07f8f9b4152636a212e900d8"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-mechanical.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-mechanical.stdout",
+      "sha256": "0a6deb22c48be938d1be11de4238a114f7bb5845687a7533fe3926ab24ee4819"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-proof-process.json",
+      "sha256": "0de5270a2dce7cb223fb0ec2be4851be78f720f62da885f264c65c769fcb05ad"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-proof-products.json",
+      "sha256": "2ef87975cd2d9a02ad3377d3e3da3a90773deb48963ec2409050cd0ebc52aae9"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-proof.metta",
+      "sha256": "d3b595415e1130c7cde5049ed5211cd9efbd80a970c5da25c50fdab663cec74f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-proof.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/mattermost-proof.stdout",
+      "sha256": "a4dc51fc938c797c907e58d4d6546bc2e89ba8834c1c82446847cfb1f17b604a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/nace-severed-process.json",
+      "sha256": "b15a112e07b5767af5110542531a2d991f31c1a1b41b1eedacefbd6c9e304f91"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/nace-severed-products.json",
+      "sha256": "f70f003de0850b2a6d24a593d9d32ab905fec57d897947d16fb867878a32d688"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/nace-severed.metta",
+      "sha256": "9ce862efca67881a880bd50915cf6aba6403767275bc3f559d4749f6b3d5fedd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/nace-severed.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/nace-severed.stdout",
+      "sha256": "cbc96ad6533b043207129b7e29d47dc05281a08bdfdebda6a6e33d49e4d16f88"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/accepted-development-v2-56fc8c9fb2446d0d52f3e377fcfdd9807415adffd5ee2be4b9ccb38a446b8a28.json",
+      "sha256": "c48d8ce3131654f4fee66e1ed30eb7d28e3dad8129e5396c7281361bb72a4a2c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/active-v2.json",
+      "sha256": "bb3043f65a534209ad69f54745c3d275d01cea836d9d574544fe19519f1f52eb"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/authorization.json",
+      "sha256": "f29f51dcdc5647502fd9be97576c661d44b8ef377e09f3d0ffccff851c5389cd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/candidate-lineage.json",
+      "sha256": "1496215c11948b19c6d9737ee6d6361e5dc547c907c166254b0ce6bbf939d15c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/candidate.json",
+      "sha256": "34314c0e9e89c300767d2c2b366c1dfbf14289e4cc910424a05cce178e43973e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/development-intent-v2.json",
+      "sha256": "bb3043f65a534209ad69f54745c3d275d01cea836d9d574544fe19519f1f52eb"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/efficacy-8ca062627f3c6426eefa964f2ee0a496e3b15da15c1f4adf35aa62524f7b6101.json",
+      "sha256": "e10076b1f163d89be83d0e140a1a12d5063c9591c04d0d22a6f37469cf69a5c2"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/efficacy-after.json",
+      "sha256": "fa28444b8a1eddda8e5e7a030dcfdb1c676e8763cf70e39bb23a5308a2cb8ef4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/efficacy-before.json",
+      "sha256": "bffe2cc6e1b37dccad2831c64c3bc6b8ff879291be30787faa7a6c55c6cf38e4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/efficacy-consequence-v2-4bbdad452f73a0f22a6834801d165c7ba52669bebc83c1e36b0be47e3d2c31a2.json",
+      "sha256": "8ef7caa22a12a93eb1e6221ab8e9251ec6089f9efad91dde9120e87869a44a83"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/efficacy-consequence-v2-99e85c6e3c4439052c88eb8b1500e15cc31dbfec173f89e0697f8af3b3643d0a.json",
+      "sha256": "776d9ed15cdffffb29c25eeaccf321c118cec31408d1ff120b1cfd5fb6f0cf96"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/efficacy-d9c078c2954bd82ae41da094ee252d6dcd604d095a9f2c7477d5947a997ec672.json",
+      "sha256": "f39c552e680f168d6dfc77df25a9dd258671d5c5d380400481580272485d744a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/final.json",
+      "sha256": "2322378efceb70953f381724e0fe4fe82fea0a4bb2748c82dee697f62aa5278c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/input.json",
+      "sha256": "23808df63147986378aca96973e3203b6041eea6eaf3d1006a6212bf9474b95e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/manifest.json",
+      "sha256": "2c792a105f8c24fc42c1f510ad9c2615c0dc75eef60c4c239f1538c17f659102"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/quarantine.json",
+      "sha256": "c93f8e70445461fbabceac586a354d511a4087ab9e21ea45d777fa36557f4a08"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/store/objects/sha256/6c5725c814ce72679a8a172bf2849fbad00178e93c14552d6990e0999fd67126.json",
+      "sha256": "6c5725c814ce72679a8a172bf2849fbad00178e93c14552d6990e0999fd67126"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/store/objects/sha256/da569bca2d2bb8e3ea08889d0dbaf847b9876b1f0749602bb56f84e502d47225.json",
+      "sha256": "da569bca2d2bb8e3ea08889d0dbaf847b9876b1f0749602bb56f84e502d47225"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/store/objects/sha256/dd1082371620ef0c1b8cb755c2f6583ac7eb4a5a33caa50b0eb72c6587e9d77c.json",
+      "sha256": "dd1082371620ef0c1b8cb755c2f6583ac7eb4a5a33caa50b0eb72c6587e9d77c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/store/trajectory.jsonl",
+      "sha256": "a4a8feaa0541f806253d63fefb86ebdf716c31728339503a0268d937eee1cb64"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/store/trajectory.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/neutral/development/trial.json",
+      "sha256": "21f72af736a709ae1db99d57ce5c21ca97f138f0f910a6a1f23ee0947a23ad3b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/observations.json",
+      "sha256": "49914b76841871cb731bcc0bad25e8238aa41c47b788ff489c2d5c04eb83ce6f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/opening.json",
+      "sha256": "a9ce6132d1596143df5b9d620faa7a247bc33c7b48f980e6b54e27b4ebbf6858"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/phase-lineage.json",
+      "sha256": "033fda22338631583deba70da81b300ca8232531d43875fc8bdd996229810c12"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/reactor-canonical-process.json",
+      "sha256": "ec33ade26925fc9a675cd333f3767439ace004cf27925efaf1679dff8679eace"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/reactor-canonical-trace.json",
+      "sha256": "8d6734c22cfca4eb51774c53f0c76d611c6fe946c1ea7121da7944d1fd17ce5d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/reactor-canonical.metta",
+      "sha256": "cb4d40c63998477e969017c95f63a3b0840c8528042a276d12f1bfd903998e0c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/reactor-canonical.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/reactor-canonical.stdout",
+      "sha256": "4eac5c7658c73cf4d50a8481943673509162ed17c69bc0e205b2903d588b65dd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/reactor-severed-process.json",
+      "sha256": "a66c93b5a59dcc060fef0fb7bd252fabfdd61b6731cedff4dc4b22f77036aca4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/reactor-severed-trace.json",
+      "sha256": "31414c8a415d23e5eb79a5e422a21ed1fa40404486b4dc5fc8573a3db7556c78"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/reactor-severed.metta",
+      "sha256": "ab87ced516b67d06003e56c196786375af186bd5840c315525f4b5e67ea5db2b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/reactor-severed.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/reactor-severed.stdout",
+      "sha256": "4eac5c7658c73cf4d50a8481943673509162ed17c69bc0e205b2903d588b65dd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/readiness-proof-process.json",
+      "sha256": "c759a527b4af847065e49030758c49c828f5b60d1ca70f0f5c77074b58a83844"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/readiness-proof-products.json",
+      "sha256": "7933b23ecc827ea2c42d9f4d55948d44bc5919d0e7d038715f9a3c0d0cbf5429"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/readiness-proof.metta",
+      "sha256": "6961ff39051935d36340fc0bdb4acabcdd073f0058eb8fa4b711ecfa5d4394e7"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/readiness-proof.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/readiness-proof.stdout",
+      "sha256": "b43e85fcb8c60f7c7fd74ea70ba784ba654cf2b46d72c0620b019b7b09849c0e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/run-verdict.json",
+      "sha256": "ce6b35225f6ca244438da0d9f865f507e994ddd9d1c88215d45207266add0124"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/capsules/projects/project-g08-glass-archive/capsules/capsule-g08-001.json",
+      "sha256": "cb10b21595e8cf3f816d032eec163bd0e0c1681a00fc509b0fc51fc3c0b7aa3d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/capsules/projects/project-g08-glass-archive/capsules/capsule-g08-002.json",
+      "sha256": "847a409d1da59067e15c6acbc0e756a697c192f12079c08a111ab7f7abea1b1a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/capsules/projects/project-g08-glass-archive/capsules/capsule-g11-003.json",
+      "sha256": "716c9d8aaa267c53410583e87929a84d8c5fe4a9069f0d8259be8ee633bb1147"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/capsules/projects/project-g08-glass-archive/continuity.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/capsules/projects/project-g08-glass-archive/current.json",
+      "sha256": "c39f7e20d39e39b6b9357ada5231d9a234ed7cf803fb118053ffcb1f769b3309"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/context.json",
+      "sha256": "70a94e30cca0f5d461b8e63df0e7265742d48522edff771921038985cf30c3dd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/answer.json",
+      "sha256": "5621277537e15fb760437471863f477725bb6faa8d2adb8473614e44774688d0"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/capsule-event-witness.json",
+      "sha256": "3c6da45cf09b05eaf23b721ac04522d39200f3a590c1bf5fb975c67a4f558d00"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/capsule.json",
+      "sha256": "1589ab574948e3acd46d45890519265107aab113eb73ca00d87bbf224ff60ec7"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/continuity-reading-raw.json",
+      "sha256": "fb3228ec6c46075fc56147ffd4d97a3c76fe6549ecbf40a007bdd9af8ca2c75d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/continuity-reading-request.json",
+      "sha256": "032ab2dd157c179457b7243b0d7415ea77393248f9b999afcaf9b75288329148"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/continuity-reading-template.json",
+      "sha256": "316c87073550cbc5ceaeae88776ae9c3a85c7c58604bffd315518b57a8a1524a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/continuity-reading-timing.json",
+      "sha256": "e31598b509eab36457314751deccafd8f2eb57ed6aacd4d94ecbd9237482e940"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/continuity-reading-typed.json",
+      "sha256": "7d5c4bcb18826fdf79c83e48d4b364909a038d570659d6121b055312360d52b7"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/request-intent.json",
+      "sha256": "74a1d29218a0fa26b6fb3cc4abb4349f65a8dcf54a1fa7101b79468e41e1753b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/restart-intent.json",
+      "sha256": "f79e2237f5346d3919cdd14b46a61a4b38c51b28db1317aff483766c328f981c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/outputs/startup.json",
+      "sha256": "b2df1e6c3a1ec3bc51f2d47b331365ad0f5291f5cce7906d50447e6d365ad2c4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/project-registry.json",
+      "sha256": "9d27515a16671d8b5072cae17c16ef36e272704e5c1ab40fe128f425220fb50a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/derived/g33-r14-canonical-008/embedding-metadata.json",
+      "sha256": "55da166ec382fc2473ef736d5caff932a0e2d38e545a8e1e4dc44d9d6d907141"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/derived/g33-r14-canonical-008/embedding.json",
+      "sha256": "9a44c5839c6333d3125dc90cf6dc35f406aa65cfc5a72826fa9be60e1b96756e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/derived/g33-r14-canonical-008/query-request.json",
+      "sha256": "21b4d8b546c733f4e0d3f2b8beb37f9ccc320198ed792f2e75731239a69b6e51"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/derived/g33-r14-canonical-008/query-result.json",
+      "sha256": "4b4a053565b18f7398cec8d1ac04247ed2efad0635c308514515a1e75a7bb0ef"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/derived/g33-r14-canonical-008/query-result.json.http.1.json",
+      "sha256": "39fe4a40977d0585fd5704359e3685b0ada5cf5ee061e5d97385601d120cd0ec"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/derived/g33-r14-canonical-008/query-result.json.http.2.json",
+      "sha256": "4f5c51a6b601f2b7c99e4a4a57084c74f4a8246da8fb2f6f9b516fdb8bea4c38"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/derived/g33-r14-canonical-008/query-result.json.http.3.json",
+      "sha256": "946f802132e8157932f4ca11fa5fd5d31d069219787b0dfc1cfd985d8c1decf7"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/derived/g33-r14-canonical-008/verified.json",
+      "sha256": "a22ccdecb12317dd6a5103b0259e7b6b81b0772da54b5496f610fc300ce8dbf5"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/memories/mem-g10-checkpoint.json",
+      "sha256": "124c24afb2f7e7d277ead826f38e2a1db3f061f740d78d9063c68851ba1fabd1"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/memories/mem-g10-pref-new.json",
+      "sha256": "c1e7ecc7caf8977e00d87ae1e8000bf9e92d2b088b7292485c2378687f50a41f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/memories/mem-g10-pref-old.json",
+      "sha256": "ad50386f82f3618a154ac1312a5a8fe04fbcd09a7d4a78142d3a4529f35f67ec"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/memory-bodies/444e3dd36bd22175126f4d50d6001a47554017ca0751f767fa7136d30eb278a1.txt",
+      "sha256": "444e3dd36bd22175126f4d50d6001a47554017ca0751f767fa7136d30eb278a1"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/memory-bodies/4fce80579952ad8a35b0e194749e1167a30472fa69fa8c3e9908c3064e8e13cc.txt",
+      "sha256": "4fce80579952ad8a35b0e194749e1167a30472fa69fa8c3e9908c3064e8e13cc"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/memory-bodies/f2d1139911fec63a48a25c87055d051f75cd29d6b42f9beb03af56fb7dd6a3f2.txt",
+      "sha256": "f2d1139911fec63a48a25c87055d051f75cd29d6b42f9beb03af56fb7dd6a3f2"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/0040b26beb69af6ba1586bd9cde328109b64292cef4c6d68d4ec77a193aa272a.json",
+      "sha256": "0040b26beb69af6ba1586bd9cde328109b64292cef4c6d68d4ec77a193aa272a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/0ba9c070a5539a21455a5b4e19d618c9bedfc882bb1e2abf3b6da225ad693c5f.json",
+      "sha256": "0ba9c070a5539a21455a5b4e19d618c9bedfc882bb1e2abf3b6da225ad693c5f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/0f84610456420c04f0be04db8233ab2cd28bd73bad07ac49331ee88c12589167.json",
+      "sha256": "0f84610456420c04f0be04db8233ab2cd28bd73bad07ac49331ee88c12589167"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/3293fbaae622ca4a2b12b294c2bea86517be3863fef0b3c54b8a136f4c28240a.json",
+      "sha256": "3293fbaae622ca4a2b12b294c2bea86517be3863fef0b3c54b8a136f4c28240a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/40af106c7491a0acec3a0b023de5b7b099cf8068399d4bfab160629b70321e23.json",
+      "sha256": "40af106c7491a0acec3a0b023de5b7b099cf8068399d4bfab160629b70321e23"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/4849a6aa8d8933a0ebb9abb42080722fa491c9cdd66ef2a75547b0897e1a359b.json",
+      "sha256": "4849a6aa8d8933a0ebb9abb42080722fa491c9cdd66ef2a75547b0897e1a359b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/4a3cceb86b9bcd0ea7fc757544cc1a4e5bd17010f35347f9169b46684a7f919d.json",
+      "sha256": "4a3cceb86b9bcd0ea7fc757544cc1a4e5bd17010f35347f9169b46684a7f919d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/676bd5ca2d39d896750cb1855d9be1816bbe4a0194d40439897a40b8444aca53.json",
+      "sha256": "676bd5ca2d39d896750cb1855d9be1816bbe4a0194d40439897a40b8444aca53"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/76c491aac18f3ccfa84c7747bb2190ad86652a436e9e42f17eb9d9f20b5f926a.json",
+      "sha256": "76c491aac18f3ccfa84c7747bb2190ad86652a436e9e42f17eb9d9f20b5f926a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/7d9ed02491a4f65123c257af088d4402e22937e07d9b0af1c23ca7bb1bf92971.json",
+      "sha256": "7d9ed02491a4f65123c257af088d4402e22937e07d9b0af1c23ca7bb1bf92971"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/a66e065e3cedcc251d6b728ef8afc0a53e827d37cc864468e09c01a6664242a6.json",
+      "sha256": "a66e065e3cedcc251d6b728ef8afc0a53e827d37cc864468e09c01a6664242a6"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/b410b5c46aa8a16fa4fbd1c21ae67fd9e568be1e510a215821c71db5aa645727.json",
+      "sha256": "b410b5c46aa8a16fa4fbd1c21ae67fd9e568be1e510a215821c71db5aa645727"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/ca08faf2f60bb1c8dae4f337403ee57418ec82c1ec8d189641009ed25e8c2a1f.json",
+      "sha256": "ca08faf2f60bb1c8dae4f337403ee57418ec82c1ec8d189641009ed25e8c2a1f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/e3deb9d5f25f751c0ed9050b46d543b83a0f23b0ec9f020ef84572e5caea6010.json",
+      "sha256": "e3deb9d5f25f751c0ed9050b46d543b83a0f23b0ec9f020ef84572e5caea6010"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/e55398104cf4c147a4d4378c3088532e55b90d2e2f92ef2165e656ccdadefe67.json",
+      "sha256": "e55398104cf4c147a4d4378c3088532e55b90d2e2f92ef2165e656ccdadefe67"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/ee92e308f60ca5a7c00013eb2ba1ed8df3b648dde9f5705f43ed53e83570fc0c.json",
+      "sha256": "ee92e308f60ca5a7c00013eb2ba1ed8df3b648dde9f5705f43ed53e83570fc0c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/f2236fb90c3e21bb209bf81efa2dcc047511b3479e8ec517133b7fde18dff121.json",
+      "sha256": "f2236fb90c3e21bb209bf81efa2dcc047511b3479e8ec517133b7fde18dff121"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/objects/sha256/f69b5009873ddb3bc5fd4612da556e68f9469583a21791572c36ee3092849f3c.json",
+      "sha256": "f69b5009873ddb3bc5fd4612da556e68f9469583a21791572c36ee3092849f3c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/trajectory.jsonl",
+      "sha256": "18f0079237a88206635861bf87a8253719bbf470310b445204510542af1c4ce7"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/canonical/store/trajectory.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/capsules/projects/project-g08-glass-archive/capsules/capsule-g08-001.json",
+      "sha256": "cb10b21595e8cf3f816d032eec163bd0e0c1681a00fc509b0fc51fc3c0b7aa3d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/capsules/projects/project-g08-glass-archive/capsules/capsule-g08-002.json",
+      "sha256": "847a409d1da59067e15c6acbc0e756a697c192f12079c08a111ab7f7abea1b1a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/capsules/projects/project-g08-glass-archive/capsules/capsule-g11-003.json",
+      "sha256": "716c9d8aaa267c53410583e87929a84d8c5fe4a9069f0d8259be8ee633bb1147"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/capsules/projects/project-g08-glass-archive/continuity.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/capsules/projects/project-g08-glass-archive/current.json",
+      "sha256": "c39f7e20d39e39b6b9357ada5231d9a234ed7cf803fb118053ffcb1f769b3309"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/context.json",
+      "sha256": "af05cc6e5543284939a7d546aa4b0c64894e788f5d44afb0f6927d25f8a2f7de"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/outputs/answer.json",
+      "sha256": "ff543b4ef4205e504bad3a62c12b187955adfa4da8fcb88fec2520a92d11da02"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/project-registry.json",
+      "sha256": "9d27515a16671d8b5072cae17c16ef36e272704e5c1ab40fe128f425220fb50a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/derived/g33-r14-capsule-severed-008/embedding-metadata.json",
+      "sha256": "e3939253437c3c2b9f1716571659ec43b5cdd731c2e02ee4039779e60a536942"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/derived/g33-r14-capsule-severed-008/embedding.json",
+      "sha256": "9a44c5839c6333d3125dc90cf6dc35f406aa65cfc5a72826fa9be60e1b96756e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/derived/g33-r14-capsule-severed-008/query-request.json",
+      "sha256": "a7a5ea0c8166d63a280e99b198ecbca2ddd9510628925f320aa9a830a56f9075"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/derived/g33-r14-capsule-severed-008/query-result.json",
+      "sha256": "4b4a053565b18f7398cec8d1ac04247ed2efad0635c308514515a1e75a7bb0ef"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/derived/g33-r14-capsule-severed-008/query-result.json.http.1.json",
+      "sha256": "39fe4a40977d0585fd5704359e3685b0ada5cf5ee061e5d97385601d120cd0ec"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/derived/g33-r14-capsule-severed-008/query-result.json.http.2.json",
+      "sha256": "6dee50fa25126264dad436b8a8a86b4e694e34b95795c3630ff3b11d4ec37971"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/derived/g33-r14-capsule-severed-008/query-result.json.http.3.json",
+      "sha256": "2d3c3f6a2f2fa7a8fa8df3d2436c2bb9abdf2b2259e7e5c5c3a8c9f53ab82bd0"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/derived/g33-r14-capsule-severed-008/verified.json",
+      "sha256": "a22ccdecb12317dd6a5103b0259e7b6b81b0772da54b5496f610fc300ce8dbf5"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/memories/mem-g10-checkpoint.json",
+      "sha256": "124c24afb2f7e7d277ead826f38e2a1db3f061f740d78d9063c68851ba1fabd1"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/memories/mem-g10-pref-new.json",
+      "sha256": "c1e7ecc7caf8977e00d87ae1e8000bf9e92d2b088b7292485c2378687f50a41f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/memories/mem-g10-pref-old.json",
+      "sha256": "ad50386f82f3618a154ac1312a5a8fe04fbcd09a7d4a78142d3a4529f35f67ec"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/memory-bodies/444e3dd36bd22175126f4d50d6001a47554017ca0751f767fa7136d30eb278a1.txt",
+      "sha256": "444e3dd36bd22175126f4d50d6001a47554017ca0751f767fa7136d30eb278a1"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/memory-bodies/4fce80579952ad8a35b0e194749e1167a30472fa69fa8c3e9908c3064e8e13cc.txt",
+      "sha256": "4fce80579952ad8a35b0e194749e1167a30472fa69fa8c3e9908c3064e8e13cc"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/memory-bodies/f2d1139911fec63a48a25c87055d051f75cd29d6b42f9beb03af56fb7dd6a3f2.txt",
+      "sha256": "f2d1139911fec63a48a25c87055d051f75cd29d6b42f9beb03af56fb7dd6a3f2"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/0040b26beb69af6ba1586bd9cde328109b64292cef4c6d68d4ec77a193aa272a.json",
+      "sha256": "0040b26beb69af6ba1586bd9cde328109b64292cef4c6d68d4ec77a193aa272a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/0ba9c070a5539a21455a5b4e19d618c9bedfc882bb1e2abf3b6da225ad693c5f.json",
+      "sha256": "0ba9c070a5539a21455a5b4e19d618c9bedfc882bb1e2abf3b6da225ad693c5f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/0f84610456420c04f0be04db8233ab2cd28bd73bad07ac49331ee88c12589167.json",
+      "sha256": "0f84610456420c04f0be04db8233ab2cd28bd73bad07ac49331ee88c12589167"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/3293fbaae622ca4a2b12b294c2bea86517be3863fef0b3c54b8a136f4c28240a.json",
+      "sha256": "3293fbaae622ca4a2b12b294c2bea86517be3863fef0b3c54b8a136f4c28240a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/40af106c7491a0acec3a0b023de5b7b099cf8068399d4bfab160629b70321e23.json",
+      "sha256": "40af106c7491a0acec3a0b023de5b7b099cf8068399d4bfab160629b70321e23"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/4849a6aa8d8933a0ebb9abb42080722fa491c9cdd66ef2a75547b0897e1a359b.json",
+      "sha256": "4849a6aa8d8933a0ebb9abb42080722fa491c9cdd66ef2a75547b0897e1a359b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/4a3cceb86b9bcd0ea7fc757544cc1a4e5bd17010f35347f9169b46684a7f919d.json",
+      "sha256": "4a3cceb86b9bcd0ea7fc757544cc1a4e5bd17010f35347f9169b46684a7f919d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/676bd5ca2d39d896750cb1855d9be1816bbe4a0194d40439897a40b8444aca53.json",
+      "sha256": "676bd5ca2d39d896750cb1855d9be1816bbe4a0194d40439897a40b8444aca53"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/76c491aac18f3ccfa84c7747bb2190ad86652a436e9e42f17eb9d9f20b5f926a.json",
+      "sha256": "76c491aac18f3ccfa84c7747bb2190ad86652a436e9e42f17eb9d9f20b5f926a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/7d9ed02491a4f65123c257af088d4402e22937e07d9b0af1c23ca7bb1bf92971.json",
+      "sha256": "7d9ed02491a4f65123c257af088d4402e22937e07d9b0af1c23ca7bb1bf92971"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/a66e065e3cedcc251d6b728ef8afc0a53e827d37cc864468e09c01a6664242a6.json",
+      "sha256": "a66e065e3cedcc251d6b728ef8afc0a53e827d37cc864468e09c01a6664242a6"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/b410b5c46aa8a16fa4fbd1c21ae67fd9e568be1e510a215821c71db5aa645727.json",
+      "sha256": "b410b5c46aa8a16fa4fbd1c21ae67fd9e568be1e510a215821c71db5aa645727"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/ca08faf2f60bb1c8dae4f337403ee57418ec82c1ec8d189641009ed25e8c2a1f.json",
+      "sha256": "ca08faf2f60bb1c8dae4f337403ee57418ec82c1ec8d189641009ed25e8c2a1f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/e55398104cf4c147a4d4378c3088532e55b90d2e2f92ef2165e656ccdadefe67.json",
+      "sha256": "e55398104cf4c147a4d4378c3088532e55b90d2e2f92ef2165e656ccdadefe67"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/f2236fb90c3e21bb209bf81efa2dcc047511b3479e8ec517133b7fde18dff121.json",
+      "sha256": "f2236fb90c3e21bb209bf81efa2dcc047511b3479e8ec517133b7fde18dff121"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/objects/sha256/f69b5009873ddb3bc5fd4612da556e68f9469583a21791572c36ee3092849f3c.json",
+      "sha256": "f69b5009873ddb3bc5fd4612da556e68f9469583a21791572c36ee3092849f3c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/trajectory.jsonl",
+      "sha256": "718aab726cc38218c17b56de9eafcc64871e51b1433fdc21280f05a96c2ac2b4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/capsule-severed/store/trajectory.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/capsules/projects/project-g08-glass-archive/capsules/capsule-g08-001.json",
+      "sha256": "cb10b21595e8cf3f816d032eec163bd0e0c1681a00fc509b0fc51fc3c0b7aa3d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/capsules/projects/project-g08-glass-archive/capsules/capsule-g08-002.json",
+      "sha256": "847a409d1da59067e15c6acbc0e756a697c192f12079c08a111ab7f7abea1b1a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/capsules/projects/project-g08-glass-archive/capsules/capsule-g11-003.json",
+      "sha256": "716c9d8aaa267c53410583e87929a84d8c5fe4a9069f0d8259be8ee633bb1147"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/capsules/projects/project-g08-glass-archive/continuity.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/capsules/projects/project-g08-glass-archive/current.json",
+      "sha256": "c39f7e20d39e39b6b9357ada5231d9a234ed7cf803fb118053ffcb1f769b3309"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/context.json",
+      "sha256": "68f60179084173be587fbc51aa833b2e4b2248a3ad9e6042ce7ccea3fdba1ca8"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/outputs/answer.json",
+      "sha256": "be57ed0bda2598ab4e35c49983f659e9aa34aae667c947a8b68db103cc3bdbad"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/outputs/capsule-event-witness.json",
+      "sha256": "bc9691b901fe27a90c14eeba60b3f1cc887385c2d41ffc423167fa31417dd655"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/outputs/capsule.json",
+      "sha256": "1589ab574948e3acd46d45890519265107aab113eb73ca00d87bbf224ff60ec7"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/project-registry.json",
+      "sha256": "9d27515a16671d8b5072cae17c16ef36e272704e5c1ab40fe128f425220fb50a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/memories/mem-g10-checkpoint.json",
+      "sha256": "124c24afb2f7e7d277ead826f38e2a1db3f061f740d78d9063c68851ba1fabd1"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/memories/mem-g10-pref-new.json",
+      "sha256": "c1e7ecc7caf8977e00d87ae1e8000bf9e92d2b088b7292485c2378687f50a41f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/memories/mem-g10-pref-old.json",
+      "sha256": "ad50386f82f3618a154ac1312a5a8fe04fbcd09a7d4a78142d3a4529f35f67ec"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/memory-bodies/444e3dd36bd22175126f4d50d6001a47554017ca0751f767fa7136d30eb278a1.txt",
+      "sha256": "444e3dd36bd22175126f4d50d6001a47554017ca0751f767fa7136d30eb278a1"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/memory-bodies/4fce80579952ad8a35b0e194749e1167a30472fa69fa8c3e9908c3064e8e13cc.txt",
+      "sha256": "4fce80579952ad8a35b0e194749e1167a30472fa69fa8c3e9908c3064e8e13cc"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/memory-bodies/f2d1139911fec63a48a25c87055d051f75cd29d6b42f9beb03af56fb7dd6a3f2.txt",
+      "sha256": "f2d1139911fec63a48a25c87055d051f75cd29d6b42f9beb03af56fb7dd6a3f2"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/0040b26beb69af6ba1586bd9cde328109b64292cef4c6d68d4ec77a193aa272a.json",
+      "sha256": "0040b26beb69af6ba1586bd9cde328109b64292cef4c6d68d4ec77a193aa272a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/0ba9c070a5539a21455a5b4e19d618c9bedfc882bb1e2abf3b6da225ad693c5f.json",
+      "sha256": "0ba9c070a5539a21455a5b4e19d618c9bedfc882bb1e2abf3b6da225ad693c5f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/0f84610456420c04f0be04db8233ab2cd28bd73bad07ac49331ee88c12589167.json",
+      "sha256": "0f84610456420c04f0be04db8233ab2cd28bd73bad07ac49331ee88c12589167"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/3293fbaae622ca4a2b12b294c2bea86517be3863fef0b3c54b8a136f4c28240a.json",
+      "sha256": "3293fbaae622ca4a2b12b294c2bea86517be3863fef0b3c54b8a136f4c28240a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/40af106c7491a0acec3a0b023de5b7b099cf8068399d4bfab160629b70321e23.json",
+      "sha256": "40af106c7491a0acec3a0b023de5b7b099cf8068399d4bfab160629b70321e23"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/4849a6aa8d8933a0ebb9abb42080722fa491c9cdd66ef2a75547b0897e1a359b.json",
+      "sha256": "4849a6aa8d8933a0ebb9abb42080722fa491c9cdd66ef2a75547b0897e1a359b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/4a3cceb86b9bcd0ea7fc757544cc1a4e5bd17010f35347f9169b46684a7f919d.json",
+      "sha256": "4a3cceb86b9bcd0ea7fc757544cc1a4e5bd17010f35347f9169b46684a7f919d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/676bd5ca2d39d896750cb1855d9be1816bbe4a0194d40439897a40b8444aca53.json",
+      "sha256": "676bd5ca2d39d896750cb1855d9be1816bbe4a0194d40439897a40b8444aca53"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/76c491aac18f3ccfa84c7747bb2190ad86652a436e9e42f17eb9d9f20b5f926a.json",
+      "sha256": "76c491aac18f3ccfa84c7747bb2190ad86652a436e9e42f17eb9d9f20b5f926a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/7d9ed02491a4f65123c257af088d4402e22937e07d9b0af1c23ca7bb1bf92971.json",
+      "sha256": "7d9ed02491a4f65123c257af088d4402e22937e07d9b0af1c23ca7bb1bf92971"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/a66e065e3cedcc251d6b728ef8afc0a53e827d37cc864468e09c01a6664242a6.json",
+      "sha256": "a66e065e3cedcc251d6b728ef8afc0a53e827d37cc864468e09c01a6664242a6"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/b410b5c46aa8a16fa4fbd1c21ae67fd9e568be1e510a215821c71db5aa645727.json",
+      "sha256": "b410b5c46aa8a16fa4fbd1c21ae67fd9e568be1e510a215821c71db5aa645727"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/ca08faf2f60bb1c8dae4f337403ee57418ec82c1ec8d189641009ed25e8c2a1f.json",
+      "sha256": "ca08faf2f60bb1c8dae4f337403ee57418ec82c1ec8d189641009ed25e8c2a1f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/e55398104cf4c147a4d4378c3088532e55b90d2e2f92ef2165e656ccdadefe67.json",
+      "sha256": "e55398104cf4c147a4d4378c3088532e55b90d2e2f92ef2165e656ccdadefe67"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/f2236fb90c3e21bb209bf81efa2dcc047511b3479e8ec517133b7fde18dff121.json",
+      "sha256": "f2236fb90c3e21bb209bf81efa2dcc047511b3479e8ec517133b7fde18dff121"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/objects/sha256/f69b5009873ddb3bc5fd4612da556e68f9469583a21791572c36ee3092849f3c.json",
+      "sha256": "f69b5009873ddb3bc5fd4612da556e68f9469583a21791572c36ee3092849f3c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/trajectory.jsonl",
+      "sha256": "718aab726cc38218c17b56de9eafcc64871e51b1433fdc21280f05a96c2ac2b4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/chroma-severed/store/trajectory.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/inbox/g33-r14-contact.json",
+      "sha256": "56a8f2de54f71cbc36544554552d1f95b778d8b2064baaff04a60838e5ec1fde"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/inbox/g33-r14-stop-canonical.json",
+      "sha256": "c986282c53a4db6c1b697d5c6e06f6d1390a0620560e4d6c36c73b0f2b0ca4c2"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/1.json",
+      "sha256": "1a2462188428ba4ed8aa5e308a8d53099e7bd1b001f21dfce5ca3e8a8c0d5a29"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/10.json",
+      "sha256": "3403294e14ef43ca14e45b67ef8176fb55dcac9ffd6f7c5420c6caa622b8ac07"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/11.json",
+      "sha256": "f8c63145903b6b3a7e0d4cde0387b5142e1a9e12ee5593b0ca9406f74ffef7de"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/12.json",
+      "sha256": "73c222a1faa1c54d295c2c200bfe44d94e85abb2afca9e94d8a290cf383ec5cf"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/13.json",
+      "sha256": "c8d279f2ea47647ed1690279667b7fd2fb744e9ef1c900236dc847bd1da52ab0"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/2.json",
+      "sha256": "a86dfd76d49f2067acc83e3eba86f5c314ab1b7141043c269ca6a5c3db98b56e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/3.json",
+      "sha256": "9730302ab87d2743219c5d8e949f2a7fc42a03d5f99a45167a3178f46939b853"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/4.json",
+      "sha256": "62e29e2edafb5e72b135fc26dc9a3c474b74df24a9df172391bea9128a5d2b56"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/5.json",
+      "sha256": "296a3fba976b1c28457dca67e9a7bdc62f419a4103a9297b84f0adb6ca2b130c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/6.json",
+      "sha256": "4bab901932d57425cf71005c9f180a7282d060c14c87b06e00957bde5f676214"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/7.json",
+      "sha256": "ca11acc3f4f359ac71201b823590ed3ccc82ea3c1ba9053117acaa9b598964b5"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/8.json",
+      "sha256": "b6ae2181d8a078eb35dd3b18bc52e52e34da286b02131425365503166de1ebd9"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/intents/9.json",
+      "sha256": "14d5b270cd3e2a1aca320da39481c852526387a1644eade78e7db0c5fa9280ce"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/obligations.json",
+      "sha256": "fc568deb1a9ff1995ab70b99e66fcfa0c47f40b66d83ecc458ee4f9cfb7d6df6"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/reactor-integrity.json",
+      "sha256": "33778237a154e6abbc078a76b5bd77a7a41de00823901190604fe2f2c4e899f4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/rna/g33-r14-contact.json",
+      "sha256": "95b37ce09807de9b9ce0e8fb606aa280698f6d3fe039ddc509e590646ecbb117"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/2490e94a6ae0155e12957e4d588f6728551f2470be5595df5ae01c75cd7da572.json",
+      "sha256": "2490e94a6ae0155e12957e4d588f6728551f2470be5595df5ae01c75cd7da572"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/3cefdecd49fb5f166338249059d33fbf75dd34bc670d299fb85c80242aac2dde.json",
+      "sha256": "3cefdecd49fb5f166338249059d33fbf75dd34bc670d299fb85c80242aac2dde"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/40e51b0b43e20182422007ede2db9aa6225a229b1adc2ceea94868a71cc5bc02.json",
+      "sha256": "40e51b0b43e20182422007ede2db9aa6225a229b1adc2ceea94868a71cc5bc02"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/429fce886dfb5f503aff551225338d1f968707fb1c5f277caa6d047858f25bdd.json",
+      "sha256": "429fce886dfb5f503aff551225338d1f968707fb1c5f277caa6d047858f25bdd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/54186ebe17b7d2caf29a2ce212aab094ee8417d2fae1fa84bf02254b67ae0f82.json",
+      "sha256": "54186ebe17b7d2caf29a2ce212aab094ee8417d2fae1fa84bf02254b67ae0f82"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/9a92b76171319d5e6941fbe5f08e40d557e5fb273640b028d216e1619895f5da.json",
+      "sha256": "9a92b76171319d5e6941fbe5f08e40d557e5fb273640b028d216e1619895f5da"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/9aa9eb8d394c06a694f3c67b14384b3c17f067c5ae151f0b8d58453d7cca5a1e.json",
+      "sha256": "9aa9eb8d394c06a694f3c67b14384b3c17f067c5ae151f0b8d58453d7cca5a1e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/a288b1400737b5f4630ea1bec9443a5c6f982a5b1dfca6c09699f29fca44fafe.json",
+      "sha256": "a288b1400737b5f4630ea1bec9443a5c6f982a5b1dfca6c09699f29fca44fafe"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/b1c9fa14f4a018d981c7ad2cb03de858297d4a2e28f55022b7962b6ca6614c3a.json",
+      "sha256": "b1c9fa14f4a018d981c7ad2cb03de858297d4a2e28f55022b7962b6ca6614c3a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/c50e9e48d09170161c23a4a982c9cffb622d09c2f332948d1aced4ef89451cca.json",
+      "sha256": "c50e9e48d09170161c23a4a982c9cffb622d09c2f332948d1aced4ef89451cca"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/d5ceaa5c9f2eb30e89e8ad391e5c711adc57a96ace7423e5955716a14508594d.json",
+      "sha256": "d5ceaa5c9f2eb30e89e8ad391e5c711adc57a96ace7423e5955716a14508594d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/dd94a81a4023f239a8e1ebcf5f3789e27baa678734487a4ea13bfb10d67461c9.json",
+      "sha256": "dd94a81a4023f239a8e1ebcf5f3789e27baa678734487a4ea13bfb10d67461c9"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/objects/sha256/fd3409e4024492449cf2fbe455c781ea7764d1ce092a45c1bf3986ffbddfbd16.json",
+      "sha256": "fd3409e4024492449cf2fbe455c781ea7764d1ce092a45c1bf3986ffbddfbd16"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/trajectory.jsonl",
+      "sha256": "148512d3b5e558f700523dbdc4fdbfa0cb22ba45c0ae86dd6a8d7cecd240bd0a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/store/trajectory.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/readiness/trace.jsonl",
+      "sha256": "d4b358d5953651d51efbec27aaf44be566982573d6e13a2006922246e0ca5b12"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/relational-voice/canonical/native-result.json",
+      "sha256": "3bc0fba85df94552510614ce797a29b3e85ab61435abadf962fd485add79b407"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/relational-voice/missing/native-result.json",
+      "sha256": "3a2e3c024e6afbb6a8b9ed08bd7c22a46e5c350b56fd3c4a87170bd9fe2242d1"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/relational-voice/neutral/native-result.json",
+      "sha256": "f9052270b9267069d3f6d83a6fae39f1dff5096a21f3bedc4aff91988bf843eb"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/relational-voice/restored/native-result.json",
+      "sha256": "31bbcc2b88c9b499bf9c2b2880d0daf3e75309900de3edb3dcf3966ad2ba9520"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/capsules/projects/project-g08-glass-archive/capsules/capsule-g08-001.json",
+      "sha256": "cb10b21595e8cf3f816d032eec163bd0e0c1681a00fc509b0fc51fc3c0b7aa3d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/capsules/projects/project-g08-glass-archive/capsules/capsule-g08-002.json",
+      "sha256": "847a409d1da59067e15c6acbc0e756a697c192f12079c08a111ab7f7abea1b1a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/capsules/projects/project-g08-glass-archive/capsules/capsule-g11-003.json",
+      "sha256": "716c9d8aaa267c53410583e87929a84d8c5fe4a9069f0d8259be8ee633bb1147"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/capsules/projects/project-g08-glass-archive/continuity.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/capsules/projects/project-g08-glass-archive/current.json",
+      "sha256": "c39f7e20d39e39b6b9357ada5231d9a234ed7cf803fb118053ffcb1f769b3309"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/context.json",
+      "sha256": "9f0c2453739a8052204582fa9bc187430ea6207560f53e0922c010afd0f886e2"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/outputs/answer.json",
+      "sha256": "5621277537e15fb760437471863f477725bb6faa8d2adb8473614e44774688d0"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/outputs/capsule-event-witness.json",
+      "sha256": "bc9691b901fe27a90c14eeba60b3f1cc887385c2d41ffc423167fa31417dd655"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/outputs/capsule.json",
+      "sha256": "1589ab574948e3acd46d45890519265107aab113eb73ca00d87bbf224ff60ec7"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/project-registry.json",
+      "sha256": "9d27515a16671d8b5072cae17c16ef36e272704e5c1ab40fe128f425220fb50a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/derived/g33-r14-restored-008/embedding-metadata.json",
+      "sha256": "8b251d696c018f5b1bcd52004fdcce5ed4432bbdf7fc835c56edceb668e5f66f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/derived/g33-r14-restored-008/embedding.json",
+      "sha256": "9a44c5839c6333d3125dc90cf6dc35f406aa65cfc5a72826fa9be60e1b96756e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/derived/g33-r14-restored-008/query-request.json",
+      "sha256": "cb7570630ada8f639abc64157b7ee4a5e5cbf4e5e62f4db59586f67f4c854ce6"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/derived/g33-r14-restored-008/query-result.json",
+      "sha256": "4b4a053565b18f7398cec8d1ac04247ed2efad0635c308514515a1e75a7bb0ef"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/derived/g33-r14-restored-008/query-result.json.http.1.json",
+      "sha256": "39fe4a40977d0585fd5704359e3685b0ada5cf5ee061e5d97385601d120cd0ec"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/derived/g33-r14-restored-008/query-result.json.http.2.json",
+      "sha256": "c145fcac37fe755c5c9d9320449439f2db99652fc73f965375052703db7a5a96"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/derived/g33-r14-restored-008/query-result.json.http.3.json",
+      "sha256": "b418a4d560fc35543a97e9b1356eea5af269174419a4d1b3e78ac399c49c16ba"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/derived/g33-r14-restored-008/verified.json",
+      "sha256": "a22ccdecb12317dd6a5103b0259e7b6b81b0772da54b5496f610fc300ce8dbf5"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/memories/mem-g10-checkpoint.json",
+      "sha256": "124c24afb2f7e7d277ead826f38e2a1db3f061f740d78d9063c68851ba1fabd1"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/memories/mem-g10-pref-new.json",
+      "sha256": "c1e7ecc7caf8977e00d87ae1e8000bf9e92d2b088b7292485c2378687f50a41f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/memories/mem-g10-pref-old.json",
+      "sha256": "ad50386f82f3618a154ac1312a5a8fe04fbcd09a7d4a78142d3a4529f35f67ec"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/memory-bodies/444e3dd36bd22175126f4d50d6001a47554017ca0751f767fa7136d30eb278a1.txt",
+      "sha256": "444e3dd36bd22175126f4d50d6001a47554017ca0751f767fa7136d30eb278a1"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/memory-bodies/4fce80579952ad8a35b0e194749e1167a30472fa69fa8c3e9908c3064e8e13cc.txt",
+      "sha256": "4fce80579952ad8a35b0e194749e1167a30472fa69fa8c3e9908c3064e8e13cc"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/memory-bodies/f2d1139911fec63a48a25c87055d051f75cd29d6b42f9beb03af56fb7dd6a3f2.txt",
+      "sha256": "f2d1139911fec63a48a25c87055d051f75cd29d6b42f9beb03af56fb7dd6a3f2"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/0040b26beb69af6ba1586bd9cde328109b64292cef4c6d68d4ec77a193aa272a.json",
+      "sha256": "0040b26beb69af6ba1586bd9cde328109b64292cef4c6d68d4ec77a193aa272a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/0ba9c070a5539a21455a5b4e19d618c9bedfc882bb1e2abf3b6da225ad693c5f.json",
+      "sha256": "0ba9c070a5539a21455a5b4e19d618c9bedfc882bb1e2abf3b6da225ad693c5f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/0f84610456420c04f0be04db8233ab2cd28bd73bad07ac49331ee88c12589167.json",
+      "sha256": "0f84610456420c04f0be04db8233ab2cd28bd73bad07ac49331ee88c12589167"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/3293fbaae622ca4a2b12b294c2bea86517be3863fef0b3c54b8a136f4c28240a.json",
+      "sha256": "3293fbaae622ca4a2b12b294c2bea86517be3863fef0b3c54b8a136f4c28240a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/40af106c7491a0acec3a0b023de5b7b099cf8068399d4bfab160629b70321e23.json",
+      "sha256": "40af106c7491a0acec3a0b023de5b7b099cf8068399d4bfab160629b70321e23"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/4849a6aa8d8933a0ebb9abb42080722fa491c9cdd66ef2a75547b0897e1a359b.json",
+      "sha256": "4849a6aa8d8933a0ebb9abb42080722fa491c9cdd66ef2a75547b0897e1a359b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/4a3cceb86b9bcd0ea7fc757544cc1a4e5bd17010f35347f9169b46684a7f919d.json",
+      "sha256": "4a3cceb86b9bcd0ea7fc757544cc1a4e5bd17010f35347f9169b46684a7f919d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/676bd5ca2d39d896750cb1855d9be1816bbe4a0194d40439897a40b8444aca53.json",
+      "sha256": "676bd5ca2d39d896750cb1855d9be1816bbe4a0194d40439897a40b8444aca53"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/76c491aac18f3ccfa84c7747bb2190ad86652a436e9e42f17eb9d9f20b5f926a.json",
+      "sha256": "76c491aac18f3ccfa84c7747bb2190ad86652a436e9e42f17eb9d9f20b5f926a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/7d9ed02491a4f65123c257af088d4402e22937e07d9b0af1c23ca7bb1bf92971.json",
+      "sha256": "7d9ed02491a4f65123c257af088d4402e22937e07d9b0af1c23ca7bb1bf92971"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/a66e065e3cedcc251d6b728ef8afc0a53e827d37cc864468e09c01a6664242a6.json",
+      "sha256": "a66e065e3cedcc251d6b728ef8afc0a53e827d37cc864468e09c01a6664242a6"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/b410b5c46aa8a16fa4fbd1c21ae67fd9e568be1e510a215821c71db5aa645727.json",
+      "sha256": "b410b5c46aa8a16fa4fbd1c21ae67fd9e568be1e510a215821c71db5aa645727"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/ca08faf2f60bb1c8dae4f337403ee57418ec82c1ec8d189641009ed25e8c2a1f.json",
+      "sha256": "ca08faf2f60bb1c8dae4f337403ee57418ec82c1ec8d189641009ed25e8c2a1f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/e55398104cf4c147a4d4378c3088532e55b90d2e2f92ef2165e656ccdadefe67.json",
+      "sha256": "e55398104cf4c147a4d4378c3088532e55b90d2e2f92ef2165e656ccdadefe67"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/f2236fb90c3e21bb209bf81efa2dcc047511b3479e8ec517133b7fde18dff121.json",
+      "sha256": "f2236fb90c3e21bb209bf81efa2dcc047511b3479e8ec517133b7fde18dff121"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/objects/sha256/f69b5009873ddb3bc5fd4612da556e68f9469583a21791572c36ee3092849f3c.json",
+      "sha256": "f69b5009873ddb3bc5fd4612da556e68f9469583a21791572c36ee3092849f3c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/trajectory.jsonl",
+      "sha256": "718aab726cc38218c17b56de9eafcc64871e51b1433fdc21280f05a96c2ac2b4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/runtime/restored/store/trajectory.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/nace/authorization.json",
+      "sha256": "f29f51dcdc5647502fd9be97576c661d44b8ef377e09f3d0ffccff851c5389cd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/nace/candidate-lineage.json",
+      "sha256": "1496215c11948b19c6d9737ee6d6361e5dc547c907c166254b0ce6bbf939d15c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/nace/candidate.json",
+      "sha256": "34314c0e9e89c300767d2c2b366c1dfbf14289e4cc910424a05cce178e43973e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/nace/input.json",
+      "sha256": "a914b203d002e268f6e18d2479ac53ed3bf969441138456eeb745baa6641571e"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/nace/manifest.json",
+      "sha256": "1bed633626d4ce2570049557c6f871d54dac0b67710a2c0a3b8df40ae1e948c3"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/nace/store/trajectory.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/nace/store/trajectory.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/inbox/g33-r14-perpetual.json",
+      "sha256": "f007efeefdfb04b3095e49fc833da94056203e1ae4063b634b4bc3003011d7cf"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/inbox/g33-r14-stop-severed.json",
+      "sha256": "3b297e6545be0bd4ea4449f8781ba1c286dfc02ae2b2f64934066f98aec281b9"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/intents/1.json",
+      "sha256": "b7bbc3c617f97a27ea1df2dc35a9d87d0f25e5277b7a9b06c88588ecae2a20fb"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/intents/2.json",
+      "sha256": "37ca676aa7e2648a391ac08f8790767769c48fb9495598335f1a8f170a076fb5"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/intents/3.json",
+      "sha256": "5a928d1f88554e3dd89a53450a2cd3f166cd3d5de9b57b62d9947a553816312a"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/intents/4.json",
+      "sha256": "76915c5bf53e4e2d2822a2d56970cc96635e0cbe4984291a2c321dc00e586e43"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/intents/5.json",
+      "sha256": "3dfd0abbf77e4e2bbfb7b6980b7e18da441b9d19191135f4d4caf01e95dfe51c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/obligations.json",
+      "sha256": "fc568deb1a9ff1995ab70b99e66fcfa0c47f40b66d83ecc458ee4f9cfb7d6df6"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/reactor-integrity.json",
+      "sha256": "33778237a154e6abbc078a76b5bd77a7a41de00823901190604fe2f2c4e899f4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/store/objects/sha256/03582c035994a5f3bf1eaf0b4ba5859a6c38501399cc063fceaa9aa125d7f327.json",
+      "sha256": "03582c035994a5f3bf1eaf0b4ba5859a6c38501399cc063fceaa9aa125d7f327"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/store/objects/sha256/5eb27c14709960d6c46ed7c5995909e17f836e204354f183dd0b5076e16eb384.json",
+      "sha256": "5eb27c14709960d6c46ed7c5995909e17f836e204354f183dd0b5076e16eb384"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/store/objects/sha256/698702322c56df33e044f2cb71fe6f1fa6154b4243d557580679cfd8cdf1c52f.json",
+      "sha256": "698702322c56df33e044f2cb71fe6f1fa6154b4243d557580679cfd8cdf1c52f"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/store/objects/sha256/966ba1785cedc5aa1b73f558d608928c6b7b315886c30b88c734ec1d81feeb93.json",
+      "sha256": "966ba1785cedc5aa1b73f558d608928c6b7b315886c30b88c734ec1d81feeb93"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/store/objects/sha256/d7f7768145ccb7340cfb04d1e4855303b5924607e12a840a6ddfe5896283bf49.json",
+      "sha256": "d7f7768145ccb7340cfb04d1e4855303b5924607e12a840a6ddfe5896283bf49"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/store/trajectory.jsonl",
+      "sha256": "b836a48153ee7fb63437d7a8278453eb10187324dba9231e047f61928dfe2411"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/store/trajectory.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/severed/readiness/trace.jsonl",
+      "sha256": "3aabfeec83d1889525b7e79d7f7e42cf98514bde916a113c4accc70bcceef8bf"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-integrity.json",
+      "sha256": "33778237a154e6abbc078a76b5bd77a7a41de00823901190604fe2f2c4e899f4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-process.json",
+      "sha256": "131098caa8058e2a8675a0e8b9b32e6a76c8a428338f87bf2e6f55acfb16665c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-products.json",
+      "sha256": "37a84720f0d78240faadbc980c19abcfb6e0d1ed2edb34fd2bb602d05e2f10ee"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-restored-process.json",
+      "sha256": "9fe743856a610e27b4584fb62600b31c7d7f78f37b3f22e5ffad29e8d65befbf"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-restored-products.json",
+      "sha256": "547d0e43dde838f2b4631a090f4003265b75432eacf875d6173f6d6568b7ffd5"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-restored.metta",
+      "sha256": "7a15ecfbeb9ae9b6e09f6e1e6963a46be5d61e31bbd2959be4b0fd991399b0e3"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-restored.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-restored.stdout",
+      "sha256": "fab4d939901bdfd2bfbed20f25cd58cdeb877b2b7dfdd0183cef4a18cf3b6a66"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-severed-process.json",
+      "sha256": "1ca5f4cda1dfd7bdaa53a2a2ae5627e605cd376ad901176d4fb432df7f0edc84"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-severed-products.json",
+      "sha256": "47bedaff3cd0a3e00465169f86e9e2c9233fb024e8cdbcb6237d220cfecb24cd"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-severed.metta",
+      "sha256": "f69f25ddf13bfd0cdb8fd80f92cb4597104230ccd8c2049945f3eaf87f22cff2"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-severed.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul-severed.stdout",
+      "sha256": "3cf47df35d5b19a4de27b6438438533df0eefbee32bcf6ab8dadac64fa0c230b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul.metta",
+      "sha256": "0638bf9b1a2477d4366271aa3a5fd2436aea0100edcafea21c13358a95a24c3d"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/soul.stdout",
+      "sha256": "bb77b20d05b26e9349cfea5ddf3d26034311cf08859fd96e1eaa0f0fb80f7fc3"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/verdict.json",
+      "sha256": "1ddff8ea5448dadf921e8d975ab3453c4de971e3eed802e48e30e7ffa7292a2c"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/verification.json",
+      "sha256": "8dea606324ab38e5969463b536da8fbf71fb895e743ebe1f71883f4dd4e44921"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-canonical-process.json",
+      "sha256": "8b8894a5ed073d70520c2fbd73c3ab491f1256112fbfdf17ad7f5672e051edfb"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-canonical-products.json",
+      "sha256": "3085ecde74a41158ec164519f801cc3c79e91c13ee05222470281b5afce0f78b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-canonical.metta",
+      "sha256": "afb4f5e34e1a4014545931999e33c6d205199465c476e079971b984ea4a63816"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-canonical.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-canonical.stdout",
+      "sha256": "0e4838b6a5763c494891c2daa70ed840cd88a5c208b0d5c1cbc9b713956a9595"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-missing-process.json",
+      "sha256": "c5664faea8279f5d60a24881ccd92796a7b6e2819c9c2ea4c416d7ce0199b3be"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-missing-products.json",
+      "sha256": "1c7409d1f7905be3fd28c797901870cc5f216f882f11be9e6e73a21e9ff823a2"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-missing.metta",
+      "sha256": "35ba453a29bca03e95957ad1941c817e14a5beec8ba26e0d8ad7c8b6c1c0a496"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-missing.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-missing.stdout",
+      "sha256": "06b435f7c36d6a588b31761c1507c381c6df47358ceafb3378bf34e264fe8a01"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-neutral-process.json",
+      "sha256": "e4b955bb23b9bd1d922c13296aeb413fb73dc01634f861a278ec0e15f5bed8bb"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-neutral-products.json",
+      "sha256": "b433a87f9ae6905714f643ad7e4f9b93fb9659ba33727c1c74912feb02638310"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-neutral.metta",
+      "sha256": "3aca5c9a07cbcded113add5f805e0d6183614d511ed45cc2c6bcb42d40c80e80"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-neutral.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-neutral.stdout",
+      "sha256": "caefe4c8829db13b88a35cb0d4801d2b4adde43b346e6f4c7c398c707616bb79"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-restored-process.json",
+      "sha256": "9dda0f2bdb795aec3690f1700b426736a0396c27cb8bba70a2beade1d35279e8"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-restored-products.json",
+      "sha256": "3085ecde74a41158ec164519f801cc3c79e91c13ee05222470281b5afce0f78b"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-restored.metta",
+      "sha256": "02d5da40acb4404508c198c23bfee0fefe7fec2cd69e2d21c021f9f393dbede4"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-restored.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/claritymiter/miter/evidence/G33/R14/attempt-008/voice-restored.stdout",
+      "sha256": "0e4838b6a5763c494891c2daa70ed840cd88a5c208b0d5c1cbc9b713956a9595"
+    },
+    {
+      "path": "/Users/claritymiter/miter/scripts/g33_r14/verify.mjs",
+      "sha256": "b4a627c7cca62c89df15cd99781035184881d36c1d7a6ea4109ce71946e22bbc"
+    }
+  ],
+  "report": "/Users/claritymiter/miter/FINAL_POC_REPORT.md",
+  "report_sha256": "0616f5703f1a0dddcf57c927f792c36083991d69f0006c4f0f135e731ac8b05a",
+  "prior_generation_replayed": false,
+  "prior_live_effect_replayed": false
+}

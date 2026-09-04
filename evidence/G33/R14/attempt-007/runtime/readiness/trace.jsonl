@@ -1,0 +1,13 @@
+{"data": ["empty-lawful-ready-set", "no-model-call" ],"kind":"quiescent-ready","wall_time":1788540066.00613}
+{"data": ["wait", 0.05, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788540066.008159}
+{"data": {"authority":"internal-hash-checkpoint-only","budget":1,"current_locus":"Transcribe","dependencies": [],"provenance":"verified-local-ingress","rna_id":"g33-r14-contact","scope":"scope:reactor-local","source_event":"g33-r14-contact","species":"ContactRNA","status":"ready","termination_condition":"finite-step-budget-or-human-stop"},"kind":"RNA-state","wall_time":1788540066.032106}
+{"data": ["rna-created", "g33-r14-contact", "ContactRNA", "human", "none" ],"kind":"RNA-created","wall_time":1788540066.033439}
+{"data": ["contact-or-due-work" ],"kind":"wake","wall_time":1788540066.035277}
+{"data": ["backoff", 0.05, "contact-or-due-work" ],"kind":"interval-reset","wall_time":1788540066.036923}
+{"data": {"authority":"internal-hash-checkpoint-only","budget":1,"current_locus":"Inquire","dependencies": [],"provenance":"verified-local-ingress","rna_id":"g33-r14-contact","scope":"scope:reactor-local","source_event":"g33-r14-contact","species":"ContactRNA","status":"ready","termination_condition":"finite-step-budget-or-human-stop"},"kind":"RNA-state","wall_time":1788540066.039674}
+{"data": ["g33-r14-contact", "b4bd4f9511f7953d5ab08af21147320c0727580460f8ff1d776b5b1774c94c56" ],"kind":"step-witness","wall_time":1788540066.043012}
+{"data": {"authority":"internal-hash-checkpoint-only","budget":0,"current_locus":"Witness","dependencies": [],"provenance":"verified-local-ingress","rna_id":"g33-r14-contact","scope":"scope:reactor-local","source_event":"g33-r14-contact","species":"ContactRNA","status":"ready","termination_condition":"finite-step-budget-or-human-stop"},"kind":"RNA-state","wall_time":1788540066.045848}
+{"data": {"authority":"internal-hash-checkpoint-only","budget":0,"current_locus":"Consolidate","dependencies": [],"provenance":"verified-local-ingress","rna_id":"g33-r14-contact","scope":"scope:reactor-local","source_event":"g33-r14-contact","species":"ContactRNA","status":"completed","termination_condition":"finite-step-budget-or-human-stop"},"kind":"RNA-state","wall_time":1788540066.050332}
+{"data": ["empty-lawful-ready-set", "no-model-call" ],"kind":"quiescent-ready","wall_time":1788540066.05369}
+{"data": ["wait", 0.05, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788540066.05663}
+{"data": ["explicit-stop" ],"kind":"reactor-stopped","wall_time":1788540066.081339}

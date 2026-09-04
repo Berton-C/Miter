@@ -1,0 +1,53 @@
+{
+  "status": "PASS-BOUNDED",
+  "gate_id": "G33",
+  "proof_a": "PASS-BOUNDED",
+  "proof_b": "PASS-BOUNDED",
+  "overall_poc": "PASS-BOUNDED",
+  "claims": [
+    {
+      "claim": "one_clean_current_consumer_lineage",
+      "status": "PASS",
+      "evidence": [
+        "evidence/G33/R14/attempt-008/observations.json",
+        "evidence/G33/R14/attempt-008/verification.json"
+      ]
+    },
+    {
+      "claim": "development_learning_and_restart_causal_bite",
+      "status": "PASS",
+      "evidence": [
+        "evidence/G33/R14/attempt-008/observations.json",
+        "evidence/G33/R14/attempt-008/verification.json"
+      ]
+    },
+    {
+      "claim": "mattermost_extension_and_terminated_live_witness_lineage",
+      "status": "PASS",
+      "evidence": [
+        "evidence/G33/R14/attempt-008/observations.json",
+        "evidence/G33/R14/attempt-008/verification.json"
+      ]
+    },
+    {
+      "claim": "five_integrated_severances_and_controls",
+      "status": "PASS",
+      "evidence": [
+        "evidence/G33/R14/attempt-008/observations.json",
+        "evidence/G33/R14/attempt-008/verification.json"
+      ]
+    },
+    {
+      "claim": "evidence_generated_clause_mapped_final_report",
+      "status": "PASS",
+      "evidence": [
+        "evidence/G33/R14/attempt-008/observations.json",
+        "evidence/G33/R14/attempt-008/verification.json"
+      ]
+    }
+  ],
+  "negative_control_difference": true,
+  "notes": [
+    "One synthetic book/voice/development family and one previously authorized local Mattermost canary lineage. This proves the bounded PoC mechanism, not the final Soul, universal intelligence, unrestricted self-programming, production multi-user governance, or arbitrary extension safety."
+  ]
+}

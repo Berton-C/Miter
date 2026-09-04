@@ -1,0 +1,5 @@
+{"data": ["empty-lawful-ready-set", "no-model-call" ],"kind":"quiescent-ready","wall_time":1788540066.180634}
+{"data": ["wait", 0.05, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788540066.183344}
+{"data": ["unauthorized", "g33-r14-perpetual", "continue-autonomous-work", "none" ],"kind":"unauthorized-event","wall_time":1788540066.198379}
+{"data": ["wait", 0.05, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788540066.201138}
+{"data": ["explicit-stop" ],"kind":"reactor-stopped","wall_time":1788540066.229107}

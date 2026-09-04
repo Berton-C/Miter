@@ -1,0 +1,18 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-unauthorized-event-3",
+  "event_kind":"unauthorized-event",
+  "occurred_at":"2026-09-04T16:43:37Z",
+  "parent_event_ids": [],
+  "payload": {
+    "data": ["unauthorized", "g33-r14-perpetual", "continue-autonomous-work", "none" ],
+    "wall_time":1788540217.233885
+  },
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-04T16:43:37Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

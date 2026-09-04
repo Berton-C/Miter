@@ -1,0 +1,25 @@
+{
+  "alternatives": [
+    "The user is asking for a summary of a previously discussed book project.",
+    "The user is inquiring about the status of a manuscript they are currently editing."
+  ],
+  "claims": [
+    {"evidence_spans": ["my book" ],"relation":"project-kind","value":"book"},
+    {
+      "evidence_spans": ["where we paused" ],
+      "relation":"continuity-facet",
+      "value":"current-position"
+    },
+    {
+      "evidence_spans": ["what I should work on next" ],
+      "relation":"continuity-facet",
+      "value":"next-movement"
+    }
+  ],
+  "completion_status":"complete",
+  "request_id":"g33-r14-canonical-007-continuity-reading",
+  "schema":"miter-continuity-reading-v1",
+  "source_sha256":"f8be7b9bb63fb850b63d57191d4ab42aa5f15a4363c2943706ba09971ae90951",
+  "standing":"generated-source-verified-candidate",
+  "uncertainty":"The specific title or content of the book is not provided in the source contact, only the general category 'book' is identified."
+}

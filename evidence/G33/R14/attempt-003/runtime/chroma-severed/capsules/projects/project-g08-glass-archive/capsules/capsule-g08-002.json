@@ -1,0 +1,32 @@
+{
+  "audience_scope":"scope:g08-private-project",
+  "blocked_by": [],
+  "capsule_id":"capsule-g08-002",
+  "commitments": [
+    "Keep the key's warmth consistent with chapter-one foreshadowing.",
+    "Do not resolve Jonas's trustworthiness in this scene."
+  ],
+  "content_hash":"01cc5fd17e657d12b848e7f11141773b7cc50921c69ba2544923909359e0865d",
+  "created_at":"2026-09-01T23:30:00Z",
+  "current_artifact_hash":"5a8433e2d94034aa79c3098353acd1d5e55db6e54d8e9edab969261a4d4e34a3",
+  "current_artifact_ref":"tests/fixtures/g08_manuscript.md",
+  "current_goal":"Resolve Mara's choice about revealing the archive key.",
+  "exact_location":"Chapter 3 / The Observatory / paragraph 4 decision beat",
+  "last_completed_work":"Revised the observatory entrance and added the stair beneath the silent telescope.",
+  "live_tensions": [
+    "Trust Jonas versus protecting the archive secret.",
+    "Urgency of the storm versus deliberate disclosure."
+  ],
+  "next_intended_movement":"Draft Mara's decision beat, then test the reveal against chapter-one foreshadowing.",
+  "open_questions": ["Should Mara reveal the archive key to Jonas before the storm breaks?" ],
+  "previous_capsule_id":"capsule-g08-001",
+  "principal_scope":"principal:g08-human",
+  "project_id":"project-g08-glass-archive",
+  "project_name":"The Glass Archive",
+  "project_purpose":"Complete a continuity-preserving speculative novel draft.",
+  "relevant_event_ids": ["evt-g07-witnessed-result-0003", "evt-g07-fork-0004" ],
+  "relevant_memory_ids": [],
+  "schema_version":"miter-project-continuity-v1",
+  "status":"current",
+  "supersedes_capsule_id":"capsule-g08-001"
+}

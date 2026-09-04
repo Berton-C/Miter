@@ -1,0 +1,6 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_final_integration_v1.metta")
+!(result identity (g33_r14_identity_probe "/Users/claritymiter/miter/evidence/G31/p3-351/candidate/extension/mattermost_bridge.pl" cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3 canonical))
+!(result identity-severed (g33_r14_identity_probe "/Users/claritymiter/miter/evidence/G31/p3-351/candidate/extension/mattermost_bridge.pl" cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3 severed))
+!(result identity-restored (g33_r14_identity_probe "/Users/claritymiter/miter/evidence/G31/p3-351/candidate/extension/mattermost_bridge.pl" cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3 restored))
+!(result panic (g33_r14_panic_probe "/Users/claritymiter/miter/evidence/G31/p3-351/candidate/extension/mattermost_bridge.pl" cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3))
+!(result live (g33_r14_prior_live_witness))

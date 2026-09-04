@@ -1,0 +1,18 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-RNA-created-4",
+  "event_kind":"RNA-created",
+  "occurred_at":"2026-09-04T16:35:22Z",
+  "parent_event_ids": [],
+  "payload": {
+    "data": ["rna-created", "g33-r14-contact", "ContactRNA", "human", "none" ],
+    "wall_time":1788539722.521638
+  },
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-04T16:35:22Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "miter-g33-r14-verification-v1",
+  "status": "PASS-BOUNDED",
+  "gate": "G33",
+  "revision": "R14",
+  "claims": {
+    "one_clean_current_consumer_lineage": true,
+    "development_learning_and_restart_causal_bite": true,
+    "mattermost_extension_and_terminated_live_witness_lineage": true,
+    "five_integrated_severances_and_controls": true,
+    "evidence_generated_clause_mapped_final_report": true
+  },
+  "verifier_identity": {
+    "execution_freeze_sha256": "c694aaea4bce052f662ad7d2d561530c5ed37447a4db8366e84d495f13f62e5d",
+    "final_sha256": "b4a627c7cca62c89df15cd99781035184881d36c1d7a6ea4109ce71946e22bbc",
+    "standing": "post-run-independent-verifier-version-explicit"
+  },
+  "mandatory_severances": {
+    "soul": true,
+    "capsule": true,
+    "voiceaudit": true,
+    "nace": true,
+    "mattermost_identity": true
+  },
+  "controls": {
+    "neutral": true,
+    "restoration": true,
+    "chroma_optional": true,
+    "synthetic_busyness_rejected": true
+  },
+  "process_boundary": {
+    "runtime": "PeTTa-on-SWI-Prolog",
+    "builder_harness": "Node.js",
+    "python_core_process": false
+  },
+  "effect_accounting": {
+    "openrouter_calls": 0,
+    "mattermost_requests": 0,
+    "credential_lookups": 0,
+    "chroma_mutations": 0,
+    "human_emissions": 0,
+    "external_effects": 0,
+    "prior_live_effect_replayed": false
+  },
+  "local_services": {
+    "lm_studio_calls": 1,
+    "chroma_read_queries": 3
+  },
+  "limits": "One synthetic book/voice/development family and one previously authorized local Mattermost canary lineage. This proves the bounded PoC mechanism, not the final Soul, universal intelligence, unrestricted self-programming, production multi-user governance, or arbitrary extension safety."
+}

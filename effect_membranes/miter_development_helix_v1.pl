@@ -12,10 +12,12 @@ nn_number(_,_,false).
 
 dh_root(R,A) :- miter_store_nonempty_atom(R,A),
  (sub_atom(A,0,_,_,'/Users/claritymiter/miter/evidence/G33/R12/');
-  sub_atom(A,0,_,_,'/Users/claritymiter/miter/evidence/G33/R13/')),
+  sub_atom(A,0,_,_,'/Users/claritymiter/miter/evidence/G33/R13/');
+  sub_atom(A,0,_,_,'/Users/claritymiter/miter/evidence/G33/R14/')),
  \+sub_atom(A,_,_,_,'..'),\+sub_atom(A,_,_,_,'//'),exists_directory(A),dh_no_links(A).
 dh_no_links('/Users/claritymiter/miter/evidence/G33/R12') :- !.
 dh_no_links('/Users/claritymiter/miter/evidence/G33/R13') :- !.
+dh_no_links('/Users/claritymiter/miter/evidence/G33/R14') :- !.
 dh_no_links(A) :- \+read_link(A,_,_),file_directory_name(A,P),P\==A,dh_no_links(P).
 dh_path(R,F,P) :- dh_root(R,A),atom(F),\+sub_atom(F,_,_,_,'/'),\+sub_atom(F,_,_,_,'..'),
  directory_file_path(A,F,P),\+read_link(P,_,_).
@@ -26,7 +28,7 @@ dh_document_native(D,N) :- (is_dict(D),get_dict(term,D,T)->tv_decode(T,N),
  ;is_dict(D),get_dict(native,D,N0)->vc_native(N0,N);vc_native(D,N)).
 dh_entry(Files,P,S) :- member(E,Files),get_dict(path,E,P),get_dict(sha256,E,S),dh_sha(P,S).
 dh_verify(R) :- dh_path(R,'manifest.json',MP),dh_json(MP,M),
- get_dict(schema,M,Schema),memberchk(Schema,["miter-g33-r12-manifest-v1","miter-g33-r13-manifest-v1"]),
+ get_dict(schema,M,Schema),memberchk(Schema,["miter-g33-r12-manifest-v1","miter-g33-r13-manifest-v1","miter-g33-r14-manifest-v1"]),
  get_dict(files,M,Files),is_list(Files),
  forall(member(E,Files),(get_dict(path,E,P),get_dict(sha256,E,S),string(P),string(S),dh_entry(Files,P,S))),
  dh_path(R,'input.json',IP),dh_path(R,'authorization.json',AP),

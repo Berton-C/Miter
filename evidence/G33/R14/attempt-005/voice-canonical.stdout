@@ -1,0 +1,3 @@
+true
+true
+(result observation (voice-observation (voice-proof expression-certificate-v1 no-emission-authority "beaad59c44487a37cfce54b8c10463295c14057521e9c7aeceb6237920b761d7") (semantic-projection ((reported-request (path artifact revised)) (retain artifact person choice choose) (retain artifact person inspection inspect) (retain artifact person recovery recover)) ("you requested revision of ledger." "mara must remain able to restore and inspect and choose ledger.") faithful no-emission-authority)))

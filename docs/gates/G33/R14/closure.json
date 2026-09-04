@@ -1,0 +1,63 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G33",
+  "plan": "docs/gates/G33/R14/plan.json",
+  "plan_commit": "32e8b7153387491007818038513fb91848ebe61f",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G33/R14/outcome.md","sha256":"78cd460a330147df14612e7e457ebfc831f0bdf375276a61f2b707637e15a023"},
+    {"path":"docs/gates/G33/R14/semantic-audit.md","sha256":"59ed7e6e92a35193802f152967ebd9bb7a09a9e990fcad2a84b385ff5ef46e02"},
+    {"path":"FINAL_POC_REPORT.md","sha256":"0616f5703f1a0dddcf57c927f792c36083991d69f0006c4f0f135e731ac8b05a"},
+    {"path":"evidence/G33/R14/attempt-008/verification.json","sha256":"8dea606324ab38e5969463b536da8fbf71fb895e743ebe1f71883f4dd4e44921"},
+    {"path":"evidence/G33/R14/attempt-008/verdict.json","sha256":"1ddff8ea5448dadf921e8d975ab3453c4de971e3eed802e48e30e7ffa7292a2c"},
+    {"path":"evidence/G33/R14/attempt-008/manifest.json","sha256":"63370d96e341a57830ecc7a290feb6706f8ac3ca74ce8d077ccb88cfa9ece8b6"},
+    {"path":"evidence/G33/R14/attempt-008/observations.json","sha256":"49914b76841871cb731bcc0bad25e8238aa41c47b788ff489c2d5c04eb83ce6f"},
+    {"path":"evidence/G33/R14/attempt-008/phase-lineage.json","sha256":"033fda22338631583deba70da81b300ca8232531d43875fc8bdd996229810c12"},
+    {"path":"evidence/G33/R14/attempt-008/final-trace-products.json","sha256":"fc47f585971ea92a12fbacdc8a86b112ce38770aa31520ae7e82b68000c1f8bb"},
+    {"path":"evidence/G33/R14/attempt-008/runtime/canonical/outputs/answer.json","sha256":"5621277537e15fb760437471863f477725bb6faa8d2adb8473614e44774688d0"},
+    {"path":"evidence/G33/R14/attempt-008/voice-missing-products.json","sha256":"1c7409d1f7905be3fd28c797901870cc5f216f882f11be9e6e73a21e9ff823a2"},
+    {"path":"evidence/G33/R14/attempt-008/reactor-canonical-trace.json","sha256":"8d6734c22cfca4eb51774c53f0c76d611c6fe946c1ea7121da7944d1fd17ce5d"},
+    {"path":"evidence/G33/R14/attempt-008/development/efficacy-before.json","sha256":"bffe2cc6e1b37dccad2831c64c3bc6b8ff879291be30787faa7a6c55c6cf38e4"},
+    {"path":"evidence/G33/R14/attempt-008/development/efficacy-after.json","sha256":"fa28444b8a1eddda8e5e7a030dcfdb1c676e8763cf70e39bb23a5308a2cb8ef4"},
+    {"path":"evidence/G33/R14/attempt-008/development/restart.json","sha256":"14c91078979390aa843f3ca42937108cf2687cd1f3a88086d68f3b364daca9ad"},
+    {"path":"evidence/G33/R14/attempt-008/mattermost-mechanical-products.json","sha256":"7a18fbe49de6b42f34573b8e742e953c48db9f3f9abee81173d591b5761d179c"},
+    {"path":"docs/gates/G33/R13/R1/closure.json","sha256":"33fdd7aa3e8ef39ca9e15a2c568019c2a4b2c9339d36894a524c28810cda99a2"}
+  ],
+  "claim_results": [
+    {
+      "id": "G33-R14-one-clean-current-consumer-lineage",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Attempt 008 joined eight actual current-consumer phase products into one native content-addressed trace. The GLM candidate and terminated G31 live canary remain exact prior lineage and were deliberately not replayed."
+    },
+    {
+      "id": "G33-R14-development-learning-and-restart-causal-bite",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Current quarantine and 13-case/four-expansion trial were followed by native consequence revision: the canonical ranking changed from two maxima to the candidate alone, the consequence-severed arm retained the tie, and restart rehydrated the changed maximum without generation replay. This is one finite development family, not general learning."
+    },
+    {
+      "id": "G33-R14-mattermost-extension-and-terminated-live-witness-lineage",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The exact current bridge passed offline trial, identity-first ingress and panic checks; the previously authorized live canary was reverified through complete public pins and remained terminal with no replay. R14 made no Mattermost or credential request and grants no ongoing service authority."
+    },
+    {
+      "id": "G33-R14-five-integrated-severances-and-controls",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Soul, exact capsule, VoiceRNA source frame, consequence/NACE and Mattermost stable identity each changed the named current product; exact restoration recovered it and neutral controls remained stable. The result is bounded to the retained synthetic cases and one prior local canary lineage."
+    },
+    {
+      "id": "G33-R14-evidence-generated-clause-mapped-final-report",
+      "status": "PROVEN-HARNESS",
+      "limit": "The independent verifier passed every frozen R14 assertion, checked all local report links and rendered FINAL_POC_REPORT.md plus a complete manifest. Report generation is evidence interpretation by the test harness, not a new native cognitive standing."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "R14 preserves the constitutional allocation: the Soul, exact continuity, VoiceRNA, recurring readiness, native consequence revision and capability-bounded surface extension each participate through their current consumer. Model and vector products remain derived; hashes prove identity rather than semantic truth; historical effects remain explicitly prior and terminated.",
+    "causal_evidence": "The five required severances produce the frozen losses and exact restoration recovers them. Consequence changes later selection, Chroma loss does not erase capsule authority, source-frame loss removes voice certification, unauthorized busyness does not wake cognition, and Mattermost identity loss rejects ingress before body inspection.",
+    "substitution_audit": "No old PASS label substitutes for a repeatable current product. The JavaScript harness launches, captures and compares; it does not choose undertakings, language, trial outcomes or rankings. The Prolog additions compact/hash already-computed evidence and exercise offline mechanics only. Attempts 001–007 remain failures and their corrections are disclosed rather than laundered into attempt 008.",
+    "capability_and_constraint_audit": "Attempt 008 used one localhost Qwen call and three read-only isolated Miter Chroma queries. It used zero OpenRouter, Mattermost, Keychain, Chroma mutation, private-memory, human-emission or external-effect operations. The recurring and final native processes stopped with status 0, no Python file exists in the core/effect trees, and user-owned G22/G28 work remains preserved and unstaged.",
+    "remaining_gaps": "The seed PoC is complete only in the explicit bounded sense documented by the final report. A final Soul, complete flourishing mathematics, universal open-ended intelligence, unrestricted safe self-programming, production multi-user privacy/erasure, general model reliability, arbitrary extension safety and the proposed Local Surface Protocol/web workbench remain future separately authorized work."
+  },
+  "reviewer": "Codex primary builder and fidelity reviewer, applying the committed Miter gate methodology",
+  "review_limits": "Single-reviewer final audit over one synthetic book/voice/development family, current bounded consumers and the exact prior local Mattermost canary lineage. The independent verifier is mechanical and does not replace broader adversarial, multi-user or production validation.",
+  "terminal_reason": "G33 R14, G33 and the agreed seed PoC are closed PASS-BOUNDED. The control documents specify no further PoC gate after G33. The Local Surface Protocol and composable web workbench are post-PoC product work and require a new frozen plan rather than being inferred into this closure."
+}

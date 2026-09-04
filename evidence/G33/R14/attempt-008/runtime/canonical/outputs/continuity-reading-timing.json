@@ -1,0 +1,11 @@
+{
+  "alias":"qwen-local",
+  "completed_at_epoch":1788540209.615093,
+  "duration_ms":56194,
+  "http_status":200,
+  "model":"qwen/qwen3.8-27b",
+  "request_id":"g33-r14-canonical-008-continuity-reading",
+  "schema":"miter-model-timing-v1",
+  "started_at_epoch":1788540153.420823,
+  "timeout_seconds":120
+}

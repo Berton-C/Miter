@@ -1,0 +1,78 @@
+{
+  "body": {
+    "max_tokens":512,
+    "messages": [
+      {
+	"content":"Return only the JSON object required by the supplied schema. Your product is an inert generated reading, not authority, memory, an answer, executable code, or permission.",
+	"role":"system"
+      },
+      {
+	"content":"Read the SOURCE CONTACT only. Propose a bounded semantic reading; do not answer the request. Each claim must cite one or more exact, case-sensitive substrings copied from SOURCE CONTACT. Use relation \"project-kind\" only for a kind such as book, manuscript, codebase, or trip; never emit a project ID. Use relation \"continuity-facet\" for any requested relation, choosing only current-position, last-completed-work, unresolved-question, or next-movement. If the contact does not support a project-kind plus at least one continuity facet, set completion_status to insufficient_evidence and return no claims. Preserve uncertainty as concise prose and list plausible alternative readings when material.\nREQUEST ID: g33-r14-canonical-006-continuity-reading\nSOURCE SHA256: f8be7b9bb63fb850b63d57191d4ab42aa5f15a4363c2943706ba09971ae90951\nSOURCE CONTACT:\nCan you remind me exactly where we paused in my book and what I should work on next?",
+	"role":"user"
+      }
+    ],
+    "reasoning_effort":"none",
+    "response_format": {
+      "json_schema": {
+	"name":"miter_continuity_reading",
+	"schema": {
+	  "additionalProperties":false,
+	  "properties": {
+	    "alternatives": {
+	      "items": {"maxLength":240,"minLength":1,"type":"string"},
+	      "maxItems":3,
+	      "minItems":0,
+	      "type":"array"
+	    },
+	    "claims": {
+	      "items": {
+		"additionalProperties":false,
+		"properties": {
+		  "evidence_spans": {
+		    "items": {"maxLength":240,"minLength":1,"type":"string"},
+		    "maxItems":3,
+		    "minItems":1,
+		    "type":"array"
+		  },
+		  "relation": {"maxLength":80,"minLength":1,"type":"string"},
+		  "value": {"maxLength":120,"minLength":1,"type":"string"}
+		},
+		"required": ["relation", "value", "evidence_spans" ],
+		"type":"object"
+	      },
+	      "maxItems":6,
+	      "minItems":0,
+	      "type":"array"
+	    },
+	    "completion_status": {"enum": ["complete", "insufficient_evidence" ],"type":"string"},
+	    "request_id": {"const":"g33-r14-canonical-006-continuity-reading","type":"string"},
+	    "source_sha256": {
+	      "const":"f8be7b9bb63fb850b63d57191d4ab42aa5f15a4363c2943706ba09971ae90951",
+	      "type":"string"
+	    },
+	    "uncertainty": {"maxLength":240,"minLength":1,"type":"string"}
+	  },
+	  "required": [
+	    "request_id",
+	    "source_sha256",
+	    "claims",
+	    "alternatives",
+	    "uncertainty",
+	    "completion_status"
+	  ],
+	  "type":"object"
+	},
+	"strict":true
+      },
+      "type":"json_schema"
+    },
+    "seed":3302,
+    "stream":false,
+    "temperature":0,
+    "top_p":1,
+    "ttl":300
+  },
+  "endpoint":"http://127.0.0.1:1234/v1/chat/completions",
+  "request_id":"g33-r14-canonical-006-continuity-reading",
+  "schema":"miter-schema-request-v1"
+}

@@ -1,0 +1,12 @@
+ERROR: [Thread main] /private/tmp/miter-g06-petta-ae66fa8/src/main.pl:36: user:main Stack limit (2.0Gb) exceeded
+ERROR: [Thread main]   Stack sizes: local: 2.0Mb, global: 2.4Mb, trail: 53Kb
+ERROR: [Thread main]   Stack depth: 33, last-call: 36%, Choice points: 7,919
+ERROR: [Thread main]   In:
+ERROR: [Thread main]     [33] system:'$add_findall_bag'([length:4])
+ERROR: [Thread main]     [32] '$bags':findall_loop([length:4], <compound (:)/2>, _71624, [])
+ERROR: [Thread main]     [31] '$bags':cleanup_bag(<compound (:)/2>, <compound (:)/2>)
+ERROR: [Thread main]     [28] user:'LProducts'([length:7], _71690)
+ERROR: [Thread main]     [27] user:'LAllProducts'([length:2], 0, [], _71720)
+ERROR: [Thread main] 
+ERROR: [Thread main] Use the --stack_limit=size[KMG] command line option or
+ERROR: [Thread main] ?- set_prolog_flag(stack_limit, 4_294_967_296). to double the limit.
