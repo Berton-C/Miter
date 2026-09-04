@@ -1,0 +1,66 @@
+{
+  "native": [
+    "cycle-step",
+    [
+      "development-life",
+      "g33-r10-development",
+      [
+	"scope",
+	"cut-fixture",
+	"principal-fixture",
+	"project-fixture",
+	"test-owner-structural-contact"
+      ],
+      "waiting",
+      "3d68feed0eedea1833fcaf3897b84bf8a9d382f32a7e24c3b155033415721311",
+      [
+	"development-grant",
+	[
+	  "scope",
+	  "cut-fixture",
+	  "principal-fixture",
+	  "project-fixture",
+	  "test-owner-structural-contact"
+	],
+	1,
+	1024,
+	120
+      ],
+      0,
+      [
+	"purpose",
+	[
+	  "development-held",
+	  "no-independent-repeated-relation",
+	  [
+	    ["held-audit", "r10-self-a", "unqualified-source-or-scope" ],
+	    ["held-audit", "r10-self-b", "unqualified-source-or-scope" ]
+	  ]
+	],
+	[
+	  "development-not-transcribed",
+	  [
+	    "development-held",
+	    "no-independent-repeated-relation",
+	    [
+	      ["held-audit", "r10-self-a", "unqualified-source-or-scope" ],
+	      ["held-audit", "r10-self-b", "unqualified-source-or-scope" ]
+	    ]
+	  ]
+	]
+      ],
+      "none",
+      [
+	"development-held",
+	"no-independent-repeated-relation",
+	[
+	  ["held-audit", "r10-self-a", "unqualified-source-or-scope" ],
+	  ["held-audit", "r10-self-b", "unqualified-source-or-scope" ]
+	]
+      ]
+    ],
+    [],
+    "native-opportunity-unavailable"
+  ],
+  "schema":"miter-development-cycle-step-native-v1"
+}

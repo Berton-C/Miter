@@ -1,0 +1,31 @@
+{
+  "schema": "miter-g33-r10-cases-v1",
+  "undertaking_id": "g33-r10-development",
+  "variants": [
+    "canonical",
+    "neutral-order",
+    "same-family",
+    "self-authored",
+    "missing-capability",
+    "exhausted-grant"
+  ],
+  "expected": {
+    "canonical_phase": "pending",
+    "canonical_result": "awaiting-model-result",
+    "canonical_rna_status": "awaiting-authorized-generation",
+    "same_family_result": "development-held",
+    "self_authored_result": "development-held",
+    "missing_capability_result": "development-inquiry",
+    "exhausted_grant_result": "development-incomplete"
+  },
+  "resources": {
+    "model_calls": 0,
+    "external_network_requests": 0,
+    "credential_lookups": 0,
+    "chroma_mutations": 0,
+    "mattermost_operations": 0,
+    "human_emissions": 0,
+    "external_effects": 0
+  },
+  "standing": "Builder fixture describes disclosed raw contacts and expected observations only; it is never imported as native standing."
+}

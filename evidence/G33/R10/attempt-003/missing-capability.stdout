@@ -1,0 +1,3 @@
+true
+(case-result registered-hooks ((idle-promoter SourceGroundedDevelopmentIdle) (rna-advancer SourceGroundedDevelopRNA SourceGroundedDevelopmentBoundary)))
+reactor-recorded

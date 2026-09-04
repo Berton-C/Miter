@@ -1,0 +1,15 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-idle-wait-32",
+  "event_kind":"idle-wait",
+  "occurred_at":"2026-09-04T13:56:29Z",
+  "parent_event_ids": [],
+  "payload": {"data": ["wait", 0.4, "no-progress-claim", "no-model-call" ],"wall_time":1788530189.521077},
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-04T13:56:29Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}

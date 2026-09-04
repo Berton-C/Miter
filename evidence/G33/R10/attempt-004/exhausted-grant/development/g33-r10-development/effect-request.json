@@ -1,0 +1,4 @@
+{
+  "native": ["unapplied-effects",  [], "authority-awaiting-separate-authorization" ],
+  "schema":"miter-development-effect-request-native-v1"
+}

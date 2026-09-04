@@ -1,0 +1,700 @@
+{
+  "native": [
+    "development-contact-set",
+    "g33-r10-development",
+    [
+      "scope",
+      "cut-fixture",
+      "principal-fixture",
+      "project-fixture",
+      "test-owner-structural-contact"
+    ],
+    [
+      [
+	"raw-contact",
+	"r10-a",
+	"independent-native-audit",
+	[
+	  "voice-frame",
+	  [
+	    "scope",
+	    "cut-fixture",
+	    "principal-fixture",
+	    "project-fixture",
+	    "test-owner-structural-contact"
+	  ],
+	  [
+	    [
+	      "node",
+	      "edge-0",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person", "choose" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "edge-1",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person", "inspect" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "edge-2",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person", "recover" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "edge-3",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "artifact", "original" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "name-person",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "mara", "person", "person" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "name-artifact",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "ledger", "artifact", "artifact" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "name-other",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "journal", "artifact", "other-artifact" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "interface-choice",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact", "choice", "choose" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "interface-inspection",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact", "inspection", "inspect" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "interface-recovery",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact", "recovery", "recover" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "request-source",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["utterance", "artifact", "Please revise ledger." ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "commitment-source",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["utterance", "artifact", "Keep mara able to choose and inspect and restore ledger." ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "joint-contact",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      [
+		"coexpress",
+		"artifact",
+		[
+		  ["retain", "artifact", "person", "choice", "choose" ],
+		  ["retain", "artifact", "person", "inspection", "inspect" ],
+		  ["retain", "artifact", "person", "recovery", "recover" ]
+		]
+	      ],
+	      []
+	    ]
+	  ],
+	  [
+	    [
+	      "observation",
+	      "edge-0",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person", "choose" ]
+	    ],
+	    [
+	      "observation",
+	      "edge-1",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person", "inspect" ]
+	    ],
+	    [
+	      "observation",
+	      "edge-2",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person", "recover" ]
+	    ],
+	    [
+	      "observation",
+	      "edge-3",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "artifact", "original" ]
+	    ],
+	    [
+	      "observation",
+	      "name-person",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "mara", "person", "person" ]
+	    ],
+	    [
+	      "observation",
+	      "name-artifact",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "ledger", "artifact", "artifact" ]
+	    ],
+	    [
+	      "observation",
+	      "name-other",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "journal", "artifact", "other-artifact" ]
+	    ],
+	    [
+	      "observation",
+	      "interface-choice",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact", "choice", "choose" ]
+	    ],
+	    [
+	      "observation",
+	      "interface-inspection",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact", "inspection", "inspect" ]
+	    ],
+	    [
+	      "observation",
+	      "interface-recovery",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact", "recovery", "recover" ]
+	    ],
+	    [
+	      "observation",
+	      "request-source",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["utterance", "artifact", "Please revise ledger." ]
+	    ],
+	    [
+	      "observation",
+	      "commitment-source",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["utterance", "artifact", "Keep mara able to choose and inspect and restore ledger." ]
+	    ],
+	    [
+	      "observation",
+	      "joint-contact",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      [
+		"coexpress",
+		"artifact",
+		[
+		  ["retain", "artifact", "person", "choice", "choose" ],
+		  ["retain", "artifact", "person", "inspection", "inspect" ],
+		  ["retain", "artifact", "person", "recovery", "recover" ]
+		]
+	      ]
+	    ]
+	  ],
+	  [
+	    ["at", "edge-0", "v1" ],
+	    ["at", "edge-1", "v1" ],
+	    ["at", "edge-2", "v1" ],
+	    ["at", "edge-3", "v1" ],
+	    ["at", "name-person", "v1" ],
+	    ["at", "name-artifact", "v1" ],
+	    ["at", "name-other", "v1" ],
+	    ["at", "interface-choice", "v1" ],
+	    ["at", "interface-inspection", "v1" ],
+	    ["at", "interface-recovery", "v1" ],
+	    ["at", "request-source", "v1" ],
+	    ["at", "commitment-source", "v1" ],
+	    ["at", "joint-contact", "v1" ]
+	  ],
+	  [
+	    [
+	      "operation",
+	      "direct-change",
+	      [ ["edge", "artifact", "original" ] ],
+	      [ ["edge", "artifact", "revised" ] ],
+	      [
+		["edge", "person", "choose" ],
+		["edge", "person", "inspect" ],
+		["edge", "person", "recover" ]
+	      ]
+	    ],
+	    [
+	      "operation",
+	      "preserve-participation",
+	      [ ["edge", "artifact", "original" ] ],
+	      [
+		["edge", "person", "delegate" ],
+		["edge", "delegate", "choose" ],
+		["edge", "delegate", "inspect" ],
+		["edge", "delegate", "recover" ]
+	      ],
+	      []
+	    ]
+	  ],
+	  "artifact",
+	  2,
+	  []
+	],
+	["You requested revision of ledger.", "Mara must remain able to choose and restore ledger." ]
+      ],
+      [
+	"raw-contact",
+	"r10-b",
+	"independent-native-audit",
+	[
+	  "voice-frame",
+	  [
+	    "scope",
+	    "cut-fixture",
+	    "principal-fixture",
+	    "project-fixture",
+	    "test-owner-structural-contact"
+	  ],
+	  [
+	    [
+	      "node",
+	      "edge-0",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person-two", "choose" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "edge-1",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person-two", "inspect" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "edge-2",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person-two", "recover" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "edge-3",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "artifact-two", "original" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "name-person",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "mara", "person", "person-two" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "name-artifact",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "ledger", "artifact", "artifact-two" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "name-other",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "journal", "artifact", "other-artifact" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "interface-choice",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact-two", "choice", "choose" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "interface-inspection",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact-two", "inspection", "inspect" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "interface-recovery",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact-two", "recovery", "recover" ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "request-source",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["utterance", "artifact-two", "Please revise ledger." ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "commitment-source",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      [
+		"utterance",
+		"artifact-two",
+		"Keep mara able to choose and inspect and restore ledger."
+	      ],
+	      []
+	    ],
+	    [
+	      "node",
+	      "joint-contact",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      [
+		"coexpress",
+		"artifact-two",
+		[
+		  ["retain", "artifact-two", "person-two", "choice", "choose" ],
+		  ["retain", "artifact-two", "person-two", "inspection", "inspect" ],
+		  ["retain", "artifact-two", "person-two", "recovery", "recover" ]
+		]
+	      ],
+	      []
+	    ]
+	  ],
+	  [
+	    [
+	      "observation",
+	      "edge-0",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person-two", "choose" ]
+	    ],
+	    [
+	      "observation",
+	      "edge-1",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person-two", "inspect" ]
+	    ],
+	    [
+	      "observation",
+	      "edge-2",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "person-two", "recover" ]
+	    ],
+	    [
+	      "observation",
+	      "edge-3",
+	      "external-contact",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["edge", "artifact-two", "original" ]
+	    ],
+	    [
+	      "observation",
+	      "name-person",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "mara", "person", "person-two" ]
+	    ],
+	    [
+	      "observation",
+	      "name-artifact",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "ledger", "artifact", "artifact-two" ]
+	    ],
+	    [
+	      "observation",
+	      "name-other",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["named", "journal", "artifact", "other-artifact" ]
+	    ],
+	    [
+	      "observation",
+	      "interface-choice",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact-two", "choice", "choose" ]
+	    ],
+	    [
+	      "observation",
+	      "interface-inspection",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact-two", "inspection", "inspect" ]
+	    ],
+	    [
+	      "observation",
+	      "interface-recovery",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["interface", "artifact-two", "recovery", "recover" ]
+	    ],
+	    [
+	      "observation",
+	      "request-source",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      ["utterance", "artifact-two", "Please revise ledger." ]
+	    ],
+	    [
+	      "observation",
+	      "commitment-source",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      [
+		"utterance",
+		"artifact-two",
+		"Keep mara able to choose and inspect and restore ledger."
+	      ]
+	    ],
+	    [
+	      "observation",
+	      "joint-contact",
+	      "human-confirmation",
+	      ["principal-fixture" ],
+	      "project-fixture",
+	      "v1",
+	      [
+		"coexpress",
+		"artifact-two",
+		[
+		  ["retain", "artifact-two", "person-two", "choice", "choose" ],
+		  ["retain", "artifact-two", "person-two", "inspection", "inspect" ],
+		  ["retain", "artifact-two", "person-two", "recovery", "recover" ]
+		]
+	      ]
+	    ]
+	  ],
+	  [
+	    ["at", "edge-0", "v1" ],
+	    ["at", "edge-1", "v1" ],
+	    ["at", "edge-2", "v1" ],
+	    ["at", "edge-3", "v1" ],
+	    ["at", "name-person", "v1" ],
+	    ["at", "name-artifact", "v1" ],
+	    ["at", "name-other", "v1" ],
+	    ["at", "interface-choice", "v1" ],
+	    ["at", "interface-inspection", "v1" ],
+	    ["at", "interface-recovery", "v1" ],
+	    ["at", "request-source", "v1" ],
+	    ["at", "commitment-source", "v1" ],
+	    ["at", "joint-contact", "v1" ]
+	  ],
+	  [
+	    [
+	      "operation",
+	      "direct-change",
+	      [ ["edge", "artifact-two", "original" ] ],
+	      [ ["edge", "artifact-two", "revised" ] ],
+	      [
+		["edge", "person-two", "choose" ],
+		["edge", "person-two", "inspect" ],
+		["edge", "person-two", "recover" ]
+	      ]
+	    ],
+	    [
+	      "operation",
+	      "preserve-participation",
+	      [ ["edge", "artifact-two", "original" ] ],
+	      [
+		["edge", "person-two", "delegate" ],
+		["edge", "delegate", "choose" ],
+		["edge", "delegate", "inspect" ],
+		["edge", "delegate", "recover" ]
+	      ],
+	      []
+	    ]
+	  ],
+	  "artifact-two",
+	  2,
+	  []
+	],
+	["You requested revision of ledger.", "Mara must remain able to choose and restore ledger." ]
+      ]
+    ],
+    [
+      [
+	"surface-capability",
+	"VoicePolicy",
+	"retention-omission",
+	"miter-voice-realization-v2",
+	["trial-expression" ],
+	[]
+      ]
+    ],
+    [
+      "development-grant",
+      [
+	"scope",
+	"cut-fixture",
+	"principal-fixture",
+	"project-fixture",
+	"test-owner-structural-contact"
+      ],
+      1,
+      1024,
+      120
+    ],
+    "c47a8ae75353ea40e8c1b51895977463cfa3d2eadf03bdcfe4f0290f5c732f2c"
+  ],
+  "schema":"miter-development-contact-native-v1"
+}
