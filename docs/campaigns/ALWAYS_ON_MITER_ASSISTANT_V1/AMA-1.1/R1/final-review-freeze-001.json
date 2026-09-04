@@ -1,0 +1,94 @@
+{
+  "schema": "miter-ama11-final-review-freeze-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "date": "2026-09-05",
+  "plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/plan.json",
+  "plan_sha256": "28ea805b824702cac7dcc827b6d2e8d1fc1120bcbd2d74358932c0c3fd2294fd",
+  "purpose": "Freeze the offline regression, package verification, and qualitative F-09 review inputs after RR-001. A green mechanical package cannot assign semantic standing or override a partial constitutive row.",
+  "semantic_standing_assigned_by_script": false,
+  "files": [
+    {"path": "scripts/ama1_1/final_review.mjs", "sha256": "1fafaf0fb6e52da0fd513cccde82d6e98ce265897c3c121d42bc1f8ca93edc3e"},
+    {"path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/plan.json", "sha256": "28ea805b824702cac7dcc827b6d2e8d1fc1120bcbd2d74358932c0c3fd2294fd"},
+    {"path": "src/constitutive_participation_v1.metta", "sha256": "c6a5b93ec64bcc18c88e920b1d8ff695deee2b2e2aa8333899707b1a3cada7a3"},
+    {"path": "src/assistant_reactor_v1.metta", "sha256": "3b769512a0a9e38e2a00b8b56f124ab17c895f7985b2999105ad4018dc06e528"},
+    {"path": "src/bootstrap_assistant_v1.metta", "sha256": "ba3fc8030070f9e24ac651cd9167994e5cc8132b2c06af71675e654c91d5c0d1"},
+    {"path": "effect_membranes/miter_assistant_service_v1.pl", "sha256": "3b3e89645c66e054e85905183b2116a993ea8967581de68f1d426998bf5b4c41"},
+    {"path": "effect_membranes/miter_assistant_operator_v1.pl", "sha256": "e77ff9c75f87447b74822d13b673238f4786f4141c3afbfb0c882b599da32902"},
+    {"path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/repair-outcome-001.json", "sha256": "e609fb4775f80779faf3b032b905dd9fce9503c51a3bbbcb256c887faea3f53c"},
+    {"path": "evidence/AMA-1.1/R1/operator-freeze-002/verdict.json", "sha256": "bcee098b5e41f6b1cbe61cd96e32927beec7178bf7e692bbfb573976a03151cf"},
+    {"path": "evidence/AMA-1.1/R1/reactor-freeze-002/verdict.json", "sha256": "8354e7e1fb85533f01019285e5ba17e4911a6857a02d5dfd194f5b1bb541504e"},
+    {"path": "evidence/AMA-1.1/R1/service-freeze-001/verdict.json", "sha256": "be771e31ccd7efd4821664e1844103eb7e3aa98d2f357361683d29e4184612f7"},
+    {"path": "evidence/AMA-1.1/R1/participant-voice-freeze-001/verdict.json", "sha256": "e3e64ca1b96a75f31556a3be1b054b2ca58126085bbdb5e01b6c60cc676f3eb8"},
+    {"path": "evidence/AMA-1.1/R1/post-operator-matrix-001/verdict.json", "sha256": "3f6064508ad69fa5e2e46924480a5b84d8152180cc5f6890ab342f6b15f9fb54"},
+    {"path": "evidence/AMA-1.1/R1/post-operator-repair-001/results.json", "sha256": "3831c8d2d304a253b945d913eaed5dd57d54c2901a3d9e8c368f492e41021102"},
+    {"path": "evidence/AMA-1.1/R1/post-operator-repair-001/verdict.json", "sha256": "ca970e0f4abdce5bd6d72d7cd93cc05ef279352ff95bd3d31fbd182894d2cad8"},
+    {"path": "docs/gates/G31/P9/R1/closure.json", "sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1"},
+    {"path": "docs/gates/G32/R2/closure.json", "sha256": "9c4c00bc2d5605f3ecaf8bee1bc3993be9af50d53037184d3847fb06d2fce0"},
+    {"path": "docs/gates/G33/R14/closure.json", "sha256": "1dce6a97a2292d0dac84a4c32064a375ee90c4ae07e1995a92d49d46c55856c6"}
+  ],
+  "public_scan_paths": [
+    "evidence/AMA-1.1/R1"
+  ],
+  "regression_boundary": {
+    "run": [
+      "active fidelity checker tests",
+      "active phase package verifier",
+      "current Prolog membrane syntax",
+      "native PeTTa/MeTTa bootstrap import",
+      "current AMA-1.1 frozen evidence verification",
+      "G31, G32, and G33 promoted predecessor closure evidence verification",
+      "public evidence secret scan",
+      "no-Python-core and no-implicit-runtime-root checks"
+    ],
+    "do_not_run": [
+      "expired G31 live grant",
+      "Mattermost or Keychain access",
+      "OpenRouter or local model calls",
+      "Chroma or private-memory access",
+      "historical generators or mutating acceptance runners"
+    ]
+  },
+  "f09_protocol": {
+    "stages": [
+      "typed-contact",
+      "constitutive-cut",
+      "fact9-expression",
+      "flourishing-organization",
+      "generated-continuations",
+      "native-movement",
+      "bounded-participant-reentry",
+      "voice-and-effect",
+      "consequence-next-cut",
+      "restart-continuity"
+    ],
+    "allowed_statuses": ["PROVEN-RUNTIME", "PARTIAL", "UNRESOLVED", "FAIL"],
+    "required_fields": [
+      "stage",
+      "status",
+      "source_meaning",
+      "runtime_evidence",
+      "material_severance",
+      "neutral",
+      "restoration",
+      "causal_consumer",
+      "limit",
+      "successor_dependency"
+    ],
+    "closure_law": "AMA-1.1 may close PASS-BOUNDED only if all ten stages are PROVEN-RUNTIME and CA-01 through CA-09 are supported through the same persistent assistant. Any partial, unresolved, or failed row keeps the phase open.",
+    "reviewer_must_not": [
+      "count a populated schema as causal participation",
+      "treat carried participant data as cut incorporation",
+      "treat supplied possible-movement forms as native formation without qualification",
+      "treat one favorable matrix as complete flourishing semantics",
+      "treat checkpoint persistence as full Continuity of Mind without load-bearing organization",
+      "promote PoC evidence into final Inquiry 26.6 or 26.9 authority"
+    ]
+  },
+  "expected_outputs": [
+    "evidence/AMA-1.1/R1/final-review-001/",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/f09-review-001.json",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/f09-review-001.md",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/formalization-feedback-001.json"
+  ]
+}
