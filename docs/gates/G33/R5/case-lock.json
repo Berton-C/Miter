@@ -1,0 +1,31 @@
+{
+  "schema": "miter-g33-r5-case-lock-v1",
+  "source_frame": {
+    "path": "evidence/SC07/live-001/frame.json",
+    "sha256": "3af77056b5e276f8a33553ac8e820969c1bf10f95e2d7053afa725a584c8cd1f"
+  },
+  "accepted_capability": {
+    "path": "evidence/G22/g26-001/accepted/candidate.json",
+    "sha256": "5c22eaadab79625bf9602e8ed553405a4774e83a1c19a46fe8226d4fa8f58356",
+    "active_receipt_path": "evidence/G22/g26-001/accepted/active.json",
+    "active_receipt_sha256": "8ff2514c5274560cd7e5363376491fb74802ac5691ea3b31f6cf1939c2d02f03",
+    "closure_path": "docs/gates/G22/closure.json",
+    "closure_sha256": "9884bb7ebbac2e1f97e35073388af09c2f6619dd99ececa94120c900d99ec5f8"
+  },
+  "controlled_first_candidate": ["I will revise ledger."],
+  "expected_initial_standing": "meaning-altered repair-request",
+  "expected_repair_properties": [
+    "covers the exact source-grounded reported request",
+    "covers all three exact retained participations",
+    "honors the source-grounded joint co-expression relation",
+    "is independently re-read and re-audited faithful",
+    "carries no emission authority"
+  ],
+  "forbidden_fixture_content": [
+    "an exact repaired sentence",
+    "a scenario-to-response lookup",
+    "a defect-to-action table",
+    "a scalar winner",
+    "a builder-supplied faithful audit or certificate"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R5: when a controlled renderer candidate changes a source-grounded relational intention, native MeTTa consumes the actual specific repair-request, uses an independently accepted declarative expressive capability to construct and compare complete alternatives from the encounter's material relations, re-reads and re-audits the resulting expression, and produces a recomputable no-emission certificate only when one expression is uniquely supported; ambiguity, missing participation, stale scope, bypassed audit, or unaccepted capability remains explicitly uncertified.",
+  "claim_ids": [
+    "G33-R5-repair-request-consumed-by-native-construction",
+    "G33-R5-source-joint-participation-determines-repaired-expression",
+    "G33-R5-faithful-repair-carries-recomputable-certificate",
+    "G33-R5-bypass-ambiguity-and-forged-capability-held"
+  ],
+  "non_claims": "No claim of general language, general relational benefit, a fresh LLM product, public RRun/RWait repair integration, human emission, effect eligibility, arbitrary accepted-capability recovery, production registry portability, complete G16/G17, complete G33, quiescence, later development, NACE learning, restart, new Mattermost activity, or final PoC acceptance. The first candidate and source frame are disclosed prior finite acceptance stimuli. The exact repaired wording is deliberately not frozen or supplied by builder code.",
+  "rationale": "G33 R3 proved that native RAudit detects an actual system-promise substitution and four omissions and that RDisposition forms repair-request. G33 R4 repaired the earlier mechanical root coupling and ran current RRun, but its coincidentally faithful candidate did not exercise repair. C-004/C-009/C-011/C-012/C-054-C-062 and S-501-S-505/S-902-S-905 require the encounter's grounded organization to form expression; ACCEPTANCE G16 requires a rejected first candidate, specific defects, repaired candidate, and separate certificate. SC07 already supplies non-rule-based native construction, while G22 supplies an actually accepted expressive capability. R5 connects those proven native products rather than adding defect-to-action lookup or repeated model sampling.",
+  "requirements": [
+    "C-003", "C-004", "C-005", "C-006", "C-007", "C-008", "C-009", "C-010", "C-011", "C-012", "C-013", "C-020", "C-021", "C-022", "C-023", "C-040", "C-041", "C-042", "C-044", "C-045", "C-050", "C-051", "C-052", "C-053", "C-054", "C-055", "C-056", "C-057", "C-060", "C-061", "C-062", "C-063", "C-064", "C-065", "C-066", "C-067", "C-090", "C-091", "C-092", "C-093", "C-094", "C-095", "C-096", "C-097", "C-098", "C-099", "C-100", "C-101", "C-102", "C-103", "C-104", "C-105",
+    "S-103", "S-202", "S-203", "S-205", "S-301", "S-302", "S-303", "S-304", "S-305", "S-401", "S-402", "S-403", "S-404", "S-405", "S-501", "S-502", "S-503", "S-504", "S-505", "S-601", "S-603", "S-604", "S-605", "S-801", "S-802", "S-803", "S-804", "S-901", "S-902", "S-903", "S-904", "S-905", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202", "S-1203",
+    "T-01", "T-03", "T-05", "T-09", "T-14", "T-22", "T-23", "T-28", "T-29", "T-30", "T-31"
+  ],
+  "reading": "Read both complete controls; C-004/C-009/C-011/C-012/C-054-C-067/C-090-C-105; Soul S-501-S-505, S-601-S-605, S-801-S-804, S-901-S-905, S-1101-S-1105, S-1201-S-1203; T-14/T-22/T-23/T-30/T-31; ACCEPTANCE G16/G17/G33; POC_SPEC VoiceRNA and final demonstration; BUILD_FIDELITY_PROTOCOL F-01-F-07; SC07 correction/closure; G22 accepted-development closure; G33 R3 and R4 outcomes/closures. The actual R3 repair-request and R4 limit determine this scope.",
+  "representation": "A new native repair-continuation record binds the current frame, RIntend product, generated first-candidate clauses, recomputed RAudit, actual RDisposition, accepted expressive-capability record and lineage, bounded VConstruct search, all supported alternatives, relevant joint participation, fresh audits, and certificate standing. The certificate contains source cut/scope, intended relations and proofs, original candidate and alterations, exact constructed clauses/fragments, capability/source hashes, fresh audit, and no-emission authority. A small Prolog membrane may project and hash the exact committed G22 accepted capability/receipt and provide lexical sentence mechanics; it cannot select an alternative, interpret a defect, judge fidelity, or certify.",
+  "consumer": "The actual consumers are GroundLanguage/DGround, RIntend, RAudit, RDisposition, VConstruct/VEligible and a new native repair/comparison/certificate checker. The canonical entry receives the same rendered-state product shape used by RWait so later public integration can call it without a second semantic implementation. Builder JavaScript only launches pinned PeTTa, captures products, alters one frozen participant per adversarial arm, and compares the structural contract; it cannot contain the repaired sentence, choose an alternative, supply a faithful audit, or mint a certificate.",
+  "falsifiers": "A defect/action or scenario/response table chooses repair; exact repaired wording appears in runtime or test fixtures; list order or a scalar selects among alternatives; the altered first candidate is certified; a supplied audit/certificate is trusted without recomputation; material source meaning or joint participation is omitted or compensated; an unaccepted or changed module is used; removing joint participation still fabricates the same unique standing; changing scope/cut preserves a stale certificate; model text gains authority; Prolog or JavaScript chooses semantic content; the path calls a model or performs an external effect; or old first-match VoicePolicy code is imported.",
+  "scope_review": "R5 may add one native repair/certificate module and bootstrap, one non-cognitive accepted-capability/lexical projection membrane, frozen R5 fixtures, builder run/verify code, R5 evidence, and R5 closure docs. It may minimally refactor no existing semantic module unless a separately evidenced integration defect requires it; any public RRun/RWait wiring is deferred. It may read the exact committed SC07 frame and G22 accepted candidate/active receipt under their pinned hashes. It may not modify controls, old voice/policy code, historical evidence, G22 accepted state, model configuration, Chroma, Mattermost, credentials, user-owned G22/G28 work, or create ~/.miter. No model, network, credential, external-service, human-emission, or external-effect call is authorized.",
+  "rollback": "The new native repair path has no external effect and does not replace the current RRun entry. Reverting its bootstrap/module/membrane removes only the unintegrated R5 continuation. All failed and passing evidence remains provenance; accepted G22 development and historical voice evidence are read-only.",
+  "predecessor": "docs/gates/G33/R4/closure.json",
+  "allowed_paths": [
+    "docs/gates/G33/R5/",
+    "src/relational_voice_repair_v1.metta",
+    "src/bootstrap_relational_voice_repair_v1.metta",
+    "effect_membranes/miter_relational_voice_repair_v1.pl",
+    "tests/fixtures/g33_r5/",
+    "scripts/g33_r5/",
+    "evidence/G33/R5/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G33/R4/closure.json","sha256":"d9dbfabdaa37fe641383b3ae9573df0bad677fa8fee9f7533d7263075e1b1159"},
+    {"path":"docs/gates/G33/R4/outcome.md","sha256":"d9f6c8ea1644ede5f25adc4d03daae696637076d90946590a8746e1c64daa399"},
+    {"path":"src/relational_voice.metta","sha256":"ac26b0fc44f30c00ae7abdfc85953a78a4d569a716531bb04e93e3aeaab78b4e"},
+    {"path":"src/voice_construction.metta","sha256":"57a68c16d5658ebd04d2e4119e9a2f1f0fc634a2ba1871548ff4ce86eaee50f2"},
+    {"path":"src/bootstrap_voice_construction.metta","sha256":"b862cac3ce57ad48c72e0c8d6dd6a992bd170b3e6b6c24c79b474d661a17eaca"},
+    {"path":"src/bootstrap_relational_voice.metta","sha256":"af6854433ea16b5b23ac7f013dfca43a10d1cac9a31e1919e1b7985470bf6593"},
+    {"path":"effect_membranes/miter_relational_voice_v2.pl","sha256":"65976a04f3b286685d4f38e5f4e497a9b1ea15427618fb6623c64bc73112e238"},
+    {"path":"effect_membranes/miter_voice_construction.pl","sha256":"967e13fbee24be700312f5c7c8f78e77c46327146bbb9225aefd7ed0914922ef"},
+    {"path":"derived/voice-realization-seed-v2.json","sha256":"e18142fdd6aef1bcada31af1b2dd9a9cb36780cedf0e616582557c069ed9be96"},
+    {"path":"docs/gates/SC07/closure.json","sha256":"74489c782f0588189acf955e1cbcf06b4759635d83c95a34468059e2082996aa"},
+    {"path":"docs/gates/G22/closure.json","sha256":"9884bb7ebbac2e1f97e35073388af09c2f6619dd99ececa94120c900d99ec5f8"},
+    {"path":"evidence/SC07/live-001/frame.json","sha256":"3af77056b5e276f8a33553ac8e820969c1bf10f95e2d7053afa725a584c8cd1f"},
+    {"path":"evidence/G22/g26-001/accepted/candidate.json","sha256":"5c22eaadab79625bf9602e8ed553405a4774e83a1c19a46fe8226d4fa8f58356"},
+    {"path":"evidence/G22/g26-001/accepted/active.json","sha256":"8ff2514c5274560cd7e5363376491fb74802ac5691ea3b31f6cf1939c2d02f03"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
+  "cases": {
+    "positive": "The controlled distorted candidate produces the actual specific repair-request; exact accepted capability plus material joint relation yields a complete native construction, faithful re-audit, and recomputable no-emission certificate.",
+    "severed": "Remove joint participation, one material intended relation, semantic re-audit, accepted capability standing, capability bytes, or current scope/cut separately; each changes the native product and blocks the same certificate.",
+    "neutral": "Reorder construction resources and source records without changing relations; the supported certificate content remains invariant.",
+    "restored": "Restore each exact participant and recover the canonical derivation.",
+    "held_out": "No held-out language claim. The defective expression, frame, and accepted module are disclosed finite integration stimuli frozen before implementation.",
+    "unknown_malformed": "Malformed frame, intention, first candidate, capability record, construction result, audit, or certificate remains inquiry/revalidation/incomplete and never effect-eligible."
+  },
+  "environment": "Pinned native PeTTa ae66fa8e41dcd5539d614706bd4e5cfb34f9608d through SWI-Prolog 10.0.2 arm64. This is a deterministic native semantic experiment with zero model or service calls. All inputs are synthetic public fixtures or hash-pinned committed evidence.",
+  "next_step_hypothesis": "If R5 closes, freeze G33 R6 to connect this one native rendered-product continuation to the generalized RRun/RWait path and exercise a deterministic defective renderer response plus public repair without duplicating cognition. If accepted-capability recovery or construction integration fails first, preserve that exact failure and narrow R5 without adding a response rule."
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "miter-g33-r5-expected-run-contract-v1",
+  "canonical": {
+    "initial_audit": "meaning-altered",
+    "initial_disposition": "repair-request",
+    "continuation": "native source-grounded construction and comparison",
+    "constructed_standing": "one uniquely supported complete expression under the material joint relation",
+    "re_audit": "faithful",
+    "result": "recomputable expression certificate with no-emission-authority"
+  },
+  "neutral": [
+    "reordering expressive constructions preserves the supported certificate content",
+    "reordering source nodes and observations preserves the supported certificate content"
+  ],
+  "severed": [
+    "removing the material joint relation preserves alternatives and blocks fabricated unique certification",
+    "removing a material intended relation changes or blocks the certificate rather than being compensated",
+    "removing semantic re-audit blocks certification",
+    "supplying an unaccepted or byte-changed capability blocks construction authority",
+    "changing scope or cut blocks stale certification",
+    "presenting the defective first candidate directly to certification is held"
+  ],
+  "restored": "restoring the exact severed participant restores the canonical derivation",
+  "resource_limits": {
+    "model_calls": 0,
+    "network_requests": 0,
+    "credential_lookups": 0,
+    "chroma_mutations": 0,
+    "mattermost_operations": 0,
+    "human_emissions": 0,
+    "external_effects": 0,
+    "construction_fuel_max": 512
+  }
+}
