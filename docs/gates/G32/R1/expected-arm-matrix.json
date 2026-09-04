@@ -1,0 +1,43 @@
+{
+  "schema": "miter-g32-expected-arm-matrix-v1",
+  "frozen_before_execution": true,
+  "fixture_bundle": [
+    "authenticated-manuscript-contact-and-current-continuity",
+    "voice-certified-bounded-response",
+    "witnessed-consequence-and-later-developmental-selection",
+    "contained-extension-trial-and-restart-lineage",
+    "contact-free-recurring-cycle"
+  ],
+  "canonical": {
+    "expected": "all applicable capacities participate with source-bound traces",
+    "must_not_mean": "all components produce one scalar verdict or every component blocks every movement"
+  },
+  "arms": [
+    {"id":"soul-severed","sever":"native constitutional organization","expected_difference":"movement and expression certification lose constitutional standing"},
+    {"id":"memory-capsule-severed","sever":"authoritative structured checkpoint","expected_difference":"exact artifact, location, unresolved work, and next movement are unavailable even if semantic recall remains"},
+    {"id":"chroma-severed","sever":"replaceable semantic index","expected_difference":"associative support becomes unavailable while exact capsule continuity remains possible and authoritative"},
+    {"id":"voiceaudit-severed","sever":"native semantic alteration audit","expected_difference":"otherwise rendered output cannot become a certified external effect"},
+    {"id":"vad-severed","sever":"bounded lexical and trajectory cue","expected_difference":"affective cue participation becomes explicitly unknown; it cannot be silently replaced by positive wording or a fabricated PNS claim"},
+    {"id":"nace-severed","sever":"native consequence-earned efficacy revision consumer","expected_difference":"the consequence remains recorded but cannot change the matched later alternative ranking"},
+    {"id":"consequence-severed","sever":"independent returned consequence","expected_difference":"NACE retains prior uncertainty and no learned later-selection difference is claimed"},
+    {"id":"endogenous-curiosity-severed","sever":"source-grounded opportunity-to-RNA continuation","expected_difference":"human-contact work remains possible but the witnessed defect does not form an endogenous development request"},
+    {"id":"continuity-lineage-severed","sever":"accepted-module, undertaking, and capsule lineage across restart","expected_difference":"fresh-process resumption cannot claim the current accepted development or unfinished purpose"},
+    {"id":"workshop-containment-severed","sever":"capability-limited isolated trial boundary","expected_difference":"candidate execution and promotion standing are held; ordinary current-contact reasoning is not erased"},
+    {"id":"mattermost-identity-severed","sever":"authenticated server/team/channel/principal mapping","expected_difference":"the surface event is rejected before cognition and cannot inherit memory or response authority"},
+    {"id":"non-recursive","sever":"none; inject an oracle product requesting another oracle call","expected_difference":"the product remains derived candidate material and total oracle-call count stays one"},
+    {"id":"zero-pitch-perpetual-loop","sever":"material contact, obligation, opportunity, and consequence pitch while retaining recurring clock availability","expected_difference":"cycles remain interruptible and available without fabricated work, model calls, effects, completion, or forced permanent quiescence"},
+    {"id":"decorative-control","sever":"an explicitly irrelevant fixture annotation","expected_difference":"no semantic or effect difference from canonical"},
+    {"id":"neutral-reordering","sever":"none; reorder meaning-equivalent evidence","expected_difference":"canonical semantic standing is preserved"}
+  ],
+  "restoration": "Restoring each materially severed source/consumer relation must restore its named capacity under the same fixture bytes; restoration is not inferred from a label.",
+  "held_out": "At least one meaning-preserving held-out variant must retain canonical standing without adding a new scenario branch.",
+  "failure_conditions": [
+    "a named material severance leaves its claimed downstream capacity unchanged",
+    "the decorative or neutral arm changes semantic standing",
+    "all severances collapse to one undifferentiated failure",
+    "a host-language branch selects the expected semantic answer",
+    "a prior gate report substitutes for executing the integrated consumer",
+    "the non-recursive arm makes a second oracle call",
+    "the zero-pitch arm fabricates work or treats a supplied step count as completion"
+  ]
+}

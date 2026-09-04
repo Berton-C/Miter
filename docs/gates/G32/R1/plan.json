@@ -1,0 +1,59 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G32",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G32 R1: one frozen, identical multi-case fixture bundle can demonstrate that every named constitutive participant changes at least one appropriate downstream capacity when its actual source/consumer relation is severed, while decorative and meaning-preserving changes do not; non-recursive oracle and zero-pitch clock behavior remain bounded.",
+  "claim_ids": [
+    "G32-R1-integrated-current-consumers-causal",
+    "G32-R1-differentiated-material-severances",
+    "G32-R1-restoration-neutral-and-decorative-controls",
+    "G32-R1-nonrecursive-and-zero-pitch-bounds",
+    "G32-R1-independent-raw-evidence-and-scope"
+  ],
+  "non_claims": "No claim that every mathematical authority, all nine flourishing enactors, general cognition, arbitrary language, every unauthorized identity, production multi-user operation, universal exactly-once behavior, kernel-proof containment, provider cancellation, or the complete G33 end-to-end organism is proven. No new external effect, live Mattermost contact, model inference, Chroma mutation, candidate promotion, or ongoing service is included.",
+  "rationale": "G31 closes the bounded live omitted-part contact, but G32 must show causal integration rather than neighboring green reports. The control documents require source/consumer/consequence traces, meaningful severances, semantic stability under irrelevant changes, restoration, and honest partiality. A five-case bundle allows each component to matter where appropriate without inventing one universal all-components veto.",
+  "requirements": [
+    "C-004", "C-005", "C-006", "C-007", "C-008", "C-020", "C-023", "C-024",
+    "C-030", "C-040", "C-050", "C-060", "C-064", "C-065", "C-066", "C-070",
+    "C-074", "C-080", "C-083", "C-090", "C-096", "C-097", "C-098", "C-099",
+    "C-100", "C-101", "C-102", "C-103", "C-104", "S-103", "S-305", "S-401",
+    "S-403", "S-404", "S-405", "S-501", "S-502", "S-503", "S-504", "S-505",
+    "S-603", "S-605", "S-607", "S-701", "S-804", "S-901", "S-902", "S-903",
+    "S-904", "S-905", "S-1001", "S-1002", "S-1003", "S-1004", "S-1005",
+    "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202",
+    "S-1203", "T-11", "T-12", "T-13", "T-16", "T-18", "T-19", "T-20",
+    "T-21", "T-22", "T-24", "T-25", "T-26", "T-27", "T-29", "T-31", "T-33"
+  ],
+  "reading": "Retain both complete controls, ACCEPTANCE G32, W-013-W-017/W-120-W-136, POC_SPEC 16-17, SC01-SC08 closures, G08-G21 raw gate evidence, G22-G31 closures, and especially committed G31 P9 closure SHA-256 0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1 plus the frozen expected-arm matrix. Earlier gate evidence supplies provenance and test material, not an automatic integrated pass.",
+  "representation": "Use one versioned five-case fixture bundle, source hashes for each actual subsystem participant, fresh-process native observations for canonical/severed/restored/neutral/held-out arms, a structured participation trace naming consulted versus load-bearing relations, and a matrix of predeclared expected versus observed downstream differences. The integration evaluator must be generic relational composition; arm IDs are builder labels and cannot be runtime behavior selectors.",
+  "consumer": "Current native MeTTa subsystem consumers own their domain meanings. A test-only native integration fixture composes their actual returned standings and traces. Prolog may provide existing file/hash/process mechanics only where already pinned. JavaScript owns fixture assembly, process launch, raw capture and independent comparison; it cannot emit a passing native standing or choose a semantic response. No LLM is a judge.",
+  "falsifiers": "Any arm receives different immediate fixture content except its declared single perturbation; a named severance fails to change its claimed consumer; Chroma loss erases exact capsule authority; NACE and consequence severance are conflated; workshop loss erases unrelated cognition; denied identity reaches cognition; VoiceAudit can be bypassed; VAD absence becomes fabricated affect; restoration fails; decorative/reordering changes standing; non-recursive makes a second oracle call; zero-pitch invents purpose/effects or step-count completion; host code selects semantic answers; prior reports substitute for execution; raw output is missing; private IDs/credentials/content enter tracked evidence; or a claim exceeds its observed domain.",
+  "scope_review": "Add only G32 R1 plan/expectations, test-only native fixtures, builder verification scripts, and G32 evidence/outcome/closure. Read existing committed sources and redacted evidence. Do not modify Miter core or candidate code in R1; if execution exposes an actual integration defect, stop R1 with evidence and freeze a separately bounded repair revision. No network, Keychain, model, Docker, Chroma mutation, Mattermost operation, persistent runtime state, promotion, or push before closure.",
+  "rollback": "Before closure, remove only disposable G32 test/evidence products or preserve a failed attempt; committed runtime/core and prior evidence remain untouched. Because R1 has no external effect or persistent runtime mutation, rollback is deletion of test-only generated state. A failed arm remains evidence and cannot be rewritten as a pass.",
+  "predecessor": "docs/gates/G31/P9/R1/closure.json",
+  "allowed_paths": [
+    "docs/gates/G32/",
+    "tests/fixtures/g32/",
+    "scripts/g32/",
+    "evidence/G32/"
+  ],
+  "preserved": [
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"}
+  ]
+}

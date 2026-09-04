@@ -1,0 +1,9 @@
+# G32 R1 — integrated constitutive severed-arm suite
+
+This plan freezes one identical fixture bundle and its expected differences before execution. The suite is an acceptance instrument, not a new runtime policy table. It must invoke actual current subsystem consumers and then use native relational composition to expose which source/consumer relations materially participated. JavaScript may assemble fixtures, launch processes, retain raw output, and compare declared expectations; it may not manufacture a semantic standing.
+
+The suite is deliberately non-binary. Removing Chroma must not erase authoritative capsule continuity. Removing workshop containment must hold candidate execution rather than erase ordinary contact reasoning. Removing NACE differs from removing consequence: one preserves the observation without the revision consumer, while the other removes the returned evidence itself. These distinctions prevent a universal “missing component = fail” checklist from masquerading as integration.
+
+All arms receive the same five-case bundle. Canonical, each material severance, restoration, meaning-preserving reorder, a held-out variant, the non-recursive oracle product, the zero-pitch recurring cycle, and a decorative control are executed in fresh native processes. Raw products and process status precede the independently checked matrix. No local live Mattermost message, external effect, credential, Chroma mutation, model call, promotion, or persistent runtime mutation is authorized by R1; prior redacted contact/consequence records may participate only through exact source hashes and current code consumers.
+
+If actual integration is absent, the run must report the missing consumer rather than add a branch that forces the expected answer. Any source repair required after a failed attempt receives a new bounded revision plan and preserves the failure evidence.
