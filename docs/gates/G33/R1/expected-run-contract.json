@@ -1,0 +1,39 @@
+{
+  "schema": "miter-g33-r1-expected-run-contract-v1",
+  "frozen_before_execution": true,
+  "run_identity": "one top-level G33 run from an empty G33 runtime root, with deliberately observed process restarts inside that run",
+  "semantic_rule": "The trace must be built from products returned by the actual current native consumers. Phase labels, earlier verdicts, expected strings, and builder code may locate evidence but may not supply the alleged cognitive result.",
+  "phases": [
+    {"id":"boot","required_product":"control, runtime-pin, Soul-integrity, empty-context, and clean-G33-root observations"},
+    {"id":"rehydrate","required_product":"current Soul, trajectory, exact capsule, Chroma support standing, accepted module lineage, and NACE beliefs reconstructed with separate readback"},
+    {"id":"continuity","required_product":"held-out ninety-day book question yields exact authoritative project/artifact/location/open-question/next-movement/source identifiers without model-context memory"},
+    {"id":"voice","required_product":"human contact forms a native intention; an intention-distorting model candidate is held; a repaired faithful candidate is certified before any effect eligibility"},
+    {"id":"quiescence","required_product":"empty lawful ready set records receptive readiness with no compulsory model call, fabricated work, completion, or permanent silence"},
+    {"id":"development","required_product":"a witnessed defect/opportunity, not a builder stage command or self-assertion, changes what native cognition forms next"},
+    {"id":"capability","required_product":"generated derived capability remains quarantined, is independently trialed, and reaches accepted or rejected standing without candidate self-certification"},
+    {"id":"learning","required_product":"typed independent consequence drives native NAL revision and changes a later eligible selection while a correlated duplicate does not"},
+    {"id":"restart","required_product":"fresh process rehydrates the accepted module, revised efficacy, unfinished undertaking, and exact lineage without replaying an old external effect"},
+    {"id":"mattermost","required_product":"request-to-extension lineage reaches the Miter-authored bridge, independent mock trial, promotion/later-use standing, and the previously authorized live-canary witness without core or candidate sovereignty over credentials"},
+    {"id":"severed","required_product":"inside the same top-level run, Soul, exact capsule, VoiceAudit, NACE, and Mattermost identity cuts each change the named downstream product; neutral and restoration arms remain stable"},
+    {"id":"report","required_product":"a separate verifier produces the complete manifest and FINAL_POC_REPORT.md clause by clause from retained evidence, marking every unsupported clause FAIL or INCOMPLETE"}
+  ],
+  "positive_case": "An authenticated human resumes a stale book undertaking, supplies a message whose first rendering distorts the native intention, leaves no immediate work, and later presents a witnessed missing-capability opportunity whose tested consequence changes later selection and survives restart.",
+  "severed_cases": ["Soul","exact-continuity-capsule","VoiceAudit","NACE-revision","Mattermost-stable-identity"],
+  "neutral_case": "Meaning-equivalent event ordering and a decorative unconsumed observation preserve the trace's semantic products.",
+  "restoration_case": "Restoring each exact severed participant in a fresh branch of the run restores its named product.",
+  "held_out_case": "Use book-continuity wording and one relational voice encounter not named in current dispatch tables; no case-specific behavior entry may be added after disclosure.",
+  "unknown_and_malformed": "Unknown event, malformed model product, unavailable Chroma, stale capsule, duplicate consequence, and uncertain effect each become differentiated typed states without fabricated success.",
+  "external_effect_policy": "No fresh Mattermost read or write is authorized by this contract. The terminated G31 live canary is incorporated only as a hashed prior external-effect witness. A new live canary requires a separate exact C-098 grant and cannot be inferred from this plan.",
+  "pass_condition": "Every phase has raw current-consumer evidence, the five integrated cuts discriminate, controls restore/preserve meaning, and every README governing-claim clause is linked to supporting evidence. Any unsupported clause makes the overall PoC INCOMPLETE even if other phases pass.",
+  "automatic_failures": [
+    "multiple unrelated gate scripts are called and their old PASS files are relabeled as one cognitive run",
+    "a builder-authored stage machine supplies the next semantic undertaking",
+    "the ninety-day answer is selected by exact prompt string or copied from an earlier verdict",
+    "model output directly becomes authority, executable code, memory truth, or external effect",
+    "candidate-owned tests or a model self-review are the sole judge",
+    "resource exhaustion or step count is reported as completion",
+    "a prior live receipt is represented as a newly executed live effect",
+    "private identity, credential, memory, or personal content enters public evidence",
+    "an unsupported README clause is marked PASS"
+  ]
+}
