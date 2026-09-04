@@ -1,0 +1,33 @@
+{
+  "schema": "miter-ama11-operator-runtime-v1",
+  "started_at_utc": "2026-09-04T20:48:27.815Z",
+  "completed_at_utc": "2026-09-04T20:48:27.944Z",
+  "swipl": "SWI-Prolog version 10.0.2 for arm64-darwin",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "temporary_runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-operator-TfBeZd",
+  "external_network_calls": 0,
+  "model_calls": 0,
+  "private_memory_reads": 0,
+  "sources": [
+    {
+      "path": "constitution/fact9_projection_v1.metta",
+      "sha256": "e5a294a9aa8a6be8478c6cb33194f90c16624eb0ec5873e6970f85c1388c4c8a"
+    },
+    {
+      "path": "constitution/soul.metta",
+      "sha256": "3297db4df4a7f8279a60fcdeac33067ce00c5734ccdff11b6cda88ca06015619"
+    },
+    {
+      "path": "constitution/soul_compass_v02.metta",
+      "sha256": "4008936744e864c508fc862e477789de8db0a2ce4a36b2daa3245f9d47c281d0"
+    },
+    {
+      "path": "src/bootstrap_assistant_v1.metta",
+      "sha256": "1923cbb9eb620f00f59cd32d5ba14b4e861118d2f8e5f887479f3f32e3844093"
+    },
+    {
+      "path": "src/constitutive_participation_v1.metta",
+      "sha256": "a92a14b35fbf193d1310269411c88dff0300361c940801f482e8182a63bf8706"
+    }
+  ]
+}
