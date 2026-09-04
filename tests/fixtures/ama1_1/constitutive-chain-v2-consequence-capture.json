@@ -1,0 +1,36 @@
+{
+  "schema": "miter-assistant-input-v2",
+  "input_id": "input-constitutive-v2-consequence-capture",
+  "input_kind": "consequence",
+  "scope": {"principal": "principal-alpha", "audience": "audience-alpha", "project": "project-alpha"},
+  "consequence": {
+    "id": "consequence-constitutive-v2-capture",
+    "movement_id": "thread-undertaking-alpha",
+    "effect_key": "contact-constitutive-v2-base",
+    "result": "capture-return",
+    "d_relations": [
+      {"id": "relation-return", "kind": "consequence", "standing": "contradiction", "evidence": "dependency-transfer-observed"}
+    ],
+    "d_distinctions": [
+      {"id": "distinction-dependency", "standing": "available", "evidence": "dependency-transfer-observed"}
+    ],
+    "omega_relations": [
+      {"id": "relation-return-whole", "roles": ["Balance", "Connection"], "standing": "obstruction", "evidence": "dependency-transfer-observed"}
+    ],
+    "interfaces": [
+      {"id": "interface-conversation", "standing": "revisable", "evidence": "dependency-transfer-observed"}
+    ],
+    "weave": [
+      {"id": "thread-undertaking-alpha", "standing": "continued", "evidence": "dependency-transfer-observed"}
+    ],
+    "soul_relations": [
+      {"id": "relation-developmental-tension", "standing": "material", "evidence": "dependency-transfer-observed"}
+    ],
+    "flourishing_views": [
+      {"value": "AgencyBalance", "relation_id": "relation-return", "standing": "capture", "evidence": "dependency-transfer-observed"},
+      {"value": "CognitiveResilience", "relation_id": "relation-return", "standing": "beneficial-direction", "evidence": "consequence-open-to-revision"}
+    ],
+    "present": {"context": "present-after-capture-return", "evidence": "dependency-transfer-observed"},
+    "evidence": "controlled-consequence-capture"
+  }
+}

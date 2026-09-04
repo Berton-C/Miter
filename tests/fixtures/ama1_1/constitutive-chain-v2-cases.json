@@ -1,0 +1,128 @@
+{
+  "schema": "miter-ama11-constitutive-chain-v2-cases-v1",
+  "operator_meaning_frozen_before_implementation": true,
+  "base_fixture": "tests/fixtures/ama1_1/constitutive-chain-v2-base.json",
+  "support_consequence": "tests/fixtures/ama1_1/constitutive-chain-v2-consequence-support.json",
+  "capture_consequence": "tests/fixtures/ama1_1/constitutive-chain-v2-consequence-capture.json",
+  "same_surface_payload_ref": "same-surface-contact-alpha",
+  "cases": [
+    {
+      "id": "native-undertaking-without-supplied-possibility",
+      "operations": [],
+      "require": ["same-surface-contact-alpha", "compass-semantics", "bridge-organization", "movement-formed.undertaking.thread-undertaking-alpha", "rap-readings", "generated"],
+      "forbid": ["possible-movement.movement-unfamiliar-inquiry"],
+      "claim": "A supported open thread forms a native undertaking even though the contact supplies no possible-movement."
+    },
+    {
+      "id": "same-surface-capture-forms-inquiry",
+      "operations": [
+        {"op": "set", "path": "/contact/configuration/flourishing_views/0/standing", "value": "capture"},
+        {"op": "set", "path": "/contact/configuration/flourishing_views/0/evidence", "value": "dependency-transfer-observed"}
+      ],
+      "require": ["same-surface-contact-alpha", "AgencyBalance", "capture", "movement-formed.inquiry", "non-compensatory"],
+      "forbid": ["movement-formed.undertaking"],
+      "claim": "With identical surface contact, capture changes native continuation from undertaking to inquiry."
+    },
+    {
+      "id": "same-surface-disguise-forms-inquiry",
+      "operations": [
+        {"op": "set", "path": "/contact/configuration/flourishing_views/0/standing", "value": "disguise"},
+        {"op": "set", "path": "/contact/configuration/flourishing_views/0/evidence", "value": "choice-language-preselected-outcome"}
+      ],
+      "require": ["same-surface-contact-alpha", "AgencyBalance", "disguise", "movement-formed.inquiry"],
+      "forbid": ["movement-formed.undertaking"],
+      "claim": "Disguise remains material before rendering and opens inquiry rather than passing favorable surface wording."
+    },
+    {
+      "id": "d-severance-changes-movement",
+      "operations": [{"op": "set", "path": "/contact/configuration/d_relations", "value": []}],
+      "require": ["movement-unresolved", "D"],
+      "forbid": ["movement-formed.undertaking"],
+      "claim": "D severance changes the continuation while other fields and surface identity remain fixed."
+    },
+    {
+      "id": "omega-severance-forms-inquiry",
+      "operations": [{"op": "set", "path": "/contact/configuration/omega_relations", "value": []}],
+      "require": ["fact9-unresolved", "movement-formed.inquiry"],
+      "forbid": ["movement-formed.undertaking"],
+      "claim": "Omega severance preserves the gap and makes inquiry available."
+    },
+    {
+      "id": "interface-severance-forms-defer",
+      "operations": [{"op": "set", "path": "/contact/configuration/interfaces", "value": []}],
+      "require": ["movement-formed.defer", "interface-unavailable"],
+      "forbid": ["movement-formed.undertaking"],
+      "claim": "Missing current participation interface forms a bounded defer without forced action or completion."
+    },
+    {
+      "id": "weave-severance-forms-inquiry",
+      "operations": [{"op": "set", "path": "/contact/configuration/weave", "value": []}],
+      "require": ["movement-formed.inquiry", "weave-unresolved"],
+      "forbid": ["movement-formed.undertaking"],
+      "claim": "Missing path/undertaking weave changes the form instead of leaving W decorative."
+    },
+    {
+      "id": "soul-relation-severance-holds-movement",
+      "operations": [{"op": "set", "path": "/contact/configuration/soul_relations", "value": []}],
+      "require": ["movement-unresolved", "soul-relation-unavailable"],
+      "forbid": ["movement-formed"],
+      "claim": "A cut without live Soul relation cannot form movement merely because other carriers are favorable."
+    },
+    {
+      "id": "same-lineage-participant-not-independent",
+      "operations": [{"op": "set", "path": "/contact/configuration/participants", "value": [
+        {"id": "participant-model-one", "kind": "model", "lineage": ["model-root-one", "generation-one"], "claim": {"kind": "relation", "target": "relation-opportunity", "proposed_standing": "support", "evidence": "model-reading-one"}, "standing": "supported", "authority": "no-contact-no-movement-authority"},
+        {"id": "participant-model-repeat", "kind": "model", "lineage": ["model-root-one", "generation-one"], "claim": {"kind": "relation", "target": "relation-opportunity", "proposed_standing": "support", "evidence": "model-reading-repeated"}, "standing": "supported", "authority": "no-contact-no-movement-authority"}
+      ]}],
+      "require": ["participant-proposed-relation", "same-lineage-not-independent", "movement-formed.inquiry"],
+      "forbid": ["participant-supported-relation.relation-opportunity"],
+      "claim": "Repeated same-lineage model support becomes one unresolved proposal and changes inquiry without becoming corroboration."
+    },
+    {
+      "id": "independent-participants-support-relation",
+      "operations": [{"op": "set", "path": "/contact/configuration/participants", "value": [
+        {"id": "participant-model-one", "kind": "model", "lineage": ["model-root-one", "generation-one"], "claim": {"kind": "relation", "target": "relation-opportunity", "proposed_standing": "support", "evidence": "model-reading-one"}, "standing": "supported", "authority": "no-contact-no-movement-authority"},
+        {"id": "participant-tool-one", "kind": "tool", "lineage": ["tool-root-one", "observation-one"], "claim": {"kind": "relation", "target": "relation-opportunity", "proposed_standing": "support", "evidence": "tool-observation-one"}, "standing": "supported", "authority": "no-contact-no-movement-authority"}
+      ]}],
+      "require": ["participant-supported-relation.relation-opportunity", "independent-lineages", "movement-formed.undertaking"],
+      "forbid": ["same-lineage-not-independent"],
+      "claim": "Independent bounded participants create a provenance-bearing supported relation without becoming contact or authority."
+    },
+    {
+      "id": "participant-conflict-forms-inquiry",
+      "operations": [{"op": "set", "path": "/contact/configuration/participants", "value": [
+        {"id": "participant-model-one", "kind": "model", "lineage": ["model-root-one", "generation-one"], "claim": {"kind": "relation", "target": "relation-opportunity", "proposed_standing": "support", "evidence": "model-reading-one"}, "standing": "supported", "authority": "no-contact-no-movement-authority"},
+        {"id": "participant-nal-one", "kind": "nal", "lineage": ["nal-root-one", "revision-one"], "claim": {"kind": "relation", "target": "relation-opportunity", "proposed_standing": "contradiction", "evidence": "nal-counter-reading"}, "standing": "contradicted", "authority": "no-contact-no-movement-authority"}
+      ]}],
+      "require": ["participant-relation-conflict.relation-opportunity", "movement-formed.inquiry", "no-contact", "no-movement-authority"],
+      "forbid": ["movement-formed.undertaking"],
+      "claim": "Conflicting participant readings remain explicit and form inquiry rather than being collapsed or selected."
+    },
+    {
+      "id": "endogenous-same-kernel",
+      "operations": [
+        {"op": "set", "path": "/contact/source_kind", "value": "endogenous-contact"},
+        {"op": "set", "path": "/contact/occurrence", "value": "occurrence-endogenous-v2"}
+      ],
+      "require": ["endogenous-contact", "contact-locus", "movement-formed.undertaking"],
+      "forbid": [],
+      "claim": "The same material organization uses the same native constructor for endogenous contact with distinct provenance."
+    },
+    {
+      "id": "identity-severed-before-cognition",
+      "operations": [{"op": "set", "path": "/contact/project", "value": ""}],
+      "expected_submit": "rejected",
+      "require": [],
+      "forbid": [],
+      "claim": "Severed project identity is rejected by the carrier before cognition and creates no checkpoint or effect."
+    },
+    {
+      "id": "matched-consequences-reconstruct-and-restart",
+      "operations": [],
+      "special": "fork-support-and-capture-consequences",
+      "require": ["consequence-incorporated", "next-constitutive-organization"],
+      "forbid": [],
+      "claim": "Matched initial movements plus materially different returned consequences reconstruct different next movements and each branch survives restart without effect replay."
+    }
+  ]
+}

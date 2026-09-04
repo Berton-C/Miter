@@ -1,0 +1,143 @@
+{
+  "schema": "miter-campaign-constitutive-refreeze-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "repair": "RR-002",
+  "date": "2026-09-05",
+  "authority": {
+    "plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/plan.json",
+    "plan_sha256": "28ea805b824702cac7dcc827b6d2e8d1fc1120bcbd2d74358932c0c3fd2294fd",
+    "constitution": "CONSTITUTION.md",
+    "soul_specification": "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md",
+    "controls_unchanged": true,
+    "acceptance_not_weakened": true,
+    "external_scope_unchanged": true
+  },
+  "predecessor": {
+    "commit": "c7359f3f7ba0143142a93de65c5ccdbdc2b8d7d1",
+    "f09_review": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/f09-review-001.json",
+    "f09_review_sha256": "e75bf8cfaac499a7d73fabdc42d91e91a37a2f60cf7a6b4d07da3b538b2fc9d2",
+    "regression": "evidence/AMA-1.1/R1/final-review-001/regression.json",
+    "regression_sha256": "0b8ae52b3553fdaaebf3834f85e2179b15710755ebb3cd587fc621d4f9810bbc",
+    "verdict": "evidence/AMA-1.1/R1/final-review-001/verdict.json",
+    "verdict_sha256": "9874ae039ac9a946f9c7a1698594378b460636afc159a33f1e4f56520c42c302",
+    "standing": "PASS-REGRESSION-ONLY-OPEN-CONSTITUTIVE-GAPS"
+  },
+  "source_baseline": [
+    {
+      "path": "src/constitutive_participation_v1.metta",
+      "sha256": "c6a5b93ec64bcc18c88e920b1d8ff695deee2b2e2aa8333899707b1a3cada7a3"
+    },
+    {
+      "path": "src/assistant_reactor_v1.metta",
+      "sha256": "3b769512a0a9e38e2a00b8b56f124ab17c895f7985b2999105ad4018dc06e528"
+    },
+    {
+      "path": "src/bootstrap_assistant_v1.metta",
+      "sha256": "ba3fc8030070f9e24ac651cd9167994e5cc8132b2c06af71675e654c91d5c0d1"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_service_v1.pl",
+      "sha256": "3b3e89645c66e054e85905183b2116a993ea8967581de68f1d426998bf5b4c41"
+    }
+  ],
+  "frozen_inputs": [
+    {
+      "path": "tests/fixtures/ama1_1/constitutive-chain-v2-base.json",
+      "sha256": "0c498594ea9da6a8e01210160ad1b15906b92c6c75754f8bfb5d49fcacb9b64b"
+    },
+    {
+      "path": "tests/fixtures/ama1_1/constitutive-chain-v2-consequence-support.json",
+      "sha256": "b553562ba5a8591f1729f086abd713a82c9187da07c2f51aecacdeb86e9d05cf"
+    },
+    {
+      "path": "tests/fixtures/ama1_1/constitutive-chain-v2-consequence-capture.json",
+      "sha256": "127a027f3e36a52852f35bf0bb95bd1401e40c211904def50d8ee3397e8fedad"
+    },
+    {
+      "path": "tests/fixtures/ama1_1/constitutive-chain-v2-cases.json",
+      "sha256": "3cb6110d5cb881bc7014533cf1d23b46a71d5a685ef53a03f9dc6ff8b7749212"
+    }
+  ],
+  "central_requirement": "Balance unfolding as intelligence is the movement being finitely encountered, not a label surrounding a decision. Contact is the developmental locus at which that Balance becomes partially legible and the interconnected Flourishings can participate. Fact9, the full flourishing compass, Generated, and M25 R/A/P therefore form one causal constitutive organization: R/A/P are heterogeneous readings of the same forming movement and must be able to change its comparison, refinement, or standing without becoming scores, sovereign judges, or post-hoc narration.",
+  "required_corrections": [
+    {
+      "id": "RR002-native-formation",
+      "requirement": "The supported persistent service must form a lawful continuation from a v2 contact whose supplied possibilities list is empty. The contact carrier may provide grounded D/Omega/I/W/C relations, Fact9 and flourishing readings, and bounded participant claims; it may not preselect the continuation form or movement identifier."
+    },
+    {
+      "id": "RR002-full-compass-participation",
+      "requirement": "Each used flourishing identity must be joined to its constitutional semantic record before movement. Flourishing, capture, obstruction, disguise, contradiction, unresolved standing, beneficial direction, counterevidence, and positive-pole distortion remain relationally explicit and non-compensatory. Capture or disguise in otherwise identical contact must form a materially different live inquiry possibility rather than merely block a supplied undertaking."
+    },
+    {
+      "id": "RR002-many-way-bridge",
+      "requirement": "One cut-bound bridge organization must retain the contacted D/Omega/I/W/C relations, support-specific Fact9 expression, flourishing expressions, scope, uncertainty, alternatives, defeaters, and predicted difference. It may not be a one-to-one vocabulary mapping or a favorable bridge label."
+    },
+    {
+      "id": "RR002-balance-rap-causal-use",
+      "requirement": "Native movement construction must retain a Balance organization and M25 R/A/P witnesses over the same candidate movement. Their material relation, admissibility, and distinction readings must participate in keeping, revising, comparing, joining, inquiring, deferring, declining, or holding that movement. They may not be collapsed into a scalar, evaluated only after selection, or confused with M255 R-star/A-star/P-star/O-star generation obligations."
+    },
+    {
+      "id": "RR002-participant-reentry",
+      "requirement": "Bounded model, tool, PLN, NAL, memory, or other participant claims must re-enter as typed derived relations with provenance, scope, lineage, standing, and no contact or movement authority. Same-lineage repetition does not become corroboration; independent support may strengthen a relation; material conflict must remain explicit and change available inquiry."
+    },
+    {
+      "id": "RR002-differentiated-consequence",
+      "requirement": "A v2 consequence must be able to change D, Omega, I, W, C, flourishing expression, and Present context. The supported reactor must incorporate the returned contact into a next constitutive organization, reconstruct its possible continuations, and preserve the changed organization across process restart without replaying the prior effect. Matched supportive and capture-bearing consequences must produce materially different next movements."
+    }
+  ],
+  "frozen_case_contract": {
+    "case_count": 14,
+    "predictions_may_not_be_weakened": true,
+    "same_surface_means": "The payload reference remains same-surface-contact-alpha while only the named constitutive relation changes.",
+    "required_discriminations": [
+      "empty supplied possibility set versus native undertaking formation",
+      "flourishing versus capture versus disguise on the same contact surface",
+      "independent D, Omega, I, W, and C severance",
+      "same-lineage repetition versus independent participant support versus participant conflict",
+      "human versus endogenous contact through one native kernel",
+      "carrier-level identity rejection before cognition",
+      "supportive versus capture-bearing consequence through reconstruction and restart"
+    ]
+  },
+  "operator_discipline": {
+    "permitted": "A finite vocabulary of composable, relation-sensitive cognitive operators may expose multiple lawful possible continuations. Their applicability must be derived from the current cut, bridge, participant, uncertainty, interface, and consequence relations, and plural or incomparable possibilities must remain live.",
+    "prohibited": [
+      "scenario identifiers or situation-to-answer entries",
+      "first-match or ordered fallthrough selection",
+      "argmax, weighted score, balance score, or compensatory aggregate",
+      "a sealed behavior or RNA species catalogue",
+      "host-language semantic choice",
+      "prompt or model verdict as authority",
+      "step count, keep-busy command, or forced quiescence",
+      "copying a supplied movement form and calling it native construction"
+    ]
+  },
+  "allowed_changes": [
+    "src/constitutive_participation_v1.metta",
+    "src/assistant_reactor_v1.metta",
+    "src/bootstrap_assistant_v1.metta",
+    "effect_membranes/miter_assistant_service_v1.pl",
+    "scripts/ama1_1/constitutive_chain_v2.mjs",
+    "evidence/AMA-1.1/R1/constitutive-chain-v2-001/",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/constitutive-repair-outcome-002.json",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/f09-review-002.json",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/f09-review-002.md",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/formalization-feedback-002.json"
+  ],
+  "preserve": [
+    "all prior AMA-1.1 evidence directories",
+    "the twelve-case post-operator matrix and its passing repair evidence",
+    "effect_membranes/miter_assistant_operator_v1.pl",
+    "all promoted G31, G32, and G33 evidence",
+    "all user-owned work outside this repair"
+  ],
+  "external_limits": [
+    "No live Mattermost, model, Chroma, memory, network, credential, or personal-content access.",
+    "All runtime roots are fresh explicit directories under /private/tmp.",
+    "No implicit or created /Users/bcb/.miter path is permitted.",
+    "No new external effect or capability authority is granted."
+  ],
+  "success": "All fourteen unchanged v2 cases pass through the supported persistent assistant path; the v1 twelve-case repaired matrix remains passing; active fidelity, syntax, import, secret, provenance, explicit-root, and no-live-reach checks pass; the retained artifacts show Balance/contact/Fact9/full flourishing semantics/bridge/Generated/RAP/participant/consequence/restart in one causal derivation; and an updated F-09 review identifies every remaining partial claim without closing AMA-1.1 by assertion.",
+  "non_claims": "RR-002 does not establish unrestricted natural-language grounding, general intelligence, universal flourishing interpretation, final mathematical proof, live model or reasoner inference, live memory or Chroma retrieval, Mattermost authority, multi-user product readiness, or AMA-1.1 closure unless the updated qualitative F-09 review separately earns it."
+}

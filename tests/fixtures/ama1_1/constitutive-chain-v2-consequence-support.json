@@ -1,0 +1,35 @@
+{
+  "schema": "miter-assistant-input-v2",
+  "input_id": "input-constitutive-v2-consequence-support",
+  "input_kind": "consequence",
+  "scope": {"principal": "principal-alpha", "audience": "audience-alpha", "project": "project-alpha"},
+  "consequence": {
+    "id": "consequence-constitutive-v2-support",
+    "movement_id": "thread-undertaking-alpha",
+    "effect_key": "contact-constitutive-v2-base",
+    "result": "supported-return",
+    "d_relations": [
+      {"id": "relation-return", "kind": "consequence", "standing": "support", "evidence": "observed-return"}
+    ],
+    "d_distinctions": [
+      {"id": "distinction-return", "standing": "available", "evidence": "observed-return"}
+    ],
+    "omega_relations": [
+      {"id": "relation-return-whole", "roles": ["Connection", "Transformation"], "standing": "support", "evidence": "observed-return"}
+    ],
+    "interfaces": [
+      {"id": "interface-conversation", "standing": "revisable", "evidence": "observed-return"}
+    ],
+    "weave": [
+      {"id": "thread-undertaking-alpha", "standing": "continued", "evidence": "observed-return"}
+    ],
+    "soul_relations": [
+      {"id": "relation-developmental-uptake", "standing": "material", "evidence": "observed-return"}
+    ],
+    "flourishing_views": [
+      {"value": "TimeCoherence", "relation_id": "relation-return", "standing": "beneficial-direction", "evidence": "consequence-carried-forward"}
+    ],
+    "present": {"context": "present-after-supported-return", "evidence": "observed-return"},
+    "evidence": "controlled-consequence-support"
+  }
+}
