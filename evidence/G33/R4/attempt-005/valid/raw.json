@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-5px3spwhia2e3b7hkz4ash",
+  "object": "chat.completion",
+  "created": 1788523972,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"clauses\": [\n    \"The change must keep Mara able to recover the ledger.\",\n    \"The change must keep Mara able to inspect the ledger.\",\n    \"The change must keep Mara able to choose the ledger.\",\n    \"You requested revision of the ledger.\"\n  ],\n  \"request_id\": \"g33-r4-live\"\n}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 300,
+    "completion_tokens": 81,
+    "total_tokens": 381,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 69,
+    "accepted_draft_tokens_count": 58,
+    "rejected_draft_tokens_count": 11
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

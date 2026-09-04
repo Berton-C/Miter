@@ -1,0 +1,50 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G33",
+  "plan": "docs/gates/G33/R4/plan.json",
+  "plan_commit": "01bc72946cb758c835f8b4adabbc7928b69449ac",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G33/R4/attempts.md","sha256":"588d7c848a06632961e152cb1f98d7ea08a676f73ade8a58294bf42833b282df"},
+    {"path":"docs/gates/G33/R4/outcome.md","sha256":"d9f6c8ea1644ede5f25adc4d03daae696637076d90946590a8746e1c64daa399"},
+    {"path":"evidence/G33/R4/attempt-001/runner-failure.json","sha256":"0b8c97772e5eea27e56128cae164f290e5f40510cd30f6b19984e6fb70abed3c"},
+    {"path":"evidence/G33/R4/attempt-002/runner-failure.json","sha256":"ff0b4fa583cdee6059ee781f49bd507f9c81883754c3019844edafb2791cb8af"},
+    {"path":"evidence/G33/R4/attempt-003/runner-failure.json","sha256":"ff0b4fa583cdee6059ee781f49bd507f9c81883754c3019844edafb2791cb8af"},
+    {"path":"evidence/G33/R4/attempt-004/runner-failure.json","sha256":"4896259ab18d122cf9ba4bda4cd497e0f2d8254d27b2bbdfe099529d39f02830"},
+    {"path":"evidence/G33/R4/attempt-005/runner-failure.json","sha256":"7ae3645b9bf09fecd8bad054331d732c2bb2ea48097a17c2eb8a17fd45c06db0"},
+    {"path":"evidence/G33/R4/attempt-006/verdict.json","sha256":"ba84860594cb5db8c48e7f00766114409492bf79e4762dd06218fabdeb7ac919"},
+    {"path":"evidence/G33/R4/attempt-007/verdict.json","sha256":"0b72f084fff6ba85033eb49f0de101eaf429f5cb12d98a77a3a6c0e1b7c97062"},
+    {"path":"evidence/G33/R4/attempt-007/verification.json","sha256":"e3b572670aedd9cc15ebeff937d0fa25d59aa0da40bb3e03b9830cc5b6215f4e"},
+    {"path":"evidence/G33/R4/attempt-007/observations.json","sha256":"7d19d99f50ca7758b901807c3f3229c1816bcc0d89211a8b83186914d6a66d75"},
+    {"path":"evidence/G33/R4/attempt-007/freeze.json","sha256":"bf396d006209238a5f8d96264166836c6dbe03df659d3544b4a903030900d36d"},
+    {"path":"evidence/G33/R4/attempt-007/positive.stdout","sha256":"be857eb1be4206f5a3efea17ee048bb51bf6780417d443b1e29c227efa7eeb82"},
+    {"path":"evidence/G33/R4/attempt-007/second-call.stdout","sha256":"ba0bb3e03cbc16ea6d9553a80e8f5a2d9940b718fbacae266a139850e24b1c89"}
+  ],
+  "claim_results": [
+    {
+      "id": "G33-R4-runtime-root-authority-replaces-test-directory-coupling",
+      "status": "PROVEN-RUNTIME",
+      "limit": "A fresh G33-owned root operated under one exact synthetic, short-lived local grant and complete source manifest. This is not a production grant issuer, portable installation contract, general filesystem capability, or Soul authority."
+    },
+    {
+      "id": "G33-R4-current-relational-voice-public-entry-runs",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The current RRun path formed and stored its native intention, made one qwen-local rendering call, natively audited the generated product as faithful, returned expression-ready, and retained no-emission authority. This does not prove repair or expression certification."
+    },
+    {
+      "id": "G33-R4-invalid-or-tampered-runtime-authority-fails-before-transport",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Fourteen frozen root, grant, manifest, schema, expiry, endpoint, scope, call-limit, emission, syntax, and integrity cuts failed before a worker started; replay from the valid root also failed before another call. This finite suite does not prove every filesystem race or malformed input."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-003/C-008/C-060-C-067 and S-901-S-905 require external mechanics to be capability-limited and non-cognitive. S-502-S-505 and S-1101-S-1105 require the actual native consumer to retain semantic authority and preserve differentiated failures. R4 therefore generalizes only the runtime-root membrane while leaving intention, interpretation, audit, and disposition in MeTTa.",
+    "causal_evidence": "Attempt 007 ran the current RRun consumer from a fresh granted root. The exact valid participants caused one worker and a typed native disposition. Changing each of fourteen authority participants separately changed the observed result to its root, grant, or manifest failure before transport. Reusing the valid root changed the result to append-only storage failure and did not start a second call.",
+    "substitution_audit": "The Prolog membrane verifies path, capability, integrity, transport, storage, and call use but never supplies an intention or judges meaning. The JavaScript runner creates synthetic authority documents and adversarial cuts, then compares actual products; it does not choose candidate language or a native disposition. src/relational_voice.metta and the historical SC05 membrane remained byte-identical. No behavior table or first-match semantic policy was added.",
+    "capability_and_constraint_audit": "The final attempt made one qwen-local request to 127.0.0.1, used no credential, and had no external-human-emission standing. It performed zero external-network requests, Chroma mutations, Mattermost operations, or external effects. Exact root canonicalization, symlink/traversal rejection, fixed output basenames, a 30-minute maximum grant lifetime, one-call use, append-only files, and a full current-source manifest bound the experiment. No ~/.miter path was created.",
+    "remaining_gaps": "R4 does not demonstrate source-grounded repair after a meaning-altered expression, comparison and re-audit of candidates, expression certification, effect eligibility, arbitrary language, human benefit, quiescent readiness, endogenous development, capability construction, NACE learning, integrated restart, Mattermost lineage, the complete G33 severed suite, or final report. The observed faithful candidate means the missing repair continuation remains untested and must be a separately frozen cognitive revision."
+  },
+  "reviewer": "Codex primary builder and fidelity reviewer, applying the committed Miter gate methodology",
+  "review_limits": "Single-reviewer source, runtime, and evidence audit. It establishes the finite R4 membrane claim, not whole-Soul fidelity, general semantic sufficiency, production security, or independent replication.",
+  "terminal_reason": "G33 R4 is a completed mechanical repair revision, not the terminal G33 acceptance gate. The fidelity checker does not allow a same-gate next_plan link; G33 R5 must be derived and frozen in a separate commit before cognitive repair integration proceeds."
+}

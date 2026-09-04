@@ -1,0 +1,23 @@
+{
+  "schema": "miter-g33-r4-cases-v1",
+  "valid": "exact fresh root grant and complete current-source manifest",
+  "pre_transport_rejections": [
+    "root-mismatch",
+    "scope-mismatch",
+    "external-emission-true",
+    "call-limit-overbroad",
+    "external-endpoint",
+    "expired-grant",
+    "unknown-grant-schema",
+    "malformed-grant-json",
+    "missing-grant-root",
+    "malformed-manifest-json",
+    "missing-manifest-entry",
+    "tampered-source-hash",
+    "traversal-root-alias",
+    "symlink-root-alias"
+  ],
+  "second_call": "the existing worker-started/intention record prevents another transport from the same one-call root",
+  "expected_public_product": "voice-result with native audited disposition and no emission authority, or a typed model/provider incomplete product",
+  "external_human_emission": false
+}
