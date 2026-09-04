@@ -1,0 +1,72 @@
+{
+  "schema": "miter-campaign-repair-refreeze-v1",
+  "phase": "AMA-1.1",
+  "attempt": "R1",
+  "repair": "RR-001",
+  "date": "2026-09-04",
+  "authority": {
+    "plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/plan.json",
+    "plan_sha256": "28ea805b824702cac7dcc827b6d2e8d1fc1120bcbd2d74358932c0c3fd2294fd",
+    "controls_unchanged": true,
+    "acceptance_unchanged": true,
+    "scope_unchanged": true
+  },
+  "predecessor": {
+    "commit": "9a5d1a2ca2ca808cb383c89631cc52534313b5c9",
+    "verdict": "evidence/AMA-1.1/R1/post-operator-matrix-001/verdict.json",
+    "verdict_sha256": "3f6064508ad69fa5e2e46924480a5b84d8152180cc5f6890ab342f6b15f9fb54",
+    "results": "evidence/AMA-1.1/R1/post-operator-matrix-001/results.json",
+    "results_sha256": "8cba189a8561d86db0afbd1a9e44c9cca6b770cbd06ad4ec8feee7aa39a25cb8",
+    "standing": "FAIL-CONSTITUTIVE"
+  },
+  "frozen_cases": {
+    "path": "tests/fixtures/ama1_1/post-operator-cases.json",
+    "sha256": "6d2033ae3cd4c63faee2f614c4c5bbc6fd3ff8a755d234fd0039fb422b3661d1",
+    "predictions_may_not_be_weakened": true
+  },
+  "diagnosis": [
+    {
+      "id": "RR001-total-empty-relation-query",
+      "observation": "When the n-ary material relation set is empty, CPFind has no reduction rather than returning an empty result. CPFactExpressions and the entire encounter therefore disappear instead of retaining fact9-unresolved and movement-unresolved.",
+      "source": "src/constitutive_participation_v1.metta",
+      "required_correction": "Make relation lookup total by structural recursion over the supplied list; absence must become an explicit empty result consumed by the existing unresolved constructors. Do not add a case-specific relation name or behavior branch."
+    },
+    {
+      "id": "RR001-recognition-standing-loss",
+      "observation": "A fact carrying can-compose plus unrecognized-compose is currently treated as live support for Generated, producing movement-formed.",
+      "source": "src/constitutive_participation_v1.metta",
+      "required_correction": "Preserve recognition as a distinct generated standing. Unrecognized support must remain inspectable and must not become movement-forming support merely because composition is lawful."
+    },
+    {
+      "id": "RR001-capture-as-satisfaction",
+      "observation": "CPFlourishingEngaged currently treats every standing except unknown as satisfying a possible movement's flourishing requirement, so explicit AgencyBalance capture certifies an AgencyBalance-dependent undertaking.",
+      "source": "src/constitutive_participation_v1.metta",
+      "required_correction": "Distinguish beneficial support from capture, obstruction, disguise, contradiction, unresolved, counterevidence, and positive-pole distortion. A concern may remain material and generate inquiry through an appropriately represented possibility, but it cannot satisfy a beneficial flourishing requirement or be compensated by a favorable label."
+    }
+  ],
+  "architectural_constraints": [
+    "Balance unfolding as intelligence remains movement-primary; contact remains its finite locus.",
+    "Fact9, the nine interconnected flourishings, Generated, and R/A/P remain one non-scalar material derivation.",
+    "R/A/P remain non-sovereign readings of the same movement and are not a score or selector.",
+    "No scenario identifier, situation-to-answer rule, first-match selector, argmax, weighted score, shortest-plan rule, prompt verdict, or host-language semantic choice may be introduced.",
+    "The correction changes standing propagation and totality, not external authority or capability reach.",
+    "No Prolog membrane change, network access, model call, memory read, Mattermost use, Chroma mutation, or credential access is authorized."
+  ],
+  "allowed_changes": [
+    "src/constitutive_participation_v1.metta",
+    "scripts/ama1_1/post_operator_repair_matrix.mjs",
+    "evidence/AMA-1.1/R1/post-operator-repair-001/",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/repair-outcome-001.json"
+  ],
+  "preserve": [
+    "tests/fixtures/ama1_1/post-operator-cases.json",
+    "scripts/ama1_1/post_operator_matrix.mjs",
+    "evidence/AMA-1.1/R1/post-operator-matrix-001/",
+    "effect_membranes/miter_assistant_service_v1.pl",
+    "effect_membranes/miter_assistant_operator_v1.pl",
+    "src/assistant_reactor_v1.metta",
+    "src/bootstrap_assistant_v1.metta"
+  ],
+  "success": "All twelve unchanged disclosed cases pass through the supported persistent assistant; the three failed cases gain their predicted explicit standings; the nine prior passes remain passes; restart/consequence and local idempotency remain intact; all active fidelity, syntax, provenance, secret, and preserved-work checks pass.",
+  "non_claims": "This repair does not establish general language understanding, complete Fact9/flourishing semantics, automatic inquiry generation from every capture, independent live PLN/NAL reasoning, live model or memory participation, or full AMA-1.1 closure."
+}
