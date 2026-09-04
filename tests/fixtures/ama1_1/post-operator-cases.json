@@ -1,0 +1,177 @@
+{
+  "schema": "miter-ama11-post-operator-cases-v1",
+  "frozen_against_commit": "d811020e34859bf9c6cfaf641dc127370f8851b4",
+  "base_fixture": {
+    "path": "tests/fixtures/ama1_1/contact-unfamiliar.json",
+    "sha256": "0f1939f2ca68070aa547fb3db4037a8766fc1217c4bf9733d39038c64ffe6e6d"
+  },
+  "consequence_fixture": {
+    "path": "tests/fixtures/ama1_1/consequence-unfamiliar.json",
+    "sha256": "0560e605710002f095dec1d9631fe351de67e1dba24c4a1dafeb0dc8c7b102ce"
+  },
+  "implementation_pins": {
+    "src/constitutive_participation_v1.metta": "6ccf0a3478120ccb51ab8555d5a538a28f9f59a196c5bedcef77a131f9f2fb9b",
+    "src/assistant_reactor_v1.metta": "3b769512a0a9e38e2a00b8b56f124ab17c895f7985b2999105ad4018dc06e528",
+    "src/bootstrap_assistant_v1.metta": "ba3fc8030070f9e24ac651cd9167994e5cc8132b2c06af71675e654c91d5c0d1",
+    "effect_membranes/miter_assistant_service_v1.pl": "3b3e89645c66e054e85905183b2116a993ea8967581de68f1d426998bf5b4c41",
+    "effect_membranes/miter_assistant_operator_v1.pl": "e77ff9c75f87447b74822d13b673238f4786f4141c3afbfb0c882b599da32902"
+  },
+  "cases": [
+    {
+      "id": "human-positive-and-restart",
+      "claim": "Human contact forms the finite constitutive movement; restart preserves it without replay; linked consequence changes the next cut.",
+      "operations": [],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["human-contact", "fact9-expression", "recognized-compose", "flourishing-organization", "movement-formed", "VoiceRNA", "effect-witness"],
+      "forbid": ["fact9-unresolved"],
+      "restart_and_consequence": true
+    },
+    {
+      "id": "material-relation-severed",
+      "claim": "Removing the n-ary material relation changes the fact standing and withholds the previously formed movement.",
+      "operations": [
+        {"op": "set", "path": "/contact/configuration/omega_relations", "value": []}
+      ],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["fact9-unresolved", "missing-nary-materiality-or-role-essentiality", "unavailable-or-unresolved", "movement-unresolved"],
+      "forbid": ["movement-formed"]
+    },
+    {
+      "id": "material-relation-restored",
+      "claim": "Restoring the exact n-ary relation recovers formation without adding a behavioral branch.",
+      "operations": [
+        {"op": "set", "path": "/contact/configuration/omega_relations", "value": [{"id":"relation-whole","roles":["Gravity","Balance","Connection","Love"],"standing":"support","evidence":"restored-nary-witness"}]}
+      ],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["restored-nary-witness", "support-specific-fourthness", "movement-formed"],
+      "forbid": ["fact9-unresolved"]
+    },
+    {
+      "id": "carrier-order-neutral",
+      "claim": "Permuting support, relation, flourishing, and participant carrier order does not create first-position selection.",
+      "operations": [
+        {"op":"set","path":"/contact/configuration/omega_relations/0/roles","value":["Love","Connection","Balance","Gravity"]},
+        {"op":"set","path":"/contact/configuration/fact_views/0/support","value":["Love","Connection","Balance","Gravity"]},
+        {"op":"set","path":"/contact/configuration/possibilities/0/relation_ids","value":["relation-whole","relation-request"]},
+        {"op":"set","path":"/contact/configuration/possibilities/0/flourishing_values","value":["ConnectionDepth","SharedUnderstanding","AgencyBalance"]},
+        {"op":"reverse","path":"/contact/configuration/flourishing_views"},
+        {"op":"reverse","path":"/contact/configuration/participants"}
+      ],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["movement-formed", "movement-unfamiliar-inquiry", "support-specific-fourthness", "participant-reentry-organization"],
+      "forbid": ["movement-unresolved"]
+    },
+    {
+      "id": "pairwise-complete-whole-wrong",
+      "claim": "Pairwise coverage cannot certify a missing triadic whole.",
+      "operations": [
+        {"op":"set","path":"/contact/configuration/omega_relations","value":[
+          {"id":"relation-gb","roles":["Gravity","Balance"],"standing":"support","evidence":"pairwise-only"},
+          {"id":"relation-bc","roles":["Balance","Connection"],"standing":"support","evidence":"pairwise-only"},
+          {"id":"relation-gc","roles":["Gravity","Connection"],"standing":"support","evidence":"pairwise-only"}
+        ]},
+        {"op":"set","path":"/contact/configuration/fact_views/0/support","value":["Gravity","Balance","Connection"]},
+        {"op":"set","path":"/contact/configuration/fact_views/0/relation_ids","value":["relation-gb","relation-bc","relation-gc"]},
+        {"op":"set","path":"/contact/configuration/possibilities/0/relation_ids","value":["relation-request","relation-gb","relation-bc","relation-gc"]},
+        {"op":"set","path":"/contact/configuration/flourishing_views/2/relation_id","value":"relation-gb"}
+      ],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["pairwise-only", "missing-nary-materiality-or-role-essentiality", "movement-unresolved"],
+      "forbid": ["support-specific-fourthness"]
+    },
+    {
+      "id": "fact9-role-laundered",
+      "claim": "A material relation containing a role outside the declared support remains unresolved.",
+      "operations": [
+        {"op":"set","path":"/contact/configuration/fact_views/0/support","value":["Gravity","Balance"]},
+        {"op":"set","path":"/contact/configuration/omega_relations/0/roles","value":["Gravity","Love"]}
+      ],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["missing-nary-materiality-or-role-essentiality", "movement-unresolved"],
+      "forbid": ["movement-formed"]
+    },
+    {
+      "id": "present-as-support-rejected",
+      "claim": "Present cannot be laundered into the first-eight support vocabulary.",
+      "operations": [
+        {"op":"set","path":"/contact/configuration/fact_views/0/support","value":["Gravity","Balance","Present"]}
+      ],
+      "expected_submit": "rejected",
+      "expected_outbox": 0,
+      "require": [],
+      "forbid": []
+    },
+    {
+      "id": "can-compose-without-recognition",
+      "claim": "Lawful composability without recognition must retain an unrecognized continuation standing rather than silently forming the recognized movement.",
+      "operations": [
+        {"op":"set","path":"/contact/configuration/fact_views/0/recognition","value":"unrecognized"}
+      ],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["unrecognized-compose", "generated-standing.movement-unfamiliar-inquiry.unrecognized", "movement-unresolved"],
+      "forbid": ["movement-formed"]
+    },
+    {
+      "id": "flourishing-capture-withholds-undertaking",
+      "claim": "A sole undertaking requiring AgencyBalance cannot treat an explicit AgencyBalance capture standing as satisfaction of that flourishing requirement.",
+      "operations": [
+        {"op":"set","path":"/contact/configuration/flourishing_views/0/standing","value":"capture"},
+        {"op":"set","path":"/contact/configuration/flourishing_views/0/evidence","value":"dependency-transfer-observed"},
+        {"op":"set","path":"/contact/configuration/possibilities/0/form","value":"undertaking"}
+      ],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["AgencyBalance", "capture", "dependency-transfer-observed", "movement-unresolved"],
+      "forbid": ["movement-formed.undertaking"]
+    },
+    {
+      "id": "plural-generated-remains-live",
+      "claim": "Two warranted continuations remain plural instead of being selected by carrier position.",
+      "operations": [
+        {"op":"set","path":"/contact/configuration/possibilities","value":[
+          {"id":"movement-unfamiliar-inquiry","form":"inquiry","relation_ids":["relation-request","relation-whole"],"distinction_ids":["distinction-authorship"],"interface_ids":["interface-conversation"],"flourishing_values":["AgencyBalance","SharedUnderstanding","ConnectionDepth"],"consequence_kind":"local-response","consequence_standing":"non-certifying","legality":"l2425-supported"},
+          {"id":"movement-unfamiliar-defer","form":"defer","relation_ids":["relation-request","relation-whole"],"distinction_ids":["distinction-authorship"],"interface_ids":["interface-conversation"],"flourishing_values":["AgencyBalance","SharedUnderstanding","ConnectionDepth"],"consequence_kind":"deferred-response","consequence_standing":"non-certifying","legality":"l2425-supported"}
+        ]}
+      ],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["movement-plural-live", "movement-unfamiliar-inquiry", "movement-unfamiliar-defer", "generated-alternatives"],
+      "forbid": ["movement-formed"]
+    },
+    {
+      "id": "participant-conflict-retained",
+      "claim": "Conflicting and same-lineage participant readings remain differentiated and never become contact or movement authority.",
+      "operations": [
+        {"op":"set","path":"/contact/configuration/participants/0/claim","value":"direction-x"},
+        {"op":"set","path":"/contact/configuration/participants/0/standing","value":"supported"},
+        {"op":"set","path":"/contact/configuration/participants/1/claim","value":"direction-x"},
+        {"op":"set","path":"/contact/configuration/participants/1/standing","value":"contradicted"},
+        {"op":"set","path":"/contact/configuration/participants/2/claim","value":"direction-x"},
+        {"op":"set","path":"/contact/configuration/participants/2/standing","value":"supported"}
+      ],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["direction-x", "supported", "contradicted", "repeated-same-lineage-is-not-independent-support", "no-contact", "no-movement-authority", "movement-formed"],
+      "forbid": []
+    },
+    {
+      "id": "endogenous-contact-same-kernel",
+      "claim": "Endogenous contact uses the same constitutive path while retaining its distinct provenance.",
+      "operations": [
+        {"op":"set","path":"/contact/source_kind","value":"endogenous-contact"},
+        {"op":"set","path":"/contact/occurrence","value":"occurrence-endogenous-one"}
+      ],
+      "expected_submit": "queued",
+      "expected_outbox": 1,
+      "require": ["endogenous-contact", "contact-locus", "fact9-participation", "flourishing-participation", "movement-formed"],
+      "forbid": []
+    }
+  ]
+}
