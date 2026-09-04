@@ -1,0 +1,22 @@
+{
+  "schema": "miter-g33-r12-r3-recheck-v1",
+  "plan_commit": "27504bbc2d3b94faac3177ae66acc610136e1d28",
+  "runtime_evidence": "evidence/G33/R12/attempt-016",
+  "independent_verifier": {
+    "status": "PASS-BOUNDED",
+    "gate": "G33",
+    "revision": "R12-R2",
+    "claims": 4,
+    "disclosed_limit": "Initial daemon required harness SIGTERM after final serialization; fresh-process stop and no-generation-replay passed."
+  },
+  "actual_keychain_secret_absent_from_r12_evidence": true,
+  "provider_claims": [
+    "evidence/G33/R12/openrouter-call-1.claim",
+    "evidence/G33/R12/openrouter-call-2.claim"
+  ],
+  "provider_claim_count": 2,
+  "new_model_calls": 0,
+  "runtime_changes": 0,
+  "user_owned_paths_modified_or_staged": false,
+  "fidelity_checker_weakened": false
+}

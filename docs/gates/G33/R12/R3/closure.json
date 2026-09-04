@@ -1,0 +1,53 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G33",
+  "plan": "docs/gates/G33/R12/R3/plan.json",
+  "plan_commit": "27504bbc2d3b94faac3177ae66acc610136e1d28",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G33/R12/R3/recheck.json","sha256":"df9e3c421e2d45ada5197e2121d8c33308cb56b15a5882b79bed960aba2e3049"},
+    {"path":"docs/gates/G33/R12/R3/outcome.md","sha256":"e5161dadf75905bdb8315eb24397b9d031193be34bcad8c097f539861f2ae6b0"},
+    {"path":"docs/gates/G33/R12/R3/semantic-audit.md","sha256":"30b00cc4c63077b03e510336be4e9d41edde7aed82e80c821d83f04dcadd8cf7"},
+    {"path":"docs/gates/G33/R12/R2/outcome.md","sha256":"f1d39f3ea5725f651a3aa1e8add301b833fee87e97e285ccb8456c3c67dd201c"},
+    {"path":"docs/gates/G33/R12/R2/semantic-audit.md","sha256":"781f74a2c5e2d3b005a6b1019eb3e3e0b53e1107375da916f0e7d6a51d138323"},
+    {"path":"evidence/G33/R12/attempt-016/verdict.json","sha256":"3c6d0523f3bb2130b967b0a9636bc5aa13f2726e33586d931f0d80333dcb810c"},
+    {"path":"evidence/G33/R12/attempt-016/observations.json","sha256":"99eaddc4b53eb5024b14c607bc631e1c7a70a1a7b8fb5566ed0c084f17a55ee7"},
+    {"path":"evidence/G33/R12/attempt-016/freeze.json","sha256":"3862305f4430b58fa9000cddca5af3e9f64f847cb7a53d8a4263025abcd39255"},
+    {"path":"evidence/G33/R12/attempt-016/canonical/final.json","sha256":"9ec54da2d66eed5188fa071ea70a95560a627b498be02277ce272e34ed234751"},
+    {"path":"evidence/G33/R12/attempt-016/canonical/restart.json","sha256":"5e81495a1ac74177530ec621df9b405db850e97fbc7ba6231de53f06f69ce1e7"},
+    {"path":"evidence/G33/R12/attempt-016/consequence-severed-summary.json","sha256":"16f652517f1d3fc045be2b04fee33b7370a5380bfd60c656e21706e713df1ad2"},
+    {"path":"evidence/G33/R12/attempt-016/stop-restart-process.json","sha256":"b522b23671aed797ffa71e79be0528c639b5af86097257f6d2ddb105b7db9df1"}
+  ],
+  "claim_results": [
+    {
+      "id": "G33-R12-R3-preserved-baseline-is-complete",
+      "status": "PROVEN-HARNESS",
+      "limit": "The fidelity checker accepted explicit hashes for the completed R2 result and every pre-existing user-owned G22/G28 worktree path. This is a local package-boundary result, not authorship or semantic validation of those user files."
+    },
+    {
+      "id": "G33-R12-R3-r2-resource-and-quarantine-evidence-remains-valid",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The unchanged R2 evidence still proves one natively selected exact GLM 5.3 rendering remained model-bound and quarantined until independent finite v2 trial. R3 adds no new runtime evidence or generalization."
+    },
+    {
+      "id": "G33-R12-R3-r2-consequence-causality-remains-valid",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The unchanged R2 evidence and offline verifier retain the one-question before/after ranking change and the exact-candidate consequence-severed tie. This is bounded causal efficacy evidence, not general learning."
+    },
+    {
+      "id": "G33-R12-R3-r2-restart-and-stop-limit-remains-explicit",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The unchanged fresh-process evidence retains admitted development, sole later maximum, no generation replay, and successful queued-stop consumption. The initial process SIGTERM after large final serialization remains an explicit non-claim."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "R3 changes no source meaning. It corrects only the build package's representation of the pre-existing worktree boundary while preserving the R2 application of model non-sovereignty, non-compensatory trial, evidence lineage, native consequence, and changed future possibility.",
+    "causal_evidence": "R3's causal question is package-level: omitting user paths caused closure failure; explicitly hash-preserving those exact paths while changing nothing else permits the same R2 evidence to be reviewed. The R2 runtime causality remains the before/after versus consequence-severed contrast and restart non-replay.",
+    "substitution_audit": "No runtime, model, Miter cognition, candidate, trial, or evidence generation occurred. The independent verifier re-read exact committed artifacts. R3 did not transform a harness result into new semantic standing; it only checked that all changed paths were either preserved or in the R3 documentation scope.",
+    "capability_and_constraint_audit": "No user path was modified or staged. Exactly two historical provider claims remained and no third call occurred. The actual Keychain secret remained absent. Source, configuration, fixtures, controls, prior evidence, live services, and effects were unchanged; the fidelity checker itself was not weakened.",
+    "remaining_gaps": "R12 remains bounded to one synthetic expressive development and matched efficacy question. Efficient compact proof projection, clean same-process post-final return/shutdown, final clean-start G33 integration/reporting, general Soul navigation, production promotion, and whole-PoC acceptance remain open."
+  },
+  "reviewer": "Codex primary builder and fidelity reviewer, applying the committed Miter gate methodology",
+  "review_limits": "No-inference, single-reviewer package correction over already-committed R2 runtime evidence and local preserved-path hashes. It adds no runtime generality and retains the disclosed initial-process limitation.",
+  "terminal_reason": "G33 R12 is now closed PASS-BOUNDED through the R3 package correction, but G33 itself is not terminal. A separately derived next revision must address compact hash-bound proof projections and the remaining clean-start integrated severance/report requirement without replaying G31 live effects or either R12 provider claim."
+}
