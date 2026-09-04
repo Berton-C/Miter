@@ -1,0 +1,71 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R4: replace the historical SC05-directory restriction at the corrected relational voice transport with an explicit, versioned, capability-limited runtime-root grant and integrity manifest; from a fresh G33-owned root, the actual current RRun consumer can then store its native intention, make at most one qwen-local rendering call, preserve the product as generated, natively audit it, and return a typed disposition with no human-emission or external-effect authority, while malformed, mismatched, overbroad, or tampered grants/manifests fail before transport.",
+  "claim_ids": [
+    "G33-R4-runtime-root-authority-replaces-test-directory-coupling",
+    "G33-R4-current-relational-voice-public-entry-runs",
+    "G33-R4-invalid-or-tampered-runtime-authority-fails-before-transport"
+  ],
+  "non_claims": "No claim of completed voice repair, expression certification, effect eligibility, general language, human benefit, production identity, complete runtime capability issuance, complete G33, or later G33 phases. The runtime grant is synthetic builder-owned evidence authority for an isolated local-model call; it is not Soul authority, human messaging permission, filesystem authority beyond its exact root, or precedent for creating ~/.miter. The old SC05 membrane remains historical and is not rewritten.",
+  "rationale": "G33 R3 crossed continuity and proved that pure GroundLanguage/RIntend/RAudit/RDisposition products remain available, but the current public RRun returned an integrity/storage failure because its Prolog membrane admits only evidence/SC05 roots. C-003/C-008, C-060-C-067, S-901-S-905, S-1101/S-1102/S-1105, and T-23/T-30 require narrow mechanical capability and integrity without test-harness coupling or broadened ambient authority. This is a non-cognitive membrane repair; it must not change relational intention or audit semantics.",
+  "requirements": [
+    "C-003", "C-004", "C-005", "C-006", "C-007", "C-008", "C-009", "C-010", "C-011", "C-012", "C-013", "C-020", "C-021", "C-022", "C-023", "C-040", "C-044", "C-050", "C-051", "C-052", "C-053", "C-054", "C-055", "C-056", "C-057", "C-060", "C-061", "C-062", "C-063", "C-064", "C-065", "C-066", "C-067", "C-090", "C-091", "C-092", "C-093", "C-094", "C-095", "C-096", "C-097", "C-098", "C-099", "C-100", "C-101", "C-102", "C-103", "C-104", "C-105",
+    "S-103", "S-301", "S-302", "S-303", "S-304", "S-305", "S-401", "S-402", "S-403", "S-404", "S-405", "S-501", "S-502", "S-503", "S-504", "S-505", "S-601", "S-603", "S-604", "S-605", "S-801", "S-802", "S-804", "S-901", "S-902", "S-903", "S-904", "S-905", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202", "S-1203",
+    "T-01", "T-03", "T-05", "T-09", "T-12", "T-13", "T-14", "T-22", "T-23", "T-24", "T-28", "T-29", "T-30", "T-31"
+  ],
+  "reading": "Read both complete controls; C-003-C-013/C-060-C-067/C-090-C-105; Soul S-502-S-505, S-601/S-603-S-605, S-901-S-905, S-1101-S-1105, S-1201-S-1203; T-22/T-23/T-30/T-31; ACCEPTANCE G33; BUILD_FIDELITY_PROTOCOL F-01-F-07; SC05 relational voice boundary and closure; SC07 corrected construction; G33 R3 plan, raw public-entry result, verifier, and outcome. The R3 failure is the authority for the repair scope.",
+  "representation": "A new JSON runtime-root grant names its exact canonical root, bounded purpose, request identity, native scope, qwen-local alias, one-call maximum, localhost-only endpoint, expiry, and false external-human-emission standing. A separate integrity manifest names and hashes the exact current controls, native modules, Prolog membranes, and local non-secret model profile required by the public entry. The v2 Prolog membrane canonicalizes the existing root, rejects traversal/symlink aliasing and root mismatch, verifies grant fields and expiry, verifies every required logical source path/hash, confines all fixed output names beneath that root, and checks call use before starting localhost transport. It returns typed mechanical products only. RRun continues to form intention, request, audit, and disposition natively.",
+  "consumer": "The actual consumer is unchanged RRun/RIntend/RModelRequest/RWait/RAudit/RDisposition loaded through an updated bootstrap that imports a new relational-voice v2 mechanical membrane with the same narrow primitive names. Builder code creates only the synthetic grant, manifest, and frozen source encounter, captures bytes, and runs adversarial branches. It cannot provide intention, candidate meaning, audit, or disposition.",
+  "falsifiers": "Any arbitrary writable path works without a matching grant; `..` or a symlink alias escapes the granted root; root/scope/request/model/endpoint/purpose/expiry/emission/call-limit mismatch reaches transport; missing or tampered required source passes integrity; a second call starts; an output path is candidate-controlled; RRun still requires an SC05 directory; a model product bypasses RAudit; the public entry emits to a human or gains external effect authority; pure relational products change; the old historical membrane is edited; or test code supplies a faithful disposition.",
+  "scope_review": "R4 may add one grant schema, one new Prolog membrane version, minimally update the current relational voice bootstrap to import it, add frozen fixtures and builder run/verify code, and retain G33 R4 evidence/docs. It may make at most one actual qwen-local call on 127.0.0.1 using synthetic public text, with 1024 output tokens and the committed 120-second deadline. It may not modify relational cognition, the historical SC05 membrane/evidence, controls, model profiles, Chroma, Mattermost, credentials, accepted state, user G22/G28 work, or create ~/.miter. No OpenRouter or non-local network call is authorized.",
+  "rollback": "The old SC05 membrane remains intact. A later explicit revert can restore the bootstrap import and remove only the new v2 membrane/schema. Failed G33 roots and raw provider evidence remain provenance. No external effect or canonical state needs rollback. Any cognitive repair after this mechanical boundary is a separate G33 revision.",
+  "predecessor": "docs/gates/G33/R3/outcome.md",
+  "allowed_paths": [
+    "docs/gates/G33/R4/",
+    "config/relational-voice-runtime-grant-v1.json",
+    "effect_membranes/miter_relational_voice_v2.pl",
+    "src/bootstrap_relational_voice.metta",
+    "tests/fixtures/g33_r4/",
+    "scripts/g33_r4/",
+    "evidence/G33/R4/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G33/R3/outcome.md","sha256":"678ae7c3b5d2ef785290fdf20d44e0e4d3573f0792120c15d06c3f886addc13c"},
+    {"path":"evidence/G33/R3/attempt-002/verdict.json","sha256":"3f1e21e3e8f328a083fc1e50cb513e70162a9fcae3d5b70b99e02850ca696bdc"},
+    {"path":"evidence/G33/R3/attempt-002/verification.json","sha256":"d22351f0ec350c462d5e1af3196fe722fdf92addb79b68a8a88521e490bae456"},
+    {"path":"src/relational_voice.metta","sha256":"ac26b0fc44f30c00ae7abdfc85953a78a4d569a716531bb04e93e3aeaab78b4e"},
+    {"path":"effect_membranes/miter_relational_voice.pl","sha256":"dc60b950bf1e95add7c006125a02fa686d736d0cce04a4b2305e439872287588"},
+    {"path":"effect_membranes/miter_store.pl","sha256":"b5b1906ede97d278ff6cfeba8001873a8f0192d308e87bf8cb97f0c51fcd4b39"},
+    {"path":"effect_membranes/miter_llm.pl","sha256":"ebd2cf4d9c513954496089a30ebdfffe87f57577f4b455b637246d8bd14f1440"},
+    {"path":"config/local/g03-model-profiles.json","sha256":"aa9832b6eaa4130955297576645bbd36086fd6abb380c539f03a9702bb330c6e"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
+  "cases": {
+    "positive": "A fresh G33 runtime root with exact grant, scope, manifest, hashes, expiry, and one-call allowance runs current RRun through one actual local model product and native disposition with no emission authority.",
+    "severed": "Remove or alter root identity, request identity, scope, manifest entry, source hash, endpoint, expiry, call limit, or false-emission field separately; each branch fails before a worker starts.",
+    "neutral": "A different fresh directory name with a separately matching grant and identical source manifest preserves the native product class.",
+    "restored": "Restoring the exact valid grant/manifest in a fresh root restores public-entry transport and native audit.",
+    "held_out": "No language held-out claim. The transport grant cases and relational source encounter are frozen builder fixtures.",
+    "unknown_malformed": "Malformed JSON, missing root, noncanonical root, unknown schema, stale expiry, or unavailable localhost provider returns a typed non-success and never becomes a model or native semantic success."
+  },
+  "environment": "Pinned native PeTTa ae66fa8e41dcd5539d614706bd4e5cfb34f9608d and SWI-Prolog 10.0.2 arm64. One optional qwen-local call uses 127.0.0.1 only. All runtime roots are isolated under evidence/G33/R4. No Chroma, Mattermost, credentials, or external effects.",
+  "next_step_hypothesis": "If the generalized narrow membrane closes, resume the relational voice phase through the actual public entry. If its product is faithful but has no certification path, or if a meaning-altered product produces a repair request with no native construction/comparison/re-audit continuation, preserve that next discontinuity and freeze G33 R5 around the cognitive repair path. Do not combine that cognitive change into R4."
+}
