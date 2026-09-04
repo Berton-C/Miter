@@ -1,0 +1,22 @@
+{
+  "schema": "miter-ama11-service-freeze-verdict-v1",
+  "status": "PASS-BOUNDED",
+  "facts": {
+    "explicit_root_only": true,
+    "forbidden_home_root_absent": true,
+    "continuously_receptive_process": true,
+    "idle_cycles_do_not_manufacture_trajectory": true,
+    "strict_transport_and_invalid_quarantine": true,
+    "constitutive_contact_checkpointed": true,
+    "balance_and_rap_participation_checkpointed": true,
+    "consequence_changes_next_cut": true,
+    "duplicate_input_suppressed": true,
+    "native_state_rehydrated_after_restart": true,
+    "panic_preserves_checkpoint_and_history": true,
+    "lkg_mismatch_refused": true,
+    "three_crash_window_contained": true,
+    "evidence_export_excludes_private_content": true
+  },
+  "standing": "Supported local process, transport, checkpoint, rehydration and supervision mechanics with a finite structured contact/consequence. No natural-language grounding, local effect descriptor, VoiceRNA, model/memory/PLN/NAL/tool re-entry, live service, or full AMA-1.1 closure is claimed.",
+  "next_boundary": "Connect bounded participants, VoiceRNA and a no-network local effect descriptor through this same running process."
+}

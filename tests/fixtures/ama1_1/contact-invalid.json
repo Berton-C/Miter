@@ -1,0 +1,10 @@
+{
+  "schema": "miter-assistant-input-v1",
+  "input_id": "input-invalid-one",
+  "input_kind": "contact",
+  "contact": {
+    "id": "contact-invalid-one",
+    "source_kind": "human-contact",
+    "principal": "principal-alpha"
+  }
+}

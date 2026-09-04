@@ -1,0 +1,18 @@
+{
+  "schema": "miter-evidence-supersession-v1",
+  "status": "SUPERSEDES-BEFORE-POST-OPERATOR-FREEZE",
+  "superseded": [
+    {
+      "path": "evidence/AMA-1.1/R1/operator-freeze-002/verdict.json",
+      "prior_standing": "PASS-BOUNDED",
+      "reason": "The constitutive movement representation was strengthened to make balance-as-intelligence primary and to distinguish Investigation-25 Relatedness/Appropriateness/Precision readings from Inquiry-25.5 R-star/A-star/P-star/O-star Generated carriers."
+    },
+    {
+      "path": "evidence/AMA-1.1/R1/reactor-freeze-002/verdict.json",
+      "prior_standing": "PASS-BOUNDED",
+      "reason": "The recurring reactor was corrected so receptive idle cycles do not manufacture checkpoints or trajectory events, and developmental provenance now validates both contact and consequence cuts across restart."
+    }
+  ],
+  "replacement": "evidence/AMA-1.1/R1/service-freeze-001/verdict.json",
+  "scope": "The earlier artifacts remain immutable historical evidence. This record changes their current evidentiary standing; it does not rewrite them or claim AMA-1.1 closure."
+}

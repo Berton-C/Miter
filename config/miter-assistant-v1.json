@@ -1,0 +1,10 @@
+{
+  "schema": "miter-assistant-config-v1",
+  "idle_base_seconds": 0.05,
+  "idle_cap_seconds": 0.4,
+  "max_input_batch": 8,
+  "max_input_bytes": 1048576,
+  "external_effects": "none",
+  "network_access": "none",
+  "runtime_root": "explicit-required"
+}

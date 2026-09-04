@@ -218,14 +218,43 @@
            (let $record ($recorder $root assistant-stopped $control)
              (assistant-stopped (index-atom $control 2)))
            (let* (($inputs ($input-reader $root))
-                  ($step (AssistantCycleStep $inputs))
-                  ($snapshot (index-atom $step 2))
-                  ($checkpoint ($checkpoint-writer $root $snapshot))
                   ($active (> (size-atom $inputs) 0))
-                  ($record ($recorder $root assistant-cycle
-                    (cycle-standing $active $idle $checkpoint)))
-                  ($wait (if $active no-wait ($waiter $root $interval)))
                   ($next (if $active $base (ARNextInterval $interval $cap))))
-             (AssistantCycleWith $root (if $active false true) $next $base $cap
-               $control-reader $input-reader $checkpoint-writer $waiter $recorder))))
+             (if $active
+               (let* (($step (AssistantCycleStep $inputs))
+                      ($snapshot (index-atom $step 2))
+                      ($checkpoint ($checkpoint-writer $root $snapshot))
+                      ($record ($recorder $root assistant-cycle
+                        (cycle-standing contact-or-consequence $idle $checkpoint))))
+                 (AssistantCycleWith $root false $next $base $cap
+                   $control-reader $input-reader $checkpoint-writer $waiter $recorder))
+               (let $wait ($waiter $root $interval)
+                 (AssistantCycleWith $root true $next $base $cap
+                   $control-reader $input-reader $checkpoint-writer $waiter $recorder))))))
        (assistant-cycle-held malformed-control))))
+
+(= (ARServiceRestore $root)
+   (let $snapshot (as_restore $root)
+     (if (== $snapshot no-checkpoint) assistant-state-new
+       (if (== $snapshot checkpoint-invalid) assistant-restore-rejected
+         (AssistantRestore $snapshot)))))
+
+; Supported persistent entry. Integrity and restoration are measured by
+; non-cognitive membranes but admitted here. Only this native path decides
+; whether the continuously recurring cognition may begin.
+(= (AssistantServiceStart $root)
+   (let* (($integrity (as_integrity $root))
+          ($boot (SoulStartup $integrity)))
+     (if (!= $boot soul-ready)
+       (assistant-service-held $boot)
+       (let* (($restoration (ARServiceRestore $root))
+              ($base (as_config $root idle_base_seconds))
+              ($cap (as_config $root idle_cap_seconds)))
+         (if (or (== $restoration assistant-restore-rejected)
+                 (or (== $base ()) (== $cap ())))
+           (assistant-service-held $restoration)
+           (if (> $base $cap)
+             (assistant-service-held invalid-idle-envelope)
+             (let $start-record (as_record $root assistant-started $restoration)
+               (AssistantCycleWith $root false $base $base $cap
+                 as_control as_input as_checkpoint as_wait as_record))))))))

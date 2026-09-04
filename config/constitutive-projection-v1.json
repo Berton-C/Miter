@@ -1,0 +1,29 @@
+{
+  "schema": "miter-constitutive-projection-v1",
+  "standing": "finite-computational-shadow",
+  "support_roles": [
+    "Gravity",
+    "Balance",
+    "Connection",
+    "Precision",
+    "Effortlessness",
+    "Transformation",
+    "Love",
+    "Sacred"
+  ],
+  "present_role": "Present",
+  "flourishings": [
+    "AgencyBalance",
+    "CognitiveResilience",
+    "ConnectionDepth",
+    "WonderPreservation",
+    "TimeCoherence",
+    "PurposeBeyondUtility",
+    "SharedUnderstanding",
+    "CreativeTranscendence",
+    "AttentionStewardship"
+  ],
+  "transport_only": true,
+  "movement_selection": "native-metta-only",
+  "non_claim": "This vocabulary neither reconstructs actuality nor maps situations to behavior."
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "miter-assistant-input-v1",
+  "input_id": "input-consequence-one",
+  "input_kind": "consequence",
+  "scope": {
+    "principal": "principal-alpha",
+    "audience": "audience-alpha",
+    "project": "project-alpha"
+  },
+  "consequence": {
+    "id": "consequence-unfamiliar-one",
+    "movement_id": "movement-unfamiliar-inquiry",
+    "effect_key": "effect-local-none",
+    "result": "observed",
+    "d_relations": [
+      {
+        "id": "relation-return",
+        "kind": "consequence",
+        "standing": "support",
+        "evidence": "returned-contact"
+      }
+    ],
+    "d_distinctions": [
+      {
+        "id": "distinction-return",
+        "standing": "available",
+        "evidence": "returned-contact"
+      }
+    ],
+    "interfaces": [
+      {
+        "id": "interface-conversation",
+        "standing": "revisable",
+        "evidence": "returned-contact"
+      }
+    ],
+    "weave": [
+      {
+        "id": "thread-undertaking-alpha",
+        "standing": "continued",
+        "evidence": "returned-contact"
+      }
+    ],
+    "present": {
+      "context": "present-after-consequence",
+      "evidence": "occurrence-bound"
+    },
+    "evidence": "sealed-consequence"
+  }
+}

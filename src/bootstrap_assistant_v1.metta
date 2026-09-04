@@ -1,9 +1,11 @@
-; AMA-1.1 bootstrap. Service membranes are added only after native operators
-; have been syntax-checked and frozen. Relative imports are resolved from the
-; repository working directory by the supported launcher.
+; AMA-1.1 bootstrap. Relative imports are resolved from the repository working
+; directory by the supported launcher. Prolog imports below expose mechanics
+; only; AssistantServiceStart remains the sole cognitive service controller.
 !(import! &self (library lib_import))
 !(import_prolog_functions_from_file "./effect_membranes/miter_integrity.pl"
   (miter_integrity_verify))
+!(import_prolog_functions_from_file "./effect_membranes/miter_assistant_service_v1.pl"
+  (as_config as_integrity as_control as_input as_checkpoint as_restore as_wait as_record))
 !(bind! &assistant_state (new-space))
 !(bind! &assistant_history (new-space))
 !(import! &soul "./constitution/soul.metta")

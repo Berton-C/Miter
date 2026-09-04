@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+repo_dir=$(dirname -- "$script_dir")
+swipl=${MITER_SWIPL:-/opt/homebrew/bin/swipl}
+
+exec "$swipl" -q -f none -s "$repo_dir/effect_membranes/miter_assistant_operator_v1.pl" -- "$@"
