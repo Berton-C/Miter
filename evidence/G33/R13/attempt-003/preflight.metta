@@ -1,0 +1,8 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_development_helix_v2.metta")
+!(result root-canonical (dh2_root_probe "/Users/claritymiter/miter/evidence/G33/R13/attempt-003/canonical"))
+!(result root-r12 (dh2_root_probe "/Users/claritymiter/miter/evidence/G33/R12/attempt-016/canonical"))
+!(result root-other-gate (dh2_root_probe "/Users/claritymiter/miter/evidence/G33/R14/not-authorized"))
+!(result root-traversal (dh2_root_probe "/Users/claritymiter/miter/evidence/G33/R13/../R12/attempt-016"))
+!(result canonical-input (dh2_input "/Users/claritymiter/miter/evidence/G33/R13/attempt-003/canonical"))
+!(result neutral-input (dh2_input "/Users/claritymiter/miter/evidence/G33/R13/attempt-003/neutral"))
+!(result malformed-input (dh2_input "/Users/claritymiter/miter/evidence/G33/R13/attempt-003/malformed"))

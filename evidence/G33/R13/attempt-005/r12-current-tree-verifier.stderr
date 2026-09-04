@@ -1,0 +1,18 @@
+node:internal/process/esm_loader:34
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+
+AssertionError [ERR_ASSERTION]: /Users/claritymiter/miter/src/bootstrap_modules.metta
+    at file:///Users/claritymiter/miter/scripts/g33_r12/verify.mjs:13:39
+    at ModuleJob.run (node:internal/modules/esm/module_job:218:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:329:24)
+    at async loadESM (node:internal/process/esm_loader:28:7)
+    at async handleMainPromise (node:internal/modules/run_main:113:12) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'c2a124fa67d3f705eea5d4132a7e1282d13b17df0b65d6f702335fcea3c567a4',
+  expected: 'e09030b0da181e8abbaf00fbf8f146949103a8d5f98f7f737d6498bb03dd8bbf',
+  operator: 'strictEqual'
+}
+
+Node.js v20.11.1
