@@ -1,0 +1,156 @@
+[
+  {
+    "name": "bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"73c771d986515ac22aef88ec02964c88518be22731b97f438fb5917dced5a2b1\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "severed-certificate-capability",
+    "args": [
+      "swipl",
+      "-g",
+      "<bounded-goal>"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['local-effect-held','severed-effect','mechanical-boundary']",
+    "stderr": ""
+  },
+  {
+    "name": "start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":77819,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "invalid-participant-authority",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_1/contact-participant-invalid.json"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"reason\":\"strict-input-schema-runtime-or-size-boundary\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"rejected\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "submit-contact",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_1/contact-unfamiliar.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "duplicate-contact",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_1/contact-unfamiliar.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-unfamiliar-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"duplicate\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "stop",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":77819,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "restart",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":77854,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "restart-status",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\": {\"observed_at_epoch\":1788558329.83105,\"schema\":\"miter-assistant-heartbeat-v1\",\"state\":\"assistant-started\"},\"lkg\":\"verified\",\"pid\":77854,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"running\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "submit-consequence",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_1/consequence-unfamiliar.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-consequence-one\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "evidence-export",
+    "args": [
+      "evidence-bundle",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr",
+      "--output",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-export-upHae2/evidence.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"output\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-export-upHae2/evidence.json\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"evidence-stored\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama11-participant-voice-e9Ruvr"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":77854,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": ""
+  }
+]

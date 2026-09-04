@@ -1,0 +1,19 @@
+{
+  "schema": "miter-ama11-participant-voice-freeze-verdict-v1",
+  "status": "PASS-BOUNDED",
+  "facts": {
+    "balance_is_movement_primary_at_contact": true,
+    "fact9_flourishing_and_rap_remain_one_material_derivation": true,
+    "participant_sources_scopes_lineages_and_standings_remain_explicit": true,
+    "repeated_same_lineage_is_not_promoted_to_independent_support": true,
+    "participant_products_have_no_contact_or_movement_authority": true,
+    "native_voice_certificate_is_source_bound_and_has_no_emission_authority": true,
+    "prolog_commits_only_the_exact_local_descriptor": true,
+    "severed_certificate_or_capability_is_withheld": true,
+    "local_effect_is_idempotent_across_duplicate_and_restart": true,
+    "consequence_changes_the_next_cut_without_fabricating_an_effect": true,
+    "no_live_or_private_reach_occurred": true
+  },
+  "standing": "Finite structured runtime proof through the supported persistent assistant. It proves bounded participant carriage, native VoiceRNA qualification, a no-network local descriptor, one local commit, restart deduplication, and consequence incorporation. It does not prove live participant calls, natural-language grounding, semantic sufficiency, general conversation, independent PLN/NAL inference, Chroma recall, Mattermost reach, or full AMA-1.1 closure.",
+  "next_boundary": "Freeze the post-operator constitutive trial set and run the full positive, severed, neutral, restored, plural, capture, participant-conflict, consequence, restart, and endogenous/exogenous matrix."
+}

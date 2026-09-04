@@ -5,7 +5,7 @@
 !(import_prolog_functions_from_file "./effect_membranes/miter_integrity.pl"
   (miter_integrity_verify))
 !(import_prolog_functions_from_file "./effect_membranes/miter_assistant_service_v1.pl"
-  (as_config as_integrity as_control as_input as_checkpoint as_restore as_wait as_record))
+  (as_config as_integrity as_control as_input as_checkpoint as_restore as_wait as_record as_effect))
 !(bind! &assistant_state (new-space))
 !(bind! &assistant_history (new-space))
 !(import! &soul "./constitution/soul.metta")

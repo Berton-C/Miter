@@ -415,7 +415,7 @@
 ; Balance is the movement-primary organization at contact, not a score and
 ; not a requirement that every finite Fact9 support explicitly contain the
 ; Balance role. DPF, Fact9 and Flourishing are one constitutive joint here.
-(= (CPBalanceOrganization $cut $facts $organization $standings)
+(= (CPBalanceOrganization $cut $facts $organization $standings $participants)
    (balance-unfolding-as-intelligence movement-primary
      (contact-locus (index-atom $cut 1) (index-atom $cut 5) (index-atom $cut 12))
      (dynamic-participatory-fourthness
@@ -425,6 +425,7 @@
      (fact9-participation $facts)
      (flourishing-participation $organization)
      (generated-participation $standings)
+     (bounded-participant-reentry $participants)
      finite-non-reconstruction))
 
 ; These are Investigation-25 R/A/P readings of an already-primary movement.
@@ -442,13 +443,13 @@
          derived-standing-not-contact)
        (precision-reading $id (index-atom $standing 5) non-compensatory))))
 
-(= (CPMovementFromStanding $cut $facts $organization $standing $all)
+(= (CPMovementFromStanding $cut $facts $organization $participants $standing $all)
    (let* (($source-wrapper (index-atom $standing 8))
           ($source (index-atom $source-wrapper 1)))
      (movement-formed (index-atom $source 2) (index-atom $standing 1)
        (source-cut (index-atom $cut 1))
        (material-derivation
-         (CPBalanceOrganization $cut $facts $organization $all)
+         (CPBalanceOrganization $cut $facts $organization $all $participants)
          (CPRAPReadings $standing)
          (generated-carriers (index-atom $standing 3) (index-atom $standing 4)
            (index-atom $standing 5) (index-atom $standing 6))
@@ -456,19 +457,19 @@
        (answerability (index-atom $standing 6))
        (retained-alternatives $all))))
 
-(= (CPConstructMovement $cut $facts $organization $standings)
+(= (CPConstructMovement $cut $facts $organization $participants $standings)
    (let $generated (CPGeneratedOnly $standings)
      (if (== (size-atom $generated) 0)
        (movement-unresolved (source-cut (index-atom $cut 1))
          (retained-alternatives $standings
-           (CPBalanceOrganization $cut $facts $organization $standings)))
+           (CPBalanceOrganization $cut $facts $organization $standings $participants)))
        (if (== (size-atom $generated) 1)
-         (CPMovementFromStanding $cut $facts $organization
+         (CPMovementFromStanding $cut $facts $organization $participants
            (index-atom $generated 0) $standings)
          (movement-plural-live (source-cut (index-atom $cut 1))
            (generated-alternatives $generated)
            (retained-alternatives $standings
-             (CPBalanceOrganization $cut $facts $organization $standings)))))))
+             (CPBalanceOrganization $cut $facts $organization $standings $participants)))))))
 
 (= (CPParticipantScope $participant $scope)
    (== (index-atom $participant 3) $scope))
@@ -479,8 +480,9 @@
      (if (and (CPParticipantScope $participant (index-atom $cut 3))
            (== (index-atom $participant 7) no-contact-no-movement-authority))
        (derived-participant-reading (index-atom $participant 1) (index-atom $participant 2)
-         (index-atom $participant 4) (index-atom $participant 5)
-         (index-atom $participant 6) no-contact no-movement-authority)
+         (index-atom $participant 3) (index-atom $participant 4)
+         (index-atom $participant 5) (index-atom $participant 6)
+         no-contact no-movement-authority)
        (participant-unresolved (index-atom $participant 1) scope-or-authority-mismatch))
      (participant-unresolved unknown malformed-participant)))
 
@@ -490,16 +492,18 @@
        (CPParticipantAt $cut $participants (+ $i 1))) ()))
 
 (= (CPParticipantReadings $cut $contact)
-   (CPParticipantAt $cut (CPParticipants $contact) 0))
+   (participant-reentry-organization differentiated-by-source-scope-and-lineage
+     (CPParticipantAt $cut (CPParticipants $contact) 0)
+     repeated-same-lineage-is-not-independent-support))
 
 (= (CPEncounter $contact $predecessor)
    (let $cut (CPMakeCut $contact $predecessor)
      (if (CPCutValid $cut)
        (let* (($facts (CPFactExpressions $cut $contact))
               ($flourishing (CPFlourishingOrganization $cut $contact))
+              ($participants (CPParticipantReadings $cut $contact))
               ($generated (CPGeneratedAt $cut $facts $flourishing (CPPossibilities $contact) 0))
-              ($movement (CPConstructMovement $cut $facts $flourishing $generated))
-              ($participants (CPParticipantReadings $cut $contact)))
+              ($movement (CPConstructMovement $cut $facts $flourishing $participants $generated)))
          (constitutive-encounter $cut $facts $flourishing $generated $movement $participants))
        $cut)))
 

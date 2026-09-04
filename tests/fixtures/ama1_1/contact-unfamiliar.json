@@ -104,11 +104,59 @@
       ],
       "participants": [
         {
-          "id": "participant-model-alpha",
+          "id": "participant-model-current",
           "kind": "model",
-          "lineage": ["model-local-alpha"],
-          "claim": "semantic-reading-alpha",
+          "lineage": ["model-local-alpha", "generation-current"],
+          "claim": "semantic-reading-current",
           "standing": "candidate",
+          "authority": "no-contact-no-movement-authority"
+        },
+        {
+          "id": "participant-model-history",
+          "kind": "model",
+          "lineage": ["model-local-alpha", "generation-prior"],
+          "claim": "semantic-reading-prior",
+          "standing": "candidate",
+          "authority": "no-contact-no-movement-authority"
+        },
+        {
+          "id": "participant-model-repeat",
+          "kind": "model",
+          "lineage": ["model-local-alpha", "generation-current"],
+          "claim": "semantic-reading-current-repeated",
+          "standing": "candidate",
+          "authority": "no-contact-no-movement-authority"
+        },
+        {
+          "id": "participant-memory-continuity",
+          "kind": "memory",
+          "lineage": ["memory-project-alpha", "capsule-one"],
+          "claim": "continuity-reading-alpha",
+          "standing": "supported",
+          "authority": "no-contact-no-movement-authority"
+        },
+        {
+          "id": "participant-pln-relation",
+          "kind": "pln",
+          "lineage": ["pln-space-alpha", "derivation-one"],
+          "claim": "probabilistic-relation-reading",
+          "standing": "supported",
+          "authority": "no-contact-no-movement-authority"
+        },
+        {
+          "id": "participant-nal-revision",
+          "kind": "nal",
+          "lineage": ["nal-space-alpha", "revision-one"],
+          "claim": "temporal-revision-reading",
+          "standing": "contradicted",
+          "authority": "no-contact-no-movement-authority"
+        },
+        {
+          "id": "participant-tool-observation",
+          "kind": "tool",
+          "lineage": ["tool-local-alpha", "observation-one"],
+          "claim": "mechanical-observation-reading",
+          "standing": "unresolved",
           "authority": "no-contact-no-movement-authority"
         }
       ]

@@ -394,6 +394,102 @@ as_record(Root0, Kind0, Payload, Result) :-
       Append=='event-appended', as_heartbeat(Root,Kind,Now)), _,fail)
     -> Result=recorded ; Result='record-failed' ), !.
 
+% Commit an already-formed native VoiceRNA certificate to the isolated local
+% outbox. This membrane validates the carrier and durability boundary only. It
+% does not interpret the movement, compare participants, render language, or
+% gain network/external-effect authority.
+as_effect(Root0, Descriptor, Result) :-
+    ( catch((as_root(Root0, Root),
+      as_local_effect_descriptor(Descriptor, EffectId, Scope, Certificate, Hash),
+      as_commit_local_effect(Root, EffectId, Scope, Certificate, Hash, Result0),
+      Result=Result0), _, fail)
+    -> true ; as_effect_id_or_unknown(Descriptor, EffectId0),
+      Result=['local-effect-held',EffectId0,'mechanical-boundary'] ), !.
+
+as_effect_id_or_unknown(Descriptor, EffectId) :-
+    ( is_list(Descriptor), Descriptor=[_,Candidate|_], as_symbol(Candidate,EffectId)
+    -> true ; EffectId='unknown-effect' ).
+
+as_local_effect_descriptor(
+    ['local-effect-descriptor-v1',EffectId0,IdempotencyKey0,Scope,
+     [payload,Certificate],
+     [capability,'local-isolated-outbox','no-network','no-external-authority'],
+     prepared], EffectId, Scope, Certificate, Hash) :-
+    as_symbol(EffectId0, EffectId), as_symbol(IdempotencyKey0, IdempotencyKey),
+    EffectId==IdempotencyKey,
+    as_local_scope(Scope), as_local_voice_certificate(Certificate, Scope),
+    term_string(Certificate, CertificateText, [quoted(true),ignore_ops(true)]),
+    string_length(CertificateText, Length), Length=<1048576,
+    crypto_data_hash(CertificateText, Hash, [algorithm(sha256),encoding(utf8)]).
+
+as_local_scope([scope,Principal0,Audience0,Project0]) :-
+    as_symbol(Principal0,_), as_symbol(Audience0,_), as_symbol(Project0,_).
+
+as_local_voice_certificate(
+    ['assistant-voice-certificate-v1',
+     ['VoiceRNA','bounded-native-expression'],
+     ['source-cut',CutId0],Scope,
+     ['movement-source',Movement],
+     ['intended-expression',['local-response',Summary]],
+     ['participant-boundaries',Participants],
+     ['voice-audit','source-bound','uncertainty-retained','no-added-authority'],
+     'no-emission-authority'], Scope) :-
+    as_local_cut_id(CutId0),
+    as_local_movement(Movement), as_local_summary(Summary),
+    Participants=['participant-reentry-organization',
+      'differentiated-by-source-scope-and-lineage',Readings,
+      'repeated-same-lineage-is-not-independent-support'],
+    is_list(Readings), ground(Readings).
+
+as_local_cut_id(['cut-of',Contact0,Proto0]) :-
+    as_symbol(Contact0,_), as_symbol(Proto0,_).
+
+as_local_movement([Kind|Rest]) :-
+    memberchk(Kind,['movement-formed','movement-plural-live','movement-unresolved']),
+    Rest=[_|_], ground(Rest).
+
+as_local_summary(['movement-standing'|Rest]) :- Rest=[_|_], ground(Rest).
+
+as_commit_local_effect(Root, EffectId, Scope, Certificate, Hash, Result) :-
+    atomic_list_concat(['outbox/',EffectId,'.json'], Relative),
+    as_path(Root, Relative, Path),
+    ( exists_file(Path) ->
+        as_verify_local_effect(Path, EffectId, Scope, Hash),
+        as_local_effect_receipt(Root, EffectId, Hash, 'duplicate-observed'),
+        Result=['local-effect-duplicate',EffectId,Hash]
+    ; as_local_effect_dict(EffectId, Scope, Certificate, Hash, Dict),
+      as_write_json_durable(Path, Dict),
+      as_local_effect_receipt(Root, EffectId, Hash, committed),
+      Result=['local-effect-committed',EffectId,Hash] ).
+
+as_local_effect_dict(EffectId, [scope,Principal,Audience,Project], Certificate, Hash,
+    _{schema:"miter-local-effect-v1",effect_id:EffectId,idempotency_key:EffectId,
+      principal:Principal,audience:Audience,project:Project,
+      certificate_sha256:Hash,native_certificate:CertificateText,
+      capability:"local-isolated-outbox",network_access:false,
+      external_effect:false,standing:"committed-local-only"}) :-
+    term_string(Certificate, CertificateText, [quoted(true),ignore_ops(true)]).
+
+as_verify_local_effect(Path, EffectId, [scope,Principal,Audience,Project], Hash) :-
+    miter_store_read_json(Path, Dict),
+    as_dict_atom(Dict,schema,'miter-local-effect-v1'),
+    as_dict_atom(Dict,effect_id,EffectId),
+    as_dict_atom(Dict,idempotency_key,EffectId),
+    as_dict_atom(Dict,principal,Principal), as_dict_atom(Dict,audience,Audience),
+    as_dict_atom(Dict,project,Project),
+    as_dict_atom(Dict,certificate_sha256,Hash),
+    as_dict_atom(Dict,capability,'local-isolated-outbox'),
+    get_dict(network_access,Dict,false), get_dict(external_effect,Dict,false),
+    as_dict_atom(Dict,standing,'committed-local-only').
+
+as_local_effect_receipt(Root, EffectId, Hash, Standing) :-
+    atomic_list_concat(['receipts/effect-',EffectId,'.json'], Relative),
+    as_path(Root,Relative,Path), get_time(Now),
+    as_write_json_durable(Path, _{schema:"miter-assistant-effect-receipt-v1",
+      effect_id:EffectId,idempotency_key:EffectId,certificate_sha256:Hash,
+      capability:"local-isolated-outbox",standing:Standing,
+      network_access:false,external_effect:false,observed_at_epoch:Now}).
+
 as_heartbeat(Root, Kind, Now) :-
     as_path(Root, 'heartbeat.json', Path),
     as_write_json_durable(Path, _{schema:"miter-assistant-heartbeat-v1",

@@ -27,7 +27,7 @@
 
 (= (ARHistoryValid $row)
    (and (CPShape $row assistant-history 5)
-     (and (CPHas (index-atom $row 1) (encounter consequence restoration) 0)
+     (and (CPHas (index-atom $row 1) (encounter consequence restoration effect) 0)
           (CPShape (index-atom $row 3) scope 4))))
 
 (= (ARAllValid $rows $validator $i)
@@ -37,7 +37,8 @@
 
 (= (ARAddAll $space $rows $i)
    (if (< $i (size-atom $rows))
-     (let $added (add-atom $space (index-atom $rows $i))
+     (let* (($row (index-atom $rows $i))
+            ($added (add-atom $space $row)))
        (ARAddAll $space $rows (+ $i 1))) restored))
 
 (= (ARStateScopesUnique $rows $i $seen)
@@ -197,6 +198,86 @@
      (assistant-cycle-step (AssistantProcessAt $inputs 0) (AssistantSnapshot))
      (assistant-cycle-step ((assistant-input-rejected malformed-batch)) (AssistantSnapshot))))
 
+(= (ARVoiceCertificate $encounter)
+   (if (CPShape $encounter constitutive-encounter 7)
+     (let* (($cut (index-atom $encounter 1))
+            ($movement (index-atom $encounter 5))
+            ($participants (index-atom $encounter 6)))
+       (if (ARMovementValid $movement)
+         (assistant-voice-certificate-v1
+           (VoiceRNA bounded-native-expression)
+           (source-cut (index-atom $cut 1))
+           (index-atom $cut 3)
+           (movement-source $movement)
+           (intended-expression
+             (local-response (ARMovementSummary $movement)))
+           (participant-boundaries $participants)
+           (voice-audit source-bound uncertainty-retained no-added-authority)
+           no-emission-authority)
+         (assistant-voice-held invalid-movement)))
+     (assistant-voice-held invalid-encounter)))
+
+(= (ARVoiceCertificateValid $certificate)
+   (and (CPShape $certificate assistant-voice-certificate-v1 9)
+     (and (CPShape (index-atom $certificate 1) VoiceRNA 2)
+      (and (CPShape (index-atom $certificate 2) source-cut 2)
+       (and (CPShape (index-atom $certificate 3) scope 4)
+        (and (CPShape (index-atom $certificate 4) movement-source 2)
+         (and (CPShape (index-atom $certificate 5) intended-expression 2)
+          (and (CPShape (index-atom $certificate 6) participant-boundaries 2)
+           (and (CPShape (index-atom $certificate 7) voice-audit 4)
+                (== (index-atom $certificate 8) no-emission-authority))))))))))
+
+(= (ARLocalEffectDescriptor $contact-result)
+   (if (CPShape $contact-result assistant-contact-incorporated 3)
+     (let* (($contact-id (index-atom $contact-result 1))
+            ($encounter (index-atom $contact-result 2))
+            ($certificate (ARVoiceCertificate $encounter)))
+       (if (ARVoiceCertificateValid $certificate)
+         (local-effect-descriptor-v1 $contact-id $contact-id
+           (index-atom $certificate 3)
+           (payload $certificate)
+           (capability local-isolated-outbox no-network no-external-authority)
+           prepared)
+         (local-effect-held $contact-id $certificate)))
+     no-local-effect))
+
+(= (ARLocalEffectResultValid $result)
+   (and (is-expr $result)
+     (and (== (size-atom $result) 3)
+       (CPHas (index-atom $result 0)
+         (local-effect-committed local-effect-duplicate) 0))))
+
+(= (AREffectOne $root $contact-result $effect-writer)
+   (let $descriptor (ARLocalEffectDescriptor $contact-result)
+     (if (CPShape $descriptor local-effect-descriptor-v1 7)
+       (let $result ($effect-writer $root $descriptor)
+         (if (ARLocalEffectResultValid $result)
+           (let* (($scope (index-atom $descriptor 3))
+                  ($history (ARRecord effect (index-atom $descriptor 1) $scope
+                    (effect-witness $result (index-atom $descriptor 4)))))
+             (local-effect-result $result $history))
+           (local-effect-held (index-atom $descriptor 1) $result)))
+       $descriptor)))
+
+(= (AREffectsAt $root $results $effect-writer $i)
+   (if (< $i (size-atom $results))
+     (cons-atom (AREffectOne $root (index-atom $results $i) $effect-writer)
+       (AREffectsAt $root $results $effect-writer (+ $i 1))) ()))
+
+(= (AREffectOutcomeValid $outcome)
+   (if (== $outcome no-local-effect) true
+     (if (CPShape $outcome local-effect-result 3)
+       (and (ARLocalEffectResultValid (index-atom $outcome 1))
+            (CPHas (index-atom $outcome 2)
+              (assistant-history-recorded assistant-history-duplicate) 0))
+       false)))
+
+(= (AREffectsValidAt $effects $i)
+   (if (< $i (size-atom $effects))
+     (and (AREffectOutcomeValid (index-atom $effects $i))
+          (AREffectsValidAt $effects (+ $i 1))) true))
+
 (= (ARControlValid $control)
    (and (CPShape $control assistant-control 3)
         (CPHas (index-atom $control 1) (continue stop panic) 0)))
@@ -206,9 +287,10 @@
 
 ; All callbacks are non-cognitive capabilities supplied by the service bootstrap:
 ; control(root), input(root), checkpoint(root,snapshot), wait(root,seconds),
-; and record(root,kind,payload). Native recursion owns continuation.
+; record(root,kind,payload), and effect(root,descriptor). Native recursion owns
+; continuation, VoiceRNA and descriptor formation.
 (= (AssistantCycleWith $root $idle $interval $base $cap
-      $control-reader $input-reader $checkpoint-writer $waiter $recorder)
+      $control-reader $input-reader $checkpoint-writer $waiter $recorder $effect-writer)
    (let $control ($control-reader $root)
      (if (ARControlValid $control)
        (if (== (index-atom $control 1) panic)
@@ -222,15 +304,22 @@
                   ($next (if $active $base (ARNextInterval $interval $cap))))
              (if $active
                (let* (($step (AssistantCycleStep $inputs))
-                      ($snapshot (index-atom $step 2))
-                      ($checkpoint ($checkpoint-writer $root $snapshot))
-                      ($record ($recorder $root assistant-cycle
-                        (cycle-standing contact-or-consequence $idle $checkpoint))))
-                 (AssistantCycleWith $root false $next $base $cap
-                   $control-reader $input-reader $checkpoint-writer $waiter $recorder))
+                      ($effects (AREffectsAt $root (index-atom $step 1) $effect-writer 0))
+                      ($effects-valid (AREffectsValidAt $effects 0)))
+                 (if $effects-valid
+                   (let* (($snapshot (AssistantSnapshot))
+                          ($checkpoint ($checkpoint-writer $root $snapshot))
+                          ($record ($recorder $root assistant-cycle
+                            (cycle-standing contact-or-consequence $idle $checkpoint))))
+                     (if (== $checkpoint checkpointed)
+                       (AssistantCycleWith $root false $next $base $cap
+                         $control-reader $input-reader $checkpoint-writer $waiter $recorder $effect-writer)
+                       (assistant-service-held (checkpoint $checkpoint))))
+                   (let $record ($recorder $root assistant-effect-held $effects)
+                     (assistant-service-held $effects))))
                (let $wait ($waiter $root $interval)
                  (AssistantCycleWith $root true $next $base $cap
-                   $control-reader $input-reader $checkpoint-writer $waiter $recorder))))))
+                   $control-reader $input-reader $checkpoint-writer $waiter $recorder $effect-writer))))))
        (assistant-cycle-held malformed-control))))
 
 (= (ARServiceRestore $root)
@@ -257,4 +346,4 @@
              (assistant-service-held invalid-idle-envelope)
              (let $start-record (as_record $root assistant-started $restoration)
                (AssistantCycleWith $root false $base $base $cap
-                 as_control as_input as_checkpoint as_wait as_record))))))))
+                 as_control as_input as_checkpoint as_wait as_record as_effect))))))))

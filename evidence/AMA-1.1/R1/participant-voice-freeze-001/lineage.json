@@ -1,0 +1,6 @@
+{
+  "schema": "miter-ama11-additive-evidence-lineage-v1",
+  "predecessor": "evidence/AMA-1.1/R1/service-freeze-001/verdict.json",
+  "predecessor_standing": "PASS-BOUNDED",
+  "relation": "adds bounded participant re-entry, native VoiceRNA, and local effect qualification through the same supported service"
+}
