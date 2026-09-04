@@ -18,20 +18,30 @@
 (= (RecoverContinuity $store-root $project-id $output-path)
    (miter_continuity_reconstruct $store-root $project-id $output-path))
 
-; G11 bounded book-continuity intent. No fuzzy vector result grants exactness.
+; G33 R2 continuity contact. A generated reading is non-authoritative; native
+; relation use and scoped registry cardinality decide whether exact continuity
+; can be addressed. No fuzzy vector result or model product grants exactness.
 (= (ContinuityRNA $context $mode)
-   (let* (($text (miter_resume_field $context "text"))
-          ($begin (miter_resume_begin $context)))
+   (let $begin (miter_resume_begin $context)
      (if (== $begin restart-contact-recorded)
-       (if (== $text "Where was I with the book?")
-         (if (== (miter_resume_registry_count $context "book") 1)
-           (BookContinuityRNA $context $mode)
-           continuity-project-ambiguous)
-         continuity-intent-unsupported)
+       (let $reading (ContinuityAcquireReading $context $mode)
+         (ContinuityFromReading $context $mode $reading))
        $begin)))
 
+(= (ContinuityFromReading $context $mode $reading)
+   (if (ContinuityReadingSupported $reading)
+     (let* (($kind (index-atom $reading 1))
+            ($count (miter_resume_registry_count $context $kind)))
+       (if (== $count 1) (ProjectContinuityRNA $context $mode $kind)
+         (if (== $count 0) continuity-project-unavailable
+           continuity-project-ambiguous)))
+     $reading))
+
 (= (BookContinuityRNA $context $mode)
-   (let* (($project (miter_resume_registry_project $context "book"))
+   (ProjectContinuityRNA $context $mode "book"))
+
+(= (ProjectContinuityRNA $context $mode $kind)
+   (let* (($project (miter_resume_registry_project $context $kind))
           ($store (miter_resume_field $context "memory_store"))
           ($principal (miter_resume_field $context "principal_scope"))
           ($audience (miter_resume_field $context "audience_scope"))

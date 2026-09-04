@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-c32fld9lg0tn316m9so3kg",
+  "object": "chat.completion",
+  "created": 1788521826,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"alternatives\": [\n    \"The speaker is asking for the current position within a book.\",\n    \"The speaker is asking for the last completed work on a book.\",\n    \"The speaker is asking for the next movement in a book.\"\n  ],\n  \"claims\": [\n    {\n      \"evidence_spans\": [\n        \"book\"\n      ],\n      \"relation\": \"project-kind\",\n      \"value\": \"book\"\n    },\n    {\n      \"evidence_spans\": [\n        \"Where was I with the book?\"\n      ],\n      \"relation\": \"continuity-facet\",\n      \"value\": \"current-position\"\n    }\n  ],\n  \"completion_status\": \"complete\",\n  \"request_id\": \"g33-r2-004-g11-exact-regression-continuity-reading\",\n  \"source_sha256\": \"b71cdd2c59068dbc0f1911188fe85e572b04433b0d25bade3876e5a8068fd689\",\"uncertainty\": \"The phrase 'Where was I' is a standard idiom for recalling one's current position in a narrative or task, but it could also imply a request for the last completed work or the next movement depending on context not present in the source.\"\n}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 288,
+    "completion_tokens": 320,
+    "total_tokens": 608,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 300,
+    "accepted_draft_tokens_count": 220,
+    "rejected_draft_tokens_count": 80
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

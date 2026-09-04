@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-srpatpxqr1mveuog5ycug8",
+  "object": "chat.completion",
+  "created": 1788521456,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "reasoning_content": "We need answer user's request. Need produce JSON only per schema? User says: \"Read the SOURCE CONTACT only. Propose a bounded semantic reading; do not answer the request. Each claim must cite one or more exact, case-sensitive substrings copied from SOURCE CONTACT. Use relation \"project-kind\" only for a kind such as book, manuscript, codebase, or trip; never emit a project ID. Use relation \"continuity-facet\" for any requested relation, choosing only current-position, last-completed-work, unresolved-question, or next-movement. If the contact does not support a project-kind plus at least one continuity facet, set completion_status to insufficient_evidence and return no claims. Preserve uncertainty as concise prose and list plausible alternative readings when material.\nREQUEST ID: g33-r2-002-r1-transfer-continuity-reading\nSOURCE SHA256: ...\nSOURCE CONTACT:\nCan you remind me exactly where we paused in my book and what I should work on next?\"\n\nNeed output JSON object required by supplied schema. But schema not explicitly given? Need infer likely fields: completion_status, claims? Maybe request id? Need only JSON. Need ensure claims cite exact substrings. Source contact: \"Can you remind me exactly where we paused in my book and what I should work on next?\"\n\nWe need propose bounded semantic reading, not answer request. Need relation project-kind only for kind such as book. Source has \"my book\" exact substring? \"book\" exact. Could claim project-kind: book citing \"book\" or \"my book\". Continuity facet for requested relation: current-position? \"where we paused\" indicates current-position. next-movement? \"what I should work on next\" indicates next-movement. Need at least one continuity facet. So completion_status likely \"supported\" or \"complete\"? Need schema unknown. Could be {\"completion_status\":\"supported\",\"claims\":[...],\"uncertainty\":\"...\",\"alternative_readings\":[...]}? Need maybe include request_id, source_sha256? The prompt says return only JSON object required by supplied schema. But no schema. Need make reasonable. Maybe expected fields: completion_status, claims, uncertainty, alternative_readings. Each claim must cite one or more exact substrings. Could have claim objects with relation, value, evidence? Need exact substrings copied. Need not answer request. We can say reading: contact asks for reminder of pause and next work in book. Claims:\n- relation: project-kind",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 332,
+    "completion_tokens": 512,
+    "total_tokens": 844,
+    "completion_tokens_details": {
+      "reasoning_tokens": 512
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 499,
+    "accepted_draft_tokens_count": 344,
+    "rejected_draft_tokens_count": 155
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

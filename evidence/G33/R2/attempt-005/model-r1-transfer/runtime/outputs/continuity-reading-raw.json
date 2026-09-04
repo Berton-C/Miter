@@ -1,0 +1,33 @@
+{
+  "id": "chatcmpl-gbdqr1ijds8ixr1glhwqck",
+  "object": "chat.completion",
+  "created": 1788521939,
+  "model": "qwen/qwen3.8-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"alternatives\": [\n    \"The user is asking for a summary of the entire book rather than a specific pause point.\",\n    \"The user is inquiring about a different project, such as a manuscript or codebase, but mistakenly referred to it as a book.\"\n  ],\n  \"claims\": [\n    {\n      \"evidence_spans\": [\n        \"my book\"\n      ],\n      \"relation\": \"project-kind\",\n      \"value\": \"book\"\n    },\n    {\n      \"evidence_spans\": [\n        \"where we paused\"\n      ],\n      \"relation\": \"continuity-facet\",\n      \"value\": \"current-position\"\n    },\n    {\n      \"evidence_spans\": [\n        \"what I should work on next\"\n      ],\n      \"relation\": \"continuity-facet\",\n      \"value\": \"next-movement\"\n    }\n  ],\n  \"completion_status\": \"complete\",\n  \"request_id\": \"g33-r2-005-r1-transfer-continuity-reading\",\n  \"source_sha256\": \"f8be7b9bb63fb850b63d57191d4ab42aa5f15a4363c2943706ba09971ae90951\",\"uncertainty\": \"The source contact explicitly identifies the project as a 'book' and requests information regarding the 'paused' state and 'next' steps. No specific content, chapter, or task is provided in the contact, so the reading is limited to the type\"\n}",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 296,
+    "completion_tokens": 369,
+    "total_tokens": 665,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "stats": {
+    "total_draft_tokens_count": 348,
+    "accepted_draft_tokens_count": 253,
+    "rejected_draft_tokens_count": 95
+  },
+  "system_fingerprint": "qwen/qwen3.8-27b"
+}

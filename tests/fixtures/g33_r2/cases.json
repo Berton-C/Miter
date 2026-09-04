@@ -1,0 +1,26 @@
+{
+  "schema": "miter-g33-r2-cases-v1",
+  "model_cases": [
+    {
+      "id": "r1-transfer",
+      "text": "Can you remind me exactly where we paused in my book and what I should work on next?",
+      "mode": "canonical",
+      "required_kind": "book",
+      "required_facets": ["current-position", "next-movement"],
+      "standing": "builder-inspected-transfer-regression"
+    },
+    {
+      "id": "g11-exact-regression",
+      "text": "Where was I with the book?",
+      "mode": "chroma-off",
+      "required_kind": "book",
+      "required_facets": ["current-position"],
+      "standing": "historical-exact-regression"
+    }
+  ],
+  "synthetic_non_continuity": "Please turn the blue lamp off.",
+  "source_scope": {
+    "principal_scope": "principal:g08-human",
+    "audience_scope": "scope:g08-private-project"
+  }
+}

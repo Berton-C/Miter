@@ -1,0 +1,31 @@
+{
+  "schema": "miter-continuity-reading-contract-v1",
+  "standing": "generated-source-verified-candidate",
+  "description": "A bounded model-proposed reading of continuity contact. It is not authority, project selection, memory, or an answer.",
+  "relations": {
+    "project-kind": "A kind named or supported by an exact source span, never a project identifier.",
+    "continuity-facet": "A requested continuity relation supported by an exact source span."
+  },
+  "native_continuity_facets": [
+    "current-position",
+    "last-completed-work",
+    "unresolved-question",
+    "next-movement"
+  ],
+  "forbidden_model_fields": [
+    "project_id",
+    "principal_scope",
+    "audience_scope",
+    "permission",
+    "capsule_id",
+    "artifact_ref",
+    "exact_location",
+    "next_intended_movement",
+    "answer"
+  ],
+  "authority": {
+    "project_identity": "authenticated scoped registry interpreted by native MeTTa",
+    "exact_state": "current capsule plus trajectory witness",
+    "model_product": "generated semantic proposal only"
+  }
+}

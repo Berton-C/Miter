@@ -1,0 +1,21 @@
+{
+  "alternatives": [
+    "The speaker is asking for the current position within a book.",
+    "The speaker is asking for the last completed work on a book.",
+    "The speaker is asking for the next movement in a book."
+  ],
+  "claims": [
+    {"evidence_spans": ["book" ],"relation":"project-kind","value":"book"},
+    {
+      "evidence_spans": ["Where was I with the book?" ],
+      "relation":"continuity-facet",
+      "value":"current-position"
+    }
+  ],
+  "completion_status":"complete",
+  "request_id":"g33-r2-005-g11-exact-regression-continuity-reading",
+  "schema":"miter-continuity-reading-v1",
+  "source_sha256":"b71cdd2c59068dbc0f1911188fe85e572b04433b0d25bade3876e5a8068fd689",
+  "standing":"generated-source-verified-candidate",
+  "uncertainty":"The phrase 'Where was I' is a standard idiom for recalling one's current position in a narrative or task, but it could also imply a request for the last completed work or the next movement depending on context not present in the source."
+}

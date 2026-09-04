@@ -1,0 +1,11 @@
+{
+  "alias":"qwen-local",
+  "completed_at_epoch":1788522268.139627,
+  "duration_ms":45742,
+  "http_status":200,
+  "model":"qwen/qwen3.8-27b",
+  "request_id":"g33-r2-006-g11-exact-regression-continuity-reading",
+  "schema":"miter-model-timing-v1",
+  "started_at_epoch":1788522222.397787,
+  "timeout_seconds":120
+}

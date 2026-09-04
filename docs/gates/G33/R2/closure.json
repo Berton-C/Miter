@@ -1,0 +1,58 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G33",
+  "plan": "docs/gates/G33/R2/plan.json",
+  "plan_commit": "aba224974d74ca86a6144a524b2170db0ac2e6c9",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G33/R2/attempts.md","sha256":"e8af293df188eb4b6733a66a89523f383e1ef65fc04cda7335d25d0d61d01407"},
+    {"path":"docs/gates/G33/R2/outcome.md","sha256":"779a89b360b23c65aaafd9f2c41b15647a2e240199faaeabd1a1a739b0397fc1"},
+    {"path":"evidence/G33/R2/attempt-001/runner-failure.json","sha256":"f662cc5b6b530031917cbb529fa58ef2b15bd8e51c7f97198572fc90eb269360"},
+    {"path":"evidence/G33/R2/attempt-002/runner-failure.json","sha256":"951bcf8df6573acb2e7ce8f77cfc9b74062992bf659dd789eab40621fc503d00"},
+    {"path":"evidence/G33/R2/attempt-002/model-r1-transfer/runtime/outputs/continuity-reading-timing.json","sha256":"b5b20a368d1f1d82ba0466be0097a0b27f033b170c16d3ada0871f00f4f53c43"},
+    {"path":"evidence/G33/R2/attempt-003/runner-failure.json","sha256":"e5d01751f7798d4b612b93e24dc79a1f7eefe6173d528e7dfcfa9a7b11e8549f"},
+    {"path":"evidence/G33/R2/attempt-004/runner-failure.json","sha256":"3c2889a607f7fc4ab35b37fc81f57f8b31ed2229ee7f6f3b973cca153f0b1418"},
+    {"path":"evidence/G33/R2/attempt-005/verdict.json","sha256":"c446f466fc62a709ce40393a7639c389825d8428956496fcd51f8af4c9353728"},
+    {"path":"evidence/G33/R2/attempt-006/verdict.json","sha256":"c446f466fc62a709ce40393a7639c389825d8428956496fcd51f8af4c9353728"},
+    {"path":"evidence/G33/R2/attempt-006/observations.json","sha256":"01dd9afa6f167559d142f04ccc07c99c678e714678fd5118dd0a3b2a57315b20"},
+    {"path":"evidence/G33/R2/attempt-006/freeze.json","sha256":"4c37e793289bb525365479dafbb932cda3f375250496bb30174be06fcf07174c"},
+    {"path":"evidence/G33/R2/attempt-006/manifest.json","sha256":"7762892eef829224f90ebb692521983598696c70e5fe708deba28402bcb9b94c"}
+  ],
+  "claim_results": [
+    {
+      "id": "G33-R2-derived-reading-separated-from-authority",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Two disclosed synthetic contacts reached actual qwen-local products that remained generated, strictly parsed, source-cited data. This does not prove arbitrary semantic readings or genuinely unseen language."
+    },
+    {
+      "id": "G33-R2-native-scoped-project-grounding",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Native MeTTa accepted only one named project-kind relation plus recognized continuity facets and selected only an exactly unique in-scope registry match. This is a bounded kind/facet ontology, not general entity resolution."
+    },
+    {
+      "id": "G33-R2-exact-capsule-trajectory-authority-preserved",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Both readings produced identical exact state from the current capsule and trajectory witness; Chroma loss did not change it. Stale external-artifact reconciliation and full T-20 remain unproved."
+    },
+    {
+      "id": "G33-R2-ambiguity-malformed-and-unavailable-held",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The frozen malformed, span, identity, scope-cardinality, capsule, trajectory, and provider cuts were differentiated. Universal provider, parser, privacy, and recovery faults are not proved."
+    },
+    {
+      "id": "G33-R2-exact-regression-and-transfer-paraphrases",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The historical exact sentence and the already inspected R1 paraphrase passed without any sentence entry in runtime source. Both are disclosed regressions; neither is a genuine post-freeze held-out evaluation."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004-C-013 and S-502/S-801-S-803 require language interpretation to remain a reading while native cognition retains scope, project selection, and exact continuity authority. T-19 explicitly rejects one exact trigger sentence. R2 therefore makes the model product a cited generated relation set, requires source and scope participation, and leaves checkpoint truth solely in the capsule and trajectory.",
+    "causal_evidence": "Attempt 006 invoked the revised current ContinuityRNA with two actual local-model products. Different cited relation sets reached the same native registry project and exact checkpoint. Removing the capsule or one cited trajectory event demoted the certificate; removing Chroma preserved exactness; restoring the participant restored the exact certificate. Registry cardinality and malformed candidate changes produced their named native or mechanical differences.",
+    "substitution_audit": "No sentence, synonym, case ID, expected answer, model confidence score, or JavaScript branch selects continuity in runtime code. The model proposes fallible relations but cannot name the project ID or state. Literal span and kind-name checks prevent it from fabricating the decisive identity token; native MeTTa checks relation vocabulary, sufficiency, and unique authenticated scope. JavaScript creates synthetic branches and compares frozen expectations only. The remaining facet interpretation is still a bounded model proposal, not a claim that native code proves arbitrary linguistic entailment.",
+    "capability_and_constraint_audit": "Attempt 006 used two localhost calls at 61,273 ms and 45,742 ms, each with reasoning disabled, 512 output tokens, and a 120-second hard timeout. It performed zero external-network requests, credential lookups, Mattermost operations, Chroma mutations, or external effects. Raw provider content was retained and parsed as inert JSON. Public evidence contains only synthetic fixtures. Historical G11/G32 harness imports are not relabeled current; G33 must exercise the revised bootstrap and consumers.",
+    "remaining_gaps": "R2 does not establish genuine held-out T-19, stale or externally changed artifact reconciliation, mixed-user T-21, general semantic grounding, complete S-502/S-803, voice repair, quiescent readiness, endogenous development, governed capability construction, NACE learning, integrated restart, Mattermost lineage, the G33 severed suite, or the final clause-mapped report. The next G33 revision must restart the clean-start trace and stop at its next actual semantic discontinuity."
+  },
+  "reviewer": "Codex primary builder and fidelity reviewer, applying the committed Miter gate methodology",
+  "review_limits": "Single-reviewer source, runtime, and evidence audit. It establishes the finite R2 causal claim, not philosophical truth, complete semantic sufficiency, whole-Soul fidelity, or independent third-party replication.",
+  "terminal_reason": "G33 R2 is a completed repair revision, not the terminal G33 acceptance gate. The fidelity checker does not allow a same-gate next_plan link; G33 R3 must therefore be derived and frozen in a separate commit before the clean-start integration demonstration resumes."
+}

@@ -1,0 +1,2 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_continuity_intent_v1.metta")
+!(result continuity (ContinuityRNA "/Users/claritymiter/miter/evidence/G33/R2/attempt-003/model-g11-exact-regression/runtime/context.json" chroma-off))
