@@ -1,0 +1,77 @@
+{
+  "schema": "miter-build-plan-v1",
+  "gate": "G33",
+  "controls": {
+    "CONSTITUTION.md": "b6378a5cc6a256e94813bc2c4b6598339ee7d7982355fc05c6a1aafcded8d47c",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "1c8b8b63aa8c05f9c75345add978d35e074cf4cb76bf510013c945ae6098f4e7"
+  },
+  "claim": "G33 R9: repair the current public relational-voice, voice-construction, and development-cycle bootstrap graph so each loads the current native meanings once in dependency order, preserves the repaired relational-voice consumer, restores source-grounded DObserve/DOpportunity causal behavior, and introduces no legacy/v2 Prolog predicate collision; do not yet connect development to the recurring reactor.",
+  "claim_ids": [
+    "G33-R9-public-bootstraps-preserve-current-source-grounded-development-meaning",
+    "G33-R9-causal-development-controls-remain-distinct",
+    "G33-R9-current-relational-voice-repair-consumer-remains-intact",
+    "G33-R9-construction-mechanics-load-without-legacy-v2-collision"
+  ],
+  "non_claims": "No claim that R8 passes, no recurring reactor development ingress, no new promoter/advancer, no durable undertaking, candidate generation, model performance, trial, promotion, consequence learning, accepted development, restart-preserved changed selection, natural incident prevalence, unrestricted purpose formation, general flourishing, complete S-602/S-606/S-607/S-702/S-705, Mattermost activity, human emission, external effect, final G33 completion, or whole-PoC acceptance.",
+  "rationale": "R8 proved that exact qualifying contacts return development-opportunity under a single dependency-ordered import but development-held under every public current bootstrap. The regression follows R6's insertion of development evidence before relational voice, duplicate outer imports, and the construction membrane's load of legacy relational-voice Prolog mechanics over v2. C-004/C-011/C-012/C-060-C-064 and S-602/S-905/S-1101/S-1105 require the implemented consumer to preserve source meaning at runtime. The smallest honest repair is the bootstrap graph before any reactor integration.",
+  "requirements": [
+    "C-003", "C-004", "C-005", "C-006", "C-007", "C-008", "C-009", "C-010", "C-011", "C-012", "C-013", "C-020", "C-021", "C-022", "C-023", "C-030", "C-031", "C-032", "C-033", "C-034", "C-040", "C-041", "C-042", "C-043", "C-044", "C-045", "C-054", "C-055", "C-056", "C-057", "C-060", "C-061", "C-062", "C-064", "C-065", "C-067", "C-070", "C-071", "C-074", "C-090", "C-091", "C-094", "C-096", "C-100", "C-102", "C-104", "C-105",
+    "S-103", "S-202", "S-203", "S-205", "S-301", "S-302", "S-303", "S-304", "S-305", "S-501", "S-502", "S-503", "S-504", "S-505", "S-601", "S-602", "S-603", "S-604", "S-607", "S-701", "S-702", "S-704", "S-901", "S-902", "S-903", "S-905", "S-1001", "S-1002", "S-1003", "S-1004", "S-1101", "S-1102", "S-1103", "S-1104", "S-1105", "S-1201", "S-1202", "S-1203",
+    "T-10", "T-12", "T-14", "T-16", "T-20", "T-21", "T-22", "T-23", "T-25", "T-30", "T-33"
+  ],
+  "reading": "Read both complete controls and reread Constitution C-003-C-013, C-054-C-067, C-090-C-105; Soul S-501-S-505, S-601-S-607, S-901-S-905 and S-1101-S-1105; ACCEPTANCE G20/G33; BUILD_FIDELITY_PROTOCOL F-01-F-07; G33 R6/R7 closures; R8 plan, failure outcome, raw native products and import-isolation summary; and every current semantic/bootstrap/membrane participant named in preserved. The repair is limited to the first R8 discontinuity.",
+  "representation": "Acyclic public bootstraps load grounded language before relational voice, and relational voice before development evidence and its consumers. Outer bootstraps do not import already-loaded semantic modules again. The construction membrane defines or qualifies its own mechanical JSON/native/error helpers rather than importing the legacy relational-voice transport solely for shared names. Fresh native arms compare canonical material projections and causal severances across each public bootstrap.",
+  "consumer": "Actual current consumers are RIntend/RAudit, DObserve/DRead/DRepeated/DOpportunity/DDevelop, RWaitReturned/RRenderedContinuation/RRContinueRuntime, and the public bootstrap files that make them callable. Prolog remains mechanical parsing/storage/transport only. JavaScript launches isolated variants, captures stderr/products, and independently compares frozen projections; it cannot supply audit/opportunity/certificate standing.",
+  "falsifiers": "Any public bootstrap still returns an unresolved RAudit or development-held for the qualifying canonical pair; public variants disagree materially; duplicate/self-authored/missing-capability/exhausted-grant controls form an opportunity; the repaired voice consumer loses its exact certificate or certifies without a source frame; the legacy relational-voice membrane or predicates are reloaded/redefined; source semantic functions or fixture contacts are edited; JavaScript supplies native standing; a prior PASS is reused as a current product; a model or external effect occurs; unrelated work changes; or reactor integration is added under this plan.",
+  "scope_review": "R9 may change only src/bootstrap_relational_voice.metta, src/bootstrap_voice_construction.metta, effect_membranes/miter_voice_construction.pl, and add docs/gates/G33/R9, tests/fixtures/g33_r9, scripts/g33_r9, evidence/G33/R9. It may read prior public/synthetic evidence and execute pinned local PeTTa/SWI-Prolog with zero model calls. It may not change development/voice semantic functions, bootstrap_development_cycle, reactor/interests, controls, config, historical evidence, accepted registries, live Mattermost/private state, credentials, Chroma state, model selection, or unrelated G22/G28 work.",
+  "rollback": "Restore the three permitted source files to their R8 hashes. R9 evidence remains append-only. No accepted registry, runtime service, model setting, or external system changes.",
+  "predecessor": "docs/gates/G33/R8/outcome.md",
+  "allowed_paths": [
+    "src/bootstrap_relational_voice.metta",
+    "src/bootstrap_voice_construction.metta",
+    "effect_membranes/miter_voice_construction.pl",
+    "docs/gates/G33/R9/",
+    "tests/fixtures/g33_r9/",
+    "scripts/g33_r9/",
+    "evidence/G33/R9/"
+  ],
+  "preserved": [
+    {"path":"docs/gates/G33/R8/outcome.md","sha256":"106c89847c1d292d4322714e4bd605900774e10dc2048488c7cb1ee8a7cb98d4"},
+    {"path":"evidence/G33/R8/attempt-001/verdict.json","sha256":"ce23f04bcf4b9d90835cca212a6964d9746dc7dc2878f62180d7058def486472"},
+    {"path":"evidence/G33/R8/attempt-001/isolation/summary.json","sha256":"77da6bad3799fd74ec352b96bea4c26abe6a63e9ab6219c555fe36ac2e36493a"},
+    {"path":"src/bootstrap_relational_voice.metta","sha256":"bda9b46150ba8cc45aba1a885f9c0536a54805d31c873fe5e3f78d6a4c371fc8"},
+    {"path":"src/bootstrap_voice_construction.metta","sha256":"b862cac3ce57ad48c72e0c8d6dd6a992bd170b3e6b6c24c79b474d661a17eaca"},
+    {"path":"src/bootstrap_development_cycle.metta","sha256":"13990150c553889207e70e3e443076878f49e04aae7ba241216837d5fd514730"},
+    {"path":"effect_membranes/miter_voice_construction.pl","sha256":"967e13fbee24be700312f5c7c8f78e77c46327146bbb9225aefd7ed0914922ef"},
+    {"path":"src/development_evidence.metta","sha256":"3c294d2aa47f4068a7aa46b59bef36ecd6007a398e308acc9dbcb0e15b6df112"},
+    {"path":"src/relational_voice.metta","sha256":"bf8123981cbc1af76dc302c61f473875778d3cab29c7cbf69e6d756f463806ce"},
+    {"path":"src/voice_construction.metta","sha256":"57a68c16d5658ebd04d2e4119e9a2f1f0fc634a2ba1871548ff4ce86eaee50f2"},
+    {"path":"src/relational_voice_repair_v1.metta","sha256":"fa7520c10f2bee85ad2d0380e1a192ce4d5c070b1f8762372226f428c7959bfb"},
+    {"path":"effect_membranes/miter_relational_voice_v2.pl","sha256":"d1d693abcfb345bfe2c1a2eee347b404256d159b85dddaaecd7434c5c8d29cb5"},
+    {"path":"effect_membranes/miter_relational_voice_repair_v1.pl","sha256":"bb3d2166c0ac1f5cf821404e45e1048fb3a912951bf0bff13aff3d9ca4d07ae1"},
+    {"path":"docs/gates/G28/R1/completion.md","sha256":"d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path":"effect_membranes/miter_trials.pl","sha256":"062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path":"evidence/20260902T090100Z-G22/hashes/protected_before.sha256","sha256":"5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path":"evidence/20260902T090100Z-G22/inputs/plan.txt","sha256":"10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path":"evidence/20260902T090100Z-G22/raw/preflight.txt","sha256":"1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stderr","sha256":"050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path":"evidence/20260902T090100Z-G22/raw/prepare.stdout","sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path":"scripts/g22/prepare.pl","sha256":"b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path":"src/bootstrap_trials.metta","sha256":"04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path":"src/trials.metta","sha256":"2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path":"tests/fixtures/g22_canonical.metta","sha256":"d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path":"tests/fixtures/g22_cases.json","sha256":"d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path":"tests/fixtures/g22_parent.metta","sha256":"5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path":"tests/fixtures/g22_severed.metta","sha256":"b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
+  "cases": {
+    "positive": "The exact R8 qualifying source pair returns materially equivalent development-opportunity products under each public bootstrap, and current RWaitReturned returns its repaired no-emission certificate.",
+    "severed": "Same-family repetition, self-authored observations, missing surface capability, exhausted grant, and missing voice source frame each remove the corresponding product.",
+    "neutral": "Meaning-equivalent record order and decorative fixture labels preserve the material opportunity/certificate projection.",
+    "restored": "Restoring exact dependency order/source participants in a fresh process restores the canonical product.",
+    "held_out": "Use the second R8 material family and current repaired rendering; no arbitrary-language or general development claim follows.",
+    "unknown_malformed": "Unresolved function, import ambiguity, predicate collision, malformed frame, unavailable capability, storage fault, process error, and timeout remain distinct failures."
+  },
+  "environment": "Pinned native PeTTa ae66fa8e41dcd5539d614706bd4e5cfb34f9608d through SWI-Prolog 10.0.2 arm64; isolated evidence roots; zero model calls and zero external reach.",
+  "next_step_hypothesis": "If R9 closes, freeze R10 to connect the corrected source-grounded observations to the recurring reactor with a native idle promoter, durable continuation, causal severance, and only narrow mechanical ingress/persistence. If R9 fails, preserve the exact remaining bootstrap or consumer discontinuity and repair only that boundary."
+}
