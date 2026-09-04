@@ -1,0 +1,13 @@
+{"data": ["empty-lawful-ready-set", "no-model-call" ],"kind":"quiescent-ready","wall_time":1788527390.390963}
+{"data": ["wait", 0.05, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788527390.396441}
+{"data": {"authority":"internal-hash-checkpoint-only","budget":1,"current_locus":"Transcribe","dependencies": [],"provenance":"verified-local-ingress","rna_id":"g33-r7-contact","scope":"scope:reactor-local","source_event":"g33-r7-contact","species":"ContactRNA","status":"ready","termination_condition":"finite-step-budget-or-human-stop"},"kind":"RNA-state","wall_time":1788527390.432802}
+{"data": ["rna-created", "g33-r7-contact", "ContactRNA", "human", "none" ],"kind":"RNA-created","wall_time":1788527390.438197}
+{"data": ["contact-or-due-work" ],"kind":"wake","wall_time":1788527390.44452}
+{"data": ["backoff", 0.05, "contact-or-due-work" ],"kind":"interval-reset","wall_time":1788527390.450013}
+{"data": {"authority":"internal-hash-checkpoint-only","budget":1,"current_locus":"Inquire","dependencies": [],"provenance":"verified-local-ingress","rna_id":"g33-r7-contact","scope":"scope:reactor-local","source_event":"g33-r7-contact","species":"ContactRNA","status":"ready","termination_condition":"finite-step-budget-or-human-stop"},"kind":"RNA-state","wall_time":1788527390.456158}
+{"data": ["g33-r7-contact", "775bf160d1eeffe609cfa1935f52955d54657a0843255a2d5fb6c87ba11cfd53" ],"kind":"step-witness","wall_time":1788527390.462774}
+{"data": {"authority":"internal-hash-checkpoint-only","budget":0,"current_locus":"Witness","dependencies": [],"provenance":"verified-local-ingress","rna_id":"g33-r7-contact","scope":"scope:reactor-local","source_event":"g33-r7-contact","species":"ContactRNA","status":"ready","termination_condition":"finite-step-budget-or-human-stop"},"kind":"RNA-state","wall_time":1788527390.469404}
+{"data": {"authority":"internal-hash-checkpoint-only","budget":0,"current_locus":"Consolidate","dependencies": [],"provenance":"verified-local-ingress","rna_id":"g33-r7-contact","scope":"scope:reactor-local","source_event":"g33-r7-contact","species":"ContactRNA","status":"completed","termination_condition":"finite-step-budget-or-human-stop"},"kind":"RNA-state","wall_time":1788527390.476405}
+{"data": ["empty-lawful-ready-set", "no-model-call" ],"kind":"quiescent-ready","wall_time":1788527390.483507}
+{"data": ["wait", 0.05, "no-progress-claim", "no-model-call" ],"kind":"idle-wait","wall_time":1788527390.490129}
+{"data": ["explicit-stop" ],"kind":"reactor-stopped","wall_time":1788527390.523743}

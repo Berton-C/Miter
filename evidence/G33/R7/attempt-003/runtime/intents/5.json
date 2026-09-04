@@ -1,0 +1,15 @@
+{
+  "audience_scope":"scope:reactor-local",
+  "correlation_id":"reactor",
+  "event_id":"reactor-wake-5",
+  "event_kind":"wake",
+  "occurred_at":"2026-09-04T13:11:31Z",
+  "parent_event_ids": [],
+  "payload": {"data": ["contact-or-due-work" ],"wall_time":1788527491.986138},
+  "project_scope":"reactor-fixture",
+  "provenance_kind":"native-control",
+  "recorded_at":"2026-09-04T13:11:31Z",
+  "schema":"miter-event-intent-v1",
+  "source_principal":"miter:reactor",
+  "source_surface":"native-reactor"
+}
