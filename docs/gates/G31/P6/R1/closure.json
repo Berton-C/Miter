@@ -1,0 +1,46 @@
+{
+  "schema": "miter-build-closure-v1",
+  "gate": "G31",
+  "plan": "docs/gates/G31/P6/R1/plan.json",
+  "plan_commit": "68303fadaa0e050e43364ebbf3e0336d9d8cf78b",
+  "status": "PASS-BOUNDED",
+  "evidence": [
+    {"path":"docs/gates/G31/P6/R1/outcome.md","sha256":"1a7f69f65a4fe36b89052b5ec83c37c28df58465526f35863b37713730d722eb"},
+    {"path":"evidence/G31/p6-601/binding-process.json","sha256":"3335025d52e09a1ee1b8262016799d7df3653b20cb8318a84b423b8dbb758a64"},
+    {"path":"evidence/G31/p6-601/run-failure.json","sha256":"bd0114501694639c3d5fdfffcbcd0f3066f84fc1a750d2abb6dad4a7766f744b"},
+    {"path":"evidence/G31/p6-602/binding-process.json","sha256":"78ce226df319f233f815685c7035e63dfaac54a215bea777454336e84243b58d"},
+    {"path":"evidence/G31/p6-602/run-failure.json","sha256":"0cf05d285c62229dccfd5294d1e82d0020f6bc21221e535b89fcbb56a31426b6"},
+    {"path":"evidence/G31/p6-603/run-verdict.json","sha256":"4fafa7fd31141dcb3d3c33a6c33278950e0a2c594c8ad3018edb312c2d5b1af5"},
+    {"path":"evidence/G31/p6-603/manifest.json","sha256":"4cdc007cf9bd75f8ea4e36b047bb9a95811ea59f79146042f41243def2f15e45"},
+    {"path":"evidence/G31/p6-603/principal-binding-redacted.json","sha256":"c58dcb3bbcbc83c824257a126c8ae56016a98bd420b812290808c7e202e527b9"},
+    {"path":"evidence/G31/p6-603/principal-binding-observation.json","sha256":"dfdf73fb1b137d872c01f8965b8417f19093a33a53f6c5d94dd3d228d70c0437"},
+    {"path":"evidence/G31/p6-603/native-standings.json","sha256":"38470b9231428f72abde8ee9c617f4fead3f3c4436851ef413f27f0eb6adf75f"}
+  ],
+  "claim_results": [
+    {
+      "id": "G31-P6-R1-explicit-human-principal-binding",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The explicitly supplied account matched exactly one stable candidate in the hash-pinned P5 private record and produced a new private binding. This proves only the named local principal at this observed lineage; it does not authorize other people or future identity changes."
+    },
+    {
+      "id": "G31-P6-R1-private-stable-identity-public-hash",
+      "status": "PROVEN-RUNTIME",
+      "limit": "The new binding remained ignored and mode 0600 while tracked evidence contained only account/stable-ID hashes and source lineage. This finite scan and harness cannot guarantee every future log or consumer preserves that privacy."
+    },
+    {
+      "id": "G31-P6-R1-principal-authority-not-live-effect-authority",
+      "status": "PROVEN-RUNTIME",
+      "limit": "Native standing accepted explicit principal authority only with live-effect approval unresolved, and held a fixture that changed it to approved. This establishes the represented distinction for P6; a later exact grant and separate human approval remain required."
+    }
+  ],
+  "fidelity_review": {
+    "source_meaning": "C-004-C-008/C-020-C-024/C-050-C-055/C-060-C-066/C-090-C-104 and S-103/S-401-S-404/S-501-S-504/S-804/S-901-S-905/S-1004-S-1005/S-1101-S-1105/S-1201-S-1203 require exact principal scope, private identity, provenance and a non-transferable human gate for live reach. P6 preserves principal selection as one input to a grant rather than treating the human's identity confirmation as permission for an external utterance.",
+    "causal_evidence": "The Prolog binder required the exact P5 private hash, candidate and transport hashes, mode-0600 inputs, unresolved prior selection, explicit selection record, and exactly one matching stable candidate. Native MeTTa required those source-bound hashes, uniqueness, explicit authority, no public identity, zero effects and unresolved live approval. Wrong source, inferred authority, conflated approval and identity disclosure each changed the standing to held; canonical restoration restored it.",
+    "substitution_audit": "Berton selected the account. Prolog mechanically matched and stored that supplied selection without deciding authority or communication. MeTTa owned the principal-versus-effect distinction. JavaScript launched, inspected independent private readback, checked non-disclosure and exercised severed cases; it did not choose the principal or authorize a message. No LLM or behavior lookup participated.",
+    "capability_and_constraint_audit": "Attempts 601 and 602 preserved local representation failures before any private binding. Attempt 603 wrote a separate private record rather than altering P5, retained actual identity outside Git, and made zero network requests, credential lookups, post reads, message reads/writes, API mutations, model calls, promotions or activations. Live-effect approval remains explicitly unresolved.",
+    "remaining_gaps": "No complete, inactive live grant has yet surfaced purpose, exact allowlisted and denied scope, event/effect classes, canary payload, memory scope, VoiceRNA certificate route, credential capability, transport/reconciliation identity, cursor/effect journals, one-shot lifetime, expiry, panic, rollback and revocation. Berton has not approved that complete grant or its live effect. G31 canary/restart/panic evidence, G32 and G33 remain open."
+  },
+  "reviewer": "Codex builder using frozen controls and P6 plan, exact P5 private-record hash, independent private readback, public non-disclosure checks, native PeTTa/MeTTa causal/severed trials, and preserved failed attempts.",
+  "review_limits": "This closes only G31 P6 R1 explicit principal binding. It does not complete or approve a live grant, inspect posts, send a message, activate the adapter, or close G31.",
+  "terminal_reason": "P6 principal binding is complete. Because the next bounded phase remains within G31, the checker forbids a same-gate next_plan link; a separately frozen phase must construct and surface the exact inactive live grant before any request for live-effect approval."
+}

@@ -143,6 +143,36 @@
    (human-principal unresolved) (live-effects held))
   (g31-identity-resolution-held $candidateHash $transportHash $observation)))
 
+; Principal identity selection is not live communication authority.
+(= (G31PrincipalBindingValid $observation $candidateHash $transportHash $sourceHash)
+ (if (PShape $observation g31-principal-binding-observation 15)
+  (not (PHas false
+   ((== (index-atom $observation 1) $candidateHash)
+    (== (index-atom $observation 2) $transportHash)
+    (== (index-atom $observation 3) $sourceHash)
+    (== (index-atom $observation 4) true)
+    (== (index-atom $observation 5) 1)
+    (G31Present (index-atom $observation 6))
+    (G31Present (index-atom $observation 7))
+    (== (index-atom $observation 8) berton-explicit)
+    (== (index-atom $observation 9) unresolved)
+    (== (index-atom $observation 10) false)
+    (== (index-atom $observation 11) 0)
+    (== (index-atom $observation 12) 0)
+    (== (index-atom $observation 13) 0)
+    (== (index-atom $observation 14) true)) 0))
+  false))
+
+(= (G31PrincipalBindingStanding $observation $candidateHash $transportHash $sourceHash)
+ (if (G31PrincipalBindingValid $observation $candidateHash $transportHash $sourceHash)
+  (g31-human-principal-bound-awaiting-live-grant
+   (candidate $candidateHash) (transport $transportHash)
+   (source-identity $sourceHash)
+   (human-principal-sha256 (index-atom $observation 7))
+   (authority berton-explicit) (live-effect-approval unresolved)
+   (live-effects held))
+  (g31-human-principal-binding-held $candidateHash $transportHash $sourceHash)))
+
 (= (G31Run $output $grant $candidateHash $expectedHash $g30Standing)
  (let $standing (G31DiscoveryStanding $candidateHash $expectedHash $g30Standing)
   (if (PShape $standing g31-read-only-discovery-ready 2)
