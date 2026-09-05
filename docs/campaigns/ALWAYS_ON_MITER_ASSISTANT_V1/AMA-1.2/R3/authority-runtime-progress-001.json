@@ -4,7 +4,8 @@
   "attempt": "R3",
   "checkpoint": "R3-C2-in-progress",
   "cluster": "M24-contact-provenance--M260-occurrence-participation",
-  "purpose": "Join the native cluster, reactor join, and supported-service evidence without promoting any exported meaning beyond its distinct causal proof.",
+  "purpose": "Join the native cluster, reactor join, and supported-service evidence without promoting any exported meaning beyond its distinct causal proof. The ratified authority defines every required runtime consumer; absence from the current incomplete runtime is a mandatory integration gap, never grounds to omit or reject the formalized meaning.",
+  "consumer_field_law": "required_runtime_consumer is derived from the ratified source meaning. persistent_runtime_consumer records only the presently observed implementation. A null current consumer increases the mandatory runtime work; it does not weaken the authority requirement.",
   "evidence_bundles": [
     {
       "path": "evidence/AMA-1.2/R3/authority-cluster-001/verdict.json",
@@ -25,6 +26,7 @@
   "rows": [
     {
       "id": "M24-E02",
+      "required_runtime_consumer": "Every contact, interpretation, memory, generated candidate, action, and consequence admission that depends on proto-time or derivation standing.",
       "native_representation": ["M24EventValid", "M24DerivationValid", "M24ProvenanceValid"],
       "persistent_runtime_consumer": "M24ContactValid inside CP2EncounterFromAuthority",
       "positive_difference": "A contact carries proto-time, parents, and a typed external-input derivation before it may participate.",
@@ -37,6 +39,7 @@
     },
     {
       "id": "M24-E03",
+      "required_runtime_consumer": "The sealed contact boundary, every downstream proof-tree use, and all later answerability to contact provenance.",
       "native_representation": ["M24RouteValid", "M24SealMatches", "M24ProvenanceValid", "M24DirectContact"],
       "persistent_runtime_consumer": "M24ContactValid inside CP2EncounterFromAuthority",
       "positive_difference": "A sealed route and direct-contact provenance are required before the M24 participant enters the cut.",
@@ -49,6 +52,7 @@
     },
     {
       "id": "M24-E04",
+      "required_runtime_consumer": "All admission, authority, durability, affordance, and discharge transitions that must preserve non-equivalent standings.",
       "native_representation": ["M24StandingValid", "M24StandingWarrant", "M24StandingPressure", "M24StandingFreshness"],
       "persistent_runtime_consumer": "M24ContactValid and M24ContactOrganization",
       "positive_difference": "Warrant, support, pressure, and freshness remain separate fields in the contact organization.",
@@ -61,6 +65,7 @@
     },
     {
       "id": "M24-E05",
+      "required_runtime_consumer": "Frame formation, interpretation, possibility construction, memory retrieval use, and every movement whose materiality depends on the represented finite domain.",
       "native_representation": ["M24RawFieldValid", "M24FrameValid"],
       "persistent_runtime_consumer": "M24ContactValid before CP2AuthorityParticipants and CPEncounter",
       "positive_difference": "The finite frame explicitly retains represented and omitted domains while raw contradiction and incompleteness remain legal.",
@@ -73,6 +78,7 @@
     },
     {
       "id": "M24-E07",
+      "required_runtime_consumer": "Movement, effect, consequence, interpretation, recovery, and next-cut relations that must remain answerable to the exact contacted carrier and cut.",
       "native_representation": ["M24ContactOrganization:contact-answerability-anchor"],
       "persistent_runtime_consumer": "Stored in authority-participation-joint-v1",
       "positive_difference": "The contact, frame, cut precursor, and carried distinctions remain attributable.",
@@ -85,6 +91,7 @@
     },
     {
       "id": "M24-E12",
+      "required_runtime_consumer": "Movement construction and next-cut development whenever an additive interpretation is actually consulted, plus immutable history of that governed use.",
       "native_representation": ["M24InterpretationValid", "M24InterpretationUseValid", "M24InterpretationParticipation"],
       "persistent_runtime_consumer": null,
       "positive_difference": "A provenance-bearing additive interpretation may participate only through a governed scoped use.",
@@ -97,6 +104,7 @@
     },
     {
       "id": "M24-E16",
+      "required_runtime_consumer": "Plural-frame interpretation and movement construction, which must permit scoped joint use while preventing global amalgamation.",
       "native_representation": ["M24ScopedJointUseValid"],
       "persistent_runtime_consumer": null,
       "positive_difference": "Plural frames may be used locally with compatibility or retained tension without global amalgamation.",
@@ -109,6 +117,7 @@
     },
     {
       "id": "M24-E17",
+      "required_runtime_consumer": "Every AtomSpace, history, continuity, memory, consequence, capability, and effect transition that writes branch-local state.",
       "native_representation": ["M24BranchTransactionValid"],
       "persistent_runtime_consumer": null,
       "positive_difference": "A closed writer adds one event atomically to a branch-local pre-cut.",
@@ -121,6 +130,7 @@
     },
     {
       "id": "M260-E01",
+      "required_runtime_consumer": "Every finite occurrence representation, bridge qualification, movement, and restart claim that must remain non-reconstructive.",
       "native_representation": ["m260-occurrence-organization", "finite-non-reconstruction"],
       "persistent_runtime_consumer": "CP2M260Organization and CP2AuthorityJointValid",
       "positive_difference": "One opaque occurrence identifier organizes finite views without storing actuality contents.",
@@ -133,6 +143,7 @@
     },
     {
       "id": "M260-E02",
+      "required_runtime_consumer": "The Fact9-Flourishing-contact joint, movement formation, consequence uptake, and next-cut construction as participation within one occurrence.",
       "native_representation": ["M260PartKnown", "M260ViewsGroundedAt", "participates"],
       "persistent_runtime_consumer": "M260OrganizationValid before CP2AuthorityParticipants",
       "positive_difference": "Contact, frame, and Soul participation are grounded in the same occurrence without a detached observer prerequisite.",
@@ -145,6 +156,7 @@
     },
     {
       "id": "M260-E03",
+      "required_runtime_consumer": "DWS, O/P/C, persistent form, plural participant coordination, and every bridge claiming multiple finite participations of one occurrence.",
       "native_representation": ["M260SameOcc"],
       "persistent_runtime_consumer": null,
       "positive_difference": "Distinct finite participations can be related as one occurrence without identity or global merge.",
@@ -157,6 +169,7 @@
     },
     {
       "id": "M260-E04",
+      "required_runtime_consumer": "Manifestation, recognition, DWS, O/P/C, Fact9 expression, and Flourishing expression without component or independent-substance collapse.",
       "native_representation": ["unity-aspect", "M260AspectKnown"],
       "persistent_runtime_consumer": "M260OrganizationValid, M260DWS, and M260OPCAt",
       "positive_difference": "Generic non-independent aspects participate without component, substance, or independent-domain semantics.",
@@ -169,6 +182,7 @@
     },
     {
       "id": "M260-E05",
+      "required_runtime_consumer": "Every recognition admitted into the constitutive bridge, Generated field, movement, learning, or regenerative expression.",
       "native_representation": ["manifests-through", "recognizes", "M260ManifestationKnown", "M260RecognitionGrounded"],
       "persistent_runtime_consumer": "M260OrganizationValid before CP2AuthorityParticipants and CPEncounter",
       "positive_difference": "Recognition is admitted only when its distinct manifestation, view, aspect, and participation grounding hold.",
@@ -181,6 +195,7 @@
     },
     {
       "id": "M260-E06",
+      "required_runtime_consumer": "The one-occurrence constitutive organization used to form and qualify movement, not a diagnostic appended after movement.",
       "native_representation": ["mode-reading", "M260ModeAspect", "M260OPCAt"],
       "persistent_runtime_consumer": "Stored in authority-participation-joint-v1 and checked by shape",
       "positive_difference": "Ontology, phenomenology, and consciousness are distinct readings of one occurrence and cannot factorize into independent occurrences.",
@@ -193,6 +208,7 @@
     },
     {
       "id": "M260-E07",
+      "required_runtime_consumer": "Reusable Fact9, Flourishing, O/P/C, and participation compositions that form the pre-movement constitutive organization.",
       "native_representation": ["M260DWS", "dws-family"],
       "persistent_runtime_consumer": "Stored in authority-participation-joint-v1 and checked by shape",
       "positive_difference": "A reusable family expresses common occurrence, distinction, manifestation, non-independence, and non-reconstruction together.",
@@ -205,6 +221,7 @@
     },
     {
       "id": "M260-E08",
+      "required_runtime_consumer": "Every representation, retrieval, LLM reading, recognition, and movement qualification that could otherwise imply finite reconstruction or sovereignty.",
       "native_representation": ["finite-ambiguity", "M260AmbiguityValid"],
       "persistent_runtime_consumer": "M260OrganizationValid before CP2AuthorityParticipants",
       "positive_difference": "Finite equal observations preserve an explicit alternative occurrence and block reconstruction claims.",
@@ -217,6 +234,7 @@
     },
     {
       "id": "M260-E11",
+      "required_runtime_consumer": "Developmental identity, continuation, restart, regenerative recovery, and next-cut formation across changed local boundaries.",
       "native_representation": ["M260PersistentForm", "M260BoundaryFor", "M260ContinuationKnown"],
       "persistent_runtime_consumer": null,
       "positive_difference": "Finite form persists through participation and an evidenced change of local boundary.",
@@ -229,6 +247,7 @@
     },
     {
       "id": "M260-E12",
+      "required_runtime_consumer": "Generated qualification, movement construction, consequence incorporation, next-cut identity, and restart validation.",
       "native_representation": ["M260SameBecoming", "same-becoming-witness"],
       "persistent_runtime_consumer": "CP2EncounterFromAuthority and AR2HistoryValid",
       "positive_difference": "The movement is related to the occurrence through an explicit L24/25-bearing witness.",
@@ -241,6 +260,7 @@
     },
     {
       "id": "M260-E13",
+      "required_runtime_consumer": "Every plural Generated candidate before it can participate in R/A/P reading or movement construction.",
       "native_representation": ["M260GReadingOf"],
       "persistent_runtime_consumer": null,
       "positive_difference": "Generated becomes occurrence-qualified only through SameBecoming and never becomes actuality or a second ontology.",
@@ -253,6 +273,7 @@
     },
     {
       "id": "M260-E16",
+      "required_runtime_consumer": "Promotion, recovery, regenerative comparison, grammar revision, and any claim that a later organization preserves load-bearing relations.",
       "native_representation": ["M260StructuralFidelity"],
       "persistent_runtime_consumer": null,
       "positive_difference": "Preservation of load-bearing relations is ordered without a scalar distance to actuality.",
@@ -270,5 +291,5 @@
     "partial": 18,
     "gap": 0
   },
-  "conclusion": "The first cluster is joined to the supported assistant, but only M24-E05 and M260-E05 presently satisfy the complete row-level causal promotion law. The other eighteen rows retain useful native/runtime progress and explicit next work; none is laundered into completion by neighboring evidence."
+  "conclusion": "The first cluster is joined to the supported assistant, but only M24-E05 and M260-E05 presently satisfy the complete row-level causal promotion law. All twenty remain mandatory authority inheritance. The other eighteen retain useful native/runtime progress and explicit required consumers; their missing current consumers expand the runtime work rather than diminishing the formalizations. None is laundered into completion by neighboring evidence."
 }

@@ -32,6 +32,14 @@ exact durable validation. In particular:
   is constructed after movement, so it cannot yet carry its complete ratified
   meaning.
 
+This standing does **not** accept or reject a formalization according to the current
+runtime. The direction of authority is the reverse: the ratified formalization
+defines the runtime footprint we must instantiate. Every row now distinguishes the
+consumer required by its source meaning from the consumer currently present. A
+missing current consumer is a mandatory implementation gap, including for theorem,
+boundary, and non-equivalence rows; it is not a reason to omit the relation or defer
+it merely because the earlier runtime was incomplete.
+
 The machine-readable ledger records the representation, consumer, expected
 difference, severance, neutral arm, restoration, evidence, limitation, and standing
 for every row. The promotion verifier checks the frozen atlas membership, immutable
@@ -41,7 +49,8 @@ two-row completion set.
 ## Consequence for the next seam
 
 The next cluster must not jump directly to a decorative M25 R/A/P layer. It must
-repair the joint so that contact answerability, DWS/OPC, SameOccurrence,
+expand the runtime footprint required by the authorities and repair the joint so
+that contact answerability, DWS/OPC, SameOccurrence,
 SameBecoming, qualified Generated, persistent form, and structural fidelity are
 actual inputs to movement construction and restart qualification. That upstream
 repair then provides the developmental object on which M25 movement and R/A/P can

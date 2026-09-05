@@ -27,6 +27,14 @@ parallel service. A cluster is eligible only when:
 4. restoration can recover the dependent capacity; and
 5. the result advances the same assistant that Berton and Haley will evaluate.
 
+The ratified authorities define the required cognitive footprint. The current
+runtime is evidence about implementation progress, never a ballot on whether an
+exported meaning belongs. If an authority row has no current consumer, the result is
+a mandatory runtime-integration gap: implement the required consumer in the same
+organism. A theorem, boundary, or non-equivalence may be represented differently
+from an executable operation, but it must still constrain the runtime surface named
+by its source meaning and expose a material falsifier.
+
 ## One-pass implementation cycle
 
 For each causal seam:
@@ -35,9 +43,10 @@ For each causal seam:
    implementation removes the most downstream gaps. Do not select work by ease or
    by an old gate number.
 2. **Bind the constitutive trace.** Before editing cognition, record source meaning,
-   native representation, runtime consumer, positive difference, material
-   severance, neutral perturbation, restoration, and the next seam that will consume
-   it.
+   native representation, the consumer required by the authority, the current
+   runtime consumer (if any), the exact integration gap, positive difference,
+   material severance, neutral perturbation, restoration, and the next seam that
+   will consume it.
 3. **Implement once in the organism.** Add generic PeTTa/MeTTa relations and
    operations to the versioned constitutive path. Prolog may provide only
    deterministic carrier, persistence, integrity, process, reconciliation, and

@@ -1,0 +1,37 @@
+{
+  "schema": "miter-ama12-r3-authority-promotion-audit-result-v1",
+  "status": "PASS-HONEST-PROMOTION-AUDIT",
+  "phase": "AMA-1.2",
+  "attempt": "R3",
+  "checkpoint": "R3-C2-in-progress",
+  "rows_audited": 20,
+  "promoted_rows": [
+    "M24-E05",
+    "M260-E05"
+  ],
+  "partial_rows": [
+    "M24-E02",
+    "M24-E03",
+    "M24-E04",
+    "M24-E07",
+    "M24-E12",
+    "M24-E16",
+    "M24-E17",
+    "M260-E01",
+    "M260-E02",
+    "M260-E03",
+    "M260-E04",
+    "M260-E06",
+    "M260-E07",
+    "M260-E08",
+    "M260-E11",
+    "M260-E12",
+    "M260-E13",
+    "M260-E16"
+  ],
+  "evidence_bundles_verified": 3,
+  "live_payload_reads": 0,
+  "model_calls": 0,
+  "memory_reads": 0,
+  "external_effects": 0
+}

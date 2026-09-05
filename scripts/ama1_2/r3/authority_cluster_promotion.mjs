@@ -10,7 +10,7 @@ const repo = '/Users/claritymiter/miter';
 const ledgerRelative = 'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/authority-runtime-progress-001.json';
 const atlasRelative = 'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/authority-completion-atlas.json';
 const reviewRelative = 'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/checkpoint-c2-promotion-audit-001.md';
-const evidenceRelative = 'evidence/AMA-1.2/R3/authority-promotion-audit-001';
+const evidenceRelative = 'evidence/AMA-1.2/R3/authority-promotion-audit-002';
 const evidence = path.join(repo, evidenceRelative);
 const record = process.argv.includes('--record');
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
@@ -31,7 +31,8 @@ assert.equal(rowIds.length, 20);
 for (const id of rowIds) assert.ok(atlasIds.has(id), `unknown atlas row ${id}`);
 
 const requiredFields = [
-  'id', 'native_representation', 'persistent_runtime_consumer',
+  'id', 'required_runtime_consumer', 'native_representation',
+  'persistent_runtime_consumer',
   'positive_difference', 'material_severance', 'neutral_perturbation',
   'restoration', 'evidence', 'limit', 'standing'
 ];
@@ -40,6 +41,10 @@ for (const row of ledger.rows) {
     `${row.id} missing ${field}`);
   assert.ok(Array.isArray(row.native_representation) && row.native_representation.length > 0,
     `${row.id} missing native representation`);
+  assert.equal(typeof row.required_runtime_consumer, 'string',
+    `${row.id} missing authority-required consumer`);
+  assert.ok(row.required_runtime_consumer.length > 0,
+    `${row.id} empty authority-required consumer`);
   assert.ok(Array.isArray(row.evidence) && row.evidence.length > 0,
     `${row.id} missing evidence`);
   assert.ok(['PROVEN-RUNTIME', 'PARTIAL', 'GAP'].includes(row.standing),
