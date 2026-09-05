@@ -5,7 +5,19 @@ import crypto from 'node:crypto';
 import {validatePlan,local,constitutiveStages,firstSliceBoundary} from './check.mjs';
 const source=JSON.parse(fs.readFileSync(local('docs/gates/SC01/plan.json')));
 const digest=p=>crypto.createHash('sha256').update(fs.readFileSync(local(p))).digest('hex');
-const fresh=()=>{const p=structuredClone(source);for(const name of Object.keys(p.controls))p.controls[name]=digest(name);return p};
+const fresh=()=>{
+  const p=structuredClone(source);
+  for(const name of Object.keys(p.controls))p.controls[name]=digest(name);
+  // SC01's historical plan preserved loose preflight files that were never
+  // committed and were retired under D-045.  The checker test needs a live
+  // preservation target; it must not make those obsolete workspace files a
+  // permanent dependency of every future plan validation.
+  p.preserved=[{
+    path:'docs/gates/G31/P9/R1/closure.json',
+    sha256:digest('docs/gates/G31/P9/R1/closure.json')
+  }];
+  return p;
+};
 const campaignControlPaths=['CONSTITUTION.md','MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md','AUTHORITY_MAP.md','POC_SPEC.md','ACCEPTANCE.md','BUILD_FIDELITY_PROTOCOL.md','WORK_PROTOCOL.md','docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md','docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.json'];
 const campaignFresh=()=>{
   const p=fresh(); p.schema='miter-campaign-phase-plan-v1'; p.phase='AMA-1.1'; delete p.gate;

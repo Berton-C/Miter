@@ -193,9 +193,13 @@ PASS-IDENTITY-BOUND-AWAITING-HALEY-DISCLOSURE
 
 Haley's affirmative disclosure consent remains a real boundary. The message already placed in the group is not permission to read its content.
 
-## Protected work and rollback
+## Clean baseline and rollback
 
-The exact loose G22 files and dirty superseded G28 completion record are pinned in `plan.json` and remain outside every R3 commit. No broad staging is permitted.
+Under D-045, the obsolete untracked G22 preflight was moved to a named folder in
+the user's Trash and the accidental G28 working-copy corruption was restored to its
+committed text. Neither is an R3 dependency, and neither requires continuing
+preservation bookkeeping. R3 proceeds from a clean worktree. No broad staging is
+permitted.
 
 Before activation, rollback removes only the versioned R3 candidate integration and retains evidence. After activation, rollback latches panic, stops only recorded R3 processes, reconciles pending effects, preserves canonical continuity and experimental-choice lineage, and restores the last known good implementation. It never describes an external message as undone.
 
@@ -206,7 +210,7 @@ GATE: AMA-1.2 R3 — Constitutive Completion and Live Laboratory
 REQUIREMENT IDS: C-004/C-009–018/C-020–025/C-030–045/C-054/C-060–066/C-098; S-102/S-106/S-201–206/S-401–505/S-603/S-606–607/S-703–704/S-801–805/S-901–904/S-1001–1005/S-1102/S-1104/S-1301–1310/S-1401–1412; T and CA families named in plan.json
 CONSTITUTIONAL LAWS: Soul owns cognition; finite representation is partial; continuity is exact and durable; Fact9 and Flourishings are one constitutive participation joint; provisional downstream choices retain differentiated standing.
 FILES EXPECTED TO CHANGE: only the exact R3 paths in plan.json
-FILES FORBIDDEN TO CHANGE: protected controls/sources/canon; credentials/private state; loose G22 and dirty G28; ~/.miter
+FILES FORBIDDEN TO CHANGE: protected controls/sources/canon; credentials/private state; ~/.miter
 POSITIVE FIXTURE: unfamiliar contact traverses every material inherited seam and produces attributable plural possibilities, native movement, consequence-dependent K-prime, and restart continuity
 NEGATIVE CONTROL: sever each claimed material dependency without changing irrelevant presentation
 EXPECTED OBSERVABLE DIFFERENCE: only dependent native standing, possibility, movement, interface, consequence, or continuity changes and returns under restoration

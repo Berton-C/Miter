@@ -681,3 +681,23 @@ Berton selected the third route. R3 SHALL use one complete authority atlas and f
 "Complete" means complete finite operational inheritance of every load-bearing exported construct that the running PoC consumes. It does not mean a proof of universal metaphysical claims, final 26.6/26.9 mathematics, or pretending a theorem-only boundary is executable. Missing operational inheritance blocks R3 closure. A non-executable inherited theorem or boundary may close only with its exact representational constraint, runtime consumer, and falsifier made explicit.
 
 R3 supersedes only R2's route from identity resolution to activation. It preserves the ratified AMA-1.2 grant, exact three-member identity evidence, durable Continuity of Mind requirements, model-direction semantics, all earlier evidence, and the inactive state. Haley's disclosure consent remains unresolved; message payloads, memory, models, and egress remain held until she affirmatively consents and the constitutive completion checkpoint passes. The loose unfinished G22 material and superseded dirty G28 record remain outside this decision and outside its commits.
+
+---
+
+## D-045 — Retire stale G22/G28 workspace preservation exception
+
+**Status:** ACCEPTED BY BERTON; COMPLETED
+**Date:** 2026-09-05
+
+The loose G22 files were an abandoned, untracked preflight from 2026-09-02. G22 was
+subsequently completed and committed through the independent `g22_v2` path and its
+promoted evidence. The dirty G28 completion record contained an accidental text
+insertion and differed from its correct committed version. Neither working-copy
+artifact is an unfinished dependency of R3.
+
+At Berton's direction, move the exact obsolete G22 preflight files to a named,
+recoverable Trash folder and restore the G28 completion record to committed text.
+Remove their byte-preservation entries from the R3 plan so future fidelity checks do
+not spend resources tracking resolved workspace noise. This cleanup changes no
+historical commit, authority, architecture, acceptance claim, or promoted gate
+evidence.

@@ -6,17 +6,17 @@
   "status": "frozen-constitutive-completion-and-live-laboratory-delta",
   "claim": "Miter can complete the finite operational inheritance of every load-bearing M24, M25, M25.5, M26.0, and M26.3 export required by the PoC, expose every necessary post-26.3 engineering choice as competing provenance-bearing and falsifiable AtomSpace material, and exercise that complete organization through the same persistent assistant before the consented AMA-1.2 Mattermost laboratory is activated.",
   "bounded_claim": "One persistent PeTTa/MeTTa organism will carry typed contact, complete finite authority inheritance, Fact9-Flourishing constitutive participation, plural Generated continuations, native movement construction, bounded participant re-entry, consequence-dependent development, and restart continuity. The first live reach remains the exact three-member local Mattermost group and the already-ratified AMA-1.2 capability envelope.",
-  "non_claims": "R3 does not claim universal actuality reconstruction, metaphysical proof, final Inquiry 26.6 or 26.9 mathematics, universal beneficial outcomes, production readiness, unrestricted multi-user reach, or LLM/PLN/NAL/memory/tool authority. It does not make the build procedure a runtime Soul checklist; does not authorize hidden host-code semantic choices; does not activate Mattermost before Haley's affirmative disclosure consent; and does not reopen or absorb loose G22 or superseded dirty G28 work.",
+  "non_claims": "R3 does not claim universal actuality reconstruction, metaphysical proof, final Inquiry 26.6 or 26.9 mathematics, universal beneficial outcomes, production readiness, unrestricted multi-user reach, or LLM/PLN/NAL/memory/tool authority. It does not make the build procedure a runtime Soul checklist; does not authorize hidden host-code semantic choices; and does not activate Mattermost before Haley's affirmative disclosure consent.",
   "non_claim_list": [
     "No finite representation is actuality or a reconstruction of actuality.",
     "No runtime result ratifies, amends, completes, or supersedes the five mathematical authorities or future 26.6/26.9 work.",
     "No score, checklist, first-match table, scenario branch, prompt, or carrier supplies Soul navigation.",
     "No live payload reading, memory admission, model use, or egress occurs before the remaining consent and completion boundaries pass.",
     "No claim is made that every exported theorem is itself an executable operation; theorem-only inheritance must still constrain an actual consumer and have a falsifier.",
-    "No unrelated G22/G28 material is staged, repaired, deleted, or incorporated."
+    "No superseded historical gate material is incorporated into R3 merely because it exists in repository history."
   ],
   "rationale": "The promoted AMA-1.1 kernel establishes a real finite causal vertical slice, but its own R1 review limits the result to controlled structured fixtures and records unresolved formalization questions. The user requires the PoC to be a faithful, functional laboratory embodiment of M24 through M26.3 and an explicitly provisional exploration surface for 26.6/26.9. Activating now would evaluate a partial Soul; splitting 114 inherited export obligations into independent gates would repeat scaffold and integration work. R3 therefore uses one atlas, one runtime, four additive checkpoints, shared causal test matrices, and one eventual live activation boundary.",
-  "human_decision": "Berton approved the swift high-fidelity method on 2026-09-05: one integrated R3 procedure, full finite M24-M26.3 implementation, explicit experimental standing for post-26.3 choices, and activation only through that same completed organism. Recorded as D-044.",
+  "human_decision": "Berton approved the swift high-fidelity method on 2026-09-05: one integrated R3 procedure, full finite M24-M26.3 implementation, explicit experimental standing for post-26.3 choices, and activation only through that same completed organism. Recorded as D-044. Berton then directed removal of obsolete untracked G22 preflight material and restoration of the accidentally edited G28 completion record so they no longer burden R3 preservation bookkeeping. Recorded as D-045.",
   "decision_owner": "Berton retains constitutional, acceptance, grant, and ratification authority. Miter retains encounter interpretation, possible-continuation construction, native movement, and consequence-sensitive developmental choice within the authorized runtime. Builders choose neither on Miter's behalf.",
   "requirements": [
     "C-004", "C-009", "C-010", "C-011", "C-012", "C-013", "C-015", "C-016", "C-017", "C-018",
@@ -128,29 +128,16 @@
     "effect_membranes/miter_assistant_service_v2.pl",
     "effect_membranes/miter_mattermost_live_v1.pl",
     "bin/miter",
+    "scripts/fidelity/check.test.mjs",
     "scripts/ama1_2/r3/",
     "tests/fixtures/ama1_2/r3/",
     "evidence/AMA-1.2/R3/"
   ],
-  "forbidden": "CONSTITUTION.md, ACCEPTANCE.md, AUTHORITY_MAP.md, POC_SPEC.md, the Soul spec copies, Build Fidelity Protocol, Work Protocol, active campaign plan, initial_canon, docs/sources, credentials, Chroma collections, private memories, model weights, NRC data, ~/.miter, unrelated projects/users/channels, and all loose G22/G28 material are forbidden to change. No Python may enter the Miter core-service path.",
-  "preserve_unrelated_work": "Preserve byte-for-byte the pre-existing dirty G28 completion record and every loose G22 file listed below. Never use broad staging. R3 commits name exact paths.",
+  "forbidden": "CONSTITUTION.md, ACCEPTANCE.md, AUTHORITY_MAP.md, POC_SPEC.md, the Soul spec copies, Build Fidelity Protocol, Work Protocol, active campaign plan, initial_canon, docs/sources, credentials, Chroma collections, private memories, model weights, NRC data, ~/.miter, and unrelated projects/users/channels are forbidden to change. No Python may enter the Miter core-service path.",
+  "preserve_unrelated_work": "The obsolete untracked G22 preflight was moved to the user's Trash and the accidental G28 working-copy corruption was restored on 2026-09-05 under D-045. R3 now begins from a clean worktree. Never use broad staging; R3 commits name exact paths.",
   "preserved": [
     {"path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/closure.json", "sha256": "959923719eeee0df22157856b36b476bf5b538fb1d5850fa99ab5a6c29d9b522"},
-    {"path": "docs/gates/G31/P9/R1/closure.json", "sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1"},
-    {"path": "docs/gates/G28/R1/completion.md", "sha256": "d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
-    {"path": "effect_membranes/miter_trials.pl", "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
-    {"path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256", "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
-    {"path": "evidence/20260902T090100Z-G22/inputs/plan.txt", "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
-    {"path": "evidence/20260902T090100Z-G22/raw/preflight.txt", "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
-    {"path": "evidence/20260902T090100Z-G22/raw/prepare.stderr", "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
-    {"path": "evidence/20260902T090100Z-G22/raw/prepare.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
-    {"path": "scripts/g22/prepare.pl", "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
-    {"path": "src/bootstrap_trials.metta", "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
-    {"path": "src/trials.metta", "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
-    {"path": "tests/fixtures/g22_canonical.metta", "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
-    {"path": "tests/fixtures/g22_cases.json", "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
-    {"path": "tests/fixtures/g22_parent.metta", "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
-    {"path": "tests/fixtures/g22_severed.metta", "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+    {"path": "docs/gates/G31/P9/R1/closure.json", "sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1"}
   ],
   "rollback": "Before live activation, remove only the versioned R3 integration from the candidate runtime and retain all failed evidence. After activation, latch the exact grant's panic state, stop only its recorded processes, reconcile pending effects, preserve trajectory/capsules/raw artifacts/admitted memory/receipts/experimental-choice lineage, and restore the last-known-good implementation. External messages are never represented as undone.",
   "predecessor": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R2/plan.json at commit 5906e4ea6a0b03ef62c6d553d0fbc6b65bcb8e1e; identity-004 was produced afterward and is pinned above. R3 supersedes only R2's immediate activation route.",
@@ -165,7 +152,7 @@
     "path": "scripts/fidelity/check.mjs",
     "sha256": "17fb9dde7a0a7b1c39ab3e43a77777e8a2f31b08fd30bffb11748b9d501446df",
     "test_path": "scripts/fidelity/check.test.mjs",
-    "test_sha256": "19b06c98d2580fb42685c36ce1bc9e18cf87209bbc085f562d43e0ba12b77751"
+    "test_sha256": "eecdfc1008fd3f807c8f68aaa19849e08aecfd1c85477dfd02ecd9edf137db41"
   },
   "constitutive_trace": [
     {
