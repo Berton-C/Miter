@@ -1,9 +1,9 @@
 {
-  "schema": "miter-campaign-phase-delta-plan-v1",
+  "schema": "miter-campaign-phase-plan-v1",
   "phase": "AMA-1.2",
   "attempt": "R2",
   "date": "2026-09-05",
-  "status": "frozen-awaiting-plan-commit",
+  "status": "frozen-activation-delta",
   "decision_owner": "Berton",
   "human_decision": "Berton ratified the durable-memory, Berton-and-Haley, staged-forensic-evaluation, GLM-5.3-default, human-model-direction, and Soul-authority separation in the current task on 2026-09-05 and authorized activation after preflight.",
   "controls": {
@@ -17,7 +17,8 @@
     "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md": "65dde851c93b1833bc48e0a16d1665b9c73d9b6d9118728a8b269771a09b55c4",
     "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.json": "f40291f763d982d52ef64027307caafcdb17ad3458f53c7e3315cd20e7832acb"
   },
-  "predecessor": {
+  "predecessor": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R1/plan.json at commit 0459ad5db8ec58654cc39ecc76e3c3e7a9fb2fbc; R2 prospectively supersedes only R1's inactive live-grant proposal and preserves its evidence.",
+  "predecessor_detail": {
     "commit": "0459ad5db8ec58654cc39ecc76e3c3e7a9fb2fbc",
     "r1_plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R1/plan.json",
     "r1_inactive_proposal_sha256": "8576debd59f280883c28fee0cd3d9adebb6892942f8fecfdce3239e30c5a5a47",
@@ -27,16 +28,24 @@
   "requirements": [
     "C-004", "C-015", "C-016", "C-020", "C-030", "C-032", "C-033", "C-034", "C-035", "C-036", "C-037", "C-038", "C-039", "C-041", "C-042", "C-045", "C-054", "C-060", "C-062", "C-064", "C-065", "C-066", "C-098",
     "S-603", "S-801", "S-802", "S-803", "S-804", "S-805", "S-901", "S-902", "S-903", "S-904", "S-1102", "S-1104", "S-1301", "S-1302", "S-1310", "S-1401", "S-1402", "S-1408", "S-1409", "S-1410", "S-1411",
-    "T-19", "T-20", "T-21", "T-22", "T-23", "T-24", "T-38", "T-46", "T-47", "T-54", "T-55", "T-56"
+    "T-19", "T-20", "T-21", "T-22", "T-23", "T-24", "T-38", "T-46", "T-47", "T-54", "T-55", "T-56", "CA-01", "CA-05", "CA-06", "CA-09"
   ],
-  "bounded_claim": "An explicitly consented Berton-and-Haley local Mattermost evaluation can be activated through the same Soul-constituted persistent Miter runtime with durable scoped Continuity of Mind, human-directed or Soul-selected authorized model participation, GLM 5.3 as the initial human preference, bounded exactly reconciled message effects, a 72-hour first segment, and mandatory forensic pause/closure.",
-  "non_claims": [
+  "claim": "An explicitly consented Berton-and-Haley local Mattermost evaluation can be activated through the same Soul-constituted persistent Miter runtime with durable scoped Continuity of Mind, human-directed or Soul-selected authorized model participation, GLM 5.3 as the initial human preference, bounded reconciled message effects, a 72-hour first segment, and mandatory forensic pause and closure.",
+  "bounded_claim": "An explicitly consented Berton-and-Haley local Mattermost evaluation can be activated through the same Soul-constituted persistent Miter runtime with durable scoped Continuity of Mind, human-directed or Soul-selected authorized model participation, GLM 5.3 as the initial human preference, bounded reconciled message effects, a 72-hour first segment, and mandatory forensic pause and closure.",
+  "non_claims": "This delta does not confer cognitive authority on the grant, human model preference, an LLM, transport, retrieval rank, or host logic; does not claim final privacy/erasure, production readiness, unrestricted multi-user reach, universal exactly-once delivery, or final 26.6/26.9 mathematics; and does not permit activation when identity, consent, integrity, recovery, service, or reconciliation preflight is unresolved.",
+  "non_claim_list": [
     "The grant does not decide cognitive meaning, flourishing, undertaking, movement, memory admission, expression, or consequence interpretation.",
     "Human model selection does not give the selected model Soul, movement, memory, or effect authority.",
     "This is not a production, privacy-complete, unrestricted multi-user, arbitrary-tool, or SNET release grant.",
     "No final Inquiry 26.6/26.9 mathematics or universal cognitive fidelity is claimed.",
     "Ratification does not excuse failed live preflight or permit activation with unresolved identity, consent, integrity, or recovery standing."
   ],
+  "rationale": "R1 made a single-principal public-safe remote model proposal. Berton's ratified evaluation requires Haley's first-hand participation, canonical Continuity of Mind that does not expire by age, human-directed model experiments with GLM 5.3 as the preferred default, clear separation between authority grants and Soul cognition, and a mandatory forensic pause before longer evaluation. These are material authority changes and therefore require a prospectively frozen attempt rather than rewriting R1 evidence.",
+  "reading": "C-004 keeps model output subordinate to native Soul cognition; C-030 through C-045 and S-801 through S-804 require durable scoped four-plane continuity; C-042 and S-804 require multi-principal scope at every admission and disclosure boundary; C-064 through C-066 and S-904 require typed, reconciled effects; C-098 and S-1310 require the exact live grant; S-1401, S-1402 and S-1408 through S-1411 require the live path to remain the same constitutive process rather than a model-to-message wrapper.",
+  "representation": "A versioned tracked redacted grant, mode-0600 private stable bindings and consent record, native MeTTa grant and model-direction atoms, narrow Prolog capability enforcement and transport, durable activation/effect/continuity journals, and redacted evidence whose source hashes bind the private records without disclosing them.",
+  "consumer": "The promoted AMA-1.1/AMA-1.2 persistent assistant reactor consumes the bound surface contact, constitutive cut, scoped continuity, authorized model direction and returned candidate before VoiceRNA and a qualified Mattermost effect; the external operator and membranes only enforce and witness the ratified envelope.",
+  "falsifiers": "Activation fails if the shared carrier or either principal is ambiguous, consent is absent, any private identity or credential enters tracked evidence, model direction becomes movement authority, canonical memory expires by age, another scope becomes retrievable, the LLM or Prolog selects the response, the live path bypasses Fact9/flourishing constitution, a confirmed effect replays, an unknown effect is blindly resent, or expiry deletes continuity or declares an undertaking complete.",
+  "scope_review": "The grant reaches only the local Mattermost server, one uniquely bound shared conversation, Berton, Haley, the existing Miter bot, one evaluation project, the Miter-only Chroma collection, three named model resources, and Mattermost create-post effects. No repository write, arbitrary tools, unrelated history, other projects/users/channels/collections, ClarityOmega state, NRC data, credentials, model weights, or ~/.miter path enters runtime authority.",
   "first_segment_hours": 72,
   "maximum_evaluation_hours": 168,
   "continuation_requires": "explicit-joint-checkpoint-decision-under-unchanged-boundaries",
@@ -57,6 +66,43 @@
     "no unresolved prior effect and restart no-replay standing",
     "supported constitutive path rather than direct model-to-message transport"
   ],
+  "allowed_paths": [
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R2/",
+    "docs/operations/AMA-1.2-LIVE-GRANT.md",
+    "config/miter-assistant-mattermost-v1.example.json",
+    "config/model-resources-v1.json",
+    "config/local/ama1_2/",
+    "src/mattermost_live_grant_v2.metta",
+    "src/bootstrap_mattermost_live_grant_v2.metta",
+    "src/mattermost_model_direction_v1.metta",
+    "effect_membranes/miter_mattermost_multi_identity_probe_v1.pl",
+    "effect_membranes/miter_mattermost_live_v1.pl",
+    "effect_membranes/miter_assistant_operator_v1.pl",
+    "effect_membranes/miter_assistant_service_v1.pl",
+    "bin/miter",
+    "scripts/ama1_2/",
+    "tests/fixtures/ama1_2/",
+    "evidence/AMA-1.2/R2/"
+  ],
+  "claim_ids": ["AMA12-R2-GRANT", "AMA12-R2-IDENTITY-CONSENT", "AMA12-R2-MODEL-DIRECTION", "AMA12-R2-DURABLE-CONTINUITY", "AMA12-R2-ACTIVATION"],
+  "preserved": [
+    {"path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/closure.json", "sha256": "959923719eeee0df22157856b36b476bf5b538fb1d5850fa99ab5a6c29d9b522"},
+    {"path": "docs/gates/G31/P9/R1/closure.json", "sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1"},
+    {"path": "docs/gates/G28/R1/completion.md", "sha256": "d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path": "effect_membranes/miter_trials.pl", "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256", "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path": "evidence/20260902T090100Z-G22/inputs/plan.txt", "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path": "evidence/20260902T090100Z-G22/raw/preflight.txt", "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path": "evidence/20260902T090100Z-G22/raw/prepare.stderr", "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path": "evidence/20260902T090100Z-G22/raw/prepare.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path": "scripts/g22/prepare.pl", "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path": "src/bootstrap_trials.metta", "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path": "src/trials.metta", "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path": "tests/fixtures/g22_canonical.metta", "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path": "tests/fixtures/g22_cases.json", "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path": "tests/fixtures/g22_parent.metta", "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path": "tests/fixtures/g22_severed.metta", "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
   "preserve_unrelated_work": [
     "docs/gates/G28/R1/completion.md",
     "effect_membranes/miter_trials.pl",
@@ -72,5 +118,24 @@
   "forbidden": [
     "CONSTITUTION.md", "ACCEPTANCE.md", "AUTHORITY_MAP.md", "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md", "BUILD_FIDELITY_PROTOCOL.md", "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md", "initial_canon/", "docs/sources/", "~/.miter", "credentials", "other Chroma collections", "ClarityOmega state", "NRC VAD assets"
   ],
-  "next_action": "Commit this plan alone, verify its control pins, then revise and independently test the versioned grant before any identity probe or activation."
+  "rollback": "Latch the exact grant's panic state, stop only its recorded processes, reconcile pending Mattermost effects, retain trajectory, capsules, raw artifacts, admitted memory and receipts, and restore the last-known-good implementation. Rollback never represents external messages as undone and never deletes canonical continuity.",
+  "fidelity_checker": {
+    "path": "scripts/fidelity/check.mjs",
+    "sha256": "17fb9dde7a0a7b1c39ab3e43a77777e8a2f31b08fd30bffb11748b9d501446df",
+    "test_path": "scripts/fidelity/check.test.mjs",
+    "test_sha256": "19b06c98d2580fb42685c36ce1bc9e18cf87209bbc085f562d43e0ba12b77751"
+  },
+  "constitutive_trace": [
+    {"stage":"typed-contact","requirements":["C-020","C-042","S-804","S-1310","T-21","CA-01"],"representation":"Exact stable server, team, shared carrier, principal, bot, post and project relations bound before payload cognition.","consumer":"Assistant contact admission and cut construction.","expected_positive":"New contact from either consented principal on the exact shared carrier enters one scoped path.","material_severance":"Change principal, carrier, membership, consent or project while preserving text; admission is held.","neutral":"Change display name or presentation order; stable identity result is unchanged.","restoration":"Restore exact stable binding and consent; eligibility returns.","standing":"PARTIAL pending fresh private identity and consent preflight.","successor_dependency":"Supplies legitimate shared encounters without weakening n-user scope."},
+    {"stage":"constitutive-cut","requirements":["C-016","C-030","C-045","S-1302","S-1402","T-38","T-47","CA-01"],"representation":"The live D/Omega/I/W/C cut includes exact shared continuity, participant and current authority relations.","consumer":"Persistent native assistant before model participation.","expected_positive":"A restarted encounter rehydrates unfinished organization before ordinary cognition.","material_severance":"Remove a load-bearing continuity or authority relation; dependent participation becomes unresolved.","neutral":"Clear model context; canonical organization remains available.","restoration":"Restore verified canonical relation and rehydrate without effect replay.","standing":"PARTIAL from R1 fixture evidence; unproven on live group contact.","successor_dependency":"Grounds live constitutive breadth."},
+    {"stage":"fact9-expression","requirements":["C-017","S-1401","S-1408","T-47","CA-01"],"representation":"Support-specific Fact9 expression remains inside the same cut and retains Present asymmetry and provenance.","consumer":"Native possibility formation.","expected_positive":"Grounded shared contact changes only support-dependent expression.","material_severance":"Remove a material role or n-ary relation; dependent possibility changes.","neutral":"Equivalent wording or authorized model carrier does not manufacture a new role.","restoration":"Restore exact relation and recover only its dependent standing.","standing":"PARTIAL from promoted kernel; live grounding unproven.","successor_dependency":"Prevents direct chat-wrapper activation."},
+    {"stage":"flourishing-organization","requirements":["C-016","S-1303","S-1401","T-47","CA-01"],"representation":"Interconnected flourishing, capture, obstruction, disguise, contradiction and unknown standings participate on the cut.","consumer":"Native alternatives and undertaking construction.","expected_positive":"Different grounded relationship or consequence can change possibility formation without a behavioral entry.","material_severance":"Remove the claimed load-bearing flourishing relation; movement changes before rendering.","neutral":"Positive tone or model choice alone cannot establish flourishing.","restoration":"Restore the relation and causal capacity through unchanged operators.","standing":"PARTIAL from promoted kernel; live unfamiliar contact unproven.","successor_dependency":"Keeps Soul navigation distinct from the grant."},
+    {"stage":"generated-continuations","requirements":["S-1401","S-1408","T-47","CA-01"],"representation":"Plural continuations retain available, unavailable, unresolved, contradicted and deferred standing.","consumer":"Native MeTTa movement construction.","expected_positive":"Model or memory contributions alter only their dependent possibilities.","material_severance":"Remove source scope or support; the dependent possibility loses standing.","neutral":"Reorder candidates or retrievals; no first-match choice appears.","restoration":"Restore source-bound support and recover the dependent possibility.","standing":"PARTIAL from AMA-1.1/R1; live model-direction integration unproven.","successor_dependency":"Enables model experimentation without sovereignty."},
+    {"stage":"native-movement","requirements":["C-004","C-016","S-1401","S-1408","T-47","CA-01"],"representation":"Movement binds source cut, alternatives, material relations, R/A/P readings, uncertainty, authority and consequence route.","consumer":"Native MeTTa alone selects, joins, defers, declines or continues.","expected_positive":"Human model direction changes the authorized participant but not the native decision owner.","material_severance":"Remove a claimed material relation; movement changes before LLM rendering.","neutral":"Change authorized model carrier with semantically equivalent contribution; authority remains native.","restoration":"Restore the dependency and recover construction through the same native operators.","standing":"PARTIAL; live human-directed model use unproven.","successor_dependency":"Preserves C-004 during live evaluation."},
+    {"stage":"bounded-participant-reentry","requirements":["C-004","C-041","C-042","S-901","S-1408","T-21","T-23","T-54","CA-05"],"representation":"Human direction and model, memory, PLN/NAL or tool result re-enter with exact scope, lineage, role, disclosure and no movement authority.","consumer":"Assistant reconstitutes the current cut and possibilities.","expected_positive":"GLM, local or Soul-choice dispositions are honored at exact scope and every product remains a candidate.","material_severance":"Remove consent, disclosure, direction authority, request lineage or memory scope; use is held.","neutral":"Equivalent provider serialization or duplicate same-lineage output adds no independent authority.","restoration":"Restore verified authorization and source scope; bounded participation returns.","standing":"PARTIAL from R1 semantic fixtures; actual model and disclosure path unproven.","successor_dependency":"Supports comparative model forensics without data leakage."},
+    {"stage":"voice-and-effect","requirements":["C-054","C-064","C-066","C-098","S-902","S-904","S-1310","T-22","T-24","T-46","CA-09"],"representation":"VoiceRNA and exact effect identity bind movement, payload, shared destination, grant, pending intent, receipt or unknown outcome.","consumer":"Narrow Prolog Mattermost membrane after native certification.","expected_positive":"One useful general response is emitted once to the exact shared carrier.","material_severance":"Remove current grant, VoiceRNA certificate, consent, destination or effect identity; no send occurs.","neutral":"Restart or reconnect after confirmed effect; no duplicate appears.","restoration":"Restore current qualification for an uncommitted effect and permit one attempt.","standing":"PARTIAL from terminated G31 canary; ongoing live path unproven.","successor_dependency":"Makes live consequence available to the same organism."},
+    {"stage":"consequence-next-cut","requirements":["C-020","S-1302","S-1409","T-38","T-55","CA-06"],"representation":"Receipt, reply, edit, model failure, memory availability and absence return as typed consequence linked to movement and project.","consumer":"Assistant reconstitutes K-prime before later movement.","expected_positive":"Materially different consequence changes later accessibility or undertaking where justified.","material_severance":"Detach consequence identity; no consequence-dependent claim is available.","neutral":"Equivalent receipt serialization or timestamp does not create developmental pitch.","restoration":"Restore exact linkage and recover the expected K-prime relation.","standing":"PARTIAL from controlled evidence; live human consequence unproven.","successor_dependency":"Provides forensic and developmental evidence."},
+    {"stage":"restart-continuity","requirements":["C-015","C-030","C-032","C-034","C-035","C-045","S-1302","S-1410","T-19","T-20","T-21","T-38","T-56","CA-06","CA-09"],"representation":"Durable checkpoint binds shared scope, cut, alternatives, artifact/capsule/raw source, admitted memory, directions, consequences and effect journal.","consumer":"Fresh startup before ordinary contact.","expected_positive":"Empty-context restart and long gap recover exact shared undertaking and no confirmed effect replays.","material_severance":"Sever scope, capsule lineage, source hash or effect journal; startup narrows or holds rather than guesses.","neutral":"Elapsed time or model-context loss does not delete canonical continuity.","restoration":"Restore verified canonical material and recover organization without vector sovereignty.","standing":"PARTIAL from R1 continuity evidence; live multi-principal restart unproven.","successor_dependency":"Makes the alpha a continuity-bearing evaluation rather than a temporary chat session."}
+  ],
+  "next_action": "Commit the schema-corrected plan, pass the opening checker, then revise and independently test the versioned grant before any identity probe or activation."
 }
