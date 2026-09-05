@@ -1,0 +1,13 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_assistant_v2.metta")
+!(import! &self "/Users/claritymiter/miter/tests/fixtures/ama1_2/r3/authority-runtime-data.metta")
+
+!(let* (($contact (R3RuntimeContact))
+        ($grounded (CP2Encounter $contact ()))
+        ($joint (index-atom $grounded 1))
+        ($snapshot (R3SnapshotFromGrounded $contact $grounded $joint))
+        ($restored (AssistantRestoreV2 $snapshot))
+        ($history (collapse (match &assistant_history $row $row)))
+        ($active (collapse (match &assistant_state $row $row))))
+  (restore-case canonical $restored (size-atom $history) (size-atom $active)
+    (if (== (size-atom $history) 1)
+      (AR2HistoryValid (index-atom $history 0)) false)))

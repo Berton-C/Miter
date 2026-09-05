@@ -1,0 +1,62 @@
+{
+  "schema": "miter-ama12-r3-authority-runtime-join-manifest-v1",
+  "files": [
+    {
+      "path": "src/constitutive_participation_v2.metta",
+      "sha256": "645ce146bd1c5d25d777b9acf48104de827d0559502f7c563b3d212aef1ac7f1"
+    },
+    {
+      "path": "src/assistant_reactor_v2.metta",
+      "sha256": "48ec417f4f9ee7275fca8c04fae9e8a33300406c6280197bd49e81de17ba70c9"
+    },
+    {
+      "path": "src/bootstrap_assistant_v2.metta",
+      "sha256": "2dc14796118a22573256bfc401e2917ed70d003534067854939ff790b26afa2f"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-data.metta",
+      "sha256": "8eecc3f2867bcc17686da88257e6b6158240b9a345b125342b53d37164e5f2e9"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-join-smoke.metta",
+      "sha256": "f5af28686c25c73acf3a8dc2d9de6a142cd56f529d767d200b8f748966321763"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-causal-matrix.metta",
+      "sha256": "39de811f9588b966309256c26c592cb2ee1a9ae1655874c31b6260fdb1fdad87"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-restore.metta",
+      "sha256": "00caa3b6ff6a52595339aec82ff103fa48a41cc81c00fa3cac4b3cba6b3ec4a5"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-restore-severed.metta",
+      "sha256": "78f492fd713b840b720b290ed77b00cec51eef2eb7e9359bdaee141b1da097c8"
+    },
+    {
+      "path": "scripts/ama1_2/r3/authority_runtime_join.mjs",
+      "sha256": "2f4a8be2b9e522819f6975b3907d7d31d46e1cce64211c9db7ef65d2e3bf9731"
+    },
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/swift-high-fidelity-procedure.md",
+      "sha256": "806819bc9d1bce198f6460da9ae61c6e88a5577b068bb53b9a10f440eb27f11a"
+    }
+  ],
+  "evidence_files": [
+    "smoke.stdout",
+    "smoke.stderr",
+    "smoke-process.json",
+    "matrix.stdout",
+    "matrix.stderr",
+    "matrix-process.json",
+    "restore.stdout",
+    "restore.stderr",
+    "restore-process.json",
+    "restore-severed.stdout",
+    "restore-severed.stderr",
+    "restore-severed-process.json",
+    "verdict.json"
+  ],
+  "contains_credentials": false,
+  "contains_private_content": false
+}
