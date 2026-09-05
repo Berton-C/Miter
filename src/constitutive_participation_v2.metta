@@ -318,6 +318,16 @@
                  m24-developmental-grounding)))
      (CP2AuthorityJointV1Valid $joint)))
 
+(= (CP2M25Encounter $contact $predecessor $developmental)
+   (let $cut (CPMakeCut $contact $predecessor)
+     (if (CPCutValid $cut)
+       (let $configuration (CPContactConfiguration $contact)
+         (M25ConstitutiveEncounter $cut
+           (index-atom $configuration 7) (index-atom $configuration 8)
+           (index-atom $configuration 10) (index-atom $contact 8)
+           $developmental))
+       $cut)))
+
 (= (CP2EncounterFromAuthorityOrganizations $contact $predecessor
       $m24 $m24-organization $m260 $m260-pre)
    (if (and (M24ContactValid $m24)
@@ -328,7 +338,10 @@
               (CP2AuthorityParticipants $contact $m24-organization $m260-pre))
               ($participating-contact
                 (CP2ContactWithAuthorityParticipants $contact $authority-participants))
-              ($encounter (CPEncounter $participating-contact $predecessor)))
+              ($developmental
+                (CP2M24DevelopmentalOrganization $m24-organization))
+              ($encounter (CP2M25Encounter $participating-contact $predecessor
+                $developmental)))
        (if (CPShape $encounter constitutive-encounter 7)
          (let* (($cut (index-atom $encounter 1))
                 ($movement (index-atom $encounter 5))

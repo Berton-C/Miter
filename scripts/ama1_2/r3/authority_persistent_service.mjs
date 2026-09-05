@@ -20,6 +20,10 @@ const forbiddenRoot = '/Users/bcb/.miter';
 const record = process.argv.includes('--record');
 const evidenceRelative = 'evidence/AMA-1.2/R3/authority-persistent-service-003';
 const evidence = path.join(repo, evidenceRelative);
+// The complete primary movement now carries the constitutive Fact9-Flourishing
+// joint read by R/A/P. Bound the integrated one-contact proof-carrying snapshot
+// without reverting to the previously thinner authority representation.
+const maxSingleContactCheckpointBytes = 1280 * 1024;
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const fileHash = file => sha256(fs.readFileSync(file));
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -141,7 +145,7 @@ try {
   ]) assert.ok(canonical.includes(required), `checkpoint missing ${required}`);
   const canonicalHash = fileHash(termPath);
   const canonicalBytes = fs.statSync(termPath).size;
-  assert.ok(canonicalBytes <= 300000,
+  assert.ok(canonicalBytes <= maxSingleContactCheckpointBytes,
     `single-contact checkpoint unexpectedly expanded to ${canonicalBytes} bytes`);
   assert.equal(jsonCount(path.join(root, 'outbox')), 1,
     'one local no-network effect should be committed');
@@ -234,6 +238,7 @@ try {
     lkg_v2_verified: true,
     canonical_disk_checkpoint: true,
     canonical_checkpoint_bytes: canonicalBytes,
+    canonical_checkpoint_limit_bytes: maxSingleContactCheckpointBytes,
     bounded_checkpoint_representation: true,
     fresh_process_restore: true,
     duplicate_suppressed: true,

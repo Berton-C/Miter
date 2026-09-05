@@ -106,6 +106,34 @@
      (and (AR2HistoryValid (index-atom $rows $i))
           (AR2AllHistoryValid $rows (+ $i 1))) true))
 
+(= (AR2MovementBasis $movement)
+   (if (CPShape $movement movement-formed 7)
+     (let $retained (index-atom $movement 6)
+       (if (CPShape $retained retained-alternatives-v3 3)
+         (index-atom $retained 2)
+         (CPMovementBasisV2 $movement)))
+     no-continuation-basis))
+
+(= (AR2MovementConstitutivelyConsistent $cut $movement)
+   (let $basis (AR2MovementBasis $movement)
+     (if (CPShape $basis continuation-basis-v3 6)
+       (let* (($base-cut (CPBaseCutWithoutParticipantRelations $cut))
+              ($encounter (M25ConstitutiveEncounter $base-cut
+                (index-atom $basis 1) (index-atom $basis 2)
+                (index-atom $basis 3) (index-atom (index-atom $basis 4) 1)
+                (index-atom $basis 5))))
+         (and (CPShape $encounter constitutive-encounter 7)
+              (== (index-atom $encounter 5) $movement)))
+       (ARMovementConstitutivelyConsistent $cut $movement))))
+
+(= (AR2ActiveValid $active)
+   (and (CPShape $active active-organization 4)
+     (and (CPShape (index-atom $active 1) scope 4)
+      (and (CPCutValid (index-atom $active 2))
+       (and (ARMovementValid (index-atom $active 3))
+            (AR2MovementConstitutivelyConsistent
+              (index-atom $active 2) (index-atom $active 3)))))))
+
 (= (AR2RestoreValid $state-wrapper $history-wrapper $state $history)
    (and (ARSpacesEmpty)
      (and (CPShape $state-wrapper state 2)
@@ -114,7 +142,7 @@
         (and (is-expr $history)
          (and (CPUniq $state 0 ())
           (and (CPUniq $history 0 ())
-           (and (ARAllValid $state ARActiveValid 0)
+           (and (ARAllValid $state AR2ActiveValid 0)
             (and (AR2AllHistoryValid $history 0)
              (and (ARStateScopesUnique $state 0 ())
                   (ARHistoryKeysUnique $history 0 ()))))))))))))
@@ -208,14 +236,15 @@
          supported no-contact-no-movement-authority))))
 
 (= (AR2ReconstituteAfterConsequence $scope $cut $movement $consequence)
-   (let* (($basis (CPMovementBasisV2 $movement))
+   (let* (($basis (AR2MovementBasis $movement))
           ($prior (AR2DevelopmentalForMovement $scope $cut $movement))
           ($probe-basis (M24ProbeBasisForMovement $movement))
           ($next-cut (CPNextCutV2 $cut $consequence))
           ($base-next-cut (CPBaseCutWithoutParticipantRelations $next-cut))
           ($transition (M24DevelopmentalTransition $prior $probe-basis
             $consequence $scope $base-next-cut)))
-     (if (and (CPShape $basis continuation-basis-v2 5)
+     (if (and (or (CPShape $basis continuation-basis-v2 5)
+                  (CPShape $basis continuation-basis-v3 6))
            (and (M24DevelopmentalTransitionValid $transition)
                 (CPCutValid $base-next-cut)))
        (let* (($evolved (index-atom $transition 2))
@@ -223,9 +252,9 @@
                 (index-atom (index-atom $consequence 10) 1)))
               ($participant-source (CPListAppend (index-atom $basis 3)
                 (AR2ConsequenceParticipants $scope $evolved $consequence)))
-              ($next (CPConstitutiveEncounterV2 $base-next-cut
+              ($next (M25ConstitutiveEncounter $base-next-cut
                 (index-atom $basis 1) $flourishing-views $participant-source
-                (index-atom (index-atom $basis 4) 1))))
+                (index-atom (index-atom $basis 4) 1) $evolved)))
          (if (and (CPShape $next constitutive-encounter 7)
                   (CPDRelationKnown (index-atom $next 1)
                     m24-consequence-developmental-grounding))

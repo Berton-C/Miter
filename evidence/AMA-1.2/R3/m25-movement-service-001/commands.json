@@ -1,0 +1,679 @@
+[
+  {
+    "name": "bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"4a8cc84cae6c712373de97067059db35ec3024baa177ab883b0fffed9b6586aa\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "4a8cc84cae6c712373de97067059db35ec3024baa177ab883b0fffed9b6586aa",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":43314,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 43314,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "submit-contact",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_2/r3/probe-contact-v3.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-r3-probe-contact\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-r3-probe-contact",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "duplicate-contact",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_2/r3/probe-contact-v3.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-r3-probe-contact\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"duplicate\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-r3-probe-contact",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "duplicate"
+    }
+  },
+  {
+    "name": "stop-before-restart",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":43314,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 43314,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-canonical",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":43347,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 43347,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "stop-before-severance",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":43347,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 43347,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "bootstrap-severance-0",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s0-QckyXJ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"8c3980831967bd34e3fedb8804b1952d8279a4949384dd80586bf765665bc488\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s0-QckyXJ\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "8c3980831967bd34e3fedb8804b1952d8279a4949384dd80586bf765665bc488",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s0-QckyXJ",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "restart-severed-0",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s0-QckyXJ"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":43382,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 43382,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "status-severed-0",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s0-QckyXJ"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\":null,\"lkg\":\"verified\",\"pid\":43382,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": null,
+      "lkg": "verified",
+      "pid": 43382,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "bootstrap-severance-1",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s1-nWtc3x"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"7d1969ac99c577ba825421cff8d7a2ee7ba474d10519da2f071093c607cb88c4\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s1-nWtc3x\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "7d1969ac99c577ba825421cff8d7a2ee7ba474d10519da2f071093c607cb88c4",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s1-nWtc3x",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "restart-severed-1",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s1-nWtc3x"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":43503,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 43503,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "status-severed-1",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s1-nWtc3x"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\":null,\"lkg\":\"verified\",\"pid\":43503,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": null,
+      "lkg": "verified",
+      "pid": 43503,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "bootstrap-severance-2",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s2-N3yIts"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"6dec43728f3e80dd773a5dabe68fcf44cbf05cde8fe73e2041ce443c0f9c433a\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s2-N3yIts\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "6dec43728f3e80dd773a5dabe68fcf44cbf05cde8fe73e2041ce443c0f9c433a",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s2-N3yIts",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "restart-severed-2",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s2-N3yIts"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":43622,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 43622,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "status-severed-2",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s2-N3yIts"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\":null,\"lkg\":\"verified\",\"pid\":43622,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": null,
+      "lkg": "verified",
+      "pid": 43622,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "bootstrap-severance-3",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s3-QqtvEI"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"2c9df0b5c8d147c6ea6bd87316eb014266a85a2b8e96d7e2fdad312073fe6e88\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s3-QqtvEI\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "2c9df0b5c8d147c6ea6bd87316eb014266a85a2b8e96d7e2fdad312073fe6e88",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s3-QqtvEI",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "restart-severed-3",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s3-QqtvEI"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":43750,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 43750,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "status-severed-3",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s3-QqtvEI"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\":null,\"lkg\":\"verified\",\"pid\":43750,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": null,
+      "lkg": "verified",
+      "pid": 43750,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "bootstrap-severance-4",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s4-mCjQ5P"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"cdc0c781797a1de26d47af8cdfa7c1c940e28b2bf091609f1e2c6ec86745c455\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s4-mCjQ5P\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "cdc0c781797a1de26d47af8cdfa7c1c940e28b2bf091609f1e2c6ec86745c455",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s4-mCjQ5P",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "restart-severed-4",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s4-mCjQ5P"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":43872,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 43872,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "status-severed-4",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s4-mCjQ5P"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\":null,\"lkg\":\"verified\",\"pid\":43872,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": null,
+      "lkg": "verified",
+      "pid": 43872,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "bootstrap-severance-5",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s5-OOji4P"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"27b42daf68b7f59f3771a556e58eb20a5c42be61e00ee2eff5ccb5d667aabaa9\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s5-OOji4P\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "27b42daf68b7f59f3771a556e58eb20a5c42be61e00ee2eff5ccb5d667aabaa9",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s5-OOji4P",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "restart-severed-5",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s5-OOji4P"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":43992,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 43992,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "status-severed-5",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s5-OOji4P"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\":null,\"lkg\":\"verified\",\"pid\":43992,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": null,
+      "lkg": "verified",
+      "pid": 43992,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "bootstrap-severance-6",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s6-xA4zyu"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"09243b82228e8d2380b099ef3bc814a32fce63783e6d226567a257b49b6cc9be\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s6-xA4zyu\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "09243b82228e8d2380b099ef3bc814a32fce63783e6d226567a257b49b6cc9be",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s6-xA4zyu",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "restart-severed-6",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s6-xA4zyu"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":44122,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 44122,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "status-severed-6",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s6-xA4zyu"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\":null,\"lkg\":\"verified\",\"pid\":44122,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": null,
+      "lkg": "verified",
+      "pid": 44122,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "bootstrap-severance-7",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s7-ftYGHR"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"a98e0866b583b242eeb84a236873be12da2ce3a69dd972275b8ddd402499b729\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s7-ftYGHR\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "a98e0866b583b242eeb84a236873be12da2ce3a69dd972275b8ddd402499b729",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s7-ftYGHR",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "restart-severed-7",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s7-ftYGHR"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":44239,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 44239,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "status-severed-7",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s7-ftYGHR"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\":null,\"lkg\":\"verified\",\"pid\":44239,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": null,
+      "lkg": "verified",
+      "pid": 44239,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "bootstrap-severance-8",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s8-iU4fMX"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"8bfb79eafe0a3762995b071de52bbcc93cd317b5947055cc5c938e69effb2530\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s8-iU4fMX\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "8bfb79eafe0a3762995b071de52bbcc93cd317b5947055cc5c938e69effb2530",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s8-iU4fMX",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "restart-severed-8",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s8-iU4fMX"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":44360,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 44360,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "status-severed-8",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-s8-iU4fMX"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\":null,\"lkg\":\"verified\",\"pid\":44360,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": null,
+      "lkg": "verified",
+      "pid": 44360,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-restored",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":44471,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 44471,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m25-KwXiXl"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":44471,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 44471,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  }
+]

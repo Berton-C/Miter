@@ -1,0 +1,17 @@
+true
+true
+(m25-primary-case formation true true 3 3 true true true)
+(m25-primary-case material-floors undertaking true true true true)
+(m25-primary-case rap true true true admissible one-contact-movement-surface-three-simultaneous-perspectives true)
+(m25-primary-case constitutive-joint true true true true true true)
+(m25-causal-case constitutive-joint-severed true false false false)
+(m25-primary-case construction 3 movement-formed undertaking thread-undertaking-alpha true)
+(m25-primary-case runtime true true movement-formed (movement-standing formed thread-undertaking-alpha undertaking) true)
+(m25-causal-case ambient-soul true false false)
+(m25-causal-case relation-severed true m25-primary-movement-v2 false read-app-held unresolved harmonic-alignment-unresolved)
+(m25-causal-case distinction-severed true m25-primary-movement-v2 false read-app-held unresolved harmonic-alignment-unresolved)
+(m25-causal-case interface-change true available true (participation-mode-for-route interface-contact))
+(m25-causal-case energetics true true true)
+(m25-causal-case shared-trajectory true false false false true false true true pns-like sns-like stuck)
+(m25-causal-case bounded-harmonic true false true true)
+(m25-causal-case neutral-permutation true true (movement-standing formed thread-undertaking-alpha undertaking) (movement-standing formed thread-undertaking-alpha undertaking))

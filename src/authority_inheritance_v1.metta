@@ -893,6 +893,754 @@
                     (index-atom $transition 5)
                     (index-atom $transition 6)))))))))) false))
 
+; ---------- Investigation 25: movement-primary DPF and R/A/P ----------
+
+; These constructors read an already-formed primary movement candidate. R/A/P
+; never supply its identity, form, source cut, answerability, or continuation
+; basis, and no scalar aggregation exists in this surface.
+
+(= (M25RowsWithoutIdAt $rows $id $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (and (is-expr $row)
+                (and (> (size-atom $row) 1)
+                     (== (index-atom $row 1) $id)))
+         (M25RowsWithoutIdAt $rows $id (+ $i 1))
+         (cons-atom $row (M25RowsWithoutIdAt $rows $id (+ $i 1))))) ()))
+
+(= (M25RowsWithoutId $rows $id)
+   (M25RowsWithoutIdAt $rows $id 0))
+
+(= (M25CutWithoutRelation $cut $id)
+   (let* (($d (index-atom $cut 6))
+          ($omega (index-atom $cut 7)))
+     (constitutive-cut
+       (index-atom $cut 1) (index-atom $cut 2) (index-atom $cut 3)
+       (index-atom $cut 4) (index-atom $cut 5)
+       (D (M25RowsWithoutId (index-atom $d 1) $id) (index-atom $d 2))
+       (Omega (M25RowsWithoutId (index-atom $omega 1) $id))
+       (index-atom $cut 8) (index-atom $cut 9) (index-atom $cut 10)
+       (index-atom $cut 11) (index-atom $cut 12) (index-atom $cut 13))))
+
+(= (M25CutWithoutDistinction $cut $id)
+   (let $d (index-atom $cut 6)
+     (constitutive-cut
+       (index-atom $cut 1) (index-atom $cut 2) (index-atom $cut 3)
+       (index-atom $cut 4) (index-atom $cut 5)
+       (D (index-atom $d 1) (M25RowsWithoutId (index-atom $d 2) $id))
+       (index-atom $cut 7) (index-atom $cut 8) (index-atom $cut 9)
+       (index-atom $cut 10) (index-atom $cut 11) (index-atom $cut 12)
+       (index-atom $cut 13))))
+
+(= (M25RelationOccurrenceCount $cut $id)
+   (+ (size-atom (CPFind (CPDRelations $cut) $id))
+      (size-atom (CPFind (CPOmegaRelations $cut) $id))))
+
+(= (M25RelationDomain $cut $id)
+   (if (== (size-atom (CPFind (CPDRelations $cut) $id)) 1) D
+     (if (== (size-atom (CPFind (CPOmegaRelations $cut) $id)) 1) Omega
+       relation-domain-unresolved)))
+
+(= (M25RelationRow $cut $id)
+   (let $d (CPFind (CPDRelations $cut) $id)
+     (if (== (size-atom $d) 1) (index-atom $d 0)
+       (let $omega (CPFind (CPOmegaRelations $cut) $id)
+         (if (== (size-atom $omega) 1) (index-atom $omega 0)
+           (relation-row-unresolved $id))))))
+
+(= (M25RelatednessFloor $cut $id)
+   (== (M25RelationOccurrenceCount $cut $id) 1))
+
+(= (M25PrecisionFloor $cut $id)
+   (== (size-atom (CPFind (CPDDistinctions $cut) $id)) 1))
+
+(= (M25FourthDiscrimination $movement-id $cut $id)
+   (if (M25RelatednessFloor $cut $id)
+     (let $counterfactual (M25CutWithoutRelation $cut $id)
+       (fourth-discrimination $movement-id $id
+         (counterfactual remove-material-relation)
+         (if (M25RelatednessFloor $counterfactual $id)
+           no-material-difference changes-material-relatedness-floor)))
+     (fourth-discrimination-unresolved $movement-id $id
+       missing-material-relation)))
+
+(= (M25PrecisionDiscrimination $movement-id $cut $id)
+   (if (M25PrecisionFloor $cut $id)
+     (let $counterfactual (M25CutWithoutDistinction $cut $id)
+       (precision-discrimination $movement-id $id
+         (counterfactual remove-material-distinction)
+         (if (M25PrecisionFloor $counterfactual $id)
+           no-material-difference changes-material-precision-floor)))
+     (precision-discrimination-unresolved $movement-id $id
+       missing-material-distinction)))
+
+(= (M25RelatednessWitness $movement-id $cut $id)
+   (if (M25RelatednessFloor $cut $id)
+     (relatedness-witness $movement-id $id
+       (material-floor satisfied
+         (relation-standing (index-atom (M25RelationRow $cut $id) 3)))
+       (provenance (M25RelationDomain $cut $id)
+         (index-atom $cut 12) (M25FourthDiscrimination $movement-id $cut $id)))
+     (relatedness-witness $movement-id $id
+       (material-floor failed missing-or-ambiguous-relation)
+       (provenance unresolved))))
+
+(= (M25PrecisionWitness $movement-id $cut $id)
+   (if (M25PrecisionFloor $cut $id)
+     (let $row (index-atom (CPFind (CPDDistinctions $cut) $id) 0)
+       (precision-witness $movement-id $id
+         (material-floor satisfied
+           (distinction-standing (index-atom $row 2)))
+         (provenance D (index-atom $cut 12)
+           (M25PrecisionDiscrimination $movement-id $cut $id))))
+     (precision-witness $movement-id $id
+       (material-floor failed missing-or-ambiguous-distinction)
+       (provenance unresolved))))
+
+(= (M25RelatednessWitnessValid $movement-id $witness)
+   (if (CPShape $witness relatedness-witness 5)
+     (if (== (index-atom $witness 1) $movement-id)
+       (if (== (index-atom (index-atom $witness 3) 1) satisfied)
+         (if (CPShape (index-atom $witness 4) provenance 4)
+           (== (index-atom (index-atom $witness 4) 3)
+             (fourth-discrimination $movement-id (index-atom $witness 2)
+               (counterfactual remove-material-relation)
+               changes-material-relatedness-floor)) false)
+         false) false) false))
+
+(= (M25PrecisionWitnessValid $movement-id $witness)
+   (if (CPShape $witness precision-witness 5)
+     (if (== (index-atom $witness 1) $movement-id)
+       (if (== (index-atom (index-atom $witness 3) 1) satisfied)
+         (if (CPShape (index-atom $witness 4) provenance 4)
+           (== (index-atom (index-atom $witness 4) 3)
+             (precision-discrimination $movement-id (index-atom $witness 2)
+               (counterfactual remove-material-distinction)
+               changes-material-precision-floor)) false)
+         false) false) false))
+
+(= (M25RelatednessAt $movement-id $cut $required $i)
+   (if (< $i (size-atom $required))
+     (cons-atom (M25RelatednessWitness $movement-id $cut
+       (index-atom $required $i))
+       (M25RelatednessAt $movement-id $cut $required (+ $i 1))) ()))
+
+(= (M25PrecisionAt $movement-id $cut $required $i)
+   (if (< $i (size-atom $required))
+     (cons-atom (M25PrecisionWitness $movement-id $cut
+       (index-atom $required $i))
+       (M25PrecisionAt $movement-id $cut $required (+ $i 1))) ()))
+
+(= (M25AllRelatednessValid $movement-id $rows $i)
+   (if (< $i (size-atom $rows))
+     (and (M25RelatednessWitnessValid $movement-id (index-atom $rows $i))
+          (M25AllRelatednessValid $movement-id $rows (+ $i 1))) true))
+
+(= (M25AllPrecisionValid $movement-id $rows $i)
+   (if (< $i (size-atom $rows))
+     (and (M25PrecisionWitnessValid $movement-id (index-atom $rows $i))
+          (M25AllPrecisionValid $movement-id $rows (+ $i 1))) true))
+
+(= (M25RelatednessProfile $primary $cut)
+   (let* (($id (index-atom $primary 1))
+          ($required (index-atom (index-atom $primary 9) 3))
+          ($witnesses (M25RelatednessAt $id $cut $required 0)))
+     (relatedness-profile $required $witnesses
+       (M25AllRelatednessValid $id $witnesses 0))))
+
+(= (M25PrecisionProfile $primary $cut)
+   (let* (($id (index-atom $primary 1))
+          ($required (index-atom (index-atom $primary 9) 4))
+          ($witnesses (M25PrecisionAt $id $cut $required 0)))
+     (precision-profile $required $witnesses
+       (M25AllPrecisionValid $id $witnesses 0))))
+
+(= (M25DPFDiscriminationsAt $movement-id $cut $ids $i)
+   (if (< $i (size-atom $ids))
+     (cons-atom (M25FourthDiscrimination $movement-id $cut
+       (index-atom $ids $i))
+       (M25DPFDiscriminationsAt $movement-id $cut $ids (+ $i 1))) ()))
+
+; C carries finite constitutional relations as encounter data. It can never
+; carry a Soul verdict or standing as though the cut itself owned doctrine.
+(= (M25AmbientSoulRelationsValidAt $relations $i)
+   (if (< $i (size-atom $relations))
+     (and (CPShape (index-atom $relations $i) soul-relation 4)
+          (M25AmbientSoulRelationsValidAt $relations (+ $i 1))) true))
+
+(= (M25AmbientSoulCarrierValid $c)
+   (if (CPShape $c C 2)
+     (let $relations (index-atom $c 1)
+       (and (is-expr $relations)
+         (and (> (size-atom $relations) 0)
+              (M25AmbientSoulRelationsValidAt $relations 0)))) false))
+
+(= (M25DynamicParticipatoryFourthness $movement-id $cut)
+   (let* (($relation-ids (CPNativeRequirementRelations $cut))
+          ($discriminations
+            (M25DPFDiscriminationsAt $movement-id $cut $relation-ids 0)))
+     (dynamic-participatory-fourthness-v1 $movement-id
+       (source-cut (index-atom $cut 1))
+       (index-atom $cut 6) (index-atom $cut 7) (index-atom $cut 8)
+       (index-atom $cut 9) (index-atom $cut 10)
+       (counterfactual-bite $discriminations)
+       ambient-soul-doctrine finite-partial-non-reconstructive)))
+
+(= (M25DynamicParticipatoryFourthnessValid $dpf)
+   (if (CPShape $dpf dynamic-participatory-fourthness-v1 11)
+     (and (CPShape (index-atom $dpf 2) source-cut 2)
+      (and (CPShape (index-atom $dpf 3) D 3)
+       (and (CPShape (index-atom $dpf 4) Omega 2)
+        (and (CPShape (index-atom $dpf 5) I 2)
+          (and (CPShape (index-atom $dpf 6) W 2)
+          (and (M25AmbientSoulCarrierValid (index-atom $dpf 7))
+           (and (CPShape (index-atom $dpf 8) counterfactual-bite 2)
+            (and (> (size-atom (index-atom (index-atom $dpf 8) 1)) 0)
+             (and (== (index-atom $dpf 9) ambient-soul-doctrine)
+                  (== (index-atom $dpf 10)
+                    finite-partial-non-reconstructive)))))))))) false))
+
+(= (M25MovementAvailability $possibility $cut $facts $flourishing
+      $participant-relations)
+   (let $form (index-atom $possibility 2)
+     (if (== $form undertaking)
+       (if (and (> (size-atom (CPLiveThreadIds $cut)) 0)
+                (== (CPInquiryNeededV2 $cut $facts $flourishing
+                  $participant-relations) false))
+         (movement-availability available live-undertaking)
+         (movement-availability unavailable inquiry-or-thread-gap))
+       (if (== $form inquiry)
+         (if (CPInquiryNeededV2 $cut $facts $flourishing $participant-relations)
+           (movement-availability available discriminating-contact-needed)
+           (movement-availability unavailable inquiry-not-needed))
+         (if (== $form defer)
+           (if (== (CPInterfacesLive $cut) false)
+             (movement-availability available interface-contact-needed)
+             (movement-availability unavailable interface-remains-live))
+           (movement-availability unavailable unsupported-form))))))
+
+; Balance unfolding is the one movement/contact organization. Fact9 makes the
+; one becoming finitely legible and the interconnected Flourishings participate
+; within that same organization. R/A/P will read this exact organization as
+; three simultaneous perspectives; they are neither sequential stages nor
+; independent verdicts. The bridge is therefore a material constituent of the
+; primary movement rather than an adjacent or post-hoc record.
+(= (M25Fact9FlourishingBridgeValid $bridge $source-cut $dpf)
+   (if (CPShape $bridge bridge-organization 13)
+     (let* (($contacted (index-atom $bridge 3))
+            ($fact9 (index-atom $bridge 4))
+            ($flourishing (index-atom $bridge 5))
+            ($participants (index-atom $bridge 6))
+            ($scope-present (index-atom $bridge 7))
+            ($standing (index-atom $bridge 8))
+            ($uncertainty (index-atom $bridge 9)))
+       (if (CPShape $contacted contacted-organization 6)
+         (if (CPShape $fact9 fact9-expressions 2)
+           (if (CPShape $flourishing flourishing-expressions 2)
+             (if (CPShape (index-atom $flourishing 1)
+                   flourishing-organization 3)
+               (and (== (index-atom $bridge 1)
+                      many-way-situated-proof-relevant)
+                (and (== (index-atom $bridge 2) $source-cut)
+                 (and (== $source-cut (index-atom $dpf 2))
+                  (and (== (index-atom $contacted 1) (index-atom $dpf 3))
+                   (and (== (index-atom $contacted 2) (index-atom $dpf 4))
+                    (and (== (index-atom $contacted 3) (index-atom $dpf 5))
+                     (and (== (index-atom $contacted 4) (index-atom $dpf 6))
+                      (and (== (index-atom $contacted 5) (index-atom $dpf 7))
+                       (and (> (size-atom (index-atom $fact9 1)) 0)
+                        (and (CPFactExpressionsLive (index-atom $fact9 1))
+                         (and (== (size-atom
+                                  (index-atom (index-atom $flourishing 1) 2)) 9)
+                          (and (CPShape $participants
+                                 bounded-participant-relations 3)
+                           (and (CPShape $scope-present scope-and-present 3)
+                            (and (CPShape $standing constitutive-standing 6)
+                             (and (CPShape $uncertainty bridge-uncertainty 4)
+                              (and (== (index-atom $bridge 10)
+                                     (alternatives
+                                       plural-lawful-continuations-remain-possible))
+                               (and (CPShape (index-atom $bridge 11) defeaters 8)
+                                    (== (index-atom $bridge 12)
+                                      (predicted-difference
+                                        continuation-accessibility-and-next-cut)))))))))))))))))))
+                 false)
+               false)
+             false)
+           false))
+     false))
+
+(= (M25BalanceUnfoldingOrganization $bridge)
+   (balance-unfolding-as-intelligence
+     movement-primary-at-contact
+     (fact9-flourishing-constitutive-joint $bridge)
+     (rap-perspective-contract one-contact-movement-surface
+       simultaneous-relatedness-appropriateness-precision)
+     finite-partial-non-reconstructive))
+
+(= (M25BalanceUnfoldingValid $balance $source-cut $dpf)
+   (if (CPShape $balance balance-unfolding-as-intelligence 5)
+     (let* (($joint (index-atom $balance 2))
+            ($contract (index-atom $balance 3)))
+       (if (CPShape $joint fact9-flourishing-constitutive-joint 2)
+         (if (CPShape $contract rap-perspective-contract 3)
+           (and (== (index-atom $balance 1) movement-primary-at-contact)
+            (and (M25Fact9FlourishingBridgeValid (index-atom $joint 1)
+                   $source-cut $dpf)
+             (and (== (index-atom $contract 1)
+                    one-contact-movement-surface)
+              (and (== (index-atom $contract 2)
+                     simultaneous-relatedness-appropriateness-precision)
+                   (== (index-atom $balance 4)
+                     finite-partial-non-reconstructive))))) false) false))
+     false))
+
+(= (M25PrimaryMovement $possibility $cut $facts $flourishing
+      $participant-relations $bridge $fact-views $flourishing-views
+      $participant-source $payload-ref $developmental)
+   (let* (($id (index-atom $possibility 1))
+          ($dpf (M25DynamicParticipatoryFourthness $id $cut)))
+     (m25-primary-movement-v2 $id (index-atom $possibility 2)
+       (source-cut (index-atom $cut 1)) $dpf
+       (M25BalanceUnfoldingOrganization $bridge)
+       (M25MovementAvailability $possibility $cut $facts $flourishing
+         $participant-relations)
+       (answerability (o-star (index-atom $possibility 7)))
+       (continuation-basis-v3 $fact-views $flourishing-views
+         $participant-source (payload-reference $payload-ref) $developmental)
+       $possibility primary-before-rap)))
+
+(= (M25PrimaryMovementValid $primary)
+   (if (CPShape $primary m25-primary-movement-v2 11)
+     (and (CPShape (index-atom $primary 3) source-cut 2)
+      (and (M25DynamicParticipatoryFourthnessValid (index-atom $primary 4))
+       (and (M25BalanceUnfoldingValid (index-atom $primary 5)
+              (index-atom $primary 3) (index-atom $primary 4))
+        (and (CPShape (index-atom $primary 6) movement-availability 3)
+         (and (CPShape (index-atom $primary 7) answerability 2)
+          (and (CPShape (index-atom $primary 8) continuation-basis-v3 6)
+           (and (CPShape (index-atom $primary 9) possible-movement 9)
+            (and (== (index-atom $primary 1)
+                   (index-atom (index-atom $primary 9) 1))
+             (and (== (index-atom $primary 2)
+                    (index-atom (index-atom $primary 9) 2))
+                  (== (index-atom $primary 10) primary-before-rap))))))))))
+     false))
+
+(= (M25Contactable $primary)
+   (let $o-star (index-atom (index-atom $primary 7) 1)
+     (if (CPShape $o-star o-star 2)
+       (let $route (index-atom $o-star 1)
+         (and (CPShape $route consequence-route 3)
+              (== (index-atom $route 2) non-certifying))) false)))
+
+(= (M25Adm25Witness $primary $developmental $relatedness $precision)
+   (let* (($id (index-atom $primary 1))
+          ($available (and (M25PrimaryMovementValid $primary)
+            (== (index-atom (index-atom $primary 6) 1) available)))
+          ($r-floor (== (index-atom $relatedness 3) true))
+          ($p-floor (== (index-atom $precision 3) true))
+          ($m24 (M24DevelopmentalOrganizationValid $developmental))
+          ($contactable (M25Contactable $primary)))
+     (admissibility-witness $id
+       (inherited-inquiry-24 $m24)
+       (movement-available $available)
+       (relatedness-floor $r-floor)
+       (precision-floor $p-floor)
+       (forcing-standing no-demonstrated-unnecessary-forcing)
+       (future-participation contactable-non-certifying)
+       (consequence-answerability $contactable)
+       (admissibility-standing
+         (if (and $m24
+               (and $available
+                (and $r-floor (and $p-floor $contactable))))
+           admissible unresolved)))))
+
+(= (M25Adm25WitnessValid $primary $witness)
+   (if (CPShape $witness admissibility-witness 10)
+     (and (== (index-atom $witness 1) (index-atom $primary 1))
+      (and (== (index-atom (index-atom $witness 2) 1) true)
+       (and (== (index-atom (index-atom $witness 3) 1) true)
+        (and (== (index-atom (index-atom $witness 4) 1) true)
+         (and (== (index-atom (index-atom $witness 5) 1) true)
+          (and (== (index-atom (index-atom $witness 6) 1)
+                 no-demonstrated-unnecessary-forcing)
+           (and (== (index-atom (index-atom $witness 7) 1)
+                  contactable-non-certifying)
+            (and (== (index-atom (index-atom $witness 8) 1) true)
+                 (== (index-atom (index-atom $witness 9) 1)
+                   admissible))))))))) false))
+
+(= (M25RAPSurface $primary $cut $developmental)
+   (m25-rap-surface-v2
+     (rap-read-event (index-atom $primary 1) (index-atom $cut 1))
+     (movement-reference (index-atom $primary 1) (index-atom $primary 2))
+     (source-cut (index-atom $cut 1)) (index-atom $cut 12)
+     (developmental-reference (index-atom $developmental 13))
+     (balance-unfolding-alignment (index-atom $primary 5))
+     one-contact-movement-surface-three-simultaneous-perspectives))
+
+(= (M25ReadApp $primary $surface $admissibility $relatedness $precision)
+   (let* (($id (index-atom $primary 1))
+          ($read-event (index-atom $surface 1)))
+     (if (M25Adm25WitnessValid $primary $admissibility)
+       (read-app-v2 $read-event $id $admissibility $relatedness $precision
+         (semantic-seam structural-fitness no-renderer-required)
+         (appropriateness-standing fitting)
+         (provenance $read-event Investigation-25 native-metta)
+         derived-standing-not-contact)
+       (read-app-held $read-event $id invalid-or-incomplete-admissibility))))
+
+(= (M25AppropriatenessPerspective $primary $surface $admissibility
+      $relatedness $precision)
+   (appropriateness-perspective (index-atom $surface 1)
+     (index-atom $primary 1)
+     (M25ReadApp $primary $surface $admissibility $relatedness $precision)
+     derived-standing-not-contact))
+
+(= (M25AppropriatenessValid $primary $surface $perspective)
+   (if (CPShape $perspective appropriateness-perspective 5)
+     (if (== (index-atom $perspective 1) (index-atom $surface 1))
+       (if (== (index-atom $perspective 2) (index-atom $primary 1))
+         (if (CPShape (index-atom $perspective 3) read-app-v2 10)
+           (and (== (index-atom (index-atom $perspective 3) 1)
+                  (index-atom $surface 1))
+            (and (== (index-atom (index-atom $perspective 3) 2)
+                   (index-atom $primary 1))
+                 (== (index-atom $perspective 4)
+                   derived-standing-not-contact))) false)
+         false) false) false))
+
+(= (M25RAPReadings $primary $cut $developmental)
+   (let* (($surface (M25RAPSurface $primary $cut $developmental))
+          ($read-event (index-atom $surface 1))
+          ($relatedness-profile (M25RelatednessProfile $primary $cut))
+          ($precision-profile (M25PrecisionProfile $primary $cut))
+          ($admissibility (M25Adm25Witness $primary $developmental
+            $relatedness-profile $precision-profile))
+          ($relatedness (relatedness-perspective $read-event
+            (index-atom $primary 1) $relatedness-profile non-compensatory))
+          ($precision (precision-perspective $read-event
+            (index-atom $primary 1) $precision-profile non-compensatory))
+          ($appropriateness (M25AppropriatenessPerspective $primary $surface
+            $admissibility $relatedness-profile $precision-profile))
+          ($admissible (M25AppropriatenessValid $primary $surface
+            $appropriateness)))
+     (rap-read-v2 $surface
+       (rap-perspectives $relatedness $appropriateness $precision)
+       (rap-standing (if $admissible admissible unresolved))
+       heterogeneous-non-reconstructive
+       no-sequential-judge-or-chooser)))
+
+(= (M25RAPValid $primary $rap)
+   (if (CPShape $rap rap-read-v2 6)
+     (let* (($id (index-atom $primary 1))
+            ($surface (index-atom $rap 1))
+            ($read-event (index-atom $surface 1))
+            ($perspectives (index-atom $rap 2))
+            ($relatedness (index-atom $perspectives 1))
+            ($appropriateness (index-atom $perspectives 2))
+            ($precision (index-atom $perspectives 3))
+            ($surface-valid (and (M25PrimaryMovementValid $primary)
+              (and (CPShape $surface m25-rap-surface-v2 8)
+               (and (== (index-atom (index-atom $surface 2) 1) $id)
+                (and (== (index-atom $surface 3) (index-atom $primary 3))
+                 (and (CPShape (index-atom $surface 6)
+                        balance-unfolding-alignment 2)
+                  (and (== (index-atom (index-atom $surface 6) 1)
+                         (index-atom $primary 5))
+                       (== (index-atom $surface 7)
+                         one-contact-movement-surface-three-simultaneous-perspectives))))))))
+            ($perspectives-valid
+              (CPShape $perspectives rap-perspectives 4))
+            ($relatedness-valid
+              (and (CPShape $relatedness relatedness-perspective 5)
+               (and (== (index-atom $relatedness 1) $read-event)
+                    (== (index-atom $relatedness 2) $id))))
+            ($appropriateness-valid
+              (M25AppropriatenessValid $primary $surface $appropriateness))
+            ($precision-valid
+              (and (CPShape $precision precision-perspective 5)
+               (and (== (index-atom $precision 1) $read-event)
+                    (== (index-atom $precision 2) $id))))
+            ($standing-valid
+              (CPShape (index-atom $rap 3) rap-standing 2))
+            ($discipline-valid
+              (and (== (index-atom $rap 4) heterogeneous-non-reconstructive)
+                   (== (index-atom $rap 5) no-sequential-judge-or-chooser))))
+       (and $surface-valid
+        (and $perspectives-valid
+         (and $relatedness-valid
+          (and $appropriateness-valid
+           (and $precision-valid
+            (and $standing-valid $discipline-valid))))))) false))
+
+(= (M25HarmonicAlignment $primary $rap)
+   (let $id (index-atom $primary 1)
+     (if (and (M25RAPValid $primary $rap)
+              (== (index-atom (index-atom $rap 3) 1) admissible))
+       (harmonic-alignment-witness $id
+         (material-basis
+           (index-atom $rap 1)
+           (index-atom (index-atom $rap 2) 1)
+           (index-atom (index-atom $rap 2) 2)
+           (index-atom (index-atom $rap 2) 3))
+         (forcing-standing no-demonstrated-unnecessary-forcing)
+         (contactability retained)
+         (aligned-extensions none-materially-participating)
+         (provenance Investigation-25 derived-not-constituent))
+       (harmonic-alignment-unresolved $id material-floor-or-fittingness-gap))))
+
+(= (M25HarmonicAlignmentValid $primary $alignment)
+   (if (CPShape $alignment harmonic-alignment-witness 7)
+     (and (== (index-atom $alignment 1) (index-atom $primary 1))
+      (and (CPShape (index-atom $alignment 2) material-basis 5)
+       (and (CPShape (index-atom (index-atom $alignment 2) 1)
+              m25-rap-surface-v2 8)
+        (and (== (index-atom
+                   (index-atom (index-atom $alignment 2) 1) 6)
+                 (balance-unfolding-alignment (index-atom $primary 5)))
+         (and (== (index-atom (index-atom $alignment 3) 1)
+              no-demonstrated-unnecessary-forcing)
+          (and (== (index-atom (index-atom $alignment 4) 1) retained)
+           (and (CPShape (index-atom $alignment 5) aligned-extensions 2)
+                (CPShape (index-atom $alignment 6) provenance 3))))))))
+     false))
+
+; The bounded-continuation schema is a constraint over an externally witnessed
+; model claim and returned consequence. Neither movement nor model may certify
+; sufficiency by assertion, and a miss renews actuality rather than becoming a
+; negative reward or a contradiction of the Soul.
+(= (M25BoundedModelWitnessValid $primary $witness)
+   (if (CPShape $witness bounded-model-witness-v1 8)
+     (and (== (index-atom $witness 2) (index-atom $primary 1))
+      (and (CPShape (index-atom $witness 3) bounded-model-domain 3)
+       (and (CPShape (index-atom $witness 4) independent-evaluation 3)
+        (and (== (index-atom $witness 5) correct-consequence-law-witnessed)
+         (and (== (index-atom $witness 6) no-omitted-disturbance-witnessed)
+              (CPShape (index-atom $witness 7) provenance 3)))))) false))
+
+(= (M25HarmonicOutcomeValid $primary $outcome)
+   (if (CPShape $outcome harmonic-outcome-witness-v1 5)
+     (and (== (index-atom $outcome 1) (index-atom $primary 1))
+      (and (CPShape (index-atom $outcome 2) returned-consequence 3)
+       (and (CPShape (index-atom $outcome 3) continued-material-organization 2)
+            (CPShape (index-atom $outcome 4) provenance 3)))) false))
+
+(= (M25BoundedHarmonicContinuation $primary $rap $model $outcome)
+   (let* (($alignment (M25HarmonicAlignment $primary $rap))
+          ($aligned (M25HarmonicAlignmentValid $primary $alignment))
+          ($model-valid (M25BoundedModelWitnessValid $primary $model))
+          ($outcome-valid (M25HarmonicOutcomeValid $primary $outcome)))
+     (if $outcome-valid
+       (if (and $aligned $model-valid)
+         (bounded-harmonic-continuation-consistent-v1
+           (index-atom $primary 1) $model $alignment $outcome
+           bounded-coherence-not-future-guarantee)
+         (bounded-harmonic-continuation-unresolved
+           missing-alignment-or-independent-model-witness))
+       (renewed-actuality-premise-gap-v1 (index-atom $primary 1)
+         $model $alignment $outcome
+         (at-least-one-incomplete model-sufficiency harmonic-alignment
+           consequence-law no-omitted-disturbance)
+         miss-is-information-not-reward))))
+
+(= (M25Energetics $primary)
+   (m25-energetics-v1 (index-atom $primary 1)
+     (E-phys synthetic-process-participating)
+     (E-rep symbolic-representation-participating)
+     (E-act action-expenditure-unresolved)
+     (E-force no-demonstrated-unnecessary-forcing)
+     (G generation-is-not-energy)
+     pairwise-non-identical-types))
+
+(= (M25EnergeticsValid $primary $energetics)
+   (if (CPShape $energetics m25-energetics-v1 8)
+     (and (== (index-atom $energetics 1) (index-atom $primary 1))
+      (and (CPShape (index-atom $energetics 2) E-phys 2)
+       (and (CPShape (index-atom $energetics 3) E-rep 2)
+        (and (CPShape (index-atom $energetics 4) E-act 2)
+         (and (CPShape (index-atom $energetics 5) E-force 2)
+          (and (CPShape (index-atom $energetics 6) G 2)
+           (and (!= (index-atom $energetics 4) (index-atom $energetics 5))
+                (== (index-atom $energetics 7)
+                  pairwise-non-identical-types)))))))) false))
+
+(= (M25InterfaceChange $primary)
+   (let* (($possibility (index-atom $primary 9))
+          ($pre-interface (index-atom (index-atom $primary 4) 5))
+          ($route (index-atom $possibility 7)))
+     (if (and (== (index-atom $primary 2) defer)
+              (== (index-atom (index-atom $primary 6) 1) available))
+       (interface-change $pre-interface
+         (interface-extension-candidate
+           (participation-mode-for-route (index-atom $route 1)))
+         (participation-mode-for-route (index-atom $route 1))
+         (provenance (index-atom $primary 1) (index-atom $primary 3)
+           derived-candidate-not-activated))
+       (interface-change-standing (index-atom $primary 1) retained
+         $pre-interface no-change-required-by-this-movement))))
+
+(= (M25TrajectoryBasis $primary $developmental)
+   (let* (($traction (index-atom $developmental 9))
+          ($structured (index-atom $traction 1))
+          ($pathology (index-atom $traction 2))
+          ($dpf (index-atom $primary 4))
+          ($interface (index-atom $dpf 5)))
+     (m25-trajectory-basis-v1 (index-atom $primary 1)
+       (index-atom $structured 1)
+       relational-openness-retained
+       material-distinctions-preserved
+       receptive-attention-unresolved
+       differentiation-with-coherence-present
+       no-demonstrated-unnecessary-forcing
+       (if (M25Contactable $primary) consequence-answerable
+         consequence-answerability-unresolved)
+       (if (> (size-atom (index-atom $interface 1)) 0)
+         interface-open interface-unavailable)
+       self-weaving-plasticity-unresolved
+       (index-atom $pathology 2)
+       pivot-availability-unresolved urgency-unresolved
+       (trajectory-provenance (index-atom $primary 3)
+         (index-atom $developmental 13)))))
+
+(= (M25PNSLike $basis)
+   (if (CPShape $basis m25-trajectory-basis-v1 15)
+     (and (CPHas (index-atom $basis 2)
+            (contact-uptake-present contact-uptake-returned) 0)
+      (and (== (index-atom $basis 3) relational-openness-retained)
+       (and (== (index-atom $basis 4) material-distinctions-preserved)
+        (and (== (index-atom $basis 5) receptive-attention-present)
+         (and (== (index-atom $basis 6)
+                differentiation-with-coherence-present)
+          (and (== (index-atom $basis 7)
+                 no-demonstrated-unnecessary-forcing)
+           (and (== (index-atom $basis 8) consequence-answerable)
+            (and (== (index-atom $basis 9) interface-open)
+                 (== (index-atom $basis 10)
+                   self-weaving-plasticity-present))))))))) false))
+
+(= (M25SNSLike $basis)
+   (if (CPShape $basis m25-trajectory-basis-v1 15)
+     (and (CPHas (index-atom $basis 2)
+            (material-contact-excluded contact-uptake-rejected) 0)
+      (and (== (index-atom $basis 11) frame-topology-persists)
+       (and (== (index-atom $basis 9) interface-narrowed)
+        (and (== (index-atom $basis 13) forced-velocity-present)
+             (CPHas (index-atom $basis 7)
+               (unnecessary-forcing-present force-residue-present) 0))))) false))
+
+(= (M25Stuck $basis)
+   (and (M25SNSLike $basis)
+     (and (== (index-atom $basis 12) pivot-functionally-unavailable)
+          (== (index-atom $basis 11) frame-topology-persists))))
+
+(= (M25OrientationFromBasis $basis)
+   (if (M25Stuck $basis)
+     (participation-orientation-v1 (index-atom $basis 1) stuck
+       $basis (stuck-implies-sns shared-trajectory-basis))
+     (if (M25SNSLike $basis)
+       (participation-orientation-v1 (index-atom $basis 1) sns-like
+         $basis holding-apart-plus-forced-velocity)
+       (if (M25PNSLike $basis)
+         (participation-orientation-v1 (index-atom $basis 1) pns-like
+           $basis participation-without-unnecessary-obstruction)
+         (participation-orientation-v1 (index-atom $basis 1) unresolved
+           $basis insufficient-relational-trajectory)))))
+
+(= (M25Orientation $primary $developmental)
+   (M25OrientationFromBasis (M25TrajectoryBasis $primary $developmental)))
+
+(= (M25MovementReading $primary $cut $developmental)
+   (let* (($rap (M25RAPReadings $primary $cut $developmental))
+          ($standing (index-atom (index-atom $rap 3) 1)))
+     (m25-movement-reading-v2 $primary $rap
+       (M25HarmonicAlignment $primary $rap) (M25Energetics $primary)
+       (M25Orientation $primary $developmental) (M25InterfaceChange $primary)
+       (movement-reading-standing $standing))))
+
+(= (M25PrimaryAt $possibilities $cut $facts $flourishing
+      $participant-relations $bridge $fact-views $flourishing-views
+      $participant-source $payload-ref $developmental $i)
+   (if (< $i (size-atom $possibilities))
+     (cons-atom (M25PrimaryMovement (index-atom $possibilities $i) $cut
+       $facts $flourishing $participant-relations $bridge $fact-views
+       $flourishing-views $participant-source $payload-ref $developmental)
+       (M25PrimaryAt $possibilities $cut $facts $flourishing
+         $participant-relations $bridge $fact-views $flourishing-views
+         $participant-source $payload-ref $developmental (+ $i 1))) ()))
+
+(= (M25ReadingsAt $primaries $cut $developmental $i)
+   (if (< $i (size-atom $primaries))
+     (cons-atom (M25MovementReading (index-atom $primaries $i) $cut
+       $developmental)
+       (M25ReadingsAt $primaries $cut $developmental (+ $i 1))) ()))
+
+(= (M25AdmissibleReadingsAt $readings $i $out)
+   (if (< $i (size-atom $readings))
+     (let $reading (index-atom $readings $i)
+       (if (and (CPShape $reading m25-movement-reading-v2 8)
+                (== (index-atom (index-atom $reading 7) 1) admissible))
+         (M25AdmissibleReadingsAt $readings (+ $i 1)
+           (cons-atom $reading $out))
+         (M25AdmissibleReadingsAt $readings (+ $i 1) $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (M25MovementFromReading $reading $all)
+   (let* (($primary (index-atom $reading 1))
+          ($possibility (index-atom $primary 9))
+          ($rap (index-atom $reading 2)))
+     (movement-formed (index-atom $primary 2) (index-atom $primary 1)
+       (index-atom $primary 3)
+       (material-derivation
+         (primary-movement $primary)
+         (dynamic-participatory-fourthness (index-atom $primary 4))
+         (balance-unfolding-organization (index-atom $primary 5))
+         (m25-readings $rap (index-atom $reading 3)
+           (index-atom $reading 4) (index-atom $reading 5)
+           (index-atom $reading 6))
+         (generated-carriers (index-atom $possibility 3)
+           (index-atom $possibility 5) (index-atom $possibility 4)
+           (index-atom $possibility 7))
+         (flourishing-requirements (index-atom $possibility 6)))
+       (index-atom $primary 7)
+       (retained-alternatives-v3 $all (index-atom $primary 8)))))
+
+(= (M25ConstructMovement $readings)
+   (let $admissible (M25AdmissibleReadingsAt $readings 0 ())
+     (if (== (size-atom $admissible) 0)
+       (movement-unresolved m25-no-admissible-primary
+         (retained-alternatives-v3 $readings no-continuation-basis))
+       (if (== (size-atom $admissible) 1)
+         (M25MovementFromReading (index-atom $admissible 0) $readings)
+         (movement-plural-live m25-multiple-admissible-primaries
+           (m25-primary-alternatives $admissible)
+           (retained-alternatives-v3 $readings no-single-continuation-basis))))))
+
+(= (M25ConstitutiveEncounter $cut $fact-views $flourishing-views
+      $participant-source $payload-ref $developmental)
+   (let* (($facts (CPFactExpressionsAt $cut $fact-views 0))
+          ($flourishing (CPFlourishingOrganizationV2 $cut $flourishing-views))
+          ($participants (participant-reentry-organization
+            differentiated-by-source-scope-and-lineage
+            (CPParticipantAt $cut $participant-source 0)
+            repeated-same-lineage-is-not-independent-support))
+          ($participant-relations (CPParticipantRelationOrganization $participants))
+          ($revised-cut (CPApplyParticipantRelations $cut $participant-relations))
+          ($bridge (CPBridgeOrganizationV2 $revised-cut $facts $flourishing
+            $participants $participant-relations))
+          ($possibilities (CPNativePossibilitiesV2 $revised-cut $facts
+            $flourishing $participant-relations))
+          ($primaries (M25PrimaryAt $possibilities $revised-cut $facts
+            $flourishing $participant-relations $bridge $fact-views
+            $flourishing-views
+            $participant-source $payload-ref $developmental 0))
+          ($readings (M25ReadingsAt $primaries $revised-cut $developmental 0))
+          ($movement (M25ConstructMovement $readings)))
+     (constitutive-encounter $revised-cut $facts $flourishing
+       (m25-generated-organization-v1 $bridge $primaries $readings)
+       $movement $participants)))
+
 ; ---------- Inquiry 26.0: one occurrence and partial participation ----------
 
 ; m260-occurrence-organization:

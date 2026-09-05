@@ -1,0 +1,63 @@
+{
+  "schema": "miter-ama12-r3-m25-movement-service-manifest-v1",
+  "files": [
+    {
+      "path": "bin/miter",
+      "sha256": "2b1c2d8bc4da5a26ebee7d61c58e86de9352c239c03610e84ce568f7a6763fef"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_operator_v2.pl",
+      "sha256": "9410be98a7c8f7e8967e056197114ef2006cba45119984b35650db669543b263"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_service_v1.pl",
+      "sha256": "b3009416653c82ac7056567de82b091dc620467b2ff1490074139f083d8c3244"
+    },
+    {
+      "path": "src/authority_inheritance_v1.metta",
+      "sha256": "1a182d6d94a2bd16274b73887206952008e898195aa19e3e4a05ade7789d1fa4"
+    },
+    {
+      "path": "src/constitutive_participation_v2.metta",
+      "sha256": "4e23ca91e377bbbd917d51d125244e35d6d6a0e557b04c1ba07d6900c53feb23"
+    },
+    {
+      "path": "src/assistant_reactor_v2.metta",
+      "sha256": "8460a4ab1579e0484a0d00b098095784292edee1387e58871c28e6603df1793d"
+    },
+    {
+      "path": "src/bootstrap_assistant_v2.metta",
+      "sha256": "2dc14796118a22573256bfc401e2917ed70d003534067854939ff790b26afa2f"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-data.metta",
+      "sha256": "61c1fdc54f295d036f21943d853f49d5ae84176ec4ff1ebdda7991985a657068"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/m25-movement-primary-runtime.metta",
+      "sha256": "2f39223ba083e06b7a8b86b724ee0ffec103b63894e116fb4c1b24905bf46280"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/probe-contact-v3.json",
+      "sha256": "685515079323d66c4da7d1d8d8ddd11994616405799e0056a7a4a3761606de90"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/scope-bindings.json",
+      "sha256": "6f8cb1ab6781b9433a90b5697086a321540f7a6ed2b94aa3547cf89ad9285849"
+    },
+    {
+      "path": "scripts/ama1_2/r3/m25_movement_service.mjs",
+      "sha256": "9d46d71a24e90e4c760481eecdd22907ede2acbbd1665f643c9cf25765c114cd"
+    }
+  ],
+  "artifacts": [
+    "commands.json",
+    "verdict.json",
+    "native-output.txt",
+    "canonical-checkpoint.term",
+    "lkg.json",
+    "service-entry.metta"
+  ],
+  "contains_credentials": false,
+  "contains_private_content": false
+}
