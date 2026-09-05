@@ -1,0 +1,70 @@
+{
+  "schema": "miter-ama12-inactive-live-grant-runtime-v1",
+  "swipl": "SWI-Prolog version 10.0.2 for arm64-darwin",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "checkpoint_base_commit": "28c0a0c6",
+  "external_network_calls": 0,
+  "credential_lookups": 0,
+  "model_calls": 0,
+  "chroma_calls": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "sources": [
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R1/plan.json",
+      "sha256": "375ddc1bc84a2693fff1cdf65d8fd77b7c6eba04ba228b10357880507769651c"
+    },
+    {
+      "path": "docs/operations/AMA-1.2-LIVE-GRANT.md",
+      "sha256": "8576debd59f280883c28fee0cd3d9adebb6892942f8fecfdce3239e30c5a5a47"
+    },
+    {
+      "path": "config/miter-assistant-mattermost-v1.example.json",
+      "sha256": "3ccf0aa46c6d718b40de5225ac2cb1174f2dfe4e8c03288ee703ddbfe5f9ea33"
+    },
+    {
+      "path": "CONSTITUTION.md",
+      "sha256": "3b334598da7ed7b1b4a1f17d0bb4df9aa586b2f4128f2bfdee3d6a8339b36e0a"
+    },
+    {
+      "path": "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md",
+      "sha256": "855983108cd9745669c66c7d74fa69e9b583454331abf0d8ac6a142ba73b9e14"
+    },
+    {
+      "path": "BUILD_FIDELITY_PROTOCOL.md",
+      "sha256": "cd325c9c233827b9ab6895c9788c7e9d30f1899ca1face248b12ba5f8cb78a4c"
+    },
+    {
+      "path": "WORK_PROTOCOL.md",
+      "sha256": "ce739372a5b5338f3953ff85fbf33fa82e7febb02da6af2769ea89245e45fa5a"
+    },
+    {
+      "path": "ACCEPTANCE.md",
+      "sha256": "018f2a917d7af18fc9e6bda8b116bebf21d181d998374c723573dc1b58f66930"
+    },
+    {
+      "path": "src/mattermost_live_grant_v1.metta",
+      "sha256": "94d645084f75ce88b86df7f5db85d51e763a91cbfb3632e4369ddb51ef23ce40"
+    },
+    {
+      "path": "src/bootstrap_mattermost_live_grant_v1.metta",
+      "sha256": "138e2eac7eb11ef7d6e2a48425546cc6325f8b116e30499621996792d42a0d10"
+    },
+    {
+      "path": "config/model-resources-v1.json",
+      "sha256": "90e5273c336211f962b06de004bd322d878b5838d6fa4b7314b19ba373f2b392"
+    },
+    {
+      "path": "config/chroma-service.json",
+      "sha256": "7cce6038005a4b7797e22b8dcfcf7279dfae6929d5cdc245453a83df0af0d4db"
+    },
+    {
+      "path": "docs/gates/G31/P9/R1/closure.json",
+      "sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1"
+    },
+    {
+      "path": "scripts/ama1_2/live_grant_freeze.mjs",
+      "sha256": "1f7b2d086a83284b0b11fa3beedff94f88d823b8902e07878acfffe1198577d2"
+    }
+  ]
+}

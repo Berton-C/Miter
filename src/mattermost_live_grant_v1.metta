@@ -330,3 +330,91 @@
     (g31-preflight-result $standing
      (G31AssessGrant $grant $expectedHash $inventory)))
    (g31-preflight-result $standing not-executed))))
+
+; AMA-1.2 does not reuse the terminated G31 canary authority. This constructor
+; represents the complete public review surface for the first general assistant
+; alpha while retaining approval and activation as separate unresolved events.
+; The grant bounds reach and mechanics; it never chooses contact meaning,
+; movement, memory authority, a model answer, or an utterance.
+(= (AMA12InactiveGrantV1 $planHash $proposalHash $configHash $g31ClosureHash
+     $candidateHash $transportHash $identityHash $bindingHash
+     $modelRegistryHash $chromaConfigHash)
+ (ama12-live-grant-v1
+  (authority-lineage
+   (campaign-plan $planHash) (public-proposal $proposalHash)
+   (public-config $configHash) (g31-closure $g31ClosureHash)
+   (candidate $candidateHash) (transport $transportHash)
+   (private-identity-record $identityHash)
+   (private-principal-binding $bindingHash))
+  (purpose general-unfamiliar-always-on-assistant-alpha
+   one-constitutive-soul-path)
+  (surface
+   (mattermost "http://127.0.0.1:8065" loopback-only)
+   (team clarityclaw exact-private-identity)
+   (allowlisted-channel miter-g31-canary cognition-and-egress)
+   (denied-control-channel miter-g31-denied reject-before-payload-cognition))
+  (principals one-berton-explicit-human one-miter-bot
+   (credential-ref macos-keychain bcb "ai.bgi.miter.mattermost"
+    value-never-returned))
+  (project-scope miter-g31-canary miter-evaluation-v1
+   berton-private-local stable-registry-only)
+  (inbound posted post-edited new-events-only no-history-backfill
+   authorized-thread-root-bounded event-max-bytes 32768 root-max-bytes 65536)
+  (continuity four-plane exact-principal-audience-project
+   trajectory capsule raw-artifact semantic-memory)
+  (semantic-memory
+   (chroma-config $chromaConfigHash) (collection miter-ltm-v1)
+   scope-filtered-read native-admitted-write other-collections-prohibited
+   vector-rank-no-authority)
+  (artifact-boundary explicit-activation-runtime-root project-subtree-only
+   repository-write-prohibited arbitrary-home-write-prohibited)
+  (model-registry $modelRegistryHash native-relational-comparison-only)
+  (local-models qwen-local nemotron-local private-contact-eligible)
+  (remote-model openrouter-glm53 public-safe-only
+   raw-mattermost-prohibited personal-content-prohibited
+   private-memory-prohibited credentials-prohibited
+   stable-private-identities-prohibited)
+  (model-standing candidate-participant no-contact no-soul-authority
+   no-movement-authority no-effect-authority)
+  (voice-effect mattermost-create-post allowlisted-channel-only
+   VoiceRNA-certified-utterance-required raw-model-output-prohibited)
+  (effect-reconciliation stable-effect-id pending-post-id
+   durable-pending-before-send confirmed-or-unknown-after-observation
+   unknown-hold-and-reconcile never-blind-resend)
+  (consequence receipt-non-certifying reply-edit-failure-absence-return-to-next-cut)
+  (resource-bounds activation-hours 72 admitted-events 1000 outbound-posts 500
+   outbound-per-hour 60 concurrent-contacts 2 model-per-scope 1
+   local-output-tokens 4096 local-deadline-seconds 180
+   remote-calls 50 remote-output-tokens 8192 remote-deadline-seconds 300
+   idle-poll-seconds 2 backoff-cap-seconds 30)
+  (persistence explicit-root private-directory-mode 0700 private-file-mode 0600
+   cursor-effect-continuity-fresh-process-readback credential-persistence-prohibited)
+  (retention operational-logs-days 14 contact-memory-review-days 30
+   repository-evidence-redacted-only)
+  (lifecycle separate-preflight separate-explicit-activation
+   renewal-requires-new-explicit-approval automatic-expiry-and-checkpoint)
+  (containment fixed-local-panic immediate-human-revocation
+   crash-loop-three-in-sixty last-known-good-rollback history-preserved
+   pending-effect-reconcile-before-future-send)
+  (approval berton-explicit unresolved)
+  (activation inactive network-held credentials-held model-held chroma-held
+   message-read-held message-write-held)))
+
+(= (AMA12InactiveGrantValid $grant $planHash $proposalHash $configHash
+     $g31ClosureHash $candidateHash $transportHash $identityHash $bindingHash
+     $modelRegistryHash $chromaConfigHash)
+ (== $grant
+  (AMA12InactiveGrantV1 $planHash $proposalHash $configHash $g31ClosureHash
+   $candidateHash $transportHash $identityHash $bindingHash
+   $modelRegistryHash $chromaConfigHash)))
+
+(= (AMA12InactiveGrantStanding $grant $planHash $proposalHash $configHash
+     $g31ClosureHash $candidateHash $transportHash $identityHash $bindingHash
+     $modelRegistryHash $chromaConfigHash)
+ (if (AMA12InactiveGrantValid $grant $planHash $proposalHash $configHash
+      $g31ClosureHash $candidateHash $transportHash $identityHash $bindingHash
+      $modelRegistryHash $chromaConfigHash)
+  (ama12-inactive-live-grant-ready-for-human-review
+   (proposal $proposalHash) (configuration $configHash)
+   (approval unresolved) (activation inactive) (live-effects held))
+  (ama12-inactive-live-grant-held source-scope-or-authority-mismatch)))

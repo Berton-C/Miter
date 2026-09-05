@@ -1,0 +1,16 @@
+{
+  "schema": "miter-ama12-inactive-live-grant-verdict-v1",
+  "status": "PASS-BOUNDED-INACTIVE-AWAITING-HUMAN",
+  "facts": {
+    "grant_is_complete_and_publicly_reviewable": true,
+    "approval_and_activation_remain_separate_unresolved_events": true,
+    "balance_rap_fact9_and_flourishings_remain_constitutive_not_grant_logic": true,
+    "four_plane_continuity_is_exactly_scoped": true,
+    "local_models_are_private_contact_eligible": true,
+    "remote_model_is_public_safe_only": true,
+    "voice_and_effect_reconciliation_are_required": true,
+    "causal_severance_holds_the_native_grant": true,
+    "no_live_authority_was_exercised": true
+  },
+  "next_boundary": "Berton must approve the exact proposal hash before an approval overlay, live preflight, or activation plan can be constructed."
+}

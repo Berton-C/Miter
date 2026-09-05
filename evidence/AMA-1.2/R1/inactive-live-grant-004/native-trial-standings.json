@@ -1,0 +1,101 @@
+{
+  "native": {
+    "canonical": [
+      "ama12-inactive-live-grant-ready-for-human-review",
+      [
+        "proposal",
+        "8576debd59f280883c28fee0cd3d9adebb6892942f8fecfdce3239e30c5a5a47"
+      ],
+      [
+        "configuration",
+        "3ccf0aa46c6d718b40de5225ac2cb1174f2dfe4e8c03288ee703ddbfe5f9ea33"
+      ],
+      [
+        "approval",
+        "unresolved"
+      ],
+      [
+        "activation",
+        "inactive"
+      ],
+      [
+        "live-effects",
+        "held"
+      ]
+    ],
+    "neutral-json-roundtrip": [
+      "ama12-inactive-live-grant-ready-for-human-review",
+      [
+        "proposal",
+        "8576debd59f280883c28fee0cd3d9adebb6892942f8fecfdce3239e30c5a5a47"
+      ],
+      [
+        "configuration",
+        "3ccf0aa46c6d718b40de5225ac2cb1174f2dfe4e8c03288ee703ddbfe5f9ea33"
+      ],
+      [
+        "approval",
+        "unresolved"
+      ],
+      [
+        "activation",
+        "inactive"
+      ],
+      [
+        "live-effects",
+        "held"
+      ]
+    ],
+    "restored": [
+      "ama12-inactive-live-grant-ready-for-human-review",
+      [
+        "proposal",
+        "8576debd59f280883c28fee0cd3d9adebb6892942f8fecfdce3239e30c5a5a47"
+      ],
+      [
+        "configuration",
+        "3ccf0aa46c6d718b40de5225ac2cb1174f2dfe4e8c03288ee703ddbfe5f9ea33"
+      ],
+      [
+        "approval",
+        "unresolved"
+      ],
+      [
+        "activation",
+        "inactive"
+      ],
+      [
+        "live-effects",
+        "held"
+      ]
+    ],
+    "approval-conflated": [
+      "ama12-inactive-live-grant-held",
+      "source-scope-or-authority-mismatch"
+    ],
+    "activation-conflated": [
+      "ama12-inactive-live-grant-held",
+      "source-scope-or-authority-mismatch"
+    ],
+    "surface-severed": [
+      "ama12-inactive-live-grant-held",
+      "source-scope-or-authority-mismatch"
+    ],
+    "continuity-severed": [
+      "ama12-inactive-live-grant-held",
+      "source-scope-or-authority-mismatch"
+    ],
+    "remote-disclosure-severed": [
+      "ama12-inactive-live-grant-held",
+      "source-scope-or-authority-mismatch"
+    ],
+    "model-authority-severed": [
+      "ama12-inactive-live-grant-held",
+      "source-scope-or-authority-mismatch"
+    ],
+    "effect-reconciliation-severed": [
+      "ama12-inactive-live-grant-held",
+      "source-scope-or-authority-mismatch"
+    ]
+  }
+}

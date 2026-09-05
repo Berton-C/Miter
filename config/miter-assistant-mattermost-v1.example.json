@@ -1,0 +1,167 @@
+{
+  "schema": "miter-assistant-mattermost-grant-v1",
+  "human_editable": true,
+  "status": "inactive-awaiting-explicit-approval",
+  "authority_lineage": {
+    "campaign_plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R1/plan.json",
+    "g31_closure_sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1",
+    "candidate_sha256": "cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3",
+    "transport_sha256": "81d2ee5d219e2cdadeb231202d698f0a5cf10a6f50a633cbcf7ccd21e40da4d6",
+    "private_identity_record_sha256": "eb63f0e2fea7c9356a096437c3cdf0603090b9f1d3a1fa8262d4e13ce97c3bd1",
+    "private_principal_binding_sha256": "f1eb5944ed21f76477e059d763014c1ae96e678fcd1494f7149026c81bfd79ab"
+  },
+  "purpose": "A general, continuously cycling, single-principal local Mattermost assistant alpha that exercises one constitutive Soul path with exact Continuity of Mind.",
+  "surface": {
+    "origin": "http://127.0.0.1:8065",
+    "origin_policy": "loopback-only",
+    "team_slug": "clarityclaw",
+    "allowlisted_channel_slug": "miter-g31-canary",
+    "denied_control_channel_slug": "miter-g31-denied",
+    "stable_identity_source": "existing-private-g31-binding",
+    "identity_refresh": "exact-match-required-before-activation"
+  },
+  "principals": {
+    "authorized_human": "existing-berton-explicit-private-binding",
+    "authorized_human_id_sha256": "6e164f603b5ec811e72746e2aefe9154a3e415455d9afd31a38472bf63aab654",
+    "outbound_bot": "existing-private-miter-bot-binding",
+    "mattermost_credential_reference": {
+      "source": "macos-keychain",
+      "account": "bcb",
+      "service": "ai.bgi.miter.mattermost"
+    },
+    "credential_value_may_leave_membrane": false
+  },
+  "project_bindings": [
+    {
+      "channel_slug": "miter-g31-canary",
+      "principal": "existing-berton-explicit-private-binding",
+      "project": "miter-evaluation-v1",
+      "audience": "berton-private-local",
+      "standing": "authorized"
+    }
+  ],
+  "inbound": {
+    "event_classes": [
+      "posted",
+      "post-edited"
+    ],
+    "new_events_only": true,
+    "channel_history_backfill": false,
+    "admitted_content": [
+      "exact-event-text",
+      "stable-post-thread-version-identity",
+      "referenced-thread-root-when-authorized"
+    ],
+    "denied_control": "identity-checked-and-rejected-before-payload-cognition",
+    "max_event_bytes": 32768,
+    "max_authorized_thread_root_bytes": 65536
+  },
+  "continuity": {
+    "scope": "exact-principal-audience-project",
+    "planes": [
+      "append-only-trajectory",
+      "structured-current-capsule",
+      "raw-artifact",
+      "semantic-memory"
+    ],
+    "chroma": {
+      "endpoint_source": "config/chroma-service.json",
+      "collection": "miter-ltm-v1",
+      "access": [
+        "scope-filtered-read",
+        "native-admitted-write"
+      ],
+      "other_collections": "prohibited",
+      "vector_rank_authority": false
+    },
+    "raw_artifact_root": "activation-runtime-root/project-data/miter-evaluation-v1",
+    "repository_write_access": false,
+    "arbitrary_home_write_access": false
+  },
+  "models": {
+    "registry": "config/model-resources-v1.json",
+    "selection_authority": "native-relational-comparison-only",
+    "local_private_eligible": [
+      "qwen-local",
+      "nemotron-local"
+    ],
+    "local_eligible_information": [
+      "current-authorized-contact",
+      "scope-filtered-continuity",
+      "native-selected-source-spans"
+    ],
+    "remote_public_safe_eligible": [
+      "openrouter-glm53"
+    ],
+    "remote_eligible_information": [
+      "public-miter-repository-source",
+      "non-secret-mechanical-diagnostics",
+      "native-formed-public-safe-question"
+    ],
+    "remote_prohibited_information": [
+      "raw-mattermost-content",
+      "personal-content",
+      "private-memory",
+      "credentials",
+      "stable-private-identities"
+    ],
+    "raw_model_output_authority": "none"
+  },
+  "outbound": {
+    "effect_class": "mattermost-create-post",
+    "destination": "exact-allowlisted-channel-only",
+    "certificate": "VoiceRNA-certified-utterance-required",
+    "idempotency": "stable-effect-id-and-pending-post-id-required",
+    "unknown_outcome": "hold-and-reconcile-never-blind-resend",
+    "denied_channel_egress": false,
+    "other_effect_classes": "prohibited"
+  },
+  "resource_bounds": {
+    "activation_hours": 72,
+    "max_admitted_events": 1000,
+    "max_outbound_posts": 500,
+    "max_outbound_posts_per_hour": 60,
+    "max_concurrent_contacts": 2,
+    "max_concurrent_model_calls_per_scope": 1,
+    "local_model_max_output_tokens": 4096,
+    "local_model_deadline_seconds": 180,
+    "remote_model_max_calls": 50,
+    "remote_model_max_output_tokens": 8192,
+    "remote_model_deadline_seconds": 300,
+    "mattermost_idle_poll_seconds": 2,
+    "mattermost_backoff_cap_seconds": 30
+  },
+  "persistence": {
+    "root": "explicit-activation-runtime-root",
+    "private_directory_mode": "0700",
+    "private_file_mode": "0600",
+    "cursor_journal": "durable-required",
+    "effect_journal": "pending-before-send-confirmed-or-unknown-after-observation",
+    "continuity_checkpoint": "fresh-process-readback-required",
+    "contact_and_memory_review_after_days": 30,
+    "operational_log_retention_days": 14,
+    "repository_evidence": "redacted-only",
+    "credential_persistence": "prohibited"
+  },
+  "lifecycle": {
+    "activation": "separate-explicit-command-after-approval-and-preflight",
+    "renewal": "new-explicit-human-approval-required",
+    "panic": "fixed-local-immediate-stop-new-effects-preserve-state",
+    "revocation": "human-local-immediate-future-effects-prohibited",
+    "expiry": "automatic-stop-and-checkpoint",
+    "rollback": "stop-adapter-restore-last-known-good-preserve-history",
+    "crash_loop": "three-failures-in-sixty-seconds-contained",
+    "pending_effect_on_stop": "preserve-and-reconcile-before-any-future-send"
+  },
+  "approval": {
+    "authority": "berton-explicit",
+    "standing": "unresolved",
+    "approved_proposal_sha256": null,
+    "activation_authority": "unresolved"
+  },
+  "operator_notes": [
+    "This tracked file is an inactive public-safe proposal. It contains references, never credential values or private stable IDs.",
+    "Approval does not activate the assistant. Activation requires a fresh exact-identity and integrity preflight plus a separate operator command.",
+    "Adding a principal, channel, project, memory collection, model disclosure class, effect class, or longer lifetime requires a newly reviewed grant."
+  ]
+}

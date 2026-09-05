@@ -1,0 +1,27 @@
+{
+  "schema": "miter-ama12-inactive-live-grant-results-v1",
+  "status": "PASS-BOUNDED-INACTIVE-AWAITING-HUMAN",
+  "proposal_sha256": "8576debd59f280883c28fee0cd3d9adebb6892942f8fecfdce3239e30c5a5a47",
+  "config_sha256": "3ccf0aa46c6d718b40de5225ac2cb1174f2dfe4e8c03288ee703ddbfe5f9ea33",
+  "native_standing": "ama12-inactive-live-grant-ready-for-human-review",
+  "cases": {
+    "canonical": "ama12-inactive-live-grant-ready-for-human-review",
+    "neutral-json-roundtrip": "ama12-inactive-live-grant-ready-for-human-review",
+    "restored": "ama12-inactive-live-grant-ready-for-human-review",
+    "approval-conflated": "ama12-inactive-live-grant-held",
+    "activation-conflated": "ama12-inactive-live-grant-held",
+    "surface-severed": "ama12-inactive-live-grant-held",
+    "continuity-severed": "ama12-inactive-live-grant-held",
+    "remote-disclosure-severed": "ama12-inactive-live-grant-held",
+    "model-authority-severed": "ama12-inactive-live-grant-held",
+    "effect-reconciliation-severed": "ama12-inactive-live-grant-held"
+  },
+  "external_network_calls": 0,
+  "credential_lookups": 0,
+  "model_calls": 0,
+  "chroma_calls": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "activated": false,
+  "approval": "unresolved"
+}
