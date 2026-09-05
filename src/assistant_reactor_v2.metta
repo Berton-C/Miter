@@ -6,8 +6,19 @@
      (or (CPShape $summary movement-standing 3)
          (CPShape $summary movement-standing 2))))
 
+(= (AR2ProbeBasisMatchesReference $basis $reference)
+   (if (and (CPShape $reference movement-reference 5)
+         (and (== (index-atom $reference 2) formed)
+              (== (index-atom $reference 3) inquiry)))
+     (and (M24ProbeBasisValid $basis)
+       (and (== (index-atom $basis 2) (index-atom $reference 4))
+            (== (index-atom $basis 3)
+              (source-cut (index-atom $reference 1)))))
+     (CPShape $basis probe-basis-unresolved 2)))
+
 (= (AR2EncounterHistoryPayloadValid $payload)
-   (let* (($payload-valid (CPShape $payload encounter-incorporated-v2 5))
+   (let* (($payload-valid (or (CPShape $payload encounter-incorporated-v2 5)
+                              (CPShape $payload encounter-incorporated-v3 6)))
           ($cut-valid (if $payload-valid
             (CPShape (index-atom $payload 1) cut-of 3) false))
           ($movement-valid (if $payload-valid
@@ -18,6 +29,9 @@
        (and $cut-valid
         (and $movement-valid
          (and $joint-valid
+          (and (if (CPShape $payload encounter-incorporated-v3 6)
+                 (AR2ProbeBasisMatchesReference (index-atom $payload 5)
+                   (CP2JointMovementReference (index-atom $payload 4))) true)
           (if (CPShape (index-atom $payload 4)
                 authority-participation-joint-v2 11)
             (let* (($summary (index-atom $payload 2))
@@ -27,7 +41,47 @@
                 (and (== (index-atom $reference 2) formed)
                  (and (== (index-atom $reference 3) (index-atom $summary 3))
                       (== (index-atom $reference 4) (index-atom $summary 2))))
-                true)) true)))))))
+                true)) true))))))))
+
+(= (AR2ConsequenceHistoryPayloadValid $payload)
+   (if (CPShape $payload consequence-incorporation-v3 4)
+     (let* (($next (index-atom $payload 1))
+            ($next-valid (CPShape $next next-constitutive-organization-v3 3)))
+       (if $next-valid
+         (let* (($encounter (index-atom $next 1))
+                ($transition (index-atom $next 2))
+                ($transition-valid (M24DevelopmentalTransitionValid $transition))
+                ($consequence (if $transition-valid
+                  (index-atom $transition 4) ()))
+                ($scope (if $transition-valid
+                  (index-atom $transition 5) ()))
+                ($expected-participants (if $transition-valid
+                  (AR2ConsequenceParticipants $scope
+                    (index-atom $transition 2) $consequence) ()))
+                ($expected-readings (if $transition-valid
+                  (CPParticipantAt (index-atom $encounter 1)
+                    $expected-participants 0) ()))
+                ($retained-readings (if
+                  (CPShape $encounter constitutive-encounter 7)
+                  (index-atom (index-atom $encounter 6) 2) ())))
+           (and (CPShape $encounter constitutive-encounter 7)
+            (and $transition-valid
+             (and (CPDRelationKnown (index-atom $encounter 1)
+                    m24-consequence-developmental-grounding)
+              (and (== (index-atom (index-atom $encounter 1) 1)
+                     (index-atom (index-atom $transition 6) 1))
+               (and (== (index-atom $payload 2)
+                      (prior-movement (index-atom $consequence 2)))
+                (and (== (index-atom $payload 3)
+                       (returned-evidence (index-atom $consequence 12)))
+                     (CPSubset $expected-readings $retained-readings 0))))))))
+         false))
+     false))
+
+(= (AR2PayloadHead $payload $head)
+   (and (is-expr $payload)
+     (and (> (size-atom $payload) 0)
+          (== (index-atom $payload 0) $head))))
 
 (= (AR2HistoryValid $row)
    (let* (($row-valid (CPShape $row assistant-history 5))
@@ -38,7 +92,14 @@
               ($payload-valid
                 (AR2EncounterHistoryPayloadValid (index-atom $row 4))))
          (and $scope-valid $payload-valid))
-       (ARHistoryValid $row))))
+       (if (and $row-valid (== (index-atom $row 1) consequence))
+         (let $payload (index-atom $row 4)
+           (if (AR2PayloadHead $payload consequence-incorporation-v3)
+             (and (AR2ConsequenceHistoryPayloadValid $payload)
+               (== (index-atom (index-atom (index-atom $payload 1) 2) 5)
+                 (index-atom $row 3)))
+             (ARHistoryValid $row)))
+         (ARHistoryValid $row)))))
 
 (= (AR2AllHistoryValid $rows $i)
    (if (< $i (size-atom $rows))
@@ -74,14 +135,143 @@
 (= (AR2EncounterSummary $encounter $joint)
    (let* (($cut (index-atom $encounter 1))
           ($movement (AREncounterMovement $encounter)))
-     (encounter-incorporated-v2 (index-atom $cut 1)
-       (ARMovementSummary $movement) (index-atom $cut 12) $joint)))
+     (encounter-incorporated-v3 (index-atom $cut 1)
+       (ARMovementSummary $movement) (index-atom $cut 12) $joint
+       (M24ProbeBasisForMovement $movement))))
 
 (= (AR2GroundedEncounterValid $grounded)
    (let $shape-valid (CPShape $grounded authority-grounded-encounter 3)
      (if $shape-valid
        (CP2AuthorityJointMatchesEncounter (index-atom $grounded 1)
          (index-atom $grounded 2)) false)))
+
+; The developmental carrier used by a returned consequence must be the one
+; retained for the exact active cut and movement. No latest-row convention and
+; no merely similar contact may substitute for that lineage.
+(= (AR2EncounterPayloadsForScope $scope)
+   (collapse (match &assistant_history
+     (assistant-history encounter $id $scope $payload) $payload)))
+
+(= (AR2EncounterPayloadMatchesMovement $payload $cut $movement)
+   (if (AR2EncounterHistoryPayloadValid $payload)
+     (let $joint (index-atom $payload 4)
+       (and (== (CP2JointMovementReference $joint)
+              (CP2MovementReference $cut $movement))
+            (== (index-atom $payload 2) (ARMovementSummary $movement))))
+     false))
+
+(= (AR2DevelopmentalMatchesAt $payloads $cut $movement $i $out)
+   (if (< $i (size-atom $payloads))
+     (let $payload (index-atom $payloads $i)
+       (if (AR2EncounterPayloadMatchesMovement $payload $cut $movement)
+         (let* (($joint (index-atom $payload 4))
+                ($m24-organization (index-atom $joint 3))
+                ($developmental
+                  (CP2M24DevelopmentalOrganization $m24-organization)))
+           (AR2DevelopmentalMatchesAt $payloads $cut $movement (+ $i 1)
+             (cons-atom $developmental $out)))
+         (AR2DevelopmentalMatchesAt $payloads $cut $movement (+ $i 1) $out)))
+     $out))
+
+(= (AR2DevelopmentalForMovement $scope $cut $movement)
+   (let* (($payloads (AR2EncounterPayloadsForScope $scope))
+          ($matches (AR2DevelopmentalMatchesAt $payloads $cut $movement 0 ())))
+     (if (== (size-atom $matches) 1)
+       (index-atom $matches 0)
+       (m24-developmental-organization-unresolved
+         missing-or-ambiguous-active-movement-lineage))))
+
+(= (AR2ConsequenceParticipants $scope $evolved $consequence)
+   (let* (($carrier (index-atom $evolved 1))
+          ($contact-id (index-atom $carrier 1))
+          ($consequence-id (index-atom $consequence 1))
+          ($developmental-reference
+            (m24-developmental-reference $contact-id
+              (index-atom $evolved 3) (index-atom $evolved 13)))
+          ($consequence-reference
+            (returned-consequence-reference $consequence-id
+              (index-atom $consequence 2) (index-atom $consequence 4)
+              (index-atom $consequence 12))))
+     ((participant-contribution
+         (m24-consequence-developmental-participation $consequence-id)
+         native-authority $scope
+         (lineage Inquiry-24-developmental-consequence $contact-id)
+         (participant-relation-claim m24-consequence-developmental-grounding
+           support (m24-developmental-evidence $developmental-reference))
+         supported no-contact-no-movement-authority)
+      (participant-contribution
+         (returned-consequence-participation $consequence-id)
+         returned-contact $scope
+         (lineage returned-consequence $consequence-id)
+         (participant-relation-claim m24-consequence-developmental-grounding
+           support (returned-contact-evidence $consequence-reference))
+         supported no-contact-no-movement-authority))))
+
+(= (AR2ReconstituteAfterConsequence $scope $cut $movement $consequence)
+   (let* (($basis (CPMovementBasisV2 $movement))
+          ($prior (AR2DevelopmentalForMovement $scope $cut $movement))
+          ($probe-basis (M24ProbeBasisForMovement $movement))
+          ($next-cut (CPNextCutV2 $cut $consequence))
+          ($base-next-cut (CPBaseCutWithoutParticipantRelations $next-cut))
+          ($transition (M24DevelopmentalTransition $prior $probe-basis
+            $consequence $scope $base-next-cut)))
+     (if (and (CPShape $basis continuation-basis-v2 5)
+           (and (M24DevelopmentalTransitionValid $transition)
+                (CPCutValid $base-next-cut)))
+       (let* (($evolved (index-atom $transition 2))
+              ($flourishing-views (CPListAppend (index-atom $basis 2)
+                (index-atom (index-atom $consequence 10) 1)))
+              ($participant-source (CPListAppend (index-atom $basis 3)
+                (AR2ConsequenceParticipants $scope $evolved $consequence)))
+              ($next (CPConstitutiveEncounterV2 $base-next-cut
+                (index-atom $basis 1) $flourishing-views $participant-source
+                (index-atom (index-atom $basis 4) 1))))
+         (if (and (CPShape $next constitutive-encounter 7)
+                  (CPDRelationKnown (index-atom $next 1)
+                    m24-consequence-developmental-grounding))
+           (next-constitutive-organization-v3 $next $transition)
+           (next-constitutive-organization-unresolved
+             developmental-participation-not-causal)))
+       (next-constitutive-organization-unresolved
+         missing-basis-developmental-lineage-or-valid-transition))))
+
+(= (AR2IncorporateConsequenceV3 $id $scope $cut $movement $consequence)
+   (let $next-organization
+     (AR2ReconstituteAfterConsequence $scope $cut $movement $consequence)
+     (if (CPShape $next-organization next-constitutive-organization-v3 3)
+       (let* (($encounter (index-atom $next-organization 1))
+              ($next-cut (index-atom $encounter 1))
+              ($next-movement (AREncounterMovement $encounter))
+              ($state (ARReplaceActive $scope $next-cut $next-movement))
+              ($history (if (== $state assistant-active-replaced)
+                (ARRecord consequence $id $scope
+                  (consequence-incorporation-v3 $next-organization
+                    (prior-movement (index-atom $consequence 2))
+                    (returned-evidence (index-atom $consequence 12))))
+                state-not-recorded)))
+         (if (== $history assistant-history-recorded)
+           (assistant-consequence-incorporated $id $next-organization)
+           (assistant-consequence-held $id $history)))
+       (assistant-consequence-held $id $next-organization))))
+
+(= (AssistantConsequenceV2 $scope $consequence)
+   (if (and (CPShape $scope scope 4) (CPConsequenceValid $consequence))
+     (let* (($id (index-atom $consequence 1))
+            ($active (ARActiveRows $scope)))
+       (if (ARHistoryHas consequence $id) (assistant-consequence-duplicate $id)
+         (if (!= (size-atom $active) 1)
+           (assistant-consequence-held $id active-cut-unavailable)
+           (let* (($organization (index-atom $active 0))
+                  ($cut (index-atom $organization 2))
+                  ($movement (index-atom $organization 3)))
+             (if (ARConsequenceMovementMatches $movement $consequence)
+               (if (CPConsequenceV2Valid $consequence)
+                 (AR2IncorporateConsequenceV3 $id $scope $cut $movement
+                   $consequence)
+                 (ARIncorporateConsequenceV1 $id $scope $cut $movement
+                   $consequence))
+               (assistant-consequence-held $id movement-link-mismatch))))))
+     (assistant-consequence-rejected malformed-scope-or-consequence)))
 
 (= (AR2IncorporateGrounded $id $scope $grounded)
    (let $grounded-valid (AR2GroundedEncounterValid $grounded)
@@ -157,7 +347,7 @@
        (if (== (index-atom $input 1) contact)
          (ACBoundEncounterV2 (index-atom $input 2) (index-atom $input 3))
          (if (== (index-atom $input 1) consequence)
-           (AssistantConsequence (index-atom $input 2) (index-atom $input 3))
+           (AssistantConsequenceV2 (index-atom $input 2) (index-atom $input 3))
            (assistant-input-rejected unknown-input-kind)))
        (assistant-input-rejected malformed-input))))
 

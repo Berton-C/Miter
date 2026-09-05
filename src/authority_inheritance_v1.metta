@@ -347,11 +347,12 @@
    (if (and (CPShape $candidate candidate-standing 4)
             (CPShape $probe probe-witness-v1 9))
      (and (== (index-atom $probe 1) (index-atom $candidate 1))
-      (and (== (index-atom $probe 2) $candidate)
+       (and (== (index-atom $probe 2) $candidate)
        (and (CPShape (index-atom $probe 4) scope 4)
         (and (== (index-atom $probe 5) bounded-reversible)
          (and (== (index-atom $probe 6) information-seeking)
-              (== (index-atom $probe 8) probe-authorizer)))))) false))
+          (and (CPShape (index-atom $probe 7) returned-contact 4)
+              (== (index-atom $probe 8) probe-authorizer))))))) false))
 
 (= (M24AdvanceProbeEligible $lifecycle $probe)
    (if (and (M24LifecycleValid $lifecycle)
@@ -491,7 +492,8 @@
 (= (M24AffordanceStateValid $state)
    (if (CPShape $state affordance-state-v1 4)
      (and (CPShape (index-atom $state 1) prospective-affordance 4)
-       (and (CPShape (index-atom $state 2) retrospective-affordance-standing 3)
+       (and (or (CPShape (index-atom $state 2) retrospective-affordance-standing 3)
+                (M24RetrospectiveAffordanceValid (index-atom $state 2)))
             (== (index-atom $state 3) prospective-does-not-certify-outcome))) false))
 
 (= (M24ComputedStuck $witness)
@@ -554,6 +556,44 @@
         (and (> (size-atom (index-atom $carrier 3)) 0)
              (> (size-atom (index-atom $carrier 5)) 0)))) false))
 
+(= (M24Current $rows)
+   (if (and (is-expr $rows) (> (size-atom $rows) 0))
+     (index-atom $rows 0)
+     (m24-current-unresolved empty-or-malformed-collection)))
+
+(= (M24LifecycleProbeStanding $lifecycle)
+   (if (CPShape (index-atom $lifecycle 2) probe-eligible-standing 4)
+     probe-eligible probe-unresolved))
+
+(= (M24LifecycleAuthorityStanding $lifecycle)
+   (if (CPShape (index-atom $lifecycle 3) authoritative-standing 4)
+     authoritative authoritative-unresolved))
+
+(= (M24LifecycleDurableStanding $lifecycle)
+   (if (CPShape (index-atom $lifecycle 4) durable-standing 4)
+     durable durable-unresolved))
+
+(= (M24DevelopmentalStandingFor $lifecycle)
+   (developmental-standing-v1 candidate
+     (M24LifecycleProbeStanding $lifecycle)
+     (M24LifecycleAuthorityStanding $lifecycle)
+     (M24LifecycleDurableStanding $lifecycle) discharge-unresolved))
+
+(= (M24DevelopmentalCarrierCoherent $organization)
+   (let* (($carrier (index-atom $organization 1))
+          ($lifecycle (M24Current (index-atom $carrier 10))))
+     (and (M24LifecycleValid $lifecycle)
+      (and (== (M24Current (index-atom $carrier 7))
+             (index-atom $organization 7))
+       (and (== (M24Current (index-atom $carrier 8))
+              (index-atom $organization 6))
+        (and (== (M24Current (index-atom $carrier 9))
+               (index-atom $organization 8))
+         (and (== (M24Current (index-atom $carrier 11))
+                (index-atom $organization 12))
+              (== (index-atom $organization 13)
+                (M24DevelopmentalStandingFor $lifecycle)))))))))
+
 (= (M24DevelopmentalOrganizationValid $organization)
    (if (CPShape $organization m24-developmental-organization-v1 14)
      (and (M24FormalCarrierValid (index-atom $organization 1))
@@ -568,8 +608,9 @@
               (and (M24FramePluralityValid (index-atom $organization 10))
                (and (M24WriterBoundaryValid (index-atom $organization 11))
                 (and (M24BranchTransactionValid (index-atom $organization 12))
-                     (CPShape (index-atom $organization 13)
-                       developmental-standing-v1 6))))))))))))) false))
+                 (and (CPShape (index-atom $organization 13)
+                        developmental-standing-v1 6)
+                      (M24DevelopmentalCarrierCoherent $organization)))))))))))))) false))
 
 (= (M24ProspectiveFor $contact)
    (let* (($id (index-atom $contact 1))
@@ -655,14 +696,14 @@
        ((frame-record $frame-id (index-atom $frame 9))) (index-atom $contact 8)
        ((live-item (live-item $id) (index-atom $frame 4) grounded))
        ((history-record (index-atom $event 1) contact $seal))
-       ((M24InterpretationStateFor $contact))
        ((M24AvailabilityStateFor $contact))
+       ((M24InterpretationStateFor $contact))
        ((M24AffordanceStateFor $contact))
        ($lifecycle) ((M24BranchTransactionFor $contact)))))
 
 (= (M24DevelopmentalLifecycle $developmental)
    (if (CPShape $developmental m24-developmental-organization-v1 14)
-     (index-atom (index-atom (index-atom $developmental 1) 10) 0)
+     (M24Current (index-atom (index-atom $developmental 1) 10))
      (lifecycle-unresolved malformed-developmental-organization)))
 
 (= (M24DevelopmentalOrganization $contact)
@@ -689,6 +730,168 @@
          (developmental-standing-v1 candidate probe-unresolved
            authoritative-unresolved durable-unresolved discharge-unresolved)))
      (m24-developmental-organization-unresolved malformed-contact)))
+
+; A native inquiry is probe-eligible only through its retained non-certifying
+; consequence route. This basis describes the already-formed movement; it does
+; not select a movement or promote a lifecycle standing.
+(= (M24ProbeBasisValid $basis)
+   (if (CPShape $basis probe-basis-v1 5)
+     (and (== (index-atom $basis 1) inquiry)
+      (and (CPShape (index-atom $basis 3) source-cut 2)
+       (and (CPShape (index-atom $basis 4) bounded-probe-route 5)
+        (and (CPShape (index-atom (index-atom $basis 4) 1)
+               consequence-route 3)
+         (and (== (index-atom (index-atom $basis 4) 2)
+                information-seeking)
+          (and (== (index-atom (index-atom $basis 4) 3)
+                 no-persistent-authority)
+               (== (index-atom (index-atom $basis 4) 4)
+                 non-certifying))))))) false))
+
+(= (M24ProbeBasisForMovement $movement)
+   (if (and (CPShape $movement movement-formed 7)
+            (== (index-atom $movement 1) inquiry))
+     (let $answerability (index-atom $movement 5)
+       (if (CPShape $answerability answerability 2)
+         (let $o-star (index-atom $answerability 1)
+           (if (CPShape $o-star o-star 2)
+             (let $route (index-atom $o-star 1)
+               (if (and (CPShape $route consequence-route 3)
+                        (== (index-atom $route 2) non-certifying))
+                 (probe-basis-v1 inquiry (index-atom $movement 2)
+                   (index-atom $movement 3)
+                   (bounded-probe-route $route information-seeking
+                     no-persistent-authority non-certifying))
+                 (probe-basis-unresolved certifying-or-malformed-route)))
+             (probe-basis-unresolved missing-o-star)))
+         (probe-basis-unresolved missing-answerability)))
+     (probe-basis-unresolved movement-not-native-inquiry)))
+
+(= (M24ProbeWitnessFromConsequence $lifecycle $basis $consequence $scope)
+   (if (and (M24LifecycleValid $lifecycle)
+         (and (M24ProbeBasisValid $basis)
+          (and (CPConsequenceV2Valid $consequence)
+           (and (CPShape $scope scope 4)
+                (== (index-atom $consequence 2) (index-atom $basis 2))))))
+     (let $candidate (index-atom $lifecycle 1)
+       (probe-witness-v1 (index-atom $candidate 1) $candidate
+         (index-atom $consequence 1) $scope bounded-reversible
+         information-seeking
+         (returned-contact (index-atom $consequence 3)
+           (index-atom $consequence 4) (index-atom $consequence 12))
+         probe-authorizer))
+     (probe-witness-unresolved missing-inquiry-basis-or-returned-consequence)))
+
+(= (M24RetrospectiveAffordanceValid $retrospective)
+   (if (CPShape $retrospective retrospective-affordance-v1 6)
+     (and (CPShape (index-atom $retrospective 4) returned-contact 4)
+      (and (CPShape (index-atom $retrospective 5) changed-participation 3)
+           (!= (index-atom (index-atom $retrospective 5) 1)
+             (index-atom (index-atom $retrospective 5) 2)))) false))
+
+(= (M24RetrospectiveAffordanceFor $lifecycle $basis $consequence $next-cut)
+   (retrospective-affordance-v1
+     (index-atom (index-atom $lifecycle 1) 1)
+     (index-atom $basis 2) (index-atom $consequence 1)
+     (returned-contact (index-atom $consequence 4)
+       (index-atom $consequence 12) consequence-provenance-retained)
+     (changed-participation (index-atom (index-atom $basis 3) 1)
+       (index-atom $next-cut 1))))
+
+(= (M24AffordanceAfterConsequence $prior $retrospective)
+   (if (and (M24AffordanceStateValid $prior)
+            (M24RetrospectiveAffordanceValid $retrospective))
+     (affordance-state-v1 (index-atom $prior 1) $retrospective
+       prospective-does-not-certify-outcome)
+     (affordance-state-unresolved missing-prospective-or-retrospective-evidence)))
+
+(= (M24TractionAfterConsequence)
+   (traction-state-v1
+     (structured-traction contact-uptake-returned discrimination-unresolved
+       frame-permeability-preserved affordance-vitality-exercised
+       provenance-continuity-preserved soul-admissibility-unresolved)
+     (trajectory-pathology-v1 contact-starvation-unresolved
+       frame-distinction-death-unresolved stuck-unresolved
+       insufficient-trajectory-for-pathology)
+     no-canonical-scalar-authority))
+
+(= (M24ConsequenceTransactionFor $prior $consequence)
+   (let* (($event (index-atom $consequence 1))
+          ($pre (index-atom $prior 4)))
+     (branch-transaction $event $pre
+       ((consequence-patch $event (index-atom $consequence 4)
+          (index-atom $consequence 12)))
+       (cons-atom $event $pre) consequence-recorder)))
+
+(= (M24FormalCarrierAfterProbe $carrier $availability $interpretation
+      $affordance $lifecycle $transaction $consequence)
+   (formal-carrier-v1 (index-atom $carrier 1)
+     (index-atom $carrier 2) (index-atom $carrier 3)
+     (index-atom $carrier 4) (index-atom $carrier 5)
+     (CPListAppend (index-atom $carrier 6)
+       ((history-record (index-atom $consequence 1) consequence
+          (index-atom $consequence 12))))
+     (index-atom $carrier 7) (index-atom $carrier 8)
+     (CPListAppend (index-atom $carrier 9) ($affordance))
+     (CPListAppend (index-atom $carrier 10) ($lifecycle))
+     (CPListAppend (index-atom $carrier 11) ($transaction))))
+
+(= (M24DevelopmentalAfterProbe $prior $basis $consequence $scope $next-cut)
+   (if (and (M24DevelopmentalOrganizationValid $prior)
+         (and (M24ProbeBasisValid $basis)
+          (and (CPConsequenceV2Valid $consequence)
+           (and (== (index-atom $consequence 2) (index-atom $basis 2))
+            (and (CPShape $scope scope 4) (CPCutValid $next-cut))))))
+     (let* (($old-lifecycle (M24DevelopmentalLifecycle $prior))
+            ($probe (M24ProbeWitnessFromConsequence $old-lifecycle $basis
+              $consequence $scope))
+            ($lifecycle (M24AdvanceProbeEligible $old-lifecycle $probe))
+            ($retrospective (M24RetrospectiveAffordanceFor $old-lifecycle
+              $basis $consequence $next-cut))
+            ($affordance (M24AffordanceAfterConsequence
+              (index-atom $prior 8) $retrospective))
+            ($transaction (M24ConsequenceTransactionFor
+              (index-atom $prior 12) $consequence))
+            ($carrier (M24FormalCarrierAfterProbe (index-atom $prior 1)
+              (index-atom $prior 7) (index-atom $prior 6) $affordance
+              $lifecycle $transaction $consequence)))
+       (m24-developmental-organization-v1 $carrier
+         (index-atom $prior 2) (index-atom $prior 3) (index-atom $prior 4)
+         (index-atom $prior 5) (index-atom $prior 6) (index-atom $prior 7)
+         $affordance (M24TractionAfterConsequence) (index-atom $prior 10)
+         (index-atom $prior 11) $transaction
+         (M24DevelopmentalStandingFor $lifecycle)))
+     (m24-developmental-organization-unresolved
+       missing-prior-inquiry-consequence-or-next-cut)))
+
+(= (M24DevelopmentalTransition $prior $basis $consequence $scope $next-cut)
+   (let* (($lifecycle (M24DevelopmentalLifecycle $prior))
+          ($probe (M24ProbeWitnessFromConsequence $lifecycle $basis
+            $consequence $scope))
+          ($evolved (M24DevelopmentalAfterProbe $prior $basis $consequence
+            $scope $next-cut)))
+     (if (M24DevelopmentalOrganizationValid $evolved)
+       (m24-developmental-transition-v1 $prior $evolved $basis $consequence
+         $scope $next-cut $probe)
+       (m24-developmental-transition-unresolved $evolved))))
+
+(= (M24DevelopmentalTransitionValid $transition)
+   (if (CPShape $transition m24-developmental-transition-v1 8)
+     (and (M24DevelopmentalOrganizationValid (index-atom $transition 1))
+      (and (M24DevelopmentalOrganizationValid (index-atom $transition 2))
+       (and (M24ProbeBasisValid (index-atom $transition 3))
+        (and (CPConsequenceV2Valid (index-atom $transition 4))
+         (and (CPShape (index-atom $transition 5) scope 4)
+          (and (CPCutValid (index-atom $transition 6))
+           (and (M24ProbeWitnessValid
+                  (index-atom (M24DevelopmentalLifecycle
+                    (index-atom $transition 1)) 1)
+                  (index-atom $transition 7))
+                (== $transition
+                  (M24DevelopmentalTransition (index-atom $transition 1)
+                    (index-atom $transition 3) (index-atom $transition 4)
+                    (index-atom $transition 5)
+                    (index-atom $transition 6)))))))))) false))
 
 ; ---------- Inquiry 26.0: one occurrence and partial participation ----------
 

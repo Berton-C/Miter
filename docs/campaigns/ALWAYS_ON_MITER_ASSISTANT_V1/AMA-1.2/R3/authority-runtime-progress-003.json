@@ -1,0 +1,97 @@
+{
+  "schema": "miter-ama12-r3-authority-runtime-progress-v3",
+  "phase": "AMA-1.2",
+  "attempt": "R3",
+  "checkpoint": "R3-C2-in-progress",
+  "waypoint": "C2-M24-returned-consequence-004",
+  "complete_atlas": {
+    "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/authority-completion-atlas.json",
+    "sha256": "702724adc491ddb82863cfb8aa621e5bdf7d105d47554f621fb6811c1f3ee381",
+    "export_count": 114
+  },
+  "prior_progress": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/authority-runtime-progress-002.json",
+  "waypoint_law": "This is an additive row-level waypoint inside C2. C2 still means complete finite operational inheritance of M24, M25, M25.5, M26.0, and M26.3 in one supported persistent runtime. C3 may add provisional 26.6/26.9 laboratory dynamics only after C2 closure and only to this same accumulated organism and AtomSpace. A fixture, history label, or persisted structure without a live runtime consumer does not discharge an atlas row.",
+  "same_organism": {
+    "supported_operator": "bin/miter",
+    "persistent_service_entry": "AssistantServiceStartV2",
+    "native_cognition": [
+      "src/authority_inheritance_v1.metta",
+      "src/constitutive_participation_v2.metta",
+      "src/assistant_reactor_v2.metta"
+    ],
+    "parallel_runtime_created": false,
+    "fixture_completion_claimed": false,
+    "c3_started": false
+  },
+  "evidence": [
+    {
+      "path": "evidence/AMA-1.2/R3/m24-developmental-consequence-service-001/verdict.json",
+      "sha256": "cad795e99f4839b76e3e0ee2c1dc3dfde2e62aab8320989b8ea7ed10f6b3f1f6",
+      "standing": "supported-service contact, returned consequence, next-cut participation, restart, lineage severance, affordance severance, restoration, duplicate suppression, and no replay"
+    }
+  ],
+  "causal_seam": {
+    "contact": "A held-out contact with no live weave causes native inquiry formation and retains an exact M24 developmental carrier in the encounter history.",
+    "returned_consequence": "A typed consequence must name that exact movement. Native MeTTa derives the probe basis from the already-formed inquiry and advances the lifecycle only from actual returned contact.",
+    "development": "The returned consequence creates a retrospective affordance, changes structured traction, appends history, lifecycle, affordance, and branch-transaction records, and preserves prior records.",
+    "next_cut": "Independent Inquiry-24 developmental and returned-consequence lineages jointly support m24-consequence-developmental-grounding before the next movement is constructed.",
+    "continuity": "The complete changed organization survives an exact fresh-process restore. Altering the retained consequence lineage or retrospective-affordance type rejects restore with no effect replay; exact restoration recovers.",
+    "resource_bound": "The two-cut canonical checkpoint is 418215 bytes, below the frozen 750000-byte trial bound. No model, memory, Mattermost payload, network call, external effect, or ~/.miter state participates."
+  },
+  "row_changes": [
+    {
+      "id": "M24-E14",
+      "standing_before": "PARTIAL",
+      "standing_after": "REPRESENTED-BOUNDARY",
+      "persistent_runtime_consumer": "M24RetrospectiveAffordanceFor -> M24DevelopmentalTransition -> AR2ReconstituteAfterConsequence -> AssistantConsequenceV2 -> AssistantServiceStartV2",
+      "positive_difference": "Prospective affordance remains a non-certifying before-contact reach. Only actual returned consequence creates the distinct retrospective affordance tying prior movement, returned evidence, source cut, and next cut.",
+      "severance_evidence": "Replacing the persisted retrospective-affordance-v1 type while retaining all surrounding presentation causes fresh-process restore rejection and no replay. Exact restoration recovers.",
+      "remaining_dependency": "None for the finite PoC non-equivalence boundary. Later 26.6/26.9 work may generalize retrospective affordance dynamics but cannot erase this distinction."
+    }
+  ],
+  "refined_partial_rows": [
+    {
+      "id": "M24-E07",
+      "standing": "PARTIAL",
+      "advance": "The exact active cut and movement now select one and only one retained M24 developmental lineage before consequence can alter it.",
+      "remaining_dependency": "Independently sever the contact-answerability anchor at the consequence boundary and show the returned contact is held for that reason."
+    },
+    {
+      "id": "M24-E09",
+      "standing": "PARTIAL",
+      "advance": "The supported runtime now earns candidate-to-probe transition from an actual non-certifying inquiry and returned consequence; stage skipping remains rejected natively.",
+      "remaining_dependency": "Exercise and discriminate governing-authority and retrospective-durability transitions. The four-stage lifecycle is not complete after merely reaching probe eligibility."
+    },
+    {
+      "id": "M24-E12",
+      "standing": "PARTIAL",
+      "advance": "Returned consequence appends provenance-bearing history while leaving the prior interpretation record intact.",
+      "remaining_dependency": "Show that a governed InterpretationUse changes a later movement and that a lineage-mismatched use is held."
+    },
+    {
+      "id": "M24-E15",
+      "standing": "PARTIAL",
+      "advance": "Actual returned contact changes traction from contact-uptake-present/prospective-affordance-live to contact-uptake-returned/affordance-vitality-exercised without assigning a favorable Stuck value.",
+      "remaining_dependency": "Accumulate enough trajectory evidence for contact starvation, frame-distinction death, and computed Stuck to alter a later continuation."
+    },
+    {
+      "id": "M24-E17",
+      "standing": "PARTIAL",
+      "advance": "A consequence-recorder branch transaction is derived and validated before replacement of the live active organization; the record persists and duplicates do not replay.",
+      "remaining_dependency": "Prove full branch-local atomic rollback when semantic history recording or checkpointing fails, and independently reject a non-writer."
+    }
+  ],
+  "standing_counts_all_114": {
+    "proven_runtime": 3,
+    "represented_boundary": 1,
+    "partial": 52,
+    "gap": 58,
+    "experimental_choice_proven_runtime": 0,
+    "unresolved_observed": 0,
+    "fail": 0,
+    "sum": 114
+  },
+  "c2_closure": false,
+  "c3_entry_permitted": false,
+  "next_dependency_frontier": "Make M25 R/A/P compute over this consequence-enriched cut and exact developmental lineage without becoming a scalar chooser; preserve competing standings and show materially different returned consequence changes the R/A/P organization and later movement through the same persistent service."
+}

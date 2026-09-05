@@ -159,3 +159,40 @@
      (index-atom $organization 5)
      (derivation-and-developmental-organization
        (index-atom (index-atom $organization 6) 1) $developmental)))
+
+(= (R3ContactWithoutWeave $contact)
+   (let $configuration (index-atom $contact 9)
+     (contact-v2
+       (index-atom $contact 1) (index-atom $contact 2)
+       (index-atom $contact 3) (index-atom $contact 4)
+       (index-atom $contact 5) (index-atom $contact 6)
+       (index-atom $contact 7) (index-atom $contact 8)
+       (encounter-configuration
+         (index-atom $configuration 1) (index-atom $configuration 2)
+         (index-atom $configuration 3) (W ())
+         (index-atom $configuration 5) (index-atom $configuration 6)
+         (index-atom $configuration 7) (index-atom $configuration 8)
+         (index-atom $configuration 9) (index-atom $configuration 10))
+       (index-atom $contact 10))))
+
+(= (R3ProbeRuntimeContact)
+   (R3ContactWithoutWeave (R3RuntimeContact)))
+
+(= (R3ProbeConsequence $movement-id)
+   (consequence-v2 consequence-probe-return $movement-id
+     local-probe-effect observed-return
+     (D-delta ((relation relation-probe-return consequence support
+                  observed-return))
+       ((distinction distinction-probe-return available observed-return)))
+     (Omega-delta
+       ((material-relation relation-probe-whole
+          (Connection Transformation) support observed-return)))
+     (I-delta ((interface interface-conversation revisable observed-return)))
+     (W-delta ())
+     (C-delta ((soul-relation relation-developmental-uptake material
+                  observed-return)))
+     (flourishing-delta
+       ((flourishing-view TimeCoherence relation-probe-return
+          beneficial-direction consequence-carried-forward)))
+     (present-context present-after-probe observed-return)
+     sealed-probe-consequence))

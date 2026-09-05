@@ -56,7 +56,8 @@
         ($frame (index-atom $candidate 1))
         ($scope (index-atom (index-atom $m24 6) 4))
         ($probe (probe-witness-v1 $frame $candidate inspect-route $scope
-          bounded-reversible information-seeking probe-event probe-authorizer))
+          bounded-reversible information-seeking
+          (returned-contact probe-effect observed probe-evidence) probe-authorizer))
         ($probed (M24AdvanceProbeEligible $initial $probe))
         ($probe-standing (index-atom $probed 2))
         ($selfgen (index-atom $developmental 5))

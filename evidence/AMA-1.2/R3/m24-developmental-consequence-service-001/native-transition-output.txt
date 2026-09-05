@@ -1,0 +1,5 @@
+true
+true
+(m24-consequence-case canonical inquiry true true true probe-eligible true true 2 2 2 2)
+(m24-consequence-case movement-link-severed false false)
+(m24-consequence-case non-inquiry undertaking false)

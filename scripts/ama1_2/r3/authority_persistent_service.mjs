@@ -137,7 +137,7 @@ try {
     'affordance-state-v1', 'traction-state-v1', 'frame-plurality-v1',
     'writer-boundary-v1', 'branch-transaction',
     'm24-developmental-grounding',
-    'finite-non-reconstruction', 'encounter-incorporated-v2'
+    'finite-non-reconstruction', 'encounter-incorporated-v3'
   ]) assert.ok(canonical.includes(required), `checkpoint missing ${required}`);
   const canonicalHash = fileHash(termPath);
   const canonicalBytes = fs.statSync(termPath).size;

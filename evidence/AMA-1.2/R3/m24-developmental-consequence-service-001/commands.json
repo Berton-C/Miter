@@ -1,0 +1,302 @@
+[
+  {
+    "name": "bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"070b6f2ba399626db4aa6a6c5053df06084ccc45cc3b3aac69379008834aceba\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "070b6f2ba399626db4aa6a6c5053df06084ccc45cc3b3aac69379008834aceba",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":29171,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 29171,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "submit-probe-contact",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_2/r3/probe-contact-v3.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-r3-probe-contact\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-r3-probe-contact",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "submit-returned-consequence",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_2/r3/probe-consequence-v2.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-r3-probe-consequence\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-r3-probe-consequence",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "duplicate-consequence",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_2/r3/probe-consequence-v2.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-r3-probe-consequence\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"duplicate\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-r3-probe-consequence",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "duplicate"
+    }
+  },
+  {
+    "name": "stop-before-restart",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":29171,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 29171,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-canonical",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":29215,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 29215,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "stop-before-severance",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":29215,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 29215,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-severed-consequence-lineage",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":29238,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 29238,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "lineage-severed-status",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\": {\"observed_at_epoch\":1788639721.955481,\"schema\":\"miter-assistant-heartbeat-v1\",\"state\":\"assistant-stopped\"},\"lkg\":\"verified\",\"pid\":29238,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": {
+        "observed_at_epoch": 1788639721.955481,
+        "schema": "miter-assistant-heartbeat-v1",
+        "state": "assistant-stopped"
+      },
+      "lkg": "verified",
+      "pid": 29238,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-after-lineage-restoration",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":29348,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 29348,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "stop-before-affordance-severance",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":29348,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 29348,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-severed-retrospective-affordance",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":29371,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 29371,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "affordance-severed-status",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\": {\"observed_at_epoch\":1788639728.02603,\"schema\":\"miter-assistant-heartbeat-v1\",\"state\":\"assistant-stopped\"},\"lkg\":\"verified\",\"pid\":29371,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": {
+        "observed_at_epoch": 1788639728.02603,
+        "schema": "miter-assistant-heartbeat-v1",
+        "state": "assistant-stopped"
+      },
+      "lkg": "verified",
+      "pid": 29371,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-after-affordance-restoration",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":29482,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 29482,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-m24-consequence-IYPZha"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":29482,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 29482,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  }
+]

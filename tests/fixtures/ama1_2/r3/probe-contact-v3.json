@@ -1,0 +1,101 @@
+{
+  "schema": "miter-assistant-input-v3",
+  "input_id": "input-r3-probe-contact",
+  "input_kind": "surface-contact",
+  "surface": {
+    "carrier_kind": "controlled-fixture",
+    "server_id": "fixture-server-alpha",
+    "team_id": "fixture-team-alpha",
+    "channel_id": "fixture-channel-alpha",
+    "principal_id": "fixture-user-alpha",
+    "post_id": "contact-r3-probe",
+    "thread_id": "fixture-thread-r3-probe",
+    "event_version": "v1"
+  },
+  "contact": {
+    "id": "contact-r3-probe",
+    "source_kind": "human-contact",
+    "principal": "principal-alpha",
+    "audience": "audience-alpha",
+    "project": "project-alpha",
+    "occurrence": "occurrence-r3-probe",
+    "proto": "proto-r3-probe",
+    "payload_ref": "payload-r3-probe",
+    "parents": [],
+    "configuration": {
+      "d_relations": [
+        {
+          "id": "relation-request-r3-probe",
+          "kind": "contact",
+          "standing": "support",
+          "evidence": "controlled-contact"
+        }
+      ],
+      "d_distinctions": [
+        {
+          "id": "distinction-authorship-r3-probe",
+          "standing": "available",
+          "evidence": "controlled-contact"
+        }
+      ],
+      "omega_relations": [
+        {
+          "id": "relation-whole-r3-probe",
+          "roles": ["Gravity", "Balance", "Connection", "Love"],
+          "standing": "support",
+          "evidence": "nary-contact-witness"
+        }
+      ],
+      "interfaces": [
+        {
+          "id": "interface-conversation",
+          "standing": "open",
+          "evidence": "authorized-local-contact"
+        }
+      ],
+      "weave": [],
+      "soul_relations": [
+        {
+          "id": "relation-soul-participation-r3-probe",
+          "standing": "material",
+          "evidence": "constitutional-weave"
+        }
+      ],
+      "present": {
+        "context": "present-r3-probe",
+        "evidence": "occurrence-bound"
+      },
+      "fact_views": [
+        {
+          "id": "fact-view-r3-probe",
+          "support": ["Gravity", "Balance", "Connection", "Love"],
+          "relation_ids": ["relation-whole-r3-probe"],
+          "recognition": "recognized",
+          "evidence": "finite-contact-reading"
+        }
+      ],
+      "flourishing_views": [
+        {
+          "value": "AgencyBalance",
+          "relation_id": "relation-request-r3-probe",
+          "standing": "flourishing",
+          "evidence": "choice-remains-open"
+        },
+        {
+          "value": "SharedUnderstanding",
+          "relation_id": "relation-request-r3-probe",
+          "standing": "beneficial-direction",
+          "evidence": "request-distinction-live"
+        },
+        {
+          "value": "ConnectionDepth",
+          "relation_id": "relation-whole-r3-probe",
+          "standing": "flourishing",
+          "evidence": "contact-remains-relational"
+        }
+      ],
+      "possibilities": [],
+      "participants": []
+    }
+  }
+}

@@ -1,0 +1,6 @@
+true
+true
+(m24-runtime-consequence contact assistant-contact-incorporated)
+(m24-runtime-consequence returned assistant-consequence-incorporated)
+(m24-runtime-consequence canonical 2 1 true true probe-eligible true true)
+(m24-runtime-consequence duplicate assistant-consequence-duplicate 2)
