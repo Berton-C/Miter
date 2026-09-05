@@ -1,0 +1,173 @@
+{
+  "schema": "miter-poc-experimental-choice-inventory-v1",
+  "phase": "AMA-1.2",
+  "attempt": "R3",
+  "checkpoint": "R3-C1",
+  "status": "PROPOSED-UNRESOLVED",
+  "authority_boundary": "These are engineering hypotheses needed to make the finite PoC a consequence-bearing laboratory. They are not INHERITED:24, INHERITED:25, INHERITED:25.5, INHERITED:26.0, INHERITED:26.3, or ratified 26.6/26.9 mathematics.",
+  "native_form": "(poc-experimental-choice id developmental-cut question basis alternatives scope uncertainty consumers predictions falsifiers standing consequences lineage)",
+  "allowed_standings": [
+    "hypothesis",
+    "contact-supported",
+    "consequence-supported",
+    "contradicted",
+    "superseded",
+    "unresolved"
+  ],
+  "choices": [
+    {
+      "id": "PEC-001",
+      "question": "What finite warrant permits raw language to disclose Fact9/flourishing/capture standing without making the semantic participant sovereign?",
+      "basis": ["M24-E03", "M24-E05", "M24-E12", "M25-E08", "M260-E05", "M263-E16", "FF-003-06"],
+      "alternatives": [
+        "Span-bound provisional reading with explicit defeaters and no standing above candidate until later contact or consequence.",
+        "Multi-reading relational bundle retaining incompatible interpretations until native counterfactual discrimination changes local accessibility.",
+        "Inquiry continuation that declines semantic admission when neither bounded reading preserves the material distinctions."
+      ],
+      "scope": "One contact and its project/relationship cut; no automatic cross-user or cross-project generalization.",
+      "uncertainty": "Future 26.6/26.9 may supply a different or richer semantic relation.",
+      "consumers": ["native cut enrichment", "Generated formation", "movement construction", "VoiceRNA"],
+      "predictions": ["Changed grounded span or defeater changes only dependent reading.", "Equivalent wording with the same retained relation does not create independent warrant."],
+      "falsifiers": ["Model confidence becomes Soul standing.", "Positive tone alone yields flourishing.", "The only reading is chosen in host code."],
+      "standing": "unresolved",
+      "consequences": [],
+      "lineage": ["formalization-feedback-003:FF-003-06", "D-044"]
+    },
+    {
+      "id": "PEC-002",
+      "question": "What relation identifies local dependency inside a plural Generated topology while preserving source support and neutral ordering?",
+      "basis": ["M255-E03", "M255-E04", "M255-E09", "M255-E10", "M260-E13", "M263-E18", "FF-003-02"],
+      "alternatives": [
+        "A continuation carries an explicit minimal support hyperedge whose severance removes only that continuation.",
+        "A continuation carries multiple non-amalgamated support paths and remains available while at least one lawful path survives.",
+        "A continuation remains unresolved when support paths conflict and the cut lacks a lawful joint-use witness."
+      ],
+      "scope": "Cut-local continuation topology with preserved source lineage.",
+      "uncertainty": "The exact future mathematical category for local dependency is not ratified.",
+      "consumers": ["Generated", "Access", "native movement", "continuation renewal"],
+      "predictions": ["Severing one support path has local bite.", "Reordering candidates never changes standing or selection."],
+      "falsifiers": ["Generated becomes an ordered option list.", "Duplicate support counts as independent evidence.", "One global merge erases conflicting frames."],
+      "standing": "unresolved",
+      "consequences": [],
+      "lineage": ["formalization-feedback-003:FF-003-02", "D-044"]
+    },
+    {
+      "id": "PEC-003",
+      "question": "How should a malformed or provenance-incomplete participant remain locally legible without destroying contact or contributing authority through absence?",
+      "basis": ["M24-E04", "M24-E16", "M260-E02", "M260-E10", "M263-E16", "FF-003-03"],
+      "alternatives": [
+        "Retain a participant-local unresolved term and remove only continuations that materially depend on it.",
+        "Quarantine the participant reading while allowing independent contact-grounded relations to proceed.",
+        "Hold the whole cut only when the missing participant lineage is itself required for contact jurisdiction or effect authority."
+      ],
+      "scope": "One participant reading and its dependent relations.",
+      "uncertainty": "The lawful composition of partial participant morphisms is future-formalization territory.",
+      "consumers": ["participant re-entry", "Generated", "movement admissibility", "effect qualification"],
+      "predictions": ["Independent contact survives local participant failure.", "Missing effect-authority lineage still prevents the effect."],
+      "falsifiers": ["Absence counts as negative evidence.", "A malformed optional participant kills unrelated contact.", "A required authority participant is silently ignored."],
+      "standing": "unresolved",
+      "consequences": [],
+      "lineage": ["formalization-feedback-003:FF-003-03", "D-044"]
+    },
+    {
+      "id": "PEC-004",
+      "question": "What preservation witness establishes constitutive checkpoint equivalence across K to K-prime without reducing continuity to byte identity or transcript replay?",
+      "basis": ["M24-E12", "M24-E13", "M260-E11", "M260-E12", "M260-E16", "M263-E17", "FF-003-04"],
+      "alternatives": [
+        "Re-form the movement from retained basis and require preservation of every still-load-bearing relation, distinction, interface, and lineage edge.",
+        "Prove a scoped lawful transport between pre-restart and post-restart finite forms while allowing consequence-earned boundary change.",
+        "Hold restoration unresolved when either exact source material or the transport witness is unavailable, even if hashes and transcript parse."
+      ],
+      "scope": "One project/relationship organization across process restart or long gap.",
+      "uncertainty": "Future work may supply a stronger categorical preservation object.",
+      "consumers": ["startup rehydration", "continuation renewal", "effect reconciliation", "long-gap continuity"],
+      "predictions": ["Semantically stale but rehashed state fails.", "Lawful consequence-earned interface change can persist without being mistaken for corruption."],
+      "falsifiers": ["Same hash alone proves SameBecoming.", "Transcript presence alone proves continuity.", "Restart replays a confirmed effect."],
+      "standing": "unresolved",
+      "consequences": [],
+      "lineage": ["formalization-feedback-003:FF-003-04", "D-044"]
+    },
+    {
+      "id": "PEC-005",
+      "question": "How should heterogeneous losses in D/Omega/I/W/C become R/A/P readings of one movement without independent vetoes, compensation, or retrospective labels?",
+      "basis": ["M25-E01", "M25-E04", "M25-E05", "M25-E06", "M25-E07", "M25-E17", "FF-003-05"],
+      "alternatives": [
+        "Each reading retains typed material witnesses into the same movement, and admissibility requires every applicable non-compensatory floor.",
+        "A partial reading remains unresolved rather than false when its carrier cannot preserve the needed distinction.",
+        "Movement construction compares relational counterfactuals directly; diagnostic summaries are generated only afterward."
+      ],
+      "scope": "One movement between adjacent developmental cuts.",
+      "uncertainty": "Exact semantic carrier for every appropriateness seam and every R/P witness family is deferred by M25.",
+      "consumers": ["native movement", "ReadApp", "HarmonicAlign", "consequence interpretation"],
+      "predictions": ["Different material severances yield heterogeneous movement differences.", "A favorable summary cannot compensate for a failed material floor."],
+      "falsifiers": ["Movement reconstructed from three numbers.", "R then A then P sequential optimization matches integrated discrimination on all cases.", "Appropriateness is only external reward."],
+      "standing": "unresolved",
+      "consequences": [],
+      "lineage": ["formalization-feedback-003:FF-003-05", "D-044"]
+    },
+    {
+      "id": "PEC-006",
+      "question": "How does consequence transform the Fact9-Flourishing constitutive joint at the next cut without turning either side into a retrospective verdict?",
+      "basis": ["M25-E10", "M255-E13", "M255-E14", "M255-E15", "M255-E16", "M260-E14", "M263-E18", "S-1409"],
+      "alternatives": [
+        "Consequence changes the standing of existing support-specific relations and therefore changes dependent accessibility.",
+        "Consequence discloses a previously inaccessible lawful expression without creating a new generative possibility.",
+        "Consequence supports a genuinely new expression only when no lawful prior transport-equivalent precursor exists."
+      ],
+      "scope": "One consequence-bearing transition K to K-prime with exact movement and occurrence lineage.",
+      "uncertainty": "M26.3 explicitly leaves consequence-bearing semantics downstream.",
+      "consumers": ["next-cut construction", "NACE plasticity", "Flourishing development", "formalization feedback"],
+      "predictions": ["Supportive and capturing consequences can alter later organization differently.", "Receipt or repetition alone changes nothing material."],
+      "falsifiers": ["Consequence is a scalar reward.", "A post-hoc label is the only change.", "New wording is called Creation without a no-preimage witness."],
+      "standing": "unresolved",
+      "consequences": [],
+      "lineage": ["M263 downstream limitation", "S-1409", "D-044"]
+    },
+    {
+      "id": "PEC-007",
+      "question": "What temporal relation distinguishes living open participation, capture, SNS-like organization, and Stuck without forcing action or quiescence?",
+      "basis": ["M24-E15", "M25-E14", "M25-E15", "M25-E18", "M255-E11", "S-606", "S-607"],
+      "alternatives": [
+        "A trajectory witness over contact, expectation, action, consequence, pivot availability, interface openness, and later reorganization.",
+        "A recurring relational motif over multiple cuts whose standing changes only when materially new contact or consequence appears.",
+        "An unresolved disposition when the observed window is insufficient, preserving both activity and quiescence as possible movements."
+      ],
+      "scope": "A bounded trajectory window tied to one undertaking and contact surface.",
+      "uncertainty": "Exact numerical Stuck threshold and complete awareness mathematics are deferred.",
+      "consumers": ["attention", "continuation renewal", "repair inquiry", "interface change"],
+      "predictions": ["Fast forceful turning-toward can remain PNS-like.", "Cheap repetitive avoidance can remain SNS-like or become Stuck.", "Neither activity nor silence is hard-coded."],
+      "falsifiers": ["High compute automatically means SNS.", "Low energy automatically means PNS.", "SNS and Stuck use unrelated detector ontologies.", "A fixed timer chooses activity."],
+      "standing": "unresolved",
+      "consequences": [],
+      "lineage": ["M25 Sections 15-17", "Berton quiescence correction", "D-044"]
+    },
+    {
+      "id": "PEC-008",
+      "question": "How can the finite expression grammar earn and trial a new relation or participation interface without silently mutating constitutional authority?",
+      "basis": ["M25-E16", "M255-E12", "M255-E14", "M260-E11", "M263-E20", "M263-E27", "M263-E29", "S-1308"],
+      "alternatives": [
+        "First attempt a previously unseen composition using existing generic relation/support operators.",
+        "When the current interface cannot preserve a material distinction, create a scoped experimental interface candidate with predicted discrimination and rollback.",
+        "Promote only after native comparison, consequence evidence, compatibility checks, and retained supersession lineage; otherwise keep or retire it in quarantine."
+      ],
+      "scope": "One bounded participation-interface candidate; no germline or protected acceptance mutation.",
+      "uncertainty": "Future 26.9 may formalize grammar revision more precisely.",
+      "consumers": ["Generated topology", "workshop", "native movement", "hot reload", "regenerative Soul"],
+      "predictions": ["Novel support composition needs no scenario branch.", "A truly missing interface can be proposed and tested without changing existing continuations mid-frame."],
+      "falsifiers": ["Every future mode is pre-enumerated.", "Generated UI or code acquires authority automatically.", "Promotion erases the previous meaning or failed evidence."],
+      "standing": "unresolved",
+      "consequences": [],
+      "lineage": ["M25 open-ended possibility", "M263 open grammar", "D-044"]
+    }
+  ],
+  "totals": {
+    "choices": 8,
+    "hypothesis": 0,
+    "contact_supported": 0,
+    "consequence_supported": 0,
+    "contradicted": 0,
+    "superseded": 0,
+    "unresolved": 8
+  },
+  "next_use": "R3-C2 implements only the native representation and comparison substrate. R3-C3 supplies discriminating contact, consequence, contradiction, and restart evidence; no alternative above is preselected by this inventory."
+}

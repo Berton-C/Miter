@@ -1,0 +1,24 @@
+{
+  "status": "OPEN-PACKAGE-VALID",
+  "target": "AMA-1.2",
+  "phase": "AMA-1.2",
+  "attempt": "R3",
+  "plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/plan.json",
+  "plan_sha256": "17b659e5cabbcd8f1c13d7eca289c7c1adcbc6db7ad4d232cb50232dc793a241",
+  "plan_commit": "5a8e910ba0ad7d55a1783f0d406702bb49600a50",
+  "controls": {
+    "CONSTITUTION.md": "3b334598da7ed7b1b4a1f17d0bb4df9aa586b2f4128f2bfdee3d6a8339b36e0a",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "855983108cd9745669c66c7d74fa69e9b583454331abf0d8ac6a142ba73b9e14",
+    "AUTHORITY_MAP.md": "311afca7a285a629ba01797847f0558f51ae0778fc59673cc5e2a77aa6104449",
+    "POC_SPEC.md": "85ddc684a6aaeb5ee672c2724883bb81c1661e8cd0184d03473c23ca4cd967eb",
+    "ACCEPTANCE.md": "018f2a917d7af18fc9e6bda8b116bebf21d181d998374c723573dc1b58f66930",
+    "BUILD_FIDELITY_PROTOCOL.md": "cd325c9c233827b9ab6895c9788c7e9d30f1899ca1face248b12ba5f8cb78a4c",
+    "WORK_PROTOCOL.md": "ce739372a5b5338f3953ff85fbf33fa82e7febb02da6af2769ea89245e45fa5a",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md": "65dde851c93b1833bc48e0a16d1665b9c73d9b6d9118728a8b269771a09b55c4",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.json": "f40291f763d982d52ef64027307caafcdb17ad3458f53c7e3315cd20e7832acb"
+  },
+  "semantic_fidelity_certified": false,
+  "external_effects": 0,
+  "mattermost_payload_reads": 0,
+  "activation": false
+}

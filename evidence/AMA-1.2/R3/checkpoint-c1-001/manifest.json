@@ -1,0 +1,18 @@
+{
+  "schema": "miter-ama12-r3-c1-evidence-manifest-v1",
+  "phase": "AMA-1.2",
+  "attempt": "R3",
+  "checkpoint": "R3-C1",
+  "plan_commit": "5a8e910ba0ad7d55a1783f0d406702bb49600a50",
+  "files": [
+    {"path":"docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/authority-completion-atlas.json","sha256":"702724adc491ddb82863cfb8aa621e5bdf7d105d47554f621fb6811c1f3ee381"},
+    {"path":"docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/experimental-choice-inventory.json","sha256":"90d2bdf5a5431ca728651338467ff5be46d451ca3352db91198cf6d9aa622ec5"},
+    {"path":"docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/checkpoint-c1-review.md","sha256":"0189258b70bc4adfe451a476496c4fd8c24b42228684aed10c8bc057e146cfa2"},
+    {"path":"scripts/ama1_2/r3/verify_atlas.mjs","sha256":"2a194f1c18caa7e4477c40d375e01526a05534dcc7cb00e368493c6f98fad587"},
+    {"path":"evidence/AMA-1.2/R3/opening-001/verdict.json","sha256":"a59129e55fa53eab8882f866ad0b552b9cbfcf88e7de65f8f716374dc6ca258d"},
+    {"path":"evidence/AMA-1.2/R3/checkpoint-c1-001/atlas-verdict.json","sha256":"7318fff872254799daa56e53979e7edf126a8ab7877202693d3509d0f6bf2c28"}
+  ],
+  "external_effects": 0,
+  "mattermost_payload_reads": 0,
+  "activation": false
+}

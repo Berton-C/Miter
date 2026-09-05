@@ -1,0 +1,31 @@
+{
+  "schema": "miter-ama12-r3-c1-atlas-structural-verdict-v1",
+  "status": "PASS-STRUCTURAL-BASELINE-NOT-SEMANTIC-COMPLETION",
+  "phase": "AMA-1.2",
+  "attempt": "R3",
+  "checkpoint": "R3-C1",
+  "plan_commit": "5a8e910ba0ad7d55a1783f0d406702bb49600a50",
+  "plan_sha256": "17b659e5cabbcd8f1c13d7eca289c7c1adcbc6db7ad4d232cb50232dc793a241",
+  "authority_exports": 114,
+  "authority_counts": {
+    "M24": 20,
+    "M25": 19,
+    "M255": 24,
+    "M260": 18,
+    "M263": 33
+  },
+  "baseline_counts": {
+    "partial": 49,
+    "gap": 65,
+    "rejected": 0
+  },
+  "experimental_choices": 8,
+  "experimental_choice_standings": {
+    "unresolved": 8
+  },
+  "implementation_complete_claimed": false,
+  "semantic_fidelity_certified": false,
+  "live_activation": false,
+  "mattermost_payload_reads": 0,
+  "external_effects": 0
+}
