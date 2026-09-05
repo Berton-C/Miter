@@ -1,0 +1,76 @@
+{
+  "schema": "miter-campaign-phase-delta-plan-v1",
+  "phase": "AMA-1.2",
+  "attempt": "R2",
+  "date": "2026-09-05",
+  "status": "frozen-awaiting-plan-commit",
+  "decision_owner": "Berton",
+  "human_decision": "Berton ratified the durable-memory, Berton-and-Haley, staged-forensic-evaluation, GLM-5.3-default, human-model-direction, and Soul-authority separation in the current task on 2026-09-05 and authorized activation after preflight.",
+  "controls": {
+    "CONSTITUTION.md": "3b334598da7ed7b1b4a1f17d0bb4df9aa586b2f4128f2bfdee3d6a8339b36e0a",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "855983108cd9745669c66c7d74fa69e9b583454331abf0d8ac6a142ba73b9e14",
+    "AUTHORITY_MAP.md": "311afca7a285a629ba01797847f0558f51ae0778fc59673cc5e2a77aa6104449",
+    "POC_SPEC.md": "85ddc684a6aaeb5ee672c2724883bb81c1661e8cd0184d03473c23ca4cd967eb",
+    "ACCEPTANCE.md": "018f2a917d7af18fc9e6bda8b116bebf21d181d998374c723573dc1b58f66930",
+    "BUILD_FIDELITY_PROTOCOL.md": "cd325c9c233827b9ab6895c9788c7e9d30f1899ca1face248b12ba5f8cb78a4c",
+    "WORK_PROTOCOL.md": "ce739372a5b5338f3953ff85fbf33fa82e7febb02da6af2769ea89245e45fa5a",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md": "65dde851c93b1833bc48e0a16d1665b9c73d9b6d9118728a8b269771a09b55c4",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.json": "f40291f763d982d52ef64027307caafcdb17ad3458f53c7e3315cd20e7832acb"
+  },
+  "predecessor": {
+    "commit": "0459ad5db8ec58654cc39ecc76e3c3e7a9fb2fbc",
+    "r1_plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R1/plan.json",
+    "r1_inactive_proposal_sha256": "8576debd59f280883c28fee0cd3d9adebb6892942f8fecfdce3239e30c5a5a47",
+    "r1_public_config_sha256": "3ccf0aa46c6d718b40de5225ac2cb1174f2dfe4e8c03288ee703ddbfe5f9ea33",
+    "standing": "superseded-proposal-preserved-in-git"
+  },
+  "requirements": [
+    "C-004", "C-015", "C-016", "C-020", "C-030", "C-032", "C-033", "C-034", "C-035", "C-036", "C-037", "C-038", "C-039", "C-041", "C-042", "C-045", "C-054", "C-060", "C-062", "C-064", "C-065", "C-066", "C-098",
+    "S-603", "S-801", "S-802", "S-803", "S-804", "S-805", "S-901", "S-902", "S-903", "S-904", "S-1102", "S-1104", "S-1301", "S-1302", "S-1310", "S-1401", "S-1402", "S-1408", "S-1409", "S-1410", "S-1411",
+    "T-19", "T-20", "T-21", "T-22", "T-23", "T-24", "T-38", "T-46", "T-47", "T-54", "T-55", "T-56"
+  ],
+  "bounded_claim": "An explicitly consented Berton-and-Haley local Mattermost evaluation can be activated through the same Soul-constituted persistent Miter runtime with durable scoped Continuity of Mind, human-directed or Soul-selected authorized model participation, GLM 5.3 as the initial human preference, bounded exactly reconciled message effects, a 72-hour first segment, and mandatory forensic pause/closure.",
+  "non_claims": [
+    "The grant does not decide cognitive meaning, flourishing, undertaking, movement, memory admission, expression, or consequence interpretation.",
+    "Human model selection does not give the selected model Soul, movement, memory, or effect authority.",
+    "This is not a production, privacy-complete, unrestricted multi-user, arbitrary-tool, or SNET release grant.",
+    "No final Inquiry 26.6/26.9 mathematics or universal cognitive fidelity is claimed.",
+    "Ratification does not excuse failed live preflight or permit activation with unresolved identity, consent, integrity, or recovery standing."
+  ],
+  "first_segment_hours": 72,
+  "maximum_evaluation_hours": 168,
+  "continuation_requires": "explicit-joint-checkpoint-decision-under-unchanged-boundaries",
+  "model_dispositions": ["openrouter-glm53", "qwen-local", "nemotron-local", "soul-choice"],
+  "model_direction_scopes": ["one-call", "conversation", "undertaking", "until-time"],
+  "continuity": {
+    "canonical_default": "durable-until-explicit-authorized-erasure-repair-or-migration",
+    "noncanonical_projections": ["chroma-index", "temporary-context"],
+    "thirty_day_action": "continuity-audit-no-implied-deletion",
+    "operational_log_retention_days": 14
+  },
+  "activation_preflight": [
+    "exact stable server team group-conversation bot Berton and Haley identities and memberships",
+    "Berton and Haley disclosure affirmation",
+    "control and last-known-good implementation hashes",
+    "private file modes and credential non-disclosure",
+    "Mattermost Chroma selected model and panic health",
+    "no unresolved prior effect and restart no-replay standing",
+    "supported constitutive path rather than direct model-to-message transport"
+  ],
+  "preserve_unrelated_work": [
+    "docs/gates/G28/R1/completion.md",
+    "effect_membranes/miter_trials.pl",
+    "evidence/20260902T090100Z-G22/",
+    "scripts/g22/",
+    "src/bootstrap_trials.metta",
+    "src/trials.metta",
+    "tests/fixtures/g22_canonical.metta",
+    "tests/fixtures/g22_cases.json",
+    "tests/fixtures/g22_parent.metta",
+    "tests/fixtures/g22_severed.metta"
+  ],
+  "forbidden": [
+    "CONSTITUTION.md", "ACCEPTANCE.md", "AUTHORITY_MAP.md", "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md", "BUILD_FIDELITY_PROTOCOL.md", "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md", "initial_canon/", "docs/sources/", "~/.miter", "credentials", "other Chroma collections", "ClarityOmega state", "NRC VAD assets"
+  ],
+  "next_action": "Commit this plan alone, verify its control pins, then revise and independently test the versioned grant before any identity probe or activation."
+}
