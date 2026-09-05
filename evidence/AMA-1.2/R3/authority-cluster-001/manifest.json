@@ -1,0 +1,43 @@
+{
+  "schema": "miter-ama12-r3-authority-cluster-manifest-v1",
+  "files": [
+    {
+      "path": "src/authority_inheritance_v1.metta",
+      "sha256": "1e515b7a24ea12e5d9fc22c2ee69eb0e193a0b315661803cd8fe33b43302a91c"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-cluster-data.metta",
+      "sha256": "6565e1aa5512f1ff06bfefcc1e7bad9cc87560398305bf5a1326d9331cfbfe12"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-cluster-smoke.metta",
+      "sha256": "624d58d20552fe117f6cab45682d72eea73d09614a35bc766714f3e327220877"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-cluster-canonical.metta",
+      "sha256": "46bcb54923c5bea28da57007c68a95e69bf7fe5cc3473aa3ad5a806766cd170d"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-cluster-causal-matrix.metta",
+      "sha256": "708d7d93b3939d1f228b7eb7fb9e60e280e6e7cc6a2a753ab4074065057e6220"
+    },
+    {
+      "path": "scripts/ama1_2/r3/authority_cluster.mjs",
+      "sha256": "ba34fed95b42b5680d259616ea184bc2b3427b1272371d87c4368fa45ba514c2"
+    }
+  ],
+  "evidence_files": [
+    "smoke.stdout",
+    "smoke.stderr",
+    "smoke-process.json",
+    "canonical.stdout",
+    "canonical.stderr",
+    "canonical-process.json",
+    "causal-matrix.stdout",
+    "causal-matrix.stderr",
+    "causal-matrix-process.json",
+    "verdict.json"
+  ],
+  "contains_credentials": false,
+  "contains_private_content": false
+}

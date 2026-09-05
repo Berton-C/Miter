@@ -1,0 +1,14 @@
+true
+true
+true
+(case-result m24-canonical true)
+(case-result m24-sever-seal false)
+(case-result m24-sever-frame-partiality false)
+(case-result m24-sever-direct-contact-standing false)
+(case-result m24-restored true)
+(case-result m260-canonical (result true true (persistent-form occurrence-alpha part-before part-after (changed-local-boundary boundary-before boundary-after))))
+(case-result m260-sever-manifestation (result false false))
+(case-result m260-sever-boundary-change (result true (persistent-form-unresolved missing-or-unchanged-local-boundary)))
+(case-result m260-sever-l2425 false)
+(case-result m260-neutral-order (result true true (persistent-form occurrence-alpha part-before part-after (changed-local-boundary boundary-before boundary-after)) (opc-at occurrence-alpha (aspect-ontology aspect-phenomenology aspect-consciousness) (dws-family occurrence-alpha (aspect-ontology aspect-phenomenology aspect-consciousness) common-occurrence distinguishable manifested non-independent non-reconstructive) non-factorized)))
+(case-result m260-restored (result true true (persistent-form occurrence-alpha part-before part-after (changed-local-boundary boundary-before boundary-after)) (opc-at occurrence-alpha (aspect-ontology aspect-phenomenology aspect-consciousness) (dws-family occurrence-alpha (aspect-ontology aspect-phenomenology aspect-consciousness) common-occurrence distinguishable manifested non-independent non-reconstructive) non-factorized)))

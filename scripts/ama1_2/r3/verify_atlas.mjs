@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import {execFileSync} from 'node:child_process';
 import {checkOpen} from '../../fidelity/check.mjs';
 
 const repo = '/Users/claritymiter/miter';
@@ -25,7 +26,13 @@ const choices = json(relativeChoices);
 
 assert.equal(opening.status, 'OPEN-PACKAGE-VALID');
 assert.equal(atlas.schema, 'miter-authority-completion-atlas-v1');
-assert.equal(atlas.baseline_commit, opening.plan_commit);
+assert.match(atlas.baseline_commit, /^[0-9a-f]{40}$/);
+execFileSync('git', ['-C', repo, 'merge-base', '--is-ancestor',
+  atlas.baseline_commit, opening.plan_commit]);
+const baselinePlan = execFileSync('git', ['-C', repo, 'show',
+  `${atlas.baseline_commit}:${relativePlan}`]);
+assert.equal(hash(baselinePlan), opening.plan_sha256,
+  'R3 plan changed after the atlas baseline');
 assert.equal(choices.schema, 'miter-poc-experimental-choice-inventory-v1');
 
 const expectedAuthorities = Object.entries(plan.authority_sources);
@@ -92,6 +99,7 @@ process.stdout.write(`${JSON.stringify({
   attempt: 'R3',
   checkpoint: 'R3-C1',
   plan_commit: opening.plan_commit,
+  atlas_baseline_commit: atlas.baseline_commit,
   plan_sha256: opening.plan_sha256,
   authority_exports: rows.length,
   authority_counts: Object.fromEntries(atlas.authorities.map(authority => [

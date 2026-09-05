@@ -1,0 +1,5 @@
+!(import! &self "/Users/claritymiter/miter/src/bootstrap_assistant_v1.metta")
+!(import! &self "/Users/claritymiter/miter/src/authority_inheritance_v1.metta")
+!(CPShape (prov-contact seal-alpha) prov-contact 2)
+!(M24DirectContact (prov-contact seal-alpha))
+!(M260StructuralFidelity (relation-alpha) (relation-alpha relation-beta))

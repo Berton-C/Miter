@@ -1,0 +1,26 @@
+true
+true
+true
+true
+true
+(cluster-result contact-valid true)
+(cluster-result contact-organization (m24-contact-organization (contacted contact-alpha (contact-seal contact-alpha event-alpha route-alpha payload-alpha)) (frame-formation frame-alpha (node-request node-author) (node-unknown) (domain-witness (node-request node-author) (node-unknown) explicit-undefined)) (contact-answerability-anchor frame-alpha contact-alpha (distinction-contact distinction-authorship)) (standing-separation provisional (urgent repeated fluent) fresh-for-contact) (partial-domain-honest (node-request node-author) (node-unknown)) ((derivation derivation-alpha world-return world-alpha contact-alpha (prov-contact (contact-seal contact-alpha event-alpha route-alpha payload-alpha))))))
+(cluster-result infer-is-not-contact false)
+(cluster-result pressure-does-not-change-warrant-a provisional)
+(cluster-result pressure-does-not-change-warrant-b provisional)
+(cluster-result interpretation-use-valid true)
+(cluster-result interpretation-renderer-cannot-write false)
+(cluster-result scoped-joint-retained-tension true)
+(cluster-result scoped-joint-no-witness false)
+(cluster-result branch-commit-valid true)
+(cluster-result branch-recommit-rejected false)
+(cluster-result occurrence-valid true)
+(cluster-result same-occurrence true)
+(cluster-result same-becoming true)
+(cluster-result orphan-generated (g-reading-unresolved missing-same-becoming-or-l2425 movement-alpha))
+(cluster-result generated-reading (g-reading-of occurrence-alpha movement-alpha (generated movement-alpha precursor-organization source-alpha) (same-becoming-witness movement-alpha occurrence-alpha (l2425 movement-alpha evidence-l2425) evidence-same-becoming)))
+(cluster-result structural-fidelity-forward true)
+(cluster-result structural-fidelity-reverse false)
+(cluster-result persistent-form (persistent-form occurrence-alpha part-before part-after (changed-local-boundary boundary-before boundary-after)))
+(cluster-result dws (dws-family occurrence-alpha (aspect-ontology aspect-phenomenology aspect-consciousness) common-occurrence distinguishable manifested non-independent non-reconstructive))
+(cluster-result opc (opc-at occurrence-alpha (aspect-ontology aspect-phenomenology aspect-consciousness) (dws-family occurrence-alpha (aspect-ontology aspect-phenomenology aspect-consciousness) common-occurrence distinguishable manifested non-independent non-reconstructive) non-factorized))
