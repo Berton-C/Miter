@@ -69,7 +69,9 @@
          (if (== (size-atom $rows) 0) assistant-continuity-new
            (ACContinuityAddAll $rows 0))
          assistant-continuity-restore-rejected))
-     assistant-continuity-restore-rejected))
+     (if (CPShape $source-set continuity-source-set-held 2)
+       (assistant-continuity-restore-held (index-atom $source-set 1))
+       assistant-continuity-restore-rejected)))
 
 (= (ACContinuityForScope $scope)
    (let $rows (ACContinuityRows $scope)

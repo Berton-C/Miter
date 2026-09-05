@@ -1,0 +1,1992 @@
+[
+  {
+    "name": "independent-support:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"16cd157465a68b09c41b1ecb0cacb6c55d95ad334ebb527e6243ba7f89876b2c\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "16cd157465a68b09c41b1ecb0cacb6c55d95ad334ebb527e6243ba7f89876b2c",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "independent-support:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "independent-support:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "independent-support:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "independent-support:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "independent-support:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-v1',[['semantic-projection-v1',[scope,'principal-alpha','audience-alpha','project-alpha'],['semantic-index-observation','semantic-source-alpha','miter-ltm-alpha','nomic-embed-text-v1.5',available,'verified-controlled-observation','query-independent-support',bf763d33fbd606efaf53f677b0d6ea161be8285b09b7ac043e6346f2f11829e8,'rank-not-authority'],['semantic-participants',[['participant-contribution','memory-source-a',memory,[scope,'principal-alpha','audience-alpha','project-alpha'],[lineage,'semantic-source-alpha',bf763d33fbd606efaf53f677b0d6ea161be8285b09b7ac043e6346f2f11829e8,'canonical-memory','source-a','revision-one'],['participant-relation-claim','relation-opportunity',support,'memory-source-a-evidence'],supported,'no-contact-no-movement-authority'],['participant-contribution','memory-source-a-repeat',memory,[scope,'principal-alpha','audience-alpha','project-alpha'],[lineage,'semantic-source-alpha',bf763d33fbd606efaf53f677b0d6ea161be8285b09b7ac043e6346f2f11829e8,'canonical-memory','source-a','revision-one'],['participant-relation-claim','relation-opportunity',support,'memory-source-a-repeat-evidence'],supported,'no-contact-no-movement-authority'],['participant-contribution','memory-consequence-b',memory,[scope,'principal-alpha','audience-alpha','project-alpha'],[lineage,'semantic-source-alpha',bf763d33fbd606efaf53f677b0d6ea161be8285b09b7ac043e6346f2f11829e8,episode,'consequence-b','observation-one'],['participant-relation-claim','relation-opportunity',support,'memory-consequence-b-evidence'],supported,'no-contact-no-movement-authority']]],['semantic-source-lineage','semantic-source-alpha','query-independent-support',bf763d33fbd606efaf53f677b0d6ea161be8285b09b7ac043e6346f2f11829e8,'controlled-fixture-only']]]]\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "independent-support:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":22774,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 22774,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "independent-support:submit",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-input-independent-support-k5sIKG/independent-support.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-semantic-independent-support\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-semantic-independent-support",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "independent-support:stop",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":22774,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 22774,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "independent-support:restart",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":22801,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 22801,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "independent-support:panic",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-independent-support-x2ezzB"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":22801,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 22801,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "same-lineage-repetition:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"a5f0647cfe9de69c9780500abbb0149e97444fbb85832e41f716c0cb8d28ee1e\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "a5f0647cfe9de69c9780500abbb0149e97444fbb85832e41f716c0cb8d28ee1e",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "same-lineage-repetition:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "same-lineage-repetition:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "same-lineage-repetition:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "same-lineage-repetition:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "same-lineage-repetition:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-v1',[['semantic-projection-v1',[scope,'principal-alpha','audience-alpha','project-alpha'],['semantic-index-observation','semantic-source-alpha','miter-ltm-alpha','nomic-embed-text-v1.5',available,'verified-controlled-observation','query-same-lineage-repetition','27533c2beb7526cb6acad6770a310f69fc189db73ecb99f22d3c872a0de1b433','rank-not-authority'],['semantic-participants',[['participant-contribution','memory-source-a',memory,[scope,'principal-alpha','audience-alpha','project-alpha'],[lineage,'semantic-source-alpha','27533c2beb7526cb6acad6770a310f69fc189db73ecb99f22d3c872a0de1b433','canonical-memory','source-a','revision-one'],['participant-relation-claim','relation-opportunity',support,'memory-source-a-evidence'],supported,'no-contact-no-movement-authority'],['participant-contribution','memory-source-a-repeat',memory,[scope,'principal-alpha','audience-alpha','project-alpha'],[lineage,'semantic-source-alpha','27533c2beb7526cb6acad6770a310f69fc189db73ecb99f22d3c872a0de1b433','canonical-memory','source-a','revision-one'],['participant-relation-claim','relation-opportunity',support,'memory-source-a-repeat-evidence'],supported,'no-contact-no-movement-authority']]],['semantic-source-lineage','semantic-source-alpha','query-same-lineage-repetition','27533c2beb7526cb6acad6770a310f69fc189db73ecb99f22d3c872a0de1b433','controlled-fixture-only']]]]\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "same-lineage-repetition:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":22840,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 22840,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "same-lineage-repetition:submit",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-input-same-lineage-repetition-wbBADd/same-lineage-repetition.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-semantic-same-lineage-repetition\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-semantic-same-lineage-repetition",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "same-lineage-repetition:panic",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-same-lineage-repetition-N4rt9O"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":22840,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 22840,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "contradiction-retained:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"5e1812773c071a31cb76d17c78c3973db0c1926adb4574ba76e7c035a58c7b31\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "5e1812773c071a31cb76d17c78c3973db0c1926adb4574ba76e7c035a58c7b31",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "contradiction-retained:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "contradiction-retained:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "contradiction-retained:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "contradiction-retained:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "contradiction-retained:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-v1',[['semantic-projection-v1',[scope,'principal-alpha','audience-alpha','project-alpha'],['semantic-index-observation','semantic-source-alpha','miter-ltm-alpha','nomic-embed-text-v1.5',available,'verified-controlled-observation','query-contradiction-retained','61a1e98ac0e15df250e274561fdb7ed0a4c888ca20af4c634d75d13b282a7064','rank-not-authority'],['semantic-participants',[['participant-contribution','memory-source-a',memory,[scope,'principal-alpha','audience-alpha','project-alpha'],[lineage,'semantic-source-alpha','61a1e98ac0e15df250e274561fdb7ed0a4c888ca20af4c634d75d13b282a7064','canonical-memory','source-a','revision-one'],['participant-relation-claim','relation-opportunity',support,'memory-source-a-evidence'],supported,'no-contact-no-movement-authority'],['participant-contribution','memory-counter-c',memory,[scope,'principal-alpha','audience-alpha','project-alpha'],[lineage,'semantic-source-alpha','61a1e98ac0e15df250e274561fdb7ed0a4c888ca20af4c634d75d13b282a7064','canonical-memory','counter-c','observation-one'],['participant-relation-claim','relation-opportunity',contradiction,'memory-counter-c-evidence'],contradicted,'no-contact-no-movement-authority']]],['semantic-source-lineage','semantic-source-alpha','query-contradiction-retained','61a1e98ac0e15df250e274561fdb7ed0a4c888ca20af4c634d75d13b282a7064','controlled-fixture-only']]]]\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "contradiction-retained:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":22882,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 22882,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "contradiction-retained:submit",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-input-contradiction-retained-NADmzN/contradiction-retained.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-semantic-contradiction-retained\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-semantic-contradiction-retained",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "contradiction-retained:panic",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-contradiction-retained-iEYSZT"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":22882,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 22882,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "semantic-unavailable:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"3ec1d02b913bbbde9b2ceab36e383235b526a8ba6fca9b919a58d435554c2e45\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "3ec1d02b913bbbde9b2ceab36e383235b526a8ba6fca9b919a58d435554c2e45",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "semantic-unavailable:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-unavailable:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-unavailable:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-unavailable:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-unavailable:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-v1',[['semantic-projection-v1',[scope,'principal-alpha','audience-alpha','project-alpha'],['semantic-index-observation','semantic-source-alpha','miter-ltm-alpha','nomic-embed-text-v1.5',unavailable,'semantic-index-unavailable','query-semantic-unavailable','2bf4ee6c2424d6b24ae3eaa19c79e266a2f9f9f1ce73c689543e672f92b660dd','rank-not-authority'],['semantic-participants',[]],['semantic-source-lineage','semantic-source-alpha','query-semantic-unavailable','2bf4ee6c2424d6b24ae3eaa19c79e266a2f9f9f1ce73c689543e672f92b660dd','controlled-fixture-only']]]]\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-unavailable:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":22923,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 22923,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "semantic-unavailable:submit",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-input-semantic-unavailable-NfmD6K/semantic-unavailable.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-semantic-semantic-unavailable\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-semantic-semantic-unavailable",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "semantic-unavailable:panic",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-unavailable-ZZZmAe"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":22923,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 22923,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "semantic-degraded:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"c623eac3b02446034aa57f2499f3b7990f4d9239f46cecc22957311bb7e76855\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "c623eac3b02446034aa57f2499f3b7990f4d9239f46cecc22957311bb7e76855",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "semantic-degraded:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-degraded:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-degraded:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-degraded:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-degraded:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-v1',[['semantic-projection-v1',[scope,'principal-alpha','audience-alpha','project-alpha'],['semantic-index-observation','semantic-source-alpha','miter-ltm-alpha','nomic-embed-text-v1.5',degraded,'semantic-index-degraded','query-semantic-degraded','5ee48304cc2a919cfa50e12eb450e570bf1d0a5d197699bcc286b8ad98392006','rank-not-authority'],['semantic-participants',[]],['semantic-source-lineage','semantic-source-alpha','query-semantic-degraded','5ee48304cc2a919cfa50e12eb450e570bf1d0a5d197699bcc286b8ad98392006','controlled-fixture-only']]]]\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-degraded:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":22963,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 22963,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "semantic-degraded:submit",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-input-semantic-degraded-X8jP6C/semantic-degraded.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-semantic-semantic-degraded\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-semantic-semantic-degraded",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "semantic-degraded:panic",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-degraded-fnqa8Z"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":22963,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 22963,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "semantic-incompatible:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"0d0e73d76d12f3f25a2dcc390660e746e56fbefe802f77d6f5ff711bd7ff9429\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "0d0e73d76d12f3f25a2dcc390660e746e56fbefe802f77d6f5ff711bd7ff9429",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "semantic-incompatible:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-incompatible:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-incompatible:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-incompatible:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-incompatible:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-v1',[['semantic-projection-v1',[scope,'principal-alpha','audience-alpha','project-alpha'],['semantic-index-observation','semantic-source-alpha','miter-ltm-alpha','nomic-embed-text-v1.5',incompatible,'semantic-index-incompatible','query-semantic-incompatible',e058083e291b7afc74fd743b35b8a1580b831a83420fc873a0d97d7505f48833,'rank-not-authority'],['semantic-participants',[]],['semantic-source-lineage','semantic-source-alpha','query-semantic-incompatible',e058083e291b7afc74fd743b35b8a1580b831a83420fc873a0d97d7505f48833,'controlled-fixture-only']]]]\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-incompatible:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":23004,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23004,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "semantic-incompatible:submit",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8",
+      "--event",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-input-semantic-incompatible-FO3dSM/semantic-incompatible.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-semantic-semantic-incompatible\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-semantic-semantic-incompatible",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "semantic-incompatible:panic",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-incompatible-uxQkV8"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":23004,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 23004,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  },
+  {
+    "name": "wrong-result-scope:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"0239dfdf6cf492bff6992cfac1a943a94ecb0b76c7ffcbe865216871031ec18e\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "0239dfdf6cf492bff6992cfac1a943a94ecb0b76c7ffcbe865216871031ec18e",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "wrong-result-scope:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "wrong-result-scope:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "wrong-result-scope:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "wrong-result-scope:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "wrong-result-scope:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-held','semantic-result-scope-lineage-or-standing-invalid']\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "wrong-result-scope:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-wrong-result-scope-LK9bhp"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":23044,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23044,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "changed-result-body:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"0a60a0617feca6c83a5dc0f20662af809cd168de4948e1946b7049ebe23bb6f4\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "0a60a0617feca6c83a5dc0f20662af809cd168de4948e1946b7049ebe23bb6f4",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "changed-result-body:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "changed-result-body:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "changed-result-body:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "changed-result-body:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "changed-result-body:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-held','semantic-result-body-hash-mismatch']\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "changed-result-body:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-result-body-Eyx9HC"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":23166,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23166,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "changed-observation:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"da38ff8ec39ce9456e290d108c76d0080c689d91a0fd4f43cf8db71d4db84f03\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "da38ff8ec39ce9456e290d108c76d0080c689d91a0fd4f43cf8db71d4db84f03",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "changed-observation:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "changed-observation:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "changed-observation:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "changed-observation:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "changed-observation:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-held','semantic-observation-hash-mismatch']\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "changed-observation:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-changed-observation-GIEezh"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":23274,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23274,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "rank-field-rejected:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"6b6950701ba58bc2821ca7f4b2a6f04fd50e48592fd7e44995b134437bafebc5\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "6b6950701ba58bc2821ca7f4b2a6f04fd50e48592fd7e44995b134437bafebc5",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "rank-field-rejected:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "rank-field-rejected:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "rank-field-rejected:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "rank-field-rejected:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "rank-field-rejected:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-held','semantic-result-schema-invalid']\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "rank-field-rejected:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-rank-field-rejected-rF2FkR"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":23397,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23397,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "semantic-scope-unbound:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"290d72af419bb1135db3f2c5172b3358c10a2c22acdb5bb81a5ae44e8bca0f0c\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "290d72af419bb1135db3f2c5172b3358c10a2c22acdb5bb81a5ae44e8bca0f0c",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "semantic-scope-unbound:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-scope-unbound:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-scope-unbound:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-scope-unbound:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-scope-unbound:semantic-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_semantic_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['semantic-source-set-held','semantic-source-scope-unbound']\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "semantic-scope-unbound:start",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-semantic-scope-unbound-AtpQjX"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":23509,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23509,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "continuity-artifact-changed:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"7f87db7a589d325821a9567df8501f61191019a62249d7a04429a6e16d4fafbe\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "7f87db7a589d325821a9567df8501f61191019a62249d7a04429a6e16d4fafbe",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "continuity-artifact-changed:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-artifact-changed:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-artifact-changed:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-artifact-changed:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-artifact-changed:continuity-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_continuity_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-changed-d7dHEY',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['continuity-source-set-held','raw-artifact-hash-mismatch']\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-artifact-missing:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f2295b6ed1ae90843b0ba2387e77a2399efec4d888f02546bb9427c670fefd82\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "f2295b6ed1ae90843b0ba2387e77a2399efec4d888f02546bb9427c670fefd82",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "continuity-artifact-missing:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-artifact-missing:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-artifact-missing:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-artifact-missing:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-artifact-missing:continuity-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_continuity_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-artifact-missing-Mlhi7W',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['continuity-source-set-held','raw-artifact-unavailable']\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-trajectory-corrupt:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f2c1050a9f40f060c732d949c72db2efa50177bf42659758105894dac5a1015e\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "f2c1050a9f40f060c732d949c72db2efa50177bf42659758105894dac5a1015e",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "continuity-trajectory-corrupt:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-trajectory-corrupt:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-trajectory-corrupt:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-trajectory-corrupt:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-trajectory-corrupt:continuity-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_continuity_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-trajectory-corrupt-T7tNtx',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['continuity-source-set-held','trajectory-integrity-or-scope-invalid']\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-source-unbound:bootstrap",
+    "executable": "/Users/claritymiter/miter/bin/miter",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"f028954b3d9324cc5199bb9957c656bb17142e01c28e732ed4832f35e492865a\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "f028954b3d9324cc5199bb9957c656bb17142e01c28e732ed4832f35e492865a",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "continuity-source-unbound:append-trajectory",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_store_append_event('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/continuity/trajectory','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/setup/trajectory-intent.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'event-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-source-unbound:append-prior-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/setup/capsule-prior.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-source-unbound:append-current-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_write_capsule('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/lib/libmiter_store_posix.dylib','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/setup/capsule-current.json',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'capsule-appended'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-source-unbound:select-capsule",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_continuity_set_current('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/continuity/capsules','/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy/lib/libmiter_store_posix.dylib','project-alpha','capsule-alpha-current',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "'current-capsule-selected'\n",
+    "stderr": "",
+    "reply": null
+  },
+  {
+    "name": "continuity-source-unbound:continuity-projection",
+    "executable": "/opt/homebrew/bin/swipl",
+    "args": [
+      "-q",
+      "-s",
+      "/Users/claritymiter/miter/effect_membranes/miter_assistant_service_v1.pl",
+      "-g",
+      "miter_assistant_continuity_restore('/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-ama12-semantic-continuity-source-unbound-mBBipy',R),write_canonical(R),nl,halt"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "['continuity-source-set-held','continuity-source-scope-unbound']\n",
+    "stderr": "",
+    "reply": null
+  }
+]

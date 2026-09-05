@@ -7,6 +7,7 @@
 :- ensure_loaded('miter_store.pl').
 :- ensure_loaded('miter_integrity.pl').
 :- ensure_loaded('miter_assistant_continuity_v1.pl').
+:- ensure_loaded('miter_assistant_semantic_v1.pl').
 :- use_module(library(crypto)).
 :- use_module(library(filesex)).
 :- use_module(library(http/json)).

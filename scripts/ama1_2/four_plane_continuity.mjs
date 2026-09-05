@@ -99,9 +99,11 @@ function continuitySource(root) {
   };
 }
 
-function scopeDocument(root, bindings = [bindingAlpha], sources = [continuitySource(root)]) {
+function scopeDocument(root, bindings = [bindingAlpha], sources = [continuitySource(root)],
+    semanticSources = []) {
   return {schema: 'miter-assistant-scope-bindings-v1',
-    authority_mode: 'controlled-fixture-only', bindings, continuity_sources: sources};
+    authority_mode: 'controlled-fixture-only', bindings, continuity_sources: sources,
+    semantic_sources: semanticSources};
 }
 
 function setupRoot(id, options = {}) {

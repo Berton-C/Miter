@@ -1,0 +1,78 @@
+{
+  "schema": "miter-ama12-semantic-participation-runtime-v1",
+  "swipl": "SWI-Prolog version 10.0.2 for arm64-darwin",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "plan_commit": "61c1c21fc19b0b1d8bb84b46e717be2642c52499",
+  "checkpoint_base_commit": "e3d6d189",
+  "external_network_calls": 0,
+  "model_calls": 0,
+  "chroma_calls": 0,
+  "private_memory_reads": 0,
+  "external_effects": 0,
+  "sources": [
+    {
+      "path": "config/miter-assistant-continuity-v1.json",
+      "sha256": "56bb754810789678aa7da41b27bca4a4bef7ec3891bad28df4e43ff0823bdc13"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_continuity_v1.pl",
+      "sha256": "ceedb37a3c45791ee85b2b9affb513deac8c09b4c9d2b596a3a258313c0c41b4"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_semantic_v1.pl",
+      "sha256": "3d30aec45e4a215b59eccb7deae794cd35c7d63d76e3400dafc7a5ec419ab139"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_service_v1.pl",
+      "sha256": "b3009416653c82ac7056567de82b091dc620467b2ff1490074139f083d8c3244"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_operator_v1.pl",
+      "sha256": "1f1a073549257d1f8c391e7e36f361f16ab5a91a87942047665834b494f2335a"
+    },
+    {
+      "path": "effect_membranes/miter_continuity.pl",
+      "sha256": "174b992a6cd486f0c48adef1391dfc570f5688da6d28185f954b2815ef45bba4"
+    },
+    {
+      "path": "effect_membranes/miter_store.pl",
+      "sha256": "b5b1906ede97d278ff6cfeba8001873a8f0192d308e87bf8cb97f0c51fcd4b39"
+    },
+    {
+      "path": "src/assistant_scope_continuity_v1.metta",
+      "sha256": "a3d4533c8acc178bbf5fb1970e4af41df5ad5ea1cd99ec2d8c6b07c185203ed8"
+    },
+    {
+      "path": "src/assistant_semantic_participation_v1.metta",
+      "sha256": "e30f34f723fe0031bd35a306071a287128019389499635c4a5233f58ad497912"
+    },
+    {
+      "path": "src/assistant_reactor_v1.metta",
+      "sha256": "41592bfe52eff5b55d4ebe28941ab927cda8a2e719255f0c01faef4ad7e945f5"
+    },
+    {
+      "path": "src/constitutive_participation_v1.metta",
+      "sha256": "60a2d94ea58426c7d7cfbd6552250cf1772240fecf166208f555b8c836f2c890"
+    },
+    {
+      "path": "src/bootstrap_assistant_v1.metta",
+      "sha256": "65d7d47fda327b40337f838a5f743301a81bced6bd6167c8a6625d922ea993f2"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/scope-bindings.json",
+      "sha256": "6f8cb1ab6781b9433a90b5697086a321540f7a6ed2b94aa3547cf89ad9285849"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/scope-contact-v3.json",
+      "sha256": "9dc2fcc16be4151b8ac2576bf529f903d1d168d6df8c630f4cd63eeb03b44177"
+    },
+    {
+      "path": "tests/fixtures/g08_manuscript.md",
+      "sha256": "5a8433e2d94034aa79c3098353acd1d5e55db6e54d8e9edab969261a4d4e34a3"
+    },
+    {
+      "path": "scripts/ama1_2/semantic_participation.mjs",
+      "sha256": "14ee21e179bc46e42c70fd0eab9ff5100ce36fd8a62c17a93806ad00ab6578af"
+    }
+  ]
+}

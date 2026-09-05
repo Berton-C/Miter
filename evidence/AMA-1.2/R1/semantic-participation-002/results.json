@@ -1,0 +1,115 @@
+{
+  "schema": "miter-ama12-semantic-participation-results-v1",
+  "status": "PASS-BOUNDED",
+  "results": [
+    {
+      "id": "independent-support",
+      "standing": "available",
+      "observed": "constitutive-participant-incorporated",
+      "exact_continuity": true,
+      "rank_authority": false,
+      "restart_stable": true,
+      "replayed_effects": 0
+    },
+    {
+      "id": "same-lineage-repetition",
+      "standing": "available",
+      "observed": "constitutive-participant-incorporated",
+      "exact_continuity": true,
+      "rank_authority": false,
+      "restart_stable": false,
+      "replayed_effects": null
+    },
+    {
+      "id": "contradiction-retained",
+      "standing": "available",
+      "observed": "constitutive-participant-incorporated",
+      "exact_continuity": true,
+      "rank_authority": false,
+      "restart_stable": false,
+      "replayed_effects": null
+    },
+    {
+      "id": "semantic-unavailable",
+      "standing": "unavailable",
+      "observed": "constitutive-participant-incorporated",
+      "exact_continuity": true,
+      "rank_authority": false,
+      "restart_stable": false,
+      "replayed_effects": null
+    },
+    {
+      "id": "semantic-degraded",
+      "standing": "degraded",
+      "observed": "constitutive-participant-incorporated",
+      "exact_continuity": true,
+      "rank_authority": false,
+      "restart_stable": false,
+      "replayed_effects": null
+    },
+    {
+      "id": "semantic-incompatible",
+      "standing": "incompatible",
+      "observed": "constitutive-participant-incorporated",
+      "exact_continuity": true,
+      "rank_authority": false,
+      "restart_stable": false,
+      "replayed_effects": null
+    },
+    {
+      "id": "wrong-result-scope",
+      "standing": "startup-held-before-ordinary-cognition",
+      "reason": "semantic-result-scope-lineage-or-standing-invalid",
+      "checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "changed-result-body",
+      "standing": "startup-held-before-ordinary-cognition",
+      "reason": "semantic-result-body-hash-mismatch",
+      "checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "changed-observation",
+      "standing": "startup-held-before-ordinary-cognition",
+      "reason": "semantic-observation-hash-mismatch",
+      "checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "rank-field-rejected",
+      "standing": "startup-held-before-ordinary-cognition",
+      "reason": "semantic-result-schema-invalid",
+      "checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "semantic-scope-unbound",
+      "standing": "startup-held-before-ordinary-cognition",
+      "reason": "semantic-source-scope-unbound",
+      "checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "continuity-artifact-changed",
+      "standing": "differentiated-mechanical-hold",
+      "reason": "raw-artifact-hash-mismatch"
+    },
+    {
+      "id": "continuity-artifact-missing",
+      "standing": "differentiated-mechanical-hold",
+      "reason": "raw-artifact-unavailable"
+    },
+    {
+      "id": "continuity-trajectory-corrupt",
+      "standing": "differentiated-mechanical-hold",
+      "reason": "trajectory-integrity-or-scope-invalid"
+    },
+    {
+      "id": "continuity-source-unbound",
+      "standing": "differentiated-mechanical-hold",
+      "reason": "continuity-source-scope-unbound"
+    }
+  ]
+}

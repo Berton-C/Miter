@@ -45,7 +45,7 @@
 (= (ARHistoryValid $row)
    (and (CPShape $row assistant-history 5)
      (and (CPHas (index-atom $row 1)
-            (encounter consequence restoration effect scope-binding continuity) 0)
+            (encounter consequence restoration effect scope-binding continuity semantic) 0)
           (CPShape (index-atom $row 3) scope 4))))
 
 (= (ARAllValid $rows $validator $i)
@@ -224,25 +224,35 @@
 (= (ACBoundEncounter $binding $contact)
    (if (ACScopeBindingValid $binding $contact)
      (let* (($scope (CPContactScope $contact))
-            ($continuity (ACContinuityForScope $scope)))
+            ($continuity (ACContinuityForScope $scope))
+            ($semantic (ASSemanticForScope $scope)))
        (if (== $continuity (continuity-standing conflicting-sources-for-scope))
          (assistant-contact-rejected conflicting-continuity-sources)
-         (let* (($effective-contact (if (ACContinuityValid $continuity)
+         (let* (($continuity-contact (if (ACContinuityValid $continuity)
                   (ACContactWithContinuity $contact $continuity) $contact))
+                ($effective-contact
+                  (ASContactWithSemantic $continuity-contact $semantic))
                 ($result (AssistantEncounter $effective-contact)))
-           (if (CPShape $result assistant-contact-incorporated 3)
+           (if (CPShape $effective-contact semantic-contact-held 2)
+             (assistant-contact-held (index-atom $contact 1) $effective-contact)
+            (if (CPShape $result assistant-contact-incorporated 3)
              (let* (($binding-history (ARRecord scope-binding
                        (index-atom $contact 1) $scope $binding))
                     ($continuity-history (ARRecord continuity
-                       (index-atom $contact 1) $scope $continuity)))
+                       (index-atom $contact 1) $scope $continuity))
+                    ($semantic-history (ARRecord semantic
+                       (index-atom $contact 1) $scope
+                       (ASSemanticStandingSummary $semantic))))
                (if (and (CPHas $binding-history
                          (assistant-history-recorded assistant-history-duplicate) 0)
-                        (CPHas $continuity-history
-                         (assistant-history-recorded assistant-history-duplicate) 0))
+                    (and (CPHas $continuity-history
+                           (assistant-history-recorded assistant-history-duplicate) 0)
+                         (CPHas $semantic-history
+                           (assistant-history-recorded assistant-history-duplicate) 0)))
                  $result
                  (assistant-contact-held (index-atom $contact 1)
-                   scope-or-continuity-history-failed)))
-             $result))))
+                   scope-continuity-or-semantic-history-failed)))
+             $result)))))
      (assistant-contact-rejected stable-identity-scope-mismatch)))
 
 ; assistant-input contact Contact | assistant-input consequence Scope Consequence
@@ -411,17 +421,28 @@
               ($continuity-source (miter_assistant_continuity_restore $root))
               ($continuity-restoration
                 (AssistantContinuityRestore $continuity-source))
+              ($semantic-source (miter_assistant_semantic_restore $root))
+              ($semantic-restoration
+                (AssistantSemanticRestore $semantic-source))
               ($base (as_config $root idle_base_seconds))
               ($cap (as_config $root idle_cap_seconds)))
          (if (or (== $restoration assistant-restore-rejected)
                  (or (== $continuity-restoration
                         assistant-continuity-restore-rejected)
-                  (or (== $base ()) (== $cap ()))))
+                  (or (CPShape $continuity-restoration
+                        assistant-continuity-restore-held 2)
+                   (or (== $semantic-restoration
+                          assistant-semantic-restore-rejected)
+                    (or (CPShape $semantic-restoration
+                          assistant-semantic-restore-held 2)
+                     (or (== $base ()) (== $cap ())))))))
            (assistant-service-held
-             (startup-restoration $restoration $continuity-restoration))
+             (startup-restoration $restoration $continuity-restoration
+               $semantic-restoration))
            (if (> $base $cap)
              (assistant-service-held invalid-idle-envelope)
              (let $start-record (as_record $root assistant-started
-                    (startup-restoration $restoration $continuity-restoration))
+                    (startup-restoration $restoration $continuity-restoration
+                      $semantic-restoration))
                (AssistantCycleWith $root false $base $base $cap
                  as_control as_input as_checkpoint as_wait as_record as_effect))))))))

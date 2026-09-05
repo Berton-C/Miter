@@ -94,19 +94,32 @@ miter_assistant_symbol(Value, Atom) :-
 % canonical sequence, exact capsule selection, artifact hash, and declared
 % semantic-index availability. It does not decide how any of them matter.
 miter_assistant_continuity_restore(Root0, Result) :-
-    ( catch(miter_assistant_continuity_restore_checked(Root0, Result0), _, fail)
+    catch(
+      catch(miter_assistant_continuity_restore_with_reason(Root0, Result),
+        miter_assistant_continuity_hold(Reason),
+        Result=['continuity-source-set-held',Reason]),
+      _, Result=['continuity-source-set-held',
+                 'unexpected-mechanical-validation-failure']), !.
+
+miter_assistant_continuity_restore_with_reason(Root0, Result) :-
+    ( miter_assistant_continuity_restore_checked(Root0, Result0)
     -> Result=Result0
-    ;  Result=['continuity-source-set-held','source-invalid-or-unavailable']
-    ), !.
+    ;  Result=['continuity-source-set-held','continuity-source-invalid']
+    ).
 
 miter_assistant_continuity_restore_checked(Root0,
     ['continuity-source-set-v1',Projections]) :-
-    miter_store_nonempty_atom(Root0, Root),
-    is_absolute_file_name(Root), exists_directory(Root),
+    miter_assistant_continuity_require(
+      (miter_store_nonempty_atom(Root0, Root), is_absolute_file_name(Root),
+       exists_directory(Root)), 'runtime-root-unavailable'),
     directory_file_path(Root, 'scope-bindings.json', SourcePath),
-    miter_store_read_json(SourcePath, Document),
-    miter_assistant_bindings_document(Document, Bindings),
-    get_dict(continuity_sources, Document, Sources), is_list(Sources),
+    miter_assistant_continuity_require(
+      (exists_file(SourcePath), miter_store_read_json(SourcePath, Document),
+       miter_assistant_bindings_document(Document, Bindings)),
+      'scope-binding-document-invalid'),
+    miter_assistant_continuity_require(
+      (get_dict(continuity_sources, Document, Sources), is_list(Sources)),
+      'continuity-source-registry-invalid'),
     maplist(miter_assistant_continuity_source(Bindings), Sources, Projections).
 
 miter_assistant_continuity_source(Bindings, Source,
@@ -127,32 +140,65 @@ miter_assistant_continuity_source(Bindings, Source,
      ['pending-consequence-organization',PendingConsequences],
      ['learned-relation-organization',LearnedRelations],
      ['source-lineage',SourceId,CapsuleId,HeadId]]) :-
-    is_dict(Source),
-    miter_assistant_dict_symbol(Source, source_id, SourceId),
-    miter_assistant_dict_symbol(Source, principal, Principal),
-    miter_assistant_dict_symbol(Source, audience, Audience),
-    miter_assistant_dict_symbol(Source, project, Project),
+    miter_assistant_continuity_require(
+      (is_dict(Source),
+       miter_assistant_dict_symbol(Source, source_id, SourceId),
+       miter_assistant_dict_symbol(Source, principal, Principal),
+       miter_assistant_dict_symbol(Source, audience, Audience),
+       miter_assistant_dict_symbol(Source, project, Project)),
+      'continuity-source-record-malformed'),
     Scope=[scope,Principal,Audience,Project],
-    miter_assistant_source_scope_bound(Bindings, Scope),
-    miter_assistant_dict_path(Source, capsule_store, CapsuleStore),
-    miter_assistant_dict_path(Source, trajectory_store, TrajectoryStore),
-    miter_assistant_current_capsule(CapsuleStore, Scope, Capsule),
-    miter_assistant_capsule_fields(Capsule, Project, CapsuleId, CapsuleHash,
-      ArtifactRef, ArtifactHash, ExactLocation, CurrentGoal, LastCompleted,
-      OpenQuestions, LiveTensions, NextMovement, Commitments, RelevantEvents),
-    miter_assistant_trajectory_plane(TrajectoryStore, Scope, RelevantEvents,
-      HeadId, HeadHash, EventCount),
-    miter_assistant_dict_symbol(Source, semantic_collection, Collection),
-    miter_assistant_dict_symbol(Source, embedding_profile, EmbeddingProfile),
-    miter_assistant_dict_symbol(Source, semantic_standing, SemanticStanding),
-    memberchk(SemanticStanding,[available,unavailable,degraded,incompatible]),
-    miter_assistant_dict_symbol(Source, undertaking_id, Undertaking),
-    miter_assistant_dict_symbol(Source, attention_id, Attention),
-    miter_assistant_dict_symbol(Source, rna_id, RNA),
-    miter_assistant_dict_list(Source, relationships, Relationships),
-    miter_assistant_dict_list(Source, open_alternatives, OpenAlternatives),
-    miter_assistant_dict_list(Source, pending_consequences, PendingConsequences),
-    miter_assistant_dict_list(Source, learned_relations, LearnedRelations).
+    miter_assistant_continuity_require(
+      miter_assistant_source_scope_bound(Bindings, Scope),
+      'continuity-source-scope-unbound'),
+    miter_assistant_continuity_require(
+      miter_assistant_dict_path(Source, capsule_store, CapsuleStore),
+      'continuity-capsule-store-unavailable'),
+    miter_assistant_continuity_require(
+      miter_assistant_dict_path(Source, trajectory_store, TrajectoryStore),
+      'continuity-trajectory-store-unavailable'),
+    miter_assistant_continuity_require(
+      miter_assistant_current_capsule_candidate(CapsuleStore, Scope, Capsule),
+      'current-capsule-invalid-or-unavailable'),
+    miter_assistant_continuity_artifact_check(Capsule),
+    miter_assistant_continuity_require(
+      catch(miter_assistant_current_capsule(CapsuleStore, Scope, Capsule),_,fail),
+      'current-capsule-invalid-or-unavailable'),
+    miter_assistant_continuity_require(
+      miter_assistant_capsule_fields(Capsule, Project, CapsuleId, CapsuleHash,
+        ArtifactRef, ArtifactHash, ExactLocation, CurrentGoal, LastCompleted,
+        OpenQuestions, LiveTensions, NextMovement, Commitments, RelevantEvents),
+      'current-capsule-schema-invalid'),
+    miter_assistant_continuity_require(
+      miter_assistant_trajectory_plane(TrajectoryStore, Scope, RelevantEvents,
+        HeadId, HeadHash, EventCount),
+      'trajectory-integrity-or-scope-invalid'),
+    miter_assistant_continuity_require(
+      (miter_assistant_dict_symbol(Source, semantic_collection, Collection),
+       miter_assistant_dict_symbol(Source, embedding_profile, EmbeddingProfile),
+       miter_assistant_dict_symbol(Source, semantic_standing, SemanticStanding),
+       memberchk(SemanticStanding,[available,unavailable,degraded,incompatible]),
+       miter_assistant_dict_symbol(Source, undertaking_id, Undertaking),
+       miter_assistant_dict_symbol(Source, attention_id, Attention),
+       miter_assistant_dict_symbol(Source, rna_id, RNA),
+       miter_assistant_dict_list(Source, relationships, Relationships),
+       miter_assistant_dict_list(Source, open_alternatives, OpenAlternatives),
+       miter_assistant_dict_list(Source, pending_consequences, PendingConsequences),
+       miter_assistant_dict_list(Source, learned_relations, LearnedRelations)),
+      'continuity-organization-record-invalid').
+
+miter_assistant_continuity_artifact_check(Capsule) :-
+    miter_assistant_continuity_require(
+      (get_dict(current_artifact_ref, Capsule, Ref0),
+       miter_store_nonempty_atom(Ref0, Ref), is_absolute_file_name(Ref),
+       exists_file(Ref)), 'raw-artifact-unavailable'),
+    miter_assistant_continuity_require(
+      (get_dict(current_artifact_hash, Capsule, Expected0),
+       miter_store_nonempty_atom(Expected0, Expected)),
+      'raw-artifact-hash-invalid'),
+    crypto_file_hash(Ref, Actual,[algorithm(sha256),encoding(octet)]),
+    miter_assistant_continuity_require(Actual==Expected,
+      'raw-artifact-hash-mismatch').
 
 miter_assistant_source_scope_bound(Bindings, Scope) :-
     member(Binding, Bindings),
@@ -175,6 +221,25 @@ miter_assistant_current_capsule(Store, [scope,Principal,Audience,Project], Capsu
     get_dict(current_capsule_id, Reconstruction, CapsuleId0),
     miter_store_nonempty_atom(CapsuleId0, CapsuleId),
     miter_continuity_load_capsule(Store, Project, CapsuleId, Capsule),
+    get_dict(principal_scope, Capsule, Principal0),
+    miter_store_nonempty_atom(Principal0, Principal),
+    get_dict(audience_scope, Capsule, Audience0),
+    miter_store_nonempty_atom(Audience0, Audience).
+
+% Read the explicitly indexed capsule before the legacy reconstruction helper
+% validates its artifact.  This lets the membrane distinguish a missing raw
+% artifact from changed bytes, then still require the full reconstruction.
+miter_assistant_current_capsule_candidate(Store,
+    [scope,Principal,Audience,Project], Capsule) :-
+    miter_continuity_current_path(Store, Project, CurrentPath),
+    exists_file(CurrentPath),
+    miter_store_read_json(CurrentPath, Index),
+    miter_continuity_index(Index, Project, CapsuleId, CapsuleHash),
+    miter_continuity_load_capsule(Store, Project, CapsuleId, Capsule),
+    get_dict(content_hash, Capsule, CapsuleHash0),
+    miter_store_nonempty_atom(CapsuleHash0, CapsuleHash),
+    get_dict(status, Capsule, Status0),
+    miter_store_nonempty_atom(Status0, current),
     get_dict(principal_scope, Capsule, Principal0),
     miter_store_nonempty_atom(Principal0, Principal),
     get_dict(audience_scope, Capsule, Audience0),
@@ -231,3 +296,6 @@ miter_assistant_relevant_event(Events, [scope,Principal,Audience,Project], Event
     miter_store_nonempty_atom(Audience0, Audience),
     get_dict(project_scope, Event, Project0),
     miter_store_nonempty_atom(Project0, Project), !.
+
+miter_assistant_continuity_require(Goal, Reason) :-
+    ( call(Goal) -> true ; throw(miter_assistant_continuity_hold(Reason)) ).

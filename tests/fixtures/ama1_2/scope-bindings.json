@@ -15,5 +15,6 @@
       "standing": "authorized"
     }
   ],
-  "continuity_sources": []
+  "continuity_sources": [],
+  "semantic_sources": []
 }
