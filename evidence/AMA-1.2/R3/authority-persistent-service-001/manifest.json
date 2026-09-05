@@ -1,0 +1,54 @@
+{
+  "schema": "miter-ama12-r3-authority-persistent-service-manifest-v1",
+  "files": [
+    {
+      "path": "effect_membranes/miter_assistant_operator_v2.pl",
+      "sha256": "9410be98a7c8f7e8967e056197114ef2006cba45119984b35650db669543b263"
+    },
+    {
+      "path": "bin/miter",
+      "sha256": "2b1c2d8bc4da5a26ebee7d61c58e86de9352c239c03610e84ce568f7a6763fef"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_service_v1.pl",
+      "sha256": "b3009416653c82ac7056567de82b091dc620467b2ff1490074139f083d8c3244"
+    },
+    {
+      "path": "src/authority_inheritance_v1.metta",
+      "sha256": "1e515b7a24ea12e5d9fc22c2ee69eb0e193a0b315661803cd8fe33b43302a91c"
+    },
+    {
+      "path": "src/constitutive_participation_v2.metta",
+      "sha256": "645ce146bd1c5d25d777b9acf48104de827d0559502f7c563b3d212aef1ac7f1"
+    },
+    {
+      "path": "src/assistant_reactor_v2.metta",
+      "sha256": "a553077146718766766f3b52fea5aee03f620289d8c7e8af57088141d9bd5dd4"
+    },
+    {
+      "path": "src/bootstrap_assistant_v2.metta",
+      "sha256": "2dc14796118a22573256bfc401e2917ed70d003534067854939ff790b26afa2f"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/scope-contact-v3.json",
+      "sha256": "9dc2fcc16be4151b8ac2576bf529f903d1d168d6df8c630f4cd63eeb03b44177"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/scope-bindings.json",
+      "sha256": "6f8cb1ab6781b9433a90b5697086a321540f7a6ed2b94aa3547cf89ad9285849"
+    },
+    {
+      "path": "scripts/ama1_2/r3/authority_persistent_service.mjs",
+      "sha256": "5d1a8219f7925e3d8acb726e02bf3e3382d3bb85ff129826206161d5912de9db"
+    }
+  ],
+  "artifacts": [
+    "commands.json",
+    "verdict.json",
+    "canonical-checkpoint.term",
+    "lkg.json",
+    "service-entry.metta"
+  ],
+  "contains_credentials": false,
+  "contains_private_content": false
+}

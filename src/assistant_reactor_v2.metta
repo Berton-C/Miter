@@ -1,12 +1,17 @@
 ; AMA-1.2 R3 persistent assistant integration for the native authority joint.
 ; This replaces the contact step; it does not run beside the v1 cognition path.
 
+(= (AR2MovementSummaryValid $summary)
+   (or (CPShape $summary movement-standing 4)
+     (or (CPShape $summary movement-standing 3)
+         (CPShape $summary movement-standing 2))))
+
 (= (AR2EncounterHistoryPayloadValid $payload)
    (let* (($payload-valid (CPShape $payload encounter-incorporated-v2 5))
           ($cut-valid (if $payload-valid
             (CPShape (index-atom $payload 1) cut-of 3) false))
           ($movement-valid (if $payload-valid
-            (CPShape (index-atom $payload 2) movement-standing 4) false))
+            (AR2MovementSummaryValid (index-atom $payload 2)) false))
           ($joint-valid (if $payload-valid
             (CP2AuthorityJointValid (index-atom $payload 4)) false)))
      (and $payload-valid
