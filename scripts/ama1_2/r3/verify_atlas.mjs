@@ -14,6 +14,8 @@ const relativeAtlas =
   'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/authority-completion-atlas.json';
 const relativeChoices =
   'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/experimental-choice-inventory.json';
+const relativeBaselineVerdict =
+  'evidence/AMA-1.2/R3/checkpoint-c1-001/atlas-verdict.json';
 const read = relative => fs.readFileSync(path.join(repo, relative));
 const json = relative => JSON.parse(read(relative));
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
@@ -23,6 +25,7 @@ const opening = checkOpen(relativePlan);
 const plan = json(relativePlan);
 const atlas = json(relativeAtlas);
 const choices = json(relativeChoices);
+const baselineVerdict = json(relativeBaselineVerdict);
 
 assert.equal(opening.status, 'OPEN-PACKAGE-VALID');
 assert.equal(atlas.schema, 'miter-authority-completion-atlas-v1');
@@ -31,8 +34,24 @@ execFileSync('git', ['-C', repo, 'merge-base', '--is-ancestor',
   atlas.baseline_commit, opening.plan_commit]);
 const baselinePlan = execFileSync('git', ['-C', repo, 'show',
   `${atlas.baseline_commit}:${relativePlan}`]);
-assert.equal(hash(baselinePlan), opening.plan_sha256,
-  'R3 plan changed after the atlas baseline');
+const baselinePlanHash = hash(baselinePlan);
+assert.equal(baselineVerdict.plan_commit, atlas.baseline_commit,
+  'atlas baseline commit differs from its immutable verdict');
+assert.equal(baselineVerdict.plan_sha256, baselinePlanHash,
+  'atlas baseline plan differs from its immutable verdict');
+const recognizedPlanTransitions = new Map([
+  ['3ebc28e0bb927b504b7a7f70c1aa47a3cf974068f8fa51331264e257a571af4e', {
+    predecessor: '17b659e5cabbcd8f1c13d7eca289c7c1adcbc6db7ad4d232cb50232dc793a241',
+    decision: 'D-045'
+  }]
+]);
+if (opening.plan_sha256 !== baselinePlanHash) {
+  const transition = recognizedPlanTransitions.get(opening.plan_sha256);
+  assert.equal(transition?.predecessor, baselinePlanHash,
+    'R3 plan changed without a recognized exact-byte refreeze');
+  assert.ok(plan.human_decision.includes(transition.decision),
+    'recognized refreeze decision is absent from the current plan');
+}
 assert.equal(choices.schema, 'miter-poc-experimental-choice-inventory-v1');
 
 const expectedAuthorities = Object.entries(plan.authority_sources);
@@ -101,6 +120,9 @@ process.stdout.write(`${JSON.stringify({
   plan_commit: opening.plan_commit,
   atlas_baseline_commit: atlas.baseline_commit,
   plan_sha256: opening.plan_sha256,
+  atlas_baseline_plan_sha256: baselinePlanHash,
+  recognized_mechanical_refreeze:
+    opening.plan_sha256 === baselinePlanHash ? null : 'D-045',
   authority_exports: rows.length,
   authority_counts: Object.fromEntries(atlas.authorities.map(authority => [
     authority.id, authority.exports.length

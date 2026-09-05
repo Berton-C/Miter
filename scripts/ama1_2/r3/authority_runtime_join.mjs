@@ -14,7 +14,7 @@ const swi = '/opt/homebrew/bin/swipl';
 const plan = 'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/plan.json';
 const fixtureRoot = 'tests/fixtures/ama1_2/r3';
 const record = process.argv.includes('--record');
-const evidenceRelative = 'evidence/AMA-1.2/R3/authority-runtime-join-001';
+const evidenceRelative = 'evidence/AMA-1.2/R3/authority-runtime-join-002';
 const evidence = path.join(repo, evidenceRelative);
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const hashFile = relative => sha256(fs.readFileSync(path.join(repo, relative)));
@@ -53,6 +53,7 @@ const files = [
   `${fixtureRoot}/authority-runtime-data.metta`,
   `${fixtureRoot}/authority-runtime-join-smoke.metta`,
   `${fixtureRoot}/authority-runtime-causal-matrix.metta`,
+  `${fixtureRoot}/authority-runtime-footprint.metta`,
   `${fixtureRoot}/authority-runtime-restore.metta`,
   `${fixtureRoot}/authority-runtime-restore-severed.metta`,
   'scripts/ama1_2/r3/authority_runtime_join.mjs',
@@ -83,6 +84,17 @@ assert.deepEqual(lines(matrix, '(runtime-case '), [
   '(runtime-case duplicate assistant-contact-duplicate 1 1)'
 ]);
 
+const footprint = runFixture(`${fixtureRoot}/authority-runtime-footprint.metta`);
+assert.deepEqual(lines(footprint, '(footprint-case '), [
+  '(footprint-case canonical true true true true true true true true true true)',
+  '(footprint-case structural-fidelity-severed true true false false)',
+  '(footprint-case opacity-severed false false false)',
+  '(footprint-case persistent-form-severed true true true false false)',
+  '(footprint-case opc-severed true true true false false)',
+  '(footprint-case qualified-generated-severed false)',
+  '(footprint-case contact-answerability-severed false)'
+]);
+
 const restore = runFixture(`${fixtureRoot}/authority-runtime-restore.metta`);
 assert.deepEqual(lines(restore, '(restore-case '), [
   '(restore-case canonical assistant-state-restored-v2 1 1 true)'
@@ -95,8 +107,8 @@ assert.deepEqual(lines(severedRestore, '(restore-case '), [
 ]);
 
 const verdict = {
-  schema: 'miter-ama12-r3-authority-runtime-join-verdict-v1',
-  status: 'PASS-NATIVE-REACTOR-JOIN-NOT-SUPPORTED-SERVICE',
+  schema: 'miter-ama12-r3-authority-runtime-join-verdict-v2',
+  status: 'PASS-NATIVE-REACTOR-M24-M260-FOOTPRINT-NOT-YET-SUPPORTED-SERVICE',
   phase: 'AMA-1.2', attempt: 'R3', checkpoint: 'R3-C2-in-progress',
   plan_commit: opening.plan_commit, plan_sha256: opening.plan_sha256,
   cluster: 'M24-contact-provenance--M260-occurrence-participation',
@@ -109,6 +121,13 @@ const verdict = {
   duplicate_suppressed: true,
   positive: true, severed_m24: true, severed_m260: true,
   severed_same_becoming_restore: true, neutral_order: true,
+  contact_answerability_causal: true,
+  same_occurrence_causal: true,
+  persistent_form_causal: true,
+  dws_opc_causal: true,
+  observational_opacity_causal: true,
+  structural_fidelity_causal: true,
+  qualified_generated_causal: true,
   supported_persistent_service: false,
   disk_checkpoint_restart: false,
   atlas_rows_promoted_to_proven_runtime: 0,
@@ -124,17 +143,18 @@ if (record) {
     typeof value === 'string' ? value : `${JSON.stringify(value, null, 2)}\n`,
     {mode: 0o600});
   for (const [name, run] of Object.entries({smoke, matrix, restore,
-    'restore-severed': severedRestore})) {
+    footprint, 'restore-severed': severedRestore})) {
     write(`${name}.stdout`, run.stdout);
     write(`${name}.stderr`, run.stderr);
     write(`${name}-process.json`, {...run, stdout: undefined, stderr: undefined});
   }
   write('verdict.json', verdict);
   write('manifest.json', {
-    schema: 'miter-ama12-r3-authority-runtime-join-manifest-v1',
+    schema: 'miter-ama12-r3-authority-runtime-join-manifest-v2',
     files: files.map(relative => ({path: relative, sha256: hashFile(relative)})),
     evidence_files: ['smoke.stdout', 'smoke.stderr', 'smoke-process.json',
       'matrix.stdout', 'matrix.stderr', 'matrix-process.json',
+      'footprint.stdout', 'footprint.stderr', 'footprint-process.json',
       'restore.stdout', 'restore.stderr', 'restore-process.json',
       'restore-severed.stdout', 'restore-severed.stderr',
       'restore-severed-process.json', 'verdict.json'],

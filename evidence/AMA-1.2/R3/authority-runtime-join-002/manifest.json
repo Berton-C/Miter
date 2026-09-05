@@ -1,0 +1,69 @@
+{
+  "schema": "miter-ama12-r3-authority-runtime-join-manifest-v2",
+  "files": [
+    {
+      "path": "src/constitutive_participation_v2.metta",
+      "sha256": "215c03bc424671425b0490e19d44f8b01ca474577385c3df57e5720914402494"
+    },
+    {
+      "path": "src/assistant_reactor_v2.metta",
+      "sha256": "0ad9495f0e1ef8d78ac0fa72d41f52b5a24dd8142ee1fb4ba15ae3bc68e867b7"
+    },
+    {
+      "path": "src/bootstrap_assistant_v2.metta",
+      "sha256": "2dc14796118a22573256bfc401e2917ed70d003534067854939ff790b26afa2f"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-data.metta",
+      "sha256": "4d5b35747ef01a47f92cf41a8f5acd93acb9ccb9ffc99528b5687d0e583d8043"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-join-smoke.metta",
+      "sha256": "f5af28686c25c73acf3a8dc2d9de6a142cd56f529d767d200b8f748966321763"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-causal-matrix.metta",
+      "sha256": "39de811f9588b966309256c26c592cb2ee1a9ae1655874c31b6260fdb1fdad87"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-footprint.metta",
+      "sha256": "64fa0269507c6df978554cbd555fa58ae8832ea71b4cb23fa08fbcbe098ec530"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-restore.metta",
+      "sha256": "00caa3b6ff6a52595339aec82ff103fa48a41cc81c00fa3cac4b3cba6b3ec4a5"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-restore-severed.metta",
+      "sha256": "78f492fd713b840b720b290ed77b00cec51eef2eb7e9359bdaee141b1da097c8"
+    },
+    {
+      "path": "scripts/ama1_2/r3/authority_runtime_join.mjs",
+      "sha256": "907f98d132ae03cfa938bdacd328b5428e4c182d163959e01dc45d4ff03f4aca"
+    },
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/swift-high-fidelity-procedure.md",
+      "sha256": "281e7149c791f7a560c31317d571246fd9b1f3cd83adbabcc86744a8ce000adb"
+    }
+  ],
+  "evidence_files": [
+    "smoke.stdout",
+    "smoke.stderr",
+    "smoke-process.json",
+    "matrix.stdout",
+    "matrix.stderr",
+    "matrix-process.json",
+    "footprint.stdout",
+    "footprint.stderr",
+    "footprint-process.json",
+    "restore.stdout",
+    "restore.stderr",
+    "restore-process.json",
+    "restore-severed.stdout",
+    "restore-severed.stderr",
+    "restore-severed-process.json",
+    "verdict.json"
+  ],
+  "contains_credentials": false,
+  "contains_private_content": false
+}

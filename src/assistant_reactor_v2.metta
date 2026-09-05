@@ -15,7 +15,19 @@
           ($joint-valid (if $payload-valid
             (CP2AuthorityJointValid (index-atom $payload 4)) false)))
      (and $payload-valid
-       (and $cut-valid (and $movement-valid $joint-valid)))))
+       (and $cut-valid
+        (and $movement-valid
+         (and $joint-valid
+          (if (CPShape (index-atom $payload 4)
+                authority-participation-joint-v2 11)
+            (let* (($summary (index-atom $payload 2))
+                   ($reference (CP2JointMovementReference
+                     (index-atom $payload 4))))
+              (if (CPShape $summary movement-standing 4)
+                (and (== (index-atom $reference 2) formed)
+                 (and (== (index-atom $reference 3) (index-atom $summary 3))
+                      (== (index-atom $reference 4) (index-atom $summary 2))))
+                true)) true)))))))
 
 (= (AR2HistoryValid $row)
    (let* (($row-valid (CPShape $row assistant-history 5))
@@ -68,7 +80,8 @@
 (= (AR2GroundedEncounterValid $grounded)
    (let $shape-valid (CPShape $grounded authority-grounded-encounter 3)
      (if $shape-valid
-       (CP2AuthorityJointValid (index-atom $grounded 1)) false)))
+       (CP2AuthorityJointMatchesEncounter (index-atom $grounded 1)
+         (index-atom $grounded 2)) false)))
 
 (= (AR2IncorporateGrounded $id $scope $grounded)
    (let $grounded-valid (AR2GroundedEncounterValid $grounded)

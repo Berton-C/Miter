@@ -18,7 +18,7 @@ const contactPath = path.join(repo, 'tests/fixtures/ama1_2/scope-contact-v3.json
 const bindingsPath = path.join(repo, 'tests/fixtures/ama1_2/scope-bindings.json');
 const forbiddenRoot = '/Users/bcb/.miter';
 const record = process.argv.includes('--record');
-const evidenceRelative = 'evidence/AMA-1.2/R3/authority-persistent-service-001';
+const evidenceRelative = 'evidence/AMA-1.2/R3/authority-persistent-service-002';
 const evidence = path.join(repo, evidenceRelative);
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const fileHash = file => sha256(fs.readFileSync(file));
@@ -124,9 +124,12 @@ try {
   const termPath = path.join(root, 'checkpoints/active.term');
   const canonical = fs.readFileSync(termPath, 'utf8');
   for (const required of [
-    'authority-participation-joint-v1', 'm24-contact',
+    'authority-participation-joint-v2', 'm24-contact',
     'm24-contact-organization', 'm260-occurrence-organization',
-    'contact-occurrence-grounding', "'same-becoming'",
+    'contact-answerability-anchor', 'same-occurrence-family',
+    'persistent-form-family', 'dws-family', 'opc-at',
+    'finite-observational-opacity', 'structural-fidelity-witness',
+    'g-reading-of', 'same-becoming-certified',
     'finite-non-reconstruction', 'encounter-incorporated-v2'
   ]) assert.ok(canonical.includes(required), `checkpoint missing ${required}`);
   const canonicalHash = fileHash(termPath);
@@ -153,10 +156,12 @@ try {
   assert.equal(run('stop-before-severance', ['stop', '--runtime-root', root]).status,
     'stopped'); active = false;
 
-  const tail = ",true,'finite-non-reconstruction']";
-  const occurrences = canonical.split(tail).length - 1;
-  assert.equal(occurrences, 1, 'expected one exact SameBecoming standing in authority joint');
-  const severed = canonical.replace(tail, ",false,'finite-non-reconstruction']");
+  const sameStanding = ",true],['contact-answerability-anchor'";
+  const occurrences = canonical.split(sameStanding).length - 1;
+  assert.equal(occurrences, 1,
+    'expected one exact SameBecoming certificate standing in authority joint');
+  const severed = canonical.replace(sameStanding,
+    ",false],['contact-answerability-anchor'");
   writeCheckpoint(root, severed);
   const rejected = run('restart-severed-same-becoming',
     ['start', '--runtime-root', root], 1);
@@ -179,8 +184,8 @@ try {
   assert.equal(fs.existsSync(forbiddenRoot), false, 'no command may create ~/.miter');
 
   const verdict = {
-    schema: 'miter-ama12-r3-authority-persistent-service-verdict-v1',
-    status: 'PASS-SUPPORTED-PERSISTENT-SERVICE-CLUSTER',
+    schema: 'miter-ama12-r3-authority-persistent-service-verdict-v2',
+    status: 'PASS-SUPPORTED-PERSISTENT-SERVICE-M24-M260-FOOTPRINT',
     phase: 'AMA-1.2', attempt: 'R3', checkpoint: 'R3-C2-in-progress',
     plan_commit: opening.plan_commit, plan_sha256: opening.plan_sha256,
     candidate_operator: 'effect_membranes/miter_assistant_operator_v2.pl',
@@ -191,6 +196,13 @@ try {
     duplicate_suppressed: true,
     effect_replay_suppressed: true,
     same_becoming_severance_rejected: true,
+    contact_answerability_present: true,
+    same_occurrence_present: true,
+    persistent_form_present: true,
+    dws_opc_present: true,
+    observational_opacity_present: true,
+    structural_fidelity_present: true,
+    qualified_generated_present: true,
     exact_restoration_recovers: true,
     idle_does_not_manufacture_checkpoint: true,
     forbidden_implicit_root_absent: true,
@@ -225,7 +237,7 @@ try {
     ].map(relative => ({path: relative,
       sha256: fileHash(path.join(repo, relative))}));
     writeJson(path.join(evidence, 'manifest.json'), {
-      schema: 'miter-ama12-r3-authority-persistent-service-manifest-v1',
+      schema: 'miter-ama12-r3-authority-persistent-service-manifest-v2',
       files: sources,
       artifacts: ['commands.json', 'verdict.json', 'canonical-checkpoint.term',
         'lkg.json', 'service-entry.metta'],
