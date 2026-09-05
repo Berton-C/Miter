@@ -1,0 +1,324 @@
+[
+  {
+    "name": "bootstrap",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"external_effects\":\"none\",\"lkg_sha256\":\"573ba4794ef2e294ce646146e29ee75dbdfd34cdf031bf4b798a8cc6f5917d09\",\"network_access\":\"none\",\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "external_effects": "none",
+      "lkg_sha256": "573ba4794ef2e294ce646146e29ee75dbdfd34cdf031bf4b798a8cc6f5917d09",
+      "network_access": "none",
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "bootstrapped"
+    }
+  },
+  {
+    "name": "bootstrap-idempotent",
+    "args": [
+      "bootstrap",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"runtime_root\":\"/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"already-bootstrapped\"}\n",
+    "stderr": "",
+    "reply": {
+      "runtime_root": "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "already-bootstrapped"
+    }
+  },
+  {
+    "name": "start",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":23078,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23078,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "running-status",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\": {\"observed_at_epoch\":1788637820.216328,\"schema\":\"miter-assistant-heartbeat-v1\",\"state\":\"assistant-started-v2\"},\"lkg\":\"verified\",\"pid\":23078,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"running\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": {
+        "observed_at_epoch": 1788637820.216328,
+        "schema": "miter-assistant-heartbeat-v1",
+        "state": "assistant-started-v2"
+      },
+      "lkg": "verified",
+      "pid": 23078,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "running"
+    }
+  },
+  {
+    "name": "submit-contact",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_2/scope-contact-v3.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-scope-contact-alpha\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"queued\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-scope-contact-alpha",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "queued"
+    }
+  },
+  {
+    "name": "duplicate-contact",
+    "args": [
+      "submit",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk",
+      "--event",
+      "/Users/claritymiter/miter/tests/fixtures/ama1_2/scope-contact-v3.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"input_id\":\"input-scope-contact-alpha\",\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"duplicate\"}\n",
+    "stderr": "",
+    "reply": {
+      "input_id": "input-scope-contact-alpha",
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "duplicate"
+    }
+  },
+  {
+    "name": "stop-before-restart",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":23078,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23078,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-canonical",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":23121,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23121,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "stop-before-severance",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":23121,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23121,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-severed-same-becoming",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":23145,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23145,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "severed-status",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\": {\"observed_at_epoch\":1788637822.710731,\"schema\":\"miter-assistant-heartbeat-v1\",\"state\":\"assistant-stopped\"},\"lkg\":\"verified\",\"pid\":23145,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": {
+        "observed_at_epoch": 1788637822.710731,
+        "schema": "miter-assistant-heartbeat-v1",
+        "state": "assistant-stopped"
+      },
+      "lkg": "verified",
+      "pid": 23145,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-restored",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":23254,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23254,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "stop-before-developmental-severance",
+    "args": [
+      "stop",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":23254,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23254,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-severed-m24-developmental-carrier",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "{\"pid\":23276,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"start-failed\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23276,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "start-failed"
+    }
+  },
+  {
+    "name": "developmental-severed-status",
+    "args": [
+      "status",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"heartbeat\": {\"observed_at_epoch\":1788637829.11072,\"schema\":\"miter-assistant-heartbeat-v1\",\"state\":\"assistant-stopped\"},\"lkg\":\"verified\",\"pid\":23276,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"stopped\"}\n",
+    "stderr": "",
+    "reply": {
+      "heartbeat": {
+        "observed_at_epoch": 1788637829.11072,
+        "schema": "miter-assistant-heartbeat-v1",
+        "state": "assistant-stopped"
+      },
+      "lkg": "verified",
+      "pid": 23276,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "stopped"
+    }
+  },
+  {
+    "name": "restart-developmental-restored",
+    "args": [
+      "start",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"pid\":23389,\"schema\":\"miter-assistant-operator-result-v1\",\"semantic_health\":\"not-claimed\",\"status\":\"started\"}\n",
+    "stderr": "",
+    "reply": {
+      "pid": 23389,
+      "schema": "miter-assistant-operator-result-v1",
+      "semantic_health": "not-claimed",
+      "status": "started"
+    }
+  },
+  {
+    "name": "panic",
+    "args": [
+      "panic",
+      "--runtime-root",
+      "/var/folders/rf/5j15q01d2qd126c4mh1j2nt40000gn/T/miter-r3-service-1urPPk"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "{\"history_deleted\":false,\"pid\":23389,\"schema\":\"miter-assistant-operator-result-v1\",\"status\":\"panicked\"}\n",
+    "stderr": "",
+    "reply": {
+      "history_deleted": false,
+      "pid": 23389,
+      "schema": "miter-assistant-operator-result-v1",
+      "status": "panicked"
+    }
+  }
+]

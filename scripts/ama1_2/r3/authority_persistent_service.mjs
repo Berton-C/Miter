@@ -18,7 +18,7 @@ const contactPath = path.join(repo, 'tests/fixtures/ama1_2/scope-contact-v3.json
 const bindingsPath = path.join(repo, 'tests/fixtures/ama1_2/scope-bindings.json');
 const forbiddenRoot = '/Users/bcb/.miter';
 const record = process.argv.includes('--record');
-const evidenceRelative = 'evidence/AMA-1.2/R3/authority-persistent-service-002';
+const evidenceRelative = 'evidence/AMA-1.2/R3/authority-persistent-service-003';
 const evidence = path.join(repo, evidenceRelative);
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const fileHash = file => sha256(fs.readFileSync(file));
@@ -130,9 +130,19 @@ try {
     'persistent-form-family', 'dws-family', 'opc-at',
     'finite-observational-opacity', 'structural-fidelity-witness',
     'g-reading-of', 'same-becoming-certified',
+    'm24-developmental-organization-v1', 'formal-carrier-v1',
+    'virtual-equipment-host-v1', 'carrier-open-discharge-v1',
+    'prospective-attachment-v1', 'derived-selfgen-v1',
+    'interpretation-state-v1', 'availability-state-v1',
+    'affordance-state-v1', 'traction-state-v1', 'frame-plurality-v1',
+    'writer-boundary-v1', 'branch-transaction',
+    'm24-developmental-grounding',
     'finite-non-reconstruction', 'encounter-incorporated-v2'
   ]) assert.ok(canonical.includes(required), `checkpoint missing ${required}`);
   const canonicalHash = fileHash(termPath);
+  const canonicalBytes = fs.statSync(termPath).size;
+  assert.ok(canonicalBytes <= 300000,
+    `single-contact checkpoint unexpectedly expanded to ${canonicalBytes} bytes`);
   assert.equal(jsonCount(path.join(root, 'outbox')), 1,
     'one local no-network effect should be committed');
 
@@ -177,6 +187,37 @@ try {
   assert.equal(restored.status, 'started'); active = true;
   await sleep(500);
   assert.equal(fileHash(termPath), canonicalHash);
+  assert.equal(run('stop-before-developmental-severance',
+    ['stop', '--runtime-root', root]).status, 'stopped'); active = false;
+
+  const developmentalStanding =
+    "['discharge-standing',unresolved,'soul-judgment-required'],'non-equivalent'";
+  assert.ok(canonical.includes(developmentalStanding),
+    'expected a persisted M24 open/discharge non-equivalence standing');
+  const developmentalOccurrences =
+    canonical.split(developmentalStanding).length - 1;
+  assert.ok(developmentalOccurrences > 0,
+    'expected at least one persisted developmental standing');
+  const developmentalSevered = canonical.replaceAll(developmentalStanding,
+    "['discharge-standing',closed,'carrier-state-implied-closure'],equivalent");
+  assert.notEqual(developmentalSevered, canonical,
+    'developmental severance must change the persisted authority joint');
+  writeCheckpoint(root, developmentalSevered);
+  const developmentalRejected = run('restart-severed-m24-developmental-carrier',
+    ['start', '--runtime-root', root], 1);
+  assert.equal(developmentalRejected.status, 'start-failed');
+  await sleep(200);
+  assert.notEqual(run('developmental-severed-status',
+    ['status', '--runtime-root', root]).status, 'running');
+  assert.equal(jsonCount(path.join(root, 'outbox')), 1,
+    'rejected developmental restore must not replay an effect');
+
+  writeCheckpoint(root, canonical);
+  const developmentalRestored = run('restart-developmental-restored',
+    ['start', '--runtime-root', root]);
+  assert.equal(developmentalRestored.status, 'started'); active = true;
+  await sleep(500);
+  assert.equal(fileHash(termPath), canonicalHash);
   assert.equal(run('panic', ['panic', '--runtime-root', root]).status, 'panicked');
   active = false;
   assert.equal(fs.existsSync(termPath), true);
@@ -184,18 +225,23 @@ try {
   assert.equal(fs.existsSync(forbiddenRoot), false, 'no command may create ~/.miter');
 
   const verdict = {
-    schema: 'miter-ama12-r3-authority-persistent-service-verdict-v2',
-    status: 'PASS-SUPPORTED-PERSISTENT-SERVICE-M24-M260-FOOTPRINT',
+    schema: 'miter-ama12-r3-authority-persistent-service-verdict-v3',
+    status: 'PASS-SUPPORTED-PERSISTENT-SERVICE-M24-DEVELOPMENTAL-M260-FOOTPRINT',
     phase: 'AMA-1.2', attempt: 'R3', checkpoint: 'R3-C2-in-progress',
     plan_commit: opening.plan_commit, plan_sha256: opening.plan_sha256,
     candidate_operator: 'effect_membranes/miter_assistant_operator_v2.pl',
     service_entry: 'AssistantServiceStartV2',
     lkg_v2_verified: true,
     canonical_disk_checkpoint: true,
+    canonical_checkpoint_bytes: canonicalBytes,
+    bounded_checkpoint_representation: true,
     fresh_process_restore: true,
     duplicate_suppressed: true,
     effect_replay_suppressed: true,
     same_becoming_severance_rejected: true,
+    m24_developmental_carrier_persisted: true,
+    m24_developmental_participation_precedes_movement: true,
+    m24_developmental_severance_rejected_on_restart: true,
     contact_answerability_present: true,
     same_occurrence_present: true,
     persistent_form_present: true,
@@ -237,7 +283,7 @@ try {
     ].map(relative => ({path: relative,
       sha256: fileHash(path.join(repo, relative))}));
     writeJson(path.join(evidence, 'manifest.json'), {
-      schema: 'miter-ama12-r3-authority-persistent-service-manifest-v2',
+      schema: 'miter-ama12-r3-authority-persistent-service-manifest-v3',
       files: sources,
       artifacts: ['commands.json', 'verdict.json', 'canonical-checkpoint.term',
         'lkg.json', 'service-entry.metta'],

@@ -1,0 +1,7 @@
+true
+true
+(runtime-case m24-sever false assistant-contact-held 0)
+(runtime-case m260-sever false assistant-contact-held 0)
+(runtime-case malformed-contact assistant-contact-rejected 0)
+(runtime-case neutral-order assistant-contact-incorporated 1 1)
+(runtime-case duplicate assistant-contact-duplicate 1 1)

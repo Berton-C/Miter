@@ -1,0 +1,10 @@
+true
+true
+(m24-developmental-case canonical true true true true true true true true true true true true)
+(m24-developmental-case open-discharge-severed false false false)
+(m24-developmental-case derived-selfgen true true true true false)
+(m24-developmental-case lifecycle true true true true true true)
+(m24-developmental-case recovery true false)
+(m24-developmental-case stuck true false)
+(m24-developmental-case plurality true false)
+(m24-developmental-case branch-transaction true false)

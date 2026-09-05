@@ -14,7 +14,7 @@ const swi = '/opt/homebrew/bin/swipl';
 const plan = 'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/plan.json';
 const fixtureRoot = 'tests/fixtures/ama1_2/r3';
 const record = process.argv.includes('--record');
-const evidenceRelative = 'evidence/AMA-1.2/R3/authority-runtime-join-002';
+const evidenceRelative = 'evidence/AMA-1.2/R3/authority-runtime-join-003';
 const evidence = path.join(repo, evidenceRelative);
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const hashFile = relative => sha256(fs.readFileSync(path.join(repo, relative)));
@@ -56,6 +56,7 @@ const files = [
   `${fixtureRoot}/authority-runtime-footprint.metta`,
   `${fixtureRoot}/authority-runtime-restore.metta`,
   `${fixtureRoot}/authority-runtime-restore-severed.metta`,
+  `${fixtureRoot}/m24-developmental-runtime.metta`,
   'scripts/ama1_2/r3/authority_runtime_join.mjs',
   'docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/swift-high-fidelity-procedure.md'
 ];
@@ -106,9 +107,21 @@ assert.deepEqual(lines(severedRestore, '(restore-case '), [
   '(restore-case severed-same-becoming assistant-restore-rejected-v2 0 0)'
 ]);
 
+const developmental = runFixture(`${fixtureRoot}/m24-developmental-runtime.metta`);
+assert.deepEqual(lines(developmental, '(m24-developmental-case '), [
+  '(m24-developmental-case canonical true true true true true true true true true true true true)',
+  '(m24-developmental-case open-discharge-severed false false false)',
+  '(m24-developmental-case derived-selfgen true true true true false)',
+  '(m24-developmental-case lifecycle true true true true true true)',
+  '(m24-developmental-case recovery true false)',
+  '(m24-developmental-case stuck true false)',
+  '(m24-developmental-case plurality true false)',
+  '(m24-developmental-case branch-transaction true false)'
+]);
+
 const verdict = {
-  schema: 'miter-ama12-r3-authority-runtime-join-verdict-v2',
-  status: 'PASS-NATIVE-REACTOR-M24-M260-FOOTPRINT-NOT-YET-SUPPORTED-SERVICE',
+  schema: 'miter-ama12-r3-authority-runtime-join-verdict-v3',
+  status: 'PASS-NATIVE-REACTOR-M24-DEVELOPMENTAL-M260-FOOTPRINT',
   phase: 'AMA-1.2', attempt: 'R3', checkpoint: 'R3-C2-in-progress',
   plan_commit: opening.plan_commit, plan_sha256: opening.plan_sha256,
   cluster: 'M24-contact-provenance--M260-occurrence-participation',
@@ -128,12 +141,20 @@ const verdict = {
   observational_opacity_causal: true,
   structural_fidelity_causal: true,
   qualified_generated_causal: true,
+  m24_developmental_carrier_causal_before_movement: true,
+  m24_open_discharge_non_equivalence: true,
+  m24_derived_self_generation_closed: true,
+  m24_four_stage_lifecycle_discriminated: true,
+  m24_exact_recovery_discriminated: true,
+  m24_structured_stuck_discriminated: true,
+  m24_frame_plurality_discriminated: true,
+  m24_branch_transaction_discriminated: true,
   supported_persistent_service: false,
   disk_checkpoint_restart: false,
   atlas_rows_promoted_to_proven_runtime: 0,
   model_calls: 0, memory_reads: 0, mattermost_payload_reads: 0,
   network_calls: 0, external_effects: 0,
-  note: 'The cluster now causes the native assistant encounter and restore boundary. It is not yet reachable through the supported operator/service, so its 20 rows remain below PROVEN-RUNTIME.'
+  note: 'The native join now makes the M24 developmental carrier a material participant before movement. This verifier does not itself establish supported-service reachability; the paired persistent-service evidence does.'
 };
 
 if (record) {
@@ -143,21 +164,22 @@ if (record) {
     typeof value === 'string' ? value : `${JSON.stringify(value, null, 2)}\n`,
     {mode: 0o600});
   for (const [name, run] of Object.entries({smoke, matrix, restore,
-    footprint, 'restore-severed': severedRestore})) {
+    footprint, 'restore-severed': severedRestore, developmental})) {
     write(`${name}.stdout`, run.stdout);
     write(`${name}.stderr`, run.stderr);
     write(`${name}-process.json`, {...run, stdout: undefined, stderr: undefined});
   }
   write('verdict.json', verdict);
   write('manifest.json', {
-    schema: 'miter-ama12-r3-authority-runtime-join-manifest-v2',
+    schema: 'miter-ama12-r3-authority-runtime-join-manifest-v3',
     files: files.map(relative => ({path: relative, sha256: hashFile(relative)})),
     evidence_files: ['smoke.stdout', 'smoke.stderr', 'smoke-process.json',
       'matrix.stdout', 'matrix.stderr', 'matrix-process.json',
       'footprint.stdout', 'footprint.stderr', 'footprint-process.json',
       'restore.stdout', 'restore.stderr', 'restore-process.json',
       'restore-severed.stdout', 'restore-severed.stderr',
-      'restore-severed-process.json', 'verdict.json'],
+      'restore-severed-process.json', 'developmental.stdout',
+      'developmental.stderr', 'developmental-process.json', 'verdict.json'],
     contains_credentials: false, contains_private_content: false
   });
 }

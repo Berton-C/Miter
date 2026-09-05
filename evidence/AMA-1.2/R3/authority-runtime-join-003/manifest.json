@@ -1,0 +1,76 @@
+{
+  "schema": "miter-ama12-r3-authority-runtime-join-manifest-v3",
+  "files": [
+    {
+      "path": "src/constitutive_participation_v2.metta",
+      "sha256": "0034ecfaf44a3bb66f9c6fd94f0addafe910921a3b108c49349743d2ee4d9541"
+    },
+    {
+      "path": "src/assistant_reactor_v2.metta",
+      "sha256": "0ad9495f0e1ef8d78ac0fa72d41f52b5a24dd8142ee1fb4ba15ae3bc68e867b7"
+    },
+    {
+      "path": "src/bootstrap_assistant_v2.metta",
+      "sha256": "2dc14796118a22573256bfc401e2917ed70d003534067854939ff790b26afa2f"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-data.metta",
+      "sha256": "663313d04de9fd914d6af21700c12ece17b768747c884d8fa0c8b5e702932322"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-join-smoke.metta",
+      "sha256": "f5af28686c25c73acf3a8dc2d9de6a142cd56f529d767d200b8f748966321763"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-causal-matrix.metta",
+      "sha256": "39de811f9588b966309256c26c592cb2ee1a9ae1655874c31b6260fdb1fdad87"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-footprint.metta",
+      "sha256": "64fa0269507c6df978554cbd555fa58ae8832ea71b4cb23fa08fbcbe098ec530"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-restore.metta",
+      "sha256": "00caa3b6ff6a52595339aec82ff103fa48a41cc81c00fa3cac4b3cba6b3ec4a5"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/authority-runtime-restore-severed.metta",
+      "sha256": "78f492fd713b840b720b290ed77b00cec51eef2eb7e9359bdaee141b1da097c8"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/r3/m24-developmental-runtime.metta",
+      "sha256": "d30560c00075072edb35f7a2129bbe5a7c09055caba471caef2f45fcada77f74"
+    },
+    {
+      "path": "scripts/ama1_2/r3/authority_runtime_join.mjs",
+      "sha256": "da250b0617a2d4818b137d6c54ee4758515b6c997997366065fa936a53ad4926"
+    },
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/swift-high-fidelity-procedure.md",
+      "sha256": "281e7149c791f7a560c31317d571246fd9b1f3cd83adbabcc86744a8ce000adb"
+    }
+  ],
+  "evidence_files": [
+    "smoke.stdout",
+    "smoke.stderr",
+    "smoke-process.json",
+    "matrix.stdout",
+    "matrix.stderr",
+    "matrix-process.json",
+    "footprint.stdout",
+    "footprint.stderr",
+    "footprint-process.json",
+    "restore.stdout",
+    "restore.stderr",
+    "restore-process.json",
+    "restore-severed.stdout",
+    "restore-severed.stderr",
+    "restore-severed-process.json",
+    "developmental.stdout",
+    "developmental.stderr",
+    "developmental-process.json",
+    "verdict.json"
+  ],
+  "contains_credentials": false,
+  "contains_private_content": false
+}

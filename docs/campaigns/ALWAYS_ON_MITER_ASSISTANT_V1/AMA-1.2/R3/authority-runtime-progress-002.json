@@ -1,0 +1,146 @@
+{
+  "schema": "miter-ama12-r3-authority-runtime-progress-v2",
+  "phase": "AMA-1.2",
+  "attempt": "R3",
+  "checkpoint": "R3-C2-in-progress",
+  "waypoint": "C2-M24-developmental-carrier-003",
+  "complete_atlas": {
+    "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/authority-completion-atlas.json",
+    "sha256": "702724adc491ddb82863cfb8aa621e5bdf7d105d47554f621fb6811c1f3ee381",
+    "export_count": 114
+  },
+  "prior_progress": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/authority-runtime-progress-001.json",
+  "waypoint_law": "This file is an additive delta over the complete 114-row atlas and prior progress ledger. Rows not named here retain their prior or baseline standing and remain mandatory. No absent consumer, theorem status, or fixture result removes an inherited obligation. C2 cannot close until every operational row is PROVEN-RUNTIME and every genuine boundary row is REPRESENTED-BOUNDARY through the same supported persistent service.",
+  "same_organism": {
+    "supported_operator": "bin/miter",
+    "persistent_service_entry": "AssistantServiceStartV2",
+    "native_cognition": [
+      "src/authority_inheritance_v1.metta",
+      "src/constitutive_participation_v2.metta",
+      "src/assistant_reactor_v2.metta"
+    ],
+    "parallel_runtime_created": false,
+    "fixture_completion_claimed": false
+  },
+  "evidence": [
+    {
+      "path": "evidence/AMA-1.2/R3/authority-runtime-join-003/verdict.json",
+      "sha256": "002eef428ce0f10efedf5580672c8f7fe3c08c0dbded30f835e436303d03a020",
+      "standing": "native causal discrimination and assistant-reactor join"
+    },
+    {
+      "path": "evidence/AMA-1.2/R3/authority-persistent-service-003/verdict.json",
+      "sha256": "e8e342108c5f57142f7df2d32667a1db4ef9d9a3c7f027892497a3810964e276",
+      "standing": "supported-service persistence, restart, severance rejection, and exact restoration"
+    }
+  ],
+  "row_changes": [
+    {
+      "id": "M24-E06",
+      "standing_before": "GAP",
+      "standing_after": "PARTIAL",
+      "persistent_runtime_consumer": "M24DevelopmentalOrganization -> CP2AuthorityParticipants -> CPEncounter -> AssistantServiceStartV2",
+      "positive_difference": "The exact virtual-equipment host contract is now stored as material pre-movement organization rather than implied by a host implementation.",
+      "severance_evidence": "Native M24DevelopmentalOrganizationValid discriminates the exact host vocabulary; an independent supported-service host-interface severance is still required.",
+      "remaining_dependency": "Prove a host-interface alteration is rejected through the supported persistent service without relying only on whole-organization equality."
+    },
+    {
+      "id": "M24-E08",
+      "standing_before": "GAP",
+      "standing_after": "PROVEN-RUNTIME",
+      "persistent_runtime_consumer": "M24CarrierOpenDischargeValid -> CP2M24ContactOrganizationValid -> CP2AuthorityParticipants -> CPEncounter -> AssistantServiceStartV2 restore",
+      "positive_difference": "Carrier openness and discharge remain distinct, explicitly non-equivalent standings before movement and across restart.",
+      "severance_evidence": "The native matrix rejects collapsed open/discharge identity; the supported-service trial replaces every persisted non-equivalence with collapsed equivalence and rejects restart with no effect replay; restoring exact state recovers the service.",
+      "remaining_dependency": "None for the finite PoC non-equivalence claim; no claim is made about exhaustive discharge semantics."
+    },
+    {
+      "id": "M24-E09",
+      "standing_before": "GAP",
+      "standing_after": "PARTIAL",
+      "persistent_runtime_consumer": "M24ProspectiveFor and M24InitialLifecycle inside the persisted formal carrier",
+      "positive_difference": "A lawful contact now begins at candidate standing with explicit unresolved probe, authority, durability, and discharge standings; native transitions require prior-stage witnesses.",
+      "severance_evidence": "The native lifecycle matrix rejects an authoritative jump without candidate and bounded-probe history.",
+      "remaining_dependency": "Drive candidate-to-probe-to-authoritative-to-durable transitions from actual consequence-bearing assistant continuations and prove them through restart."
+    },
+    {
+      "id": "M24-E10",
+      "standing_before": "GAP",
+      "standing_after": "PARTIAL",
+      "persistent_runtime_consumer": "M24DerivedSelfGen inside the developmental organization participating before movement",
+      "positive_difference": "Self-generation is computed only through typed internal-generation and render derivations and remains separate from fresh external support.",
+      "severance_evidence": "The native matrix proves transitive internal closure and rejects an external-input node from SelfGen.",
+      "remaining_dependency": "Exercise a non-empty mixed derivation graph through the supported persistent service and show that derived repetition cannot acquire fresh-support authority."
+    },
+    {
+      "id": "M24-E11",
+      "standing_before": "GAP",
+      "standing_after": "PARTIAL",
+      "persistent_runtime_consumer": "M24AdvanceAuthoritative is available to the same native module; the live carrier truthfully remains authority-unresolved",
+      "positive_difference": "Authority promotion now requires the exact prior probe standing, contact seal and route, route discrimination, fresh non-SelfGen contribution, Soul admission, and live continuation.",
+      "severance_evidence": "Native validation rejects incomplete or self-generated governing support.",
+      "remaining_dependency": "Connect the governing package to a real post-consequence continuation in the supported service and prove independent severance/restoration."
+    },
+    {
+      "id": "M24-E14",
+      "standing_before": "GAP",
+      "standing_after": "PARTIAL",
+      "persistent_runtime_consumer": "M24AffordanceStateFor inside the persisted developmental organization",
+      "positive_difference": "Prospective reach is live while retrospective affordance remains explicitly unresolved and cannot be inferred from possibility.",
+      "severance_evidence": "M24AffordanceStateValid preserves distinct typed prospective and retrospective fields.",
+      "remaining_dependency": "Exercise consequence and next-cut uptake so retrospective affordance is earned or contradicted rather than merely represented."
+    },
+    {
+      "id": "M24-E15",
+      "standing_before": "GAP",
+      "standing_after": "PARTIAL",
+      "persistent_runtime_consumer": "M24TractionStateFor inside the persisted developmental organization",
+      "positive_difference": "Traction is a structured relation; discrimination, contact starvation, frame death, and Stuck remain unresolved until trajectory evidence exists rather than being assigned favorable defaults.",
+      "severance_evidence": "The native matrix accepts only the full relational Stuck witness and rejects a superficially similar non-discriminating contact case.",
+      "remaining_dependency": "Accumulate consequence-bearing trajectory observations in the supported service and make the computed relation alter a later continuation."
+    }
+  ],
+  "refined_partial_rows": [
+    {
+      "id": "M24-E07",
+      "standing": "PARTIAL",
+      "advance": "The cut-indexed formal carrier and exact contact-answerability anchor now persist and materially participate before movement.",
+      "remaining_dependency": "Independently sever the anchor through supported-service restart and prove later consequence answerability."
+    },
+    {
+      "id": "M24-E12",
+      "standing": "PARTIAL",
+      "advance": "A provenance-bearing interpretation and governed InterpretationUse now persist in the formal carrier before movement.",
+      "remaining_dependency": "Prove a later movement changes when governed use is present, and rejects unauthorized or lineage-mismatched use through the supported service."
+    },
+    {
+      "id": "M24-E13",
+      "standing": "PARTIAL",
+      "advance": "Context-indexed availability is persisted and native recovery requires an exact dependent semantic witness.",
+      "remaining_dependency": "Produce an actual loss and reintroduction in the running assistant and prove dependent semantic recovery across restart."
+    },
+    {
+      "id": "M24-E16",
+      "standing": "PARTIAL",
+      "advance": "The live carrier records a non-amalgamated frame set; native discrimination supports plural scoped joint use with retained tension.",
+      "remaining_dependency": "Run plural live frames through movement formation in the supported service."
+    },
+    {
+      "id": "M24-E17",
+      "standing": "PARTIAL",
+      "advance": "Closed writer vocabulary and a branch transaction now persist in the pre-movement organization.",
+      "remaining_dependency": "Make that semantic transaction qualify the actual branch-local state commit rather than accompany the mechanical commit as evidence."
+    }
+  ],
+  "standing_counts_all_114": {
+    "proven_runtime": 3,
+    "represented_boundary": 0,
+    "partial": 53,
+    "gap": 58,
+    "experimental_choice_proven_runtime": 0,
+    "unresolved_observed": 0,
+    "fail": 0,
+    "sum": 114
+  },
+  "c2_closure": false,
+  "next_dependency_frontier": "Make actual continuation and consequence mutate the M24 lifecycle, retrospective affordance, availability/recovery, traction, and branch-local organization in the same service; then continue upstream into M25 R/A/P over that enriched cut."
+}

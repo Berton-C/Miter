@@ -1,0 +1,9 @@
+true
+true
+(footprint-case canonical true true true true true true true true true true)
+(footprint-case structural-fidelity-severed true true false false)
+(footprint-case opacity-severed false false false)
+(footprint-case persistent-form-severed true true true false false)
+(footprint-case opc-severed true true true false false)
+(footprint-case qualified-generated-severed false)
+(footprint-case contact-answerability-severed false)

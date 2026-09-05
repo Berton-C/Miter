@@ -170,17 +170,50 @@
 (= (CP2AuthorityParticipants $contact $m24-organization $m260-pre)
    (let* (($id (index-atom $contact 1))
           ($scope (CPContactScope $contact))
-          ($occurrence (index-atom $contact 6)))
+          ($occurrence (index-atom $contact 6))
+          ($developmental (CP2M24DevelopmentalOrganization $m24-organization))
+          ($m24-reference (m24-organization-reference $id
+            (index-atom $m24-organization 3)
+            (index-atom $m24-organization 4)))
+          ($m260-reference (m260-pre-movement-reference $occurrence
+            (index-atom $m260-pre 8)))
+          ($developmental-reference (m24-developmental-reference $id
+            (index-atom $developmental 3)
+            (index-atom $developmental 13))))
      ((participant-contribution (m24-participation $id) native-authority $scope
         (lineage Inquiry-24 $id)
         (participant-relation-claim contact-occurrence-grounding support
-          (m24-evidence $m24-organization))
+          (m24-evidence $m24-reference))
         supported no-contact-no-movement-authority)
       (participant-contribution (m260-participation $id) native-authority $scope
         (lineage Inquiry-26.0 $occurrence)
         (participant-relation-claim contact-occurrence-grounding support
-          (m260-evidence $m260-pre))
+          (m260-evidence $m260-reference))
+        supported no-contact-no-movement-authority)
+      (participant-contribution (m24-developmental-participation $id)
+        native-authority $scope (lineage Inquiry-24-developmental $id)
+        (participant-relation-claim m24-developmental-grounding support
+          (m24-developmental-evidence $developmental-reference))
+        supported no-contact-no-movement-authority)
+      (participant-contribution (m260-developmental-participation $id)
+        native-authority $scope (lineage Inquiry-26.0-bridge $occurrence)
+        (participant-relation-claim m24-developmental-grounding support
+          (occurrence-accepts-developmental-carrier $m260-reference
+            $developmental-reference))
         supported no-contact-no-movement-authority))))
+
+(= (CP2M24DevelopmentalOrganization $m24-organization)
+   (if (CPShape $m24-organization m24-contact-organization 7)
+     (let $joined (index-atom $m24-organization 6)
+       (if (CPShape $joined derivation-and-developmental-organization 3)
+         (index-atom $joined 2)
+         (m24-developmental-organization-unresolved missing-developmental-carrier)))
+     (m24-developmental-organization-unresolved malformed-contact-organization)))
+
+(= (CP2M24ContactOrganizationValid $m24 $m24-organization)
+   (and (== $m24-organization (M24ContactOrganization $m24))
+        (M24DevelopmentalOrganizationValid
+          (CP2M24DevelopmentalOrganization $m24-organization))))
 
 (= (CP2ContactWithAuthorityParticipants $contact $participants)
    (if (CPShape $contact contact-v2 11)
@@ -254,7 +287,7 @@
             ($g-reading (index-atom $joint 7))
             ($same (index-atom $joint 8)))
        (and (M24ContactValid $m24)
-        (and (== $m24-organization (M24ContactOrganization $m24))
+        (and (CP2M24ContactOrganizationValid $m24 $m24-organization)
          (and (CP2M260PreMovementValid $m260 $pre)
           (and (== (index-atom $joint 6) true)
            (and (CP2SameBecomingCertificateValid $m260 $same)
@@ -276,41 +309,51 @@
 (= (CP2AuthorityJointMatchesEncounter $joint $encounter)
    (if (and (CP2AuthorityJointV2Valid $joint)
             (CPShape $encounter constitutive-encounter 7))
-     (== (CP2JointMovementReference $joint)
-       (CP2MovementReference (index-atom $encounter 1)
-         (index-atom $encounter 5)))
+     (and (== (CP2JointMovementReference $joint)
+            (CP2MovementReference (index-atom $encounter 1)
+              (index-atom $encounter 5)))
+          (and (CPDRelationKnown (index-atom $encounter 1)
+                 contact-occurrence-grounding)
+               (CPDRelationKnown (index-atom $encounter 1)
+                 m24-developmental-grounding)))
      (CP2AuthorityJointV1Valid $joint)))
 
+(= (CP2EncounterFromAuthorityOrganizations $contact $predecessor
+      $m24 $m24-organization $m260 $m260-pre)
+   (if (and (M24ContactValid $m24)
+         (and (CP2M24ContactOrganizationValid $m24 $m24-organization)
+          (and (M260OrganizationValid $m260)
+               (CP2M260PreMovementValid $m260 $m260-pre))))
+     (let* (($authority-participants
+              (CP2AuthorityParticipants $contact $m24-organization $m260-pre))
+              ($participating-contact
+                (CP2ContactWithAuthorityParticipants $contact $authority-participants))
+              ($encounter (CPEncounter $participating-contact $predecessor)))
+       (if (CPShape $encounter constitutive-encounter 7)
+         (let* (($cut (index-atom $encounter 1))
+                ($movement (index-atom $encounter 5))
+                ($same (CP2SameBecomingCertificate $m260 $cut $movement))
+                ($g-reading (CP2GReading $m260 $m260-pre $same))
+                ($joint (authority-participation-joint-v2
+                  (index-atom $contact 1) $m24 $m24-organization $m260 $m260-pre
+                  (CPDRelationKnown $cut contact-occurrence-grounding)
+                  $g-reading $same (index-atom $m24-organization 3)
+                  finite-non-reconstruction)))
+           (if (CP2AuthorityJointMatchesEncounter $joint $encounter)
+             (authority-grounded-encounter $joint $encounter)
+             (authority-grounded-encounter-unresolved joint-not-causal $joint)))
+         (authority-grounded-encounter-unresolved encounter-not-formed $encounter)))
+     (authority-grounded-encounter-unresolved
+       contact-or-authority-organization-not-grounded)))
+
 (= (CP2EncounterFromAuthority $contact $predecessor $m24 $m260)
-   (let* (($m24-valid (M24ContactValid $m24))
-          ($m24-organization (M24ContactOrganization $m24))
+   (let* (($m24-organization (M24ContactOrganization $m24))
           ($m260-valid (M260OrganizationValid $m260))
           ($m260-pre (if $m260-valid
             (CP2M260PreMovementOrganization $m260)
             (pre-movement-occurrence-organization-unresolved))))
-     (if (and $m24-valid
-           (and $m260-valid (CP2M260PreMovementValid $m260 $m260-pre)))
-       (let* (($authority-participants
-                (CP2AuthorityParticipants $contact $m24-organization $m260-pre))
-              ($participating-contact
-                (CP2ContactWithAuthorityParticipants $contact $authority-participants))
-              ($encounter (CPEncounter $participating-contact $predecessor)))
-         (if (CPShape $encounter constitutive-encounter 7)
-           (let* (($cut (index-atom $encounter 1))
-                  ($movement (index-atom $encounter 5))
-                  ($same (CP2SameBecomingCertificate $m260 $cut $movement))
-                  ($g-reading (CP2GReading $m260 $m260-pre $same))
-                  ($joint (authority-participation-joint-v2
-                    (index-atom $contact 1) $m24 $m24-organization $m260 $m260-pre
-                    (CPDRelationKnown $cut contact-occurrence-grounding)
-                    $g-reading $same (index-atom $m24-organization 3)
-                    finite-non-reconstruction)))
-             (if (CP2AuthorityJointMatchesEncounter $joint $encounter)
-               (authority-grounded-encounter $joint $encounter)
-               (authority-grounded-encounter-unresolved joint-not-causal $joint)))
-           (authority-grounded-encounter-unresolved encounter-not-formed $encounter)))
-       (authority-grounded-encounter-unresolved
-         contact-or-occurrence-not-grounded (m24 $m24-valid) (m260 $m260-valid)))))
+     (CP2EncounterFromAuthorityOrganizations $contact $predecessor
+       $m24 $m24-organization $m260 $m260-pre)))
 
 (= (CP2Encounter $contact $predecessor)
    (let* (($m24 (CP2M24Contact $contact))

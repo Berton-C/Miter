@@ -139,3 +139,23 @@
        (state ((active-organization $scope $cut $movement)))
        (history ((assistant-history encounter (index-atom $contact 1)
          $scope $summary))))))
+
+(= (R3M24DevelopmentalWithCollapsedDischarge $developmental)
+   (m24-developmental-organization-v1
+     (index-atom $developmental 1) (index-atom $developmental 2)
+     (carrier-open-discharge-v1
+       (index-atom (index-atom $developmental 3) 1)
+       (discharge-standing closed carrier-state-implied-closure) equivalent)
+     (index-atom $developmental 4) (index-atom $developmental 5)
+     (index-atom $developmental 6) (index-atom $developmental 7)
+     (index-atom $developmental 8) (index-atom $developmental 9)
+     (index-atom $developmental 10) (index-atom $developmental 11)
+     (index-atom $developmental 12) (index-atom $developmental 13)))
+
+(= (R3M24OrganizationWithDevelopmental $organization $developmental)
+   (m24-contact-organization
+     (index-atom $organization 1) (index-atom $organization 2)
+     (index-atom $organization 3) (index-atom $organization 4)
+     (index-atom $organization 5)
+     (derivation-and-developmental-organization
+       (index-atom (index-atom $organization 6) 1) $developmental)))
