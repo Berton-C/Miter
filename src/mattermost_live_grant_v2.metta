@@ -106,3 +106,18 @@
    (grant $grantHash) (berton-consent affirmed)
    (haley-consent unresolved) (activation held))
   (ama12-ratified-grant-held source-scope-or-authority-mismatch)))
+
+; Stable identity resolution is mechanical evidence only.  Payload cognition,
+; memory, model use, and egress remain held until the second human's disclosure
+; affirmation is separately witnessed.
+(= (AMA12IdentityStanding $observation $candidateHash $transportHash)
+ (if (== $observation
+      (ama12-identity-observation $candidateHash $transportHash
+       server-resolved team-resolved group-resolved exact-three-members
+       bot-resolved berton-resolved haley-resolved denied-control-resolved
+       unique-group-count 1 post-content-reads 0 message-writes 0 api-mutations 0))
+  (ama12-private-identity-bound
+   (candidate $candidateHash) (transport $transportHash)
+   (haley-disclosure unresolved) (ordinary-cognition held)
+   (memory-admission held) (model-use held) (egress held))
+  (ama12-private-identity-held identity-or-scope-mismatch)))

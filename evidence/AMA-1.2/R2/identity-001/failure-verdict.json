@@ -1,0 +1,12 @@
+{
+  "schema": "miter-ama12-r2-identity-preflight-failure-v1",
+  "status": "FAILED-CLOSED-BEFORE-BINDING",
+  "reason": "The initial exact-group probe returned contract-failed and created no private binding.",
+  "credential_values_returned": false,
+  "post_content_reads": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "api_mutations": 0,
+  "activated": false,
+  "superseded_by_diagnostic_attempt": "identity-002"
+}
