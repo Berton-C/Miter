@@ -1,0 +1,70 @@
+{
+  "schema": "miter-ama12-four-plane-continuity-runtime-v1",
+  "swipl": "SWI-Prolog version 10.0.2 for arm64-darwin",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "plan_commit": "61c1c21fc19b0b1d8bb84b46e717be2642c52499",
+  "simulated_gap": "2026-06-02 to 2026-09-05",
+  "external_network_calls": 0,
+  "model_calls": 0,
+  "chroma_calls": 0,
+  "private_memory_reads": 0,
+  "external_effects": 0,
+  "sources": [
+    {
+      "path": "config/miter-assistant-continuity-v1.json",
+      "sha256": "ebbe4dd46d7f56f3b6ec57016a6c7f2e9edc109a02f79fa77d49c352cfc2d033"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_continuity_v1.pl",
+      "sha256": "c53cdae27357c9efa6d4cf60cb0207d32b5899d064314a2aae35c864632ebba3"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_service_v1.pl",
+      "sha256": "eec033dd960cd47c81abd00e9ed57f0de405aec577d978481d6536e2997f781c"
+    },
+    {
+      "path": "effect_membranes/miter_assistant_operator_v1.pl",
+      "sha256": "d45beea0f07bd9740937bfe5114a9b5e58a82a4a5035f5cca4fabe643dec4775"
+    },
+    {
+      "path": "effect_membranes/miter_continuity.pl",
+      "sha256": "174b992a6cd486f0c48adef1391dfc570f5688da6d28185f954b2815ef45bba4"
+    },
+    {
+      "path": "effect_membranes/miter_store.pl",
+      "sha256": "b5b1906ede97d278ff6cfeba8001873a8f0192d308e87bf8cb97f0c51fcd4b39"
+    },
+    {
+      "path": "src/assistant_scope_continuity_v1.metta",
+      "sha256": "d33569f18498d6287a5e75501d6471075f1d6b607204a8f00f6b39f342e31b6d"
+    },
+    {
+      "path": "src/assistant_reactor_v1.metta",
+      "sha256": "c59728b746302bd8ccbe812e9389e2622d829a4bf0bd87ee967f9a23560d403e"
+    },
+    {
+      "path": "src/constitutive_participation_v1.metta",
+      "sha256": "60a2d94ea58426c7d7cfbd6552250cf1772240fecf166208f555b8c836f2c890"
+    },
+    {
+      "path": "src/bootstrap_assistant_v1.metta",
+      "sha256": "71210427f71e961e61c6be1c4aee8f2d30c69a8dc816cb78078ec73f7170da97"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/scope-bindings.json",
+      "sha256": "8e143fef5943d7dd5c09f365dc6e9080ba00aad1f9d93beb304843598dcd0fd7"
+    },
+    {
+      "path": "tests/fixtures/ama1_2/scope-contact-v3.json",
+      "sha256": "9dc2fcc16be4151b8ac2576bf529f903d1d168d6df8c630f4cd63eeb03b44177"
+    },
+    {
+      "path": "tests/fixtures/g08_manuscript.md",
+      "sha256": "5a8433e2d94034aa79c3098353acd1d5e55db6e54d8e9edab969261a4d4e34a3"
+    },
+    {
+      "path": "scripts/ama1_2/four_plane_continuity.mjs",
+      "sha256": "f718a957d28e7980ebc868617c55676eec8889308ee2d8d33831927240f65e25"
+    }
+  ]
+}

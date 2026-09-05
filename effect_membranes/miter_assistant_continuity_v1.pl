@@ -4,6 +4,8 @@
 % contact. It does not inspect contact meaning or select a movement.
 
 :- ensure_loaded('miter_store.pl').
+:- ensure_loaded('miter_continuity.pl').
+:- use_module(library(crypto)).
 :- use_module(library(http/json)).
 :- use_module(library(lists)).
 :- use_module(library(pcre)).
@@ -87,3 +89,145 @@ miter_assistant_dict_symbol(Dict, Key, Atom) :-
 miter_assistant_symbol(Value, Atom) :-
     miter_store_nonempty_atom(Value, Atom),
     re_match('^[A-Za-z][A-Za-z0-9_.:-]{0,127}$', Atom).
+
+% Four-plane source rehydration. The membrane establishes byte identity,
+% canonical sequence, exact capsule selection, artifact hash, and declared
+% semantic-index availability. It does not decide how any of them matter.
+miter_assistant_continuity_restore(Root0, Result) :-
+    ( catch(miter_assistant_continuity_restore_checked(Root0, Result0), _, fail)
+    -> Result=Result0
+    ;  Result=['continuity-source-set-held','source-invalid-or-unavailable']
+    ), !.
+
+miter_assistant_continuity_restore_checked(Root0,
+    ['continuity-source-set-v1',Projections]) :-
+    miter_store_nonempty_atom(Root0, Root),
+    is_absolute_file_name(Root), exists_directory(Root),
+    directory_file_path(Root, 'scope-bindings.json', SourcePath),
+    miter_store_read_json(SourcePath, Document),
+    miter_assistant_bindings_document(Document, Bindings),
+    get_dict(continuity_sources, Document, Sources), is_list(Sources),
+    maplist(miter_assistant_continuity_source(Bindings), Sources, Projections).
+
+miter_assistant_continuity_source(Bindings, Source,
+    ['continuity-projection-v1',Scope,
+     ['trajectory-plane',SourceId,HeadId,HeadHash,EventCount,
+      'canonical-append-only'],
+     ['capsule-plane',CapsuleId,CapsuleHash,ArtifactRef,ArtifactHash,
+      ExactLocation,CurrentGoal,LastCompleted,OpenQuestions,LiveTensions,
+      NextMovement,Commitments,RelevantEvents,'exact-authoritative'],
+     ['raw-artifact-plane',ArtifactRef,ArtifactHash,
+      'hash-verified-independent-source'],
+     ['semantic-plane',Collection,EmbeddingProfile,SemanticStanding,
+      'index-not-authority'],
+     ['relationship-organization',Relationships],
+     ['undertaking-organization',Undertaking,OpenAlternatives,NextMovement],
+     ['attention-organization',Attention,LiveTensions],
+     ['rna-organization',RNA,'bounded-renewable'],
+     ['pending-consequence-organization',PendingConsequences],
+     ['learned-relation-organization',LearnedRelations],
+     ['source-lineage',SourceId,CapsuleId,HeadId]]) :-
+    is_dict(Source),
+    miter_assistant_dict_symbol(Source, source_id, SourceId),
+    miter_assistant_dict_symbol(Source, principal, Principal),
+    miter_assistant_dict_symbol(Source, audience, Audience),
+    miter_assistant_dict_symbol(Source, project, Project),
+    Scope=[scope,Principal,Audience,Project],
+    miter_assistant_source_scope_bound(Bindings, Scope),
+    miter_assistant_dict_path(Source, capsule_store, CapsuleStore),
+    miter_assistant_dict_path(Source, trajectory_store, TrajectoryStore),
+    miter_assistant_current_capsule(CapsuleStore, Scope, Capsule),
+    miter_assistant_capsule_fields(Capsule, Project, CapsuleId, CapsuleHash,
+      ArtifactRef, ArtifactHash, ExactLocation, CurrentGoal, LastCompleted,
+      OpenQuestions, LiveTensions, NextMovement, Commitments, RelevantEvents),
+    miter_assistant_trajectory_plane(TrajectoryStore, Scope, RelevantEvents,
+      HeadId, HeadHash, EventCount),
+    miter_assistant_dict_symbol(Source, semantic_collection, Collection),
+    miter_assistant_dict_symbol(Source, embedding_profile, EmbeddingProfile),
+    miter_assistant_dict_symbol(Source, semantic_standing, SemanticStanding),
+    memberchk(SemanticStanding,[available,unavailable,degraded,incompatible]),
+    miter_assistant_dict_symbol(Source, undertaking_id, Undertaking),
+    miter_assistant_dict_symbol(Source, attention_id, Attention),
+    miter_assistant_dict_symbol(Source, rna_id, RNA),
+    miter_assistant_dict_list(Source, relationships, Relationships),
+    miter_assistant_dict_list(Source, open_alternatives, OpenAlternatives),
+    miter_assistant_dict_list(Source, pending_consequences, PendingConsequences),
+    miter_assistant_dict_list(Source, learned_relations, LearnedRelations).
+
+miter_assistant_source_scope_bound(Bindings, Scope) :-
+    member(Binding, Bindings),
+    miter_assistant_binding(Binding, _, Scope, _), !.
+
+miter_assistant_dict_path(Dict, Key, Path) :-
+    get_dict(Key, Dict, Value), miter_store_nonempty_atom(Value, Path),
+    is_absolute_file_name(Path), exists_directory(Path).
+
+miter_assistant_dict_list(Dict, Key, Values) :-
+    get_dict(Key, Dict, Raw), is_list(Raw),
+    maplist(miter_store_nonempty_atom, Raw, Values).
+
+miter_assistant_current_capsule(Store, [scope,Principal,Audience,Project], Capsule) :-
+    miter_continuity_current_path(Store, Project, CurrentPath),
+    exists_file(CurrentPath),
+    miter_continuity_load_capsules(Store, Project, Capsules),
+    miter_continuity_reconstruct_current(Project, CurrentPath, Capsules,
+      'continuity-reconstructed', Reconstruction),
+    get_dict(current_capsule_id, Reconstruction, CapsuleId0),
+    miter_store_nonempty_atom(CapsuleId0, CapsuleId),
+    miter_continuity_load_capsule(Store, Project, CapsuleId, Capsule),
+    get_dict(principal_scope, Capsule, Principal0),
+    miter_store_nonempty_atom(Principal0, Principal),
+    get_dict(audience_scope, Capsule, Audience0),
+    miter_store_nonempty_atom(Audience0, Audience).
+
+miter_assistant_capsule_fields(Capsule, Project, CapsuleId, CapsuleHash,
+    ArtifactRef, ArtifactHash, ExactLocation, CurrentGoal, LastCompleted,
+    OpenQuestions, LiveTensions, NextMovement, Commitments, RelevantEvents) :-
+    get_dict(project_id, Capsule, Project0), miter_store_nonempty_atom(Project0, Project),
+    get_dict(capsule_id, Capsule, CapsuleId0), miter_store_nonempty_atom(CapsuleId0, CapsuleId),
+    get_dict(content_hash, Capsule, CapsuleHash0),
+    miter_store_nonempty_atom(CapsuleHash0, CapsuleHash),
+    get_dict(current_artifact_ref, Capsule, ArtifactRef0),
+    miter_store_nonempty_atom(ArtifactRef0, ArtifactRef),
+    get_dict(current_artifact_hash, Capsule, ArtifactHash0),
+    miter_store_nonempty_atom(ArtifactHash0, ArtifactHash),
+    crypto_file_hash(ArtifactRef, ObservedArtifactHash,
+      [algorithm(sha256),encoding(octet)]),
+    ObservedArtifactHash==ArtifactHash,
+    get_dict(exact_location, Capsule, ExactLocation0),
+    miter_store_nonempty_atom(ExactLocation0, ExactLocation),
+    get_dict(current_goal, Capsule, CurrentGoal0),
+    miter_store_nonempty_atom(CurrentGoal0, CurrentGoal),
+    get_dict(last_completed_work, Capsule, LastCompleted0),
+    miter_store_nonempty_atom(LastCompleted0, LastCompleted),
+    get_dict(next_intended_movement, Capsule, NextMovement0),
+    miter_store_nonempty_atom(NextMovement0, NextMovement),
+    miter_assistant_capsule_list(Capsule, open_questions, OpenQuestions),
+    miter_assistant_capsule_list(Capsule, live_tensions, LiveTensions),
+    miter_assistant_capsule_list(Capsule, commitments, Commitments),
+    miter_assistant_capsule_list(Capsule, relevant_event_ids, RelevantEvents).
+
+miter_assistant_capsule_list(Capsule, Key, Values) :-
+    get_dict(Key, Capsule, Raw), is_list(Raw),
+    maplist(miter_store_nonempty_atom, Raw, Values).
+
+miter_assistant_trajectory_plane(Store, Scope, RelevantEvents,
+    HeadId, HeadHash, EventCount) :-
+    miter_store_load_ledger(Store, Lines),
+    miter_store_analyze(Store, Lines, Analysis, Events),
+    get_dict(status, Analysis, valid), Events=[_|_],
+    RelevantEvents=[_|_],
+    maplist(miter_assistant_relevant_event(Events, Scope), RelevantEvents),
+    length(Events, EventCount), last(Events, Head),
+    get_dict(event_id, Head, HeadId0), miter_store_nonempty_atom(HeadId0, HeadId),
+    get_dict(event_hash, Head, HeadHash0), miter_store_nonempty_atom(HeadHash0, HeadHash).
+
+miter_assistant_relevant_event(Events, [scope,Principal,Audience,Project], EventId) :-
+    member(Event, Events),
+    get_dict(event_id, Event, EventId0), miter_store_nonempty_atom(EventId0, EventId),
+    get_dict(source_principal, Event, Principal0),
+    miter_store_nonempty_atom(Principal0, Principal),
+    get_dict(audience_scope, Event, Audience0),
+    miter_store_nonempty_atom(Audience0, Audience),
+    get_dict(project_scope, Event, Project0),
+    miter_store_nonempty_atom(Project0, Project), !.

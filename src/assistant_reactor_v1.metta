@@ -45,7 +45,7 @@
 (= (ARHistoryValid $row)
    (and (CPShape $row assistant-history 5)
      (and (CPHas (index-atom $row 1)
-            (encounter consequence restoration effect scope-binding) 0)
+            (encounter consequence restoration effect scope-binding continuity) 0)
           (CPShape (index-atom $row 3) scope 4))))
 
 (= (ARAllValid $rows $validator $i)
@@ -223,16 +223,26 @@
 ; developmental history; the binding never chooses or renders movement.
 (= (ACBoundEncounter $binding $contact)
    (if (ACScopeBindingValid $binding $contact)
-     (let $result (AssistantEncounter $contact)
-       (if (CPShape $result assistant-contact-incorporated 3)
-         (let $history (ARRecord scope-binding (index-atom $contact 1)
-               (CPContactScope $contact) $binding)
-           (if (CPHas $history
-                 (assistant-history-recorded assistant-history-duplicate) 0)
-             $result
-             (assistant-contact-held (index-atom $contact 1)
-               scope-binding-history-failed)))
-         $result))
+     (let* (($scope (CPContactScope $contact))
+            ($continuity (ACContinuityForScope $scope)))
+       (if (== $continuity (continuity-standing conflicting-sources-for-scope))
+         (assistant-contact-rejected conflicting-continuity-sources)
+         (let* (($effective-contact (if (ACContinuityValid $continuity)
+                  (ACContactWithContinuity $contact $continuity) $contact))
+                ($result (AssistantEncounter $effective-contact)))
+           (if (CPShape $result assistant-contact-incorporated 3)
+             (let* (($binding-history (ARRecord scope-binding
+                       (index-atom $contact 1) $scope $binding))
+                    ($continuity-history (ARRecord continuity
+                       (index-atom $contact 1) $scope $continuity)))
+               (if (and (CPHas $binding-history
+                         (assistant-history-recorded assistant-history-duplicate) 0)
+                        (CPHas $continuity-history
+                         (assistant-history-recorded assistant-history-duplicate) 0))
+                 $result
+                 (assistant-contact-held (index-atom $contact 1)
+                   scope-or-continuity-history-failed)))
+             $result))))
      (assistant-contact-rejected stable-identity-scope-mismatch)))
 
 ; assistant-input contact Contact | assistant-input consequence Scope Consequence
@@ -398,13 +408,20 @@
      (if (!= $boot soul-ready)
        (assistant-service-held $boot)
        (let* (($restoration (ARServiceRestore $root))
+              ($continuity-source (miter_assistant_continuity_restore $root))
+              ($continuity-restoration
+                (AssistantContinuityRestore $continuity-source))
               ($base (as_config $root idle_base_seconds))
               ($cap (as_config $root idle_cap_seconds)))
          (if (or (== $restoration assistant-restore-rejected)
-                 (or (== $base ()) (== $cap ())))
-           (assistant-service-held $restoration)
+                 (or (== $continuity-restoration
+                        assistant-continuity-restore-rejected)
+                  (or (== $base ()) (== $cap ()))))
+           (assistant-service-held
+             (startup-restoration $restoration $continuity-restoration))
            (if (> $base $cap)
              (assistant-service-held invalid-idle-envelope)
-             (let $start-record (as_record $root assistant-started $restoration)
+             (let $start-record (as_record $root assistant-started
+                    (startup-restoration $restoration $continuity-restoration))
                (AssistantCycleWith $root false $base $base $cap
                  as_control as_input as_checkpoint as_wait as_record as_effect))))))))

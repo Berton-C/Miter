@@ -1,0 +1,46 @@
+{
+  "schema": "miter-ama12-four-plane-continuity-results-v1",
+  "status": "PASS-BOUNDED",
+  "results": [
+    {
+      "id": "positive-long-gap",
+      "standing": "continuity-constitutively-incorporated",
+      "semantic_index": "unavailable-without-amnesia",
+      "exact_capsule": "capsule-alpha-current",
+      "exact_artifact_sha256": "5a8433e2d94034aa79c3098353acd1d5e55db6e54d8e9edab969261a4d4e34a3",
+      "movement": "plural-live-from-continuity-relations-and-open-alternatives",
+      "restart_stable": true,
+      "replayed_effects": 0
+    },
+    {
+      "id": "scope-isolation",
+      "standing": "no-source-for-beta-scope",
+      "alpha_continuity_leaked": false,
+      "beta_contact_incorporated": true
+    },
+    {
+      "id": "artifact-changed",
+      "standing": "startup-held-before-ordinary-cognition",
+      "checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "artifact-missing",
+      "standing": "startup-held-before-ordinary-cognition",
+      "checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "trajectory-corrupt",
+      "standing": "startup-held-before-ordinary-cognition",
+      "checkpoint": false,
+      "local_effects": 0
+    },
+    {
+      "id": "continuity-scope-unbound",
+      "standing": "startup-held-before-ordinary-cognition",
+      "checkpoint": false,
+      "local_effects": 0
+    }
+  ]
+}
