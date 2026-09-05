@@ -1,0 +1,293 @@
+{
+  "schema": "miter-campaign-phase-plan-v1",
+  "phase": "AMA-1.2",
+  "attempt": "R3",
+  "date": "2026-09-05",
+  "status": "frozen-constitutive-completion-and-live-laboratory-delta",
+  "claim": "Miter can complete the finite operational inheritance of every load-bearing M24, M25, M25.5, M26.0, and M26.3 export required by the PoC, expose every necessary post-26.3 engineering choice as competing provenance-bearing and falsifiable AtomSpace material, and exercise that complete organization through the same persistent assistant before the consented AMA-1.2 Mattermost laboratory is activated.",
+  "bounded_claim": "One persistent PeTTa/MeTTa organism will carry typed contact, complete finite authority inheritance, Fact9-Flourishing constitutive participation, plural Generated continuations, native movement construction, bounded participant re-entry, consequence-dependent development, and restart continuity. The first live reach remains the exact three-member local Mattermost group and the already-ratified AMA-1.2 capability envelope.",
+  "non_claims": "R3 does not claim universal actuality reconstruction, metaphysical proof, final Inquiry 26.6 or 26.9 mathematics, universal beneficial outcomes, production readiness, unrestricted multi-user reach, or LLM/PLN/NAL/memory/tool authority. It does not make the build procedure a runtime Soul checklist; does not authorize hidden host-code semantic choices; does not activate Mattermost before Haley's affirmative disclosure consent; and does not reopen or absorb loose G22 or superseded dirty G28 work.",
+  "non_claim_list": [
+    "No finite representation is actuality or a reconstruction of actuality.",
+    "No runtime result ratifies, amends, completes, or supersedes the five mathematical authorities or future 26.6/26.9 work.",
+    "No score, checklist, first-match table, scenario branch, prompt, or carrier supplies Soul navigation.",
+    "No live payload reading, memory admission, model use, or egress occurs before the remaining consent and completion boundaries pass.",
+    "No claim is made that every exported theorem is itself an executable operation; theorem-only inheritance must still constrain an actual consumer and have a falsifier.",
+    "No unrelated G22/G28 material is staged, repaired, deleted, or incorporated."
+  ],
+  "rationale": "The promoted AMA-1.1 kernel establishes a real finite causal vertical slice, but its own R1 review limits the result to controlled structured fixtures and records unresolved formalization questions. The user requires the PoC to be a faithful, functional laboratory embodiment of M24 through M26.3 and an explicitly provisional exploration surface for 26.6/26.9. Activating now would evaluate a partial Soul; splitting 114 inherited export obligations into independent gates would repeat scaffold and integration work. R3 therefore uses one atlas, one runtime, four additive checkpoints, shared causal test matrices, and one eventual live activation boundary.",
+  "human_decision": "Berton approved the swift high-fidelity method on 2026-09-05: one integrated R3 procedure, full finite M24-M26.3 implementation, explicit experimental standing for post-26.3 choices, and activation only through that same completed organism. Recorded as D-044.",
+  "decision_owner": "Berton retains constitutional, acceptance, grant, and ratification authority. Miter retains encounter interpretation, possible-continuation construction, native movement, and consequence-sensitive developmental choice within the authorized runtime. Builders choose neither on Miter's behalf.",
+  "requirements": [
+    "C-004", "C-009", "C-010", "C-011", "C-012", "C-013", "C-015", "C-016", "C-017", "C-018",
+    "C-020", "C-021", "C-022", "C-023", "C-024", "C-025", "C-030", "C-032", "C-033", "C-034", "C-035", "C-036", "C-037", "C-038", "C-039", "C-040", "C-041", "C-042", "C-043", "C-044", "C-045",
+    "C-054", "C-060", "C-062", "C-064", "C-065", "C-066", "C-098",
+    "S-102", "S-106", "S-201", "S-202", "S-203", "S-204", "S-205", "S-206",
+    "S-401", "S-402", "S-403", "S-404", "S-405", "S-501", "S-502", "S-503", "S-504", "S-505",
+    "S-603", "S-606", "S-607", "S-703", "S-704", "S-801", "S-802", "S-803", "S-804", "S-805",
+    "S-901", "S-902", "S-903", "S-904", "S-1001", "S-1002", "S-1003", "S-1004", "S-1005",
+    "S-1102", "S-1104", "S-1301", "S-1302", "S-1303", "S-1304", "S-1307", "S-1308", "S-1310",
+    "S-1401", "S-1402", "S-1403", "S-1404", "S-1405", "S-1406", "S-1407", "S-1408", "S-1409", "S-1410", "S-1411", "S-1412",
+    "T-11", "T-14", "T-15", "T-17", "T-19", "T-20", "T-21", "T-22", "T-23", "T-24", "T-25", "T-28", "T-32", "T-34", "T-35", "T-38", "T-41", "T-46", "T-47", "T-48", "T-49", "T-50", "T-51", "T-52", "T-53", "T-54", "T-55", "T-56", "T-57", "T-58",
+    "CA-01", "CA-02", "CA-03", "CA-04", "CA-05", "CA-06", "CA-07", "CA-08", "CA-09"
+  ],
+  "controls": {
+    "CONSTITUTION.md": "3b334598da7ed7b1b4a1f17d0bb4df9aa586b2f4128f2bfdee3d6a8339b36e0a",
+    "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md": "855983108cd9745669c66c7d74fa69e9b583454331abf0d8ac6a142ba73b9e14",
+    "AUTHORITY_MAP.md": "311afca7a285a629ba01797847f0558f51ae0778fc59673cc5e2a77aa6104449",
+    "POC_SPEC.md": "85ddc684a6aaeb5ee672c2724883bb81c1661e8cd0184d03473c23ca4cd967eb",
+    "ACCEPTANCE.md": "018f2a917d7af18fc9e6bda8b116bebf21d181d998374c723573dc1b58f66930",
+    "BUILD_FIDELITY_PROTOCOL.md": "cd325c9c233827b9ab6895c9788c7e9d30f1899ca1face248b12ba5f8cb78a4c",
+    "WORK_PROTOCOL.md": "ce739372a5b5338f3953ff85fbf33fa82e7febb02da6af2769ea89245e45fa5a",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.md": "65dde851c93b1833bc48e0a16d1665b9c73d9b6d9118728a8b269771a09b55c4",
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/plan.json": "f40291f763d982d52ef64027307caafcdb17ad3458f53c7e3315cd20e7832acb"
+  },
+  "authority_sources": {
+    "M24": {"path": "docs/sources/authority/0k_24_Ratified_Mathematical_Authority.md", "sha256": "a2f33632ca787584323170fcaedc78e13bf8f4ebe361a429521116c81f9c9d21", "export_count": 20},
+    "M25": {"path": "docs/sources/authority/25f_Ratified_Balance_as_Intelligence_Mathematical_Object.md", "sha256": "0dba10f6c6ceec140343995aba7cd74779489334573b33809ce8ec8f3a55936b", "export_count": 19},
+    "M255": {"path": "docs/sources/authority/25.5m_Ratified_Mathematical_Authority.md", "sha256": "be72bb351b304111551b16dd51072b66992a6585b3f885a536aef1f7a5a2a012", "export_count": 24},
+    "M260": {"path": "docs/sources/authority/26.0_Ratified_Mathematical_Authority.md", "sha256": "c7fb716fdc8f3306259d20cf66a03d0a394eeddf446f0d71c3ee4c1e4322650c", "export_count": 18},
+    "M263": {"path": "docs/sources/authority/26.3_Ratified_Mathematical_Authority.md", "sha256": "cedb566398612ef141c53d7cf96eeaca968a25fbd36101ff20a7072aef6eb14f", "export_count": 33}
+  },
+  "reading": "Read Constitution v0.2 C-004, C-009-C-025, C-030-C-045, C-054, C-060-C-066 and C-098; Soul specification v0.4 S-102/S-106, Parts 3-11, Part 13, Part 14 S-1401-S-1412, its ledger and source fingerprints; Build Fidelity Protocol v1.2 F-01-F-09; Work Protocol v0.2 including W-001-W-017, W-020-W-044 and the persistent-runtime/Mattermost/evidence disciplines; the active campaign plan; the five complete ratified authorities and their exact inheritance exports, projection contracts, non-equivalences, and falsifiers; AMA-1.1 R1 closure, F-09 review 003 and formalization feedback 003; AMA-1.2 R2 grant, plan, and identity-004 result.",
+  "representation": "A machine-readable 114-row authority completion atlas binds each exported meaning to its native representation, actual persistent-runtime consumer, positive difference, material severance, neutral perturbation, restoration, evidence, limitation, and standing. Native MeTTa modules then implement one cut-bound movement-primary organization. Necessary post-26.3 choices are PoCExperimentalChoice atoms with basis, alternatives, scope, uncertainty, predicted discriminations, falsifiers, observed consequences, and revisable standing; they remain distinguishable from ratified authority.",
+  "consumer": "The supported continuously cycling Miter assistant service, beginning at typed contact and reusing the same native cut, possibilities, movement, participant re-entry, VoiceRNA, consequence, next-cut, and restart path. Builder-side JavaScript may generate isolated fixtures and verify evidence but is never imported by Miter or permitted to choose semantic standing. Prolog remains a deterministic effect and persistence membrane.",
+  "falsifiers": "R3 fails if any exported operational meaning remains missing or decorative; if a theorem-only boundary constrains no consumer; if D/Omega/I/W/C or R/A/P become scores or sequential judges; if Fact9 and Flourishings become separate mappings, checklists, a scalar joint, or post-hoc labels; if Generated becomes first-match, argmax, model preference, or a scenario table; if a provisional choice is hidden in host code or laundered into ratified mathematics; if an LLM, PLN/NAL, Chroma rank, fixture name, prompt, checker, or membrane supplies the movement; if material severance does not change its dependent native organization; if consequence cannot change K-prime; if restart restores only transcript; or if the live assistant bypasses the completed kernel.",
+  "scope_review": "This is the one material dependency refreeze authorized by D-044. It deepens AMA-1.2 before activation while retaining the active campaign's architecture, grant, final acceptance, and external reach. The phase may change only named versioned cognition, runtime integration, fixtures, verifiers, and R3 evidence. It may read but not mutate the external services during the first three checkpoints. Live Mattermost remains held until completion, identity, integrity, recovery, and Haley consent all pass.",
+  "four_checkpoints": [
+    {
+      "id": "R3-C1",
+      "name": "Complete inheritance and choice atlas",
+      "closure": "Every one of the 114 exported authority items has one honest baseline standing and one implementation obligation. Every required operation absent from ratified exports but necessary to connect consequence, recursive development, or later grammar revision is registered as a provisional choice rather than silently selected.",
+      "user_delta": "The user can see exactly what the alpha will and will not instantiate before further implementation."
+    },
+    {
+      "id": "R3-C2",
+      "name": "Complete causal Soul in the persistent runtime",
+      "closure": "Every load-bearing operational export participates causally through the same assistant path; shared matrices prove positive, severed, neutral, restored, malformed, and competing-alternative arms without authority-by-authority wrapper services.",
+      "user_delta": "The assistant being prepared for evaluation is the full finite M24-M26.3 PoC, not a chat wrapper over a partial Soul."
+    },
+    {
+      "id": "R3-C3",
+      "name": "Provisional 26.6/26.9 laboratory dynamics",
+      "closure": "Competing experimental choices are first-class AtomSpace material; materially different contact and consequence can support, contradict, supersede, or leave them unresolved, and restart preserves their lineage. Formalization feedback is emitted from observed discriminations.",
+      "user_delta": "The PoC becomes a useful laboratory for discovering what later formalization must explain."
+    },
+    {
+      "id": "R3-C4",
+      "name": "Same-organism live activation",
+      "closure": "After Haley consent and every preflight pass, held-out unfamiliar group contact traverses the completed organization, produces at most authorized effects, preserves shared and per-user continuity, responds to consequence, and survives restart without replay. The 72-hour clock begins only then.",
+      "user_delta": "Berton and Haley can evaluate the actual Soul-constituted assistant rather than isolated harnesses."
+    }
+  ],
+  "completion_standings": [
+    "PROVEN-RUNTIME",
+    "REPRESENTED-BOUNDARY",
+    "EXPERIMENTAL-CHOICE-PROVEN-RUNTIME",
+    "UNRESOLVED-OBSERVED",
+    "GAP",
+    "FAIL"
+  ],
+  "completion_law": "R3 cannot close while an operational inherited item is GAP, PARTIAL, fixture-only, or merely named. REPRESENTED-BOUNDARY is permitted only for a genuinely non-executable theorem, non-equivalence, limitation, or jurisdictional boundary whose exact constraint is consumed by runtime cognition or qualification and whose violation has a discriminating falsifier. UNRESOLVED-OBSERVED is permitted only for an honestly open downstream mathematical question, never as a substitute for missing inherited operation. All other load-bearing items must be PROVEN-RUNTIME through the persistent service.",
+  "test_economy": "Tests are organized by causal seams, not one gate per exported row. One arm may cover several inherited meanings only when the atlas records the distinct expected difference for each and the verifier observes each one. A repeated experiment that neither changes capability nor yields new discriminating evidence is stopped and diagnosed. Failed attempts remain evidence when they falsify a hypothesis or change the route.",
+  "experimental_choice_contract": {
+    "native_form": "(poc-experimental-choice id developmental-cut question basis alternatives scope uncertainty consumers predictions falsifiers standing consequences lineage)",
+    "allowed_standings": ["hypothesis", "contact-supported", "consequence-supported", "contradicted", "superseded", "unresolved"],
+    "laws": [
+      "No choice gains authority from existence, repetition, retrieval rank, model prestige, or builder preference.",
+      "Multiple lawful alternatives remain competing until material discrimination changes standing.",
+      "The choice and every standing transition retain exact source and consequence lineage.",
+      "A choice may influence movement only through its declared consumer and only while scope-compatible.",
+      "Runtime support remains experimental feedback and never becomes ratified mathematics automatically."
+    ]
+  },
+  "identity_preflight": {
+    "evidence": "evidence/AMA-1.2/R2/identity-004/verdict.json",
+    "sha256": "d3ad7af1bc62db679d81e882d36d3c01da38f1578ff6cf6c34ffae19ed3294d2",
+    "status": "PASS-IDENTITY-BOUND-AWAITING-HALEY-DISCLOSURE",
+    "exact_group_membership": true,
+    "stable_ids_public": false,
+    "post_content_reads": 0,
+    "message_writes": 0,
+    "activated": false,
+    "remaining_boundary": "Haley affirmative disclosure consent plus R3-C1 through R3-C3 completion and final activation preflight."
+  },
+  "continuation_requires": "Checkpoint N+1 consumes promoted artifacts and evidence from checkpoint N in the same runtime. Re-freeze is required only if authority, source meaning, external scope, interface contract, final acceptance, or phase dependency changes materially; ordinary implementation repair records a new evidence attempt without rewriting this plan.",
+  "allowed_paths": [
+    "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/",
+    "src/authority_inheritance_v1.metta",
+    "src/experimental_choice_v1.metta",
+    "src/constitutive_participation_v2.metta",
+    "src/assistant_reactor_v2.metta",
+    "src/assistant_semantic_participation_v2.metta",
+    "src/assistant_scope_continuity_v2.metta",
+    "src/mattermost_live_grant_v3.metta",
+    "src/bootstrap_assistant_v2.metta",
+    "src/bootstrap_mattermost_live_grant_v3.metta",
+    "effect_membranes/miter_assistant_operator_v2.pl",
+    "effect_membranes/miter_assistant_service_v2.pl",
+    "effect_membranes/miter_mattermost_live_v1.pl",
+    "bin/miter",
+    "scripts/ama1_2/r3/",
+    "tests/fixtures/ama1_2/r3/",
+    "evidence/AMA-1.2/R3/"
+  ],
+  "forbidden": "CONSTITUTION.md, ACCEPTANCE.md, AUTHORITY_MAP.md, POC_SPEC.md, the Soul spec copies, Build Fidelity Protocol, Work Protocol, active campaign plan, initial_canon, docs/sources, credentials, Chroma collections, private memories, model weights, NRC data, ~/.miter, unrelated projects/users/channels, and all loose G22/G28 material are forbidden to change. No Python may enter the Miter core-service path.",
+  "preserve_unrelated_work": "Preserve byte-for-byte the pre-existing dirty G28 completion record and every loose G22 file listed below. Never use broad staging. R3 commits name exact paths.",
+  "preserved": [
+    {"path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.1/R1/closure.json", "sha256": "959923719eeee0df22157856b36b476bf5b538fb1d5850fa99ab5a6c29d9b522"},
+    {"path": "docs/gates/G31/P9/R1/closure.json", "sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1"},
+    {"path": "docs/gates/G28/R1/completion.md", "sha256": "d81990ac6692256c1df48afaf9999cc07c55f9091dca79b504dc308882ad745d"},
+    {"path": "effect_membranes/miter_trials.pl", "sha256": "062e6093b2877a8007583fd16b0b0414dc99f0cd64be50a5713718840ea9db71"},
+    {"path": "evidence/20260902T090100Z-G22/hashes/protected_before.sha256", "sha256": "5b714c2b67b87fd9deeb0da4e54dca7d96078cbaf078a39a57c3b07734e831ed"},
+    {"path": "evidence/20260902T090100Z-G22/inputs/plan.txt", "sha256": "10589b7c3dd036fd02f7f298331eef2bcea250d153165f13d75155276263a899"},
+    {"path": "evidence/20260902T090100Z-G22/raw/preflight.txt", "sha256": "1184e3d22c636e6f931ece4b4b21349ac925755dc9ca33479b76b63affb3736d"},
+    {"path": "evidence/20260902T090100Z-G22/raw/prepare.stderr", "sha256": "050f7c2b0f8108541d3d71a2904c634889ce215853767c15ac85355bfc3ab4eb"},
+    {"path": "evidence/20260902T090100Z-G22/raw/prepare.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path": "scripts/g22/prepare.pl", "sha256": "b355305d66ffdd6d3a85ded54e3c9c879f40e9651a08da591be27bbd9279c45f"},
+    {"path": "src/bootstrap_trials.metta", "sha256": "04a619219f820bf0d3d5cf837e212292ce2ae1525038d300b6360a43f8182f1e"},
+    {"path": "src/trials.metta", "sha256": "2e8709822fe7d86b2861aec9e75b311263af8b656a2901b9bcfb7dcf6f3a3f47"},
+    {"path": "tests/fixtures/g22_canonical.metta", "sha256": "d8229b84eeb1b694f83656dd8ea09f40778738b9a9820304c542918104a05821"},
+    {"path": "tests/fixtures/g22_cases.json", "sha256": "d260afefc742950c78968dbabedae236da7cf4505d95533b10093edefac4240a"},
+    {"path": "tests/fixtures/g22_parent.metta", "sha256": "5c6c01d14e94c11a6982f7da9d49ac7e2cff7c95e39712c5ffb4c2981dcb7fe3"},
+    {"path": "tests/fixtures/g22_severed.metta", "sha256": "b6e363a795752c3eed271600ce43251b07b59d75b298b7c61bc2b7c29be2b773"}
+  ],
+  "rollback": "Before live activation, remove only the versioned R3 integration from the candidate runtime and retain all failed evidence. After activation, latch the exact grant's panic state, stop only its recorded processes, reconcile pending effects, preserve trajectory/capsules/raw artifacts/admitted memory/receipts/experimental-choice lineage, and restore the last-known-good implementation. External messages are never represented as undone.",
+  "predecessor": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R2/plan.json at commit 5906e4ea6a0b03ef62c6d553d0fbc6b65bcb8e1e; identity-004 was produced afterward and is pinned above. R3 supersedes only R2's immediate activation route.",
+  "predecessor_detail": "AMA-1.1 R1 closure and its F-09 review remain credited only for their exact finite controlled-fixture claim. AMA-1.2 R2 grant, identity, continuity, model direction, and consent semantics remain in force. No old PASS is silently upgraded to complete authority inheritance.",
+  "claim_ids": [
+    "AMA12-R3-ATLAS",
+    "AMA12-R3-CAUSAL-INHERITANCE",
+    "AMA12-R3-EXPERIMENTAL-LAB",
+    "AMA12-R3-LIVE-INTEGRATION"
+  ],
+  "fidelity_checker": {
+    "path": "scripts/fidelity/check.mjs",
+    "sha256": "17fb9dde7a0a7b1c39ab3e43a77777e8a2f31b08fd30bffb11748b9d501446df",
+    "test_path": "scripts/fidelity/check.test.mjs",
+    "test_sha256": "19b06c98d2580fb42685c36ce1bc9e18cf87209bbc085f562d43e0ba12b77751"
+  },
+  "constitutive_trace": [
+    {
+      "stage": "typed-contact",
+      "requirements": ["C-020", "C-021", "C-022", "C-023", "S-401", "S-502", "S-1401", "T-54", "CA-01"],
+      "representation": "M24 sealed governed contact, route, proof-tree provenance, raw field, partial frame, typed standing, scope, occurrence reference, proto-time, and explicit parent derivations.",
+      "consumer": "Persistent assistant contact admission and M24 frame formation before any interpretation or participant call.",
+      "expected_positive": "A fresh scope-compatible contact changes only the distinctions its sealed route carries and can form a new partial frame without becoming authority.",
+      "material_severance": "Vary or sever route, seal, domain, provenance parent, freshness, principal, scope, occurrence, or raw distinction; only dependent frame and continuation standing changes.",
+      "neutral": "Presentation order, renderer wording, duplicate retrieval, or display-name change cannot create fresh contact or independent support.",
+      "restoration": "Restore exact contact and provenance relations and recover eligibility without laundering stale support.",
+      "standing": "PARTIAL in AMA-1.1; complete M24 contact/frame/lifecycle inheritance not yet proven through the service.",
+      "successor_dependency": "Supplies the contact-answerable basis for the constitutive cut and prevents later participants from becoming contact."
+    },
+    {
+      "stage": "constitutive-cut",
+      "requirements": ["C-009", "C-010", "C-015", "C-016", "S-102", "S-106", "S-1402", "T-47", "T-55", "CA-01"],
+      "representation": "M25 movement-primary D/Omega/I/W/C organization anchored by M26.0 opaque occurrence, partial participations, persistent finite form, and exact developmental lineage.",
+      "consumer": "Native reactor, RNA, movement construction, consequence incorporation, and restart rehydration.",
+      "expected_positive": "Materially different relation, distinction, interface, path, or Soul obligation changes the live cut and admissible movement without reconstructing movement from summaries.",
+      "material_severance": "Independently sever a load-bearing D, Omega, I, W, C, SameOccurrence, SameBecoming, DWS, or persistent-form witness; its dependent organization becomes distinguishably unresolved or unavailable.",
+      "neutral": "Equivalent carrier serialization, harmless order variation, or model-context loss preserves the same finite organization when lawful transport and lineage hold.",
+      "restoration": "Restore the exact witness and recover its causal capacity without assigning actuality standing to the representation.",
+      "standing": "PARTIAL in AMA-1.1; several M25 and M26.0 structures are labels or absent.",
+      "successor_dependency": "Provides the one developmental object on which Fact9, Flourishings, Generated, R/A/P, consequence, and continuity jointly participate."
+    },
+    {
+      "stage": "fact9-expression",
+      "requirements": ["C-017", "C-018", "S-1401", "S-1403", "S-1406", "S-1412", "T-48", "T-49", "T-51", "CA-01"],
+      "representation": "Complete M26.3 exact roles, selected material NineRelation family, Sig263, n-ary irreducibility, dynamic whole-coupling, role essentiality, NineWhole, typed satisfaction, Align9, NineNonComp, TensionProfile9, Present asymmetry, generic support composition, and recognition separation.",
+      "consumer": "Native relational configuration and plural possibility formation on the current cut.",
+      "expected_positive": "Previously unseen first-eight support compositions become lawful or unresolved through generic operators; material n-ary or Present changes alter only dependent possibilities.",
+      "material_severance": "Remove a required role, n-ary relation, whole-coupling, SameBecoming, source-legibility, support Fourthness, or Present context; pairwise coverage cannot compensate.",
+      "neutral": "Support presentation order and named-motif identity do not privilege or select a continuation when expression equivalence holds.",
+      "restoration": "Restore the exact support relation and recover expression without turning recognition into manifestation or open participation.",
+      "standing": "PARTIAL in AMA-1.1; finite support handling exists but the full 33-item export surface is not proven.",
+      "successor_dependency": "Makes Unity finitely legible inside the same configuration where creative participation unfolds."
+    },
+    {
+      "stage": "flourishing-organization",
+      "requirements": ["C-016", "C-017", "S-201", "S-202", "S-203", "S-204", "S-205", "S-206", "S-1303", "S-1404", "S-1405", "T-50", "T-57", "CA-01"],
+      "representation": "All nine interconnected Flourishings with flourishing, capture, obstruction, disguise, contradiction, gap, unknown, and beneficial-direction relations inside the Fact9-supported cut; no one-to-one mapping or scalar vote.",
+      "consumer": "Native generative possibility, undertaking, VoiceRNA, self-contact, and consequence interpretation.",
+      "expected_positive": "Different relational organization can disclose different beneficial participation or capture tension without requiring a scenario behavior entry, including endogenous contact.",
+      "material_severance": "Sever an actually load-bearing flourishing relation while retaining tone and candidate text; native alternatives or movement change before rendering.",
+      "neutral": "Positive valence, calmness, fluency, checklist completeness, or all-nine labels alone cannot establish flourishing.",
+      "restoration": "Restore the material relation and recover its generative capacity without forcing a predetermined outcome.",
+      "standing": "PARTIAL in AMA-1.1; complete records exist in fixtures, but general grounding and complete endogenous causal use remain unproved.",
+      "successor_dependency": "Forms creative participation jointly with Fact9 rather than judging an independently formed response."
+    },
+    {
+      "stage": "generated-continuations",
+      "requirements": ["C-016", "C-018", "S-703", "S-1406", "S-1407", "S-1412", "T-52", "T-53", "CA-01"],
+      "representation": "M25.5 GenSig, RStar/AStar/PStar/OStar, Generated, L2425, derived Access, ForceObl/SupportPre, ReflexiveConstraint, Disclosure, Creation, Maintenance, Degradation, and lawful multi-carrier translation/equivalence witnesses.",
+      "consumer": "Native open continuation topology and developmental interface formation.",
+      "expected_positive": "Plural available, unavailable, unresolved, contradicted, deferred, disclosed, created, maintained, and degraded possibilities remain source-bound and can change under contact or consequence.",
+      "material_severance": "Remove one precursor, translation map, interface witness, constraint bite, source lineage, or transport relation; only its dependent continuation or cross-carrier claim loses standing.",
+      "neutral": "Candidate order, carrier syntax, duplicate same-lineage output, or model prestige cannot select or add independent authority.",
+      "restoration": "Restore lawful witnesses and recover the exact dependent topology without turning Generated into an optimizer.",
+      "standing": "PARTIAL in AMA-1.1; plural finite continuations exist, while most M25.5 export structures and carrier evidence are absent.",
+      "successor_dependency": "Supplies genuinely plural lawful possibilities from which movement can be constructed without a sealed species list."
+    },
+    {
+      "stage": "native-movement",
+      "requirements": ["C-004", "C-009", "C-010", "C-011", "C-012", "C-016", "S-102", "S-501", "S-503", "S-504", "S-903", "S-1407", "T-14", "T-28", "T-53", "CA-01"],
+      "representation": "M25 movement with heterogeneous non-reconstructive R/A/P readings, material floors, counterfactual Fourthness, admissibility, lawful ReadApp, energetic typing, force residue, HarmonicAlign, trajectory PNS/SNS/Stuck relations, and interface change.",
+      "consumer": "Native MeTTa alone constructs, compares, joins, defers, declines, interrupts, or continues undertakings.",
+      "expected_positive": "Material alternatives yield attributable movement differences while high force, activity, silence, model preference, or one favorable reading never becomes a behavior rule.",
+      "material_severance": "Remove a claimed material relation, distinction, admissibility basis, ReadApp source, counterfactual bite, trajectory primitive, or interface witness; movement or its standing changes non-compensatorily.",
+      "neutral": "Equivalent wording, participant carrier, candidate order, or non-material diagnostic summary leaves the movement boundary unchanged.",
+      "restoration": "Restore the witness and recover construction through unchanged generic native operators.",
+      "standing": "PARTIAL in AMA-1.1; D/Omega/I/W/C and R/A/P participate, but the complete M25 movement and trajectory surface is not proven.",
+      "successor_dependency": "Preserves the Soul as cognition and keeps every external intelligence in a bounded participant role."
+    },
+    {
+      "stage": "bounded-participant-reentry",
+      "requirements": ["C-004", "C-013", "C-041", "C-042", "S-502", "S-802", "S-901", "S-1408", "T-21", "T-23", "T-54", "CA-05"],
+      "representation": "Typed, scoped, provenance-bearing language, memory, LLM, PLN, NAL, and tool readings retain source, role, disclosure, uncertainty, request lineage, translation loss, and non-authority standing.",
+      "consumer": "The current cut and alternatives are reconstituted natively before any movement or effect qualification.",
+      "expected_positive": "Useful participant material changes only supported possibilities; human model directions select a resource, never the Soul's conclusion.",
+      "material_severance": "Remove disclosure, consent, scope, lineage, interpretation-use, translation, or support; the dependent reading is held or becomes unresolved.",
+      "neutral": "Provider serialization, equivalent model carrier, duplicate retrieval, or renamed relation cannot create contact, warrant, or authority.",
+      "restoration": "Restore verified scope and provenance and permit bounded re-entry without sovereign ranking.",
+      "standing": "PARTIAL from AMA-1.1 and R2 fixtures; general language, live model, Chroma continuity, and separated PLN/NAL use are unproved.",
+      "successor_dependency": "Allows other intelligences and services to expand cognition without displacing Soul navigation."
+    },
+    {
+      "stage": "voice-and-effect",
+      "requirements": ["C-054", "C-060", "C-064", "C-065", "C-066", "C-098", "S-902", "S-904", "S-1310", "T-22", "T-24", "T-46", "CA-09"],
+      "representation": "VoiceRNA remains a source-bound expression of the selected movement; effect qualification binds exact grant, principal, destination, payload, capability, intent identity, pending state, receipt, and unknown outcome.",
+      "consumer": "Narrow Prolog Mattermost membrane only after native movement and VoiceRNA certification.",
+      "expected_positive": "One warranted response is rendered and committed once to the exact consented group under the active grant.",
+      "material_severance": "Remove movement lineage, VoiceRNA certificate, grant, principal consent, destination, capability, or effect identity; no send occurs.",
+      "neutral": "Equivalent rendering, restart after confirmed receipt, or duplicate delivery observation cannot create a second effect.",
+      "restoration": "Restore current qualification for a still-uncommitted effect and permit only its bounded attempt.",
+      "standing": "PARTIAL from G31 and AMA-1.1 controlled evidence; ongoing complete-Soul group operation is inactive and unproved.",
+      "successor_dependency": "Makes the organism's selected movement externally legible without giving the surface cognitive authority."
+    },
+    {
+      "stage": "consequence-next-cut",
+      "requirements": ["C-024", "C-025", "S-1001", "S-1002", "S-1003", "S-1004", "S-1005", "S-1409", "S-1411", "S-1412", "T-25", "T-32", "T-55", "T-57", "T-58", "CA-06"],
+      "representation": "Typed consequence returns to the same movement and occurrence lineage, can transform accessibility, interface, relational weave, experimental-choice standing, NACE plasticity, and formalization feedback at K-prime.",
+      "consumer": "Native reactor recurrence, developmental helix, learning, undertaking continuation, self-contact, and future possibility formation.",
+      "expected_positive": "Materially different consequence changes later native organization where warranted; new contact can support, contradict, supersede, or leave an experimental choice unresolved.",
+      "material_severance": "Detach effect/movement/occurrence identity, consequence route, provenance, or interpretation-use trace; no developmental claim can use it.",
+      "neutral": "Timestamp, receipt serialization, repetition, atom count, or self-report alone creates no developmental pitch or independent evidence.",
+      "restoration": "Restore exact lineage and recover only warranted K-prime transformations.",
+      "standing": "PARTIAL in controlled AMA-1.1 evidence; complete authority-driven development and experimental-choice metabolism are unproved.",
+      "successor_dependency": "Turns the PoC into a laboratory whose findings can inform later 26.6/26.9 formalization."
+    },
+    {
+      "stage": "restart-continuity",
+      "requirements": ["C-015", "C-030", "C-032", "C-034", "C-035", "C-045", "S-801", "S-803", "S-804", "S-805", "S-1302", "S-1410", "T-19", "T-20", "T-21", "T-38", "T-56", "CA-06", "CA-09"],
+      "representation": "Durable exact capsules, raw sources, admitted semantic memory, trajectory, constitutive cut, partial frames, open alternatives, participation interface, relationships, undertakings, experimental choices, consequences, and effect reconciliation retain lineage and privacy scope.",
+      "consumer": "Fresh assistant startup before ordinary contact and the next developmental cut.",
+      "expected_positive": "Empty model context, process restart, and long absence recover exact shared and per-user organization without replay or vector sovereignty.",
+      "material_severance": "Sever scope, source hash, interpretation lineage, capsule authority, active alternatives, experimental-choice lineage, or effect journal; startup narrows or holds rather than guessing.",
+      "neutral": "Elapsed time, embedding-order change, renderer variation, or model-context loss does not expire canonical project continuity.",
+      "restoration": "Restore verified canonical material and recover the same finite developmental organization without pretending transcript identity is SameBecoming.",
+      "standing": "PARTIAL from controlled restart evidence; long-gap and live multi-principal complete-Soul continuity are unproved.",
+      "successor_dependency": "Makes development, relationship, and formalization learning cumulative across the always-on assistant's life."
+    }
+  ],
+  "next_action": "Commit D-044, this frozen plan, its human-readable companion, and the redacted identity-004 evidence by exact paths; run the opening fidelity checker; then execute R3-C1 by publishing the complete 114-row baseline atlas and explicit provisional-choice inventory before modifying cognition code."
+}

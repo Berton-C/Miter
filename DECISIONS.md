@@ -662,3 +662,22 @@ Accordingly, causal Soul organization may not be postponed until after a generic
 ---
 
 A later implementation surprise does not retroactively change these decisions. It creates a new decision entry with evidence and an explicit supersession relation.
+
+## D-044 — Complete constitutive inheritance before live alpha
+
+**Status:** ACCEPTED BY BERTON; AMA-1.2 R3 AUTHORIZED
+**Date:** 2026-09-05
+
+The completed AMA-1.1 vertical slice proves a finite causal joint, but its own fidelity review and formalization-feedback record expressly limit that evidence to controlled structured fixtures. It does not establish complete operational inheritance of the ratified M24, M25, M25.5, M26.0, and M26.3 export surfaces. Activating the evaluation assistant at that standing would ask Berton and Haley to assess a partial Soul implementation and would weaken the PoC's intended role as a laboratory for later Inquiry 26.6 and 26.9.
+
+Three routes were considered:
+
+1. activate the current finite slice and defer missing authority inheritance;
+2. create a new sequence of independent authority-by-authority gates before returning to the assistant; or
+3. replace AMA-1.2 R2's immediate activation route with one integrated R3 constitutive-completion and live-laboratory delta.
+
+Berton selected the third route. R3 SHALL use one complete authority atlas and four additive checkpoints: complete inheritance and explicit-choice accounting; complete causal participation through the same persistent runtime; first-class, provenance-bearing and falsifiable experimental choices for necessary but unfinished 26.6/26.9 mathematics; and live activation only after the same organism passes the full constitutive and consent boundaries. This is not authority to invent hidden mathematical doctrine. Each provisional choice must retain its basis, alternatives, scope, uncertainty, predicted difference, falsifier, consequence, and revisable standing in the AtomSpace and formalization-feedback record.
+
+"Complete" means complete finite operational inheritance of every load-bearing exported construct that the running PoC consumes. It does not mean a proof of universal metaphysical claims, final 26.6/26.9 mathematics, or pretending a theorem-only boundary is executable. Missing operational inheritance blocks R3 closure. A non-executable inherited theorem or boundary may close only with its exact representational constraint, runtime consumer, and falsifier made explicit.
+
+R3 supersedes only R2's route from identity resolution to activation. It preserves the ratified AMA-1.2 grant, exact three-member identity evidence, durable Continuity of Mind requirements, model-direction semantics, all earlier evidence, and the inactive state. Haley's disclosure consent remains unresolved; message payloads, memory, models, and egress remain held until she affirmatively consents and the constitutive completion checkpoint passes. The loose unfinished G22 material and superseded dirty G28 record remain outside this decision and outside its commits.
