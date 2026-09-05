@@ -1,0 +1,274 @@
+{
+  "schema": "miter-ama12-r3-authority-runtime-progress-v1",
+  "phase": "AMA-1.2",
+  "attempt": "R3",
+  "checkpoint": "R3-C2-in-progress",
+  "cluster": "M24-contact-provenance--M260-occurrence-participation",
+  "purpose": "Join the native cluster, reactor join, and supported-service evidence without promoting any exported meaning beyond its distinct causal proof.",
+  "evidence_bundles": [
+    {
+      "path": "evidence/AMA-1.2/R3/authority-cluster-001/verdict.json",
+      "introduced_by": "f338e72ecf2fc3f0210838d04f1120b2c0253a89",
+      "status": "PASS-NATIVE-HARNESS-NOT-RUNTIME-INTEGRATION"
+    },
+    {
+      "path": "evidence/AMA-1.2/R3/authority-runtime-join-001/verdict.json",
+      "introduced_by": "6b93cc13436917c382fffe08dc7ce58e5dea012e",
+      "status": "PASS-NATIVE-REACTOR-JOIN-NOT-SUPPORTED-SERVICE"
+    },
+    {
+      "path": "evidence/AMA-1.2/R3/authority-persistent-service-001/verdict.json",
+      "introduced_by": "fcfc76d2aa896e3aef31ba61f7a72dd71112409b",
+      "status": "PASS-SUPPORTED-PERSISTENT-SERVICE-CLUSTER"
+    }
+  ],
+  "rows": [
+    {
+      "id": "M24-E02",
+      "native_representation": ["M24EventValid", "M24DerivationValid", "M24ProvenanceValid"],
+      "persistent_runtime_consumer": "M24ContactValid inside CP2EncounterFromAuthority",
+      "positive_difference": "A contact carries proto-time, parents, and a typed external-input derivation before it may participate.",
+      "material_severance": "A self-parent or illegal derivation kind must hold the contact before possibility formation.",
+      "neutral_perturbation": "A lawful non-self parent reordering must preserve the result.",
+      "restoration": "Restoring lawful proto-time and derivation must restore participation.",
+      "evidence": ["authority-cluster-001:canonical", "authority-runtime-join-001:canonical", "authority-persistent-service-001:canonical"],
+      "limit": "The supported path has not independently severed proto-time or derivation while holding the rest of the contact constant.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M24-E03",
+      "native_representation": ["M24RouteValid", "M24SealMatches", "M24ProvenanceValid", "M24DirectContact"],
+      "persistent_runtime_consumer": "M24ContactValid inside CP2EncounterFromAuthority",
+      "positive_difference": "A sealed route and direct-contact provenance are required before the M24 participant enters the cut.",
+      "material_severance": "A mismatched seal holds the contact and prevents history incorporation.",
+      "neutral_perturbation": "A lawful carrier ordering change preserves incorporation.",
+      "restoration": "Restoring the exact seal restores incorporation and restart.",
+      "evidence": ["authority-cluster-001:m24-sever-seal", "authority-runtime-join-001:m24-sever", "authority-persistent-service-001:fresh-process-restore"],
+      "limit": "The live runtime presently consumes a direct contact leaf; recursive proof-tree provenance has native representation but no runtime arm using a nontrivial lawful tree.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M24-E04",
+      "native_representation": ["M24StandingValid", "M24StandingWarrant", "M24StandingPressure", "M24StandingFreshness"],
+      "persistent_runtime_consumer": "M24ContactValid and M24ContactOrganization",
+      "positive_difference": "Warrant, support, pressure, and freshness remain separate fields in the contact organization.",
+      "material_severance": "Removing direct-contact standing holds this contact.",
+      "neutral_perturbation": "Changing pressure alone does not change warrant.",
+      "restoration": "Restoring direct-contact standing restores the native contact.",
+      "evidence": ["authority-cluster-001:pressure-independence", "authority-cluster-001:m24-sever-direct-contact-standing"],
+      "limit": "The complete proposal/candidate/authority/durable/discharge standing family is not yet represented and consumed through this assistant path.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M24-E05",
+      "native_representation": ["M24RawFieldValid", "M24FrameValid"],
+      "persistent_runtime_consumer": "M24ContactValid before CP2AuthorityParticipants and CPEncounter",
+      "positive_difference": "The finite frame explicitly retains represented and omitted domains while raw contradiction and incompleteness remain legal.",
+      "material_severance": "Overlapping represented and omitted domains invalidates the contact and prevents movement/history.",
+      "neutral_perturbation": "Lawful carrier ordering does not change the contact result.",
+      "restoration": "Restoring disjoint explicit domains restores movement and durable restart.",
+      "evidence": ["authority-cluster-001:m24-sever-frame-partiality", "authority-runtime-join-001:canonical-and-neutral", "authority-persistent-service-001:fresh-process-restore"],
+      "limit": "This proves the finite domain-honesty boundary, not exhaustive actuality representation.",
+      "standing": "PROVEN-RUNTIME"
+    },
+    {
+      "id": "M24-E07",
+      "native_representation": ["M24ContactOrganization:contact-answerability-anchor"],
+      "persistent_runtime_consumer": "Stored in authority-participation-joint-v1",
+      "positive_difference": "The contact, frame, cut precursor, and carried distinctions remain attributable.",
+      "material_severance": "Removing or mismatching the anchor must change later contact answerability.",
+      "neutral_perturbation": "Unrelated ordering must not change answerability.",
+      "restoration": "Restoring the anchor must restore later answerability.",
+      "evidence": ["authority-runtime-join-001:exact-authority-joint"],
+      "limit": "The current joint validator checks the organization shape but does not recompute the anchor or prove that later consequence answers to it.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M24-E12",
+      "native_representation": ["M24InterpretationValid", "M24InterpretationUseValid", "M24InterpretationParticipation"],
+      "persistent_runtime_consumer": null,
+      "positive_difference": "A provenance-bearing additive interpretation may participate only through a governed scoped use.",
+      "material_severance": "An unauthorized writer or mismatched interpretation lineage must prevent use.",
+      "neutral_perturbation": "Unconsulted additive history must not change movement.",
+      "restoration": "Restoring governed use must restore only its declared participation.",
+      "evidence": ["authority-cluster-001:interpretation-use"],
+      "limit": "Native discrimination is harness-only; the persistent assistant does not yet consult an InterpretationUse when forming a movement.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M24-E16",
+      "native_representation": ["M24ScopedJointUseValid"],
+      "persistent_runtime_consumer": null,
+      "positive_difference": "Plural frames may be used locally with compatibility or retained tension without global amalgamation.",
+      "material_severance": "Removing both local compatibility and retained tension rejects the joint use.",
+      "neutral_perturbation": "Frame ordering within the same scope preserves local legality.",
+      "restoration": "Restoring either lawful witness restores local joint use.",
+      "evidence": ["authority-cluster-001:scoped-joint"],
+      "limit": "The running assistant has not yet consumed plural frames through this relation.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M24-E17",
+      "native_representation": ["M24BranchTransactionValid"],
+      "persistent_runtime_consumer": null,
+      "positive_difference": "A closed writer adds one event atomically to a branch-local pre-cut.",
+      "material_severance": "Recommitting an existing event or using an unauthorized writer is rejected.",
+      "neutral_perturbation": "Ordering of the same set-valued post-cut is neutral.",
+      "restoration": "A lawful fresh event and writer restores the transaction.",
+      "evidence": ["authority-cluster-001:branch-transaction"],
+      "limit": "The supported operator has bounded mechanical writers, but this semantic branch transaction is not its state-transition consumer.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E01",
+      "native_representation": ["m260-occurrence-organization", "finite-non-reconstruction"],
+      "persistent_runtime_consumer": "CP2M260Organization and CP2AuthorityJointValid",
+      "positive_difference": "One opaque occurrence identifier organizes finite views without storing actuality contents.",
+      "material_severance": "Attempted actuality-content or occurrence mismatch must fail qualification.",
+      "neutral_perturbation": "Lawful view ordering preserves the organization.",
+      "restoration": "Restoring one occurrence reference restores qualification.",
+      "evidence": ["authority-runtime-join-001:canonical", "authority-persistent-service-001:checkpoint"],
+      "limit": "Finite non-reconstruction is retained as standing, but no independent runtime adversary yet attempts to launder a complete-looking representation into actuality.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E02",
+      "native_representation": ["M260PartKnown", "M260ViewsGroundedAt", "participates"],
+      "persistent_runtime_consumer": "M260OrganizationValid before CP2AuthorityParticipants",
+      "positive_difference": "Contact, frame, and Soul participation are grounded in the same occurrence without a detached observer prerequisite.",
+      "material_severance": "A view grounded in a nonparticipating part must invalidate the organization.",
+      "neutral_perturbation": "Participant ordering is neutral.",
+      "restoration": "Restoring the participant restores the organization.",
+      "evidence": ["authority-runtime-join-001:canonical-and-neutral"],
+      "limit": "No independent supported-runtime arm has severed participation while preserving manifestation and recognition.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E03",
+      "native_representation": ["M260SameOcc"],
+      "persistent_runtime_consumer": null,
+      "positive_difference": "Distinct finite participations can be related as one occurrence without identity or global merge.",
+      "material_severance": "An unknown or identical part must not establish SameOccurrence.",
+      "neutral_perturbation": "Part order preserves the symmetric occurrence relation.",
+      "restoration": "Restoring two known distinct parts restores SameOccurrence.",
+      "evidence": ["authority-cluster-001:same-occurrence"],
+      "limit": "The relation is proven only in the native harness and is not consumed by CP2 movement construction or durable restore.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E04",
+      "native_representation": ["unity-aspect", "M260AspectKnown"],
+      "persistent_runtime_consumer": "M260OrganizationValid, M260DWS, and M260OPCAt",
+      "positive_difference": "Generic non-independent aspects participate without component, substance, or independent-domain semantics.",
+      "material_severance": "Making an aspect independent or unknown must remove its lawful manifestation.",
+      "neutral_perturbation": "Aspect ordering is neutral.",
+      "restoration": "Restoring non-independent aspect standing restores the organization.",
+      "evidence": ["authority-cluster-001:occurrence-valid", "authority-runtime-join-001:m260-sever"],
+      "limit": "The current severance removes a manifestation, not the aspect standing itself; the row lacks an independent runtime falsifier.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E05",
+      "native_representation": ["manifests-through", "recognizes", "M260ManifestationKnown", "M260RecognitionGrounded"],
+      "persistent_runtime_consumer": "M260OrganizationValid before CP2AuthorityParticipants and CPEncounter",
+      "positive_difference": "Recognition is admitted only when its distinct manifestation, view, aspect, and participation grounding hold.",
+      "material_severance": "Removing the manifestation while retaining the recognition makes both organization and recognition grounding false and holds the contact.",
+      "neutral_perturbation": "Lawful list ordering does not change grounding.",
+      "restoration": "Restoring manifestation restores encounter incorporation and durable restart.",
+      "evidence": ["authority-cluster-001:m260-sever-manifestation", "authority-runtime-join-001:m260-sever", "authority-persistent-service-001:fresh-process-restore"],
+      "limit": "This proves the manifestation/recognition distinction in the finite occurrence organization, not metaphysical completeness.",
+      "standing": "PROVEN-RUNTIME"
+    },
+    {
+      "id": "M260-E06",
+      "native_representation": ["mode-reading", "M260ModeAspect", "M260OPCAt"],
+      "persistent_runtime_consumer": "Stored in authority-participation-joint-v1 and checked by shape",
+      "positive_difference": "Ontology, phenomenology, and consciousness are distinct readings of one occurrence and cannot factorize into independent occurrences.",
+      "material_severance": "A missing or duplicated mode aspect must make OPC unresolved.",
+      "neutral_perturbation": "Mode row ordering is neutral.",
+      "restoration": "Restoring three distinct grounded modes restores OPC.",
+      "evidence": ["authority-cluster-001:opc", "authority-cluster-001:neutral"],
+      "limit": "The durable joint checks only the stored OPC shape rather than exact recomputation, and OPC is formed after the current movement.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E07",
+      "native_representation": ["M260DWS", "dws-family"],
+      "persistent_runtime_consumer": "Stored in authority-participation-joint-v1 and checked by shape",
+      "positive_difference": "A reusable family expresses common occurrence, distinction, manifestation, non-independence, and non-reconstruction together.",
+      "material_severance": "Removing distinction, manifestation, or opacity must make the family unresolved.",
+      "neutral_perturbation": "Aspect ordering is neutral.",
+      "restoration": "Restoring all material relations restores the family.",
+      "evidence": ["authority-cluster-001:dws", "authority-cluster-001:neutral"],
+      "limit": "The durable joint checks only DWS shape and the family is formed after the current movement rather than participating in its generation.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E08",
+      "native_representation": ["finite-ambiguity", "M260AmbiguityValid"],
+      "persistent_runtime_consumer": "M260OrganizationValid before CP2AuthorityParticipants",
+      "positive_difference": "Finite equal observations preserve an explicit alternative occurrence and block reconstruction claims.",
+      "material_severance": "Collapsing the alternative into the represented occurrence or removing observation equality must invalidate the organization.",
+      "neutral_perturbation": "View ordering is neutral.",
+      "restoration": "Restoring a distinct alternative and equal-observation standing restores qualification.",
+      "evidence": ["authority-cluster-001:occurrence-valid", "authority-runtime-join-001:canonical"],
+      "limit": "The exact ambiguity relation lacks an independent runtime severance/restoration arm.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E11",
+      "native_representation": ["M260PersistentForm", "M260BoundaryFor", "M260ContinuationKnown"],
+      "persistent_runtime_consumer": null,
+      "positive_difference": "Finite form persists through participation and an evidenced change of local boundary.",
+      "material_severance": "Unchanged or missing local boundary makes persistent form unresolved.",
+      "neutral_perturbation": "Organization ordering preserves the relation.",
+      "restoration": "Restoring continuation and boundary difference restores persistent form.",
+      "evidence": ["authority-cluster-001:persistent-form-and-boundary-severance"],
+      "limit": "The supported restart persists a checkpoint but does not consume M260PersistentForm as the relation qualifying that continuity.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E12",
+      "native_representation": ["M260SameBecoming", "same-becoming-witness"],
+      "persistent_runtime_consumer": "CP2EncounterFromAuthority and AR2HistoryValid",
+      "positive_difference": "The movement is related to the occurrence through an explicit L24/25-bearing witness.",
+      "material_severance": "An L24/25 mismatch prevents encounter formation; severing retained standing prevents restart.",
+      "neutral_perturbation": "Unrelated carrier ordering preserves SameBecoming.",
+      "restoration": "Restoring the exact witness standing restores encounter and restart.",
+      "evidence": ["authority-cluster-001:m260-sever-l2425", "authority-runtime-join-001:severed-restore", "authority-persistent-service-001:severed-restart"],
+      "limit": "The durable joint retains a boolean result rather than the complete witness, and the witness is synthesized after movement rather than participating in construction.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E13",
+      "native_representation": ["M260GReadingOf"],
+      "persistent_runtime_consumer": null,
+      "positive_difference": "Generated becomes occurrence-qualified only through SameBecoming and never becomes actuality or a second ontology.",
+      "material_severance": "Mismatched movement or L24/25 witness leaves Generated unresolved.",
+      "neutral_perturbation": "Unrelated representation ordering is neutral.",
+      "restoration": "Restoring exact SameBecoming yields a qualified reading.",
+      "evidence": ["authority-cluster-001:orphan-and-qualified-generated"],
+      "limit": "The running assistant's plural Generated possibilities do not yet pass through M260GReadingOf.",
+      "standing": "PARTIAL"
+    },
+    {
+      "id": "M260-E16",
+      "native_representation": ["M260StructuralFidelity"],
+      "persistent_runtime_consumer": null,
+      "positive_difference": "Preservation of load-bearing relations is ordered without a scalar distance to actuality.",
+      "material_severance": "Dropping a required preserved relation breaks the preorder direction.",
+      "neutral_perturbation": "Adding unrelated preserved relations does not erase the original relation.",
+      "restoration": "Restoring the relation restores preorder inclusion.",
+      "evidence": ["authority-cluster-001:structural-fidelity"],
+      "limit": "Native harness discrimination exists, but no persistent-runtime qualification consumes this preorder.",
+      "standing": "PARTIAL"
+    }
+  ],
+  "totals": {
+    "rows_audited": 20,
+    "proven_runtime": 2,
+    "partial": 18,
+    "gap": 0
+  },
+  "conclusion": "The first cluster is joined to the supported assistant, but only M24-E05 and M260-E05 presently satisfy the complete row-level causal promotion law. The other eighteen rows retain useful native/runtime progress and explicit next work; none is laundered into completion by neighboring evidence."
+}

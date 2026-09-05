@@ -1,0 +1,39 @@
+{
+  "schema": "miter-ama12-r3-authority-promotion-audit-manifest-v1",
+  "files": [
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/authority-runtime-progress-001.json",
+      "sha256": "04c5ec9916d7806b433fa92f6eee9af0d0581961ec7769049bd6b12f32174878"
+    },
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/checkpoint-c2-promotion-audit-001.md",
+      "sha256": "3ac333528fba41a6a47245b3292355c249989e8dddea865618fa282ab512f7d6"
+    },
+    {
+      "path": "scripts/ama1_2/r3/authority_cluster_promotion.mjs",
+      "sha256": "0aa66fca1a7452889a07463452605b13b9e32e8eabac923ff7b1ed02d7d73108"
+    }
+  ],
+  "source_evidence_bundles": [
+    {
+      "path": "evidence/AMA-1.2/R3/authority-cluster-001/verdict.json",
+      "introduced_by": "f338e72ecf2fc3f0210838d04f1120b2c0253a89",
+      "status": "PASS-NATIVE-HARNESS-NOT-RUNTIME-INTEGRATION"
+    },
+    {
+      "path": "evidence/AMA-1.2/R3/authority-runtime-join-001/verdict.json",
+      "introduced_by": "6b93cc13436917c382fffe08dc7ce58e5dea012e",
+      "status": "PASS-NATIVE-REACTOR-JOIN-NOT-SUPPORTED-SERVICE"
+    },
+    {
+      "path": "evidence/AMA-1.2/R3/authority-persistent-service-001/verdict.json",
+      "introduced_by": "fcfc76d2aa896e3aef31ba61f7a72dd71112409b",
+      "status": "PASS-SUPPORTED-PERSISTENT-SERVICE-CLUSTER"
+    }
+  ],
+  "artifacts": [
+    "verdict.json"
+  ],
+  "contains_credentials": false,
+  "contains_private_content": false
+}
