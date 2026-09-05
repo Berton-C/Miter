@@ -1,0 +1,21 @@
+{
+  "native": [
+    "ama12-ratified-grant-ready-for-private-binding-and-preflight",
+    [
+      "grant",
+      "237c64b6555fa01d8d9fb8f25330eea4cd010660b31ba44b8d9547c33f6a9596"
+    ],
+    [
+      "berton-consent",
+      "affirmed"
+    ],
+    [
+      "haley-consent",
+      "unresolved"
+    ],
+    [
+      "activation",
+      "held"
+    ]
+  ]
+}

@@ -1,0 +1,10 @@
+true
+(result canonical (ama12-ratified-grant-ready-for-private-binding-and-preflight (grant "237c64b6555fa01d8d9fb8f25330eea4cd010660b31ba44b8d9547c33f6a9596") (berton-consent affirmed) (haley-consent unresolved) (activation held)))
+(result neutral-json-roundtrip (ama12-ratified-grant-ready-for-private-binding-and-preflight (grant "237c64b6555fa01d8d9fb8f25330eea4cd010660b31ba44b8d9547c33f6a9596") (berton-consent affirmed) (haley-consent unresolved) (activation held)))
+(result restored (ama12-ratified-grant-ready-for-private-binding-and-preflight (grant "237c64b6555fa01d8d9fb8f25330eea4cd010660b31ba44b8d9547c33f6a9596") (berton-consent affirmed) (haley-consent unresolved) (activation held)))
+(result activation-without-witness (ama12-ratified-grant-held source-scope-or-authority-mismatch))
+(result haley-consent-bypassed (ama12-ratified-grant-held source-scope-or-authority-mismatch))
+(result continuity-age-expiry (ama12-ratified-grant-held source-scope-or-authority-mismatch))
+(result model-authority-escalation (ama12-ratified-grant-held source-scope-or-authority-mismatch))
+(result direct-model-to-effect (ama12-ratified-grant-held source-scope-or-authority-mismatch))
+(result self-renewing-grant (ama12-ratified-grant-held source-scope-or-authority-mismatch))

@@ -1,0 +1,66 @@
+{
+  "schema": "miter-ama12-r2-ratified-grant-runtime-v1",
+  "swipl": "SWI-Prolog version 10.0.2 for arm64-darwin",
+  "petta_commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+  "opening_plan_commit": "5906e4eac20c30881547ed60f371194614673c9e",
+  "external_network_calls": 0,
+  "credential_lookups": 0,
+  "model_calls": 0,
+  "chroma_calls": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "sources": [
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R2/plan.json",
+      "sha256": "bbfc9bd3836caadb2b3647c68a3ff113b4360f8c284b03101812e15757f3156d"
+    },
+    {
+      "path": "docs/operations/AMA-1.2-LIVE-GRANT.md",
+      "sha256": "237c64b6555fa01d8d9fb8f25330eea4cd010660b31ba44b8d9547c33f6a9596"
+    },
+    {
+      "path": "config/miter-assistant-mattermost-v1.example.json",
+      "sha256": "e805c66e38db56291fc05e2bd0d7858979f3bcf2fb5105c2cf633ab6d67551c5"
+    },
+    {
+      "path": "config/model-resources-v1.json",
+      "sha256": "f40335e0bd2bdbc5284fec6d750a81ed01d737efbb0d8ee071d4b8c64306da0d"
+    },
+    {
+      "path": "CONSTITUTION.md",
+      "sha256": "3b334598da7ed7b1b4a1f17d0bb4df9aa586b2f4128f2bfdee3d6a8339b36e0a"
+    },
+    {
+      "path": "MITER_SOUL_CONSTITUTIVE_SPEC_DRAFT.md",
+      "sha256": "855983108cd9745669c66c7d74fa69e9b583454331abf0d8ac6a142ba73b9e14"
+    },
+    {
+      "path": "BUILD_FIDELITY_PROTOCOL.md",
+      "sha256": "cd325c9c233827b9ab6895c9788c7e9d30f1899ca1face248b12ba5f8cb78a4c"
+    },
+    {
+      "path": "WORK_PROTOCOL.md",
+      "sha256": "ce739372a5b5338f3953ff85fbf33fa82e7febb02da6af2769ea89245e45fa5a"
+    },
+    {
+      "path": "ACCEPTANCE.md",
+      "sha256": "018f2a917d7af18fc9e6bda8b116bebf21d181d998374c723573dc1b58f66930"
+    },
+    {
+      "path": "src/mattermost_live_grant_v2.metta",
+      "sha256": "440263b260a39ba6cb06244f4e525a505888a89fe6d5d796f64d95085038712d"
+    },
+    {
+      "path": "src/bootstrap_mattermost_live_grant_v2.metta",
+      "sha256": "dc71cc10a2b684ca2e237b5d33eee61122d3d65370fe4405336b17d98edbe9f7"
+    },
+    {
+      "path": "scripts/ama1_2/live_grant_ratify.mjs",
+      "sha256": "d56418feeae7fb9f6c862f2982e079ae0a1c8557bae3784c3af2e4a937035633"
+    },
+    {
+      "path": "docs/gates/G31/P9/R1/closure.json",
+      "sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1"
+    }
+  ]
+}

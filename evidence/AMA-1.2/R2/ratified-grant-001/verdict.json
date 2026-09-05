@@ -1,0 +1,15 @@
+{
+  "schema": "miter-ama12-r2-ratified-grant-verdict-v1",
+  "status": "PASS-RATIFIED-AWAITING-PRIVATE-BINDING-AND-PREFLIGHT",
+  "facts": {
+    "ratification_and_activation_are_separate": true,
+    "two_principals_and_exact_shared_carrier_are_required": true,
+    "haley_disclosure_is_unresolved": true,
+    "canonical_continuity_has_no_age_expiry": true,
+    "human_model_direction_selects_a_participant_only": true,
+    "first_segment_forensic_pause_is_mandatory": true,
+    "causal_severance_holds_the_native_grant": true,
+    "no_live_authority_was_exercised": true
+  },
+  "next_boundary": "Resolve exact private group membership and obtain Haley disclosure affirmation before payload cognition, memory admission, model use, or egress."
+}

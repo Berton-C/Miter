@@ -1,29 +1,30 @@
 {
-  "schema": "miter-assistant-mattermost-grant-v1",
+  "schema": "miter-assistant-mattermost-grant-v2",
   "human_editable": true,
-  "status": "inactive-awaiting-explicit-approval",
+  "status": "ratified-awaiting-private-binding-preflight-and-activation",
   "authority_lineage": {
-    "campaign_plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R1/plan.json",
+    "campaign_plan": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R2/plan.json",
+    "superseded_r1_proposal_sha256": "8576debd59f280883c28fee0cd3d9adebb6892942f8fecfdce3239e30c5a5a47",
     "g31_closure_sha256": "0b02fd42e8f43506f1fb9736b6e4db80761cc1d61f9ec7c61f8e058395edd9c1",
     "candidate_sha256": "cf771e7bdfa571f695a3949177cb33ed6fb04431999e88401163b21a328efca3",
     "transport_sha256": "81d2ee5d219e2cdadeb231202d698f0a5cf10a6f50a633cbcf7ccd21e40da4d6",
-    "private_identity_record_sha256": "eb63f0e2fea7c9356a096437c3cdf0603090b9f1d3a1fa8262d4e13ce97c3bd1",
-    "private_principal_binding_sha256": "f1eb5944ed21f76477e059d763014c1ae96e678fcd1494f7149026c81bfd79ab"
+    "private_binding": "ignored-config-local-ama1-2-exact-hash-required-before-activation"
   },
-  "purpose": "A general, continuously cycling, single-principal local Mattermost assistant alpha that exercises one constitutive Soul path with exact Continuity of Mind.",
+  "purpose": "A general continuously cycling local Mattermost assistant alpha shared by Berton and Haley through one constitutive Soul path with durable scoped Continuity of Mind and controlled model comparison.",
   "surface": {
     "origin": "http://127.0.0.1:8065",
     "origin_policy": "loopback-only",
     "team_slug": "clarityclaw",
-    "allowlisted_channel_slug": "miter-g31-canary",
+    "allowlisted_carrier": "one-private-group-conversation-with-exactly-berton-haley-and-miter",
     "denied_control_channel_slug": "miter-g31-denied",
-    "stable_identity_source": "existing-private-g31-binding",
-    "identity_refresh": "exact-match-required-before-activation"
+    "stable_identity_source": "ignored-private-ama1-2-binding",
+    "identity_refresh": "exact-match-required-before-activation-and-reconnect"
   },
   "principals": {
-    "authorized_human": "existing-berton-explicit-private-binding",
-    "authorized_human_id_sha256": "6e164f603b5ec811e72746e2aefe9154a3e415455d9afd31a38472bf63aab654",
-    "outbound_bot": "existing-private-miter-bot-binding",
+    "authorized_humans": ["berton_c", "haley"],
+    "stable_ids": "ignored-private-binding-only",
+    "outbound_bot": "miter",
+    "required_group_membership": ["berton_c", "haley", "miter"],
     "mattermost_credential_reference": {
       "source": "macos-keychain",
       "account": "bcb",
@@ -31,13 +32,25 @@
     },
     "credential_value_may_leave_membrane": false
   },
+  "consent": {
+    "berton": "ratified-2026-09-05",
+    "haley": "required-before-payload-cognition-memory-admission-remote-model-or-egress",
+    "disclosure": [
+      "alpha-system",
+      "durable-shared-project-memory",
+      "local-model-processing",
+      "bounded-openrouter-glm53-processing",
+      "no-credentials-stable-ids-unrelated-private-memory",
+      "panic-revocation-correction-and-incomplete-erasure-facility"
+    ]
+  },
   "project_bindings": [
     {
-      "channel_slug": "miter-g31-canary",
-      "principal": "existing-berton-explicit-private-binding",
+      "carrier": "exact-private-group-conversation",
+      "principals": ["berton_c", "haley"],
       "project": "miter-evaluation-v1",
-      "audience": "berton-private-local",
-      "standing": "authorized"
+      "audience": "berton-haley-shared-local",
+      "standing": "authorized-after-exact-private-binding-and-consent"
     }
   ],
   "inbound": {
@@ -47,6 +60,7 @@
     ],
     "new_events_only": true,
     "channel_history_backfill": false,
+    "bot_posts_are_contact": false,
     "admitted_content": [
       "exact-event-text",
       "stable-post-thread-version-identity",
@@ -57,13 +71,17 @@
     "max_authorized_thread_root_bytes": 65536
   },
   "continuity": {
-    "scope": "exact-principal-audience-project",
+    "scope": "exact-principal-audience-project-with-explicit-shared-and-private-standing",
     "planes": [
-      "append-only-trajectory",
-      "structured-current-capsule",
-      "raw-artifact",
-      "semantic-memory"
+      "append-only-developmental-trajectory",
+      "structured-versioned-continuity-capsules",
+      "independently-recoverable-raw-artifacts",
+      "admitted-relational-and-semantic-memory"
     ],
+    "canonical_retention": "durable-no-age-expiry-explicit-authorized-erasure-repair-or-migration-only",
+    "correction": "additive-supersession-with-lineage",
+    "thirty_day_action": "continuity-and-privacy-audit-no-implied-deletion",
+    "projections": ["chroma-index", "temporary-model-context", "tiered-summary"],
     "chroma": {
       "endpoint_source": "config/chroma-service.json",
       "collection": "miter-ltm-v1",
@@ -72,7 +90,8 @@
         "native-admitted-write"
       ],
       "other_collections": "prohibited",
-      "vector_rank_authority": false
+      "vector_rank_authority": false,
+      "rebuildable_from_canonical_sources": true
     },
     "raw_artifact_root": "activation-runtime-root/project-data/miter-evaluation-v1",
     "repository_write_access": false,
@@ -80,32 +99,37 @@
   },
   "models": {
     "registry": "config/model-resources-v1.json",
-    "selection_authority": "native-relational-comparison-only",
-    "local_private_eligible": [
-      "qwen-local",
-      "nemotron-local"
-    ],
+    "initial_human_preference": "openrouter-glm53",
+    "authorized_dispositions": ["openrouter-glm53", "qwen-local", "nemotron-local", "soul-choice"],
+    "direction_authorities": ["berton_c", "haley"],
+    "direction_scopes": ["one-call", "conversation", "undertaking", "until-time"],
+    "direction_changes_participant_not_cognitive_authority": true,
+    "soul_choice": "native-relational-selection-among-authorized-resources",
+    "remote_consent_required_from_all_affected_principals": true,
+    "local_private_eligible": ["qwen-local", "nemotron-local"],
     "local_eligible_information": [
       "current-authorized-contact",
       "scope-filtered-continuity",
       "native-selected-source-spans"
     ],
-    "remote_public_safe_eligible": [
-      "openrouter-glm53"
-    ],
+    "remote_shared_scope_eligible": ["openrouter-glm53"],
     "remote_eligible_information": [
+      "current-authorized-shared-contact",
+      "minimum-relevant-native-selected-shared-continuity",
+      "explicitly-shared-project-artifact",
       "public-miter-repository-source",
-      "non-secret-mechanical-diagnostics",
-      "native-formed-public-safe-question"
+      "non-secret-mechanical-diagnostics"
     ],
     "remote_prohibited_information": [
-      "raw-mattermost-content",
-      "personal-content",
-      "private-memory",
       "credentials",
-      "stable-private-identities"
+      "stable-private-identities",
+      "principal-private-memory",
+      "unrelated-projects",
+      "other-channel-content",
+      "secret-bearing-or-unconsented-material"
     ],
-    "raw_model_output_authority": "none"
+    "raw_model_output_authority": "none",
+    "tracked_evidence": "redacted-hashes-counts-standing-and-timing-only"
   },
   "outbound": {
     "effect_class": "mattermost-create-post",
@@ -117,7 +141,9 @@
     "other_effect_classes": "prohibited"
   },
   "resource_bounds": {
-    "activation_hours": 72,
+    "first_segment_hours": 72,
+    "maximum_evaluation_hours": 168,
+    "continuation_after_first_segment": "explicit-joint-berton-haley-checkpoint-under-unchanged-boundaries",
     "max_admitted_events": 1000,
     "max_outbound_posts": 500,
     "max_outbound_posts_per_hour": 60,
@@ -138,30 +164,35 @@
     "cursor_journal": "durable-required",
     "effect_journal": "pending-before-send-confirmed-or-unknown-after-observation",
     "continuity_checkpoint": "fresh-process-readback-required",
-    "contact_and_memory_review_after_days": 30,
+    "canonical_memory_age_expiry": false,
+    "continuity_audit_after_days": 30,
     "operational_log_retention_days": 14,
     "repository_evidence": "redacted-only",
     "credential_persistence": "prohibited"
   },
   "lifecycle": {
-    "activation": "separate-explicit-command-after-approval-and-preflight",
-    "renewal": "new-explicit-human-approval-required",
-    "panic": "fixed-local-immediate-stop-new-effects-preserve-state",
-    "revocation": "human-local-immediate-future-effects-prohibited",
-    "expiry": "automatic-stop-and-checkpoint",
+    "activation": "durable-witness-after-ratification-private-binding-consent-and-preflight",
+    "renewal": "explicit-joint-checkpoint-required",
+    "panic": "fixed-local-immediate-stop-new-effects-model-memory-preserve-state",
+    "revocation": "either-authorized-human-may-stop-future-operations",
+    "expiry": "pause-new-ingress-model-memory-and-effects-checkpoint-preserve-continuity",
+    "forensic_checkpoint": "mandatory-at-72-hours-before-continuation",
+    "final_forensic_closure": "mandatory",
     "rollback": "stop-adapter-restore-last-known-good-preserve-history",
     "crash_loop": "three-failures-in-sixty-seconds-contained",
     "pending_effect_on_stop": "preserve-and-reconcile-before-any-future-send"
   },
   "approval": {
     "authority": "berton-explicit",
-    "standing": "unresolved",
-    "approved_proposal_sha256": null,
-    "activation_authority": "unresolved"
+    "standing": "ratified-2026-09-05",
+    "approved_document": "docs/operations/AMA-1.2-LIVE-GRANT.md",
+    "activation_authority": "authorized-after-complete-preflight",
+    "activation_witness": "absent-until-successful-activation"
   },
   "operator_notes": [
-    "This tracked file is an inactive public-safe proposal. It contains references, never credential values or private stable IDs.",
-    "Approval does not activate the assistant. Activation requires a fresh exact-identity and integrity preflight plus a separate operator command.",
-    "Adding a principal, channel, project, memory collection, model disclosure class, effect class, or longer lifetime requires a newly reviewed grant."
+    "This tracked file contains references, never credential values or private stable IDs.",
+    "The grant is an authority envelope and must not become a behavior or Soul decision table.",
+    "The activation clock starts only after the durable activation witness is committed.",
+    "Adding a principal, carrier, project, memory collection, model/provider, disclosure class, effect class, or longer maximum window requires a newly reviewed grant."
   ]
 }

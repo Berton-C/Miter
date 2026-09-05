@@ -2,9 +2,14 @@
   "schema": "miter-model-resource-registry-v1",
   "human_editable": true,
   "selection": {
-    "mode": "native-relational",
+    "mode": "human-direction-or-native-relational",
     "operator_preference": "openrouter-glm53",
-    "preference_standing": "evidence-not-authority",
+    "preference_standing": "human-preferred-default-not-cognitive-authority",
+    "authorized_directions": ["openrouter-glm53", "qwen-local", "nemotron-local", "soul-choice"],
+    "direction_scopes": ["one-call", "conversation", "undertaking", "until-time"],
+    "direction_authority_source": "active-surface-grant-and-authenticated-human-contact",
+    "soul_choice": "native-relational-comparison-among-currently-authorized-resources",
+    "selected_model_output_authority": "none",
     "fallback_policy": "explicit-native-comparison-only",
     "silent_model_substitution": false
   },
@@ -72,7 +77,8 @@
   "operator_notes": [
     "Edit this file to add, disable, or express a preference among model resources.",
     "Store secret values outside this file; credential_reference contains only a lookup location.",
-    "Operator preference participates in native comparison but never grants model text authority or executable standing.",
+    "An authenticated human direction selects an already-authorized participant for its exact scope; it does not choose meaning, movement, memory admission or effects.",
+    "Operator preference is the initial human default when no more specific current direction exists; Soul choice returns selection to native relational comparison.",
     "config/local/g03-model-profiles.json is a compatibility artifact for already-certified gates pending tested migration."
   ]
 }

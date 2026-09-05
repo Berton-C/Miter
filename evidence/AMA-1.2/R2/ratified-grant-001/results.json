@@ -1,0 +1,29 @@
+{
+  "schema": "miter-ama12-r2-ratified-grant-results-v1",
+  "status": "PASS-RATIFIED-AWAITING-PRIVATE-BINDING-AND-PREFLIGHT",
+  "plan_sha256": "bbfc9bd3836caadb2b3647c68a3ff113b4360f8c284b03101812e15757f3156d",
+  "grant_sha256": "237c64b6555fa01d8d9fb8f25330eea4cd010660b31ba44b8d9547c33f6a9596",
+  "config_sha256": "e805c66e38db56291fc05e2bd0d7858979f3bcf2fb5105c2cf633ab6d67551c5",
+  "model_registry_sha256": "f40335e0bd2bdbc5284fec6d750a81ed01d737efbb0d8ee071d4b8c64306da0d",
+  "native_standing": "ama12-ratified-grant-ready-for-private-binding-and-preflight",
+  "cases": {
+    "canonical": "ama12-ratified-grant-ready-for-private-binding-and-preflight",
+    "neutral-json-roundtrip": "ama12-ratified-grant-ready-for-private-binding-and-preflight",
+    "restored": "ama12-ratified-grant-ready-for-private-binding-and-preflight",
+    "activation-without-witness": "ama12-ratified-grant-held",
+    "haley-consent-bypassed": "ama12-ratified-grant-held",
+    "continuity-age-expiry": "ama12-ratified-grant-held",
+    "model-authority-escalation": "ama12-ratified-grant-held",
+    "direct-model-to-effect": "ama12-ratified-grant-held",
+    "self-renewing-grant": "ama12-ratified-grant-held"
+  },
+  "external_network_calls": 0,
+  "credential_lookups": 0,
+  "model_calls": 0,
+  "chroma_calls": 0,
+  "message_reads": 0,
+  "message_writes": 0,
+  "activated": false,
+  "berton_consent": "affirmed",
+  "haley_consent": "unresolved"
+}
