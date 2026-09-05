@@ -1,0 +1,29 @@
+{
+  "schema": "miter-ama12-r3-m25-promotion-audit-manifest-v1",
+  "files": [
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/m25-runtime-progress-001.json",
+      "sha256": "0082a6e7a0d9d9cd33951af0c7d730d83d08d0cd63a9ae7c9c7a92651246277b"
+    },
+    {
+      "path": "docs/campaigns/ALWAYS_ON_MITER_ASSISTANT_V1/AMA-1.2/R3/checkpoint-c2-m25-promotion-audit-001.md",
+      "sha256": "f732b7e611311d3822adb4336e3a44738c6ee1f57afe224e9143d7a54f344486"
+    },
+    {
+      "path": "scripts/ama1_2/r3/m25_promotion_audit.mjs",
+      "sha256": "753b327163ae8b32579ed776869dcd322f8c942ebe3e50e2594cf7dd0fb3b25e"
+    }
+  ],
+  "source_evidence_bundles": [
+    {
+      "path": "evidence/AMA-1.2/R3/m25-movement-service-001/verdict.json",
+      "introduced_by": "eb1ff3770629ea2404b5c02f9c357b102f7b8a00",
+      "status": "PASS-SUPPORTED-RUNTIME-M25-ONE-MOVEMENT-ONE-RAP-READ"
+    }
+  ],
+  "artifacts": [
+    "verdict.json"
+  ],
+  "contains_credentials": false,
+  "contains_private_content": false
+}

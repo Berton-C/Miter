@@ -1,0 +1,40 @@
+{
+  "schema": "miter-ama12-r3-m25-promotion-audit-result-v1",
+  "status": "PASS-HONEST-M25-PROMOTION-AUDIT",
+  "phase": "AMA-1.2",
+  "attempt": "R3",
+  "checkpoint": "R3-C2-in-progress",
+  "rows_audited": 19,
+  "promoted_rows": [
+    "M25-E01",
+    "M25-E03",
+    "M25-E04",
+    "M25-E10"
+  ],
+  "partial_rows": [
+    "M25-E02",
+    "M25-E05",
+    "M25-E06",
+    "M25-E07",
+    "M25-E08",
+    "M25-E09",
+    "M25-E11",
+    "M25-E12",
+    "M25-E13",
+    "M25-E14",
+    "M25-E15",
+    "M25-E16",
+    "M25-E17",
+    "M25-E18",
+    "M25-E19"
+  ],
+  "evidence_bundles_verified": 1,
+  "one_movement_one_rap_read_bound": true,
+  "fact9_flourishing_joint_bound": true,
+  "remaining_rows_are_mandatory": true,
+  "live_payload_reads": 0,
+  "model_calls": 0,
+  "memory_reads": 0,
+  "network_calls": 0,
+  "external_effects": 0
+}
