@@ -518,14 +518,31 @@ Already carried:
   consequence-sensitive half of the one-engine bridge. It does not yet
   establish a severed/constrained trajectory, SNS/Stuck, or any of the four
   cross-cut change categories.
+- the trajectory and current-cut projection are now explicitly separated.
+  Prior cuts and consequences remain append-only, while a consequence row with
+  the same stable identity supersedes the earlier standing in the newly
+  projected cut only. An actual `interface-conversation` transition from
+  `open` to `unavailable` therefore leaves exactly one current row and forms
+  `m255-constrained-consequence-participation`. M25.5 A* now retains the
+  unavailable interface as the fitting object of a bounded recovery/defer
+  movement and carries the constraint explicitly rather than pretending no
+  interface obligation exists. Through `bin/miter`, the constrained next cut
+  formed `constitutive-defer`; its one R/A/P surface read the inherited M25
+  orientation as `unresolved`, not SNS-like. Stop/start restored the defer,
+  unavailable interface, constrained relation, and consequence exactly, while
+  one pre-existing effect remained byte-identical and exactly once. This
+  establishes actual constrained participation and the prerequisite current-
+  projection semantics for M24 loss/reintroduction and M25.5 degradation. It
+  does not yet establish reflexive self-representation bite, recovery, SNS,
+  Stuck, or the four actual cross-cut change-category witnesses.
 
 Next movement:
 
-1. exercise actual severing/constrained participation across prior/next cuts,
-   preserving the rule that constraint alone is not SNS, then connect
-   disclosure, creation, maintenance, and degradation to witnessed cross-cut
-   accessibility/generative change and the unchanged HarmonicAlign/interface
-   surfaces;
+1. connect disclosure, creation, maintenance, and degradation to witnessed
+   cross-cut accessibility/generative change and the unchanged
+   HarmonicAlign/interface surfaces; distinguish actual interface
+   reintroduction from a recovery label, and distinguish a changed identifier
+   from genuinely new generative structure;
 2. complete recognition overlap/non-reconstruction and the inherited B1–B10
    bridge directions without adding a chooser or a second R/A/P surface;
 3. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same

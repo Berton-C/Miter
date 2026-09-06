@@ -19,6 +19,39 @@
 (= (CPListAppend $a $b)
    (CPReverseInto (CPReverseInto $b 0 ()) 0 $a))
 
+; The developmental trajectory retains every prior cut and consequence, but a
+; cut is the current projection at that event.  Applying a consequence row
+; therefore supersedes an earlier row with the same stable identity in the new
+; cut only.  Without this distinction, an interface could never become
+; unavailable (both old and new standings would remain current), and M24 loss
+; / reintroduction plus M25.5 severing / degradation would be decorative.
+(= (CPRowsWithoutIdAt $rows $id $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (and (is-expr $row) (> (size-atom $row) 1))
+         (if (== (index-atom $row 1) $id)
+           (CPRowsWithoutIdAt $rows $id (+ $i 1))
+           (cons-atom $row (CPRowsWithoutIdAt $rows $id (+ $i 1))))
+         (cons-atom $row (CPRowsWithoutIdAt $rows $id (+ $i 1)))))
+     ()))
+
+(= (CPRowsWithoutId $rows $id)
+   (CPRowsWithoutIdAt $rows $id 0))
+
+(= (CPProjectRow $rows $row)
+   (if (and (is-expr $row) (> (size-atom $row) 1))
+     (CPListAppend (CPRowsWithoutId $rows (index-atom $row 1)) ($row))
+     $rows))
+
+(= (CPProjectDeltaRowsAt $rows $delta $i)
+   (if (< $i (size-atom $delta))
+     (CPProjectDeltaRowsAt
+       (CPProjectRow $rows (index-atom $delta $i)) $delta (+ $i 1))
+     $rows))
+
+(= (CPProjectDeltaRows $rows $delta)
+   (CPProjectDeltaRowsAt $rows $delta 0))
+
 (= (CPUniq $xs $i $seen)
    (if (< $i (size-atom $xs))
      (if (CPHas (index-atom $xs $i) $seen 0) false
@@ -371,10 +404,21 @@
      (and (== (size-atom $rows) 1)
           (CPHas (index-atom (index-atom $rows 0) 2) (available open revisable) 0))))
 
+(= (CPInterfaceUnavailable $cut $id)
+   (let $rows (CPFind (CPInterfaces $cut) $id)
+     (and (== (size-atom $rows) 1)
+          (== (CPHas (index-atom (index-atom $rows 0) 2)
+            (available open revisable) 0) false))))
+
 (= (CPAllInterfaces $cut $ids $i)
    (if (< $i (size-atom $ids))
      (and (CPInterfaceAvailable $cut (index-atom $ids $i))
           (CPAllInterfaces $cut $ids (+ $i 1))) true))
+
+(= (CPAllInterfacesUnavailable $cut $ids $i)
+   (if (< $i (size-atom $ids))
+     (and (CPInterfaceUnavailable $cut (index-atom $ids $i))
+          (CPAllInterfacesUnavailable $cut $ids (+ $i 1))) true))
 
 (= (CPFlourishingExpressionFor $organization $value)
    (CPFind (index-atom $organization 2) $value))
@@ -947,7 +991,8 @@
 (= (CPNativeDeferralsV2 $cut $flourishing)
    (cons-atom (possible-movement constitutive-defer defer
        (CPNativeRequirementRelations $cut)
-       (CPNativeRequirementDistinctions $cut) ()
+       (CPNativeRequirementDistinctions $cut)
+       (CPNativeRequirementInterfaces $cut)
        (CPBeneficialFlourishingValues $flourishing)
        (consequence-route interface-contact non-certifying) l2425-supported)
      ()))
@@ -1191,11 +1236,11 @@
          (index-atom $cut 3)
          (after (index-atom $cut 4) (index-atom $consequence 1))
          (same-becoming (index-atom $cut 5) (index-atom $consequence 1))
-         (D (CPListAppend (index-atom $old-d 1) (index-atom $delta-d 1))
-            (CPListAppend (index-atom $old-d 2) (index-atom $delta-d 2)))
+         (D (CPProjectDeltaRows (index-atom $old-d 1) (index-atom $delta-d 1))
+            (CPProjectDeltaRows (index-atom $old-d 2) (index-atom $delta-d 2)))
          (index-atom $cut 7)
-         (I (CPListAppend (index-atom $old-i 1) (index-atom $delta-i 1)))
-         (W (CPListAppend (index-atom $old-w 1) (index-atom $delta-w 1)))
+         (I (CPProjectDeltaRows (index-atom $old-i 1) (index-atom $delta-i 1)))
+         (W (CPProjectDeltaRows (index-atom $old-w 1) (index-atom $delta-w 1)))
          (index-atom $cut 10)
          (index-atom $consequence 8)
          (consequence-provenance (index-atom $consequence 1)
@@ -1222,12 +1267,13 @@
          (index-atom $cut 3)
          (after (index-atom $cut 4) (index-atom $consequence 1))
          (same-becoming (index-atom $cut 5) (index-atom $consequence 1))
-         (D (CPListAppend (index-atom $old-d 1) (index-atom $delta-d 1))
-            (CPListAppend (index-atom $old-d 2) (index-atom $delta-d 2)))
-         (Omega (CPListAppend (index-atom $old-omega 1) (index-atom $delta-omega 1)))
-         (I (CPListAppend (index-atom $old-i 1) (index-atom $delta-i 1)))
-         (W (CPListAppend (index-atom $old-w 1) (index-atom $delta-w 1)))
-         (C (CPListAppend (index-atom $old-c 1) (index-atom $delta-c 1)))
+         (D (CPProjectDeltaRows (index-atom $old-d 1) (index-atom $delta-d 1))
+            (CPProjectDeltaRows (index-atom $old-d 2) (index-atom $delta-d 2)))
+         (Omega (CPProjectDeltaRows (index-atom $old-omega 1)
+           (index-atom $delta-omega 1)))
+         (I (CPProjectDeltaRows (index-atom $old-i 1) (index-atom $delta-i 1)))
+         (W (CPProjectDeltaRows (index-atom $old-w 1) (index-atom $delta-w 1)))
+         (C (CPProjectDeltaRows (index-atom $old-c 1) (index-atom $delta-c 1)))
          (index-atom $consequence 11)
          (consequence-provenance (index-atom $consequence 1)
            (index-atom $consequence 2) (index-atom $consequence 3)

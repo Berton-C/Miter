@@ -167,12 +167,31 @@
 ; witness-bearing relation. In particular, the mere presence of the force,
 ; disposition, reflexive, and recognition fields above does not claim that
 ; any such witness is inhabited for this movement.
+(= (M255AStarWitness $signature)
+   (let* (($move (index-atom $signature 3))
+          ($form (index-atom $move 2))
+          ($interfaces (M255GenSigInterfaces $signature)))
+     (if (== $form defer)
+       (a-star-witness $interfaces fits-bounded-interface-recovery
+         witnessed-current-interface-constraint)
+       (a-star-witness $interfaces fits-interface
+         no-unwitnessed-constraint))))
+
+(= (M255InterfacesFitMovement $cut $possibility)
+   (let* (($form (index-atom $possibility 2))
+          ($interfaces (index-atom $possibility 5)))
+     (if (== $form defer)
+       (and (is-expr $interfaces)
+         (and (> (size-atom $interfaces) 0)
+           (and (== (CPInterfacesLive $cut) false)
+                (CPAllInterfacesUnavailable $cut $interfaces 0))))
+       (CPInterfacesReady $cut $interfaces))))
+
 (= (M255GeneratedFromSignature $signature $possibility)
    (generated-v1 $signature
      (r-star-witness (M255GenSigRelations $signature)
        used-and-counterfactually-discriminating)
-     (a-star-witness (M255GenSigInterfaces $signature)
-       fits-interface no-unwitnessed-constraint)
+     (M255AStarWitness $signature)
      (p-star-witness (M255GenSigDistinctions $signature)
        used-and-counterfactually-discriminating)
      (o-star-witness (index-atom $possibility 7) consequence-open)
@@ -187,9 +206,7 @@
       (and (== (index-atom $witness 2)
              (r-star-witness (M255GenSigRelations $signature)
                used-and-counterfactually-discriminating))
-       (and (== (index-atom $witness 3)
-              (a-star-witness (M255GenSigInterfaces $signature)
-                fits-interface no-unwitnessed-constraint))
+       (and (== (index-atom $witness 3) (M255AStarWitness $signature))
         (and (== (index-atom $witness 4)
                (p-star-witness (M255GenSigDistinctions $signature)
                  used-and-counterfactually-discriminating))
@@ -204,7 +221,7 @@
      (and (M255GeneratedWitnessStructuralValid $witness $signature)
       (and (CPRelationsReady $cut $facts (index-atom $possibility 3))
        (and (CPDistinctionsReady $cut (index-atom $possibility 4))
-        (and (CPInterfacesReady $cut (index-atom $possibility 5))
+        (and (M255InterfacesFitMovement $cut $possibility)
          (and (CPConsequenceReady (index-atom $possibility 7))
           (and (== (index-atom $possibility 8) l2425-supported)
            (and (CPShape $flourishing flourishing-organization 3)
@@ -603,7 +620,7 @@
     (and (M255FiveCarrierSuiteStructuralValid $suite $possibility)
      (and (CPRelationsReady $cut $facts (index-atom $possibility 3))
       (and (CPDistinctionsReady $cut (index-atom $possibility 4))
-       (and (CPInterfacesReady $cut (index-atom $possibility 5))
+       (and (M255InterfacesFitMovement $cut $possibility)
         (and (CPConsequenceReady (index-atom $possibility 7))
          (and (== (index-atom $possibility 8) l2425-supported)
           (and (CPShape $flourishing flourishing-organization 3)
