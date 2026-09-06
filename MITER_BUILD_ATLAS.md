@@ -324,8 +324,8 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-04 | `Generated` is canonical realization of `𝒢` | P | supplied option is called generated |
 | M255-05 | `GenTranslation` preserves load-bearing structure locally | P | translation lacks bidirectional relation/distinction/interface proof |
 | M255-06 | `GenEquivV2` is canonical cross-carrier equivalence | P | truth-only equivalence substitutes |
-| M255-07 | lawful equivalence laws on bounded domains | A | laws asserted outside domain |
-| M255-08 | five-carrier connected-equivalence evidence pattern | A | one carrier is generalized universally |
+| M255-07 | lawful equivalence laws on bounded domains | P | finite constructors are generalized outside their witnessed domain |
+| M255-08 | five-carrier connected-equivalence evidence pattern | P | carrier names substitute for carrier-specific organization |
 | M255-09 | `ForceObl` / `SupportPre` are non-optimizing structures | P | minimization score substitutes |
 | M255-10 | `Access` is a derived read-only participation view | P | access mutates generation |
 | M255-11 | one-engine PNS/SNS organization | P | separate engines/behavior tables appear |
@@ -338,7 +338,7 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-18 | open participation bridges into unchanged HarmonicAlign | P | openness rewrites alignment law |
 | M255-19 | B1–B10 retain ratified direction/scope | A | converse or wider scope is assumed |
 | M255-20 | overlapping recognition `Π` is non-reconstructive | P | recognitions are treated as exhaustive parts |
-| M255-21 | finite heterogeneous manifestation suite MA–ME | A | suite not represented/read back |
+| M255-21 | finite heterogeneous manifestation suite MA–ME | P | renamed vocabularies are mistaken for complete heterogeneous dynamics |
 | M255-22 | N01–N25 falsifier surface | P | a partial negative surface is mistaken for the complete N01–N25 set |
 | M255-23 | MeTTa projection contract | P | host computation replaces native witness |
 | M255-24 | bounded machine-evidence packages | A | evidence names are mistaken for live proof |
@@ -474,25 +474,33 @@ Already carried:
   relation, distinction, and interface, explicit no-unwitnessed-constraint and
   O* transport, and a `GenEquivV2` witness that expressly does not establish
   carrier identity, actuality, or `SameBecoming`;
-- missing load-bearing coverage and same-carrier substitution are rejected in
-  external ephemeral checks; a live contact forms through the supported
-  runtime and restart preserves one byte-identical effect without replay.
+- missing load-bearing coverage and same-carrier substitution at a required
+  cross-carrier boundary are rejected in external ephemeral checks, while
+  same-carrier reflexivity remains lawful; a live contact forms through the
+  supported runtime and restart preserves one byte-identical effect without
+  replay;
+- each primary now also carries a finite MA–ME manifestation suite with
+  carrier-distinct relation, distinction, interface, and recognition
+  vocabularies; MA/MB/MD/ME are connected to the MC human-cognitive hub by
+  explicit proof-relevant maps, and each bounded map carries native
+  reflexive/symmetric/transitive evidence. This is a finite formal projection,
+  not an empirical claim about any carrier or evidence of complete
+  heterogeneous dynamics.
 
 Next movement:
 
-1. complete M255-07/08/21 with bounded reflexive/symmetric/transitive
-   translation and a genuinely heterogeneous MA–ME carrier graph connected
-   through the human-cognitive hub; each carrier must retain its own vocabulary
-   and feed the same native generative law;
-2. complete the remaining M25.5 causal consumers—`ForceObl`/`SupportPre`,
-   derived `Access`, one-engine disposition organization, reflexive severing
-   bite, change categories, and recognition non-reconstruction—without adding
-   a chooser or a second R/A/P surface;
-3. discharge the M25.5→M25 and M25.5→M26.0 bridges through the same primary
-   movement, then continue the export map until all M24–M26.3 gaps have live
-   consumers in this organism;
+1. give the five carrier projections actual carrier-specific
+   `ForceObl`/`SupportPre`, derived `Access`, one-engine disposition,
+   reflexive-severing, and change-category organization so the suite cannot be
+   satisfied by names and shared shape alone;
+2. complete recognition overlap/non-reconstruction and the inherited B1–B10
+   bridge directions without adding a chooser or a second R/A/P surface;
+3. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same
+   primary movement, then continue the export map until all M24–M26.3 gaps
+   have live consumers in this organism;
 4. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 
-The old repository is not to be deleted, rewritten, or force-pushed during C1.
+The old repository and remote `main` remain untouched until the separately
+authorized destructive operation in step 4.
