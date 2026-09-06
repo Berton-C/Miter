@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+repo_dir=$(dirname -- "$script_dir")
+if [ -n "${MITER_SWIPL:-}" ]; then
+  swipl=$MITER_SWIPL
+else
+  swipl=$(command -v swipl 2>/dev/null || true)
+fi
+
+if [ -z "$swipl" ] || [ ! -x "$swipl" ]; then
+  echo "Miter requires SWI-Prolog. Set MITER_SWIPL to its executable path." >&2
+  exit 69
+fi
+
+exec "$swipl" -q -f none -s "$repo_dir/effect_membranes/assistant_operator.pl" -- "$@"

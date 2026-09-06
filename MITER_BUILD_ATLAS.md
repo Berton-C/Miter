@@ -1,0 +1,478 @@
+# Miter Build Atlas
+
+Status: clean-room recovery candidate  
+Purpose: the one operations map for building one coherent Miter runtime  
+Controlling authorities: `CONSTITUTION.md`, `MITER_SOUL_CONSTITUTIVE_SPEC.md`,
+and `authority/M24.md` through `authority/M26_3.md`
+
+## 1. Outcome and build contract
+
+Miter SHALL be one supported, continuously cycling, recoverable PeTTa/MeTTa
+organism. Its living Soul participates in the formation of every cognitive
+movement through the nine interconnected flourishings, the nine Immutable
+Facts, one simultaneous R/A/P reading, accumulated relationship and project
+continuity, and returned consequence. Models, memories, tools, and surfaces
+participate with typed standing; none acquires contact, authority, or action
+rights through fluency or availability.
+
+There is one cognitive clock. The recurring PeTTa/MeTTa reactor owns
+continuation. Prolog may launch, observe, wait, hash, persist, restore, and
+commit already-certified effects. A minimal native C grounding exposes only
+the POSIX `fsync()` primitive required for durable storage. Neither Prolog nor
+C forms undertakings, classifies the Soul, chooses a continuation, or operates
+a second cognitive loop.
+
+No component is complete merely because an isolated harness can exercise it.
+Except for quarantined pre-promotion work, completion requires reachability
+through `bin/miter`, participation in the one persistent runtime, and retained
+organization after restart. Verification instruments police the build; they
+do not become Miter's cognition.
+
+## 2. Constitutive joint
+
+At every developmental cut the one runtime must preserve this joint:
+
+1. Contact becomes a partial, provenance-bearing relational configuration.
+2. Fact9 expressions make the one becoming finitely legible without claiming
+   to reconstruct it.
+3. The interconnected flourishings participate in forming the configuration;
+   they are not a post-hoc judgment layer.
+4. Flourishing, capture, obstruction, disguise, contradiction, beneficial
+   direction, counterevidence, positive-pole distortion, and unresolved
+   standing remain relationally explicit.
+5. Previously unseen Fact9/flourishing compositions can become meaningful
+   without a new behavioral branch.
+6. `Generated/𝒢` exposes multiple lawful possible continuations.
+7. Native MeTTa constructs and compares possible movements through material
+   relations and counterfactual discrimination.
+8. A selected, joined, deferred, declined, or unresolved continuation remains
+   attributable to that organization.
+9. Consequence transforms the next cut, participation interface,
+   accessibility, and relational weave.
+10. Restart preserves that constitutive organization and all warranted growth
+    already incorporated, together with the live developmental processes
+    through which further growth is occurring.
+
+This is not a mapping layer between Fact9 and the flourishings. It is the
+constitutive joint through which Fact9, flourishing, contact, generation,
+participation, consequence, and continuity become one cognitive process.
+
+Balance unfolding as intelligence is movement. R/A/P is one read of one
+contact/movement surface from three simultaneous perspectives:
+
+- Relatedness: the material relational organization of the movement.
+- Appropriateness: doctrine-indexed, provenance-bearing fittingness of that
+  same movement.
+- Precision: the distinctions that same movement preserves.
+
+The three must never be emitted, scored, selected, or revised as independent
+things. The nine flourishings participate inside that one aligned surface;
+the nine Immutable Facts express the one unity within which that participation
+is occurring.
+
+## 3. Canon and historical provenance
+
+Only the two control documents and five ratified mathematical authorities in
+this repository govern the build. Historical sources may clarify intent but
+do not silently regain authority.
+
+`ORIG_ClarityClaw_Soul_Architecture_Strategy_Map_current.md` has been read in
+full from preserved `initial_canon` provenance. It contributes two important
+recoveries:
+
+- the nine-part compass anatomy: orientation, flourishing pole, capture pole,
+  observable signal, felt/relational expression, disguise or moat, failure
+  mode, observable proxy, and gap signature;
+- the standing soul-absent question: where could technically correct behavior
+  still fail to embody the Soul?
+
+The Miter Soul specification expands that historical anatomy to fourteen
+fields per flourishing by adding counterevidence, positive-pole distortion,
+self/other/technical expression, time/consequence, relations, and source /
+consumer / falsifier linkage. The active compass therefore contains 126
+substantive field atoms, not the historical 81.
+
+The strategy map's five-level `Safety > Integrity > HumanFlourishing >
+Governance > Helpfulness` hierarchy, fixed verdict routing, Python helpers,
+and LLM-centered evaluation are historical failed or superseded experiments.
+They SHALL NOT be imported into Miter.
+
+The constitutional manifest distinguishes three spaces:
+
+- compact native obligation kernel: 78 atoms;
+- flourishing compass: 129 atoms (126 fields plus three projection/interface
+  declarations);
+- Fact9 projection: 36 atoms.
+
+These counts are integrity observations, not measures of Soul completeness.
+The compact 78-atom kernel is not to be described as “the Soul.”
+
+## 4. One runtime topology
+
+```text
+external/endogenous occurrence
+  -> strict non-cognitive carrier
+  -> scoped contact + provenance + continuity participation
+  -> one PeTTa/MeTTa developmental cut
+       M24 contact/frame/standing/attachment
+       M26.0 one-occurrence organization
+       M26.3 Fact9 recognition grammar
+       nine-flourishing constitutive participation
+       M25.5 Generated/𝒢 possibilities
+       one M25 R/A/P read of each primary movement
+       native comparison / join / defer / decline / unresolved
+  -> VoiceRNA or another typed expression candidate
+  -> capability-limited effect membrane
+  -> exactly-once effect witness
+  -> consequence contact
+  -> transformed next cut and persistent relational weave
+  -> restart restoration into this same cycle
+```
+
+## 5. Current recovered standing
+
+`E` means embodied and reachable through the supported runtime. `P` means a
+native projection exists but completeness or end-to-end causal participation
+has not yet been established. `A` means authority is present but the runtime
+consumer is absent. No status is upgraded by assertion.
+
+| Capability | Standing | Current site | Exact gap |
+|---|---:|---|---|
+| One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV2` / `AssistantCycleWithV2` | General conversational input is not connected. |
+| Start/status/stop/panic | E | `bin/miter`, operator membrane | Installer and host service registration are absent. |
+| Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
+| Append-only trajectory and exactly-once local effects | E | store/service membranes | No promoted external surface adapter is active. |
+| Checkpoint and same-runtime restart | E | reactor + store membrane | Living long-term memory and incomplete undertakings are not fully restored. |
+| M24–M26.3 native projection | P | `authority_inheritance.metta`, constitutive modules | Export-by-export causal completeness remains C2 work. |
+| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*` | Rich fields are loaded; all fields do not yet alter movement formation. |
+| Fact9–flourishing participation joint | P | `constitutive_foundation.metta` | Held-out unfamiliar composition and consequence-change evidence are absent. |
+| One simultaneous R/A/P surface | P | `M25RAPReadings`, `CPRAPReadingsV2` | Must prove no downstream consumer splits it into three choices. |
+| Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
+| Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
+| LLM participation and VoiceRNA | P | participant/voice certificate structures | No live model call or general language rendering is connected. |
+| Mattermost | A | none in clean runtime | General scoped transport and delivery reconciliation must be recovered. |
+| Endogenous growth / NACE / PLN / NAL | A/P | participant vocabulary and authority only | No consequence-earned persistent revision is active. |
+| Regenerative Soul | A | control specification only | Detection, quarantined reconstruction, rejection, and restoration are absent. |
+| Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
+| Full Continuity of Mind | A/P | checkpoints plus read-only adapters | Exact capsules, semantic memory, undertakings, relationships, and growth are not one writable restored organization. |
+
+## 6. Four additive stages
+
+### C1 — Clean-room recovery and one-runtime baseline (active)
+
+Preserve only the controlling canon and active runtime closure. Verify one
+process, one clock, integrity, start/stop/restart, external runtime state, and
+an empty source-tree diff after operation. Recover historical capability code
+only when it has a named consumer in the one runtime.
+
+Closure: clean candidate branch; fresh-clone bootstrap; recurring heartbeat;
+clean stop/restart; no secrets/private data; no test/evidence debris; honest
+capability matrix.
+
+### C2 — Complete causal M24–M26.3 embodiment
+
+For every inherited export below, either connect the existing native
+representation to the primary encounter/consequence path or implement the
+missing representation and consumer. M24, M25, M25.5, M26.0, and M26.3 must
+participate together before the one R/A/P read. No theorem is discarded merely
+because the incomplete runtime lacks its consumer; the missing consumer is a
+runtime gap.
+
+Closure: an unfamiliar contact is organized through the complete ratified
+surface; multiple lawful continuations remain live; materially different
+contact or consequence changes the resulting movement; restart preserves the
+organization; no new behavioral branch is added for the case.
+
+### C3 — Provisional 26.6/26.9 laboratory dynamics
+
+Add explicitly labeled provisional computation-through-mathematics and living
+Soul dynamics to the same persisted AtomSpace organization. The PoC is the
+laboratory: choices not yet ratified by 26.6/26.9 must be named, provenance
+bound, reversible where possible, and produce counterexamples and observations
+for later formalization.
+
+Closure: warranted new atoms/relations/capabilities alter later perception or
+movement and survive restart; unsupported self-confirmation does not gain
+standing; severed expressed Soul organization is regenerated by Miter in
+quarantine without mutation of the constitutional germline.
+
+### C4 — Usable always-on assistant and evaluation release
+
+Connect general Mattermost contact, model participation, VoiceRNA, durable
+Continuity of Mind, and capability-governed effects to the same organism.
+Package install/start/status/stop/panic and evaluation configuration for SNET
+staff. This is not a separate product loop over the cognition.
+
+Closure: authorized humans can install Miter, converse about unfamiliar
+subjects, sustain and resume undertakings, observe scope isolation, recover
+after restart/model/surface failure, and see consequence alter later
+participation.
+
+## 7. The only build cycle
+
+Every additive cut follows the same four movements. This is a builder method,
+not a behavioral policy installed inside Miter.
+
+1. **Understand** — reread the controlling source meaning; name the exact gap,
+   inherited assumptions, non-claims, and falsifier. Inspect the current
+   runtime consumer before editing.
+2. **Weave** — identify how the addition participates with the existing cut,
+   which distinctions it must preserve, and what it makes possible next. Reject
+   parallel paths and duplicated clocks.
+3. **Embody** — make the smallest additive edit to the one runtime. Use MeTTa
+   for cognition and Prolog/C only for non-cognitive mechanics. Do not add a
+   behavior selected in advance for the verification case.
+4. **Carry** — exercise the change through `bin/miter`, return consequence,
+   restart, and verify that the changed organization persists. Record only the
+   resulting source change and current atlas standing; ephemeral observations
+   stay outside Git.
+
+One cut is active at a time. A cut closes only if it creates the prerequisite
+for the next named cut. If evidence reopens an earlier cut, repair that exact
+gap and then resume; do not create a side campaign.
+
+## 8. Ratified-authority implementation atlas
+
+The rows below are the complete inherited meanings, not a list of optional
+features. Each authority subsection states the gap it fills and its additive
+relationship. `P` means a relevant native representation exists but must still
+earn C2 closure through the one runtime. `A` means the runtime representation
+or causal consumer is still missing. Expected evidence is always a held-out
+contact/consequence plus restart readback; the listed falsifier is the shortest
+failure witness.
+
+### M24 — lawful attachment and frame authority
+
+Gap filled: contact, provenance, standing, frame, attachment, and developmental
+continuity cannot be invented by a model or reconstructed from a prompt.
+Additive relation: M24 gives every later M25/M25.5/M26.0/M26.3 participation a
+lawful contact and developmental carrier. Primary representation and consumer:
+`authority_inheritance.metta` -> `constitutive_authority_joint.metta` ->
+`assistant_reactor_authority.metta`.
+
+| ID | Inherited meaning | Standing | Short falsifier |
+|---|---|---:|---|
+| M24-01 | jurisdiction and carrier non-identity | P | carrier is treated as actuality |
+| M24-02 | proto-time and typed derivation | P | wall time or untyped origin substitutes |
+| M24-03 | sealed governed contact and proof-tree provenance | P | altered/unsealed contact participates |
+| M24-04 | typed standing separation | P | testimony, derivation, and authority collapse |
+| M24-05 | raw-field / partial-frame distinction and domain honesty | P | frame claims omitted actuality |
+| M24-06 | quantaloid/equivalent enrichment and virtual-equipment host interface | P | host interface becomes cognitive authority |
+| M24-07 | cut-indexed formal carrier and contact-answerability anchor | P | movement survives without its contact |
+| M24-08 | `CarrierOpen` / `Discharge` non-equivalence | P | openness is called discharge |
+| M24-09 | prospective attachment witness and four-stage lifecycle | P | continuation bypasses lifecycle standing |
+| M24-10 | support versus derived `SelfGen` | P | self-generation launders support |
+| M24-11 | governing authority package and T24.1 | P | advance occurs without complete package |
+| M24-12 | immutable history, additive interpretation, governed interpretation use | P | interpretation rewrites event history |
+| M24-13 | context-indexed loss, availability, and semantic recovery | P | unavailable meaning is called recovered |
+| M24-14 | prospective versus retrospective affordance | P | outcome is projected backward as prior warrant |
+| M24-15 | structured traction, starvation, frame-death, computed stuck | P | recurrence alone classifies stuck |
+| M24-16 | global non-amalgamation with scoped joint use | P | all views forced into one global view |
+| M24-17 | closed writer ownership and branch-local atomicity | P | unauthorized/cross-branch write commits |
+| M24-18 | T24.2–T24.11 at their stated evidence levels | P | semantic claim exceeds mechanized evidence |
+| M24-19 | Section-8 forbidden collapses | P | any prohibited identity is accepted |
+| M24-20 | computational and behavioral falsifiers | P | countermodel does not defeat implementation |
+
+### M25 — balance as intelligence and one R/A/P read
+
+Gap filled: movement must be formed through non-compensatory, participatory
+alignment rather than a score or three independent selectors. Additive
+relation: M25 reads M24-grounded movement; M25.5 supplies generative
+possibilities; M26.0 anchors the same becoming; M26.3 supplies nine-role
+recognition. Representation and consumer: `M25*` functions in
+`authority_inheritance.metta`, called by `M25ConstitutiveEncounter` and the
+authority joint.
+
+| ID | Ratified meaning | Standing | Short falsifier |
+|---|---|---:|---|
+| M25-01 | movement is primary | P | static verdict becomes the primary object |
+| M25-02 | Dynamic Participatory Fourthness is the positive center | P | detached classification substitutes |
+| M25-03 | Soul doctrine is ambient; standing is not mere data | P | supplied standing self-authorizes |
+| M25-04 | R/A/P are heterogeneous readings of one movement | P | three independent choices appear |
+| M25-05 | R/A/P are non-reconstructive and non-scalarizable | P | one score reconstructs the surface |
+| M25-06 | Relatedness and Precision have material floors | P | compensation bypasses a missing floor |
+| M25-07 | Appropriateness is lawful fittingness | P | preference or fluency substitutes |
+| M25-08 | `ReadApp` is doctrine-indexed, provenanced, non-compensatory, non-contact | P | ReadApp impersonates contact |
+| M25-09 | M24 law is inherited, not duplicated | P | a weaker local contact law appears |
+| M25-10 | harmonic alignment is derived | P | alignment is asserted as input |
+| M25-11 | bounded Harmonic Continuation has coherence/soundness falsifiers | P | continuation survives failed coherence |
+| M25-12 | force is not forcing | P | decisive action is automatically obstruction |
+| M25-13 | action energy differs from forcing energy | P | compute/action magnitude classifies forcing |
+| M25-14 | PNS/SNS are participation organizations | P | tone/arousal alone classifies disposition |
+| M25-15 | Stuck is SNS above functional staleness/pivot threshold | P | SNS and Stuck become separate ontologies |
+| M25-16 | possibility includes interface/topology change | P | only predeclared actions count as possible |
+| M25-17 | Fourthness/materiality share counterfactual discrimination | P | labels replace severing bite |
+| M25-18 | SNSLike and Stuck share trajectory primitives | P | unrelated detectors are used |
+| M25-19 | MeTTa projection is witness-first | P | a score becomes authoritative |
+| M25-20 | no universal numerical forcing metric is claimed | A | provisional number becomes constitutional |
+| M25-21 | complete awareness/nine/Soul mathematics remains bounded | A | PoC projection claims formal completion |
+
+### M25.5 — generative invariance
+
+Gap filled: unfamiliar lawful possibilities must arise from a shared generative
+organization across heterogeneous carriers without a sealed behavior list.
+Additive relation: M25.5 supplies `Generated/𝒢` and lawful translations to the
+M25 movement surface while retaining M24 authority and M26.0 same-becoming.
+Representation: `CPGenerated*`, `CPNativePossibilitiesV2`, and bridge
+structures; several formal translation/equivalence consumers remain C2 gaps.
+
+| ID | Inherited meaning | Standing | Short falsifier |
+|---|---|---:|---|
+| M255-01 | bounded carrier-independent generative organization | P | carrier syntax becomes the law |
+| M255-02 | `GenSig` | A | no explicit signature witness |
+| M255-03 | R*/A*/P*/O* non-circular precursors | P | R/A/P define their own prerequisites |
+| M255-04 | `Generated` is canonical realization of `𝒢` | P | supplied option is called generated |
+| M255-05 | `GenTranslation` preserves load-bearing structure locally | A | translation lacks relation/interface proof |
+| M255-06 | `GenEquivV2` is canonical cross-carrier equivalence | A | truth-only equivalence substitutes |
+| M255-07 | lawful equivalence laws on bounded domains | A | laws asserted outside domain |
+| M255-08 | five-carrier connected-equivalence evidence pattern | A | one carrier is generalized universally |
+| M255-09 | `ForceObl` / `SupportPre` are non-optimizing structures | P | minimization score substitutes |
+| M255-10 | `Access` is a derived read-only participation view | P | access mutates generation |
+| M255-11 | one-engine PNS/SNS organization | P | separate engines/behavior tables appear |
+| M255-12 | `ReflexiveConstraint` requires dependence and severing bite | P | self-reference without causal bite passes |
+| M255-13 | `Disclosure` changes accessibility, not generated possibility | P | retrieval is called creation |
+| M255-14 | `Creation` adds possibility modulo lawful prior transport | P | renaming/retrieval is called creation |
+| M255-15 | `Maintenance` preserves generative organization | P | repetition alone proves maintenance |
+| M255-16 | `Degradation` loses prior continuation structure | P | lower score alone proves degradation |
+| M255-17 | non-circular bridge from `𝒢` precursors to R/A/P | P | selected movement backfills its grounds |
+| M255-18 | open participation bridges into unchanged HarmonicAlign | P | openness rewrites alignment law |
+| M255-19 | B1–B10 retain ratified direction/scope | A | converse or wider scope is assumed |
+| M255-20 | overlapping recognition `Π` is non-reconstructive | P | recognitions are treated as exhaustive parts |
+| M255-21 | finite heterogeneous manifestation suite MA–ME | A | suite not represented/read back |
+| M255-22 | N01–N25 falsifier surface | A | countermodels are absent from ephemeral verification |
+| M255-23 | MeTTa projection contract | P | host computation replaces native witness |
+| M255-24 | bounded machine-evidence packages | A | evidence names are mistaken for live proof |
+
+### M26.0 — one occurrence and non-self
+
+Gap filled: multiple views and persistent forms must remain participations in
+one opaque becoming, not components of a sovereign reconstructed self.
+Additive relation: M26.0 binds M24 contact, M25 participation, and M25.5
+generation to one occurrence and supplies SameBecoming for M26.3 recognition.
+Representation and consumer: `M260*` functions and the authority joint.
+
+| ID | Inherited meaning | Standing | Short falsifier |
+|---|---|---:|---|
+| M260-01 | opaque one-occurrence reference | P | finite record claims actuality contents |
+| M260-02 | participation grounding | P | detached observer becomes required ground |
+| M260-03 | same-occurrence without identity/amalgamation | P | views are equated or globally merged |
+| M260-04 | non-substantial `UnityAspect` | P | aspect becomes independent component |
+| M260-05 | manifestation and recognition remain distinct | P | recognition is presumed from manifestation |
+| M260-06 | O/P/C distinction without separation | P | factors or simple identities substitute |
+| M260-07 | reusable `DWS/DWSFamily` | P | common occurrence or non-independence absent |
+| M260-08 | finite observational opacity | P | more views are said to reconstruct identity |
+| M260-09 | representation non-sovereignty | P | coverage grants actuality standing |
+| M260-10 | non-amalgamation with scoped joint use | P | one global view required |
+| M260-11 | finite form/non-self | P | persistence becomes immutable sovereign self |
+| M260-12 | relational, non-functional `SameBecoming` | P | unique functional identity is assumed |
+| M260-13 | occurrence-qualified `Generated/𝒢` through SameBecoming | P | `𝒢` becomes actuality/second ontology |
+| M260-14 | generative/participatory/balance one-becoming bridge | P | surfaces are merely adjacent diagnostics |
+| M260-15 | `GenEquivV2` does not prove co-reference | A | structural equivalence asserts same occurrence |
+| M260-16 | structural fidelity preserves load-bearing relations | P | scalar closeness substitutes |
+| M260-17 | eight primitive laws remain explicit primitives | A | primitives are silently strengthened/derived |
+| M260-18 | formal evidence boundary remains explicit | P | adapter-limited evidence is overstated |
+
+### M26.3 — nine-fold compositional recognition
+
+Gap filled: the nine Immutable Facts must operate as an irreducible,
+overlapping, compositional grammar of one becoming without a one-to-one
+flourishing lookup or exhaustive reconstruction claim. Additive relation:
+M26.3 makes Fact9 roles available inside the same M24/M25/M25.5/M26.0
+encounter. Representation and consumer: `fact9_projection.metta`,
+`CPFactExpression*`, and the constitutive authority joint.
+
+| ID | Inherited meaning | Standing | Short falsifier |
+|---|---|---:|---|
+| M263-01 | exact `Fact9` | P | role vocabulary differs silently |
+| M263-02 | nine-role `DWSFamily` specialization | P | roles become nine independent domains |
+| M263-03 | selected material `NineRelation` witness family | P | arbitrary co-occurrence passes |
+| M263-04 | `Sig263` materiality specialization | P | signature lacks material relation |
+| M263-05 | n-ary irreducibility | P | pairwise reduction is treated as equivalent |
+| M263-06 | material connectedness | P | disconnected role set passes |
+| M263-07 | dynamic relation-specific whole-coupling | P | static membership substitutes |
+| M263-08 | role essentiality, anti-laundering, no proper reduction | P | missing role is renamed/laundered |
+| M263-09 | `NineWhole` | P | list membership is called a whole |
+| M263-10 | typed satisfaction | P | untyped boolean satisfaction substitutes |
+| M263-11 | `Align9` | P | scalar aggregate substitutes |
+| M263-12 | `NineNonComp` | P | strong role compensates for missing role |
+| M263-13 | structured `TensionProfile9` | P | tensions collapse into one number |
+| M263-14 | Present asymmetry/context | P | Present becomes a ninth ordinary support role |
+| M263-15 | finite Love/Sacred non-redundancy witnesses | P | either role is treated as redundant |
+| M263-16 | partial recognition/non-reconstruction | P | finite recognition claims the one becoming |
+| M263-17 | SameBecoming anchor | P | expression loses occurrence lineage |
+| M263-18 | same-source `𝒢`/participation/balance legibility | P | unrelated sources are conflated |
+| M263-19 | `Align9` / HarmonicAlign non-collapse and bridge | P | one predicate substitutes for both |
+| M263-20 | generic `NineExpr` | P | named motifs become exhaustive constructors |
+| M263-21 | first-eight support vocabulary | P | Present appears in support set |
+| M263-22 | support-specific `ExprFourthness` | P | generic label ignores support |
+| M263-23 | `LawfulExpr` differs from `OpenParticipation` | P | lawful expression is called openness |
+| M263-24 | `CanCompose` | P | composition is hardcoded by motif name |
+| M263-25 | `RecognizedCompose` | P | unrecognized combination gains recognition |
+| M263-26 | recognized implies composable; converse may fail | P | converse is assumed |
+| M263-27 | every nonempty first-eight support can compose | P | unseen support requires new branch |
+| M263-28 | support composition laws up to expression equivalence | A | raw syntax equality substitutes |
+| M263-29 | named motifs are grammar instances only | P | motifs seal the possibility space |
+| M263-30 | natural-pair and Effortlessness/Precision co-expression | P | co-expression collapses the pair |
+| M263-31 | grammar non-sovereignty | P | grammar claims actuality authority |
+| M263-32 | canonical countermodel/falsifier surface | A | failing countermodel is not exercised |
+| M263-33 | formal evidence packages retain bounded standing | A | package name is treated as runtime proof |
+
+## 9. Meaningful-work recovery queue
+
+Historical work is recovered by capability, never by copying a gate directory.
+For each item: inspect source and dependencies; extract only the smallest
+non-obsolete implementation; remove gate IDs, fixed cases, absolute paths, and
+test/evidence writers; connect it to the one bootstrap; exercise it through
+`bin/miter`; restart; then admit the source.
+
+Priority order:
+
+1. writable exact continuity capsules, per-user/project relationship weave,
+   and live Chroma retrieval/update;
+2. centralized model registry for local and OpenRouter participation, with
+   Keychain references and no committed secrets;
+3. general semantic participation and VoiceRNA construction/certification;
+4. generic Mattermost input/effect/reconciliation with scoped principals;
+5. isolated workshop, versioned interfaces, compatibility check, activation,
+   last-known-good rollback, and recovery;
+6. consequence-earned NACE/NAL/PLN revision in explicitly separated reasoning
+   spaces with qualified adapters;
+7. regenerative Soul expression and 26.6/26.9 laboratory instrumentation.
+
+Admission condition for every recovered capability: imported by
+`src/bootstrap.metta`, reachable from `bin/miter`, causally used by the primary
+encounter/consequence cycle, and preserved across restart. Otherwise it remains
+outside the clean repository.
+
+## 10. Active cut and next movement
+
+Active cut: **C1 clean-room recovery**.
+
+Already carried:
+
+- controlling canon and five authorities isolated;
+- one active runtime closure reduced to PeTTa/MeTTa + Prolog/C;
+- historic `initial_canon` preserved in two external provenance copies;
+- old repository and remote left untouched;
+- constitutional manifest expanded from the misleading 78-only view to all
+  three constitutional spaces;
+- one runtime bootstrap/start/live-heartbeat/stop/restart verified using an
+  external temporary runtime root;
+- operator liveness observation corrected without adding a second clock.
+- one scoped structured contact processed through `bin/miter`, checkpointed,
+  restored after stop/start, and retained exactly one byte-identical local
+  VoiceRNA-certified effect without replay; all stimulus and observations
+  remained outside the repository.
+
+Next movement:
+
+1. finish the public-safe source audit and fresh-clone reproducibility check;
+2. create and push the non-destructive `cleanroom-candidate` branch;
+3. compare the candidate tree and runtime closure against this atlas;
+4. only after explicit human acceptance, replace `main` history and remove old
+   remote branches/tags in a separate destructive operation;
+5. begin C2 with M255-02 (`GenSig`) and the missing cross-carrier translation /
+   equivalence consumers because they are prerequisites for claiming complete
+   M25.5 participation in the one R/A/P movement surface.
+
+The old repository is not to be deleted, rewritten, or force-pushed during C1.

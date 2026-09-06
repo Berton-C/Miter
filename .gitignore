@@ -1,0 +1,43 @@
+.DS_Store
+._*
+
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+credentials/
+secrets/
+
+# Private or licensed data
+NRC-VAD-Lexicon*.txt
+private_assets/
+private_memory/
+
+# Models and generated indexes
+*.gguf
+*.safetensors
+*.onnx
+chroma/
+chroma_db/
+*.sqlite3
+
+# Runtime state is external to the source tree
+runtime/
+logs/
+evidence/
+tmp/
+cache/
+
+# Build/editor residue
+*.dylib
+*.so
+*.o
+__pycache__/
+node_modules/
+.idea/
+.vscode/
+*~
+
