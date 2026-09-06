@@ -145,7 +145,7 @@ consumer is absent. No status is upgraded by assertion.
 | Checkpoint and same-runtime restart | E | reactor + store membrane | Living long-term memory and incomplete undertakings are not fully restored. |
 | M24–M26.3 native projection | P | `authority_inheritance.metta`, constitutive modules | Export-by-export causal completeness remains C2 work. |
 | Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*` | Rich fields are loaded; all fields do not yet alter movement formation. |
-| Fact9–flourishing participation joint | P | `constitutive_foundation.metta` | Held-out unfamiliar composition and consequence-change evidence are absent. |
+| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta` | The M26.3 Fact9 grammar now participates causally; fuller flourishing-field participation remains C2 work. |
 | One simultaneous R/A/P surface | P | `M25RAPReadings`, `CPRAPReadingsV2` | Must prove no downstream consumer splits it into three choices. |
 | Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
@@ -381,43 +381,44 @@ overlapping, compositional grammar of one becoming without a one-to-one
 flourishing lookup or exhaustive reconstruction claim. Additive relation:
 M26.3 makes Fact9 roles available inside the same M24/M25/M25.5/M26.0
 encounter. Representation and consumer: `fact9_projection.metta`,
-`CPFactExpression*`, and the constitutive authority joint.
+`fact9_composition.metta`, `CPFactExpression*`, and the constitutive authority
+joint.
 
 | ID | Inherited meaning | Standing | Short falsifier |
 |---|---|---:|---|
-| M263-01 | exact `Fact9` | P | role vocabulary differs silently |
-| M263-02 | nine-role `DWSFamily` specialization | P | roles become nine independent domains |
-| M263-03 | selected material `NineRelation` witness family | P | arbitrary co-occurrence passes |
-| M263-04 | `Sig263` materiality specialization | P | signature lacks material relation |
-| M263-05 | n-ary irreducibility | P | pairwise reduction is treated as equivalent |
-| M263-06 | material connectedness | P | disconnected role set passes |
-| M263-07 | dynamic relation-specific whole-coupling | P | static membership substitutes |
-| M263-08 | role essentiality, anti-laundering, no proper reduction | P | missing role is renamed/laundered |
-| M263-09 | `NineWhole` | P | list membership is called a whole |
-| M263-10 | typed satisfaction | P | untyped boolean satisfaction substitutes |
-| M263-11 | `Align9` | P | scalar aggregate substitutes |
-| M263-12 | `NineNonComp` | P | strong role compensates for missing role |
-| M263-13 | structured `TensionProfile9` | P | tensions collapse into one number |
-| M263-14 | Present asymmetry/context | P | Present becomes a ninth ordinary support role |
-| M263-15 | finite Love/Sacred non-redundancy witnesses | P | either role is treated as redundant |
-| M263-16 | partial recognition/non-reconstruction | P | finite recognition claims the one becoming |
-| M263-17 | SameBecoming anchor | P | expression loses occurrence lineage |
-| M263-18 | same-source `𝒢`/participation/balance legibility | P | unrelated sources are conflated |
-| M263-19 | `Align9` / HarmonicAlign non-collapse and bridge | P | one predicate substitutes for both |
-| M263-20 | generic `NineExpr` | P | named motifs become exhaustive constructors |
-| M263-21 | first-eight support vocabulary | P | Present appears in support set |
-| M263-22 | support-specific `ExprFourthness` | P | generic label ignores support |
-| M263-23 | `LawfulExpr` differs from `OpenParticipation` | P | lawful expression is called openness |
-| M263-24 | `CanCompose` | P | composition is hardcoded by motif name |
-| M263-25 | `RecognizedCompose` | P | unrecognized combination gains recognition |
-| M263-26 | recognized implies composable; converse may fail | P | converse is assumed |
-| M263-27 | every nonempty first-eight support can compose | P | unseen support requires new branch |
-| M263-28 | support composition laws up to expression equivalence | A | raw syntax equality substitutes |
-| M263-29 | named motifs are grammar instances only | P | motifs seal the possibility space |
-| M263-30 | natural-pair and Effortlessness/Precision co-expression | P | co-expression collapses the pair |
-| M263-31 | grammar non-sovereignty | P | grammar claims actuality authority |
-| M263-32 | canonical countermodel/falsifier surface | A | failing countermodel is not exercised |
-| M263-33 | formal evidence packages retain bounded standing | A | package name is treated as runtime proof |
+| M263-01 | exact `Fact9` | E | role vocabulary differs silently |
+| M263-02 | nine-role `DWSFamily` specialization | E | roles become nine independent domains |
+| M263-03 | selected material `NineRelation` witness family | E | arbitrary co-occurrence passes |
+| M263-04 | `Sig263` materiality specialization | E | signature lacks material relation |
+| M263-05 | n-ary irreducibility | E | pairwise reduction is treated as equivalent |
+| M263-06 | material connectedness | E | disconnected role set passes |
+| M263-07 | dynamic relation-specific whole-coupling | E | static membership substitutes |
+| M263-08 | role essentiality, anti-laundering, no proper reduction | E | missing role is renamed/laundered |
+| M263-09 | `NineWhole` | E | list membership is called a whole |
+| M263-10 | typed satisfaction | E | untyped boolean satisfaction substitutes |
+| M263-11 | `Align9` | E | scalar aggregate substitutes |
+| M263-12 | `NineNonComp` | E | strong role compensates for missing role |
+| M263-13 | structured `TensionProfile9` | E | tensions collapse into one number |
+| M263-14 | Present asymmetry/context | E | Present becomes a ninth ordinary support role |
+| M263-15 | finite Love/Sacred non-redundancy witnesses | E | either role is treated as redundant |
+| M263-16 | partial recognition/non-reconstruction | E | finite recognition claims the one becoming |
+| M263-17 | SameBecoming anchor | E | expression loses occurrence lineage |
+| M263-18 | same-source `𝒢`/participation/balance legibility | E | unrelated sources are conflated |
+| M263-19 | `Align9` / HarmonicAlign non-collapse and bridge | E | one predicate substitutes for both |
+| M263-20 | generic `NineExpr` | E | named motifs become exhaustive constructors |
+| M263-21 | first-eight support vocabulary | E | Present appears in support set |
+| M263-22 | support-specific `ExprFourthness` | E | generic label ignores support |
+| M263-23 | `LawfulExpr` differs from `OpenParticipation` | E | lawful expression is called openness |
+| M263-24 | `CanCompose` | E | composition is hardcoded by motif name |
+| M263-25 | `RecognizedCompose` | E | unrecognized combination gains recognition |
+| M263-26 | recognized implies composable; converse may fail | E | converse is assumed |
+| M263-27 | every nonempty first-eight support can compose | E | unseen support requires new branch |
+| M263-28 | support composition laws up to expression equivalence | E | raw syntax equality substitutes |
+| M263-29 | named motifs are grammar instances only | E | motifs seal the possibility space |
+| M263-30 | natural-pair and Effortlessness/Precision co-expression | E | co-expression collapses the pair |
+| M263-31 | grammar non-sovereignty | E | grammar claims actuality authority |
+| M263-32 | canonical countermodel/falsifier surface | E | failing countermodel is not exercised |
+| M263-33 | formal evidence packages retain bounded standing | E | package name is treated as runtime proof |
 
 ## 9. Meaningful-work recovery queue
 
@@ -726,11 +727,30 @@ Already carried:
   A fresh supported runtime retained exactly one full certificate; returned
   consequence changed the next cut, while stop/start restored the exact new
   checkpoint and unchanged proof/effect bytes with no duplicate effect.
+- M26.3 now participates in the same primary movement before its single R/A/P
+  read through one exact constitutive grammar certificate. The certificate
+  retains all thirty-three inherited meanings: the exact nine roles and
+  seventeen projection laws; material relation and n-ary whole witnesses;
+  dynamic coupling and role essentiality; typed satisfaction, `Align9`,
+  non-compensation, and per-role tension; Present asymmetry; generic support
+  composition and expression equivalence; natural-pair co-expression; the
+  SameBecoming/Generated/participatory-balance joint; formal-evidence bounds;
+  and the complete falsifier surface. Held-out native checks rejected forged
+  certificates, missing cut and primary groundings, a severed SameBecoming
+  anchor, scalar alignment, role reduction, Present-as-support, and collapsed
+  R/A/P events. Through `bin/miter`, one unfamiliar contact formed the M26.3
+  organization, one returned consequence materially transformed the next
+  cut, and stop/start restored the exact 12,822,449-byte checkpoint SHA-256
+  `9a4e483a08089c35a3e43b9062434d4dc3c6c7346a2aa503a6dff8d0343ef6b0`.
+  Both inputs remained consumed; the proof and sole compact effect remained
+  byte-identical and exactly once. All stimuli and verification material
+  remained outside Git.
 
 Next movement:
 
-1. discharge the complete M26.3 Fact9 composition surface through this same
-   M24/M25/M25.5/M26.0 primary movement before closing C2;
+1. discharge the remaining `P` and `A` C2 authority rows through the same
+   primary encounter, beginning with M24 because its contact, standing,
+   attachment, and developmental carriers ground every later authority;
 2. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
