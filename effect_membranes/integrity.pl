@@ -13,7 +13,8 @@ miter_integrity_sources([
  'constitution/fact9_projection.metta','src/soul.metta',
  'src/constitutive_foundation.metta','src/generative_invariance.metta',
  'src/generative_participation.metta',
- 'src/authority_inheritance.metta','src/fact9_composition.metta',
+ 'src/authority_inheritance.metta','src/m24_completion.metta',
+ 'src/fact9_composition.metta',
  'src/constitutive_authority_joint.metta','effect_membranes/integrity.pl']).
 miter_integrity_snapshot(Output, Result) :-
  catch((miter_integrity_measure(D), miter_integrity_write(Output,D)

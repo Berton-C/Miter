@@ -254,26 +254,26 @@ lawful contact and developmental carrier. Primary representation and consumer:
 
 | ID | Inherited meaning | Standing | Short falsifier |
 |---|---|---:|---|
-| M24-01 | jurisdiction and carrier non-identity | P | carrier is treated as actuality |
-| M24-02 | proto-time and typed derivation | P | wall time or untyped origin substitutes |
-| M24-03 | sealed governed contact and proof-tree provenance | P | altered/unsealed contact participates |
-| M24-04 | typed standing separation | P | testimony, derivation, and authority collapse |
-| M24-05 | raw-field / partial-frame distinction and domain honesty | P | frame claims omitted actuality |
-| M24-06 | quantaloid/equivalent enrichment and virtual-equipment host interface | P | host interface becomes cognitive authority |
-| M24-07 | cut-indexed formal carrier and contact-answerability anchor | P | movement survives without its contact |
-| M24-08 | `CarrierOpen` / `Discharge` non-equivalence | P | openness is called discharge |
-| M24-09 | prospective attachment witness and four-stage lifecycle | P | continuation bypasses lifecycle standing |
-| M24-10 | support versus derived `SelfGen` | P | self-generation launders support |
-| M24-11 | governing authority package and T24.1 | P | advance occurs without complete package |
-| M24-12 | immutable history, additive interpretation, governed interpretation use | P | interpretation rewrites event history |
-| M24-13 | context-indexed loss, availability, and semantic recovery | P | unavailable meaning is called recovered |
-| M24-14 | prospective versus retrospective affordance | P | outcome is projected backward as prior warrant |
-| M24-15 | structured traction, starvation, frame-death, computed stuck | P | recurrence alone classifies stuck |
-| M24-16 | global non-amalgamation with scoped joint use | P | all views forced into one global view |
-| M24-17 | closed writer ownership and branch-local atomicity | P | unauthorized/cross-branch write commits |
-| M24-18 | T24.2–T24.11 at their stated evidence levels | P | semantic claim exceeds mechanized evidence |
-| M24-19 | Section-8 forbidden collapses | P | any prohibited identity is accepted |
-| M24-20 | computational and behavioral falsifiers | P | countermodel does not defeat implementation |
+| M24-01 | jurisdiction and carrier non-identity | E | carrier is treated as actuality |
+| M24-02 | proto-time and typed derivation | E | wall time or untyped origin substitutes |
+| M24-03 | sealed governed contact and proof-tree provenance | E | altered/unsealed contact participates |
+| M24-04 | typed standing separation | E | testimony, derivation, and authority collapse |
+| M24-05 | raw-field / partial-frame distinction and domain honesty | E | frame claims omitted actuality |
+| M24-06 | quantaloid/equivalent enrichment and virtual-equipment host interface | E | host interface becomes cognitive authority |
+| M24-07 | cut-indexed formal carrier and contact-answerability anchor | E | movement survives without its contact |
+| M24-08 | `CarrierOpen` / `Discharge` non-equivalence | E | openness is called discharge |
+| M24-09 | prospective attachment witness and four-stage lifecycle | E | continuation bypasses lifecycle standing |
+| M24-10 | support versus derived `SelfGen` | E | self-generation launders support |
+| M24-11 | governing authority package and T24.1 | E | advance occurs without complete package |
+| M24-12 | immutable history, additive interpretation, governed interpretation use | E | interpretation rewrites event history |
+| M24-13 | context-indexed loss, availability, and semantic recovery | E | unavailable meaning is called recovered |
+| M24-14 | prospective versus retrospective affordance | E | outcome is projected backward as prior warrant |
+| M24-15 | structured traction, starvation, frame-death, computed stuck | E | recurrence alone classifies stuck |
+| M24-16 | global non-amalgamation with scoped joint use | E | all views forced into one global view |
+| M24-17 | closed writer ownership and branch-local atomicity | E | unauthorized/cross-branch write commits |
+| M24-18 | T24.2–T24.11 at their stated evidence levels | E | semantic claim exceeds mechanized evidence |
+| M24-19 | Section-8 forbidden collapses | E | any prohibited identity is accepted |
+| M24-20 | computational and behavioral falsifiers | E | countermodel does not defeat implementation |
 
 ### M25 — balance as intelligence and one R/A/P read
 
@@ -727,6 +727,25 @@ Already carried:
   A fresh supported runtime retained exactly one full certificate; returned
   consequence changed the next cut, while stop/start restored the exact new
   checkpoint and unchanged proof/effect bytes with no duplicate effect.
+- M24 now enters every primary movement before R/A/P through one exact
+  constitutive export certificate built from the live contact and its actual
+  developmental organization. Its five typed bundles retain all twenty
+  inherited meanings without claiming current authority, discharge, a total
+  world model, or a completed Soul formalization. Native evaluation accepted
+  the exact certificate and rejected a forged certificate, missing cut and
+  primary groundings, provenance laundering, a mismatched seal, unwitnessed
+  recovery, same-branch recommit, an unauthorized writer, false global
+  amalgamation, incomplete Stuck evidence, and lifecycle stage-skipping.
+  Through `bin/miter`, one unfamiliar contact formed the M24-grounded primary
+  and one compact effect. Duplicate submission was rejected. Stop/start
+  preserved checkpoint SHA-256
+  `53d108ddfe6f8e62206e008b6d5fb0ff92c388c8a0e99fb7345fb1737de0ec00`.
+  Returned consequence then changed that same developmental organization;
+  the 13,342,730-byte checkpoint became SHA-256
+  `a24a142fdb78bef2a2060d1dc66ffcd8171e43d48ff8088a8f13baec21d96d5d`.
+  A second stop/start preserved it byte-identically, with two consumed inputs
+  and the sole effect exactly once. All stimuli and observations remained
+  outside Git.
 - M26.3 now participates in the same primary movement before its single R/A/P
   read through one exact constitutive grammar certificate. The certificate
   retains all thirty-three inherited meanings: the exact nine roles and
@@ -749,8 +768,8 @@ Already carried:
 Next movement:
 
 1. discharge the remaining `P` and `A` C2 authority rows through the same
-   primary encounter, beginning with M24 because its contact, standing,
-   attachment, and developmental carriers ground every later authority;
+   primary encounter, completing M25 next and then M25.5 without opening a
+   separate runtime or moving R/A/P away from its one simultaneous read;
 2. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.

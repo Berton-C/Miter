@@ -994,6 +994,11 @@
                       (index-atom $transition 6))))))))))
        false)))
 
+; Load the exact Inquiry-24 completion certificate after all of its native
+; contact and developmental constructors exist and before later authorities
+; specialize them.
+!(import! &self "./src/m24_completion.metta")
+
 ; ---------- Investigation 25: movement-primary DPF and R/A/P ----------
 
 ; These constructors read an already-formed primary movement candidate. R/A/P
@@ -1338,6 +1343,9 @@
     m260-explicit-primitive-laws
     m260-formal-evidence-boundary))
 
+(= (M24PreMovementCausalRelationIds)
+   (m24-constitutive-export-grounding))
+
 (= (M260PreMovementCausalRelationIds)
    (m260-constitutive-export-grounding))
 
@@ -1347,6 +1355,12 @@
 (= (M260PossibleMovementCarriesPreExports $possibility)
    (if (CPShape $possibility possible-movement 9)
      (AIAllIn (M260PreMovementCausalRelationIds)
+       (index-atom $possibility 3) 0)
+     false))
+
+(= (M24PossibleMovementCarriesConstitutiveExports $possibility)
+   (if (CPShape $possibility possible-movement 9)
+     (AIAllIn (M24PreMovementCausalRelationIds)
        (index-atom $possibility 3) 0)
      false))
 
@@ -1361,9 +1375,10 @@
      (let $possibility (index-atom $primary 9)
        (if (==
              ((CPShape $possibility possible-movement 9)
+              (M24PossibleMovementCarriesConstitutiveExports $possibility)
               (M260PossibleMovementCarriesPreExports $possibility)
               (M263PossibleMovementCarriesConstitutiveGrammar $possibility))
-             (true true true))
+             (true true true true))
          (and (CPShape (index-atom $primary 3) source-cut 2)
           (and (M25DynamicParticipatoryFourthnessValid (index-atom $primary 4))
            (and (M25BalanceUnfoldingValid (index-atom $primary 5)
@@ -1803,39 +1818,81 @@
          false))
      false))
 
+(= (M24CausalRelationFromCut $cut)
+   (let $rows (CPFind (CPDRelations $cut)
+                 m24-constitutive-export-grounding)
+     (if (== (size-atom $rows) 1)
+       (index-atom $rows 0)
+       (relation-unresolved m24-constitutive-export-grounding))))
+
+(= (M24PrimaryBridgeFromCut $primary $cut $developmental)
+   (let* (($relation (M24CausalRelationFromCut $cut))
+          ($prospective (index-atom $developmental 4))
+          ($anchor (if (CPShape $prospective prospective-attachment-v1 13)
+            (index-atom $prospective 4)
+            (contact-answerability-anchor-unresolved))))
+     (m24-primary-constitutive-bridge-v1
+       (M260PrimaryMovementReference $primary)
+       (source-cut (index-atom $cut 1))
+       (if (CPShape $relation relation 5) (index-atom $relation 4)
+         (m24-certificate-reference-unresolved))
+       (developmental-reference (index-atom (index-atom $developmental 1) 1)
+         (index-atom $developmental 3) (index-atom $developmental 13))
+       $anchor
+       (M24DevelopmentalLifecycle $developmental)
+       contact-standing-attachment-and-history-before-rap)))
+
+(= (M24PrimaryBridgeFromCutValid $bridge $primary $cut $developmental)
+   (if (CPShape $bridge m24-primary-constitutive-bridge-v1 8)
+     (let $relation (M24CausalRelationFromCut $cut)
+       (if (and (M25PrimaryMovementValid $primary)
+            (and (CPShape $relation relation 5)
+                 (M24DevelopmentalOrganizationValid $developmental)))
+         (== $bridge (M24PrimaryBridgeFromCut $primary $cut $developmental))
+         false))
+     false))
+
 (= (M25RAPSurface $primary $cut $developmental)
-   (let* (($m255 (M255RAPPrecursorBridge $primary $cut $developmental))
+   (let* (($m24 (M24PrimaryBridgeFromCut $primary $cut $developmental))
+          ($m255 (M255RAPPrecursorBridge $primary $cut $developmental))
           ($m260 (M260PrimaryBridgeFromCut $primary $cut))
           ($m263 (M263PrimaryBridgeFromCut $primary $cut)))
-     (m25-rap-surface-v5
+     (m25-rap-surface-v6
        (rap-read-event (index-atom $primary 1) (index-atom $cut 1))
        (movement-reference (index-atom $primary 1) (index-atom $primary 2))
        (source-cut (index-atom $cut 1)) (index-atom $cut 12)
        (developmental-reference (index-atom $developmental 13))
        (balance-unfolding-alignment (index-atom $primary 5)
-         (constitutive-precursors-v2 $m255 $m260 $m263))
+         (constitutive-precursors-v3 $m24 $m255 $m260 $m263))
        one-contact-movement-surface-three-simultaneous-perspectives)))
+
+(= (M25RAPM24Precursor $surface)
+   (let $alignment (index-atom $surface 6)
+     (if (CPShape $alignment balance-unfolding-alignment 3)
+       (let $precursors (index-atom $alignment 2)
+         (if (CPShape $precursors constitutive-precursors-v3 5)
+           (index-atom $precursors 1) ())) ())))
 
 (= (M25RAPM255Precursor $surface)
    (let $alignment (index-atom $surface 6)
      (if (CPShape $alignment balance-unfolding-alignment 3)
        (let $precursors (index-atom $alignment 2)
-         (if (CPShape $precursors constitutive-precursors-v2 4)
-           (index-atom $precursors 1) ())) ())))
+         (if (CPShape $precursors constitutive-precursors-v3 5)
+           (index-atom $precursors 2) ())) ())))
 
 (= (M25RAPM260Precursor $surface)
    (let $alignment (index-atom $surface 6)
      (if (CPShape $alignment balance-unfolding-alignment 3)
        (let $precursors (index-atom $alignment 2)
-         (if (CPShape $precursors constitutive-precursors-v2 4)
-           (index-atom $precursors 2) ())) ())))
+         (if (CPShape $precursors constitutive-precursors-v3 5)
+           (index-atom $precursors 3) ())) ())))
 
 (= (M25RAPM263Precursor $surface)
    (let $alignment (index-atom $surface 6)
      (if (CPShape $alignment balance-unfolding-alignment 3)
        (let $precursors (index-atom $alignment 2)
-         (if (CPShape $precursors constitutive-precursors-v2 4)
-           (index-atom $precursors 3) ())) ())))
+         (if (CPShape $precursors constitutive-precursors-v3 5)
+           (index-atom $precursors 4) ())) ())))
 
 (= (M25ReadApp $primary $surface $admissibility $relatedness $precision)
    (let* (($id (index-atom $primary 1))
@@ -1871,15 +1928,18 @@
 (= (M25RAPReadings $primary $cut $developmental)
    (let* (($surface (M25RAPSurface $primary $cut $developmental))
           ($read-event (index-atom $surface 1))
+          ($m24-precursor (M25RAPM24Precursor $surface))
           ($m255-precursor (M25RAPM255Precursor $surface))
           ($m260-precursor (M25RAPM260Precursor $surface))
           ($m263-precursor (M25RAPM263Precursor $surface))
-          ($precursors-valid (and
-            (M255RAPPrecursorBridgeValid $m255-precursor
-              $primary $cut $developmental)
-            (and (M260PrimaryBridgeFromCutValid $m260-precursor $primary $cut)
-                 (M263PrimaryBridgeFromCutValid $m263-precursor
-                   $primary $cut))))
+          ($precursors-valid
+            (and (M24PrimaryBridgeFromCutValid $m24-precursor $primary $cut
+                   $developmental)
+             (and (M255RAPPrecursorBridgeValid $m255-precursor
+                    $primary $cut $developmental)
+              (and (M260PrimaryBridgeFromCutValid $m260-precursor $primary $cut)
+                   (M263PrimaryBridgeFromCutValid $m263-precursor
+                     $primary $cut)))))
           ($relatedness-profile (M25RelatednessProfile $primary $cut))
           ($precision-profile (M25PrecisionProfile $primary $cut))
           ($admissibility (M25Adm25Witness $primary $developmental
@@ -1910,7 +1970,7 @@
             ($surface-valid (and (M25PrimaryMovementValid $primary)
               (and (CPCutValid $cut)
                (and (M24DevelopmentalOrganizationValid $developmental)
-                (and (CPShape $surface m25-rap-surface-v5 8)
+                (and (CPShape $surface m25-rap-surface-v6 8)
                      (== $surface
                        (M25RAPSurface $primary $cut $developmental)))))))
             ($perspectives-valid
@@ -2044,25 +2104,28 @@
      (let $material (index-atom $alignment 2)
        (if (CPShape $material material-basis 5)
          (let $rap-surface (index-atom $material 1)
-           (if (CPShape $rap-surface m25-rap-surface-v5 8)
+           (if (CPShape $rap-surface m25-rap-surface-v6 8)
              (let* (($precursor-wrapper (index-atom $rap-surface 6))
+                    ($m24-precursor (M25RAPM24Precursor $rap-surface))
                     ($m255-precursor (M25RAPM255Precursor $rap-surface))
                     ($m260-precursor (M25RAPM260Precursor $rap-surface))
                     ($m263-precursor (M25RAPM263Precursor $rap-surface)))
                (if (and (CPShape $precursor-wrapper
                           balance-unfolding-alignment 3)
                         (CPShape (index-atom $precursor-wrapper 2)
-                          constitutive-precursors-v2 4))
+                          constitutive-precursors-v3 5))
                  (and (== $rap-surface
                         (M25RAPSurface $primary $cut $developmental))
                   (and (== (index-atom $alignment 1)
                          (index-atom $primary 1))
-                   (and (M255RAPPrecursorBridgeValid $m255-precursor
-                          $primary $cut $developmental)
-                    (and (CPShape $m260-precursor
-                           m260-primary-one-becoming-bridge-v1 11)
-                     (and (M263PrimaryBridgeFromCutValid $m263-precursor
-                            $primary $cut)
+                   (and (M24PrimaryBridgeFromCutValid $m24-precursor $primary
+                          $cut $developmental)
+                    (and (M255RAPPrecursorBridgeValid $m255-precursor
+                           $primary $cut $developmental)
+                     (and (CPShape $m260-precursor
+                            m260-primary-one-becoming-bridge-v1 11)
+                      (and (M263PrimaryBridgeFromCutValid $m263-precursor
+                             $primary $cut)
                       (and (== (index-atom (index-atom $alignment 3) 1)
                              no-demonstrated-unnecessary-forcing)
                        (and (== (index-atom (index-atom $alignment 4) 1)
@@ -2070,7 +2133,7 @@
                         (and (CPShape (index-atom $alignment 5)
                                aligned-extensions 2)
                              (CPShape (index-atom $alignment 6)
-                               provenance 3)))))))))
+                               provenance 3))))))))))
                  false))
              false))
          false))
@@ -2871,7 +2934,7 @@
 (= (M263Align9HarmonicBridge $primary $cut $developmental $rap $alignment)
    (let* (($surface (if (CPShape $rap rap-read-v2 6)
             (index-atom $rap 1) ()))
-          ($m263 (if (CPShape $surface m25-rap-surface-v5 8)
+          ($m263 (if (CPShape $surface m25-rap-surface-v6 8)
             (M25RAPM263Precursor $surface) ())))
      (if (and (M25RAPValid $primary $cut $developmental $rap)
           (and (M263PrimaryBridgeFromCutValid $m263 $primary $cut)

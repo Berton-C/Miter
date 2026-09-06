@@ -38,8 +38,10 @@
                      authority-participation-joint-v3 11)
                 (or (CPShape (index-atom $payload 4)
                       authority-participation-joint-v4 12)
-                    (CPShape (index-atom $payload 4)
-                      authority-participation-joint-v5 13))))
+                 (or (CPShape (index-atom $payload 4)
+                       authority-participation-joint-v5 13)
+                     (CPShape (index-atom $payload 4)
+                       authority-participation-joint-v6 14)))))
             (let* (($summary (index-atom $payload 2))
                    ($reference (CP2JointMovementReference
                      (index-atom $payload 4))))

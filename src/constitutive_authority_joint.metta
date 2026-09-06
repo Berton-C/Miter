@@ -383,6 +383,31 @@
         (M24DevelopmentalOrganizationValid
           (CP2M24DevelopmentalOrganization $m24-organization))))
 
+(= (CP2M24CertificateDRelation $certificate)
+   (relation m24-constitutive-export-grounding m24-authority-derived support
+     (M24CertificateReference $certificate)))
+
+(= (CP2CutWithM24Certificate $cut $certificate $m24 $m24-organization)
+   (if (and (CPCutValid $cut)
+            (M24ConstitutiveCertificateValid $certificate $m24
+              $m24-organization))
+     (let* (($d (index-atom $cut 6))
+            ($rows (index-atom $d 1))
+            ($relation (CP2M24CertificateDRelation $certificate)))
+       (constitutive-cut
+         (index-atom $cut 1) (index-atom $cut 2) (index-atom $cut 3)
+         (index-atom $cut 4) (index-atom $cut 5)
+         (D (CPMergeNewRelationsAt $rows ($relation) 0)
+            (index-atom $d 2))
+         (index-atom $cut 7) (index-atom $cut 8) (index-atom $cut 9)
+         (index-atom $cut 10) (index-atom $cut 11) (index-atom $cut 12)
+         (index-atom $cut 13)))
+     (constitutive-cut-unresolved invalid-m24-certificate)))
+
+(= (CP2M24CertificateRelationKnown $cut $certificate)
+   (CPHas (CP2M24CertificateDRelation $certificate)
+     (CPDRelations $cut) 0))
+
 (= (CP2ContactWithAuthorityParticipants $contact $participants)
    (if (CPShape $contact contact-v2 11)
      (let* (($configuration (index-atom $contact 9))
@@ -469,6 +494,47 @@
 ; V3 carries the exact per-primary one-becoming bridges already present inside
 ; the encounter's R/A/P surfaces.  It therefore works for a formed, plural, or
 ; unresolved movement without manufacturing a post-selection Generated object.
+(= (CP2M24BridgeFromReading $reading)
+   (if (CPShape $reading m25-movement-reading-v3 9)
+     (let $rap (index-atom $reading 2)
+       (if (CPShape $rap rap-read-v2 6)
+         (M25RAPM24Precursor (index-atom $rap 1))
+         (m24-primary-constitutive-bridge-unresolved malformed-rap)))
+     (m24-primary-constitutive-bridge-unresolved malformed-reading)))
+
+(= (CP2M24CausalInPrimariesAt $readings $cut $developmental $certificate $i)
+   (if (< $i (size-atom $readings))
+     (let $reading (index-atom $readings $i)
+       (if (CPShape $reading m25-movement-reading-v3 9)
+         (let* (($primary (index-atom $reading 1))
+                ($bridge (CP2M24BridgeFromReading $reading))
+                ($checks
+                  ((M25PrimaryMovementValid $primary)
+                   (AIAllIn (M24PreMovementCausalRelationIds)
+                     (index-atom (index-atom $primary 9) 3) 0)
+                   (M24PrimaryBridgeFromCutValid $bridge $primary $cut
+                     $developmental)
+                   (== (index-atom $bridge 3)
+                     (M24CertificateReference $certificate))
+                   (CP2M24CausalInPrimariesAt $readings $cut $developmental
+                     $certificate (+ $i 1)))))
+           (== $checks (true true true true true)))
+         false))
+     true))
+
+(= (CP2M24ExportsCausalInEncounter $encounter $developmental $certificate)
+   (if (and (CPShape $encounter constitutive-encounter 7)
+            (CPShape $certificate m24-constitutive-export-certificate-v1 8))
+     (let* (($cut (index-atom $encounter 1))
+            ($readings (CP2EncounterM25Readings $encounter)))
+       (==
+         ((CP2M24CertificateRelationKnown $cut $certificate)
+          (> (size-atom $readings) 0)
+          (CP2M24CausalInPrimariesAt $readings $cut $developmental
+            $certificate 0))
+         (true true true)))
+     false))
+
 (= (CP2M260BridgeFromReading $reading)
    (if (CPShape $reading m25-movement-reading-v3 9)
      (let $rap (index-atom $reading 2)
@@ -697,25 +763,78 @@
               $m260-certificate)))
      false))
 
+; V6 makes the complete Inquiry-24 inheritance surface an exact constituent
+; of the same joint.  M24 grounds every later authority and is therefore
+; validated both structurally here and cut-relatively below.
+(= (CP2AuthorityJointV6Valid $joint)
+   (if (CPShape $joint authority-participation-joint-v6 14)
+     (let* (($v5 (authority-participation-joint-v5
+                   (index-atom $joint 1) (index-atom $joint 2)
+                   (index-atom $joint 3) (index-atom $joint 4)
+                   (index-atom $joint 5) (index-atom $joint 6)
+                   (index-atom $joint 7) (index-atom $joint 8)
+                   (index-atom $joint 9) (index-atom $joint 10)
+                   (index-atom $joint 11) (index-atom $joint 12)))
+            ($m24-certificate (index-atom $joint 13)))
+       (and (CP2AuthorityJointV5Valid $v5)
+            (M24ConstitutiveCertificateStructuralValid $m24-certificate)))
+     false))
+
 (= (CP2AuthorityJointValid $joint)
    (or (CP2AuthorityJointV1Valid $joint)
      (or (CP2AuthorityJointV2Valid $joint)
       (or (CP2AuthorityJointV3Valid $joint)
        (or (CP2AuthorityJointV4Valid $joint)
-           (CP2AuthorityJointV5Valid $joint))))))
+        (or (CP2AuthorityJointV5Valid $joint)
+            (CP2AuthorityJointV6Valid $joint)))))))
 
 (= (CP2JointMovementReference $joint)
-   (if (CPShape $joint authority-participation-joint-v5 13)
+   (if (CPShape $joint authority-participation-joint-v6 14)
+     (index-atom (index-atom $joint 8) 1)
+    (if (CPShape $joint authority-participation-joint-v5 13)
      (index-atom (index-atom $joint 8) 1)
     (if (CPShape $joint authority-participation-joint-v4 12)
      (index-atom (index-atom $joint 8) 1)
     (if (CPShape $joint authority-participation-joint-v3 11)
      (index-atom (index-atom $joint 8) 1)
      (if (CPShape $joint authority-participation-joint-v2 11)
-       (index-atom (index-atom $joint 8) 1) no-movement-reference)))))
+       (index-atom (index-atom $joint 8) 1) no-movement-reference))))))
 
 (= (CP2AuthorityJointMatchesEncounter $joint $encounter)
-   (if (and (CP2AuthorityJointV5Valid $joint)
+   (if (and (CP2AuthorityJointV6Valid $joint)
+            (CPShape $encounter constitutive-encounter 7))
+     (let* (($cut (index-atom $encounter 1))
+            ($facts (index-atom $encounter 2))
+            ($movement (index-atom $encounter 5))
+            ($m24 (index-atom $joint 2))
+            ($m24-organization (index-atom $joint 3))
+            ($developmental
+              (CP2M24DevelopmentalOrganization $m24-organization))
+            ($m260 (index-atom $joint 4))
+            ($m260-pre (index-atom $joint 5))
+            ($family (CP2M260BridgeFamilyForEncounter $encounter))
+            ($m260-certificate (index-atom $joint 11))
+            ($m263-certificate (index-atom $joint 12))
+            ($m24-certificate (index-atom $joint 13))
+            ($checks
+              ((M24ConstitutiveCertificateValid $m24-certificate $m24
+                 $m24-organization)
+               (CP2M24ExportsCausalInEncounter $encounter $developmental
+                 $m24-certificate)
+               (== $m260 (CP2M260OrganizationFromCut $cut))
+               (== (index-atom $joint 7) $family)
+               (== (index-atom $joint 8)
+                 (CP2M260MovementOccurrenceStanding $cut $movement $m260
+                   $family))
+               (CP2M260ExportsCausalInEncounter $encounter $m260-certificate)
+               (CP2M263ConstitutiveCertificateValid $m263-certificate $cut
+                 $facts $m24 $m24-organization $m260 $m260-pre
+                 $m260-certificate)
+               (CP2M263ExportsCausalInEncounter $encounter $m263-certificate)
+               (CPDRelationKnown $cut contact-occurrence-grounding)
+               (CPDRelationKnown $cut m24-developmental-grounding))))
+       (== $checks (true true true true true true true true true true)))
+    (if (and (CP2AuthorityJointV5Valid $joint)
             (CPShape $encounter constitutive-encounter 7))
      (let* (($cut (index-atom $encounter 1))
             ($facts (index-atom $encounter 2))
@@ -776,12 +895,15 @@
                    contact-occurrence-grounding)
                  (CPDRelationKnown (index-atom $encounter 1)
                    m24-developmental-grounding)))
-       (CP2AuthorityJointV1Valid $joint))))))
+       (CP2AuthorityJointV1Valid $joint)))))))
 
-(= (CP2M25Encounter $contact $predecessor $developmental $m260-certificate
-      $m263-certificate $m24 $m24-organization $m260 $m260-pre)
+(= (CP2M25Encounter $contact $predecessor $developmental $m24-certificate
+      $m260-certificate $m263-certificate $m24 $m24-organization $m260
+      $m260-pre)
    (let* (($cut (CPMakeCut $contact $predecessor))
-          ($m260-cut (CP2CutWithM260Certificate $cut $m260-certificate
+          ($m24-cut (CP2CutWithM24Certificate $cut $m24-certificate $m24
+            $m24-organization))
+          ($m260-cut (CP2CutWithM260Certificate $m24-cut $m260-certificate
             $m24 $m24-organization $m260 $m260-pre))
           ($configuration (CPContactConfiguration $contact))
           ($facts (CPFactExpressionsAt $m260-cut
@@ -804,6 +926,8 @@
                (CP2M260PreMovementValid $m260 $m260-pre))))
      (let* (($m260-certificate (CP2M260ConstitutiveCertificate $m24
               $m24-organization $m260 $m260-pre))
+            ($m24-certificate (M24ConstitutiveCertificate $m24
+              $m24-organization))
             ($authority-participants
               (CP2AuthorityParticipants $contact $m24-organization $m260-pre))
             ($participating-contact
@@ -811,7 +935,9 @@
             ($developmental
               (CP2M24DevelopmentalOrganization $m24-organization))
             ($base-cut (CPMakeCut $participating-contact $predecessor))
-            ($m260-cut (CP2CutWithM260Certificate $base-cut $m260-certificate
+            ($m24-cut (CP2CutWithM24Certificate $base-cut $m24-certificate
+              $m24 $m24-organization))
+            ($m260-cut (CP2CutWithM260Certificate $m24-cut $m260-certificate
               $m24 $m24-organization $m260 $m260-pre))
             ($configuration (CPContactConfiguration $participating-contact))
             ($facts (CPFactExpressionsAt $m260-cut
@@ -819,20 +945,20 @@
             ($m263-certificate (M263ConstitutiveCertificate $m260-cut $facts
               $m260 $m260-pre $m260-certificate))
             ($encounter (CP2M25Encounter $participating-contact $predecessor
-              $developmental $m260-certificate $m263-certificate $m24
-              $m24-organization $m260 $m260-pre)))
+              $developmental $m24-certificate $m260-certificate
+              $m263-certificate $m24 $m24-organization $m260 $m260-pre)))
        (if (CPShape $encounter constitutive-encounter 7)
          (let* (($cut (index-atom $encounter 1))
                 ($movement (index-atom $encounter 5))
                 ($family (CP2M260BridgeFamilyForEncounter $encounter))
                 ($standing (CP2M260MovementOccurrenceStanding $cut $movement
                   $m260 $family))
-                ($joint (authority-participation-joint-v5
+                ($joint (authority-participation-joint-v6
                   (index-atom $contact 1) $m24 $m24-organization $m260 $m260-pre
                   (CPDRelationKnown $cut contact-occurrence-grounding)
                   $family $standing (index-atom $m24-organization 3)
                   finite-non-reconstruction $m260-certificate
-                  $m263-certificate)))
+                  $m263-certificate $m24-certificate)))
            (if (CP2AuthorityJointMatchesEncounter $joint $encounter)
              (authority-grounded-encounter $joint $encounter)
              (authority-grounded-encounter-unresolved joint-not-causal $joint)))
