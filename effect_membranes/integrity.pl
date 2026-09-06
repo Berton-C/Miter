@@ -15,6 +15,7 @@ miter_integrity_sources([
  'src/generative_participation.metta',
  'src/authority_inheritance.metta','src/m24_completion.metta',
  'src/m25_completion.metta',
+ 'src/m255_completion.metta',
  'src/fact9_composition.metta',
  'src/constitutive_authority_joint.metta','effect_membranes/integrity.pl']).
 miter_integrity_snapshot(Output, Result) :-

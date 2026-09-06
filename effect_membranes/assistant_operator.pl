@@ -28,6 +28,7 @@ as_lkg_relative_paths([
   'src/generative_participation.metta',
   'src/authority_inheritance.metta','src/m24_completion.metta',
   'src/m25_completion.metta',
+  'src/m255_completion.metta',
   'src/fact9_composition.metta',
   'src/constitutive_authority_joint.metta',
   'src/assistant_reactor_foundation.metta','src/scope_continuity.metta',

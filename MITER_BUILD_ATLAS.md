@@ -153,9 +153,9 @@ consumer is absent. No status is upgraded by assertion.
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | No promoted external surface adapter is active. |
 | Checkpoint and same-runtime restart | E | reactor + store membrane | Living long-term memory and incomplete undertakings are not fully restored. |
-| M24–M26.3 native projection | P | `authority_inheritance.metta`, constitutive modules | Export-by-export causal completeness remains C2 work. |
-| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*` | Rich fields are loaded; all fields do not yet alter movement formation. |
-| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta` | The M26.3 Fact9 grammar now participates causally; fuller flourishing-field participation remains C2 work. |
+| M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C3 must now learn from their provisional composition. |
+| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*` | Rich fields are loaded; C3 must make their interconnected endogenous participation generative across unfamiliar contact. |
+| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta` | The complete ratified foundation participates causally; C3 must test previously unseen compositions and consequence-earned reorganization. |
 | One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate` | One exact contact/movement is read simultaneously; C3 must now use partial alignment generatively without splitting or scoring it. |
 | Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
@@ -179,7 +179,7 @@ Closure: clean candidate branch; fresh-clone bootstrap; recurring heartbeat;
 clean stop/restart; no secrets/private data; no test/evidence debris; honest
 capability matrix.
 
-### C2 — Complete causal M24–M26.3 embodiment (active)
+### C2 — Complete causal M24–M26.3 embodiment (closed)
 
 For every inherited export below, either connect the existing native
 representation to the primary encounter/consequence path or implement the
@@ -336,14 +336,14 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 
 | ID | Inherited meaning | Standing | Short falsifier |
 |---|---|---:|---|
-| M255-01 | bounded carrier-independent generative organization | P | carrier syntax becomes the law |
-| M255-02 | `GenSig` | P | signature is absent from a primary movement or treated as generation proof |
+| M255-01 | bounded carrier-independent generative organization | E | carrier syntax becomes the law |
+| M255-02 | `GenSig` | E | signature is absent from a primary movement or treated as generation proof |
 | M255-03 | R*/A*/P*/O* non-circular precursors | E | R/A/P define their own prerequisites |
-| M255-04 | `Generated` is canonical realization of `𝒢` | P | supplied option is called generated |
-| M255-05 | `GenTranslation` preserves load-bearing structure locally | P | translation lacks bidirectional relation/distinction/interface proof |
-| M255-06 | `GenEquivV2` is canonical cross-carrier equivalence | P | truth-only equivalence substitutes |
-| M255-07 | lawful equivalence laws on bounded domains | P | finite constructors are generalized outside their witnessed domain |
-| M255-08 | five-carrier connected-equivalence evidence pattern | P | carrier names substitute for carrier-specific organization |
+| M255-04 | `Generated` is canonical realization of `𝒢` | E | supplied option is called generated |
+| M255-05 | `GenTranslation` preserves load-bearing structure locally | E | translation lacks bidirectional relation/distinction/interface proof |
+| M255-06 | `GenEquivV2` is canonical cross-carrier equivalence | E | truth-only equivalence substitutes |
+| M255-07 | lawful equivalence laws on bounded domains | E | finite constructors are generalized outside their witnessed domain |
+| M255-08 | five-carrier connected-equivalence evidence pattern | E | carrier names substitute for carrier-specific organization |
 | M255-09 | `ForceObl` / `SupportPre` are non-optimizing structures | E | minimization score substitutes |
 | M255-10 | `Access` is a derived read-only participation view | E | access mutates generation |
 | M255-11 | one-engine PNS/SNS organization | E | separate engines/behavior tables appear |
@@ -356,10 +356,10 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-18 | open participation bridges into unchanged HarmonicAlign | E | openness rewrites alignment law |
 | M255-19 | B1–B10 retain ratified direction/scope | E | converse or wider scope is assumed |
 | M255-20 | overlapping recognition `Π` is non-reconstructive | E | recognitions are treated as exhaustive parts |
-| M255-21 | finite heterogeneous manifestation suite MA–ME | P | renamed vocabularies are mistaken for complete heterogeneous dynamics |
-| M255-22 | N01–N25 falsifier surface | P | a partial negative surface is mistaken for the complete N01–N25 set |
-| M255-23 | MeTTa projection contract | P | host computation replaces native witness |
-| M255-24 | bounded machine-evidence packages | A | evidence names are mistaken for live proof |
+| M255-21 | finite heterogeneous manifestation suite MA–ME | E | renamed vocabularies are mistaken for complete heterogeneous dynamics |
+| M255-22 | N01–N25 falsifier surface | E | a partial negative surface is mistaken for the complete N01–N25 set |
+| M255-23 | MeTTa projection contract | E | host computation replaces native witness |
+| M255-24 | bounded machine-evidence packages | E | evidence names are mistaken for live proof |
 
 ### M26.0 — one occurrence and non-self
 
@@ -465,7 +465,7 @@ outside the clean repository.
 
 ## 10. Active cut and next movement
 
-Active cut: **C2 complete causal M24–M26.3 embodiment**.
+Active cut: **C3 provisional 26.6/26.9 laboratory dynamics**.
 
 Already carried:
 
@@ -809,12 +809,42 @@ Already carried:
   claim that Miter already explores partial alignment generatively. That
   laboratory dynamic remains the explicit next-stage obligation above. All
   stimuli and verification material remained outside Git.
+- M25.5 now closes C2 through one exact V8 authority-joint package dependent
+  on the already-validated M24/M25 encounter rather than a parallel generator.
+  The package carries all twenty-four inherited exports, all twelve canonical
+  success clauses, the complete N01–N25 surface, fifteen witness-bearing MeTTa
+  projection forms, CH1–CH6, ten explicit provisional exclusions, and twenty
+  non-equivalences. Each of the three retained alternatives has a compact
+  closure over its exact `Generated`, `GenTranslation`, `GenEquivV2`, MA–ME
+  carrier/participation suite, overlapping recognition, B1–B10 direction,
+  and the same one R/A/P read. The machine-evidence boundary retains the
+  ratified Lean package and theorem as source evidence while distinguishing
+  them from the native runtime re-projection; neither is allowed to become an
+  actuality, Soul-standing, or universal-metaphysical claim. A single native
+  encounter check accepted the exact 24/12/25/15/6/10/20 surfaces and rejected
+  altered exports, a partial falsifier set, a Generated-only projection,
+  self-certified evidence, a wrong carrier hub, truth-only V1 equivalence,
+  and malformed Generated standing. Through `bin/miter`, the fresh V8 runtime
+  formed exactly one package and three reading/coherence closures. The initial
+  9,389,979-byte checkpoint had SHA-256
+  `ae8b62609b8015b8a4a2e8d63e8c2653e0f93d89b57feb40c2493c2c08714f63`;
+  duplicate submission created nothing and stop/start preserved it exactly.
+  Returned consequence changed the persisted organization to the
+  17,356,466-byte checkpoint SHA-256
+  `20a8e8fb2db8896b73bbdc5c12337b277b4be7bad28f984250fc60ab8a81de5e`;
+  a second restart preserved it byte-identically with two consumed inputs and
+  one unchanged effect. This closes the complete ratified M24–M26.3 causal
+  foundation in C2. It does not claim the provisional 26.6/26.9 laboratory
+  dynamics that C3 must now discover. All stimuli and verification material
+  remained outside Git.
 
 Next movement:
 
-1. discharge the remaining `P` and `A` M25.5 rows through the same primary
-   encounter without opening a separate runtime or moving R/A/P away from its
-   one simultaneous read;
+1. build the first C3 unfamiliar-contact laboratory in the same runtime:
+   partial R/A/P alignment must expose generative possibility, preserve what
+   is already aligned, form materially different lawful reorganizations, and
+   let returned consequence change later possibility formation without a
+   behavior branch, scalar optimizer, or LLM sovereignty;
 2. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
