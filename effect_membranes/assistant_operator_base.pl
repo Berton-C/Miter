@@ -132,7 +132,7 @@ as_swipl_ld(Path) :-
     ).
 
 as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
-  receipts,outbox,intents,lib,logs]).
+  receipts,outbox,proofs,intents,lib,logs]).
 
 as_bootstrap(Root, Reply) :-
     ( exists_directory(Root) ->

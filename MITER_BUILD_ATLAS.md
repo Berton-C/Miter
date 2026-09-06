@@ -683,18 +683,33 @@ Already carried:
   carrier bound; the next cut must make the external certificate a compact
   reference to persisted internal proof organization before adding further
   nested inherited surfaces.
+- That carrier correction is now embodied without moving cognition into the
+  membrane. MeTTa forms the complete native movement proof, records it in the
+  AtomSpace history, and forms a compact VoiceRNA certificate containing exact
+  cut, movement, participant-boundary, and proof-store references. Prolog only
+  validates their structural identity, persists the already-certified full
+  proof before exposing the local effect, computes the two SHA-256 identities,
+  and commits the compact outbox envelope. The final supported-runtime outbox
+  artifact is 1,452 bytes with a 926-character certificate, while the exact
+  1,016,042-byte proof remains in the private runtime proof store and the same
+  proof remains in the native checkpoint. Both independently recomputed to
+  SHA-256
+  `30c1dd5d41be3bff0a1d41fbda4205a58769ac8a3895bc2f25e255a254c2e7c6`.
+  Altered certificate bytes and altered proof-store bytes were both rejected.
+  Stop/start restored the byte-identical checkpoint, proof, and compact effect,
+  with one consumed input and exactly one effect and proof carrier—no replay.
+  A fresh runtime seeded only with the previously committed proof/effect pair
+  then reprocessed the still-pending contact, reported `duplicate-observed`,
+  and completed its native checkpoint with one unchanged proof and effect.
+  The membrane still has no network or external-effect authority.
 
 Next movement:
 
-1. replace the nearly saturated external effect payload with a compact,
-   integrity-bound reference to the complete persisted native proof carrier;
-   this is a carrier correction only and may not move cognition,
-   certification, or authority into Prolog;
-2. discharge the M25.5→M26.0 one-becoming, `SameBecoming`, occurrence-qualified
+1. discharge the M25.5→M26.0 one-becoming, `SameBecoming`, occurrence-qualified
    `Generated/𝒢`, and structural-fidelity bridges through the same primary
    movement, then continue the export map until all M24–M26.3 gaps have live
    consumers in this organism;
-3. only after explicit human acceptance of the complete clean candidate,
+2. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 
