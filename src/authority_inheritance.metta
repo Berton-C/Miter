@@ -1104,13 +1104,16 @@
       $participant-relations)
    (let $form (index-atom $possibility 2)
      (if (== $form undertaking)
-       (if (and (> (size-atom (CPLiveThreadIds $cut)) 0)
-                (== (CPInquiryNeededV2 $cut $facts $flourishing
-                  $participant-relations) false))
+       (if (and (CPInterfacesLive $cut)
+             (and (> (size-atom (CPLiveThreadIds $cut)) 0)
+               (== (CPInquiryNeededV2 $cut $facts $flourishing
+                 $participant-relations) false)))
          (movement-availability available live-undertaking)
          (movement-availability unavailable inquiry-or-thread-gap))
        (if (== $form inquiry)
-         (if (CPInquiryNeededV2 $cut $facts $flourishing $participant-relations)
+         (if (and (CPInterfacesLive $cut)
+               (CPInquiryNeededV2 $cut $facts $flourishing
+                 $participant-relations))
            (movement-availability available discriminating-contact-needed)
            (movement-availability unavailable inquiry-not-needed))
          (if (== $form defer)

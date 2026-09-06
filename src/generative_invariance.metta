@@ -168,24 +168,14 @@
 ; disposition, reflexive, and recognition fields above does not claim that
 ; any such witness is inhabited for this movement.
 (= (M255AStarWitness $signature)
-   (let* (($move (index-atom $signature 3))
-          ($form (index-atom $move 2))
-          ($interfaces (M255GenSigInterfaces $signature)))
-     (if (== $form defer)
-       (a-star-witness $interfaces fits-bounded-interface-recovery
-         witnessed-current-interface-constraint)
-       (a-star-witness $interfaces fits-interface
-         no-unwitnessed-constraint))))
+   (a-star-witness (M255GenSigInterfaces $signature)
+     fits-identified-interface no-unwitnessed-constraint))
 
 (= (M255InterfacesFitMovement $cut $possibility)
-   (let* (($form (index-atom $possibility 2))
-          ($interfaces (index-atom $possibility 5)))
-     (if (== $form defer)
-       (and (is-expr $interfaces)
-         (and (> (size-atom $interfaces) 0)
-           (and (== (CPInterfacesLive $cut) false)
-                (CPAllInterfacesUnavailable $cut $interfaces 0))))
-       (CPInterfacesReady $cut $interfaces))))
+   (let $interfaces (index-atom $possibility 5)
+     (and (is-expr $interfaces)
+       (and (> (size-atom $interfaces) 0)
+            (CPAllInterfacesKnown $cut $interfaces 0)))))
 
 (= (M255GeneratedFromSignature $signature $possibility)
    (generated-v1 $signature

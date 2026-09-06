@@ -404,21 +404,19 @@
      (and (== (size-atom $rows) 1)
           (CPHas (index-atom (index-atom $rows 0) 2) (available open revisable) 0))))
 
-(= (CPInterfaceUnavailable $cut $id)
+(= (CPInterfaceKnown $cut $id)
    (let $rows (CPFind (CPInterfaces $cut) $id)
-     (and (== (size-atom $rows) 1)
-          (== (CPHas (index-atom (index-atom $rows 0) 2)
-            (available open revisable) 0) false))))
+     (== (size-atom $rows) 1)))
 
 (= (CPAllInterfaces $cut $ids $i)
    (if (< $i (size-atom $ids))
      (and (CPInterfaceAvailable $cut (index-atom $ids $i))
           (CPAllInterfaces $cut $ids (+ $i 1))) true))
 
-(= (CPAllInterfacesUnavailable $cut $ids $i)
+(= (CPAllInterfacesKnown $cut $ids $i)
    (if (< $i (size-atom $ids))
-     (and (CPInterfaceUnavailable $cut (index-atom $ids $i))
-          (CPAllInterfacesUnavailable $cut $ids (+ $i 1))) true))
+     (and (CPInterfaceKnown $cut (index-atom $ids $i))
+          (CPAllInterfacesKnown $cut $ids (+ $i 1))) true))
 
 (= (CPFlourishingExpressionFor $organization $value)
    (CPFind (index-atom $organization 2) $value))

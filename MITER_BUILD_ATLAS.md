@@ -523,12 +523,18 @@ Already carried:
   the same stable identity supersedes the earlier standing in the newly
   projected cut only. An actual `interface-conversation` transition from
   `open` to `unavailable` therefore leaves exactly one current row and forms
-  `m255-constrained-consequence-participation`. M25.5 A* now retains the
-  unavailable interface as the fitting object of a bounded recovery/defer
-  movement and carries the constraint explicitly rather than pretending no
+  `m255-constrained-consequence-participation`. M25.5 A* now retains an
+  identified interface as a fitting generative precursor even when its current
+  Access view is constrained; interface fit, current reachability, and M25
+  movement availability are therefore separate. A bounded recovery/defer
+  movement carries the unavailable interface rather than pretending no
   interface obligation exists. Through `bin/miter`, the constrained next cut
   formed `constitutive-defer`; its one R/A/P surface read the inherited M25
-  orientation as `unresolved`, not SNS-like. Stop/start restored the defer,
+  orientation as `unresolved`, not SNS-like. The inaccessible inquiry retained
+  a valid `Generated/𝒢` witness and carrier bridge while its M25 movement
+  availability was `unavailable`; the defer alone was available. Thus
+  generation, access, and movement admission no longer collapse. Stop/start
+  restored the defer,
   unavailable interface, constrained relation, and consequence exactly, while
   one pre-existing effect remained byte-identical and exactly once. This
   establishes actual constrained participation and the prerequisite current-
