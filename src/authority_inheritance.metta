@@ -1315,6 +1315,38 @@
        $possibility
        (M255PrimaryCarrierBridge $cut $facts $flourishing $possibility))))
 
+; The fourteen pre-movement M26.0 exports are a finite authority surface, not
+; a behavior catalogue.  Their exact structured certificate is represented in
+; R* by one conjunctive, proof-carrying relation so that the whole authority
+; basis remains causally required without copying fourteen names through every
+; carrier.  The four remaining M26.0 exports (Generated/SameBecoming, the
+; one-becoming bridge, non-co-reference, and structural fidelity) are carried
+; by the exact per-primary bridge constructed below.
+(= (M260PreMovementExportRelationIds)
+   (m260-opaque-occurrence-reference
+    m260-participation-grounding
+    m260-same-occurrence-relation
+    m260-unity-aspect-non-independence
+    m260-manifestation-recognition-separation
+    m260-opc-distinction-without-separation
+    m260-dws-family
+    m260-finite-observational-opacity
+    m260-representation-nonsovereignty
+    m260-scoped-nonamalgamation
+    m260-persistent-form-nonself
+    m260-relational-same-becoming-law
+    m260-explicit-primitive-laws
+    m260-formal-evidence-boundary))
+
+(= (M260PreMovementCausalRelationIds)
+   (m260-constitutive-export-grounding))
+
+(= (M260PossibleMovementCarriesPreExports $possibility)
+   (if (CPShape $possibility possible-movement 9)
+     (AIAllIn (M260PreMovementCausalRelationIds)
+       (index-atom $possibility 3) 0)
+     false))
+
 (= (M25PrimaryMovementValid $primary)
    (if (CPShape $primary m25-primary-movement-v2 11)
      (and (CPShape (index-atom $primary 3) source-cut 2)
@@ -1325,12 +1357,14 @@
          (and (CPShape (index-atom $primary 7) answerability 2)
           (and (CPShape (index-atom $primary 8) continuation-basis-v3 6)
            (and (CPShape (index-atom $primary 9) possible-movement 9)
-             (and (== (index-atom $primary 1)
-                   (index-atom (index-atom $primary 9) 1))
-             (and (== (index-atom $primary 2)
-                    (index-atom (index-atom $primary 9) 2))
-                  (M255PrimaryCarrierBridgeValid (index-atom $primary 10)
-                    (index-atom $primary 9)))))))))))
+             (and (M260PossibleMovementCarriesPreExports
+                    (index-atom $primary 9))
+              (and (== (index-atom $primary 1)
+                    (index-atom (index-atom $primary 9) 1))
+               (and (== (index-atom $primary 2)
+                      (index-atom (index-atom $primary 9) 2))
+                    (M255PrimaryCarrierBridgeValid (index-atom $primary 10)
+                      (index-atom $primary 9))))))))))))
      false))
 
 (= (M25Contactable $primary)

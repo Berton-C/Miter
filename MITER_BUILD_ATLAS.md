@@ -236,10 +236,12 @@ gap and then resume; do not create a side campaign.
 The rows below are the complete inherited meanings, not a list of optional
 features. Each authority subsection states the gap it fills and its additive
 relationship. `P` means a relevant native representation exists but must still
-earn C2 closure through the one runtime. `A` means the runtime representation
-or causal consumer is still missing. Expected evidence is always a held-out
-contact/consequence plus restart readback; the listed falsifier is the shortest
-failure witness.
+earn C2 closure through the one runtime. `E` means that meaning is embodied in
+the one runtime and its current causal, falsifier, consequence, and restart
+evidence has passed; C2 still closes only as one integrated whole. `A` means
+the runtime representation or causal consumer is still missing. Expected
+evidence is always a held-out contact/consequence plus restart readback; the
+listed falsifier is the shortest failure witness.
 
 ### M24 — lawful attachment and frame authority
 
@@ -353,24 +355,24 @@ Representation and consumer: `M260*` functions and the authority joint.
 
 | ID | Inherited meaning | Standing | Short falsifier |
 |---|---|---:|---|
-| M260-01 | opaque one-occurrence reference | P | finite record claims actuality contents |
-| M260-02 | participation grounding | P | detached observer becomes required ground |
-| M260-03 | same-occurrence without identity/amalgamation | P | views are equated or globally merged |
-| M260-04 | non-substantial `UnityAspect` | P | aspect becomes independent component |
-| M260-05 | manifestation and recognition remain distinct | P | recognition is presumed from manifestation |
-| M260-06 | O/P/C distinction without separation | P | factors or simple identities substitute |
-| M260-07 | reusable `DWS/DWSFamily` | P | common occurrence or non-independence absent |
-| M260-08 | finite observational opacity | P | more views are said to reconstruct identity |
-| M260-09 | representation non-sovereignty | P | coverage grants actuality standing |
-| M260-10 | non-amalgamation with scoped joint use | P | one global view required |
-| M260-11 | finite form/non-self | P | persistence becomes immutable sovereign self |
-| M260-12 | relational, non-functional `SameBecoming` | P | unique functional identity is assumed |
+| M260-01 | opaque one-occurrence reference | E | finite record claims actuality contents |
+| M260-02 | participation grounding | E | detached observer becomes required ground |
+| M260-03 | same-occurrence without identity/amalgamation | E | views are equated or globally merged |
+| M260-04 | non-substantial `UnityAspect` | E | aspect becomes independent component |
+| M260-05 | manifestation and recognition remain distinct | E | recognition is presumed from manifestation |
+| M260-06 | O/P/C distinction without separation | E | factors or simple identities substitute |
+| M260-07 | reusable `DWS/DWSFamily` | E | common occurrence or non-independence absent |
+| M260-08 | finite observational opacity | E | more views are said to reconstruct identity |
+| M260-09 | representation non-sovereignty | E | coverage grants actuality standing |
+| M260-10 | non-amalgamation with scoped joint use | E | one global view required |
+| M260-11 | finite form/non-self | E | persistence becomes immutable sovereign self |
+| M260-12 | relational, non-functional `SameBecoming` | E | unique functional identity is assumed |
 | M260-13 | occurrence-qualified `Generated/𝒢` through SameBecoming | E | `𝒢` becomes actuality/second ontology |
 | M260-14 | generative/participatory/balance one-becoming bridge | E | surfaces are merely adjacent diagnostics |
 | M260-15 | `GenEquivV2` does not prove co-reference | E | structural equivalence asserts same occurrence |
 | M260-16 | structural fidelity preserves load-bearing relations | E | scalar closeness substitutes |
-| M260-17 | eight primitive laws remain explicit primitives | A | primitives are silently strengthened/derived |
-| M260-18 | formal evidence boundary remains explicit | P | adapter-limited evidence is overstated |
+| M260-17 | eight primitive laws remain explicit primitives | E | primitives are silently strengthened/derived |
+| M260-18 | formal evidence boundary remains explicit | E | adapter-limited evidence is overstated |
 
 ### M26.3 — nine-fold compositional recognition
 
@@ -712,13 +714,23 @@ Already carried:
   equivalence-boundary carriers all failed exact validation. Returned
   consequence formed the next cut, and stop/start restored its constitutive
   organization byte-identically with one unchanged local effect and no replay.
+- The remaining M26.0 exports now enter that same cut before possibility
+  formation through one conjunctive `m260-constitutive-export-grounding`
+  relation backed by an exact V4 authority-joint certificate. The certificate
+  carries all fourteen pre-movement exports, the eight explicit primitive
+  constitutional/interface laws, their derived occurrence structures, the
+  formal-evidence boundary, and the authority's non-claims. Detached views,
+  free recognition, independent aspects, unchanged-boundary persistence,
+  product-factor substitution, scalar fidelity, an altered certificate, a
+  missing causal relation, and a primary missing that relation were rejected.
+  A fresh supported runtime retained exactly one full certificate; returned
+  consequence changed the next cut, while stop/start restored the exact new
+  checkpoint and unchanged proof/effect bytes with no duplicate effect.
 
 Next movement:
 
-1. continue M26.0 from the now-live one-becoming bridge into the remaining
-   opaque-occurrence, participation, DWS/O-P-C, persistent-form, primitive-law,
-   and evidence-boundary exports; then discharge the complete M26.3 Fact9
-   composition surface through that same primary movement before closing C2;
+1. discharge the complete M26.3 Fact9 composition surface through this same
+   M24/M25/M25.5/M26.0 primary movement before closing C2;
 2. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.

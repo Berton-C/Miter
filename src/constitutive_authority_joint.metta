@@ -140,6 +140,125 @@
                  (CPShape (index-atom $organization 8)
                    representation-standing 2))))))))) false))
 
+; The hardened M26.0 primitive basis is carried explicitly.  These are
+; semantic/interface primitives whose live instantiation is checked here;
+; they are neither Lean axioms nor derived behavioral rules.
+(= (CP2M260PrimitiveLawBasis $m24-organization $m260 $pre)
+   (m260-primitive-law-basis-v1
+     (primitive-law participation-grounding-of-views
+       (M260ViewsGroundedAt $m260 (index-atom $m260 3) 0)
+       explicit-semantic-primitive-not-derived)
+     (primitive-law manifestation-soundness
+       (M260ManifestationsGroundedAt $m260 (index-atom $m260 5) 0)
+       explicit-semantic-primitive-not-derived)
+     (primitive-law recognition-soundness
+       (M260RecognitionsGroundedAt $m260 (index-atom $m260 6) 0)
+       explicit-semantic-primitive-not-derived)
+     (primitive-law inherited-m24-contact-domain-nonamalgamation
+       (m24-minimum-interface
+         (index-atom $m24-organization 1)
+         (index-atom $m24-organization 5)
+         scoped-joint-use-without-global-amalgamation)
+       explicit-interface-primitive-not-derived)
+     (primitive-law relational-same-becoming-with-embedded-l2425
+       proof-relevant-non-functional-no-total-attachment
+       explicit-semantic-primitive-not-derived)
+     (primitive-law finite-observational-ambiguity
+       (index-atom (index-atom $pre 6) 1)
+       explicit-semantic-primitive-not-derived)
+     (primitive-law unity-without-independent-aspect-domain
+       (M260AspectSupportValidAt $m260 (index-atom $m260 4) 0)
+       explicit-semantic-primitive-not-derived)
+     (primitive-law continuity-and-local-boundary
+       (index-atom $pre 3)
+       explicit-interface-primitive-not-derived)))
+
+(= (CP2M260DerivedExportBasis $m24-organization $m260 $pre)
+   (m260-derived-export-basis-v1
+     (occurrence-reference (index-atom $m260 1))
+     (partial-views (index-atom $m260 3))
+     (same-occurrence-standing (index-atom $pre 2))
+     (unity-aspect-standing (index-atom $m260 4))
+     (manifestation-recognition-standing
+       (index-atom $m260 5) (index-atom $m260 6)
+       distinct-with-recognition-grounded-in-manifestation)
+     (opc-distinction-standing (index-atom $pre 5))
+     (dws-standing (index-atom $pre 4))
+     (opacity-standing (index-atom $pre 6))
+     (representation-standing (index-atom $pre 8))
+     (scoped-nonamalgamation-standing
+       (index-atom $m24-organization 5) no-required-global-view)
+     (finite-form-nonself-standing
+       (index-atom $pre 3) continuity-with-changing-local-boundary)
+     (relational-same-becoming-interface
+       proof-relevant non-functional generated-must-remain-occurrence-qualified)
+     (structural-fidelity-standing
+       (index-atom $pre 7) relation-preservation-not-scalar-distance)))
+
+(= (CP2M260ConstitutiveCertificate $m24 $m24-organization $m260 $pre)
+   (if (and (M24ContactValid $m24)
+         (and (CP2M24ContactOrganizationValid $m24 $m24-organization)
+          (and (M260OrganizationValid $m260)
+               (CP2M260PreMovementValid $m260 $pre))))
+     (m260-constitutive-export-certificate-v1
+       (index-atom $m260 1)
+       (M260PreMovementExportRelationIds)
+       (CP2M260PrimitiveLawBasis $m24-organization $m260 $pre)
+       (CP2M260DerivedExportBasis $m24-organization $m260 $pre)
+       (formal-evidence-boundary
+         formally-supported-under-hardened-lean-encoding
+         adapter-mediated-inquiry24-specialization
+         finite-runtime-witness-does-not-prove-actuality)
+       (nonclaims no-global-actuality-state no-finite-reconstruction
+         no-product-opc no-scalar-fidelity no-generated-equals-actuality
+         no-universal-fact9-or-generative-exhaustiveness)
+       no-contact-no-movement-authority)
+     (m260-constitutive-export-certificate-unresolved
+       invalid-authority-or-occurrence-organization)))
+
+(= (CP2M260ConstitutiveCertificateValid $certificate $m24
+      $m24-organization $m260 $pre)
+   (if (CPShape $certificate m260-constitutive-export-certificate-v1 8)
+     (== $certificate
+       (CP2M260ConstitutiveCertificate $m24 $m24-organization $m260 $pre))
+     false))
+
+; One compact D relation carries the conjunction of all fourteen pre-movement
+; exports.  The complete exact certificate remains in the authority joint.
+; This keeps every constituent counterfactually load-bearing while avoiding a
+; combinatorial copy of the export vocabulary through Generated carriers.
+(= (CP2M260CertificateDRelation $certificate)
+   (relation m260-constitutive-export-grounding m260-authority-derived support
+     (m260-certificate-reference
+       (index-atom $certificate 1)
+       (export-count (size-atom (index-atom $certificate 2)))
+       (primitive-count (- (size-atom (index-atom $certificate 3)) 1)))))
+
+(= (CP2CutWithM260Certificate $cut $certificate $m24 $m24-organization
+      $m260 $pre)
+   (if (and (CPCutValid $cut)
+         (and (CP2M260ConstitutiveCertificateValid $certificate $m24
+                $m24-organization $m260 $pre)
+          (and (== (index-atom $certificate 2)
+                 (M260PreMovementExportRelationIds))
+               (== (size-atom (index-atom $certificate 3)) 9))))
+     (let* (($d (index-atom $cut 6))
+            ($rows (index-atom $d 1))
+            ($relation (CP2M260CertificateDRelation $certificate)))
+       (constitutive-cut
+         (index-atom $cut 1) (index-atom $cut 2) (index-atom $cut 3)
+         (index-atom $cut 4) (index-atom $cut 5)
+         (D (CPMergeNewRelationsAt $rows ($relation) 0)
+            (index-atom $d 2))
+         (index-atom $cut 7) (index-atom $cut 8) (index-atom $cut 9)
+         (index-atom $cut 10) (index-atom $cut 11) (index-atom $cut 12)
+         (index-atom $cut 13)))
+     (constitutive-cut-unresolved invalid-m260-certificate)))
+
+(= (CP2M260CertificateRelationKnown $cut $certificate)
+   (CPHas (CP2M260CertificateDRelation $certificate)
+     (CPDRelations $cut) 0))
+
 ; Inquiry 26.0 joins the exact Inquiry-25.5 Generated witness to the same
 ; primary movement that is about to receive its single M25 R/A/P read.  The
 ; occurrence is rebuilt from the cut; Generated is neither copied into a new
@@ -333,6 +452,30 @@
        (if (CPShape $generated m25-generated-organization-v1 4)
          (index-atom $generated 3) ())) ()))
 
+(= (CP2M260CausalRelationInPrimariesAt $readings $i)
+   (if (< $i (size-atom $readings))
+     (let $reading (index-atom $readings $i)
+       (if (CPShape $reading m25-movement-reading-v3 9)
+         (let $primary (index-atom $reading 1)
+           (and (M25PrimaryMovementValid $primary)
+             (and (AIAllIn (M260PreMovementCausalRelationIds)
+                    (index-atom (index-atom $primary 9) 3) 0)
+                  (CP2M260CausalRelationInPrimariesAt $readings (+ $i 1)))))
+         false))
+     true))
+
+(= (CP2M260ExportsCausalInEncounter $encounter $certificate)
+   (if (and (CPShape $encounter constitutive-encounter 7)
+            (CPShape $certificate m260-constitutive-export-certificate-v1 8))
+     (let* (($cut (index-atom $encounter 1))
+            ($ids (index-atom $certificate 2))
+            ($readings (CP2EncounterM25Readings $encounter)))
+       (and (== $ids (M260PreMovementExportRelationIds))
+        (and (CP2M260CertificateRelationKnown $cut $certificate)
+         (and (> (size-atom $readings) 0)
+              (CP2M260CausalRelationInPrimariesAt $readings 0)))))
+     false))
+
 (= (CP2M260BridgeFamilyForEncounter $encounter)
    (let $cut (index-atom $encounter 1)
      (m260-primary-bridge-family
@@ -431,31 +574,67 @@
                       finite-non-reconstruction)))))))))))
      false))
 
+; V4 retains V3's exact per-primary one-becoming family and adds the bounded
+; M26.0 constitutive certificate.  The certificate makes all eight primitive
+; laws and the remaining derived export structures inspectable without
+; granting a finite representation actuality or movement authority.
+(= (CP2AuthorityJointV4Valid $joint)
+   (if (CPShape $joint authority-participation-joint-v4 12)
+     (let* (($v3 (authority-participation-joint-v3
+                   (index-atom $joint 1) (index-atom $joint 2)
+                   (index-atom $joint 3) (index-atom $joint 4)
+                   (index-atom $joint 5) (index-atom $joint 6)
+                   (index-atom $joint 7) (index-atom $joint 8)
+                   (index-atom $joint 9) (index-atom $joint 10)))
+            ($certificate (index-atom $joint 11)))
+       (and (CP2AuthorityJointV3Valid $v3)
+            (CP2M260ConstitutiveCertificateValid $certificate
+              (index-atom $joint 2) (index-atom $joint 3)
+              (index-atom $joint 4) (index-atom $joint 5))))
+     false))
+
 (= (CP2AuthorityJointValid $joint)
    (or (CP2AuthorityJointV1Valid $joint)
      (or (CP2AuthorityJointV2Valid $joint)
-         (CP2AuthorityJointV3Valid $joint))))
+      (or (CP2AuthorityJointV3Valid $joint)
+          (CP2AuthorityJointV4Valid $joint)))))
 
 (= (CP2JointMovementReference $joint)
-   (if (CPShape $joint authority-participation-joint-v3 11)
+   (if (CPShape $joint authority-participation-joint-v4 12)
+     (index-atom (index-atom $joint 8) 1)
+    (if (CPShape $joint authority-participation-joint-v3 11)
      (index-atom (index-atom $joint 8) 1)
      (if (CPShape $joint authority-participation-joint-v2 11)
-       (index-atom (index-atom $joint 8) 1) no-movement-reference)))
+       (index-atom (index-atom $joint 8) 1) no-movement-reference))))
 
 (= (CP2AuthorityJointMatchesEncounter $joint $encounter)
-   (if (and (CP2AuthorityJointV3Valid $joint)
+   (if (and (CP2AuthorityJointV4Valid $joint)
             (CPShape $encounter constitutive-encounter 7))
      (let* (($cut (index-atom $encounter 1))
             ($movement (index-atom $encounter 5))
             ($m260 (index-atom $joint 4))
-            ($family (CP2M260BridgeFamilyForEncounter $encounter)))
+            ($family (CP2M260BridgeFamilyForEncounter $encounter))
+            ($certificate (index-atom $joint 11)))
        (and (== $m260 (CP2M260OrganizationFromCut $cut))
         (and (== (index-atom $joint 7) $family)
          (and (== (index-atom $joint 8)
                 (CP2M260MovementOccurrenceStanding $cut $movement $m260 $family))
-          (and (CPDRelationKnown $cut contact-occurrence-grounding)
-               (CPDRelationKnown $cut m24-developmental-grounding))))))
-     (if (and (CP2AuthorityJointV2Valid $joint)
+          (and (CP2M260ExportsCausalInEncounter $encounter $certificate)
+           (and (CPDRelationKnown $cut contact-occurrence-grounding)
+                (CPDRelationKnown $cut m24-developmental-grounding)))))))
+     (if (and (CP2AuthorityJointV3Valid $joint)
+              (CPShape $encounter constitutive-encounter 7))
+       (let* (($cut (index-atom $encounter 1))
+              ($movement (index-atom $encounter 5))
+              ($m260 (index-atom $joint 4))
+              ($family (CP2M260BridgeFamilyForEncounter $encounter)))
+         (and (== $m260 (CP2M260OrganizationFromCut $cut))
+          (and (== (index-atom $joint 7) $family)
+           (and (== (index-atom $joint 8)
+                  (CP2M260MovementOccurrenceStanding $cut $movement $m260 $family))
+            (and (CPDRelationKnown $cut contact-occurrence-grounding)
+                 (CPDRelationKnown $cut m24-developmental-grounding))))))
+      (if (and (CP2AuthorityJointV2Valid $joint)
               (CPShape $encounter constitutive-encounter 7))
        (and (== (CP2JointMovementReference $joint)
               (CP2MovementReference (index-atom $encounter 1)
@@ -464,17 +643,20 @@
                    contact-occurrence-grounding)
                  (CPDRelationKnown (index-atom $encounter 1)
                    m24-developmental-grounding)))
-       (CP2AuthorityJointV1Valid $joint))))
+       (CP2AuthorityJointV1Valid $joint)))))
 
-(= (CP2M25Encounter $contact $predecessor $developmental)
-   (let $cut (CPMakeCut $contact $predecessor)
-     (if (CPCutValid $cut)
+(= (CP2M25Encounter $contact $predecessor $developmental $m260-certificate
+      $m24 $m24-organization $m260 $m260-pre)
+   (let* (($cut (CPMakeCut $contact $predecessor))
+          ($authority-cut (CP2CutWithM260Certificate $cut $m260-certificate
+            $m24 $m24-organization $m260 $m260-pre)))
+     (if (CPCutValid $authority-cut)
        (let $configuration (CPContactConfiguration $contact)
-         (M25ConstitutiveEncounter $cut
+         (M25ConstitutiveEncounter $authority-cut
            (index-atom $configuration 7) (index-atom $configuration 8)
            (index-atom $configuration 10) (index-atom $contact 8)
            $developmental))
-       $cut)))
+       $authority-cut)))
 
 (= (CP2EncounterFromAuthorityOrganizations $contact $predecessor
       $m24 $m24-organization $m260 $m260-pre)
@@ -482,25 +664,28 @@
          (and (CP2M24ContactOrganizationValid $m24 $m24-organization)
           (and (M260OrganizationValid $m260)
                (CP2M260PreMovementValid $m260 $m260-pre))))
-     (let* (($authority-participants
+     (let* (($m260-certificate (CP2M260ConstitutiveCertificate $m24
+              $m24-organization $m260 $m260-pre))
+            ($authority-participants
               (CP2AuthorityParticipants $contact $m24-organization $m260-pre))
               ($participating-contact
                 (CP2ContactWithAuthorityParticipants $contact $authority-participants))
               ($developmental
                 (CP2M24DevelopmentalOrganization $m24-organization))
               ($encounter (CP2M25Encounter $participating-contact $predecessor
-                $developmental)))
+                $developmental $m260-certificate $m24 $m24-organization
+                $m260 $m260-pre)))
        (if (CPShape $encounter constitutive-encounter 7)
          (let* (($cut (index-atom $encounter 1))
                 ($movement (index-atom $encounter 5))
                 ($family (CP2M260BridgeFamilyForEncounter $encounter))
                 ($standing (CP2M260MovementOccurrenceStanding $cut $movement
                   $m260 $family))
-                ($joint (authority-participation-joint-v3
+                ($joint (authority-participation-joint-v4
                   (index-atom $contact 1) $m24 $m24-organization $m260 $m260-pre
                   (CPDRelationKnown $cut contact-occurrence-grounding)
                   $family $standing (index-atom $m24-organization 3)
-                  finite-non-reconstruction)))
+                  finite-non-reconstruction $m260-certificate)))
            (if (CP2AuthorityJointMatchesEncounter $joint $encounter)
              (authority-grounded-encounter $joint $encounter)
              (authority-grounded-encounter-unresolved joint-not-causal $joint)))
