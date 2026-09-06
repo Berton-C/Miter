@@ -320,7 +320,7 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 |---|---|---:|---|
 | M255-01 | bounded carrier-independent generative organization | P | carrier syntax becomes the law |
 | M255-02 | `GenSig` | P | signature is absent from a primary movement or treated as generation proof |
-| M255-03 | R*/A*/P*/O* non-circular precursors | P | R/A/P define their own prerequisites |
+| M255-03 | R*/A*/P*/O* non-circular precursors | E | R/A/P define their own prerequisites |
 | M255-04 | `Generated` is canonical realization of `𝒢` | P | supplied option is called generated |
 | M255-05 | `GenTranslation` preserves load-bearing structure locally | P | translation lacks bidirectional relation/distinction/interface proof |
 | M255-06 | `GenEquivV2` is canonical cross-carrier equivalence | P | truth-only equivalence substitutes |
@@ -334,7 +334,7 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-14 | `Creation` adds possibility modulo lawful prior transport | E | renaming/retrieval is called creation |
 | M255-15 | `Maintenance` preserves generative organization under lawful transport | E | repetition alone proves maintenance |
 | M255-16 | `Degradation` loses prior continuation structure under the same law | E | lower score alone proves degradation |
-| M255-17 | non-circular bridge from `𝒢` precursors to R/A/P | P | selected movement backfills its grounds |
+| M255-17 | non-circular bridge from `𝒢` precursors to R/A/P | E | selected movement backfills its grounds |
 | M255-18 | open participation bridges into unchanged HarmonicAlign | E | openness rewrites alignment law |
 | M255-19 | B1–B10 retain ratified direction/scope | A | converse or wider scope is assumed |
 | M255-20 | overlapping recognition `Π` is non-reconstructive | E | recognitions are treated as exhaustive parts |
@@ -639,11 +639,33 @@ Already carried:
   `cd9a70e819d92cf8e0ac491890c300d6372aee170b026316f27875649e301840`,
   with one consumed input, zero rejections, and one exactly-once local effect.
   All stimulus and audit material remained external to Git.
+- B1, B2, and B8 now participate before the one R/A/P read in that same live
+  primary movement. B1 relates the exact Generated witness to its lawful DPF
+  carrier without identifying either representation with the other. B2 carries
+  R*/A*/P*/O* into the inherited Relatedness, Adm25→ReadApp, Precision, and
+  consequence-answerability surfaces without permitting R/A/P to backfill its
+  own grounds. B8 traces L2425 to the exact M24 contact and developmental
+  organization; a native negative case retained otherwise valid R*/A*/P*/O*
+  while missing L2425 and remained explicitly not Generated. A forged inverse
+  bridge failed exact validation. The proof carrier uses exact references rather
+  than recursively copying the full cut and M24 organization into each reading.
+  Through `bin/miter`, a fresh runtime consumed one contact, committed one local
+  effect, and persisted one checkpoint; it remained running until clean stop.
+  Stop/start preserved the byte-identical checkpoint SHA-256
+  `7b2ebe53470781d744db516e23c20bab66a0030c87d0c5377659d516ac579a53`
+  and outbox SHA-256
+  `aa270d51eeb74c2f95a99ac40b0410e39be0be80ba27517510cee060f084dfcb`,
+  with one consumed input, zero rejections, and no replay. The serialized local
+  effect measured 983,247 bytes under the unchanged 1,048,576-byte membrane
+  bound. All stimulus and diagnostic material remained external to Git.
 
 Next movement:
 
-1. complete and explicitly audit the remaining inherited B1–B8 directions
-   without adding a chooser, global amalgamation, or a second R/A/P surface;
+1. complete and explicitly audit B4–B7: constrained/reflexive participation to
+   inherited SNS-like witness, thresholded obstruction to inherited Stuck,
+   disclosure/creation to interface evolution, and reorganization to distinct
+   Inquiry-24 evidence—without adding a chooser, pathology label, global
+   amalgamation, or a second R/A/P surface;
 2. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same
    primary movement, then continue the export map until all M24–M26.3 gaps
    have live consumers in this organism;

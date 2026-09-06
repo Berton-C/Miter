@@ -464,6 +464,97 @@
            (and (CPShape $flourishing flourishing-organization 3)
                 (== (size-atom (index-atom $flourishing 2)) 9)))))))))))
 
+; B8 negative direction: R*/A*/P*/O* do not compensate for a missing L2425
+; premise. This constructor is evidence of a failed Generated relation, not a
+; way to manufacture either contact or a negative movement verdict.
+(= (M255GenSigNonL2425ContractsValid $signature $carrier $move-type $cut
+      $facts $possibility)
+   (let* (($obligations (index-atom $signature 9))
+          ($recognition (index-atom $signature 12)))
+     (and (CPShape $signature gen-sig-v1 13)
+      (and (== $signature
+             (M255GenSig $carrier $move-type $cut $facts $possibility))
+       (and (!= (index-atom $possibility 8) l2425-supported)
+        (and (== (index-atom $signature 8)
+               (inherited-legality (index-atom $possibility 8)))
+         (and (== $obligations
+                (force-obligation-vocabulary
+                  (obligation-domain holding-apart imposed-velocity
+                    compensatory bypass)
+                  (holds-obligation-relation witness-required)
+                  (disqualifying-obligation-relation witness-required)
+                  witness-bearing-non-optimizing))
+          (and (== (index-atom $signature 10)
+                 (disposition-reachability-vocabulary
+                   (disposition-domain open constrained unresolved)
+                   (reachable-relation derived-read-only)))
+           (and (== (index-atom $signature 11)
+                  (reflexive-constraint-vocabulary
+                    (self-representation-dependence witness-required)
+                    (severing-changes-access witness-required)
+                    conjunctive-causal-bite))
+            (and (CPShape $recognition recognition-vocabulary 3)
+                 (== (index-atom $recognition 2)
+                   partial-non-reconstructive)))))))))))
+
+(= (M255GenSigValidExceptL2425 $signature $carrier $move-type $cut $facts
+      $possibility)
+   (and (CPCutValid $cut)
+      (and (CPShape $possibility possible-movement 9)
+       (and (== $signature
+              (M255GenSig $carrier $move-type $cut $facts $possibility))
+        (and (CPShape $signature gen-sig-v1 13)
+         (and (CPShape (index-atom $signature 1) carrier-signature 4)
+          (and (CPShape (index-atom $signature 2) cut-vocabulary 4)
+           (and (CPShape (index-atom $signature 3) move-vocabulary 3)
+            (and (M255GenSigVocabularyValid $signature)
+             (and (M255GenSigPrecursorsValid $signature)
+                  (M255GenSigNonL2425ContractsValid $signature $carrier
+                    $move-type $cut $facts $possibility)))))))))))
+
+(= (M255L2425FailureWitness $signature $carrier $move-type $cut $facts
+      $flourishing $possibility)
+   (if (CPShape $possibility possible-movement 9)
+     (let $candidate (M255GeneratedWitness $signature $possibility)
+       (if (M255GenSigValidExceptL2425 $signature $carrier $move-type $cut
+             $facts $possibility)
+         (if (CPRelationsReady $cut $facts (index-atom $possibility 3))
+           (if (CPDistinctionsReady $cut (index-atom $possibility 4))
+             (if (M255InterfacesFitMovement $cut $possibility)
+               (if (CPConsequenceReady (index-atom $possibility 7))
+                 (if (!= (index-atom $possibility 8) l2425-supported)
+                   (if (and (CPShape $flourishing flourishing-organization 3)
+                            (== (size-atom (index-atom $flourishing 2)) 9))
+                     (if (== (M255GeneratedWitnessValid $candidate $signature
+                               $carrier $move-type $cut $facts $flourishing
+                               $possibility) false)
+                       (m255-l2425-failure-witness-v1
+                         (r-star-retained (index-atom $candidate 2))
+                         (a-star-retained (index-atom $candidate 3))
+                         (p-star-retained (index-atom $candidate 4))
+                         (o-star-retained (index-atom $candidate 5))
+                         (l2425-standing (index-atom $candidate 6))
+                         generated-standing-not-generated
+                         no-contact-or-movement-authority)
+                       (m255-l2425-failure-unresolved
+                         candidate-unexpectedly-generated))
+                     (m255-l2425-failure-unresolved
+                       incomplete-flourishing-organization))
+                   (m255-l2425-failure-unresolved l2425-is-supported))
+                 (m255-l2425-failure-unresolved missing-o-star))
+               (m255-l2425-failure-unresolved missing-a-star-interface-fit))
+             (m255-l2425-failure-unresolved missing-p-star-distinction))
+           (m255-l2425-failure-unresolved missing-r-star-relation))
+         (m255-l2425-failure-unresolved invalid-generative-signature)))
+     (m255-l2425-failure-unresolved malformed-possibility)))
+
+(= (M255L2425FailureWitnessValid $witness $signature $carrier $move-type
+      $cut $facts $flourishing $possibility)
+   (if (CPShape $witness m255-l2425-failure-witness-v1 8)
+     (== $witness (M255L2425FailureWitness $signature $carrier $move-type
+       $cut $facts $flourishing $possibility))
+     false))
+
 (= (M255IdentityMapAt $kind $ids $i)
    (if (< $i (size-atom $ids))
      (let $id (index-atom $ids $i)

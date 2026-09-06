@@ -1377,14 +1377,159 @@
                  (== (index-atom (index-atom $witness 9) 1)
                    admissible))))))))) false))
 
+; B1: one Generated/𝒢 realization may participate as the lawful generative
+; basis of this contact's dynamic participatory fourthness. The bridge names
+; the exact primary, source cut, DPF and precursor identities without copying
+; their full organizations into every downstream reading. Exact validation
+; below reconstructs the relation from those live objects; neither side
+; redefines or reconstructs the other.
+(= (M255DPFRealizationBridge $primary $cut)
+   (let* (($generated (M255TargetGeneratedFromPrimary $primary))
+          ($dpf (if (CPShape $primary m25-primary-movement-v2 11)
+            (index-atom $primary 4) ()))
+          ($possibility (if (CPShape $primary m25-primary-movement-v2 11)
+            (index-atom $primary 9) ())))
+     (if (M25PrimaryMovementValid $primary)
+       (if (and (CPCutValid $cut)
+                (== (index-atom $primary 3) (source-cut (index-atom $cut 1))))
+         (if (and (M255GeneratedWitnessStructuralValid $generated
+                    (index-atom $generated 1))
+                  (M25DynamicParticipatoryFourthnessValid $dpf))
+           (m255-g-to-dpf-bridge-v1 (index-atom $primary 1)
+             (generated-reference (index-atom $primary 1))
+             (lawful-dpf-realization-reference
+               (index-atom $primary 1) (index-atom $primary 3))
+             (r-star-to-dpf-material-relations
+               (index-atom $generated 2)
+               (required-relations (index-atom $possibility 3))
+               (dpf-reference (index-atom $primary 1)))
+             (a-star-to-dpf-participation-interfaces
+               (index-atom $generated 3)
+               (required-interfaces (index-atom $possibility 5))
+               (dpf-reference (index-atom $primary 1)))
+             (p-star-to-dpf-material-distinctions
+               (index-atom $generated 4)
+               (required-distinctions (index-atom $possibility 4))
+               (dpf-reference (index-atom $primary 1)))
+             (o-star-and-l2425-retained
+               (index-atom $generated 5) (index-atom $generated 6))
+             dpf-is-lawful-carrier-level-realization-not-g-definition
+             finite-partial-no-actuality-reconstruction-or-movement-authority)
+           (m255-g-to-dpf-bridge-unresolved
+             invalid-generated-or-dpf-organization))
+         (m255-g-to-dpf-bridge-unresolved source-cut-mismatch))
+       (m255-g-to-dpf-bridge-unresolved invalid-primary))))
+
+(= (M255DPFRealizationBridgeValid $bridge $primary $cut)
+   (if (CPShape $bridge m255-g-to-dpf-bridge-v1 10)
+     (== $bridge (M255DPFRealizationBridge $primary $cut))
+     false))
+
+; B8: L2425 remains the inherited legality/contact premise. Its witness must
+; trace to the exact M24 contact record from which this primary's cut and
+; developmental organization descend. This adds no contact doctrine and gives
+; neither Generated nor the bridge direct-contact standing.
+(= (M255L2425ContactDependenceBridge $primary $cut $developmental)
+   (let* (($generated (M255TargetGeneratedFromPrimary $primary))
+          ($source-wrapper (if (CPShape $primary m25-primary-movement-v2 11)
+            (index-atom $primary 3) ()))
+          ($source-cut (if (CPShape $source-wrapper source-cut 2)
+            (index-atom $source-wrapper 1) ()))
+          ($contact-id (if (CPShape $source-cut cut-of 3)
+            (index-atom $source-cut 1) missing-contact))
+          ($carrier (if (M24DevelopmentalOrganizationValid $developmental)
+            (index-atom $developmental 1) ()))
+          ($contacts (if (CPShape $carrier formal-carrier-v1 12)
+            (index-atom $carrier 2) ()))
+          ($contact-record (if (and (is-expr $contacts)
+                                  (> (size-atom $contacts) 0))
+            (index-atom $contacts 0) ())))
+     (if (M25PrimaryMovementValid $primary)
+       (if (and (CPCutValid $cut)
+                (== $source-wrapper (source-cut (index-atom $cut 1))))
+         (if (M24DevelopmentalOrganizationValid $developmental)
+           (if (and (CPShape $contact-record contact-record 4)
+                    (== (index-atom $contact-record 1) $contact-id))
+             (if (== (index-atom $generated 6)
+                   (l2425-witness l2425-supported))
+               (m255-l2425-contact-dependence-bridge-v1
+                 (index-atom $primary 1)
+                 (index-atom $generated 6)
+                 (source-contact-cut $source-cut)
+                 (m24-contact-record $contact-record)
+                 (developmental-standing (index-atom $developmental 13))
+                 inherited-l2425-remains-load-bearing
+                 no-new-contact-doctrine-or-direct-contact-standing)
+               (m255-l2425-contact-dependence-unresolved
+                 missing-inherited-legality))
+             (m255-l2425-contact-dependence-unresolved
+               exact-m24-contact-record-unavailable))
+           (m255-l2425-contact-dependence-unresolved
+             invalid-m24-developmental-organization))
+         (m255-l2425-contact-dependence-unresolved source-cut-mismatch))
+       (m255-l2425-contact-dependence-unresolved invalid-primary))))
+
+(= (M255L2425ContactDependenceBridgeValid $bridge $primary $cut
+      $developmental)
+   (if (CPShape $bridge m255-l2425-contact-dependence-bridge-v1 8)
+     (== $bridge
+       (M255L2425ContactDependenceBridge $primary $cut $developmental))
+     false))
+
+; B2: R*/A*/P*/O*/L2425 are carried from Generated into the already
+; inherited M25 surfaces. They do not use R/A/P as premises, do not choose a
+; movement, and do not permit the resulting perspectives to reconstruct 𝒢.
+(= (M255RAPPrecursorBridge $primary $cut $developmental)
+   (let* (($generated (M255TargetGeneratedFromPrimary $primary))
+          ($possibility (index-atom $primary 9))
+          ($dpf-bridge (M255DPFRealizationBridge $primary $cut))
+          ($contact-bridge
+            (M255L2425ContactDependenceBridge $primary $cut $developmental)))
+     (if (M255DPFRealizationBridgeValid $dpf-bridge $primary $cut)
+       (if (M255L2425ContactDependenceBridgeValid $contact-bridge $primary
+             $cut $developmental)
+         (m255-to-m25-rap-precursor-bridge-v1
+           (index-atom $primary 1)
+           (generated-reference (index-atom $primary 1)) $dpf-bridge
+           (source-cut-reference (index-atom $cut 1))
+           (m24-developmental-reference (index-atom $developmental 13))
+           (r-star-to-relatedness (index-atom $generated 2)
+             (required-relations (index-atom $possibility 3)))
+           (a-star-to-adm25-read-app
+             (index-atom $generated 3)
+             (admissibility-reference (index-atom $primary 1))
+             read-app-must-remain-inherited-and-independently-valid)
+           (p-star-to-precision (index-atom $generated 4)
+             (required-distinctions (index-atom $possibility 4)))
+           (o-star-to-consequence-answerability
+             (index-atom $generated 5) (index-atom $primary 7))
+           $contact-bridge
+           one-way-non-circular-precursor-participation
+           no-rap-to-g-inverse-no-optimizer-no-chooser)
+         (m255-to-m25-rap-precursor-bridge-unresolved
+           missing-l2425-contact-dependence))
+       (m255-to-m25-rap-precursor-bridge-unresolved
+         missing-lawful-dpf-realization))))
+
+(= (M255RAPPrecursorBridgeValid $bridge $primary $cut $developmental)
+   (if (CPShape $bridge m255-to-m25-rap-precursor-bridge-v1 13)
+     (and (== (index-atom $bridge 4)
+            (source-cut-reference (index-atom $cut 1)))
+      (and (== (index-atom $bridge 5)
+             (m24-developmental-reference (index-atom $developmental 13)))
+           (== $bridge
+             (M255RAPPrecursorBridge $primary $cut $developmental))))
+     false))
+
 (= (M25RAPSurface $primary $cut $developmental)
-   (m25-rap-surface-v2
-     (rap-read-event (index-atom $primary 1) (index-atom $cut 1))
-     (movement-reference (index-atom $primary 1) (index-atom $primary 2))
-     (source-cut (index-atom $cut 1)) (index-atom $cut 12)
-     (developmental-reference (index-atom $developmental 13))
-     (balance-unfolding-alignment (index-atom $primary 5))
-     one-contact-movement-surface-three-simultaneous-perspectives))
+   (let $precursors (M255RAPPrecursorBridge $primary $cut $developmental)
+     (m25-rap-surface-v3
+       (rap-read-event (index-atom $primary 1) (index-atom $cut 1))
+       (movement-reference (index-atom $primary 1) (index-atom $primary 2))
+       (source-cut (index-atom $cut 1)) (index-atom $cut 12)
+       (developmental-reference (index-atom $developmental 13))
+       (balance-unfolding-alignment (index-atom $primary 5) $precursors)
+       one-contact-movement-surface-three-simultaneous-perspectives)))
 
 (= (M25ReadApp $primary $surface $admissibility $relatedness $precision)
    (let* (($id (index-atom $primary 1))
@@ -1420,6 +1565,12 @@
 (= (M25RAPReadings $primary $cut $developmental)
    (let* (($surface (M25RAPSurface $primary $cut $developmental))
           ($read-event (index-atom $surface 1))
+          ($precursor-wrapper (index-atom $surface 6))
+          ($precursor-bridge (if (CPShape $precursor-wrapper
+                               balance-unfolding-alignment 3)
+            (index-atom $precursor-wrapper 2) ()))
+          ($precursors-valid (M255RAPPrecursorBridgeValid $precursor-bridge
+            $primary $cut $developmental))
           ($relatedness-profile (M25RelatednessProfile $primary $cut))
           ($precision-profile (M25PrecisionProfile $primary $cut))
           ($admissibility (M25Adm25Witness $primary $developmental
@@ -1430,15 +1581,15 @@
             (index-atom $primary 1) $precision-profile non-compensatory))
           ($appropriateness (M25AppropriatenessPerspective $primary $surface
             $admissibility $relatedness-profile $precision-profile))
-          ($admissible (M25AppropriatenessValid $primary $surface
-            $appropriateness)))
+          ($admissible (and $precursors-valid
+            (M25AppropriatenessValid $primary $surface $appropriateness))))
      (rap-read-v2 $surface
        (rap-perspectives $relatedness $appropriateness $precision)
        (rap-standing (if $admissible admissible unresolved))
        heterogeneous-non-reconstructive
        no-sequential-judge-or-chooser)))
 
-(= (M25RAPValid $primary $rap)
+(= (M25RAPValid $primary $cut $developmental $rap)
    (if (CPShape $rap rap-read-v2 6)
      (let* (($id (index-atom $primary 1))
             ($surface (index-atom $rap 1))
@@ -1448,15 +1599,11 @@
             ($appropriateness (index-atom $perspectives 2))
             ($precision (index-atom $perspectives 3))
             ($surface-valid (and (M25PrimaryMovementValid $primary)
-              (and (CPShape $surface m25-rap-surface-v2 8)
-               (and (== (index-atom (index-atom $surface 2) 1) $id)
-                (and (== (index-atom $surface 3) (index-atom $primary 3))
-                 (and (CPShape (index-atom $surface 6)
-                        balance-unfolding-alignment 2)
-                  (and (== (index-atom (index-atom $surface 6) 1)
-                         (index-atom $primary 5))
-                       (== (index-atom $surface 7)
-                         one-contact-movement-surface-three-simultaneous-perspectives))))))))
+              (and (CPCutValid $cut)
+               (and (M24DevelopmentalOrganizationValid $developmental)
+                (and (CPShape $surface m25-rap-surface-v3 8)
+                     (== $surface
+                       (M25RAPSurface $primary $cut $developmental)))))))
             ($perspectives-valid
               (CPShape $perspectives rap-perspectives 4))
             ($relatedness-valid
@@ -1567,9 +1714,9 @@
      (== $witness (M255OpenParticipationFromPrimary $primary $cut))
      false))
 
-(= (M25HarmonicAlignment $primary $rap)
+(= (M25HarmonicAlignment $primary $cut $developmental $rap)
    (let $id (index-atom $primary 1)
-     (if (and (M25RAPValid $primary $rap)
+     (if (and (M25RAPValid $primary $cut $developmental $rap)
               (== (index-atom (index-atom $rap 3) 1) admissible))
        (harmonic-alignment-witness $id
          (material-basis
@@ -1583,20 +1730,33 @@
          (provenance Investigation-25 derived-not-constituent))
        (harmonic-alignment-unresolved $id material-floor-or-fittingness-gap))))
 
-(= (M25HarmonicAlignmentValid $primary $alignment)
+(= (M25HarmonicAlignmentValid $primary $cut $developmental $alignment)
    (if (CPShape $alignment harmonic-alignment-witness 7)
-     (and (== (index-atom $alignment 1) (index-atom $primary 1))
-      (and (CPShape (index-atom $alignment 2) material-basis 5)
-       (and (CPShape (index-atom (index-atom $alignment 2) 1)
-              m25-rap-surface-v2 8)
-        (and (== (index-atom
-                   (index-atom (index-atom $alignment 2) 1) 6)
-                 (balance-unfolding-alignment (index-atom $primary 5)))
-         (and (== (index-atom (index-atom $alignment 3) 1)
-              no-demonstrated-unnecessary-forcing)
-          (and (== (index-atom (index-atom $alignment 4) 1) retained)
-           (and (CPShape (index-atom $alignment 5) aligned-extensions 2)
-                (CPShape (index-atom $alignment 6) provenance 3))))))))
+     (let $material (index-atom $alignment 2)
+       (if (CPShape $material material-basis 5)
+         (let $rap-surface (index-atom $material 1)
+           (if (CPShape $rap-surface m25-rap-surface-v3 8)
+             (let $precursor-wrapper (index-atom $rap-surface 6)
+               (if (CPShape $precursor-wrapper
+                     balance-unfolding-alignment 3)
+                 (and (== $rap-surface
+                        (M25RAPSurface $primary $cut $developmental))
+                  (and (== (index-atom $alignment 1)
+                         (index-atom $primary 1))
+                   (and (M255RAPPrecursorBridgeValid
+                          (index-atom $precursor-wrapper 2) $primary $cut
+                          $developmental)
+                    (and (== (index-atom (index-atom $alignment 3) 1)
+                           no-demonstrated-unnecessary-forcing)
+                     (and (== (index-atom (index-atom $alignment 4) 1)
+                            retained)
+                      (and (CPShape (index-atom $alignment 5)
+                             aligned-extensions 2)
+                           (CPShape (index-atom $alignment 6)
+                             provenance 3)))))))
+                 false))
+             false))
+         false))
      false))
 
 ; B3 is one-way: earned M25.5 open participation may land in the existing
@@ -1606,11 +1766,13 @@
 ; and this bridge constructs no movement.
 (= (M255HarmonicAlignmentBridge $primary $cut $rap $alignment)
    (let* (($open (M255OpenParticipationFromPrimary $primary $cut))
+          ($developmental (index-atom (index-atom $primary 8) 5))
           ($relatedness (M25RelatednessProfile $primary $cut))
           ($precision (M25PrecisionProfile $primary $cut)))
      (if (and (M255OpenParticipationFromPrimaryValid $open $primary $cut)
-          (and (M25RAPValid $primary $rap)
-           (and (M25HarmonicAlignmentValid $primary $alignment)
+          (and (M25RAPValid $primary $cut $developmental $rap)
+           (and (M25HarmonicAlignmentValid $primary $cut $developmental
+                  $alignment)
             (and (== (index-atom $relatedness 3) true)
                  (== (index-atom $precision 3) true)))))
        (m255-to-m25-harmonic-bridge-v1 (index-atom $primary 1)
@@ -1649,9 +1811,12 @@
        (and (CPShape (index-atom $outcome 3) continued-material-organization 2)
             (CPShape (index-atom $outcome 4) provenance 3)))) false))
 
-(= (M25BoundedHarmonicContinuation $primary $rap $model $outcome)
-   (let* (($alignment (M25HarmonicAlignment $primary $rap))
-          ($aligned (M25HarmonicAlignmentValid $primary $alignment))
+(= (M25BoundedHarmonicContinuation $primary $cut $developmental $rap
+      $model $outcome)
+   (let* (($alignment (M25HarmonicAlignment $primary $cut $developmental
+            $rap))
+          ($aligned (M25HarmonicAlignmentValid $primary $cut $developmental
+            $alignment))
           ($model-valid (M25BoundedModelWitnessValid $primary $model))
           ($outcome-valid (M25HarmonicOutcomeValid $primary $outcome)))
      (if $outcome-valid
@@ -1969,7 +2134,8 @@
 (= (M25MovementReading $primary $cut $developmental)
    (let* (($rap (M25RAPReadings $primary $cut $developmental))
           ($standing (index-atom (index-atom $rap 3) 1))
-          ($alignment (M25HarmonicAlignment $primary $rap))
+          ($alignment (M25HarmonicAlignment $primary $cut $developmental
+            $rap))
           ($interface (M25InterfaceEvolution $primary $cut)))
      (m25-movement-reading-v3 $primary $rap
        $alignment (M25Energetics $primary)
