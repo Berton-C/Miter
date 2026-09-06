@@ -497,15 +497,35 @@ Already carried:
   byte-identical effect without replay. Reflexive bite and disclosure,
   creation, maintenance, and degradation remain `P`, not `E`, until actual
   severing or consequence across developmental cuts changes later access or
-  generative continuation. The one-engine PNS/SNS bridge likewise remains
-  partial until access/disposition feeds unchanged inherited M25 orientation.
+  generative continuation. At this waypoint the one-engine PNS/SNS bridge also
+  still lacked a consequence-sensitive consumer in inherited M25 orientation;
+  the next carried cut supplies its open half.
+- a returned consequence now forms an Inquiry-25.5 developmental
+  participation witness only when the exact prior and next material cut
+  organizations differ. The witness reads the Miter-synthetic carrier's two
+  lawful Access views over its one unchanged generative law, derives the
+  resulting open/constrained disposition from the next participation
+  interface, and carries no writer, chooser, or second-engine authority. Two
+  differentiated lineages make that organization a material participant in
+  the next cut before its one R/A/P read. In a supported-runtime trial, actual
+  returned D/distinction/W/C/flourishing consequence changed the formed
+  movement from inquiry to a continued undertaking and the unchanged inherited
+  M25 orientation from unresolved to `pns-like`; an otherwise identical
+  consequence with no material delta formed no witness, and a forged
+  disposition failed exact validation. Stop/start restored the undertaking,
+  orientation, participation relation, and consequence history exactly, while
+  preserving one pre-existing effect without replay. This establishes an open
+  consequence-sensitive half of the one-engine bridge. It does not yet
+  establish a severed/constrained trajectory, SNS/Stuck, or any of the four
+  cross-cut change categories.
 
 Next movement:
 
-1. connect the finite reflexive/change models to actual prior/next
-   developmental cuts so severing and consequence materially change later
-   access or generative continuation, and bridge the one-engine disposition
-   organization into unchanged inherited M25 orientation;
+1. exercise actual severing/constrained participation across prior/next cuts,
+   preserving the rule that constraint alone is not SNS, then connect
+   disclosure, creation, maintenance, and degradation to witnessed cross-cut
+   accessibility/generative change and the unchanged HarmonicAlign/interface
+   surfaces;
 2. complete recognition overlap/non-reconstruction and the inherited B1–B10
    bridge directions without adding a chooser or a second R/A/P surface;
 3. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same

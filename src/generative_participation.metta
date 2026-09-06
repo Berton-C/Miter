@@ -466,3 +466,139 @@
                  (index-atom $participation 5) (index-atom $suite 5) $possibility)
                (== (index-atom $participation 7)
                  no-optimizer-no-chooser-no-second-rap))))))))))) false))
+
+; A returned consequence may reorganize how Miter participates in the same
+; generative law.  This witness is deliberately transition-primary: it reads
+; the exact movement that received the consequence and compares the material
+; organization of its cut with the exact next cut.  It neither invents a new
+; generative engine nor treats a new cut identifier as material change.
+
+(= (M255PrimaryFromMovement $movement)
+   (if (CPShape $movement movement-formed 7)
+     (let $derivation (index-atom $movement 4)
+       (if (CPShape $derivation material-derivation 7)
+         (let $wrapper (index-atom $derivation 1)
+           (if (CPShape $wrapper primary-movement 2)
+             (index-atom $wrapper 1)
+             (m255-primary-unresolved missing-primary-wrapper)))
+         (m255-primary-unresolved missing-m25-material-derivation)))
+     (m255-primary-unresolved movement-not-formed)))
+
+(= (M255MiterParticipationFromPrimary $primary)
+   (if (CPShape $primary m25-primary-movement-v2 11)
+     (let $bridge (index-atom $primary 10)
+       (if (CPShape $bridge primary-before-rap 4)
+         (let $participation (index-atom $bridge 3)
+           (if (CPShape $participation five-carrier-participation-v1 8)
+             (index-atom $participation 4)
+             (m255-participation-unresolved missing-five-carrier-suite)))
+         (m255-participation-unresolved missing-primary-before-rap)))
+     (m255-participation-unresolved malformed-primary)))
+
+(= (M255MaterialCutProjection $cut)
+   (let $d (index-atom $cut 6)
+     (material-cut-organization-v1
+       (D (index-atom $d 1) (index-atom $d 2))
+       (index-atom $cut 7) (index-atom $cut 8) (index-atom $cut 9)
+       (index-atom $cut 10))))
+
+(= (M255MaterialCutProjectionValid $projection)
+   (and (CPShape $projection material-cut-organization-v1 6)
+     (and (CPShape (index-atom $projection 1) D 3)
+      (and (CPShape (index-atom $projection 2) Omega 2)
+       (and (CPShape (index-atom $projection 3) I 2)
+        (and (CPShape (index-atom $projection 4) W 2)
+             (CPShape (index-atom $projection 5) C 2)))))))
+
+(= (M255MaterialCutEquivalent $left $right)
+   (let* (($ld (index-atom $left 1))
+          ($rd (index-atom $right 1)))
+     (and (M255MaterialCutProjectionValid $left)
+      (and (M255MaterialCutProjectionValid $right)
+       (and (CPSetEqual (index-atom $ld 1) (index-atom $rd 1))
+        (and (CPSetEqual (index-atom $ld 2) (index-atom $rd 2))
+         (and (CPSetEqual (index-atom (index-atom $left 2) 1)
+                (index-atom (index-atom $right 2) 1))
+          (and (CPSetEqual (index-atom (index-atom $left 3) 1)
+                 (index-atom (index-atom $right 3) 1))
+           (and (CPSetEqual (index-atom (index-atom $left 4) 1)
+                  (index-atom (index-atom $right 4) 1))
+                (CPSetEqual (index-atom (index-atom $left 5) 1)
+                  (index-atom (index-atom $right 5) 1)))))))))))
+
+(= (M255ResultingDisposition $next-cut)
+   (if (CPInterfacesLive $next-cut) open constrained))
+
+(= (M255ConsequenceReorganization $prior-cut $movement $next-cut $consequence)
+   (let* (($primary (M255PrimaryFromMovement $movement))
+          ($profile (M255MiterParticipationFromPrimary $primary))
+          ($one-engine (if (CPShape $profile carrier-participation-v1 8)
+            (index-atom $profile 4) ()))
+          ($prior-base (CPBaseCutWithoutParticipantRelations $prior-cut))
+          ($expected-next
+            (CPBaseCutWithoutParticipantRelations
+              (CPNextCutV2 $prior-cut $consequence)))
+          ($prior-material (M255MaterialCutProjection $prior-base))
+          ($next-material (M255MaterialCutProjection $next-cut))
+          ($changed (== (M255MaterialCutEquivalent $prior-material
+            $next-material) false))
+          ($disposition (M255ResultingDisposition $next-cut))
+          ($access (if (== $disposition open)
+            (index-atom $one-engine 5) (index-atom $one-engine 6))))
+     (if (and (CPCutValid $prior-cut)
+          (and (CPCutValid $next-cut)
+           (and (CPConsequenceV2Valid $consequence)
+            (and (CPShape $primary m25-primary-movement-v2 11)
+             (and (CPShape $profile carrier-participation-v1 8)
+              (and (CPShape $one-engine one-engine-participation-v1 9)
+               (and (== (index-atom $movement 2) (index-atom $consequence 2))
+                (and (== $next-cut $expected-next) $changed))))))))
+       (m255-consequence-reorganization-v1
+         (movement-reference (index-atom $primary 1)
+           (index-atom $primary 2))
+         (cut-transition (index-atom $prior-base 1)
+           (index-atom $next-cut 1))
+         (index-atom $one-engine 3)
+         (available-access-views (index-atom $one-engine 5)
+           (index-atom $one-engine 6))
+         (returned-consequence-reference (index-atom $consequence 1)
+           (index-atom $consequence 2) (index-atom $consequence 4)
+           (index-atom $consequence 12))
+         (material-reorganization $prior-material $next-material
+           changed)
+         (actual-participation-disposition $disposition)
+         (derived-read-only-access $access)
+         consequence-materially-changes-next-cut-organization
+         no-writer-no-chooser-no-second-generative-engine)
+       (m255-consequence-reorganization-unresolved
+         missing-formed-primary-valid-consequence-or-material-change))))
+
+(= (M255ConsequenceReorganizationValid $witness $prior-cut $movement
+      $next-cut $consequence)
+   (and (CPShape $witness m255-consequence-reorganization-v1 11)
+        (== $witness (M255ConsequenceReorganization $prior-cut $movement
+          $next-cut $consequence))))
+
+(= (M255ConsequenceParticipationTarget $witness)
+   (if (and (CPShape $witness m255-consequence-reorganization-v1 11)
+            (== (index-atom (index-atom $witness 7) 1) open))
+     m255-open-consequence-participation
+     m255-constrained-consequence-participation))
+
+; The native law premise and returned-contact premise are kept distinct.  The
+; native premise contributes the already-instantiated one-engine/access law;
+; the returned premise contributes the actual cross-cut difference.  Neither
+; is counted twice as independent evidence for itself.
+(= (M255NativeOneEngineBasis $witness)
+   (if (CPShape $witness m255-consequence-reorganization-v1 11)
+     (m255-one-engine-authority-basis (index-atom $witness 1)
+       (index-atom $witness 3) (index-atom $witness 4)
+       no-writer-no-chooser-no-second-generative-engine)
+     (m255-one-engine-authority-unresolved malformed-reorganization)))
+
+(= (M255ReturnedReorganizationBasis $witness)
+   (if (CPShape $witness m255-consequence-reorganization-v1 11)
+     (m255-returned-reorganization-basis (index-atom $witness 2)
+       (index-atom $witness 5) (index-atom $witness 6)
+       (index-atom $witness 7) (index-atom $witness 8))
+     (m255-returned-reorganization-unresolved malformed-reorganization)))

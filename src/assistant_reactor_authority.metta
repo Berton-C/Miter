@@ -235,6 +235,34 @@
            support (returned-contact-evidence $consequence-reference))
          supported no-contact-no-movement-authority))))
 
+(= (AR2M255ConsequenceParticipants $scope $cut $movement $next-cut
+      $consequence)
+   (let* (($witness (M255ConsequenceReorganization $cut $movement $next-cut
+            $consequence))
+          ($target (M255ConsequenceParticipationTarget $witness))
+          ($consequence-id (index-atom $consequence 1)))
+     (if (M255ConsequenceReorganizationValid $witness $cut $movement
+           $next-cut $consequence)
+       ((participant-contribution
+          (m255-native-reorganization-participation $consequence-id)
+          native-authority $scope
+          (lineage Inquiry-25.5-one-engine-participation
+            (index-atom $movement 2))
+          (participant-relation-claim $target support
+            (m255-developmental-evidence
+              (M255NativeOneEngineBasis $witness)))
+          supported no-contact-no-movement-authority)
+        (participant-contribution
+          (m255-returned-contact-participation $consequence-id)
+          returned-contact $scope
+          (lineage returned-consequence $consequence-id)
+          (participant-relation-claim $target support
+            (returned-contact-evidence
+              (index-atom $consequence 12)
+              (M255ReturnedReorganizationBasis $witness)))
+          supported no-contact-no-movement-authority))
+       ())))
+
 (= (AR2ReconstituteAfterConsequence $scope $cut $movement $consequence)
    (let* (($basis (AR2MovementBasis $movement))
           ($prior (AR2DevelopmentalForMovement $scope $cut $movement))
@@ -242,7 +270,9 @@
           ($next-cut (CPNextCutV2 $cut $consequence))
           ($base-next-cut (CPBaseCutWithoutParticipantRelations $next-cut))
           ($transition (M24DevelopmentalTransition $prior $probe-basis
-            $consequence $scope $base-next-cut)))
+            $consequence $scope $base-next-cut))
+          ($m255-participants (AR2M255ConsequenceParticipants $scope $cut
+            $movement $base-next-cut $consequence)))
      (if (and (or (CPShape $basis continuation-basis-v2 5)
                   (CPShape $basis continuation-basis-v3 6))
            (and (M24DevelopmentalTransitionValid $transition)
@@ -251,7 +281,9 @@
               ($flourishing-views (CPListAppend (index-atom $basis 2)
                 (index-atom (index-atom $consequence 10) 1)))
               ($participant-source (CPListAppend (index-atom $basis 3)
-                (AR2ConsequenceParticipants $scope $evolved $consequence)))
+                (CPListAppend
+                  (AR2ConsequenceParticipants $scope $evolved $consequence)
+                  $m255-participants)))
               ($next (M25ConstitutiveEncounter $base-next-cut
                 (index-atom $basis 1) $flourishing-views $participant-source
                 (index-atom (index-atom $basis 4) 1) $evolved)))

@@ -1488,19 +1488,30 @@
           ($structured (index-atom $traction 1))
           ($pathology (index-atom $traction 2))
           ($dpf (index-atom $primary 4))
-          ($interface (index-atom $dpf 5)))
+          ($d (index-atom $dpf 3))
+          ($interface (index-atom $dpf 5))
+          ($returned (CPHas (index-atom $structured 1)
+            (contact-uptake-returned) 0))
+          ($m255-open (== (size-atom (CPFind (index-atom $d 1)
+            m255-open-consequence-participation)) 1))
+          ($m255-constrained (== (size-atom (CPFind (index-atom $d 1)
+            m255-constrained-consequence-participation)) 1))
+          ($open-after-consequence (and $returned $m255-open)))
      (m25-trajectory-basis-v1 (index-atom $primary 1)
        (index-atom $structured 1)
        relational-openness-retained
        material-distinctions-preserved
-       receptive-attention-unresolved
+       (if $open-after-consequence receptive-attention-present
+         receptive-attention-unresolved)
        differentiation-with-coherence-present
        no-demonstrated-unnecessary-forcing
        (if (M25Contactable $primary) consequence-answerable
          consequence-answerability-unresolved)
-       (if (> (size-atom (index-atom $interface 1)) 0)
-         interface-open interface-unavailable)
-       self-weaving-plasticity-unresolved
+       (if $m255-constrained interface-narrowed
+         (if (> (size-atom (index-atom $interface 1)) 0)
+           interface-open interface-unavailable))
+       (if $open-after-consequence self-weaving-plasticity-present
+         self-weaving-plasticity-unresolved)
        (index-atom $pathology 2)
        pivot-availability-unresolved urgency-unresolved
        (trajectory-provenance (index-atom $primary 3)
