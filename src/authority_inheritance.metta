@@ -1429,14 +1429,20 @@
 ; trace to the exact M24 contact record from which this primary's cut and
 ; developmental organization descend. This adds no contact doctrine and gives
 ; neither Generated nor the bridge direct-contact standing.
+(= (M255RootContactIdFromCutId $cut-id)
+   (if (CPShape $cut-id cut-of 3)
+     (index-atom $cut-id 1)
+     (if (CPShape $cut-id next-cut 3)
+       (M255RootContactIdFromCutId (index-atom $cut-id 1))
+       missing-contact)))
+
 (= (M255L2425ContactDependenceBridge $primary $cut $developmental)
    (let* (($generated (M255TargetGeneratedFromPrimary $primary))
           ($source-wrapper (if (CPShape $primary m25-primary-movement-v2 11)
             (index-atom $primary 3) ()))
           ($source-cut (if (CPShape $source-wrapper source-cut 2)
             (index-atom $source-wrapper 1) ()))
-          ($contact-id (if (CPShape $source-cut cut-of 3)
-            (index-atom $source-cut 1) missing-contact))
+          ($contact-id (M255RootContactIdFromCutId $source-cut))
           ($carrier (if (M24DevelopmentalOrganizationValid $developmental)
             (index-atom $developmental 1) ()))
           ($contacts (if (CPShape $carrier formal-carrier-v1 12)
@@ -1868,6 +1874,266 @@
        (interface-change-standing (index-atom $primary 1) retained
          $pre-interface no-change-required-by-this-movement))))
 
+; Common recovery path for consequence-earned participant evidence already
+; materialized in the current cut.  A supported relation is usable only when
+; it was independently formed from more than one lineage; proposed or
+; conflicted relations never enter these bridges.
+(= (M255ParticipantClaimsForTargetAtCut $cut $target)
+   (let $rows (CPFind (CPDRelations $cut) $target)
+     (if (== (size-atom $rows) 1)
+       (let* (($row (index-atom $rows 0))
+              ($evidence (index-atom $row 4))
+              ($supported (if (CPShape $evidence participant-evidence 2)
+                (index-atom $evidence 1) ())))
+         (if (CPShape $supported participant-supported-relation 4)
+           (index-atom $supported 3) ()))
+       ())))
+
+(= (M255CurrentCutConsequenceId $cut)
+   (let $id (index-atom $cut 1)
+     (if (CPShape $id next-cut 3) (index-atom $id 2)
+       no-current-consequence)))
+
+; B7 and B4 both need the actual returned-contact half of a reorganization,
+; never the native category assertion by itself.  The reference is compact,
+; but it is emitted only after validating the exact current-cut transition.
+(= (M255ReturnedReorganizationReferenceFromClaim $claim $cut)
+   (if (and (CPParticipantClaimSupports $claim)
+            (== (index-atom $claim 2) returned-contact))
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence returned-contact-evidence 3)
+         (let* (($basis (index-atom $evidence 2))
+                ($transition (if (CPShape $basis
+                  m255-returned-reorganization-basis 6)
+                  (index-atom $basis 1) ()))
+                ($returned (if (CPShape $basis
+                  m255-returned-reorganization-basis 6)
+                  (index-atom $basis 2) ()))
+                ($disposition (if (CPShape $basis
+                  m255-returned-reorganization-basis 6)
+                  (index-atom $basis 4) ())))
+           (if (and (CPShape $transition cut-transition 3)
+                 (and (CPShape $returned returned-consequence-reference 5)
+                  (and (== (index-atom $transition 2) (index-atom $cut 1))
+                   (and (== (index-atom $returned 1)
+                          (M255CurrentCutConsequenceId $cut))
+                        (CPShape $disposition
+                          actual-participation-disposition 2)))))
+             (m255-returned-reorganization-reference-v1
+               (index-atom $returned 1) $transition $disposition
+               (material-reorganization-reference changed)
+               (access-reference (index-atom $disposition 1)
+                 derived-read-only))
+             (m255-returned-reorganization-reference-unresolved
+               wrong-cut-or-malformed-returned-evidence)))
+         (m255-returned-reorganization-reference-unresolved
+           missing-returned-reorganization-evidence)))
+     (m255-returned-reorganization-reference-unresolved
+       unsupported-or-nonreturned-claim)))
+
+(= (M255ReturnedReorganizationReferencesAt $claims $cut $i)
+   (if (< $i (size-atom $claims))
+     (let $reference (M255ReturnedReorganizationReferenceFromClaim
+                       (index-atom $claims $i) $cut)
+       (if (CPShape $reference m255-returned-reorganization-reference-v1 6)
+         (cons-atom $reference
+           (M255ReturnedReorganizationReferencesAt $claims $cut (+ $i 1)))
+         (M255ReturnedReorganizationReferencesAt $claims $cut (+ $i 1))))
+     ()))
+
+(= (M255ReturnedReorganizationReferencesForCut $cut)
+   (let $open (M255ParticipantClaimsForTargetAtCut $cut
+                m255-open-consequence-participation)
+     (let $constrained (M255ParticipantClaimsForTargetAtCut $cut
+                         m255-constrained-consequence-participation)
+       (CPListAppend
+         (M255ReturnedReorganizationReferencesAt $open $cut 0)
+         (M255ReturnedReorganizationReferencesAt $constrained $cut 0)))))
+
+(= (M255ReflexiveReferenceForSevering $severing $consequence-id $cut)
+   (if (CPShape $severing m255-severing-changes-access-v1 9)
+     (let $transition (index-atom $severing 3)
+       (if (and (CPShape $transition cut-transition 3)
+             (and (== (index-atom $transition 2) (index-atom $cut 1))
+              (and (== (index-atom $severing 6)
+                     (access-transition open constrained))
+               (and (== (index-atom $severing 7)
+                      access-changed-by-required-self-representation-severing)
+                    (== (index-atom $severing 8)
+                      not-interface-outage-or-bare-physical-obstruction)))))
+         (m255-reflexive-severing-reference-v1 $consequence-id
+           (index-atom $severing 2) $transition
+           (index-atom $severing 6) conjunctive-causal-bite)
+         (m255-reflexive-severing-reference-unresolved
+           wrong-cut-or-noncausal-severing)))
+     (m255-reflexive-severing-reference-unresolved malformed-severing)))
+
+(= (M255ReflexiveReferencesAt $severings $consequence-id $cut $i)
+   (if (< $i (size-atom $severings))
+     (let $reference (M255ReflexiveReferenceForSevering
+                       (index-atom $severings $i) $consequence-id $cut)
+       (if (CPShape $reference m255-reflexive-severing-reference-v1 6)
+         (cons-atom $reference
+           (M255ReflexiveReferencesAt $severings $consequence-id $cut
+             (+ $i 1)))
+         (M255ReflexiveReferencesAt $severings $consequence-id $cut
+           (+ $i 1))))
+     ()))
+
+(= (M255ReflexiveReferencesFromClaim $claim $cut)
+   (if (and (CPParticipantClaimSupports $claim)
+            (== (index-atom $claim 2) returned-contact))
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence m255-severing-bite-evidence 3)
+         (let* (($returned (index-atom $evidence 1))
+                ($wrapper (index-atom $evidence 2)))
+           (if (and (CPShape $returned returned-consequence-reference 5)
+                 (and (== (index-atom $returned 1)
+                        (M255CurrentCutConsequenceId $cut))
+                      (CPShape $wrapper severing-changes-access 2)))
+             (M255ReflexiveReferencesAt (index-atom $wrapper 1)
+               (index-atom $returned 1) $cut 0)
+             ()))
+         ()))
+     ()))
+
+(= (M255ReflexiveReferencesFromClaimsAt $claims $cut $i)
+   (if (< $i (size-atom $claims))
+     (CPListAppend
+       (M255ReflexiveReferencesFromClaim (index-atom $claims $i) $cut)
+       (M255ReflexiveReferencesFromClaimsAt $claims $cut (+ $i 1)))
+     ()))
+
+(= (M255ReflexiveReferencesForCut $cut)
+   (M255ReflexiveReferencesFromClaimsAt
+     (M255ParticipantClaimsForTargetAtCut $cut
+       m255-reflexive-constraint-participation) $cut 0))
+
+; Flourishing views are already bounded, relation-grounded material in the
+; continuation basis.  These readers preserve their standing and evidence;
+; they do not turn tone, activity, effort, or a free label into orientation.
+(= (M255FlourishingViewsFromPrimary $primary)
+   (let $basis (index-atom $primary 8)
+     (if (CPShape $basis continuation-basis-v3 6)
+       (index-atom $basis 2) ())))
+
+(= (M255FlourishingViewsByEvidenceAt $views $standings $evidence $i)
+   (if (< $i (size-atom $views))
+     (let $view (index-atom $views $i)
+       (if (and (CPShape $view flourishing-view 5)
+             (and (CPHas (index-atom $view 3) $standings 0)
+                  (CPHas (index-atom $view 4) $evidence 0)))
+         (cons-atom $view
+           (M255FlourishingViewsByEvidenceAt $views $standings $evidence
+             (+ $i 1)))
+         (M255FlourishingViewsByEvidenceAt $views $standings $evidence
+           (+ $i 1))))
+     ()))
+
+(= (M255FlourishingViewsByEvidence $primary $standings $evidence)
+   (M255FlourishingViewsByEvidenceAt
+     (M255FlourishingViewsFromPrimary $primary) $standings $evidence 0))
+
+(= (M255ForcingObligationReference $primary)
+   (let* (($profile (M255MiterParticipationFromPrimary $primary))
+          ($organization (if (CPShape $profile carrier-participation-v1 8)
+            (index-atom $profile 3) ()))
+          ($force (if (CPShape $organization
+                        force-support-organization-v1 6)
+            (index-atom $organization 3) ())))
+     (if (and (M25PrimaryMovementValid $primary)
+              (CPShape $force force-obl-v1 7))
+       (if (and (CPShape (index-atom $force 2) obligation 2)
+             (and (CPShape (index-atom $force 4)
+                    disqualifying-obligation 3)
+                  (== (index-atom $force 6)
+                    structural-forcing-not-action-energy)))
+         (m255-forcing-obligation-reference-v1 (index-atom $force 2)
+           (index-atom $force 4) (index-atom $force 5)
+           structural-forcing-not-action-energy)
+         (m255-forcing-obligation-reference-unresolved malformed-obligation))
+       (m255-forcing-obligation-reference-unresolved
+         invalid-primary-or-force))))
+
+; B4 source: actual constrained reorganization and reflexive causal bite must
+; coincide with material holding-apart, persistent frame topology, and forced
+; velocity on this cut.  Constraint alone, interface loss, physical effort,
+; high compute, or urgency alone cannot inhabit this witness.
+(= (M255SNSObstructionSource $primary $cut)
+   (let* (($reorganizations
+            (M255ReturnedReorganizationReferencesForCut $cut))
+          ($reflexive (M255ReflexiveReferencesForCut $cut))
+          ($holding (M255FlourishingViewsByEvidence $primary
+            (capture obstruction)
+            (witnessed-contact-held-apart)))
+          ($velocity (M255FlourishingViewsByEvidence $primary
+            (capture obstruction)
+            (witnessed-forced-velocity witnessed-imposed-elsewhere)))
+          ($topology (M255FlourishingViewsByEvidence $primary
+            (capture obstruction)
+            (witnessed-frame-topology-persistence
+              witnessed-frame-reinforcement)))
+          ($forcing-obligation (M255ForcingObligationReference $primary)))
+     (if (M25PrimaryMovementValid $primary)
+       (if (> (size-atom $reorganizations) 0)
+         (if (> (size-atom $reflexive) 0)
+           (if (and (> (size-atom $holding) 0)
+                 (and (> (size-atom $velocity) 0)
+                      (> (size-atom $topology) 0)))
+             (if (== (index-atom (index-atom $reorganizations 0) 1)
+                   (index-atom (index-atom $reflexive 0) 1))
+               (m255-sns-obstruction-source-v1 (index-atom $primary 1)
+                 (index-atom (index-atom $reorganizations 0) 1)
+                 (constrained-participation
+                   (index-atom $reorganizations 0))
+                 (reflexive-holding-apart (index-atom $reflexive 0)
+                   $holding)
+                 (persistent-imposed-velocity $velocity $topology)
+                 (forcing-obligation-provenance $forcing-obligation)
+                 same-generated-law-retained)
+               (m255-sns-obstruction-source-unresolved
+                 obstruction-evidence-from-different-consequences))
+             (m255-sns-obstruction-source-unresolved
+               missing-holding-apart-persistent-frame-or-forced-velocity))
+           (m255-sns-obstruction-source-unresolved
+             constraint-without-reflexive-causal-bite))
+         (m255-sns-obstruction-source-unresolved
+           no-consequence-earned-constrained-participation))
+       (m255-sns-obstruction-source-unresolved invalid-primary-movement))))
+
+; Inquiry-24 computed-Stuck evidence is constructed from seven distinct
+; trajectory relations.  It remains evidence about the occurrence and is not
+; identified with the M25.5 reorganization or the M25 orientation.
+(= (M255M24ComputedStuckEvidence $primary)
+   (let* (($demand (M255FlourishingViewsByEvidence $primary
+            (capture obstruction) (witnessed-live-demand)))
+          ($discrepancy (M255FlourishingViewsByEvidence $primary
+            (capture obstruction) (witnessed-persistent-discrepancy)))
+          ($recurrence (M255FlourishingViewsByEvidence $primary
+            (capture obstruction) (witnessed-effect-equivalent-recurrence)))
+          ($topology (M255FlourishingViewsByEvidence $primary
+            (capture obstruction) (witnessed-frame-reinforcement)))
+          ($reachability (M255FlourishingViewsByEvidence $primary
+            (capture obstruction) (witnessed-reachability-not-opening)))
+          ($contact (M255FlourishingViewsByEvidence $primary
+            (counterevidence obstruction)
+            (witnessed-relevant-contact-discriminating)))
+          ($distinction (M255FlourishingViewsByEvidence $primary
+            (capture obstruction)
+            (witnessed-distinction-dies-in-active-frame))))
+     (if (and (> (size-atom $demand) 0)
+          (and (> (size-atom $discrepancy) 0)
+           (and (> (size-atom $recurrence) 0)
+            (and (> (size-atom $topology) 0)
+             (and (> (size-atom $reachability) 0)
+              (and (> (size-atom $contact) 0)
+                   (> (size-atom $distinction) 0)))))))
+       (stuck-evidence-v1 live-demand-persists discrepancy-persists
+         effect-equivalent-recurrence frame-reinforcement
+         reachability-not-opening relevant-contact-discriminating
+         distinction-dies-in-active-frame)
+       (stuck-evidence-unresolved incomplete-trajectory-witness))))
+
 ; Recover an actual M25.5 disclosure witness from the independently supported
 ; participant relation that was formed at consequence incorporation. The
 ; returned-contact claim—not the native category label—must carry the exact
@@ -1922,12 +2188,53 @@
            (M255DisclosureWitnessesAt $claims $cut 0) ()))
        ())))
 
+; Creation is recovered from the same independently supported two-lineage
+; change relation as disclosure.  Only a returned-contact claim whose
+; consequence is the current cut may supply the concrete creation witness.
+(= (M255CreationReferenceFromParticipantClaim $claim $cut)
+   (if (and (CPParticipantClaimSupports $claim)
+            (== (index-atom $claim 2) returned-contact))
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence m255-cross-cut-change-evidence 3)
+         (let* (($returned (index-atom $evidence 1))
+                ($witness (index-atom $evidence 2)))
+           (if (and (CPShape $returned returned-consequence-reference 5)
+                 (and (== (index-atom $returned 1)
+                        (M255CurrentCutConsequenceId $cut))
+                      (M255CreationTransitionValid $witness)))
+             (m255-creation-reference-v1 (index-atom $returned 1)
+               (index-atom $witness 1)
+               (new-generated-possibility-reference
+                 (index-atom (index-atom $witness 3) 1))
+               no-prior-identity-or-transport-equivalent-precursor)
+             (m255-creation-reference-unresolved
+               wrong-cut-or-invalid-creation)))
+         (m255-creation-reference-unresolved
+           missing-cross-cut-change-evidence)))
+     (m255-creation-reference-unresolved unsupported-or-nonreturned-claim)))
+
+(= (M255CreationReferencesAt $claims $cut $i)
+   (if (< $i (size-atom $claims))
+     (let $reference (M255CreationReferenceFromParticipantClaim
+                       (index-atom $claims $i) $cut)
+       (if (CPShape $reference m255-creation-reference-v1 5)
+         (cons-atom $reference
+           (M255CreationReferencesAt $claims $cut (+ $i 1)))
+         (M255CreationReferencesAt $claims $cut (+ $i 1))))
+     ()))
+
+(= (M255CreationReferencesForCut $cut)
+   (M255CreationReferencesAt
+     (M255ParticipantClaimsForTargetAtCut $cut m255-creation-participation)
+     $cut 0))
+
 ; This is the inherited M25 InterfaceChange meaning: a mode unavailable at
 ; the earlier cut is available at the later cut. It consumes the M25.5
 ; disclosure evidence; it neither redefines Disclosure nor pre-authorizes a
 ; capability merely because a future mode was described.
 (= (M25InterfaceEvolution $primary $cut)
-   (let $disclosures (M255DisclosureWitnessesForCut $cut)
+   (let* (($disclosures (M255DisclosureWitnessesForCut $cut))
+          ($creations (M255CreationReferencesForCut $cut)))
      (if (and (M25PrimaryMovementValid $primary)
           (and (CPInterfacesLive $cut) (> (size-atom $disclosures) 0)))
        (let* (($witness (index-atom $disclosures 0))
@@ -1939,49 +2246,79 @@
            (disclosure-witnesses $disclosures)
            (provenance Inquiry-25.5-to-Inquiry-25 derived-not-constituent)
            no-preauthorization-or-movement-authority))
-       (M25InterfaceChange $primary))))
+       (if (and (M25PrimaryMovementValid $primary)
+                (> (size-atom $creations) 0))
+         (let $creation (index-atom $creations 0)
+           (m25-interface-change-v3 (index-atom $primary 1)
+             (participation-topology prior-possibility-absent)
+             (newly-available-mode (index-atom $creation 2))
+             (availability-transition absent available)
+             (creation-witnesses $creations)
+             (provenance Inquiry-25.5-to-Inquiry-25
+               derived-not-constituent)
+             no-preauthorization-or-movement-authority))
+         (M25InterfaceChange $primary)))))
 
 (= (M25InterfaceEvolutionValid $evolution $primary $cut)
-   (and (CPShape $evolution m25-interface-change-v2 8)
+   (and (or (CPShape $evolution m25-interface-change-v2 8)
+            (CPShape $evolution m25-interface-change-v3 8))
         (== $evolution (M25InterfaceEvolution $primary $cut))))
 
 (= (M255InterfaceEvolutionBridge $primary $cut $evolution)
-   (let $disclosures (M255DisclosureWitnessesForCut $cut)
+   (let* (($disclosures (M255DisclosureWitnessesForCut $cut))
+          ($creations (M255CreationReferencesForCut $cut)))
      (if (M25InterfaceEvolutionValid $evolution $primary $cut)
-       (m255-to-m25-interface-bridge-v1 (index-atom $primary 1)
-         (m255-disclosure $disclosures)
-         (inherited-interface-change-relation $evolution)
-         disclosure-to-newly-available-mode-only
-         no-converse-no-preauthorization-no-chooser)
+       (if (CPShape $evolution m25-interface-change-v2 8)
+         (m255-to-m25-interface-bridge-v2 (index-atom $primary 1)
+           (m255-reorganization-source disclosure $disclosures)
+           (inherited-interface-change-relation $evolution)
+           disclosure-to-newly-available-mode-only
+           no-converse-no-preauthorization-no-chooser)
+         (if (CPShape $evolution m25-interface-change-v3 8)
+           (m255-to-m25-interface-bridge-v2 (index-atom $primary 1)
+             (m255-reorganization-source creation $creations)
+             (inherited-interface-change-relation $evolution)
+             creation-to-new-participation-topology-only
+             no-converse-no-preauthorization-no-chooser)
+           (m255-to-m25-interface-bridge-unresolved
+             no-disclosure-or-creation-interface-change)))
        (m255-to-m25-interface-bridge-unresolved
-         no-current-disclosure-derived-interface-change))))
+         no-current-reorganization-derived-interface-change))))
 
 (= (M255InterfaceEvolutionBridgeValid $bridge $primary $cut $evolution)
-   (and (CPShape $bridge m255-to-m25-interface-bridge-v1 6)
+   (and (CPShape $bridge m255-to-m25-interface-bridge-v2 6)
         (== $bridge (M255InterfaceEvolutionBridge $primary $cut $evolution))))
 
-(= (M25TrajectoryBasis $primary $developmental)
+(= (M25TrajectoryBasis $primary $cut $developmental)
    (let* (($traction (index-atom $developmental 9))
           ($structured (index-atom $traction 1))
           ($pathology (index-atom $traction 2))
           ($dpf (index-atom $primary 4))
           ($d (index-atom $dpf 3))
           ($interface (index-atom $dpf 5))
-          ($returned (CPHas (index-atom $structured 1)
-            (contact-uptake-returned) 0))
+          ($returned (== (index-atom $structured 1)
+            contact-uptake-returned))
           ($m255-open (== (size-atom (CPFind (index-atom $d 1)
             m255-open-consequence-participation)) 1))
           ($m255-constrained (== (size-atom (CPFind (index-atom $d 1)
             m255-constrained-consequence-participation)) 1))
-          ($open-after-consequence (and $returned $m255-open)))
+          ($open-after-consequence (and $returned $m255-open))
+          ($sns-source (M255SNSObstructionSource $primary $cut))
+          ($sns (CPShape $sns-source m255-sns-obstruction-source-v1 8))
+          ($stuck-evidence (M255M24ComputedStuckEvidence $primary))
+          ($stuck (and $sns (M24ComputedStuck $stuck-evidence)))
+          ($contact-trajectory (if $sns
+            (material-contact-excluded contact-uptake-rejected)
+            (cons-atom (index-atom $structured 1) ()))))
      (m25-trajectory-basis-v1 (index-atom $primary 1)
-       (index-atom $structured 1)
-       relational-openness-retained
+       $contact-trajectory
+       (if $sns relational-openness-obstructed relational-openness-retained)
        material-distinctions-preserved
        (if $open-after-consequence receptive-attention-present
          receptive-attention-unresolved)
        differentiation-with-coherence-present
-       no-demonstrated-unnecessary-forcing
+       (if $sns unnecessary-forcing-present
+         no-demonstrated-unnecessary-forcing)
        (if (M25Contactable $primary) consequence-answerable
          consequence-answerability-unresolved)
        (if $m255-constrained interface-narrowed
@@ -1989,15 +2326,19 @@
            interface-open interface-unavailable))
        (if $open-after-consequence self-weaving-plasticity-present
          self-weaving-plasticity-unresolved)
-       (index-atom $pathology 2)
-       pivot-availability-unresolved urgency-unresolved
+       (if $sns frame-topology-persists (index-atom $pathology 2))
+       (if $stuck pivot-functionally-unavailable
+         pivot-availability-unresolved)
+       (if $sns forced-velocity-present urgency-unresolved)
        (trajectory-provenance (index-atom $primary 3)
-         (index-atom $developmental 13)))))
+         (index-atom $developmental 13)
+         (m255-obstruction-source $sns-source)
+         (m24-stuck-evidence $stuck-evidence)))))
 
 (= (M25PNSLike $basis)
    (if (CPShape $basis m25-trajectory-basis-v1 15)
-     (and (CPHas (index-atom $basis 2)
-            (contact-uptake-present contact-uptake-returned) 0)
+     (and (or (CPHas contact-uptake-present (index-atom $basis 2) 0)
+              (CPHas contact-uptake-returned (index-atom $basis 2) 0))
       (and (== (index-atom $basis 3) relational-openness-retained)
        (and (== (index-atom $basis 4) material-distinctions-preserved)
         (and (== (index-atom $basis 5) receptive-attention-present)
@@ -2012,13 +2353,13 @@
 
 (= (M25SNSLike $basis)
    (if (CPShape $basis m25-trajectory-basis-v1 15)
-     (and (CPHas (index-atom $basis 2)
-            (material-contact-excluded contact-uptake-rejected) 0)
+     (and (CPHas material-contact-excluded (index-atom $basis 2) 0)
+      (and (CPHas contact-uptake-rejected (index-atom $basis 2) 0)
       (and (== (index-atom $basis 11) frame-topology-persists)
        (and (== (index-atom $basis 9) interface-narrowed)
         (and (== (index-atom $basis 13) forced-velocity-present)
-             (CPHas (index-atom $basis 7)
-               (unnecessary-forcing-present force-residue-present) 0))))) false))
+             (== (index-atom $basis 7)
+               unnecessary-forcing-present)))))) false))
 
 (= (M25Stuck $basis)
    (and (M25SNSLike $basis)
@@ -2038,8 +2379,105 @@
          (participation-orientation-v1 (index-atom $basis 1) unresolved
            $basis insufficient-relational-trajectory)))))
 
-(= (M25Orientation $primary $developmental)
-   (M25OrientationFromBasis (M25TrajectoryBasis $primary $developmental)))
+(= (M25Orientation $primary $cut $developmental)
+   (M25OrientationFromBasis
+     (M25TrajectoryBasis $primary $cut $developmental)))
+
+; B4 is a one-way bridge into the inherited M25 witness shape.  Its source is
+; the complete obstruction trajectory above; it cannot classify a merely
+; constrained carrier and cannot alter Generated, Access, or movement.
+(= (M255ObstructionSNSBridge $primary $cut $developmental)
+   (let* (($source (M255SNSObstructionSource $primary $cut))
+          ($basis (M25TrajectoryBasis $primary $cut $developmental)))
+     (if (and (CPShape $source m255-sns-obstruction-source-v1 8)
+              (M25SNSLike $basis))
+       (m255-to-m25-sns-bridge-v1 (index-atom $primary 1)
+         $source
+         (sns-trajectory-witness
+           (trajectory-reference (index-atom $primary 3)
+             (index-atom $developmental 13))
+           (holding-apart-and-forced-velocity
+             (index-atom $source 3) (index-atom $source 4)
+             (index-atom $source 5) (index-atom $source 6))
+           (provenance Inquiry-25.5-to-Inquiry-25
+             derived-not-constituent))
+         same-generative-law-retained
+         no-constraint-only-physical-effort-or-compute-classification
+         no-movement-authority)
+       (m255-to-m25-sns-bridge-unresolved
+         incomplete-obstruction-trajectory))))
+
+(= (M255ObstructionSNSBridgeValid $bridge $primary $cut $developmental)
+   (and (CPShape $bridge m255-to-m25-sns-bridge-v1 7)
+        (== $bridge
+          (M255ObstructionSNSBridge $primary $cut $developmental))))
+
+; B5 reuses the exact B4 trajectory and adds the independently constructed
+; Inquiry-24 threshold witness.  This preserves Stuck => SNS-like and prevents
+; a second detector ontology or a numerical-force shortcut.
+(= (M255ThresholdedStuckBridge $primary $cut $developmental)
+   (let* (($sns (M255ObstructionSNSBridge $primary $cut $developmental))
+          ($basis (M25TrajectoryBasis $primary $cut $developmental))
+          ($evidence (M255M24ComputedStuckEvidence $primary)))
+     (if (and (M255ObstructionSNSBridgeValid $sns $primary $cut
+                $developmental)
+          (and (M24ComputedStuck $evidence) (M25Stuck $basis)))
+       (m255-to-m25-stuck-bridge-v1 (index-atom $primary 1)
+         $sns
+         (stuck-threshold-witness
+           (trajectory-reference (index-atom $primary 3)
+             (index-atom $developmental 13))
+           pivot-functionally-unavailable staleness-functionally-expressed
+           (shared-sns-basis (index-atom $sns 2)))
+         (inquiry-24-computed-stuck-evidence $evidence)
+         stuck-implies-sns-shared-trajectory-ontology
+         no-scalar-threshold-or-movement-authority)
+       (m255-to-m25-stuck-bridge-unresolved
+         missing-sns-or-independent-threshold-evidence))))
+
+(= (M255ThresholdedStuckBridgeValid $bridge $primary $cut $developmental)
+   (and (CPShape $bridge m255-to-m25-stuck-bridge-v1 7)
+        (== $bridge
+          (M255ThresholdedStuckBridge $primary $cut $developmental))))
+
+; B7: returned occurrence and the evidence used to interpret its
+; reorganization stay separate.  The M24 retrospective affordance and the
+; M25.5 reorganization must name the same consequence and current cut.
+(= (M255M24ReorganizationEvidenceBridge $primary $cut $developmental)
+   (let* (($references
+            (M255ReturnedReorganizationReferencesForCut $cut))
+          ($affordance (if (M24DevelopmentalOrganizationValid $developmental)
+            (index-atom $developmental 8) ()))
+          ($retrospective (if (CPShape $affordance affordance-state-v1 4)
+            (index-atom $affordance 2) ())))
+     (if (and (M25PrimaryMovementValid $primary)
+              (M24RetrospectiveAffordanceValid $retrospective))
+       (if (> (size-atom $references) 0)
+         (if (== (index-atom $retrospective 3)
+               (index-atom (index-atom $references 0) 1))
+           (m255-to-m24-reorganization-evidence-bridge-v1
+             (index-atom $primary 1)
+             (returned-occurrence (index-atom $retrospective 3)
+               (index-atom $retrospective 4))
+             (reorganization-evidence (index-atom $references 0)
+               (changed-participation-reference
+                 (index-atom $retrospective 5)))
+             occurrence-and-evidence-distinct
+             retrospective-contact-may-change-later-participation
+             no-insight-authority-or-occurrence-substitution)
+           (m255-to-m24-reorganization-evidence-bridge-unresolved
+             occurrence-and-reorganization-reference-mismatch))
+         (m255-to-m24-reorganization-evidence-bridge-unresolved
+           no-current-reorganization-reference))
+       (m255-to-m24-reorganization-evidence-bridge-unresolved
+         invalid-primary-or-missing-retrospective-affordance))))
+
+(= (M255M24ReorganizationEvidenceBridgeValid $bridge $primary $cut
+      $developmental)
+   (and (CPShape $bridge
+          m255-to-m24-reorganization-evidence-bridge-v1 7)
+        (== $bridge (M255M24ReorganizationEvidenceBridge $primary $cut
+          $developmental))))
 
 (= (M255FactExpressionsFromPrimary $primary)
    (if (CPShape $primary m25-primary-movement-v2 11)
@@ -2115,20 +2553,24 @@
      (== $bridge (M255RecognitionNonReconstructionBridge $primary $cut))
      false))
 
-(= (M255InheritedSurfaceBridges $primary $cut $rap $alignment $interface)
-   (m255-inherited-surface-bridges-v2
+(= (M255InheritedSurfaceBridges $primary $cut $developmental $rap
+      $alignment $interface)
+   (m255-inherited-surface-bridges-v3
      (M255HarmonicAlignmentBridge $primary $cut $rap $alignment)
      (M255InterfaceEvolutionBridge $primary $cut $interface)
+     (M255ObstructionSNSBridge $primary $cut $developmental)
+     (M255ThresholdedStuckBridge $primary $cut $developmental)
+     (M255M24ReorganizationEvidenceBridge $primary $cut $developmental)
      (M255EquivalenceNonAmalgamationBridge $primary $cut)
      (M255RecognitionNonReconstructionBridge $primary $cut)
-     m255-to-m25-only
+     m255-to-m25-and-m24-only
      derived-relations-no-movement-authority))
 
-(= (M255InheritedSurfaceBridgesValid $bridges $primary $cut $rap
-      $alignment $interface)
-   (if (CPShape $bridges m255-inherited-surface-bridges-v2 7)
-     (== $bridges (M255InheritedSurfaceBridges $primary $cut $rap
-       $alignment $interface))
+(= (M255InheritedSurfaceBridgesValid $bridges $primary $cut $developmental
+      $rap $alignment $interface)
+   (if (CPShape $bridges m255-inherited-surface-bridges-v3 10)
+     (== $bridges (M255InheritedSurfaceBridges $primary $cut $developmental
+       $rap $alignment $interface))
      false))
 
 (= (M25MovementReading $primary $cut $developmental)
@@ -2139,8 +2581,9 @@
           ($interface (M25InterfaceEvolution $primary $cut)))
      (m25-movement-reading-v3 $primary $rap
        $alignment (M25Energetics $primary)
-       (M25Orientation $primary $developmental) $interface
-       (M255InheritedSurfaceBridges $primary $cut $rap $alignment $interface)
+       (M25Orientation $primary $cut $developmental) $interface
+       (M255InheritedSurfaceBridges $primary $cut $developmental $rap
+         $alignment $interface)
        (movement-reading-standing $standing))))
 
 (= (M25PrimaryAt $possibilities $cut $facts $flourishing

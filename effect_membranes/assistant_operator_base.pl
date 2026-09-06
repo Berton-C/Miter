@@ -68,7 +68,7 @@ as_command('evidence-bundle', Args, Reply, Code) :-
 as_command(Command, _, _, _) :- throw(error(unknown_operator_command(Command),_)).
 
 as_reply_code(Reply, 0) :- get_dict(status, Reply, Status),
-    memberchk(Status, [bootstrapped,'already-bootstrapped',started,running,stopped,
+    memberchk(Status, [bootstrapped,'already-bootstrapped',started,starting,running,stopped,
       panicked,queued,duplicate,'evidence-stored']), !.
 as_reply_code(_, 1).
 
@@ -239,6 +239,9 @@ as_start(Root, Reply) :-
         ( as_wait_started(Root,Pid,StartedAt,5) ->
             Reply=_{schema:"miter-assistant-operator-result-v1",status:started,pid:Pid,
               semantic_health:"not-claimed"}
+        ; as_process_state(Root,alive,Pid) ->
+            Reply=_{schema:"miter-assistant-operator-result-v1",status:starting,pid:Pid,
+              semantic_health:"readiness-pending"}
         ; Reply=_{schema:"miter-assistant-operator-result-v1",status:'start-failed',pid:Pid} ) ) ).
 
 as_crash_admit(Root, Standing) :-

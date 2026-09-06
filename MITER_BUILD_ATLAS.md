@@ -298,11 +298,11 @@ authority joint.
 | M25-11 | bounded Harmonic Continuation has coherence/soundness falsifiers | P | continuation survives failed coherence |
 | M25-12 | force is not forcing | P | decisive action is automatically obstruction |
 | M25-13 | action energy differs from forcing energy | P | compute/action magnitude classifies forcing |
-| M25-14 | PNS/SNS are participation organizations | P | tone/arousal alone classifies disposition |
-| M25-15 | Stuck is SNS above functional staleness/pivot threshold | P | SNS and Stuck become separate ontologies |
-| M25-16 | possibility includes interface/topology change | P | only predeclared actions count as possible |
-| M25-17 | Fourthness/materiality share counterfactual discrimination | P | labels replace severing bite |
-| M25-18 | SNSLike and Stuck share trajectory primitives | P | unrelated detectors are used |
+| M25-14 | PNS/SNS are participation organizations | E | tone/arousal alone classifies disposition |
+| M25-15 | Stuck is SNS above functional staleness/pivot threshold | E | SNS and Stuck become separate ontologies |
+| M25-16 | possibility includes interface/topology change | E | only predeclared actions count as possible |
+| M25-17 | Fourthness/materiality share counterfactual discrimination | E | labels replace severing bite |
+| M25-18 | SNSLike and Stuck share trajectory primitives | E | unrelated detectors are used |
 | M25-19 | MeTTa projection is witness-first | P | a score becomes authoritative |
 | M25-20 | no universal numerical forcing metric is claimed | A | provisional number becomes constitutional |
 | M25-21 | complete awareness/nine/Soul mathematics remains bounded | A | PoC projection claims formal completion |
@@ -328,7 +328,7 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-08 | five-carrier connected-equivalence evidence pattern | P | carrier names substitute for carrier-specific organization |
 | M255-09 | `ForceObl` / `SupportPre` are non-optimizing structures | E | minimization score substitutes |
 | M255-10 | `Access` is a derived read-only participation view | E | access mutates generation |
-| M255-11 | one-engine PNS/SNS organization | P | separate engines/behavior tables appear |
+| M255-11 | one-engine PNS/SNS organization | E | separate engines/behavior tables appear |
 | M255-12 | `ReflexiveConstraint` requires dependence and severing bite | E | self-reference without causal bite passes |
 | M255-13 | `Disclosure` changes accessibility, not generated possibility | E | retrieval is called creation |
 | M255-14 | `Creation` adds possibility modulo lawful prior transport | E | renaming/retrieval is called creation |
@@ -336,7 +336,7 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-16 | `Degradation` loses prior continuation structure under the same law | E | lower score alone proves degradation |
 | M255-17 | non-circular bridge from `𝒢` precursors to R/A/P | E | selected movement backfills its grounds |
 | M255-18 | open participation bridges into unchanged HarmonicAlign | E | openness rewrites alignment law |
-| M255-19 | B1–B10 retain ratified direction/scope | A | converse or wider scope is assumed |
+| M255-19 | B1–B10 retain ratified direction/scope | E | converse or wider scope is assumed |
 | M255-20 | overlapping recognition `Π` is non-reconstructive | E | recognitions are treated as exhaustive parts |
 | M255-21 | finite heterogeneous manifestation suite MA–ME | P | renamed vocabularies are mistaken for complete heterogeneous dynamics |
 | M255-22 | N01–N25 falsifier surface | P | a partial negative surface is mistaken for the complete N01–N25 set |
@@ -658,20 +658,45 @@ Already carried:
   with one consumed input, zero rejections, and no replay. The serialized local
   effect measured 983,247 bytes under the unchanged 1,048,576-byte membrane
   bound. All stimulus and diagnostic material remained external to Git.
+- B4–B7 now close the inherited M25.5→M25/M24 bridge family in that same
+  movement reading. B4 requires actual constrained reorganization, exact
+  reflexive severing, relation-grounded flourishing observations of contact
+  held apart, forced velocity, and persistent frame topology. It retains the
+  movement-relative `ForceObl` only as non-quantitative provenance, not as a
+  required forcing-energy measure; constraint, effort, or compute alone
+  remains unresolved. B5 adds the distinct M24 live-demand, discrepancy, recurrence,
+  reinforcement, reachability, discriminating-contact, and distinction-death
+  threshold evidence, so Stuck shares the B4 SNS trajectory rather than
+  becoming a second detector. B6 carries both interface disclosure /
+  reintroduction and newly created participation topology without granting a
+  capability. B7 keeps returned occurrence distinct from the evidence by
+  which its reorganization is interpreted. Positive, negative, and forged-
+  witness cases passed both native evaluation and the supported persistent
+  runtime. A post-consequence source-cut lineage defect was also repaired so
+  B8 recursively reaches the exact root M24 contact through nested `next-cut`
+  identifiers. Restart restored the byte-identical 8,937,681-byte checkpoint
+  SHA-256
+  `10ed07586c722df8040fa44495132bef3b2471cc7233bb8c757d8b6e41a84a8a`
+  without replay. Slow restoration now reports truthful `starting` standing
+  rather than a false failure while readiness is pending. The current local
+  effect is 1,016,006 bytes, leaving little room beneath the 1,048,576-byte
+  carrier bound; the next cut must make the external certificate a compact
+  reference to persisted internal proof organization before adding further
+  nested inherited surfaces.
 
 Next movement:
 
-1. complete and explicitly audit B4–B7: constrained/reflexive participation to
-   inherited SNS-like witness, thresholded obstruction to inherited Stuck,
-   disclosure/creation to interface evolution, and reorganization to distinct
-   Inquiry-24 evidence—without adding a chooser, pathology label, global
-   amalgamation, or a second R/A/P surface;
-2. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same
-   primary movement, then continue the export map until all M24–M26.3 gaps
-   have live consumers in this organism;
+1. replace the nearly saturated external effect payload with a compact,
+   integrity-bound reference to the complete persisted native proof carrier;
+   this is a carrier correction only and may not move cognition,
+   certification, or authority into Prolog;
+2. discharge the M25.5→M26.0 one-becoming, `SameBecoming`, occurrence-qualified
+   `Generated/𝒢`, and structural-fidelity bridges through the same primary
+   movement, then continue the export map until all M24–M26.3 gaps have live
+   consumers in this organism;
 3. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 
-The old repository and remote `main` remain untouched until the separately
-authorized destructive operation in step 4.
+The old repository and remote `main` remain untouched until a separately
+authorized destructive operation.
