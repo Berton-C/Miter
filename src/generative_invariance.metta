@@ -596,6 +596,8 @@
                          finite-formal-projection-not-empirical-carrier-or-actuality-claim))))))))))))))
      false))
 
+!(import! &self "./src/generative_participation.metta")
+
 (= (M255FiveCarrierSuiteReady $suite $cut $facts $flourishing $possibility)
    (and (== $suite (M255FiveCarrierSuite $cut $facts $possibility))
     (and (M255FiveCarrierSuiteStructuralValid $suite $possibility)
@@ -616,22 +618,27 @@
           ($target-generated (M255GeneratedWitness $target $possibility))
           ($equivalence (M255GenEquivV2 $source $target
             $source-generated $target-generated))
-          ($suite (M255FiveCarrierSuite $cut $facts $possibility)))
+          ($suite (M255FiveCarrierSuite $cut $facts $possibility))
+          ($participation (M255FiveCarrierParticipationSuite $suite
+            $possibility)))
      (if (and (M255GeneratedWitnessValid $source-generated $source
                 miter-native-possibility possible-movement $cut $facts
                 $flourishing $possibility)
           (and (M255GeneratedWitnessValid $target-generated $target
                  miter-primary-movement m25-primary-movement-v2 $cut $facts
                  $flourishing $possibility)
-               (M255FiveCarrierSuiteReady $suite $cut $facts $flourishing
-                 $possibility)))
-       (primary-before-rap $equivalence $suite)
+           (and (M255FiveCarrierSuiteReady $suite $cut $facts $flourishing
+                  $possibility)
+                (M255FiveCarrierParticipationSuiteValid $participation $suite
+                  $possibility))))
+       (primary-before-rap $equivalence $suite $participation)
        (primary-before-rap-unresolved missing-generated-signature))))
 
 (= (M255PrimaryCarrierBridgeValid $bridge $possibility)
-   (if (CPShape $bridge primary-before-rap 3)
+   (if (CPShape $bridge primary-before-rap 4)
      (let* (($equivalence (index-atom $bridge 1))
             ($suite (index-atom $bridge 2))
+            ($participation (index-atom $bridge 3))
             ($source (if (CPShape $equivalence gen-equiv-v2 5)
               (index-atom $equivalence 1) ()))
             ($target (if (CPShape $equivalence gen-equiv-v2 5)
@@ -649,5 +656,6 @@
              (and (== (index-atom $target 3)
                     (move-vocabulary (index-atom $possibility 1)
                       (index-atom $possibility 2)))
-                  (M255FiveCarrierSuiteStructuralValid $suite
-                    $possibility))))))))) false))
+              (and (M255FiveCarrierSuiteStructuralValid $suite $possibility)
+                   (M255FiveCarrierParticipationSuiteValid $participation
+                     $suite $possibility)))))))))) false))

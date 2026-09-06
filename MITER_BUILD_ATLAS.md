@@ -326,14 +326,14 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-06 | `GenEquivV2` is canonical cross-carrier equivalence | P | truth-only equivalence substitutes |
 | M255-07 | lawful equivalence laws on bounded domains | P | finite constructors are generalized outside their witnessed domain |
 | M255-08 | five-carrier connected-equivalence evidence pattern | P | carrier names substitute for carrier-specific organization |
-| M255-09 | `ForceObl` / `SupportPre` are non-optimizing structures | P | minimization score substitutes |
-| M255-10 | `Access` is a derived read-only participation view | P | access mutates generation |
+| M255-09 | `ForceObl` / `SupportPre` are non-optimizing structures | E | minimization score substitutes |
+| M255-10 | `Access` is a derived read-only participation view | E | access mutates generation |
 | M255-11 | one-engine PNS/SNS organization | P | separate engines/behavior tables appear |
 | M255-12 | `ReflexiveConstraint` requires dependence and severing bite | P | self-reference without causal bite passes |
 | M255-13 | `Disclosure` changes accessibility, not generated possibility | P | retrieval is called creation |
 | M255-14 | `Creation` adds possibility modulo lawful prior transport | P | renaming/retrieval is called creation |
-| M255-15 | `Maintenance` preserves generative organization | P | repetition alone proves maintenance |
-| M255-16 | `Degradation` loses prior continuation structure | P | lower score alone proves degradation |
+| M255-15 | `Maintenance` preserves generative organization under lawful transport | P | repetition alone proves maintenance |
+| M255-16 | `Degradation` loses prior continuation structure under the same law | P | lower score alone proves degradation |
 | M255-17 | non-circular bridge from `𝒢` precursors to R/A/P | P | selected movement backfills its grounds |
 | M255-18 | open participation bridges into unchanged HarmonicAlign | P | openness rewrites alignment law |
 | M255-19 | B1–B10 retain ratified direction/scope | A | converse or wider scope is assumed |
@@ -485,14 +485,27 @@ Already carried:
   explicit proof-relevant maps, and each bounded map carries native
   reflexive/symmetric/transitive evidence. This is a finite formal projection,
   not an empirical claim about any carrier or evidence of complete
-  heterogeneous dynamics.
+  heterogeneous dynamics;
+- that same pre-R/A/P suite now carries carrier-specific, non-optimizing
+  `ForceObl`/`SupportPre` organization and read-only open and constrained
+  `Access` views over one unchanged Generated reference. It also carries finite
+  MC/MD reflexive and change-category models. MA explicitly refuses to treat a
+  bare physical obstruction as reflexivity. Mutations that introduce optimizer
+  support, writer authority, a second generated reference, narration without
+  dependence, or a false prior transport all fail. A live contact carries these
+  structures before its only `rap-read-v2`, and restart preserves one
+  byte-identical effect without replay. Reflexive bite and disclosure,
+  creation, maintenance, and degradation remain `P`, not `E`, until actual
+  severing or consequence across developmental cuts changes later access or
+  generative continuation. The one-engine PNS/SNS bridge likewise remains
+  partial until access/disposition feeds unchanged inherited M25 orientation.
 
 Next movement:
 
-1. give the five carrier projections actual carrier-specific
-   `ForceObl`/`SupportPre`, derived `Access`, one-engine disposition,
-   reflexive-severing, and change-category organization so the suite cannot be
-   satisfied by names and shared shape alone;
+1. connect the finite reflexive/change models to actual prior/next
+   developmental cuts so severing and consequence materially change later
+   access or generative continuation, and bridge the one-engine disposition
+   organization into unchanged inherited M25 orientation;
 2. complete recognition overlap/non-reconstruction and the inherited B1–B10
    bridge directions without adding a chooser or a second R/A/P surface;
 3. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same

@@ -12,6 +12,7 @@ miter_integrity_sources([
  'constitution/soul.metta','constitution/soul_compass.metta',
  'constitution/fact9_projection.metta','src/soul.metta',
  'src/constitutive_foundation.metta','src/generative_invariance.metta',
+ 'src/generative_participation.metta',
  'src/authority_inheritance.metta',
  'src/constitutive_authority_joint.metta','effect_membranes/integrity.pl']).
 miter_integrity_snapshot(Output, Result) :-
