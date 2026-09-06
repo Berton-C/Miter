@@ -24,6 +24,7 @@ as_lkg_relative_paths([
   'constitution/authority-manifest.json','constitution/soul.metta',
   'constitution/soul_compass.metta','constitution/fact9_projection.metta',
   'src/soul.metta','src/constitutive_foundation.metta',
+  'src/generative_invariance.metta',
   'src/authority_inheritance.metta','src/constitutive_authority_joint.metta',
   'src/assistant_reactor_foundation.metta','src/scope_continuity.metta',
   'src/semantic_participation.metta','src/assistant_reactor_authority.metta',

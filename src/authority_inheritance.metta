@@ -1208,7 +1208,8 @@
        (answerability (o-star (index-atom $possibility 7)))
        (continuation-basis-v3 $fact-views $flourishing-views
          $participant-source (payload-reference $payload-ref) $developmental)
-       $possibility primary-before-rap)))
+       $possibility
+       (M255PrimaryCarrierBridge $cut $facts $flourishing $possibility))))
 
 (= (M25PrimaryMovementValid $primary)
    (if (CPShape $primary m25-primary-movement-v2 11)
@@ -1220,11 +1221,12 @@
          (and (CPShape (index-atom $primary 7) answerability 2)
           (and (CPShape (index-atom $primary 8) continuation-basis-v3 6)
            (and (CPShape (index-atom $primary 9) possible-movement 9)
-            (and (== (index-atom $primary 1)
+             (and (== (index-atom $primary 1)
                    (index-atom (index-atom $primary 9) 1))
              (and (== (index-atom $primary 2)
                     (index-atom (index-atom $primary 9) 2))
-                  (== (index-atom $primary 10) primary-before-rap))))))))))
+                  (M255PrimaryCarrierBridgeValid (index-atom $primary 10)
+                    (index-atom $primary 9)))))))))))
      false))
 
 (= (M25Contactable $primary)

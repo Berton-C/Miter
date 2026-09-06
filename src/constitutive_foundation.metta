@@ -438,6 +438,10 @@
         (and (CPConsequenceReady $consequence)
              (== $legality l2425-supported)))))))
 
+; Load M25.5 here, after its native prerequisites exist and before any
+; Generated candidate is compiled. PeTTa resolves this file sequentially.
+!(import! &self "./src/generative_invariance.metta")
+
 (= (CPGeneratedStanding $cut $facts $organization $possibility)
    (if (CPShape $possibility possible-movement 9)
      (let* (($id (index-atom $possibility 1))

@@ -158,7 +158,7 @@ consumer is absent. No status is upgraded by assertion.
 
 ## 6. Four additive stages
 
-### C1 — Clean-room recovery and one-runtime baseline (active)
+### C1 — Clean-room recovery and one-runtime baseline (closed at `65ba74e`)
 
 Preserve only the controlling canon and active runtime closure. Verify one
 process, one clock, integrity, start/stop/restart, external runtime state, and
@@ -169,7 +169,7 @@ Closure: clean candidate branch; fresh-clone bootstrap; recurring heartbeat;
 clean stop/restart; no secrets/private data; no test/evidence debris; honest
 capability matrix.
 
-### C2 — Complete causal M24–M26.3 embodiment
+### C2 — Complete causal M24–M26.3 embodiment (active)
 
 For every inherited export below, either connect the existing native
 representation to the primary encounter/consequence path or implement the
@@ -319,11 +319,11 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | ID | Inherited meaning | Standing | Short falsifier |
 |---|---|---:|---|
 | M255-01 | bounded carrier-independent generative organization | P | carrier syntax becomes the law |
-| M255-02 | `GenSig` | A | no explicit signature witness |
+| M255-02 | `GenSig` | P | signature is absent from a primary movement or treated as generation proof |
 | M255-03 | R*/A*/P*/O* non-circular precursors | P | R/A/P define their own prerequisites |
 | M255-04 | `Generated` is canonical realization of `𝒢` | P | supplied option is called generated |
-| M255-05 | `GenTranslation` preserves load-bearing structure locally | A | translation lacks relation/interface proof |
-| M255-06 | `GenEquivV2` is canonical cross-carrier equivalence | A | truth-only equivalence substitutes |
+| M255-05 | `GenTranslation` preserves load-bearing structure locally | P | translation lacks bidirectional relation/distinction/interface proof |
+| M255-06 | `GenEquivV2` is canonical cross-carrier equivalence | P | truth-only equivalence substitutes |
 | M255-07 | lawful equivalence laws on bounded domains | A | laws asserted outside domain |
 | M255-08 | five-carrier connected-equivalence evidence pattern | A | one carrier is generalized universally |
 | M255-09 | `ForceObl` / `SupportPre` are non-optimizing structures | P | minimization score substitutes |
@@ -339,7 +339,7 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-19 | B1–B10 retain ratified direction/scope | A | converse or wider scope is assumed |
 | M255-20 | overlapping recognition `Π` is non-reconstructive | P | recognitions are treated as exhaustive parts |
 | M255-21 | finite heterogeneous manifestation suite MA–ME | A | suite not represented/read back |
-| M255-22 | N01–N25 falsifier surface | A | countermodels are absent from ephemeral verification |
+| M255-22 | N01–N25 falsifier surface | P | a partial negative surface is mistaken for the complete N01–N25 set |
 | M255-23 | MeTTa projection contract | P | host computation replaces native witness |
 | M255-24 | bounded machine-evidence packages | A | evidence names are mistaken for live proof |
 
@@ -367,7 +367,7 @@ Representation and consumer: `M260*` functions and the authority joint.
 | M260-12 | relational, non-functional `SameBecoming` | P | unique functional identity is assumed |
 | M260-13 | occurrence-qualified `Generated/𝒢` through SameBecoming | P | `𝒢` becomes actuality/second ontology |
 | M260-14 | generative/participatory/balance one-becoming bridge | P | surfaces are merely adjacent diagnostics |
-| M260-15 | `GenEquivV2` does not prove co-reference | A | structural equivalence asserts same occurrence |
+| M260-15 | `GenEquivV2` does not prove co-reference | P | structural equivalence asserts same occurrence |
 | M260-16 | structural fidelity preserves load-bearing relations | P | scalar closeness substitutes |
 | M260-17 | eight primitive laws remain explicit primitives | A | primitives are silently strengthened/derived |
 | M260-18 | formal evidence boundary remains explicit | P | adapter-limited evidence is overstated |
@@ -446,7 +446,7 @@ outside the clean repository.
 
 ## 10. Active cut and next movement
 
-Active cut: **C1 clean-room recovery**.
+Active cut: **C2 complete causal M24–M26.3 embodiment**.
 
 Already carried:
 
@@ -462,17 +462,37 @@ Already carried:
 - one scoped structured contact processed through `bin/miter`, checkpointed,
   restored after stop/start, and retained exactly one byte-identical local
   VoiceRNA-certified effect without replay; all stimulus and observations
-  remained outside the repository.
+  remained outside the repository;
+- C1 committed and pushed only as non-destructive branch
+  `cleanroom-candidate` at `65ba74e`; a fresh clone reproduced bootstrap,
+  start, status, and stop while remote `main` remained untouched;
+- C2 now carries an explicit M25.5 `GenSig` and a separate witness-bearing
+  `Generated/𝒢` relation into each M25 primary movement before its single
+  R/A/P read;
+- the native-possibility → M25-primary boundary now requires a proof-relevant
+  `GenTranslation` with unique bidirectional coverage of every load-bearing
+  relation, distinction, and interface, explicit no-unwitnessed-constraint and
+  O* transport, and a `GenEquivV2` witness that expressly does not establish
+  carrier identity, actuality, or `SameBecoming`;
+- missing load-bearing coverage and same-carrier substitution are rejected in
+  external ephemeral checks; a live contact forms through the supported
+  runtime and restart preserves one byte-identical effect without replay.
 
 Next movement:
 
-1. finish the public-safe source audit and fresh-clone reproducibility check;
-2. create and push the non-destructive `cleanroom-candidate` branch;
-3. compare the candidate tree and runtime closure against this atlas;
-4. only after explicit human acceptance, replace `main` history and remove old
-   remote branches/tags in a separate destructive operation;
-5. begin C2 with M255-02 (`GenSig`) and the missing cross-carrier translation /
-   equivalence consumers because they are prerequisites for claiming complete
-   M25.5 participation in the one R/A/P movement surface.
+1. complete M255-07/08/21 with bounded reflexive/symmetric/transitive
+   translation and a genuinely heterogeneous MA–ME carrier graph connected
+   through the human-cognitive hub; each carrier must retain its own vocabulary
+   and feed the same native generative law;
+2. complete the remaining M25.5 causal consumers—`ForceObl`/`SupportPre`,
+   derived `Access`, one-engine disposition organization, reflexive severing
+   bite, change categories, and recognition non-reconstruction—without adding
+   a chooser or a second R/A/P surface;
+3. discharge the M25.5→M25 and M25.5→M26.0 bridges through the same primary
+   movement, then continue the export map until all M24–M26.3 gaps have live
+   consumers in this organism;
+4. only after explicit human acceptance of the complete clean candidate,
+   replace `main` history and remove old remote branches/tags in a separate
+   destructive operation.
 
 The old repository is not to be deleted, rewritten, or force-pushed during C1.
