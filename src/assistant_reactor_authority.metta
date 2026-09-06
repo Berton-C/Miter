@@ -32,8 +32,10 @@
           (and (if (CPShape $payload encounter-incorporated-v3 6)
                  (AR2ProbeBasisMatchesReference (index-atom $payload 5)
                    (CP2JointMovementReference (index-atom $payload 4))) true)
-          (if (CPShape (index-atom $payload 4)
-                authority-participation-joint-v2 11)
+          (if (or (CPShape (index-atom $payload 4)
+                    authority-participation-joint-v2 11)
+                  (CPShape (index-atom $payload 4)
+                    authority-participation-joint-v3 11))
             (let* (($summary (index-atom $payload 2))
                    ($reference (CP2JointMovementReference
                      (index-atom $payload 4))))

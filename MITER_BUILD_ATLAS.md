@@ -365,10 +365,10 @@ Representation and consumer: `M260*` functions and the authority joint.
 | M260-10 | non-amalgamation with scoped joint use | P | one global view required |
 | M260-11 | finite form/non-self | P | persistence becomes immutable sovereign self |
 | M260-12 | relational, non-functional `SameBecoming` | P | unique functional identity is assumed |
-| M260-13 | occurrence-qualified `Generated/𝒢` through SameBecoming | P | `𝒢` becomes actuality/second ontology |
-| M260-14 | generative/participatory/balance one-becoming bridge | P | surfaces are merely adjacent diagnostics |
-| M260-15 | `GenEquivV2` does not prove co-reference | P | structural equivalence asserts same occurrence |
-| M260-16 | structural fidelity preserves load-bearing relations | P | scalar closeness substitutes |
+| M260-13 | occurrence-qualified `Generated/𝒢` through SameBecoming | E | `𝒢` becomes actuality/second ontology |
+| M260-14 | generative/participatory/balance one-becoming bridge | E | surfaces are merely adjacent diagnostics |
+| M260-15 | `GenEquivV2` does not prove co-reference | E | structural equivalence asserts same occurrence |
+| M260-16 | structural fidelity preserves load-bearing relations | E | scalar closeness substitutes |
 | M260-17 | eight primitive laws remain explicit primitives | A | primitives are silently strengthened/derived |
 | M260-18 | formal evidence boundary remains explicit | P | adapter-limited evidence is overstated |
 
@@ -702,13 +702,23 @@ Already carried:
   then reprocessed the still-pending contact, reported `duplicate-observed`,
   and completed its native checkpoint with one unchanged proof and effect.
   The membrane still has no network or external-effect authority.
+- M26.0 now joins each exact M25.5 `Generated/𝒢` witness to its primary through
+  an occurrence-qualified, relational `SameBecoming` certificate before that
+  primary's one simultaneous R/A/P read. The same surface carries its lawful
+  DPF realization, participatory balance organization, structural-fidelity
+  inclusion, and an explicit boundary denying that `GenEquivV2` proves
+  co-reference. A live runtime formed two readings and retained both bridges
+  in one V3 authority joint; altered Generated, SameBecoming, fidelity, and
+  equivalence-boundary carriers all failed exact validation. Returned
+  consequence formed the next cut, and stop/start restored its constitutive
+  organization byte-identically with one unchanged local effect and no replay.
 
 Next movement:
 
-1. discharge the M25.5→M26.0 one-becoming, `SameBecoming`, occurrence-qualified
-   `Generated/𝒢`, and structural-fidelity bridges through the same primary
-   movement, then continue the export map until all M24–M26.3 gaps have live
-   consumers in this organism;
+1. continue M26.0 from the now-live one-becoming bridge into the remaining
+   opaque-occurrence, participation, DWS/O-P-C, persistent-form, primitive-law,
+   and evidence-boundary exports; then discharge the complete M26.3 Fact9
+   composition surface through that same primary movement before closing C2;
 2. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
