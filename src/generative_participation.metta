@@ -526,8 +526,28 @@
                 (CPSetEqual (index-atom (index-atom $left 5) 1)
                   (index-atom (index-atom $right 5) 1)))))))))))
 
+(= (M255SelfRepresentationRow $row)
+   (and (CPShape $row relation 5)
+        (== (index-atom $row 2) self-representation)))
+
+(= (M255SelfRepresentationObstructedAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (and (M255SelfRepresentationRow $row)
+                (== (index-atom $row 3) unavailable))
+         true
+         (M255SelfRepresentationObstructedAt $rows (+ $i 1))))
+     false))
+
+; Access is a derived read-only view over one unchanged generative law.  A
+; participation interface may be mechanically unavailable, or a typed
+; self/trajectory representation on which the movement depends may be
+; severed.  Neither condition edits Generated/G or chooses a movement.
 (= (M255ResultingDisposition $next-cut)
-   (if (CPInterfacesLive $next-cut) open constrained))
+   (if (and (CPInterfacesLive $next-cut)
+            (== (M255SelfRepresentationObstructedAt
+                  (CPDRelations $next-cut) 0) false))
+     open constrained))
 
 (= (M255ConsequenceReorganization $prior-cut $movement $next-cut $consequence)
    (let* (($primary (M255PrimaryFromMovement $movement))
@@ -733,6 +753,138 @@
         (and (== (index-atom $movement 2) (index-atom $consequence 2))
              (== $next-cut
                (M255ExpectedBaseNextCut $prior-cut $consequence))))))))
+
+; ---------------------------------------------------------------------------
+; Actual reflexive constraint across developmental cuts.
+;
+; The finite carrier suite contains theorem-shaped examples.  The live Miter
+; carrier additionally has to earn both conjuncts from its own material
+; organization.  Dependence is established only by a typed self/trajectory
+; representation that is an R* requirement of the exact Generated movement.
+; Severing bite is established only when that same stable relation changes
+; from support to unavailable, both participation interfaces remain live, the
+; same Generated movement transports lawfully, and derived Access changes.
+; A self-description, an arbitrary relation loss, or an interface outage cannot
+; satisfy this witness.
+
+(= (M255SelfRepresentationDependenceFor $generated-at $row)
+   (let* (($id (index-atom $generated-at 1))
+          ($possibility (index-atom $generated-at 2))
+          ($relation-id (index-atom $row 1)))
+     (if (and (M255GeneratedAtProbeValid $generated-at)
+          (and (M255SelfRepresentationRow $row)
+           (and (== (index-atom $row 3) support)
+                (CPHas $relation-id (index-atom $possibility 3) 0))))
+       (m255-self-representation-dependence-v1 $id $relation-id
+         (r-star-required $relation-id)
+         (typed-self-representation $row)
+         (generated-movement $generated-at)
+         material-access-dependence-not-narration)
+       (m255-self-representation-dependence-unresolved $id $relation-id))))
+
+(= (M255SelfRepresentationDependencesAt $generated-at $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $witness (M255SelfRepresentationDependenceFor $generated-at
+                      (index-atom $rows $i))
+       (if (CPShape $witness m255-self-representation-dependence-v1 7)
+         (cons-atom $witness
+           (M255SelfRepresentationDependencesAt $generated-at $rows
+             (+ $i 1)))
+         (M255SelfRepresentationDependencesAt $generated-at $rows
+           (+ $i 1))))
+     ()))
+
+(= (M255SelfRepresentationDependences $probe $id)
+   (let $generated-at (M255GeneratedAtProbe $probe $id)
+     (if (M255GeneratedAtProbeValid $generated-at)
+       (M255SelfRepresentationDependencesAt $generated-at
+         (CPDRelations (index-atom $probe 1)) 0)
+       ())))
+
+(= (M255SelfRepresentationDependenceValid $witness $probe $id)
+   (and (CPShape $witness m255-self-representation-dependence-v1 7)
+        (CPHas $witness (M255SelfRepresentationDependences $probe $id) 0)))
+
+(= (M255SeveringChangesAccessFor $prior-probe $next-probe $transport
+      $dependence)
+   (let* (($id (index-atom $dependence 1))
+          ($relation-id (index-atom $dependence 2))
+          ($prior-cut (index-atom $prior-probe 1))
+          ($next-cut (index-atom $next-probe 1))
+          ($prior-rows (CPFind (CPDRelations $prior-cut) $relation-id))
+          ($next-rows (CPFind (CPDRelations $next-cut) $relation-id))
+          ($prior-row (if (== (size-atom $prior-rows) 1)
+            (index-atom $prior-rows 0) ()))
+          ($next-row (if (== (size-atom $next-rows) 1)
+            (index-atom $next-rows 0) ()))
+          ($prior-access (M255ResultingDisposition $prior-cut))
+          ($next-access (M255ResultingDisposition $next-cut)))
+     (if (and (M255SelfRepresentationDependenceValid $dependence
+                $prior-probe $id)
+          (and (M255SameGeneratedTransportValid $transport)
+           (and (M255SelfRepresentationRow $prior-row)
+            (and (M255SelfRepresentationRow $next-row)
+             (and (== (index-atom $prior-row 3) support)
+              (and (== (index-atom $next-row 3) unavailable)
+               (and (CPInterfacesLive $prior-cut)
+                (and (CPInterfacesLive $next-cut)
+                 (and (== $prior-access open)
+                      (== $next-access constrained))))))))))
+       (m255-severing-changes-access-v1 $id $relation-id
+         (cut-transition (index-atom $prior-cut 1) (index-atom $next-cut 1))
+         (same-generated-transport $transport)
+         (self-representation-standing-transition $prior-row $next-row)
+         (access-transition $prior-access $next-access)
+         access-changed-by-required-self-representation-severing
+         not-interface-outage-or-bare-physical-obstruction)
+       (m255-severing-changes-access-unresolved $id $relation-id))))
+
+(= (M255SeveringChangesAccessAt $prior-probe $next-probe $transport
+      $dependences $i)
+   (if (< $i (size-atom $dependences))
+     (let $witness (M255SeveringChangesAccessFor $prior-probe $next-probe
+                      $transport (index-atom $dependences $i))
+       (if (CPShape $witness m255-severing-changes-access-v1 9)
+         (cons-atom $witness
+           (M255SeveringChangesAccessAt $prior-probe $next-probe $transport
+             $dependences (+ $i 1)))
+         (M255SeveringChangesAccessAt $prior-probe $next-probe $transport
+           $dependences (+ $i 1))))
+     ()))
+
+(= (M255ReflexiveConstraintTransition $prior-cut $movement $next-cut
+      $consequence)
+   (let* (($primary (M255PrimaryFromMovement $movement))
+          ($id (if (CPShape $primary m25-primary-movement-v2 11)
+            (index-atom $primary 1) missing-primary))
+          ($prior-probe (M255PriorTransitionProbe $prior-cut $movement))
+          ($next-probe (M255NextTransitionProbe $next-cut $movement
+            $consequence))
+          ($transport (M255SameGeneratedTransport $prior-probe $next-probe
+            $id))
+          ($dependences (M255SelfRepresentationDependences $prior-probe $id))
+          ($severings (M255SeveringChangesAccessAt $prior-probe $next-probe
+            $transport $dependences 0)))
+     (if (and (M255TransitionInputsValid $prior-cut $movement $next-cut
+                $consequence)
+          (and (M255SameGeneratedTransportValid $transport)
+           (and (> (size-atom $dependences) 0)
+                (> (size-atom $severings) 0))))
+       (m255-reflexive-constraint-transition-v1 $id
+         (cut-transition (index-atom $prior-cut 1) (index-atom $next-cut 1))
+         (same-generated-law $transport)
+         (self-representation-dependence $dependences)
+         (severing-changes-access $severings)
+         conjunctive-causal-bite
+         no-narration-interface-outage-or-bare-obstruction-substitute)
+       (m255-reflexive-constraint-transition-unresolved
+         missing-self-representation-dependence-or-severing-bite))))
+
+(= (M255ReflexiveConstraintTransitionValid $witness $prior-cut $movement
+      $next-cut $consequence)
+   (and (CPShape $witness m255-reflexive-constraint-transition-v1 8)
+        (== $witness (M255ReflexiveConstraintTransition $prior-cut $movement
+          $next-cut $consequence))))
 
 (= (M255MaintenanceTransition $prior-cut $movement $next-cut $consequence)
    (let* (($primary (M255PrimaryFromMovement $movement))

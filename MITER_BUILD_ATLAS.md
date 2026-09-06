@@ -329,7 +329,7 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-09 | `ForceObl` / `SupportPre` are non-optimizing structures | E | minimization score substitutes |
 | M255-10 | `Access` is a derived read-only participation view | E | access mutates generation |
 | M255-11 | one-engine PNS/SNS organization | P | separate engines/behavior tables appear |
-| M255-12 | `ReflexiveConstraint` requires dependence and severing bite | P | self-reference without causal bite passes |
+| M255-12 | `ReflexiveConstraint` requires dependence and severing bite | E | self-reference without causal bite passes |
 | M255-13 | `Disclosure` changes accessibility, not generated possibility | E | retrieval is called creation |
 | M255-14 | `Creation` adds possibility modulo lawful prior transport | E | renaming/retrieval is called creation |
 | M255-15 | `Maintenance` preserves generative organization under lawful transport | E | repetition alone proves maintenance |
@@ -575,13 +575,27 @@ Already carried:
   the six inputs stayed consumed, no input was rejected, and the sole prior
   effect remained exactly once with no restart replay. All stimuli and audit
   material remained external to Git.
+- `ReflexiveConstraint` is now earned from the live Miter carrier rather than
+  inherited from the finite carrier demonstration. A typed self/trajectory
+  representation must be an R* requirement of the exact Generated movement;
+  an actual consequence must then change that same stable representation from
+  supported to unavailable while the participation interface remains live and
+  proof-relevant same-Generated transport succeeds. Only that conjunction
+  changes derived Access from open to constrained and forms the two-lineage
+  `m255-reflexive-constraint-participation` relation before the next cut's one
+  R/A/P read. Interface outage alone and loss of an ordinary contact relation
+  both fail the constructor. Through the supported runtime, the reflexive
+  relation, constrained Access, still-valid Generated carrier bridge, and
+  formed inquiry persisted across stop/start; history remained valid, both
+  inputs were consumed, none was rejected, and the one prior effect remained
+  exactly once without replay. Stimulus and audit material remained external
+  to Git.
 
 Next movement:
 
-1. establish actual `ReflexiveConstraint` with both self-representation
-   dependence and severing bite, then connect the proven M25.5 participation
-   organizations to the unchanged HarmonicAlign/interface surfaces without
-   turning either into a chooser;
+1. connect the proven M25.5 participation organizations to the unchanged
+   HarmonicAlign/interface surfaces without turning either into a chooser or
+   allowing open participation to compensate for a failed inherited floor;
 2. complete recognition overlap/non-reconstruction and the inherited B1–B10
    bridge directions without adding a chooser or a second R/A/P surface;
 3. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same

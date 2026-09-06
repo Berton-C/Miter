@@ -341,14 +341,53 @@
            $consequence $changes (+ $i 1))))
      ()))
 
+; Reflexive constraint is admitted only as a conjunction of two independently
+; attributable premises: native M25.5 supplies the typed dependence law and
+; returned contact supplies the actual severing that changed Access.  The
+; witness is constructed against the participant-free next projection, so it
+; cannot use its own participant relation as a premise.
+(= (AR2M255ReflexiveParticipants $scope $cut $movement $next-cut
+      $consequence)
+   (let* (($witness (M255ReflexiveConstraintTransition $cut $movement
+            $next-cut $consequence))
+          ($consequence-id (index-atom $consequence 1)))
+     (if (M255ReflexiveConstraintTransitionValid $witness $cut $movement
+           $next-cut $consequence)
+       ((participant-contribution
+          (m255-reflexive-native-participation $consequence-id)
+          native-authority $scope
+          (lineage Inquiry-25.5-reflexive-constraint
+            (index-atom $movement 2))
+          (participant-relation-claim m255-reflexive-constraint-participation
+            support
+            (m255-self-representation-dependence-evidence
+              (index-atom $witness 4)))
+          supported no-contact-no-movement-authority)
+        (participant-contribution
+          (m255-reflexive-returned-participation $consequence-id)
+          returned-contact $scope
+          (lineage returned-consequence $consequence-id)
+          (participant-relation-claim m255-reflexive-constraint-participation
+            support
+            (m255-severing-bite-evidence
+              (returned-consequence-reference $consequence-id
+                (index-atom $consequence 2) (index-atom $consequence 4)
+                (index-atom $consequence 12))
+              (index-atom $witness 5)))
+          supported no-contact-no-movement-authority))
+       ())))
+
 (= (AR2M255ConsequenceParticipants $scope $cut $movement $next-cut
       $consequence)
    (let $changes (M255CrossCutChanges $cut $movement $next-cut $consequence)
      (CPListAppend
        (AR2M255ReorganizationParticipants $scope $cut $movement $next-cut
          $consequence)
-       (AR2M255ChangeParticipantsAt $scope $cut $movement $next-cut
-         $consequence $changes 0))))
+       (CPListAppend
+         (AR2M255ChangeParticipantsAt $scope $cut $movement $next-cut
+           $consequence $changes 0)
+         (AR2M255ReflexiveParticipants $scope $cut $movement $next-cut
+           $consequence)))))
 
 (= (AR2ReconstituteAfterConsequence $scope $cut $movement $consequence)
    (let* (($basis (AR2MovementBasis $movement))
