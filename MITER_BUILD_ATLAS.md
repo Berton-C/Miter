@@ -337,7 +337,7 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-17 | non-circular bridge from `𝒢` precursors to R/A/P | P | selected movement backfills its grounds |
 | M255-18 | open participation bridges into unchanged HarmonicAlign | E | openness rewrites alignment law |
 | M255-19 | B1–B10 retain ratified direction/scope | A | converse or wider scope is assumed |
-| M255-20 | overlapping recognition `Π` is non-reconstructive | P | recognitions are treated as exhaustive parts |
+| M255-20 | overlapping recognition `Π` is non-reconstructive | E | recognitions are treated as exhaustive parts |
 | M255-21 | finite heterogeneous manifestation suite MA–ME | P | renamed vocabularies are mistaken for complete heterogeneous dynamics |
 | M255-22 | N01–N25 falsifier surface | P | a partial negative surface is mistaken for the complete N01–N25 set |
 | M255-23 | MeTTa projection contract | P | host computation replaces native witness |
@@ -616,11 +616,34 @@ Already carried:
   and inherited-bridge paths remained total. Its checkpoint SHA-256 remained
   byte-identical across restart, with six consumed inputs, zero rejections,
   and one exactly-once local effect.
+- M25.5 recognition is now a constitutional nine-index partial-recognition
+  organization inside every valid primary carrier bridge before R/A/P. The
+  nine indices are exactly Gravity, Balance, Connection, Precision,
+  Effortlessness, Transformation, Love, Sacred, and Present; finite Fact9
+  support supplies cut-relative recognition values without turning the facts
+  present in one contact into the index vocabulary. One live contact supported
+  five simultaneous recognitions and ten pairwise overlaps of its one
+  occurrence. The organization carries no inverse to `Generated/𝒢`,
+  completeness, amalgamation, or movement authority. An independently
+  constructed loss-of-required-distinction cut retained the same recognition
+  profile while its formerly generated primary became explicitly unresolved,
+  providing a native non-reconstruction countermodel. Removing a
+  constitutional recognition, forging authority into a recognition row, and
+  supplying malformed recognition all failed explicitly. B9 now carries
+  lawful equivalence only to a non-amalgamation boundary; B10 carries partial
+  overlap only to non-reconstruction/non-sovereignty. Both are embedded in the
+  inherited movement-reading bundle after the single R/A/P read and neither
+  can construct that read or its movement. Through `bin/miter`, the current
+  source formed one constitutively consistent movement with one simultaneous
+  R/A/P read. Stop/start restored its exact checkpoint SHA-256
+  `cd9a70e819d92cf8e0ac491890c300d6372aee170b026316f27875649e301840`,
+  with one consumed input, zero rejections, and one exactly-once local effect.
+  All stimulus and audit material remained external to Git.
 
 Next movement:
 
-1. complete recognition overlap/non-reconstruction and the inherited B1–B10
-   bridge directions without adding a chooser or a second R/A/P surface;
+1. complete and explicitly audit the remaining inherited B1–B8 directions
+   without adding a chooser, global amalgamation, or a second R/A/P surface;
 2. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same
    primary movement, then continue the export map until all M24–M26.3 gaps
    have live consumers in this organism;

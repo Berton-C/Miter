@@ -487,7 +487,7 @@
 (= (M255MiterParticipationFromPrimary $primary)
    (if (CPShape $primary m25-primary-movement-v2 11)
      (let $bridge (index-atom $primary 10)
-       (if (CPShape $bridge primary-before-rap 4)
+       (if (CPShape $bridge primary-before-rap 5)
          (let $participation (index-atom $bridge 3)
            (if (CPShape $participation five-carrier-participation-v1 8)
              (index-atom $participation 4)

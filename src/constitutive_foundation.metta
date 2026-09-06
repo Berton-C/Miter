@@ -391,8 +391,9 @@
 
 (= (CPDistinctionAvailable $cut $id)
    (let $rows (CPFind (CPDDistinctions $cut) $id)
-     (and (== (size-atom $rows) 1)
-          (!= (index-atom (index-atom $rows 0) 2) unavailable))))
+     (if (== (size-atom $rows) 1)
+       (!= (index-atom (index-atom $rows 0) 2) unavailable)
+       false)))
 
 (= (CPAllDistinctions $cut $ids $i)
    (if (< $i (size-atom $ids))
@@ -401,8 +402,10 @@
 
 (= (CPInterfaceAvailable $cut $id)
    (let $rows (CPFind (CPInterfaces $cut) $id)
-     (and (== (size-atom $rows) 1)
-          (CPHas (index-atom (index-atom $rows 0) 2) (available open revisable) 0))))
+     (if (== (size-atom $rows) 1)
+       (CPHas (index-atom (index-atom $rows 0) 2)
+         (available open revisable) 0)
+       false)))
 
 (= (CPInterfaceKnown $cut $id)
    (let $rows (CPFind (CPInterfaces $cut) $id)

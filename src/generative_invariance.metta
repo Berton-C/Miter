@@ -7,12 +7,259 @@
      (and (CPHas (index-atom $xs $i) $ys 0)
           (M255AllIn $xs $ys (+ $i 1))) true))
 
+(= (M255Fact9RecognitionIndices)
+   (Gravity Balance Connection Precision Effortlessness Transformation Love
+     Sacred Present))
+
+(= (M255FirstEightRecognitionIndicesValidAt $indices $i)
+   (if (< $i 8)
+     (and (CPFirstEight (index-atom $indices $i))
+          (M255FirstEightRecognitionIndicesValidAt $indices (+ $i 1)))
+     true))
+
+(= (M255Fact9RecognitionIndicesValid $indices)
+   (if (== $indices (M255Fact9RecognitionIndices))
+     (and (CPUniq $indices 0 ())
+      (and (M255FirstEightRecognitionIndicesValidAt $indices 0)
+           (CPPresent (index-atom $indices 8))))
+     false))
+
+; RecIdx is the constitutional nine-role vocabulary, not the IDs of whichever
+; finite fact views happen to be present in one contact. PartialRec below
+; supplies the cut-relative recognition values separately.
 (= (M255RecognitionIdsAt $facts $i)
+   (let $indices (M255Fact9RecognitionIndices)
+     (if (< $i (size-atom $indices))
+       (cons-atom (index-atom $indices $i)
+         (M255RecognitionIdsAt $facts (+ $i 1))) ())))
+
+(= (M255RecognizedFactBasesAt $facts $index $i)
    (if (< $i (size-atom $facts))
      (let $fact (index-atom $facts $i)
-       (cons-atom (if (CPShape $fact fact9-expression 10)
-                    (index-atom $fact 1) unrecognized-fact-expression)
-         (M255RecognitionIdsAt $facts (+ $i 1)))) ()))
+       (if (CPShape $fact fact9-expression 10)
+         (if (and (CPHas $index (index-atom $fact 2) 0)
+                  (== (index-atom $fact 6)
+                    (composition can-compose recognized-compose)))
+           (cons-atom
+             (recognized-fact-basis (index-atom $fact 1)
+               (index-atom $fact 2) (index-atom $fact 5)
+               (index-atom $fact 9))
+             (M255RecognizedFactBasesAt $facts $index (+ $i 1)))
+           (M255RecognizedFactBasesAt $facts $index (+ $i 1)))
+         (M255RecognizedFactBasesAt $facts $index (+ $i 1))))
+     ()))
+
+(= (M255PartialRecognitionValue $cut $facts $index)
+   (if (== $index Present)
+     (if (and (CPCutValid $cut) (CPPresent Present))
+       (some (present-context-basis (index-atom $cut 11)
+         (same-becoming (index-atom $cut 5) (index-atom $cut 1))))
+       (none no-current-present-context))
+     (if (CPFirstEight $index)
+       (let $bases (M255RecognizedFactBasesAt $facts $index 0)
+         (if (> (size-atom $bases) 0)
+           (some (recognized-fact-bases $bases))
+           (none no-current-recognition)))
+       (none unknown-fact9-index))))
+
+(= (M255PartialRecognition $cut $facts $index)
+   (m255-partial-recognition-v1 $index (index-atom $cut 5)
+     (M255PartialRecognitionValue $cut $facts $index)
+     (source-cut (index-atom $cut 1))
+     (provenance Inquiry-25.5-from-Inquiry-26.3 finite-contact-reading)
+     no-generated-completeness-amalgamation-or-movement-authority))
+
+(= (M255PartialRecognitionsAt $cut $facts $indices $i)
+   (if (< $i (size-atom $indices))
+     (cons-atom (M255PartialRecognition $cut $facts
+                  (index-atom $indices $i))
+       (M255PartialRecognitionsAt $cut $facts $indices (+ $i 1)))
+     ()))
+
+(= (M255RecognitionFamily $cut $facts)
+   (let* (($indices (M255Fact9RecognitionIndices))
+          ($rows (M255PartialRecognitionsAt $cut $facts $indices 0)))
+     (m255-recognition-family-v1 (index-atom $cut 5)
+       (recognition-indices $indices) (partial-recognitions $rows)
+       nine-index-recognition overlapping-recognition-permitted
+       finite-partial-not-completeness-proof
+       no-inverse-to-generated-or-movement)))
+
+(= (M255PartialRecognitionRowsValidAt $rows $indices $occurrence
+      $source-cut $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (CPShape $row m255-partial-recognition-v1 7)
+         (let* (($index-valid
+                  (== (index-atom $row 1) (index-atom $indices $i)))
+                ($occurrence-valid
+                  (== (index-atom $row 2) $occurrence))
+                ($value-valid
+                  (or (CPShape (index-atom $row 3) some 2)
+                      (CPShape (index-atom $row 3) none 2)))
+                ($cut-valid
+                  (== (index-atom $row 4) (source-cut $source-cut)))
+                ($provenance-valid
+                  (== (index-atom $row 5)
+                    (provenance Inquiry-25.5-from-Inquiry-26.3
+                      finite-contact-reading)))
+                ($authority-valid
+                  (== (index-atom $row 6)
+                    no-generated-completeness-amalgamation-or-movement-authority))
+                ($remaining-valid
+                  (M255PartialRecognitionRowsValidAt $rows $indices
+                    $occurrence $source-cut (+ $i 1))))
+           (and $index-valid
+            (and $occurrence-valid
+             (and $value-valid
+              (and $cut-valid
+               (and $provenance-valid
+                (and $authority-valid $remaining-valid)))))))
+         false))
+     true))
+
+(= (M255RecognitionFamilyMarkersValid $family)
+   (and (== (index-atom $family 4) nine-index-recognition)
+    (and (== (index-atom $family 5) overlapping-recognition-permitted)
+     (and (== (index-atom $family 6)
+            finite-partial-not-completeness-proof)
+          (== (index-atom $family 7)
+            no-inverse-to-generated-or-movement)))))
+
+(= (M255RecognitionFamilyRowsValid $family $indices $rows)
+   (if (M255Fact9RecognitionIndicesValid $indices)
+     (if (== (size-atom $rows) 9)
+       (let $first (index-atom $rows 0)
+         (if (CPShape $first m255-partial-recognition-v1 7)
+           (let $source-wrapper (index-atom $first 4)
+             (if (CPShape $source-wrapper source-cut 2)
+               (and (M255PartialRecognitionRowsValidAt $rows $indices
+                      (index-atom $family 1)
+                      (index-atom $source-wrapper 1) 0)
+                    (M255RecognitionFamilyMarkersValid $family))
+               false))
+           false))
+       false)
+     false))
+
+(= (M255RecognitionFamilyStructuralValid $family)
+   (if (CPShape $family m255-recognition-family-v1 8)
+     (let* (($indices-wrapper (index-atom $family 2))
+            ($rows-wrapper (index-atom $family 3)))
+       (if (CPShape $indices-wrapper recognition-indices 2)
+         (if (CPShape $rows-wrapper partial-recognitions 2)
+           (let* (($indices (index-atom $indices-wrapper 1))
+                  ($rows (index-atom $rows-wrapper 1)))
+             (M255RecognitionFamilyRowsValid $family $indices $rows))
+           false)
+         false))
+     false))
+
+(= (M255RecognitionFamilyValid $family $cut $facts)
+   (if (M255RecognitionFamilyStructuralValid $family)
+     (== $family (M255RecognitionFamily $cut $facts))
+     false))
+
+(= (M255PartialRecognitionPresent $row)
+   (if (CPShape $row m255-partial-recognition-v1 7)
+     (CPShape (index-atom $row 3) some 2) false))
+
+(= (M255RecognitionOverlapsAtJ $rows $i $j)
+   (if (< $j (size-atom $rows))
+     (let* (($left (index-atom $rows $i))
+            ($right (index-atom $rows $j)))
+       (if (and (M255PartialRecognitionPresent $left)
+             (and (M255PartialRecognitionPresent $right)
+              (and (!= (index-atom $left 1) (index-atom $right 1))
+                   (== (index-atom $left 2) (index-atom $right 2)))))
+         (cons-atom
+           (m255-recognition-overlap-v1 (index-atom $left 1)
+             (index-atom $right 1) (index-atom $left 2)
+             (left-recognition (index-atom $left 3))
+             (right-recognition (index-atom $right 3))
+             common-occurrence-without-amalgamation-or-sovereignty)
+           (M255RecognitionOverlapsAtJ $rows $i (+ $j 1)))
+         (M255RecognitionOverlapsAtJ $rows $i (+ $j 1))))
+     ()))
+
+(= (M255RecognitionOverlapsAtI $rows $i)
+   (if (< (+ $i 1) (size-atom $rows))
+     (CPListAppend (M255RecognitionOverlapsAtJ $rows $i (+ $i 1))
+       (M255RecognitionOverlapsAtI $rows (+ $i 1)))
+     ()))
+
+(= (M255RecognitionProfileAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (cons-atom (recognition-value (index-atom $row 1)
+                    (index-atom $row 3))
+         (M255RecognitionProfileAt $rows (+ $i 1))))
+     ()))
+
+(= (M255RecognitionProfile $family)
+   (if (CPShape $family m255-recognition-family-v1 8)
+     (let $rows-wrapper (index-atom $family 3)
+       (if (CPShape $rows-wrapper partial-recognitions 2)
+         (recognition-profile
+           (M255RecognitionProfileAt (index-atom $rows-wrapper 1) 0))
+         (recognition-profile-unresolved malformed-recognition-family)))
+     (recognition-profile-unresolved malformed-recognition-family)))
+
+(= (M255RecognitionOrganization $cut $facts)
+   (let* (($family (M255RecognitionFamily $cut $facts))
+          ($rows (index-atom (index-atom $family 3) 1))
+          ($overlaps (M255RecognitionOverlapsAtI $rows 0)))
+     (m255-recognition-organization-v1 $family
+       (recognition-overlaps $overlaps)
+       (recognition-profile (M255RecognitionProfile $family))
+       overlap-does-not-imply-exhaustion-or-global-view
+       recognition-does-not-construct-generated-or-movement)))
+
+(= (M255RecognitionOrganizationStructuralValid $organization)
+   (if (CPShape $organization m255-recognition-organization-v1 6)
+     (let $family (index-atom $organization 1)
+       (if (M255RecognitionFamilyStructuralValid $family)
+         (let* (($rows-wrapper (index-atom $family 3))
+                ($rows (index-atom $rows-wrapper 1)))
+           (and (== (index-atom $organization 2)
+                  (recognition-overlaps
+                    (M255RecognitionOverlapsAtI $rows 0)))
+            (and (== (index-atom $organization 3)
+                   (recognition-profile (M255RecognitionProfile $family)))
+             (and (== (index-atom $organization 4)
+                    overlap-does-not-imply-exhaustion-or-global-view)
+                  (== (index-atom $organization 5)
+                    recognition-does-not-construct-generated-or-movement)))))
+         false))
+     false))
+
+(= (M255RecognitionOrganizationValid $organization $cut $facts)
+   (if (M255RecognitionOrganizationStructuralValid $organization)
+     (== $organization (M255RecognitionOrganization $cut $facts))
+     false))
+
+; This finite countermodel form is used only with independently constructed
+; valid/invalid Generated witnesses. Equal recognition profiles can therefore
+; witness non-invertibility; the relation itself cannot create either status.
+(= (M255RecognitionNonReconstructionCountermodel $family-a $generated-a
+      $family-b $generated-b)
+   (if (M255RecognitionFamilyStructuralValid $family-a)
+     (if (M255RecognitionFamilyStructuralValid $family-b)
+       (if (and (== (M255RecognitionProfile $family-a)
+                     (M255RecognitionProfile $family-b))
+             (and (CPShape $generated-a generated-v1 7)
+                  (CPShape $generated-b m255-generated-unresolved 2)))
+         (m255-recognition-nonreconstruction-countermodel-v1
+           (M255RecognitionProfile $family-a)
+           (generated-standing generated) (generated-standing unresolved)
+           same-recognition-profile-different-generated-standing
+           no-inverse-no-completeness-no-movement-authority)
+         (m255-recognition-nonreconstruction-unresolved
+           missing-equal-profile-or-differentiated-generated-standing))
+       (m255-recognition-nonreconstruction-unresolved
+         malformed-second-recognition-family))
+     (m255-recognition-nonreconstruction-unresolved
+       malformed-first-recognition-family)))
 
 (= (M255GenSig $carrier $move-type $cut $facts $possibility)
    (gen-sig-v1
@@ -616,36 +863,72 @@
           (and (CPShape $flourishing flourishing-organization 3)
                (== (size-atom (index-atom $flourishing 2)) 9))))))))))
 
-(= (M255PrimaryCarrierBridge $cut $facts $flourishing $possibility)
+(= (M255PrimaryCarrierBridgeAfterGenerated $cut $facts $flourishing
+      $possibility $source $target $source-generated $target-generated)
+   (let* (($equivalence (M255GenEquivV2 $source $target
+            $source-generated $target-generated))
+          ($suite (M255FiveCarrierSuite $cut $facts $possibility))
+          ($participation (M255FiveCarrierParticipationSuite $suite
+            $possibility))
+          ($recognition (M255RecognitionOrganization $cut $facts)))
+     (if (M255FiveCarrierSuiteReady $suite $cut $facts $flourishing
+           $possibility)
+       (if (M255FiveCarrierParticipationSuiteValid $participation $suite
+             $possibility)
+         (if (M255RecognitionOrganizationValid $recognition $cut $facts)
+           (primary-before-rap $equivalence $suite $participation
+             $recognition)
+           (primary-before-rap-unresolved invalid-recognition-organization))
+         (primary-before-rap-unresolved invalid-participation-suite))
+       (primary-before-rap-unresolved invalid-five-carrier-suite))))
+
+(= (M255PrimaryCarrierBridgeReady $cut $facts $flourishing $possibility)
    (let* (($source (M255GenSig miter-native-possibility possible-movement
                     $cut $facts $possibility))
           ($target (M255GenSig miter-primary-movement
                     m25-primary-movement-v2 $cut $facts $possibility))
           ($source-generated (M255GeneratedWitness $source $possibility))
-          ($target-generated (M255GeneratedWitness $target $possibility))
-          ($equivalence (M255GenEquivV2 $source $target
-            $source-generated $target-generated))
-          ($suite (M255FiveCarrierSuite $cut $facts $possibility))
-          ($participation (M255FiveCarrierParticipationSuite $suite
-            $possibility)))
-     (if (and (M255GeneratedWitnessValid $source-generated $source
-                miter-native-possibility possible-movement $cut $facts
-                $flourishing $possibility)
-          (and (M255GeneratedWitnessValid $target-generated $target
-                 miter-primary-movement m25-primary-movement-v2 $cut $facts
-                 $flourishing $possibility)
-           (and (M255FiveCarrierSuiteReady $suite $cut $facts $flourishing
-                  $possibility)
-                (M255FiveCarrierParticipationSuiteValid $participation $suite
-                  $possibility))))
-       (primary-before-rap $equivalence $suite $participation)
-       (primary-before-rap-unresolved missing-generated-signature))))
+          ($target-generated (M255GeneratedWitness $target $possibility)))
+     (if (M255GeneratedWitnessValid $source-generated $source
+           miter-native-possibility possible-movement $cut $facts
+           $flourishing $possibility)
+       (if (M255GeneratedWitnessValid $target-generated $target
+             miter-primary-movement m25-primary-movement-v2 $cut $facts
+             $flourishing $possibility)
+         (M255PrimaryCarrierBridgeAfterGenerated $cut $facts $flourishing
+           $possibility $source $target $source-generated $target-generated)
+         (primary-before-rap-unresolved invalid-target-generated))
+       (primary-before-rap-unresolved invalid-source-generated))))
+
+; The constructor is total across material failure. Failed contact floors are
+; explicit unresolved standings and do not enter the heavier carrier suite or
+; get repaired by recognition, equivalence, or open participation.
+(= (M255PrimaryCarrierBridge $cut $facts $flourishing $possibility)
+   (if (CPShape $possibility possible-movement 9)
+     (if (CPRelationsReady $cut $facts (index-atom $possibility 3))
+       (if (CPDistinctionsReady $cut (index-atom $possibility 4))
+         (if (M255InterfacesFitMovement $cut $possibility)
+           (if (CPConsequenceReady (index-atom $possibility 7))
+             (if (== (index-atom $possibility 8) l2425-supported)
+               (if (and (CPShape $flourishing flourishing-organization 3)
+                        (== (size-atom (index-atom $flourishing 2)) 9))
+                 (M255PrimaryCarrierBridgeReady $cut $facts $flourishing
+                   $possibility)
+                 (primary-before-rap-unresolved
+                   incomplete-flourishing-organization))
+               (primary-before-rap-unresolved missing-l2425))
+             (primary-before-rap-unresolved missing-consequence-openness))
+           (primary-before-rap-unresolved missing-fitting-interface))
+         (primary-before-rap-unresolved missing-material-distinction))
+       (primary-before-rap-unresolved missing-material-relation))
+     (primary-before-rap-unresolved malformed-possibility)))
 
 (= (M255PrimaryCarrierBridgeValid $bridge $possibility)
-   (if (CPShape $bridge primary-before-rap 4)
+   (if (CPShape $bridge primary-before-rap 5)
      (let* (($equivalence (index-atom $bridge 1))
             ($suite (index-atom $bridge 2))
             ($participation (index-atom $bridge 3))
+            ($recognition (index-atom $bridge 4))
             ($source (if (CPShape $equivalence gen-equiv-v2 5)
               (index-atom $equivalence 1) ()))
             ($target (if (CPShape $equivalence gen-equiv-v2 5)
@@ -664,5 +947,7 @@
                     (move-vocabulary (index-atom $possibility 1)
                       (index-atom $possibility 2)))
               (and (M255FiveCarrierSuiteStructuralValid $suite $possibility)
-                   (M255FiveCarrierParticipationSuiteValid $participation
-                     $suite $possibility)))))))))) false))
+               (and (M255FiveCarrierParticipationSuiteValid $participation
+                      $suite $possibility)
+                    (M255RecognitionOrganizationStructuralValid
+                      $recognition))))))))))) false))

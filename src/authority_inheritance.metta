@@ -1524,7 +1524,7 @@
 (= (M255OpenParticipationFromValidPrimary $primary $cut)
    (let* (($possibility (index-atom $primary 9))
           ($bridge (index-atom $primary 10))
-          ($suite (if (CPShape $bridge primary-before-rap 4)
+          ($suite (if (CPShape $bridge primary-before-rap 5)
             (index-atom $bridge 2) ()))
           ($miter-bundle (if (CPShape $suite five-carrier-connected-suite-v1 10)
             (index-atom $suite 4) ()))
@@ -1876,18 +1876,95 @@
 (= (M25Orientation $primary $developmental)
    (M25OrientationFromBasis (M25TrajectoryBasis $primary $developmental)))
 
+(= (M255FactExpressionsFromPrimary $primary)
+   (if (CPShape $primary m25-primary-movement-v2 11)
+     (let* (($balance (index-atom $primary 5))
+            ($joint (if (CPShape $balance balance-unfolding-as-intelligence 5)
+              (index-atom $balance 2) ()))
+            ($bridge (if (CPShape $joint
+                       fact9-flourishing-constitutive-joint 2)
+              (index-atom $joint 1) ()))
+            ($facts-wrapper (if (CPShape $bridge bridge-organization 13)
+              (index-atom $bridge 4) ())))
+       (if (CPShape $facts-wrapper fact9-expressions 2)
+         (index-atom $facts-wrapper 1) ()))
+     ()))
+
+; B9 preserves the direction from lawful bounded structural equivalence to a
+; non-amalgamation boundary. It never asserts carrier identity, co-reference,
+; SameBecoming, global gluing, or a common master representation.
+(= (M255EquivalenceNonAmalgamationBridge $primary $cut)
+   (let* (($carrier-bridge (index-atom $primary 10))
+          ($equivalence (if (CPShape $carrier-bridge primary-before-rap 5)
+            (index-atom $carrier-bridge 1) ()))
+          ($recognition (if (CPShape $carrier-bridge primary-before-rap 5)
+            (index-atom $carrier-bridge 4) ()))
+          ($facts (M255FactExpressionsFromPrimary $primary)))
+     (if (and (M25PrimaryMovementValid $primary)
+          (and (M255CrossCarrierEquivV2Valid $equivalence)
+               (M255RecognitionOrganizationValid $recognition $cut $facts)))
+       (m255-equivalence-nonamalgamation-bridge-v1
+         (index-atom $primary 1) $equivalence
+         (bounded-recognition-organization $recognition)
+         structural-equivalence-without-carrier-identity
+         no-co-reference-same-becoming-or-global-amalgamation
+         derived-boundary-no-movement-authority)
+       (m255-equivalence-nonamalgamation-bridge-unresolved
+         invalid-equivalence-or-recognition-organization))))
+
+(= (M255EquivalenceNonAmalgamationBridgeValid $bridge $primary $cut)
+   (if (CPShape $bridge m255-equivalence-nonamalgamation-bridge-v1 7)
+     (== $bridge (M255EquivalenceNonAmalgamationBridge $primary $cut))
+     false))
+
+; B10 begins before R/A/P in the primary carrier. This downstream reference
+; exposes the already-formed nine-index partial-recognition organization and
+; its actual overlap standing, while preserving the ratified one-way boundary:
+; recognition can neither reconstruct Generated nor certify completeness or
+; construct a movement.
+(= (M255RecognitionNonReconstructionBridge $primary $cut)
+   (let* (($carrier-bridge (index-atom $primary 10))
+          ($recognition (if (CPShape $carrier-bridge primary-before-rap 5)
+            (index-atom $carrier-bridge 4) ()))
+          ($facts (M255FactExpressionsFromPrimary $primary))
+          ($overlaps-wrapper (if (CPShape $recognition
+                               m255-recognition-organization-v1 6)
+            (index-atom $recognition 2) (recognition-overlaps ())))
+          ($overlaps (if (CPShape $overlaps-wrapper recognition-overlaps 2)
+            (index-atom $overlaps-wrapper 1) ())))
+     (if (and (M25PrimaryMovementValid $primary)
+              (M255RecognitionOrganizationValid $recognition $cut $facts))
+       (m255-recognition-nonreconstruction-bridge-v1
+         (index-atom $primary 1) $recognition
+         (overlap-standing
+           (if (> (size-atom $overlaps) 0) observed not-observed-at-this-cut)
+           $overlaps)
+         nine-partial-perspectives-of-one-occurrence
+         no-inverse-no-exhaustion-no-amalgamation
+         no-generated-or-movement-authority)
+       (m255-recognition-nonreconstruction-bridge-unresolved
+         invalid-primary-or-recognition-organization))))
+
+(= (M255RecognitionNonReconstructionBridgeValid $bridge $primary $cut)
+   (if (CPShape $bridge m255-recognition-nonreconstruction-bridge-v1 7)
+     (== $bridge (M255RecognitionNonReconstructionBridge $primary $cut))
+     false))
+
 (= (M255InheritedSurfaceBridges $primary $cut $rap $alignment $interface)
-   (m255-inherited-surface-bridges-v1
+   (m255-inherited-surface-bridges-v2
      (M255HarmonicAlignmentBridge $primary $cut $rap $alignment)
      (M255InterfaceEvolutionBridge $primary $cut $interface)
+     (M255EquivalenceNonAmalgamationBridge $primary $cut)
+     (M255RecognitionNonReconstructionBridge $primary $cut)
      m255-to-m25-only
      derived-relations-no-movement-authority))
 
 (= (M255InheritedSurfaceBridgesValid $bridges $primary $cut $rap
       $alignment $interface)
-   (and (CPShape $bridges m255-inherited-surface-bridges-v1 5)
-        (== $bridges (M255InheritedSurfaceBridges $primary $cut $rap
-          $alignment $interface))))
+   (if (CPShape $bridges m255-inherited-surface-bridges-v2 7)
+     (== $bridges (M255InheritedSurfaceBridges $primary $cut $rap
+       $alignment $interface))
+     false))
 
 (= (M25MovementReading $primary $cut $developmental)
    (let* (($rap (M25RAPReadings $primary $cut $developmental))
