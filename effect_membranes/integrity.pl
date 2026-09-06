@@ -17,6 +17,7 @@ miter_integrity_sources([
  'src/m25_completion.metta',
  'src/m255_completion.metta',
  'src/fact9_composition.metta',
+ 'src/provisional_dynamics.metta',
  'src/constitutive_authority_joint.metta','effect_membranes/integrity.pl']).
 miter_integrity_snapshot(Output, Result) :-
  catch((miter_integrity_measure(D), miter_integrity_write(Output,D)

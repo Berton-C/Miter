@@ -428,7 +428,9 @@
           ($transition (M24DevelopmentalTransition $prior $probe-basis
             $consequence $scope $base-next-cut))
           ($m255-participants (AR2M255ConsequenceParticipants $scope $cut
-            $movement $base-next-cut $consequence)))
+            $movement $base-next-cut $consequence))
+          ($c3-participants (C3ConsequenceParticipants $scope $cut $movement
+            $prior $consequence)))
      (if (and (or (CPShape $basis continuation-basis-v2 5)
                   (CPShape $basis continuation-basis-v3 6))
            (and (M24DevelopmentalTransitionValid $transition)
@@ -439,7 +441,7 @@
               ($participant-source (CPListAppend (index-atom $basis 3)
                 (CPListAppend
                   (AR2ConsequenceParticipants $scope $evolved $consequence)
-                  $m255-participants)))
+                  (CPListAppend $m255-participants $c3-participants))))
               ($next (M25ConstitutiveEncounter $base-next-cut
                 (index-atom $basis 1) $flourishing-views $participant-source
                 (index-atom (index-atom $basis 4) 1) $evolved)))

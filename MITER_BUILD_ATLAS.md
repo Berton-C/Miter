@@ -212,6 +212,20 @@ reorganizations, preserves the relations already aligned, encounters returned
 consequence, and changes later possibility formation without a new behavioral
 branch or scalar optimizer.
 
+When native relations do not yet disclose a sufficiently grounded
+continuation, that same partial opening may cause the Soul to compose a bounded
+semantic question for an authorized model such as GLM 5.3. The question must
+name the one contact/movement surface, the material already aligned, the
+unresolved R/A/P perspective, the relevant Fact9/flourishing organization, and
+the exact uncertainty Miter has chosen to explore. The model participates as a
+non-sovereign thought partner: its returned readings widen the possibility
+field but remain typed, provenance-bearing candidates. The model cannot define
+alignment, choose or certify a movement, mutate the Soul, or turn its own
+fluency into evidence. Native MeTTa must compare, join, defer, decline, or
+select among those candidates through the complete constitutive joint, and
+only returned consequence may earn a developmental change that survives
+restart.
+
 ### C4 — Usable always-on assistant and evaluation release
 
 Connect general Mattermost contact, model participation, VoiceRNA, durable
@@ -837,15 +851,46 @@ Already carried:
   foundation in C2. It does not claim the provisional 26.6/26.9 laboratory
   dynamics that C3 must now discover. All stimuli and verification material
   remained outside Git.
+- The first C3 laboratory cut now treats partial R/A/P standing as generative
+  inside that same movement path. Each retained M25 reading is represented as
+  one contact/movement configuration with three simultaneous perspectives;
+  aligned perspectives are preserved while unresolved perspectives remain
+  explicit openings. A material consequence tied to the exact formed movement
+  produces two independently attributable participation lineages—native
+  provisional interpretation and returned contact—which form one supported
+  `c3-partial-rap-reorganization` relation before the next cut. That relation
+  replaces the generic inquiry with one `c3-developmental-inquiry` whose route
+  names the returned consequence and all nine flourishing requirements; the
+  undertaking and defer alternatives remain live, so this is not a
+  first-match selector. Native checks found three exact retained readings and
+  two partial openings, rejected a wrong movement reference and a return with
+  no material change, and found no learned possibility before consequence.
+  Through the supported persistent cycle, the unfamiliar contact and exact
+  consequence were consumed once, duplicate consequence submission was
+  rejected, and the resulting 19,093,439-byte checkpoint contained exactly
+  one supported relation and one learned inquiry. Restart preserved checkpoint
+  SHA-256
+  `bb9f2a0286a1dada3383c0efdf197132d3e528d3ceca5d260dfa06e96022a6c1`
+  and the sole compact effect SHA-256
+  `4944321d733ce09ff4996dd9ff7404e273c17cc300dc5adab63a617158144183`
+  byte-for-byte with no replay. Recursive proof copying discovered during the
+  trial was replaced by compact exact references before admission. This
+  establishes native partial-alignment generativity, not yet model-assisted
+  exploration, consequence-earned learning from a chosen candidate, or the
+  full C3 closure.
 
 Next movement:
 
-1. build the first C3 unfamiliar-contact laboratory in the same runtime:
-   partial R/A/P alignment must expose generative possibility, preserve what
-   is already aligned, form materially different lawful reorganizations, and
-   let returned consequence change later possibility formation without a
-   behavior branch, scalar optimizer, or LLM sovereignty;
-2. only after explicit human acceptance of the complete clean candidate,
+1. connect one bounded Soul-authored GLM 5.3 thought-partner query to that
+   same partial-alignment opening; preserve
+   the model result as a non-authoritative candidate, require native
+   constitutive comparison before movement, and admit learning only through
+   later consequence;
+2. prove with differentiated returned candidates and consequences that model
+   participation widens Miter's possibility field but cannot define R/A/P
+   alignment, select itself, self-certify, or create persistent growth without
+   consequence;
+3. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

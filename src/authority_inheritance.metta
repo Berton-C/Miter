@@ -3097,6 +3097,11 @@
            (m25-primary-alternatives $admissible)
            (retained-alternatives-v3 $readings no-single-continuation-basis))))))
 
+; C3's provisional dynamics extend this already-complete M24-M26.3 native
+; namespace. Loading here makes the generative refinement visible at the exact
+; possibility-formation seam without introducing another runtime.
+!(import! &self "./src/provisional_dynamics.metta")
+
 (= (M25ConstitutiveEncounter $cut $fact-views $flourishing-views
       $participant-source $payload-ref $developmental)
    (let* (($facts (CPFactExpressionsAt $cut $fact-views 0))
@@ -3109,7 +3114,7 @@
           ($revised-cut (CPApplyParticipantRelations $cut $participant-relations))
           ($bridge (CPBridgeOrganizationV2 $revised-cut $facts $flourishing
             $participants $participant-relations))
-          ($possibilities (CPNativePossibilitiesV2 $revised-cut $facts
+          ($possibilities (C3NativePossibilities $revised-cut $facts
             $flourishing $participant-relations))
           ($primaries (M25PrimaryAt $possibilities $revised-cut $facts
             $flourishing $participant-relations $bridge $fact-views
