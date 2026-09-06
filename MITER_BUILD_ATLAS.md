@@ -335,7 +335,7 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-15 | `Maintenance` preserves generative organization under lawful transport | E | repetition alone proves maintenance |
 | M255-16 | `Degradation` loses prior continuation structure under the same law | E | lower score alone proves degradation |
 | M255-17 | non-circular bridge from `𝒢` precursors to R/A/P | P | selected movement backfills its grounds |
-| M255-18 | open participation bridges into unchanged HarmonicAlign | P | openness rewrites alignment law |
+| M255-18 | open participation bridges into unchanged HarmonicAlign | E | openness rewrites alignment law |
 | M255-19 | B1–B10 retain ratified direction/scope | A | converse or wider scope is assumed |
 | M255-20 | overlapping recognition `Π` is non-reconstructive | P | recognitions are treated as exhaustive parts |
 | M255-21 | finite heterogeneous manifestation suite MA–ME | P | renamed vocabularies are mistaken for complete heterogeneous dynamics |
@@ -590,18 +590,41 @@ Already carried:
   inputs were consumed, none was rejected, and the one prior effect remained
   exactly once without replay. Stimulus and audit material remained external
   to Git.
+- M25.5 open participation now enters the inherited M25 surfaces without
+  becoming a chooser. The witness is reconstructed from the exact primary
+  carrier bridge and retains `Generated`, R*, A*, P*, O*, L2425, unobstructed
+  standing, and derived read-only Access as distinct constituents. Its
+  one-way HarmonicAlign bridge can form only after the unchanged M25 R/A/P
+  read, material Relatedness and Precision floors, and derived harmonic
+  witness have independently succeeded. Removing one required relation from
+  the cut left M25.5 participation open but made the M25 floor, harmonic
+  witness, and bridge fail, demonstrating that openness cannot compensate for
+  inherited material inadequacy. A separate one-way interface bridge forms
+  only from the actual two-lineage M25.5 disclosure relation at the current
+  cut; it records unavailable-to-available InterfaceChange without creating a
+  possibility, authorizing a capability, or constructing movement. Through
+  `bin/miter`, one contact followed by actual interface severance and
+  reintroduction produced one primary movement with one simultaneous R/A/P
+  read, both valid inherited bridges, and a constitutively consistent active
+  movement. Stop/start restored the byte-identical checkpoint, all three
+  consumed inputs, and the sole prior effect exactly once without replay. All
+  stimulus and audit material remained external to Git. Replaying the complete
+  six-cut sequence after this bridge was connected also preserved all four
+  M25.5 change categories. Required-distinction loss produced thirty explicit
+  candidate readings, zero admissible primaries, and an explicit unresolved
+  movement rather than a vanished reduction; the invalid open-participation
+  and inherited-bridge paths remained total. Its checkpoint SHA-256 remained
+  byte-identical across restart, with six consumed inputs, zero rejections,
+  and one exactly-once local effect.
 
 Next movement:
 
-1. connect the proven M25.5 participation organizations to the unchanged
-   HarmonicAlign/interface surfaces without turning either into a chooser or
-   allowing open participation to compensate for a failed inherited floor;
-2. complete recognition overlap/non-reconstruction and the inherited B1–B10
+1. complete recognition overlap/non-reconstruction and the inherited B1–B10
    bridge directions without adding a chooser or a second R/A/P surface;
-3. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same
+2. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same
    primary movement, then continue the export map until all M24–M26.3 gaps
    have live consumers in this organism;
-4. only after explicit human acceptance of the complete clean candidate,
+3. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

@@ -1481,6 +1481,92 @@
            (and $precision-valid
             (and $standing-valid $discipline-valid))))))) false))
 
+; M25.5 open participation is reconstructed from the exact primary carrier
+; bridge and the current cut. It is not a positive label: R*/A*/P*/O* and
+; L2425 remain separate precursor witnesses, Generated remains separate from
+; Access, and unobstructed standing is a derived view of the live carrier.
+(= (M255TargetGeneratedFromPrimary $primary)
+   (if (M25PrimaryMovementValid $primary)
+     (let* (($bridge (index-atom $primary 10))
+            ($equivalence (index-atom $bridge 1))
+            ($translation (index-atom $equivalence 3)))
+       (if (M255GenTranslationValid $translation)
+         (index-atom $translation 4)
+         (m255-generated-unresolved invalid-primary-translation)))
+     (m255-generated-unresolved invalid-primary)))
+
+(= (M255OpenParticipationGrounded $primary $cut $possibility $bridge
+      $miter-bundle $profile $force $one-engine $open-access $generated)
+   (if (M25PrimaryMovementValid $primary)
+     (if (CPCutValid $cut)
+       (if (== (index-atom $primary 3) (source-cut (index-atom $cut 1)))
+         (if (M255PrimaryCarrierBridgeValid $bridge $possibility)
+           (if (CPShape $miter-bundle manifestation-carrier-v1 6)
+             (if (CPShape $profile carrier-participation-v1 8)
+               (if (M255ForceSupportOrganizationValid $force $miter-bundle)
+                 (if (M255OneEngineParticipationValid $one-engine
+                       $miter-bundle $force)
+                   (if (M255AccessViewValid $open-access $miter-bundle $force)
+                     (if (M255GeneratedWitnessStructuralValid $generated
+                           (index-atom $generated 1))
+                       (== (M255ResultingDisposition $cut) open)
+                       false)
+                     false)
+                   false)
+                 false)
+               false)
+             false)
+           false)
+         false)
+       false)
+     false))
+
+(= (M255OpenParticipationFromValidPrimary $primary $cut)
+   (let* (($possibility (index-atom $primary 9))
+          ($bridge (index-atom $primary 10))
+          ($suite (if (CPShape $bridge primary-before-rap 4)
+            (index-atom $bridge 2) ()))
+          ($miter-bundle (if (CPShape $suite five-carrier-connected-suite-v1 10)
+            (index-atom $suite 4) ()))
+          ($profile (M255MiterParticipationFromPrimary $primary))
+          ($force (if (CPShape $profile carrier-participation-v1 8)
+            (index-atom $profile 3) ()))
+          ($one-engine (if (CPShape $profile carrier-participation-v1 8)
+            (index-atom $profile 4) ()))
+          ($open-access (if (CPShape $one-engine one-engine-participation-v1 9)
+            (index-atom $one-engine 5) ()))
+          ($generated (M255TargetGeneratedFromPrimary $primary)))
+     (if (M255OpenParticipationGrounded $primary $cut $possibility $bridge
+           $miter-bundle $profile $force $one-engine $open-access $generated)
+       (m255-open-participation-v1 (index-atom $primary 1)
+         (source-cut (index-atom $cut 1))
+         (generated $generated)
+         (r-star (index-atom $generated 2))
+         (a-star (index-atom $generated 3))
+         (p-star (index-atom $generated 4))
+         (unobstructed (actual-participation-disposition open)
+           no-demonstrated-disqualifying-force-obligation)
+         (o-star (index-atom $generated 5))
+         (l2425 (index-atom $generated 6))
+         (access $open-access)
+         one-way-precursors-no-optimizer-no-chooser)
+       (m255-open-participation-unresolved
+         invalid-generated-access-or-unobstructed-standing))))
+
+; An invalid primary is still a legible outcome of the current contact. Keep
+; it explicit instead of attempting to index its failed carrier organization
+; or allowing the reduction to disappear. This does not admit the primary or
+; compensate for a missing material relation.
+(= (M255OpenParticipationFromPrimary $primary $cut)
+   (if (M25PrimaryMovementValid $primary)
+     (M255OpenParticipationFromValidPrimary $primary $cut)
+     (m255-open-participation-unresolved invalid-primary)))
+
+(= (M255OpenParticipationFromPrimaryValid $witness $primary $cut)
+   (if (CPShape $witness m255-open-participation-v1 12)
+     (== $witness (M255OpenParticipationFromPrimary $primary $cut))
+     false))
+
 (= (M25HarmonicAlignment $primary $rap)
    (let $id (index-atom $primary 1)
      (if (and (M25RAPValid $primary $rap)
@@ -1512,6 +1598,36 @@
            (and (CPShape (index-atom $alignment 5) aligned-extensions 2)
                 (CPShape (index-atom $alignment 6) provenance 3))))))))
      false))
+
+; B3 is one-way: earned M25.5 open participation may land in the existing
+; M25 HarmonicAlign relation only after the inherited per-material Relatedness
+; and Precision floors, admissibility, and contactability have independently
+; produced that unchanged M25 witness. Openness cannot repair a failed floor
+; and this bridge constructs no movement.
+(= (M255HarmonicAlignmentBridge $primary $cut $rap $alignment)
+   (let* (($open (M255OpenParticipationFromPrimary $primary $cut))
+          ($relatedness (M25RelatednessProfile $primary $cut))
+          ($precision (M25PrecisionProfile $primary $cut)))
+     (if (and (M255OpenParticipationFromPrimaryValid $open $primary $cut)
+          (and (M25RAPValid $primary $rap)
+           (and (M25HarmonicAlignmentValid $primary $alignment)
+            (and (== (index-atom $relatedness 3) true)
+                 (== (index-atom $precision 3) true)))))
+       (m255-to-m25-harmonic-bridge-v1 (index-atom $primary 1)
+         $open
+         (unchanged-inherited-harmonic-alignment $alignment)
+         (inherited-relatedness-floors $relatedness)
+         (inherited-precision-floors $precision)
+         m255-open-participation-to-m25-harmonic-only
+         no-converse-no-floor-compensation
+         derived-relation-not-chooser)
+       (m255-to-m25-harmonic-bridge-unresolved
+         open-participation-or-inherited-floor-gap))))
+
+(= (M255HarmonicAlignmentBridgeValid $bridge $primary $cut $rap $alignment)
+   (and (CPShape $bridge m255-to-m25-harmonic-bridge-v1 9)
+        (== $bridge (M255HarmonicAlignmentBridge $primary $cut $rap
+          $alignment))))
 
 ; The bounded-continuation schema is a constraint over an externally witnessed
 ; model claim and returned consequence. Neither movement nor model may certify
@@ -1586,6 +1702,98 @@
            derived-candidate-not-activated))
        (interface-change-standing (index-atom $primary 1) retained
          $pre-interface no-change-required-by-this-movement))))
+
+; Recover an actual M25.5 disclosure witness from the independently supported
+; participant relation that was formed at consequence incorporation. The
+; returned-contact claim—not the native category label—must carry the exact
+; cross-cut witness, and its post-cut must be this primary's current cut.
+(= (M255DisclosureFromParticipantClaim $claim $cut)
+   (if (CPParticipantClaimSupports $claim)
+     (if (== (index-atom $claim 2) returned-contact)
+       (let $evidence (index-atom $claim 6)
+         (if (CPShape $evidence m255-cross-cut-change-evidence 3)
+           (let $witness (index-atom $evidence 2)
+             (if (CPShape $witness possibility-disclosure-transition-v1 7)
+               (let $transition (index-atom $witness 2)
+                 (if (CPShape $transition cut-transition 3)
+                   (if (and (== (index-atom $transition 2)
+                                  (index-atom $cut 1))
+                         (and (== (index-atom $witness 4)
+                                (access-transition constrained open))
+                          (and (== (index-atom $witness 5)
+                                 same-generated-possibility-no-new-identity)
+                               (== (index-atom $witness 6)
+                                 interface-reorganization))))
+                     $witness
+                     (m255-disclosure-unresolved
+                       invalid-or-wrong-current-cut))
+                   (m255-disclosure-unresolved malformed-cut-transition)))
+               (m255-disclosure-unresolved non-disclosure-change-witness)))
+           (m255-disclosure-unresolved missing-cross-cut-change-evidence)))
+       (m255-disclosure-unresolved non-returned-contact-claim))
+     (m255-disclosure-unresolved unsupported-participant-claim)))
+
+(= (M255DisclosureWitnessesAt $claims $cut $i)
+   (if (< $i (size-atom $claims))
+     (let $witness (M255DisclosureFromParticipantClaim
+                      (index-atom $claims $i) $cut)
+       (if (CPShape $witness possibility-disclosure-transition-v1 7)
+         (cons-atom $witness
+           (M255DisclosureWitnessesAt $claims $cut (+ $i 1)))
+         (M255DisclosureWitnessesAt $claims $cut (+ $i 1))))
+     ()))
+
+(= (M255DisclosureWitnessesForCut $cut)
+   (let $rows (CPFind (CPDRelations $cut) m255-disclosure-participation)
+     (if (== (size-atom $rows) 1)
+       (let* (($row (index-atom $rows 0))
+              ($evidence (index-atom $row 4))
+              ($supported (if (CPShape $evidence participant-evidence 2)
+                (index-atom $evidence 1) ()))
+              ($claims (if (CPShape $supported
+                participant-supported-relation 4)
+                (index-atom $supported 3) ())))
+         (if (is-expr $claims)
+           (M255DisclosureWitnessesAt $claims $cut 0) ()))
+       ())))
+
+; This is the inherited M25 InterfaceChange meaning: a mode unavailable at
+; the earlier cut is available at the later cut. It consumes the M25.5
+; disclosure evidence; it neither redefines Disclosure nor pre-authorizes a
+; capability merely because a future mode was described.
+(= (M25InterfaceEvolution $primary $cut)
+   (let $disclosures (M255DisclosureWitnessesForCut $cut)
+     (if (and (M25PrimaryMovementValid $primary)
+          (and (CPInterfacesLive $cut) (> (size-atom $disclosures) 0)))
+       (let* (($witness (index-atom $disclosures 0))
+              ($transition (index-atom $witness 2)))
+         (m25-interface-change-v2 (index-atom $primary 1)
+           (mode-at (index-atom $transition 1) constrained unavailable)
+           (mode-at (index-atom $transition 2) open available)
+           (availability-transition unavailable available)
+           (disclosure-witnesses $disclosures)
+           (provenance Inquiry-25.5-to-Inquiry-25 derived-not-constituent)
+           no-preauthorization-or-movement-authority))
+       (M25InterfaceChange $primary))))
+
+(= (M25InterfaceEvolutionValid $evolution $primary $cut)
+   (and (CPShape $evolution m25-interface-change-v2 8)
+        (== $evolution (M25InterfaceEvolution $primary $cut))))
+
+(= (M255InterfaceEvolutionBridge $primary $cut $evolution)
+   (let $disclosures (M255DisclosureWitnessesForCut $cut)
+     (if (M25InterfaceEvolutionValid $evolution $primary $cut)
+       (m255-to-m25-interface-bridge-v1 (index-atom $primary 1)
+         (m255-disclosure $disclosures)
+         (inherited-interface-change-relation $evolution)
+         disclosure-to-newly-available-mode-only
+         no-converse-no-preauthorization-no-chooser)
+       (m255-to-m25-interface-bridge-unresolved
+         no-current-disclosure-derived-interface-change))))
+
+(= (M255InterfaceEvolutionBridgeValid $bridge $primary $cut $evolution)
+   (and (CPShape $bridge m255-to-m25-interface-bridge-v1 6)
+        (== $bridge (M255InterfaceEvolutionBridge $primary $cut $evolution))))
 
 (= (M25TrajectoryBasis $primary $developmental)
    (let* (($traction (index-atom $developmental 9))
@@ -1668,12 +1876,28 @@
 (= (M25Orientation $primary $developmental)
    (M25OrientationFromBasis (M25TrajectoryBasis $primary $developmental)))
 
+(= (M255InheritedSurfaceBridges $primary $cut $rap $alignment $interface)
+   (m255-inherited-surface-bridges-v1
+     (M255HarmonicAlignmentBridge $primary $cut $rap $alignment)
+     (M255InterfaceEvolutionBridge $primary $cut $interface)
+     m255-to-m25-only
+     derived-relations-no-movement-authority))
+
+(= (M255InheritedSurfaceBridgesValid $bridges $primary $cut $rap
+      $alignment $interface)
+   (and (CPShape $bridges m255-inherited-surface-bridges-v1 5)
+        (== $bridges (M255InheritedSurfaceBridges $primary $cut $rap
+          $alignment $interface))))
+
 (= (M25MovementReading $primary $cut $developmental)
    (let* (($rap (M25RAPReadings $primary $cut $developmental))
-          ($standing (index-atom (index-atom $rap 3) 1)))
-     (m25-movement-reading-v2 $primary $rap
-       (M25HarmonicAlignment $primary $rap) (M25Energetics $primary)
-       (M25Orientation $primary $developmental) (M25InterfaceChange $primary)
+          ($standing (index-atom (index-atom $rap 3) 1))
+          ($alignment (M25HarmonicAlignment $primary $rap))
+          ($interface (M25InterfaceEvolution $primary $cut)))
+     (m25-movement-reading-v3 $primary $rap
+       $alignment (M25Energetics $primary)
+       (M25Orientation $primary $developmental) $interface
+       (M255InheritedSurfaceBridges $primary $cut $rap $alignment $interface)
        (movement-reading-standing $standing))))
 
 (= (M25PrimaryAt $possibilities $cut $facts $flourishing
@@ -1696,8 +1920,8 @@
 (= (M25AdmissibleReadingsAt $readings $i $out)
    (if (< $i (size-atom $readings))
      (let $reading (index-atom $readings $i)
-       (if (and (CPShape $reading m25-movement-reading-v2 8)
-                (== (index-atom (index-atom $reading 7) 1) admissible))
+       (if (and (CPShape $reading m25-movement-reading-v3 9)
+                (== (index-atom (index-atom $reading 8) 1) admissible))
          (M25AdmissibleReadingsAt $readings (+ $i 1)
            (cons-atom $reading $out))
          (M25AdmissibleReadingsAt $readings (+ $i 1) $out)))
@@ -1713,9 +1937,9 @@
          (primary-movement $primary)
          (dynamic-participatory-fourthness (index-atom $primary 4))
          (balance-unfolding-organization (index-atom $primary 5))
-         (m25-readings $rap (index-atom $reading 3)
+         (m25-readings-v2 $rap (index-atom $reading 3)
            (index-atom $reading 4) (index-atom $reading 5)
-           (index-atom $reading 6))
+           (index-atom $reading 6) (index-atom $reading 7))
          (generated-carriers (index-atom $possibility 3)
            (index-atom $possibility 5) (index-atom $possibility 4)
            (index-atom $possibility 7))
