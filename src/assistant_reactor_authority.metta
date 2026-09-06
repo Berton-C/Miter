@@ -201,9 +201,43 @@
          (AR2DevelopmentalMatchesAt $payloads $cut $movement (+ $i 1) $out)))
      $out))
 
+; Once consequence has formed the next cut, its history payload—not the
+; original encounter payload—is the exact developmental lineage for that new
+; active movement. Collecting by structural cut/movement identity avoids a
+; latest-row convention and lets the same organism receive further contact.
+(= (AR2ConsequencePayloadsForScope $scope)
+   (collapse (match &assistant_history
+     (assistant-history consequence $id $scope $payload) $payload)))
+
+(= (AR2ConsequencePayloadMatchesMovement $payload $cut $movement)
+   (if (AR2ConsequenceHistoryPayloadValid $payload)
+     (let* (($next (index-atom $payload 1))
+            ($encounter (index-atom $next 1)))
+       (and (== (index-atom $encounter 1) $cut)
+            (== (AREncounterMovement $encounter) $movement)))
+     false))
+
+(= (AR2ConsequenceDevelopmentalMatchesAt $payloads $cut $movement $i $out)
+   (if (< $i (size-atom $payloads))
+     (let $payload (index-atom $payloads $i)
+       (if (AR2ConsequencePayloadMatchesMovement $payload $cut $movement)
+         (let* (($next (index-atom $payload 1))
+                ($transition (index-atom $next 2))
+                ($developmental (index-atom $transition 2)))
+           (AR2ConsequenceDevelopmentalMatchesAt $payloads $cut $movement
+             (+ $i 1) (cons-atom $developmental $out)))
+         (AR2ConsequenceDevelopmentalMatchesAt $payloads $cut $movement
+           (+ $i 1) $out)))
+     $out))
+
 (= (AR2DevelopmentalForMovement $scope $cut $movement)
-   (let* (($payloads (AR2EncounterPayloadsForScope $scope))
-          ($matches (AR2DevelopmentalMatchesAt $payloads $cut $movement 0 ())))
+   (let* (($encounter-payloads (AR2EncounterPayloadsForScope $scope))
+          ($consequence-payloads (AR2ConsequencePayloadsForScope $scope))
+          ($encounter-matches (AR2DevelopmentalMatchesAt $encounter-payloads
+            $cut $movement 0 ()))
+          ($consequence-matches (AR2ConsequenceDevelopmentalMatchesAt
+            $consequence-payloads $cut $movement 0 ()))
+          ($matches (CPListAppend $encounter-matches $consequence-matches)))
      (if (== (size-atom $matches) 1)
        (index-atom $matches 0)
        (m24-developmental-organization-unresolved
@@ -235,7 +269,7 @@
            support (returned-contact-evidence $consequence-reference))
          supported no-contact-no-movement-authority))))
 
-(= (AR2M255ConsequenceParticipants $scope $cut $movement $next-cut
+(= (AR2M255ReorganizationParticipants $scope $cut $movement $next-cut
       $consequence)
    (let* (($witness (M255ConsequenceReorganization $cut $movement $next-cut
             $consequence))
@@ -263,10 +297,63 @@
           supported no-contact-no-movement-authority))
        ())))
 
+; M25.5 change categories are not post-hoc labels. Two differentiated
+; lineages make each valid same-law cross-cut witness available as a material
+; relation before the next cut's single R/A/P read: native law supplies the
+; category meaning, while returned contact supplies the actual transition.
+; Neither participant may choose a movement or claim contact authority.
+(= (AR2M255ChangeParticipantPair $scope $movement $consequence $witness)
+   (let* (($category (M255CrossCutChangeCategory $witness))
+          ($target (M255CrossCutChangeTarget $witness))
+          ($consequence-id (index-atom $consequence 1)))
+     ((participant-contribution
+        (m255-change-native-participation $category $consequence-id)
+        native-authority $scope
+        (lineage Inquiry-25.5-generative-change $category)
+        (participant-relation-claim $target support
+          (m255-same-law-category-evidence $category
+            (movement-reference (index-atom $movement 2))))
+        supported no-contact-no-movement-authority)
+      (participant-contribution
+        (m255-change-returned-participation $category $consequence-id)
+        returned-contact $scope
+        (lineage returned-consequence $consequence-id)
+        (participant-relation-claim $target support
+          (m255-cross-cut-change-evidence
+            (returned-consequence-reference $consequence-id
+              (index-atom $consequence 2) (index-atom $consequence 4)
+              (index-atom $consequence 12))
+            $witness))
+        supported no-contact-no-movement-authority))))
+
+(= (AR2M255ChangeParticipantsAt $scope $cut $movement $next-cut
+      $consequence $changes $i)
+   (if (< $i (size-atom $changes))
+     (let $witness (index-atom $changes $i)
+       (if (M255CrossCutChangeValid $witness $cut $movement $next-cut
+             $consequence)
+         (CPListAppend
+           (AR2M255ChangeParticipantPair $scope $movement $consequence
+             $witness)
+           (AR2M255ChangeParticipantsAt $scope $cut $movement $next-cut
+             $consequence $changes (+ $i 1)))
+         (AR2M255ChangeParticipantsAt $scope $cut $movement $next-cut
+           $consequence $changes (+ $i 1))))
+     ()))
+
+(= (AR2M255ConsequenceParticipants $scope $cut $movement $next-cut
+      $consequence)
+   (let $changes (M255CrossCutChanges $cut $movement $next-cut $consequence)
+     (CPListAppend
+       (AR2M255ReorganizationParticipants $scope $cut $movement $next-cut
+         $consequence)
+       (AR2M255ChangeParticipantsAt $scope $cut $movement $next-cut
+         $consequence $changes 0))))
+
 (= (AR2ReconstituteAfterConsequence $scope $cut $movement $consequence)
    (let* (($basis (AR2MovementBasis $movement))
           ($prior (AR2DevelopmentalForMovement $scope $cut $movement))
-          ($probe-basis (M24ProbeBasisForMovement $movement))
+          ($probe-basis (M24ConsequenceBasisForMovement $movement))
           ($next-cut (CPNextCutV2 $cut $consequence))
           ($base-next-cut (CPBaseCutWithoutParticipantRelations $next-cut))
           ($transition (M24DevelopmentalTransition $prior $probe-basis

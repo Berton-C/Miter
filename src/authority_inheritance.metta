@@ -767,6 +767,35 @@
          (probe-basis-unresolved missing-answerability)))
      (probe-basis-unresolved movement-not-native-inquiry)))
 
+; A returned consequence is broader than a probe result. Only an inquiry may
+; cross the ProbeEligible boundary, but another already-formed continuation
+; (for example defer/wait-for-contact) can lawfully receive contact, extend
+; immutable history, and reorganize later participation without earning probe
+; or authority standing. Keeping these constructors disjoint prevents a
+; generic return from being laundered into lifecycle promotion.
+(= (M24ContinuationReturnBasisValid $basis)
+   (if (CPShape $basis continuation-return-basis-v1 6)
+     (and (!= (index-atom $basis 1) inquiry)
+      (and (CPShape (index-atom $basis 3) source-cut 2)
+       (and (CPShape (index-atom $basis 4) answerability 2)
+            (== (index-atom $basis 5) no-probe-no-authority-promotion))))
+     false))
+
+(= (M24ConsequenceBasisForMovement $movement)
+   (let $probe (M24ProbeBasisForMovement $movement)
+     (if (M24ProbeBasisValid $probe) $probe
+       (if (and (CPShape $movement movement-formed 7)
+                (!= (index-atom $movement 1) inquiry))
+         (continuation-return-basis-v1 (index-atom $movement 1)
+           (index-atom $movement 2) (index-atom $movement 3)
+           (index-atom $movement 5) no-probe-no-authority-promotion)
+         (continuation-return-basis-unresolved
+           movement-not-formed-or-inquiry-probe-invalid)))))
+
+(= (M24ConsequenceBasisValid $basis)
+   (or (M24ProbeBasisValid $basis)
+       (M24ContinuationReturnBasisValid $basis)))
+
 (= (M24ProbeWitnessFromConsequence $lifecycle $basis $consequence $scope)
    (if (and (M24LifecycleValid $lifecycle)
          (and (M24ProbeBasisValid $basis)
@@ -864,16 +893,72 @@
      (m24-developmental-organization-unresolved
        missing-prior-inquiry-consequence-or-next-cut)))
 
+(= (M24ContinuationReturnWitness $basis $consequence $scope)
+   (if (and (M24ContinuationReturnBasisValid $basis)
+         (and (CPConsequenceV2Valid $consequence)
+          (and (CPShape $scope scope 4)
+               (== (index-atom $consequence 2) (index-atom $basis 2)))))
+     (continuation-return-witness-v1 (index-atom $basis 2)
+       (index-atom $basis 1) (index-atom $consequence 1) $scope
+       (returned-contact (index-atom $consequence 3)
+         (index-atom $consequence 4) (index-atom $consequence 12))
+       history-and-participation-only no-probe-no-authority-promotion)
+     (continuation-return-witness-unresolved
+       missing-formed-continuation-or-returned-consequence)))
+
+(= (M24ContinuationReturnWitnessValid $witness $basis $consequence $scope)
+   (if (CPShape $witness continuation-return-witness-v1 8)
+     (and (M24ContinuationReturnBasisValid $basis)
+       (== $witness (M24ContinuationReturnWitness $basis $consequence $scope)))
+     false))
+
+(= (M24DevelopmentalAfterReturn $prior $basis $consequence $scope $next-cut)
+   (if (and (M24DevelopmentalOrganizationValid $prior)
+         (and (M24ContinuationReturnBasisValid $basis)
+          (and (CPConsequenceV2Valid $consequence)
+           (and (== (index-atom $consequence 2) (index-atom $basis 2))
+            (and (CPShape $scope scope 4) (CPCutValid $next-cut))))))
+     (let* (($lifecycle (M24DevelopmentalLifecycle $prior))
+            ($retrospective (M24RetrospectiveAffordanceFor $lifecycle
+              $basis $consequence $next-cut))
+            ($affordance (M24AffordanceAfterConsequence
+              (index-atom $prior 8) $retrospective))
+            ($transaction (M24ConsequenceTransactionFor
+              (index-atom $prior 12) $consequence))
+            ($carrier (M24FormalCarrierAfterProbe (index-atom $prior 1)
+              (index-atom $prior 7) (index-atom $prior 6) $affordance
+              $lifecycle $transaction $consequence)))
+       (m24-developmental-organization-v1 $carrier
+         (index-atom $prior 2) (index-atom $prior 3) (index-atom $prior 4)
+         (index-atom $prior 5) (index-atom $prior 6) (index-atom $prior 7)
+         $affordance (M24TractionAfterConsequence) (index-atom $prior 10)
+         (index-atom $prior 11) $transaction
+         (M24DevelopmentalStandingFor $lifecycle)))
+     (m24-developmental-organization-unresolved
+       missing-prior-continuation-return-or-next-cut)))
+
 (= (M24DevelopmentalTransition $prior $basis $consequence $scope $next-cut)
-   (let* (($lifecycle (M24DevelopmentalLifecycle $prior))
-          ($probe (M24ProbeWitnessFromConsequence $lifecycle $basis
-            $consequence $scope))
-          ($evolved (M24DevelopmentalAfterProbe $prior $basis $consequence
-            $scope $next-cut)))
-     (if (M24DevelopmentalOrganizationValid $evolved)
-       (m24-developmental-transition-v1 $prior $evolved $basis $consequence
-         $scope $next-cut $probe)
-       (m24-developmental-transition-unresolved $evolved))))
+   (if (M24ProbeBasisValid $basis)
+     (let* (($lifecycle (M24DevelopmentalLifecycle $prior))
+            ($probe (M24ProbeWitnessFromConsequence $lifecycle $basis
+              $consequence $scope))
+            ($evolved (M24DevelopmentalAfterProbe $prior $basis $consequence
+              $scope $next-cut)))
+       (if (M24DevelopmentalOrganizationValid $evolved)
+         (m24-developmental-transition-v1 $prior $evolved $basis $consequence
+           $scope $next-cut $probe)
+         (m24-developmental-transition-unresolved $evolved)))
+     (if (M24ContinuationReturnBasisValid $basis)
+       (let* (($witness (M24ContinuationReturnWitness $basis $consequence
+                $scope))
+              ($evolved (M24DevelopmentalAfterReturn $prior $basis
+                $consequence $scope $next-cut)))
+         (if (M24DevelopmentalOrganizationValid $evolved)
+           (m24-developmental-transition-v2 $prior $evolved $basis
+             $consequence $scope $next-cut $witness)
+           (m24-developmental-transition-unresolved $evolved)))
+       (m24-developmental-transition-unresolved
+         missing-probe-or-continuation-return-basis))))
 
 (= (M24DevelopmentalTransitionValid $transition)
    (if (CPShape $transition m24-developmental-transition-v1 8)
@@ -891,7 +976,23 @@
                   (M24DevelopmentalTransition (index-atom $transition 1)
                     (index-atom $transition 3) (index-atom $transition 4)
                     (index-atom $transition 5)
-                    (index-atom $transition 6)))))))))) false))
+                    (index-atom $transition 6))))))))))
+     (if (CPShape $transition m24-developmental-transition-v2 8)
+       (and (M24DevelopmentalOrganizationValid (index-atom $transition 1))
+        (and (M24DevelopmentalOrganizationValid (index-atom $transition 2))
+         (and (M24ContinuationReturnBasisValid (index-atom $transition 3))
+          (and (CPConsequenceV2Valid (index-atom $transition 4))
+           (and (CPShape (index-atom $transition 5) scope 4)
+            (and (CPCutValid (index-atom $transition 6))
+             (and (M24ContinuationReturnWitnessValid
+                    (index-atom $transition 7) (index-atom $transition 3)
+                    (index-atom $transition 4) (index-atom $transition 5))
+                  (== $transition
+                    (M24DevelopmentalTransition (index-atom $transition 1)
+                      (index-atom $transition 3) (index-atom $transition 4)
+                      (index-atom $transition 5)
+                      (index-atom $transition 6))))))))))
+       false)))
 
 ; ---------- Investigation 25: movement-primary DPF and R/A/P ----------
 

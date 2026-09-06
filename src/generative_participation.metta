@@ -580,10 +580,11 @@
           $next-cut $consequence))))
 
 (= (M255ConsequenceParticipationTarget $witness)
-   (if (and (CPShape $witness m255-consequence-reorganization-v1 11)
-            (== (index-atom (index-atom $witness 7) 1) open))
-     m255-open-consequence-participation
-     m255-constrained-consequence-participation))
+   (if (CPShape $witness m255-consequence-reorganization-v1 11)
+     (if (== (index-atom (index-atom $witness 7) 1) open)
+       m255-open-consequence-participation
+       m255-constrained-consequence-participation)
+     m255-consequence-participation-unresolved))
 
 ; The native law premise and returned-contact premise are kept distinct.  The
 ; native premise contributes the already-instantiated one-engine/access law;
@@ -602,3 +603,367 @@
        (index-atom $witness 5) (index-atom $witness 6)
        (index-atom $witness 7) (index-atom $witness 8))
      (m255-returned-reorganization-unresolved malformed-reorganization)))
+
+; ---------------------------------------------------------------------------
+; Actual same-law change categories across developmental cuts.
+;
+; The movement's continuation basis carries the exact views and participant
+; lineages that generated it.  Replaying those lineages into participant-free
+; projections of the prior and consequence-derived cuts gives a bounded
+; comparison domain without letting the new category witness prove itself.
+
+(= (M255TransitionBasis $movement)
+   (let $primary (M255PrimaryFromMovement $movement)
+     (if (CPShape $primary m25-primary-movement-v2 11)
+       (index-atom $primary 8)
+       (m255-transition-basis-unresolved missing-primary))))
+
+(= (M255TransitionProbe $cut $movement $flourishing-views)
+   (let $basis (M255TransitionBasis $movement)
+     (if (CPShape $basis continuation-basis-v3 6)
+       (let* (($base (CPBaseCutWithoutParticipantRelations $cut))
+              ($participant-source (index-atom $basis 3))
+              ($participants (participant-reentry-organization
+                differentiated-by-source-scope-and-lineage
+                (CPParticipantAt $base $participant-source 0)
+                repeated-same-lineage-is-not-independent-support))
+              ($participant-relations
+                (CPParticipantRelationOrganization $participants))
+              ($probe-cut
+                (CPApplyParticipantRelations $base $participant-relations))
+              ($facts
+                (CPFactExpressionsAt $probe-cut (index-atom $basis 1) 0))
+              ($flourishing
+                (CPFlourishingOrganizationV2 $probe-cut $flourishing-views))
+              ($possibilities (CPNativePossibilitiesV2 $probe-cut $facts
+                $flourishing $participant-relations)))
+         (m255-transition-probe-v1 $probe-cut $facts $flourishing
+           $participants $participant-relations $possibilities))
+       (m255-transition-probe-unresolved missing-continuation-basis-v3))))
+
+(= (M255PriorTransitionProbe $prior-cut $movement)
+   (let $basis (M255TransitionBasis $movement)
+     (if (CPShape $basis continuation-basis-v3 6)
+       (M255TransitionProbe $prior-cut $movement (index-atom $basis 2))
+       (m255-transition-probe-unresolved missing-prior-basis))))
+
+(= (M255NextTransitionProbe $next-cut $movement $consequence)
+   (let $basis (M255TransitionBasis $movement)
+     (if (CPShape $basis continuation-basis-v3 6)
+       (M255TransitionProbe $next-cut $movement
+         (CPListAppend (index-atom $basis 2)
+           (index-atom (index-atom $consequence 10) 1)))
+       (m255-transition-probe-unresolved missing-next-basis))))
+
+(= (M255TransitionProbeValid $probe)
+   (and (CPShape $probe m255-transition-probe-v1 7)
+     (and (CPCutValid (index-atom $probe 1))
+      (and (is-expr (index-atom $probe 2))
+       (and (CPShape (index-atom $probe 3) flourishing-organization 3)
+        (and (CPShape (index-atom $probe 4)
+               participant-reentry-organization 4)
+         (and (CPShape (index-atom $probe 5)
+                participant-relation-organization 2)
+              (is-expr (index-atom $probe 6)))))))))
+
+(= (M255PossibilitiesForId $possibilities $id)
+   (collapse (let $possibility (superpose $possibilities)
+     (if (and (CPShape $possibility possible-movement 9)
+              (== (index-atom $possibility 1) $id))
+       $possibility (empty)))))
+
+(= (M255GeneratedAtProbe $probe $id)
+   (if (M255TransitionProbeValid $probe)
+     (let $matches (M255PossibilitiesForId (index-atom $probe 6) $id)
+       (if (== (size-atom $matches) 1)
+         (let* (($possibility (index-atom $matches 0))
+                ($cut (index-atom $probe 1))
+                ($facts (index-atom $probe 2))
+                ($flourishing (index-atom $probe 3))
+                ($signature (M255GenSig miter-developmental-transition
+                  possible-movement $cut $facts $possibility))
+                ($generated (M255GeneratedWitness $signature $possibility))
+                ($valid (M255GeneratedWitnessValid $generated $signature
+                  miter-developmental-transition possible-movement $cut
+                  $facts $flourishing $possibility)))
+           (m255-generated-at-probe-v1 $id $possibility $signature
+             $generated (generated-valid $valid)))
+         (m255-generated-at-probe-unresolved $id
+           missing-or-ambiguous-possibility)))
+     (m255-generated-at-probe-unresolved $id malformed-probe)))
+
+(= (M255GeneratedAtProbeValid $generated-at)
+   (if (CPShape $generated-at m255-generated-at-probe-v1 6)
+     (== (index-atom $generated-at 5) (generated-valid true)) false))
+
+(= (M255SameGeneratedTransport $prior-probe $next-probe $id)
+   (let* (($prior (M255GeneratedAtProbe $prior-probe $id))
+          ($next (M255GeneratedAtProbe $next-probe $id)))
+     (if (and (M255GeneratedAtProbeValid $prior)
+              (M255GeneratedAtProbeValid $next))
+       (let* (($translation (M255GenTranslation
+                (index-atom $prior 3) (index-atom $next 3)
+                (index-atom $prior 4) (index-atom $next 4)))
+              ($equivalence (M255GenEquivV2FromTranslation $translation)))
+         (if (and (M255GenTranslationValid $translation)
+                  (M255GenEquivV2Valid $equivalence))
+           (m255-same-generated-transport-v1 $id $prior $next
+             $translation $equivalence)
+           (m255-same-generated-transport-unresolved $id
+             no-proof-relevant-transport)))
+       (m255-same-generated-transport-unresolved $id
+         prior-or-next-not-generated))))
+
+(= (M255SameGeneratedTransportValid $transport)
+   (if (CPShape $transport m255-same-generated-transport-v1 6)
+     (and (M255GeneratedAtProbeValid (index-atom $transport 2))
+      (and (M255GeneratedAtProbeValid (index-atom $transport 3))
+       (and (M255GenTranslationValid (index-atom $transport 4))
+            (M255GenEquivV2Valid (index-atom $transport 5))))) false))
+
+(= (M255ExpectedBaseNextCut $prior-cut $consequence)
+   (CPBaseCutWithoutParticipantRelations
+     (CPNextCutV2 $prior-cut $consequence)))
+
+(= (M255TransitionInputsValid $prior-cut $movement $next-cut $consequence)
+   (and (CPCutValid $prior-cut)
+     (and (CPCutValid $next-cut)
+      (and (CPConsequenceV2Valid $consequence)
+       (and (CPShape $movement movement-formed 7)
+        (and (== (index-atom $movement 2) (index-atom $consequence 2))
+             (== $next-cut
+               (M255ExpectedBaseNextCut $prior-cut $consequence))))))))
+
+(= (M255MaintenanceTransition $prior-cut $movement $next-cut $consequence)
+   (let* (($primary (M255PrimaryFromMovement $movement))
+          ($id (if (CPShape $primary m25-primary-movement-v2 11)
+            (index-atom $primary 1) missing-primary))
+          ($prior-probe (M255PriorTransitionProbe $prior-cut $movement))
+          ($next-probe
+            (M255NextTransitionProbe $next-cut $movement $consequence))
+          ($transport
+            (M255SameGeneratedTransport $prior-probe $next-probe $id))
+          ($prior-material (M255MaterialCutProjection
+            (CPBaseCutWithoutParticipantRelations $prior-cut)))
+          ($next-material (M255MaterialCutProjection $next-cut))
+          ($same-material
+            (M255MaterialCutEquivalent $prior-material $next-material))
+          ($prior-disposition (M255ResultingDisposition $prior-cut))
+          ($next-disposition (M255ResultingDisposition $next-cut)))
+     (if (and (M255TransitionInputsValid $prior-cut $movement $next-cut
+                $consequence)
+          (and (M255SameGeneratedTransportValid $transport)
+           (and $same-material (== $prior-disposition $next-disposition))))
+       (generative-maintenance-transition-v1 $id
+         (cut-transition (index-atom $prior-cut 1) (index-atom $next-cut 1))
+         $transport (material-organization-preserved $prior-material)
+         (access-disposition-preserved $prior-disposition)
+         same-law-lawful-transport)
+       (generative-maintenance-transition-unresolved
+         changed-material-access-or-missing-transport))))
+
+(= (M255MaintenanceTransitionValid $witness $prior-cut $movement $next-cut
+      $consequence)
+   (and (CPShape $witness generative-maintenance-transition-v1 7)
+        (== $witness (M255MaintenanceTransition $prior-cut $movement $next-cut
+          $consequence))))
+
+(= (M255InterfaceVocabularySame $prior-cut $next-cut)
+   (CPSetEqual (CPRowIds (CPInterfaces $prior-cut))
+     (CPRowIds (CPInterfaces $next-cut))))
+
+(= (M255DisclosureTransition $prior-cut $movement $next-cut $consequence)
+   (let* (($primary (M255PrimaryFromMovement $movement))
+          ($id (if (CPShape $primary m25-primary-movement-v2 11)
+            (index-atom $primary 1) missing-primary))
+          ($prior-probe (M255PriorTransitionProbe $prior-cut $movement))
+          ($next-probe
+            (M255NextTransitionProbe $next-cut $movement $consequence))
+          ($transport
+            (M255SameGeneratedTransport $prior-probe $next-probe $id))
+          ($prior-disposition (M255ResultingDisposition $prior-cut))
+          ($next-disposition (M255ResultingDisposition $next-cut)))
+     (if (and (M255TransitionInputsValid $prior-cut $movement $next-cut
+                $consequence)
+          (and (M255SameGeneratedTransportValid $transport)
+           (and (M255InterfaceVocabularySame $prior-cut $next-cut)
+            (and (== $prior-disposition constrained)
+                 (== $next-disposition open)))))
+       (possibility-disclosure-transition-v1 $id
+         (cut-transition (index-atom $prior-cut 1) (index-atom $next-cut 1))
+         $transport
+         (access-transition constrained open)
+         same-generated-possibility-no-new-identity
+         interface-reorganization)
+       (possibility-disclosure-transition-unresolved
+         no-constrained-to-open-same-generated-transport))))
+
+(= (M255DisclosureTransitionValid $witness $prior-cut $movement $next-cut
+      $consequence)
+   (and (CPShape $witness possibility-disclosure-transition-v1 7)
+        (== $witness (M255DisclosureTransition $prior-cut $movement $next-cut
+          $consequence))))
+
+(= (M255LostRequiredDistinctionsAt $ids $prior-cut $next-cut $i)
+   (if (< $i (size-atom $ids))
+     (let $id (index-atom $ids $i)
+       (if (and (CPDistinctionAvailable $prior-cut $id)
+                (== (CPDistinctionAvailable $next-cut $id) false))
+         (cons-atom (lost-required-distinction $id)
+           (M255LostRequiredDistinctionsAt $ids $prior-cut $next-cut
+             (+ $i 1)))
+         (M255LostRequiredDistinctionsAt $ids $prior-cut $next-cut
+           (+ $i 1))))
+     ()))
+
+(= (M255DegradationTransition $prior-cut $movement $next-cut $consequence)
+   (let* (($primary (M255PrimaryFromMovement $movement))
+          ($id (if (CPShape $primary m25-primary-movement-v2 11)
+            (index-atom $primary 1) missing-primary))
+          ($prior-probe (M255PriorTransitionProbe $prior-cut $movement))
+          ($next-probe
+            (M255NextTransitionProbe $next-cut $movement $consequence))
+          ($prior-generated (M255GeneratedAtProbe $prior-probe $id))
+          ($next-generated (M255GeneratedAtProbe $next-probe $id))
+          ($prior-possibility (if (M255GeneratedAtProbeValid $prior-generated)
+            (index-atom $prior-generated 2) ()))
+          ($lost (if (CPShape $prior-possibility possible-movement 9)
+            (M255LostRequiredDistinctionsAt
+              (index-atom $prior-possibility 4)
+              (index-atom $prior-probe 1) (index-atom $next-probe 1) 0)
+            ())))
+     (if (and (M255TransitionInputsValid $prior-cut $movement $next-cut
+                $consequence)
+          (and (M255GeneratedAtProbeValid $prior-generated)
+           (and (== (M255GeneratedAtProbeValid $next-generated) false)
+                (> (size-atom $lost) 0))))
+       (generative-degradation-transition-v1 $id
+         (cut-transition (index-atom $prior-cut 1) (index-atom $next-cut 1))
+         (prior-generated $prior-generated)
+         (lost-generative-structure $lost)
+         (no-valid-postimage $next-generated)
+         same-law-not-outcome-score)
+       (generative-degradation-transition-unresolved
+         no-witnessed-loss-of-prior-generated-structure))))
+
+(= (M255DegradationTransitionValid $witness $prior-cut $movement $next-cut
+      $consequence)
+   (and (CPShape $witness generative-degradation-transition-v1 7)
+        (== $witness (M255DegradationTransition $prior-cut $movement $next-cut
+          $consequence))))
+
+(= (M255NewLiveThreadIdsAt $next-ids $prior-ids $i)
+   (if (< $i (size-atom $next-ids))
+     (let $id (index-atom $next-ids $i)
+       (if (CPHas $id $prior-ids 0)
+         (M255NewLiveThreadIdsAt $next-ids $prior-ids (+ $i 1))
+         (cons-atom $id
+           (M255NewLiveThreadIdsAt $next-ids $prior-ids (+ $i 1)))))
+     ()))
+
+(= (M255CreationForThread $prior-probe $next-probe $thread-id)
+   (let* (($prior (M255GeneratedAtProbe $prior-probe $thread-id))
+          ($next (M255GeneratedAtProbe $next-probe $thread-id)))
+     (if (and (CPShape $prior m255-generated-at-probe-unresolved 3)
+              (M255GeneratedAtProbeValid $next))
+       (possibility-creation-transition-v1 $thread-id
+         (prior-possibility absent)
+         (new-generated-possibility $next)
+         no-prior-identity-or-transport-equivalent-precursor)
+       (possibility-creation-transition-unresolved $thread-id
+         prior-possibility-present-or-next-not-generated))))
+
+(= (M255CreationForThreadsAt $prior-probe $next-probe $ids $i)
+   (if (< $i (size-atom $ids))
+     (let $witness (M255CreationForThread $prior-probe $next-probe
+            (index-atom $ids $i))
+       (if (CPShape $witness possibility-creation-transition-v1 5)
+         (cons-atom $witness
+           (M255CreationForThreadsAt $prior-probe $next-probe $ids (+ $i 1)))
+         (M255CreationForThreadsAt $prior-probe $next-probe $ids (+ $i 1))))
+     ()))
+
+(= (M255CreationTransitions $prior-cut $movement $next-cut $consequence)
+   (if (M255TransitionInputsValid $prior-cut $movement $next-cut $consequence)
+     (let* (($prior-probe (M255PriorTransitionProbe $prior-cut $movement))
+            ($next-probe
+              (M255NextTransitionProbe $next-cut $movement $consequence))
+            ($new-ids (M255NewLiveThreadIdsAt
+              (CPLiveThreadIds (index-atom $next-probe 1))
+              (CPLiveThreadIds (index-atom $prior-probe 1)) 0)))
+       (M255CreationForThreadsAt $prior-probe $next-probe $new-ids 0))
+     ()))
+
+(= (M255CreationTransitionValid $witness)
+   (if (CPShape $witness possibility-creation-transition-v1 5)
+     (and (== (index-atom $witness 2) (prior-possibility absent))
+      (and (CPShape (index-atom $witness 3) new-generated-possibility 2)
+           (M255GeneratedAtProbeValid
+             (index-atom (index-atom $witness 3) 1)))) false))
+
+(= (M255SingletonIf $witness $valid)
+   (if $valid (cons-atom $witness ()) ()))
+
+(= (M255CrossCutChanges $prior-cut $movement $next-cut $consequence)
+   (let* (($maintenance
+            (M255MaintenanceTransition $prior-cut $movement $next-cut
+              $consequence))
+          ($disclosure
+            (M255DisclosureTransition $prior-cut $movement $next-cut
+              $consequence))
+          ($degradation
+            (M255DegradationTransition $prior-cut $movement $next-cut
+              $consequence))
+          ($creations
+            (M255CreationTransitions $prior-cut $movement $next-cut
+              $consequence)))
+     (CPListAppend
+       (M255SingletonIf $maintenance
+         (M255MaintenanceTransitionValid $maintenance $prior-cut $movement
+           $next-cut $consequence))
+       (CPListAppend
+         (M255SingletonIf $disclosure
+           (M255DisclosureTransitionValid $disclosure $prior-cut $movement
+             $next-cut $consequence))
+         (CPListAppend
+           (M255SingletonIf $degradation
+             (M255DegradationTransitionValid $degradation $prior-cut
+               $movement $next-cut $consequence))
+           $creations)))))
+
+(= (M255CrossCutChangeCategory $witness)
+   (if (CPShape $witness generative-maintenance-transition-v1 7)
+     maintenance
+     (if (CPShape $witness possibility-disclosure-transition-v1 7)
+       disclosure
+       (if (CPShape $witness generative-degradation-transition-v1 7)
+         degradation
+         (if (CPShape $witness possibility-creation-transition-v1 5)
+           creation unresolved)))))
+
+(= (M255CrossCutChangeTarget $witness)
+   (let $category (M255CrossCutChangeCategory $witness)
+     (if (== $category maintenance) m255-maintenance-participation
+       (if (== $category disclosure) m255-disclosure-participation
+         (if (== $category degradation) m255-degradation-participation
+           (if (== $category creation) m255-creation-participation
+             m255-change-unresolved))))))
+
+(= (M255CrossCutChangeValid $witness $prior-cut $movement $next-cut
+      $consequence)
+   (let $category (M255CrossCutChangeCategory $witness)
+     (if (== $category maintenance)
+       (M255MaintenanceTransitionValid $witness $prior-cut $movement $next-cut
+         $consequence)
+       (if (== $category disclosure)
+         (M255DisclosureTransitionValid $witness $prior-cut $movement $next-cut
+           $consequence)
+         (if (== $category degradation)
+           (M255DegradationTransitionValid $witness $prior-cut $movement
+             $next-cut $consequence)
+           (if (== $category creation)
+             (and (M255CreationTransitionValid $witness)
+               (CPHas $witness
+                 (M255CreationTransitions $prior-cut $movement $next-cut
+                   $consequence) 0))
+             false))))))

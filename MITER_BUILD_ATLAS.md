@@ -330,10 +330,10 @@ structures; several formal translation/equivalence consumers remain C2 gaps.
 | M255-10 | `Access` is a derived read-only participation view | E | access mutates generation |
 | M255-11 | one-engine PNS/SNS organization | P | separate engines/behavior tables appear |
 | M255-12 | `ReflexiveConstraint` requires dependence and severing bite | P | self-reference without causal bite passes |
-| M255-13 | `Disclosure` changes accessibility, not generated possibility | P | retrieval is called creation |
-| M255-14 | `Creation` adds possibility modulo lawful prior transport | P | renaming/retrieval is called creation |
-| M255-15 | `Maintenance` preserves generative organization under lawful transport | P | repetition alone proves maintenance |
-| M255-16 | `Degradation` loses prior continuation structure under the same law | P | lower score alone proves degradation |
+| M255-13 | `Disclosure` changes accessibility, not generated possibility | E | retrieval is called creation |
+| M255-14 | `Creation` adds possibility modulo lawful prior transport | E | renaming/retrieval is called creation |
+| M255-15 | `Maintenance` preserves generative organization under lawful transport | E | repetition alone proves maintenance |
+| M255-16 | `Degradation` loses prior continuation structure under the same law | E | lower score alone proves degradation |
 | M255-17 | non-circular bridge from `𝒢` precursors to R/A/P | P | selected movement backfills its grounds |
 | M255-18 | open participation bridges into unchanged HarmonicAlign | P | openness rewrites alignment law |
 | M255-19 | B1–B10 retain ratified direction/scope | A | converse or wider scope is assumed |
@@ -539,16 +539,49 @@ Already carried:
   one pre-existing effect remained byte-identical and exactly once. This
   establishes actual constrained participation and the prerequisite current-
   projection semantics for M24 loss/reintroduction and M25.5 degradation. It
-  does not yet establish reflexive self-representation bite, recovery, SNS,
-  Stuck, or the four actual cross-cut change-category witnesses.
+  does not yet establish reflexive self-representation bite, SNS, or Stuck.
+- M25.5 maintenance, disclosure, creation, and degradation are now actual
+  same-law cross-cut witnesses rather than labels or fixture-selected
+  outcomes. Maintenance requires lawful transport of the same `Generated`
+  possibility with material organization and access disposition preserved.
+  Disclosure requires constrained-to-open Access with the same Generated
+  identity and interface vocabulary. Creation requires a newly live thread
+  whose Generated possibility has no prior identity. Degradation requires
+  loss of a specific distinction used by the prior Generated possibility and
+  failure of its postimage under the same generative law; an outcome score
+  cannot substitute. Each valid witness is carried by distinct native-law and
+  returned-contact lineages into a supported participant relation before the
+  next cut's one R/A/P read. Mere interface severance remains no change
+  category rather than being mislabeled.
+- The same work exposed and repaired a multi-consequence M24 gap. A probe
+  return and an ordinary continuation return are now distinct constructors.
+  Inquiry can still earn `ProbeEligible` only through the existing bounded
+  probe route. A formed non-inquiry continuation such as `defer` can receive
+  returned contact, extend immutable history, and reorganize later
+  participation, but its return basis and transition carry an explicit
+  `no-probe-no-authority-promotion` standing. Developmental lineage for a
+  later movement is recovered by exact cut/movement identity from either its
+  encounter or consequence history payload, never by selecting a latest
+  record.
+- One supported continuously cycling runtime then processed, in order, a
+  scoped unfamiliar contact, interface severance, interface reintroduction,
+  no-material-change return, new-thread creation, and required-distinction
+  loss. The four category relations all materially participated in the final
+  cut; disclosure restored the interface without creating a possibility;
+  creation formed the new undertaking; degradation left no admissible primary
+  after the required distinction became unavailable. All ten native history
+  records remained valid. Stop/start restored the exact four relations, open
+  interface, new thread, unavailable distinction, and unresolved movement;
+  the six inputs stayed consumed, no input was rejected, and the sole prior
+  effect remained exactly once with no restart replay. All stimuli and audit
+  material remained external to Git.
 
 Next movement:
 
-1. connect disclosure, creation, maintenance, and degradation to witnessed
-   cross-cut accessibility/generative change and the unchanged
-   HarmonicAlign/interface surfaces; distinguish actual interface
-   reintroduction from a recovery label, and distinguish a changed identifier
-   from genuinely new generative structure;
+1. establish actual `ReflexiveConstraint` with both self-representation
+   dependence and severing bite, then connect the proven M25.5 participation
+   organizations to the unchanged HarmonicAlign/interface surfaces without
+   turning either into a chooser;
 2. complete recognition overlap/non-reconstruction and the inherited B1–B10
    bridge directions without adding a chooser or a second R/A/P surface;
 3. discharge the complete M25.5→M25 and M25.5→M26.0 bridges through the same
