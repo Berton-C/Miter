@@ -222,6 +222,250 @@
             l2425-supported)))
        ())))
 
+; Returned consequence may answer one exact member of the native alignment
+; family even when another admissible movement was active.  The family is
+; recovered from that movement's retained M25 alternatives: it is never
+; reconstructed from the returned payload or a provider response.
+(= (C3AlignmentMovementCandidateSelfValid $candidate)
+   (if (CPShape $candidate c3-alignment-movement-candidate-v1 9)
+     (let* (($movement (index-atom $candidate 1))
+            ($rap-reference (index-atom $candidate 2))
+            ($source-cut (index-atom $candidate 3))
+            ($partial (index-atom $candidate 4))
+            ($fact9 (index-atom $candidate 5))
+            ($flourishing (index-atom $candidate 6)))
+       (if (CPShape $movement movement-reference 3)
+         (if (CPShape $rap-reference rap-read-reference 3)
+           (if (CPShape $source-cut source-cut 2)
+             (if (CPShape $partial rap-partial 3)
+               (if (CPShape (index-atom $partial 1) preserve 2)
+                 (if (CPShape (index-atom $partial 2) explore 2)
+                   (if (CPShape $fact9 fact9-material 2)
+                     (if (CPShape $flourishing flourishing-material 2)
+                       (and (== (index-atom $movement 1)
+                                 (index-atom $rap-reference 1))
+                        (and (> (size-atom
+                                  (index-atom (index-atom $partial 1) 1)) 0)
+                         (and (> (size-atom
+                                   (index-atom (index-atom $partial 2) 1)) 0)
+                          (and (> (size-atom (index-atom $fact9 1)) 0)
+                           (and (> (size-atom (index-atom $flourishing 1)) 0)
+                            (and (== (index-atom $candidate 7)
+                                   (alignment-participation
+                                     preserve-aligned-relations
+                                     explore-unresolved-relations
+                                     fact9-finite-legibility
+                                     flourishing-generative-composition))
+                                 (== (index-atom $candidate 8)
+                                   unresolved-requires-returned-contact)))))))
+                       false)
+                     false)
+                   false)
+                 false)
+               false)
+             false)
+           false)
+         false))
+     false))
+
+(= (C3AlignmentCandidateIdsAt $candidates $i $out)
+   (if (< $i (size-atom $candidates))
+     (let $candidate (index-atom $candidates $i)
+       (if (C3AlignmentMovementCandidateSelfValid $candidate)
+         (let $id (index-atom (index-atom $candidate 1) 1)
+           (if (CPHas $id $out 0)
+             (C3AlignmentCandidateIdsAt $candidates (+ $i 1) $out)
+             (C3AlignmentCandidateIdsAt $candidates (+ $i 1)
+               (cons-atom $id $out))))
+         (C3AlignmentCandidateIdsAt $candidates (+ $i 1) $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (C3AlignmentCandidatesSelfValidAt $candidates $i)
+   (if (< $i (size-atom $candidates))
+     (and (C3AlignmentMovementCandidateSelfValid
+            (index-atom $candidates $i))
+          (C3AlignmentCandidatesSelfValidAt $candidates (+ $i 1)))
+     true))
+
+(= (C3AlignmentInquiryFamilySelfValid $family)
+   (if (CPShape $family c3-alignment-inquiry-family-v1 7)
+     (let* (($source-cut (index-atom $family 1))
+            ($possible (index-atom $family 2))
+            ($candidates (if
+              (CPShape $possible possible-alignment-movements 2)
+              (index-atom $possible 1) ()))
+            ($ids (C3AlignmentCandidateIdsAt $candidates 0 ())))
+       (if (CPShape $source-cut source-cut 2)
+         (if (CPShape $possible possible-alignment-movements 2)
+           (if (> (size-atom $candidates) 0)
+             (if (== (size-atom $ids) (size-atom $candidates))
+               (if (== (index-atom $family 3)
+                     (comparison-surface
+                       one-contact-one-simultaneous-rap-read
+                       preserve-what-is-aligned
+                       expose-what-remains-unresolved
+                       fact9-and-flourishings-participate-in-formation))
+                 (if (== (index-atom $family 4)
+                       (joined-standing
+                         plural-lawful-movements-retained-without-argmax))
+                   (if (== (index-atom $family 5)
+                         (consequence-requirement
+                           new-contact-can-reorganize-next-cut))
+                     (== (index-atom $family 6)
+                       (authority-boundary native-soul-forms-and-compares
+                         provider-may-contribute-only-when-native-inquiry-opens))
+                     false)
+                   false)
+                 false)
+               false)
+             false)
+           false)
+         false))
+     false))
+
+(= (C3AlignmentFamilyFromReading $reading)
+   (if (CPShape $reading m25-movement-reading-v3 9)
+     (let $primary (index-atom $reading 1)
+       (if (CPShape $primary m25-primary-movement-v2 11)
+         (let $possibility (index-atom $primary 9)
+           (if (CPShape $possibility possible-movement 9)
+             (let $route (index-atom $possibility 7)
+               (if (and (== (index-atom $possibility 1)
+                            c3-fact9-flourishing-alignment-inquiry)
+                     (and (== (index-atom $possibility 2) inquiry)
+                          (CPShape $route consequence-route 3)))
+                 (let $inquiry (index-atom $route 1)
+                   (if (CPShape $inquiry
+                         soul-formed-partial-alignment-comparison 2)
+                     (let $family (index-atom $inquiry 1)
+                       (if (and (== (index-atom $route 2) non-certifying)
+                                (CPShape $family
+                                  c3-alignment-inquiry-family-v1 7))
+                         $family
+                         (c3-alignment-inquiry-family-unavailable
+                           malformed-or-certifying-retained-family)))
+                     (c3-alignment-inquiry-family-unavailable
+                       retained-reading-is-not-alignment-comparison)))
+                 (c3-alignment-inquiry-family-unavailable
+                   retained-reading-is-not-alignment-inquiry)))
+             (c3-alignment-inquiry-family-unavailable
+               retained-primary-has-no-possibility)))
+         (c3-alignment-inquiry-family-unavailable
+           retained-primary-is-invalid)))
+     (c3-alignment-inquiry-family-unavailable malformed-retained-reading)))
+
+(= (C3AlignmentFamiliesFromReadingsAt $readings $i)
+   (if (< $i (size-atom $readings))
+     (let $family (C3AlignmentFamilyFromReading (index-atom $readings $i))
+       (if (CPShape $family c3-alignment-inquiry-family-v1 7)
+         (cons-atom $family
+           (C3AlignmentFamiliesFromReadingsAt $readings (+ $i 1)))
+         (C3AlignmentFamiliesFromReadingsAt $readings (+ $i 1))))
+     ()))
+
+(= (C3AlignmentInquiryFamilyFromMovement $movement)
+   (if (CPShape $movement movement-formed 7)
+     (let $retained (index-atom $movement 6)
+       (if (CPShape $retained retained-alternatives-v3 3)
+         (let $families (C3AlignmentFamiliesFromReadingsAt
+                          (index-atom $retained 1) 0)
+           (if (== (size-atom $families) 1)
+             (index-atom $families 0)
+             (c3-alignment-inquiry-family-unavailable
+               missing-or-ambiguous-retained-family)))
+         (c3-alignment-inquiry-family-unavailable
+           movement-has-no-retained-alternatives)))
+     (c3-alignment-inquiry-family-unavailable movement-is-not-formed)))
+
+(= (C3AlignmentCandidateForIdAt $candidates $id $i)
+   (if (< $i (size-atom $candidates))
+     (let $candidate (index-atom $candidates $i)
+       (if (and (C3AlignmentMovementCandidateSelfValid $candidate)
+                (== (index-atom (index-atom $candidate 1) 1) $id))
+         $candidate
+         (C3AlignmentCandidateForIdAt $candidates $id (+ $i 1))))
+     (c3-alignment-movement-candidate-unavailable candidate-not-found)))
+
+(= (C3AlignmentCandidateForId $family $id)
+   (if (and (CPShape $family c3-alignment-inquiry-family-v1 7)
+            (CPShape (index-atom $family 2)
+              possible-alignment-movements 2))
+     (C3AlignmentCandidateForIdAt
+       (index-atom (index-atom $family 2) 1) $id 0)
+     (c3-alignment-movement-candidate-unavailable invalid-family)))
+
+(= (C3AlignmentReturnedCandidateRowsAt $relations $candidate-ids $i)
+   (if (< $i (size-atom $relations))
+     (let $row (index-atom $relations $i)
+       (if (and (CPShape $row relation 5)
+             (and (CPHas (index-atom $row 1) $candidate-ids 0)
+              (and (== (index-atom $row 2) alignment-candidate-contact)
+                   (CPHas (index-atom $row 3)
+                     (support contradiction unresolved) 0))))
+         (cons-atom $row
+           (C3AlignmentReturnedCandidateRowsAt $relations $candidate-ids
+             (+ $i 1)))
+         (C3AlignmentReturnedCandidateRowsAt $relations $candidate-ids
+           (+ $i 1))))
+     ()))
+
+(= (C3AlignmentConsequenceResolution $movement $consequence)
+   (let $family (C3AlignmentInquiryFamilyFromMovement $movement)
+     (if (and (C3AlignmentInquiryFamilySelfValid $family)
+              (CPConsequenceV2Valid $consequence))
+       (let* (($candidates (index-atom (index-atom $family 2) 1))
+              ($ids (C3AlignmentCandidateIdsAt $candidates 0 ()))
+              ($rows (C3AlignmentReturnedCandidateRowsAt
+                (index-atom (index-atom $consequence 5) 1) $ids 0)))
+         (if (== (size-atom $rows) 1)
+           (let* (($row (index-atom $rows 0))
+                  ($candidate (C3AlignmentCandidateForId $family
+                    (index-atom $row 1))))
+             (if (C3AlignmentMovementCandidateSelfValid $candidate)
+               (c3-alignment-consequence-resolution-v1
+                 $family $candidate $row
+                 (returned-consequence (index-atom $consequence 1))
+                 exact-alignment-candidate-contact
+                 one-rap-fact9-flourishing-comparison-remains-native)
+               (c3-alignment-consequence-resolution-unavailable
+                 candidate-not-found-in-retained-family)))
+           (c3-alignment-consequence-resolution-unavailable
+             missing-or-ambiguous-candidate-contact)))
+       (c3-alignment-consequence-resolution-unavailable
+         invalid-family-or-consequence))))
+
+(= (C3AlignmentConsequenceResolutionValid $resolution)
+   (if (CPShape $resolution c3-alignment-consequence-resolution-v1 7)
+     (let* (($family (index-atom $resolution 1))
+            ($candidate (index-atom $resolution 2))
+            ($row (index-atom $resolution 3)))
+       (if (C3AlignmentInquiryFamilySelfValid $family)
+         (if (C3AlignmentMovementCandidateSelfValid $candidate)
+           (let $candidate-id (index-atom (index-atom $candidate 1) 1)
+             (if (== $candidate (C3AlignmentCandidateForId $family
+                                  $candidate-id))
+               (if (CPShape $row relation 5)
+                 (if (== (index-atom $row 1) $candidate-id)
+                   (if (== (index-atom $row 2) alignment-candidate-contact)
+                     (if (CPHas (index-atom $row 3)
+                           (support contradiction unresolved) 0)
+                       (if (CPShape (index-atom $resolution 4)
+                             returned-consequence 2)
+                         (if (== (index-atom $resolution 5)
+                               exact-alignment-candidate-contact)
+                           (== (index-atom $resolution 6)
+                             one-rap-fact9-flourishing-comparison-remains-native)
+                           false)
+                         false)
+                       false)
+                     false)
+                   false)
+                 false)
+               false))
+           false)
+         false))
+     false))
+
 (= (C3Fact9InquirySurfacesAt $surfaces $i)
    (if (< $i (size-atom $surfaces))
      (let $surface (index-atom $surfaces $i)
@@ -1351,6 +1595,319 @@
           (C3SemanticResolutionParticipantStanding $resolution)
           no-contact-no-movement-authority))
        ())))
+
+(= (C3AlignmentResolutionClaimStanding $resolution)
+   (if (CPShape $resolution c3-alignment-consequence-resolution-v1 7)
+     (let $standing (index-atom (index-atom $resolution 3) 3)
+       (if (== $standing support) support
+         (if (== $standing contradiction) contradiction unresolved)))
+     unresolved))
+
+(= (C3AlignmentResolutionParticipantStanding $resolution)
+   (let $standing (C3AlignmentResolutionClaimStanding $resolution)
+     (if (== $standing support) supported
+       (if (== $standing contradiction) contradicted candidate))))
+
+(= (C3AlignmentResolutionTarget $resolution)
+   (if (CPShape $resolution c3-alignment-consequence-resolution-v1 7)
+     (c3-alignment-candidate-standing
+       (index-atom (index-atom (index-atom $resolution 2) 1) 1))
+     (c3-alignment-candidate-standing unavailable)))
+
+(= (C3AlignmentResolutionReference $resolution)
+   (if (C3AlignmentConsequenceResolutionValid $resolution)
+     (let* (($family (index-atom $resolution 1))
+            ($candidate (index-atom $resolution 2)))
+       (c3-alignment-resolution-reference-v1
+         (index-atom $family 1)
+         (index-atom $candidate 1)
+         (index-atom $candidate 2)
+         (index-atom $candidate 4)
+         (index-atom $candidate 5)
+         (index-atom $candidate 6)
+         (index-atom $resolution 3)
+         (index-atom $resolution 4)
+         native-comparison-provider-nonsovereign))
+     (c3-alignment-resolution-reference-unavailable)))
+
+(= (C3AlignmentResolutionReferenceSelfValid $reference)
+   (if (CPShape $reference c3-alignment-resolution-reference-v1 10)
+     (if (CPShape (index-atom $reference 1) source-cut 2)
+       (if (CPShape (index-atom $reference 2) movement-reference 3)
+         (if (CPShape (index-atom $reference 3) rap-read-reference 3)
+           (if (== (index-atom (index-atom $reference 2) 1)
+                   (index-atom (index-atom $reference 3) 1))
+             (if (CPShape (index-atom $reference 4) rap-partial 3)
+               (if (CPShape (index-atom $reference 5) fact9-material 2)
+                 (if (CPShape (index-atom $reference 6)
+                       flourishing-material 2)
+                   (if (CPShape (index-atom $reference 7) relation 5)
+                     (if (== (index-atom (index-atom $reference 7) 1)
+                           (index-atom (index-atom $reference 2) 1))
+                       (if (== (index-atom (index-atom $reference 7) 2)
+                             alignment-candidate-contact)
+                         (if (CPHas
+                               (index-atom (index-atom $reference 7) 3)
+                               (support contradiction unresolved) 0)
+                           (if (CPShape (index-atom $reference 8)
+                                 returned-consequence 2)
+                             (== (index-atom $reference 9)
+                               native-comparison-provider-nonsovereign)
+                             false)
+                           false)
+                         false)
+                       false)
+                     false)
+                   false)
+                 false)
+               false)
+             false)
+           false)
+         false)
+       false)
+     false))
+
+(= (C3AlignmentReferenceTarget $reference)
+   (if (C3AlignmentResolutionReferenceSelfValid $reference)
+     (c3-alignment-candidate-standing
+       (index-atom (index-atom $reference 2) 1))
+     (c3-alignment-candidate-standing unavailable)))
+
+(= (C3AlignmentReferenceClaimStanding $reference)
+   (if (C3AlignmentResolutionReferenceSelfValid $reference)
+     (let $standing (index-atom (index-atom $reference 7) 3)
+       (if (== $standing support) support
+         (if (== $standing contradiction) contradiction unresolved)))
+     unresolved))
+
+; The native read and the returned contact are separate participants.  Their
+; agreement can support only the exact candidate named by the retained family.
+; Contradiction and unresolved standing remain explicit and keep inquiry live.
+(= (C3AlignmentConsequenceParticipants $scope $movement $consequence)
+   (let $resolution (C3AlignmentConsequenceResolution $movement $consequence)
+     (if (and (CPShape $scope scope 4)
+              (C3AlignmentConsequenceResolutionValid $resolution))
+       (let* (($id (index-atom $consequence 1))
+              ($reference (C3AlignmentResolutionReference $resolution))
+              ($target (C3AlignmentReferenceTarget $reference))
+              ($standing (C3AlignmentReferenceClaimStanding $reference))
+              ($participant-standing
+                (C3AlignmentResolutionParticipantStanding $resolution)))
+         ((participant-contribution
+            (c3-native-alignment-consequence-participation $id)
+            native-authority $scope
+            (lineage provisional-26.6-26.9 alignment-consequence-comparison)
+            (participant-relation-claim $target $standing
+              (c3-native-alignment-consequence-basis-v2 $reference
+                one-contact-one-movement-three-simultaneous-perspectives
+                fact9-and-flourishings-participate-generatively
+                no-provider-self-certification))
+            $participant-standing no-contact-no-movement-authority)
+          (participant-contribution
+            (c3-returned-alignment-consequence-participation $id)
+            returned-contact $scope
+            (lineage returned-consequence $id)
+            (participant-relation-claim $target $standing
+              (c3-returned-alignment-consequence-evidence-v2
+                (index-atom $reference 7)
+                (index-atom $reference 8)
+                (index-atom $consequence 12)))
+            $participant-standing no-contact-no-movement-authority)))
+       ())))
+
+(= (C3AlignmentReferenceFromClaim $claim)
+   (if (CPShape $claim participant-relation-evidence 7)
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence c3-native-alignment-consequence-basis-v2 5)
+         (index-atom $evidence 1)
+         (c3-alignment-resolution-reference-unavailable
+           claim-has-no-native-alignment-reference)))
+     (c3-alignment-resolution-reference-unavailable malformed-claim)))
+
+(= (C3AlignmentNativeReferencesAt $claims $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($reference (C3AlignmentReferenceFromClaim $claim)))
+       (if (C3AlignmentResolutionReferenceSelfValid $reference)
+         (cons-atom $reference
+           (C3AlignmentNativeReferencesAt $claims (+ $i 1)))
+         (C3AlignmentNativeReferencesAt $claims (+ $i 1))))
+     ()))
+
+(= (C3AlignmentReferenceFromClaims $claims)
+   (let $references (C3AlignmentNativeReferencesAt $claims 0)
+     (if (== (size-atom $references) 1)
+       (index-atom $references 0)
+       (c3-alignment-resolution-reference-unavailable
+         missing-or-ambiguous-native-reference))))
+
+(= (C3AlignmentClaimsHaveSourceAt $claims $source $i)
+   (if (< $i (size-atom $claims))
+     (if (== (index-atom (index-atom $claims $i) 2) $source)
+       true (C3AlignmentClaimsHaveSourceAt $claims $source (+ $i 1)))
+     false))
+
+(= (C3AlignmentReturnedEvidenceMatchesAt $claims $reference $i $count)
+   (if (< $i (size-atom $claims))
+     (let $claim (index-atom $claims $i)
+       (if (and (CPShape $claim participant-relation-evidence 7)
+                (== (index-atom $claim 2) returned-contact))
+         (let $evidence (index-atom $claim 6)
+           (if (CPShape $evidence
+                 c3-returned-alignment-consequence-evidence-v2 4)
+             (if (and (== (index-atom $evidence 1)
+                           (index-atom $reference 7))
+                      (== (index-atom $evidence 2)
+                        (index-atom $reference 8)))
+               (C3AlignmentReturnedEvidenceMatchesAt $claims $reference
+                 (+ $i 1) (+ $count 1))
+               -1)
+             -1))
+         (C3AlignmentReturnedEvidenceMatchesAt $claims $reference
+           (+ $i 1) $count)))
+     $count))
+
+(= (C3AlignmentResultRelationClaims $relation)
+   (if (CPShape $relation participant-supported-relation 4)
+     (index-atom $relation 3)
+     (if (CPShape $relation participant-proposed-relation 4)
+       (index-atom $relation 3) ())))
+
+(= (C3AlignmentResultRelationValid $relation)
+   (if (or (CPShape $relation participant-supported-relation 4)
+           (CPShape $relation participant-proposed-relation 4))
+     (let* (($target (index-atom $relation 1))
+            ($claims (C3AlignmentResultRelationClaims $relation))
+            ($reference (C3AlignmentReferenceFromClaims $claims)))
+       (if (CPShape $target c3-alignment-candidate-standing 2)
+         (and (== (size-atom $claims) 2)
+          (and (C3AlignmentResolutionReferenceSelfValid $reference)
+           (and (== $target (C3AlignmentReferenceTarget $reference))
+            (and (== (C3AlignmentReturnedEvidenceMatchesAt $claims
+                        $reference 0 0) 1)
+             (and (C3AlignmentClaimsHaveSourceAt $claims native-authority 0)
+              (and (C3AlignmentClaimsHaveSourceAt $claims returned-contact 0)
+               (if (== (C3AlignmentReferenceClaimStanding $reference) support)
+                 (CPShape $relation participant-supported-relation 4)
+                 (CPShape $relation participant-proposed-relation 4))))))))
+         false))
+     false))
+
+(= (C3AlignmentResultPossibilitiesAt $relations $cut $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       ; Contradicted or unresolved standing remains an attributable relation
+       ; for inquiry and later contact; only independent support constructs the
+       ; consequence-earned undertaking possibility.
+       (if (and (C3AlignmentResultRelationValid $relation)
+                (CPShape $relation participant-supported-relation 4))
+         (let* (($target (index-atom $relation 1))
+                ($claims (C3AlignmentResultRelationClaims $relation))
+                ($reference (C3AlignmentReferenceFromClaims $claims))
+                ($base-relations (CPNativeRequirementRelations $cut))
+                ($required-relations (if (CPHas $target $base-relations 0)
+                  $base-relations (cons-atom $target $base-relations)))
+                ($flourishing-material (index-atom $reference 6))
+                ($values (if (CPShape $flourishing-material
+                               flourishing-material 2)
+                  (C3AlignmentFlourishingValuesFromEntriesAt
+                    (index-atom $flourishing-material 1) 0 ()) ())))
+           (cons-atom
+             (possible-movement c3-alignment-consequence-continuation
+               undertaking $required-relations
+               (CPNativeRequirementDistinctions $cut)
+               (CPNativeRequirementInterfaces $cut)
+               (CPReverseInto $values 0 ())
+               (consequence-route
+                 (consequence-earned-alignment-comparison
+                   $reference)
+                 non-certifying)
+               l2425-supported)
+             (C3AlignmentResultPossibilitiesAt $relations $cut (+ $i 1))))
+         (C3AlignmentResultPossibilitiesAt $relations $cut (+ $i 1))))
+     ()))
+
+(= (C3AlignmentResultPossibilities $cut $participant-relations)
+   (if (CPShape $participant-relations participant-relation-organization 2)
+     (C3AlignmentResultPossibilitiesAt
+       (index-atom $participant-relations 1) $cut 0)
+     ()))
+
+; The live participant carries only the selected alignment reference.  The
+; complete native family is retained exactly once here as append-only
+; developmental history: all alternatives, the one simultaneous R/A/P read,
+; the Soul-selected Fact9/flourishing material, returned standing, and source
+; and next movement lineage remain recoverable without recursively expanding
+; every active M25 carrier.
+(= (C3AlignmentDevelopmentRecord $scope $cut $movement $next-cut
+      $next-movement $consequence)
+   (let $resolution (C3AlignmentConsequenceResolution $movement $consequence)
+     (if (and (CPShape $scope scope 4)
+              (C3AlignmentConsequenceResolutionValid $resolution))
+       (let* (($standing (C3AlignmentResolutionClaimStanding $resolution))
+              ($participant-standing
+                (C3AlignmentResolutionParticipantStanding $resolution)))
+         (c3-alignment-development-v1
+           (alignment-development-reference (index-atom $consequence 1))
+           $scope
+           (C3DevelopmentMovementReference $cut $movement)
+           $resolution
+           (C3DevelopmentMovementReference $next-cut $next-movement)
+           (epistemic-standing consequence-earned-alignment-comparison
+             $standing $participant-standing provisional)
+           (authority-boundary
+             soul-forms-and-compares-alignment-possibilities
+             fact9-and-flourishings-participate-generatively
+             returned-contact-changes-next-movement
+             provider-remains-nonsovereign
+             no-repetition-authority no-genome-mutation)))
+       (c3-alignment-development-unavailable
+         (index-atom $consequence 1) no-exact-alignment-comparison))))
+
+(= (C3AlignmentDevelopmentRecordValid $record)
+   (if (CPShape $record c3-alignment-development-v1 8)
+     (let* (($reference (index-atom $record 1))
+            ($scope (index-atom $record 2))
+            ($source (index-atom $record 3))
+            ($resolution (index-atom $record 4))
+            ($next (index-atom $record 5)))
+       (if (CPShape $reference alignment-development-reference 2)
+         (if (CPShape $scope scope 4)
+           (if (CPShape $source movement-reference 5)
+             (if (CPShape $next movement-reference 5)
+               (if (C3AlignmentConsequenceResolutionValid $resolution)
+                 (let* (($family (index-atom $resolution 1))
+                        ($standing
+                          (C3AlignmentResolutionClaimStanding $resolution))
+                        ($participant-standing
+                          (C3AlignmentResolutionParticipantStanding
+                            $resolution)))
+                   (if (== (index-atom $reference 1)
+                         (index-atom (index-atom $resolution 4) 1))
+                     (if (== (index-atom $source 1)
+                           (index-atom (index-atom $family 1) 1))
+                       (if (== (index-atom $source 2) formed)
+                         (if (== (index-atom $record 6)
+                               (epistemic-standing
+                                 consequence-earned-alignment-comparison
+                                 $standing $participant-standing provisional))
+                           (== (index-atom $record 7)
+                             (authority-boundary
+                               soul-forms-and-compares-alignment-possibilities
+                               fact9-and-flourishings-participate-generatively
+                               returned-contact-changes-next-movement
+                               provider-remains-nonsovereign
+                               no-repetition-authority no-genome-mutation))
+                           false)
+                         false)
+                       false)
+                     false))
+                 false)
+               false)
+             false)
+           false)
+         false))
+     false))
 
 (= (C3SemanticParticipantForSurface $participant $surface)
    (let* (($candidate-ids (C3SemanticCandidateIds $surface))

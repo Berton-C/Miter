@@ -1064,21 +1064,45 @@ Already carried:
   optional semantic history total: an ordinary non-semantic consequence now
   records an explicit unavailable standing instead of terminating the cycle.
   Stimuli and diagnostic material remained outside Git.
+- Materially different returned contact now changes the next movement through
+  the same continuously cycling runtime. The native comparison retains one
+  R/A/P read of one contact: Relatedness, Appropriateness, and Precision remain
+  three simultaneous perspectives rather than separate scores or decisions.
+  A supportive return for `constitutive-inquiry` made its exact standing
+  available and formed `c3-alignment-consequence-continuation` as an
+  undertaking. A contradictory return retained the same exact alternative,
+  partial R/A/P opening, Fact9 `Connection`/`Love` participation, and
+  `AgencyBalance`/`ConnectionDepth`/`SharedUnderstanding` participation as
+  unresolved developmental material, but formed `c3-developmental-inquiry`
+  instead. Neither path used a first-match rule or model choice. The live
+  carrier now uses a compact selected-surface reference; consequence history
+  V7 retains the complete plural family exactly once, including source and
+  next movements, returned standing, provider non-sovereignty, and
+  no-genome-mutation boundaries. The independently restored support and
+  contradiction checkpoints were respectively 6,390,787 bytes with SHA-256
+  `aa8ba9968c9e2cd6458fb4f947be3b2fc9887893b2fb03a61bda470afe2e431c`
+  and 5,939,930 bytes with SHA-256
+  `83c32234c709ad951b86f6cd2e1fd37b329d1c33c9d262f86cf2ec246a24dfd2`.
+  Each held one valid alignment-development record, one previously existing
+  model-history record, and otherwise valid history. Duplicate delivery after
+  fresh-process restore was rejected without model participation and left both
+  checkpoint hashes byte-identical. This proves consequence-sensitive native
+  alignment formation and durable continuity; it does not yet prove the next
+  bounded GLM widening experiment or acceptable conversational latency.
 
 Next movement:
 
-1. return materially different consequence to the exact alignment candidates
-   and require
-   Miter's own comparison, undertaking, and later possibility field to change
-   while preserving the one simultaneous R/A/P read and provider
-   non-sovereignty;
-2. exercise the new native consultation disposition through one bounded GLM
+1. exercise the new native consultation disposition through one bounded GLM
    thought-partner call and prove that changing provider material can widen
-   the field but cannot choose, certify, or execute an alignment movement;
-3. continue reducing proof-rich re-formation latency without weakening exact
+   the field but cannot choose, certify, or execute an alignment movement. The
+   question must be composed by Miter from the partial R/A/P opening and only
+   the Fact9 and flourishing material it finds relevant; the provider must not
+   receive or acquire the whole Soul by default;
+2. continue reducing proof-rich re-formation latency and repeated compact
+   carriers without weakening exact
    native organization, one-runtime integrity, restart fidelity, or falsifier
    surfaces required for an always-on assistant;
-4. only after explicit human acceptance of the complete clean candidate,
+3. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

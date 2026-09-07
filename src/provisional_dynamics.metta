@@ -309,6 +309,8 @@
           ($transfer-result
             (C3DevelopmentalTransferResultPossibilities $cut
               $participant-relations))
+          ($alignment-result
+            (C3AlignmentResultPossibilities $cut $participant-relations))
           ($transfer-memory
             (C3TransferDevelopmentMemoryPossibilities $cut $facts
               $flourishing $participant-relations))
@@ -325,8 +327,13 @@
             (CPListAppend $transfer
               (CPListAppend $transfer-result $transfer-memory)))))
      (CPListAppend
-       (CPNativeUndertakingsV2 $cut $facts $flourishing
-         $participant-relations)
+       ; Exact returned alignment contact refines the generic undertaking
+       ; surface. It does not add a second scheduler or first-match branch:
+       ; M25 still determines availability from the same participant
+       ; organization and one simultaneous R/A/P read.
+       (if (> (size-atom $alignment-result) 0) $alignment-result
+         (CPNativeUndertakingsV2 $cut $facts $flourishing
+           $participant-relations))
        (CPListAppend
          (if (> (size-atom $specialized) 0) $specialized
            (CPNativeInquiriesV2 $cut $facts $flourishing
