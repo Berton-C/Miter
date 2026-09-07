@@ -148,7 +148,10 @@ as_model_flourishing_surface_valid_for(Openings,
     sort(Values,Unique), same_length(Values,Unique),
     sort(RequiredFlourishings,RequiredUnique),
     same_length(RequiredFlourishings,RequiredUnique),
-    Unique==RequiredUnique.
+    % The native Soul may expose only the materially participating subset.
+    % The membrane checks that subset against the source-required identities;
+    % it does not enlarge relevance by requiring every available flourishing.
+    forall(member(Value,Unique),memberchk(Value,RequiredUnique)).
 
 as_model_flourishing_entry(
     ['flourishing-inquiry-entry',Value,
@@ -191,12 +194,21 @@ as_model_opening_material(
           ['required-relations',Relations],
           ['required-flourishings',Flourishings]]],_,_],
     Relations,Flourishings) :-
-    is_list(Relations), Relations=[_|_], maplist(as_symbol,Relations,_),
+    is_list(Relations), Relations=[_|_],
+    maplist(as_model_relation_identity,Relations),
     sort(Relations,UniqueRelations), same_length(Relations,UniqueRelations),
     is_list(Flourishings), Flourishings=[_|_],
     maplist(as_flourishing,Flourishings),
     sort(Flourishings,UniqueFlourishings),
     same_length(Flourishings,UniqueFlourishings).
+
+% Most relation identities are symbols.  Native construction may also retain
+% this exact typed standing identity; recognizing its carrier shape here does
+% not interpret or choose its standing.
+as_model_relation_identity(Relation) :- as_symbol(Relation,_), !.
+as_model_relation_identity(
+    ['c3-alignment-candidate-standing',Candidate]) :-
+    as_symbol(Candidate,_).
 
 as_model_perspective_set(Values) :-
     is_list(Values), maplist(as_model_perspective, Values),

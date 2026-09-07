@@ -74,9 +74,17 @@
             ($rows (CPFlourishingExpressionFor $organization $value)))
        (if (== (size-atom $rows) 1)
          (let $expression (index-atom $rows 0)
-           (cons-atom
-             (flourishing-inquiry-entry $value
-               (current-relational-standings (index-atom $expression 3)))
+           ; Constitutional availability alone does not make a flourishing
+           ; relevant to this inquiry. Only a materially participating
+           ; relational standing enters the surface Miter may expose to a
+           ; thought partner; unknown/no-material identities remain available
+           ; to the Soul but are not sent by default.
+           (if (C3FlourishingRowsMaterialAt
+                 (index-atom $expression 3) 0)
+             (cons-atom
+               (flourishing-inquiry-entry $value
+                 (current-relational-standings (index-atom $expression 3)))
+               (C3FlourishingInquiryEntriesAt $organization $values (+ $i 1)))
              (C3FlourishingInquiryEntriesAt $organization $values (+ $i 1))))
          (C3FlourishingInquiryEntriesAt $organization $values (+ $i 1))))
      ()))

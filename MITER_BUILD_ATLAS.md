@@ -1089,15 +1089,44 @@ Already carried:
   checkpoint hashes byte-identical. This proves consequence-sensitive native
   alignment formation and durable continuity; it does not yet prove the next
   bounded GLM widening experiment or acceptable conversational latency.
+- The bounded GLM widening experiment now exercises that opening without
+  exporting the whole Soul or giving the provider relevance authority. Native
+  MeTTa found `Appropriateness` unresolved while `Relatedness` and `Precision`
+  remained aligned, selected the `selective-connection-love` Fact9 expression
+  with its `Connection`/`Love` roles, and exposed only the materially
+  participating `AgencyBalance`, `ConnectionDepth`, and
+  `SharedUnderstanding` relations. This identified and repaired two
+  mechanical membrane assumptions: a valid D-relation identity can be an
+  exact typed standing rather than only a flat symbol, and the membrane must
+  verify the Soul-selected flourishing subset against source organization
+  rather than expand it to every constitutionally available identity. One
+  exact, runtime-local grant then carried the unchanged question to GLM 5.3.
+  The provider returned three materially different ways that further contact
+  might disclose Appropriateness through agency balance, connection depth, or
+  shared understanding. MeTTa retained all three as unresolved proposals,
+  joined them without provider selection, and formed the Soul-owned
+  `c3-semantic-discrimination-inquiry`; none became a supported D-relation or
+  an effect. A fresh process restored the exact inquiry, selected Fact9 and
+  flourishing surface, three candidate identities, one valid model-history
+  row, and valid complete history. Duplicate consequence delivery requested no
+  model participation and left the 13,387,049-byte checkpoint byte-identical
+  at SHA-256
+  `484c8b550da79c3b0687376864d1708f3ef46eccde30c92298ac7ea57aeeffb8`.
+  A forged provider-choice assertion and a fluent single-answer collapse both
+  yielded zero participants. This establishes selective Fact9/flourishing
+  thought-partner participation while Miter remains sovereign; it does not yet
+  establish a native contact-seeking experiment over those alternatives or
+  acceptable conversational latency.
 
 Next movement:
 
-1. exercise the new native consultation disposition through one bounded GLM
-   thought-partner call and prove that changing provider material can widen
-   the field but cannot choose, certify, or execute an alignment movement. The
-   question must be composed by Miter from the partial R/A/P opening and only
-   the Fact9 and flourishing material it finds relevant; the provider must not
-   receive or acquire the whole Soul by default;
+1. make the three returned thought-partner possibilities usable as native,
+   candidate-specific contact-seeking experiments inside the same
+   Fact9/flourishing/R/A/P organization. Miter must preserve their plurality,
+   construct what further contact could discriminate among them, and remain
+   able to join, defer, decline, or pursue contact without provider or fixture
+   choice. Returned consequence—not fluent wording—must be what can warrant
+   fuller alignment and developmental learning;
 2. continue reducing proof-rich re-formation latency and repeated compact
    carriers without weakening exact
    native organization, one-runtime integrity, restart fidelity, or falsifier
