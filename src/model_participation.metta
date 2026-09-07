@@ -115,6 +115,113 @@
    (C3InquirySurfacesForOrganizationsAt (index-atom $encounter 2)
      (index-atom $encounter 3) $openings $i))
 
+; A partial R/A/P read is a computable opening, not a diagnostic label.  Each
+; source possibility contributes one exact possible alignment movement.  Its
+; already-aligned perspectives remain material, its unresolved perspectives
+; remain open, Fact9 makes the contacted actuality finitely legible, and the
+; complete Soul-selected flourishing subset participates generatively.  The
+; candidates are joined below so plurality does not become a first-match
+; selector or a second scheduler.
+(= (C3AlignmentMovementCandidate $opening $surface)
+   (if (and (CPShape $opening c3-partial-alignment-opening-v2 9)
+            (and (CPShape $surface alignment-inquiry-surface-v1 6)
+                 (== (index-atom $opening 1) (index-atom $surface 1))))
+     (c3-alignment-movement-candidate-v1
+       (index-atom $opening 1)
+       (index-atom $opening 2)
+       (index-atom $opening 3)
+       (index-atom $surface 4)
+       (index-atom $surface 2)
+       (index-atom $surface 3)
+       (alignment-participation
+         preserve-aligned-relations
+         explore-unresolved-relations
+         fact9-finite-legibility
+         flourishing-generative-composition)
+       unresolved-requires-returned-contact)
+     (c3-alignment-movement-candidate-unavailable
+       malformed-or-cross-surface-opening)))
+
+(= (C3AlignmentMovementCandidateValid $candidate $opening $surface)
+   (and (CPShape $candidate c3-alignment-movement-candidate-v1 9)
+        (== $candidate (C3AlignmentMovementCandidate $opening $surface))))
+
+(= (C3AlignmentMovementCandidatesAt $openings $surfaces $i)
+   (if (< $i (size-atom $openings))
+     (if (< $i (size-atom $surfaces))
+       (let* (($opening (index-atom $openings $i))
+              ($surface (index-atom $surfaces $i))
+              ($candidate (C3AlignmentMovementCandidate $opening $surface)))
+         (if (C3AlignmentMovementCandidateValid $candidate $opening $surface)
+           (cons-atom $candidate
+             (C3AlignmentMovementCandidatesAt $openings $surfaces (+ $i 1)))
+           (C3AlignmentMovementCandidatesAt $openings $surfaces (+ $i 1))))
+       ())
+     ()))
+
+(= (C3AlignmentFlourishingValuesFromEntriesAt $entries $i $out)
+   (if (< $i (size-atom $entries))
+     (let $entry (index-atom $entries $i)
+       (if (and (CPShape $entry flourishing-inquiry-entry 3)
+                (== (CPHas (index-atom $entry 1) $out 0) false))
+         (C3AlignmentFlourishingValuesFromEntriesAt $entries (+ $i 1)
+           (cons-atom (index-atom $entry 1) $out))
+         (C3AlignmentFlourishingValuesFromEntriesAt $entries (+ $i 1) $out)))
+     $out))
+
+(= (C3AlignmentFlourishingValuesAt $candidates $i $out)
+   (if (< $i (size-atom $candidates))
+     (let* (($candidate (index-atom $candidates $i))
+            ($material (index-atom $candidate 6))
+            ($entries (if (CPShape $material flourishing-material 2)
+              (index-atom $material 1) ())))
+       (C3AlignmentFlourishingValuesAt $candidates (+ $i 1)
+         (C3AlignmentFlourishingValuesFromEntriesAt $entries 0 $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (C3AlignmentInquiryFamily $cut $facts $flourishing)
+   (let* (($evidence (C3ReturnedEvidenceFromCut $cut))
+          ($openings (C3OpeningsFromReturnedEvidence $evidence))
+          ($surfaces (C3InquirySurfacesForOrganizationsAt $facts $flourishing
+            $openings 0))
+          ($candidates (C3AlignmentMovementCandidatesAt $openings $surfaces 0)))
+     (if (and (> (size-atom $candidates) 0)
+           (and (== (size-atom $candidates) (size-atom $openings))
+                (== (size-atom $surfaces) (size-atom $openings))))
+       (c3-alignment-inquiry-family-v1
+         (source-cut (index-atom $cut 1))
+         (possible-alignment-movements $candidates)
+         (comparison-surface
+           one-contact-one-simultaneous-rap-read
+           preserve-what-is-aligned
+           expose-what-remains-unresolved
+           fact9-and-flourishings-participate-in-formation)
+         (joined-standing plural-lawful-movements-retained-without-argmax)
+         (consequence-requirement new-contact-can-reorganize-next-cut)
+         (authority-boundary native-soul-forms-and-compares
+           provider-may-contribute-only-when-native-inquiry-opens))
+       (c3-alignment-inquiry-family-unavailable
+         no-material-partial-alignment-composition))))
+
+(= (C3AlignmentInquiryFamilyValid $family $cut $facts $flourishing)
+   (and (CPShape $family c3-alignment-inquiry-family-v1 7)
+        (== $family (C3AlignmentInquiryFamily $cut $facts $flourishing))))
+
+(= (C3AlignmentInquiryPossibilities $cut $facts $flourishing)
+   (let $family (C3AlignmentInquiryFamily $cut $facts $flourishing)
+     (if (C3AlignmentInquiryFamilyValid $family $cut $facts $flourishing)
+       (let $candidates (index-atom (index-atom $family 2) 1)
+         ((possible-movement c3-fact9-flourishing-alignment-inquiry inquiry
+            (CPNativeRequirementRelations $cut)
+            (CPNativeRequirementDistinctions $cut)
+            (CPNativeRequirementInterfaces $cut)
+            (C3AlignmentFlourishingValuesAt $candidates 0 ())
+            (consequence-route
+              (soul-formed-partial-alignment-comparison $family)
+              non-certifying)
+            l2425-supported)))
+       ())))
+
 (= (C3Fact9InquirySurfacesAt $surfaces $i)
    (if (< $i (size-atom $surfaces))
      (let $surface (index-atom $surfaces $i)
@@ -463,6 +570,74 @@
        (C3QuestionFactIdsFromSurfacesAt (index-atom $participation 1) 0 ())
        ())))
 
+(= (C3QuestionUnresolvedPerspectivesAt $openings $i $out)
+   (if (< $i (size-atom $openings))
+     (let* (($opening (index-atom $openings $i))
+            ($explore (if
+              (CPShape $opening c3-partial-alignment-opening-v2 9)
+              (index-atom (index-atom $opening 5) 1) ())))
+       (C3QuestionUnresolvedPerspectivesFromRowsAt $openings (+ $i 1)
+         $explore 0 $out))
+     (CPReverseInto $out 0 ())))
+
+(= (C3QuestionUnresolvedPerspectivesFromRowsAt $openings $next $rows $i $out)
+   (if (< $i (size-atom $rows))
+     (let $perspective (index-atom $rows $i)
+       (C3QuestionUnresolvedPerspectivesFromRowsAt $openings $next $rows
+         (+ $i 1)
+         (if (CPHas $perspective $out 0) $out
+           (cons-atom $perspective $out))))
+     (C3QuestionUnresolvedPerspectivesAt $openings $next $out)))
+
+(= (C3QuestionUnresolvedPerspectives $question)
+   (C3QuestionUnresolvedPerspectivesAt (C3QuestionOpenings $question) 0 ()))
+
+(= (C3QuestionReturnedMaterialAvailable $question)
+   (if (CPShape $question c3-semantic-question-v1 11)
+     (let $uncertainty (index-atom $question 8)
+       (if (CPShape $uncertainty uncertainty 3)
+         (let $returned (index-atom $uncertainty 2)
+           (if (CPShape $returned returned-contact-material 2)
+             (!= (index-atom $returned 1)
+               returned-contact-material-unavailable)
+             false))
+         false))
+     false))
+
+; A mechanical model grant never decides that a model should be consulted.
+; Native MeTTa first exposes the exact unresolved R/A/P perspectives and the
+; Soul-selected Fact9/flourishing material.  Only that source-grounded
+; disposition makes semantic participation useful; the provider remains one
+; optional participant and receives no contact, authority, choice, or verdict
+; standing.
+(= (C3SemanticConsultationDisposition $question)
+   (if (CPShape $question c3-semantic-question-v1 11)
+     (let* (($unresolved (C3QuestionUnresolvedPerspectives $question))
+            ($facts (C3QuestionFactIds $question))
+            ($flourishing (C3QuestionFlourishingValues $question)))
+       (if (and (> (size-atom $unresolved) 0)
+             (and (> (size-atom $facts) 0)
+              (and (> (size-atom $flourishing) 0)
+                   (C3QuestionReturnedMaterialAvailable $question))))
+         (c3-semantic-consultation-disposition-v1
+           (index-atom $question 1)
+           (index-atom $question 3)
+           (unresolved-rap-perspectives $unresolved)
+           (soul-selected-fact9 $facts)
+           (soul-selected-flourishings $flourishing)
+           (standing consultation-useful-for-widening-lawful-possibilities)
+           (authority-boundary miter-frames-compares-chooses-and-learns
+             provider-proposes-only))
+         (c3-semantic-consultation-disposition-unavailable
+           native-material-does-not-support-model-participation)))
+     (c3-semantic-consultation-disposition-unavailable malformed-question)))
+
+(= (C3SemanticConsultationUseful $disposition)
+   (if (CPShape $disposition c3-semantic-consultation-disposition-v1 8)
+     (== (index-atom $disposition 6)
+       (standing consultation-useful-for-widening-lawful-possibilities))
+     false))
+
 ; Native MeTTa does not pick a fluent proposal. It joins all exact candidates
 ; into one bounded discriminating inquiry over their differences. The inquiry
 ; is a new Soul-owned movement possibility; every provider proposal remains
@@ -670,26 +845,47 @@
           ($question (C3SemanticQuestionFromMovement $cut $movement))
           ($resolution (C3SemanticConsequenceResolution $movement
             $consequence)))
-     (if (and (CPShape $scope scope 4)
-           (and (CPShape $question c3-semantic-question-v1 11)
-            (and (== (index-atom $question 1) (index-atom $surface 1))
-             (and (C3SemanticResolutionMatchesSurface $resolution $surface)
-                  (== (index-atom (index-atom $resolution 4) 1)
-                    (index-atom $consequence 1))))))
-       (c3-semantic-development-v1
-         (development-reference (index-atom $consequence 1))
-         $scope
-         (C3DevelopmentMovementReference $cut $movement)
-         $surface
-         $question
-         $resolution
-         (C3DevelopmentMovementReference $next-cut $next-movement)
-         (epistemic-standing consequence-earned-discrimination provisional)
-         (authority-boundary
-           no-provider-choice no-repetition-authority no-genome-mutation
-           later-use-requires-new-native-comparison-and-consequence))
+     ; A semantic development record is optional history.  Shape checks must
+     ; therefore guard every semantic index operation: an ordinary movement
+     ; is a lawful non-semantic consequence, not a failed reduction.
+     (if (and (CPShape $scope scope 4) (CPConsequenceV2Valid $consequence))
+       (if (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+         (if (CPShape $question c3-semantic-question-v1 11)
+           (if (CPShape $resolution c3-semantic-consequence-resolution-v1 7)
+             (if (and (== (index-atom $question 1)
+                            (index-atom $surface 1))
+                       (and (C3SemanticResolutionMatchesSurface
+                              $resolution $surface)
+                            (== (index-atom (index-atom $resolution 4) 1)
+                              (index-atom $consequence 1))))
+               (c3-semantic-development-v1
+                 (development-reference (index-atom $consequence 1))
+                 $scope
+                 (C3DevelopmentMovementReference $cut $movement)
+                 $surface
+                 $question
+                 $resolution
+                 (C3DevelopmentMovementReference $next-cut $next-movement)
+                 (epistemic-standing consequence-earned-discrimination
+                   provisional)
+                 (authority-boundary
+                   no-provider-choice no-repetition-authority
+                   no-genome-mutation
+                   later-use-requires-new-native-comparison-and-consequence))
+               (c3-semantic-development-unavailable
+                 (index-atom $consequence 1)
+                 no-exact-semantic-discrimination))
+             (c3-semantic-development-unavailable
+               (index-atom $consequence 1)
+               no-exact-semantic-discrimination))
+           (c3-semantic-development-unavailable
+             (index-atom $consequence 1)
+             no-exact-semantic-discrimination))
+         (c3-semantic-development-unavailable
+           (index-atom $consequence 1)
+           no-exact-semantic-discrimination))
        (c3-semantic-development-unavailable
-         (index-atom $consequence 1) no-exact-semantic-discrimination))))
+         invalid-consequence-reference no-exact-semantic-discrimination))))
 
 (= (C3SemanticDevelopmentRecordValid $record)
    (if (CPShape $record c3-semantic-development-v1 10)

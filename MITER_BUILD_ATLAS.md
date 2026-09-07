@@ -164,12 +164,12 @@ consumer is absent. No status is upgraded by assertion.
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | No promoted external surface adapter is active. |
 | Checkpoint and same-runtime restart | E | reactor + store membrane | The semantic episode, consequence-earned transfer, and later developmental-memory participation now restore; complete long-term memory and incomplete undertakings are not yet one writable continuity organization. |
 | M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C3 must now learn from their provisional composition. |
-| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 semantic inquiry, transfer, and developmental memory | Soul-selected flourishing relations now participate in partial-alignment inquiry, cross-contact comparison, consequence interpretation, and structurally applicable later memory; broader endogenous growth and regeneration remain open. |
-| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 semantic inquiry, transfer, and developmental memory | Fact9/flourishing organization now constrains native/model-assisted inquiry, discloses transfer through newly named compositions, and permits a consequence-earned episode to alter a still later unfamiliar cut; broader composition learning remains open. |
-| One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate` | Partial alignment now forms native, model-assisted, cross-contact, and consequence-earned later possibilities without splitting or scoring; broader recursive developmental inquiry remains a C3 obligation. |
+| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 alignment/semantic inquiry, transfer, and developmental memory | Soul-selected flourishing relations now generate contact-differentiated alignment families, constrain optional semantic participation, enter consequence interpretation, and remain structurally available to later memory; broader endogenous growth and regeneration remain open. |
+| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 alignment/semantic inquiry, transfer, and developmental memory | Fact9/flourishing organization now generates plural native alignment movements, constrains model-assisted inquiry, discloses transfer through newly named compositions, and permits consequence-earned episodes to alter later unfamiliar cuts; broader skill and composition learning remain open. |
+| One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; candidate-specific returned-contact comparison remains a C3 obligation. |
 | Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
-| LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | GLM 5.3 candidates now enter a Soul-owned inquiry and returned candidate contact changes the next persisted cut without provider self-certification; general language rendering remains absent. |
+| LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | GLM 5.3 candidates now enter a Soul-owned inquiry and returned candidate contact changes the next persisted cut without provider self-certification; a mechanical grant can no longer trigger a call unless native MeTTa exposes unresolved R/A/P plus selected Fact9/flourishing and returned-contact material. General language rendering remains absent. |
 | Mattermost | A | none in clean runtime | General scoped transport and delivery reconciliation must be recovered. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, and developmental memory; qualified reasoning vocabulary | A consequence-earned discrimination transfers to a newly named composition, returned support becomes a durable developmental episode, and that episode changes possibility formation on a third unfamiliar cut; broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | A | control specification only | Detection, quarantined reconstruction, rejection, and restoration are absent. |
@@ -1038,18 +1038,43 @@ Already carried:
   exact compact relations and rejected a forged authority/movement reference
   and a mismatched proof/effect hash. Legacy full-history checkpoints remain
   readable, but their redundant size is not propagated by new encounters.
+- Partial alignment is now recursively generative inside the live possibility
+  field rather than only being material for a later semantic question. Every
+  exact partial R/A/P opening forms an attributable possible alignment
+  movement that preserves its already-aligned perspectives, keeps its
+  unresolved perspectives explicit, and carries only the Fact9 expressions
+  and flourishing relations selected from that contact. MeTTa joins the
+  candidates into one comparison inquiry; it does not rank, average, or take
+  the first one. A broad held-out contact formed two exact candidates over all
+  nine materially supplied flourishings. A different Connection/Love contact
+  formed two exact candidates over only `AgencyBalance`, `ConnectionDepth`,
+  and `SharedUnderstanding`, demonstrating contact-sensitive native relevance
+  without a behavior branch. Native model disposition is now separately
+  required before any mechanical grant can be used: the question must expose
+  at least one unresolved perspective, selected Fact9 and flourishing
+  material, and returned-contact material. A structurally valid but empty
+  question reduces explicitly to `false`; it cannot accidentally request a
+  provider. The current-source supported runtime consumed the selective
+  contact and its material consequence once, persisted the alignment family
+  in a 4,152,487-byte checkpoint, emitted one pre-existing local effect and no
+  model request, and returned to its waiting cycle. Stop/start preserved
+  checkpoint SHA-256
+  `577574c61589e6e5718b9023342a6e8d6f83180a6d5177375a3faa18d9f3791a`
+  byte-for-byte with two consumed inputs and no replay. The same work made
+  optional semantic history total: an ordinary non-semantic consequence now
+  records an explicit unavailable standing instead of terminating the cycle.
+  Stimuli and diagnostic material remained outside Git.
 
 Next movement:
 
-1. make the nine-flourishing/Fact9 partial-alignment surface recursively
-   generative in the live cycle: held-out contact must cause native relevance
-   to select materially different relations, possible alignment movements,
-   and—only when useful—a bounded GLM thought-partner question without adding
-   a behavioral branch;
-2. return materially different consequence to those alternatives and require
+1. return materially different consequence to the exact alignment candidates
+   and require
    Miter's own comparison, undertaking, and later possibility field to change
    while preserving the one simultaneous R/A/P read and provider
    non-sovereignty;
+2. exercise the new native consultation disposition through one bounded GLM
+   thought-partner call and prove that changing provider material can widen
+   the field but cannot choose, certify, or execute an alignment movement;
 3. continue reducing proof-rich re-formation latency without weakening exact
    native organization, one-runtime integrity, restart fidelity, or falsifier
    surfaces required for an always-on assistant;

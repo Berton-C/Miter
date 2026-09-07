@@ -302,6 +302,8 @@
 ; persisted relational evidence, not first-match behavioral selection.
 (= (C3NativePossibilities $cut $facts $flourishing $participant-relations)
    (let* (($learned (C3LearnedPossibilities $cut))
+          ($alignment (C3AlignmentInquiryPossibilities $cut $facts
+            $flourishing))
           ($transfer (C3SemanticDevelopmentTransferPossibilities $cut $facts
             $flourishing $participant-relations))
           ($transfer-result
@@ -317,7 +319,8 @@
           ; cognitive possibility. A transfer inquiry has a different source
           ; contact and remains independently live when present.
           ($source-inquiry (if (> (size-atom $semantic-inquiry) 0)
-            $semantic-inquiry $learned))
+            $semantic-inquiry
+            (if (> (size-atom $alignment) 0) $alignment $learned)))
           ($specialized (CPListAppend $source-inquiry
             (CPListAppend $transfer
               (CPListAppend $transfer-result $transfer-memory)))))

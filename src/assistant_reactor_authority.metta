@@ -1199,8 +1199,13 @@
                       $movement $prior $consequence $source-facts
                       $source-flourishing)
                   (if (CPShape $question c3-semantic-question-v1 11)
-                    (AR3PreformationModelReading $root $question
-                      (index-atom $consequence 1) $model-writer)
+                    (let $disposition
+                        (C3SemanticConsultationDisposition $question)
+                      (if (C3SemanticConsultationUseful $disposition)
+                        (AR3PreformationModelReading $root $question
+                          (index-atom $consequence 1) $model-writer)
+                        (preformation-model-reading-not-requested
+                          (native-consultation-not-useful $disposition))))
                     (preformation-model-reading-not-requested
                       no-consequence-earned-partial-alignment-question))))))
          (if (AR3PreformationModelReadingUsable $model-reading)
