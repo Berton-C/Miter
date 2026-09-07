@@ -1346,6 +1346,31 @@ Already carried:
   extension, and the supported operator again reached `assistant-waiting` and
   stopped cleanly. This is a faithful scheduling improvement, not a claim of
   acceptable conversational latency.
+- A held-out `Balance`/`Precision`/`Transformation` contact then exercised a
+  materially different constitutive surface. Native formation selected
+  `WonderPreservation`, `TimeCoherence`, and `CreativeTranscendence`, preserved
+  Relatedness and Precision, and exposed Appropriateness as the unresolved
+  perspective. It projected zero earlier `Connection`/`Love` transfer
+  possibilities, demonstrating that prior development is not forced onto a
+  different composition. The Soul found a bounded semantic widening useful
+  and disclosed only that exact Fact9/flourishing/R/A/P surface to GLM 5.3.
+  Two overlong provider responses failed the native schema and admitted no
+  observation; the question contract was repaired to state conservative field
+  limits, after which two distinct proposals entered as unresolved
+  participants beside Miter's native inquiry, contact-grounded undertaking,
+  and deferral. Returned independent contact supported one exact proposal,
+  retired that unresolved family from active projection, formed
+  `c3-developmental-inquiry`, and produced a valid consequence-earned
+  developmental record. Fresh-process restoration retained the supported
+  relation, three valid developmental records, the changed movement, and all
+  26 valid history rows. Duplicate delivery changed no state and caused no
+  model call. This trial also exposed a totality defect: an ordinary inquiry
+  without a developmental-transfer route reduced to no value because an eager
+  conjunction indexed an absent route. The repaired constructor now returns
+  an explicit unavailable relation, preserving the next constitutive encounter
+  without inventing transfer. Attempting to parallelize Relatedness and
+  Precision inside each joined R/A/P read preserved exact semantics but was
+  slower (about 33.1 versus 32.6 seconds), so that machinery was not admitted.
 
 Next movement:
 
@@ -1355,15 +1380,14 @@ Next movement:
    organization, falsifier strength, one-runtime integrity, and restart
    fidelity; latency relief may not be purchased by deleting causal
    participation or substituting cached verdicts;
-2. run a held-out unfamiliar-contact transfer trial in the same supported
-   runtime. Let the Soul select a materially different R/A/P–Fact9–flourishing
-   surface, optionally seek a bounded GLM reading, encounter independent
-   consequence, and show whether warranted learning transfers, differentiates,
-   or remains unresolved without adding a behavioral branch. Preserve the
-   counterexample and insufficiency record for M26.6/M26.9 formalization;
+2. use the newly earned held-out developmental record in a later contact whose
+   material organization has partial but non-identical overlap. Require native
+   MeTTa to disclose whether the learning transfers, differentiates, or remains
+   unresolved; neither recurrence nor provider fluency may decide that
+   standing;
 3. continue C3 through broader endogenous learning and regenerative Soul
-   expression only after the performance seam keeps the live constitutive
-   joint intact and reachable at always-on conversational cadence;
+   expression after the performance seam keeps the complete live constitutive
+   joint reachable at always-on conversational cadence;
 4. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.

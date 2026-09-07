@@ -27,7 +27,7 @@
      ()))
 
 (= (C3SemanticQuestionInstructions)
-  "Return only one JSON object with keys uncertainty and candidates. Each candidate must have exactly the keys summary, preserve, explore, and counterfactual. Return 2 or 3 materially different relational possibilities. For every candidate, select one supplied partial opening and copy that opening's complete preserve array and complete explore array exactly; do not add, omit, or move a perspective. Every supplied opening must be represented by at least one candidate. The only permitted perspective names are Relatedness, Appropriateness, and Precision. Use the supplied Fact9 and interconnected flourishing inquiry surfaces to explain what new contact or distinction could disclose fuller alignment. Do not choose a candidate, claim alignment, issue a verdict, address the human, add a value or Fact9 role which Miter did not supply, or use a Markdown fence.")
+  "Return only one JSON object with keys uncertainty and candidates. Keep uncertainty at 800 characters or fewer, including spaces. Each candidate must have exactly the keys summary, preserve, explore, and counterfactual; keep summary and counterfactual at 800 characters or fewer each, including spaces. Return 2 or 3 materially different relational possibilities. For every candidate, select one supplied partial opening and copy that opening's complete preserve array and complete explore array exactly; do not add, omit, or move a perspective. Every supplied opening must be represented by at least one candidate. The only permitted perspective names are Relatedness, Appropriateness, and Precision. Use the supplied Fact9 and interconnected flourishing inquiry surfaces to explain what new contact or distinction could disclose fuller alignment. Do not choose a candidate, claim alignment, issue a verdict, address the human, add a value or Fact9 role which Miter did not supply, or use a Markdown fence.")
 
 (= (C3OpeningSourceMaterial $opening)
    (if (CPShape $opening c3-partial-alignment-opening-v2 9)
@@ -1642,11 +1642,22 @@
               (index-atom $o-star 1) ()))
             ($route (if (CPShape $route-wrapper consequence-route 3)
               (index-atom $route-wrapper 1) ())))
-       (if (and (C3DevelopmentalTransferRouteValid $route)
-             (and (== (index-atom $route-wrapper 2) non-certifying)
-                  (== (index-atom $movement 2)
-                    (index-atom (index-atom $route 1) 1))))
-         $route
+       ; PeTTa conjunction is not a short-circuit guard.  Keep every index
+       ; behind the exact shape that makes it lawful so an ordinary inquiry
+       ; with no transfer route remains explicit instead of erasing the next
+       ; constitutive encounter through a no-solution reduction.
+       (if (C3DevelopmentalTransferRouteValid $route)
+         (if (CPShape $route-wrapper consequence-route 3)
+           (if (== (index-atom $route-wrapper 2) non-certifying)
+             (if (== (index-atom $movement 2)
+                   (index-atom (index-atom $route 1) 1))
+               $route
+               (c3-developmental-transfer-route-unavailable
+                 malformed-or-movement-id-mismatched))
+             (c3-developmental-transfer-route-unavailable
+               malformed-or-movement-id-mismatched))
+           (c3-developmental-transfer-route-unavailable
+             malformed-or-movement-id-mismatched))
          (c3-developmental-transfer-route-unavailable
            malformed-or-movement-id-mismatched)))
      (c3-developmental-transfer-route-unavailable
