@@ -595,6 +595,324 @@
        (c3-semantic-consequence-resolution-unavailable
          missing-or-ambiguous-candidate-contact))))
 
+; A consequence-earned semantic discrimination becomes durable developmental
+; material only as an exact, provisional episode.  It retains the complete
+; Soul-selected inquiry surface, all alternatives and their counterfactuals,
+; the exact returned row, and the one source/next movement lineage.  It is not
+; a truth assertion, a reusable rule, or provider authority.
+(= (C3DevelopmentMovementReference $cut $movement)
+   (if (CPShape $movement movement-formed 7)
+     (movement-reference
+       (if (CPShape (index-atom $movement 3) source-cut 2)
+         (index-atom (index-atom $movement 3) 1)
+         (index-atom $cut 1))
+       formed
+       (index-atom $movement 1) (index-atom $movement 2))
+     (if (CPShape $movement movement-plural-live 4)
+       (movement-reference (index-atom $cut 1) plural-live
+         (size-atom (index-atom (index-atom $movement 2) 1)) unresolved)
+       (movement-reference (index-atom $cut 1) unresolved
+         (index-atom $movement 1) unresolved))))
+
+; Recover the exact native semantic question from the source movement's
+; continuation basis.  The question is not reconstructed from provider text:
+; it is the original Soul-formed participant retained by the one constitutive
+; encounter that formed the semantic inquiry.
+(= (C3SemanticQuestionFromMovement $cut $movement)
+   (if (CPShape $movement movement-formed 7)
+     (let $retained (index-atom $movement 6)
+       (if (CPShape $retained retained-alternatives-v3 3)
+         (let $basis (index-atom $retained 2)
+           (if (CPShape $basis continuation-basis-v3 6)
+             (let* (($participant-source (index-atom $basis 3))
+                    ($participants (participant-reentry-organization
+                      differentiated-by-source-scope-and-lineage
+                      (CPParticipantAt $cut $participant-source 0)
+                      repeated-same-lineage-is-not-independent-support))
+                    ($relations
+                      (CPParticipantRelationOrganization $participants))
+                    ($questions (C3SemanticQuestions $relations)))
+               (if (== (size-atom $questions) 1)
+                 (index-atom $questions 0)
+                 (c3-semantic-question-unavailable
+                   missing-or-ambiguous-source-question)))
+             (c3-semantic-question-unavailable
+               source-movement-has-no-v3-basis)))
+         (c3-semantic-question-unavailable
+           source-movement-has-no-retained-v3-alternatives)))
+     (c3-semantic-question-unavailable source-movement-not-formed)))
+
+(= (C3SemanticResolutionMatchesSurface $resolution $surface)
+   (if (and (CPShape $resolution c3-semantic-consequence-resolution-v1 7)
+            (CPShape $surface c3-semantic-inquiry-surface-v1 8))
+     (let* (($entry (index-atom $resolution 2))
+            ($row (index-atom $resolution 3))
+            ($candidate-id (if
+              (CPShape $entry c3-semantic-discrimination-entry-v1 9)
+              (index-atom $entry 1) no-candidate-id)))
+       (==
+         ((== (index-atom $resolution 1) (index-atom $surface 1))
+          (== $entry (C3SemanticEntryForId $surface $candidate-id))
+          (CPShape $row relation 5)
+          (== (index-atom $row 1) $candidate-id)
+          (== (index-atom $row 2) semantic-candidate-contact)
+          (CPHas (index-atom $row 3) (support contradiction unresolved) 0)
+          (CPShape (index-atom $resolution 4) returned-consequence 2)
+          (== (index-atom $resolution 5) exact-candidate-contact)
+          (== (index-atom $resolution 6)
+            provider-proposal-still-non-certifying))
+         (true true true true true true true true true)))
+     false))
+
+(= (C3SemanticDevelopmentRecord $scope $cut $movement $next-cut
+      $next-movement $consequence)
+   (let* (($surface (C3SemanticInquirySurfaceFromMovement $movement))
+          ($question (C3SemanticQuestionFromMovement $cut $movement))
+          ($resolution (C3SemanticConsequenceResolution $movement
+            $consequence)))
+     (if (and (CPShape $scope scope 4)
+           (and (CPShape $question c3-semantic-question-v1 11)
+            (and (== (index-atom $question 1) (index-atom $surface 1))
+             (and (C3SemanticResolutionMatchesSurface $resolution $surface)
+                  (== (index-atom (index-atom $resolution 4) 1)
+                    (index-atom $consequence 1))))))
+       (c3-semantic-development-v1
+         (development-reference (index-atom $consequence 1))
+         $scope
+         (C3DevelopmentMovementReference $cut $movement)
+         $surface
+         $question
+         $resolution
+         (C3DevelopmentMovementReference $next-cut $next-movement)
+         (epistemic-standing consequence-earned-discrimination provisional)
+         (authority-boundary
+           no-provider-choice no-repetition-authority no-genome-mutation
+           later-use-requires-new-native-comparison-and-consequence))
+       (c3-semantic-development-unavailable
+         (index-atom $consequence 1) no-exact-semantic-discrimination))))
+
+(= (C3SemanticDevelopmentRecordValid $record)
+   (if (CPShape $record c3-semantic-development-v1 10)
+     (let* (($reference (index-atom $record 1))
+            ($scope (index-atom $record 2))
+            ($source (index-atom $record 3))
+            ($surface (index-atom $record 4))
+            ($question (index-atom $record 5))
+            ($resolution (index-atom $record 6))
+            ($next (index-atom $record 7)))
+       (==
+         ((CPShape $reference development-reference 2)
+          (CPShape $scope scope 4)
+          (CPShape $source movement-reference 5)
+          (CPShape $next movement-reference 5)
+          (CPShape $question c3-semantic-question-v1 11)
+          (== (index-atom $question 1) (index-atom $surface 1))
+          (== (index-atom $question 4) (index-atom $surface 2))
+          (CPSetEqual (C3QuestionFactIds $question)
+            (index-atom (index-atom $surface 3) 1))
+          (CPSetEqual (C3QuestionFlourishingValues $question)
+            (index-atom (index-atom $surface 4) 1))
+          (C3SemanticResolutionMatchesSurface $resolution $surface)
+          (== (index-atom $reference 1)
+            (index-atom (index-atom $resolution 4) 1))
+          (== (index-atom $source 1)
+            (next-cut
+              (index-atom (index-atom $question 4) 1)
+              (index-atom (index-atom $question 1) 1)))
+          (== (index-atom $source 2) formed)
+          (== (index-atom $source 3) inquiry)
+          (== (index-atom $source 4) c3-semantic-discrimination-inquiry)
+          (== (index-atom $record 8)
+            (epistemic-standing consequence-earned-discrimination provisional))
+          (== (index-atom $record 9)
+            (authority-boundary
+              no-provider-choice no-repetition-authority no-genome-mutation
+              later-use-requires-new-native-comparison-and-consequence)))
+         (true true true true true true true true true true true true true true
+           true true true)))
+     false))
+
+(= (C3SemanticDevelopmentParticipant $scope $record)
+   (if (and (C3SemanticDevelopmentRecordValid $record)
+            (== (index-atom $record 2) $scope))
+     (participant-contribution
+       (c3-semantic-development-memory-participation
+         (index-atom (index-atom $record 1) 1))
+       developmental-memory $scope
+       (lineage consequence-earned-semantic-development
+         (index-atom (index-atom $record 1) 1))
+       (participant-relation-claim c3-semantic-development-memory
+         unresolved
+         (c3-semantic-development-memory-evidence-v1 $record
+           candidate-for-new-contact-comparison-not-support))
+       candidate no-contact-no-movement-authority)
+     (participant-unresolved semantic-development-memory
+       malformed-or-scope-mismatched)))
+
+(= (C3SemanticDevelopmentClaimsFromRelationsAt $relations $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (and (CPShape $relation participant-proposed-relation 4)
+             (and (== (index-atom $relation 1)
+                    c3-semantic-development-memory)
+                  (== (index-atom $relation 2) unresolved)))
+         (index-atom $relation 3)
+         (C3SemanticDevelopmentClaimsFromRelationsAt $relations (+ $i 1))))
+     ()))
+
+(= (C3SemanticDevelopmentClaims $participant-relations)
+   (if (CPShape $participant-relations participant-relation-organization 2)
+     (C3SemanticDevelopmentClaimsFromRelationsAt
+       (index-atom $participant-relations 1) 0)
+     ()))
+
+(= (C3SemanticDevelopmentRecordFromClaim $claim)
+   (if (CPShape $claim participant-relation-evidence 7)
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence c3-semantic-development-memory-evidence-v1 3)
+         (index-atom $evidence 1)
+         (c3-semantic-development-unavailable claim-has-no-record)))
+     (c3-semantic-development-unavailable malformed-claim)))
+
+(= (C3FactRolesPresentAt $facts $roles $i)
+   (if (< $i (size-atom $facts))
+     (let $fact (index-atom $facts $i)
+       (if (and (CPShape $fact fact9-expression 10)
+             (and (CPSetEqual (index-atom $fact 2) $roles)
+                  (== (index-atom (index-atom $fact 6) 2)
+                    recognized-compose)))
+         true (C3FactRolesPresentAt $facts $roles (+ $i 1))))
+     false))
+
+(= (C3QuestionFactEntriesApplicableAt $entries $facts $i)
+   (if (< $i (size-atom $entries))
+     (let* (($entry (index-atom $entries $i))
+            ($roles (if (and (CPShape $entry fact9-inquiry-entry 4)
+                             (CPShape (index-atom $entry 2) roles 2))
+              (index-atom (index-atom $entry 2) 1) ())))
+       (and (> (size-atom $roles) 0)
+            (and (C3FactRolesPresentAt $facts $roles 0)
+                 (C3QuestionFactEntriesApplicableAt $entries $facts
+                   (+ $i 1)))))
+     true))
+
+(= (C3QuestionFactSurfacesApplicableAt $surfaces $facts $i)
+   (if (< $i (size-atom $surfaces))
+     (let* (($surface (index-atom $surfaces $i))
+            ($entries (if (and (CPShape $surface fact9-inquiry-surface 3)
+                               (CPShape (index-atom $surface 2)
+                                 fact9-material 2))
+              (index-atom (index-atom $surface 2) 1) ())))
+       (and (> (size-atom $entries) 0)
+            (and (C3QuestionFactEntriesApplicableAt $entries $facts 0)
+                 (C3QuestionFactSurfacesApplicableAt $surfaces $facts
+                   (+ $i 1)))))
+     true))
+
+(= (C3QuestionFactParticipationApplicable $question $facts)
+   (let $participation (index-atom $question 6)
+     (if (CPShape $participation fact9-participation 3)
+       (let $surfaces (index-atom $participation 1)
+         (and (> (size-atom $surfaces) 0)
+              (C3QuestionFactSurfacesApplicableAt $surfaces $facts 0)))
+       false)))
+
+(= (C3FlourishingRowsMaterialAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (and (CPShape $row flourishing-standing 4)
+             (and (!= (index-atom $row 1) no-material-relation)
+                  (!= (index-atom $row 2) unknown)))
+         true (C3FlourishingRowsMaterialAt $rows (+ $i 1))))
+     false))
+
+(= (C3FlourishingMaterialPresent $organization $value)
+   (let $expressions (CPFlourishingExpressionFor $organization $value)
+     (if (== (size-atom $expressions) 1)
+       (let $expression (index-atom $expressions 0)
+         (and (CPShape $expression flourishing-expression 4)
+              (C3FlourishingRowsMaterialAt (index-atom $expression 3) 0)))
+       false)))
+
+(= (C3AllFlourishingMaterialPresentAt $organization $values $i)
+   (if (< $i (size-atom $values))
+     (and (C3FlourishingMaterialPresent $organization
+            (index-atom $values $i))
+          (C3AllFlourishingMaterialPresentAt $organization $values
+            (+ $i 1)))
+     true))
+
+; Applicability is structural and conservative: a different contact cut must
+; expose recognized Fact9 expressions over every exact role-set and material
+; participation by every flourishing selected by the source Soul inquiry.
+; Fact/view and relation identifiers may differ, allowing a previously unseen
+; composition to become comparable without a new behavioral branch. No words,
+; model confidence, repetition count, or preferred answer are consulted.
+; Passing this test only permits a new inquiry.
+(= (C3SemanticDevelopmentApplicable $record $cut $facts $flourishing)
+   (if (C3SemanticDevelopmentRecordValid $record)
+     (let* (($surface (index-atom $record 4))
+            ($question (index-atom $record 5))
+            ($source-cut (index-atom (index-atom $surface 2) 1))
+            ($values (C3QuestionFlourishingValues $question)))
+       (and (!= (index-atom $cut 1) $source-cut)
+        (and (> (size-atom $values) 0)
+          (and (C3QuestionFactParticipationApplicable $question $facts)
+               (C3AllFlourishingMaterialPresentAt $flourishing $values 0)))))
+     false))
+
+(= (C3SemanticDevelopmentTransferRoute $record $cut)
+   (let* (($surface (index-atom $record 4))
+          ($question (index-atom $record 5))
+          ($resolution (index-atom $record 6))
+          ($entry (index-atom $resolution 2)))
+     (discriminating-developmental-transfer-v2
+       (index-atom $record 1)
+       (source-cut (index-atom (index-atom $surface 2) 1))
+       (target-cut (index-atom $cut 1))
+       (source-candidate $entry)
+       (source-rap-opening (index-atom $entry 4) (index-atom $entry 5))
+       (source-partial-openings (C3QuestionOpenings $question))
+       (source-fact9-participation (index-atom $question 6))
+       (source-flourishing-participation (index-atom $question 7))
+       (index-atom $surface 3)
+       (index-atom $surface 4)
+       (counterfactual-retained (index-atom $entry 6))
+       provisional-transfer-requires-returned-contact)))
+
+(= (C3SemanticDevelopmentTransferPossibilitiesAt $claims $cut $facts
+      $flourishing $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($record (C3SemanticDevelopmentRecordFromClaim $claim)))
+       (if (and (== (index-atom $claim 2) developmental-memory)
+                (C3SemanticDevelopmentApplicable $record $cut $facts
+                  $flourishing))
+         (cons-atom
+           (possible-movement
+             (c3-developmental-transfer-inquiry
+               (index-atom (index-atom $record 1) 1))
+             inquiry
+             (CPNativeRequirementRelations $cut)
+             (CPNativeRequirementDistinctions $cut)
+             (CPNativeRequirementInterfaces $cut)
+             (index-atom (index-atom (index-atom $record 4) 4) 1)
+             (consequence-route
+               (C3SemanticDevelopmentTransferRoute $record $cut)
+               non-certifying)
+             l2425-supported)
+           (C3SemanticDevelopmentTransferPossibilitiesAt $claims $cut $facts
+             $flourishing (+ $i 1)))
+         (C3SemanticDevelopmentTransferPossibilitiesAt $claims $cut $facts
+           $flourishing (+ $i 1))))
+     ()))
+
+(= (C3SemanticDevelopmentTransferPossibilities $cut $facts $flourishing
+      $participant-relations)
+   (C3SemanticDevelopmentTransferPossibilitiesAt
+     (C3SemanticDevelopmentClaims $participant-relations)
+     $cut $facts $flourishing 0))
+
 (= (C3SemanticResolutionClaimStanding $resolution)
    (let $standing (index-atom (index-atom $resolution 3) 3)
      (if (== $standing support) support

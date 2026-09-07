@@ -162,16 +162,16 @@ consumer is absent. No status is upgraded by assertion.
 | Start/status/stop/panic | E | `bin/miter`, operator membrane | Installer and host service registration are absent. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | No promoted external surface adapter is active. |
-| Checkpoint and same-runtime restart | E | reactor + store membrane | Living long-term memory and incomplete undertakings are not fully restored. |
+| Checkpoint and same-runtime restart | E | reactor + store membrane | One scoped developmental episode and its live transfer inquiry now restore; complete long-term memory and incomplete undertakings are not yet one writable continuity organization. |
 | M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C3 must now learn from their provisional composition. |
-| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 semantic inquiry | Soul-selected flourishing relations now participate in partial-alignment inquiry; broader endogenous growth and transfer remain open. |
-| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 semantic inquiry | Fact9/flourishing selections now constrain native and model-assisted inquiry; previously unseen developmental transfer remains open. |
-| One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate` | One exact contact/movement is read simultaneously; C3 must now use partial alignment generatively without splitting or scoring it. |
+| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 semantic inquiry and developmental transfer | Soul-selected flourishing relations now participate in partial-alignment inquiry and cross-contact comparison; broader endogenous growth and regeneration remain open. |
+| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 semantic inquiry and developmental transfer | Fact9/flourishing organization now constrains native/model-assisted inquiry and can disclose a transfer inquiry through a newly named composition; consequence-earned transformation after that transfer remains open. |
+| One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate` | Partial alignment now forms native, model-assisted, and cross-contact inquiry without splitting or scoring; consequence-tested transfer remains a C3 gap. |
 | Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
 | LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | GLM 5.3 candidates now enter a Soul-owned inquiry and returned candidate contact changes the next persisted cut without provider self-certification; general language rendering remains absent. |
 | Mattermost | A | none in clean runtime | General scoped transport and delivery reconciliation must be recovered. |
-| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination result; qualified reasoning vocabulary | One consequence-earned distinction now persists and changes movement; reusable revision, transfer, NACE, and qualified PLN/NAL consumers remain absent. |
+| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination result and developmental episode; qualified reasoning vocabulary | One consequence-earned discrimination now persists and forms a new inquiry on a structurally related, newly named contact; consequence-tested revision, broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | A | control specification only | Detection, quarantined reconstruction, rejection, and restoration are absent. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
 | Full Continuity of Mind | A/P | checkpoints plus read-only adapters | Exact capsules, semantic memory, undertakings, relationships, and growth are not one writable restored organization. |
@@ -928,17 +928,40 @@ Already carried:
   participation. All stimuli and observations remained outside Git. This
   establishes consequence-sensitive semantic discrimination and durable
   developmental change, not yet generalized skill transfer or C3 closure.
+- That discrimination now becomes one exact, provisional developmental
+  episode rather than a detached answer. The episode retains its scope, source
+  and next movement lineage, complete native semantic question, original
+  simultaneous partial R/A/P openings, selected Fact9 and flourishing
+  participation, all provider alternatives and counterfactuals, exact returned
+  candidate contact, and non-sovereignty boundary. Later contact receives it
+  only as an unresolved participant. Applicability is structural: the new cut
+  must expose recognized Fact9 expressions over the source-relevant role sets
+  and material participation by the Soul-selected flourishing identities.
+  Fact/view names, relation names, wording, provider confidence, and repetition
+  do not qualify reuse. A held-out contact with a newly named Fact9 expression
+  therefore formed one
+  `c3-developmental-transfer-inquiry`; missing required role material or a
+  selected flourishing with only unknown/no-material standing formed none.
+  Another human scope received zero developmental participants. Checkpoint
+  restore preserved the exact episode and transfer movement; replay returned
+  duplicate with byte-identical native state, zero added model readings, and
+  valid history. This establishes scoped, non-rule-based developmental reuse,
+  not yet consequence-earned transformation of the transfer inquiry or full
+  skill acquisition.
 
 Next movement:
 
-1. turn the persisted discrimination result into a general consequence-earned
-   learning relation whose later reuse and transfer remain attributable to the
-   exact contact, Fact9/flourishing participation, alternatives, and
-   counterfactual difference rather than to provider fluency;
-2. exercise materially different held-out contacts to distinguish reusable
-   growth from case retention and prove that repetition without new support
-   cannot increase authority or silently alter the constitutional germline;
-3. only after explicit human acceptance of the complete clean candidate,
+1. return materially different contact to the developmental transfer inquiry
+   and require the resulting next organization to differ with the consequence,
+   while preserving one R/A/P surface and the exact source episode;
+2. when that new contact leaves a material R/A/P perspective unresolved, let
+   the Soul either continue natively or compose a newly bounded GLM 5.3 question
+   over only the Fact9/flourishing participation it finds relevant; provider
+   output must remain unresolved thought-partner participation;
+3. prove that a consequence-earned transfer changes a still later unfamiliar
+   cut, while repetition without new contact cannot increase epistemic or Soul
+   authority or mutate the constitutional germline;
+4. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

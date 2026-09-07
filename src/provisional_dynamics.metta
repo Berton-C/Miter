@@ -302,16 +302,24 @@
 ; persisted relational evidence, not first-match behavioral selection.
 (= (C3NativePossibilities $cut $facts $flourishing $participant-relations)
    (let* (($learned (C3LearnedPossibilities $cut))
+          ($transfer (C3SemanticDevelopmentTransferPossibilities $cut $facts
+            $flourishing $participant-relations))
           ($semantic-inquiry
-            (C3SemanticInquiryPossibilities $cut $participant-relations)))
+            (C3SemanticInquiryPossibilities $cut $participant-relations))
+          ; The semantic inquiry is the same source inquiry enriched by its
+          ; returned candidate family, so retaining both would duplicate one
+          ; cognitive possibility. A transfer inquiry has a different source
+          ; contact and remains independently live when present.
+          ($source-inquiry (if (> (size-atom $semantic-inquiry) 0)
+            $semantic-inquiry $learned))
+          ($specialized (CPListAppend $source-inquiry $transfer)))
      (CPListAppend
        (CPNativeUndertakingsV2 $cut $facts $flourishing
          $participant-relations)
        (CPListAppend
-         (if (> (size-atom $semantic-inquiry) 0) $semantic-inquiry
-           (if (> (size-atom $learned) 0) $learned
-             (CPNativeInquiriesV2 $cut $facts $flourishing
-               $participant-relations)))
+         (if (> (size-atom $specialized) 0) $specialized
+           (CPNativeInquiriesV2 $cut $facts $flourishing
+             $participant-relations))
          (CPListAppend
            (C3ModelPossibilities $cut $participant-relations)
            (CPNativeDeferralsV2 $cut $flourishing))))))
