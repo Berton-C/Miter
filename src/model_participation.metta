@@ -2175,6 +2175,25 @@
              $resolution (+ $i 1)))))
      ()))
 
+(= (C3TransferMemoryParticipantForApplication $participant $resolution)
+   (let* (($record (index-atom $resolution 1))
+          ($memory-id (index-atom (index-atom $record 1) 1))
+          ($id (if (CPShape $participant participant-contribution 8)
+            (index-atom $participant 1) malformed-participant)))
+     (== $id (c3-developmental-transfer-memory-participation $memory-id))))
+
+(= (C3ParticipantsWithoutDevelopmentalMemoryAt $participants $resolution
+      $i)
+   (if (< $i (size-atom $participants))
+     (let $participant (index-atom $participants $i)
+       (if (C3TransferMemoryParticipantForApplication $participant $resolution)
+         (C3ParticipantsWithoutDevelopmentalMemoryAt $participants
+           $resolution (+ $i 1))
+         (cons-atom $participant
+           (C3ParticipantsWithoutDevelopmentalMemoryAt $participants
+             $resolution (+ $i 1)))))
+     ()))
+
 ; Resolved model candidates and the exact developmental memory being tested
 ; leave the active participant set only after matching returned contact. Their
 ; append-only history remains intact and may participate in a later new contact.
@@ -2190,11 +2209,18 @@
             (C3ParticipantsWithoutSemanticSurfaceAt $participants $surface 0)
             $participants))
           ($transfer-resolution
-            (C3DevelopmentalTransferResolution $movement $consequence)))
-     (if (C3DevelopmentalTransferResolutionValid $transfer-resolution)
-       (C3ParticipantsWithoutDevelopmentalTransferAt $without-semantic
-         $transfer-resolution 0)
-       $without-semantic)))
+            (C3DevelopmentalTransferResolution $movement $consequence))
+          ($without-transfer (if
+            (C3DevelopmentalTransferResolutionValid $transfer-resolution)
+            (C3ParticipantsWithoutDevelopmentalTransferAt $without-semantic
+              $transfer-resolution 0)
+            $without-semantic))
+          ($memory-resolution
+            (C3DevelopmentalMemoryResolution $movement $consequence)))
+     (if (C3DevelopmentalMemoryResolutionValid $memory-resolution)
+       (C3ParticipantsWithoutDevelopmentalMemoryAt $without-transfer
+         $memory-resolution 0)
+       $without-transfer)))
 
 (= (C3DevelopmentalTransferResolutionFromClaim $claim)
    (if (CPShape $claim participant-relation-evidence 7)
@@ -2604,7 +2630,8 @@
              (index-atom (index-atom
                (index-atom (index-atom $record 4) 1) 10) 1)
              (consequence-route
-               (consequence-earned-developmental-memory $record)
+               (consequence-earned-developmental-memory-v2 $record
+                 (target-cut (index-atom $cut 1)))
                non-certifying)
              l2425-supported)
            (C3TransferDevelopmentMemoryPossibilitiesAt $claims $cut $facts
@@ -2618,6 +2645,442 @@
    (C3TransferDevelopmentMemoryPossibilitiesAt
      (C3TransferDevelopmentClaims $participant-relations)
      $cut $facts $flourishing 0))
+
+; A consequence-earned developmental memory can inform a later contact, but
+; recurrence alone forms only an inquiry.  Returned contact must address that
+; exact inquiry before its application has any standing.  The source cut is
+; retained in the resolution so a supported result can participate only in the
+; immediate next organization; it cannot replay as an undertaking on every
+; subsequent contact.
+(= (C3DevelopmentalMemoryRecordFromMovement $movement)
+   (if (and (CPShape $movement movement-formed 7)
+            (== (index-atom $movement 1) inquiry))
+     (let* (($answerability (index-atom $movement 5))
+            ($o-star (if (CPShape $answerability answerability 2)
+              (index-atom $answerability 1) ()))
+            ($route-wrapper (if (CPShape $o-star o-star 2)
+              (index-atom $o-star 1) ()))
+            ($route (if (CPShape $route-wrapper consequence-route 3)
+              (index-atom $route-wrapper 1) ()))
+            ($record (if (CPShape $route
+                           consequence-earned-developmental-memory-v2 3)
+              (index-atom $route 1)
+              (c3-developmental-transfer-development-unavailable
+                no-reference movement-has-no-developmental-memory-route)))
+            ($target-cut (if (CPShape $route
+                               consequence-earned-developmental-memory-v2 3)
+              (index-atom $route 2) (target-cut unavailable))))
+       (if (C3DevelopmentalTransferRecordValid $record)
+         (if (and (== (index-atom $route-wrapper 2) non-certifying)
+               (and (== (index-atom $movement 2)
+                      (index-atom (index-atom $record 1) 1))
+                (and (CPShape (index-atom $movement 3) source-cut 2)
+                 (and (CPShape $target-cut target-cut 2)
+                      (== (index-atom (index-atom $movement 3) 1)
+                        (index-atom $target-cut 1))))))
+           $record
+           (c3-developmental-transfer-development-unavailable
+             no-reference malformed-or-movement-id-mismatched-memory-route))
+         (c3-developmental-transfer-development-unavailable
+           no-reference malformed-or-movement-id-mismatched-memory-route)))
+     (c3-developmental-transfer-development-unavailable
+       no-reference movement-is-not-formed-inquiry)))
+
+(= (C3DevelopmentalMemoryRowsAt $relations $memory-id $i)
+   (if (< $i (size-atom $relations))
+     (let $row (index-atom $relations $i)
+       (if (and (CPShape $row relation 5)
+             (and (== (index-atom $row 1) $memory-id)
+              (and (== (index-atom $row 2) developmental-memory-contact)
+                   (CPHas (index-atom $row 3)
+                     (support contradiction unresolved) 0))))
+         (cons-atom $row
+           (C3DevelopmentalMemoryRowsAt $relations $memory-id (+ $i 1)))
+         (C3DevelopmentalMemoryRowsAt $relations $memory-id (+ $i 1))))
+     ()))
+
+(= (C3DevelopmentalMemoryResolution $movement $consequence)
+   (let* (($record (C3DevelopmentalMemoryRecordFromMovement $movement))
+          ($memory-id (if (C3DevelopmentalTransferRecordValid $record)
+            (index-atom (index-atom $record 1) 1) no-memory-id))
+          ($source-cut (if (and (CPShape $movement movement-formed 7)
+                                (CPShape (index-atom $movement 3) source-cut 2))
+            (index-atom $movement 3) (source-cut unavailable)))
+          ($rows (if (CPConsequenceV2Valid $consequence)
+            (C3DevelopmentalMemoryRowsAt
+              (index-atom (index-atom $consequence 5) 1) $memory-id 0) ())))
+     (if (and (C3DevelopmentalTransferRecordValid $record)
+           (and (CPConsequenceV2Valid $consequence)
+            (and (== (index-atom $movement 2) (index-atom $consequence 2))
+             (and (CPShape $source-cut source-cut 2)
+                  (== (size-atom $rows) 1)))))
+       (c3-developmental-memory-resolution-v1
+         $record $source-cut (index-atom $rows 0)
+         (returned-consequence (index-atom $consequence 1))
+         exact-developmental-memory-contact
+         source-development-remains-non-certifying)
+       (c3-developmental-memory-resolution-unavailable
+         missing-ambiguous-or-movement-mismatched-contact))))
+
+(= (C3DevelopmentalMemoryResolutionValid $resolution)
+   (if (CPShape $resolution c3-developmental-memory-resolution-v1 7)
+     (let* (($record (index-atom $resolution 1))
+            ($source-cut (index-atom $resolution 2))
+            ($row (index-atom $resolution 3))
+            ($memory-id (if (C3DevelopmentalTransferRecordValid $record)
+              (index-atom (index-atom $record 1) 1) no-memory-id)))
+       (==
+         ((C3DevelopmentalTransferRecordValid $record)
+          (CPShape $source-cut source-cut 2)
+          (CPShape $row relation 5)
+          (== (index-atom $row 1) $memory-id)
+          (== (index-atom $row 2) developmental-memory-contact)
+          (CPHas (index-atom $row 3)
+            (support contradiction unresolved) 0)
+          (CPShape (index-atom $resolution 4) returned-consequence 2)
+          (== (index-atom $resolution 5)
+            exact-developmental-memory-contact)
+          (== (index-atom $resolution 6)
+            source-development-remains-non-certifying))
+         (true true true true true true true true true)))
+     false))
+
+(= (C3DevelopmentalMemoryStanding $resolution)
+   (let $standing (index-atom (index-atom $resolution 3) 3)
+     (if (== $standing support) support
+       (if (== $standing contradiction) contradiction unresolved))))
+
+(= (C3DevelopmentalMemoryParticipantStanding $resolution)
+   (let $standing (C3DevelopmentalMemoryStanding $resolution)
+     (if (== $standing support) supported
+       (if (== $standing contradiction) contradicted candidate))))
+
+(= (C3DevelopmentalMemoryResultRelationId $resolution)
+   (c3-developmental-memory-result
+     (index-atom (index-atom $resolution 4) 1)))
+
+; Native interpretation and returned contact remain separate lineages.  GLM
+; may have contributed to the older inquiry, but no provider output is contact
+; or support here.  Only the exact returned row determines the application
+; standing of this developmental memory on the present contact.
+(= (C3DevelopmentalMemoryConsequenceParticipants $scope $movement
+      $consequence)
+   (let $resolution (C3DevelopmentalMemoryResolution $movement $consequence)
+     (if (and (CPShape $scope scope 4)
+              (C3DevelopmentalMemoryResolutionValid $resolution))
+       (let* (($id (index-atom $consequence 1))
+              ($target (C3DevelopmentalMemoryResultRelationId $resolution))
+              ($standing (C3DevelopmentalMemoryStanding $resolution))
+              ($participant-standing
+                (C3DevelopmentalMemoryParticipantStanding $resolution)))
+         ((participant-contribution
+            (c3-native-developmental-memory-participation $id)
+            native-authority $scope
+            (lineage provisional-26.6-26.9 developmental-memory-application)
+            (participant-relation-claim $target $standing
+              (c3-native-developmental-memory-basis-v1 $resolution
+                one-contact-one-movement-three-simultaneous-perspectives
+                fact9-flourishings-form-the-computable-surface
+                no-provider-self-certification))
+            $participant-standing no-contact-no-movement-authority)
+          (participant-contribution
+            (c3-returned-developmental-memory-participation $id)
+            returned-contact $scope
+            (lineage returned-consequence $id)
+            (participant-relation-claim $target $standing
+              (c3-returned-developmental-memory-evidence-v1 $resolution
+                (index-atom $consequence 12)))
+            $participant-standing no-contact-no-movement-authority)))
+       ())))
+
+(= (C3DevelopmentalMemoryResolutionFromClaim $claim)
+   (if (CPShape $claim participant-relation-evidence 7)
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence c3-native-developmental-memory-basis-v1 5)
+         (index-atom $evidence 1)
+         (if (CPShape $evidence
+               c3-returned-developmental-memory-evidence-v1 3)
+           (index-atom $evidence 1)
+           (c3-developmental-memory-resolution-unavailable
+             claim-has-no-memory-resolution))))
+     (c3-developmental-memory-resolution-unavailable malformed-claim)))
+
+(= (C3DevelopmentalMemoryClaimsSameResolutionAt $claims $resolution $i)
+   (if (< $i (size-atom $claims))
+     (and (== (C3DevelopmentalMemoryResolutionFromClaim
+                (index-atom $claims $i)) $resolution)
+          (C3DevelopmentalMemoryClaimsSameResolutionAt $claims $resolution
+            (+ $i 1)))
+     true))
+
+(= (C3DevelopmentalMemoryClaimsHaveSourceAt $claims $source $i)
+   (if (< $i (size-atom $claims))
+     (if (== (index-atom (index-atom $claims $i) 2) $source)
+       true (C3DevelopmentalMemoryClaimsHaveSourceAt $claims $source
+         (+ $i 1)))
+     false))
+
+(= (C3DevelopmentalMemoryResultRelationValid $relation)
+   (if (or (CPShape $relation participant-supported-relation 4)
+           (CPShape $relation participant-proposed-relation 4))
+     (let* (($target (index-atom $relation 1))
+            ($claims (index-atom $relation 3))
+            ($resolution (if (> (size-atom $claims) 0)
+              (C3DevelopmentalMemoryResolutionFromClaim
+                (index-atom $claims 0))
+              (c3-developmental-memory-resolution-unavailable no-claims))))
+       (if (CPShape $target c3-developmental-memory-result 2)
+         (and (== (size-atom $claims) 2)
+          (and (C3DevelopmentalMemoryResolutionValid $resolution)
+           (and (== $target
+                  (C3DevelopmentalMemoryResultRelationId $resolution))
+            (and (C3DevelopmentalMemoryClaimsSameResolutionAt $claims
+                   $resolution 0)
+             (and (C3DevelopmentalMemoryClaimsHaveSourceAt $claims
+                    native-authority 0)
+              (and (C3DevelopmentalMemoryClaimsHaveSourceAt $claims
+                     returned-contact 0)
+               (if (== (C3DevelopmentalMemoryStanding $resolution) support)
+                 (CPShape $relation participant-supported-relation 4)
+                 (CPShape $relation participant-proposed-relation 4))))))))
+         false))
+     false))
+
+(= (C3DevelopmentalMemoryResultPossibilitiesAt $relations $cut $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (and (C3DevelopmentalMemoryResultRelationValid $relation)
+                (CPShape $relation participant-supported-relation 4))
+         (let* (($target (index-atom $relation 1))
+                ($claims (index-atom $relation 3))
+                ($resolution (C3DevelopmentalMemoryResolutionFromClaim
+                  (index-atom $claims 0)))
+                ($source-cut (index-atom (index-atom $resolution 2) 1))
+                ($returned (index-atom (index-atom $resolution 4) 1))
+                ($record (index-atom $resolution 1))
+                ($route (index-atom (index-atom $record 4) 1))
+                ($base-relations (CPNativeRequirementRelations $cut))
+                ($required-relations (if (CPHas $target $base-relations 0)
+                  $base-relations (cons-atom $target $base-relations))))
+           (if (== (index-atom $cut 1) (next-cut $source-cut $returned))
+             (cons-atom
+               (possible-movement $returned undertaking $required-relations
+                 (CPNativeRequirementDistinctions $cut)
+                 (CPNativeRequirementInterfaces $cut)
+                 (index-atom (index-atom $route 10) 1)
+                 (consequence-route
+                   (consequence-earned-developmental-memory-application
+                     $resolution)
+                   non-certifying)
+                 l2425-supported)
+               (C3DevelopmentalMemoryResultPossibilitiesAt $relations $cut
+                 (+ $i 1)))
+             (C3DevelopmentalMemoryResultPossibilitiesAt $relations $cut
+               (+ $i 1))))
+         (C3DevelopmentalMemoryResultPossibilitiesAt $relations $cut
+           (+ $i 1))))
+     ()))
+
+(= (C3DevelopmentalMemoryResultPossibilities $cut $participant-relations)
+   (if (CPShape $participant-relations participant-relation-organization 2)
+     (C3DevelopmentalMemoryResultPossibilitiesAt
+       (index-atom $participant-relations 1) $cut 0)
+     ()))
+
+; The application episode is durable developmental history.  It records the
+; exact memory organization tested, the one current contact cut, the returned
+; standing, and the movement formed next.  Support, contradiction, and
+; unresolved are all retained; only support can construct the immediate
+; consequence-earned undertaking above.
+(= (C3DevelopmentalMemoryApplicationRecord $scope $cut $movement $next-cut
+      $next-movement $consequence)
+   (let $resolution (C3DevelopmentalMemoryResolution $movement $consequence)
+     (if (and (CPShape $scope scope 4)
+              (C3DevelopmentalMemoryResolutionValid $resolution))
+       (let* (($standing (C3DevelopmentalMemoryStanding $resolution))
+              ($participant-standing
+                (C3DevelopmentalMemoryParticipantStanding $resolution)))
+         (c3-developmental-memory-application-v1
+           (memory-application-reference (index-atom $consequence 1))
+           $scope
+           (C3DevelopmentMovementReference $cut $movement)
+           $resolution
+           (C3DevelopmentMovementReference $next-cut $next-movement)
+           (epistemic-standing consequence-earned-developmental-memory
+             $standing $participant-standing provisional)
+           (authority-boundary
+             one-rap-read-three-simultaneous-perspectives
+             fact9-and-flourishings-participate-generatively
+             returned-contact-determines-standing
+             provider-remains-nonsovereign
+             no-repetition-authority no-genome-mutation)))
+       (c3-developmental-memory-application-unavailable
+         (index-atom $consequence 1) no-exact-developmental-memory-contact))))
+
+(= (C3DevelopmentalMemoryApplicationRecordValid $record)
+   (if (CPShape $record c3-developmental-memory-application-v1 8)
+     (let* (($reference (index-atom $record 1))
+            ($scope (index-atom $record 2))
+            ($source (index-atom $record 3))
+            ($resolution (index-atom $record 4))
+            ($next (index-atom $record 5))
+            ($standing (if
+              (C3DevelopmentalMemoryResolutionValid $resolution)
+              (C3DevelopmentalMemoryStanding $resolution) unresolved))
+            ($participant-standing (if
+              (C3DevelopmentalMemoryResolutionValid $resolution)
+              (C3DevelopmentalMemoryParticipantStanding $resolution)
+              candidate)))
+       (==
+         ((CPShape $reference memory-application-reference 2)
+          (CPShape $scope scope 4)
+          (CPShape $source movement-reference 5)
+          (CPShape $next movement-reference 5)
+          (C3DevelopmentalMemoryResolutionValid $resolution)
+          (== (index-atom $reference 1)
+            (index-atom (index-atom $resolution 4) 1))
+          (== (index-atom $source 1)
+            (index-atom (index-atom $resolution 2) 1))
+          (== (index-atom $source 2) formed)
+          (== (index-atom $source 3) inquiry)
+          (== (index-atom $source 4)
+            (index-atom
+              (index-atom (index-atom $resolution 1) 1) 1))
+          (== (index-atom $record 6)
+            (epistemic-standing consequence-earned-developmental-memory
+              $standing $participant-standing provisional))
+          (== (index-atom $record 7)
+            (authority-boundary
+              one-rap-read-three-simultaneous-perspectives
+              fact9-and-flourishings-participate-generatively
+              returned-contact-determines-standing
+              provider-remains-nonsovereign
+              no-repetition-authority no-genome-mutation)))
+         (true true true true true true true true true true true true)))
+     false))
+
+(= (C3MemoryApplicationDevelopsTransferRecord $transfer $application)
+   (if (and (C3DevelopmentalTransferRecordValid $transfer)
+            (C3DevelopmentalMemoryApplicationRecordValid $application))
+     (let $resolution (index-atom $application 4)
+       (and (== (index-atom $transfer 2) (index-atom $application 2))
+            (== $transfer (index-atom $resolution 1))))
+     false))
+
+(= (C3DevelopmentalMemoryApplicationParticipant $scope $record)
+   (if (and (C3DevelopmentalMemoryApplicationRecordValid $record)
+            (== (index-atom $record 2) $scope))
+     (let* (($reference (index-atom $record 1))
+            ($resolution (index-atom $record 4))
+            ($standing (C3DevelopmentalMemoryStanding $resolution))
+            ($participant-standing
+              (C3DevelopmentalMemoryParticipantStanding $resolution)))
+       (participant-contribution
+         (c3-developmental-memory-application-participation
+           (index-atom $reference 1))
+         developmental-memory $scope
+         (lineage consequence-earned-developmental-memory-application
+           (index-atom $reference 1))
+         (participant-relation-claim
+           (c3-developmental-memory-application (index-atom $reference 1))
+           $standing
+           (c3-developmental-memory-application-evidence-v1 $record))
+         $participant-standing no-contact-no-movement-authority))
+     (c3-developmental-memory-application-participation-unavailable)))
+
+(= (C3MemoryApplicationResolutionFromPossibility $possibility)
+   (if (and (CPShape $possibility possible-movement 9)
+            (== (index-atom $possibility 2) undertaking))
+     (let $route (index-atom $possibility 7)
+       (if (and (CPShape $route consequence-route 3)
+                (== (index-atom $route 2) non-certifying))
+         (let $body (index-atom $route 1)
+           (if (CPShape $body
+                 consequence-earned-developmental-memory-application 2)
+             (let $resolution (index-atom $body 1)
+               (if (C3DevelopmentalMemoryResolutionValid $resolution)
+                 $resolution
+                 (c3-developmental-memory-resolution-unavailable
+                   invalid-memory-application-resolution)))
+             (c3-developmental-memory-resolution-unavailable
+               possibility-is-not-memory-application-result)))
+         (c3-developmental-memory-resolution-unavailable
+           malformed-memory-application-route)))
+     (c3-developmental-memory-resolution-unavailable
+       malformed-memory-application-possibility)))
+
+(= (C3MemoryApplicationStrictlyRefinesCurrentUndertaking $memory $current
+      $cut)
+   (let* (($resolution
+            (C3MemoryApplicationResolutionFromPossibility $memory))
+          ($target (if (C3DevelopmentalMemoryResolutionValid $resolution)
+            (C3DevelopmentalMemoryResultRelationId $resolution)
+            (c3-developmental-memory-result unavailable)))
+          ($memory-relations (if (CPShape $memory possible-movement 9)
+            (index-atom $memory 3) ()))
+          ($current-relations (if (CPShape $current possible-movement 9)
+            (index-atom $current 3) ()))
+          ($source-cut (if
+            (C3DevelopmentalMemoryResolutionValid $resolution)
+            (index-atom (index-atom $resolution 2) 1) no-source-cut))
+          ($returned (if
+            (C3DevelopmentalMemoryResolutionValid $resolution)
+            (index-atom (index-atom $resolution 4) 1) no-consequence)))
+     (and (CPCutValid $cut)
+      (and (C3DevelopmentalMemoryResolutionValid $resolution)
+       (and (C3CurrentContactUndertakingValid $current $cut)
+        (and (== (index-atom $cut 1) (next-cut $source-cut $returned))
+         (and (CPSetEqual $current-relations $memory-relations)
+          (and (CPHas $target $current-relations 0)
+           (and (CPHas $target $memory-relations 0)
+            (and (CPSetEqual (index-atom $memory 4)
+                    (index-atom $current 4))
+             (and (CPSetEqual (index-atom $memory 5)
+                    (index-atom $current 5))
+              (and (CPSetEqual (index-atom $memory 6)
+                     (index-atom $current 6))
+                   (== (index-atom $memory 8)
+                     (index-atom $current 8))))))))))))))
+
+(= (C3JoinedMemoryCurrentUndertaking $memory $current $cut)
+   (let $resolution (C3MemoryApplicationResolutionFromPossibility $memory)
+     (if (C3MemoryApplicationStrictlyRefinesCurrentUndertaking $memory $current
+           $cut)
+       (possible-movement (index-atom $memory 1) undertaking
+         (index-atom $memory 3)
+         (index-atom $memory 4)
+         (index-atom $memory 5)
+         (index-atom $memory 6)
+         (consequence-route
+           (c3-joined-memory-undertaking-v1
+             (developmental-memory-application $resolution)
+             (current-contact-undertaking (index-atom $current 1))
+             (constitutive-join-basis
+               exact-current-contact-and-returned-consequence
+               answerability-refinement-over-coextensive-material-surface
+               one-simultaneous-rap-read
+               fact9-flourishing-requirements-preserved))
+           non-certifying)
+         (index-atom $memory 8))
+       (c3-joined-memory-undertaking-unavailable
+         no-unique-strict-constitutive-refinement))))
+
+(= (C3JoinedMemoryCurrentUndertakingValid $joined $memory $current $cut)
+   (and (CPShape $joined possible-movement 9)
+        (== $joined
+          (C3JoinedMemoryCurrentUndertaking $memory $current $cut))))
+
+(= (C3UniqueMemoryCurrentUndertakingJoins $memory-results $current $cut)
+   (if (and (== (size-atom $memory-results) 1)
+            (== (size-atom $current) 1))
+     (let* (($memory (index-atom $memory-results 0))
+            ($undertaking (index-atom $current 0))
+            ($joined (C3JoinedMemoryCurrentUndertaking $memory $undertaking
+              $cut)))
+       (if (C3JoinedMemoryCurrentUndertakingValid $joined $memory $undertaking
+             $cut)
+         (cons-atom $joined ()) ()))
+     ()))
 
 (= (C3ModelPossibilitiesAt $claims $cut $i)
    (if (< $i (size-atom $claims))

@@ -1213,24 +1213,64 @@ Already carried:
   recurrence across the selected Fact9/flourishing surface did not silently
   authorize reuse as an undertaking: it formed the exact memory-specific
   inquiry `c3-later-transfer-join-support-015`, answerable to new consequence.
-  That inquiry carries one `rap-read-v2` with three simultaneous perspectives
-  and the same materially relevant
+  Its strengthened `consequence-earned-developmental-memory-v2` route binds the
+  exact later target cut as well as the source developmental record. That
+  inquiry carries one `rap-read-v2` with three simultaneous perspectives and
+  the same materially relevant
   `AgencyBalance`/`ConnectionDepth`/`SharedUnderstanding` organization. A fresh
-  process restored the 13,829,288-byte checkpoint at SHA-256
-  `55b8b5dc6cd94fc65bd8b09d44e1a862cace63c04f71ba314bf586a65aba54d4`,
+  process restored the 13,852,882-byte checkpoint at SHA-256
+  `eaa4b0c7b91bc417ec8baedd81228d28ea7b045d321c8606d34dce46ba4c4dba`,
   with sixteen valid history rows. This establishes consequence-sensitive
   active-memory projection and a later memory inquiry, not yet an independently
   warranted application outcome or a further developmental record.
+- The exact memory-specific inquiry now accepts differentiated returned
+  `support`, `contradiction`, or `unresolved` standing through the one supported
+  runtime. Native interpretation and returned contact remain two independently
+  attributable participants; the historical model contribution remains
+  non-certifying. Only exact support constructs an immediate result
+  undertaking, and only on the cut directly following that consequence. When
+  one current-contact undertaking is also live, native structure joins them
+  only as a strict answerability refinement over the same material relation,
+  distinction, interface, flourishing, legality, source-cut, and returned-
+  consequence organization. The support path formed
+  `c3-memory-application-support-017` as one joined undertaking; contradiction
+  and unresolved standing each formed the Soul-grounded
+  `c3-fact9-flourishing-alignment-inquiry` instead of fabricating an
+  undertaking. Each path stored one valid
+  `c3-developmental-memory-application-v1` record, removed the superseded
+  transfer episode only from active projection, retained semantic, transfer,
+  and application history, and restored with zero semantic participants, zero
+  transfer participants, one memory-application participant, zero replayable
+  memory-result possibilities, eighteen valid history rows, and the exact
+  standing intact. Fresh checkpoints were: support, 8,502,846 bytes at
+  `df0a02db10f975e6999db3aa88392574113b2d4fc934ec4a8a817b34160d1fd3`;
+  contradiction, 5,896,113 bytes at
+  `de8870ed6d32b9da0ef66949466fe797bde8612485d5b5d760ee490663652708`;
+  unresolved, 5,882,547 bytes at
+  `85c240b34a027394a75cb848735a435c5521ec31e7eed436f6a213103a2a9c6e`.
+  Exact-contact falsifiers passed: wrong memory identity, duplicate matching
+  rows, and a forged target cut all failed to form a resolution. The runtime
+  also rejected duplicate delivery of the already incorporated support
+  consequence before model participation and left the complete native snapshot
+  unchanged. The runtime
+  formed a semantic consultation on this partial R/A/P surface when native
+  disposition found it useful; these bounded trials deliberately supplied an
+  unavailable provider observation so the memory result could be isolated.
+  This establishes differentiated, persistent, non-replaying developmental
+  memory application. It does not yet establish how that application changes
+  possibilities at a fourth unfamiliar contact or a live GLM contribution to
+  that later formation.
 
 Next movement:
 
-1. return differentiated `support`, `contradiction`, and `unresolved`
-   consequence to the exact memory-specific inquiry. Only new independent
-   support may form an undertaking; all outcomes must remain attributable,
-   update active developmental participation without erasing history, survive
-   restart, and create the prerequisite for a still later unfamiliar cut. No
-   structural recurrence, provider replay, or behavior entry may certify the
-   memory application;
+1. carry each exact memory-application standing into a fourth unfamiliar
+   contact and prove that support, contradiction, and unresolved history form
+   materially different possible-movement organizations without a behavioral
+   entry. Where native Soul disposition finds the partial R/A/P opening worth
+   widening, permit one public-safe GLM 5.3 thought-partner reading containing
+   only the Soul-selected Fact9/flourishing/R/A/P surface; provider proposals
+   must remain plural, unresolved, and non-certifying. Returned consequence,
+   not provider fluency, must determine what develops next;
 2. continue reducing proof-rich re-formation latency and repeated compact
    carriers without weakening exact
    native organization, one-runtime integrity, restart fidelity, or falsifier
