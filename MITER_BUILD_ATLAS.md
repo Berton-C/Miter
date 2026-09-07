@@ -973,19 +973,49 @@ Already carried:
   regenerative Soul, or completed 26.6/26.9 formalization. Full-joint native
   re-formation in these proof-rich cuts took tens of seconds to minutes and is
   now an explicit always-on runtime performance gap.
+- A still-live partial R/A/P opening has now exercised the intended semantic
+  thought-partner path. Native MeTTa formed the question only after returned
+  developmental contact, retained Relatedness and Precision while making the
+  unresolved Appropriateness perspective explicit, and exposed only the
+  Fact9 composition and interconnected flourishing material constituted in
+  that cut. A single bounded GLM 5.3 reading returned three alternatives;
+  none acquired contact, authority, movement, or choice standing. Returned
+  contact to one exact alternative created a second durable developmental
+  episode. A later unfamiliar contact then recovered both independently
+  warranted semantic episodes plus the earlier transfer episode and retained
+  two live continuations instead of applying a first-match selector. Restart
+  preserved the organization and duplicate delivery changed nothing. This is
+  the computable surface required here: one simultaneous R/A/P read of one
+  contact; Fact9 expressions make the unfolding actuality finitely legible;
+  the nine flourishings participate in discovering fuller alignment; and a
+  model may contribute only to the Soul-selected portion of that inquiry.
+  Miter remains sovereign over comparison, continuation, consequence, and
+  learning.
+- The live construction path no longer reconstructs the same complete M25
+  proof three times in immediate succession. A same-reduction binding now
+  connects the freshly constructed M25/M25.5 certificates to the exact
+  encounter while the unchanged full validator remains mandatory for
+  restored, supplied, or adversarial artifacts. Importantly, retained but
+  unresolved R/A/P and harmonic readings remain valid material; the binding
+  records their actual derived standing rather than demanding premature full
+  alignment. A held-out proof-rich contact fell from 241.90 seconds to 94.04
+  seconds, remained `plural-live` with two alternatives, checkpointed and
+  restored byte-identically, and rejected forged certificate and encounter
+  R/A/P substitutions under both validation paths. This is a material
+  improvement, not yet acceptable conversational latency.
 
 Next movement:
 
-1. use a still-live partial R/A/P opening after developmental transfer to let
-   the Soul either continue natively or compose a newly bounded GLM 5.3
-   question over only the Fact9/flourishing participation it finds relevant;
-   the provider must remain an unresolved thought partner;
-2. return materially different contact to one newly compared possibility and
-   require another consequence-earned change in a subsequent unfamiliar cut,
-   while contradiction, provider repetition, and absence of new contact add no
-   epistemic or Soul authority;
-3. reduce proof-rich re-formation latency without weakening the exact native
-   organization, one-runtime integrity, restart fidelity, or falsifier
+1. carry the consequence-earned semantic and transfer organization through
+   the supported continuously cycling service input path, then show that stop,
+   restart, duplicate delivery, and unavailable model service preserve the
+   same Soul-sovereign standing;
+2. exercise selective Fact9/flourishing participation on held-out contact so
+   native relevance—not a supplied all-values fixture—determines what enters a
+   bounded thought-partner question, and require materially different returned
+   contact to change the next cut differently;
+3. continue reducing proof-rich re-formation latency without weakening exact
+   native organization, one-runtime integrity, restart fidelity, or falsifier
    surfaces required for an always-on assistant;
 4. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate

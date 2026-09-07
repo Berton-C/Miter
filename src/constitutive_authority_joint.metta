@@ -1050,8 +1050,31 @@
                   $family $standing (index-atom $m24-organization 3)
                   finite-non-reconstruction $m260-certificate
                   $m263-certificate $m24-certificate $m25-certificate
-                  $m255-certificate)))
-           (if (CP2AuthorityJointMatchesEncounter $joint $encounter)
+                  $m255-certificate))
+                ($v6 (authority-participation-joint-v6
+                  (index-atom $joint 1) (index-atom $joint 2)
+                  (index-atom $joint 3) (index-atom $joint 4)
+                  (index-atom $joint 5) (index-atom $joint 6)
+                  (index-atom $joint 7) (index-atom $joint 8)
+                  (index-atom $joint 9) (index-atom $joint 10)
+                  (index-atom $joint 11) (index-atom $joint 12)
+                  (index-atom $joint 13)))
+                ; M25 and M25.5 certificates were constructed immediately
+                ; above from this exact encounter. Reconstructing both again
+                ; through the general V8 matcher tripled the live-path work.
+                ; The V6 foundation still receives its full exact match; the
+                ; two newly constructed extensions are bound back to every
+                ; reading here. Public/restored V8 artifacts continue through
+                ; CP2AuthorityJointMatchesEncounter unchanged.
+                ($constructed-match
+                  (and (CP2AuthorityJointV8Valid $joint)
+                   (and (CP2AuthorityJointMatchesEncounter $v6 $encounter)
+                    (and (M25ConstructedCertificateMatchesEncounter
+                           $m25-certificate $encounter $developmental)
+                         (M255ConstitutiveCertificateDependentValid
+                           $m255-certificate $encounter $developmental
+                           $m25-certificate))))))
+           (if $constructed-match
              (authority-grounded-encounter $joint $encounter)
              (authority-grounded-encounter-unresolved joint-not-causal $joint)))
          (authority-grounded-encounter-unresolved encounter-not-formed $encounter)))

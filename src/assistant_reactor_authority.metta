@@ -826,6 +826,47 @@
            (assistant-contact-held $id $history)))
        (assistant-contact-held $id $grounded))))
 
+; CP2Encounter has just completed its exact V6 match and bound the freshly
+; constructed M25/M25.5 certificates to the encounter's readings. The live
+; ingestion path must not immediately run the general restored-artifact V8
+; validator over the same immutable term a second time. This narrow check is
+; usable only on the direct result in AssistantEncounterV2 below; arbitrary
+; grounded artifacts still enter through AR2IncorporateGrounded.
+(= (AR2FreshlyGroundedValid $id $scope $grounded)
+   (if (CPShape $grounded authority-grounded-encounter 3)
+     (let* (($joint (index-atom $grounded 1))
+            ($encounter (index-atom $grounded 2))
+            ($encounter-valid
+              (CPShape $encounter constitutive-encounter 7))
+            ($joint-valid (CP2AuthorityJointV8Valid $joint))
+            ($cut (if $encounter-valid
+              (index-atom $encounter 1) ()))
+            ($movement (if $encounter-valid
+              (index-atom $encounter 5) ())))
+       (and $joint-valid
+        (and $encounter-valid
+         (and (== (index-atom $joint 1) $id)
+          (and (== (index-atom $cut 3) $scope)
+               (== (CP2JointMovementReference $joint)
+                 (CP2MovementReference $cut $movement)))))))
+     false))
+
+(= (AR2IncorporateFreshlyGrounded $id $scope $grounded)
+   (if (AR2FreshlyGroundedValid $id $scope $grounded)
+     (let* (($joint (index-atom $grounded 1))
+            ($encounter (index-atom $grounded 2))
+            ($cut (index-atom $encounter 1))
+            ($movement (AREncounterMovement $encounter))
+            ($state (ARReplaceActive $scope $cut $movement))
+            ($summary (AR2EncounterSummary $encounter $joint))
+            ($history (if (== $state assistant-active-replaced)
+              (ARRecord encounter $id $scope $summary)
+              state-not-recorded)))
+       (if (== $history assistant-history-recorded)
+         (assistant-contact-incorporated $id $encounter)
+         (assistant-contact-held $id $history)))
+     (assistant-contact-held $id freshly-constructed-grounding-invalid)))
+
 (= (AssistantEncounterV2 $contact)
    (let $contact-valid (CPContactValid $contact)
      (if $contact-valid
@@ -848,7 +889,7 @@
                       $contact))
                     ($grounded (CP2Encounter $participating-contact
                       $predecessor)))
-               (AR2IncorporateGrounded $id $scope $grounded)))))
+               (AR2IncorporateFreshlyGrounded $id $scope $grounded)))))
        (assistant-contact-rejected malformed-or-unauthorized-contact))))
 
 (= (ACBoundEncounterV2 $binding $contact)

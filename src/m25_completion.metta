@@ -235,6 +235,91 @@
        (true true true true true true))
      false))
 
+; Construction-path validation is deliberately separate from the exact
+; public validator below. The caller has just constructed both the encounter
+; and this certificate in one pure reduction. These checks bind every compact
+; certificate bundle back to the exact reading material already present in
+; that encounter without constructing the complete reading a second time.
+; Restored, supplied, or adversarial certificates still use
+; M25ConstitutiveCertificateValid and receive full re-derivation.
+(= (M25ConstructedReadingCertificateMatches $certificate $reading $cut
+      $developmental)
+   (if (and (CPShape $certificate m25-reading-certificate-v1 7)
+            (CPShape $reading m25-movement-reading-v3 9))
+     (let* (($primary (index-atom $reading 1))
+            ($rap (index-atom $reading 2))
+            ($perspectives (if (CPShape $rap rap-read-v2 6)
+              (index-atom $rap 2) ()))
+            ($relatedness (if (CPShape $perspectives rap-perspectives 4)
+              (index-atom (index-atom $perspectives 1) 3) ()))
+            ($appropriateness (if
+              (CPShape $perspectives rap-perspectives 4)
+              (index-atom $perspectives 2) ()))
+            ($precision (if (CPShape $perspectives rap-perspectives 4)
+              (index-atom (index-atom $perspectives 3) 3) ()))
+            ($primary-bundle (index-atom $certificate 2))
+            ($rap-bundle (index-atom $certificate 3))
+            ($material-bundle (index-atom $certificate 4))
+            ($harmonic-bundle (index-atom $certificate 5))
+            ($energetics-bundle (index-atom $certificate 6)))
+       (==
+         ((== (index-atom $certificate 1) (index-atom $primary 1))
+          (== (index-atom $primary-bundle 1) (primary-movement $primary))
+          (== (index-atom $primary-bundle 4)
+            (source-cut (index-atom $cut 1)))
+          (== (index-atom $primary-bundle 6)
+            (developmental-organization (index-atom $developmental 13)))
+          (== (index-atom $rap-bundle 1) (index-atom $rap 1))
+          (== (index-atom $rap-bundle 4)
+            (three-simultaneous-perspectives $perspectives))
+          (== (index-atom $rap-bundle 5)
+            (rap-valid (M25RAPValid $primary $cut $developmental $rap)))
+          (== (index-atom $material-bundle 1) $relatedness)
+          (== (index-atom $material-bundle 2) $precision)
+          (== (index-atom $material-bundle 4) $appropriateness)
+          (== (index-atom $material-bundle 5)
+            (readapp (index-atom $appropriateness 3)))
+          (== (index-atom $harmonic-bundle 1) (index-atom $reading 3))
+          (== (index-atom $harmonic-bundle 2)
+            (alignment-derived-valid
+              (M25HarmonicAlignmentValid $primary $cut $developmental
+                (index-atom $reading 3))))
+          (== (index-atom $harmonic-bundle 5)
+            (interface-participation (index-atom $reading 6)))
+          (== (index-atom $energetics-bundle 1) (index-atom $reading 4))
+          (== (index-atom $energetics-bundle 2) (energetics-valid true))
+          (== (index-atom $energetics-bundle 4) (index-atom $reading 5)))
+         (true true true true true true true true true true true true true true
+           true true true)))
+     false))
+
+(= (M25ConstructedReadingCertificatesMatchAt $certificates $readings $cut
+      $developmental $i)
+   (if (< $i (size-atom $readings))
+     (and (< $i (size-atom $certificates))
+       (and (M25ConstructedReadingCertificateMatches
+              (index-atom $certificates $i) (index-atom $readings $i) $cut
+              $developmental)
+            (M25ConstructedReadingCertificatesMatchAt $certificates $readings
+              $cut $developmental (+ $i 1))))
+     (== (size-atom $certificates) (size-atom $readings))))
+
+(= (M25ConstructedCertificateMatchesEncounter $certificate $encounter
+      $developmental)
+   (if (and (M25ConstitutiveCertificateStructuralValid $certificate)
+            (CPShape $encounter constitutive-encounter 7))
+     (let* (($cut (index-atom $encounter 1))
+            ($readings (index-atom (index-atom $encounter 4) 3))
+            ($certificates (index-atom (index-atom $certificate 3) 1)))
+       (and (> (size-atom $readings) 0)
+        (and (== (index-atom $certificate 1)
+               (source-cut (index-atom $cut 1)))
+         (and (== (index-atom $certificate 4)
+                (movement-standing (index-atom $encounter 5)))
+              (M25ConstructedReadingCertificatesMatchAt $certificates
+                $readings $cut $developmental 0)))))
+     false))
+
 (= (M25ConstitutiveCertificateValid $certificate $encounter $developmental)
    (if (and (M25ConstitutiveCertificateStructuralValid $certificate)
             (CPShape $encounter constitutive-encounter 7))
