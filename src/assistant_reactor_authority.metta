@@ -130,6 +130,32 @@
        $next-movement $consequence)
      active-basis-carries-exact-developmental-organization))
 
+; V6 gives consequence-earned transfer development its own durable type.
+; When the movement is a transfer inquiry, the older semantic record is
+; explicitly unavailable rather than being forced to interpret a different
+; developmental episode. Both reference markers remain keyed to the exact
+; consequence so integrity and replay checks stay uniform.
+(= (AR3ConsequenceHistoryV6 $scope $cut $movement $next-cut $next-movement
+      $transition $consequence)
+   (let $transfer-development
+       (C3DevelopmentalTransferRecord $scope $cut $movement $next-cut
+         $next-movement $consequence)
+     (let $semantic-development
+         (if (C3DevelopmentalTransferRecordValid $transfer-development)
+           (c3-semantic-development-unavailable
+             (index-atom $consequence 1) no-exact-semantic-discrimination)
+           (C3SemanticDevelopmentRecord $scope $cut $movement $next-cut
+             $next-movement $consequence))
+       (consequence-incorporation-v6
+         (next-organization-reference $scope (index-atom $next-cut 1)
+           (CP2MovementReference $next-cut $next-movement))
+         (AR2DevelopmentalReference (index-atom $transition 2))
+         (prior-movement (index-atom $consequence 2))
+         (returned-evidence (index-atom $consequence 12))
+         $semantic-development
+         $transfer-development
+         active-basis-carries-exact-developmental-organization))))
+
 (= (AR2ConsequenceHistoryPayloadV4Valid $payload)
    (if (CPShape $payload consequence-incorporation-v4 6)
      (let* (($next (index-atom $payload 1))
@@ -191,12 +217,78 @@
          (true true true true true true true true true true true true)))
      false))
 
+(= (AR3TransferDevelopmentHistoryStandingValid $standing)
+   (or (C3DevelopmentalTransferRecordValid $standing)
+     (and (CPShape $standing
+            c3-developmental-transfer-development-unavailable 3)
+          (== (index-atom $standing 2)
+            no-exact-developmental-transfer))))
+
+(= (AR3TransferDevelopmentReferenceId $standing)
+   (if (C3DevelopmentalTransferRecordValid $standing)
+     (index-atom (index-atom $standing 1) 1)
+     (if (CPShape $standing
+           c3-developmental-transfer-development-unavailable 3)
+       (index-atom $standing 1) invalid-transfer-development-reference)))
+
+(= (AR3ConsequenceHistoryPayloadV6Valid $payload)
+   (if (CPShape $payload consequence-incorporation-v6 8)
+     (let* (($next (index-atom $payload 1))
+            ($developmental (index-atom $payload 2))
+            ($prior (index-atom $payload 3))
+            ($returned (index-atom $payload 4))
+            ($semantic-development (index-atom $payload 5))
+            ($transfer-development (index-atom $payload 6)))
+       (==
+         ((CPShape $next next-organization-reference 4)
+          (CPShape (index-atom $next 1) scope 4)
+          (CPShape (index-atom $next 3) movement-reference 5)
+          (== (index-atom $next 2)
+            (index-atom (index-atom $next 3) 1))
+          (CPShape $developmental m24-developmental-reference 4)
+          (CPShape $prior prior-movement 2)
+          (CPShape $returned returned-evidence 2)
+          (AR3SemanticDevelopmentHistoryStandingValid $semantic-development)
+          (AR3TransferDevelopmentHistoryStandingValid $transfer-development)
+          (== (AR3SemanticDevelopmentReferenceId $semantic-development)
+            (AR3TransferDevelopmentReferenceId $transfer-development))
+          (== (and (C3SemanticDevelopmentRecordValid $semantic-development)
+                   (C3DevelopmentalTransferRecordValid $transfer-development))
+            false)
+          (if (C3SemanticDevelopmentRecordValid $semantic-development)
+            (and (== (index-atom $semantic-development 2)
+                   (index-atom $next 1))
+                 (and (== (index-atom $semantic-development 7)
+                        (index-atom $next 3))
+                      (== (index-atom
+                            (index-atom $semantic-development 3) 4)
+                        (index-atom $prior 1)))) true)
+          (if (C3DevelopmentalTransferRecordValid $transfer-development)
+            (and (== (index-atom $transfer-development 2)
+                   (index-atom $next 1))
+                 (and (== (index-atom $transfer-development 5)
+                        (index-atom $next 3))
+                      (== (index-atom
+                            (index-atom $transfer-development 3) 4)
+                        (index-atom $prior 1)))) true)
+          (== (index-atom $payload 7)
+            active-basis-carries-exact-developmental-organization))
+         (true true true true true true true true true true true true true
+           true)))
+     false))
+
 (= (AR3SemanticDevelopmentRecordsForScope $scope)
-   (let $rows (collapse (match &assistant_history
-          (assistant-history consequence $id $scope
-            (consequence-incorporation-v5 $next $m24 $prior $returned
-              $semantic-development $standing))
-          $semantic-development))
+   (let* (($v5-rows (collapse (match &assistant_history
+            (assistant-history consequence $id $scope
+              (consequence-incorporation-v5 $next $m24 $prior $returned
+                $semantic-development $standing))
+            $semantic-development)))
+          ($v6-rows (collapse (match &assistant_history
+            (assistant-history consequence $id $scope
+              (consequence-incorporation-v6 $next $m24 $prior $returned
+                $semantic-development $transfer-development $standing))
+            $semantic-development)))
+          ($rows (CPListAppend $v5-rows $v6-rows)))
      (if (> (size-atom $rows) 0)
        (collapse (let $record (superpose $rows)
          (if (C3SemanticDevelopmentRecordValid $record) $record (empty))))
@@ -214,6 +306,30 @@
 (= (AR3SemanticDevelopmentParticipantsForScope $scope)
    (AR3SemanticDevelopmentParticipantsAt $scope
      (AR3SemanticDevelopmentRecordsForScope $scope) 0))
+
+(= (AR3TransferDevelopmentRecordsForScope $scope)
+   (let $rows (collapse (match &assistant_history
+          (assistant-history consequence $id $scope
+            (consequence-incorporation-v6 $next $m24 $prior $returned
+              $semantic-development $transfer-development $standing))
+          $transfer-development))
+     (if (> (size-atom $rows) 0)
+       (collapse (let $record (superpose $rows)
+         (if (C3DevelopmentalTransferRecordValid $record) $record (empty))))
+       ())))
+
+(= (AR3TransferDevelopmentParticipantsAt $scope $records $i)
+   (if (< $i (size-atom $records))
+     (let $record (index-atom $records $i)
+       (if (C3DevelopmentalTransferRecordValid $record)
+         (cons-atom (C3DevelopmentalTransferMemoryParticipant $scope $record)
+           (AR3TransferDevelopmentParticipantsAt $scope $records (+ $i 1)))
+         (AR3TransferDevelopmentParticipantsAt $scope $records (+ $i 1))))
+     ()))
+
+(= (AR3TransferDevelopmentParticipantsForScope $scope)
+   (AR3TransferDevelopmentParticipantsAt $scope
+     (AR3TransferDevelopmentRecordsForScope $scope) 0))
 
 (= (AR2PayloadHead $payload $head)
    (and (is-expr $payload)
@@ -273,7 +389,17 @@
                           (== (AR3SemanticDevelopmentReferenceId
                                 (index-atom $payload 5))
                             (index-atom $row 2))))
-                   (ARHistoryValid $row)))))
+                   (if (AR2PayloadHead $payload consequence-incorporation-v6)
+                     (and (AR3ConsequenceHistoryPayloadV6Valid $payload)
+                       (and (== (index-atom (index-atom $payload 1) 1)
+                              (index-atom $row 3))
+                         (and (== (AR3SemanticDevelopmentReferenceId
+                                   (index-atom $payload 5))
+                                 (index-atom $row 2))
+                              (== (AR3TransferDevelopmentReferenceId
+                                   (index-atom $payload 6))
+                                 (index-atom $row 2)))))
+                     (ARHistoryValid $row))))))
            (ARHistoryValid $row)))))))
 
 (= (AR2AllHistoryValid $rows $i)
@@ -415,7 +541,12 @@
            (and (== (index-atom $next 2) (index-atom $cut 1))
                 (== (index-atom $next 3)
                   (CP2MovementReference $cut $movement))))
-         false))))
+         (if (AR3ConsequenceHistoryPayloadV6Valid $payload)
+           (let $next (index-atom $payload 1)
+             (and (== (index-atom $next 2) (index-atom $cut 1))
+                  (== (index-atom $next 3)
+                    (CP2MovementReference $cut $movement))))
+           false)))))
 
 (= (AR2ConsequenceDevelopmentalMatchesAt $payloads $cut $movement $i $out)
    (if (< $i (size-atom $payloads))
@@ -611,7 +742,10 @@
           ($m255-participants (AR2M255ConsequenceParticipants $scope $cut
             $movement $base-next-cut $consequence))
           ($c3-participants (C3ConsequenceParticipants $scope $cut $movement
-            $prior $consequence)))
+            $prior $consequence))
+          ($transfer-participants
+            (C3DevelopmentalTransferConsequenceParticipants $scope $movement
+              $consequence)))
      (if (and (or (CPShape $basis continuation-basis-v2 5)
                   (CPShape $basis continuation-basis-v3 6))
            (and (M24DevelopmentalTransitionValid $transition)
@@ -622,7 +756,9 @@
               ($participant-source (CPListAppend (index-atom $basis 3)
                 (CPListAppend
                   (AR2ConsequenceParticipants $scope $evolved $consequence)
-                  (CPListAppend $m255-participants $c3-participants))))
+                  (CPListAppend $m255-participants
+                    (CPListAppend $c3-participants
+                      $transfer-participants)))))
               ($next (M25ConstitutiveEncounter $base-next-cut
                 (index-atom $basis 1) $flourishing-views $participant-source
                 (index-atom (index-atom $basis 4) 1) $evolved)))
@@ -645,7 +781,7 @@
               ($state (ARReplaceActive $scope $next-cut $next-movement))
               ($history (if (== $state assistant-active-replaced)
                 (ARRecord consequence $id $scope
-                  (AR3ConsequenceHistoryV5 $scope $cut $movement $next-cut
+                  (AR3ConsequenceHistoryV6 $scope $cut $movement $next-cut
                     $next-movement (index-atom $next-organization 2)
                     $consequence))
                 state-not-recorded)))
@@ -702,7 +838,9 @@
              (let* (($predecessor (if (== (size-atom $prior) 1)
                       (index-atom (index-atom $prior 0) 2) ()))
                     ($developmental-participants
-                      (AR3SemanticDevelopmentParticipantsForScope $scope))
+                      (CPListAppend
+                        (AR3SemanticDevelopmentParticipantsForScope $scope)
+                        (AR3TransferDevelopmentParticipantsForScope $scope)))
                     ($participating-contact (if
                       (> (size-atom $developmental-participants) 0)
                       (CP2ContactWithAuthorityParticipants $contact
@@ -824,7 +962,10 @@
           ($m255-participants (AR2M255ConsequenceParticipants $scope $cut
             $movement $base-next-cut $consequence))
           ($c3-participants (C3ConsequenceParticipants $scope $cut $movement
-            $prior $consequence)))
+            $prior $consequence))
+          ($transfer-participants
+            (C3DevelopmentalTransferConsequenceParticipants $scope $movement
+              $consequence)))
      (if (and (or (CPShape $basis continuation-basis-v2 5)
                   (CPShape $basis continuation-basis-v3 6))
            (and (M24DevelopmentalTransitionValid $transition)
@@ -868,12 +1009,13 @@
                       (AR2ConsequenceParticipants $scope $evolved $consequence)
                       (CPListAppend $m255-participants
                         (CPListAppend $c3-participants
-                         (CPListAppend $semantic-participants
-                          (CPListAppend
-                            (AR3PreformationQuestionParticipants
-                              $model-reading)
-                            (AR3PreformationModelParticipants
-                              $model-reading))))))))
+                         (CPListAppend $transfer-participants
+                          (CPListAppend $semantic-participants
+                           (CPListAppend
+                             (AR3PreformationQuestionParticipants
+                               $model-reading)
+                             (AR3PreformationModelParticipants
+                               $model-reading)))))))))
                   ($next (M25ConstitutiveEncounter $base-next-cut
                     (index-atom $basis 1) $flourishing-views
                     $participant-source (index-atom (index-atom $basis 4) 1)
@@ -933,7 +1075,7 @@
               ($state (ARReplaceActive $scope $next-cut $next-movement))
               ($history (if (== $state assistant-active-replaced)
                 (ARRecord consequence $id $scope
-                  (AR3ConsequenceHistoryV5 $scope $cut $movement $next-cut
+                  (AR3ConsequenceHistoryV6 $scope $cut $movement $next-cut
                     $next-movement (index-atom $next-organization 2)
                     $consequence))
                 state-not-recorded)))

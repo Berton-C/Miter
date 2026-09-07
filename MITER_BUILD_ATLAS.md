@@ -162,16 +162,16 @@ consumer is absent. No status is upgraded by assertion.
 | Start/status/stop/panic | E | `bin/miter`, operator membrane | Installer and host service registration are absent. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | No promoted external surface adapter is active. |
-| Checkpoint and same-runtime restart | E | reactor + store membrane | One scoped developmental episode and its live transfer inquiry now restore; complete long-term memory and incomplete undertakings are not yet one writable continuity organization. |
+| Checkpoint and same-runtime restart | E | reactor + store membrane | The semantic episode, consequence-earned transfer, and later developmental-memory participation now restore; complete long-term memory and incomplete undertakings are not yet one writable continuity organization. |
 | M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C3 must now learn from their provisional composition. |
-| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 semantic inquiry and developmental transfer | Soul-selected flourishing relations now participate in partial-alignment inquiry and cross-contact comparison; broader endogenous growth and regeneration remain open. |
-| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 semantic inquiry and developmental transfer | Fact9/flourishing organization now constrains native/model-assisted inquiry and can disclose a transfer inquiry through a newly named composition; consequence-earned transformation after that transfer remains open. |
-| One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate` | Partial alignment now forms native, model-assisted, and cross-contact inquiry without splitting or scoring; consequence-tested transfer remains a C3 gap. |
+| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 semantic inquiry, transfer, and developmental memory | Soul-selected flourishing relations now participate in partial-alignment inquiry, cross-contact comparison, consequence interpretation, and structurally applicable later memory; broader endogenous growth and regeneration remain open. |
+| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 semantic inquiry, transfer, and developmental memory | Fact9/flourishing organization now constrains native/model-assisted inquiry, discloses transfer through newly named compositions, and permits a consequence-earned episode to alter a still later unfamiliar cut; broader composition learning remains open. |
+| One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate` | Partial alignment now forms native, model-assisted, cross-contact, and consequence-earned later possibilities without splitting or scoring; broader recursive developmental inquiry remains a C3 obligation. |
 | Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
 | LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | GLM 5.3 candidates now enter a Soul-owned inquiry and returned candidate contact changes the next persisted cut without provider self-certification; general language rendering remains absent. |
 | Mattermost | A | none in clean runtime | General scoped transport and delivery reconciliation must be recovered. |
-| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination result and developmental episode; qualified reasoning vocabulary | One consequence-earned discrimination now persists and forms a new inquiry on a structurally related, newly named contact; consequence-tested revision, broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
+| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, and developmental memory; qualified reasoning vocabulary | A consequence-earned discrimination transfers to a newly named composition, returned support becomes a durable developmental episode, and that episode changes possibility formation on a third unfamiliar cut; broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | A | control specification only | Detection, quarantined reconstruction, rejection, and restoration are absent. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
 | Full Continuity of Mind | A/P | checkpoints plus read-only adapters | Exact capsules, semantic memory, undertakings, relationships, and growth are not one writable restored organization. |
@@ -948,19 +948,45 @@ Already carried:
   valid history. This establishes scoped, non-rule-based developmental reuse,
   not yet consequence-earned transformation of the transfer inquiry or full
   skill acquisition.
+- Returned contact now makes that developmental reuse consequence-sensitive.
+  A transfer movement retains the original one-surface R/A/P opening, the
+  Soul-selected Fact9 role material, the interconnected flourishing material,
+  and every provider counterfactual without granting the provider standing.
+  An exact supportive return creates two independent native/returned lineages
+  and one consequence-earned undertaking possibility; contradiction remains
+  explicitly unresolved and creates no undertaking. The result is keyed to
+  the new consequence rather than reusing the earlier inquiry identity.
+  Consequence history V6 gives semantic development and transfer development
+  distinct durable types, preserves their exact source and next movement
+  lineage, and retains provider non-authority, no-repetition authority, and
+  no-genome-mutation boundaries. After restart, a third unfamiliar contact
+  with newly named Fact9 material recovered one scoped transfer-memory
+  participant and formed one undertaking possibility only because the current
+  cut again supplied every relevant role set and flourishing. The earlier
+  semantic transfer remained an independently live alternative; Miter formed
+  that inquiry rather than receiving a first-match memory selector. Wrong
+  scope recovered no record or participant, duplicate consequence delivery
+  changed no state and requested no model, and ordinary V6 consequences with
+  both developmental forms unavailable remained valid. All history remained
+  valid and every checkpoint restored. This establishes consequence-earned
+  transfer that changes a still later cut, not full skill acquisition, NACE,
+  regenerative Soul, or completed 26.6/26.9 formalization. Full-joint native
+  re-formation in these proof-rich cuts took tens of seconds to minutes and is
+  now an explicit always-on runtime performance gap.
 
 Next movement:
 
-1. return materially different contact to the developmental transfer inquiry
-   and require the resulting next organization to differ with the consequence,
-   while preserving one R/A/P surface and the exact source episode;
-2. when that new contact leaves a material R/A/P perspective unresolved, let
-   the Soul either continue natively or compose a newly bounded GLM 5.3 question
-   over only the Fact9/flourishing participation it finds relevant; provider
-   output must remain unresolved thought-partner participation;
-3. prove that a consequence-earned transfer changes a still later unfamiliar
-   cut, while repetition without new contact cannot increase epistemic or Soul
-   authority or mutate the constitutional germline;
+1. use a still-live partial R/A/P opening after developmental transfer to let
+   the Soul either continue natively or compose a newly bounded GLM 5.3
+   question over only the Fact9/flourishing participation it finds relevant;
+   the provider must remain an unresolved thought partner;
+2. return materially different contact to one newly compared possibility and
+   require another consequence-earned change in a subsequent unfamiliar cut,
+   while contradiction, provider repetition, and absence of new contact add no
+   epistemic or Soul authority;
+3. reduce proof-rich re-formation latency without weakening the exact native
+   organization, one-runtime integrity, restart fidelity, or falsifier
+   surfaces required for an always-on assistant;
 4. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.

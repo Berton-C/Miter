@@ -890,8 +890,7 @@
                   $flourishing))
          (cons-atom
            (possible-movement
-             (c3-developmental-transfer-inquiry
-               (index-atom (index-atom $record 1) 1))
+             (index-atom (index-atom $record 1) 1)
              inquiry
              (CPNativeRequirementRelations $cut)
              (CPNativeRequirementDistinctions $cut)
@@ -912,6 +911,209 @@
    (C3SemanticDevelopmentTransferPossibilitiesAt
      (C3SemanticDevelopmentClaims $participant-relations)
      $cut $facts $flourishing 0))
+
+(= (C3TransferEntryMatchesOpeningAt $entry $openings $i)
+   (if (< $i (size-atom $openings))
+     (let $opening (index-atom $openings $i)
+       (if (and (CPShape $opening c3-partial-alignment-opening-v2 9)
+             (and (CPSetEqual (index-atom (index-atom $entry 4) 1)
+                    (index-atom (index-atom $opening 4) 1))
+                  (CPSetEqual (index-atom (index-atom $entry 5) 1)
+                    (index-atom (index-atom $opening 5) 1))))
+         true (C3TransferEntryMatchesOpeningAt $entry $openings (+ $i 1))))
+     false))
+
+(= (C3FlourishingIdsFromEntriesAt $entries $i $out)
+   (if (< $i (size-atom $entries))
+     (let $entry (index-atom $entries $i)
+       (if (and (CPShape $entry flourishing-inquiry-entry 3)
+                (== (CPHas (index-atom $entry 1) $out 0) false))
+         (C3FlourishingIdsFromEntriesAt $entries (+ $i 1)
+           (cons-atom (index-atom $entry 1) $out))
+         (C3FlourishingIdsFromEntriesAt $entries (+ $i 1) $out)))
+     $out))
+
+(= (C3FlourishingIdsFromSurfacesAt $surfaces $i $out)
+   (if (< $i (size-atom $surfaces))
+     (let $surface (index-atom $surfaces $i)
+       (if (CPShape $surface flourishing-inquiry-surface 3)
+         (C3FlourishingIdsFromSurfacesAt $surfaces (+ $i 1)
+           (C3FlourishingIdsFromEntriesAt
+             (index-atom (index-atom $surface 2) 1) 0 $out))
+         (C3FlourishingIdsFromSurfacesAt $surfaces (+ $i 1) $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (C3DevelopmentalTransferRouteValid $route)
+   (if (CPShape $route discriminating-developmental-transfer-v2 13)
+     (let* (($entry (index-atom (index-atom $route 4) 1))
+            ($openings (index-atom (index-atom $route 6) 1))
+            ($fact-participation (index-atom (index-atom $route 7) 1))
+            ($flourishing-participation
+              (index-atom (index-atom $route 8) 1))
+            ($fact-surfaces (if
+              (CPShape $fact-participation fact9-participation 3)
+              (index-atom $fact-participation 1) ()))
+            ($flourishing-surfaces (if
+              (CPShape $flourishing-participation flourishing-participation 3)
+              (index-atom $flourishing-participation 1) ()))
+            ($fact-ids (C3QuestionFactIdsFromSurfacesAt $fact-surfaces 0 ()))
+            ($flourishing-values (C3FlourishingIdsFromSurfacesAt
+              $flourishing-surfaces 0 ())))
+       (==
+         ((CPShape (index-atom $route 1) development-reference 2)
+          (CPShape (index-atom $route 2) source-cut 2)
+          (CPShape (index-atom $route 3) target-cut 2)
+          (CPShape (index-atom $route 4) source-candidate 2)
+          (CPShape $entry c3-semantic-discrimination-entry-v1 9)
+          (CPShape (index-atom $route 5) source-rap-opening 3)
+          (== (index-atom $route 5)
+            (source-rap-opening (index-atom $entry 4)
+              (index-atom $entry 5)))
+          (CPShape (index-atom $route 6) source-partial-openings 2)
+          (> (size-atom $openings) 0)
+          (C3TransferEntryMatchesOpeningAt $entry $openings 0)
+          (CPShape (index-atom $route 7) source-fact9-participation 2)
+          (CPShape $fact-participation fact9-participation 3)
+          (> (size-atom $fact-surfaces) 0)
+          (CPShape (index-atom $route 8)
+            source-flourishing-participation 2)
+          (CPShape $flourishing-participation flourishing-participation 3)
+          (> (size-atom $flourishing-surfaces) 0)
+          (CPShape (index-atom $route 9) selected-fact9-expressions 2)
+          (CPSetEqual (index-atom (index-atom $route 9) 1) $fact-ids)
+          (CPShape (index-atom $route 10) selected-flourishings 2)
+          (CPSetEqual (index-atom (index-atom $route 10) 1)
+            $flourishing-values)
+          (CPShape (index-atom $route 11) counterfactual-retained 2)
+          (== (index-atom $route 11)
+            (counterfactual-retained (index-atom $entry 6)))
+         (== (index-atom $route 12)
+            provisional-transfer-requires-returned-contact))
+         (true true true true true true true true true true true true true true
+           true true true true true true true true true)))
+     false))
+
+(= (C3DevelopmentalTransferRouteFromMovement $movement)
+   (if (and (CPShape $movement movement-formed 7)
+            (== (index-atom $movement 1) inquiry))
+     (let* (($answerability (index-atom $movement 5))
+            ($o-star (if (CPShape $answerability answerability 2)
+              (index-atom $answerability 1) ()))
+            ($route-wrapper (if (CPShape $o-star o-star 2)
+              (index-atom $o-star 1) ()))
+            ($route (if (CPShape $route-wrapper consequence-route 3)
+              (index-atom $route-wrapper 1) ())))
+       (if (and (C3DevelopmentalTransferRouteValid $route)
+             (and (== (index-atom $route-wrapper 2) non-certifying)
+                  (== (index-atom $movement 2)
+                    (index-atom (index-atom $route 1) 1))))
+         $route
+         (c3-developmental-transfer-route-unavailable
+           malformed-or-movement-id-mismatched)))
+     (c3-developmental-transfer-route-unavailable
+       movement-is-not-formed-inquiry)))
+
+(= (C3DevelopmentalTransferRowsAt $relations $development-id $i)
+   (if (< $i (size-atom $relations))
+     (let $row (index-atom $relations $i)
+       (if (and (CPShape $row relation 5)
+             (and (== (index-atom $row 1) $development-id)
+              (and (== (index-atom $row 2) developmental-transfer-contact)
+                   (CPHas (index-atom $row 3)
+                     (support contradiction unresolved) 0))))
+         (cons-atom $row
+           (C3DevelopmentalTransferRowsAt $relations $development-id
+             (+ $i 1)))
+         (C3DevelopmentalTransferRowsAt $relations $development-id
+           (+ $i 1))))
+     ()))
+
+(= (C3DevelopmentalTransferResolution $movement $consequence)
+   (let* (($route (C3DevelopmentalTransferRouteFromMovement $movement))
+          ($development-id (if (C3DevelopmentalTransferRouteValid $route)
+            (index-atom (index-atom $route 1) 1) no-development-id))
+          ($rows (if (CPConsequenceV2Valid $consequence)
+            (C3DevelopmentalTransferRowsAt
+              (index-atom (index-atom $consequence 5) 1)
+              $development-id 0) ())))
+     (if (and (C3DevelopmentalTransferRouteValid $route)
+           (and (CPConsequenceV2Valid $consequence)
+            (and (== (index-atom $movement 2) (index-atom $consequence 2))
+                 (== (size-atom $rows) 1))))
+       (c3-developmental-transfer-resolution-v1
+         $route (index-atom $rows 0)
+         (returned-consequence (index-atom $consequence 1))
+         exact-transfer-contact
+         source-provider-remains-non-certifying)
+       (c3-developmental-transfer-resolution-unavailable
+         missing-ambiguous-or-movement-mismatched-contact))))
+
+(= (C3DevelopmentalTransferResolutionValid $resolution)
+   (if (CPShape $resolution c3-developmental-transfer-resolution-v1 6)
+     (let* (($route (index-atom $resolution 1))
+            ($row (index-atom $resolution 2))
+            ($development-id (if
+              (C3DevelopmentalTransferRouteValid $route)
+              (index-atom (index-atom $route 1) 1) no-development-id)))
+       (==
+         ((C3DevelopmentalTransferRouteValid $route)
+          (CPShape $row relation 5)
+          (== (index-atom $row 1) $development-id)
+          (== (index-atom $row 2) developmental-transfer-contact)
+          (CPHas (index-atom $row 3)
+            (support contradiction unresolved) 0)
+          (CPShape (index-atom $resolution 3) returned-consequence 2)
+          (== (index-atom $resolution 4) exact-transfer-contact)
+          (== (index-atom $resolution 5)
+            source-provider-remains-non-certifying))
+         (true true true true true true true true)))
+     false))
+
+(= (C3DevelopmentalTransferStanding $resolution)
+   (let $standing (index-atom (index-atom $resolution 2) 3)
+     (if (== $standing support) support
+       (if (== $standing contradiction) contradiction unresolved))))
+
+(= (C3DevelopmentalTransferParticipantStanding $resolution)
+   (let $standing (C3DevelopmentalTransferStanding $resolution)
+     (if (== $standing support) supported
+       (if (== $standing contradiction) contradicted candidate))))
+
+(= (C3DevelopmentalTransferRelationId $resolution)
+   (c3-developmental-transfer-result
+     (index-atom (index-atom $resolution 3) 1)))
+
+; Native interpretation and returned contact remain independently attributable.
+; Their joined relation is support only when the returned row supports this
+; exact transfer inquiry. Contradiction and unresolved standing remain live
+; but cannot be promoted by provider fluency or repetition.
+(= (C3DevelopmentalTransferConsequenceParticipants $scope $movement
+      $consequence)
+   (let $resolution (C3DevelopmentalTransferResolution $movement $consequence)
+     (if (C3DevelopmentalTransferResolutionValid $resolution)
+       (let* (($id (index-atom $consequence 1))
+              ($target (C3DevelopmentalTransferRelationId $resolution))
+              ($standing (C3DevelopmentalTransferStanding $resolution))
+              ($participant-standing
+                (C3DevelopmentalTransferParticipantStanding $resolution)))
+         ((participant-contribution
+            (c3-native-developmental-transfer-participation $id)
+            native-authority $scope
+            (lineage provisional-26.6-26.9 developmental-transfer)
+            (participant-relation-claim $target $standing
+              (c3-native-developmental-transfer-basis-v1 $resolution
+                one-contact-one-movement-three-perspectives
+                no-provider-self-certification))
+            $participant-standing no-contact-no-movement-authority)
+          (participant-contribution
+            (c3-returned-developmental-transfer-participation $id)
+            returned-contact $scope
+            (lineage returned-consequence $id)
+            (participant-relation-claim $target $standing
+              (c3-returned-developmental-transfer-evidence-v1 $resolution
+                (index-atom $consequence 12)))
+            $participant-standing no-contact-no-movement-authority)))
+       ())))
 
 (= (C3SemanticResolutionClaimStanding $resolution)
    (let $standing (index-atom (index-atom $resolution 3) 3)
@@ -981,15 +1183,312 @@
 ; proposal set from the active cut. The participants remain in append-only
 ; model history; their consequence-bearing resolution replaces them in the
 ; next live organization. Missing or ambiguous contact retires nothing.
+(= (C3DevelopmentalMemoryParticipantForResolution $participant $resolution)
+   (let* (($route (index-atom $resolution 1))
+          ($development-id (index-atom (index-atom $route 1) 1))
+          ($id (if (CPShape $participant participant-contribution 8)
+            (index-atom $participant 1) malformed-participant)))
+     (== $id
+       (c3-semantic-development-memory-participation $development-id))))
+
+(= (C3ParticipantsWithoutDevelopmentalTransferAt $participants $resolution
+      $i)
+   (if (< $i (size-atom $participants))
+     (let $participant (index-atom $participants $i)
+       (if (C3DevelopmentalMemoryParticipantForResolution $participant
+             $resolution)
+         (C3ParticipantsWithoutDevelopmentalTransferAt $participants
+           $resolution (+ $i 1))
+         (cons-atom $participant
+           (C3ParticipantsWithoutDevelopmentalTransferAt $participants
+             $resolution (+ $i 1)))))
+     ()))
+
+; Resolved model candidates and the exact developmental memory being tested
+; leave the active participant set only after matching returned contact. Their
+; append-only history remains intact and may participate in a later new contact.
 (= (C3ParticipantsAfterSemanticConsequence $participants $movement
       $consequence)
    (let* (($surface (C3SemanticInquirySurfaceFromMovement $movement))
-          ($resolution (C3SemanticConsequenceResolution $movement
-            $consequence)))
-     (if (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
-              (CPShape $resolution c3-semantic-consequence-resolution-v1 7))
-       (C3ParticipantsWithoutSemanticSurfaceAt $participants $surface 0)
-       $participants)))
+          ($semantic-resolution (C3SemanticConsequenceResolution $movement
+            $consequence))
+          ($without-semantic (if
+            (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+                 (CPShape $semantic-resolution
+                   c3-semantic-consequence-resolution-v1 7))
+            (C3ParticipantsWithoutSemanticSurfaceAt $participants $surface 0)
+            $participants))
+          ($transfer-resolution
+            (C3DevelopmentalTransferResolution $movement $consequence)))
+     (if (C3DevelopmentalTransferResolutionValid $transfer-resolution)
+       (C3ParticipantsWithoutDevelopmentalTransferAt $without-semantic
+         $transfer-resolution 0)
+       $without-semantic)))
+
+(= (C3DevelopmentalTransferResolutionFromClaim $claim)
+   (if (CPShape $claim participant-relation-evidence 7)
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence c3-native-developmental-transfer-basis-v1 4)
+         (index-atom $evidence 1)
+         (if (CPShape $evidence
+               c3-returned-developmental-transfer-evidence-v1 3)
+           (index-atom $evidence 1)
+           (c3-developmental-transfer-resolution-unavailable
+             claim-has-no-transfer-resolution))))
+     (c3-developmental-transfer-resolution-unavailable malformed-claim)))
+
+(= (C3TransferClaimsSameResolutionAt $claims $resolution $i)
+   (if (< $i (size-atom $claims))
+     (and (== (C3DevelopmentalTransferResolutionFromClaim
+                (index-atom $claims $i)) $resolution)
+          (C3TransferClaimsSameResolutionAt $claims $resolution (+ $i 1)))
+     true))
+
+(= (C3TransferClaimsHaveSourceAt $claims $source $i)
+   (if (< $i (size-atom $claims))
+     (if (== (index-atom (index-atom $claims $i) 2) $source)
+       true (C3TransferClaimsHaveSourceAt $claims $source (+ $i 1)))
+     false))
+
+(= (C3DevelopmentalTransferResultRelationValid $relation)
+   (if (CPShape $relation participant-supported-relation 4)
+     (let $target (index-atom $relation 1)
+       ; Most supported relations in the shared organization are not C3
+       ; transfer results. Discriminate the target before inspecting their
+       ; differently typed evidence so unrelated authorities remain total.
+       (if (CPShape $target c3-developmental-transfer-result 2)
+         (let* (($claims (index-atom $relation 3))
+                ($resolution (if (> (size-atom $claims) 0)
+                  (C3DevelopmentalTransferResolutionFromClaim
+                    (index-atom $claims 0))
+                  (c3-developmental-transfer-resolution-unavailable
+                    no-claims))))
+           (and (== (size-atom $claims) 2)
+            (and (C3DevelopmentalTransferResolutionValid $resolution)
+             (and (== (index-atom $target 1)
+                    (index-atom (index-atom $resolution 3) 1))
+              (and (C3TransferClaimsSameResolutionAt $claims $resolution 0)
+               (and (C3TransferClaimsHaveSourceAt $claims native-authority 0)
+                    (C3TransferClaimsHaveSourceAt $claims returned-contact
+                      0)))))))
+         false))
+     false))
+
+(= (C3DevelopmentalTransferResultPossibilitiesAt $relations $cut $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (C3DevelopmentalTransferResultRelationValid $relation)
+         (let* (($target (index-atom $relation 1))
+                ($claims (index-atom $relation 3))
+                ($resolution (C3DevelopmentalTransferResolutionFromClaim
+                  (index-atom $claims 0)))
+                ($route (index-atom $resolution 1))
+                ($base-relations (CPNativeRequirementRelations $cut))
+                ($required-relations (if
+                  (CPHas $target $base-relations 0) $base-relations
+                  (cons-atom $target $base-relations))))
+           (cons-atom
+             (possible-movement (index-atom $target 1) undertaking
+               $required-relations
+               (CPNativeRequirementDistinctions $cut)
+               (CPNativeRequirementInterfaces $cut)
+               (index-atom (index-atom $route 10) 1)
+               (consequence-route
+                 (consequence-earned-developmental-transfer $resolution)
+                 non-certifying)
+               l2425-supported)
+             (C3DevelopmentalTransferResultPossibilitiesAt $relations $cut
+               (+ $i 1))))
+         (C3DevelopmentalTransferResultPossibilitiesAt $relations $cut
+           (+ $i 1))))
+     ()))
+
+(= (C3DevelopmentalTransferResultPossibilities $cut $participant-relations)
+   (if (CPShape $participant-relations participant-relation-organization 2)
+     (C3DevelopmentalTransferResultPossibilitiesAt
+       (index-atom $participant-relations 1) $cut 0)
+     ()))
+
+; A returned developmental-transfer consequence is a new episode in its own
+; right. It is not another semantic-provider reading and must not be squeezed
+; into that older record type. The exact Soul-selected Fact9/flourishing/RAP
+; surface remains embedded in the resolution route, while returned contact
+; determines the standing carried forward.
+(= (C3DevelopmentalTransferRecord $scope $cut $movement $next-cut
+      $next-movement $consequence)
+   (let $resolution (C3DevelopmentalTransferResolution $movement $consequence)
+     (if (C3DevelopmentalTransferResolutionValid $resolution)
+       (let* (($standing (C3DevelopmentalTransferStanding $resolution))
+              ($participant-standing
+                (C3DevelopmentalTransferParticipantStanding $resolution)))
+         (c3-developmental-transfer-development-v1
+           (transfer-development-reference (index-atom $consequence 1))
+           $scope
+           (C3DevelopmentMovementReference $cut $movement)
+           $resolution
+           (C3DevelopmentMovementReference $next-cut $next-movement)
+           (epistemic-standing consequence-earned-developmental-transfer
+             $standing $participant-standing provisional)
+           (authority-boundary
+             soul-selected-fact9-flourishing-rap-surface
+             returned-contact-determines-standing
+             provider-remains-non-certifying
+             no-repetition-authority no-genome-mutation)))
+       (c3-developmental-transfer-development-unavailable
+         (index-atom $consequence 1) no-exact-developmental-transfer))))
+
+(= (C3DevelopmentalTransferRecordValid $record)
+   (if (CPShape $record c3-developmental-transfer-development-v1 8)
+     (let* (($reference (index-atom $record 1))
+            ($scope (index-atom $record 2))
+            ($source (index-atom $record 3))
+            ($resolution (index-atom $record 4))
+            ($next (index-atom $record 5))
+            ($route (if
+              (C3DevelopmentalTransferResolutionValid $resolution)
+              (index-atom $resolution 1)
+              (c3-developmental-transfer-route-unavailable
+                invalid-resolution)))
+            ($standing (if
+              (C3DevelopmentalTransferResolutionValid $resolution)
+              (C3DevelopmentalTransferStanding $resolution) unresolved))
+            ($participant-standing (if
+              (C3DevelopmentalTransferResolutionValid $resolution)
+              (C3DevelopmentalTransferParticipantStanding $resolution)
+              candidate)))
+       (==
+         ((CPShape $reference transfer-development-reference 2)
+          (CPShape $scope scope 4)
+          (CPShape $source movement-reference 5)
+          (CPShape $next movement-reference 5)
+          (C3DevelopmentalTransferResolutionValid $resolution)
+          (== (index-atom $reference 1)
+            (index-atom (index-atom $resolution 3) 1))
+          (== (index-atom $source 1)
+            (index-atom (index-atom $route 3) 1))
+          (== (index-atom $source 2) formed)
+          (== (index-atom $source 3) inquiry)
+          (== (index-atom $source 4)
+            (index-atom (index-atom $route 1) 1))
+          (== (index-atom $record 6)
+            (epistemic-standing consequence-earned-developmental-transfer
+              $standing $participant-standing provisional))
+          (== (index-atom $record 7)
+            (authority-boundary
+              soul-selected-fact9-flourishing-rap-surface
+              returned-contact-determines-standing
+              provider-remains-non-certifying
+              no-repetition-authority no-genome-mutation)))
+         (true true true true true true true true true true true true)))
+     false))
+
+(= (C3DevelopmentalTransferMemoryParticipant $scope $record)
+   (if (and (C3DevelopmentalTransferRecordValid $record)
+            (== (index-atom $record 2) $scope))
+     (let* (($reference (index-atom $record 1))
+            ($resolution (index-atom $record 4))
+            ($standing (C3DevelopmentalTransferStanding $resolution))
+            ($participant-standing
+              (C3DevelopmentalTransferParticipantStanding $resolution)))
+       (participant-contribution
+         (c3-developmental-transfer-memory-participation
+           (index-atom $reference 1))
+         developmental-memory $scope
+         (lineage consequence-earned-developmental-transfer
+           (index-atom $reference 1))
+         (participant-relation-claim
+           (c3-developmental-transfer-memory (index-atom $reference 1))
+           $standing
+           (c3-developmental-transfer-memory-evidence-v1 $record))
+         $participant-standing no-contact-no-movement-authority))
+     (c3-developmental-transfer-memory-participation-unavailable)))
+
+(= (C3TransferDevelopmentClaimsFromRelationsAt $relations $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (or (CPShape $relation participant-proposed-relation 4)
+               (CPShape $relation participant-proposed-relation 5))
+         (let $target (index-atom $relation 1)
+           (if (CPShape $target c3-developmental-transfer-memory 2)
+             (if (CPShape $relation participant-proposed-relation 5)
+               (index-atom $relation 4) (index-atom $relation 3))
+             (C3TransferDevelopmentClaimsFromRelationsAt $relations
+               (+ $i 1))))
+         (C3TransferDevelopmentClaimsFromRelationsAt $relations (+ $i 1))))
+     ()))
+
+(= (C3TransferDevelopmentClaims $participant-relations)
+   (if (CPShape $participant-relations participant-relation-organization 2)
+     (C3TransferDevelopmentClaimsFromRelationsAt
+       (index-atom $participant-relations 1) 0)
+     ()))
+
+(= (C3TransferDevelopmentRecordFromClaim $claim)
+   (if (CPShape $claim participant-relation-evidence 7)
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence
+             c3-developmental-transfer-memory-evidence-v1 2)
+         (index-atom $evidence 1)
+         (c3-developmental-transfer-development-unavailable
+           no-reference claim-has-no-transfer-record)))
+     (c3-developmental-transfer-development-unavailable
+       no-reference malformed-claim)))
+
+; A supported developmental transfer may participate in a later unfamiliar
+; contact only when the current cut again supplies all material Fact9 role
+; sets and all interconnected flourishings selected by the original Soul
+; inquiry. The learned episode proposes an undertaking; it never executes one.
+(= (C3TransferDevelopmentApplicable $record $cut $facts $flourishing)
+   (if (C3DevelopmentalTransferRecordValid $record)
+     (let* (($resolution (index-atom $record 4))
+            ($route (index-atom $resolution 1))
+            ($fact-participation
+              (index-atom (index-atom $route 7) 1))
+            ($fact-surfaces (if
+              (CPShape $fact-participation fact9-participation 3)
+              (index-atom $fact-participation 1) ()))
+            ($values (index-atom (index-atom $route 10) 1))
+            ($source-cut (index-atom (index-atom $record 3) 1)))
+       (and (== (C3DevelopmentalTransferStanding $resolution) support)
+        (and (!= (index-atom $cut 1) $source-cut)
+         (and (> (size-atom $fact-surfaces) 0)
+          (and (> (size-atom $values) 0)
+           (and (C3QuestionFactSurfacesApplicableAt $fact-surfaces $facts 0)
+                (C3AllFlourishingMaterialPresentAt $flourishing $values
+                  0)))))))
+     false))
+
+(= (C3TransferDevelopmentMemoryPossibilitiesAt $claims $cut $facts
+      $flourishing $i)
+   (if (< $i (size-atom $claims))
+     (let* (($record (C3TransferDevelopmentRecordFromClaim
+              (index-atom $claims $i)))
+            ($reference (if (C3DevelopmentalTransferRecordValid $record)
+              (index-atom $record 1)
+              (transfer-development-reference no-reference))))
+       (if (C3TransferDevelopmentApplicable $record $cut $facts $flourishing)
+         (cons-atom
+           (possible-movement (index-atom $reference 1) undertaking
+             (CPNativeRequirementRelations $cut)
+             (CPNativeRequirementDistinctions $cut)
+             (CPNativeRequirementInterfaces $cut)
+             (index-atom (index-atom
+               (index-atom (index-atom $record 4) 1) 10) 1)
+             (consequence-route
+               (consequence-earned-developmental-memory $record)
+               non-certifying)
+             l2425-supported)
+           (C3TransferDevelopmentMemoryPossibilitiesAt $claims $cut $facts
+             $flourishing (+ $i 1)))
+         (C3TransferDevelopmentMemoryPossibilitiesAt $claims $cut $facts
+           $flourishing (+ $i 1))))
+     ()))
+
+(= (C3TransferDevelopmentMemoryPossibilities $cut $facts $flourishing
+      $participant-relations)
+   (C3TransferDevelopmentMemoryPossibilitiesAt
+     (C3TransferDevelopmentClaims $participant-relations)
+     $cut $facts $flourishing 0))
 
 (= (C3ModelPossibilitiesAt $claims $cut $i)
    (if (< $i (size-atom $claims))

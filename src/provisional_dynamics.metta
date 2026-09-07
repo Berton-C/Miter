@@ -304,6 +304,12 @@
    (let* (($learned (C3LearnedPossibilities $cut))
           ($transfer (C3SemanticDevelopmentTransferPossibilities $cut $facts
             $flourishing $participant-relations))
+          ($transfer-result
+            (C3DevelopmentalTransferResultPossibilities $cut
+              $participant-relations))
+          ($transfer-memory
+            (C3TransferDevelopmentMemoryPossibilities $cut $facts
+              $flourishing $participant-relations))
           ($semantic-inquiry
             (C3SemanticInquiryPossibilities $cut $participant-relations))
           ; The semantic inquiry is the same source inquiry enriched by its
@@ -312,7 +318,9 @@
           ; contact and remains independently live when present.
           ($source-inquiry (if (> (size-atom $semantic-inquiry) 0)
             $semantic-inquiry $learned))
-          ($specialized (CPListAppend $source-inquiry $transfer)))
+          ($specialized (CPListAppend $source-inquiry
+            (CPListAppend $transfer
+              (CPListAppend $transfer-result $transfer-memory)))))
      (CPListAppend
        (CPNativeUndertakingsV2 $cut $facts $flourishing
          $participant-relations)
