@@ -7,6 +7,13 @@
     miter_assistant_continuity_restore miter_assistant_semantic_restore))
 !(import_prolog_functions_from_file "./effect_membranes/model.pl"
   (as_model))
+; The functions remain MeTTa-owned cognitive reductions. This pinned runtime
+; extension only schedules independent alternatives concurrently and returns
+; them in their original order; it has no selection or semantic authority.
+!(import_prolog_functions_from_file
+  "./effect_membranes/runtime_extensions/petta_parallel.pl"
+  (miter_petta_parallel_m25_primaries
+    miter_petta_parallel_m25_readings))
 !(bind! &assistant_state (new-space))
 !(bind! &assistant_history (new-space))
 !(bind! &assistant_continuity (new-space))

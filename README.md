@@ -51,6 +51,9 @@ capability-limited Prolog effect membrane
 
 Prolog supervision does not create a second cognitive cycle. Python,
 JavaScript, and Java are not part of the core or core-service seam.
+The pinned PeTTa/SWI runtime extension may schedule independent
+MeTTa-defined possibility reductions concurrently. It preserves their order
+and has no authority to inspect, filter, rank, join, or select their results.
 
 ## Requirements
 

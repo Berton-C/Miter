@@ -16,10 +16,12 @@ participate with typed standing; none acquires contact, authority, or action
 rights through fluency or availability.
 
 There is one cognitive clock. The recurring PeTTa/MeTTa reactor owns
-continuation. Prolog may launch, observe, wait, hash, persist, restore, and
-commit already-certified effects. A minimal native C grounding exposes only
-the POSIX `fsync()` primitive required for durable storage. Neither Prolog nor
-C forms undertakings, classifies the Soul, chooses a continuation, or operates
+continuation. Prolog may launch, observe, wait, hash, persist, restore, commit
+already-certified effects, and concurrently schedule independent reductions
+whose constructors remain defined in MeTTa. A minimal native C grounding
+exposes only the POSIX `fsync()` primitive required for durable storage.
+Neither Prolog nor C interprets a reduction, forms an undertaking, classifies
+the Soul, filters or ranks possibilities, chooses a continuation, or operates
 a second cognitive loop.
 
 No component is complete merely because an isolated harness can exercise it.
@@ -1330,6 +1332,20 @@ Already carried:
   exposed and repaired stale manifest hashes for the two C3 MeTTa files in the
   preceding waypoint; isolated load success is not accepted as runtime
   completion.
+- Profiling then located nearly the entire remaining restore cost in exact
+  active-movement re-formation: active validation took about 50.4 seconds,
+  while all twenty-two exact history rows validated in about 1.3 seconds.
+  A narrow PeTTa/SWI scheduling grounding now applies the unchanged
+  MeTTa-defined `M25PrimaryMovement` and `M25MovementReading` constructors to
+  independent possibilities concurrently. It preserves list order and calls
+  every constructor exactly once; it cannot inspect, drop, rank, join, or
+  select results. Against the persisted C3 cut it reproduced the exact same
+  encounter, three primaries, three R/A/P readings, and selected native
+  movement while reducing full active re-formation to about 32.8 seconds.
+  Constitutional integrity verified, the LKG included the new runtime
+  extension, and the supported operator again reached `assistant-waiting` and
+  stopped cleanly. This is a faithful scheduling improvement, not a claim of
+  acceptable conversational latency.
 
 Next movement:
 

@@ -41,6 +41,7 @@ as_lkg_relative_paths([
   'effect_membranes/semantic_adapter.pl','effect_membranes/assistant_service.pl',
   'effect_membranes/assistant_operator_base.pl','effect_membranes/assistant_operator.pl',
   'effect_membranes/runtime_extensions/store_posix.c',
+  'effect_membranes/runtime_extensions/petta_parallel.pl',
   'effect_membranes/model.pl',
   'config/constitutive-projection.json','config/miter.json','config/continuity.json',
   'config/models.json','config/model-grants.json'

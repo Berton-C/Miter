@@ -3116,11 +3116,16 @@
             $participants $participant-relations))
           ($possibilities (C3NativePossibilities $revised-cut $facts
             $flourishing $participant-relations))
-          ($primaries (M25PrimaryAt $possibilities $revised-cut $facts
-            $flourishing $participant-relations $bridge $fact-views
-            $flourishing-views
-            $participant-source $payload-ref $developmental 0))
-          ($readings (M25ReadingsAt $primaries $revised-cut $developmental 0))
+          ; Every possibility still receives the exact same MeTTa constructor
+          ; and one simultaneous R/A/P reading. The narrow PeTTa runtime
+          ; grounding changes scheduling only, preserves list order, and has
+          ; no authority to filter, compare, rank, or choose an alternative.
+          ($primaries (miter_petta_parallel_m25_primaries $possibilities
+            $revised-cut $facts $flourishing $participant-relations $bridge
+            $fact-views $flourishing-views $participant-source $payload-ref
+            $developmental))
+          ($readings (miter_petta_parallel_m25_readings $primaries
+            $revised-cut $developmental))
           ($movement (M25ConstructMovement $readings $revised-cut
             $developmental)))
      (constitutive-encounter $revised-cut $facts $flourishing
