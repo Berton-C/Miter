@@ -2280,6 +2280,117 @@
        (index-atom $participant-relations 1) $cut 0)
      ()))
 
+; A consequence-earned developmental undertaking and the one undertaking
+; already live in its source contact need not become competing
+; scheduler choices.  They may be joined only when the retained transfer
+; proves that it is a strict material refinement of that exact contact:
+; unique live thread, exact cut/consequence lineage, one coextensive material
+; surface containing the earned relation, and unchanged flourishing,
+; distinction, interface, and legality requirements.  The refinement is the
+; more precise answerability carried by the transfer, not a higher score or a
+; preferred identifier. If any of those relations is absent or more than one
+; current undertaking could be meant,
+; construction declines and plurality remains live.
+(= (C3TransferResultResolutionFromPossibility $possibility)
+   (if (and (CPShape $possibility possible-movement 9)
+            (== (index-atom $possibility 2) undertaking))
+     (let $route (index-atom $possibility 7)
+       (if (and (CPShape $route consequence-route 3)
+                (== (index-atom $route 2) non-certifying))
+         (let $body (index-atom $route 1)
+           (if (CPShape $body consequence-earned-developmental-transfer 2)
+             (let $resolution (index-atom $body 1)
+               (if (C3DevelopmentalTransferResolutionValid $resolution)
+                 $resolution
+                 (c3-developmental-transfer-resolution-unavailable
+                   invalid-transfer-result-resolution)))
+             (c3-developmental-transfer-resolution-unavailable
+               possibility-is-not-transfer-result)))
+         (c3-developmental-transfer-resolution-unavailable
+           malformed-transfer-result-route)))
+     (c3-developmental-transfer-resolution-unavailable
+       malformed-transfer-result-possibility)))
+
+(= (C3CurrentContactUndertakingValid $possibility $cut)
+   (and (CPShape $possibility possible-movement 9)
+     (and (== (index-atom $possibility 2) undertaking)
+      (and (== (index-atom $possibility 7)
+             (consequence-route returned-contact non-certifying))
+       (and (== (size-atom (CPLiveThreadIds $cut)) 1)
+            (== (index-atom $possibility 1)
+              (index-atom (CPLiveThreadIds $cut) 0)))))))
+
+(= (C3TransferStrictlyRefinesCurrentUndertaking $transfer $current $cut)
+   (let* (($resolution
+            (C3TransferResultResolutionFromPossibility $transfer))
+          ($route (if (C3DevelopmentalTransferResolutionValid $resolution)
+            (index-atom $resolution 1) ()))
+          ($target (if (C3DevelopmentalTransferResolutionValid $resolution)
+            (C3DevelopmentalTransferRelationId $resolution)
+            (c3-developmental-transfer-result unavailable)))
+          ($transfer-relations (if (CPShape $transfer possible-movement 9)
+            (index-atom $transfer 3) ()))
+          ($current-relations (if (CPShape $current possible-movement 9)
+            (index-atom $current 3) ()))
+          ($source-cut (if (C3DevelopmentalTransferRouteValid $route)
+            (index-atom (index-atom $route 3) 1) no-source-cut))
+          ($returned (if (C3DevelopmentalTransferResolutionValid $resolution)
+            (index-atom (index-atom $resolution 3) 1) no-consequence)))
+     (and (CPCutValid $cut)
+      (and (C3DevelopmentalTransferResolutionValid $resolution)
+       (and (C3CurrentContactUndertakingValid $current $cut)
+        (and (== (index-atom $cut 1) (next-cut $source-cut $returned))
+         (and (CPSetEqual $current-relations $transfer-relations)
+          (and (CPHas $target $current-relations 0)
+           (and (CPHas $target $transfer-relations 0)
+            (and (CPSetEqual (index-atom $transfer 4)
+                    (index-atom $current 4))
+             (and (CPSetEqual (index-atom $transfer 5)
+                    (index-atom $current 5))
+              (and (CPSetEqual (index-atom $transfer 6)
+                     (index-atom $current 6))
+                   (== (index-atom $transfer 8)
+                     (index-atom $current 8))))))))))))))
+
+(= (C3JoinedTransferCurrentUndertaking $transfer $current $cut)
+   (let $resolution (C3TransferResultResolutionFromPossibility $transfer)
+     (if (C3TransferStrictlyRefinesCurrentUndertaking $transfer $current $cut)
+       (possible-movement (index-atom $transfer 1) undertaking
+         (index-atom $transfer 3)
+         (index-atom $transfer 4)
+         (index-atom $transfer 5)
+         (index-atom $transfer 6)
+         (consequence-route
+           (c3-joined-undertaking-v1
+             (developmental-transfer $resolution)
+             (current-contact-undertaking (index-atom $current 1))
+             (constitutive-join-basis
+               exact-source-contact-and-returned-consequence
+               answerability-refinement-over-coextensive-material-surface
+               one-simultaneous-rap-read
+               fact9-flourishing-requirements-preserved))
+           non-certifying)
+         (index-atom $transfer 8))
+       (c3-joined-undertaking-unavailable
+         no-unique-strict-constitutive-refinement))))
+
+(= (C3JoinedTransferCurrentUndertakingValid $joined $transfer $current $cut)
+   (and (CPShape $joined possible-movement 9)
+        (== $joined
+          (C3JoinedTransferCurrentUndertaking $transfer $current $cut))))
+
+(= (C3UniqueTransferCurrentUndertakingJoins $transfer-results $current $cut)
+   (if (and (== (size-atom $transfer-results) 1)
+            (== (size-atom $current) 1))
+     (let* (($transfer (index-atom $transfer-results 0))
+            ($undertaking (index-atom $current 0))
+            ($joined (C3JoinedTransferCurrentUndertaking $transfer
+              $undertaking $cut)))
+       (if (C3JoinedTransferCurrentUndertakingValid $joined $transfer
+             $undertaking $cut)
+         (cons-atom $joined ()) ()))
+     ()))
+
 ; A returned developmental-transfer consequence is a new episode in its own
 ; right. It is not another semantic-provider reading and must not be squeezed
 ; into that older record type. The exact Soul-selected Fact9/flourishing/RAP

@@ -1175,18 +1175,42 @@ Already carried:
   No additional provider call occurred. This closes candidate-specific
   cross-contact transfer; it does not yet establish how two concurrently
   admissible undertakings should be joined, coordinated, or kept independent.
+- The transfer undertaking and the one current-contact undertaking now become
+  one primary movement only when native structure proves they are one causal
+  refinement. The constructor requires exactly one current live thread, the
+  exact source cut and returned consequence, a coextensive material relation /
+  distinction / interface / flourishing surface containing the earned
+  transfer relation, unchanged legality, and the transfer's more precise
+  answerability. It neither ranks names nor treats specificity as a score. If
+  the current undertaking is ambiguous, the earned relation is removed, or
+  the candidate roles are reversed, no join forms and plurality remains live.
+  Through the current-source persistent path, the same later unfamiliar
+  `Connection`/`Love` contact and its exact support consequence formed one
+  undertaking, `c3-later-transfer-join-support-015`, rather than two competing
+  primaries. Its answerability retains both the consequence-earned transfer
+  and `(current-contact-undertaking c3-later-undertaking)` under an exact
+  constitutive join basis. A fresh process restored one `rap-read-v2` with
+  exactly three simultaneous perspectives, the contact-selected
+  `AgencyBalance`/`ConnectionDepth`/`SharedUnderstanding` requirements, one
+  semantic-development record, one transfer-development record, and valid
+  complete history. The 7,931,146-byte checkpoint has SHA-256
+  `a46c47a90126ac348a541412249d2e06ee4e4dea0c1780cf12669a9be58b3b00`.
+  Duplicate consequence delivery was rejected, made no model request, changed
+  no native state, and left the checkpoint byte-identical. The same structural
+  join also accepts the earlier-unresolved source episode only after new exact
+  support has independently warranted its transfer result. This establishes
+  one consequence-sensitive joined undertaking, not yet its sustained reuse
+  as developmental memory across a further contact.
 
 Next movement:
 
-1. make the two live undertakings computationally comparable without a
-   first-match selector. Native organization must determine whether the
-   current human undertaking and the consequence-earned developmental
-   undertaking are causally one refinement, materially complementary and
-   joinable, or genuinely independent continuations. The one R/A/P read,
-   relevant Fact9 expressions, and interconnected flourishing relations must
-   remain inside that comparison. A semantic partner may contribute only if
-   Miter forms a bounded uncertainty about the relation; it may not choose the
-   undertaking or supply its authority;
+1. carry the joined undertaking through a further unfamiliar contact. Its
+   consequence-earned developmental memory and the current contact undertaking
+   may form one continued primary only when their exact lineage and material
+   surfaces establish the relation; genuinely independent or ambiguous
+   undertakings must remain plural. The further cut must retain one
+   simultaneous R/A/P read, relevant Fact9/flourishing participation, and no
+   provider replay or behavior entry;
 2. continue reducing proof-rich re-formation latency and repeated compact
    carriers without weakening exact
    native organization, one-runtime integrity, restart fidelity, or falsifier

@@ -309,6 +309,15 @@
           ($transfer-result
             (C3DevelopmentalTransferResultPossibilities $cut
               $participant-relations))
+          ($current-undertakings
+            (CPNativeUndertakingsV2 $cut $facts $flourishing
+              $participant-relations))
+          ($transfer-current-joins
+            (C3UniqueTransferCurrentUndertakingJoins $transfer-result
+              $current-undertakings $cut))
+          ($unjoined-transfer-result
+            (if (> (size-atom $transfer-current-joins) 0)
+              () $transfer-result))
           ($alignment-result
             (C3AlignmentResultPossibilities $cut $participant-relations))
           ($transfer-memory
@@ -325,15 +334,16 @@
             (if (> (size-atom $alignment) 0) $alignment $learned)))
           ($specialized (CPListAppend $source-inquiry
             (CPListAppend $transfer
-              (CPListAppend $transfer-result $transfer-memory)))))
+              (CPListAppend $unjoined-transfer-result $transfer-memory)))))
      (CPListAppend
        ; Exact returned alignment contact refines the generic undertaking
        ; surface. It does not add a second scheduler or first-match branch:
        ; M25 still determines availability from the same participant
        ; organization and one simultaneous R/A/P read.
-       (if (> (size-atom $alignment-result) 0) $alignment-result
-         (CPNativeUndertakingsV2 $cut $facts $flourishing
-           $participant-relations))
+       (if (> (size-atom $transfer-current-joins) 0)
+         (CPListAppend $alignment-result $transfer-current-joins)
+         (if (> (size-atom $alignment-result) 0) $alignment-result
+           $current-undertakings))
        (CPListAppend
          (if (> (size-atom $specialized) 0) $specialized
            (CPNativeInquiriesV2 $cut $facts $flourishing
