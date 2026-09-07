@@ -1149,15 +1149,44 @@ Already carried:
   candidate-specific contact-seeking and consequence-sensitive continuation,
   not yet consequence-earned transfer of that exact candidate experiment to a
   later unfamiliar composition or acceptable conversational latency.
+- The exact candidate episode now participates in a later unfamiliar
+  composition without becoming a learned behavior rule. A newly named
+  `later-connection-love` Fact9 expression supplied the same material
+  `Connection`/`Love` role set and the same contact-specific
+  `AgencyBalance`/`ConnectionDepth`/`SharedUnderstanding` participation.
+  Independently restored source episodes with `support` and `unresolved`
+  standing each formed its own developmental-transfer inquiry. The transfer
+  route now retains the source consequence standing explicitly, but that
+  standing cannot certify the new inquiry. Fresh returned contact supporting
+  each exact new inquiry then formed a consequence-earned transfer result in
+  both runs. This demonstrates that earlier unresolved material neither
+  launders authority nor permanently prevents later warrant: the new contact
+  determines the new standing. In each run M25 retained two admissible
+  undertakings—the specific consequence-earned transfer and the independent
+  undertaking opened by the current human contact—as `plural-live` rather
+  than selecting one by priority. Both use the same three materially relevant
+  flourishings and one simultaneous R/A/P surface. Fresh-process restoration
+  preserved one semantic-development record, one transfer-development record,
+  and valid complete history. The support-source checkpoint is 11,360,021
+  bytes at SHA-256
+  `f0a2ccfd5e0d0501c4abf1574235517f8082d09a05a48f497287b38a398d01cf`;
+  the unresolved-source checkpoint is 11,521,256 bytes at SHA-256
+  `a979d2d83ca2f85329659217b25c3cec2897a3550f433a0329c2b2eba3dfc0ab`.
+  No additional provider call occurred. This closes candidate-specific
+  cross-contact transfer; it does not yet establish how two concurrently
+  admissible undertakings should be joined, coordinated, or kept independent.
 
 Next movement:
 
-1. prove that the supported candidate-specific episode can participate in a
-   later unfamiliar Fact9/flourishing composition while the unresolved episode
-   remains non-certifying material. The later cut must form its own movement
-   from current contact, retained one-surface R/A/P, and consequence-earned
-   relations; it may not replay a provider proposal as a learned rule or use a
-   fixture to choose the continuation;
+1. make the two live undertakings computationally comparable without a
+   first-match selector. Native organization must determine whether the
+   current human undertaking and the consequence-earned developmental
+   undertaking are causally one refinement, materially complementary and
+   joinable, or genuinely independent continuations. The one R/A/P read,
+   relevant Fact9 expressions, and interconnected flourishing relations must
+   remain inside that comparison. A semantic partner may contribute only if
+   Miter forms a bounded uncertainty about the relation; it may not choose the
+   undertaking or supply its authority;
 2. continue reducing proof-rich re-formation latency and repeated compact
    carriers without weakening exact
    native organization, one-runtime integrity, restart fidelity, or falsifier

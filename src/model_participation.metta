@@ -1478,6 +1478,8 @@
        (index-atom $surface 3)
        (index-atom $surface 4)
        (counterfactual-retained (index-atom $entry 6))
+       (source-consequence-standing
+         (C3SemanticResolutionClaimStanding $resolution))
        provisional-transfer-requires-returned-contact)))
 
 (= (C3SemanticDevelopmentTransferPossibilitiesAt $claims $cut $facts
@@ -1544,7 +1546,7 @@
      (CPReverseInto $out 0 ())))
 
 (= (C3DevelopmentalTransferRouteValid $route)
-   (if (CPShape $route discriminating-developmental-transfer-v2 13)
+   (if (CPShape $route discriminating-developmental-transfer-v2 14)
      (let* (($entry (index-atom (index-atom $route 4) 1))
             ($openings (index-atom (index-atom $route 6) 1))
             ($fact-participation (index-atom (index-atom $route 7) 1))
@@ -1587,10 +1589,13 @@
           (CPShape (index-atom $route 11) counterfactual-retained 2)
           (== (index-atom $route 11)
             (counterfactual-retained (index-atom $entry 6)))
-         (== (index-atom $route 12)
+          (CPShape (index-atom $route 12) source-consequence-standing 2)
+          (CPHas (index-atom (index-atom $route 12) 1)
+            (support contradiction unresolved) 0)
+          (== (index-atom $route 13)
             provisional-transfer-requires-returned-contact))
          (true true true true true true true true true true true true true true
-           true true true true true true true true true)))
+           true true true true true true true true true true true)))
      false))
 
 (= (C3DevelopmentalTransferRouteFromMovement $movement)
