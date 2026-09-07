@@ -2464,6 +2464,52 @@
          (true true true true true true true true true true true true)))
      false))
 
+; Append-only semantic history is not deleted when a later transfer develops
+; it.  Instead, exact source organization and independent returned support
+; allow the more developed transfer episode to become the active memory
+; participant on later cuts.  A merely similar or unresolved transfer cannot
+; displace the earlier inquiry.
+(= (C3TransferRouteMatchesSemanticDevelopment $route $record)
+   (if (and (C3DevelopmentalTransferRouteValid $route)
+            (C3SemanticDevelopmentRecordValid $record))
+     (let* (($surface (index-atom $record 4))
+            ($question (index-atom $record 5))
+            ($resolution (index-atom $record 6))
+            ($entry (index-atom $resolution 2)))
+       (==
+         ((== (index-atom $route 1) (index-atom $record 1))
+          (== (index-atom $route 2)
+            (source-cut (index-atom (index-atom $surface 2) 1)))
+          (== (index-atom $route 4) (source-candidate $entry))
+          (== (index-atom $route 5)
+            (source-rap-opening (index-atom $entry 4)
+              (index-atom $entry 5)))
+          (== (index-atom $route 6)
+            (source-partial-openings (C3QuestionOpenings $question)))
+          (== (index-atom $route 7)
+            (source-fact9-participation (index-atom $question 6)))
+          (== (index-atom $route 8)
+            (source-flourishing-participation (index-atom $question 7)))
+          (== (index-atom $route 9) (index-atom $surface 3))
+          (== (index-atom $route 10) (index-atom $surface 4))
+          (== (index-atom $route 11)
+            (counterfactual-retained (index-atom $entry 6)))
+          (== (index-atom $route 12)
+            (source-consequence-standing
+              (C3SemanticResolutionClaimStanding $resolution))))
+         (true true true true true true true true true true true)))
+     false))
+
+(= (C3SupportedTransferDevelopsSemanticRecord $semantic $transfer)
+   (if (and (C3SemanticDevelopmentRecordValid $semantic)
+            (C3DevelopmentalTransferRecordValid $transfer))
+     (let* (($resolution (index-atom $transfer 4))
+            ($route (index-atom $resolution 1)))
+       (and (== (index-atom $semantic 2) (index-atom $transfer 2))
+         (and (== (C3DevelopmentalTransferStanding $resolution) support)
+              (C3TransferRouteMatchesSemanticDevelopment $route $semantic))))
+     false))
+
 (= (C3DevelopmentalTransferMemoryParticipant $scope $record)
    (if (and (C3DevelopmentalTransferRecordValid $record)
             (== (index-atom $record 2) $scope))
@@ -2519,7 +2565,8 @@
 ; A supported developmental transfer may participate in a later unfamiliar
 ; contact only when the current cut again supplies all material Fact9 role
 ; sets and all interconnected flourishings selected by the original Soul
-; inquiry. The learned episode proposes an undertaking; it never executes one.
+; inquiry. The learned episode forms a memory-specific inquiry; structural
+; recurrence alone cannot silently promote it to an undertaking.
 (= (C3TransferDevelopmentApplicable $record $cut $facts $flourishing)
    (if (C3DevelopmentalTransferRecordValid $record)
      (let* (($resolution (index-atom $record 4))
@@ -2550,7 +2597,7 @@
               (transfer-development-reference no-reference))))
        (if (C3TransferDevelopmentApplicable $record $cut $facts $flourishing)
          (cons-atom
-           (possible-movement (index-atom $reference 1) undertaking
+           (possible-movement (index-atom $reference 1) inquiry
              (CPNativeRequirementRelations $cut)
              (CPNativeRequirementDistinctions $cut)
              (CPNativeRequirementInterfaces $cut)

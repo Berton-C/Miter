@@ -1201,16 +1201,36 @@ Already carried:
   support has independently warranted its transfer result. This establishes
   one consequence-sensitive joined undertaking, not yet its sustained reuse
   as developmental memory across a further contact.
+- Developmental memory now advances by consequence rather than replaying its
+  precursor forever. Append-only history retains the original semantic episode
+  and its later supported transfer episode. Native projection verifies their
+  exact candidate, R/A/P, Fact9, flourishing, scope, and consequence lineage;
+  only then does the developed transfer memory participate on the next cut
+  while the earlier semantic inquiry remains historical rather than being
+  re-emitted. A third unfamiliar `Connection`/`Love` contact therefore
+  restored one semantic record and one transfer record but projected zero
+  semantic-memory participants and one transfer-memory participant. Structural
+  recurrence across the selected Fact9/flourishing surface did not silently
+  authorize reuse as an undertaking: it formed the exact memory-specific
+  inquiry `c3-later-transfer-join-support-015`, answerable to new consequence.
+  That inquiry carries one `rap-read-v2` with three simultaneous perspectives
+  and the same materially relevant
+  `AgencyBalance`/`ConnectionDepth`/`SharedUnderstanding` organization. A fresh
+  process restored the 13,829,288-byte checkpoint at SHA-256
+  `55b8b5dc6cd94fc65bd8b09d44e1a862cace63c04f71ba314bf586a65aba54d4`,
+  with sixteen valid history rows. This establishes consequence-sensitive
+  active-memory projection and a later memory inquiry, not yet an independently
+  warranted application outcome or a further developmental record.
 
 Next movement:
 
-1. carry the joined undertaking through a further unfamiliar contact. Its
-   consequence-earned developmental memory and the current contact undertaking
-   may form one continued primary only when their exact lineage and material
-   surfaces establish the relation; genuinely independent or ambiguous
-   undertakings must remain plural. The further cut must retain one
-   simultaneous R/A/P read, relevant Fact9/flourishing participation, and no
-   provider replay or behavior entry;
+1. return differentiated `support`, `contradiction`, and `unresolved`
+   consequence to the exact memory-specific inquiry. Only new independent
+   support may form an undertaking; all outcomes must remain attributable,
+   update active developmental participation without erasing history, survive
+   restart, and create the prerequisite for a still later unfamiliar cut. No
+   structural recurrence, provider replay, or behavior entry may certify the
+   memory application;
 2. continue reducing proof-rich re-formation latency and repeated compact
    carriers without weakening exact
    native organization, one-runtime integrity, restart fidelity, or falsifier

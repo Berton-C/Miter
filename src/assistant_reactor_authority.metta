@@ -506,14 +506,33 @@
          (if (C3SemanticDevelopmentRecordValid $record) $record (empty))))
        ())))
 
-(= (AR3SemanticDevelopmentParticipantsAt $scope $records $i)
+(= (AR3SemanticDevelopedBySupportedTransferAt $semantic $transfers $i)
+   (if (< $i (size-atom $transfers))
+     (if (C3SupportedTransferDevelopsSemanticRecord $semantic
+           (index-atom $transfers $i))
+       true
+       (AR3SemanticDevelopedBySupportedTransferAt $semantic $transfers
+         (+ $i 1)))
+     false))
+
+(= (AR3SemanticDevelopmentParticipantsAgainstTransfersAt $scope $records
+      $transfers $i)
    (if (< $i (size-atom $records))
      (let $record (index-atom $records $i)
        (if (C3SemanticDevelopmentRecordValid $record)
-         (cons-atom (C3SemanticDevelopmentParticipant $scope $record)
-           (AR3SemanticDevelopmentParticipantsAt $scope $records (+ $i 1)))
-         (AR3SemanticDevelopmentParticipantsAt $scope $records (+ $i 1))))
+         (if (AR3SemanticDevelopedBySupportedTransferAt $record $transfers 0)
+           (AR3SemanticDevelopmentParticipantsAgainstTransfersAt $scope
+             $records $transfers (+ $i 1))
+           (cons-atom (C3SemanticDevelopmentParticipant $scope $record)
+             (AR3SemanticDevelopmentParticipantsAgainstTransfersAt $scope
+               $records $transfers (+ $i 1))))
+         (AR3SemanticDevelopmentParticipantsAgainstTransfersAt $scope
+           $records $transfers (+ $i 1))))
      ()))
+
+(= (AR3SemanticDevelopmentParticipantsAt $scope $records $i)
+   (AR3SemanticDevelopmentParticipantsAgainstTransfersAt $scope $records
+     (AR3TransferDevelopmentRecordsForScope $scope) $i))
 
 (= (AR3SemanticDevelopmentParticipantsForScope $scope)
    (AR3SemanticDevelopmentParticipantsAt $scope
