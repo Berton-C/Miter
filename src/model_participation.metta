@@ -915,18 +915,164 @@
        (c3-semantic-inquiry-surface-unavailable
          missing-or-ambiguous-question-or-candidates))))
 
+; A provider contrast becomes useful to Miter only as a native request for
+; further contact.  The experiment preserves the already-aligned perspectives,
+; keeps the unresolved perspective open, and carries the exact Fact9 and
+; flourishing surface that the Soul selected before the provider was called.
+; It does not treat the proposal or its counterfactual as returned contact.
+(= (C3SemanticContactExperiment $surface $entry)
+   (if (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+            (CPShape $entry c3-semantic-discrimination-entry-v1 9))
+     (c3-semantic-contact-experiment-v1
+       (index-atom $entry 1)
+       (one-contact-one-movement
+         (index-atom $surface 2))
+       (rap-partial (index-atom $entry 4) (index-atom $entry 5))
+       (index-atom $surface 3)
+       (index-atom $surface 4)
+       (contact-to-discriminate
+         (index-atom $entry 6)
+         new-contact-not-provider-fluency)
+       unresolved-contact-seeking-possibility
+       (authority-boundary
+         soul-forms-compares-and-interprets-consequence
+         provider-supplies-proposal-only))
+     (c3-semantic-contact-experiment-unavailable malformed-surface-or-entry)))
+
+(= (C3SemanticContactExperimentValid $experiment $surface $entry)
+   (and (CPShape $experiment c3-semantic-contact-experiment-v1 9)
+        (== $experiment (C3SemanticContactExperiment $surface $entry))))
+
+(= (C3SemanticContactExperimentsAt $surface $entries $i)
+   (if (< $i (size-atom $entries))
+     (let* (($entry (index-atom $entries $i))
+            ($experiment (C3SemanticContactExperiment $surface $entry)))
+       (if (C3SemanticContactExperimentValid $experiment $surface $entry)
+         (cons-atom $experiment
+           (C3SemanticContactExperimentsAt $surface $entries (+ $i 1)))
+         (C3SemanticContactExperimentsAt $surface $entries (+ $i 1))))
+     ()))
+
+(= (C3SemanticContactExperimentReference $surface $entry)
+   (if (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+            (CPShape $entry c3-semantic-discrimination-entry-v1 9))
+     (c3-semantic-contact-experiment-reference-v1
+       (index-atom $entry 1)
+       (index-atom $surface 1)
+       exact-native-experiment-derivation
+       no-contact-or-choice-standing)
+     (c3-semantic-contact-experiment-reference-unavailable
+       malformed-surface-or-entry)))
+
+(= (C3SemanticContactExperimentReferenceValid $reference $surface $entry)
+   (and (CPShape $reference
+          c3-semantic-contact-experiment-reference-v1 5)
+        (== $reference (C3SemanticContactExperimentReference $surface $entry))))
+
+(= (C3SemanticContactExperimentReferencesAt $surface $entries $i)
+   (if (< $i (size-atom $entries))
+     (let* (($entry (index-atom $entries $i))
+            ($reference (C3SemanticContactExperimentReference $surface $entry)))
+       (if (C3SemanticContactExperimentReferenceValid $reference $surface
+             $entry)
+         (cons-atom $reference
+           (C3SemanticContactExperimentReferencesAt $surface $entries
+             (+ $i 1)))
+         (C3SemanticContactExperimentReferencesAt $surface $entries
+           (+ $i 1))))
+     ()))
+
+(= (C3SemanticContactExperimentFamily $surface)
+   (if (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+            (CPShape (index-atom $surface 5) candidate-contrasts 2))
+     (let* (($entries (index-atom (index-atom $surface 5) 1))
+            ($references (C3SemanticContactExperimentReferencesAt $surface
+              $entries 0)))
+       (if (and (> (size-atom $references) 1)
+                (== (size-atom $references) (size-atom $entries)))
+         (c3-semantic-contact-experiment-family-v1
+           (index-atom $surface 1)
+           (index-atom $surface 2)
+           $surface
+           (contact-seeking-experiment-references $references)
+           all-provider-possibilities-retained
+           no-provider-selection-or-contact-standing
+           native-consequence-required-for-development)
+         (c3-semantic-contact-experiment-family-unavailable
+           insufficient-valid-experiments)))
+     (c3-semantic-contact-experiment-family-unavailable
+       malformed-semantic-inquiry-surface)))
+
+(= (C3SemanticContactExperimentFamilyValid $family $surface)
+   (and (CPShape $family c3-semantic-contact-experiment-family-v1 8)
+        (== $family (C3SemanticContactExperimentFamily $surface))))
+
+(= (C3SemanticContactExperimentReferencesValidAt $references $entries
+      $surface $i)
+   (if (< $i (size-atom $entries))
+     (and (< $i (size-atom $references))
+       (and (C3SemanticContactExperimentReferenceValid
+              (index-atom $references $i) $surface
+              (index-atom $entries $i))
+         (C3SemanticContactExperimentReferencesValidAt $references $entries
+           $surface (+ $i 1))))
+     (== (size-atom $references) (size-atom $entries))))
+
+; Persisted movement validation checks the exact constituent relations without
+; rebuilding the whole proof-rich family as a second term.  This remains exact
+; per candidate and rejects omission, insertion, reordering, source changes,
+; or altered authority standing.
+(= (C3SemanticContactExperimentFamilySelfValid $family)
+   (if (CPShape $family c3-semantic-contact-experiment-family-v1 8)
+     (let* (($surface (index-atom $family 3))
+            ($entries (if (and
+              (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+              (CPShape (index-atom $surface 5) candidate-contrasts 2))
+              (index-atom (index-atom $surface 5) 1) ()))
+            ($references-wrapper (index-atom $family 4))
+            ($references (if (CPShape $references-wrapper
+              contact-seeking-experiment-references 2)
+              (index-atom $references-wrapper 1) ())))
+       (and (> (size-atom $entries) 1)
+        (and (== (index-atom $family 1) (index-atom $surface 1))
+         (and (== (index-atom $family 2) (index-atom $surface 2))
+          (and (CPShape $references-wrapper
+                 contact-seeking-experiment-references 2)
+           (and (C3SemanticContactExperimentReferencesValidAt $references
+                  $entries $surface 0)
+            (and (== (index-atom $family 5)
+                   all-provider-possibilities-retained)
+             (and (== (index-atom $family 6)
+                    no-provider-selection-or-contact-standing)
+                  (== (index-atom $family 7)
+                    native-consequence-required-for-development)))))))))
+     false))
+
+; The complete experiments remain exactly derivable from the one retained
+; surface. They are expanded only when cognition needs to inspect them, never
+; copied into every movement and history carrier.
+(= (C3SemanticContactExperimentsFromFamily $family)
+   (if (C3SemanticContactExperimentFamilySelfValid $family)
+     (let* (($surface (index-atom $family 3))
+            ($entries (index-atom (index-atom $surface 5) 1)))
+       (C3SemanticContactExperimentsAt $surface $entries 0))
+     ()))
+
 (= (C3SemanticInquiryPossibilities $cut $participant-relations)
    (let $surface (C3SemanticInquirySurface $participant-relations)
      (if (CPShape $surface c3-semantic-inquiry-surface-v1 8)
-       ((possible-movement c3-semantic-discrimination-inquiry inquiry
-          (CPNativeRequirementRelations $cut)
-          (CPNativeRequirementDistinctions $cut)
-          (CPNativeRequirementInterfaces $cut)
-          (index-atom (index-atom $surface 4) 1)
-          (consequence-route
-            (soul-formed-semantic-discrimination $surface)
-            non-certifying)
-          l2425-supported))
+       (let $family (C3SemanticContactExperimentFamily $surface)
+         (if (C3SemanticContactExperimentFamilyValid $family $surface)
+           ((possible-movement c3-semantic-discrimination-inquiry inquiry
+              (CPNativeRequirementRelations $cut)
+              (CPNativeRequirementDistinctions $cut)
+              (CPNativeRequirementInterfaces $cut)
+              (index-atom (index-atom $surface 4) 1)
+              (consequence-route
+                (soul-formed-semantic-contact-experiments $family)
+                non-certifying)
+              l2425-supported))
+           ()))
        ())))
 
 (= (C3SemanticInquirySurfaceFromMovement $movement)
@@ -943,7 +1089,13 @@
               (index-atom $route 1) ()))
             ($surface (if
               (CPShape $inquiry soul-formed-semantic-discrimination 2)
-              (index-atom $inquiry 1) ())))
+              (index-atom $inquiry 1)
+              (if (CPShape $inquiry
+                    soul-formed-semantic-contact-experiments 2)
+                (let $family (index-atom $inquiry 1)
+                  (if (C3SemanticContactExperimentFamilySelfValid $family)
+                    (index-atom $family 3) ()))
+                ()))))
        (if (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
                 (== (index-atom $route 2) non-certifying))
          $surface
@@ -1573,35 +1725,88 @@
      (if (== $standing support) supported
        (if (== $standing contradiction) contradicted candidate))))
 
+(= (C3SemanticResolutionReference $resolution)
+   (if (CPShape $resolution c3-semantic-consequence-resolution-v1 7)
+     (let* (($entry (index-atom $resolution 2))
+            ($row (index-atom $resolution 3)))
+       (if (and (CPShape $entry c3-semantic-discrimination-entry-v1 9)
+                (CPShape $row relation 5))
+         (c3-semantic-resolution-reference-v1
+           (index-atom $resolution 1)
+           (index-atom $entry 1)
+           (rap-partial (index-atom $entry 4) (index-atom $entry 5))
+           $row
+           (index-atom $resolution 4)
+           exact-candidate-contact
+           provider-proposal-still-non-certifying)
+         (c3-semantic-resolution-reference-unavailable)))
+     (c3-semantic-resolution-reference-unavailable)))
+
+(= (C3SemanticResolutionReferenceSelfValid $reference)
+   (if (CPShape $reference c3-semantic-resolution-reference-v1 8)
+     (let* (($question (index-atom $reference 1))
+            ($candidate (index-atom $reference 2))
+            ($rap (index-atom $reference 3))
+            ($row (index-atom $reference 4))
+            ($preserve (if (and (CPShape $rap rap-partial 3)
+                            (CPShape (index-atom $rap 1) preserve 2))
+              (index-atom (index-atom $rap 1) 1) ()))
+            ($explore (if (and (CPShape $rap rap-partial 3)
+                           (CPShape (index-atom $rap 2) explore 2))
+              (index-atom (index-atom $rap 2) 1) ()))
+            ($rap-valid (and (CPShape $rap rap-partial 3)
+              (CPSetEqual (CPListAppend $preserve $explore)
+                (Relatedness Appropriateness Precision))))
+            ($row-valid (and (CPShape $row relation 5)
+              (and (== (index-atom $row 1) $candidate)
+                (and (== (index-atom $row 2) semantic-candidate-contact)
+                  (CPHas (index-atom $row 3)
+                    (support contradiction unresolved) 0)))))
+            ($consequence-valid
+              (CPShape (index-atom $reference 5) returned-consequence 2))
+            ($boundary-valid
+              (and (== (index-atom $reference 6) exact-candidate-contact)
+                   (== (index-atom $reference 7)
+                     provider-proposal-still-non-certifying))))
+       (and (CPShape $question question-reference 3)
+         (and $rap-valid
+           (and $row-valid
+             (and $consequence-valid $boundary-valid)))))
+     false))
+
 ; Returned contact and native interpretation are distinct lineages. Together
 ; they can establish a consequence-bearing semantic discrimination, but only
 ; for the exact candidate named by the movement's retained inquiry surface.
 (= (C3SemanticConsequenceParticipants $scope $movement $consequence)
    (let $resolution (C3SemanticConsequenceResolution $movement $consequence)
      (if (CPShape $resolution c3-semantic-consequence-resolution-v1 7)
-       ((participant-contribution
-          (c3-native-semantic-consequence-participation
-            (index-atom $consequence 1))
-          native-authority $scope
-          (lineage provisional-26.6-26.9 semantic-consequence-interpretation)
-          (participant-relation-claim c3-semantic-discrimination-result
-            (C3SemanticResolutionClaimStanding $resolution)
-            (c3-native-semantic-consequence-basis-v1 $resolution
-              candidate-difference-preserved
-              no-provider-self-certification))
-          (C3SemanticResolutionParticipantStanding $resolution)
-          no-contact-no-movement-authority)
-        (participant-contribution
-          (c3-returned-semantic-consequence-participation
-            (index-atom $consequence 1))
-          returned-contact $scope
-          (lineage returned-consequence (index-atom $consequence 1))
-          (participant-relation-claim c3-semantic-discrimination-result
-            (C3SemanticResolutionClaimStanding $resolution)
-            (c3-returned-semantic-consequence-evidence-v1 $resolution
-              (index-atom $consequence 12)))
-          (C3SemanticResolutionParticipantStanding $resolution)
-          no-contact-no-movement-authority))
+       (let $reference (C3SemanticResolutionReference $resolution)
+         (if (C3SemanticResolutionReferenceSelfValid $reference)
+           ((participant-contribution
+              (c3-native-semantic-consequence-participation
+                (index-atom $consequence 1))
+              native-authority $scope
+              (lineage provisional-26.6-26.9
+                semantic-consequence-interpretation)
+              (participant-relation-claim c3-semantic-discrimination-result
+                (C3SemanticResolutionClaimStanding $resolution)
+                (c3-native-semantic-consequence-basis-v2 $reference
+                  candidate-difference-preserved
+                  no-provider-self-certification))
+              (C3SemanticResolutionParticipantStanding $resolution)
+              no-contact-no-movement-authority)
+            (participant-contribution
+              (c3-returned-semantic-consequence-participation
+                (index-atom $consequence 1))
+              returned-contact $scope
+              (lineage returned-consequence (index-atom $consequence 1))
+              (participant-relation-claim c3-semantic-discrimination-result
+                (C3SemanticResolutionClaimStanding $resolution)
+                (c3-returned-semantic-consequence-evidence-v2 $reference
+                  (index-atom $consequence 12)))
+              (C3SemanticResolutionParticipantStanding $resolution)
+              no-contact-no-movement-authority))
+           ()))
        ())))
 
 (= (C3AlignmentResolutionClaimStanding $resolution)

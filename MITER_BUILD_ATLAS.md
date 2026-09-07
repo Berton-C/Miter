@@ -1117,16 +1117,47 @@ Already carried:
   thought-partner participation while Miter remains sovereign; it does not yet
   establish a native contact-seeking experiment over those alternatives or
   acceptable conversational latency.
+- The three retained thought-partner possibilities now form one compact native
+  contact-seeking experiment family. The complete Soul-selected semantic
+  surface is retained once; three exact candidate references derive three
+  complete experiments on demand. Each experiment preserves the already
+  aligned Relatedness and Precision perspectives, keeps Appropriateness open,
+  carries the selected `Connection`/`Love` Fact9 expression and
+  `AgencyBalance`/`ConnectionDepth`/`SharedUnderstanding` participation, and
+  asks what new contact could discriminate its counterfactual. The family
+  grants no proposal contact, choice, alignment, or movement standing. Starting
+  from one byte-identical pre-consequence checkpoint, independent contact that
+  supported candidate `model-candidate-2ca75879a0ec90435a85f87c` produced one
+  supported semantic-discrimination relation and formed the undertaking
+  `c3-alignment-consequence-continuation`; a fluent restatement with no
+  independent contact produced no supported result relation and formed
+  `c3-developmental-inquiry`. Both paths retained the same one-surface R/A/P,
+  Fact9, flourishing, question, candidate-family, and non-sovereignty lineage.
+  Full semantic resolution remains once in append-only developmental history;
+  active cognition carries an exact compact reference to question, candidate,
+  R/A/P opening, returned row, and consequence. The support checkpoint is
+  11,995,248 bytes at SHA-256
+  `102945e230fb669f980d8245cd0af694fe654bb4853fb8218679e1729a236a91`;
+  the unresolved checkpoint is 11,679,189 bytes at SHA-256
+  `0d2815abedd2cbccc73644d0e6ed144e63ef0c56bbf9194366f70b34dc33b7b5`.
+  Each restored in a fresh process, retained valid complete history, rejected
+  duplicate delivery, requested no model participation, and preserved its
+  checkpoint byte-for-byte. Native falsifiers rejected a forged candidate,
+  overlapping R/A/P perspectives, a mismatched returned-row identity, and an
+  invalid standing; a different internally lawful R/A/P split remained
+  structurally legible but failed exact source equality. This establishes
+  candidate-specific contact-seeking and consequence-sensitive continuation,
+  not yet consequence-earned transfer of that exact candidate experiment to a
+  later unfamiliar composition or acceptable conversational latency.
 
 Next movement:
 
-1. make the three returned thought-partner possibilities usable as native,
-   candidate-specific contact-seeking experiments inside the same
-   Fact9/flourishing/R/A/P organization. Miter must preserve their plurality,
-   construct what further contact could discriminate among them, and remain
-   able to join, defer, decline, or pursue contact without provider or fixture
-   choice. Returned consequence—not fluent wording—must be what can warrant
-   fuller alignment and developmental learning;
+1. prove that the supported candidate-specific episode can participate in a
+   later unfamiliar Fact9/flourishing composition while the unresolved episode
+   remains non-certifying material. The later cut must form its own movement
+   from current contact, retained one-surface R/A/P, and consequence-earned
+   relations; it may not replay a provider proposal as a learned rule or use a
+   fixture to choose the continuation;
 2. continue reducing proof-rich re-formation latency and repeated compact
    carriers without weakening exact
    native organization, one-runtime integrity, restart fidelity, or falsifier
