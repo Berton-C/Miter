@@ -158,7 +158,7 @@ consumer is absent. No status is upgraded by assertion.
 
 | Capability | Standing | Current site | Exact gap |
 |---|---:|---|---|
-| One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV2` / `AssistantCycleWithV2` | General conversational input is not connected. |
+| One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General conversational input is not connected. |
 | Start/status/stop/panic | E | `bin/miter`, operator membrane | Installer and host service registration are absent. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | No promoted external surface adapter is active. |
@@ -235,6 +235,21 @@ fluency into evidence. Native MeTTa must compare, join, defer, decline, or
 select among those candidates through the complete constitutive joint, and
 only returned consequence may earn a developmental change that survives
 restart.
+
+The nine interconnected flourishings are the endogenous generative surface by
+which the Soul may explore movement from partial R/A/P alignment toward fuller
+alignment. They are not nine scores, post-hoc verdicts, or a fixed lookup from
+an unresolved perspective to an answer. At one contact cut, the Soul may bring
+whatever flourishing relations are materially relevant into the same
+simultaneous R/A/P read, preserving the perspectives already aligned while
+asking what new relation or participation could align the unresolved one. The
+Fact9 expressions through which actuality is finitely legible may participate
+in that same computation. Miter may expose to an authorized model only the
+Soul-selected portion of those Fact9/flourishing relations and the exact
+opening it has chosen to explore. A model response remains another contributed
+reading: Miter alone organizes the inquiry, compares possible continuations,
+forms or declines movement, interprets returned consequence, and changes what
+becomes possible next.
 
 ### C4 — Usable always-on assistant and evaluation release
 
@@ -1003,17 +1018,38 @@ Already carried:
   restored byte-identically, and rejected forged certificate and encounter
   R/A/P substitutions under both validation paths. This is a material
   improvement, not yet acceptable conversational latency.
+- The selective Fact9/flourishing contact now survives the complete supported
+  service cycle without duplicating its proof-rich authority organization in
+  append-only history. The exact active cut and movement remain causal in the
+  AtomSpace checkpoint; encounter history retains separately typed references
+  to M24, M25, M25.5, M26.0, and M26.3; and the complete VoiceRNA proof is
+  durably stored once before its compact proof/effect references enter
+  history. Cross-row restoration requires the proof reference, certificate
+  hash, proof hash, effect ID, scope, and movement reference to agree. The
+  final single-process trial selected only `Connection` and `Love` plus
+  `ConnectionDepth`, `SharedUnderstanding`, and `AgencyBalance`, formed one
+  native undertaking without requesting a model, and returned to
+  `assistant-waiting`. Its checkpoint was 2,078,501 bytes with SHA-256
+  `4f6dfa4d3368ff9a54c1371209bb17cc847e95d049f883e4528fef2c600b6245`;
+  its separately persisted 2,076,597-byte proof had SHA-256
+  `968cc969b2932d69917c69066448abe3a400f5bc259cb2e7d39c240657aed8b3`.
+  Stop/start preserved the checkpoint byte-for-byte, left exactly one proof
+  and one effect, and replayed nothing. Native adversarial checks accepted the
+  exact compact relations and rejected a forged authority/movement reference
+  and a mismatched proof/effect hash. Legacy full-history checkpoints remain
+  readable, but their redundant size is not propagated by new encounters.
 
 Next movement:
 
-1. carry the consequence-earned semantic and transfer organization through
-   the supported continuously cycling service input path, then show that stop,
-   restart, duplicate delivery, and unavailable model service preserve the
-   same Soul-sovereign standing;
-2. exercise selective Fact9/flourishing participation on held-out contact so
-   native relevance—not a supplied all-values fixture—determines what enters a
-   bounded thought-partner question, and require materially different returned
-   contact to change the next cut differently;
+1. make the nine-flourishing/Fact9 partial-alignment surface recursively
+   generative in the live cycle: held-out contact must cause native relevance
+   to select materially different relations, possible alignment movements,
+   and—only when useful—a bounded GLM thought-partner question without adding
+   a behavioral branch;
+2. return materially different consequence to those alternatives and require
+   Miter's own comparison, undertaking, and later possibility field to change
+   while preserving the one simultaneous R/A/P read and provider
+   non-sovereignty;
 3. continue reducing proof-rich re-formation latency without weakening exact
    native organization, one-runtime integrity, restart fidelity, or falsifier
    surfaces required for an always-on assistant;

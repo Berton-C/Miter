@@ -31,6 +31,11 @@ as_config_value(max_input_batch, Value) :-
 as_config_value(max_input_bytes, Value) :-
     integer(Value), Value >= 1024, Value =< 16777216.
 
+% Calibrated against the complete C3 Fact9/flourishing/R/A/P proof carrier.
+% This remains a finite mechanical envelope, not authority to truncate or
+% simplify a native proof that MeTTa has formed.
+as_max_native_proof_bytes(33554432).
+
 as_root(Root0, Root) :-
     miter_store_nonempty_atom(Root0, Root),
     is_absolute_file_name(Root),
@@ -599,7 +604,8 @@ as_local_effect_descriptor(
     crypto_data_hash(CertificateText, CertificateHash,
       [algorithm(sha256),encoding(utf8)]),
     term_string(Proof, ProofText, [quoted(true),ignore_ops(true)]),
-    string_length(ProofText, ProofLength), ProofLength=<16777216,
+    string_length(ProofText, ProofLength),
+    as_max_native_proof_bytes(MaxProofLength), ProofLength=<MaxProofLength,
     crypto_data_hash(ProofText, ProofHash, [algorithm(sha256),encoding(utf8)]).
 
 as_local_scope([scope,Principal0,Audience0,Project0]) :-

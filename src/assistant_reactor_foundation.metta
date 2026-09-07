@@ -48,7 +48,9 @@
             (encounter consequence restoration effect voice-proof scope-binding continuity semantic) 0)
           (and (CPShape (index-atom $row 3) scope 4)
             (if (== (index-atom $row 1) voice-proof)
-              (ARNativeMovementProofValid (index-atom $row 4)) true)))))
+              (or (ARNativeMovementProofValid (index-atom $row 4))
+                  (ARVoiceProofReferenceRecordValid (index-atom $row 4)))
+              true)))))
 
 (= (ARAllValid $rows $validator $i)
    (if (< $i (size-atom $rows))
@@ -126,9 +128,9 @@
      (let $added (add-atom &assistant_history
        (assistant-history $kind $id $scope $payload)) assistant-history-recorded)))
 
-; A proof carrier is recorded before its external descriptor is handed to the
-; membrane. A repeated key is accepted only when the persisted proof is exact;
-; an id collision may never silently point a compact certificate at new proof.
+; Voice proof history uses the effect membrane's durable result. A repeated
+; key is accepted only when its compact proof record is exact; an id collision
+; may never silently point a compact certificate at new proof.
 (= (ARProofRows $id $scope)
    (collapse (match &assistant_history
      (assistant-history voice-proof $id $scope $payload) $payload)))
@@ -142,6 +144,42 @@
        (if (and (== (size-atom $rows) 1)
                 (== (index-atom $rows 0) $proof))
          assistant-history-duplicate assistant-history-conflict))))
+
+; The membrane persists and hashes the complete native proof before returning
+; a successful local-effect result. The restart checkpoint therefore retains
+; this exact compact receipt rather than duplicating the full proof term in
+; AtomSpace history. Older full-proof history remains valid for restoration.
+(= (ARVoiceProofReferenceRecord $proof $effect-result)
+   (if (and (ARNativeMovementProofValid $proof)
+         (ARLocalEffectResultValid $effect-result))
+     (native-movement-proof-record-v2
+       (ARNativeProofReference $proof)
+       (certificate-sha256 (index-atom $effect-result 2))
+       (proof-sha256 (index-atom $effect-result 3))
+       persisted-by-effect-membrane-before-observation)
+     (native-movement-proof-record-unresolved invalid-proof-or-effect)))
+
+(= (ARVoiceProofReferenceRecordValid $record)
+   (if (CPShape $record native-movement-proof-record-v2 5)
+     (and (CPShape (index-atom $record 1) native-proof-reference 5)
+       (and (CPShape (index-atom $record 2) certificate-sha256 2)
+        (and (CPShape (index-atom $record 3) proof-sha256 2)
+             (== (index-atom $record 4)
+               persisted-by-effect-membrane-before-observation))))
+     false))
+
+(= (ARRecordVoiceProofReference $id $scope $proof $effect-result)
+   (let* (($record (ARVoiceProofReferenceRecord $proof $effect-result))
+          ($rows (ARProofRows $id $scope)))
+     (if (!= (ARVoiceProofReferenceRecordValid $record) true)
+       assistant-history-conflict
+       (if (== (size-atom $rows) 0)
+         (let $added (add-atom &assistant_history
+           (assistant-history voice-proof $id $scope $record))
+           assistant-history-recorded)
+         (if (and (== (size-atom $rows) 1)
+                  (== (index-atom $rows 0) $record))
+           assistant-history-duplicate assistant-history-conflict)))))
 
 (= (AREncounterMovement $encounter)
    (index-atom $encounter 5))
@@ -419,18 +457,28 @@
    (if (CPShape $contact-result assistant-contact-incorporated 3)
      (let* (($contact-id (index-atom $contact-result 1))
             ($encounter (index-atom $contact-result 2))
-            ($proof (ARNativeMovementProof $encounter))
-            ($certificate (ARVoiceCertificate $encounter $proof)))
-       (if (== (ARVoiceCertificateProofStanding $certificate $proof)
-               certificate-proof-matched)
-         (local-effect-descriptor-v2 $contact-id $contact-id
-           (index-atom $certificate 3)
-           (payload $certificate)
-           (native-proof $proof)
-           (capability local-isolated-outbox no-network no-external-authority)
-           prepared)
-         (local-effect-held $contact-id
-           (ARVoiceCertificateProofStanding $certificate $proof))))
+            ($movement (AREncounterMovement $encounter)))
+       ; Plural or unresolved native movement is cognition still in motion,
+       ; not a certified expression. Preserve it in the checkpoint without
+       ; manufacturing an effect or forcing a choice merely to obtain one.
+       (if (CPShape $movement movement-formed 7)
+         (let* (($proof (ARNativeMovementProof $encounter))
+                ($certificate (ARVoiceCertificate $encounter $proof)))
+           (if (== (ARVoiceCertificateProofStanding $certificate $proof)
+                   certificate-proof-matched)
+             (local-effect-descriptor-v2 $contact-id $contact-id
+               (index-atom $certificate 3)
+               (payload $certificate)
+               (native-proof $proof)
+               (capability local-isolated-outbox no-network
+                 no-external-authority)
+               prepared)
+             (local-effect-held $contact-id
+               (ARVoiceCertificateProofStanding $certificate $proof))))
+         (if (or (CPShape $movement movement-plural-live 4)
+                 (CPShape $movement movement-unresolved 3))
+           no-local-effect
+           (local-effect-held $contact-id malformed-native-movement))))
      no-local-effect))
 
 (= (ARLocalEffectDescriptorValid $descriptor)
@@ -462,17 +510,24 @@
        (let* (($effect-id (index-atom $descriptor 1))
               ($scope (index-atom $descriptor 3))
               ($proof (index-atom (index-atom $descriptor 5) 1))
-              ($proof-history (ARRecordVoiceProof $effect-id $scope $proof)))
-         (if (CPHas $proof-history
-               (assistant-history-recorded assistant-history-duplicate) 0)
-           (let $result ($effect-writer $root $descriptor)
-             (if (ARLocalEffectResultValid $result)
-               (let $history (ARRecord effect $effect-id $scope
-                 (effect-witness-v2 $result (index-atom $descriptor 4)
-                   (ARNativeProofReference $proof)))
-                 (local-effect-result $result $proof-history $history))
-               (local-effect-held $effect-id $result)))
-           (local-effect-held $effect-id $proof-history)))
+              ($result ($effect-writer $root $descriptor)))
+         (if (ARLocalEffectResultValid $result)
+           (let* (($proof-history (ARRecordVoiceProofReference $effect-id
+                    $scope $proof $result))
+                  ($history (if (CPHas $proof-history
+                     (assistant-history-recorded assistant-history-duplicate) 0)
+                    (ARRecord effect $effect-id $scope
+                      (effect-witness-v2 $result (index-atom $descriptor 4)
+                        (ARNativeProofReference $proof)))
+                    assistant-history-conflict)))
+             (if (and (CPHas $proof-history
+                        (assistant-history-recorded assistant-history-duplicate) 0)
+                      (CPHas $history
+                        (assistant-history-recorded assistant-history-duplicate) 0))
+               (local-effect-result $result $proof-history $history)
+               (local-effect-held $effect-id
+                 (history $proof-history $history))))
+           (local-effect-held $effect-id $result)))
        $descriptor)))
 
 (= (AREffectsAt $root $results $effect-writer $i)
