@@ -1314,6 +1314,22 @@ Already carried:
   13.60 MB but append-only exact history still dominates. The computation is
   bounded and faithful, but its current re-formation and historical-validation
   cost is not acceptable conversational latency for the always-on assistant.
+- The first performance repair preserves Prolog term sharing at the mechanical
+  checkpoint boundary. `miter-assistant-checkpoint-v2` factorizes repeated
+  exact subterms, hashes and durably writes the factorized carrier, and
+  reconstructs one ground acyclic snapshot before native validation. It does
+  not summarize a proof, cache a verdict, or change what MeTTa receives. On the
+  twenty-two-row live C3 state, the checkpoint fell from 7,590,370 bytes to
+  185,068 bytes (1,123 exact factors) and restored byte-equivalent native
+  organization. Altered checkpoint hash, factor count, and a malformed factor
+  carrier were rejected; the V1 read path remains compatible. Controlled V1
+  and V2 native restores both remained about 51 seconds, so this is a material
+  storage and I/O win—not yet a cognition-latency win. The supported operator
+  verified constitutional integrity, restored the V2 state, reached its
+  recurring `assistant-waiting` condition, and stopped cleanly. That run also
+  exposed and repaired stale manifest hashes for the two C3 MeTTa files in the
+  preceding waypoint; isolated load success is not accepted as runtime
+  completion.
 
 Next movement:
 

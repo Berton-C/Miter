@@ -14,6 +14,7 @@
 :- use_module(library(lists)).
 :- use_module(library(pcre)).
 :- use_module(library(readutil)).
+:- use_module(library(terms)).
 :- use_module(library(uuid)).
 
 as_schema('miter-assistant-runtime-v1').
@@ -508,11 +509,19 @@ as_reject_input(Root, Name, Source, rejected) :-
 as_checkpoint(Root0, Snapshot, Result) :-
     ( catch((as_root(Root0, Root), Snapshot=['assistant-snapshot',_,_],
       as_path(Root, 'checkpoints/active.term', TermPath),
-      as_write_term_atomic(TermPath, Snapshot),
+      % Native proof carriers deliberately share exact subterms: the one
+      % primary participates in its R/A/P reading, derivation and retained
+      % alternatives. Preserve that identity in serialization instead of
+      % expanding each occurrence into duplicate text. This caches no verdict;
+      % restore reconstructs the exact ground snapshot before native checking.
+      as_write_factorized_checkpoint_atomic(TermPath, Snapshot, FactorCount),
       crypto_file_hash(TermPath, Hash, [algorithm(sha256),encoding(octet)]),
       atom_string(Hash, HashString), get_time(Now),
       as_path(Root, 'checkpoints/active.json', MetaPath),
-      as_write_json_durable(MetaPath, _{schema:"miter-assistant-checkpoint-v1",
+      as_write_json_durable(MetaPath, _{
+        schema:"miter-assistant-checkpoint-v2",
+        encoding:"prolog-factorized-term-v1",
+        factor_count:FactorCount,
         sha256:HashString,recorded_at_epoch:Now}),
       as_commit_leases(Root)), _, fail) -> Result=checkpointed
     ; Result='checkpoint-failed' ), !.
@@ -522,14 +531,40 @@ as_restore(Root0, Snapshot) :-
       as_path(Root, 'checkpoints/active.json', MetaPath),
       ( \+ exists_file(TermPath), \+ exists_file(MetaPath) -> Snapshot='no-checkpoint'
       ; exists_file(TermPath), exists_file(MetaPath),
-        miter_store_read_json(MetaPath, Meta), as_dict_atom(Meta, schema, 'miter-assistant-checkpoint-v1'),
+        miter_store_read_json(MetaPath, Meta),
         get_dict(sha256, Meta, Expected0), as_sha256(Expected0, Expected),
         crypto_file_hash(TermPath, Actual, [algorithm(sha256),encoding(octet)]),
         Actual==Expected,
-        setup_call_cleanup(open(TermPath,read,Stream,[encoding(utf8)]),
-          read_term(Stream,Term,[syntax_errors(error)]),close(Stream)),
-        Term=['assistant-snapshot',_,_], Snapshot=Term )), _, fail) -> true
+        as_read_checkpoint(Meta, TermPath, Term),
+        Term=['assistant-snapshot',_,_], ground(Term), acyclic_term(Term),
+        Snapshot=Term )), _, fail) -> true
     ; Snapshot='checkpoint-invalid' ), !.
+
+% V1 remains readable for existing runtime roots. New checkpoints use V2. The
+% factor list is inert data and is unified explicitly; it is never called as a
+% sequence of Prolog goals.
+as_read_checkpoint(Meta, TermPath, Term) :-
+    as_dict_atom(Meta, schema, 'miter-assistant-checkpoint-v1'),
+    setup_call_cleanup(open(TermPath,read,Stream,[encoding(utf8)]),
+      read_term(Stream,Term,[syntax_errors(error)]),close(Stream)), !.
+as_read_checkpoint(Meta, TermPath, Term) :-
+    as_dict_atom(Meta, schema, 'miter-assistant-checkpoint-v2'),
+    as_dict_atom(Meta, encoding, 'prolog-factorized-term-v1'),
+    get_dict(factor_count, Meta, ExpectedFactorCount),
+    integer(ExpectedFactorCount), ExpectedFactorCount>=0,
+    setup_call_cleanup(open(TermPath,read,Stream,[encoding(utf8)]),
+      read_term(Stream,Carrier,[syntax_errors(error)]),close(Stream)),
+    Carrier=['miter-factorized-checkpoint-v1',Skeleton,Factors],
+    is_list(Factors), length(Factors,ExpectedFactorCount),
+    as_checkpoint_factors_well_formed(Factors),
+    maplist(as_unify_checkpoint_factor, Factors),
+    ground(Skeleton), acyclic_term(Skeleton), Term=Skeleton.
+
+as_checkpoint_factors_well_formed([]).
+as_checkpoint_factors_well_formed([Left=_|Rest]) :-
+    var(Left), as_checkpoint_factors_well_formed(Rest).
+
+as_unify_checkpoint_factor(Left=Right) :- Left=Right.
 
 as_wait(Root0, Seconds, Result) :-
     ( catch((as_root(Root0, Root), number(Seconds), Seconds>0, Seconds=<2,
@@ -797,6 +832,12 @@ as_write_term_atomic(Path, Term) :-
          write(Stream,'.'),nl(Stream),flush_output(Stream),miter_store_fsync_stream(Stream)),
         close(Stream)),rename_file(Temporary,Path)),
       (exists_file(Temporary)->delete_file(Temporary);true)).
+
+as_write_factorized_checkpoint_atomic(Path, Snapshot, FactorCount) :-
+    term_factorized(Snapshot, Skeleton, Factors),
+    length(Factors, FactorCount),
+    Carrier=['miter-factorized-checkpoint-v1',Skeleton,Factors],
+    as_write_term_atomic(Path, Carrier).
 
 as_write_json_durable(Path, Dict) :-
     file_directory_name(Path, Directory), make_directory_path(Directory),

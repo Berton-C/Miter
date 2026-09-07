@@ -80,11 +80,11 @@
     },
     {
       "path": "src/provisional_dynamics.metta",
-      "sha256": "a70830cfaec4a35160520a31972696ea3422e344331bbb4cc44045f12d5fd49e"
+      "sha256": "bac6413c7078c87325338d4e917ca5b4b26f0cb36e513211697ee7ff206b0909"
     },
     {
       "path": "src/model_participation.metta",
-      "sha256": "71415bbdb3472fedfab920cf57105f5996410cefca5163ca857cb34c8e2a1423"
+      "sha256": "2a4b8a47015b5a6892e31cc6062bc67b5e21b53489c0e9848a80ed8a4f65b677"
     },
     {
       "path": "src/constitutive_authority_joint.metta",
