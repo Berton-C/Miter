@@ -65,6 +65,38 @@ as_member(Value, Allowed) :- memberchk(Value, Allowed).
 
 as_dict_atom(Dict, Key, Atom) :- get_dict(Key, Dict, Value), as_symbol(Value, Atom).
 
+% Native movement identities may be structured MeTTa data (for example, an
+% inquiry keyed to both a development reference and a cut).  The membrane may
+% carry that identity but may not parse arbitrary MeTTa source.  This bounded
+% JSON tree is therefore the only structured-reference carrier: every node is
+% data-only, depth/arity bounded, and composed solely of already-safe symbols.
+as_native_reference(Value, Reference) :-
+    as_native_reference_at(Value, 0, Reference).
+
+as_native_reference_at(Value, _, Atom) :-
+    \+ is_dict(Value),
+    as_symbol(Value, Atom).
+as_native_reference_at(Dict, Depth, [Constructor|Arguments]) :-
+    is_dict(Dict), Depth < 4,
+    dict_pairs(Dict, _, Pairs), length(Pairs, 2),
+    get_dict(constructor, Dict, ConstructorValue),
+    get_dict(arguments, Dict, ArgumentValues),
+    as_symbol(ConstructorValue, Constructor),
+    is_list(ArgumentValues), ArgumentValues = [_|_],
+    length(ArgumentValues, Arity), Arity =< 8,
+    NextDepth is Depth + 1,
+    maplist(as_native_reference_at_depth(NextDepth), ArgumentValues,
+      Arguments).
+
+as_native_reference_at_depth(Depth, Value, Reference) :-
+    as_native_reference_at(Value, Depth, Reference).
+
+as_dict_native_reference(Dict, Reference) :-
+    ( get_dict(movement_ref, Dict, Value)
+    -> as_native_reference(Value, Reference)
+    ;  get_dict(movement_id, Dict, Value), as_symbol(Value, Reference)
+    ).
+
 as_symbol_list(Values, Atoms) :-
     is_list(Values),
     maplist(as_symbol, Values, Atoms),
@@ -328,7 +360,7 @@ as_consequence(Dict,
                 ['W-delta', Weave], Present, Evidence]) :-
     is_dict(Dict),
     as_dict_atom(Dict, id, Id),
-    as_dict_atom(Dict, movement_id, Movement),
+    as_dict_native_reference(Dict, Movement),
     as_dict_atom(Dict, effect_key, Effect),
     as_dict_atom(Dict, result, Result),
     get_dict(d_relations, Dict, RelationValues),
@@ -349,7 +381,7 @@ as_consequence_v2(Dict,
                    ['flourishing-delta', Flourishings], Present, Evidence]) :-
     is_dict(Dict),
     as_dict_atom(Dict, id, Id),
-    as_dict_atom(Dict, movement_id, Movement),
+    as_dict_native_reference(Dict, Movement),
     as_dict_atom(Dict, effect_key, Effect),
     as_dict_atom(Dict, result, Result),
     get_dict(d_relations, Dict, RelationValues),

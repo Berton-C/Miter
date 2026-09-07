@@ -167,8 +167,8 @@ consumer is absent. No status is upgraded by assertion.
 | Checkpoint and same-runtime restart | E | reactor + store membrane | The semantic episode, consequence-earned transfer, and later developmental-memory participation now restore; complete long-term memory and incomplete undertakings are not yet one writable continuity organization. |
 | M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C3 must now learn from their provisional composition. |
 | Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 alignment/semantic inquiry, transfer, and developmental memory | Soul-selected flourishing relations now generate contact-differentiated alignment families, constrain optional semantic participation, enter consequence interpretation, and remain structurally available to later memory; broader endogenous growth and regeneration remain open. |
-| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 alignment/semantic inquiry, transfer, and developmental memory | Fact9/flourishing organization now generates plural native alignment movements, constrains model-assisted inquiry, discloses transfer through newly named compositions, and permits consequence-earned episodes to alter later unfamiliar cuts; broader skill and composition learning remain open. |
-| One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; independent returned contact has changed a model-assisted inquiry into durable native development. General transfer remains a C3 obligation. |
+| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 alignment/semantic inquiry, transfer, developmental memory, and partial-overlap comparison | Fact9/flourishing organization now generates plural native alignment movements, constrains model-assisted inquiry, discloses exact and partial-overlap transfer/differentiation/unresolved standing through newly named compositions, and permits consequence-earned episodes to alter later unfamiliar cuts; endogenous formation and regeneration remain open. |
+| One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; independent returned contact has changed a model-assisted inquiry into durable native development and distinguishes transfer, differentiation, and unresolved standing across non-identical overlap. |
 | Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
 | LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | GLM 5.3 candidates now enter a Soul-owned inquiry and returned candidate contact changes the next persisted cut without provider self-certification; a mechanical grant can no longer trigger a call unless native MeTTa exposes unresolved R/A/P plus selected Fact9/flourishing and returned-contact material. General language rendering remains absent. |
@@ -1416,18 +1416,42 @@ Already carried:
   checkpoint and effect, restored after stop/start, and rejected duplicate
   submission without changing checkpoint SHA-256
   `cdff5567a147a29c949c5116560f81778d808c97e8e66fb010bb5937cd458aaf`.
+- A later held-out contact now compares consequence-earned development against
+  partial but non-identical organization without treating repeated names as
+  transfer authority. The source carried `Balance`/`Precision`/
+  `Transformation` with `WonderPreservation`/`TimeCoherence`/
+  `CreativeTranscendence`; the new contact carried `Balance`/`Gravity`/
+  `Transformation` with `WonderPreservation`/`PurposeBeyondUtility`/
+  `CreativeTranscendence`. Native MeTTa retained the shared, source-only, and
+  current-only Fact9 and flourishing relations, the source partial R/A/P
+  openings, and three lawful interpretations: transfer, differentiation, or
+  unresolved. Three byte-identical starting checkpoints received materially
+  different independent contact and formed three correspondingly distinct,
+  admissible inquiry relations; none was selected by recurrence or provider
+  fluency. The transfer case also crossed the supported `bin/miter` carrier
+  using a bounded data-only structured movement reference, checkpointed,
+  rejected duplicate submission without changing checkpoint SHA-256
+  `16f395259ca6b541b92b2ee06abaab3b00ae04d7398bdef9672a674d0c20fc27`,
+  and restored the exact two-lineage result and plural native organization
+  after stop/start. Forged shared Fact9 membership, empty shared flourishing
+  participation, and an identical source/target cut all failed the structural
+  boundary.
 
 Next movement:
 
-1. use the newly earned held-out developmental record in a later contact whose
-   material organization has partial but non-identical overlap. Require native
-   MeTTa to disclose whether the learning transfers, differentiates, or remains
-   unresolved; neither recurrence nor provider fluency may decide that
-   standing;
-2. continue C3 through broader endogenous learning and regenerative Soul
-   expression after the performance seam keeps the complete live constitutive
-   joint reachable at always-on conversational cadence;
-3. only after explicit human acceptance of the complete clean candidate,
+1. add Soul-formed endogenous opportunity contact to the same recurring
+   reactor when no human undertaking is live. Activity and quiescence must
+   both remain possible: the Soul must form movement from persisted gaps,
+   tensions, consequence, Fact9, and flourishing participation rather than a
+   keep-busy timer or a supplied behavior entry;
+2. add autonomous expressed-Soul integrity detection, quarantined
+   reconstruction, adversarial false-repair rejection, causal restoration,
+   and restart persistence without mutation of the constitutional germline;
+3. close C3 only when both additions pass through `bin/miter`, then begin C4
+   by connecting general Mattermost contact, writable Continuity of Mind,
+   general model/VoiceRNA participation, and capability-governed effects to
+   this same runtime;
+4. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

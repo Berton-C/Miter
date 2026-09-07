@@ -1495,6 +1495,579 @@
                (C3AllFlourishingMaterialPresentAt $flourishing $values 0)))))
      false))
 
+; Exact structural recurrence is only one relation a later contact may have
+; to consequence-earned development.  The current contact may instead share
+; some, but not all, of the source Fact9 roles and flourishing participation.
+; These helpers retain that overlap and its negative space without treating a
+; count, a repeated name, or provider fluency as transfer authority.
+(= (C3UniqueMembersAt $members $i $out)
+   (if (< $i (size-atom $members))
+     (let $member (index-atom $members $i)
+       (C3UniqueMembersAt $members (+ $i 1)
+         (if (CPHas $member $out 0) $out (cons-atom $member $out))))
+     (CPReverseInto $out 0 ())))
+
+(= (C3MembersInAt $members $other $i $out)
+   (if (< $i (size-atom $members))
+     (let $member (index-atom $members $i)
+       (C3MembersInAt $members $other (+ $i 1)
+         (if (and (CPHas $member $other 0)
+                  (== (CPHas $member $out 0) false))
+           (cons-atom $member $out) $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (C3MembersNotInAt $members $other $i $out)
+   (if (< $i (size-atom $members))
+     (let $member (index-atom $members $i)
+       (C3MembersNotInAt $members $other (+ $i 1)
+         (if (and (== (CPHas $member $other 0) false)
+                  (== (CPHas $member $out 0) false))
+           (cons-atom $member $out) $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (C3RolesFromRoleListAt $roles $i $out)
+   (if (< $i (size-atom $roles))
+     (let $role (index-atom $roles $i)
+       (C3RolesFromRoleListAt $roles (+ $i 1)
+         (if (CPHas $role $out 0) $out (cons-atom $role $out))))
+     $out))
+
+(= (C3RolesFromFactEntriesAt $entries $i $out)
+   (if (< $i (size-atom $entries))
+     (let* (($entry (index-atom $entries $i))
+            ($roles-wrapper (if (CPShape $entry fact9-inquiry-entry 4)
+              (index-atom $entry 2) (roles ())))
+            ($roles (if (CPShape $roles-wrapper roles 2)
+              (index-atom $roles-wrapper 1) ())))
+       (C3RolesFromFactEntriesAt $entries (+ $i 1)
+         (C3RolesFromRoleListAt $roles 0 $out)))
+     $out))
+
+(= (C3RolesFromFactSurfacesAt $surfaces $i $out)
+   (if (< $i (size-atom $surfaces))
+     (let* (($surface (index-atom $surfaces $i))
+            ($entries (if (and (CPShape $surface fact9-inquiry-surface 3)
+                               (CPShape (index-atom $surface 2)
+                                 fact9-material 2))
+              (index-atom (index-atom $surface 2) 1) ())))
+       (C3RolesFromFactSurfacesAt $surfaces (+ $i 1)
+         (C3RolesFromFactEntriesAt $entries 0 $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (C3QuestionFactRoles $question)
+   (let $participation (index-atom $question 6)
+     (if (CPShape $participation fact9-participation 3)
+       (C3RolesFromFactSurfacesAt (index-atom $participation 1) 0 ()) ())))
+
+(= (C3CurrentFactRolesAt $facts $i $out)
+   (if (< $i (size-atom $facts))
+     (let* (($fact (index-atom $facts $i))
+            ($composition (if (CPShape $fact fact9-expression 10)
+              (index-atom $fact 6) (composition unavailable unavailable)))
+            ($roles (if (and (CPShape $fact fact9-expression 10)
+                             (and (CPShape $composition composition 3)
+                                  (== (index-atom $composition 2)
+                                    recognized-compose)))
+              (index-atom $fact 2) ())))
+       (C3CurrentFactRolesAt $facts (+ $i 1)
+         (C3RolesFromRoleListAt $roles 0 $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (C3CurrentFactRoles $facts)
+   (C3CurrentFactRolesAt $facts 0 ()))
+
+(= (C3EngagedFlourishingValuesAt $flourishing $values $i $out)
+   (if (< $i (size-atom $values))
+     (let $value (index-atom $values $i)
+       (C3EngagedFlourishingValuesAt $flourishing $values (+ $i 1)
+         (if (CPFlourishingEngaged $flourishing $value)
+           (cons-atom $value $out) $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (C3EngagedFlourishingValues $flourishing)
+   (C3EngagedFlourishingValuesAt $flourishing
+     (CPFlourishingValues) 0 ()))
+
+(= (C3DevelopmentalOverlapPossibility $reference $kind $condition)
+   (c3-developmental-overlap-possibility-v1
+     $reference
+     $kind
+     (contact-condition $condition)
+     provisional-requires-returned-contact
+     no-recurrence-or-provider-authority))
+
+(= (C3DevelopmentalOverlapSurface $record $cut $facts $flourishing)
+   (if (C3SemanticDevelopmentRecordValid $record)
+     (let* (($reference (index-atom $record 1))
+            ($question (index-atom $record 5))
+            ($resolution (index-atom $record 6))
+            ($source-cut (index-atom (index-atom $record 4) 2))
+            ($source-roles (C3UniqueMembersAt
+              (C3QuestionFactRoles $question) 0 ()))
+            ($current-roles (C3UniqueMembersAt
+              (C3CurrentFactRoles $facts) 0 ()))
+            ($shared-roles (C3MembersInAt $source-roles $current-roles 0 ()))
+            ($source-only-roles
+              (C3MembersNotInAt $source-roles $current-roles 0 ()))
+            ($current-only-roles
+              (C3MembersNotInAt $current-roles $source-roles 0 ()))
+            ($source-values (C3QuestionFlourishingValues $question))
+            ($current-values (C3EngagedFlourishingValues $flourishing))
+            ($shared-values
+              (C3MembersInAt $source-values $current-values 0 ()))
+            ($source-only-values
+              (C3MembersNotInAt $source-values $current-values 0 ()))
+            ($current-only-values
+              (C3MembersNotInAt $current-values $source-values 0 ()))
+            ($different
+              (or (> (size-atom $source-only-roles) 0)
+               (or (> (size-atom $current-only-roles) 0)
+                (or (> (size-atom $source-only-values) 0)
+                    (> (size-atom $current-only-values) 0))))))
+       (if (and (CPShape (index-atom $cut 1) cut-of 3)
+             (and (!= (index-atom $cut 1) (index-atom $source-cut 1))
+              (and (> (size-atom $shared-roles) 0)
+               (and (> (size-atom $shared-values) 0) $different))))
+         (c3-developmental-overlap-surface-v1
+           $reference
+           $source-cut
+           (target-cut (index-atom $cut 1))
+           (source-standing
+             (C3SemanticResolutionClaimStanding $resolution))
+           (fact9-role-comparison
+             (source $source-roles) (current $current-roles)
+             (shared $shared-roles) (source-only $source-only-roles)
+             (current-only $current-only-roles))
+           (flourishing-comparison
+             (source $source-values) (current $current-values)
+             (shared $shared-values) (source-only $source-only-values)
+             (current-only $current-only-values))
+           (source-rap-openings (C3QuestionOpenings $question))
+           (lawful-interpretations
+             ((C3DevelopmentalOverlapPossibility $reference transfer
+                new-contact-supports-source-relation-across-difference)
+              (C3DevelopmentalOverlapPossibility $reference differentiate
+                new-contact-supports-a-materially-different-organization)
+              (C3DevelopmentalOverlapPossibility $reference unresolved
+                new-contact-does-not-yet-discriminate)))
+           (constitutive-standing
+             partial-non-identical-overlap-is-an-inquiry-not-a-verdict)
+           (authority-boundary native-soul-compares
+             returned-contact-determines-standing
+             provider-no-contact-no-choice-no-verdict
+             no-scalar-no-first-match-no-genome-mutation))
+         (c3-developmental-overlap-surface-unavailable
+           no-partial-non-identical-material-overlap)))
+     (c3-developmental-overlap-surface-unavailable
+       invalid-semantic-development-record)))
+
+(= (C3DevelopmentalOverlapSurfaceValid $surface $record $cut $facts
+      $flourishing)
+   (and (CPShape $surface c3-developmental-overlap-surface-v1 11)
+        (== $surface
+          (C3DevelopmentalOverlapSurface $record $cut $facts $flourishing))))
+
+(= (C3DevelopmentalOverlapOpeningsValidAt $openings $i)
+   (if (< $i (size-atom $openings))
+     (and (CPShape (index-atom $openings $i)
+            c3-partial-alignment-opening-v2 9)
+          (C3DevelopmentalOverlapOpeningsValidAt $openings (+ $i 1)))
+     true))
+
+(= (C3DevelopmentalOverlapSurfaceStructuralValid $surface)
+   (if (CPShape $surface c3-developmental-overlap-surface-v1 11)
+     (let* (($reference (index-atom $surface 1))
+            ($source-cut (index-atom $surface 2))
+            ($target-cut (index-atom $surface 3))
+            ($source-standing (index-atom $surface 4))
+            ($fact (index-atom $surface 5))
+            ($flourishing (index-atom $surface 6))
+            ($openings-wrapper (index-atom $surface 7))
+            ($lawful-wrapper (index-atom $surface 8))
+            ($fact-source (if (CPShape $fact fact9-role-comparison 6)
+              (index-atom (index-atom $fact 1) 1) ()))
+            ($fact-current (if (CPShape $fact fact9-role-comparison 6)
+              (index-atom (index-atom $fact 2) 1) ()))
+            ($fact-shared (if (CPShape $fact fact9-role-comparison 6)
+              (index-atom (index-atom $fact 3) 1) ()))
+            ($fact-source-only (if (CPShape $fact fact9-role-comparison 6)
+              (index-atom (index-atom $fact 4) 1) ()))
+            ($fact-current-only (if (CPShape $fact fact9-role-comparison 6)
+              (index-atom (index-atom $fact 5) 1) ()))
+            ($flourishing-source (if
+              (CPShape $flourishing flourishing-comparison 6)
+              (index-atom (index-atom $flourishing 1) 1) ()))
+            ($flourishing-current (if
+              (CPShape $flourishing flourishing-comparison 6)
+              (index-atom (index-atom $flourishing 2) 1) ()))
+            ($flourishing-shared (if
+              (CPShape $flourishing flourishing-comparison 6)
+              (index-atom (index-atom $flourishing 3) 1) ()))
+            ($flourishing-source-only (if
+              (CPShape $flourishing flourishing-comparison 6)
+              (index-atom (index-atom $flourishing 4) 1) ()))
+            ($flourishing-current-only (if
+              (CPShape $flourishing flourishing-comparison 6)
+              (index-atom (index-atom $flourishing 5) 1) ()))
+            ($openings (if (CPShape $openings-wrapper source-rap-openings 2)
+              (index-atom $openings-wrapper 1) ()))
+            ($lawful (if (CPShape $lawful-wrapper lawful-interpretations 2)
+              (index-atom $lawful-wrapper 1) ()))
+            ($different (or (> (size-atom $fact-source-only) 0)
+              (or (> (size-atom $fact-current-only) 0)
+               (or (> (size-atom $flourishing-source-only) 0)
+                   (> (size-atom $flourishing-current-only) 0))))))
+       (==
+         ((CPShape $reference development-reference 2)
+          (CPShape $source-cut source-cut 2)
+          (CPShape $target-cut target-cut 2)
+          (!= (index-atom $source-cut 1) (index-atom $target-cut 1))
+          (CPShape $source-standing source-standing 2)
+          (CPHas (index-atom $source-standing 1)
+            (support contradiction unresolved) 0)
+          (CPShape $fact fact9-role-comparison 6)
+          (> (size-atom $fact-shared) 0)
+          (CPSetEqual $fact-shared
+            (C3MembersInAt $fact-source $fact-current 0 ()))
+          (CPSetEqual $fact-source-only
+            (C3MembersNotInAt $fact-source $fact-current 0 ()))
+          (CPSetEqual $fact-current-only
+            (C3MembersNotInAt $fact-current $fact-source 0 ()))
+          (CPShape $flourishing flourishing-comparison 6)
+          (> (size-atom $flourishing-shared) 0)
+          (CPSetEqual $flourishing-shared
+            (C3MembersInAt $flourishing-source $flourishing-current 0 ()))
+          (CPSetEqual $flourishing-source-only
+            (C3MembersNotInAt $flourishing-source $flourishing-current 0 ()))
+          (CPSetEqual $flourishing-current-only
+            (C3MembersNotInAt $flourishing-current $flourishing-source 0 ()))
+          $different
+          (> (size-atom $openings) 0)
+          (C3DevelopmentalOverlapOpeningsValidAt $openings 0)
+          (== $lawful
+            ((C3DevelopmentalOverlapPossibility $reference transfer
+               new-contact-supports-source-relation-across-difference)
+             (C3DevelopmentalOverlapPossibility $reference differentiate
+               new-contact-supports-a-materially-different-organization)
+             (C3DevelopmentalOverlapPossibility $reference unresolved
+               new-contact-does-not-yet-discriminate)))
+          (== (index-atom $surface 9)
+            (constitutive-standing
+              partial-non-identical-overlap-is-an-inquiry-not-a-verdict))
+          (== (index-atom $surface 10)
+            (authority-boundary native-soul-compares
+              returned-contact-determines-standing
+              provider-no-contact-no-choice-no-verdict
+              no-scalar-no-first-match-no-genome-mutation)))
+         (true true true true true true true true true true true true true true
+           true true true true true true true true)))
+     false))
+
+(= (C3DevelopmentalOverlapRouteFromMovement $movement)
+   (if (and (CPShape $movement movement-formed 7)
+            (== (index-atom $movement 1) inquiry))
+     (let* (($answerability (index-atom $movement 5))
+            ($o-star (if (CPShape $answerability answerability 2)
+              (index-atom $answerability 1) ()))
+            ($route-wrapper (if (CPShape $o-star o-star 2)
+              (index-atom $o-star 1) ()))
+            ($route (if (CPShape $route-wrapper consequence-route 3)
+              (index-atom $route-wrapper 1) ()))
+            ($surface (if
+              (CPShape $route c3-developmental-overlap-comparison 2)
+              (index-atom $route 1) ())))
+       (if (and (C3DevelopmentalOverlapSurfaceStructuralValid $surface)
+                (== (index-atom $route-wrapper 2) non-certifying))
+         (let* (($reference (index-atom $surface 1))
+                ($target-cut (index-atom $surface 3))
+                ($expected (c3-developmental-overlap-inquiry
+                  (index-atom $reference 1) (index-atom $target-cut 1))))
+           (if (== (index-atom $movement 2) $expected) $route
+             (c3-developmental-overlap-route-unavailable
+               movement-reference-mismatch)))
+         (c3-developmental-overlap-route-unavailable
+           invalid-overlap-surface-or-route)))
+     (c3-developmental-overlap-route-unavailable
+       movement-is-not-formed-inquiry)))
+
+(= (C3DevelopmentalOverlapComparisonPossibilitiesAt $claims $cut $facts
+      $flourishing $i)
+   (if (< $i (size-atom $claims))
+     (let* (($record (C3SemanticDevelopmentRecordFromClaim
+              (index-atom $claims $i)))
+            ($surface (C3DevelopmentalOverlapSurface $record $cut $facts
+              $flourishing)))
+       (if (C3DevelopmentalOverlapSurfaceValid $surface $record $cut $facts
+             $flourishing)
+         (cons-atom
+           (possible-movement
+             (c3-developmental-overlap-inquiry
+               (index-atom (index-atom $record 1) 1)
+               (index-atom $cut 1))
+             inquiry
+             (CPNativeRequirementRelations $cut)
+             (CPNativeRequirementDistinctions $cut)
+             (CPNativeRequirementInterfaces $cut)
+             (C3EngagedFlourishingValues $flourishing)
+             (consequence-route
+               (c3-developmental-overlap-comparison $surface)
+               non-certifying)
+             l2425-supported)
+           (C3DevelopmentalOverlapComparisonPossibilitiesAt $claims $cut
+             $facts $flourishing (+ $i 1)))
+         (C3DevelopmentalOverlapComparisonPossibilitiesAt $claims $cut
+           $facts $flourishing (+ $i 1))))
+     ()))
+
+(= (C3DevelopmentalOverlapComparisonPossibilities $cut $facts $flourishing
+      $participant-relations)
+   (C3DevelopmentalOverlapComparisonPossibilitiesAt
+     (C3SemanticDevelopmentClaims $participant-relations)
+     $cut $facts $flourishing 0))
+
+(= (C3DevelopmentalOverlapContactKind $relation-type)
+   (if (== $relation-type developmental-overlap-transfer-contact) transfer
+     (if (== $relation-type developmental-overlap-differentiate-contact)
+       differentiate
+       (if (== $relation-type developmental-overlap-unresolved-contact)
+         unresolved invalid-overlap-contact-kind))))
+
+(= (C3DevelopmentalOverlapRowsAt $relations $development-id $i)
+   (if (< $i (size-atom $relations))
+     (let* (($row (index-atom $relations $i))
+            ($kind (if (CPShape $row relation 5)
+              (C3DevelopmentalOverlapContactKind (index-atom $row 2))
+              invalid-overlap-contact-kind)))
+       (if (and (CPShape $row relation 5)
+             (and (== (index-atom $row 1) $development-id)
+              (and (!= $kind invalid-overlap-contact-kind)
+                   (CPHas (index-atom $row 3)
+                     (support contradiction unresolved) 0))))
+         (cons-atom $row
+           (C3DevelopmentalOverlapRowsAt $relations $development-id
+             (+ $i 1)))
+         (C3DevelopmentalOverlapRowsAt $relations $development-id
+           (+ $i 1))))
+     ()))
+
+(= (C3DevelopmentalOverlapPossibilityForKindAt $possibilities $kind $i)
+   (if (< $i (size-atom $possibilities))
+     (let $possibility (index-atom $possibilities $i)
+       (if (and (CPShape $possibility
+                  c3-developmental-overlap-possibility-v1 6)
+                (== (index-atom $possibility 2) $kind))
+         $possibility
+         (C3DevelopmentalOverlapPossibilityForKindAt $possibilities $kind
+           (+ $i 1))))
+     (c3-developmental-overlap-possibility-unavailable $kind)))
+
+(= (C3DevelopmentalOverlapResolution $movement $consequence)
+   (let* (($route (C3DevelopmentalOverlapRouteFromMovement $movement))
+          ($surface (if
+            (CPShape $route c3-developmental-overlap-comparison 2)
+            (index-atom $route 1) ()))
+          ($reference (if
+            (C3DevelopmentalOverlapSurfaceStructuralValid $surface)
+            (index-atom $surface 1) (development-reference no-reference)))
+          ($development-id (if (CPShape $reference development-reference 2)
+            (index-atom $reference 1) no-development-id))
+          ($rows (if (CPConsequenceV2Valid $consequence)
+            (C3DevelopmentalOverlapRowsAt
+              (index-atom (index-atom $consequence 5) 1)
+              $development-id 0) ())))
+     (if (and (C3DevelopmentalOverlapSurfaceStructuralValid $surface)
+           (and (CPConsequenceV2Valid $consequence)
+            (and (== (index-atom $movement 2) (index-atom $consequence 2))
+                 (== (size-atom $rows) 1))))
+       (let* (($row (index-atom $rows 0))
+              ($observed-kind
+                (C3DevelopmentalOverlapContactKind (index-atom $row 2)))
+              ($kind (if (== (index-atom $row 3) support)
+                $observed-kind unresolved))
+              ($possibilities
+                (index-atom (index-atom $surface 8) 1))
+              ($selected (C3DevelopmentalOverlapPossibilityForKindAt
+                $possibilities $kind 0)))
+         (if (CPShape $selected c3-developmental-overlap-possibility-v1 6)
+           (c3-developmental-overlap-resolution-v1
+             $route $reference $selected $row
+             (returned-consequence (index-atom $consequence 1))
+             (comparison-standing $kind)
+             exact-independent-returned-contact
+             provider-remains-non-certifying)
+           (c3-developmental-overlap-resolution-unavailable
+             selected-interpretation-not-in-native-family)))
+       (c3-developmental-overlap-resolution-unavailable
+         missing-ambiguous-or-movement-mismatched-contact))))
+
+(= (C3DevelopmentalOverlapResolutionValid $resolution)
+   (if (CPShape $resolution c3-developmental-overlap-resolution-v1 9)
+     (let* (($route (index-atom $resolution 1))
+            ($surface (if
+              (CPShape $route c3-developmental-overlap-comparison 2)
+              (index-atom $route 1) ()))
+            ($reference (index-atom $resolution 2))
+            ($selected (index-atom $resolution 3))
+            ($row (index-atom $resolution 4))
+            ($standing (index-atom $resolution 6))
+            ($kind (if (CPShape $standing comparison-standing 2)
+              (index-atom $standing 1) invalid-overlap-contact-kind))
+            ($observed-kind (if (CPShape $row relation 5)
+              (C3DevelopmentalOverlapContactKind (index-atom $row 2))
+              invalid-overlap-contact-kind))
+            ($expected-kind (if (and (CPShape $row relation 5)
+                                     (== (index-atom $row 3) support))
+              $observed-kind unresolved))
+            ($possibilities (if
+              (C3DevelopmentalOverlapSurfaceStructuralValid $surface)
+              (index-atom (index-atom $surface 8) 1) ())))
+       (==
+         ((C3DevelopmentalOverlapSurfaceStructuralValid $surface)
+          (== $reference (index-atom $surface 1))
+          (CPShape $selected c3-developmental-overlap-possibility-v1 6)
+          (== $selected (C3DevelopmentalOverlapPossibilityForKindAt
+            $possibilities $kind 0))
+          (CPShape $row relation 5)
+          (== (index-atom $row 1) (index-atom $reference 1))
+          (!= $observed-kind invalid-overlap-contact-kind)
+          (== $kind $expected-kind)
+          (CPShape (index-atom $resolution 5) returned-consequence 2)
+          (CPHas $kind (transfer differentiate unresolved) 0)
+          (== (index-atom $resolution 7)
+            exact-independent-returned-contact)
+          (== (index-atom $resolution 8)
+            provider-remains-non-certifying))
+         (true true true true true true true true true true true true)))
+     false))
+
+(= (C3DevelopmentalOverlapConsequenceParticipants $scope $movement
+      $consequence)
+   (let $resolution (C3DevelopmentalOverlapResolution $movement $consequence)
+     (if (and (CPShape $scope scope 4)
+              (C3DevelopmentalOverlapResolutionValid $resolution))
+       (let* (($id (index-atom $consequence 1))
+              ($kind (index-atom (index-atom $resolution 6) 1))
+              ($target (c3-developmental-overlap-result $id)))
+         ((participant-contribution
+            (c3-native-developmental-overlap-participation $id)
+            native-authority $scope
+            (lineage provisional-26.6-26.9
+              partial-non-identical-developmental-comparison)
+            (participant-relation-claim $target support
+              (c3-native-developmental-overlap-basis-v1 $resolution
+                (comparison-standing $kind)
+                one-contact-one-simultaneous-rap-read
+                no-provider-self-certification))
+            supported no-contact-no-movement-authority)
+          (participant-contribution
+            (c3-returned-developmental-overlap-participation $id)
+            returned-contact $scope
+            (lineage returned-consequence $id)
+            (participant-relation-claim $target support
+              (c3-returned-developmental-overlap-evidence-v1 $resolution
+                (index-atom $consequence 12)))
+            supported no-contact-no-movement-authority)))
+       ())))
+
+(= (C3DevelopmentalOverlapResolutionFromClaim $claim)
+   (if (CPShape $claim participant-relation-evidence 7)
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence c3-native-developmental-overlap-basis-v1 5)
+         (index-atom $evidence 1)
+         (if (CPShape $evidence
+               c3-returned-developmental-overlap-evidence-v1 3)
+           (index-atom $evidence 1)
+           (c3-developmental-overlap-resolution-unavailable
+             claim-has-no-overlap-resolution))))
+     (c3-developmental-overlap-resolution-unavailable malformed-claim)))
+
+(= (C3DevelopmentalOverlapClaimsSameResolutionAt $claims $resolution $i)
+   (if (< $i (size-atom $claims))
+     (and (== (C3DevelopmentalOverlapResolutionFromClaim
+                (index-atom $claims $i)) $resolution)
+          (C3DevelopmentalOverlapClaimsSameResolutionAt $claims $resolution
+            (+ $i 1)))
+     true))
+
+(= (C3DevelopmentalOverlapClaimsHaveSourceAt $claims $source $i)
+   (if (< $i (size-atom $claims))
+     (if (== (index-atom (index-atom $claims $i) 2) $source) true
+       (C3DevelopmentalOverlapClaimsHaveSourceAt $claims $source (+ $i 1)))
+     false))
+
+(= (C3DevelopmentalOverlapResultRelationValid $relation)
+   (if (CPShape $relation participant-supported-relation 4)
+     (let $target (index-atom $relation 1)
+       (if (CPShape $target c3-developmental-overlap-result 2)
+         (let* (($claims (index-atom $relation 3))
+                ($resolution (if (> (size-atom $claims) 0)
+                  (C3DevelopmentalOverlapResolutionFromClaim
+                    (index-atom $claims 0))
+                  (c3-developmental-overlap-resolution-unavailable
+                    no-claims))))
+           (and (== (size-atom $claims) 2)
+            (and (C3DevelopmentalOverlapResolutionValid $resolution)
+             (and (== (index-atom $target 1)
+                    (index-atom (index-atom $resolution 5) 1))
+              (and (C3DevelopmentalOverlapClaimsSameResolutionAt $claims
+                     $resolution 0)
+               (and (C3DevelopmentalOverlapClaimsHaveSourceAt $claims
+                      native-authority 0)
+                    (C3DevelopmentalOverlapClaimsHaveSourceAt $claims
+                      returned-contact 0)))))))
+         false))
+     false))
+
+(= (C3DevelopmentalOverlapResultPossibilitiesAt $relations $cut $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (C3DevelopmentalOverlapResultRelationValid $relation)
+         (let* (($target (index-atom $relation 1))
+                ($claims (index-atom $relation 3))
+                ($resolution (C3DevelopmentalOverlapResolutionFromClaim
+                  (index-atom $claims 0)))
+                ($kind (index-atom (index-atom $resolution 6) 1))
+                ($surface (index-atom (index-atom $resolution 1) 1))
+                ($flourishing-comparison (index-atom $surface 6))
+                ($current-flourishings
+                  (index-atom (index-atom $flourishing-comparison 2) 1))
+                ($base-relations (CPNativeRequirementRelations $cut))
+                ($required-relations (if
+                  (CPHas $target $base-relations 0) $base-relations
+                  (cons-atom $target $base-relations)))
+                ($movement-id (if (== $kind differentiate)
+                  (c3-developmental-differentiation-inquiry
+                    (index-atom $target 1))
+                  (if (== $kind transfer)
+                    (c3-developmental-transfer-inquiry
+                      (index-atom $target 1))
+                    (c3-developmental-overlap-remains-unresolved
+                      (index-atom $target 1))))))
+           (cons-atom
+             ; Returned contact establishes the comparison standing, not a
+             ; completed undertaking.  All three outcomes therefore remain
+             ; explicit inquiry material for the next constitutive cut.
+             (possible-movement $movement-id inquiry
+               $required-relations
+               (CPNativeRequirementDistinctions $cut)
+               (CPNativeRequirementInterfaces $cut)
+               $current-flourishings
+               (consequence-route
+                 (consequence-earned-developmental-overlap $resolution)
+                 non-certifying)
+               l2425-supported)
+             (C3DevelopmentalOverlapResultPossibilitiesAt $relations $cut
+               (+ $i 1))))
+         (C3DevelopmentalOverlapResultPossibilitiesAt $relations $cut
+           (+ $i 1))))
+     ()))
+
+(= (C3DevelopmentalOverlapResultPossibilities $cut $participant-relations)
+   (if (CPShape $participant-relations participant-relation-organization 2)
+     (C3DevelopmentalOverlapResultPossibilitiesAt
+       (index-atom $participant-relations 1) $cut 0)
+     ()))
+
 (= (C3SemanticDevelopmentTransferRoute $record $cut)
    (let* (($surface (index-atom $record 4))
           ($question (index-atom $record 5))

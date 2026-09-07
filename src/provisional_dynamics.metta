@@ -306,6 +306,12 @@
             $flourishing))
           ($transfer (C3SemanticDevelopmentTransferPossibilities $cut $facts
             $flourishing $participant-relations))
+          ($overlap-comparison
+            (C3DevelopmentalOverlapComparisonPossibilities $cut $facts
+              $flourishing $participant-relations))
+          ($overlap-result
+            (C3DevelopmentalOverlapResultPossibilities $cut
+              $participant-relations))
           ($transfer-result
             (C3DevelopmentalTransferResultPossibilities $cut
               $participant-relations))
@@ -351,10 +357,12 @@
             () $base-source-inquiry))
           ($specialized (CPListAppend $memory-continuation
             (CPListAppend $source-inquiry
-              (CPListAppend $transfer
-                (CPListAppend $unjoined-transfer-result
-                  (CPListAppend $transfer-memory
-                    $unjoined-memory-result)))))))
+              (CPListAppend $overlap-result
+                (CPListAppend $overlap-comparison
+                  (CPListAppend $transfer
+                    (CPListAppend $unjoined-transfer-result
+                      (CPListAppend $transfer-memory
+                        $unjoined-memory-result)))))))))
      (CPListAppend
        ; Exact returned alignment contact refines the generic undertaking
        ; surface. It does not add a second scheduler or first-match branch:

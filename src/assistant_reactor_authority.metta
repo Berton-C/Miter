@@ -1304,6 +1304,9 @@
               $consequence))
           ($memory-participants
             (C3DevelopmentalMemoryConsequenceParticipants $scope $movement
+              $consequence))
+          ($overlap-participants
+            (C3DevelopmentalOverlapConsequenceParticipants $scope $movement
               $consequence)))
      (if (and (or (CPShape $basis continuation-basis-v2 5)
                   (CPShape $basis continuation-basis-v3 6))
@@ -1319,7 +1322,8 @@
                     (CPListAppend $c3-participants
                       (CPListAppend $transfer-participants
                         (CPListAppend $alignment-participants
-                          $memory-participants)))))))
+                          (CPListAppend $memory-participants
+                            $overlap-participants))))))))
               ($next (M25ConstitutiveEncounter $base-next-cut
                 (index-atom $basis 1) $flourishing-views $participant-source
                 (index-atom (index-atom $basis 4) 1) $evolved)))
@@ -1575,6 +1579,9 @@
               $consequence))
           ($memory-participants
             (C3DevelopmentalMemoryConsequenceParticipants $scope $movement
+              $consequence))
+          ($overlap-participants
+            (C3DevelopmentalOverlapConsequenceParticipants $scope $movement
               $consequence)))
      (if (and (or (CPShape $basis continuation-basis-v2 5)
                   (CPShape $basis continuation-basis-v3 6))
@@ -1628,12 +1635,13 @@
                          (CPListAppend $transfer-participants
                           (CPListAppend $alignment-participants
                            (CPListAppend $memory-participants
-                            (CPListAppend $semantic-participants
+                            (CPListAppend $overlap-participants
+                             (CPListAppend $semantic-participants
                              (CPListAppend
                                (AR3PreformationQuestionParticipants
                                  $model-reading)
                                (AR3PreformationModelParticipants
-                                 $model-reading)))))))))))
+                                 $model-reading))))))))))))
                   ($next (M25ConstitutiveEncounter $base-next-cut
                     (index-atom $basis 1) $flourishing-views
                     $participant-source (index-atom (index-atom $basis 4) 1)
