@@ -1925,6 +1925,65 @@
                    derived-standing-not-contact))) false)
          false) false) false))
 
+; M25RAPSurface has just constructed these four native precursor bridges in
+; this same pure reduction. Reconstructing every complete authority object a
+; second time here changes no semantic standing and accounted for most of the
+; remaining R/A/P latency. This internal carrier verifies cardinality, exact
+; source/developmental linkage, one-occurrence linkage, and the cross-authority
+; invariants needed at the R/A/P boundary once. It accepts no supplied bridge
+; family and grants no standing to later or external readings: M25RAPValid and
+; the public certificate validators continue to perform full exact
+; reconstruction.
+(= (M25NativeRAPPrecursorFamilyValid $m24 $m255 $m260 $m263
+      $primary $cut $developmental)
+   (if (and (CPShape $m24 m24-primary-constitutive-bridge-v1 8)
+         (and (CPShape $m255 m255-to-m25-rap-precursor-bridge-v1 13)
+          (and (CPShape $m260 m260-primary-one-becoming-bridge-v1 11)
+               (CPShape $m263 m263-primary-constitutive-bridge-v1 10))))
+     (let* (($movement-ref (M260PrimaryMovementReference $primary))
+            ($source-cut (source-cut-reference (index-atom $cut 1)))
+            ($developmental-ref
+              (m24-developmental-reference (index-atom $developmental 13)))
+            ($checks
+              ((M25PrimaryMovementValid $primary)
+               (CPCutValid $cut)
+               (M24DevelopmentalOrganizationValid $developmental)
+               (== (index-atom $m24 1) $movement-ref)
+               (== (index-atom $m24 2) (source-cut (index-atom $cut 1)))
+               (== (index-atom $m24 4)
+                 (developmental-reference
+                   (index-atom (index-atom $developmental 1) 1)
+                   (index-atom $developmental 3)
+                   (index-atom $developmental 13)))
+               (== (index-atom $m255 1) (index-atom $primary 1))
+               (== (index-atom $m255 2)
+                 (generated-reference (index-atom $primary 1)))
+               (== (index-atom $m255 4) $source-cut)
+               (== (index-atom $m255 5) $developmental-ref)
+               (== (index-atom $m260 1) $movement-ref)
+               (CPShape (index-atom $m260 2) occurrence-reference 2)
+               (CPShape (index-atom $m260 4) same-becoming-certified 5)
+               (CPShape (index-atom $m260 8) m260-structural-fidelity-v1 6)
+               (== (index-atom $m263 1) $movement-ref)
+               (== (index-atom $m263 2) (index-atom $m260 2))
+               (== (index-atom $m263 4)
+                 (generated-reference $movement-ref))
+               (== (index-atom $m263 6)
+                 (balance-reference (index-atom $primary 1)
+                   one-contact-movement-surface))
+               (== (index-atom $m263 7)
+                 (same-becoming-reference
+                   (index-atom (index-atom $m260 4) 1)))
+               (== (index-atom $m263 8) (index-atom $cut 11))
+               (== (index-atom $m263 9)
+                 (constitutive-standing fact9-before-rap
+                   generated-participation-balance-same-becoming
+                   finite-partial-non-reconstructive)))))
+       (== $checks
+         (true true true true true true true true true true true true true
+           true true true true true true true true)))
+     false))
+
 (= (M25RAPReadings $primary $cut $developmental)
    (let* (($surface (M25RAPSurface $primary $cut $developmental))
           ($read-event (index-atom $surface 1))
@@ -1932,14 +1991,9 @@
           ($m255-precursor (M25RAPM255Precursor $surface))
           ($m260-precursor (M25RAPM260Precursor $surface))
           ($m263-precursor (M25RAPM263Precursor $surface))
-          ($precursors-valid
-            (and (M24PrimaryBridgeFromCutValid $m24-precursor $primary $cut
-                   $developmental)
-             (and (M255RAPPrecursorBridgeValid $m255-precursor
-                    $primary $cut $developmental)
-              (and (M260PrimaryBridgeFromCutValid $m260-precursor $primary $cut)
-                   (M263PrimaryBridgeFromCutValid $m263-precursor
-                     $primary $cut)))))
+          ($precursors-valid (M25NativeRAPPrecursorFamilyValid
+            $m24-precursor $m255-precursor $m260-precursor $m263-precursor
+            $primary $cut $developmental))
           ($relatedness-profile (M25RelatednessProfile $primary $cut))
           ($precision-profile (M25PrecisionProfile $primary $cut))
           ($admissibility (M25Adm25Witness $primary $developmental

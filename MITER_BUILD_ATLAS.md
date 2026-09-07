@@ -1400,23 +1400,34 @@ Already carried:
   now produces an explicit unresolved carrier rather than erasing the whole
   cut. The scheduler cannot inspect, filter, rank, join, or choose results and
   does not create another cognitive clock.
+- The four M24/M25.5/M26.0/M26.3 precursor bridges inside one complete R/A/P
+  read are now carried through a same-reduction native family boundary after
+  `M25RAPSurface` has constructed them. The boundary verifies exact primary,
+  cut, developmental, occurrence, Generated, SameBecoming, Balance, and Fact9
+  linkage once; it does not alter `ReadApp`, any R/A/P perspective, or any
+  movement standing. Public and restored readings still receive full exact
+  reconstruction. Three heterogeneous persisted organizations reproduced
+  every stored reading exactly. Mutations to each of the four precursor
+  linkages were rejected, and the unchanged public M25 validator accepted the
+  authentic reading while rejecting a forged perspective. On the current
+  26-event held-out organization, isolated one-reading re-formation fell from
+  about 4.3 to 2.45 seconds and complete active validation fell from about
+  13.0 to 11.5 seconds. A fresh supported-runtime contact formed one valid
+  checkpoint and effect, restored after stop/start, and rejected duplicate
+  submission without changing checkpoint SHA-256
+  `cdff5567a147a29c949c5116560f81778d808c97e8e66fb010bb5937cd458aaf`.
 
 Next movement:
 
-1. reduce the remaining repeated work inside complete R/A/P reading
-   construction through exact same-reduction carriers or incremental integrity
-   witnesses. Preserve every M24–M26.3 precursor, bridge, relation, and
-   falsifier; latency relief may not be purchased by deleting causal
-   participation or substituting cached verdicts;
-2. use the newly earned held-out developmental record in a later contact whose
+1. use the newly earned held-out developmental record in a later contact whose
    material organization has partial but non-identical overlap. Require native
    MeTTa to disclose whether the learning transfers, differentiates, or remains
    unresolved; neither recurrence nor provider fluency may decide that
    standing;
-3. continue C3 through broader endogenous learning and regenerative Soul
+2. continue C3 through broader endogenous learning and regenerative Soul
    expression after the performance seam keeps the complete live constitutive
    joint reachable at always-on conversational cadence;
-4. only after explicit human acceptance of the complete clean candidate,
+3. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 
