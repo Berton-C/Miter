@@ -90,10 +90,73 @@
          false))
      false))
 
+; The active v3 movement already carries its exact M24 developmental
+; organization in the continuation basis.  Consequence history therefore
+; retains a compact, integrity-protected reference instead of duplicating the
+; entire next encounter and transition.  The checkpoint membrane hashes the
+; complete snapshot; active restore separately re-forms the movement from its
+; constitutive basis.
+(= (AR2DevelopmentalReference $developmental)
+   (if (M24DevelopmentalOrganizationValid $developmental)
+     (m24-developmental-reference
+       (index-atom (index-atom $developmental 1) 1)
+       (index-atom $developmental 3)
+       (index-atom $developmental 13))
+     (m24-developmental-reference-unresolved)))
+
+(= (AR2ConsequenceHistoryV4 $scope $next-cut $next-movement $transition
+      $consequence)
+   (consequence-incorporation-v4
+     (next-organization-reference $scope (index-atom $next-cut 1)
+       (CP2MovementReference $next-cut $next-movement))
+     (AR2DevelopmentalReference (index-atom $transition 2))
+     (prior-movement (index-atom $consequence 2))
+     (returned-evidence (index-atom $consequence 12))
+     active-basis-carries-exact-developmental-organization))
+
+(= (AR2ConsequenceHistoryPayloadV4Valid $payload)
+   (if (CPShape $payload consequence-incorporation-v4 6)
+     (let* (($next (index-atom $payload 1))
+            ($developmental (index-atom $payload 2))
+            ($prior (index-atom $payload 3))
+            ($returned (index-atom $payload 4)))
+       (and (CPShape $next next-organization-reference 4)
+        (and (CPShape (index-atom $next 1) scope 4)
+         (and (CPShape (index-atom $next 3) movement-reference 5)
+          (and (== (index-atom $next 2)
+                 (index-atom (index-atom $next 3) 1))
+           (and (CPShape $developmental m24-developmental-reference 4)
+            (and (CPShape $prior prior-movement 2)
+             (and (CPShape $returned returned-evidence 2)
+                  (== (index-atom $payload 5)
+                    active-basis-carries-exact-developmental-organization)))))))))
+     false))
+
 (= (AR2PayloadHead $payload $head)
    (and (is-expr $payload)
      (and (> (size-atom $payload) 0)
           (== (index-atom $payload 0) $head))))
+
+(= (AR3ModelHistoryPayloadValid $payload)
+   (if (CPShape $payload model-reading-incorporated-v2 7)
+     (let* (($question (index-atom $payload 1))
+            ($observation (index-atom $payload 2))
+            ($count (index-atom $payload 5)))
+       (and (CPShape $question c3-semantic-question-v1 11)
+        (and (C3ModelObservationValid $observation $question)
+         (and (== (index-atom $payload 3) (index-atom $question 4))
+          (and (CPShape (index-atom $payload 4) movement-reference 5)
+           (and (CPShape $count model-participant-count 2)
+            (and (== (index-atom $count 1)
+                   (size-atom (index-atom (index-atom $observation 9) 1)))
+                 (== (index-atom $payload 6)
+                   provider-proposals-participated-before-next-formation))))))))
+     (if (CPShape $payload model-reading-unavailable-v1 3)
+       (let $question (index-atom $payload 1)
+         (and (CPShape $question c3-semantic-question-v1 11)
+              (C3ModelObservationUnavailableValid
+                (index-atom $payload 2) $question)))
+       false)))
 
 (= (AR2HistoryValid $row)
    (let* (($row-valid (CPShape $row assistant-history 5))
@@ -107,14 +170,21 @@
        (if (and $row-valid (== (index-atom $row 1) voice-proof))
          (and (CPShape (index-atom $row 3) scope 4)
               (AR2NativeMovementProofValid (index-atom $row 4)))
+         (if (and $row-valid (== (index-atom $row 1) model-reading))
+           (and (CPShape (index-atom $row 3) scope 4)
+                (AR3ModelHistoryPayloadValid (index-atom $row 4)))
          (if (and $row-valid (== (index-atom $row 1) consequence))
            (let $payload (index-atom $row 4)
              (if (AR2PayloadHead $payload consequence-incorporation-v3)
                (and (AR2ConsequenceHistoryPayloadValid $payload)
                  (== (index-atom (index-atom (index-atom $payload 1) 2) 5)
                    (index-atom $row 3)))
-               (ARHistoryValid $row)))
-           (ARHistoryValid $row))))))
+               (if (AR2PayloadHead $payload consequence-incorporation-v4)
+                 (and (AR2ConsequenceHistoryPayloadV4Valid $payload)
+                      (== (index-atom (index-atom $payload 1) 1)
+                        (index-atom $row 3)))
+                 (ARHistoryValid $row))))
+           (ARHistoryValid $row)))))))
 
 (= (AR2AllHistoryValid $rows $i)
    (if (< $i (size-atom $rows))
@@ -245,7 +315,12 @@
             ($encounter (index-atom $next 1)))
        (and (== (index-atom $encounter 1) $cut)
             (== (AREncounterMovement $encounter) $movement)))
-     false))
+     (if (AR2ConsequenceHistoryPayloadV4Valid $payload)
+       (let $next (index-atom $payload 1)
+         (and (== (index-atom $next 2) (index-atom $cut 1))
+              (== (index-atom $next 3)
+                (CP2MovementReference $cut $movement))))
+       false)))
 
 (= (AR2ConsequenceDevelopmentalMatchesAt $payloads $cut $movement $i $out)
    (if (< $i (size-atom $payloads))
@@ -261,17 +336,27 @@
      $out))
 
 (= (AR2DevelopmentalForMovement $scope $cut $movement)
-   (let* (($encounter-payloads (AR2EncounterPayloadsForScope $scope))
-          ($consequence-payloads (AR2ConsequencePayloadsForScope $scope))
-          ($encounter-matches (AR2DevelopmentalMatchesAt $encounter-payloads
-            $cut $movement 0 ()))
-          ($consequence-matches (AR2ConsequenceDevelopmentalMatchesAt
-            $consequence-payloads $cut $movement 0 ()))
-          ($matches (CPListAppend $encounter-matches $consequence-matches)))
-     (if (== (size-atom $matches) 1)
-       (index-atom $matches 0)
-       (m24-developmental-organization-unresolved
-         missing-or-ambiguous-active-movement-lineage))))
+   (let* (($basis (AR2MovementBasis $movement))
+          ($basis-developmental (if
+            (CPShape $basis continuation-basis-v3 6)
+              (index-atom $basis 5)
+              (m24-developmental-organization-unresolved
+                no-v3-continuation-basis))))
+     (if (and (M24DevelopmentalOrganizationValid $basis-developmental)
+              (== (index-atom $cut 3) $scope))
+       $basis-developmental
+       (let* (($encounter-payloads (AR2EncounterPayloadsForScope $scope))
+              ($consequence-payloads (AR2ConsequencePayloadsForScope $scope))
+              ($encounter-matches (AR2DevelopmentalMatchesAt
+                $encounter-payloads $cut $movement 0 ()))
+              ($consequence-matches (AR2ConsequenceDevelopmentalMatchesAt
+                $consequence-payloads $cut $movement 0 ()))
+              ($matches (CPListAppend $encounter-matches
+                $consequence-matches)))
+         (if (== (size-atom $matches) 1)
+           (index-atom $matches 0)
+           (m24-developmental-organization-unresolved
+             missing-or-ambiguous-active-movement-lineage))))))
 
 (= (AR2ConsequenceParticipants $scope $evolved $consequence)
    (let* (($carrier (index-atom $evolved 1))
@@ -464,9 +549,8 @@
               ($state (ARReplaceActive $scope $next-cut $next-movement))
               ($history (if (== $state assistant-active-replaced)
                 (ARRecord consequence $id $scope
-                  (consequence-incorporation-v3 $next-organization
-                    (prior-movement (index-atom $consequence 2))
-                    (returned-evidence (index-atom $consequence 12))))
+                  (AR2ConsequenceHistoryV4 $scope $next-cut $next-movement
+                    (index-atom $next-organization 2) $consequence))
                 state-not-recorded)))
          (if (== $history assistant-history-recorded)
            (assistant-consequence-incorporated $id $next-organization)
@@ -581,6 +665,274 @@
      (assistant-cycle-step ((assistant-input-rejected malformed-batch))
        (AssistantSnapshot))))
 
+; A provider may participate only after returned consequence has opened an
+; exact partial-alignment inquiry and before the next movement is formed.  The
+; question carries the source Fact9/flourishing material selected by native
+; construction plus returned-contact material.  Provider candidates remain
+; unresolved participants: they cannot define relevance, alignment, contact,
+; authority, or choice.
+(= (AR3PreformationModelReading $root $question $consequence-id $model-writer)
+   (if (ARHistoryHas model-reading $consequence-id)
+       (preformation-model-reading-held
+         prior-model-reading-without-consequence-history)
+       (let $observation ($model-writer $root $question)
+         (if (C3ModelObservationValid $observation $question)
+           (preformation-model-reading-v1 $question $observation
+             (C3ModelParticipants $observation $question)
+             model-reading-incorporated)
+           (if (C3ModelObservationUnavailableValid $observation $question)
+             (preformation-model-reading-v1 $question $observation ()
+               model-reading-unavailable)
+             (preformation-model-reading-held
+               malformed-model-observation))))))
+
+(= (AR3PreformationModelReadingUsable $reading)
+   (if (CPShape $reading preformation-model-reading-v1 5)
+     (or (== (index-atom $reading 4) model-reading-incorporated)
+         (== (index-atom $reading 4) model-reading-unavailable))
+     (CPShape $reading preformation-model-reading-not-requested 2)))
+
+(= (AR3PreformationModelParticipants $reading)
+   (if (and (CPShape $reading preformation-model-reading-v1 5)
+            (== (index-atom $reading 4) model-reading-incorporated))
+     (index-atom $reading 3) ()))
+
+; The returned consequence, M25.5/M26.6 laboratory participation, and any
+; bounded semantic proposals all enter one participant source.  M25 then forms
+; the next constitutive encounter once, preserving one runtime and one clock.
+(= (AR3ReconstituteAfterConsequence $root $scope $cut $movement $consequence
+      $model-writer)
+   (let* (($basis (AR2MovementBasis $movement))
+          ($prior (AR2DevelopmentalForMovement $scope $cut $movement))
+          ($probe-basis (M24ConsequenceBasisForMovement $movement))
+          ($next-cut (CPNextCutV2 $cut $consequence))
+          ($base-next-cut (CPBaseCutWithoutParticipantRelations $next-cut))
+          ($transition (M24DevelopmentalTransition $prior $probe-basis
+            $consequence $scope $base-next-cut))
+          ($m255-participants (AR2M255ConsequenceParticipants $scope $cut
+            $movement $base-next-cut $consequence))
+          ($c3-participants (C3ConsequenceParticipants $scope $cut $movement
+            $prior $consequence)))
+     (if (and (or (CPShape $basis continuation-basis-v2 5)
+                  (CPShape $basis continuation-basis-v3 6))
+           (and (M24DevelopmentalTransitionValid $transition)
+                (CPCutValid $base-next-cut)))
+       (let* (($evolved (index-atom $transition 2))
+              ($source-facts (CPFactExpressionsAt $cut
+                (index-atom $basis 1) 0))
+              ($source-flourishing (CPFlourishingOrganizationV2 $cut
+                (index-atom $basis 2)))
+              ($question (C3SemanticQuestionFromConsequence $scope $cut
+                $movement $prior $consequence $source-facts
+                $source-flourishing))
+              ($model-reading (if (CPShape $question c3-semantic-question-v1 11)
+                (AR3PreformationModelReading $root $question
+                  (index-atom $consequence 1) $model-writer)
+                (preformation-model-reading-not-requested
+                  no-consequence-earned-partial-alignment-question))))
+         (if (AR3PreformationModelReadingUsable $model-reading)
+           (let* (($flourishing-views (CPListAppend (index-atom $basis 2)
+                    (index-atom (index-atom $consequence 10) 1)))
+                  ($participant-source (CPListAppend (index-atom $basis 3)
+                    (CPListAppend
+                      (AR2ConsequenceParticipants $scope $evolved $consequence)
+                      (CPListAppend $m255-participants
+                        (CPListAppend $c3-participants
+                          (AR3PreformationModelParticipants $model-reading))))))
+                  ($next (M25ConstitutiveEncounter $base-next-cut
+                    (index-atom $basis 1) $flourishing-views
+                    $participant-source (index-atom (index-atom $basis 4) 1)
+                    $evolved)))
+             (if (and (CPShape $next constitutive-encounter 7)
+                      (CPDRelationKnown (index-atom $next 1)
+                        m24-consequence-developmental-grounding))
+               (ar3-next-constitutive-result-v1
+                 (next-constitutive-organization-v3 $next $transition)
+                 $model-reading)
+               (ar3-next-constitutive-result-unresolved
+                 developmental-participation-not-causal $model-reading)))
+           (ar3-next-constitutive-result-unresolved
+             model-reading-malformed-or-incoherent $model-reading)))
+       (ar3-next-constitutive-result-unresolved
+         missing-basis-developmental-lineage-or-valid-transition
+         (preformation-model-reading-not-requested invalid-transition)))))
+
+(= (AR3RecordModelReading $id $scope $next-cut $next-movement $reading)
+   (if (CPShape $reading preformation-model-reading-v1 5)
+     (let* (($question (index-atom $reading 1))
+            ($observation (index-atom $reading 2))
+            ($standing (index-atom $reading 4)))
+       (if (== $standing model-reading-incorporated)
+         (let* (($count (size-atom (index-atom $reading 3)))
+                ($history (ARRecord model-reading $id $scope
+                  (model-reading-incorporated-v2 $question $observation
+                    (index-atom $question 4)
+                    (CP2MovementReference $next-cut $next-movement)
+                    (model-participant-count $count)
+                    provider-proposals-participated-before-next-formation))))
+           (if (== $history assistant-history-recorded)
+             (assistant-model-reading-incorporated $id
+               (model-participant-count $count)
+               (ARMovementSummary $next-movement))
+             (assistant-model-reading-held $id $history)))
+         (if (== $standing model-reading-unavailable)
+           (let $history (ARRecord model-reading $id $scope
+                  (model-reading-unavailable-v1 $question $observation))
+             (assistant-model-reading-unavailable $id
+               (index-atom $observation 4) $history))
+           (assistant-model-reading-held $id unknown-model-reading-standing))))
+     (if (CPShape $reading preformation-model-reading-not-requested 2)
+       model-participation-not-requested
+       (assistant-model-reading-held $id malformed-preformation-reading))))
+
+(= (AR3IncorporateConsequenceV4 $root $id $scope $cut $movement $consequence
+      $model-writer)
+   (let $result (AR3ReconstituteAfterConsequence $root $scope $cut $movement
+          $consequence $model-writer)
+     (if (CPShape $result ar3-next-constitutive-result-v1 3)
+       (let* (($next-organization (index-atom $result 1))
+              ($model-reading (index-atom $result 2))
+              ($encounter (index-atom $next-organization 1))
+              ($next-cut (index-atom $encounter 1))
+              ($next-movement (AREncounterMovement $encounter))
+              ($state (ARReplaceActive $scope $next-cut $next-movement))
+              ($history (if (== $state assistant-active-replaced)
+                (ARRecord consequence $id $scope
+                  (AR2ConsequenceHistoryV4 $scope $next-cut $next-movement
+                    (index-atom $next-organization 2) $consequence))
+                state-not-recorded)))
+         (if (== $history assistant-history-recorded)
+           (let $model-outcome (AR3RecordModelReading $id $scope $next-cut
+                  $next-movement $model-reading)
+             (assistant-processed-v3
+               (assistant-consequence-incorporated $id $next-organization)
+               $model-outcome))
+           (assistant-processed-v3
+             (assistant-consequence-held $id $history)
+             model-participation-not-requested)))
+       (assistant-processed-v3
+         (assistant-consequence-held $id $result)
+         model-participation-not-requested))))
+
+(= (AssistantConsequenceV3 $root $scope $consequence $model-writer)
+   (if (and (CPShape $scope scope 4) (CPConsequenceValid $consequence))
+     (let* (($id (index-atom $consequence 1))
+            ($active (ARActiveRows $scope)))
+       (if (ARHistoryHas consequence $id)
+         (assistant-processed-v3 (assistant-consequence-duplicate $id)
+           model-participation-not-requested)
+         (if (!= (size-atom $active) 1)
+           (assistant-processed-v3
+             (assistant-consequence-held $id active-cut-unavailable)
+             model-participation-not-requested)
+           (let* (($organization (index-atom $active 0))
+                  ($cut (index-atom $organization 2))
+                  ($movement (index-atom $organization 3)))
+             (if (ARConsequenceMovementMatches $movement $consequence)
+               (if (CPConsequenceV2Valid $consequence)
+                 (AR3IncorporateConsequenceV4 $root $id $scope $cut $movement
+                   $consequence $model-writer)
+                 (assistant-processed-v3
+                   (ARIncorporateConsequenceV1 $id $scope $cut $movement
+                     $consequence)
+                   model-participation-not-requested))
+               (assistant-processed-v3
+                 (assistant-consequence-held $id movement-link-mismatch)
+                 model-participation-not-requested))))))
+     (assistant-processed-v3
+       (assistant-consequence-rejected malformed-scope-or-consequence)
+       model-participation-not-requested)))
+
+(= (AssistantInputWithModelV3 $root $input $model-writer)
+   (if (and (CPShape $input assistant-input 4)
+            (== (index-atom $input 1) consequence))
+     (AssistantConsequenceV3 $root (index-atom $input 2)
+       (index-atom $input 3) $model-writer)
+     (assistant-processed-v3 (AssistantInputV2 $input)
+       model-participation-not-requested)))
+
+; Inputs remain sequential inside the one supported reactor cycle. A returned
+; consequence and its optional thought-partner participation therefore complete
+; before another contact can replace the active constitutive organization.
+(= (AssistantProcessWithModelAt $root $inputs $model-writer $i)
+   (if (< $i (size-atom $inputs))
+     (cons-atom
+       (AssistantInputWithModelV3 $root (index-atom $inputs $i) $model-writer)
+       (AssistantProcessWithModelAt $root $inputs $model-writer (+ $i 1)))
+     ()))
+
+(= (AR3InputResultsAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (cons-atom (index-atom (index-atom $rows $i) 1)
+       (AR3InputResultsAt $rows (+ $i 1))) ()))
+
+(= (AR3ModelOutcomesAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (cons-atom (index-atom (index-atom $rows $i) 2)
+       (AR3ModelOutcomesAt $rows (+ $i 1))) ()))
+
+(= (AR3ModelOutcomeValid $outcome)
+   (or (== $outcome model-participation-not-requested)
+     (or (CPShape $outcome assistant-model-reading-incorporated 4)
+      (or (CPShape $outcome assistant-model-reading-unavailable 4)
+       (or (CPShape $outcome assistant-model-reading-duplicate 2)
+           (CPShape $outcome assistant-model-reading-held 3))))))
+
+(= (AR3ModelOutcomesValidAt $outcomes $i)
+   (if (< $i (size-atom $outcomes))
+     (and (AR3ModelOutcomeValid (index-atom $outcomes $i))
+          (AR3ModelOutcomesValidAt $outcomes (+ $i 1))) true))
+
+(= (AssistantCycleStepV3 $root $inputs $model-writer)
+   (if (is-expr $inputs)
+     (let $rows (AssistantProcessWithModelAt $root $inputs $model-writer 0)
+       (assistant-cycle-step-v3 (AR3InputResultsAt $rows 0)
+         (AR3ModelOutcomesAt $rows 0) (AssistantSnapshot)))
+     (assistant-cycle-step-v3 ((assistant-input-rejected malformed-batch))
+       (model-participation-not-requested) (AssistantSnapshot))))
+
+(= (AssistantCycleWithV3 $root $idle $interval $base $cap
+      $control-reader $input-reader $checkpoint-writer $waiter $recorder
+      $effect-writer $model-writer)
+   (let $control ($control-reader $root)
+     (if (ARControlValid $control)
+       (if (== (index-atom $control 1) panic)
+         (let $record ($recorder $root assistant-panicked $control)
+           (assistant-panicked (index-atom $control 2)))
+         (if (== (index-atom $control 1) stop)
+           (let $record ($recorder $root assistant-stopped $control)
+             (assistant-stopped (index-atom $control 2)))
+           (let* (($inputs ($input-reader $root))
+                  ($active (> (size-atom $inputs) 0))
+                  ($next (if $active $base (ARNextInterval $interval $cap))))
+             (if $active
+               (let* (($step (AssistantCycleStepV3 $root $inputs $model-writer))
+                      ($results (index-atom $step 1))
+                      ($model-outcomes (index-atom $step 2))
+                      ($effects (AREffectsAt $root $results $effect-writer 0))
+                      ($valid (and (AR3ModelOutcomesValidAt $model-outcomes 0)
+                                   (AREffectsValidAt $effects 0))))
+                 (if $valid
+                   (let* (($snapshot (AssistantSnapshot))
+                          ($checkpoint ($checkpoint-writer $root $snapshot))
+                          ($record ($recorder $root assistant-cycle-v3
+                            (cycle-standing contact-consequence-and-model
+                              $idle $checkpoint))))
+                     (if (== $checkpoint checkpointed)
+                       (AssistantCycleWithV3 $root false $next $base $cap
+                         $control-reader $input-reader $checkpoint-writer
+                         $waiter $recorder $effect-writer $model-writer)
+                       (assistant-service-held (checkpoint $checkpoint))))
+                   (let $record ($recorder $root assistant-cycle-held-v3
+                          (held-outcomes $model-outcomes $effects))
+                     (assistant-service-held
+                       (model-or-effect-outcomes $model-outcomes $effects)))))
+               (let $wait ($waiter $root $interval)
+                 (AssistantCycleWithV3 $root true $next $base $cap
+                   $control-reader $input-reader $checkpoint-writer $waiter
+                   $recorder $effect-writer $model-writer))))))
+       (assistant-cycle-held malformed-control))))
+
 (= (AssistantCycleWithV2 $root $idle $interval $base $cap
       $control-reader $input-reader $checkpoint-writer $waiter $recorder $effect-writer)
    (let $control ($control-reader $root)
@@ -622,7 +974,7 @@
        (if (== $snapshot checkpoint-invalid) assistant-restore-rejected-v2
          (AssistantRestoreV2 $snapshot)))))
 
-(= (AssistantServiceStartV2 $root)
+(= (AssistantServiceStartV3 $root)
    (let* (($integrity (as_integrity $root))
           ($boot (SoulStartup $integrity)))
      (if (!= $boot soul-ready)
@@ -645,8 +997,9 @@
                $semantic-restoration))
            (if (> $base $cap)
              (assistant-service-held invalid-idle-envelope)
-             (let $start-record (as_record $root assistant-started-v2
+             (let $start-record (as_record $root assistant-started-v3
                     (startup-restoration $restoration $continuity-restoration
                       $semantic-restoration))
-               (AssistantCycleWithV2 $root false $base $base $cap
-                 as_control as_input as_checkpoint as_wait as_record as_effect))))))))
+               (AssistantCycleWithV3 $root false $base $base $cap
+                 as_control as_input as_checkpoint as_wait as_record as_effect
+                 as_model))))))))

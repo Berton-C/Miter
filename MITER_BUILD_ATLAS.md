@@ -80,6 +80,16 @@ numbers, or reconstruct a movement from R/A/P alone. Returned consequence must
 then be able to change how that configuration is understood and what becomes
 possible at the next cut.
 
+The nine flourishings and Fact9 expressions are computable constituents of
+this alignment inquiry, not descriptive annotations beside it. Native Soul
+organization determines which of their contact-specific relations materially
+participate in a partial opening. It may ask an authorized semantic partner to
+consider exactly that selected surface, but the provider neither sees an
+unbounded Soul dump nor chooses what is relevant. Its proposals re-enter as
+unresolved participants in the same native formation. Only further contact,
+native comparison, and consequence can disclose fuller alignment or warrant a
+developmental change.
+
 ## 3. Canon and historical provenance
 
 Only the two control documents and five ratified mathematical authorities in
@@ -159,7 +169,7 @@ consumer is absent. No status is upgraded by assertion.
 | One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate` | One exact contact/movement is read simultaneously; C3 must now use partial alignment generatively without splitting or scoring it. |
 | Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
-| LLM participation and VoiceRNA | P | participant/voice certificate structures | No live model call or general language rendering is connected. |
+| LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | A live, exact-grant GLM 5.3 partial-alignment inquiry is causal and restart-safe; general language rendering and conversation-level participation remain absent. |
 | Mattermost | A | none in clean runtime | General scoped transport and delivery reconciliation must be recovered. |
 | Endogenous growth / NACE / PLN / NAL | A/P | participant vocabulary and authority only | No consequence-earned persistent revision is active. |
 | Regenerative Soul | A | control specification only | Detection, quarantined reconstruction, rejection, and restoration are absent. |
@@ -878,18 +888,36 @@ Already carried:
   establishes native partial-alignment generativity, not yet model-assisted
   exploration, consequence-earned learning from a chosen candidate, or the
   full C3 closure.
+- The same consequence-earned opening can now compose a bounded native
+  semantic question before the next movement is formed. For each exact source
+  possibility, MeTTa selects only Fact9 expressions whose material relations
+  participate in that possibility and its exact required flourishing
+  standings; the membrane cannot expand or choose that surface. A strict
+  runtime-local, one-question grant carried one public-safe question to GLM
+  5.3. Three materially different returned possibilities re-entered the same
+  encounter as three provenance-bearing, unresolved participants and received
+  complete native R/A/P readings. None was admitted, self-certified, or given
+  effect authority; native MeTTa formed one supported inquiry once. The compact
+  13.8 MB organization restored with one valid model-history row and all three
+  unresolved readings. Stop/start made no second provider call, and a new
+  carrier repeating the same consequence was consumed without replay: claim,
+  request, raw-response, observation, and spend counts remained exactly one.
+  The 768-token diagnostic failure is classified as truncated provider output;
+  a calibrated 2,048-token envelope completed with `finish_reason=stop`.
+  Credentials and all trial material remained outside Git. This establishes
+  sovereign semantic participation, not yet consequence-earned adoption or
+  transfer of a provider proposal.
 
 Next movement:
 
-1. connect one bounded Soul-authored GLM 5.3 thought-partner query to that
-   same partial-alignment opening; preserve
-   the model result as a non-authoritative candidate, require native
-   constitutive comparison before movement, and admit learning only through
-   later consequence;
-2. prove with differentiated returned candidates and consequences that model
-   participation widens Miter's possibility field but cannot define R/A/P
-   alignment, select itself, self-certify, or create persistent growth without
-   consequence;
+1. let native MeTTa form a bounded inquiry from one retained semantic
+   possibility, seek differentiated new contact, and carry the returned
+   consequence back to the exact source opening without allowing the provider
+   proposal to certify itself;
+2. prove that materially different returned consequences change later
+   possibility formation, while unsupported repetition creates no persistent
+   growth; preserve the resulting observation or counterexample as explicit
+   26.6/26.9 laboratory feedback;
 3. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.

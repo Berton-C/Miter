@@ -132,7 +132,8 @@ as_swipl_ld(Path) :-
     ).
 
 as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
-  receipts,outbox,proofs,intents,lib,logs]).
+  receipts,outbox,proofs,intents,lib,logs,'model/claims','model/requests',
+  'model/raw','model/observations']).
 
 as_bootstrap(Root, Reply) :-
     ( exists_directory(Root) ->
@@ -162,18 +163,31 @@ as_bootstrap_new(Root, Reply) :-
     miter_store_read_json(BindingsSource,Bindings),
     directory_file_path(Root,'scope-bindings.json',BindingsTarget),
     miter_store_write_json_atomic(BindingsTarget,Bindings),
+    directory_file_path(Repo,'config/models.json',ModelsSource),
+    miter_store_read_json(ModelsSource,Models),
+    directory_file_path(Root,'model-resources.json',ModelsTarget),
+    miter_store_write_json_atomic(ModelsTarget,Models),
+    directory_file_path(Repo,'config/model-grants.json',GrantsSource),
+    miter_store_read_json(GrantsSource,Grants),
+    directory_file_path(Root,'model-grants.json',GrantsTarget),
+    miter_store_write_json_atomic(GrantsTarget,Grants),
+    as_dict_atom(Config,network_access,NetworkAccess),
+    as_dict_atom(Config,external_effects,ExternalEffects),
     uuid(BootId),
     directory_file_path(Root,'runtime.json',Marker),
     miter_store_write_json_atomic(Marker,_{schema:"miter-assistant-runtime-v1",
-      runtime_id:BootId,external_effects:"none",network_access:"none"}),
+      runtime_id:BootId,external_effects:ExternalEffects,
+      network_access:NetworkAccess}),
     as_root(Root,_),
     as_write_service_entry(Root),
     as_write_lkg(Root,LkgHash),
     as_write_json_durable(Marker,_{schema:"miter-assistant-runtime-v1",
-      runtime_id:BootId,lkg_sha256:LkgHash,external_effects:"none",network_access:"none"}),
+      runtime_id:BootId,lkg_sha256:LkgHash,external_effects:ExternalEffects,
+      network_access:NetworkAccess}),
     as_write_control(Root,continue,'bootstrap'),
     Reply=_{schema:"miter-assistant-operator-result-v1",status:bootstrapped,
-      runtime_root:Root,lkg_sha256:LkgHash,network_access:"none",external_effects:"none"}.
+      runtime_root:Root,lkg_sha256:LkgHash,network_access:NetworkAccess,
+      external_effects:ExternalEffects}.
 
 as_make_runtime_directory(Root, Relative) :-
     directory_file_path(Root,Relative,Path), make_directory_path(Path), chmod(Path,0o700).
@@ -184,7 +198,7 @@ as_validate_config(Config) :-
       (get_dict(Key,Config,Value),as_config_value(Key,Value))),
     Config.idle_base_seconds =< Config.idle_cap_seconds,
     as_dict_atom(Config,external_effects,none),
-    as_dict_atom(Config,network_access,none),
+    as_dict_atom(Config,network_access,'explicit-model-grant-only'),
     as_dict_atom(Config,runtime_root,'explicit-required').
 
 as_compile_extension(Root) :-
@@ -423,11 +437,16 @@ as_evidence_bundle(Root, Output, Reply) :-
     as_trajectory_standing(Root,Trajectory),
     directory_file_path(Root,'lkg.json',LkgPath),
     crypto_file_hash(LkgPath,LkgHash,[algorithm(sha256),encoding(octet)]),
+    directory_file_path(Root,'runtime.json',RuntimePath),
+    miter_store_read_json(RuntimePath,Runtime),
+    get_dict(network_access,Runtime,NetworkAccess),
+    get_dict(external_effects,Runtime,ExternalEffects),
     get_time(Now),Bundle=_{schema:"miter-assistant-evidence-bundle-v1",
       recorded_at_epoch:Now,lkg:Lkg,lkg_sha256:LkgHash,status:Status,
       counts:_{receipts:ReceiptCount,consumed:ConsumedCount,rejected:RejectedCount,
         outbox:OutboxCount},checkpoint_sha256:CheckpointHash,trajectory:Trajectory,
-      network_access:"none",external_effects:"none",private_content_included:false,
+      network_access:NetworkAccess,external_effects:ExternalEffects,
+      private_content_included:false,
       semantic_health_claimed:false},
     as_write_json_durable(Output,Bundle),
     Reply=_{schema:"miter-assistant-operator-result-v1",status:'evidence-stored',output:Output}.

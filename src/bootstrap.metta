@@ -5,6 +5,8 @@
 !(import_prolog_functions_from_file "./effect_membranes/assistant_service.pl"
   (as_config as_integrity as_control as_input as_checkpoint as_restore as_wait as_record as_effect
     miter_assistant_continuity_restore miter_assistant_semantic_restore))
+!(import_prolog_functions_from_file "./effect_membranes/model.pl"
+  (as_model))
 !(bind! &assistant_state (new-space))
 !(bind! &assistant_history (new-space))
 !(bind! &assistant_continuity (new-space))

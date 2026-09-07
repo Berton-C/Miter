@@ -1,0 +1,79 @@
+{
+  "schema": "miter-model-resource-registry-v1",
+  "human_editable": true,
+  "selection": {
+    "mode": "human-direction-or-native-relational",
+    "operator_preference": "openrouter-glm53",
+    "preference_standing": "human-preferred-default-not-cognitive-authority",
+    "authorized_directions": [
+      "openrouter-glm53",
+      "qwen-local",
+      "nemotron-local",
+      "soul-choice"
+    ],
+    "direction_scopes": [
+      "one-call",
+      "conversation",
+      "undertaking",
+      "until-time"
+    ],
+    "soul_choice": "native-relational-comparison-among-authorized-resources",
+    "selected_model_output_authority": "none",
+    "fallback_policy": "explicit-native-comparison-only",
+    "silent_model_substitution": false
+  },
+  "resources": [
+    {
+      "id": "openrouter-glm53",
+      "kind": "remote",
+      "enabled": true,
+      "adapter": "openrouter-chat-completions",
+      "model": "z-ai/glm-5.3",
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "roles": ["semantic-reading"],
+      "reasoning_effort": "high",
+      "limits": {
+        "max_output_tokens": 2048,
+        "deadline_seconds": 120,
+        "capture_bytes": 262144
+      },
+      "provider": {
+        "zdr": true,
+        "data_collection": "deny",
+        "require_parameters": true,
+        "allow_fallbacks": true
+      },
+      "credential_reference": {
+        "source": "macos-keychain",
+        "account": "bcb",
+        "service": "ai.bgi.miter.openrouter"
+      }
+    },
+    {
+      "id": "qwen-local",
+      "kind": "local",
+      "enabled": true,
+      "adapter": "lm-studio",
+      "model": "qwen/qwen3.8-27b",
+      "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+      "roles": ["semantic-reading"],
+      "credential_reference": null
+    },
+    {
+      "id": "nemotron-local",
+      "kind": "local",
+      "enabled": true,
+      "adapter": "lm-studio",
+      "model": "nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+      "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+      "roles": ["semantic-reading"],
+      "credential_reference": null
+    }
+  ],
+  "operator_notes": [
+    "Edit this file to add, disable, or prefer model resources.",
+    "Store secrets outside this file; credential_reference contains only a lookup location.",
+    "Human direction or Soul choice selects an authorized participant, never meaning, movement, memory admission, or effects.",
+    "Every remote call additionally requires a current runtime-local grant."
+  ]
+}

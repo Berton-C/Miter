@@ -96,9 +96,11 @@
 (= (C3PartialAlignmentOpening $reading $cut $developmental)
    (let* (($primary (index-atom $reading 1))
           ($configuration (C3RAPConfiguration $reading $cut $developmental))
-          ($balance (index-atom $primary 5)))
+          ($balance (index-atom $primary 5))
+          ($possibility (index-atom $primary 9)))
      (if (and (CPShape $configuration c3-rap-configuration-v1 9)
-              (C3PartialRAP $configuration))
+           (and (C3PartialRAP $configuration)
+                (CPShape $possibility possible-movement 9)))
        (c3-partial-alignment-opening-v2
          (index-atom $configuration 2)
          (rap-read-reference (index-atom $primary 1)
@@ -111,7 +113,10 @@
            (C3PerspectiveNamesAt
              (index-atom (index-atom $configuration 5) 1) 0))
          (constitutive-participation-reference
-           (index-atom $balance 1) (index-atom $balance 3))
+           (index-atom $balance 1) (index-atom $balance 3)
+           (source-constitutive-material-v1
+             (required-relations (index-atom $possibility 3))
+             (required-flourishings (index-atom $possibility 6))))
          (provenance-reference (index-atom $cut 1)
            (index-atom $developmental 13))
          unresolved-is-generative-opening-not-deficit)
@@ -266,6 +271,11 @@
          (C3EvidenceConsequenceIdsAt $evidence (+ $i 1))))
      ()))
 
+; The thought-partner projection consumes the consequence-earned opening. It
+; is loaded here so its possible readings participate at the same formation
+; seam, not in a parallel model loop.
+!(import! &self "./src/model_participation.metta")
+
 (= (C3LearnedPossibilities $cut)
    (let $evidence (C3ReturnedEvidenceFromCut $cut)
      (if (> (size-atom $evidence) 0)
@@ -299,7 +309,9 @@
          (if (> (size-atom $learned) 0) $learned
            (CPNativeInquiriesV2 $cut $facts $flourishing
              $participant-relations))
-         (CPNativeDeferralsV2 $cut $flourishing)))))
+         (CPListAppend
+           (C3ModelPossibilities $cut $participant-relations)
+           (CPNativeDeferralsV2 $cut $flourishing))))))
 
 (= (C3LaboratoryBoundary)
    (c3-provisional-boundary-v1

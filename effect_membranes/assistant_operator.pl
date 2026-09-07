@@ -13,7 +13,7 @@ as_write_service_entry(Root) :-
     with_output_to(string(RootLiteral),json_write(current_output,RootString)),
     with_output_to(string(Text),
       (format('!(import! &self ~s)~n',[BootstrapLiteral]),
-       format('!(AssistantServiceStartV2 ~s)~n',[RootLiteral]))),
+       format('!(AssistantServiceStartV3 ~s)~n',[RootLiteral]))),
     as_write_text_durable(Entry,Text).
 
 as_lkg_relative_paths([
@@ -31,6 +31,7 @@ as_lkg_relative_paths([
   'src/m255_completion.metta',
   'src/fact9_composition.metta',
   'src/provisional_dynamics.metta',
+  'src/model_participation.metta',
   'src/constitutive_authority_joint.metta',
   'src/assistant_reactor_foundation.metta','src/scope_continuity.metta',
   'src/semantic_participation.metta','src/assistant_reactor_authority.metta',
@@ -40,7 +41,9 @@ as_lkg_relative_paths([
   'effect_membranes/semantic_adapter.pl','effect_membranes/assistant_service.pl',
   'effect_membranes/assistant_operator_base.pl','effect_membranes/assistant_operator.pl',
   'effect_membranes/runtime_extensions/store_posix.c',
-  'config/constitutive-projection.json','config/miter.json','config/continuity.json'
+  'effect_membranes/model.pl',
+  'config/constitutive-projection.json','config/miter.json','config/continuity.json',
+  'config/models.json','config/model-grants.json'
 ]).
 
 as_write_lkg(Root, LkgHash) :-

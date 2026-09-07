@@ -18,14 +18,15 @@ Those materials remain outside this repository.
 ## Current standing
 
 The recovered runtime presently provides one recurring PeTTa/MeTTa cycle,
-constitutional integrity admission, typed contact/consequence carriers,
-native partial projections of M24–M26.3, append-only trajectory storage,
-checkpoint restoration, stable scope boundaries, local effect preparation,
-and start/status/stop/panic operations.
+constitutional integrity admission, typed contact/consequence carriers, the
+complete causal M24–M26.3 projection, provisional partial-alignment inquiry,
+explicitly granted GLM 5.3 thought-partner participation, append-only
+trajectory storage, checkpoint restoration, stable scope boundaries, local
+effect preparation, and start/status/stop/panic operations.
 
 It is **not yet the usable Miter alpha**. General conversational contact,
-complete causal use of every M24–M26.3 export, durable read/write Continuity of
-Mind, live Chroma retrieval, LLM/VoiceRNA composition, Mattermost transport,
+durable read/write Continuity of Mind, live Chroma retrieval, general
+LLM/VoiceRNA composition, Mattermost transport,
 earned self-extension, hot upgrade, and rollback remain to be integrated into
 this same runtime. [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single
 operations map for that additive work.
@@ -77,9 +78,13 @@ bin/miter panic     --runtime-root /absolute/private/runtime/path
 ```
 
 `config/miter.json` is the human-readable mechanical runtime configuration.
-`config/continuity.json` is intentionally unbound in this baseline. It stores
-references and scope bindings, never secrets. Runtime bytes, memories,
-credentials, model files, Chroma data, logs, and evidence stay outside Git.
+`config/models.json` is the human-editable model registry; it contains only
+resource and Keychain references. Every remote call additionally requires an
+exact, time-bounded runtime-local grant derived from `config/model-grants.json`,
+which is inactive by default. `config/continuity.json` is intentionally unbound
+in this baseline. These files store references and scope bindings, never
+secrets. Runtime bytes, memories, credentials, model files, Chroma data, logs,
+and evidence stay outside Git.
 
 ## Source map
 
