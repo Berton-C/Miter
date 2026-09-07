@@ -2972,17 +2972,18 @@
 
 (= (M255InheritedSurfaceBridges $primary $cut $developmental $rap
       $alignment $interface)
-   (m255-inherited-surface-bridges-v4
-     (M255HarmonicAlignmentBridge $primary $cut $rap $alignment)
-     (M255InterfaceEvolutionBridge $primary $cut $interface)
-     (M255ObstructionSNSBridge $primary $cut $developmental)
-     (M255ThresholdedStuckBridge $primary $cut $developmental)
-     (M255M24ReorganizationEvidenceBridge $primary $cut $developmental)
-     (M255EquivalenceNonAmalgamationBridge $primary $cut)
-     (M255RecognitionNonReconstructionBridge $primary $cut)
-     (M263Align9HarmonicBridge $primary $cut $developmental $rap $alignment)
-     m255-to-m25-and-m24-only
-     derived-relations-no-movement-authority))
+   (let $components (miter_petta_parallel_m255_bridge_components
+          $primary $cut $developmental $rap $alignment $interface)
+     (if (== (size-atom $components) 8)
+       (m255-inherited-surface-bridges-v4
+         (index-atom $components 0) (index-atom $components 1)
+         (index-atom $components 2) (index-atom $components 3)
+         (index-atom $components 4) (index-atom $components 5)
+         (index-atom $components 6) (index-atom $components 7)
+         m255-to-m25-and-m24-only
+         derived-relations-no-movement-authority)
+       (m255-inherited-surface-bridges-unresolved
+         incomplete-parallel-native-components))))
 
 (= (M255InheritedSurfaceBridgesValid $bridges $primary $cut $developmental
       $rap $alignment $interface)

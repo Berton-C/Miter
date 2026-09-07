@@ -13,7 +13,8 @@
 !(import_prolog_functions_from_file
   "./effect_membranes/runtime_extensions/petta_parallel.pl"
   (miter_petta_parallel_m25_primaries
-    miter_petta_parallel_m25_readings))
+    miter_petta_parallel_m25_readings
+    miter_petta_parallel_m255_bridge_components))
 !(bind! &assistant_state (new-space))
 !(bind! &assistant_history (new-space))
 !(bind! &assistant_continuity (new-space))

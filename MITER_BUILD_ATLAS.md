@@ -1388,6 +1388,18 @@ Already carried:
   exactly; forged standing and primary linkage were rejected, and cardinality
   mismatch remained unresolved. Concurrently scheduling the unchanged full
   validators produced no wall-time gain and was not admitted.
+- The eight M25.5/M26 bridge projections inside each complete movement reading
+  are independent MeTTa constructors over one already-formed primary/R/A/P
+  surface. The pinned PeTTa/SWI extension now schedules those exact
+  constructors concurrently and returns eight opaque results in fixed order;
+  MeTTa alone composes and validates the semantic bridge family. The complete
+  persisted movement remained exact while active re-formation fell again to
+  about 13.0 seconds. One representative reading's bridge phase fell from
+  about 4.9 to 2.5 seconds. Formed undertaking, formed inquiry, and plural-live
+  organizations all remained exact. Missing or ambiguous component reduction
+  now produces an explicit unresolved carrier rather than erasing the whole
+  cut. The scheduler cannot inspect, filter, rank, join, or choose results and
+  does not create another cognitive clock.
 
 Next movement:
 
