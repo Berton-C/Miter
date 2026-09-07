@@ -332,20 +332,29 @@
           ($transfer-memory
             (C3TransferDevelopmentMemoryPossibilities $cut $facts
               $flourishing $participant-relations))
+          ($memory-continuation
+            (C3MemoryApplicationContinuationPossibilities $cut $facts
+              $flourishing $participant-relations))
           ($semantic-inquiry
             (C3SemanticInquiryPossibilities $cut $participant-relations))
           ; The semantic inquiry is the same source inquiry enriched by its
           ; returned candidate family, so retaining both would duplicate one
           ; cognitive possibility. A transfer inquiry has a different source
           ; contact and remains independently live when present.
-          ($source-inquiry (if (> (size-atom $semantic-inquiry) 0)
+          ($base-source-inquiry (if (> (size-atom $semantic-inquiry) 0)
             $semantic-inquiry
             (if (> (size-atom $alignment) 0) $alignment $learned)))
-          ($specialized (CPListAppend $source-inquiry
-            (CPListAppend $transfer
-              (CPListAppend $unjoined-transfer-result
-                (CPListAppend $transfer-memory
-                  $unjoined-memory-result))))))
+          ; A later memory-standing inquiry is the exact source-grounded
+          ; refinement of the generic alignment inquiry on this contact.  Keep
+          ; one rather than duplicating the same cognitive opening.
+          ($source-inquiry (if (> (size-atom $memory-continuation) 0)
+            () $base-source-inquiry))
+          ($specialized (CPListAppend $memory-continuation
+            (CPListAppend $source-inquiry
+              (CPListAppend $transfer
+                (CPListAppend $unjoined-transfer-result
+                  (CPListAppend $transfer-memory
+                    $unjoined-memory-result)))))))
      (CPListAppend
        ; Exact returned alignment contact refines the generic undertaking
        ; surface. It does not add a second scheduler or first-match branch:

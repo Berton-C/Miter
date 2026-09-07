@@ -27,7 +27,7 @@
      ()))
 
 (= (C3SemanticQuestionInstructions)
-  "Return only one JSON object with this exact shape: {\"uncertainty\":\"...\",\"candidates\":[{\"summary\":\"...\",\"preserve\":[\"Relatedness\"],\"explore\":[\"Appropriateness\"],\"counterfactual\":\"...\"}]}. Return 2 or 3 materially different relational possibilities. Use only Relatedness, Appropriateness, and Precision in preserve/explore. Preserve every perspective identified as aligned, explore only perspectives identified as unresolved, and use the supplied Fact9 and interconnected flourishing inquiry surfaces to explain what new contact or distinction could disclose fuller alignment. Do not choose a candidate, claim alignment, issue a verdict, address the human, add a value or Fact9 role which Miter did not supply, or use a Markdown fence.")
+  "Return only one JSON object with keys uncertainty and candidates. Each candidate must have exactly the keys summary, preserve, explore, and counterfactual. Return 2 or 3 materially different relational possibilities. For every candidate, select one supplied partial opening and copy that opening's complete preserve array and complete explore array exactly; do not add, omit, or move a perspective. Every supplied opening must be represented by at least one candidate. The only permitted perspective names are Relatedness, Appropriateness, and Precision. Use the supplied Fact9 and interconnected flourishing inquiry surfaces to explain what new contact or distinction could disclose fuller alignment. Do not choose a candidate, claim alignment, issue a verdict, address the human, add a value or Fact9 role which Miter did not supply, or use a Markdown fence.")
 
 (= (C3OpeningSourceMaterial $opening)
    (if (CPShape $opening c3-partial-alignment-opening-v2 9)
@@ -532,8 +532,42 @@
      (if (CPShape $family c3-reorganization-family-v1 8)
        (C3SemanticQuestionFromSurfaces (index-atom $consequence 1) $scope
          $movement $cut $openings $surfaces (C3ConsequenceMaterial $consequence))
-       (c3-semantic-question-unavailable
-         consequence-does-not-open-partial-alignment-inquiry))))
+       ; A consequence earned by a later developmental-memory inquiry may also
+       ; open semantic participation. Its exact source partial R/A/P openings
+       ; and its current Fact9/flourishing surfaces were formed natively before
+       ; this call. Reuse those rather than reconstructing relevance from the
+       ; provider request or from fluent text.
+       (let* (($route
+                (C3MemoryApplicationContinuationRouteFromMovementAtCut
+                  $movement $cut))
+              ($route-valid
+                (C3MemoryApplicationContinuationRouteValid $route))
+              ($surface (if $route-valid
+                (index-atom $route 2)
+                (c3-memory-application-alignment-surface-unavailable
+                  no-valid-memory-route)))
+              ($memory-source-openings (if (CPShape $surface
+                c3-memory-application-alignment-surface-v1 9)
+                (index-atom (index-atom $surface 4) 1) ()))
+              ($memory-openings (C3MemoryApplicationCurrentOpeningsAt $cut
+                $memory-source-openings 0))
+              ($memory-surfaces (if (CPShape $surface
+                c3-memory-application-alignment-surface-v1 9)
+                (index-atom (index-atom $surface 5) 1) ())))
+         (if (and $route-valid
+               (and (CPConsequenceV2Valid $consequence)
+                (and (== (index-atom $movement 2)
+                       (index-atom $consequence 2))
+                 (and (== (index-atom (index-atom $surface 3) 1)
+                        (index-atom $cut 1))
+                  (and (> (size-atom $memory-openings) 0)
+                       (C3MemoryApplicationSurfacesMatchOpeningsAt
+                         $memory-surfaces $memory-openings 0))))))
+           (C3SemanticQuestionFromSurfaces (index-atom $consequence 1) $scope
+             $movement $cut $memory-openings $memory-surfaces
+             (C3ConsequenceMaterial $consequence))
+           (c3-semantic-question-unavailable
+             consequence-does-not-open-partial-alignment-inquiry))))))
 
 (= (C3ReturnedMaterialFromEvidence $evidence)
    (if (== (size-atom $evidence) 1)
@@ -2967,6 +3001,92 @@
             (== $transfer (index-atom $resolution 1))))
      false))
 
+(= (C3DevelopmentalMemoryApplicationProjection $record)
+   (if (C3DevelopmentalMemoryApplicationRecordValid $record)
+     (let* (($resolution (index-atom $record 4))
+            ($transfer (index-atom $resolution 1))
+            ($transfer-resolution (index-atom $transfer 4))
+            ($route (index-atom $transfer-resolution 1)))
+       (if (C3DevelopmentalTransferRouteValid $route)
+         (c3-developmental-memory-application-projection-v1
+           (index-atom $record 1)
+           (index-atom $record 2)
+           (source-cut (index-atom (index-atom $record 3) 1))
+           (index-atom $route 6)
+           (index-atom $route 7)
+           (index-atom $route 10)
+           (application-standing
+             (C3DevelopmentalMemoryStanding $resolution))
+           (developmental-lineage
+             (index-atom $record 1)
+             (index-atom $transfer 1)
+             (index-atom $record 3)
+             (source-transfer-standing
+               (C3DevelopmentalTransferStanding $transfer-resolution))
+             append-only-history-reprojectable)
+           (authority-boundary
+             exact-history-before-active-projection
+             one-rap-read-three-simultaneous-perspectives
+             fact9-and-flourishings-participate-generatively
+             provider-no-contact-no-authority-no-choice-no-verdict
+             returned-consequence-determines-development))
+         (c3-developmental-memory-application-projection-unavailable
+           invalid-source-transfer-route)))
+     (c3-developmental-memory-application-projection-unavailable
+       invalid-memory-application-record)))
+
+(= (C3DevelopmentalMemoryApplicationProjectionValid $projection)
+   (if (CPShape $projection
+         c3-developmental-memory-application-projection-v1 10)
+     (let* (($openings-wrapper (index-atom $projection 4))
+            ($fact-wrapper (index-atom $projection 5))
+            ($flourishing-wrapper (index-atom $projection 6))
+            ($standing (index-atom $projection 7))
+            ($openings (if (CPShape $openings-wrapper
+              source-partial-openings 2)
+              (index-atom $openings-wrapper 1) ()))
+            ($fact-participation (if (CPShape $fact-wrapper
+              source-fact9-participation 2)
+              (index-atom $fact-wrapper 1) ()))
+            ($fact-surfaces (if
+              (CPShape $fact-participation fact9-participation 3)
+              (index-atom $fact-participation 1) ()))
+            ($flourishings (if (CPShape $flourishing-wrapper
+              selected-flourishings 2)
+              (index-atom $flourishing-wrapper 1) ())))
+       (==
+         ((CPShape (index-atom $projection 1)
+            memory-application-reference 2)
+          (CPShape (index-atom $projection 2) scope 4)
+          (CPShape (index-atom $projection 3) source-cut 2)
+          (> (size-atom $openings) 0)
+          (== (size-atom $fact-surfaces) (size-atom $openings))
+          (> (size-atom
+            (C3QuestionFactIdsFromSurfacesAt $fact-surfaces 0 ())) 0)
+          (> (size-atom $flourishings) 0)
+          (CPShape $standing application-standing 2)
+          (CPHas (index-atom $standing 1)
+            (support contradiction unresolved) 0)
+          (CPShape (index-atom $projection 8) developmental-lineage 6)
+          (== (index-atom (index-atom $projection 8) 4)
+            (source-transfer-standing support))
+          (== (index-atom $projection 9)
+            (authority-boundary
+              exact-history-before-active-projection
+              one-rap-read-three-simultaneous-perspectives
+              fact9-and-flourishings-participate-generatively
+              provider-no-contact-no-authority-no-choice-no-verdict
+              returned-consequence-determines-development)))
+         (true true true true true true true true true true true true)))
+     false))
+
+(= (C3DevelopmentalMemoryApplicationProjectionValidForRecord $projection
+      $record)
+   (and (C3DevelopmentalMemoryApplicationRecordValid $record)
+    (and (C3DevelopmentalMemoryApplicationProjectionValid $projection)
+         (== $projection
+           (C3DevelopmentalMemoryApplicationProjection $record)))))
+
 (= (C3DevelopmentalMemoryApplicationParticipant $scope $record)
    (if (and (C3DevelopmentalMemoryApplicationRecordValid $record)
             (== (index-atom $record 2) $scope))
@@ -2974,18 +3094,22 @@
             ($resolution (index-atom $record 4))
             ($standing (C3DevelopmentalMemoryStanding $resolution))
             ($participant-standing
-              (C3DevelopmentalMemoryParticipantStanding $resolution)))
-       (participant-contribution
-         (c3-developmental-memory-application-participation
-           (index-atom $reference 1))
-         developmental-memory $scope
-         (lineage consequence-earned-developmental-memory-application
-           (index-atom $reference 1))
-         (participant-relation-claim
-           (c3-developmental-memory-application (index-atom $reference 1))
-           $standing
-           (c3-developmental-memory-application-evidence-v1 $record))
-         $participant-standing no-contact-no-movement-authority))
+              (C3DevelopmentalMemoryParticipantStanding $resolution))
+            ($projection (C3DevelopmentalMemoryApplicationProjection $record)))
+       (if (C3DevelopmentalMemoryApplicationProjectionValidForRecord
+             $projection $record)
+         (participant-contribution
+           (c3-developmental-memory-application-participation
+             (index-atom $reference 1))
+           developmental-memory $scope
+           (lineage consequence-earned-developmental-memory-application
+             (index-atom $reference 1))
+           (participant-relation-claim
+             (c3-developmental-memory-application (index-atom $reference 1))
+             $standing
+             (c3-developmental-memory-application-evidence-v2 $projection))
+           $participant-standing no-contact-no-movement-authority)
+         (c3-developmental-memory-application-participation-unavailable)))
      (c3-developmental-memory-application-participation-unavailable)))
 
 (= (C3MemoryApplicationResolutionFromPossibility $possibility)
@@ -3081,6 +3205,544 @@
              $cut)
          (cons-atom $joined ()) ()))
      ()))
+
+; A persisted memory-application episode participates in a later unfamiliar
+; contact as material standing, not as a behavioral instruction.  Support,
+; contradiction, and unresolved therefore share one constructor.  Their exact
+; relational difference remains inside the one R/A/P surface for native
+; comparison with current Fact9 and flourishing organization.
+(= (C3MemoryApplicationClaimsFromRelation $relation)
+   (if (CPShape $relation participant-supported-relation 4)
+     (index-atom $relation 3)
+     (if (CPShape $relation participant-relation-conflict 4)
+       (index-atom $relation 3)
+       (if (CPShape $relation participant-proposed-relation 4)
+         (index-atom $relation 3)
+         (if (CPShape $relation participant-proposed-relation 5)
+           (index-atom $relation 4) ())))))
+
+(= (C3MemoryApplicationClaimsFromRelationsAt $relations $i)
+   (if (< $i (size-atom $relations))
+     (let* (($relation (index-atom $relations $i))
+            ($target (if (is-expr $relation)
+              (index-atom $relation 1) malformed-target)))
+       (if (CPShape $target c3-developmental-memory-application 2)
+         (CPListAppend (C3MemoryApplicationClaimsFromRelation $relation)
+           (C3MemoryApplicationClaimsFromRelationsAt $relations (+ $i 1)))
+         (C3MemoryApplicationClaimsFromRelationsAt $relations (+ $i 1))))
+     ()))
+
+(= (C3MemoryApplicationClaims $participant-relations)
+   (if (CPShape $participant-relations participant-relation-organization 2)
+     (C3MemoryApplicationClaimsFromRelationsAt
+       (index-atom $participant-relations 1) 0)
+     ()))
+
+(= (C3MemoryApplicationRecordFromClaim $claim)
+   (if (CPShape $claim participant-relation-evidence 7)
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence
+             c3-developmental-memory-application-evidence-v1 2)
+         (index-atom $evidence 1)
+         (c3-developmental-memory-application-unavailable
+           no-reference claim-has-no-application-record)))
+     (c3-developmental-memory-application-unavailable
+       no-reference malformed-claim)))
+
+(= (C3MemoryApplicationProjectionFromClaim $claim)
+   (if (CPShape $claim participant-relation-evidence 7)
+     (let $evidence (index-atom $claim 6)
+       (if (CPShape $evidence
+             c3-developmental-memory-application-evidence-v2 2)
+         (let $projection (index-atom $evidence 1)
+           (if (C3DevelopmentalMemoryApplicationProjectionValid $projection)
+             $projection
+             (c3-developmental-memory-application-projection-unavailable
+               invalid-projected-application)))
+         ; Read compatibility for pre-projection checkpoints.  Exact v1
+         ; history is validated before a bounded active projection is formed;
+         ; new checkpoints store only v2 participant evidence.
+         (if (CPShape $evidence
+               c3-developmental-memory-application-evidence-v1 2)
+           (C3DevelopmentalMemoryApplicationProjection
+             (index-atom $evidence 1))
+           (c3-developmental-memory-application-projection-unavailable
+             claim-has-no-application-projection))))
+     (c3-developmental-memory-application-projection-unavailable
+       malformed-claim)))
+
+(= (C3MemoryApplicationStanding $application)
+   (if (C3DevelopmentalMemoryApplicationProjectionValid $application)
+     (index-atom (index-atom $application 7) 1)
+     (if (C3DevelopmentalMemoryApplicationRecordValid $application)
+       (C3DevelopmentalMemoryStanding (index-atom $application 4))
+       unresolved)))
+
+(= (C3MemoryApplicationApplicable $projection $cut $facts $flourishing)
+   (if (C3DevelopmentalMemoryApplicationProjectionValid $projection)
+     (let* (($source-cut (index-atom (index-atom $projection 3) 1))
+            ($fact-participation
+              (index-atom (index-atom $projection 5) 1))
+            ($fact-surfaces (if
+              (CPShape $fact-participation fact9-participation 3)
+              (index-atom $fact-participation 1) ()))
+            ($values (index-atom (index-atom $projection 6) 1)))
+       ; An application meets a new exogenous contact cut. A consequence-
+       ; generated next cut is the answer to that application and must be free
+       ; to reorganize; replaying the same memory inquiry there would turn
+       ; continuity into a loop independent of returned contact.
+       (and (CPShape (index-atom $cut 1) cut-of 3)
+        (and (!= (index-atom $cut 1) $source-cut)
+         (and (> (size-atom $fact-surfaces) 0)
+          (and (> (size-atom $values) 0)
+           (and (C3QuestionFactSurfacesApplicableAt $fact-surfaces $facts 0)
+                (C3AllFlourishingMaterialPresentAt $flourishing $values
+                  0)))))))
+     false))
+
+(= (C3MemoryApplicationSurfacesMatchOpeningsAt $surfaces $openings $i)
+   (if (< $i (size-atom $openings))
+     (if (< $i (size-atom $surfaces))
+       (let* (($opening (index-atom $openings $i))
+              ($surface (index-atom $surfaces $i))
+              ($fact9 (if (CPShape $surface alignment-inquiry-surface-v1 6)
+                (index-atom $surface 2) (fact9-material ())))
+              ($flourishing (if
+                (CPShape $surface alignment-inquiry-surface-v1 6)
+                (index-atom $surface 3) (flourishing-material ()))))
+         (and (CPShape $opening c3-partial-alignment-opening-v2 9)
+          (and (CPShape $surface alignment-inquiry-surface-v1 6)
+           (and (== (index-atom $opening 1) (index-atom $surface 1))
+            (and (== (index-atom $surface 4)
+                   (rap-partial (index-atom $opening 4)
+                     (index-atom $opening 5)))
+             (and (> (size-atom (index-atom $fact9 1)) 0)
+              (and (> (size-atom (index-atom $flourishing 1)) 0)
+                   (C3MemoryApplicationSurfacesMatchOpeningsAt $surfaces
+                     $openings (+ $i 1)))))))))
+       false)
+     (== (size-atom $surfaces) (size-atom $openings))))
+
+(= (C3MemoryApplicationCurrentSurfaceFromOpening $cut $facts $flourishing
+      $opening)
+   (let* (($current-relations (CPNativeRequirementRelations $cut))
+          ($selected-flourishings (C3OpeningRequiredFlourishings $opening))
+          ($fact9-material (C3FactInquiryEntriesAt $facts $current-relations 0))
+          ($flourishing-material (C3FlourishingInquiryEntriesAt $flourishing
+            $selected-flourishings 0)))
+     (if (and (> (size-atom $current-relations) 0)
+           (and (> (size-atom $fact9-material) 0)
+            (and (> (size-atom $selected-flourishings) 0)
+                 (> (size-atom $flourishing-material) 0))))
+       (alignment-inquiry-surface-v1 (index-atom $opening 1)
+         (fact9-material $fact9-material)
+         (flourishing-material $flourishing-material)
+         (rap-partial (index-atom $opening 4) (index-atom $opening 5))
+         one-contact-one-movement)
+       (alignment-inquiry-surface-unavailable))))
+
+; When the Soul elects to ask a thought partner about this later contact, the
+; unresolved R/A/P perspectives continue from the source opening but the
+; material relations are those of the current contact.  This keeps continuity
+; and novelty simultaneously explicit and prevents a transport membrane from
+; mistaking new material for an unselected disclosure.
+(= (C3MemoryApplicationCurrentOpening $cut $source-opening)
+   (if (and (CPCutValid $cut)
+            (CPShape $source-opening c3-partial-alignment-opening-v2 9))
+     (c3-partial-alignment-opening-v2
+       (index-atom $source-opening 1)
+       (index-atom $source-opening 2)
+       (source-cut (index-atom $cut 1))
+       (index-atom $source-opening 4)
+       (index-atom $source-opening 5)
+       (constitutive-participation-reference
+         movement-primary-at-contact
+         (rap-perspective-contract one-contact-movement-surface
+           simultaneous-relatedness-appropriateness-precision)
+         (source-constitutive-material-v1
+           (required-relations (CPNativeRequirementRelations $cut))
+           (required-flourishings
+             (C3OpeningRequiredFlourishings $source-opening))))
+       (provenance-reference
+         (continued-from-memory-application
+           (index-atom $source-opening 3)
+           (index-atom $source-opening 7))
+         (current-contact (index-atom $cut 1)))
+       unresolved-is-generative-opening-not-deficit)
+     (c3-partial-alignment-opening-unavailable
+       no-source-opening-or-current-cut)))
+
+(= (C3MemoryApplicationCurrentOpeningsAt $cut $source-openings $i)
+   (if (< $i (size-atom $source-openings))
+     (let $opening (C3MemoryApplicationCurrentOpening $cut
+            (index-atom $source-openings $i))
+       (if (CPShape $opening c3-partial-alignment-opening-v2 9)
+         (cons-atom $opening
+           (C3MemoryApplicationCurrentOpeningsAt $cut $source-openings
+             (+ $i 1)))
+         (C3MemoryApplicationCurrentOpeningsAt $cut $source-openings
+           (+ $i 1))))
+     ()))
+
+(= (C3MemoryApplicationCurrentSurfacesAt $cut $facts $flourishing $openings
+      $i)
+   (if (< $i (size-atom $openings))
+     (let $surface (C3MemoryApplicationCurrentSurfaceFromOpening $cut $facts
+            $flourishing (index-atom $openings $i))
+       (if (CPShape $surface alignment-inquiry-surface-v1 6)
+         (cons-atom $surface
+           (C3MemoryApplicationCurrentSurfacesAt $cut $facts $flourishing
+             $openings (+ $i 1)))
+         (C3MemoryApplicationCurrentSurfacesAt $cut $facts $flourishing
+           $openings (+ $i 1))))
+     ()))
+
+(= (C3FactRoleSetsFromEntriesAt $entries $i $out)
+   (if (< $i (size-atom $entries))
+     (let $entry (index-atom $entries $i)
+       (if (and (CPShape $entry fact9-inquiry-entry 4)
+                (CPShape (index-atom $entry 2) roles 2))
+         (C3FactRoleSetsFromEntriesAt $entries (+ $i 1)
+           (cons-atom (index-atom $entry 2) $out))
+         (C3FactRoleSetsFromEntriesAt $entries (+ $i 1) $out)))
+     $out))
+
+(= (C3MemoryApplicationSelectedSurfacesAt $current $source-fact-surfaces
+      $selected-flourishings $i)
+   (if (< $i (size-atom $current))
+     (if (< $i (size-atom $source-fact-surfaces))
+       (let* (($current-surface (index-atom $current $i))
+              ($source-fact-surface (index-atom $source-fact-surfaces $i))
+              ($current-fact-entries (if
+                (CPShape $current-surface alignment-inquiry-surface-v1 6)
+                (index-atom (index-atom $current-surface 2) 1) ()))
+              ($current-flourishing-entries (if
+                (CPShape $current-surface alignment-inquiry-surface-v1 6)
+                (index-atom (index-atom $current-surface 3) 1) ()))
+              ($source-fact-entries (if
+                (CPShape $source-fact-surface fact9-inquiry-surface 3)
+                (index-atom (index-atom $source-fact-surface 2) 1) ())))
+         (and (CPSetEqual
+                (C3FactRoleSetsFromEntriesAt $current-fact-entries 0 ())
+                (C3FactRoleSetsFromEntriesAt $source-fact-entries 0 ()))
+          (and (CPSetEqual
+                 (C3FlourishingIdsFromEntriesAt
+                   $current-flourishing-entries 0 ())
+                 $selected-flourishings)
+               (C3MemoryApplicationSelectedSurfacesAt $current
+                 $source-fact-surfaces $selected-flourishings (+ $i 1)))))
+       false)
+     (== (size-atom $current) (size-atom $source-fact-surfaces))))
+
+(= (C3MemoryApplicationSelectedSurfacesValid $surface $projection)
+   (if (and (CPShape $surface c3-memory-application-alignment-surface-v1 9)
+            (C3DevelopmentalMemoryApplicationProjectionValid $projection))
+     (let* (($fact-participation
+              (index-atom (index-atom $projection 5) 1))
+            ($source-fact-surfaces (if
+              (CPShape $fact-participation fact9-participation 3)
+              (index-atom $fact-participation 1) ()))
+            ($selected-flourishings
+              (index-atom (index-atom $projection 6) 1))
+            ($current
+              (index-atom (index-atom $surface 5) 1)))
+       (C3MemoryApplicationSelectedSurfacesAt $current
+         $source-fact-surfaces $selected-flourishings 0))
+     false))
+
+; This is the explicit constitutive joint for a learned standing meeting a
+; later unfamiliar contact.  Each current alignment-inquiry-surface already
+; contains one simultaneous R/A/P opening, the current Fact9 material that
+; makes the contacted actuality finitely legible, and the interconnected
+; flourishing material that may participate in discovering fuller alignment.
+; The prior support/contradiction/unresolved standing is retained as contact-
+; earned material; it never selects an answer or a R/A/P perspective.
+(= (C3MemoryApplicationAlignmentSurface $projection $cut $facts $flourishing)
+   (if (C3DevelopmentalMemoryApplicationProjectionValid $projection)
+     (let* (($openings
+              (index-atom (index-atom $projection 4) 1))
+            ; Source openings name the simultaneous R/A/P perspectives; the
+            ; current contact supplies the material relations from which Fact9
+            ; and flourishing participation is computed. Requiring old relation
+            ; identifiers here would confuse continuity with literal replay.
+            ($surfaces (C3MemoryApplicationCurrentSurfacesAt $cut $facts
+              $flourishing $openings 0)))
+       (if (and (C3MemoryApplicationApplicable $projection $cut $facts
+                  $flourishing)
+             (and (> (size-atom $openings) 0)
+                  (C3MemoryApplicationSurfacesMatchOpeningsAt $surfaces
+                    $openings 0)))
+         (c3-memory-application-alignment-surface-v1
+           (index-atom $projection 1)
+           (application-standing (C3MemoryApplicationStanding $projection))
+           (target-cut (index-atom $cut 1))
+           (source-partial-rap-openings $openings)
+           (current-fact9-flourishing-rap-surfaces $surfaces)
+           (alignment-computation
+             balance-unfolding-at-contact
+             one-contact-one-simultaneous-three-perspective-rap-read
+             fact9-makes-actuality-finitely-legible
+             flourishings-participate-in-discovering-alignment
+             no-preselected-result)
+           (thought-partner-boundary
+             soul-selects-relevant-surface
+             glm53-may-widen-question-and-challenge-possibilities
+             provider-no-contact-no-authority-no-choice-no-verdict
+             returned-consequence-determines-development)
+           (provenance exact-memory-application-and-current-contact))
+         (c3-memory-application-alignment-surface-unavailable
+           no-exact-current-constitutive-composition)))
+     (c3-memory-application-alignment-surface-unavailable
+       invalid-memory-application-projection)))
+
+(= (C3MemoryApplicationAlignmentSurfaceStructuralValid $surface)
+   (if (CPShape $surface c3-memory-application-alignment-surface-v1 9)
+     (let* (($standing (index-atom $surface 2))
+            ($openings-wrapper (index-atom $surface 4))
+            ($surfaces-wrapper (index-atom $surface 5))
+            ($openings (if (CPShape $openings-wrapper
+              source-partial-rap-openings 2)
+              (index-atom $openings-wrapper 1) ()))
+            ($surfaces (if (CPShape $surfaces-wrapper
+              current-fact9-flourishing-rap-surfaces 2)
+              (index-atom $surfaces-wrapper 1) ())))
+       (==
+         ((CPShape (index-atom $surface 1) memory-application-reference 2)
+          (CPShape $standing application-standing 2)
+          (CPHas (index-atom $standing 1)
+            (support contradiction unresolved) 0)
+          (CPShape (index-atom $surface 3) target-cut 2)
+          (> (size-atom $openings) 0)
+          (C3MemoryApplicationSurfacesMatchOpeningsAt $surfaces $openings 0)
+          (== (index-atom $surface 6)
+            (alignment-computation
+              balance-unfolding-at-contact
+              one-contact-one-simultaneous-three-perspective-rap-read
+              fact9-makes-actuality-finitely-legible
+              flourishings-participate-in-discovering-alignment
+              no-preselected-result))
+          (== (index-atom $surface 7)
+            (thought-partner-boundary
+              soul-selects-relevant-surface
+              glm53-may-widen-question-and-challenge-possibilities
+              provider-no-contact-no-authority-no-choice-no-verdict
+              returned-consequence-determines-development))
+          (== (index-atom $surface 8)
+            (provenance exact-memory-application-and-current-contact)))
+         (true true true true true true true true true)))
+     false))
+
+(= (C3MemoryApplicationAlignmentSurfaceSelfValid $surface $projection)
+   (and (C3MemoryApplicationAlignmentSurfaceStructuralValid $surface)
+    (and (C3DevelopmentalMemoryApplicationProjectionValid $projection)
+     (and (== (index-atom $surface 1) (index-atom $projection 1))
+      (and (== (index-atom $surface 2)
+             (application-standing
+               (C3MemoryApplicationStanding $projection)))
+           (C3MemoryApplicationSelectedSurfacesValid $surface
+             $projection))))))
+
+(= (C3MemoryApplicationAlignmentSurfaceValid $surface $projection $cut $facts
+      $flourishing)
+   (and (C3MemoryApplicationAlignmentSurfaceSelfValid $surface $projection)
+        (== $surface
+          (C3MemoryApplicationAlignmentSurface $projection $cut $facts
+            $flourishing))))
+
+(= (C3MemoryApplicationContinuationRouteFromSurface $projection $surface)
+   (consequence-earned-developmental-memory-standing-v3
+     (index-atom $projection 1)
+     $surface
+     returned-contact-must-reorganize-the-next-cut))
+
+(= (C3MemoryApplicationContinuationRoute $projection $cut $facts
+      $flourishing)
+   (C3MemoryApplicationContinuationRouteFromSurface $projection
+     (C3MemoryApplicationAlignmentSurface $projection $cut $facts
+       $flourishing)))
+
+(= (C3MemoryApplicationContinuationRouteValid $route)
+   (if (CPShape $route
+         consequence-earned-developmental-memory-standing-v3 4)
+     (let* (($reference (index-atom $route 1))
+            ($surface (index-atom $route 2)))
+       (==
+         ((CPShape $reference memory-application-reference 2)
+          (C3MemoryApplicationAlignmentSurfaceStructuralValid $surface)
+          (== $reference (index-atom $surface 1))
+          (== (index-atom $route 3)
+            returned-contact-must-reorganize-the-next-cut))
+         (true true true true)))
+     false))
+
+(= (C3MemoryApplicationContinuationRouteValidForRecord $route $record)
+   (and (C3MemoryApplicationContinuationRouteValid $route)
+    (and (C3DevelopmentalMemoryApplicationRecordValid $record)
+     (let $projection (C3DevelopmentalMemoryApplicationProjection $record)
+       (and (== (index-atom $route 1) (index-atom $projection 1))
+            (C3MemoryApplicationAlignmentSurfaceSelfValid
+              (index-atom $route 2) $projection))))))
+
+(= (C3MemoryApplicationContinuationRouteValidForProjection $route
+      $projection)
+   (and (C3MemoryApplicationContinuationRouteValid $route)
+    (and (C3DevelopmentalMemoryApplicationProjectionValid $projection)
+     (and (== (index-atom $route 1) (index-atom $projection 1))
+          (C3MemoryApplicationAlignmentSurfaceSelfValid
+            (index-atom $route 2) $projection)))))
+
+(= (C3MemoryApplicationRecordForReferenceAt $claims $reference $i)
+   (if (< $i (size-atom $claims))
+     (let $record (C3MemoryApplicationRecordFromClaim
+            (index-atom $claims $i))
+       (if (and (C3DevelopmentalMemoryApplicationRecordValid $record)
+                (== (index-atom $record 1) $reference))
+         $record
+         (C3MemoryApplicationRecordForReferenceAt $claims $reference
+           (+ $i 1))))
+     (c3-developmental-memory-application-unavailable
+       no-reference no-exact-record-in-movement-basis)))
+
+(= (C3MemoryApplicationProjectionForReferenceAt $claims $reference $i)
+   (if (< $i (size-atom $claims))
+     (let $projection (C3MemoryApplicationProjectionFromClaim
+            (index-atom $claims $i))
+       (if (and
+             (C3DevelopmentalMemoryApplicationProjectionValid $projection)
+             (== (index-atom $projection 1) $reference))
+         $projection
+         (C3MemoryApplicationProjectionForReferenceAt $claims $reference
+           (+ $i 1))))
+     (c3-developmental-memory-application-projection-unavailable
+       no-exact-projection-in-movement-basis)))
+
+(= (C3MemoryApplicationRecordFromMovementAtCut $movement $cut $reference)
+   (if (and (CPShape $movement movement-formed 7) (CPCutValid $cut))
+     (let* (($retained (index-atom $movement 6))
+            ($basis (if (CPShape $retained retained-alternatives-v3 3)
+              (index-atom $retained 2) ()))
+            ($participant-source (if
+              (CPShape $basis continuation-basis-v3 6)
+              (index-atom $basis 3) ()))
+            ($participants (participant-reentry-organization
+              differentiated-by-source-scope-and-lineage
+              (CPParticipantAt $cut $participant-source 0)
+              repeated-same-lineage-is-not-independent-support))
+            ($relations (CPParticipantRelationOrganization $participants))
+            ($claims (C3MemoryApplicationClaims $relations)))
+       (C3MemoryApplicationRecordForReferenceAt $claims $reference 0))
+     (c3-developmental-memory-application-unavailable
+       no-reference malformed-movement-or-cut)))
+
+(= (C3MemoryApplicationProjectionFromMovementAtCut $movement $cut $reference)
+   (if (and (CPShape $movement movement-formed 7) (CPCutValid $cut))
+     (let* (($retained (index-atom $movement 6))
+            ($basis (if (CPShape $retained retained-alternatives-v3 3)
+              (index-atom $retained 2) ()))
+            ($participant-source (if
+              (CPShape $basis continuation-basis-v3 6)
+              (index-atom $basis 3) ()))
+            ($participants (participant-reentry-organization
+              differentiated-by-source-scope-and-lineage
+              (CPParticipantAt $cut $participant-source 0)
+              repeated-same-lineage-is-not-independent-support))
+            ($relations (CPParticipantRelationOrganization $participants))
+            ($claims (C3MemoryApplicationClaims $relations)))
+       (C3MemoryApplicationProjectionForReferenceAt $claims $reference 0))
+     (c3-developmental-memory-application-projection-unavailable
+       malformed-movement-or-cut)))
+
+(= (C3MemoryApplicationContinuationRouteFromMovement $movement)
+   (if (and (CPShape $movement movement-formed 7)
+            (== (index-atom $movement 1) inquiry))
+     (let* (($answerability (index-atom $movement 5))
+            ($o-star (if (CPShape $answerability answerability 2)
+              (index-atom $answerability 1) ()))
+            ($route-wrapper (if (CPShape $o-star o-star 2)
+              (index-atom $o-star 1) ()))
+            ($route (if (CPShape $route-wrapper consequence-route 3)
+              (index-atom $route-wrapper 1) ()))
+            ($route-valid (C3MemoryApplicationContinuationRouteValid $route))
+            ($surface (if $route-valid
+              (index-atom $route 2)
+              (c3-memory-application-alignment-surface-unavailable
+                no-valid-route))))
+       (if (and $route-valid
+             (and (== (index-atom $route-wrapper 2) non-certifying)
+              (and (== (index-atom $movement 2)
+                     (index-atom (index-atom $surface 1) 1))
+                   (== (index-atom (index-atom $movement 3) 1)
+                     (index-atom (index-atom $surface 3) 1)))))
+         $route
+         (c3-memory-application-continuation-route-unavailable
+           malformed-or-certifying-route)))
+     (c3-memory-application-continuation-route-unavailable
+       movement-is-not-formed-inquiry)))
+
+(= (C3MemoryApplicationContinuationRouteFromMovementAtCut $movement $cut)
+   (let $route (C3MemoryApplicationContinuationRouteFromMovement $movement)
+     (if (C3MemoryApplicationContinuationRouteValid $route)
+       (let $projection (C3MemoryApplicationProjectionFromMovementAtCut
+              $movement $cut
+              (index-atom $route 1))
+         (if (C3MemoryApplicationContinuationRouteValidForProjection $route
+               $projection)
+           $route
+           (c3-memory-application-continuation-route-unavailable
+             route-not-bound-to-exact-participant-projection)))
+       $route)))
+
+(= (C3MemoryApplicationContinuationPossibilitiesAt $claims $cut $facts
+      $flourishing $i)
+   (if (< $i (size-atom $claims))
+     (let* (($projection (C3MemoryApplicationProjectionFromClaim
+              (index-atom $claims $i)))
+            ($reference (if
+              (C3DevelopmentalMemoryApplicationProjectionValid $projection)
+              (index-atom $projection 1)
+              (memory-application-reference no-reference)))
+            ($selected-flourishings (if
+              (C3DevelopmentalMemoryApplicationProjectionValid $projection)
+              (index-atom (index-atom $projection 6) 1) ()))
+            ($alignment-surface (C3MemoryApplicationAlignmentSurface
+              $projection $cut $facts $flourishing))
+            ($continuation-route
+              (C3MemoryApplicationContinuationRouteFromSurface $projection
+                $alignment-surface)))
+       ; The alignment surface constructor above is pure and returns this shape
+       ; only after validating applicability, source authority and exact current
+       ; material. Re-running every deep validator here multiplies formation
+       ; cost without adding an independent lineage. Persisted/re-entering
+       ; routes are still fully checked by the validators above.
+       (if (CPShape $alignment-surface
+             c3-memory-application-alignment-surface-v1 9)
+         (cons-atom
+           (possible-movement (index-atom $reference 1) inquiry
+             ; The prior application remains a participant relation and an
+             ; exact consequence-route standing.  It is not laundered into D
+             ; as though it were a material relation supplied by this contact.
+             ; R/A/P therefore reads the new cut's actual material relations
+             ; while the participant organization remains inside the same
+             ; constitutive bridge and movement surface.
+             (CPNativeRequirementRelations $cut)
+             (CPNativeRequirementDistinctions $cut)
+             (CPNativeRequirementInterfaces $cut)
+             $selected-flourishings
+             (consequence-route
+               $continuation-route
+               non-certifying)
+             l2425-supported)
+           (C3MemoryApplicationContinuationPossibilitiesAt $claims $cut $facts
+             $flourishing (+ $i 1)))
+         (C3MemoryApplicationContinuationPossibilitiesAt $claims $cut $facts
+           $flourishing (+ $i 1))))
+     ()))
+
+(= (C3MemoryApplicationContinuationPossibilities $cut $facts $flourishing
+      $participant-relations)
+   (C3MemoryApplicationContinuationPossibilitiesAt
+     (C3MemoryApplicationClaims $participant-relations)
+     $cut $facts $flourishing 0))
 
 (= (C3ModelPossibilitiesAt $claims $cut $i)
    (if (< $i (size-atom $claims))

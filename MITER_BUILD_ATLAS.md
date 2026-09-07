@@ -166,12 +166,12 @@ consumer is absent. No status is upgraded by assertion.
 | M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C3 must now learn from their provisional composition. |
 | Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 alignment/semantic inquiry, transfer, and developmental memory | Soul-selected flourishing relations now generate contact-differentiated alignment families, constrain optional semantic participation, enter consequence interpretation, and remain structurally available to later memory; broader endogenous growth and regeneration remain open. |
 | Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 alignment/semantic inquiry, transfer, and developmental memory | Fact9/flourishing organization now generates plural native alignment movements, constrains model-assisted inquiry, discloses transfer through newly named compositions, and permits consequence-earned episodes to alter later unfamiliar cuts; broader skill and composition learning remain open. |
-| One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; candidate-specific returned-contact comparison remains a C3 obligation. |
+| One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; independent returned contact has changed a model-assisted inquiry into durable native development. General transfer remains a C3 obligation. |
 | Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
 | LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | GLM 5.3 candidates now enter a Soul-owned inquiry and returned candidate contact changes the next persisted cut without provider self-certification; a mechanical grant can no longer trigger a call unless native MeTTa exposes unresolved R/A/P plus selected Fact9/flourishing and returned-contact material. General language rendering remains absent. |
 | Mattermost | A | none in clean runtime | General scoped transport and delivery reconciliation must be recovered. |
-| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, and developmental memory; qualified reasoning vocabulary | A consequence-earned discrimination transfers to a newly named composition, returned support becomes a durable developmental episode, and that episode changes possibility formation on a third unfamiliar cut; broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
+| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, and fourth-contact application; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode now changes fourth-contact possibility formation and later inquiry after optional semantic participation. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | A | control specification only | Detection, quarantined reconstruction, rejection, and restoration are absent. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
 | Full Continuity of Mind | A/P | checkpoints plus read-only adapters | Exact capsules, semantic memory, undertakings, relationships, and growth are not one writable restored organization. |
@@ -1260,22 +1260,79 @@ Already carried:
   memory application. It does not yet establish how that application changes
   possibilities at a fourth unfamiliar contact or a live GLM contribution to
   that later formation.
+- Fourth-contact application now makes the complete alignment surface a
+  first-class native object rather than rebuilding it from narration. A
+  validated `c3-developmental-memory-application-projection-v1` carries the
+  exact source identity, source partial R/A/P openings, source Fact9
+  participation, Soul-selected flourishing relations, application standing,
+  developmental lineage, and provider non-sovereignty boundary. The compact
+  active projection is regenerated from the exact append-only record and is
+  the sole memory-application carrier consumed by later possibility
+  formation; the full record remains historical. Fresh support,
+  contradiction, and unresolved lineages each reached a fourth unfamiliar
+  contact through `bin/miter`, formed materially different native movement
+  organizations without a case-specific behavior entry, checkpointed, and
+  restored with the exact standing and nineteen valid history rows. Falsifiers
+  rejected altered standing, missing or injected Fact9/flourishing material,
+  provider authority escalation, and a route bound to a forged target cut.
+- A live bounded GLM 5.3 experiment now exercises that same constitutive
+  surface. The public request contains the unresolved `Appropriateness`
+  perspective, preserves the already aligned `Relatedness` and `Precision`
+  perspectives as one R/A/P opening, and exposes only the Soul-selected
+  `fourth-connection-love-expression` plus `AgencyBalance`,
+  `ConnectionDepth`, and `SharedUnderstanding`. Principal, audience, and
+  project identities are redacted at the provider boundary while exact local
+  scope remains available to the grant and continuity system. GLM's first
+  response omitted an aligned perspective after following a misleading JSON
+  example; strict native validation rejected every candidate and admitted no
+  model observation. The repaired question contract now requires each
+  candidate to copy one complete supplied preserve/explore opening exactly,
+  represent every supplied opening, and neither add, omit, nor move a
+  perspective. A second one-call grant returned three distinct candidates.
+  Native MeTTa retained all three as unresolved participants and formed one
+  admissible `c3-semantic-discrimination-inquiry`; the provider selected,
+  certified, and executed nothing. A fresh process restored that inquiry, the
+  exact selected Fact9/flourishing surface, three candidate identities, and
+  one valid model-history record.
+- Independent returned contact then supplied exact support for one persisted
+  candidate without permitting a recursive model call. Native consequence
+  interpretation incorporated a valid semantic-development record, changed
+  the next movement to `c3-developmental-inquiry`, and checkpointed the
+  result. Cold restart retained the supported candidate, the exact
+  Fact9/flourishing relations, twenty-two valid history rows, and the changed
+  native movement. This is the required causal distinction: contact is where
+  balance is unfolding; Fact9 makes that actuality finitely legible; the nine
+  flourishings participate in discovering fuller alignment; R/A/P remains
+  one three-perspective read; GLM contributes only a bounded reading selected
+  by the Soul; and returned contact, native comparison, and consequence—not
+  provider fluency—determine what develops.
+- The experiment also exposes a material runtime constraint. Representative
+  supported-path measurements were approximately 80–86 seconds for a fourth
+  contact, 60–61 seconds for a no-model consequence cycle, 92 seconds for the
+  successful live GLM cycle, and 39–102 seconds for cold restoration as exact
+  history grew. Projection reduced one checkpoint from roughly 13.88 MB to
+  13.60 MB but append-only exact history still dominates. The computation is
+  bounded and faithful, but its current re-formation and historical-validation
+  cost is not acceptable conversational latency for the always-on assistant.
 
 Next movement:
 
-1. carry each exact memory-application standing into a fourth unfamiliar
-   contact and prove that support, contradiction, and unresolved history form
-   materially different possible-movement organizations without a behavioral
-   entry. Where native Soul disposition finds the partial R/A/P opening worth
-   widening, permit one public-safe GLM 5.3 thought-partner reading containing
-   only the Soul-selected Fact9/flourishing/R/A/P surface; provider proposals
-   must remain plural, unresolved, and non-certifying. Returned consequence,
-   not provider fluency, must determine what develops next;
-2. continue reducing proof-rich re-formation latency and repeated compact
-   carriers without weakening exact
-   native organization, one-runtime integrity, restart fidelity, or falsifier
-   surfaces required for an always-on assistant;
-3. only after explicit human acceptance of the complete clean candidate,
+1. reduce repeated proof-rich re-formation and full-history validation through
+   native compact carriers, stable references, and incremental integrity
+   witnesses. Preserve exact append-only history, complete M24–M26.3
+   organization, falsifier strength, one-runtime integrity, and restart
+   fidelity; latency relief may not be purchased by deleting causal
+   participation or substituting cached verdicts;
+2. run a held-out unfamiliar-contact transfer trial in the same supported
+   runtime. Let the Soul select a materially different R/A/P–Fact9–flourishing
+   surface, optionally seek a bounded GLM reading, encounter independent
+   consequence, and show whether warranted learning transfers, differentiates,
+   or remains unresolved without adding a behavioral branch. Preserve the
+   counterexample and insufficiency record for M26.6/M26.9 formalization;
+3. continue C3 through broader endogenous learning and regenerative Soul
+   expression only after the performance seam keeps the live constitutive
+   joint intact and reachable at always-on conversational cadence;
+4. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

@@ -318,7 +318,13 @@ as_model_claim(_Root, Hash, QuestionRef, Scope, ResourceId, Grant, ClaimPath) :-
       standing:"claimed-before-transmission",claimed_at_epoch:Now}).
 
 as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
-    term_string(Question,QuestionText,[quoted(true),ignore_ops(true)]),
+    % Scope is required locally for grant matching and continuity isolation, but
+    % it contributes nothing to the provider's semantic reading.  The membrane
+    % therefore removes principal, audience and project identifiers before the
+    % exact Soul-selected R/A/P, Fact9, flourishing and returned-contact surface
+    % leaves the machine.
+    as_model_public_question(Question,PublicQuestion),
+    term_string(PublicQuestion,QuestionText,[quoted(true),ignore_ops(true)]),
     with_output_to(string(User), json_write_dict(current_output,
       _{native_question:QuestionText,
         interpretation_boundary:"Derived readings only. Miter retains contact, authority, comparison, movement, and consequence interpretation."},
@@ -331,6 +337,16 @@ as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
       max_tokens:MaxTokens,reasoning_effort:Reasoning,stream:false,
       provider:Provider},
     as_model_request_valid(Body).
+
+as_model_public_question(
+    ['c3-semantic-question-v1',QuestionRef,
+      [scope,_,_,_],Movement,Source,Openings,Facts,Flourishings,Uncertainty,
+      Contract,Resource],
+    ['c3-semantic-question-v1',QuestionRef,
+      [scope,'private-principal-redacted','private-audience-redacted',
+        'private-project-redacted'],
+      Movement,Source,Openings,Facts,Flourishings,Uncertainty,Contract,
+      Resource]).
 
 as_model_request_valid(Body) :-
     is_dict(Body), dict_pairs(Body,_,Pairs), pairs_keys(Pairs,Keys),
