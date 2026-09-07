@@ -5,7 +5,14 @@
 
 (= (CPShape $x $head $size)
    (if (is-expr $x)
-     (and (== (size-atom $x) $size) (== (index-atom $x 0) $head)) false))
+     ; PeTTa evaluates both operands of `and`; indexing the head of an empty or
+     ; wrong-sized expression can therefore erase the whole reduction instead
+     ; of returning false.  Shape disagreement is an explicit negative
+     ; standing, so test cardinality before inspecting the head.
+     (if (== (size-atom $x) $size)
+       (== (index-atom $x 0) $head)
+       false)
+     false))
 
 (= (CPHas $x $xs $i)
    (if (< $i (size-atom $xs))

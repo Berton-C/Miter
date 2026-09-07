@@ -977,12 +977,17 @@
             (M255NextTransitionProbe $next-cut $movement $consequence))
           ($prior-generated (M255GeneratedAtProbe $prior-probe $id))
           ($next-generated (M255GeneratedAtProbe $next-probe $id))
-          ($prior-possibility (if (M255GeneratedAtProbeValid $prior-generated)
-            (index-atom $prior-generated 2) ()))
-          ($lost (if (CPShape $prior-possibility possible-movement 9)
-            (M255LostRequiredDistinctionsAt
-              (index-atom $prior-possibility 4)
-              (index-atom $prior-probe 1) (index-atom $next-probe 1) 0)
+          ; A newly introduced movement kind may not yet have a unique
+          ; SameGenerated witness at both probes.  Treat that as explicit
+          ; unresolved standing, not an undefined reduction caused by
+          ; inspecting an empty placeholder as though it were a possibility.
+          ($lost (if (M255GeneratedAtProbeValid $prior-generated)
+            (let $prior-possibility (index-atom $prior-generated 2)
+              (if (CPShape $prior-possibility possible-movement 9)
+                (M255LostRequiredDistinctionsAt
+                  (index-atom $prior-possibility 4)
+                  (index-atom $prior-probe 1) (index-atom $next-probe 1) 0)
+                ()))
             ())))
      (if (and (M255TransitionInputsValid $prior-cut $movement $next-cut
                 $consequence)

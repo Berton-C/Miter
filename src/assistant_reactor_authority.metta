@@ -693,9 +693,16 @@
      (CPShape $reading preformation-model-reading-not-requested 2)))
 
 (= (AR3PreformationModelParticipants $reading)
-   (if (and (CPShape $reading preformation-model-reading-v1 5)
-            (== (index-atom $reading 4) model-reading-incorporated))
-     (index-atom $reading 3) ()))
+   (if (CPShape $reading preformation-model-reading-v1 5)
+     (if (== (index-atom $reading 4) model-reading-incorporated)
+       (index-atom $reading 3) ())
+     ()))
+
+(= (AR3PreformationQuestionParticipants $reading)
+   (if (CPShape $reading preformation-model-reading-v1 5)
+     (if (== (index-atom $reading 4) model-reading-incorporated)
+       (C3SemanticQuestionParticipant (index-atom $reading 1)) ())
+     ()))
 
 ; The returned consequence, M25.5/M26.6 laboratory participation, and any
 ; bounded semantic proposals all enter one participant source.  M25 then forms
@@ -722,23 +729,46 @@
                 (index-atom $basis 1) 0))
               ($source-flourishing (CPFlourishingOrganizationV2 $cut
                 (index-atom $basis 2)))
-              ($question (C3SemanticQuestionFromConsequence $scope $cut
-                $movement $prior $consequence $source-facts
-                $source-flourishing))
-              ($model-reading (if (CPShape $question c3-semantic-question-v1 11)
-                (AR3PreformationModelReading $root $question
-                  (index-atom $consequence 1) $model-writer)
+              ; A semantic provider's returned candidate is new contact for
+              ; native consequence interpretation.  It may not recursively
+              ; trigger another provider call before Miter has incorporated
+              ; and compared that contact through the full authority joint.
+              ; Any later consultation must be newly formed by that changed
+              ; native organization.
+              ($semantic-return (CPShape
+                (C3SemanticInquirySurfaceFromMovement $movement)
+                c3-semantic-inquiry-surface-v1 8))
+              ($model-reading (if $semantic-return
                 (preformation-model-reading-not-requested
-                  no-consequence-earned-partial-alignment-question))))
+                  semantic-inquiry-return-requires-native-incorporation)
+                (let $question (C3SemanticQuestionFromConsequence $scope $cut
+                      $movement $prior $consequence $source-facts
+                      $source-flourishing)
+                  (if (CPShape $question c3-semantic-question-v1 11)
+                    (AR3PreformationModelReading $root $question
+                      (index-atom $consequence 1) $model-writer)
+                    (preformation-model-reading-not-requested
+                      no-consequence-earned-partial-alignment-question))))))
          (if (AR3PreformationModelReadingUsable $model-reading)
-           (let* (($flourishing-views (CPListAppend (index-atom $basis 2)
+           (let* (($semantic-participants
+                    (C3SemanticConsequenceParticipants $scope $movement
+                      $consequence))
+                  ($prior-participants
+                    (C3ParticipantsAfterSemanticConsequence
+                      (index-atom $basis 3) $movement $consequence))
+                  ($flourishing-views (CPListAppend (index-atom $basis 2)
                     (index-atom (index-atom $consequence 10) 1)))
-                  ($participant-source (CPListAppend (index-atom $basis 3)
+                  ($participant-source (CPListAppend $prior-participants
                     (CPListAppend
                       (AR2ConsequenceParticipants $scope $evolved $consequence)
                       (CPListAppend $m255-participants
                         (CPListAppend $c3-participants
-                          (AR3PreformationModelParticipants $model-reading))))))
+                         (CPListAppend $semantic-participants
+                          (CPListAppend
+                            (AR3PreformationQuestionParticipants
+                              $model-reading)
+                            (AR3PreformationModelParticipants
+                              $model-reading))))))))
                   ($next (M25ConstitutiveEncounter $base-next-cut
                     (index-atom $basis 1) $flourishing-views
                     $participant-source (index-atom (index-atom $basis 4) 1)

@@ -164,14 +164,14 @@ consumer is absent. No status is upgraded by assertion.
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | No promoted external surface adapter is active. |
 | Checkpoint and same-runtime restart | E | reactor + store membrane | Living long-term memory and incomplete undertakings are not fully restored. |
 | M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C3 must now learn from their provisional composition. |
-| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*` | Rich fields are loaded; C3 must make their interconnected endogenous participation generative across unfamiliar contact. |
-| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta` | The complete ratified foundation participates causally; C3 must test previously unseen compositions and consequence-earned reorganization. |
+| Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 semantic inquiry | Soul-selected flourishing relations now participate in partial-alignment inquiry; broader endogenous growth and transfer remain open. |
+| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 semantic inquiry | Fact9/flourishing selections now constrain native and model-assisted inquiry; previously unseen developmental transfer remains open. |
 | One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate` | One exact contact/movement is read simultaneously; C3 must now use partial alignment generatively without splitting or scoring it. |
 | Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
-| LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | A live, exact-grant GLM 5.3 partial-alignment inquiry is causal and restart-safe; general language rendering and conversation-level participation remain absent. |
+| LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | GLM 5.3 candidates now enter a Soul-owned inquiry and returned candidate contact changes the next persisted cut without provider self-certification; general language rendering remains absent. |
 | Mattermost | A | none in clean runtime | General scoped transport and delivery reconciliation must be recovered. |
-| Endogenous growth / NACE / PLN / NAL | A/P | participant vocabulary and authority only | No consequence-earned persistent revision is active. |
+| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination result; qualified reasoning vocabulary | One consequence-earned distinction now persists and changes movement; reusable revision, transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | A | control specification only | Detection, quarantined reconstruction, rejection, and restoration are absent. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
 | Full Continuity of Mind | A/P | checkpoints plus read-only adapters | Exact capsules, semantic memory, undertakings, relationships, and growth are not one writable restored organization. |
@@ -907,17 +907,37 @@ Already carried:
   Credentials and all trial material remained outside Git. This establishes
   sovereign semantic participation, not yet consequence-earned adoption or
   transfer of a provider proposal.
+- Returned semantic contact now completes the same authority joint rather than
+  ending at the provider boundary. MeTTa retains the exact Soul-selected Fact9
+  expressions, interconnected flourishing relations, native question, and all
+  provider contrasts as one `c3-semantic-discrimination-inquiry`. Contact tied
+  to one exact candidate then creates two independent native/returned lineages
+  for `c3-semantic-discrimination-result`, retires only that inquiry's provider
+  and question participants from the active organization, and reforms the next
+  movement as the undertaking. An unknown candidate creates no result, retires
+  nothing, and keeps the same inquiry live. The inherited M25.5 degradation
+  path was made total for this new movement kind: absence of a unique
+  SameGenerated postimage now yields explicit unresolved standing while the
+  independently valid material-reorganization witness still participates.
+  Returned provider contact cannot recursively invoke the provider before this
+  native incorporation; any later model consultation must be newly formed by
+  the changed Soul organization. The exact result, undertaking, active-state
+  validity, and consequence history survived a fresh-process checkpoint
+  restore. Replaying the same consequence after restart returned duplicate,
+  preserved the active organization byte-for-byte, and requested no model
+  participation. All stimuli and observations remained outside Git. This
+  establishes consequence-sensitive semantic discrimination and durable
+  developmental change, not yet generalized skill transfer or C3 closure.
 
 Next movement:
 
-1. let native MeTTa form a bounded inquiry from one retained semantic
-   possibility, seek differentiated new contact, and carry the returned
-   consequence back to the exact source opening without allowing the provider
-   proposal to certify itself;
-2. prove that materially different returned consequences change later
-   possibility formation, while unsupported repetition creates no persistent
-   growth; preserve the resulting observation or counterexample as explicit
-   26.6/26.9 laboratory feedback;
+1. turn the persisted discrimination result into a general consequence-earned
+   learning relation whose later reuse and transfer remain attributable to the
+   exact contact, Fact9/flourishing participation, alternatives, and
+   counterfactual difference rather than to provider fluency;
+2. exercise materially different held-out contacts to distinguish reusable
+   growth from case retention and prove that repetition without new support
+   cannot increase authority or silently alter the constitutional germline;
 3. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.

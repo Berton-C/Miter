@@ -301,14 +301,17 @@
 ; available as independently constructed alternatives. This is refinement by
 ; persisted relational evidence, not first-match behavioral selection.
 (= (C3NativePossibilities $cut $facts $flourishing $participant-relations)
-   (let $learned (C3LearnedPossibilities $cut)
+   (let* (($learned (C3LearnedPossibilities $cut))
+          ($semantic-inquiry
+            (C3SemanticInquiryPossibilities $cut $participant-relations)))
      (CPListAppend
        (CPNativeUndertakingsV2 $cut $facts $flourishing
          $participant-relations)
        (CPListAppend
-         (if (> (size-atom $learned) 0) $learned
-           (CPNativeInquiriesV2 $cut $facts $flourishing
-             $participant-relations))
+         (if (> (size-atom $semantic-inquiry) 0) $semantic-inquiry
+           (if (> (size-atom $learned) 0) $learned
+             (CPNativeInquiriesV2 $cut $facts $flourishing
+               $participant-relations)))
          (CPListAppend
            (C3ModelPossibilities $cut $participant-relations)
            (CPNativeDeferralsV2 $cut $flourishing))))))

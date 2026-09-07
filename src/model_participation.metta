@@ -297,6 +297,26 @@
        $question (index-atom $question 2) 0)
      ()))
 
+; The exact native question is itself retained as one unresolved participant.
+; This gives later native formation a single source for the Soul-selected
+; Fact9/flourishing surface without copying the complete question into every
+; provider candidate. It is not support for alignment and does not create a
+; second authority lineage.
+(= (C3SemanticQuestionParticipant $question)
+   (if (CPShape $question c3-semantic-question-v1 11)
+     ((participant-contribution
+        (c3-native-semantic-question-participation
+          (index-atom (index-atom $question 1) 1))
+        native-authority (index-atom $question 2)
+        (lineage provisional-26.6-26.9 semantic-question-construction)
+        (participant-relation-claim c3-semantic-question-grounding
+          unresolved
+          (c3-native-semantic-question-basis-v1 $question
+            soul-selected-fact9-and-flourishing-surface
+            no-provider-relevance-authority))
+        candidate no-contact-no-movement-authority))
+     ()))
+
 (= (C3ModelClaimsFromRelationsAt $relations $i)
    (if (< $i (size-atom $relations))
      (let $relation (index-atom $relations $i)
@@ -312,6 +332,346 @@
    (if (CPShape $participant-relations participant-relation-organization 2)
      (C3ModelClaimsFromRelationsAt (index-atom $participant-relations 1) 0)
      ()))
+
+(= (C3SemanticQuestionClaimsFromRelationsAt $relations $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (and (CPShape $relation participant-proposed-relation 4)
+             (and (== (index-atom $relation 1)
+                    c3-semantic-question-grounding)
+                  (== (index-atom $relation 2) unresolved)))
+         (index-atom $relation 3)
+         (C3SemanticQuestionClaimsFromRelationsAt $relations (+ $i 1))))
+     ()))
+
+(= (C3SemanticQuestionClaims $participant-relations)
+   (if (CPShape $participant-relations participant-relation-organization 2)
+     (C3SemanticQuestionClaimsFromRelationsAt
+       (index-atom $participant-relations 1) 0)
+     ()))
+
+(= (C3SemanticQuestionsFromClaimsAt $claims $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($evidence (if (CPShape $claim participant-relation-evidence 7)
+              (index-atom $claim 6) ()))
+            ($question (if
+              (CPShape $evidence c3-native-semantic-question-basis-v1 4)
+              (index-atom $evidence 1) ())))
+       (if (and (== (index-atom $claim 2) native-authority)
+                (CPShape $question c3-semantic-question-v1 11))
+         (cons-atom $question
+           (C3SemanticQuestionsFromClaimsAt $claims (+ $i 1)))
+         (C3SemanticQuestionsFromClaimsAt $claims (+ $i 1))))
+     ()))
+
+(= (C3SemanticQuestions $participant-relations)
+   (C3SemanticQuestionsFromClaimsAt
+     (C3SemanticQuestionClaims $participant-relations) 0))
+
+(= (C3ModelClaimsBoundToQuestionAt $claims $question $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($evidence (if (CPShape $claim participant-relation-evidence 7)
+              (index-atom $claim 6) ()))
+            ($candidate (if (CPShape $evidence c3-model-reading-v1 4)
+              (index-atom $evidence 2) ())))
+       (and (== (index-atom $claim 2) model)
+         (and (CPShape $evidence c3-model-reading-v1 4)
+          (and (== (index-atom $evidence 1) (index-atom $question 1))
+           (and (C3ModelCandidateValid $candidate $question)
+                (C3ModelClaimsBoundToQuestionAt $claims $question
+                  (+ $i 1)))))))
+     true))
+
+(= (C3ModelInquiryEntriesAt $claims $i)
+   (if (< $i (size-atom $claims))
+     (let* (($evidence (index-atom (index-atom $claims $i) 6))
+            ($candidate (index-atom $evidence 2)))
+       (cons-atom
+         (c3-semantic-discrimination-entry-v1
+           (index-atom $candidate 1)
+           (source-question (index-atom $evidence 1))
+           (proposal-summary (index-atom $candidate 2))
+           (index-atom $candidate 3)
+           (index-atom $candidate 4)
+           (counterfactual (index-atom $candidate 5))
+           unresolved-provider-proposal
+           requires-new-contact-and-native-consequence)
+         (C3ModelInquiryEntriesAt $claims (+ $i 1))))
+     ()))
+
+(= (C3QuestionFlourishingValuesAt $surfaces $values $i $out)
+   (if (< $i (size-atom $values))
+     (let $value (index-atom $values $i)
+       (if (C3QuestionFlourishingValuePresentAt $surfaces $value 0)
+         (C3QuestionFlourishingValuesAt $surfaces $values (+ $i 1)
+           (cons-atom $value $out))
+         (C3QuestionFlourishingValuesAt $surfaces $values (+ $i 1) $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (C3QuestionFlourishingValuePresentInEntriesAt $entries $value $i)
+   (if (< $i (size-atom $entries))
+     (if (and (CPShape (index-atom $entries $i)
+                flourishing-inquiry-entry 3)
+              (== (index-atom (index-atom $entries $i) 1) $value))
+       true
+       (C3QuestionFlourishingValuePresentInEntriesAt $entries $value
+         (+ $i 1)))
+     false))
+
+(= (C3QuestionFlourishingValuePresentAt $surfaces $value $i)
+   (if (< $i (size-atom $surfaces))
+     (let $surface (index-atom $surfaces $i)
+       (if (and (CPShape $surface flourishing-inquiry-surface 3)
+             (C3QuestionFlourishingValuePresentInEntriesAt
+               (index-atom (index-atom $surface 2) 1) $value 0))
+         true
+         (C3QuestionFlourishingValuePresentAt $surfaces $value (+ $i 1))))
+     false))
+
+(= (C3QuestionFlourishingValues $question)
+   (let $participation (index-atom $question 7)
+     (if (CPShape $participation flourishing-participation 3)
+       (C3QuestionFlourishingValuesAt (index-atom $participation 1)
+         (CPFlourishingValues) 0 ())
+       ())))
+
+(= (C3QuestionFactIdsFromEntriesAt $entries $i $out)
+   (if (< $i (size-atom $entries))
+     (let $entry (index-atom $entries $i)
+       (if (and (CPShape $entry fact9-inquiry-entry 4)
+                (== (CPHas (index-atom $entry 1) $out 0) false))
+         (C3QuestionFactIdsFromEntriesAt $entries (+ $i 1)
+           (cons-atom (index-atom $entry 1) $out))
+         (C3QuestionFactIdsFromEntriesAt $entries (+ $i 1) $out)))
+     $out))
+
+(= (C3QuestionFactIdsFromSurfacesAt $surfaces $i $out)
+   (if (< $i (size-atom $surfaces))
+     (let $surface (index-atom $surfaces $i)
+       (if (CPShape $surface fact9-inquiry-surface 3)
+         (C3QuestionFactIdsFromSurfacesAt $surfaces (+ $i 1)
+           (C3QuestionFactIdsFromEntriesAt
+             (index-atom (index-atom $surface 2) 1) 0 $out))
+         (C3QuestionFactIdsFromSurfacesAt $surfaces (+ $i 1) $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (C3QuestionFactIds $question)
+   (let $participation (index-atom $question 6)
+     (if (CPShape $participation fact9-participation 3)
+       (C3QuestionFactIdsFromSurfacesAt (index-atom $participation 1) 0 ())
+       ())))
+
+; Native MeTTa does not pick a fluent proposal. It joins all exact candidates
+; into one bounded discriminating inquiry over their differences. The inquiry
+; is a new Soul-owned movement possibility; every provider proposal remains
+; unresolved until the inquiry returns contact and consequence.
+(= (C3SemanticInquirySurface $participant-relations)
+   (let* (($questions (C3SemanticQuestions $participant-relations))
+          ($claims (C3ModelClaims $participant-relations)))
+     (if (and (== (size-atom $questions) 1)
+           (and (> (size-atom $claims) 1) (< (size-atom $claims) 4)))
+       (let $question (index-atom $questions 0)
+         (if (C3ModelClaimsBoundToQuestionAt $claims $question 0)
+           (c3-semantic-inquiry-surface-v1
+             (index-atom $question 1)
+             (index-atom $question 4)
+             (selected-fact9-expressions (C3QuestionFactIds $question))
+             (selected-flourishings
+               (C3QuestionFlourishingValues $question))
+             (candidate-contrasts (C3ModelInquiryEntriesAt $claims 0))
+             joined-without-provider-selection
+             native-contact-and-counterfactual-discrimination-required)
+           (c3-semantic-inquiry-surface-unavailable
+             candidate-not-bound-to-native-question)))
+       (c3-semantic-inquiry-surface-unavailable
+         missing-or-ambiguous-question-or-candidates))))
+
+(= (C3SemanticInquiryPossibilities $cut $participant-relations)
+   (let $surface (C3SemanticInquirySurface $participant-relations)
+     (if (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+       ((possible-movement c3-semantic-discrimination-inquiry inquiry
+          (CPNativeRequirementRelations $cut)
+          (CPNativeRequirementDistinctions $cut)
+          (CPNativeRequirementInterfaces $cut)
+          (index-atom (index-atom $surface 4) 1)
+          (consequence-route
+            (soul-formed-semantic-discrimination $surface)
+            non-certifying)
+          l2425-supported))
+       ())))
+
+(= (C3SemanticInquirySurfaceFromMovement $movement)
+   (if (and (CPShape $movement movement-formed 7)
+         (and (== (index-atom $movement 1) inquiry)
+              (== (index-atom $movement 2)
+                c3-semantic-discrimination-inquiry)))
+     (let* (($answerability (index-atom $movement 5))
+            ($o-star (if (CPShape $answerability answerability 2)
+              (index-atom $answerability 1) ()))
+            ($route (if (CPShape $o-star o-star 2)
+              (index-atom $o-star 1) ()))
+            ($inquiry (if (CPShape $route consequence-route 3)
+              (index-atom $route 1) ()))
+            ($surface (if
+              (CPShape $inquiry soul-formed-semantic-discrimination 2)
+              (index-atom $inquiry 1) ())))
+       (if (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+                (== (index-atom $route 2) non-certifying))
+         $surface
+         (c3-semantic-inquiry-surface-unavailable
+           malformed-or-certifying-movement-route)))
+     (c3-semantic-inquiry-surface-unavailable
+       movement-is-not-semantic-discrimination-inquiry)))
+
+(= (C3SemanticCandidateIdsAt $entries $i)
+   (if (< $i (size-atom $entries))
+     (let $entry (index-atom $entries $i)
+       (if (CPShape $entry c3-semantic-discrimination-entry-v1 9)
+         (cons-atom (index-atom $entry 1)
+           (C3SemanticCandidateIdsAt $entries (+ $i 1)))
+         (C3SemanticCandidateIdsAt $entries (+ $i 1))))
+     ()))
+
+(= (C3SemanticCandidateIds $surface)
+   (if (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+            (CPShape (index-atom $surface 5) candidate-contrasts 2))
+     (C3SemanticCandidateIdsAt
+       (index-atom (index-atom $surface 5) 1) 0)
+     ()))
+
+(= (C3SemanticEntryForIdAt $entries $id $i)
+   (if (< $i (size-atom $entries))
+     (let $entry (index-atom $entries $i)
+       (if (and (CPShape $entry c3-semantic-discrimination-entry-v1 9)
+                (== (index-atom $entry 1) $id))
+         $entry (C3SemanticEntryForIdAt $entries $id (+ $i 1))))
+     (c3-semantic-discrimination-entry-unavailable $id)))
+
+(= (C3SemanticEntryForId $surface $id)
+   (if (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+            (CPShape (index-atom $surface 5) candidate-contrasts 2))
+     (C3SemanticEntryForIdAt (index-atom (index-atom $surface 5) 1) $id 0)
+     (c3-semantic-discrimination-entry-unavailable $id)))
+
+(= (C3SemanticReturnedCandidateRowsAt $relations $candidate-ids $i)
+   (if (< $i (size-atom $relations))
+     (let $row (index-atom $relations $i)
+       (if (and (CPShape $row relation 5)
+             (and (CPHas (index-atom $row 1) $candidate-ids 0)
+              (and (== (index-atom $row 2) semantic-candidate-contact)
+                   (CPHas (index-atom $row 3)
+                     (support contradiction unresolved) 0))))
+         (cons-atom $row
+           (C3SemanticReturnedCandidateRowsAt $relations $candidate-ids
+             (+ $i 1)))
+         (C3SemanticReturnedCandidateRowsAt $relations $candidate-ids
+           (+ $i 1))))
+     ()))
+
+(= (C3SemanticReturnedCandidateRows $surface $consequence)
+   (if (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+            (CPConsequenceV2Valid $consequence))
+     (C3SemanticReturnedCandidateRowsAt
+       (index-atom (index-atom $consequence 5) 1)
+       (C3SemanticCandidateIds $surface) 0)
+     ()))
+
+(= (C3SemanticConsequenceResolution $movement $consequence)
+   (let* (($surface (C3SemanticInquirySurfaceFromMovement $movement))
+          ($rows (C3SemanticReturnedCandidateRows $surface $consequence)))
+     (if (== (size-atom $rows) 1)
+       (let* (($row (index-atom $rows 0))
+              ($entry (C3SemanticEntryForId $surface (index-atom $row 1))))
+         (if (CPShape $entry c3-semantic-discrimination-entry-v1 9)
+           (c3-semantic-consequence-resolution-v1
+             (index-atom $surface 1) $entry $row
+             (returned-consequence (index-atom $consequence 1))
+             exact-candidate-contact
+             provider-proposal-still-non-certifying)
+           (c3-semantic-consequence-resolution-unavailable
+             candidate-entry-not-found)))
+       (c3-semantic-consequence-resolution-unavailable
+         missing-or-ambiguous-candidate-contact))))
+
+(= (C3SemanticResolutionClaimStanding $resolution)
+   (let $standing (index-atom (index-atom $resolution 3) 3)
+     (if (== $standing support) support
+       (if (== $standing contradiction) contradiction unresolved))))
+
+(= (C3SemanticResolutionParticipantStanding $resolution)
+   (let $standing (C3SemanticResolutionClaimStanding $resolution)
+     (if (== $standing support) supported
+       (if (== $standing contradiction) contradicted candidate))))
+
+; Returned contact and native interpretation are distinct lineages. Together
+; they can establish a consequence-bearing semantic discrimination, but only
+; for the exact candidate named by the movement's retained inquiry surface.
+(= (C3SemanticConsequenceParticipants $scope $movement $consequence)
+   (let $resolution (C3SemanticConsequenceResolution $movement $consequence)
+     (if (CPShape $resolution c3-semantic-consequence-resolution-v1 7)
+       ((participant-contribution
+          (c3-native-semantic-consequence-participation
+            (index-atom $consequence 1))
+          native-authority $scope
+          (lineage provisional-26.6-26.9 semantic-consequence-interpretation)
+          (participant-relation-claim c3-semantic-discrimination-result
+            (C3SemanticResolutionClaimStanding $resolution)
+            (c3-native-semantic-consequence-basis-v1 $resolution
+              candidate-difference-preserved
+              no-provider-self-certification))
+          (C3SemanticResolutionParticipantStanding $resolution)
+          no-contact-no-movement-authority)
+        (participant-contribution
+          (c3-returned-semantic-consequence-participation
+            (index-atom $consequence 1))
+          returned-contact $scope
+          (lineage returned-consequence (index-atom $consequence 1))
+          (participant-relation-claim c3-semantic-discrimination-result
+            (C3SemanticResolutionClaimStanding $resolution)
+            (c3-returned-semantic-consequence-evidence-v1 $resolution
+              (index-atom $consequence 12)))
+          (C3SemanticResolutionParticipantStanding $resolution)
+          no-contact-no-movement-authority))
+       ())))
+
+(= (C3SemanticParticipantForSurface $participant $surface)
+   (let* (($candidate-ids (C3SemanticCandidateIds $surface))
+          ($question-ref (index-atom $surface 1))
+          ($question-id (if (CPShape $question-ref question-reference 3)
+            (index-atom $question-ref 1) no-question-id))
+          ($id (if (CPShape $participant participant-contribution 8)
+            (index-atom $participant 1) malformed-participant))
+          ($source (if (CPShape $participant participant-contribution 8)
+            (index-atom $participant 2) malformed-source)))
+     (or (and (== $source model) (CPHas $id $candidate-ids 0))
+       (== $id (c3-native-semantic-question-participation $question-id)))))
+
+(= (C3ParticipantsWithoutSemanticSurfaceAt $participants $surface $i)
+   (if (< $i (size-atom $participants))
+     (let $participant (index-atom $participants $i)
+       (if (C3SemanticParticipantForSurface $participant $surface)
+         (C3ParticipantsWithoutSemanticSurfaceAt $participants $surface
+           (+ $i 1))
+         (cons-atom $participant
+           (C3ParticipantsWithoutSemanticSurfaceAt $participants $surface
+             (+ $i 1)))))
+     ()))
+
+; A successfully contacted semantic inquiry retires only its exact unresolved
+; proposal set from the active cut. The participants remain in append-only
+; model history; their consequence-bearing resolution replaces them in the
+; next live organization. Missing or ambiguous contact retires nothing.
+(= (C3ParticipantsAfterSemanticConsequence $participants $movement
+      $consequence)
+   (let* (($surface (C3SemanticInquirySurfaceFromMovement $movement))
+          ($resolution (C3SemanticConsequenceResolution $movement
+            $consequence)))
+     (if (and (CPShape $surface c3-semantic-inquiry-surface-v1 8)
+              (CPShape $resolution c3-semantic-consequence-resolution-v1 7))
+       (C3ParticipantsWithoutSemanticSurfaceAt $participants $surface 0)
+       $participants)))
 
 (= (C3ModelPossibilitiesAt $claims $cut $i)
    (if (< $i (size-atom $claims))
