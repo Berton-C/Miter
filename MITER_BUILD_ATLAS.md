@@ -1371,14 +1371,30 @@ Already carried:
   without inventing transfer. Attempting to parallelize Relatedness and
   Precision inside each joined R/A/P read preserved exact semantics but was
   slower (about 33.1 versus 32.6 seconds), so that machinery was not admitted.
+- Stage profiling of the resulting 26-event organization showed that exact
+  history validation required about 1.36 seconds while active movement
+  re-formation required about 34.3 seconds. Fact9/flourishing formation,
+  participant weaving, generation, and all primary construction together took
+  less than 0.2 seconds. Complete reading construction took about 17.9 seconds,
+  followed by about 16.1 seconds spent re-running the same theorem-bearing
+  reading constructors solely to validate their just-created outputs. The
+  internal encounter path now carries those native outputs through an exact
+  reading-family boundary that verifies cardinality, primary linkage, R/A/P
+  standing shape, and standing consistency once. The strict full validator for
+  standalone or externally supplied readings remains unchanged, while restore
+  still requires exact equality with the newly re-formed movement. Exact
+  active re-formation fell to about 19.9 seconds. A formed undertaking, formed
+  inquiry, and two-way plural-live historical organization all re-formed
+  exactly; forged standing and primary linkage were rejected, and cardinality
+  mismatch remained unresolved. Concurrently scheduling the unchanged full
+  validators produced no wall-time gain and was not admitted.
 
 Next movement:
 
-1. reduce repeated proof-rich re-formation and full-history validation through
-   native compact carriers, stable references, and incremental integrity
-   witnesses. Preserve exact append-only history, complete M24–M26.3
-   organization, falsifier strength, one-runtime integrity, and restart
-   fidelity; latency relief may not be purchased by deleting causal
+1. reduce the remaining repeated work inside complete R/A/P reading
+   construction through exact same-reduction carriers or incremental integrity
+   witnesses. Preserve every M24–M26.3 precursor, bridge, relation, and
+   falsifier; latency relief may not be purchased by deleting causal
    participation or substituting cached verdicts;
 2. use the newly earned held-out developmental record in a later contact whose
    material organization has partial but non-identical overlap. Require native

@@ -3065,6 +3065,70 @@
            $out)))
      (CPReverseInto $out 0 ())))
 
+; M25ConstitutiveEncounter constructs its primaries and complete readings in
+; the same reduction immediately before movement formation.  Reapplying every
+; expensive semantic constructor to those just-created readings would compute
+; the same theorem-bearing objects twice.  This internal family carrier checks
+; exact cardinality, primary linkage, R/A/P standing shape, and standing
+; consistency.  It grants no authority to externally supplied readings: the
+; full M25AdmissibleMovementReadingValid boundary remains unchanged for those,
+; while restore still requires equality with this newly constructed movement.
+(= (M25NativeReadingEntryValid $reading $primary)
+   (if (CPShape $reading m25-movement-reading-v3 9)
+     (let* (($rap (index-atom $reading 2))
+            ($standing (index-atom $reading 8)))
+       (and (== (index-atom $reading 1) $primary)
+         (and (M25PrimaryMovementValid $primary)
+          (and (CPShape $rap rap-read-v2 6)
+           (and (CPShape (index-atom $rap 3) rap-standing 2)
+            (and (CPHas (index-atom (index-atom $rap 3) 1)
+                   (admissible unresolved) 0)
+                 (== $standing (movement-reading-standing
+                   (index-atom (index-atom $rap 3) 1)))))))))
+     false))
+
+(= (M25NativeReadingFamilyAt $readings $primaries $i $out)
+   (if (< $i (size-atom $readings))
+     (let* (($reading (index-atom $readings $i))
+            ($primary (index-atom $primaries $i)))
+       (if (M25NativeReadingEntryValid $reading $primary)
+         (M25NativeReadingFamilyAt $readings $primaries (+ $i 1)
+           (cons-atom (if (== (index-atom (index-atom $reading 8) 1)
+                              admissible)
+             (native-admissible $reading)
+             (native-unresolved $reading)) $out))
+         (m25-native-reading-family-unresolved malformed-native-reading)))
+     (m25-native-reading-family-v1 (CPReverseInto $out 0 ()))))
+
+(= (M25NativeAdmissibleAt $entries $i $out)
+   (if (< $i (size-atom $entries))
+     (let $entry (index-atom $entries $i)
+       (if (CPShape $entry native-admissible 2)
+         (M25NativeAdmissibleAt $entries (+ $i 1)
+           (cons-atom (index-atom $entry 1) $out))
+         (M25NativeAdmissibleAt $entries (+ $i 1) $out)))
+     (CPReverseInto $out 0 ())))
+
+(= (M25ConstructMovementFromNativeReadings $readings $primaries)
+   (if (== (size-atom $readings) (size-atom $primaries))
+     (let $family (M25NativeReadingFamilyAt $readings $primaries 0 ())
+       (if (CPShape $family m25-native-reading-family-v1 2)
+         (let $admissible (M25NativeAdmissibleAt
+               (index-atom $family 1) 0 ())
+           (if (== (size-atom $admissible) 0)
+             (movement-unresolved m25-no-admissible-primary
+               (retained-alternatives-v3 $readings no-continuation-basis))
+             (if (== (size-atom $admissible) 1)
+               (M25MovementFromReading (index-atom $admissible 0) $readings)
+               (movement-plural-live m25-multiple-admissible-primaries
+                 (m25-primary-alternatives $admissible)
+                 (retained-alternatives-v3 $readings
+                   no-single-continuation-basis)))))
+         (movement-unresolved malformed-native-reading-family
+           (retained-alternatives-v3 $readings no-continuation-basis))))
+     (movement-unresolved mismatched-native-reading-family
+       (retained-alternatives-v3 $readings no-continuation-basis))))
+
 (= (M25MovementFromReading $reading $all)
    (let* (($primary (index-atom $reading 1))
           ($possibility (index-atom $primary 9))
@@ -3126,8 +3190,11 @@
             $developmental))
           ($readings (miter_petta_parallel_m25_readings $primaries
             $revised-cut $developmental))
-          ($movement (M25ConstructMovement $readings $revised-cut
-            $developmental)))
+          ; These are the exact outputs of the native constructors immediately
+          ; above. Movement formation checks their joined family once rather
+          ; than re-running the complete reading computation a second time.
+          ($movement (M25ConstructMovementFromNativeReadings $readings
+            $primaries)))
      (constitutive-encounter $revised-cut $facts $flourishing
        (m25-generated-organization-v1 $bridge $primaries $readings)
        $movement $participants)))

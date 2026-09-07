@@ -60,7 +60,7 @@
     },
     {
       "path": "src/authority_inheritance.metta",
-      "sha256": "56ad25ee30a3f95b4c6a15b1365e38935b1b95a458e4f739f5b45d7a185c108d"
+      "sha256": "2c271fe402dd35b8e35cf11d9392ffe07236319ebc03141c9fec29ed416038aa"
     },
     {
       "path": "src/m24_completion.metta",
