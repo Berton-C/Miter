@@ -48,9 +48,7 @@ as_lkg_relative_paths([
   'effect_membranes/model.pl',
   'effect_membranes/chroma.pl',
   'effect_membranes/mattermost.pl',
-  'config/constitutive-projection.json','config/miter.json','config/continuity.json',
-  'config/models.json','config/model-grants.json','config/memory.json',
-  'config/mattermost.json'
+  'config/constitutive-projection.json','config/miter.json','config/continuity.json'
 ]).
 
 as_write_lkg(Root, LkgHash) :-

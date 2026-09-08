@@ -25,20 +25,23 @@ trajectory storage, stable scope boundaries, writable per-scope Continuity of
 Mind capsules, exact checkpoint/capsule restoration, scoped live Chroma
 projection/retrieval, general Soul-formed semantic participation, native
 VoiceRNA certification, pending-before-send Mattermost effect preparation,
-and start/status/stop/panic operations.
+consequence-sensitive multi-turn undertaking continuity, and supported
+install/start/status/stop/panic operations.
 
 It is **not yet the usable Miter alpha**. Live authorized Mattermost delivery,
-sustained multi-turn undertakings, complete multi-user isolation, host-service
-recovery/packaging, earned self-extension, hot upgrade, and rollback remain to
-be integrated into this same runtime. [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md)
+evaluation packaging, earned self-extension, hot upgrade, and rollback remain
+to be integrated into this same runtime. [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md)
 is the single operations map for that additive work.
 
 The current C4 cut can resolve the configured local Mattermost group and its
 authorized principals, admit new versioned contacts into the one reactor,
 form general semantic readings and a VoiceRNA-certified response candidate,
-and restore the resulting organization after restart. It deliberately cannot
-emit a Mattermost response yet; outbound remains disabled pending the active
-evaluation disclosure/grant boundary and a live no-duplicate restart trial.
+sustain a verified returned-contact undertaking through later turns, isolate
+principal/audience/project scope, remain cognitively live under model or
+surface failure, and restore the resulting organization after restart. It
+deliberately cannot emit a Mattermost response yet; outbound remains disabled
+pending the active evaluation disclosure/grant boundary and a live
+no-duplicate restart trial.
 
 Every native checkpoint now writes immutable, content-addressed continuity
 capsules for each exact principal/audience/project scope. A capsule carries the
@@ -91,36 +94,36 @@ Point Miter at that pinned PeTTa checkout without copying it into this repo:
 export MITER_PETTA_MAIN=/absolute/path/to/PeTTa/src/main.pl
 ```
 
-## Operate the recovered baseline
+## Install and operate
 
 Use an explicit runtime directory outside this repository. Do not use
 `~/.miter`.
 
 ```sh
-bin/miter bootstrap --runtime-root /absolute/private/runtime/path
-bin/miter start     --runtime-root /absolute/private/runtime/path
-bin/miter status    --runtime-root /absolute/private/runtime/path
-bin/miter stop      --runtime-root /absolute/private/runtime/path
-bin/miter panic     --runtime-root /absolute/private/runtime/path
+bin/miter install --runtime-root /absolute/private/runtime/path
+bin/miter start   --runtime-root /absolute/private/runtime/path
+bin/miter status  --runtime-root /absolute/private/runtime/path
+bin/miter stop    --runtime-root /absolute/private/runtime/path
+bin/miter panic   --runtime-root /absolute/private/runtime/path
 ```
 
-`config/miter.json` is the human-readable mechanical runtime configuration.
-`config/models.json` is the human-editable model registry; it contains only
-resource and Keychain references. Every remote call additionally requires an
-exact, time-bounded runtime-local grant derived from `config/model-grants.json`,
-which is inactive by default. `config/continuity.json` contains only legacy
-read-only import bindings and is intentionally unbound; native writable
-continuity is intrinsic to every checkpoint. These files store references and
-scope bindings, never secrets. Runtime bytes, memories, credentials, model
-files, Chroma data, logs, and evidence stay outside Git.
+`config/miter.json` is the only human-edited repository configuration. It
+contains runtime timing, Mattermost names and Keychain reference, semantic
+memory endpoints, model resources and preference, and an inactive initial
+grant set. It never contains a secret or private stable identifier. Install
+validates that file and materializes narrow private runtime views for the
+individual membranes. Every remote call still requires an exact,
+time-bounded runtime-local grant, and outbound Mattermost remains disabled by
+default. `config/continuity.json` and `config/constitutive-projection.json` are
+internal authority projections, not operator settings.
 
-`config/memory.json` selects the loopback Chroma collection and embedding
-endpoint. It contains no memory content or credential. If either local service
-is unavailable, exact native continuity remains authoritative and semantic
-recall reports a degraded/unavailable standing rather than fabricating memory.
+If Chroma or the embedding service is unavailable, exact native continuity
+remains authoritative and semantic recall reports a degraded/unavailable
+standing rather than fabricating memory. Runtime bytes, memories,
+credentials, model files, Chroma data, logs, and evidence stay outside Git.
 
-Bootstrap also copies the exact verified source closure into the private
-runtime root. Starts and restarts execute that frozen last-known-good closure,
+Install copies the exact verified source closure into the private runtime
+root. Starts and restarts execute that frozen last-known-good closure,
 not a possibly changing repository checkout. During a long native reduction,
 status may truthfully report `processing-unconfirmed` when the host denies a
 process probe; an ordinary stop then reports `stop-pending` until the current
@@ -136,7 +139,8 @@ does not operate another cognitive loop.
 - `constitution/`: immutable native projections and their integrity manifest.
 - `src/`: PeTTa/MeTTa cognition and the single recurring runtime.
 - `effect_membranes/`: non-cognitive Prolog/C mechanics.
-- `config/`: public-safe human-editable configuration.
+- `config/miter.json`: the one public-safe human-edited configuration;
+  neighboring files are internal authority projections.
 - `bin/miter`: the only supported operator entry.
 
 ## License

@@ -1,10 +1,160 @@
 {
   "schema": "miter-assistant-config-v1",
+  "human_editable": true,
   "idle_base_seconds": 0.05,
   "idle_cap_seconds": 0.4,
   "max_input_batch": 8,
   "max_input_bytes": 1048576,
   "external_effects": "none",
   "network_access": "explicit-model-grant-only",
-  "runtime_root": "explicit-required"
+  "runtime_root": "explicit-required",
+  "mattermost": {
+    "schema": "miter-mattermost-surface-v1",
+    "human_editable": true,
+    "enabled": true,
+    "origin": "http://127.0.0.1:8065",
+    "origin_policy": "loopback-only",
+    "team_slug": "clarityclaw",
+    "bot_username": "miter",
+    "authorized_humans": ["berton_c", "haley"],
+    "required_group_members": ["berton_c", "haley", "miter"],
+    "scope": {
+      "audience": "berton-haley-shared-local",
+      "project": "miter-evaluation-v1"
+    },
+    "credential_reference": {
+      "source": "macos-keychain",
+      "account": "bcb",
+      "service": "ai.bgi.miter.mattermost"
+    },
+    "inbound": {
+      "new_events_only": true,
+      "history_backfill": false,
+      "bot_posts_are_contact": false,
+      "max_event_bytes": 32768,
+      "poll_seconds": 2
+    },
+    "outbound": {
+      "enabled": false,
+      "certificate": "VoiceRNA-required",
+      "destination": "resolved-exact-group-only",
+      "unknown_outcome": "hold-and-reconcile-never-blind-resend"
+    },
+    "operator_notes": [
+      "Stable IDs remain in the private runtime and are revalidated before cognition.",
+      "Outbound requires VoiceRNA plus a separately active evaluation grant."
+    ]
+  },
+  "memory": {
+    "schema": "miter-semantic-memory-config-v1",
+    "human_editable": true,
+    "enabled": true,
+    "chroma": {
+      "origin": "http://127.0.0.1:8001",
+      "origin_policy": "loopback-only",
+      "tenant": "default_tenant",
+      "database": "default_database",
+      "collection": "miter-cleanroom-continuity-v1",
+      "distance": "cosine"
+    },
+    "embedding": {
+      "endpoint": "http://127.0.0.1:1234/v1/embeddings",
+      "endpoint_policy": "loopback-only",
+      "model": "text-embedding-nomic-embed-text-v1.5",
+      "dimension": 768
+    },
+    "query": {"max_results": 4, "max_body_characters": 8000},
+    "projection": {
+      "source": "native-continuity-capsules-only",
+      "authority": "rebuildable-projection-never-continuity-authority",
+      "include": ["exact-human-contact", "certified-delivered-expression"]
+    },
+    "operator_notes": [
+      "Native continuity is authoritative; Chroma is a rebuildable scoped index.",
+      "Distance and result order never select or certify movement."
+    ]
+  },
+  "models": {
+    "schema": "miter-model-resource-registry-v1",
+    "human_editable": true,
+    "selection": {
+      "mode": "human-direction-or-native-relational",
+      "operator_preference": "openrouter-glm53",
+      "preference_standing": "human-preferred-default-not-cognitive-authority",
+      "authorized_directions": [
+        "openrouter-glm53",
+        "qwen-local",
+        "nemotron-local",
+        "soul-choice"
+      ],
+      "direction_scopes": ["one-call", "conversation", "undertaking", "until-time"],
+      "soul_choice": "native-relational-comparison-among-authorized-resources",
+      "selected_model_output_authority": "none",
+      "fallback_policy": "explicit-native-comparison-only",
+      "silent_model_substitution": false
+    },
+    "resources": [
+      {
+        "id": "openrouter-glm53",
+        "kind": "remote",
+        "enabled": true,
+        "adapter": "openrouter-chat-completions",
+        "model": "z-ai/glm-5.3",
+        "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+        "roles": ["semantic-reading", "language-rendering"],
+        "reasoning_effort": "high",
+        "limits": {
+          "max_output_tokens": 2048,
+          "deadline_seconds": 120,
+          "capture_bytes": 262144
+        },
+        "provider": {
+          "zdr": true,
+          "data_collection": "deny",
+          "require_parameters": true,
+          "allow_fallbacks": true
+        },
+        "credential_reference": {
+          "source": "macos-keychain",
+          "account": "bcb",
+          "service": "ai.bgi.miter.openrouter"
+        }
+      },
+      {
+        "id": "qwen-local",
+        "kind": "local",
+        "enabled": true,
+        "adapter": "lm-studio",
+        "model": "qwen/qwen3.8-27b",
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "roles": ["semantic-reading"],
+        "credential_reference": null
+      },
+      {
+        "id": "nemotron-local",
+        "kind": "local",
+        "enabled": true,
+        "adapter": "lm-studio",
+        "model": "nemotron-3.5-30b-a3b-antislop-ftpo-i1",
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "roles": ["semantic-reading"],
+        "credential_reference": null
+      }
+    ],
+    "operator_notes": [
+      "Store secrets outside this file; credential_reference is only a lookup location.",
+      "Human direction or Soul choice selects a resource, never meaning, movement, memory admission, or effects.",
+      "Every remote call additionally requires a current runtime-local grant."
+    ]
+  },
+  "initial_model_grants": {
+    "schema": "miter-model-grants-v1",
+    "standing": "inactive-no-live-model-authority",
+    "grants": []
+  },
+  "operator_notes": [
+    "This is the only human-edited repository configuration file.",
+    "It contains names and Keychain references, never secrets or private stable IDs.",
+    "Installation materializes validated private runtime views from these settings."
+  ]
 }

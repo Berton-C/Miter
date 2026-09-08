@@ -161,7 +161,7 @@ consumer is absent. No status is upgraded by assertion.
 | Capability | Standing | Current site | Exact gap |
 |---|---:|---|---|
 | One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General scoped contact, memory participation, model participation, VoiceRNA, effect preparation, consequence, regeneration, and endogenous opportunity share this one continuation; no second cognitive loop is present. |
-| Start/status/stop/panic | P | `bin/miter`, operator membrane, frozen runtime LKG | In-flight native formation is reported as `processing-unconfirmed` rather than dead when the host denies process probes; stop remains available across source mismatch and becomes `stop-pending` until the current cut reaches its safe boundary. Frozen-source restart, panic, and bounded three-crash/60-second containment are embodied; host service registration remains for final packaging. |
+| Install/start/status/stop/panic | P | `bin/miter`, operator membrane, frozen runtime LKG | One human-edited configuration now installs validated private membrane views and a frozen source closure; in-flight native formation is reported as `processing-unconfirmed` rather than dead when the host denies process probes. Stop remains available across source mismatch and becomes `stop-pending` until the current cut reaches its safe boundary. Frozen-source restart, panic, and bounded three-crash/60-second containment are embodied; host service registration remains for final packaging. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | Mattermost ingress is active; certified outbound remains deliberately disabled pending the evaluation grant and live no-replay trial. |
 | Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
@@ -371,6 +371,20 @@ restored to waiting with no replay and byte-identical checkpoint SHA-256
 `59301e866207d17c0e0aa8c39176d3e2353dc3b207d3155e9aa30b0004371c3e`.
 C4 remains open for the explicitly authorized live pending-before-send /
 no-replay trial and the SNET evaluation package.
+
+The first evaluation-packaging cut has replaced four neighboring operator
+settings files with one public-safe, human-edited `config/miter.json`. Runtime
+timing, Mattermost names and Keychain reference, Chroma/embedding endpoints,
+model resources and human preference, and inactive initial model grants are
+edited there. `bin/miter install` validates the one document and materializes
+narrow private runtime views so each membrane still sees only its mechanical
+configuration; no secret or stable remote identifier enters Git. The legacy
+continuity binding and constitutive projection remain internal authority data,
+not operator settings. A fresh install returned verified LKG SHA-256
+`2adffa4dd2ae8397ed6583f430ba1cf94f8aceabd51a431f11e3b0760b5630c1`,
+reported `already-installed` on exact repetition, and passed start/status/stop
+with the live surface disabled. Host registration and a fresh-clone evaluator
+walkthrough remain before this packaging requirement is complete.
 
 ## 7. The only build cycle
 
@@ -1586,10 +1600,10 @@ Next movement:
 1. complete the admitted Mattermost carrier with an explicitly authorized
    live pending-before-send/no-replay delivery trial; do not reuse the expired
    canary or bypass the unresolved Haley disclosure boundary;
-2. package the resulting always-on organism for SNET evaluation with one
-   human-editable configuration surface and supported install/start/status/
-   stop/panic operations, bounded crash-loop containment, and frozen-LKG
-   recovery;
+2. finish the SNET evaluation package by adding bounded host service
+   registration and verifying the one-configuration install/start/status/
+   stop/panic path from a fresh clone; the one editable configuration surface,
+   bounded crash-loop containment, and frozen-LKG recovery are embodied;
 3. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.

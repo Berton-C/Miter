@@ -24,7 +24,13 @@ as_dispatch([Command0|Args], Reply, Code) :-
     miter_store_nonempty_atom(Command0, Command),
     as_command(Command, Args, Reply, Code), !.
 as_dispatch(_, _{schema:"miter-assistant-operator-result-v1",status:"usage-error",
-  usage:"miter <bootstrap|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--event FILE|--output FILE]"}, 64).
+  usage:"miter <install|bootstrap|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--event FILE|--output FILE]"}, 64).
+
+as_command(install, Args, Reply, Code) :-
+    !,
+    as_exact_options(Args, ['--runtime-root']),
+    as_required_option(Args, '--runtime-root', Root0),
+    as_runtime_path(Root0, Root), as_install(Root, Reply), as_reply_code(Reply, Code).
 
 as_command(bootstrap, Args, Reply, Code) :-
     !,
@@ -68,7 +74,7 @@ as_command('evidence-bundle', Args, Reply, Code) :-
 as_command(Command, _, _, _) :- throw(error(unknown_operator_command(Command),_)).
 
 as_reply_code(Reply, 0) :- get_dict(status, Reply, Status),
-    memberchk(Status, [bootstrapped,'already-bootstrapped',started,starting,running,stopped,
+    memberchk(Status, [installed,'already-installed',bootstrapped,'already-bootstrapped',started,starting,running,stopped,
       panicked,'stop-pending','panic-pending','processing-unconfirmed',
       'liveness-unconfirmed','existing-process-unconfirmed',queued,duplicate,
       'evidence-stored']), !.
@@ -153,6 +159,13 @@ as_bootstrap(Root, Reply) :-
         ; as_directory_empty(Root), as_bootstrap_new(Root, Reply) )
     ; make_directory_path(Root), chmod(Root,0o700), as_bootstrap_new(Root, Reply) ).
 
+as_install(Root, Reply) :-
+    as_bootstrap(Root,Bootstrap),
+    ( Bootstrap.status==bootstrapped -> put_dict(status,Bootstrap,installed,Reply)
+    ; Bootstrap.status=='already-bootstrapped' ->
+        put_dict(status,Bootstrap,'already-installed',Reply)
+    ; Reply=Bootstrap ).
+
 as_existing_runtime(Root) :-
     catch((as_root(Root,_), as_verify_lkg(Root, verified)), _, fail).
 
@@ -166,27 +179,20 @@ as_bootstrap_new(Root, Reply) :-
     as_compile_extension(Root),
     as_operator_repo_root(Repo),
     directory_file_path(Repo,'config/miter.json',ConfigSource),
-    miter_store_read_json(ConfigSource,Config), as_validate_config(Config),
+    miter_store_read_json(ConfigSource,HumanConfig),
+    as_human_config_sections(HumanConfig,Config,Mattermost,Memory,Models,Grants),
     directory_file_path(Root,'config.json',ConfigTarget),
     miter_store_write_json_atomic(ConfigTarget,Config),
     directory_file_path(Repo,'config/continuity.json',BindingsSource),
     miter_store_read_json(BindingsSource,Bindings),
     directory_file_path(Root,'scope-bindings.json',BindingsTarget),
     miter_store_write_json_atomic(BindingsTarget,Bindings),
-    directory_file_path(Repo,'config/models.json',ModelsSource),
-    miter_store_read_json(ModelsSource,Models),
     directory_file_path(Root,'model-resources.json',ModelsTarget),
     miter_store_write_json_atomic(ModelsTarget,Models),
-    directory_file_path(Repo,'config/model-grants.json',GrantsSource),
-    miter_store_read_json(GrantsSource,Grants),
     directory_file_path(Root,'model-grants.json',GrantsTarget),
     miter_store_write_json_atomic(GrantsTarget,Grants),
-    directory_file_path(Repo,'config/memory.json',MemorySource),
-    miter_store_read_json(MemorySource,Memory),
     directory_file_path(Root,'semantic-memory.json',MemoryTarget),
     miter_store_write_json_atomic(MemoryTarget,Memory),
-    directory_file_path(Repo,'config/mattermost.json',MattermostSource),
-    miter_store_read_json(MattermostSource,Mattermost),
     directory_file_path(Root,'mattermost.json',MattermostTarget),
     miter_store_write_json_atomic(MattermostTarget,Mattermost),
     as_dict_atom(Config,network_access,NetworkAccess),
@@ -241,6 +247,33 @@ as_validate_config(Config) :-
     as_dict_atom(Config,external_effects,none),
     as_dict_atom(Config,network_access,'explicit-model-grant-only'),
     as_dict_atom(Config,runtime_root,'explicit-required').
+
+% Humans edit one repository surface. Installation validates and materializes
+% narrow private runtime views so individual membranes need no authority over
+% the repository configuration or unrelated settings.
+as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants) :-
+    is_dict(Human),
+    as_mattermost_exact_keys(Human,
+      [external_effects,human_editable,idle_base_seconds,idle_cap_seconds,
+       initial_model_grants,mattermost,max_input_batch,max_input_bytes,memory,
+       models,network_access,operator_notes,runtime_root,schema]),
+    as_dict_atom(Human,schema,'miter-assistant-config-v1'),
+    Human.human_editable==true,
+    is_list(Human.operator_notes),maplist(string,Human.operator_notes),
+    Runtime=_{schema:Human.schema,idle_base_seconds:Human.idle_base_seconds,
+      idle_cap_seconds:Human.idle_cap_seconds,max_input_batch:Human.max_input_batch,
+      max_input_bytes:Human.max_input_bytes,external_effects:Human.external_effects,
+      network_access:Human.network_access,runtime_root:Human.runtime_root},
+    as_validate_config(Runtime),
+    Mattermost=Human.mattermost,is_dict(Mattermost),
+    as_dict_atom(Mattermost,schema,'miter-mattermost-surface-v1'),
+    Memory=Human.memory,is_dict(Memory),
+    as_dict_atom(Memory,schema,'miter-semantic-memory-config-v1'),
+    Models=Human.models,is_dict(Models),
+    as_dict_atom(Models,schema,'miter-model-resource-registry-v1'),
+    Grants=Human.initial_model_grants,is_dict(Grants),
+    as_dict_atom(Grants,schema,'miter-model-grants-v1'),
+    as_mattermost_secret_free(Human).
 
 as_compile_extension(Root) :-
     as_operator_repo_root(Repo),
