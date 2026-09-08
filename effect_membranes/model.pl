@@ -21,35 +21,59 @@ as_model(Root0, Question, Observation) :-
       as_model_unavailable(Question, Error, Observation0)),
     Observation=Observation0, !.
 
+% Give the native caller a content-free mechanical standing when a bounded
+% pre-transmission check fails.  These stages cannot interpret the question or
+% decide whether a model should participate; they only expose which already-
+% required carrier check did not hold.
+as_model_preflight(_Stage, Goal) :-
+    catch(call(Goal), _, fail), !.
+as_model_preflight(Stage, _) :-
+    throw(error(model_preflight_hold(Stage),_)).
+
 as_model_checked(Root0, Question, Observation) :-
-    as_root(Root0, Root),
-    ground(Question),
-    as_model_question_carrier(Question, QuestionRef, Scope, Instructions,
-      Purpose, ResourceId, MaxTokens, Deadline),
-    as_model_continuity_context_verified_if_present(Root,Question,Scope),
-    as_model_current_direction_authorizes(Root,Question,Scope,Purpose,
-      ResourceId,MaxTokens,Deadline),
-    as_model_question_sha256(Question, QuestionHash),
-    as_model_observation_path(Root, QuestionHash, ObservationPath),
+    as_model_preflight('runtime-root-invalid', as_root(Root0, Root)),
+    as_model_preflight('question-not-ground', ground(Question)),
+    as_model_preflight('question-carrier-invalid',
+      as_model_question_carrier(Question, QuestionRef, Scope, Instructions,
+        Purpose, ResourceId, MaxTokens, Deadline)),
+    as_model_preflight('private-continuity-verification-held',
+      as_model_continuity_context_verified_if_present(Root,Question,Scope)),
+    as_model_preflight('resource-direction-unavailable',
+      as_model_current_direction_authorizes(Root,Question,Scope,Purpose,
+        ResourceId,MaxTokens,Deadline)),
+    as_model_preflight('question-identity-unavailable',
+      as_model_question_sha256(Question, QuestionHash)),
+    as_model_preflight('observation-path-unavailable',
+      as_model_observation_path(Root, QuestionHash, ObservationPath)),
     ( exists_file(ObservationPath) ->
-        as_model_read_observation(ObservationPath, Observation)
-    ; as_model_claim_path(Root, QuestionHash, ClaimPath),
+        as_model_preflight('cached-observation-invalid',
+          as_model_read_observation(ObservationPath, Observation))
+    ; as_model_preflight('model-claim-path-unavailable',
+        as_model_claim_path(Root, QuestionHash, ClaimPath)),
       ( exists_directory(ClaimPath) ->
           as_model_unavailable(Question, uncertain_prior_transmission,
             Observation)
-      ; as_model_profile(Root, ResourceId, Profile),
-        as_model_grant(Root, Question, QuestionHash, Scope, Purpose, ResourceId,
-          MaxTokens, Deadline, Grant),
-        as_evaluation_model_available(Root,Scope,ResourceId),
-        as_model_claim(Root, QuestionHash, QuestionRef, Scope, ResourceId,
-          Purpose, Grant, ClaimPath),
-        as_model_request(Profile, Question, Instructions, MaxTokens, Body),
-        as_model_write_request(Root, QuestionHash, QuestionRef, Scope,
-          Purpose, ResourceId, Profile, Body),
-        as_model_credential(Root,Profile,Key),
+      ; as_model_preflight('resource-profile-unavailable',
+          as_model_profile(Root, ResourceId, Profile)),
+        as_model_preflight('scope-purpose-grant-unavailable',
+          as_model_grant(Root, Question, QuestionHash, Scope, Purpose,
+            ResourceId, MaxTokens, Deadline, Grant)),
+        as_model_preflight('evaluation-reach-unavailable',
+          as_evaluation_model_available(Root,Scope,ResourceId)),
+        as_model_preflight('model-spend-claim-held',
+          as_model_claim(Root, QuestionHash, QuestionRef, Scope, ResourceId,
+            Purpose, Grant, ClaimPath)),
+        as_model_preflight('request-schema-invalid',
+          as_model_request(Profile, Question, Instructions, MaxTokens, Body)),
+        as_model_preflight('request-persistence-held',
+          as_model_write_request(Root, QuestionHash, QuestionRef, Scope,
+            Purpose, ResourceId, Profile, Body)),
+        as_model_preflight('credential-unavailable',
+          as_model_credential(Root,Profile,Key)),
         as_model_execute(Root, QuestionHash, QuestionRef, Scope, Question,
           ResourceId, Profile, Body, Key, Deadline, Observation0),
-        as_model_write_observation(ObservationPath, Observation0),
+        as_model_preflight('observation-persistence-held',
+          as_model_write_observation(ObservationPath, Observation0)),
         Observation=Observation0
       )
     ).
@@ -1616,6 +1640,16 @@ as_model_question_resource(_,'unknown-model-resource').
 
 as_model_failure_reason(uncertain_prior_transmission,
     'uncertain-prior-transmission-no-replay') :- !.
+as_model_failure_reason(error(model_preflight_hold(Stage),_),Stage) :-
+    memberchk(Stage,['runtime-root-invalid','question-not-ground',
+      'question-carrier-invalid','private-continuity-verification-held',
+      'resource-direction-unavailable','question-identity-unavailable',
+      'observation-path-unavailable','cached-observation-invalid',
+      'model-claim-path-unavailable','resource-profile-unavailable',
+      'scope-purpose-grant-unavailable','evaluation-reach-unavailable',
+      'model-spend-claim-held','request-schema-invalid',
+      'request-persistence-held','credential-unavailable',
+      'observation-persistence-held']), !.
 as_model_failure_reason(error(model_transport_or_schema_hold(_,_,_,_,_),_),
     'transport-or-schema-held') :- !.
 as_model_failure_reason(error(model_provider_hold(Reason,_,_),_),Reason) :- !.

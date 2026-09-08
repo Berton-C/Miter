@@ -171,7 +171,7 @@ consumer is absent. No status is upgraded by assertion.
 | One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; independent returned contact has changed a model-assisted inquiry into durable native development and distinguishes transfer, differentiation, and unresolved standing across non-identical overlap. |
 | Exact project/relationship continuity | E | native checkpoint capsules + continuity adapters | Every live scope now writes exact relationship, undertaking, attention, developmental, next-movement, and raw-source-reference organization with indefinite retention; legacy external imports remain separately unbound. |
 | Chroma semantic participation | E | `chroma.pl`, `dialogue_participation.metta`, native continuity capsules | Every authoritative checkpoint projects exact eligible capsule material into an isolated loopback Chroma collection. A later exact-scope query verifies runtime, principal, audience, project, source capsule bytes, semantic hash, and body hash before admitting results as unresolved memory participants. Chroma rank is never authority; another principal receives no result. Material recalled content may reach the explicitly selected model only under the active disclosure grant; concrete security-risk content remains excluded. |
-| LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA candidate. GLM's strict-schema audit can contribute zero to four source/candidate-bound fidelity findings plus uncertainty; it is not asked for a pass/revise/hold verdict or a revision instruction. A material finding enters fresh native movement formation; a zero-finding contribution is bound at the expression joint to the exact unchanged proof and may not manufacture a new movement. Native MeTTa retains express/revise/hold possibilities and forms a disposition only after binding the exact candidate to the authority-complete movement proof, its existing one simultaneous R/A/P carrier, the live contact-relative Fact9 expression, and all nine interconnected flourishing expressions. The selected native disposition travels in the certificate; Prolog checks only its closed shape and proof identity. Native positive/revision/bypass/falsified-reuse checks pass; promotion through current live Mattermost, restart, and returned consequence remains open. |
+| LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA candidate. GLM's strict-schema audit can contribute zero to four source/candidate-bound fidelity findings plus uncertainty; it is not asked for a pass/revise/hold verdict or a revision instruction. A material finding enters fresh native movement formation; a zero-finding contribution is bound at the expression joint to the exact unchanged proof and may not manufacture a new movement. Native MeTTa retains express/revise/hold possibilities and forms a disposition only after binding the exact candidate to the authority-complete movement proof, its existing one simultaneous R/A/P carrier, the live contact-relative Fact9 expression, and all nine interconnected flourishing expressions. The selected native disposition travels in the certificate; Prolog checks only its closed shape and proof identity. Native positive/revision/bypass/falsified-reuse checks pass. A restored exact-memory diagnostic now carries four scope/capsule/hash-verified contacts through private-context verification, valid render/audit observations, and native `express-current-candidate`. Content-free stage standings distinguish semantic transport, VoiceRNA formation, native audit, and mechanical preflight holds without exporting payloads or assigning them cognitive authority. Promotion through the single-root live Mattermost runtime, restart, and returned consequence remains open. |
 | VAD language-cue participation | A | constitutional C-051--C-053 and Soul S-303/S-804/S-902; historical licensed-asset implementation outside clean room | The clean runtime preserves the non-diagnostic authority boundary but does not yet compute sentence/trajectory VAD cues or let them participate in VoiceRNA. Recover the bounded cue surface without its old uncalibrated thresholds, private lexicon, fixed presence lookup, or Python seam. The licensed asset and any derived collection remain outside public Git. |
 | Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Exact stable-ID scope, authenticated contact, certified outbound, pending-before-send, unique reconciliation, and restart/no-replay are embodied in the live service. Poll freshness is now distinct from human content identity, so a thread-metadata update cannot become a second contact while a genuine edit remains versioned. Returned-consequence participation, scope/failure trials, and sustained use remain open. |
 | Open growth environment | P | `capability_environment.metta`, mechanical environment observer, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path receives a source-qualified native participant stating the configured web/terminal/workspace field, actual process identity, genuine human-authority boundaries, and its current availability. The private credential membrane now supports installer-materialized mode-0600 runtime files without making a GUI Keychain a boot dependency; missing credentials hold only the affected surface. Typed execution, returned tool consequence, durable capability uptake, and completed service migration to `claritymiter` remain open. |
@@ -843,6 +843,38 @@ wait, transport failure, malformed semantic artifact, or effect-transmission
 failure. Its exact native standing and the supported runtime's idle/cycle cost
 remain open C4 proportionality evidence; no second stimulus is introduced
 until those causes are known.
+
+The bounded VoiceRNA diagnosis preserved that unresolved live observation
+without treating silence as a verdict. Current clean source reconstructed the
+same story-continuity surface against four exact, scope/capsule/hash-verified
+Chroma contacts. Private-context verification, the current GLM direction,
+semantic reformation, render binding, zero-finding audit, full native audit
+basis, and the native `express-current-candidate` disposition all held. This
+rules out a constitutive inability to recall or certify the available material;
+it does not retroactively invent the old process's missing stage evidence.
+
+The resulting observability repair is deliberately content-free. Every model
+pre-transmission prerequisite now names its exact mechanical hold class rather
+than collapsing root, question, continuity, resource, grant, reach, claim,
+schema, persistence, or credential failures into one generic standing. The
+recurring reactor records only a compact per-outcome stage standing after
+native reduction; it records no utterance, memory body, semantic reading,
+Soul choice, or effect payload. Voice review uses the same explicitly supplied
+model membrane for initial audit and the one permitted revision, removing a
+hidden hard-coded seam while the supported entry still supplies `as_model`.
+Neither repair interprets a question, forms a movement, or chooses expression.
+
+A fresh CLI-managed runtime carried one authenticated-shape contact through
+the complete supported cycle with evaluation reach active but no credential.
+It recorded exactly `semantic-reading-held / credential-unavailable`, one
+pre-transmission spend claim, zero provider transport, zero effect, one
+consumed input, and one cycle record. It checkpointed at active-pointer
+SHA-256 `aeabc444e6638d553658979cb282e6b42e0ce33cc2c6189a31d683c95ed89151`.
+Stop/start retained that hash, one claim, one consumed input, and one cycle
+record without replay. The exact prior live hold remains unknowable because
+release `0653831` emitted only the generic cycle standing; the next single-root
+live contact will carry the new stage witness and must not be inferred in
+advance.
 
 ## 7. The only build cycle
 
@@ -2225,6 +2257,14 @@ Already carried:
   activity; and severed expressed Soul autonomously regenerates without
   constitutional mutation. These are provisional 26.6/26.9 laboratory
   dynamics, not claims that those later formalizations are complete.
+- The first C4 VoiceRNA observability repair preserves cognition in native
+  MeTTa while making mechanical silence attributable. Four verified continuity
+  memories traversed semantic reformation, private-context verification,
+  render/audit binding, and native `express-current-candidate` in the current
+  source. A supported credential-absent trial then recorded the exact content-
+  free `semantic-reading-held / credential-unavailable` stage, checkpointed,
+  and cold-restored once without replay. The old live release's precise hold
+  remains unknown; no behavioral explanation was manufactured for it.
 
 Next movement:
 

@@ -1042,6 +1042,35 @@
             $voice-question $voice-observation $audit-observation)
           (== (index-atom $disposition 1) revise-candidate-once))))
 
+; A content-free failure carrier exposes which native VoiceRNA joint held.
+; It is evaluated only after both lawful dispositions have failed and cannot
+; change the disposition, admit a candidate, or grant an effect.
+(= (C4VoiceAuditNativeDiagnostic $formation $voice-question
+      $voice-observation $audit-question $audit-observation)
+   (let* (($participant (C4VoiceAuditParticipant $audit-question
+            $audit-observation))
+          ($basis (C4VoiceNativeAuditBasis $formation $voice-question
+            $voice-observation))
+          ($disposition (C4VoiceNativeDisposition $formation $voice-question
+            $voice-observation $audit-observation)))
+     (voice-audit-native-diagnostic-v1
+       (audit-observation-valid
+         (C4VoiceAuditObservationValid $audit-observation $audit-question))
+       (audit-participant-valid
+         (CPShape $participant participant-contribution 8))
+       (soul-formation-valid (C4VoiceAuditSoulFormationValid $formation))
+       (native-basis-formed
+         (CPShape $basis c4-native-voice-audit-basis-v1 6))
+       (native-basis-valid
+         (C4VoiceNativeAuditBasisValid $basis $formation $voice-question
+           $voice-observation))
+       (native-disposition-valid
+         (C4VoiceNativeDispositionValid $disposition $formation
+           $voice-question $voice-observation $audit-observation))
+       (native-disposition
+         (if (CPShape $disposition c4-native-voice-disposition-v1 6)
+           (index-atom $disposition 1) unavailable)))))
+
 (= (C4VoiceRevisionStandingValid $standing $voice-question)
    (let $revision-context (index-atom (index-atom $voice-question 8) 8)
      (if (== $standing initial-candidate-soul-formed-after-audit-participation)
@@ -1287,6 +1316,38 @@
                     voice-rendering-unavailable 3)))))
      (CPShape $outcome assistant-dialogue-model-unavailable-v1 3)))
 
+; Compact stage standing is a post-reduction witness for operators. It carries
+; no utterance, memory body, semantic reading, Soul choice, or effect payload.
+(= (C4VoiceReviewStageStanding $review)
+   (if (CPShape $review c4-voice-review-held-v1 2)
+     (voice-review-held (index-atom $review 1))
+     voice-review-standing-unavailable))
+
+(= (C4VoiceStageStanding $voice)
+   (if (CPShape $voice voice-rendering-v2 2)
+     (if (C4ReviewedVoiceValid (index-atom $voice 1))
+       voice-certified voice-reviewed-invalid)
+     (if (CPShape $voice voice-rendering-unavailable 3)
+       (let $review (index-atom $voice 2)
+         (if (CPShape $review c4-voice-review-held-v1 2)
+           (C4VoiceReviewStageStanding $review)
+           voice-rendering-held-nonreview-standing))
+       voice-rendering-standing-unavailable)))
+
+(= (C4DialogueStageStanding $outcome)
+   (if (CPShape $outcome assistant-dialogue-model-participation-v1 4)
+     (dialogue-stage-standing-v1 semantic-reading-incorporated
+       (C4VoiceStageStanding (index-atom $outcome 3)))
+     (if (CPShape $outcome assistant-dialogue-model-unavailable-v1 3)
+       (let $observation (index-atom $outcome 2)
+         (if (CPShape $observation c4-model-observation-unavailable-v1 6)
+           (dialogue-stage-standing-v1 semantic-reading-held
+             (index-atom $observation 4))
+           (dialogue-stage-standing-v1 semantic-reading-held
+             native-question-or-observation-unavailable)))
+       (dialogue-stage-standing-v1 model-participation-not-requested
+         no-voice-standing))))
+
 ; Re-form the same occurrence after semantic participants arrive without
 ; recomputing its already-established M24 and M26.0 authority organizations.
 ; The final M25/M25.5 construction is still fresh: every resulting possibility
@@ -1320,7 +1381,7 @@
 ; never used directly as a switch: native Soul formation must support either
 ; expression or one bounded revision. A second unresolved defect, failed
 ; native formation, or malformed/unavailable observation holds expression.
-(= (C4ReviewVoiceUsingV1 $root $review-context)
+(= (C4ReviewVoiceUsingV1 $root $review-context $model-writer)
    (if (CPShape $review-context c4-voice-review-context-v1 10)
      (let* (($contact (index-atom $review-context 1))
             ($prepared (index-atom $review-context 2))
@@ -1337,7 +1398,7 @@
             ($initial-audit-observation
               (if (CPShape $initial-audit-question
                     c4-voice-audit-question-v1 11)
-                (as_model $root $initial-audit-question)
+                ($model-writer $root $initial-audit-question)
                 (c4-model-observation-unavailable-v1
                   (question-reference (index-atom $contact 1) voice-audit)
                   (CPContactScope $contact)
@@ -1370,7 +1431,7 @@
                   ($revision-observation
                     (if (CPShape $revision-question
                           c4-voice-render-question-v1 11)
-                      (as_model $root $revision-question)
+                      ($model-writer $root $revision-question)
                       (c4-model-observation-unavailable-v1
                         (question-reference (index-atom $contact 1)
                           voice-rendering)
@@ -1384,7 +1445,7 @@
                   ($revision-audit-observation
                     (if (CPShape $revision-audit-question
                           c4-voice-audit-question-v1 11)
-                      (as_model $root $revision-audit-question)
+                      ($model-writer $root $revision-audit-question)
                       (c4-model-observation-unavailable-v1
                         (question-reference (index-atom $contact 1)
                           voice-audit)
@@ -1413,7 +1474,10 @@
                (c4-voice-review-held-v1
                  revised-candidate-not-supported-by-final-soul-formation)))
            (c4-voice-review-held-v1
-             initial-audit-did-not-form-native-expression-or-revision))))
+             (initial-audit-did-not-form-native-expression-or-revision
+               (C4VoiceAuditNativeDiagnostic $initial-soul-formation
+                 $initial-question $initial-observation
+                 $initial-audit-question $initial-audit-observation))))))
          (c4-voice-review-held-v1 initial-rendering-unavailable-or-malformed)))
      (c4-voice-review-held-v1 invalid-native-voice-review-context)))
 
@@ -1517,7 +1581,7 @@
                         (c4-voice-review-context-v1 $enriched-contact
                           $final-prepared $encounter $question $observation
                           $voice-direction $private-context $voice-question
-                          $voice-observation))))
+                          $voice-observation) $model-writer)))
                  (if (C4ReviewedVoiceValid $reviewed)
                    (let* (($reviewed-prepared
                             (C4ReviewedVoicePrepared $reviewed))

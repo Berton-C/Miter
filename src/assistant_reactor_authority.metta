@@ -1926,6 +1926,11 @@
      (and (AR3ModelOutcomeValid (index-atom $outcomes $i))
           (AR3ModelOutcomesValidAt $outcomes (+ $i 1))) true))
 
+(= (AR3ModelStageStandingsAt $outcomes $i)
+   (if (< $i (size-atom $outcomes))
+     (cons-atom (C4DialogueStageStanding (index-atom $outcomes $i))
+       (AR3ModelStageStandingsAt $outcomes (+ $i 1))) ()))
+
 (= (AssistantCycleStepV3 $root $inputs)
    (if (is-expr $inputs)
      (let $rows (AssistantProcessWithModelAt $root $inputs 0)
@@ -2070,7 +2075,10 @@
                                 ($checkpoint-writer $root $snapshot))
                               ($record ($recorder $root assistant-cycle-v3
                                 (cycle-standing contact-consequence-and-model
-                                  $idle $checkpoint))))
+                                  $idle $checkpoint
+                                  (model-stage-standings
+                                    (AR3ModelStageStandingsAt
+                                      $model-outcomes 0))))))
                          (if (== $checkpoint checkpointed)
                            (AssistantCycleWithV3 $root false $next $base $cap
                              $control-reader $input-reader $checkpoint-writer
