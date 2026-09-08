@@ -1,6 +1,47 @@
 {
   "schema": "miter-assistant-config-v1",
   "human_editable": true,
+  "deployment": {
+    "schema": "miter-installation-v1",
+    "human_editable": true,
+    "runtime_user": "claritymiter",
+    "runtime_root": "/Users/claritymiter/Library/Application Support/Miter/runtime",
+    "application_root": "/Library/Application Support/Miter/application",
+    "dependency_root": "/Library/Application Support/Miter/dependencies",
+    "services_root": "/Users/Shared/Miter/services",
+    "service_mode": "isolated-docker-compose",
+    "docker_project": "miter",
+    "credential_imports": [
+      {
+        "relative_path": "secrets/mattermost-token",
+        "source": "macos-keychain",
+        "account": "bcb",
+        "service": "ai.bgi.miter.mattermost"
+      },
+      {
+        "relative_path": "secrets/openrouter-api-key",
+        "source": "macos-keychain",
+        "account": "bcb",
+        "service": "ai.bgi.miter.openrouter"
+      }
+    ],
+    "petta": {
+      "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+      "archive_url": "https://github.com/trueagi-io/PeTTa/archive/ae66fa8e41dcd5539d614706bd4e5cfb34f9608d.tar.gz",
+      "archive_sha256": "de1e2474b902895f5373fc833ed45341f16e0d283ae957ccb323df42200ce397"
+    },
+    "images": {
+      "chroma": "docker.io/chromadb/chroma:1.5.9@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6",
+      "mattermost": "mattermost/mattermost-team-edition:11.7.7@sha256:3ecc659553b14335e382a3d4b673afe84f4368ea1ed4cccdb44805add8dedbd7",
+      "postgres": "postgres:16-alpine@sha256:57c72fd2a128e416c7fcc499958864df5301e940bca0a56f58fddf30ffc07777"
+    },
+    "operator_notes": [
+      "The installer is finite packaging machinery and exits before Miter runs.",
+      "Application and PeTTa bytes are root-owned read-only inputs; writable continuity remains under the dedicated runtime identity.",
+      "Existing service ports or private data are never replaced implicitly.",
+      "Credential imports name optional migration sources; secret bytes never enter this file."
+    ]
+  },
   "idle_base_seconds": 0.05,
   "idle_cap_seconds": 0.4,
   "max_input_batch": 8,
@@ -55,9 +96,8 @@
       "project": "miter-evaluation-v1"
     },
     "credential_reference": {
-      "source": "macos-keychain",
-      "account": "bcb",
-      "service": "ai.bgi.miter.mattermost"
+      "source": "private-runtime-file",
+      "relative_path": "secrets/mattermost-token"
     },
     "inbound": {
       "new_events_only": true,
@@ -146,9 +186,8 @@
           "allow_fallbacks": true
         },
         "credential_reference": {
-          "source": "macos-keychain",
-          "account": "bcb",
-          "service": "ai.bgi.miter.openrouter"
+          "source": "private-runtime-file",
+          "relative_path": "secrets/openrouter-api-key"
         }
       },
       {
@@ -227,7 +266,7 @@
   },
   "operator_notes": [
     "This is the only human-edited repository configuration file.",
-    "It contains names and Keychain references, never secrets or private stable IDs.",
+    "It contains names and private credential references, never secrets or private stable IDs.",
     "Installation materializes validated private runtime views from these settings.",
     "The evaluation grant installs inactive and can activate only through the ratified administrator attestation or Haley's direct disclosure, plus complete preflight."
   ]

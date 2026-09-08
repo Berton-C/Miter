@@ -45,6 +45,46 @@ as_bounded_process_line_cleanup(Pid,Stream) :-
         catch(process_wait(Pid,_,[timeout(2)]),_,true)
     ; true ).
 
+% Credentials are mechanical capabilities. The public configuration names a
+% lookup location; secret bytes remain in either the operator's Keychain or a
+% mode-0600 file beneath the private runtime root. Callers receive only bounded
+% bytes and never persist them in logs, requests, or observations.
+as_credential_reference_valid(
+    _Root, _{source:"macos-keychain",account:Account,service:Service}) :-
+    as_credential_name(Account),as_credential_name(Service).
+as_credential_reference_valid(
+    Root, _{source:"private-runtime-file",path:PathString}) :-
+    string(PathString),atom_string(Path,PathString),is_absolute_file_name(Path),
+    as_path_within(Root,Path),exists_file(Path),\+ read_link(Path,_,_),
+    as_private_file_mode(Path).
+
+as_credential_read(Root,Reference,MaximumBytes,Secret) :-
+    as_credential_reference_valid(Root,Reference),
+    ( Reference.source=="macos-keychain" ->
+        atom_string(Account,Reference.account),
+        atom_string(Service,Reference.service),
+        as_bounded_process_line('/usr/bin/security',
+          ['find-generic-password','-w','-a',Account,'-s',Service],
+          MaximumBytes,15,Raw)
+    ; atom_string(Path,Reference.path),
+      size_file(Path,Size),Size>0,Size=<MaximumBytes,
+      setup_call_cleanup(open(Path,read,Stream,[encoding(utf8)]),
+        read_string(Stream,MaximumBytes,Raw),close(Stream))
+    ),
+    normalize_space(string(Secret),Raw),string_length(Secret,Length),
+    Length>=16,Length=<MaximumBytes.
+
+as_credential_name(Value) :-
+    string(Value),string_length(Value,Length),Length>=1,Length=<255,
+    re_match("^[A-Za-z0-9_.:@/-]+$",Value).
+
+as_path_within(Root,Path) :-
+    atom_concat(Root,'/',Prefix),atom_concat(Prefix,_,Path).
+
+as_private_file_mode(Path) :-
+    as_bounded_process_line('/usr/bin/stat',['-f','%Lp',Path],16,5,Raw),
+    normalize_space(string(Mode),Raw),Mode=="600".
+
 as_schema('miter-assistant-runtime-v1').
 as_input_schema('miter-assistant-input-v1').
 as_input_schema('miter-assistant-input-v2').

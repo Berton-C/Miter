@@ -45,7 +45,7 @@ as_model_checked(Root0, Question, Observation) :-
         as_model_request(Profile, Question, Instructions, MaxTokens, Body),
         as_model_write_request(Root, QuestionHash, QuestionRef, Scope,
           Purpose, ResourceId, Profile, Body),
-        as_model_keychain(Profile, Key),
+        as_model_credential(Root,Profile,Key),
         as_model_execute(Root, QuestionHash, QuestionRef, Scope, Question,
           ResourceId, Profile, Body, Key, Deadline, Observation0),
         as_model_write_observation(ObservationPath, Observation0),
@@ -456,10 +456,8 @@ as_model_profile_exact(Profile) :-
     get_dict(zdr,Provider,true), get_dict(data_collection,Provider,"deny"),
     get_dict(require_parameters,Provider,true),
     get_dict(allow_fallbacks,Provider,true),
-    get_dict(credential_reference,Profile,Credential), is_dict(Credential),
-    get_dict(source,Credential,"macos-keychain"),
-    get_dict(account,Credential,"bcb"),
-    get_dict(service,Credential,"ai.bgi.miter.openrouter").
+    get_dict(credential_reference,Profile,Credential),is_dict(Credential),
+    as_model_credential_reference_shape(Credential).
 as_model_profile_exact(Profile) :-
     as_dict_atom(Profile,id,ResourceId),
     memberchk(ResourceId,['qwen-local','nemotron-local']),
@@ -477,6 +475,11 @@ as_model_profile_exact(Profile) :-
 as_model_local_identity('qwen-local',"qwen/qwen3.8-27b").
 as_model_local_identity('nemotron-local',
     "nemotron-3.5-30b-a3b-antislop-ftpo-i1").
+
+as_model_credential_reference_shape(Credential) :-
+    ( Credential=_{source:"macos-keychain",account:Account,service:Service},
+      as_credential_name(Account),as_credential_name(Service)
+    ; Credential=_{source:"private-runtime-file",path:Path},string(Path) ).
 
 as_model_secret_free(Dict) :-
     is_dict(Dict), !, dict_pairs(Dict,_,Pairs),
@@ -904,26 +907,20 @@ as_model_write_request(Root,Hash,QuestionRef,Scope,Purpose,ResourceId,Profile,
       authorization:AuthorizationStanding,
       standing:"claimed-not-yet-observed"}).
 
-as_model_authorization_standing(Profile,"macos-keychain-redacted") :-
+as_model_authorization_standing(Profile,"named-private-credential-redacted") :-
     as_dict_atom(Profile,kind,remote).
 as_model_authorization_standing(Profile,"none-loopback-local") :-
     as_dict_atom(Profile,kind,local).
 
-as_model_keychain(Profile,Key) :-
+as_model_credential(Root,Profile,Key) :-
     as_dict_atom(Profile,kind,remote),
-    Credential=Profile.credential_reference,
-    as_bounded_process_line('/usr/bin/security',
-      ['find-generic-password','-a',Credential.account,'-s',Credential.service,
-       '-w'],
-      512,15,Raw),
-    normalize_space(string(Key),Raw), string_length(Key,Length),
-    Length>=16, Length=<512.
-as_model_keychain(Profile,'no-authorization-loopback-local') :-
+    as_credential_read(Root,Profile.credential_reference,512,Key).
+as_model_credential(_Root,Profile,'no-authorization-loopback-local') :-
     as_dict_atom(Profile,kind,local).
 
-as_model_resource_health(Profile,'remote-credential-available') :-
-    as_dict_atom(Profile,kind,remote),as_model_keychain(Profile,_).
-as_model_resource_health(Profile,'local-model-available') :-
+as_model_resource_health(Root,Profile,'remote-credential-available') :-
+    as_dict_atom(Profile,kind,remote),as_model_credential(Root,Profile,_).
+as_model_resource_health(_Root,Profile,'local-model-available') :-
     as_dict_atom(Profile,kind,local),
     get_dict(endpoint,Profile,"http://127.0.0.1:1234/v1/chat/completions"),
     setup_call_cleanup(

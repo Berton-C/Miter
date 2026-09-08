@@ -14,13 +14,13 @@
 :- use_module(library(readutil)).
 
 as_mattermost_prepare(Root0, Standing) :-
-    catch((as_mattermost_root(Root0, Root),
+    ( catch((as_mattermost_root(Root0, Root),
            as_mattermost_config(Root, Config),
            ( Config.enabled == true ->
                as_mattermost_resolve_live(Root, Config, Binding),
                as_mattermost_reconcile_pending_effects(Root,Config,Binding),
                Standing=ready
-           ; Standing=disabled )), _, Standing=held), !.
+           ; Standing=disabled )), _, fail) -> true ; Standing=held ), !.
 
 as_mattermost_poll(Root0, Inputs) :-
     catch((as_mattermost_root(Root0, Root),
@@ -62,15 +62,12 @@ as_mattermost_config(Root, Config) :-
     as_mattermost_name(Config.scope.audience),
     as_mattermost_name(Config.scope.project),
     as_mattermost_exact_keys(Config.scope,[audience,project]),
-    as_mattermost_exact_keys(Config.credential_reference,[account,service,source]),
+    as_mattermost_credential_reference_shape(Config.credential_reference),
     as_mattermost_exact_keys(Config.inbound,
       [bot_posts_are_contact,history_backfill,max_event_bytes,new_events_only,
        poll_seconds]),
     as_mattermost_exact_keys(Config.outbound,
       [certificate,destination,enabled,unknown_outcome]),
-    Config.credential_reference.source == "macos-keychain",
-    as_mattermost_name(Config.credential_reference.account),
-    as_mattermost_name(Config.credential_reference.service),
     Config.inbound.new_events_only == true,
     Config.inbound.history_backfill == false,
     Config.inbound.bot_posts_are_contact == false,
@@ -108,11 +105,16 @@ as_mattermost_name(Value) :-
 as_mattermost_exact_keys(Dict, Expected) :-
     dict_keys(Dict, Keys), sort(Keys, Sorted), sort(Expected, Sorted).
 
+as_mattermost_credential_reference_shape(Reference) :-
+    ( Reference=_{source:"macos-keychain",account:Account,service:Service},
+      as_credential_name(Account),as_credential_name(Service)
+    ; Reference=_{source:"private-runtime-file",path:Path},string(Path) ).
+
 as_mattermost_resolve_live(Root, Config, Binding) :-
     directory_file_path(Root, 'surface/mattermost-binding.json', Path),
     ( exists_file(Path), miter_store_read_json(Path, Candidate),
-      as_mattermost_binding_live(Config,Candidate) -> Binding=Candidate
-    ; as_mattermost_resolve_fresh(Config, Fresh),
+      as_mattermost_binding_live(Root,Config,Candidate) -> Binding=Candidate
+    ; as_mattermost_resolve_fresh(Root,Config, Fresh),
       as_write_json_durable(Path,Fresh), Binding=Fresh ),
     as_mattermost_cursor_initialize(Root).
 
@@ -137,7 +139,7 @@ as_mattermost_reconcile_pending_effects(Root,Config,Binding) :-
               ["transmission-started-outcome-unknown","outcome-unknown-held"]) ),
           Pending),
         ( Pending=[] -> true
-        ; as_mattermost_token(Config,Token),
+        ; as_mattermost_token(Root,Config,Token),
           maplist(as_mattermost_reconcile_pending_effect(Config,Binding,Token),
             Pending) )
     ; true ).
@@ -159,8 +161,8 @@ as_mattermost_binding_matches_config(Config,Binding) :-
     as_mattermost_id(Binding.channel_id,_), as_mattermost_id(Binding.bot_id,_),
     is_list(Binding.principals), length(Binding.principals,3).
 
-as_mattermost_resolve_fresh(Config, Binding) :-
-    as_mattermost_token(Config, Token),
+as_mattermost_resolve_fresh(Root,Config, Binding) :-
+    as_mattermost_token(Root,Config, Token),
     as_mattermost_get(Config,Token,'/api/v4/users/me',Me,200),
     as_mattermost_id(Me.id,BotId),
     Me.username == Config.bot_username,
@@ -206,22 +208,17 @@ as_mattermost_channel_exact_members(Config,Token,ChannelId,Principals) :-
     findall(Id,(member(P,Principals),as_mattermost_id(P.id,Id)),RequiredIds0),
     sort(RequiredIds0,RequiredIds), MemberIds==RequiredIds.
 
-as_mattermost_binding_live(Config, Binding) :-
+as_mattermost_binding_live(Root,Config, Binding) :-
     as_mattermost_binding_matches_config(Config,Binding),
-    as_mattermost_token(Config,Token),
+    as_mattermost_token(Root,Config,Token),
     as_mattermost_get(Config,Token,'/api/v4/users/me',Me,200),
     as_mattermost_id(Me.id,MeId), as_mattermost_id(Binding.bot_id,BindingBotId),
     MeId==BindingBotId, Me.username==Config.bot_username,
     as_mattermost_channel_exact_members(Config,Token,Binding.channel_id,
       Binding.principals).
 
-as_mattermost_token(Config, Token) :-
-    atom_string(Account,Config.credential_reference.account),
-    atom_string(Service,Config.credential_reference.service),
-    as_bounded_process_line('/usr/bin/security',
-      ['find-generic-password','-w','-a',Account,'-s',Service],8192,15,Raw),
-    normalize_space(string(Token),Raw),
-    string_length(Token,Length), Length>=16, Length=<8192.
+as_mattermost_token(Root,Config,Token) :-
+    as_credential_read(Root,Config.credential_reference,8192,Token).
 
 as_mattermost_auth(Token, Header) :- format(string(Header),'Bearer ~s',[Token]).
 
@@ -289,9 +286,9 @@ as_mattermost_effect_context(Root,Scope,SourcePostId,EffectId,Config,Binding,Tok
     as_mattermost_config(Root,Config), Config.enabled==true,
     Config.outbound.enabled==true,
     as_mattermost_binding_local(Root,Config,Binding),
-    as_mattermost_binding_live(Config,Binding),
+    as_mattermost_binding_live(Root,Config,Binding),
     as_evaluation_effect_available(Root,Config,Binding,EffectId,GrantId),
-    as_mattermost_token(Config,Token),
+    as_mattermost_token(Root,Config,Token),
     as_mattermost_id(Binding.channel_id,ChannelId),
     as_mattermost_id(Binding.bot_id,BotId),
     format(atom(SourcePath),'/api/v4/posts/~w',[SourcePostId]),
@@ -522,7 +519,7 @@ as_mattermost_due(Root, PollSeconds) :-
 as_mattermost_poll_ready(Root,Config,Binding,Inputs) :-
     directory_file_path(Root,'surface/mattermost-cursor.json',CursorPath),
     miter_store_read_json(CursorPath,Cursor), Since=Cursor.since_ms,
-    as_mattermost_token(Config,Token),
+    as_mattermost_token(Root,Config,Token),
     miter_store_nonempty_atom(Binding.channel_id,ChannelId),
     format(atom(Path),'/api/v4/channels/~w/posts?since=~d&per_page=200',
       [ChannelId,Since]),

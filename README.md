@@ -28,10 +28,12 @@ VoiceRNA certification, pending-before-send Mattermost effect preparation,
 consequence-sensitive multi-turn undertaking continuity, and supported
 install/start/status/stop/panic operations.
 
-It is **not yet the usable Miter alpha**. Live authorized Mattermost delivery,
-one-command dependency/service provisioning, migration to the dedicated
+It is **not yet the usable Miter alpha**. Migration to the dedicated
 `claritymiter` runtime identity, earned self-extension, hot upgrade, and
-rollback remain to be integrated into this same runtime.
+rollback remain to be integrated into this same runtime. A finite macOS
+installer now validates the clean source, pinned dependencies, dedicated
+identity, private credential boundary, isolated services, and system service;
+its complete fresh-host and continuity-preserving migration trials remain open.
 [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single operations map for
 that additive work.
 
@@ -96,13 +98,23 @@ Point Miter at that pinned PeTTa checkout without copying it into this repo:
 export MITER_PETTA_MAIN=/absolute/path/to/PeTTa/src/main.pl
 ```
 
-This manual dependency/runtime layout is the current builder interface, not the
-SNET distribution. C4 remains open until one finite installer in this repository
-fetches the pinned dependency outside Git, provisions the non-admin Miter user,
-creates private runtime state, starts isolated local services, verifies the
-complete assistant, and prints the supported operator commands. Python is
-permitted for that installer only; it exits before the PeTTa/MeTTa organism runs
-and is not a core or core-service seam.
+`install_miter.py` is the single SNET packaging entry. Python is permitted for
+this finite installer only; it exits before the PeTTa/MeTTa organism runs and is
+not a core or core-service seam. Inspect its non-destructive plan first:
+
+```sh
+./install_miter.py plan
+sudo ./install_miter.py install
+```
+
+The default creates digest-pinned isolated Chroma, Postgres, and Mattermost
+services and refuses any unowned port collision. For the current Mac migration
+only, `--reuse-local-services` explicitly preserves the already-running healthy
+local services. `--import-keychain-credentials` copies the exact named source
+credentials directly into the mode-0600 `claritymiter` runtime store without
+printing their bytes. Installation is re-entrant: if a new Mattermost instance
+still needs its users, team, bot, or exact group configured, no service is
+registered and the same installer resumes after that setup is complete.
 
 ## Install and operate
 
@@ -136,9 +148,10 @@ bin/miter unregister-service --runtime-root /absolute/private/runtime/path
 ```
 
 `config/miter.json` is the only human-edited repository configuration. It
-contains runtime timing, Mattermost names and Keychain reference, semantic
-memory endpoints, model resources and preference, and an inactive initial
-grant set. It never contains a secret or private stable identifier. Install
+contains runtime timing, deployment locations, pinned service/dependency
+identities, Mattermost names, private credential lookup/import references,
+semantic memory endpoints, model resources and preference, and an inactive
+initial grant set. It never contains a secret or private stable identifier. Install
 validates that file and materializes narrow private runtime views for the
 individual membranes. Every remote call still requires an exact,
 time-bounded runtime-local grant, and outbound Mattermost remains disabled by
@@ -215,6 +228,8 @@ erase continuity. `unregister-service` removes only the launchd registration.
   termination, and polling durations without giving the supervisor cognitive
   authority.
 - `bin/miter`: the only supported operator entry.
+- `install_miter.py`: finite packaging, dependency, identity, service, and
+  host-registration machinery; it is absent from the running cognitive seam.
 
 ## License
 

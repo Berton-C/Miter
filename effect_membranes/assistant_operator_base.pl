@@ -206,7 +206,7 @@ as_swipl_ld(Path) :-
 
 as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
   receipts,outbox,proofs,intents,lib,logs,model,surface,continuity,semantic,lkg,
-  service,workspace,capabilities,
+  service,workspace,capabilities,secrets,
   'model/claims','model/requests','model/raw','model/observations','surface/raw',
   'surface/events','surface/effects','checkpoints/objects','continuity/native',
   'continuity/native/manifests','continuity/native/scopes','semantic/queries',
@@ -247,7 +247,7 @@ as_bootstrap_new(Root, Reply) :-
     as_operator_repo_root(Repo),
     directory_file_path(Repo,'config/miter.json',ConfigSource),
     miter_store_read_json(ConfigSource,HumanConfig),
-    as_human_config_sections(HumanConfig,Config,Mattermost,Memory,Models,Grants,
+    as_human_config_sections(Root,HumanConfig,Config,Mattermost,Memory,Models,Grants,
       EvaluationGrants,GrowthEnvironment),
     directory_file_path(Root,'config.json',ConfigTarget),
     miter_store_write_json_atomic(ConfigTarget,Config),
@@ -346,7 +346,7 @@ as_select_model(Root,Resource0,Duration0,MaxCalls0,Reply) :-
     get_dict(authorized_directions,Selection,AuthorizedStrings),
     maplist(as_symbol,AuthorizedStrings,Authorized),memberchk(ResourceId,Authorized),
     as_model_profile(Root,ResourceId,Profile),
-    as_model_resource_health(Profile,Health),
+    as_model_resource_health(Root,Profile,Health),
     get_time(Now),(Duration=:=0->Expiry=0;Expiry is Now+Duration),
     uuid(DirectionId),atom_string(DirectionId,DirectionIdString),
     atom_string(ResourceId,ResourceString),
@@ -418,11 +418,11 @@ as_validate_config(Config) :-
 % Humans edit one repository surface. Installation validates and materializes
 % narrow private runtime views so individual membranes need no authority over
 % the repository configuration or unrelated settings.
-as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants,
+as_human_config_sections(Root, Human, Runtime, Mattermost, Memory, Models, Grants,
     EvaluationGrants, GrowthEnvironment) :-
     is_dict(Human),
     as_mattermost_exact_keys(Human,
-      [external_effects,human_editable,idle_base_seconds,idle_cap_seconds,
+      [deployment,external_effects,human_editable,idle_base_seconds,idle_cap_seconds,
        growth_environment,initial_evaluation_grants,initial_model_grants,mattermost,max_input_batch,
        max_input_bytes,memory,models,network_access,operator_notes,runtime_root,
        schema,supervision]),
@@ -435,11 +435,14 @@ as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants,
       network_access:Human.network_access,runtime_root:Human.runtime_root,
       supervision:Human.supervision},
     as_validate_config(Runtime),
-    Mattermost=Human.mattermost,is_dict(Mattermost),
+    as_deployment_config_valid(Human.deployment),
+    as_materialize_credential_profiles(Root,Human.mattermost,Human.models,
+      Mattermost,Models),
+    is_dict(Mattermost),
     as_dict_atom(Mattermost,schema,'miter-mattermost-surface-v1'),
     Memory=Human.memory,is_dict(Memory),
     as_dict_atom(Memory,schema,'miter-semantic-memory-config-v1'),
-    Models=Human.models,is_dict(Models),
+    is_dict(Models),
     as_dict_atom(Models,schema,'miter-model-resource-registry-v1'),
     Grants=Human.initial_model_grants,is_dict(Grants),
     as_dict_atom(Grants,schema,'miter-model-grants-v1'),
@@ -448,6 +451,64 @@ as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants,
     GrowthEnvironment=Human.growth_environment,
     as_growth_environment_config_valid(GrowthEnvironment),
     as_mattermost_secret_free(Human).
+
+as_deployment_config_valid(Deployment) :-
+    is_dict(Deployment),
+    as_mattermost_exact_keys(Deployment,
+      [application_root,credential_imports,dependency_root,docker_project,human_editable,images,
+       operator_notes,petta,runtime_root,runtime_user,schema,service_mode,
+       services_root]),
+    Deployment.schema=="miter-installation-v1",
+    Deployment.human_editable==true,
+    Deployment.runtime_user=="claritymiter",
+    Deployment.service_mode=="isolated-docker-compose",
+    Deployment.docker_project=="miter",
+    forall(member(Key,[application_root,dependency_root,runtime_root,services_root]),
+      (get_dict(Key,Deployment,Value),string(Value),sub_string(Value,0,1,_,"/"))),
+    Deployment.petta.commit==
+      "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+    Deployment.petta.archive_sha256==
+      "de1e2474b902895f5373fc833ed45341f16e0d283ae957ccb323df42200ce397",
+    string(Deployment.petta.archive_url),
+    Deployment.images.chroma==
+      "docker.io/chromadb/chroma:1.5.9@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6",
+    Deployment.images.mattermost==
+      "mattermost/mattermost-team-edition:11.7.7@sha256:3ecc659553b14335e382a3d4b673afe84f4368ea1ed4cccdb44805add8dedbd7",
+    Deployment.images.postgres==
+      "postgres:16-alpine@sha256:57c72fd2a128e416c7fcc499958864df5301e940bca0a56f58fddf30ffc07777",
+    is_list(Deployment.credential_imports),
+    maplist(as_deployment_credential_import_valid,Deployment.credential_imports),
+    is_list(Deployment.operator_notes),maplist(string,Deployment.operator_notes).
+
+as_deployment_credential_import_valid(Import) :-
+    is_dict(Import),
+    as_mattermost_exact_keys(Import,[account,relative_path,service,source]),
+    Import.source=="macos-keychain",as_credential_name(Import.account),
+    as_credential_name(Import.service),string(Import.relative_path),
+    atom_string(Relative,Import.relative_path),as_safe_lkg_relative_path(Relative),
+    sub_atom(Relative,0,8,_,'secrets/').
+
+as_materialize_credential_profiles(Root,Mattermost0,Models0,Mattermost,Models) :-
+    as_materialize_credential_reference(Root,Mattermost0.credential_reference,
+      MattermostReference),
+    put_dict(credential_reference,Mattermost0,MattermostReference,Mattermost),
+    maplist(as_materialize_model_profile(Root),Models0.resources,Resources),
+    put_dict(resources,Models0,Resources,Models).
+
+as_materialize_model_profile(Root,Profile0,Profile) :-
+    ( Profile0.credential_reference==null -> Profile=Profile0
+    ; as_materialize_credential_reference(Root,Profile0.credential_reference,
+        Reference),
+      put_dict(credential_reference,Profile0,Reference,Profile) ).
+
+as_materialize_credential_reference(Root,
+    _{source:"private-runtime-file",relative_path:RelativeString},Reference) :-
+    string(RelativeString),atom_string(Relative,RelativeString),
+    as_safe_lkg_relative_path(Relative),sub_atom(Relative,0,8,_,'secrets/'),
+    directory_file_path(Root,Relative,Path),atom_string(Path,PathString),
+    Reference=_{source:"private-runtime-file",path:PathString}.
+as_materialize_credential_reference(_Root,Reference,Reference) :-
+    is_dict(Reference),Reference.source=="macos-keychain".
 
 as_growth_environment_config_valid(Config) :-
     is_dict(Config),
@@ -582,7 +643,7 @@ as_evaluation_activation_preflight(Root,PostId,Inactive,Config,Binding,
     as_mattermost_config(Root,Config),Config.enabled==true,
     as_mattermost_resolve_live(Root,Config,Binding),
     as_mattermost_binding_sha256(Root,BindingHash),
-    as_evaluation_affirmation(Config,Binding,Inactive,PostId,Affirmation),
+    as_evaluation_affirmation(Root,Config,Binding,Inactive,PostId,Affirmation),
     as_evaluation_private_modes(Root),
     as_evaluation_no_unresolved_effect(Root),
     as_evaluation_memory_health(Root),
@@ -626,8 +687,8 @@ as_evaluation_administrator_attestation(Binding,Inactive,Attestation) :-
       content_sha256:HashString,
       standing:"ratified-consent-attestation-current"}.
 
-as_evaluation_affirmation(Config,Binding,Inactive,PostId,Affirmation) :-
-    as_mattermost_token(Config,Token),
+as_evaluation_affirmation(Root,Config,Binding,Inactive,PostId,Affirmation) :-
+    as_mattermost_token(Root,Config,Token),
     format(atom(Path),'/api/v4/posts/~w',[PostId]),
     as_mattermost_get(Config,Token,Path,Post,200),is_dict(Post),
     as_mattermost_id(Post.id,PostId),
@@ -691,7 +752,7 @@ as_evaluation_model_health(Root) :-
     as_dict_atom(Direction,standing,'active-human-direction'),
     as_dict_atom(Direction,resource_id,ResourceId),
     as_model_profile(Root,ResourceId,Profile),
-    as_model_resource_health(Profile,_).
+    as_model_resource_health(Root,Profile,_).
 
 as_write_evaluation_activation(Root,Inactive,Config,_Binding,Affirmation,
     BindingHash,Reply) :-
