@@ -683,7 +683,7 @@ as_model_local_response_schema('c4-contact-semantic-question-v1',
       required:["readings","uncertainty"],
       properties:_{readings:_{type:"array",minItems:2,maxItems:2,
           items:Reading},
-        uncertainty:_{type:"string",minLength:1,maxLength:300}}}.
+        uncertainty:_{type:"string",minLength:1,maxLength:600}}}.
 as_model_local_response_schema('c4-voice-render-question-v1',
     "miter_c4_voice_rendering",Schema) :-
     Schema=_{type:"object",additionalProperties:false,
@@ -1108,7 +1108,7 @@ as_model_candidate_id(['c3-model-candidate-v1',Id|_],Id).
 as_model_c4_semantic_result(Result,Question,Readings) :-
     is_dict(Result), as_model_exact_keys(Result,[readings,uncertainty]),
     get_dict(uncertainty,Result,Uncertainty),
-    as_model_bounded_text(Uncertainty,1,300),
+    as_model_bounded_text(Uncertainty,1,600),
     get_dict(readings,Result,Rows), is_list(Rows), length(Rows,2),
     maplist(as_model_c4_semantic_row(Question),Rows,Readings),
     maplist(as_model_c4_reading_id,Readings,Ids),

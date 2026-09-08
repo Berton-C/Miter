@@ -525,6 +525,26 @@ post-contact checkpoint with no model call or effect replay. A new live contact
 is still required to exercise rendering and delivery; consumed contacts SHALL
 NOT be reintroduced merely to make the trial pass.
 
+The following fresh contact crossed that repaired boundary and completed one
+OpenRouter transport. Both returned semantic readings were distinct, used only
+the Soul-supplied `Balance` role and admitted flourishing identities, and met
+every per-reading structural bound. The provider's uncertainty statement was
+351 characters despite the 300-character request, so the complete artifact was
+held before native participation; no VoiceRNA call or Mattermost effect was
+formed. The 300-character uncertainty cap had no constitutional or authority
+basis and was narrower than the already bounded 600-character VoiceRNA
+uncertainty carrier. The semantic carrier and its request now use the same
+600-character bound while retaining all other schema, scope, Fact9,
+flourishing, and non-sovereignty checks. The exact already-returned artifact
+passes the repaired parser without a second transmission, but it remains
+diagnostic evidence rather than being injected into the completed contact cut.
+Frozen LKG `c8d69fca465e5229be1aa8c1abd4b19ed54921497b0dc5d76ba8c426f1aa5a01`
+cold-restored the post-contact checkpoint at snapshot SHA-256
+`813504d9f9278f555b976de8115cb9cbbb17eee2b646c0df717ea6f818627cfe`
+with three admitted contacts, one model claim, zero model observations, and
+zero external posts; restart replayed none of them. A fresh live contact is
+still required for the complete two-call rendering and delivery path.
+
 ## 7. The only build cycle
 
 Every additive cut follows the same four movements. This is a builder method,
