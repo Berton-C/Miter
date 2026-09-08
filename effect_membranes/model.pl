@@ -754,12 +754,10 @@ as_model_authorization_standing(Profile,"none-loopback-local") :-
 as_model_keychain(Profile,Key) :-
     as_dict_atom(Profile,kind,remote),
     Credential=Profile.credential_reference,
-    process_create('/usr/bin/security',
+    as_bounded_process_line('/usr/bin/security',
       ['find-generic-password','-a',Credential.account,'-s',Credential.service,
        '-w'],
-      [stdin(null),stdout(pipe(Out)),stderr(null),process(Pid)]),
-    read_string(Out,1024,Raw), close(Out),
-    process_wait(Pid,exit(0),[timeout(15)]),
+      512,15,Raw),
     normalize_space(string(Key),Raw), string_length(Key,Length),
     Length>=16, Length=<512.
 as_model_keychain(Profile,'no-authorization-loopback-local') :-

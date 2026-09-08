@@ -159,6 +159,11 @@ remains authoritative and semantic recall reports a degraded/unavailable
 standing rather than fabricating memory. Runtime bytes, memories,
 credentials, model files, Chroma data, logs, and evidence stay outside Git.
 
+A Mattermost outage likewise does not stop the cognitive reactor. Credential
+and local API reads are bounded; startup reports a held surface while Miter
+continues cycling with no fabricated contact, and ordinary polling can resume
+after the surface recovers.
+
 Install copies the exact verified source closure into the private runtime
 root. Starts and restarts execute that frozen last-known-good closure,
 not a possibly changing repository checkout. During a long native reduction,

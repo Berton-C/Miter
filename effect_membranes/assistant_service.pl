@@ -17,8 +17,33 @@
 :- use_module(library(lists)).
 :- use_module(library(pcre)).
 :- use_module(library(readutil)).
+:- use_module(library(time)).
 :- use_module(library(terms)).
 :- use_module(library(uuid)).
+
+% Run a credential lookup as a bounded mechanical read.  A locked Keychain or
+% authorization prompt must degrade one surface/model call; it may not freeze
+% the single supervisor before the PeTTa reactor can start.  No returned bytes
+% are logged or persisted by this helper.
+as_bounded_process_line(Executable,Arguments,MaximumBytes,Deadline,Line) :-
+    setup_call_cleanup(
+      process_create(Executable,Arguments,
+        [stdin(null),stdout(pipe(Stream)),stderr(null),process(Pid)]),
+      as_bounded_process_line_read(Pid,Stream,MaximumBytes,Deadline,Line),
+      as_bounded_process_line_cleanup(Pid,Stream)).
+
+as_bounded_process_line_read(Pid,Stream,MaximumBytes,Deadline,Line) :-
+    catch(call_with_time_limit(Deadline,read_line_to_string(Stream,Raw)),_,fail),
+    string(Raw),string_length(Raw,Length),Length>0,Length=<MaximumBytes,
+    process_wait(Pid,exit(0),[timeout(2)]),Line=Raw.
+
+as_bounded_process_line_cleanup(Pid,Stream) :-
+    catch(close(Stream,[force(true)]),_,true),
+    ( catch(process_wait(Pid,Status,[timeout(0)]),_,Status=finished),
+      Status==timeout ->
+        catch(process_kill(Pid,term),_,true),
+        catch(process_wait(Pid,_,[timeout(2)]),_,true)
+    ; true ).
 
 as_schema('miter-assistant-runtime-v1').
 as_input_schema('miter-assistant-input-v1').

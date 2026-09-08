@@ -468,6 +468,18 @@ the frozen runtime LKG source root. The CleanRoom launcher resolves only its
 own repository root; the legacy `/Users/claritymiter/miter` operator is neither
 imported nor referenced.
 
+The launch-failure cut makes a missing surface degrade participation without
+stopping the organism. Mattermost and model Keychain reads now have bounded
+mechanical deadlines, and the local Mattermost API deadline is finite. A held
+Mattermost preflight is reported but no longer prevents the one PeTTa reactor
+from starting; its ordinary poll returns no contact while unavailable and can
+resume when the surface recovers. With Mattermost's Postgres connection
+deliberately unavailable, a fresh supported runtime reported `held`, formed a
+live heartbeat in the same reactor, and stopped cleanly. Service removal now
+loads and verifies the runtime extension before its durable registration
+update. This is surface-failure containment, not permission to fabricate
+contact or claim successful Mattermost conversation.
+
 ## 7. The only build cycle
 
 Every additive cut follows the same four movements. This is a builder method,

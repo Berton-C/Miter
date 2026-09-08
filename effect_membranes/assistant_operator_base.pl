@@ -873,6 +873,7 @@ as_register_host_service(Root,Reply) :-
       status:'service-registered',label:Label,launchd_target:Target}.
 
 as_unregister_host_service(Root,Reply) :-
+    as_root(Root,_),as_verify_lkg(Root,verified),
     as_host_service_material(Root,Label,_PlistPath,Target),
     ( as_launchd_registered(Target,Label) ->
         format(atom(ServiceTarget),'~w/~w',[Target,Label]),
@@ -898,7 +899,7 @@ as_supervised_run(Root,Reply) :-
     ( as_process_state(Root,State,Pid),State\==dead ->
         Reply=_{schema:"miter-assistant-operator-result-v1",
           status:'supervised-clean-exit',reason:"service-already-running",pid:Pid}
-    ; as_mattermost_prepare(Root,MattermostStanding),MattermostStanding\==held,
+    ; as_mattermost_prepare(Root,_MattermostStanding),
       as_crash_admit(Root,CrashStanding),
       ( CrashStanding==blocked ->
           Reply=_{schema:"miter-assistant-operator-result-v1",
@@ -951,21 +952,23 @@ as_start(Root, Reply) :-
           status:'existing-process-unconfirmed',pid:Pid,
           semantic_health:"not-claimed"}
     ; as_mattermost_prepare(Root,MattermostStanding),
-      MattermostStanding == held ->
-        Reply=_{schema:"miter-assistant-operator-result-v1",
-          status:'surface-preflight-held',surface:mattermost}
-    ; as_crash_admit(Root,CrashStanding),
+      as_crash_admit(Root,CrashStanding),
       ( CrashStanding == blocked ->
           Reply=_{schema:"miter-assistant-operator-result-v1",
-            status:'crash-loop-contained',semantic_health:"not-claimed"}
+            status:'crash-loop-contained',semantic_health:"not-claimed",
+            mattermost_preflight:MattermostStanding}
       ; as_write_control(Root,continue,start), as_spawn(Root,Pid,StartedAt),
         ( as_wait_started(Root,Pid,StartedAt,5) ->
             Reply=_{schema:"miter-assistant-operator-result-v1",status:started,pid:Pid,
-              semantic_health:"not-claimed"}
+              semantic_health:"not-claimed",
+              mattermost_preflight:MattermostStanding}
         ; as_process_state(Root,alive,Pid) ->
             Reply=_{schema:"miter-assistant-operator-result-v1",status:starting,pid:Pid,
-              semantic_health:"readiness-pending"}
-        ; Reply=_{schema:"miter-assistant-operator-result-v1",status:'start-failed',pid:Pid} ) ) ).
+              semantic_health:"readiness-pending",
+              mattermost_preflight:MattermostStanding}
+        ; Reply=_{schema:"miter-assistant-operator-result-v1",
+            status:'start-failed',pid:Pid,
+            mattermost_preflight:MattermostStanding} ) ) ).
 
 as_crash_admit(Root, Standing) :-
     ( as_process_state(Root,dead,PriorPid), \+ as_clean_exit(Root,PriorPid)

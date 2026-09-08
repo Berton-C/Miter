@@ -188,13 +188,9 @@ as_mattermost_binding_live(Config, Binding) :-
 as_mattermost_token(Config, Token) :-
     atom_string(Account,Config.credential_reference.account),
     atom_string(Service,Config.credential_reference.service),
-    setup_call_cleanup(
-      process_create('/usr/bin/security',
-        ['find-generic-password','-w','-a',Account,'-s',Service],
-        [stdin(null),stdout(pipe(Stream)),stderr(null),process(Pid)]),
-      read_string(Stream,65536,Raw),
-      close(Stream)),
-    process_wait(Pid,exit(0)), normalize_space(string(Token),Raw),
+    as_bounded_process_line('/usr/bin/security',
+      ['find-generic-password','-w','-a',Account,'-s',Service],8192,15,Raw),
+    normalize_space(string(Token),Raw),
     string_length(Token,Length), Length>=16, Length=<8192.
 
 as_mattermost_auth(Token, Header) :- format(string(Header),'Bearer ~s',[Token]).
@@ -204,7 +200,7 @@ as_mattermost_get(Config,Token,Path,Reply,Expected) :-
     as_mattermost_auth(Token,Authorization),
     setup_call_cleanup(http_open(Url,Stream,
       [request_header('Authorization'=Authorization),status_code(Status),
-       timeout(10),encoding(utf8)]),json_read_dict(Stream,Reply),close(Stream)),
+       timeout(5),encoding(utf8)]),json_read_dict(Stream,Reply),close(Stream)),
     Status==Expected.
 
 % Commit one already-certified response to the exact resolved group.  The
