@@ -107,7 +107,12 @@ bin/miter model-selection --runtime-root /absolute/private/runtime/path
 bin/miter select-model --runtime-root /absolute/private/runtime/path \
   --resource qwen-local --duration-seconds 600 --max-calls 2
 bin/miter evaluation-disclosure --runtime-root /absolute/private/runtime/path
-# After Haley posts the exact disclosure in the bound three-person group:
+# Activate under Berton's ratified system-administrator attestation of Haley's
+# consent. Haley's direct Mattermost disclosure remains available as a stronger
+# later confirmation, but is no longer an activation precondition.
+bin/miter activate-evaluation-admin \
+  --runtime-root /absolute/private/runtime/path
+# Alternative direct-confirmation path:
 bin/miter activate-evaluation --runtime-root /absolute/private/runtime/path \
   --haley-affirmation-post-id EXACT_MATTERMOST_POST_ID
 # Optional macOS always-on registration; registration starts Miter.
@@ -128,11 +133,15 @@ validates that file and materializes narrow private runtime views for the
 individual membranes. Every remote call still requires an exact,
 time-bounded runtime-local grant, and outbound Mattermost remains disabled by
 default. The AMA-1.2 evaluation grant is installed inactive. Activation is
-fail-closed and requires the exact current Haley-authored disclosure post in
-the uniquely resolved Berton/Haley/Miter group, verified private runtime modes,
-healthy local memory/model dependencies, a clean effect-reconciliation state,
-and a durable 72-hour activation witness. `status` reports its standing and
-resource counts without exposing conversation content or stable IDs.
+fail-closed and requires either Berton's ratified system-administrator
+attestation of Haley's consent or the exact current Haley-authored disclosure
+post. Both paths still require the uniquely resolved Berton/Haley/Miter group,
+verified private runtime modes, healthy local memory/model dependencies, a
+clean effect-reconciliation state, and a durable 72-hour activation witness.
+The administrative path is an explicit reach-authority record, not a Soul
+decision and not an inference of consent. `status` reports its standing,
+operator source, and resource counts without exposing conversation content or
+stable IDs.
 `config/continuity.json` and `config/constitutive-projection.json` are internal
 authority projections, not operator settings.
 

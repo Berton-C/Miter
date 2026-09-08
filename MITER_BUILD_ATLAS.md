@@ -392,18 +392,21 @@ panicked, binding-mismatched, or resource-exhausted, the Mattermost membrane
 does not fetch ordinary payloads, the model membrane cannot transmit a new
 question, and a VoiceRNA-certified descriptor still cannot become an external
 post. `bin/miter evaluation-disclosure` exposes the exact public-safe text that
-Haley must personally post in the uniquely bound three-person group;
-`activate-evaluation` accepts only that exact current post identity and author,
-then rechecks stable membership, frozen LKG integrity, mode-0700/0600 private
-state, local Chroma/embedding health, the OpenRouter Keychain reference, panic
-control, and absence of an unresolved prior effect. Only after those checks
-does it atomically expose an active 72-hour reach witness, scoped model grants,
-and outbound capability. Aggregate event, post, per-hour post, and remote-call
-bounds are enforced mechanically and reported by `status`. Synthetic private
-runtime trials distinguished inactive, active, and expired standing; an
-invalid live affirmation ID remained held and changed no grant or outbound
-standing. The real activation and live no-replay trial remain held solely on
-Haley's required disclosure affirmation, not on a missing code path.
+Haley may post in the uniquely bound three-person group. The subsequently
+ratified AMA-1.2 amendment also accepts Berton's explicit system-administrator
+attestation that Haley has consented; it records that attestation as the exact
+activation witness rather than pretending a Haley-authored post exists.
+Either activation path rechecks stable membership, frozen LKG integrity,
+mode-0700/0600 private state, local Chroma/embedding health, the selected model
+resource, panic control, and absence of an unresolved prior effect. Only after
+those checks does it atomically expose an active 72-hour reach witness, scoped
+model grants, and outbound capability. This changes reach authority only and
+does not allocate interpretation, movement, memory admission, or effect choice
+to the operator membrane. Aggregate event, post, per-hour post, and remote-call
+bounds are enforced mechanically and reported by `status`. A private runtime
+resolved the exact live group and activated from the administrator attestation
+with zero events, posts, or model calls; it was then panicked without starting.
+The persistent live activation and no-replay trial remain open.
 
 The host-service packaging cut now generates a validated, runtime-local macOS
 launchd profile from the frozen LKG and exact private runtime root. Explicit
@@ -458,6 +461,12 @@ authorized resource participants under C-004/S-901; Prolog may only execute an
 already formed direction. The live AMA-1.2 activation, real unfamiliar
 conversation, effect reconciliation, restart/no-replay, and consequence return
 remain the C4 closure trial.
+
+The operator-identity cut makes checkout ambiguity visible without adding a
+new runtime. `status` reports the exact loaded `assistant_operator.pl` path and
+the frozen runtime LKG source root. The CleanRoom launcher resolves only its
+own repository root; the legacy `/Users/claritymiter/miter` operator is neither
+imported nor referenced.
 
 ## 7. The only build cycle
 
@@ -1670,14 +1679,11 @@ Already carried:
 
 Next movement:
 
-1. complete the admitted Mattermost carrier with an explicitly authorized
-   live pending-before-send/no-replay delivery trial; do not reuse the expired
-   canary or bypass the unresolved Haley disclosure boundary;
-2. finish the SNET evaluation package by adding bounded host service
-   registration and verifying the one-configuration install/start/status/
-   stop/panic path from a fresh clone; the one editable configuration surface,
-   bounded crash-loop containment, and frozen-LKG recovery are embodied;
-3. only after explicit human acceptance of the complete clean candidate,
+1. activate the single persistent runtime through the ratified administrator
+   consent attestation, then carry unfamiliar conversation, scope isolation,
+   model/surface failure, returned consequence, and restart/no-replay through
+   the live pending-before-send Mattermost path;
+2. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

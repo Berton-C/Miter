@@ -25,7 +25,7 @@ as_dispatch([Command0|Args], Reply, Code) :-
     miter_store_nonempty_atom(Command0, Command),
     as_command(Command, Args, Reply, Code), !.
 as_dispatch(_, _{schema:"miter-assistant-operator-result-v1",status:"usage-error",
-  usage:"miter <install|bootstrap|model-selection|select-model|prepare-service|register-service|unregister-service|evaluation-disclosure|activate-evaluation|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--resource ID --duration-seconds N --max-calls N|--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
+  usage:"miter <install|bootstrap|model-selection|select-model|prepare-service|register-service|unregister-service|evaluation-disclosure|activate-evaluation|activate-evaluation-admin|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--resource ID --duration-seconds N --max-calls N|--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
 
 as_command(install, Args, Reply, Code) :-
     !,
@@ -69,6 +69,12 @@ as_command('activate-evaluation', Args, Reply, Code) :-
     as_required_option(Args,'--haley-affirmation-post-id',PostId0),
     as_runtime_path(Root0,Root),
     as_activate_evaluation(Root,PostId0,Reply),as_reply_code(Reply,Code).
+as_command('activate-evaluation-admin', Args, Reply, Code) :-
+    !,
+    as_exact_options(Args,['--runtime-root']),
+    as_required_option(Args,'--runtime-root',Root0),
+    as_runtime_path(Root0,Root),
+    as_activate_evaluation_admin(Root,Reply),as_reply_code(Reply,Code).
 as_command('prepare-service', Args, Reply, Code) :-
     !,
     as_exact_options(Args,['--runtime-root']),
@@ -440,27 +446,34 @@ as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants,
 as_evaluation_grants_inactive_valid(Document) :-
     is_dict(Document),
     as_mattermost_exact_keys(Document,
-      [authority,authority_separation,bounds,grants,haley_disclosure,
-       required_affirmations,schema,standing]),
+      [administrator_attestation,authority,authority_separation,bounds,grants,
+       haley_disclosure,required_affirmations,schema,standing]),
     as_dict_atom(Document,schema,'miter-evaluation-grants-v1'),
-    as_dict_atom(Document,standing,'inactive-awaiting-participant-disclosure'),
+    as_dict_atom(Document,standing,'inactive-awaiting-authorized-activation'),
     as_dict_atom(Document,authority,'AMA-1.2-ratified-by-berton'),
     get_dict(grants,Document,[]),
     Document.bounds=_{first_segment_hours:72,maximum_hours:168,
       admitted_events:1000,outbound_posts:500,outbound_per_hour:60,
       remote_calls:50},
     Document.required_affirmations=_{
-      berton_c:"affirmed-by-ratification",
-      haley:"required-before-payload-cognition-memory-model-or-egress"},
+      berton_c:"affirmed-by-ratification-and-current-system-administrator-attestation",
+      haley:"consent-attested-by-berton-current-system-administrator"},
+    Document.administrator_attestation=_{
+      activation_authority:"system-administrator-and-evaluation-owner",
+      attested_participant:"haley",attestor:"berton_c",
+      scope:"AMA-1.2-only",
+      standing:"ratified-participant-consent-attestation"},
     is_dict(Document.haley_disclosure),
     as_mattermost_exact_keys(Document.haley_disclosure,
-      [exact_text,required_author,required_surface]),
+      [exact_text,required_author,required_surface,standing]),
     string(Document.haley_disclosure.exact_text),
     string_length(Document.haley_disclosure.exact_text,DisclosureLength),
     DisclosureLength>=200,DisclosureLength=<1200,
     Document.haley_disclosure.required_author=="haley",
     Document.haley_disclosure.required_surface==
       "exact-berton-haley-miter-group",
+    Document.haley_disclosure.standing==
+      "recommended-direct-confirmation-not-activation-precondition",
     as_dict_atom(Document,authority_separation,
       'grant-bounds-reach-not-meaning-or-movement').
 
@@ -472,7 +485,12 @@ as_evaluation_disclosure(Root,Reply) :-
     Reply=_{schema:"miter-assistant-operator-result-v1",
       status:'evaluation-disclosure',required_author:"haley",
       exact_text:Text,
-      next:"Have Haley post this exact text in the bound three-person Mattermost group, then activate using that post ID."}.
+      direct_confirmation_standing:
+        "recommended-direct-confirmation-not-activation-precondition",
+      authorized_activation_paths:[
+        "ratified-administrator-attestation",
+        "exact-Haley-authored-Mattermost-disclosure"],
+      next:"Activate with the ratified administrator attestation now; Haley may later add the exact direct confirmation in the bound three-person Mattermost group."}.
 
 as_activate_evaluation(Root,PostId0,Reply) :-
     ( catch(as_activate_evaluation_checked(Root,PostId0,Reply0),_,fail) ->
@@ -480,6 +498,13 @@ as_activate_evaluation(Root,PostId0,Reply) :-
     ; Reply=_{schema:"miter-assistant-operator-result-v1",
         status:'evaluation-activation-held',
         reason:"exact-affirmation-or-complete-preflight-not-established"} ), !.
+
+as_activate_evaluation_admin(Root,Reply) :-
+    ( catch(as_activate_evaluation_admin_checked(Root,Reply0),_,fail) ->
+        Reply=Reply0
+    ; Reply=_{schema:"miter-assistant-operator-result-v1",
+        status:'evaluation-activation-held',
+        reason:"ratified-administrator-attestation-or-complete-preflight-not-established"} ), !.
 
 as_activate_evaluation_checked(Root,PostId0,Reply) :-
     as_root(Root,_),as_verify_lkg(Root,verified),
@@ -493,6 +518,17 @@ as_activate_evaluation_checked(Root,PostId0,Reply) :-
       as_write_evaluation_activation(Root,Inactive,Config,Binding,Affirmation,
         BindingHash,Reply) ).
 
+as_activate_evaluation_admin_checked(Root,Reply) :-
+    as_root(Root,_),as_verify_lkg(Root,verified),
+    ( as_evaluation_already_active_admin(Root,Grant) ->
+        Reply=_{schema:"miter-assistant-operator-result-v1",
+          status:'evaluation-already-active',grant_id:Grant.id,
+          segment_expires_at_epoch:Grant.segment_expires_at_epoch}
+    ; as_evaluation_activation_preflight_admin(Root,Inactive,Config,Binding,
+        Attestation,BindingHash),
+      as_write_evaluation_activation(Root,Inactive,Config,Binding,Attestation,
+        BindingHash,Reply) ).
+
 as_evaluation_already_active(Root,PostId,Grant) :-
     directory_file_path(Root,'evaluation-grants.json',Path),
     miter_store_read_json(Path,Document),is_dict(Document),
@@ -500,6 +536,15 @@ as_evaluation_already_active(Root,PostId,Grant) :-
     Document.standing=="active-explicit-grants",
     get_dict(grants,Document,[Grant]),
     as_mattermost_id(Grant.disclosure_witness.post_id,PostId).
+
+as_evaluation_already_active_admin(Root,Grant) :-
+    directory_file_path(Root,'evaluation-grants.json',Path),
+    miter_store_read_json(Path,Document),is_dict(Document),
+    Document.schema=="miter-evaluation-grants-v1",
+    Document.standing=="active-explicit-grants",
+    get_dict(grants,Document,[Grant]),
+    Grant.disclosure_witness.witness_kind==
+      "administrator-attested-participant-consent".
 
 as_evaluation_activation_preflight(Root,PostId,Inactive,Config,Binding,
     Affirmation,BindingHash) :-
@@ -518,6 +563,42 @@ as_evaluation_activation_preflight(Root,PostId,Inactive,Config,Binding,
     as_write_control(Root,continue,'evaluation-activation-preflight'),
     as_evaluation_control_allows(Root).
 
+as_evaluation_activation_preflight_admin(Root,Inactive,Config,Binding,
+    Attestation,BindingHash) :-
+    \+ (as_process_state(Root,State,_),State\==dead),
+    directory_file_path(Root,'evaluation-grants.json',GrantPath),
+    miter_store_read_json(GrantPath,Inactive),
+    as_evaluation_grants_inactive_valid(Inactive),
+    as_mattermost_config(Root,Config),Config.enabled==true,
+    as_mattermost_resolve_live(Root,Config,Binding),
+    as_mattermost_binding_sha256(Root,BindingHash),
+    as_evaluation_administrator_attestation(Binding,Inactive,Attestation),
+    as_evaluation_private_modes(Root),
+    as_evaluation_no_unresolved_effect(Root),
+    as_evaluation_memory_health(Root),
+    as_evaluation_model_health(Root),
+    as_write_control(Root,continue,'evaluation-activation-admin-preflight'),
+    as_evaluation_control_allows(Root).
+
+as_evaluation_administrator_attestation(Binding,Inactive,Attestation) :-
+    Admin=Inactive.administrator_attestation,
+    Admin.attestor=="berton_c",
+    Admin.attested_participant=="haley",
+    Admin.standing=="ratified-participant-consent-attestation",
+    Admin.activation_authority=="system-administrator-and-evaluation-owner",
+    Admin.scope=="AMA-1.2-only",
+    member(Berton,Binding.principals),Berton.username=="berton_c",
+    member(Haley,Binding.principals),Haley.username=="haley",
+    term_string(Admin,AttestationText,[quoted(true),ignore_ops(true)]),
+    crypto_data_hash(AttestationText,Hash,[algorithm(sha256),encoding(utf8)]),
+    atom_string(HashString,Hash),get_time(Now),
+    Attestation=_{witness_kind:"administrator-attested-participant-consent",
+      attestor_username:"berton_c",participant_username:"haley",
+      authority:"system-administrator-and-evaluation-owner",
+      scope:"AMA-1.2-only",attested_at_epoch:Now,
+      content_sha256:HashString,
+      standing:"ratified-consent-attestation-current"}.
+
 as_evaluation_affirmation(Config,Binding,Inactive,PostId,Affirmation) :-
     as_mattermost_token(Config,Token),
     format(atom(Path),'/api/v4/posts/~w',[PostId]),
@@ -532,7 +613,8 @@ as_evaluation_affirmation(Config,Binding,Inactive,PostId,Affirmation) :-
     as_mattermost_post_version(Post,Version),
     crypto_data_hash(Post.message,Hash,[algorithm(sha256),encoding(utf8)]),
     atom_string(HashString,Hash),
-    Affirmation=_{post_id:Post.id,event_version:Version,
+    Affirmation=_{witness_kind:"exact-Haley-authored-Mattermost-disclosure",
+      post_id:Post.id,event_version:Version,
       author_username:"haley",content_sha256:HashString,
       standing:"exact-current-disclosure-affirmed"}.
 
@@ -615,20 +697,36 @@ as_write_evaluation_activation(Root,Inactive,Config,_Binding,Affirmation,
       evaluation_grant_id:"ama-1.2"},Runtime,ActiveRuntime),
     as_write_json_durable(RuntimePath,ActiveRuntime),
     directory_file_path(Root,'evaluation-grants.json',GrantPath),
+    as_evaluation_active_affirmations(Affirmation,RequiredAffirmations),
     Active=_{schema:"miter-evaluation-grants-v1",
       standing:"active-explicit-grants",authority:Inactive.authority,
       authority_separation:Inactive.authority_separation,
       haley_disclosure:Inactive.haley_disclosure,
-      required_affirmations:_{berton_c:"affirmed-by-ratification",
-        haley:"affirmed-by-exact-mattermost-disclosure"},
+      administrator_attestation:Inactive.administrator_attestation,
+      required_affirmations:RequiredAffirmations,
       bounds:Inactive.bounds,grants:[Grant]},
     as_write_json_durable(GrantPath,Active),
-    Reply=_{schema:"miter-assistant-operator-result-v1",
+    Reply0=_{schema:"miter-assistant-operator-result-v1",
       status:'evaluation-activated',grant_id:"ama-1.2",
       activated_at_epoch:Now,segment_expires_at_epoch:SegmentExpiry,
       maximum_expires_at_epoch:MaximumExpiry,
-      disclosure_post_id:Affirmation.post_id,
-      activation_witness_sha256:WitnessHashString}.
+      consent_witness_kind:Affirmation.witness_kind,
+      activation_witness_sha256:WitnessHashString},
+    as_evaluation_activation_reply(Affirmation,Reply0,Reply).
+
+as_evaluation_active_affirmations(Affirmation,
+    _{berton_c:"affirmed-by-ratification-and-current-system-administrator-attestation",
+      haley:"consent-attested-by-berton-current-system-administrator"}) :-
+    Affirmation.witness_kind=="administrator-attested-participant-consent",!.
+as_evaluation_active_affirmations(_,
+    _{berton_c:"affirmed-by-ratification",
+      haley:"affirmed-by-exact-mattermost-disclosure"}).
+
+as_evaluation_activation_reply(Affirmation,Reply0,Reply) :-
+    ( get_dict(post_id,Affirmation,PostId) ->
+        put_dict(disclosure_post_id,Reply0,PostId,Reply)
+    ; put_dict(administrator_attestor,Reply0,
+        Affirmation.attestor_username,Reply) ).
 
 as_evaluation_model_grants(Root,Config,Now,Expiry,Document) :-
     directory_file_path(Root,'model-resources.json',RegistryPath),
@@ -1001,15 +1099,25 @@ as_status(Root, Reply) :-
             ModelSelection=ModelSelection0
         ; ModelSelection=_{standing:"unavailable"} ),
         as_host_service_status(Root,HostService),
+        as_operator_source_status(Root,OperatorSource),
         Reply=_{schema:"miter-assistant-operator-result-v1",status:State,pid:Pid,
           lkg:Lkg,heartbeat:Heartbeat,evaluation:Evaluation,
           host_service:HostService,model_selection:ModelSelection,
+          operator_source:OperatorSource,
           semantic_health:"not-claimed"}
     ; Reply=_{schema:"miter-assistant-operator-result-v1",status:'not-bootstrapped'} ).
 
 as_status_heartbeat(Root, Heartbeat) :-
     directory_file_path(Root,'heartbeat.json',Path),
     (exists_file(Path)->miter_store_read_json(Path,Heartbeat);Heartbeat=null).
+
+as_operator_source_status(Root,Standing) :-
+    as_operator_repo_root(OperatorRoot),
+    as_lkg_source_root(Root,LkgSourceRoot),
+    directory_file_path(OperatorRoot,
+      'effect_membranes/assistant_operator.pl',OperatorFile),
+    Standing=_{profile:"cleanroom-assistant-operator-v1",
+      loaded_from:OperatorFile,runtime_lkg_source_root:LkgSourceRoot}.
 
 as_host_service_status(Root,Standing) :-
     directory_file_path(Root,'service/registration.json',RegistrationPath),
@@ -1046,7 +1154,7 @@ as_evaluation_status(Root,Standing) :-
           counts:_{admitted_events:Events,outbound_posts:Posts,
             outbound_last_hour:PostsLastHour,remote_calls:RemoteCalls},
           limits:Grant.limits}
-    ; Standing=_{standing:"inactive-awaiting-participant-disclosure"} ).
+    ; Standing=_{standing:"inactive-awaiting-authorized-activation"} ).
 
 as_unconfirmed_status(Root, Status) :-
     ( as_pending_control(Root,panic) -> Status='panic-pending'
