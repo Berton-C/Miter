@@ -161,7 +161,7 @@ consumer is absent. No status is upgraded by assertion.
 | Capability | Standing | Current site | Exact gap |
 |---|---:|---|---|
 | One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General scoped contact, memory participation, model participation, VoiceRNA, effect preparation, consequence, regeneration, and endogenous opportunity share this one continuation; no second cognitive loop is present. |
-| Install/start/status/stop/panic | P | `install_miter.py`, `bin/miter`, operator membrane, frozen runtime LKG | The finite installer now validates a clean source, exact PeTTa archive hash, digest-pinned service images, non-admin runtime identity, private credential references, port ownership, and system service shape. It can create isolated services or explicitly preserve selected healthy local services, and it refuses implicit replacement. The same runtime retains process-bound heartbeat, stop, panic, and crash-loop containment. Fresh dedicated-user installation, continuity-preserving migration, and safe hot upgrade/rollback remain to be proven. |
+| Install/start/status/stop/panic | P | `install_miter.py`, single-root operator membrane, frozen runtime LKG | The finite installer derives every Miter-owned path beneath `/Users/claritymiter/Documents/Miter`, validates a clean source, exact PeTTa archive hash, digest-pinned service images, non-admin runtime identity, private credential references, and port ownership. One CLI start detaches Miter's own persistent non-cognitive supervisor; child crash recovery and clean stop pass without launchd. Single-root continuity migration, live proportionality, and safe hot upgrade/rollback remain to be proven. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once effects | P | store/service/Mattermost membranes | Local effects are exact and restart-stable. One certified Mattermost response is visibly delivered, uniquely reconciled from an initially unknown transport outcome, and not replayed across restart; broader failure and returned-consequence evidence remains open. |
 | Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
@@ -437,27 +437,12 @@ resolved the exact live group and activated from the administrator attestation
 with zero events, posts, or model calls; it was then panicked without starting.
 The persistent live activation and no-replay trial remain open.
 
-The host-service packaging cut now generates a validated, runtime-local macOS
-launchd profile from the frozen LKG and exact private runtime root. Explicit
-registration launches a non-cognitive foreground wrapper that owns no timer or
-cognitive recurrence: it starts exactly one frozen PeTTa process and waits for
-that process. launchd retries failed exits only. The existing durable crash
-ledger converts the third distinct crash in sixty seconds into a successful
-`crash-loop-contained` exit, which ends launchd retry; ordinary stop and panic
-remain clean exits and preserve continuity. A fresh private install produced a
-valid property list, reported its host-service standing, ran through the
-foreground supervisor, and completed clean start/status/stop without another
-cognitive process. Host registration is available but was not silently applied
-to this development host. A new clone of remote commit `fbfa281` contained 52
-tracked files and no test, log, evidence, gate, or campaign tree. From that
-clone, a fresh private runtime installed with verified LKG SHA-256
-`6831a0731947653aaa7e46e7183b9b046429565ef2ef9d6b8e77c9bb9f964931`,
-generated a valid service profile and exact disclosure, completed
-start/status/stop with the evaluation grant inactive, left the clone clean,
-and wrote no runtime data into Git. Evaluation packaging is therefore closed.
-Live activation must still carry unfamiliar conversation, model/surface
-failure, scope isolation, consequence return, and restart/no-replay through the
-supported service before C4 closes.
+The earlier host-service packaging trial established useful heartbeat,
+last-known-good, clean-exit, and crash-window mechanics, but its macOS launchd
+carrier is superseded by the accepted CLI-only product boundary below. None of
+its launch-service profile, registration command, or system-path layout remains
+part of the accepted runtime. The recovery mechanics must be carried by one
+CLI-started Miter supervisor without introducing another cognitive clock.
 
 The resource-direction cut removes the fixed OpenRouter choice from the live
 C4 dialogue path. The one human-edited configuration establishes an explicit
@@ -511,18 +496,19 @@ loads and verifies the runtime extension before its durable registration
 update. This is surface-failure containment, not permission to fabricate
 contact or claim successful Mattermost conversation.
 
-The frozen-process cut now gives the non-cognitive host wrapper an exact
+The frozen-process cut gave the non-cognitive supervisor an exact
 process/run-bound heartbeat lease rather than an unbounded wait. Waiting and
 native-processing leases have separately human-editable finite envelopes; an
 actual model transport extends liveness only through the deadline already
 present in the Soul-formed request plus a bounded cleanup margin. Expiry
-records a private mechanical watchdog event, terminates the exact child, and
-returns a failed wrapper exit so launchd can restart only the same verified
-LKG. A deliberately suspended PeTTa child expired its idle lease, was killed,
-and produced `stale-heartbeat-watchdog`; the same frozen runtime then restarted
-under a new run identity and stopped cleanly. This closes mechanical freeze
-detection. It does not implement hot self-upgrade, choose repair meaning, or
-establish semantic recovery merely because a process restarted.
+records a private mechanical watchdog event and terminates the exact child.
+The accepted CLI supervisor now restores only the same verified LKG within the
+existing three-crashes-in-sixty-seconds bound. A deliberately killed disposable
+PeTTa child was replaced under the same supervisor by exactly one new child;
+ordinary CLI stop then ended both processes. This closes mechanical
+crash/freeze recovery without launchd. It does not implement hot self-upgrade,
+choose repair meaning, or establish semantic recovery merely because a process
+restarted.
 
 The first activated AMA-1.2 contact exposed a real C4 integration defect. The
 same service admitted and natively incorporated the unfamiliar Mattermost
@@ -759,18 +745,40 @@ The dedicated-user migration then completed through the supported installer.
 It preserved runtime ID `76c25246-c914-4018-a5e8-bf5bcdef3f26`, retained exact
 active-checkpoint SHA-256
 `9e97c2c328e45ede5a7812e9c0f66bf87a9f38d5a17d65066305c33b10e693ba`,
-created the external migration backup, imported private credentials at their
-required ownership and mode, reused healthy loopback Mattermost and Chroma,
-and recorded `cold-restore-verified-no-replay`. Launchd then held exactly one
-system supervisor plus one pinned PeTTa child under `claritymiter`; the prior
-GUI service remained unregistered. The human operator wrapper still inherited
-an inaccessible caller directory when changing identity. A first repair using
-sudo's run-as working-directory option proved incompatible with the host sudo
-policy. The corrected wrapper establishes `/private/tmp` as an accessible,
-non-persistent operator working directory before changing identity, while all
-application, dependency, and runtime paths remain absolute. It writes no Miter
-state there and does not change the supervised service's private LKG working
-directory. This is an operator-access repair only.
+created a migration backup, imported private credentials at their required
+ownership and mode, reused healthy loopback Mattermost and Chroma, and recorded
+`cold-restore-verified-no-replay`. The temporary installed layout then held one
+supervisor plus one pinned PeTTa child under `claritymiter`. Its split placement
+across `/Library/Application Support`, the `claritymiter` Library,
+`/Users/Shared`, `/usr/local`, and a launch-service record is not the accepted
+product boundary. The human correction requires every Miter-owned application,
+dependency, runtime, service, backup, and operator path to derive beneath
+`/Users/claritymiter/Documents/Miter`, with no launchd dependency. The running
+temporary installation remains a migration source only until the single-root
+replacement preserves its exact continuity and passes rollback.
+
+The split-layout trial also exposed that its migration backup inherited
+read-only-but-world-readable modes beneath `/Users/Shared`. No secret content
+was inspected. The existing backup tree was immediately changed to root-only
+directories and immutable root-only files. The installer now places backups
+beneath the one Miter document root and applies mode 0700 to directories and
+0400 to files. This privacy repair is part of the single-root carry and must be
+rechecked before any old path is removed.
+
+The accepted CLI-only supervisor has now passed an isolated causal trial. One
+CLI `start` detached supervisor PID 24134 and child PID 24138 from a frozen LKG;
+killing only that child caused the same supervisor to create exactly one
+replacement child PID 24306, which returned to a valid waiting heartbeat. One
+CLI `stop` then ended child and supervisor with no replacement. The trial left
+no process or disposable runtime. Its warm idle child used roughly 4.5% CPU and
+75 MiB RSS, materially below the temporary live runtime's roughly 58.5% CPU and
+2.3 GiB RSS, but state sizes differ; the single-root migrated live measurement
+remains the controlling proportionality result. A separate crash-window trial
+then killed three exact disposable children in succession. The first two were
+each replaced exactly once by the same supervisor; the third produced a
+three-entry sixty-second crash ledger, `crash-loop-contained`, and no surviving
+supervisor, child, or trial directory. This is bounded mechanical recovery, not
+Soul diagnosis or semantic choice.
 
 The first mandatory post-migration hygiene audit found 29 obsolete builder
 fixtures surviving for roughly twenty hours to three days. Four were each
@@ -2175,27 +2183,27 @@ Next movement:
    workspace, with observable consequence, reversible self-development, and
    human authority retained only at genuine relational or difficult-to-reverse
    boundaries. The first integrated cut now carries the configured field and
-   actual runtime-user/workspace standing through the live contact organization;
-   it deliberately reports `held-runtime-identity-mismatch` under the current
-   `bcb` service and `held-request-broker-unimplemented` until executable typed
-   requests exist. Next, implement the direct-argument/web request broker,
-   return its observations as contact, and migrate the same service to the
-   dedicated `claritymiter` identity;
+   actual runtime-user/workspace standing through the live contact organization.
+   Dedicated `claritymiter` identity is achieved; the remaining exact standing
+   is `held-request-broker-unimplemented` until executable typed requests exist.
+   Next, implement the direct-argument/web request broker and return its
+   observations as contact through this same organism;
 4. recover the three remaining capability families through this same organism:
    VAD as a bounded non-diagnostic language participant; qualified,
    consequence-sensitive NACE/NAL/PLN reasoning; and isolated self-extension
    with versioned activation, hot upgrade, last-known-good rollback, and
    restart continuity. Historical gate-specific implementations are design
    inputs only and are not copied;
-5. complete one-distribution packaging inside this clean repository: a single
-   human-facing installer may use Python as finite bootstrap machinery, but it
-   must exit before cognition runs. It fetches and verifies the pinned PeTTa
-   dependency outside Git, provisions or validates the non-admin `claritymiter`
-   user, creates the private runtime outside the checkout, brings up isolated
-   Mattermost/Chroma dependencies, performs end-to-end health checks, and prints
-   start/status/stop/panic commands. Downloaded dependencies, runtime state,
-   credentials, logs, and local provenance never become repositories or tracked
-   product files;
+5. complete the one-distribution, one-root packaging cut: the finite Python
+   installer fetches and verifies pinned PeTTa, validates the non-admin
+   `claritymiter` identity, and derives application releases, dependencies,
+   private runtime, private immutable backups, services, and the CLI operator
+   beneath `/Users/claritymiter/Documents/Miter`. `start` owns one persistent
+   non-cognitive supervisor with bounded child recovery; no launchd or system
+   application/operator path participates. Migrate the current temporary
+   dedicated runtime into that root with exact checkpoint, continuity,
+   no-replay, rollback, live latency, and process-hygiene evidence before
+   removing any prior path;
 6. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.

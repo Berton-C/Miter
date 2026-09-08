@@ -5,10 +5,7 @@
     "schema": "miter-installation-v1",
     "human_editable": true,
     "runtime_user": "claritymiter",
-    "runtime_root": "/Users/claritymiter/Library/Application Support/Miter/runtime",
-    "application_root": "/Library/Application Support/Miter/application",
-    "dependency_root": "/Library/Application Support/Miter/dependencies",
-    "services_root": "/Users/Shared/Miter/services",
+    "install_root": "/Users/claritymiter/Documents/Miter",
     "service_mode": "isolated-docker-compose",
     "docker_project": "miter",
     "credential_imports": [
@@ -37,7 +34,8 @@
     },
     "operator_notes": [
       "The installer is finite packaging machinery and exits before Miter runs.",
-      "Application and PeTTa bytes are root-owned read-only inputs; writable continuity remains under the dedicated runtime identity.",
+      "All Miter-owned application, dependency, runtime, service, backup, and operator paths are derived beneath install_root.",
+      "Application and PeTTa bytes are root-owned read-only inputs; writable continuity remains private to the dedicated runtime identity.",
       "Existing service ports or private data are never replaced implicitly.",
       "Credential imports name optional migration sources; secret bytes never enter this file."
     ]

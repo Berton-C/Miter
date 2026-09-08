@@ -29,12 +29,13 @@ pending-before-send Mattermost effect preparation,
 consequence-sensitive multi-turn undertaking continuity, and supported
 install/start/status/stop/panic operations.
 
-It is **not yet the usable Miter alpha**. Migration to the dedicated
-`claritymiter` runtime identity, earned self-extension, hot upgrade, and
-rollback remain to be integrated into this same runtime. A finite macOS
-installer now validates the clean source, pinned dependencies, dedicated
-identity, private credential boundary, isolated services, and system service;
-its complete fresh-host and continuity-preserving migration trials remain open.
+It is **not yet the usable Miter alpha**. Dedicated-identity migration is
+proven, but the accepted product installation is now one CLI-managed tree;
+earned self-extension, hot upgrade, rollback, and the open live dialogue repair
+remain to be integrated into this same runtime. A finite macOS installer
+validates the clean source, pinned dependencies, dedicated identity, private
+credential boundary, and isolated services. Its single-root fresh-host and
+continuity-preserving migration trials remain open.
 [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single operations map for
 that additive work.
 
@@ -122,14 +123,22 @@ not a core or core-service seam. Inspect its non-destructive plan first:
 sudo ./install_miter.py install
 ```
 
+Every Miter-owned installed path is derived from the one human-edited root
+`/Users/claritymiter/Documents/Miter`. Application releases, the pinned PeTTa
+dependency, private runtime and continuity, private immutable backups, service
+data, and the operator command remain beneath that tree. No Miter code or state
+is installed in `/usr/local`, `/Library/Application Support`, the
+`claritymiter` Library, or `/Users/Shared`. Miter is a CLI-started application;
+it does not install or depend on a macOS launch service.
+
 The default creates digest-pinned isolated Chroma, Postgres, and Mattermost
 services and refuses any unowned port collision. For the current Mac migration
 only, `--reuse-local-services` explicitly preserves the already-running healthy
 local services. `--import-keychain-credentials` copies the exact named source
 credentials directly into the mode-0600 `claritymiter` runtime store without
 printing their bytes. Installation is re-entrant: if a new Mattermost instance
-still needs its users, team, bot, or exact group configured, no service is
-registered and the same installer resumes after that setup is complete.
+still needs its users, team, bot, or exact group configured, Miter is not
+started and the same installer resumes after that setup is complete.
 
 The one-time migration from the currently supported runtime is explicit and
 requires that source runtime to be stopped at a clean cycle boundary:
@@ -143,37 +152,30 @@ sudo ./install_miter.py install --reuse-local-services \
 Before restoring, the installer makes an immutable backup, verifies the exact
 checkpoint and continuity manifest, preserves the runtime identity and durable
 developmental state, performs one cold restore with Mattermost polling held,
-and refuses any replay or checkpoint change before registering the service.
+and refuses any replay or checkpoint change before starting the CLI supervisor.
 
 ## Install and operate
 
-Use an explicit runtime directory outside this repository. Do not use
-`~/.miter`.
+The installed operator binds the derived private runtime automatically. Do not
+create or use `~/.miter`.
 
 ```sh
-bin/miter install --runtime-root /absolute/private/runtime/path
-bin/miter prepare-service --runtime-root /absolute/private/runtime/path
-bin/miter model-selection --runtime-root /absolute/private/runtime/path
+sudo "/Users/claritymiter/Documents/Miter/bin/miter" model-selection
 # Use Qwen for the next two calls or ten minutes, whichever comes first:
-bin/miter select-model --runtime-root /absolute/private/runtime/path \
+sudo "/Users/claritymiter/Documents/Miter/bin/miter" select-model \
   --resource qwen-local --duration-seconds 600 --max-calls 2
-bin/miter evaluation-disclosure --runtime-root /absolute/private/runtime/path
+sudo "/Users/claritymiter/Documents/Miter/bin/miter" evaluation-disclosure
 # Activate under Berton's ratified system-administrator attestation of Haley's
 # consent. Haley's direct Mattermost disclosure remains available as a stronger
 # later confirmation, but is no longer an activation precondition.
-bin/miter activate-evaluation-admin \
-  --runtime-root /absolute/private/runtime/path
+sudo "/Users/claritymiter/Documents/Miter/bin/miter" activate-evaluation-admin
 # Alternative direct-confirmation path:
-bin/miter activate-evaluation --runtime-root /absolute/private/runtime/path \
+sudo "/Users/claritymiter/Documents/Miter/bin/miter" activate-evaluation \
   --haley-affirmation-post-id EXACT_MATTERMOST_POST_ID
-# Optional macOS always-on registration; registration starts Miter.
-bin/miter register-service --runtime-root /absolute/private/runtime/path
-bin/miter start   --runtime-root /absolute/private/runtime/path
-bin/miter status  --runtime-root /absolute/private/runtime/path
-bin/miter stop    --runtime-root /absolute/private/runtime/path
-bin/miter panic   --runtime-root /absolute/private/runtime/path
-# Remove only the host registration; runtime continuity remains intact.
-bin/miter unregister-service --runtime-root /absolute/private/runtime/path
+sudo "/Users/claritymiter/Documents/Miter/bin/miter" start
+sudo "/Users/claritymiter/Documents/Miter/bin/miter" status
+sudo "/Users/claritymiter/Documents/Miter/bin/miter" stop
+sudo "/Users/claritymiter/Documents/Miter/bin/miter" panic
 ```
 
 `config/miter.json` is the only human-edited repository configuration. It
@@ -225,23 +227,16 @@ cut reaches its safe boundary. Stop and panic remain available when source
 verification fails. This recovery layer carries process mechanics only and
 does not operate another cognitive loop.
 
-The registered host-service wrapper also watches process-bound heartbeat
-leases. Idle and native-processing leases are finite, while a model transport
+The CLI-started persistent supervisor watches process-bound heartbeat leases.
+Idle and native-processing leases are finite, while a model transport
 receives only its already-authorized request deadline plus a bounded cleanup
 margin. If the exact process/run lease expires, the wrapper records a
-mechanical liveness event, terminates the unresponsive process, and exits as a
-failure so launchd can restart the same verified last-known-good closure.
-Three failures in sixty seconds remain contained. This is crash/freeze
+mechanical liveness event, terminates the unresponsive child, and restores the
+same verified last-known-good closure. Three failures in sixty seconds remain
+contained. Ordinary `stop` and `panic` end both child and supervisor; a later
+`start` begins a new supervisor. This is crash/freeze
 recovery, not Soul diagnosis, semantic repair, hot upgrade, or proof that a
 restarted process has recovered cognition.
-
-`prepare-service` writes and validates a runtime-local macOS launchd profile;
-it changes no host registration. `register-service` explicitly loads that
-profile and starts the same frozen PeTTa runtime. launchd retries only failed
-exits. After three distinct crashes within sixty seconds the non-cognitive
-wrapper exits successfully in `crash-loop-contained` standing, preventing an
-unbounded restart loop. Ordinary stop and panic remain clean exits and do not
-erase continuity. `unregister-service` removes only the launchd registration.
 
 ## Source map
 
@@ -258,7 +253,8 @@ erase continuity. `unregister-service` removes only the launchd registration.
   authority.
 - `bin/miter`: the only supported operator entry.
 - `install_miter.py`: finite packaging, dependency, identity, service, and
-  host-registration machinery; it is absent from the running cognitive seam.
+  single-root migration machinery; it is absent from the running cognitive
+  seam.
 
 ## License
 

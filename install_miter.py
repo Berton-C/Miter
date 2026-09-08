@@ -14,7 +14,6 @@ import json
 import os
 import pathlib
 import platform
-import plistlib
 import pwd
 import secrets
 import shutil
@@ -31,9 +30,6 @@ import urllib.request
 
 SOURCE_ROOT = pathlib.Path(__file__).resolve().parent
 CONFIG_PATH = SOURCE_ROOT / "config" / "miter.json"
-LAUNCHD_LABEL = "io.singularitynet.miter"
-LAUNCHD_PATH = pathlib.Path("/Library/LaunchDaemons") / f"{LAUNCHD_LABEL}.plist"
-OPERATOR_PATH = pathlib.Path("/usr/local/bin/miter")
 APPLICATION_MEMBERS = (
     "CONSTITUTION.md",
     "LICENSE",
@@ -90,6 +86,31 @@ def load_config() -> dict:
         raise InstallError("config/miter.json has no valid deployment section")
     if deployment.get("runtime_user") != "claritymiter":
         raise InstallError("The dedicated runtime identity must be claritymiter")
+    root_text = deployment.get("install_root")
+    if not isinstance(root_text, str):
+        raise InstallError("The deployment must name one absolute install_root")
+    install_root = pathlib.Path(root_text)
+    expected_root = pathlib.Path("/Users") / deployment["runtime_user"] / "Documents" / "Miter"
+    if not install_root.is_absolute() or install_root != expected_root:
+        raise InstallError(
+            f"Miter must remain in its dedicated document root: {expected_root}"
+        )
+    forbidden_roots = {
+        "runtime_root", "application_root", "dependency_root", "services_root",
+    }.intersection(deployment)
+    if forbidden_roots:
+        raise InstallError(
+            "Deployment subpaths are derived from install_root and may not be configured separately: "
+            + ", ".join(sorted(forbidden_roots))
+        )
+    deployment.update({
+        "application_root": str(install_root / "application"),
+        "dependency_root": str(install_root / "dependencies"),
+        "runtime_root": str(install_root / "private" / "runtime"),
+        "services_root": str(install_root / "services"),
+        "backup_root": str(install_root / "private-backups"),
+        "operator_path": str(install_root / "bin" / "miter"),
+    })
     return document
 
 
@@ -172,6 +193,27 @@ def ensure_runtime_account(name: str) -> pwd.struct_passwd:
     return account
 
 
+def ensure_install_root(deployment: dict, account: pwd.struct_passwd) -> pathlib.Path:
+    root = pathlib.Path(deployment["install_root"])
+    documents = root.parent
+    if documents.is_symlink() or (documents.exists() and not documents.is_dir()):
+        raise InstallError(f"Dedicated Documents path is not a safe directory: {documents}")
+    if not documents.exists():
+        documents.mkdir(mode=0o700, parents=False)
+        os.chown(documents, account.pw_uid, account.pw_gid)
+    if documents.stat().st_uid != account.pw_uid:
+        raise InstallError(f"Dedicated Documents path is not owned by {account.pw_name}")
+    if root.is_symlink() or (root.exists() and not root.is_dir()):
+        raise InstallError(f"Miter install root is not a safe directory: {root}")
+    if not root.exists():
+        root.mkdir(mode=0o755)
+        os.chown(root, 0, 0)
+    if root.stat().st_uid != 0:
+        raise InstallError("The Miter install root must remain root-owned")
+    root.chmod(0o755)
+    return root
+
+
 def sha256_file(path: pathlib.Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as stream:
@@ -240,6 +282,19 @@ def make_read_only_tree(root: pathlib.Path) -> None:
         elif path.is_file():
             executable = path.name in {"miter", "install_miter.py"} or bool(path.stat().st_mode & stat.S_IXUSR)
             path.chmod(0o755 if executable else 0o644)
+        if os.geteuid() == 0:
+            os.chown(path, 0, 0)
+
+
+def make_private_read_only_tree(root: pathlib.Path) -> None:
+    """Make a continuity backup immutable to ordinary users and private to root."""
+    for path in [root, *root.rglob("*")]:
+        if path.is_symlink():
+            raise InstallError(f"Private backup contains an unsupported symlink: {path}")
+        if path.is_dir():
+            path.chmod(0o700)
+        elif path.is_file():
+            path.chmod(0o400)
         if os.geteuid() == 0:
             os.chown(path, 0, 0)
 
@@ -546,8 +601,11 @@ def backup_runtime(source: pathlib.Path, deployment: dict) -> pathlib.Path:
     runtime_id = runtime.get("runtime_id")
     if not isinstance(runtime_id, str) or not runtime_id:
         raise InstallError("Migration source has no runtime identity")
-    backup_root = pathlib.Path(deployment["services_root"]).parent / "migration-backups"
+    backup_root = pathlib.Path(deployment["backup_root"])
     backup_root.mkdir(parents=True, exist_ok=True)
+    backup_root.chmod(0o700)
+    if os.geteuid() == 0:
+        os.chown(backup_root, 0, 0)
     timestamp = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
     target = backup_root / f"{runtime_id}-{timestamp}"
     if target.exists():
@@ -562,7 +620,7 @@ def backup_runtime(source: pathlib.Path, deployment: dict) -> pathlib.Path:
         "created_at_epoch": time.time(),
         "standing": "immutable-pre-migration-backup",
     }, sort_keys=True) + "\n", encoding="utf-8")
-    make_read_only_tree(target)
+    make_private_read_only_tree(target)
     return target
 
 
@@ -745,61 +803,19 @@ def provision_credentials(config: dict, account: pwd.struct_passwd,
     return missing
 
 
-def plist_xml(application: pathlib.Path, deployment: dict, petta: pathlib.Path) -> str:
-    runtime = deployment["runtime_root"]
-    swipl = command_path("swipl")
-    operator = application / "effect_membranes" / "assistant_operator.pl"
-    escaped = lambda text: (str(text).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
-    arguments = [swipl, "-q", "-f", "none", "-s", str(operator), "--",
-                 "run-supervised", "--runtime-root", runtime]
-    argument_xml = "\n".join(f"      <string>{escaped(value)}</string>" for value in arguments)
-    return f'''<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0"><dict>
-  <key>Label</key><string>{LAUNCHD_LABEL}</string>
-  <key>UserName</key><string>{deployment['runtime_user']}</string>
-  <key>GroupName</key><string>staff</string>
-  <key>ProgramArguments</key><array>
-{argument_xml}
-  </array>
-  <key>EnvironmentVariables</key><dict>
-    <key>HOME</key><string>/Users/{deployment['runtime_user']}</string>
-    <key>MITER_PETTA_MAIN</key><string>{escaped(petta / 'src' / 'main.pl')}</string>
-    <key>MITER_SWIPL_LD</key><string>{escaped(command_path('swipl-ld'))}</string>
-  </dict>
-  <key>RunAtLoad</key><true/>
-  <key>KeepAlive</key><dict><key>SuccessfulExit</key><false/></dict>
-  <key>ProcessType</key><string>Interactive</string>
-</dict></plist>
-'''
-
-
-def install_launchd(application: pathlib.Path, deployment: dict, petta: pathlib.Path) -> None:
-    if os.geteuid() != 0:
-        raise InstallError("Run install with sudo so it can register the system service")
-    if LAUNCHD_PATH.exists():
-        result = run(["/bin/launchctl", "print", f"system/{LAUNCHD_LABEL}"], check=False)
-        if result.returncode == 0:
-            run(["/bin/launchctl", "bootout", f"system/{LAUNCHD_LABEL}"], check=False)
-    LAUNCHD_PATH.write_text(plist_xml(application, deployment, petta), encoding="utf-8")
-    os.chown(LAUNCHD_PATH, 0, 0)
-    LAUNCHD_PATH.chmod(0o644)
-    run(["/usr/bin/plutil", "-lint", str(LAUNCHD_PATH)])
-    run(["/bin/launchctl", "bootstrap", "system", str(LAUNCHD_PATH)])
-
-
 def operator_wrapper_text(application: pathlib.Path, deployment: dict,
                           petta: pathlib.Path) -> str:
     runtime = deployment["runtime_root"]
     user = deployment["runtime_user"]
     return f'''#!/bin/sh
 set -eu
-command=${{1:-}}
-if [ "$command" = start ]; then
-  exec /usr/bin/sudo /bin/launchctl kickstart -k system/{LAUNCHD_LABEL}
-fi
 cd /private/tmp
-exec /usr/bin/sudo -u {user} -H /usr/bin/env \\
+if [ "$(/usr/bin/id -un)" = {user} ]; then
+  run_as_runtime=
+else
+  run_as_runtime="/usr/bin/sudo -u {user} -H"
+fi
+exec $run_as_runtime /usr/bin/env \\
   MITER_PETTA_MAIN={shell_quote(str(petta / 'src' / 'main.pl'))} \\
   MITER_SWIPL_LD={shell_quote(command_path('swipl-ld'))} \\
   {shell_quote(str(application / 'bin' / 'miter'))} "$@" \\
@@ -812,91 +828,11 @@ def install_operator_wrapper(application: pathlib.Path, deployment: dict,
     if os.geteuid() != 0:
         raise InstallError("Run install with sudo so it can install the operator command")
     text = operator_wrapper_text(application, deployment, petta)
-    OPERATOR_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OPERATOR_PATH.write_text(text, encoding="utf-8")
-    os.chown(OPERATOR_PATH, 0, 0)
-    OPERATOR_PATH.chmod(0o755)
-
-
-def installed_service_paths(deployment: dict) -> tuple[pathlib.Path, pathlib.Path]:
-    if not LAUNCHD_PATH.is_file() or LAUNCHD_PATH.is_symlink():
-        raise InstallError("The installed Miter system service profile is unavailable")
-    try:
-        with LAUNCHD_PATH.open("rb") as stream:
-            profile = plistlib.load(stream)
-    except (OSError, plistlib.InvalidFileException) as exc:
-        raise InstallError(f"Cannot read the installed Miter service profile: {exc}") from exc
-    arguments = profile.get("ProgramArguments")
-    environment = profile.get("EnvironmentVariables")
-    if (
-        profile.get("Label") != LAUNCHD_LABEL
-        or profile.get("UserName") != deployment["runtime_user"]
-        or not isinstance(arguments, list)
-        or len(arguments) != 10
-        or arguments[1:5] != ["-q", "-f", "none", "-s"]
-        or arguments[6:9] != ["--", "run-supervised", "--runtime-root"]
-        or arguments[9] != deployment["runtime_root"]
-        or not isinstance(environment, dict)
-    ):
-        raise InstallError("The installed Miter service profile has an unexpected shape")
-    operator = pathlib.Path(arguments[5])
-    application = operator.parent.parent
-    releases = pathlib.Path(deployment["application_root"]) / "releases"
-    try:
-        release_relative = application.relative_to(releases)
-    except ValueError as exc:
-        raise InstallError("The installed Miter application escaped its release root") from exc
-    if (
-        len(release_relative.parts) != 1
-        or len(application.name) != 40
-        or any(character not in "0123456789abcdef" for character in application.name)
-        or operator != application / "effect_membranes" / "assistant_operator.pl"
-        or not operator.is_file()
-        or operator.is_symlink()
-    ):
-        raise InstallError("The installed Miter application release is not exact")
-    petta_main_value = environment.get("MITER_PETTA_MAIN")
-    if not isinstance(petta_main_value, str):
-        raise InstallError("The installed Miter service does not name its PeTTa dependency")
-    petta_main = pathlib.Path(petta_main_value)
-    petta = petta_main.parent.parent
-    expected_petta = (
-        pathlib.Path(deployment["dependency_root"])
-        / "PeTTa"
-        / deployment["petta"]["commit"]
-    )
-    if (
-        petta != expected_petta
-        or petta_main != petta / "src" / "main.pl"
-        or not petta_main.is_file()
-        or petta_main.is_symlink()
-    ):
-        raise InstallError("The installed Miter service does not use the pinned PeTTa dependency")
-    return application, petta
-
-
-def repair_operator(config: dict) -> dict:
-    if os.geteuid() != 0:
-        raise InstallError("Run this command with sudo so it can repair the operator command")
-    source_identity()
-    deployment = config["deployment"]
-    account = runtime_account(deployment["runtime_user"])
-    if account is None:
-        raise InstallError("The dedicated Miter runtime identity is unavailable")
-    runtime = pathlib.Path(deployment["runtime_root"])
-    if not runtime_marker_valid(runtime):
-        raise InstallError("The dedicated Miter runtime is unavailable or incomplete")
-    application, petta = installed_service_paths(deployment)
-    install_operator_wrapper(application, deployment, petta)
-    return {
-        "schema": "miter-installation-result-v1",
-        "status": "operator-repaired",
-        "operator": str(OPERATOR_PATH),
-        "application": str(application),
-        "petta": str(petta),
-        "runtime": str(runtime),
-        "service_interrupted": False,
-    }
+    operator_path = pathlib.Path(deployment["operator_path"])
+    operator_path.parent.mkdir(parents=True, exist_ok=True)
+    operator_path.write_text(text, encoding="utf-8")
+    os.chown(operator_path, 0, 0)
+    operator_path.chmod(0o755)
 
 
 def shell_quote(value: str) -> str:
@@ -933,18 +869,22 @@ def validate(config: dict, application: pathlib.Path | None = None,
             checks["miter"] = f"{status.get('status','unknown')};lkg={status.get('lkg','unknown')}"
         except json.JSONDecodeError:
             checks["miter"] = "operator-invalid"
-    checks["launchd"] = "registered" if run(["/bin/launchctl", "print", f"system/{LAUNCHD_LABEL}"], check=False).returncode == 0 else "not-registered"
-    complete = all(value in {"present-non-admin", "private-present", "healthy", "registered"} or value.startswith(("running;lkg=verified", "stopped;lkg=verified")) for value in checks.values())
+    complete = all(
+        value in {"present-non-admin", "private-present", "healthy"}
+        or value.startswith(("running;lkg=verified", "stopped;lkg=verified"))
+        for value in checks.values()
+    )
     return {"schema": "miter-installation-validation-v1", "complete": complete, "checks": checks}
 
 
-def print_commands() -> None:
+def print_commands(config: dict) -> None:
+    operator = shell_quote(config["deployment"]["operator_path"])
     print("Ordinary Miter operator commands:")
-    print("  miter start")
-    print("  miter status")
-    print("  miter stop")
-    print("  miter panic")
-    print("  miter model-selection")
+    print(f"  sudo {operator} start")
+    print(f"  sudo {operator} status")
+    print(f"  sudo {operator} stop")
+    print(f"  sudo {operator} panic")
+    print(f"  sudo {operator} model-selection")
 
 
 def plan(config: dict) -> dict:
@@ -957,10 +897,13 @@ def plan(config: dict) -> dict:
         "source": str(SOURCE_ROOT),
         "runtime_user": deployment["runtime_user"],
         "runtime_user_standing": "present" if account else "will-create",
+        "install_root": deployment["install_root"],
         "runtime_root": deployment["runtime_root"],
         "application_root": deployment["application_root"],
         "dependency_root": deployment["dependency_root"],
         "services_root": deployment["services_root"],
+        "backup_root": deployment["backup_root"],
+        "operator_path": deployment["operator_path"],
         "configured_ports": {
             "mattermost": "occupied" if mattermost else "available",
             "chroma": "occupied" if chroma else "available",
@@ -980,6 +923,7 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
     identity = source_identity()
     preflight_services(config, reuse=reuse_services)
     account = ensure_runtime_account(deployment["runtime_user"])
+    ensure_install_root(deployment, account)
     petta = install_petta(deployment)
     application = install_application(deployment, identity)
     service_standing = install_services(config, reuse=reuse_services)
@@ -1058,8 +1002,10 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
     finally:
         if migration_pending_restore:
             restore_surface_poll(runtime,prior_poll,account)
-    install_launchd(application, deployment, petta)
     install_operator_wrapper(application, deployment, petta)
+    started = miter_command(application, deployment, petta, "start", check=False)
+    if started.returncode != 0:
+        raise child_failure(started, "Miter CLI supervisor could not start")
     report = validate(config, application, petta)
     report.update({
         "status": "installed-and-started" if report["complete"] else "installed-validation-held",
@@ -1085,8 +1031,6 @@ def main() -> int:
                                 help="Import the exact named Keychain sources into the private runtime without printing them")
     install_parser.add_argument("--migrate-runtime", metavar="ABSOLUTE_PATH",
                                 help="Preserve one stopped Miter runtime's exact identity, continuity, developmental state, and receipts")
-    subparsers.add_parser("repair-operator",
-                          help="Repair the ordinary operator command without restarting Miter")
     subparsers.add_parser("validate", help="Read-only installation validation")
     subparsers.add_parser("commands", help="Print ordinary operator commands")
     args = parser.parse_args()
@@ -1098,16 +1042,14 @@ def main() -> int:
             result = install(config, args.reuse_local_services,
                              args.import_keychain_credentials,
                              args.migrate_runtime)
-        elif args.command == "repair-operator":
-            result = repair_operator(config)
         elif args.command == "validate":
             result = validate(config)
         else:
-            print_commands()
+            print_commands(config)
             return 0
         print(json.dumps(result, indent=2, sort_keys=True))
         if args.command == "install" and result.get("status") == "installed-and-started":
-            print_commands()
+            print_commands(config)
         return 0 if args.command != "validate" or result.get("complete") else 1
     except InstallError as exc:
         print(json.dumps({"schema": "miter-installation-error-v1", "error": str(exc)}, sort_keys=True), file=sys.stderr)

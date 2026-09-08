@@ -25,7 +25,7 @@ as_dispatch([Command0|Args], Reply, Code) :-
     miter_store_nonempty_atom(Command0, Command),
     as_command(Command, Args, Reply, Code), !.
 as_dispatch(_, _{schema:"miter-assistant-operator-result-v1",status:"usage-error",
-  usage:"miter <install|bootstrap|model-selection|select-model|prepare-service|register-service|unregister-service|evaluation-disclosure|activate-evaluation|activate-evaluation-admin|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--resource ID --duration-seconds N --max-calls N|--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
+  usage:"miter <install|bootstrap|model-selection|select-model|evaluation-disclosure|activate-evaluation|activate-evaluation-admin|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--resource ID --duration-seconds N --max-calls N|--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
 
 as_command(install, Args, Reply, Code) :-
     !,
@@ -75,24 +75,6 @@ as_command('activate-evaluation-admin', Args, Reply, Code) :-
     as_required_option(Args,'--runtime-root',Root0),
     as_runtime_path(Root0,Root),
     as_activate_evaluation_admin(Root,Reply),as_reply_code(Reply,Code).
-as_command('prepare-service', Args, Reply, Code) :-
-    !,
-    as_exact_options(Args,['--runtime-root']),
-    as_required_option(Args,'--runtime-root',Root0),
-    as_runtime_path(Root0,Root),as_prepare_host_service(Root,Reply),
-    as_reply_code(Reply,Code).
-as_command('register-service', Args, Reply, Code) :-
-    !,
-    as_exact_options(Args,['--runtime-root']),
-    as_required_option(Args,'--runtime-root',Root0),
-    as_runtime_path(Root0,Root),as_register_host_service(Root,Reply),
-    as_reply_code(Reply,Code).
-as_command('unregister-service', Args, Reply, Code) :-
-    !,
-    as_exact_options(Args,['--runtime-root']),
-    as_required_option(Args,'--runtime-root',Root0),
-    as_runtime_path(Root0,Root),as_unregister_host_service(Root,Reply),
-    as_reply_code(Reply,Code).
 as_command('run-supervised', Args, Reply, Code) :-
     !,
     as_exact_options(Args,['--runtime-root']),
@@ -140,8 +122,7 @@ as_reply_code(Reply, 0) :- get_dict(status, Reply, Status),
       panicked,'stop-pending','panic-pending','processing-unconfirmed',
       'liveness-unconfirmed','existing-process-unconfirmed',queued,duplicate,
       'evidence-stored','evaluation-disclosure','evaluation-activated',
-      'evaluation-already-active','service-profile-ready','service-registered',
-      'service-unregistered','supervised-clean-exit','crash-loop-contained',
+      'evaluation-already-active','supervised-clean-exit','crash-loop-contained',
       'model-selection','model-selected']), !.
 as_reply_code(_, 1).
 
@@ -455,16 +436,14 @@ as_human_config_sections(Root, Human, Runtime, Mattermost, Memory, Models, Grant
 as_deployment_config_valid(Deployment) :-
     is_dict(Deployment),
     as_mattermost_exact_keys(Deployment,
-      [application_root,credential_imports,dependency_root,docker_project,human_editable,images,
-       operator_notes,petta,runtime_root,runtime_user,schema,service_mode,
-       services_root]),
+      [credential_imports,docker_project,human_editable,images,install_root,
+       operator_notes,petta,runtime_user,schema,service_mode]),
     Deployment.schema=="miter-installation-v1",
     Deployment.human_editable==true,
     Deployment.runtime_user=="claritymiter",
     Deployment.service_mode=="isolated-docker-compose",
     Deployment.docker_project=="miter",
-    forall(member(Key,[application_root,dependency_root,runtime_root,services_root]),
-      (get_dict(Key,Deployment,Value),string(Value),sub_string(Value,0,1,_,"/"))),
+    Deployment.install_root=="/Users/claritymiter/Documents/Miter",
     Deployment.petta.commit==
       "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
     Deployment.petta.archive_sha256==
@@ -883,124 +862,25 @@ as_verify_hash(Dict, Path) :-
     as_sha256(Expected,Expected),crypto_file_hash(Path,Actual,[algorithm(sha256),encoding(octet)]),
     Actual==Expected.
 
-% macOS launchd supervises this non-cognitive wrapper.  The wrapper owns no
-% recurrence of its own: it runs exactly one frozen PeTTa service process and
-% waits for that process to end.  Failed exits may be relaunched by launchd;
-% the existing three-crashes-in-sixty-seconds ledger ends that sequence with a
-% successful containment exit so KeepAlive does not become perpetual thrash.
-as_prepare_host_service(Root,Reply) :-
-    as_root(Root,_),as_verify_lkg(Root,verified),
-    as_host_service_material(Root,Label,PlistPath,Target),
-    Reply=_{schema:"miter-assistant-operator-result-v1",
-      status:'service-profile-ready',label:Label,profile:PlistPath,
-      launchd_target:Target,registered:false}.
-
-as_host_service_material(Root,Label,PlistPath,Target) :-
-    directory_file_path(Root,'runtime.json',RuntimePath),
-    miter_store_read_json(RuntimePath,Runtime),
-    miter_store_nonempty_atom(Runtime.runtime_id,RuntimeId),
-    format(atom(Label),'io.singularitynet.miter.~w',[RuntimeId]),
-    as_host_uid(Uid),format(atom(Target),'gui/~d',[Uid]),
-    as_lkg_source_root(Root,SourceRoot),
-    directory_file_path(SourceRoot,
-      'effect_membranes/assistant_operator.pl',Operator),
-    current_prolog_flag(executable,Swipl),
-    directory_file_path(Root,'lkg.json',LkgPath),
-    miter_store_read_json(LkgPath,Lkg),
-    miter_store_nonempty_atom(Lkg.petta.path,Petta),
-    directory_file_path(Root,'logs/launchd.stdout',Stdout),
-    directory_file_path(Root,'logs/launchd.stderr',Stderr),
-    maplist(as_xml_text,[Label,Swipl,Operator,Root,Petta,SourceRoot,Stdout,Stderr],
-      [LabelX,SwiplX,OperatorX,RootX,PettaX,SourceRootX,StdoutX,StderrX]),
-    format(string(Text),
-      '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict>\n  <key>Label</key><string>~s</string>\n  <key>ProgramArguments</key>\n  <array>\n    <string>~s</string><string>-q</string><string>-f</string><string>none</string>\n    <string>-s</string><string>~s</string><string>--</string>\n    <string>run-supervised</string><string>--runtime-root</string><string>~s</string>\n  </array>\n  <key>EnvironmentVariables</key><dict>\n    <key>MITER_PETTA_MAIN</key><string>~s</string>\n  </dict>\n  <key>WorkingDirectory</key><string>~s</string>\n  <key>RunAtLoad</key><true/>\n  <key>KeepAlive</key><dict><key>SuccessfulExit</key><false/></dict>\n  <key>ThrottleInterval</key><integer>5</integer>\n  <key>ProcessType</key><string>Background</string>\n  <key>StandardOutPath</key><string>~s</string>\n  <key>StandardErrorPath</key><string>~s</string>\n</dict>\n</plist>\n',
-      [LabelX,SwiplX,OperatorX,RootX,PettaX,SourceRootX,StdoutX,StderrX]),
-    directory_file_path(Root,'service/launchd.plist',PlistPath),
-    as_write_text_durable(PlistPath,Text),
-    as_plist_valid(PlistPath),chmod(PlistPath,0o600).
-
-as_xml_text(Value,Escaped) :-
-    miter_store_nonempty_atom(Value,Atom),atom_codes(Atom,Codes),
-    as_xml_codes(Codes,EscapedCodes),string_codes(Escaped,EscapedCodes).
-
-as_xml_codes([],[]).
-as_xml_codes([0'&|Rest],[0'&,0'a,0'm,0'p,0';|Tail]) :- !,
-    as_xml_codes(Rest,Tail).
-as_xml_codes([0'<|Rest],[0'&,0'l,0't,0';|Tail]) :- !,
-    as_xml_codes(Rest,Tail).
-as_xml_codes([0'>|Rest],[0'&,0'g,0't,0';|Tail]) :- !,
-    as_xml_codes(Rest,Tail).
-as_xml_codes([0'\"|Rest],[0'&,0'q,0'u,0'o,0't,0';|Tail]) :- !,
-    as_xml_codes(Rest,Tail).
-as_xml_codes([Code|Rest],[Code|Tail]) :- as_xml_codes(Rest,Tail).
-
-as_plist_valid(Path) :-
-    process_create('/usr/bin/plutil',['-lint',Path],
-      [stdin(null),stdout(null),stderr(null),process(Pid)]),
-    process_wait(Pid,exit(0)).
-
-as_host_uid(Uid) :-
-    setup_call_cleanup(
-      process_create('/usr/bin/id',['-u'],
-        [stdin(null),stdout(pipe(Stream)),stderr(null),process(Pid)]),
-      read_string(Stream,64,Raw),close(Stream)),
-    process_wait(Pid,exit(0)),normalize_space(string(Text),Raw),
-    number_string(Uid,Text),integer(Uid),Uid>=0.
-
-as_register_host_service(Root,Reply) :-
-    as_root(Root,_),as_verify_lkg(Root,verified),
-    as_host_service_material(Root,Label,PlistPath,Target),
-    ( as_launchd_registered(Target,Label) ->
-        ( as_process_state(Root,State,_),State\==dead -> true
-        ; format(atom(ServiceTarget),'~w/~w',[Target,Label]),
-          process_create('/bin/launchctl',['kickstart',ServiceTarget],
-            [stdin(null),stdout(null),stderr(null),process(KickPid)]),
-          process_wait(KickPid,exit(0)) )
-    ; process_create('/bin/launchctl',['bootstrap',Target,PlistPath],
-        [stdin(null),stdout(null),stderr(null),process(Pid)]),
-      process_wait(Pid,exit(0)) ),
-    get_time(Now),directory_file_path(Root,'service/registration.json',StatePath),
-    as_write_json_durable(StatePath,_{schema:"miter-host-service-v1",
-      label:Label,launchd_target:Target,profile:PlistPath,
-      standing:"registered",registered_at_epoch:Now}),
-    Reply=_{schema:"miter-assistant-operator-result-v1",
-      status:'service-registered',label:Label,launchd_target:Target}.
-
-as_unregister_host_service(Root,Reply) :-
-    as_root(Root,_),as_verify_lkg(Root,verified),
-    as_host_service_material(Root,Label,_PlistPath,Target),
-    ( as_launchd_registered(Target,Label) ->
-        format(atom(ServiceTarget),'~w/~w',[Target,Label]),
-        process_create('/bin/launchctl',['bootout',ServiceTarget],
-          [stdin(null),stdout(null),stderr(null),process(Pid)]),
-        process_wait(Pid,exit(0))
-    ; true ),
-    get_time(Now),directory_file_path(Root,'service/registration.json',StatePath),
-    as_write_json_durable(StatePath,_{schema:"miter-host-service-v1",
-      label:Label,launchd_target:Target,standing:"unregistered",
-      unregistered_at_epoch:Now}),
-    Reply=_{schema:"miter-assistant-operator-result-v1",
-      status:'service-unregistered',label:Label,launchd_target:Target}.
-
-as_launchd_registered(Target,Label) :-
-    format(atom(ServiceTarget),'~w/~w',[Target,Label]),
-    process_create('/bin/launchctl',['print',ServiceTarget],
-      [stdin(null),stdout(null),stderr(null),process(Pid)]),
-    process_wait(Pid,exit(0)).
-
 as_supervised_run(Root,Reply) :-
     as_root(Root,_),as_verify_lkg(Root,verified),
     ( as_process_state(Root,State,Pid),State\==dead ->
         Reply=_{schema:"miter-assistant-operator-result-v1",
           status:'supervised-clean-exit',reason:"service-already-running",pid:Pid}
     ; as_mattermost_prepare(Root,_MattermostStanding),
-      as_crash_admit(Root,CrashStanding),
-      ( CrashStanding==blocked ->
-          Reply=_{schema:"miter-assistant-operator-result-v1",
-            status:'crash-loop-contained'}
-      ; as_write_control(Root,continue,'launchd-supervisor'),
-        as_spawn_foreground(Root,ChildPid,ProcessStatus),
-        as_supervised_outcome(Root,ChildPid,ProcessStatus,Reply) ) ), !.
+      as_write_control(Root,continue,'cli-supervisor'),
+      as_supervised_cycle(Root,Reply) ), !.
+
+as_supervised_cycle(Root,Reply) :-
+    as_crash_admit(Root,CrashStanding),
+    ( CrashStanding==blocked ->
+        Reply=_{schema:"miter-assistant-operator-result-v1",
+          status:'crash-loop-contained'}
+    ; as_spawn_foreground(Root,ChildPid,ProcessStatus),
+      as_supervised_outcome(Root,ChildPid,ProcessStatus,Outcome),
+      ( Outcome.status=='supervised-crash' ->
+          sleep(1),as_supervised_cycle(Root,Reply)
+      ; Reply=Outcome ) ).
 
 as_spawn_foreground(Root,Pid,ProcessStatus) :-
     as_lkg_source_root(Root,SourceRoot),as_petta_main(Petta),
@@ -1023,9 +903,10 @@ as_spawn_foreground(Root,Pid,ProcessStatus) :-
          as_supervise_foreground(Root,Pid,StartedAt,ProcessStatus)),
         close(Err)),close(Out)).
 
-% The wrapper polls only process and lease state.  It cannot inspect contact,
-% Soul organization, model output or movement.  A stale lease causes a
-% mechanical termination; launchd may then restore the same verified LKG.
+% The CLI-started supervisor polls only process and lease state. It cannot
+% inspect contact, Soul organization, model output or movement. A stale lease
+% causes mechanical termination; the same supervisor may then restore the
+% verified LKG within the bounded crash window.
 as_supervise_foreground(Root,Pid,StartedAt,ProcessStatus) :-
     as_config(Root,supervision,Supervision),
     as_supervise_foreground_loop(Root,Pid,StartedAt,Supervision,ProcessStatus).
@@ -1124,6 +1005,9 @@ as_start(Root, Reply) :-
     ; as_process_state(Root,alive,Pid) ->
         Reply=_{schema:"miter-assistant-operator-result-v1",status:running,pid:Pid,
           semantic_health:"not-claimed"}
+    ; as_supervisor_state(Root,alive,SupervisorPid) ->
+        Reply=_{schema:"miter-assistant-operator-result-v1",status:starting,pid:0,
+          supervisor_pid:SupervisorPid,semantic_health:"readiness-pending"}
     ; as_process_state(Root,unconfirmed,Pid) ->
         Reply=_{schema:"miter-assistant-operator-result-v1",
           status:'existing-process-unconfirmed',pid:Pid,
@@ -1134,17 +1018,19 @@ as_start(Root, Reply) :-
           Reply=_{schema:"miter-assistant-operator-result-v1",
             status:'crash-loop-contained',semantic_health:"not-claimed",
             mattermost_preflight:MattermostStanding}
-      ; as_write_control(Root,continue,start), as_spawn(Root,Pid,StartedAt),
-        ( as_wait_started(Root,Pid,StartedAt,5) ->
-            Reply=_{schema:"miter-assistant-operator-result-v1",status:started,pid:Pid,
-              semantic_health:"not-claimed",
-              mattermost_preflight:MattermostStanding}
-        ; as_process_state(Root,alive,Pid) ->
-            Reply=_{schema:"miter-assistant-operator-result-v1",status:starting,pid:Pid,
-              semantic_health:"readiness-pending",
+      ; as_write_control(Root,continue,start),
+        as_spawn_supervisor(Root,SupervisorPid,StartedAt),
+        ( as_wait_started(Root,SupervisorPid,StartedAt,5),
+          as_process_state(Root,alive,ChildPid) ->
+            Reply=_{schema:"miter-assistant-operator-result-v1",status:started,
+              pid:ChildPid,supervisor_pid:SupervisorPid,
+              semantic_health:"not-claimed",mattermost_preflight:MattermostStanding}
+        ; as_supervisor_state(Root,alive,SupervisorPid) ->
+            Reply=_{schema:"miter-assistant-operator-result-v1",status:starting,pid:0,
+              supervisor_pid:SupervisorPid,semantic_health:"readiness-pending",
               mattermost_preflight:MattermostStanding}
         ; Reply=_{schema:"miter-assistant-operator-result-v1",
-            status:'start-failed',pid:Pid,
+            status:'start-failed',pid:0,supervisor_pid:SupervisorPid,
             mattermost_preflight:MattermostStanding} ) ) ).
 
 as_crash_admit(Root, Standing) :-
@@ -1190,22 +1076,30 @@ as_recent_crash(Now, Entry) :-
     is_dict(Entry),get_dict(observed_at_epoch,Entry,Observed),number(Observed),
     Observed=<Now,Now-Observed=<60,get_dict(pid,Entry,Pid),integer(Pid),Pid>1.
 
-as_spawn(Root, Pid, StartedAt) :-
-    as_lkg_source_root(Root,SourceRoot),as_petta_main(Petta),
-    directory_file_path(Root,'service-entry.metta',Entry),uuid(RunId),
-    atomic_list_concat(['logs/service-',RunId,'.stdout'],StdoutRelative),
-    atomic_list_concat(['logs/service-',RunId,'.stderr'],StderrRelative),
-    directory_file_path(Root,StdoutRelative,Stdout),directory_file_path(Root,StderrRelative,Stderr),
+as_spawn_supervisor(Root,Pid,StartedAt) :-
+    as_lkg_source_root(Root,SourceRoot),
+    directory_file_path(SourceRoot,
+      'effect_membranes/assistant_operator.pl',Operator),
+    uuid(RunId),
+    atomic_list_concat(['logs/supervisor-',RunId,'.stdout'],StdoutRelative),
+    atomic_list_concat(['logs/supervisor-',RunId,'.stderr'],StderrRelative),
+    directory_file_path(Root,StdoutRelative,Stdout),
+    directory_file_path(Root,StderrRelative,Stderr),
     setup_call_cleanup(open(Stdout,write,Out,[encoding(utf8)]),
       setup_call_cleanup(open(Stderr,write,Err,[encoding(utf8)]),
-        (current_prolog_flag(executable,Swipl),
-         process_create(Swipl,
-           ['--stack_limit=2g','-q','-s',Petta,'--',Entry,silent],
-           [cwd(SourceRoot),stdin(null),stdout(stream(Out)),stderr(stream(Err)),detached(true),process(Pid)])),
+        ( current_prolog_flag(executable,Swipl),
+          process_create(Swipl,
+            ['-q','-f',none,'-s',Operator,'--','run-supervised',
+             '--runtime-root',Root],
+            [cwd(SourceRoot),stdin(null),stdout(stream(Out)),stderr(stream(Err)),
+             detached(true),process(Pid)]) ),
         close(Err)),close(Out)),
-    get_time(StartedAt),directory_file_path(Root,'pid.json',PidPath),
-    as_write_json_durable(PidPath,_{schema:"miter-assistant-pid-v1",pid:Pid,
-      run_id:RunId,started_at_epoch:StartedAt,stdout:StdoutRelative,stderr:StderrRelative}).
+    get_time(StartedAt),
+    directory_file_path(Root,'supervisor.json',Path),
+    as_write_json_durable(Path,_{schema:"miter-assistant-supervisor-v1",
+      pid:Pid,run_id:RunId,started_at_epoch:StartedAt,
+      stdout:StdoutRelative,stderr:StderrRelative,
+      authority_boundary:"mechanical-liveness-only"}).
 
 as_wait_started(Root, Pid, StartedAt, Seconds) :-
     End is StartedAt+Seconds,as_wait_started_until(Root,Pid,StartedAt,End).
@@ -1227,6 +1121,13 @@ as_process_state(Root, State, Pid) :-
     ; Probe==dead -> State=dead
     ; as_heartbeat_active(Root,Pid) -> State=alive
     ; State=unconfirmed ).
+
+as_supervisor_state(Root,State,Pid) :-
+    directory_file_path(Root,'supervisor.json',Path),exists_file(Path),
+    miter_store_read_json(Path,Dict),
+    as_dict_atom(Dict,schema,'miter-assistant-supervisor-v1'),
+    get_dict(pid,Dict,Pid),integer(Pid),Pid>1,
+    as_pid_probe(Pid,State).
 
 % Some supervised or sandboxed hosts permit the service to continue while
 % denying a later process signal probe. A fresh heartbeat recorded after this
@@ -1292,12 +1193,15 @@ as_status(Root, Reply) :-
         ( catch(as_model_selection(Root,ModelSelection0),_,fail) ->
             ModelSelection=ModelSelection0
         ; ModelSelection=_{standing:"unavailable"} ),
-        as_host_service_status(Root,HostService),
+        ( as_supervisor_state(Root,SupervisorState0,SupervisorPid) ->
+            Supervisor=_{standing:SupervisorState0,pid:SupervisorPid,
+              authority_boundary:"mechanical-liveness-only"}
+        ; Supervisor=_{standing:"absent"} ),
         as_operator_source_status(Root,OperatorSource),
         as_config(Root,supervision,Supervision),
         Reply=_{schema:"miter-assistant-operator-result-v1",status:State,pid:Pid,
           lkg:Lkg,heartbeat:Heartbeat,evaluation:Evaluation,
-          host_service:HostService,model_selection:ModelSelection,
+          supervisor:Supervisor,model_selection:ModelSelection,
           operator_source:OperatorSource,supervision:Supervision,
           semantic_health:"not-claimed"}
     ; Reply=_{schema:"miter-assistant-operator-result-v1",status:'not-bootstrapped'} ).
@@ -1313,22 +1217,6 @@ as_operator_source_status(Root,Standing) :-
       'effect_membranes/assistant_operator.pl',OperatorFile),
     Standing=_{profile:"cleanroom-assistant-operator-v1",
       loaded_from:OperatorFile,runtime_lkg_source_root:LkgSourceRoot}.
-
-as_host_service_status(Root,Standing) :-
-    directory_file_path(Root,'service/registration.json',RegistrationPath),
-    directory_file_path(Root,'service/launchd.plist',ProfilePath),
-    ( exists_file(RegistrationPath),
-      catch(miter_store_read_json(RegistrationPath,Registration),_,fail),
-      is_dict(Registration),Registration.schema=="miter-host-service-v1" ->
-        miter_store_nonempty_atom(Registration.label,Label),
-        miter_store_nonempty_atom(Registration.launchd_target,Target),
-        ( as_launchd_registered(Target,Label) -> State="registered"
-        ; State="not-loaded" ),
-        Standing=_{standing:State,label:Registration.label,
-          launchd_target:Registration.launchd_target}
-    ; exists_file(ProfilePath) ->
-        Standing=_{standing:"profile-ready-not-registered"}
-    ; Standing=_{standing:"not-prepared"} ).
 
 as_evaluation_status(Root,Standing) :-
     directory_file_path(Root,'evaluation-grants.json',Path),
