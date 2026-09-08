@@ -24,7 +24,8 @@ explicitly granted GLM 5.3 thought-partner participation, append-only
 trajectory storage, stable scope boundaries, writable per-scope Continuity of
 Mind capsules, exact checkpoint/capsule restoration, scoped live Chroma
 projection/retrieval, general Soul-formed semantic participation, native
-VoiceRNA certification, pending-before-send Mattermost effect preparation,
+VoiceRNA construction with bounded semantic audit and native reformation,
+pending-before-send Mattermost effect preparation,
 consequence-sensitive multi-turn undertaking continuity, and supported
 install/start/status/stop/panic operations.
 
@@ -39,13 +40,23 @@ that additive work.
 
 The current C4 cut can resolve the configured local Mattermost group and its
 authorized principals, admit new versioned contacts into the one reactor,
-form general semantic readings and a VoiceRNA-certified response candidate,
+form general semantic readings, treat source/candidate-bound model fidelity
+findings as an unresolved participant rather than a verdict or revision
+instruction, reform the complete Soul organization when a finding is material,
+and bind a zero-finding reading to the unchanged exact proof without
+manufacturing another movement,
+retain express/revise/hold possibilities, and form a native VoiceRNA
+disposition from the exact candidate, authority-complete movement proof,
+existing one simultaneous R/A/P carrier, contact-relative Fact9 expression,
+and all nine interconnected flourishing expressions. Prolog only checks the
+closed certificate and matching proof identity. The same runtime can then
 sustain a verified returned-contact undertaking through later turns, isolate
 principal/audience/project scope, remain cognitively live under model or
 surface failure, and restore the resulting organization after restart. It
-deliberately cannot emit a Mattermost response yet; outbound remains disabled
-pending the active evaluation disclosure/grant boundary and a live
-no-duplicate restart trial.
+installs with outbound and model grants inactive. The effect membrane can emit
+only under an independently active evaluation grant and an exact resolved
+destination; the current source has not yet replaced the older live evaluation
+runtime.
 
 Every native checkpoint now writes immutable, content-addressed continuity
 capsules for each exact principal/audience/project scope. A capsule carries the
@@ -57,8 +68,12 @@ and remain until explicit authorized erasure, repair, or migration. Chroma is
 only a rebuildable semantic index and can never substitute for these records.
 Its loopback query is bound to the exact runtime, principal, audience, and
 project; every result is checked against the source capsule before it can
-participate. Private recalled content remains inside native cognition and is
-not disclosed to OpenRouter.
+participate. OpenRouter GLM 5.3 is the human-selected installed default and may
+receive materially relevant, scope-verified conversation, continuity, project,
+and personal context under an active grant. Passwords, credentials,
+authentication material, and content whose disclosure creates a concrete
+security risk are excluded. Local models remain explicit selectable resources;
+continuity never silently changes the selected model.
 
 ## Runtime boundary
 

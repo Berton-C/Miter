@@ -26,6 +26,7 @@ as_model_checked(Root0, Question, Observation) :-
     ground(Question),
     as_model_question_carrier(Question, QuestionRef, Scope, Instructions,
       Purpose, ResourceId, MaxTokens, Deadline),
+    as_model_continuity_context_verified_if_present(Root,Question,Scope),
     as_model_current_direction_authorizes(Root,Question,Scope,Purpose,
       ResourceId,MaxTokens,Deadline),
     as_model_question_sha256(Question, QuestionHash),
@@ -64,15 +65,12 @@ as_model_current_direction_authorizes(Root,Question,Scope,Purpose,ResourceId,
         last(Question,['resource-request',ResourceId,ModelId,
           'human-operator-direction-not-cognitive-authority',Purpose,
           MaxTokens,Deadline])
-    ; Kind=='c4-voice-render-question-v1' ->
+    ; memberchk(Kind,['c4-voice-render-question-v1',
+          'c4-voice-audit-question-v1']) ->
         last(Question,['resource-request',ResourceId,ModelId,Authority,Purpose,
           MaxTokens,Deadline]),
-        ( Authority=='human-operator-direction-not-cognitive-authority' ->
-            as_model_direction_checked(Root,Scope,Purpose,Direction)
-        ; Authority=='native-private-continuity-choice-within-human-authorized-resources',
-          as_model_private_continuity_direction_checked(Root,Scope,Purpose,
-            Direction),
-          as_model_private_voice_context_verified(Root,Question,Scope) ),
+        Authority=='human-operator-direction-not-cognitive-authority',
+        as_model_direction_checked(Root,Scope,Purpose,Direction),
         Direction=['model-resource-direction-v1',ResourceId,ModelId,Authority,
           Purpose,MaxTokens,Deadline]
     ; true ).
@@ -107,6 +105,57 @@ as_model_question_carrier(
     InstructionLength>=100, InstructionLength=<4096,
     as_symbol(ResourceId,_),integer(MaxTokens),MaxTokens>=1,MaxTokens=<2048,
     number(Deadline),Deadline>=1,Deadline=<300.
+
+as_model_question_carrier(
+    ['c4-voice-audit-question-v1',QuestionRef,Scope,
+      ['source-contact',ContactId,['payload-reference',PayloadRef]],
+      ['exact-contact-text',ContentHash,Text,RawRef],
+      ['native-movement',MovementReference],
+      ['semantic-readings',Readings],
+      ['candidate-rendering',['raw-sha256',CandidateHash],Rendering],
+      VoiceCommitments,
+      ['request-contract',Instructions,'audit-not-movement',
+        'candidate-reading-not-effect','no-contact-no-authority-no-choice'],
+      ['resource-request',ResourceId,ModelId,DirectionAuthority,
+        'language-rendering',MaxTokens,Deadline]],
+    QuestionRef,Scope,Instructions,'language-rendering',ResourceId,MaxTokens,
+    Deadline) :-
+    QuestionRef=['question-reference',ContactId,'voice-audit'],
+    as_symbol(ContactId,_),as_symbol(PayloadRef,_),as_sha256(ContentHash,_),
+    as_model_bounded_text(Text,1,32768),as_model_raw_reference(RawRef),
+    MovementReference=['movement-reference'|_],length(MovementReference,5),
+    is_list(Readings),length(Readings,Count),between(2,3,Count),
+    maplist(as_model_c4_semantic_reading,Readings),
+    as_sha256(CandidateHash,_),
+    as_model_c4_voice_commitments(VoiceCommitments),
+    as_model_c4_rendering(Rendering,Readings,VoiceCommitments),
+    as_local_scope(Scope),string(Instructions),
+    string_length(Instructions,InstructionLength),
+    InstructionLength>=100,InstructionLength=<4096,
+    as_symbol(ResourceId,_),as_model_identifier(ModelId),
+    DirectionAuthority='human-operator-direction-not-cognitive-authority',
+    integer(MaxTokens),MaxTokens>=1,MaxTokens=<800,
+    number(Deadline),Deadline>=1,Deadline=<300.
+
+as_model_c4_rendering(
+    ['rendered-utterance',Utterance,['bindings',Bindings],
+      ['uncertainty',Uncertainty]],Readings,Commitments) :-
+    as_model_bounded_text(Utterance,1,3000),
+    as_model_bounded_text(Uncertainty,1,600),
+    is_list(Bindings),Bindings=[_|_],maplist(as_symbol,Bindings,_),
+    sort(Bindings,Unique),same_length(Bindings,Unique),
+    as_model_c4_allowed_binding_ids(Readings,Commitments,Available),
+    forall(member(Binding,Bindings),memberchk(Binding,Available)).
+
+as_model_c4_allowed_binding_ids(Readings,Commitments,Ids) :-
+    maplist(as_model_c4_reading_id,Readings,ReadingIds),
+    last(Commitments,RevisionContext),
+    as_model_c4_voice_revision_context(RevisionContext),
+    nth0(7,Commitments,PrivateContext),
+    as_model_c4_private_context(PrivateContext,Entries),
+    findall(MemoryId,
+      member(['c4-private-memory-evidence-v1',MemoryId|_],Entries),MemoryIds),
+    append(ReadingIds,MemoryIds,Ids).
 
 as_model_question_carrier(
     ['c4-contact-semantic-question-v1',QuestionRef,Scope,
@@ -234,22 +283,51 @@ as_model_question_carrier(
     string_length(Instructions,InstructionLength),
     InstructionLength>=100, InstructionLength=<4096,
     as_symbol(ResourceId,_),as_model_identifier(ModelId),
-    memberchk(DirectionAuthority,
-      ['human-operator-direction-not-cognitive-authority',
-       'native-private-continuity-choice-within-human-authorized-resources']),
+    DirectionAuthority='human-operator-direction-not-cognitive-authority',
     integer(MaxTokens),MaxTokens>=1,MaxTokens=<800,
     number(Deadline),Deadline>=1,Deadline=<300.
 
 as_model_c4_voice_commitments(
     ['voice-commitments','source-bound','scope-bound','movement-bound',
       Disclosure,'relational-not-fixed-style',
-      'no-unsupported-internal-state-claim',PrivateContext]) :-
+      'no-unsupported-internal-state-claim',PrivateContext,RevisionContext]) :-
     memberchk(Disclosure,
       ['disclosure-current-contact-only',
-       'disclosure-current-contact-and-scoped-local-continuity']),
+       'disclosure-current-contact-and-scoped-continuity']),
     as_model_c4_private_context(PrivateContext,Entries),
+    as_model_c4_voice_revision_context(RevisionContext),
     ( Entries==[] -> Disclosure=='disclosure-current-contact-only'
-    ; Disclosure=='disclosure-current-contact-and-scoped-local-continuity' ).
+    ; Disclosure=='disclosure-current-contact-and-scoped-continuity' ).
+
+as_model_c4_voice_revision_context(
+    ['voice-revision-context','initial-no-prior-defect']).
+as_model_c4_voice_revision_context(
+    ['voice-revision-context','revise-on-audit',AuditReading]) :-
+    as_model_c4_voice_audit_reading(AuditReading,Findings),Findings=[_|_].
+
+as_model_c4_voice_audit_reading(
+    ['voice-audit-reading-v2',['findings',Findings],
+      ['uncertainty',Uncertainty],'candidate-fidelity-reading-not-verdict'],
+    Findings) :-
+    is_list(Findings),length(Findings,Count),Count=<4,
+    maplist(as_model_c4_voice_finding,Findings),
+    as_model_bounded_text(Uncertainty,1,600).
+
+as_model_c4_voice_finding(
+    ['voice-audit-finding-v2',Kind,['source-basis',SourceBasis],
+      ['candidate-span',CandidateSpan],['inferred-alteration',Alteration],
+      ['why-material',WhyMaterial],['affected-dependency',Dependency]]) :-
+    memberchk(Kind,['semantic-drift','soul-absence','person-not-seen',
+      'task-smearing','unsupported-certainty','authority-inflation',
+      'coercive-dominance','hidden-scope','tone-mismatch','lost-tension',
+      'unsupported-inner-state','unsupported-action','memory-misstatement',
+      'source-fidelity','uncertainty-erasure','ungrounded-authority-claim',
+      'voice-displacement']),
+    maplist(as_model_bounded_finding_text,
+      [SourceBasis,CandidateSpan,Alteration,WhyMaterial,Dependency]).
+
+as_model_bounded_finding_text(Text) :-
+    as_model_bounded_text(Text,1,600).
 
 as_model_c4_private_context(
     ['private-continuity-context',Entries,
@@ -460,42 +538,17 @@ as_model_direction_limits('language-rendering',Profile,MaxTokens,Deadline) :-
     MaxTokens is min(800,Limits.max_output_tokens),
     Deadline=Limits.deadline_seconds.
 
-% The human-edited registry bounds which local resource is available for exact
-% scoped continuity.  Native MeTTa decides whether the formed encounter needs
-% that resource.  This is an explicit cognitive resource choice, not transport
-% fallback and not permission for a remote provider to receive memory bodies.
-as_model_private_continuity_direction(Root0,Scope,Purpose0,Direction) :-
-    catch((as_model_private_continuity_direction_checked(Root0,Scope,Purpose0,
-          Direction0) -> true ; throw(error(private_continuity_hold,_))),_,
-      Direction0=['model-resource-direction-unavailable',
-        'no-authorized-local-private-continuity-resource']),
-    Direction=Direction0, !.
+as_model_continuity_context_verified_if_present(Root,Question,Scope) :-
+    ( as_model_question_has_private_continuity(Question) ->
+        as_model_continuity_context_verified(Root,Question,Scope)
+    ; true ).
 
-as_model_private_continuity_direction_checked(Root0,Scope,Purpose0,
-    ['model-resource-direction-v1',ResourceId,ModelId,
-      'native-private-continuity-choice-within-human-authorized-resources',
-      Purpose,MaxTokens,Deadline]) :-
-    as_root(Root0,Root),as_local_scope(Scope),as_symbol(Purpose0,Purpose),
-    Purpose=='language-rendering',
-    as_path(Root,'model-resources.json',Path),
-    miter_store_read_json(Path,Registry),is_dict(Registry),
-    as_dict_atom(Registry,schema,'miter-model-resource-registry-v1'),
-    get_dict(selection,Registry,Selection),is_dict(Selection),
-    as_dict_atom(Selection,private_continuity_resource,ResourceId),
-    as_dict_atom(Selection,private_continuity_standing,
-      'authorized-local-candidate-selected-natively-only-when-exact-scoped-memory-is-material'),
-    get_dict(authorized_directions,Selection,AuthorizedStrings),
-    maplist(as_symbol,AuthorizedStrings,Authorized),memberchk(ResourceId,Authorized),
-    as_model_profile(Root,ResourceId,Profile),
-    as_dict_atom(Profile,kind,local),
-    get_dict(model,Profile,ModelString),atom_string(ModelId,ModelString),
-    atom_string(Purpose,PurposeString),memberchk(PurposeString,Profile.roles),
-    as_model_direction_limits(Purpose,Profile,MaxTokens,Deadline).
-
-as_model_private_voice_context_verified(Root,Question,Scope) :-
-    Question=['c4-voice-render-question-v1',_,Scope,_,_,_,_,_,Commitments,_,_],
+as_model_continuity_context_verified(Root,Question,Scope) :-
+    Question=[Kind,_,Scope,_,_,_,_,_,Commitments,_,_],
+    memberchk(Kind,['c4-voice-render-question-v1',
+      'c4-voice-audit-question-v1']),
     as_model_c4_voice_commitments(Commitments),
-    last(Commitments,PrivateContext),
+    nth0(7,Commitments,PrivateContext),
     as_model_c4_private_context(PrivateContext,Entries),Entries=[_|_],
     maplist(as_model_private_memory_entry_verified(Root,Scope),Entries).
 
@@ -650,20 +703,50 @@ as_model_grant_scoped(Root,Grant,Question,
     get_time(Now), Now=<Expiry.
 
 as_model_question_has_private_continuity(
-    ['c4-voice-render-question-v1',_,_,_,_,_,_,_,Commitments,_,_]) :-
-    last(Commitments,PrivateContext),
+    [Kind,_,_,_,_,_,_,_,Commitments,_,_]) :-
+    memberchk(Kind,['c4-voice-render-question-v1',
+      'c4-voice-audit-question-v1']),
+    nth0(7,Commitments,PrivateContext),
     as_model_c4_private_context(PrivateContext,[_|_]).
 
 as_model_grant_disclosure(Root,Grant,ResourceId,Question) :-
     as_model_profile(Root,ResourceId,Profile),
     ( as_dict_atom(Profile,kind,remote) ->
-        get_dict(public_safe_only,Grant,true),
-        \+ as_model_question_has_private_continuity(Question)
-    ; as_dict_atom(Profile,kind,local),
-      ( as_model_question_has_private_continuity(Question) ->
-          get_dict(local_scoped_private_context,Grant,true)
-      ; ( get_dict(public_safe_only,Grant,true)
-        ; get_dict(local_scoped_private_context,Grant,true) ) ) ).
+        ( (get_dict(remote_context_authorized,Grant,true),
+           get_dict(secret_and_security_risk_material_excluded,Grant,true))
+        ; (get_dict(public_safe_only,Grant,true),
+           \+ as_model_question_has_private_continuity(Question)) ),
+        as_model_remote_question_security_safe(Question)
+    ; as_dict_atom(Profile,kind,local) ).
+
+as_model_remote_question_security_safe(Question) :-
+    as_model_public_question(Question,ProviderQuestion),
+    as_model_public_value_security_safe(ProviderQuestion).
+
+as_model_public_value_security_safe(Value) :-
+    is_list(Value), !, maplist(as_model_public_value_security_safe,Value).
+as_model_public_value_security_safe(Value) :-
+    string(Value), !, as_model_remote_text_security_safe(Value).
+as_model_public_value_security_safe(_).
+
+as_model_remote_text_security_safe(Text) :-
+    string(Text),
+    \+ as_model_security_risk_text(Text).
+
+as_model_security_risk_text(Text) :-
+    re_match('(?i)-----BEGIN[[:space:]]+[A-Z0-9 ]*PRIVATE KEY-----',Text),!.
+as_model_security_risk_text(Text) :-
+    re_match('(?i)(sk-(or-v1-)?[A-Za-z0-9_-]{16,}|github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|AKIA[A-Z0-9]{16})',Text),!.
+as_model_security_risk_text(Text) :-
+    re_match('(?i)bearer[[:space:]]+[A-Za-z0-9._~+/-]{16,}',Text),!.
+as_model_security_risk_text(Text) :-
+    re_match('(?i)(password|passwd|passphrase|api[ _-]?key|access[ _-]?token|auth[ _-]?token|client[ _-]?secret)[[:space:]]*[:=][[:space:]]*[^[:space:]]{4,}',Text),!.
+as_model_security_risk_text(Text) :-
+    re_match('(?i)(pin|passcode|door[ _-]?code)[[:space:]]*[:=][[:space:]]*[0-9A-Za-z_-]{3,}',Text),!.
+as_model_security_risk_text(Text) :-
+    re_match('eyJ[A-Za-z0-9_-]{8,}[.][A-Za-z0-9_-]{8,}[.][A-Za-z0-9_-]{8,}',Text),!.
+as_model_security_risk_text(Text) :-
+    re_match('(^|[^0-9])[0-9]{3}-[0-9]{2}-[0-9]{4}([^0-9]|$)',Text).
 
 as_model_grant_claim_count(Root,GrantId,Count) :-
     as_path(Root,'model/claims',Directory), directory_files(Directory,Entries),
@@ -736,11 +819,13 @@ as_model_claim(_Root, Hash, QuestionRef, Scope, ResourceId, Purpose, Grant,
       standing:"claimed-before-transmission",claimed_at_epoch:Now}).
 
 as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
-    % Remote providers receive only the validated public projection.  An
-    % explicitly selected loopback resource may receive the exact native
-    % question, including scope-verified continuity bodies, because those bytes
-    % never leave the host and the scoped local grant is checked separately.
+    % Remote GLM is the ordinary configured resource.  Its projection may carry
+    % exact conversation and scope-verified continuity content, but surface and
+    % proof identifiers, credential stores and detected concrete security-risk
+    % text remain outside the provider request. Opaque memory identities remain
+    % so any recalled content used by a rendering can be attributed locally.
     ( as_dict_atom(Profile,kind,remote) ->
+        as_model_remote_question_security_safe(Question),
         as_model_public_question(Question,ProviderQuestion),
         as_model_public_question_valid(Question,ProviderQuestion)
     ; as_dict_atom(Profile,kind,local),ProviderQuestion=Question ),
@@ -762,11 +847,10 @@ as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
     ; as_dict_atom(Profile,kind,local),Body=Common ),
     as_model_request_valid(Profile,Body).
 
-as_model_response_format(Profile,_Question,_{type:"json_object"}) :-
-    as_dict_atom(Profile,kind,remote).
 as_model_response_format(Profile,Question,
     _{type:"json_schema",json_schema:_{name:Name,strict:true,schema:Schema}}) :-
-    as_dict_atom(Profile,kind,local),Question=[Kind|_],
+    (as_dict_atom(Profile,kind,remote);as_dict_atom(Profile,kind,local)),
+    Question=[Kind|_],
     as_model_local_response_schema(Kind,Name,Schema).
 
 as_model_local_response_schema('c3-semantic-question-v1',
@@ -817,6 +901,28 @@ as_model_local_response_schema('c4-voice-render-question-v1',
         uncertainty:_{type:"string",minLength:1,maxLength:600},
         bindings:_{type:"array",minItems:1,uniqueItems:true,
           items:_{type:"string",minLength:1,maxLength:256}}}}.
+as_model_local_response_schema('c4-voice-audit-question-v1',
+    "miter_c4_voice_audit",Schema) :-
+    Kind=_{type:"string",enum:["semantic-drift","soul-absence",
+      "person-not-seen","task-smearing","unsupported-certainty",
+      "authority-inflation","coercive-dominance","hidden-scope",
+      "tone-mismatch","lost-tension","unsupported-inner-state",
+      "unsupported-action","memory-misstatement","source-fidelity",
+      "uncertainty-erasure","ungrounded-authority-claim",
+      "voice-displacement"]},
+    Finding=_{type:"object",additionalProperties:false,
+      required:["kind","source_basis","candidate_span",
+        "inferred_alteration","why_material","affected_dependency"],
+      properties:_{kind:Kind,
+        source_basis:_{type:"string",minLength:1,maxLength:600},
+        candidate_span:_{type:"string",minLength:1,maxLength:600},
+        inferred_alteration:_{type:"string",minLength:1,maxLength:600},
+        why_material:_{type:"string",minLength:1,maxLength:600},
+        affected_dependency:_{type:"string",minLength:1,maxLength:600}}},
+    Schema=_{type:"object",additionalProperties:false,
+      required:["findings","uncertainty"],
+      properties:_{findings:_{type:"array",maxItems:4,items:Finding},
+        uncertainty:_{type:"string",minLength:1,maxLength:600}}}.
 
 as_model_public_question(
     ['c3-semantic-question-v1',QuestionRef,
@@ -871,15 +977,53 @@ as_model_public_question(
       Readings,Intention,PublicCommitments,Contract,Resource]) :-
     as_model_public_c4_voice_commitments(Commitments,PublicCommitments),
     QuestionRef=['question-reference',_,'voice-rendering'].
+as_model_public_question(
+    ['c4-voice-audit-question-v1',QuestionRef,[scope,_,_,_],
+      _Source,['exact-contact-text',_,Text,_],_Movement,Readings,
+      ['candidate-rendering',_,Rendering],Commitments,Contract,Resource],
+    ['c4-voice-audit-question-v1',
+      ['question-reference','current-contact','voice-audit'],
+      [scope,'private-principal-redacted','private-audience-redacted',
+        'private-project-redacted'],
+      ['source-contact','current-contact',
+        ['payload-reference','private-local-reference-redacted']],
+      ['exact-contact-text','private-content-hash-redacted',Text,
+        'private-local-reference-redacted'],
+      ['native-movement',
+        ['current-native-movement','local-proof-reference-withheld']],
+      Readings,
+      ['candidate-rendering',['raw-sha256','private-hash-redacted'],Rendering],
+      PublicCommitments,Contract,Resource]) :-
+    as_model_public_c4_voice_commitments(Commitments,PublicCommitments),
+    QuestionRef=['question-reference',_,'voice-audit'].
 
 as_model_public_c4_voice_commitments(
     ['voice-commitments',SourceBound,ScopeBound,MovementBound,Disclosure,
-      Relational,InternalClaim,PrivateContext],
+      Relational,InternalClaim,PrivateContext,RevisionContext],
     ['voice-commitments',SourceBound,ScopeBound,MovementBound,Disclosure,
       Relational,InternalClaim,
-      ['private-continuity-context-redacted',['candidate-count',Count],
-        'exact-content-and-identifiers-withheld']]) :-
-    as_model_c4_private_context(PrivateContext,Entries),length(Entries,Count).
+      PublicContext,RevisionContext]) :-
+    as_model_c4_private_context(PrivateContext,_),
+    as_model_public_c4_continuity_context(PrivateContext,PublicContext).
+
+as_model_public_c4_continuity_context(
+    ['private-continuity-context',Entries,
+      'scope-verified-native-candidates-not-authority'],
+    ['authorized-continuity-context',PublicEntries,
+      'conversation-project-and-personal-context-authorized',
+      'credentials-authentication-and-concrete-security-risk-excluded']) :-
+    include(as_model_remote_memory_entry_safe,Entries,SafeEntries),
+    maplist(as_model_public_c4_memory_entry,SafeEntries,PublicEntries).
+
+as_model_remote_memory_entry_safe(
+    ['c4-private-memory-evidence-v1',_,_,_,['body',_,Body]|_]) :-
+    as_model_remote_text_security_safe(Body).
+
+as_model_public_c4_memory_entry(
+    ['c4-private-memory-evidence-v1',MemoryId,SourceKind,_,['body',_,Body],_,
+      'scope-and-capsule-verified','rank-not-authority'],
+    ['c4-continuity-evidence-v1',MemoryId,SourceKind,['body',Body],
+      'scope-verified','candidate-not-authority']).
 
 as_model_public_c4_fact_entries([],[]).
 as_model_public_c4_fact_entries(
@@ -968,6 +1112,24 @@ as_model_public_question_shape_valid(
       Readings,Intention,PublicCommitments,Contract,Resource]) :-
     as_model_public_c4_voice_commitments(Commitments,PublicCommitments).
 as_model_public_question_shape_valid(
+    ['c4-voice-audit-question-v1',_,_,_,
+      ['exact-contact-text',_,Text,_],_,Readings,
+      ['candidate-rendering',_,Rendering],Commitments,Contract,Resource],
+    ['c4-voice-audit-question-v1',
+      ['question-reference','current-contact','voice-audit'],
+      [scope,'private-principal-redacted','private-audience-redacted',
+        'private-project-redacted'],
+      ['source-contact','current-contact',
+        ['payload-reference','private-local-reference-redacted']],
+      ['exact-contact-text','private-content-hash-redacted',Text,
+        'private-local-reference-redacted'],
+      ['native-movement',
+        ['current-native-movement','local-proof-reference-withheld']],
+      Readings,
+      ['candidate-rendering',['raw-sha256','private-hash-redacted'],Rendering],
+      PublicCommitments,Contract,Resource]) :-
+    as_model_public_c4_voice_commitments(Commitments,PublicCommitments).
+as_model_public_question_shape_valid(
     ['c3-semantic-question-v1',_,[scope,_,_,_],_,_,_,_,_,_,Contract,
       Resource],
     ['c3-semantic-question-v1',_,
@@ -1005,7 +1167,9 @@ as_model_request_valid(Profile,Body) :-
     Body.reasoning_effort=="high", Body.stream==false,
     Body.temperature=:=0, Body.top_p=:=1,
     is_dict(Body.response_format),
-    Body.response_format.type=="json_object",
+    Body.response_format.type=="json_schema",
+    get_dict(json_schema,Body.response_format,JsonSchema),is_dict(JsonSchema),
+    JsonSchema.strict==true,is_dict(JsonSchema.schema),
     Body.messages=[System,User], System.role=="system", User.role=="user",
     string(System.content), string(User.content),
     is_dict(Body.provider), Body.provider.zdr==true,
@@ -1178,7 +1342,8 @@ as_model_provider_observation(Raw,Question,QuestionRef,Scope,ResourceId,Profile,
     atom_string(ModelId,ExpectedModel),
     Question=['c4-voice-render-question-v1'|_],
     atom_json_dict(Content,Result,[]),
-    as_model_c4_voice_result(Result,Question,Utterance,Bindings,Uncertainty),
+    as_model_c4_voice_result(Result,Question,Profile,Utterance,Bindings,
+      Uncertainty),
     Observation=['c4-voice-observation-v1',QuestionRef,Scope,ResourceId,
       ModelId,['transport',eof],['http-status',200],
       ['finish-reason',Finish],['raw-sha256',RawHash],
@@ -1186,6 +1351,19 @@ as_model_provider_observation(Raw,Question,QuestionRef,Scope,ResourceId,Profile,
         [uncertainty,Uncertainty]],Usage,
       'candidate-rendering-no-effect-authority',
       'structurally-bound-semantic-fidelity-remains-consequence-testable'].
+as_model_provider_observation(Raw,Question,QuestionRef,Scope,ResourceId,Profile,
+    RawHash,Observation) :-
+    get_dict(model,Profile,ExpectedModel),
+    as_model_provider_envelope(Raw,ExpectedModel,Content,Finish,Usage),
+    atom_string(ModelId,ExpectedModel),
+    Question=['c4-voice-audit-question-v1'|_],
+    atom_json_dict(Content,Result,[]),
+    as_model_c4_voice_audit_json(Result,AuditResult),
+    Observation=['c4-voice-audit-observation-v1',QuestionRef,Scope,ResourceId,
+      ModelId,['transport',eof],['http-status',200],
+      ['finish-reason',Finish],['raw-sha256',RawHash],AuditResult,Usage,
+      'candidate-audit-no-movement-or-effect-authority',
+      'voice-fidelity-requires-native-use'].
 
 as_model_candidates_match_question(Candidates,
     ['c3-semantic-question-v1',_,_,_,_,['partial-openings',Openings]|_]) :-
@@ -1300,7 +1478,8 @@ as_model_fact9_string_atom(String,Atom) :-
 as_model_flourishing_string_atom(String,Atom) :-
     string(String), atom_string(Atom,String), as_flourishing(Atom).
 
-as_model_c4_voice_result(Result,Question,Utterance,Bindings,Uncertainty) :-
+as_model_c4_voice_result(Result,Question,Profile,Utterance,Bindings,
+    Uncertainty) :-
     is_dict(Result), as_model_exact_keys(Result,
       [bindings,uncertainty,utterance]),
     get_dict(utterance,Result,Utterance),
@@ -1310,17 +1489,49 @@ as_model_c4_voice_result(Result,Question,Utterance,Bindings,Uncertainty) :-
     get_dict(bindings,Result,BindingStrings), is_list(BindingStrings),
     BindingStrings=[_|_], maplist(as_model_string_atom,BindingStrings,Bindings0),
     sort(Bindings0,Bindings), same_length(BindingStrings,Bindings),
-    as_model_c4_voice_binding_ids(Question,Available),
+    as_model_c4_voice_binding_ids(Question,Profile,Available),
     forall(member(Binding,Bindings),memberchk(Binding,Available)).
+
+as_model_c4_voice_audit_json(Result,AuditResult) :-
+    is_dict(Result),as_model_exact_keys(Result,[findings,uncertainty]),
+    get_dict(findings,Result,Rows),is_list(Rows),length(Rows,Count),Count=<4,
+    maplist(as_model_c4_voice_finding_json,Rows,Findings),
+    get_dict(uncertainty,Result,Uncertainty),
+    as_model_bounded_text(Uncertainty,1,600),
+    AuditResult=['voice-audit-reading-v2',['findings',Findings],
+      ['uncertainty',Uncertainty],'candidate-fidelity-reading-not-verdict'],
+    as_model_c4_voice_audit_reading(AuditResult,Findings).
+
+as_model_c4_voice_finding_json(Row,
+    ['voice-audit-finding-v2',Kind,['source-basis',SourceBasis],
+      ['candidate-span',CandidateSpan],['inferred-alteration',Alteration],
+      ['why-material',WhyMaterial],['affected-dependency',Dependency]]) :-
+    is_dict(Row),as_model_exact_keys(Row,
+      [affected_dependency,candidate_span,inferred_alteration,kind,
+        source_basis,why_material]),
+    get_dict(kind,Row,KindString),as_model_string_atom(KindString,Kind),
+    get_dict(source_basis,Row,SourceBasis),
+    get_dict(candidate_span,Row,CandidateSpan),
+    get_dict(inferred_alteration,Row,Alteration),
+    get_dict(why_material,Row,WhyMaterial),
+    get_dict(affected_dependency,Row,Dependency),
+    as_model_c4_voice_finding(
+      ['voice-audit-finding-v2',Kind,['source-basis',SourceBasis],
+        ['candidate-span',CandidateSpan],['inferred-alteration',Alteration],
+        ['why-material',WhyMaterial],['affected-dependency',Dependency]]).
 
 as_model_c4_voice_binding_ids(
     ['c4-voice-render-question-v1',_,_,_,_,_,
-      ['semantic-readings',Readings],_,Commitments|_],Ids) :-
+      ['semantic-readings',Readings],_,Commitments|_],Profile,Ids) :-
     maplist(as_model_c4_reading_id,Readings,ReadingIds),
-    last(Commitments,PrivateContext),
+    nth0(7,Commitments,PrivateContext),
     as_model_c4_private_context(PrivateContext,Entries),
+    ( as_dict_atom(Profile,kind,remote) ->
+        include(as_model_remote_memory_entry_safe,Entries,BindableEntries)
+    ; as_dict_atom(Profile,kind,local),BindableEntries=Entries ),
     findall(MemoryId,
-      member(['c4-private-memory-evidence-v1',MemoryId|_],Entries),MemoryIds),
+      member(['c4-private-memory-evidence-v1',MemoryId|_],BindableEntries),
+      MemoryIds),
     append(ReadingIds,MemoryIds,Ids).
 
 as_model_string_atom(String,Atom) :-
@@ -1367,7 +1578,7 @@ as_model_read_observation(Path,Observation) :-
       read_term(Stream,Observation,[syntax_errors(error)]),close(Stream)),
     ground(Observation), Observation=[Kind|_],
     memberchk(Kind,['c3-model-observation-v1','c4-semantic-observation-v1',
-      'c4-voice-observation-v1']).
+      'c4-voice-observation-v1','c4-voice-audit-observation-v1']).
 
 as_model_write_text_durable(Path,Text) :-
     \+ exists_file(Path), file_directory_name(Path,Directory),
@@ -1385,7 +1596,7 @@ as_model_unavailable(Question,Error,
       ResourceId,Reason,'no-candidate-admitted']) :-
     Question=[Kind,QuestionRef,Scope|_],
     memberchk(Kind,['c4-contact-semantic-question-v1',
-      'c4-voice-render-question-v1']), !,
+      'c4-voice-render-question-v1','c4-voice-audit-question-v1']), !,
     as_model_question_resource(Question,ResourceId),
     as_model_failure_reason(Error,Reason).
 as_model_unavailable(Question,Error,

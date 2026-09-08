@@ -591,6 +591,25 @@
               (and (M255AllIn $target-ids $targets 0)
                    (M255AllIn $targets $target-ids 0)))))))))) false))
 
+; Translation validation already establishes that both GenSig vocabularies are
+; exact and unique.  At that boundary, sorted multiset identity is equivalent
+; to the repeated uniqueness plus bidirectional membership search above, while
+; avoiding its quadratic re-scan for every nested M25.5 certificate.  The
+; general validator remains available for callers that do not possess those
+; validated vocabulary premises.
+(= (M255MapCoverageFromExactVocabValid $map-set $kind $source-ids
+      $target-ids)
+   (if (CPShape $map-set gen-map-set 3)
+     (let* (($maps (index-atom $map-set 2))
+            ($sources (M255MapIdsAt $maps 2 0))
+            ($targets (M255MapIdsAt $maps 3 0)))
+       (and (== (index-atom $map-set 1) $kind)
+        (and (is-expr $maps)
+         (and (M255MapRowsValidAt $maps $kind 0)
+          (and (== (sort-atom $sources) (sort-atom $source-ids))
+               (== (sort-atom $targets) (sort-atom $target-ids)))))))
+     false))
+
 (= (M255GenTranslation $source $target $source-generated $target-generated)
    (gen-translation-v2 $source $target $source-generated $target-generated
      (gen-map-set relation
@@ -607,11 +626,14 @@
      structural-equivalence-does-not-imply-same-becoming))
 
 (= (M255GenTranslationMapsValid $translation $source $target)
-   (and (M255MapCoverageValid (index-atom $translation 5) relation
+   (and (M255MapCoverageFromExactVocabValid
+          (index-atom $translation 5) relation
           (M255GenSigRelations $source) (M255GenSigRelations $target))
-    (and (M255MapCoverageValid (index-atom $translation 6) distinction
+    (and (M255MapCoverageFromExactVocabValid
+           (index-atom $translation 6) distinction
            (M255GenSigDistinctions $source) (M255GenSigDistinctions $target))
-         (M255MapCoverageValid (index-atom $translation 7) interface
+         (M255MapCoverageFromExactVocabValid
+           (index-atom $translation 7) interface
            (M255GenSigInterfaces $source) (M255GenSigInterfaces $target)))))
 
 (= (M255GenTranslationContractsValid $translation $source $target

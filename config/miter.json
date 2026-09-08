@@ -158,10 +158,14 @@
         "qwen-local",
         "nemotron-local"
       ],
-      "private_continuity_resource": "qwen-local",
-      "private_continuity_standing": "authorized-local-candidate-selected-natively-only-when-exact-scoped-memory-is-material",
+      "remote_context_standing": "authorized-conversation-continuity-project-and-personal-context",
+      "remote_exclusions": [
+        "passwords-and-credentials",
+        "authentication-material",
+        "content-whose-disclosure-creates-a-concrete-security-risk"
+      ],
       "direction_scopes": ["next-model-calls", "bounded-duration", "until-replaced"],
-      "soul_choice": "bounded-private-continuity-choice-embodied;general-relational-resource-comparison-remains-open",
+      "soul_choice": "general-relational-resource-comparison-remains-open",
       "selected_model_output_authority": "none",
       "fallback_policy": "explicit-native-comparison-only",
       "silent_model_substitution": false
@@ -226,7 +230,8 @@
     "operator_notes": [
       "Store secrets outside this file; credential_reference is only a lookup location.",
       "Human direction selects a preferred live resource, never meaning, movement, memory admission, or effects.",
-      "When the formed encounter says exact scoped continuity is materially needed, native MeTTa may select the configured authorized local continuity resource; this is explicit Soul-owned resource choice, never silent transport fallback.",
+      "OpenRouter GLM 5.3 is the installed default and may receive ordinary conversation, continuity, project, and personal context needed for Miter's work; passwords, credentials, authentication material, and concrete security-risk content are excluded.",
+      "Qwen and Nemotron remain explicit human-selectable resources; continuity never silently changes the selected model.",
       "Every remote call additionally requires a current runtime-local grant."
     ]
   },
@@ -260,7 +265,7 @@
       "scope": "AMA-1.2-only"
     },
     "haley_disclosure": {
-      "exact_text": "I understand that Miter is an alpha; this shared conversation enters durable shared-project memory; local models may process it; authorized bounded material may be sent to OpenRouter GLM 5.3; credentials, unrelated private memory, and stable IDs will not be sent; either participant may panic or revoke future operation; corrections are additive; and comprehensive private-payload erasure is not yet complete. I affirm participation in AMA-1.2.",
+      "exact_text": "I understand that Miter is an alpha; this shared conversation enters durable shared-project memory; OpenRouter GLM 5.3 is the default and may process ordinary conversation, continuity, project, and personal context needed for Miter's work; passwords, credentials, authentication material, and content whose disclosure creates a concrete security risk will not be sent; local models remain available by explicit direction; either participant may panic or revoke future operation; corrections are additive; and comprehensive private-payload erasure is not yet complete. I affirm participation in AMA-1.2.",
       "required_author": "haley",
       "required_surface": "exact-berton-haley-miter-group",
       "standing": "recommended-direct-confirmation-not-activation-precondition"

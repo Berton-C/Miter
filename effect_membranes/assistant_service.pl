@@ -17,6 +17,7 @@
 :- use_module(library(lists)).
 :- use_module(library(pcre)).
 :- use_module(library(readutil)).
+:- discontiguous as_mattermost_voice_certificate/5.
 :- use_module(library(time)).
 :- use_module(library(terms)).
 :- use_module(library(uuid)).
@@ -869,6 +870,103 @@ as_mattermost_effect_descriptor(
     string_length(ProofText, ProofLength),
     as_max_native_proof_bytes(MaxProofLength), ProofLength=<MaxProofLength,
     crypto_data_hash(ProofText, ProofHash, [algorithm(sha256),encoding(utf8)]).
+
+as_mattermost_voice_certificate(
+    ['assistant-voice-certificate-v3',
+     ['VoiceRNA','situated-model-rendering'],
+     ['source-cut',CutId0],Scope,
+     ['movement-source-reference',MovementReference],
+     ['intended-expression',
+       ['mattermost-response',ReplyContact,Utterance]],
+     ParticipantReference,
+     ProofReference,
+     ['voice-audit-v3',['bindings',Bindings],['uncertainty',Uncertainty],
+       AuditReading,RevisionStanding,
+       ['native-audit-formation',AuditProofReference,NativeDisposition],
+       'source-scope-movement-bound','no-added-effect-authority'],
+     ['authorized-disclosure',Disclosure],
+     ['emission-authority','mattermost-exact-resolved-group-only']],
+    Scope, Proof, ReplyContact, Utterance) :-
+    as_local_native_movement_proof(Proof, Scope, CutId, MovementReference,
+      _Summary, ParticipantReference, ProofReference),
+    CutId0=CutId,
+    as_symbol(ReplyContact,_), atom_concat(mm_,RawPostId,ReplyContact),
+    as_mattermost_id(RawPostId,_),
+    string(Utterance), string_length(Utterance,UtteranceLength),
+    UtteranceLength>=1, UtteranceLength=<3000,
+    is_list(Bindings), Bindings=[_|_], maplist(as_symbol,Bindings,_),
+    sort(Bindings,UniqueBindings), same_length(Bindings,UniqueBindings),
+    string(Uncertainty), string_length(Uncertainty,UncertaintyLength),
+    UncertaintyLength=<600,
+    as_mattermost_voice_audit_reading(AuditReading,[]),
+    as_mattermost_voice_revision_standing(RevisionStanding),
+    AuditProofReference==ProofReference,
+    as_mattermost_native_voice_disposition(NativeDisposition,
+      AuditProofReference),
+    memberchk(Disclosure,
+      ['current-contact-and-derived-readings-only',
+       'current-contact-and-scoped-continuity-to-selected-model']).
+
+% This is a closed-shape and cross-reference check only.  MeTTa has already
+% formed the disposition from the complete constitutive organization; the
+% membrane neither interprets the R/A/P carrier nor chooses the continuation.
+as_mattermost_native_voice_disposition(
+    ['c4-native-voice-disposition-v1','express-current-candidate',
+      ['c4-native-voice-audit-basis-v1',AuditProofReference,
+        ['one-simultaneous-rap',Rap],
+        ['fact9-participation',Fact9],
+        ['interconnected-flourishing-participation',Flourishing],
+        ['candidate-source-binding',QuestionReference,Scope,Source,
+          RawReference,['bindings',Bindings]]],
+      ['provider-audit-participation',ProviderStanding],
+      ['retained-voice-continuations','express-current-candidate',
+        'revise-candidate-once','hold-expression-and-continue-inquiry'],
+      'native-soul-disposition-not-provider-verdict'],AuditProofReference) :-
+    ground([Rap,Fact9,Flourishing,QuestionReference,Scope,Source,RawReference,
+      Bindings,ProviderStanding]),
+    Rap=['rap-read-v2'|_],Fact9=[_|_],
+    Flourishing=['flourishing-organization'|_],
+    ProviderStanding=['voice-fidelity-standing',_,_,_].
+
+as_mattermost_voice_audit_reading(
+    ['voice-audit-reading-v2',['findings',Findings],
+      ['uncertainty',Uncertainty],'candidate-fidelity-reading-not-verdict'],
+    Findings) :-
+    is_list(Findings),length(Findings,Count),Count=<4,
+    maplist(as_mattermost_voice_finding,Findings),
+    string(Uncertainty),string_length(Uncertainty,UncertaintyLength),
+    UncertaintyLength>=1,UncertaintyLength=<600.
+
+as_mattermost_voice_finding(
+    ['voice-audit-finding-v2',Kind,['source-basis',SourceBasis],
+      ['candidate-span',CandidateSpan],['inferred-alteration',Alteration],
+      ['why-material',WhyMaterial],['affected-dependency',Dependency]]) :-
+    memberchk(Kind,['semantic-drift','soul-absence','person-not-seen',
+      'task-smearing','unsupported-certainty','authority-inflation',
+      'coercive-dominance','hidden-scope','tone-mismatch','lost-tension',
+      'unsupported-inner-state','unsupported-action','memory-misstatement',
+      'source-fidelity','uncertainty-erasure','ungrounded-authority-claim',
+      'voice-displacement']),
+    maplist(as_mattermost_voice_finding_text,
+      [SourceBasis,CandidateSpan,Alteration,WhyMaterial,Dependency]).
+
+as_mattermost_voice_finding_text(Text) :-
+    string(Text),string_length(Text,Length),Length>=1,Length=<600.
+
+as_mattermost_voice_revision_standing(
+    'initial-candidate-soul-formed-after-audit-participation').
+as_mattermost_voice_revision_standing(
+    ['revised-once-by-soul-after-audit-participation',InitialAudit,
+      ['raw-sha256',Hash],InitialProofReference]) :-
+    as_mattermost_voice_audit_reading(InitialAudit,Findings),Findings=[_|_],
+    as_sha256(Hash,_),
+    as_mattermost_compact_native_proof_reference(InitialProofReference).
+
+as_mattermost_compact_native_proof_reference(
+    ['native-proof-reference',CutId,MovementReference,
+      'native-proof-store','persisted-before-effect']) :-
+    as_local_cut_id(CutId),ground(MovementReference),
+    MovementReference=['movement-reference'|_].
 
 as_mattermost_voice_certificate(
     ['assistant-voice-certificate-v3',

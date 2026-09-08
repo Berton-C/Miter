@@ -8,7 +8,7 @@
     miter_assistant_continuity_restore miter_assistant_semantic_restore
     as_chroma))
 !(import_prolog_functions_from_file "./effect_membranes/model.pl"
-  (as_model as_model_direction as_model_private_continuity_direction))
+  (as_model as_model_direction))
 !(import_prolog_functions_from_file "./effect_membranes/capability_environment.pl"
   (as_capability_environment))
 ; The functions remain MeTTa-owned cognitive reductions. This pinned runtime
@@ -18,7 +18,8 @@
   "./effect_membranes/runtime_extensions/petta_parallel.pl"
   (miter_petta_parallel_m25_primaries
     miter_petta_parallel_m25_readings
-    miter_petta_parallel_m255_bridge_components))
+    miter_petta_parallel_m255_bridge_components
+    miter_petta_clear_exact_validation_tables))
 !(bind! &assistant_state (new-space))
 !(bind! &assistant_history (new-space))
 !(bind! &assistant_continuity (new-space))

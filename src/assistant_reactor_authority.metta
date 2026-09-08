@@ -2042,6 +2042,16 @@
 (= (AssistantCycleWithV3 $root $idle $interval $base $cap
       $control-reader $input-reader $checkpoint-writer $waiter $recorder
       $effect-writer $model-writer)
+   (let $tables (miter_petta_clear_exact_validation_tables)
+     (if (== $tables exact-native-validation-tables-cleared)
+       (AssistantCycleWithV3Cleared $root $idle $interval $base $cap
+         $control-reader $input-reader $checkpoint-writer $waiter $recorder
+         $effect-writer $model-writer)
+       (assistant-service-held exact-native-validation-table-reset-failed))))
+
+(= (AssistantCycleWithV3Cleared $root $idle $interval $base $cap
+      $control-reader $input-reader $checkpoint-writer $waiter $recorder
+      $effect-writer $model-writer)
    (let $control ($control-reader $root)
      (if (ARControlValid $control)
        (if (== (index-atom $control 1) panic)

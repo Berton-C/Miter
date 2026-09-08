@@ -170,15 +170,15 @@ consumer is absent. No status is upgraded by assertion.
 | Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 alignment/semantic inquiry, transfer, developmental memory, partial-overlap comparison, endogenous opportunity formation, and Soul regeneration | Fact9/flourishing organization generates plural native alignment movements, constrains model-assisted inquiry, discloses exact and partial-overlap transfer/differentiation/unresolved standing, permits consequence-earned episodes to alter later unfamiliar cuts, carries exact openings into new internal occurrences, and regenerates severed expression without a behavioral branch. Broader unfamiliar multi-turn composition remains open. |
 | One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; independent returned contact has changed a model-assisted inquiry into durable native development and distinguishes transfer, differentiation, and unresolved standing across non-identical overlap. |
 | Exact project/relationship continuity | E | native checkpoint capsules + continuity adapters | Every live scope now writes exact relationship, undertaking, attention, developmental, next-movement, and raw-source-reference organization with indefinite retention; legacy external imports remain separately unbound. |
-| Chroma semantic participation | E | `chroma.pl`, `dialogue_participation.metta`, native continuity capsules | Every authoritative checkpoint projects exact eligible capsule material into an isolated loopback Chroma collection. A later exact-scope query verifies runtime, principal, audience, project, source capsule bytes, semantic hash, and body hash before admitting results as unresolved memory participants. Chroma rank is never authority; another principal receives no result. Private memory content remains native and is withheld from the remote-provider question. |
-| LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA certificate. Live GLM 5.3 semantic and rendering calls produced a certified response that both authorized evaluators reportedly valued. A bounded native choice now selects an authorized loopback model when a derived reading says exact scoped continuity is material; broader resource comparison remains open. Voice audit must still causally reject or revise a semantically unfaithful rendering rather than relying on one-pass instructions. |
+| Chroma semantic participation | E | `chroma.pl`, `dialogue_participation.metta`, native continuity capsules | Every authoritative checkpoint projects exact eligible capsule material into an isolated loopback Chroma collection. A later exact-scope query verifies runtime, principal, audience, project, source capsule bytes, semantic hash, and body hash before admitting results as unresolved memory participants. Chroma rank is never authority; another principal receives no result. Material recalled content may reach the explicitly selected model only under the active disclosure grant; concrete security-risk content remains excluded. |
+| LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA candidate. GLM's strict-schema audit can contribute zero to four source/candidate-bound fidelity findings plus uncertainty; it is not asked for a pass/revise/hold verdict or a revision instruction. A material finding enters fresh native movement formation; a zero-finding contribution is bound at the expression joint to the exact unchanged proof and may not manufacture a new movement. Native MeTTa retains express/revise/hold possibilities and forms a disposition only after binding the exact candidate to the authority-complete movement proof, its existing one simultaneous R/A/P carrier, the live contact-relative Fact9 expression, and all nine interconnected flourishing expressions. The selected native disposition travels in the certificate; Prolog checks only its closed shape and proof identity. Native positive/revision/bypass/falsified-reuse checks pass; promotion through current live Mattermost, restart, and returned consequence remains open. |
 | VAD language-cue participation | A | constitutional C-051--C-053 and Soul S-303/S-804/S-902; historical licensed-asset implementation outside clean room | The clean runtime preserves the non-diagnostic authority boundary but does not yet compute sentence/trajectory VAD cues or let them participate in VoiceRNA. Recover the bounded cue surface without its old uncalibrated thresholds, private lexicon, fixed presence lookup, or Python seam. The licensed asset and any derived collection remain outside public Git. |
 | Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Exact stable-ID scope, authenticated contact, certified outbound, pending-before-send, unique reconciliation, and restart/no-replay are embodied in the live service. Poll freshness is now distinct from human content identity, so a thread-metadata update cannot become a second contact while a genuine edit remains versioned. Returned-consequence participation, scope/failure trials, and sustained use remain open. |
 | Open growth environment | P | `capability_environment.metta`, mechanical environment observer, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path receives a source-qualified native participant stating the configured web/terminal/workspace field, actual process identity, genuine human-authority boundaries, and its current availability. The private credential membrane now supports installer-materialized mode-0600 runtime files without making a GUI Keychain a boot dependency; missing credentials hold only the affected surface. Typed execution, returned tool consequence, durable capability uptake, and completed service migration to `claritymiter` remain open. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, and regenerative Soul; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; one exact persisted partial opening can form a provenance-bearing Soul undertaking; and injured expressed Soul can form and complete its own repair RNA. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
-| Full Continuity of Mind | P | native checkpoint capsules, scoped Chroma projection, native memory participation, and bounded local continuity rendering | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. A provider-derived continuity requirement can now participate in native formation; MeTTa then selects the configured authorized loopback resource and exposes exact scope/capsule/hash-verified memory only on that local route. Live conversational recall, restart, and correction evidence remain required; no private memory is sent to OpenRouter. |
+| Full Continuity of Mind | P | native checkpoint capsules, scoped Chroma projection, native memory participation, and bounded selected-model rendering | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. A provider-derived continuity requirement may participate only as unresolved material; native formation determines whether exact scope/capsule/hash-verified memory is material. The current human resource direction remains authoritative only over transport selection: GLM is the installed default, local models are explicit alternatives, and continuity cannot silently switch resources. Under the ratified disclosure grant, ordinary conversation, continuity, project, and personal context may reach GLM while credentials, authentication material, and concrete security-risk content remain excluded. Live story recall, correction, restart, and later-use evidence remain required. |
 
 ## 6. Four additive stages
 
@@ -348,9 +348,11 @@ cut as an unresolved participant. The resulting checkpoint retained the
 memory relation through the complete constitutive formation. The identical
 query under principal `haley` returned no candidate. Chroma loss can degrade
 associative recall but cannot alter or invalidate authoritative native
-continuity. Provider-facing questions carry only opaque memory identity and
-hashes; private remembered content is withheld pending a local-model path or
-an exact human disclosure grant. C4 remains open for persistent-service health
+continuity. At this earlier cut, provider-facing questions carried only opaque
+memory identity and hashes. The later ratified disclosure standing now permits
+ordinary scope-verified continuity content to reach the explicitly selected
+model while excluding credentials, authentication material, and concrete
+security-risk content. C4 remains open for persistent-service health
 and recovery, unfamiliar multi-turn undertakings, broader scope isolation,
 the authorized live delivery/restart trial, and evaluation packaging.
 
@@ -482,15 +484,14 @@ the OpenRouter direction verified the existing Keychain reference without a
 provider call. Synthetic exact carrier/parser probes accepted Qwen identity
 and its typed observation. No probe material entered Git.
 
-This cut did not yet pretend that general `soul-choice` existed. General
-resource comparison still requires a native, situation-bearing comparison
-among authorized resource participants under C-004/S-901; Prolog may only
-execute an already formed direction. A later bounded continuity repair now
-embodies one such choice for an exact material distinction: remote semantic
-participation can disclose that earlier content is needed without receiving
-that content, and native MeTTa may then select the human-authorized loopback
-continuity resource. That choice is part of the question and audit trail; it
-is neither a silent fallback nor model authority.
+This cut did not pretend that general `soul-choice` existed. General resource
+comparison still requires a native, situation-bearing comparison among
+authorized resource participants under C-004/S-901; Prolog may only execute an
+already formed direction. Continuity need and resource direction are now kept
+distinct: native MeTTa may determine that exact prior content is material, but
+it does not silently switch providers. The current human direction selects the
+transport resource and is recorded in the question; GLM is the installed
+default and local resources remain explicit alternatives.
 
 The operator-identity cut makes checkout ambiguity visible without adding a
 new runtime. `status` reports the exact loaded `assistant_operator.pl` path and
@@ -627,27 +628,90 @@ as mojibake. This is evidence against the implementation, not against durable
 memory: retrieval succeeded and expression failed.
 
 The source repair makes continuity need an explicit part of each derived
-semantic reading. That reading re-enters the same complete encounter. Only
-when at least one reading says prior content is materially needed and exact
-scope-verified memory exists may native MeTTa select the configured authorized
-loopback continuity resource. The local question carries the exact source
-capsule, body hash, snapshot hash, and memory identity; the membrane rechecks
-all of them against the authoritative runtime before transmission. Any memory
-used in the rendering must be named in its bindings. Remote grants reject a
-question containing private continuity, local grants name that capability
-explicitly, and the remote projection contains neither bodies nor stable
-identifiers. A real set of eleven stored semantic-memory observations—zero to
-four results each—passed the strengthened source/capsule/hash boundary. Native
-held-out reductions returned `true` for `candidate-content-needed`, `false`
-for otherwise identical `not-material` readings, and retained both semantic
-and memory provenance bindings. A fresh frozen runtime installed, loaded the
-complete current PeTTa source with empty error logs, cycled, and stopped.
+semantic reading. That reading re-enters the same complete encounter. Native
+MeTTa determines whether exact scope-verified memory is material; the current
+human direction independently names the model resource and continuity never
+silently changes it. The selected-model question carries exact source capsule,
+body hash, snapshot hash, and memory identity; the membrane rechecks all of
+them against the authoritative runtime before transmission. Any memory used in
+the rendering must be named in its bindings. The ratified remote disclosure
+standing permits ordinary conversation, continuity, project, and personal
+context while excluding credentials, authentication material, and concrete
+security-risk content. A real set of eleven stored semantic-memory
+observations—zero to four results each—passed the strengthened
+source/capsule/hash boundary. Native held-out reductions returned `true` for
+`candidate-content-needed`, `false` for otherwise identical `not-material`
+readings, and retained both semantic and memory provenance bindings.
 
-This repair is not yet promoted into the live evaluation runtime and does not
-close VoiceRNA. A semantic voice audit must still cause a defective candidate
-to be revised and re-rendered—or held—before external expression. The live
-story-revision, restart, no-replay, and exact recalled-content trial remains
-the next evidence for this seam.
+VoiceRNA now has a bounded semantic audit/reformation path. The provider uses
+a strict JSON schema and may contribute zero to four provenance-bearing
+fidelity findings, each naming its source basis, candidate span, inferred
+alteration, material significance, affected dependency, and uncertainty. It
+is not asked for a pass/revise/hold verdict or a revision instruction. MeTTa
+relates the structurally valid contribution as either no material obstruction
+contributed or one or more unresolved material obstructions. A material
+finding becomes a participant in fresh movement formation. A zero-finding
+reading is non-material expression evidence: it is bound to the exact existing
+cut, movement, participants, candidate/source relation, and native proof, and
+must neither enter nor recreate that movement. Native MeTTa retains expression,
+one bounded revision, and hold as possible continuations, then forms a disposition
+only after the exact
+candidate is bound to the authority-complete movement proof, that movement's
+already-existing one simultaneous R/A/P read, the live contact-relative Fact9
+expression, and all nine interconnected flourishing expressions. The native
+disposition—not the provider token—is carried in the VoiceRNA certificate;
+Prolog checks only its closed shape and matching proof reference. A revised
+candidate receives a second audit; another material finding holds it, while a
+zero-finding result uses the exact reformed proof. A fluent provider-shaped
+`pass` with a held native formation returns explicit `false` and cannot produce
+a certificate.
+
+One earlier bounded GLM trial identified an unsupported smile claim and source
+fidelity defect, returned a revised rendering without the invented inner
+state, and then returned a clean second audit. That trial exposed why a model
+verdict-shaped audit was too authoritative; the current schema retains the
+causal observations while removing the verdict and revision instruction.
+Native held-out reductions passed the direct-expression and one-revision paths
+and rejected native-proof bypass. The evidence-only regression returned
+`(true true false true true)` for complete formation, expression support,
+revision exclusion, reviewed voice, and certificate validity; its revision arm
+returned `(true true true)`, while the same fluent reading with native formation
+held returned `false`. Wrong-mode proof reuse and an altered proof both returned
+`false`. Before the general M25.5 evaluation repair, the isolated base
+M24--M26.3 formation measured 27.60 seconds, the same base plus zero-finding
+audit formation measured 27.42 seconds, and the complete direct VoiceRNA path
+measured 25.32--27.29 seconds. That established that ordinary audit now adds
+no second full formation. Exact M25.5 coverage comparison then reduced the base
+to 16.17 seconds. Bounded exact tabling of three pure MeTTa-defined validators
+reduced it again to 4.20 seconds and the direct review/certificate path to 4.39
+seconds. The combined regression—three independent bases plus one material
+reformation—fell from 106.54 to 60.21 seconds after incremental reformation and
+then to 11.64 seconds after both M25.5 repairs, with the same result tuple. The
+evidence fixture makes zero model calls: the intended direct live path requires
+one render plus one audit, while the one permitted material-revision path
+requires one additional render plus final audit. A zero-finding audit creates
+no additional full constitutive formation; a material finding invalidates and
+re-forms exactly one affected movement organization. The tables are cleared at
+every recurring-reactor boundary; a three-cycle trial left zero live subgoals
+after each reset, with 18,480 bytes of additional reserved table arena across
+the three cycles and no live table remaining. The present native fixture
+envelope is therefore about five seconds for direct construction and twelve
+seconds for the combined expression/revision/falsifier workload at this state
+size. Live GLM, history-growth, checkpoint-size, provider/native split, and
+restore measurements remain open, so C4 performance is improved but not
+closed. Those are the next performance measurements; they may not be replaced
+by another isolated favorable fixture.
+A separate claimed-but-unobserved model call
+was retained as uncertain
+transmission; a repeat made no second claim, returned a typed unavailable
+observation, and caused explicit audit, Soul-formation, and VoiceRNA holds.
+Fresh current source bootstrapped at LKG SHA-256
+`f8ef15977fce3ce67a1e77e8bdb276a511e8f87459b6b87815833ac7e827f596`,
+loaded, cycled, stopped, and cold-restarted with verified LKG and private
+`0700` directory / `0600` ordinary-file modes. This source is not yet promoted
+into the live evaluation runtime. The live story-revision, exact recalled
+content, restart/no-replay, and returned-consequence trial remains the next
+evidence for this seam.
 
 ## 7. The only build cycle
 
@@ -667,6 +731,86 @@ not a behavioral policy installed inside Miter.
    restart, and verify that the changed organization persists. Record only the
    resulting source change and current atlas standing; ephemeral observations
    stay outside Git.
+
+### Constitutive efficiency law
+
+Functional fidelity and usable computational cost are one build obligation.
+Every runtime-affecting commit must preserve three simultaneous ledgers:
+
+1. **Constitutive completeness** — every material Fact9, flourishing,
+   participant, one-surface R/A/P reading, provenance, consequence, and
+   continuity dependency remains causally present.
+2. **Supported reachability** — the capability is reached through the one
+   running assistant and survives the relevant restart path; an isolated fast
+   fixture is not a substitute.
+3. **Computational proportionality** — the change measures wall time, CPU
+   time, persistent-state size, model calls, and full constitutive formations
+   on the affected path against the immediately preceding supported baseline.
+   Where history, participants, memories, or possibilities can grow, measure
+   the growth slope as well as one favorable point.
+
+At **Understand**, name the semantic delta: exactly what new contact or
+consequence can invalidate. At **Weave**, derive its dependency-dirtiness
+closure and preserve every other organization by exact identity. At
+**Embody**, recompute only that closure, sharing immutable exact terms and
+scheduling independent reductions where doing so cannot inspect, rank, drop,
+or select them. At **Carry**, compare cold start, warm turn, ordinary live
+turn, failure/revision turn, checkpoint, and restart costs in proportion to
+the affected seam. Record the material result in this Atlas; keep raw profiles
+and fixtures ephemeral.
+
+Optimization may change representation, exact term sharing, evaluation order,
+parallel scheduling, indexing, and proof-identified incremental reformation.
+It may not remove a constitutive participant, split or collapse the one
+simultaneous R/A/P read, summarize away proof-relevant distinctions, reuse a
+result after any dependency changed, cache a semantic verdict, transfer
+movement choice to a model, or move cognition into Prolog/C. A provider's
+non-material observation must not manufacture a new movement; a material
+observation must invalidate and reform every affected dependency.
+
+A commit does not close merely because its outputs are correct. If the same
+exact proof or unchanged authority organization is reconstructed or deeply
+validated more than causally necessary, the cut remains open for bounded
+repair. If the supported path is too slow for ordinary conversation, grows
+without an understood bound, or regresses materially without an accepted
+fidelity reason and named repair, it remains open. Performance limits are
+builder acceptance evidence, not hard-coded Soul behavior.
+
+### Commit efficiency waypoint
+
+Immediately before every runtime-affecting commit, reread this law and append
+one compact entry to the active cut's evidence below. The entry must state:
+
+1. the affected supported path and immediately preceding baseline;
+2. the semantic invalidation boundary and its exact dependency-dirtiness
+   closure;
+3. cold-start, warm/native, ordinary live, material-failure or revision, and
+   restart observations that are relevant to the cut;
+4. model-call count, full constitutive-formation count, checkpoint size, and
+   process/table/state growth where each can change;
+5. unchanged results and newly exercised falsifiers proving that the speedup
+   did not thin the constitutive kind; and
+6. the accepted present envelope, any unmeasured limb, and the exact next
+   bottleneck rather than a general performance aspiration.
+
+The comparison is against the last accepted supported implementation, not an
+isolated microbenchmark. One cold observation must not be averaged into warm
+latency, and provider time must remain separately visible from native
+formation time. For a repeated path, take enough warm observations to expose
+variance; for a growing path, compare at least two materially different state
+sizes. A regression may proceed only when its constitutive benefit is named
+and its bounded repair remains in the active cut. No additional evidence file,
+benchmark suite, or committed log is created: the Atlas holds the concise
+decision record and all raw instruments remain ephemeral.
+
+Use exact identity as a computational asset. Every immutable authority,
+contact, proof, movement, and continuity term should be content-addressable;
+dependency changes invalidate only their transitive consumers. Exact native
+structural validations may be memoized mechanically within a cycle when their
+predicates are pure and all inputs are ground, but their tables must be cleared
+or demonstrably bounded at a named lifecycle boundary. Semantic readings,
+R/A/P standing, Soul participation, movement choice, and consequence meaning
+are never memoized as host verdicts.
 
 One cut is active at a time. A cut closes only if it creates the prerequisite
 for the next named cut. If evidence reopens an earlier cut, repair that exact
@@ -1773,6 +1917,24 @@ Already carried:
   extension, and the supported operator again reached `assistant-waiting` and
   stopped cleanly. This is a faithful scheduling improvement, not a claim of
   acceptable conversational latency.
+- A later C4 constitutive-cost profile found that full meaning was not the
+  source of most remaining work. M25.5 map coverage repeatedly performed
+  quadratic uniqueness and bidirectional membership scans after both exact
+  GenSig vocabularies had already established uniqueness. The specialized
+  translation validator now compares exact sorted multisets while the general
+  no-premise validator remains unchanged. Pure ground validations of GenSig,
+  GenTranslation, and their finite law witness were then being repeated tens
+  of thousands of times for identical terms inside one formation. The pinned
+  PeTTa/SWI extension now tables only those three unchanged MeTTa-defined
+  predicates and clears all their subgoals before every new reactor cycle.
+  Prolog neither supplies a truth value nor inspects a carrier. Valid and
+  reordered exact maps remained valid; duplicate-source, missing-target,
+  wrong-kind, altered-proof, and wrong-mode reuse cases remained false. On the
+  bounded C4 fixture, base formation fell from 27.60 to 4.20 seconds and the
+  full direct/revision/bypass suite from 106.54 to 11.64 seconds without
+  changing its native results. Three consecutive form/reset trials left zero
+  live table subgoals after each boundary; live-history growth remains to be
+  measured.
 - A held-out `Balance`/`Precision`/`Transformation` contact then exercised a
   materially different constitutive surface. Native formation selected
   `WonderPreservation`, `TimeCoherence`, and `CreativeTranscendence`, preserved
