@@ -119,6 +119,15 @@ endpoint. It contains no memory content or credential. If either local service
 is unavailable, exact native continuity remains authoritative and semantic
 recall reports a degraded/unavailable standing rather than fabricating memory.
 
+Bootstrap also copies the exact verified source closure into the private
+runtime root. Starts and restarts execute that frozen last-known-good closure,
+not a possibly changing repository checkout. During a long native reduction,
+status may truthfully report `processing-unconfirmed` when the host denies a
+process probe; an ordinary stop then reports `stop-pending` until the current
+cut reaches its safe boundary. Stop and panic remain available when source
+verification fails. This recovery layer carries process mechanics only and
+does not operate another cognitive loop.
+
 ## Source map
 
 - `CONSTITUTION.md` and `MITER_SOUL_CONSTITUTIVE_SPEC.md`: controlling identity

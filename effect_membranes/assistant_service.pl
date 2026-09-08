@@ -518,7 +518,9 @@ as_input(Root0, Inputs) :-
       as_take_limit(Files, Max, Selected),
       as_take_inputs(Root, Selected, FileInputs),
       append(SurfaceInputs,FileInputs,Combined),
-      as_take_limit(Combined,Max,Inputs)), _, fail) -> true ; Inputs=[] ), !.
+      as_take_limit(Combined,Max,Inputs),
+      (Inputs=[]->true;get_time(Now),as_heartbeat(Root,'assistant-processing',Now))),
+      _, fail) -> true ; Inputs=[] ), !.
 
 as_json_carriers(Root, Kind, Carriers) :-
     as_path(Root, Kind, Directory), directory_files(Directory, Files0),

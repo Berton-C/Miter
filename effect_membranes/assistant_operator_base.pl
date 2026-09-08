@@ -69,7 +69,9 @@ as_command(Command, _, _, _) :- throw(error(unknown_operator_command(Command),_)
 
 as_reply_code(Reply, 0) :- get_dict(status, Reply, Status),
     memberchk(Status, [bootstrapped,'already-bootstrapped',started,starting,running,stopped,
-      panicked,queued,duplicate,'evidence-stored']), !.
+      panicked,'stop-pending','panic-pending','processing-unconfirmed',
+      'liveness-unconfirmed','existing-process-unconfirmed',queued,duplicate,
+      'evidence-stored']), !.
 as_reply_code(_, 1).
 
 as_exact_options(Args, Allowed) :-
@@ -135,7 +137,13 @@ as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
   receipts,outbox,proofs,intents,lib,logs,'model/claims','model/requests',
   'model/raw','model/observations','surface/raw','surface/events',
   'surface/effects','checkpoints/objects','continuity/native/manifests',
-  'continuity/native/scopes','semantic/queries','semantic/projections']).
+  'continuity/native/scopes','semantic/queries','semantic/projections',
+  'lkg/source']).
+
+as_lkg_source_relative('lkg/source').
+
+as_lkg_source_root(Root, SourceRoot) :-
+    as_lkg_source_relative(Relative),directory_file_path(Root,Relative,SourceRoot).
 
 as_bootstrap(Root, Reply) :-
     ( exists_directory(Root) ->
@@ -189,6 +197,7 @@ as_bootstrap_new(Root, Reply) :-
       runtime_id:BootId,external_effects:ExternalEffects,
       network_access:NetworkAccess}),
     as_root(Root,_),
+    as_snapshot_lkg_source(Root),
     as_write_service_entry(Root),
     as_write_lkg(Root,LkgHash),
     as_write_json_durable(Marker,_{schema:"miter-assistant-runtime-v1",
@@ -201,6 +210,28 @@ as_bootstrap_new(Root, Reply) :-
 
 as_make_runtime_directory(Root, Relative) :-
     directory_file_path(Root,Relative,Path), make_directory_path(Path), chmod(Path,0o700).
+
+% The service executes from an immutable runtime-local copy of the verified
+% source closure. Repository edits therefore cannot silently change a running
+% or restarted organism. This is a mechanical last-known-good carrier, not a
+% second cognitive runtime and not authority to choose an upgrade.
+as_snapshot_lkg_source(Root) :-
+    as_operator_repo_root(Repo),as_lkg_source_root(Root,SourceRoot),
+    as_lkg_relative_paths(Paths),
+    maplist(as_copy_lkg_source_file(Repo,SourceRoot),Paths).
+
+as_copy_lkg_source_file(Repo, SourceRoot, Relative) :-
+    as_safe_lkg_relative_path(Relative),
+    directory_file_path(Repo,Relative,Source),exists_file(Source),
+    \+ read_link(Source,_,_),
+    directory_file_path(SourceRoot,Relative,Target),
+    file_directory_name(Target,Parent),make_directory_path(Parent),
+    \+ exists_file(Target),copy_file(Source,Target),chmod(Target,0o600).
+
+as_safe_lkg_relative_path(Relative) :-
+    miter_store_nonempty_atom(Relative,Path),\+ is_absolute_file_name(Path),
+    \+ sub_atom(Path,_,_,_,'..'),\+ sub_atom(Path,_,_,_,'\\'),
+    re_match('^[A-Za-z0-9_.:/-]+$',Path).
 
 as_validate_config(Config) :-
     is_dict(Config), as_dict_atom(Config,schema,'miter-assistant-config-v1'),
@@ -254,6 +285,10 @@ as_start(Root, Reply) :-
         Reply=_{schema:"miter-assistant-operator-result-v1",status:'lkg-mismatch'}
     ; as_process_state(Root,alive,Pid) ->
         Reply=_{schema:"miter-assistant-operator-result-v1",status:running,pid:Pid,
+          semantic_health:"not-claimed"}
+    ; as_process_state(Root,unconfirmed,Pid) ->
+        Reply=_{schema:"miter-assistant-operator-result-v1",
+          status:'existing-process-unconfirmed',pid:Pid,
           semantic_health:"not-claimed"}
     ; as_mattermost_prepare(Root,MattermostStanding),
       MattermostStanding == held ->
@@ -316,7 +351,7 @@ as_recent_crash(Now, Entry) :-
     Observed=<Now,Now-Observed=<60,get_dict(pid,Entry,Pid),integer(Pid),Pid>1.
 
 as_spawn(Root, Pid, StartedAt) :-
-    as_operator_repo_root(Repo),as_petta_main(Petta),
+    as_lkg_source_root(Root,SourceRoot),as_petta_main(Petta),
     directory_file_path(Root,'service-entry.metta',Entry),uuid(RunId),
     atomic_list_concat(['logs/service-',RunId,'.stdout'],StdoutRelative),
     atomic_list_concat(['logs/service-',RunId,'.stderr'],StderrRelative),
@@ -326,7 +361,7 @@ as_spawn(Root, Pid, StartedAt) :-
         (current_prolog_flag(executable,Swipl),
          process_create(Swipl,
            ['--stack_limit=2g','-q','-s',Petta,'--',Entry,silent],
-           [cwd(Repo),stdin(null),stdout(stream(Out)),stderr(stream(Err)),detached(true),process(Pid)])),
+           [cwd(SourceRoot),stdin(null),stdout(stream(Out)),stderr(stream(Err)),detached(true),process(Pid)])),
         close(Err)),close(Out)),
     get_time(StartedAt),directory_file_path(Root,'pid.json',PidPath),
     as_write_json_durable(PidPath,_{schema:"miter-assistant-pid-v1",pid:Pid,
@@ -335,18 +370,23 @@ as_spawn(Root, Pid, StartedAt) :-
 as_wait_started(Root, Pid, StartedAt, Seconds) :-
     End is StartedAt+Seconds,as_wait_started_until(Root,Pid,StartedAt,End).
 as_wait_started_until(Root,Pid,StartedAt,End) :-
-    (as_pid_alive(Pid);as_heartbeat_active(Root,Pid)),
     ( directory_file_path(Root,'heartbeat.json',Heartbeat),exists_file(Heartbeat),
       miter_store_read_json(Heartbeat,Dict),as_dict_atom(Dict,schema,'miter-assistant-heartbeat-v1'),
       get_dict(observed_at_epoch,Dict,Observed),number(Observed),Observed>=StartedAt
     -> true
-    ; get_time(Now),Now<End,sleep(0.05),as_wait_started_until(Root,Pid,StartedAt,End) ).
+    ; as_pid_probe(Pid,dead) -> fail
+    ; get_time(Now),Now<End,sleep(0.05),
+      as_wait_started_until(Root,Pid,StartedAt,End) ).
 
 as_process_state(Root, State, Pid) :-
     directory_file_path(Root,'pid.json',Path),exists_file(Path),
     miter_store_read_json(Path,Dict),as_dict_atom(Dict,schema,'miter-assistant-pid-v1'),
     get_dict(pid,Dict,Pid),integer(Pid),Pid>1,
-    ((as_pid_alive(Pid);as_heartbeat_active(Root,Pid))->State=alive;State=dead).
+    as_pid_probe(Pid,Probe),
+    ( Probe==alive -> State=alive
+    ; Probe==dead -> State=dead
+    ; as_heartbeat_active(Root,Pid) -> State=alive
+    ; State=unconfirmed ).
 
 % Some supervised or sandboxed hosts permit the service to continue while
 % denying a later process signal probe. A fresh heartbeat recorded after this
@@ -366,14 +406,33 @@ as_heartbeat_active(Root, Pid) :-
     Now-Observed=<Freshness.
 
 as_pid_alive(Pid) :-
-    process_create('/bin/kill',['-0',Pid],[stdin(null),stdout(null),stderr(null),process(Check)]),
-    process_wait(Check,exit(0)).
+    as_pid_probe(Pid,alive).
+
+% A denied signal probe is not evidence of process death. Some managed hosts
+% permit the detached service to run but reject a later kill(0). Preserve the
+% uncertainty so status/start/stop do not invent a crash or spawn a duplicate.
+as_pid_probe(Pid, Standing) :-
+    catch(as_pid_probe_checked(Pid,Standing0),_,Standing0=unconfirmed),
+    Standing=Standing0, !.
+
+as_pid_probe_checked(Pid, Standing) :-
+    process_create('/bin/kill',['-0',Pid],
+      [stdin(null),stdout(null),stderr(pipe(ErrorStream)),process(Check)]),
+    setup_call_cleanup(true,read_string(ErrorStream,4096,Message),
+      close(ErrorStream)),
+    process_wait(Check,Status),string_lower(Message,Lower),
+    ( Status==exit(0) -> Standing=alive
+    ; sub_string(Lower,_,_,_,"no such process") -> Standing=dead
+    ; Standing=unconfirmed ).
 
 as_status(Root, Reply) :-
     ( catch(as_root(Root,_),_,fail) ->
         as_verify_lkg(Root,Lkg),
-        (as_process_state(Root,alive,Pid)->State=running
-        ;(as_process_state(Root,dead,Pid)->State=stopped;Pid=0,State=stopped)),
+        (as_process_state(Root,Observed,Pid)->
+          (Observed==alive->State=running
+          ;Observed==dead->State=stopped
+          ;as_unconfirmed_status(Root,State))
+        ;Pid=0,State=stopped),
         as_status_heartbeat(Root,Heartbeat),
         Reply=_{schema:"miter-assistant-operator-result-v1",status:State,pid:Pid,
           lkg:Lkg,heartbeat:Heartbeat,semantic_health:"not-claimed"}
@@ -382,6 +441,22 @@ as_status(Root, Reply) :-
 as_status_heartbeat(Root, Heartbeat) :-
     directory_file_path(Root,'heartbeat.json',Path),
     (exists_file(Path)->miter_store_read_json(Path,Heartbeat);Heartbeat=null).
+
+as_unconfirmed_status(Root, Status) :-
+    ( as_pending_control(Root,panic) -> Status='panic-pending'
+    ; as_pending_control(Root,stop) -> Status='stop-pending'
+    ; as_has_leased_input(Root) -> Status='processing-unconfirmed'
+    ; Status='liveness-unconfirmed' ).
+
+as_pending_control(Root, Command) :-
+    directory_file_path(Root,'control.json',Path),
+    catch((miter_store_read_json(Path,Dict),
+      as_dict_atom(Dict,schema,'miter-assistant-control-v1'),
+      as_dict_atom(Dict,command,Command)),_,fail).
+
+as_has_leased_input(Root) :-
+    directory_file_path(Root,leased,Directory),directory_files(Directory,Files),
+    member(Name,Files),as_json_name(Name),!.
 
 as_submit(Root, Event, Reply) :-
     ( catch((as_root(Root,_),as_verify_lkg(Root,verified),
@@ -403,25 +478,33 @@ as_existing_input(Root, Name, Path) :-
     directory_file_path(Root,Directory,Dir),directory_file_path(Dir,Name,Path),exists_file(Path),!.
 
 as_stop(Root, Reply) :-
-    as_root(Root,_),as_verify_lkg(Root,verified),
-    ( as_process_state(Root,alive,Pid) ->
+    as_root(Root,_),
+    ( as_process_state(Root,State,Pid),State\==dead ->
         as_write_control(Root,stop,operator),
         (as_wait_dead(Root,Pid,5)->Status=stopped,as_write_exit(Root,Pid,'clean-stop')
-        ;Status='stop-timeout')
+        ;Status='stop-pending')
     ; Pid=0,Status=stopped ),
-    Reply=_{schema:"miter-assistant-operator-result-v1",status:Status,pid:Pid}.
+    as_verify_lkg(Root,Lkg),
+    Reply=_{schema:"miter-assistant-operator-result-v1",status:Status,pid:Pid,
+      lkg:Lkg}.
 
 as_panic(Root, Reply) :-
     as_root(Root,_),
-    ( as_process_state(Root,alive,Pid) ->
-        as_write_control(Root,panic,operator),
-        ( as_wait_dead(Root,Pid,2) -> true
-        ; as_signal(Pid,'-TERM'),(as_wait_dead(Root,Pid,1)->true
-          ;as_signal(Pid,'-KILL'),as_wait_dead(Root,Pid,1)) )
-    ; Pid=0 ),
-    as_write_exit(Root,Pid,panic),
-    Reply=_{schema:"miter-assistant-operator-result-v1",status:panicked,pid:Pid,
+    ( as_process_state(Root,State,Pid),State\==dead ->
+        as_panic_active_process(Root,Pid,Standing)
+    ; Pid=0,Standing=panicked ),
+    (Standing==panicked->as_write_exit(Root,Pid,panic);true),
+    Reply=_{schema:"miter-assistant-operator-result-v1",status:Standing,pid:Pid,
       history_deleted:false}.
+
+as_panic_active_process(Root, Pid, Standing) :-
+    as_write_control(Root,panic,operator),
+    ( as_wait_dead(Root,Pid,2) -> Standing=panicked
+    ; as_signal(Pid,'-TERM'),
+      ( as_wait_dead(Root,Pid,1) -> Standing=panicked
+      ; as_signal(Pid,'-KILL'),
+        (as_wait_dead(Root,Pid,1)->Standing=panicked
+        ;Standing='panic-pending') ) ).
 
 as_wait_dead(Root, Pid, Seconds) :-
     get_time(Start),End is Start+Seconds,as_wait_dead_until(Root,Pid,End).

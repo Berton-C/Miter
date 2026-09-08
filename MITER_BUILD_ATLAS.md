@@ -161,7 +161,7 @@ consumer is absent. No status is upgraded by assertion.
 | Capability | Standing | Current site | Exact gap |
 |---|---:|---|---|
 | One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General scoped contact, memory participation, model participation, VoiceRNA, effect preparation, consequence, regeneration, and endogenous opportunity share this one continuation; no second cognitive loop is present. |
-| Start/status/stop/panic | P | `bin/miter`, operator membrane | Commands are supported, but in-flight native formation can outlive the heartbeat freshness window on hosts that deny process probes, and ordinary stop currently requires a matching source LKG. Truthful health and recovery remain open. |
+| Start/status/stop/panic | P | `bin/miter`, operator membrane, frozen runtime LKG | In-flight native formation is reported as `processing-unconfirmed` rather than dead when the host denies process probes; stop remains available across source mismatch and becomes `stop-pending` until the current cut reaches its safe boundary. Frozen-source restart, panic, and bounded three-crash/60-second containment are embodied; host service registration remains for final packaging. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | Mattermost ingress is active; certified outbound remains deliberately disabled pending the evaluation grant and live no-replay trial. |
 | Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
@@ -326,6 +326,27 @@ hashes; private remembered content is withheld pending a local-model path or
 an exact human disclosure grant. C4 remains open for persistent-service health
 and recovery, unfamiliar multi-turn undertakings, broader scope isolation,
 the authorized live delivery/restart trial, and evaluation packaging.
+
+The first persistent-service recovery cut now separates an unavailable process
+probe from evidence of death. Before entering a potentially long native cut,
+the carrier records `assistant-processing`; if this managed host later denies
+`kill(0)` and that heartbeat ages, `bin/miter status` reports
+`processing-unconfirmed` while an exact leased input remains, never `stopped`.
+An ordinary stop writes the control request even when source integrity has
+changed, reports `stop-pending` while the current native cut completes, and
+then becomes a confirmed clean stop at the safe cycle boundary. Bootstrap now
+copies the complete hash-bound source closure into the private runtime root;
+the service entry and working directory use that frozen closure, so later
+repository edits cannot silently change restart meaning. This recovered a real
+old LKG omission: `soul_regeneration.metta` is now an explicit member of the
+runtime closure rather than an accidental dependency on the repository cwd.
+The frozen LKG is mechanical recovery substrate only; it cannot choose an
+upgrade, diagnose the Soul, or create a second clock.
+Three distinct confirmed-dead starts inside the bounded 60-second window now
+produce `crash-loop-contained` before another service process is launched.
+Repository source drift after bootstrap does not change restart meaning;
+tampering with a frozen source member produces `lkg:mismatch`, while stop and
+panic remain available so integrity damage cannot strand the process.
 
 ## 7. The only build cycle
 
@@ -1538,19 +1559,17 @@ Already carried:
 
 Next movement:
 
-1. make the operator's liveness report and stop/panic recovery truthful while
-   a long native reduction is in flight; add bounded crash-loop containment
-   and last-known-good recovery without creating a second cognitive clock;
-2. extend general Soul-formed dialogue into sustained, consequence-sensitive
+1. extend general Soul-formed dialogue into sustained, consequence-sensitive
    multi-turn undertakings and exercise model/surface failure plus exact
    principal/audience/project isolation through the same runtime;
-3. complete the admitted Mattermost carrier with an explicitly authorized
+2. complete the admitted Mattermost carrier with an explicitly authorized
    live pending-before-send/no-replay delivery trial; do not reuse the expired
    canary or bypass the unresolved Haley disclosure boundary;
-4. package the resulting always-on organism for SNET evaluation with one
+3. package the resulting always-on organism for SNET evaluation with one
    human-editable configuration surface and supported install/start/status/
-   stop/panic operations;
-5. only after explicit human acceptance of the complete clean candidate,
+   stop/panic operations, bounded crash-loop containment, and frozen-LKG
+   recovery;
+4. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 
