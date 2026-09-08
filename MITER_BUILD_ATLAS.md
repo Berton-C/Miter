@@ -510,6 +510,21 @@ the admitted contact now passes the complete pre-transmission boundary without
 making a provider call; deployment, live rendering, delivery, and restart/no-
 replay evidence remain open.
 
+The renewed live contact then exposed the next exact continuity carrier defect.
+After one cut existed, both `predecessor` and `prior-active` correctly carried
+the structured native `cut-of(contact, proto)` identity; the Prolog model
+membrane still required those local cut identities to be flat symbols. The
+contact remained safely native, checkpointed, and local-only: zero provider
+calls and zero external posts occurred. The membrane now validates the same
+structured cut identity already accepted by the native proof boundary and
+requires the predecessor and active-organization identities to be identical.
+Reconstruction from the exact pre-contact checkpoint passes the complete
+provider preflight while the public carrier retains only a redacted
+prior-organization presence marker. The repaired frozen LKG cold-restored the
+post-contact checkpoint with no model call or effect replay. A new live contact
+is still required to exercise rendering and delivery; consumed contacts SHALL
+NOT be reintroduced merely to make the trial pass.
+
 ## 7. The only build cycle
 
 Every additive cut follows the same four movements. This is a builder method,

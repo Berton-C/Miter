@@ -156,19 +156,23 @@ as_model_c4_continuity(
       ['live-undertakings',Undertakings],['present',Present],
       ['retrieved-memory-candidates',MemoryCandidates],
       'exact-native-capsule-authority-not-provider-memory']) :-
-    (Predecessor=='no-predecessor';Predecessor=['source-cut',_]),
+    as_model_c4_predecessor(Predecessor),
     as_model_c4_active_organization(ActiveOrganization,Predecessor),
     is_list(Undertakings), maplist(as_symbol,Undertakings,_),
     Present=['present-context',_,_], ground(Present),
     is_list(MemoryCandidates),length(MemoryCandidates,MemoryCount),
     MemoryCount=<4,maplist(as_model_c4_memory_candidate,MemoryCandidates).
 
+as_model_c4_predecessor('no-predecessor').
+as_model_c4_predecessor(['source-cut',CutId]) :-
+    as_local_cut_id(CutId).
+
 as_model_c4_active_organization('no-prior-active-organization',
     'no-predecessor').
 as_model_c4_active_organization(
     ['prior-active',['source-cut',CutId],MovementReference,
       ['live-undertakings',Undertakings]],['source-cut',CutId]) :-
-    as_symbol(CutId,_), MovementReference=['movement-reference'|_],
+    as_local_cut_id(CutId), MovementReference=['movement-reference'|_],
     length(MovementReference,5), is_list(Undertakings),
     maplist(as_symbol,Undertakings,_).
 
