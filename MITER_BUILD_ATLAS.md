@@ -405,6 +405,20 @@ invalid live affirmation ID remained held and changed no grant or outbound
 standing. The real activation and live no-replay trial remain held solely on
 Haley's required disclosure affirmation, not on a missing code path.
 
+The host-service packaging cut now generates a validated, runtime-local macOS
+launchd profile from the frozen LKG and exact private runtime root. Explicit
+registration launches a non-cognitive foreground wrapper that owns no timer or
+cognitive recurrence: it starts exactly one frozen PeTTa process and waits for
+that process. launchd retries failed exits only. The existing durable crash
+ledger converts the third distinct crash in sixty seconds into a successful
+`crash-loop-contained` exit, which ends launchd retry; ordinary stop and panic
+remain clean exits and preserve continuity. A fresh private install produced a
+valid property list, reported its host-service standing, ran through the
+foreground supervisor, and completed clean start/status/stop without another
+cognitive process. Host registration is available but was not silently applied
+to this development host. A fresh-clone evaluator walkthrough remains before
+packaging closure.
+
 ## 7. The only build cycle
 
 Every additive cut follows the same four movements. This is a builder method,

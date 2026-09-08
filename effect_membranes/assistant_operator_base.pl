@@ -25,7 +25,7 @@ as_dispatch([Command0|Args], Reply, Code) :-
     miter_store_nonempty_atom(Command0, Command),
     as_command(Command, Args, Reply, Code), !.
 as_dispatch(_, _{schema:"miter-assistant-operator-result-v1",status:"usage-error",
-  usage:"miter <install|bootstrap|evaluation-disclosure|activate-evaluation|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
+  usage:"miter <install|bootstrap|prepare-service|register-service|unregister-service|evaluation-disclosure|activate-evaluation|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
 
 as_command(install, Args, Reply, Code) :-
     !,
@@ -52,6 +52,30 @@ as_command('activate-evaluation', Args, Reply, Code) :-
     as_required_option(Args,'--haley-affirmation-post-id',PostId0),
     as_runtime_path(Root0,Root),
     as_activate_evaluation(Root,PostId0,Reply),as_reply_code(Reply,Code).
+as_command('prepare-service', Args, Reply, Code) :-
+    !,
+    as_exact_options(Args,['--runtime-root']),
+    as_required_option(Args,'--runtime-root',Root0),
+    as_runtime_path(Root0,Root),as_prepare_host_service(Root,Reply),
+    as_reply_code(Reply,Code).
+as_command('register-service', Args, Reply, Code) :-
+    !,
+    as_exact_options(Args,['--runtime-root']),
+    as_required_option(Args,'--runtime-root',Root0),
+    as_runtime_path(Root0,Root),as_register_host_service(Root,Reply),
+    as_reply_code(Reply,Code).
+as_command('unregister-service', Args, Reply, Code) :-
+    !,
+    as_exact_options(Args,['--runtime-root']),
+    as_required_option(Args,'--runtime-root',Root0),
+    as_runtime_path(Root0,Root),as_unregister_host_service(Root,Reply),
+    as_reply_code(Reply,Code).
+as_command('run-supervised', Args, Reply, Code) :-
+    !,
+    as_exact_options(Args,['--runtime-root']),
+    as_required_option(Args,'--runtime-root',Root0),
+    as_runtime_path(Root0,Root),as_supervised_run(Root,Reply),
+    as_reply_code(Reply,Code).
 as_command(start, Args, Reply, Code) :-
     !,
     as_exact_options(Args, ['--runtime-root']),
@@ -93,7 +117,8 @@ as_reply_code(Reply, 0) :- get_dict(status, Reply, Status),
       panicked,'stop-pending','panic-pending','processing-unconfirmed',
       'liveness-unconfirmed','existing-process-unconfirmed',queued,duplicate,
       'evidence-stored','evaluation-disclosure','evaluation-activated',
-      'evaluation-already-active']), !.
+      'evaluation-already-active','service-profile-ready','service-registered',
+      'service-unregistered','supervised-clean-exit','crash-loop-contained']), !.
 as_reply_code(_, 1).
 
 as_exact_options(Args, Allowed) :-
@@ -157,6 +182,7 @@ as_swipl_ld(Path) :-
 
 as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
   receipts,outbox,proofs,intents,lib,logs,model,surface,continuity,semantic,lkg,
+  service,
   'model/claims','model/requests','model/raw','model/observations','surface/raw',
   'surface/events','surface/effects','checkpoints/objects','continuity/native',
   'continuity/native/manifests','continuity/native/scopes','semantic/queries',
@@ -556,6 +582,150 @@ as_verify_hash(Dict, Path) :-
     as_sha256(Expected,Expected),crypto_file_hash(Path,Actual,[algorithm(sha256),encoding(octet)]),
     Actual==Expected.
 
+% macOS launchd supervises this non-cognitive wrapper.  The wrapper owns no
+% recurrence of its own: it runs exactly one frozen PeTTa service process and
+% waits for that process to end.  Failed exits may be relaunched by launchd;
+% the existing three-crashes-in-sixty-seconds ledger ends that sequence with a
+% successful containment exit so KeepAlive does not become perpetual thrash.
+as_prepare_host_service(Root,Reply) :-
+    as_root(Root,_),as_verify_lkg(Root,verified),
+    as_host_service_material(Root,Label,PlistPath,Target),
+    Reply=_{schema:"miter-assistant-operator-result-v1",
+      status:'service-profile-ready',label:Label,profile:PlistPath,
+      launchd_target:Target,registered:false}.
+
+as_host_service_material(Root,Label,PlistPath,Target) :-
+    directory_file_path(Root,'runtime.json',RuntimePath),
+    miter_store_read_json(RuntimePath,Runtime),
+    miter_store_nonempty_atom(Runtime.runtime_id,RuntimeId),
+    format(atom(Label),'io.singularitynet.miter.~w',[RuntimeId]),
+    as_host_uid(Uid),format(atom(Target),'gui/~d',[Uid]),
+    as_lkg_source_root(Root,SourceRoot),
+    directory_file_path(SourceRoot,
+      'effect_membranes/assistant_operator.pl',Operator),
+    current_prolog_flag(executable,Swipl),
+    directory_file_path(Root,'lkg.json',LkgPath),
+    miter_store_read_json(LkgPath,Lkg),
+    miter_store_nonempty_atom(Lkg.petta.path,Petta),
+    directory_file_path(Root,'logs/launchd.stdout',Stdout),
+    directory_file_path(Root,'logs/launchd.stderr',Stderr),
+    maplist(as_xml_text,[Label,Swipl,Operator,Root,Petta,SourceRoot,Stdout,Stderr],
+      [LabelX,SwiplX,OperatorX,RootX,PettaX,SourceRootX,StdoutX,StderrX]),
+    format(string(Text),
+      '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict>\n  <key>Label</key><string>~s</string>\n  <key>ProgramArguments</key>\n  <array>\n    <string>~s</string><string>-q</string><string>-f</string><string>none</string>\n    <string>-s</string><string>~s</string><string>--</string>\n    <string>run-supervised</string><string>--runtime-root</string><string>~s</string>\n  </array>\n  <key>EnvironmentVariables</key><dict>\n    <key>MITER_PETTA_MAIN</key><string>~s</string>\n  </dict>\n  <key>WorkingDirectory</key><string>~s</string>\n  <key>RunAtLoad</key><true/>\n  <key>KeepAlive</key><dict><key>SuccessfulExit</key><false/></dict>\n  <key>ThrottleInterval</key><integer>5</integer>\n  <key>ProcessType</key><string>Background</string>\n  <key>StandardOutPath</key><string>~s</string>\n  <key>StandardErrorPath</key><string>~s</string>\n</dict>\n</plist>\n',
+      [LabelX,SwiplX,OperatorX,RootX,PettaX,SourceRootX,StdoutX,StderrX]),
+    directory_file_path(Root,'service/launchd.plist',PlistPath),
+    as_write_text_durable(PlistPath,Text),
+    as_plist_valid(PlistPath),chmod(PlistPath,0o600).
+
+as_xml_text(Value,Escaped) :-
+    miter_store_nonempty_atom(Value,Atom),atom_codes(Atom,Codes),
+    as_xml_codes(Codes,EscapedCodes),string_codes(Escaped,EscapedCodes).
+
+as_xml_codes([],[]).
+as_xml_codes([0'&|Rest],[0'&,0'a,0'm,0'p,0';|Tail]) :- !,
+    as_xml_codes(Rest,Tail).
+as_xml_codes([0'<|Rest],[0'&,0'l,0't,0';|Tail]) :- !,
+    as_xml_codes(Rest,Tail).
+as_xml_codes([0'>|Rest],[0'&,0'g,0't,0';|Tail]) :- !,
+    as_xml_codes(Rest,Tail).
+as_xml_codes([0'\"|Rest],[0'&,0'q,0'u,0'o,0't,0';|Tail]) :- !,
+    as_xml_codes(Rest,Tail).
+as_xml_codes([Code|Rest],[Code|Tail]) :- as_xml_codes(Rest,Tail).
+
+as_plist_valid(Path) :-
+    process_create('/usr/bin/plutil',['-lint',Path],
+      [stdin(null),stdout(null),stderr(null),process(Pid)]),
+    process_wait(Pid,exit(0)).
+
+as_host_uid(Uid) :-
+    setup_call_cleanup(
+      process_create('/usr/bin/id',['-u'],
+        [stdin(null),stdout(pipe(Stream)),stderr(null),process(Pid)]),
+      read_string(Stream,64,Raw),close(Stream)),
+    process_wait(Pid,exit(0)),normalize_space(string(Text),Raw),
+    number_string(Uid,Text),integer(Uid),Uid>=0.
+
+as_register_host_service(Root,Reply) :-
+    as_host_service_material(Root,Label,PlistPath,Target),
+    ( as_launchd_registered(Target,Label) -> true
+    ; process_create('/bin/launchctl',['bootstrap',Target,PlistPath],
+        [stdin(null),stdout(null),stderr(null),process(Pid)]),
+      process_wait(Pid,exit(0)) ),
+    get_time(Now),directory_file_path(Root,'service/registration.json',StatePath),
+    as_write_json_durable(StatePath,_{schema:"miter-host-service-v1",
+      label:Label,launchd_target:Target,profile:PlistPath,
+      standing:"registered",registered_at_epoch:Now}),
+    Reply=_{schema:"miter-assistant-operator-result-v1",
+      status:'service-registered',label:Label,launchd_target:Target}.
+
+as_unregister_host_service(Root,Reply) :-
+    as_host_service_material(Root,Label,_PlistPath,Target),
+    ( as_launchd_registered(Target,Label) ->
+        format(atom(ServiceTarget),'~w/~w',[Target,Label]),
+        process_create('/bin/launchctl',['bootout',ServiceTarget],
+          [stdin(null),stdout(null),stderr(null),process(Pid)]),
+        process_wait(Pid,exit(0))
+    ; true ),
+    get_time(Now),directory_file_path(Root,'service/registration.json',StatePath),
+    as_write_json_durable(StatePath,_{schema:"miter-host-service-v1",
+      label:Label,launchd_target:Target,standing:"unregistered",
+      unregistered_at_epoch:Now}),
+    Reply=_{schema:"miter-assistant-operator-result-v1",
+      status:'service-unregistered',label:Label,launchd_target:Target}.
+
+as_launchd_registered(Target,Label) :-
+    format(atom(ServiceTarget),'~w/~w',[Target,Label]),
+    process_create('/bin/launchctl',['print',ServiceTarget],
+      [stdin(null),stdout(null),stderr(null),process(Pid)]),
+    process_wait(Pid,exit(0)).
+
+as_supervised_run(Root,Reply) :-
+    as_root(Root,_),as_verify_lkg(Root,verified),
+    ( as_process_state(Root,State,Pid),State\==dead ->
+        Reply=_{schema:"miter-assistant-operator-result-v1",
+          status:'supervised-clean-exit',reason:"service-already-running",pid:Pid}
+    ; as_mattermost_prepare(Root,MattermostStanding),MattermostStanding\==held,
+      as_crash_admit(Root,CrashStanding),
+      ( CrashStanding==blocked ->
+          Reply=_{schema:"miter-assistant-operator-result-v1",
+            status:'crash-loop-contained'}
+      ; as_write_control(Root,continue,'launchd-supervisor'),
+        as_spawn_foreground(Root,ChildPid,ProcessStatus),
+        as_supervised_outcome(Root,ChildPid,ProcessStatus,Reply) ) ), !.
+
+as_spawn_foreground(Root,Pid,ProcessStatus) :-
+    as_lkg_source_root(Root,SourceRoot),as_petta_main(Petta),
+    directory_file_path(Root,'service-entry.metta',Entry),uuid(RunId),
+    atomic_list_concat(['logs/service-',RunId,'.stdout'],StdoutRelative),
+    atomic_list_concat(['logs/service-',RunId,'.stderr'],StderrRelative),
+    directory_file_path(Root,StdoutRelative,Stdout),
+    directory_file_path(Root,StderrRelative,Stderr),
+    setup_call_cleanup(open(Stdout,write,Out,[encoding(utf8)]),
+      setup_call_cleanup(open(Stderr,write,Err,[encoding(utf8)]),
+        (current_prolog_flag(executable,Swipl),
+         process_create(Swipl,
+           ['--stack_limit=2g','-q','-s',Petta,'--',Entry,silent],
+           [cwd(SourceRoot),stdin(null),stdout(stream(Out)),stderr(stream(Err)),
+            process(Pid)]),
+         get_time(StartedAt),directory_file_path(Root,'pid.json',PidPath),
+         as_write_json_durable(PidPath,_{schema:"miter-assistant-pid-v1",
+           pid:Pid,run_id:RunId,started_at_epoch:StartedAt,
+           stdout:StdoutRelative,stderr:StderrRelative}),
+         process_wait(Pid,ProcessStatus)),close(Err)),close(Out)).
+
+as_supervised_outcome(Root,Pid,_ProcessStatus,Reply) :-
+    as_clean_exit(Root,Pid),!,
+    Reply=_{schema:"miter-assistant-operator-result-v1",
+      status:'supervised-clean-exit',pid:Pid}.
+as_supervised_outcome(Root,Pid,ProcessStatus,Reply) :-
+    as_note_crash(Root,Pid,Count),
+    ( Count>=3 -> Status='crash-loop-contained'
+    ; Status='supervised-crash' ),
+    term_string(ProcessStatus,ProcessStanding,[quoted(true),ignore_ops(true)]),
+    Reply=_{schema:"miter-assistant-operator-result-v1",status:Status,pid:Pid,
+      crash_count_in_window:Count,process_standing:ProcessStanding}.
+
 as_start(Root, Reply) :-
     as_root(Root,_), as_verify_lkg(Root,Lkg),
     ( Lkg \== verified ->
@@ -712,14 +882,32 @@ as_status(Root, Reply) :-
         ;Pid=0,State=stopped),
         as_status_heartbeat(Root,Heartbeat),
         as_evaluation_status(Root,Evaluation),
+        as_host_service_status(Root,HostService),
         Reply=_{schema:"miter-assistant-operator-result-v1",status:State,pid:Pid,
           lkg:Lkg,heartbeat:Heartbeat,evaluation:Evaluation,
+          host_service:HostService,
           semantic_health:"not-claimed"}
     ; Reply=_{schema:"miter-assistant-operator-result-v1",status:'not-bootstrapped'} ).
 
 as_status_heartbeat(Root, Heartbeat) :-
     directory_file_path(Root,'heartbeat.json',Path),
     (exists_file(Path)->miter_store_read_json(Path,Heartbeat);Heartbeat=null).
+
+as_host_service_status(Root,Standing) :-
+    directory_file_path(Root,'service/registration.json',RegistrationPath),
+    directory_file_path(Root,'service/launchd.plist',ProfilePath),
+    ( exists_file(RegistrationPath),
+      catch(miter_store_read_json(RegistrationPath,Registration),_,fail),
+      is_dict(Registration),Registration.schema=="miter-host-service-v1" ->
+        miter_store_nonempty_atom(Registration.label,Label),
+        miter_store_nonempty_atom(Registration.launchd_target,Target),
+        ( as_launchd_registered(Target,Label) -> State="registered"
+        ; State="not-loaded" ),
+        Standing=_{standing:State,label:Registration.label,
+          launchd_target:Registration.launchd_target}
+    ; exists_file(ProfilePath) ->
+        Standing=_{standing:"profile-ready-not-registered"}
+    ; Standing=_{standing:"not-prepared"} ).
 
 as_evaluation_status(Root,Standing) :-
     directory_file_path(Root,'evaluation-grants.json',Path),

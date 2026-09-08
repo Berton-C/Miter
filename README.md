@@ -101,6 +101,9 @@ Use an explicit runtime directory outside this repository. Do not use
 
 ```sh
 bin/miter install --runtime-root /absolute/private/runtime/path
+bin/miter prepare-service --runtime-root /absolute/private/runtime/path
+# Optional macOS always-on registration; registration starts Miter.
+bin/miter register-service --runtime-root /absolute/private/runtime/path
 bin/miter evaluation-disclosure --runtime-root /absolute/private/runtime/path
 # After Haley posts the exact disclosure in the bound three-person group:
 bin/miter activate-evaluation --runtime-root /absolute/private/runtime/path \
@@ -109,6 +112,8 @@ bin/miter start   --runtime-root /absolute/private/runtime/path
 bin/miter status  --runtime-root /absolute/private/runtime/path
 bin/miter stop    --runtime-root /absolute/private/runtime/path
 bin/miter panic   --runtime-root /absolute/private/runtime/path
+# Remove only the host registration; runtime continuity remains intact.
+bin/miter unregister-service --runtime-root /absolute/private/runtime/path
 ```
 
 `config/miter.json` is the only human-edited repository configuration. It
@@ -140,6 +145,14 @@ process probe; an ordinary stop then reports `stop-pending` until the current
 cut reaches its safe boundary. Stop and panic remain available when source
 verification fails. This recovery layer carries process mechanics only and
 does not operate another cognitive loop.
+
+`prepare-service` writes and validates a runtime-local macOS launchd profile;
+it changes no host registration. `register-service` explicitly loads that
+profile and starts the same frozen PeTTa runtime. launchd retries only failed
+exits. After three distinct crashes within sixty seconds the non-cognitive
+wrapper exits successfully in `crash-loop-contained` standing, preventing an
+unbounded restart loop. Ordinary stop and panic remain clean exits and do not
+erase continuity. `unregister-service` removes only the launchd registration.
 
 ## Source map
 
