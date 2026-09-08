@@ -21,12 +21,12 @@ The recovered runtime presently provides one recurring PeTTa/MeTTa cycle,
 constitutional integrity admission, typed contact/consequence carriers, the
 complete causal M24–M26.3 projection, provisional partial-alignment inquiry,
 explicitly granted GLM 5.3 thought-partner participation, append-only
-trajectory storage, checkpoint restoration, stable scope boundaries, local
-effect preparation, and start/status/stop/panic operations.
+trajectory storage, stable scope boundaries, writable per-scope Continuity of
+Mind capsules, exact checkpoint/capsule restoration, local effect preparation,
+and start/status/stop/panic operations.
 
-It is **not yet the usable Miter alpha**. General conversational contact,
-durable read/write Continuity of Mind, live Chroma retrieval, general
-LLM/VoiceRNA composition, Mattermost response delivery,
+It is **not yet the usable Miter alpha**. General conversational response,
+live Chroma retrieval, general LLM/VoiceRNA composition, Mattermost delivery,
 earned self-extension, hot upgrade, and rollback remain to be integrated into
 this same runtime. [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single
 operations map for that additive work.
@@ -36,6 +36,15 @@ authorized principals, admit new versioned contacts into the one reactor, and
 restore them after restart. It deliberately cannot emit a Mattermost response
 yet; outbound remains disabled until general VoiceRNA and delivery
 reconciliation are causally joined.
+
+Every native checkpoint now writes immutable, content-addressed continuity
+capsules for each exact principal/audience/project scope. A capsule carries the
+active relationship, undertaking, attention, next-movement, developmental,
+and raw-source-reference organization already formed by MeTTa. One atomic
+checkpoint pointer binds the complete snapshot to its capsule manifest;
+restart rejects altered or mismatched continuity. Capsules have no age expiry
+and remain until explicit authorized erasure, repair, or migration. Chroma is
+only a rebuildable semantic index and can never substitute for these records.
 
 ## Runtime boundary
 
@@ -90,10 +99,11 @@ bin/miter panic     --runtime-root /absolute/private/runtime/path
 `config/models.json` is the human-editable model registry; it contains only
 resource and Keychain references. Every remote call additionally requires an
 exact, time-bounded runtime-local grant derived from `config/model-grants.json`,
-which is inactive by default. `config/continuity.json` is intentionally unbound
-in this baseline. These files store references and scope bindings, never
-secrets. Runtime bytes, memories, credentials, model files, Chroma data, logs,
-and evidence stay outside Git.
+which is inactive by default. `config/continuity.json` contains only legacy
+read-only import bindings and is intentionally unbound; native writable
+continuity is intrinsic to every checkpoint. These files store references and
+scope bindings, never secrets. Runtime bytes, memories, credentials, model
+files, Chroma data, logs, and evidence stay outside Git.
 
 ## Source map
 

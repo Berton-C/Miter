@@ -39,6 +39,7 @@ as_lkg_relative_paths([
   'effect_membranes/integrity.pl','effect_membranes/store.pl',
   'effect_membranes/continuity.pl','effect_membranes/continuity_adapter.pl',
   'effect_membranes/semantic_adapter.pl','effect_membranes/assistant_service.pl',
+  'effect_membranes/runtime_continuity.pl',
   'effect_membranes/assistant_operator_base.pl','effect_membranes/assistant_operator.pl',
   'effect_membranes/runtime_extensions/store_posix.c',
   'effect_membranes/runtime_extensions/petta_parallel.pl',

@@ -8,6 +8,7 @@
 :- ensure_loaded('integrity.pl').
 :- ensure_loaded('continuity_adapter.pl').
 :- ensure_loaded('mattermost.pl').
+:- ensure_loaded('runtime_continuity.pl').
 :- ensure_loaded('semantic_adapter.pl').
 :- use_module(library(crypto)).
 :- use_module(library(filesex)).
@@ -564,47 +565,81 @@ as_reject_input(Root, Name, Source, rejected) :-
 
 as_checkpoint(Root0, Snapshot, Result) :-
     ( catch((as_root(Root0, Root), Snapshot=['assistant-snapshot',_,_],
-      as_path(Root, 'checkpoints/active.term', TermPath),
-      % Native proof carriers deliberately share exact subterms: the one
-      % primary participates in its R/A/P reading, derivation and retained
-      % alternatives. Preserve that identity in serialization instead of
-      % expanding each occurrence into duplicate text. This caches no verdict;
-      % restore reconstructs the exact ground snapshot before native checking.
-      as_write_factorized_checkpoint_atomic(TermPath, Snapshot, FactorCount),
-      crypto_file_hash(TermPath, Hash, [algorithm(sha256),encoding(octet)]),
-      atom_string(Hash, HashString), get_time(Now),
+      miter_runtime_continuity_prepare(Root, Snapshot, SnapshotHash,
+        ContinuityRelative, ContinuityFileHash),
+      as_write_checkpoint_object(Root, Snapshot, SnapshotHash,
+        CheckpointRelative, CheckpointFileHash, FactorCount),
+      atom_string(SnapshotHash, SnapshotHashString),
+      atom_string(CheckpointFileHash, CheckpointFileHashString),
+      atom_string(ContinuityFileHash, ContinuityFileHashString), get_time(Now),
       as_path(Root, 'checkpoints/active.json', MetaPath),
       as_write_json_durable(MetaPath, _{
-        schema:"miter-assistant-checkpoint-v2",
+        schema:"miter-assistant-checkpoint-v3",
         encoding:"prolog-factorized-term-v1",
         factor_count:FactorCount,
-        sha256:HashString,recorded_at_epoch:Now}),
+        snapshot_sha256:SnapshotHashString,
+        checkpoint_object:CheckpointRelative,
+        checkpoint_object_sha256:CheckpointFileHashString,
+        continuity_manifest:ContinuityRelative,
+        continuity_manifest_sha256:ContinuityFileHashString,
+        retention_standing:"indefinite-no-age-expiry-explicit-authorized-erasure-repair-or-migration-only",
+        semantic_index_standing:"rebuildable-projection-never-continuity-authority",
+        recorded_at_epoch:Now}),
       as_commit_leases(Root)), _, fail) -> Result=checkpointed
     ; Result='checkpoint-failed' ), !.
 
 as_restore(Root0, Snapshot) :-
-    ( catch((as_root(Root0, Root), as_path(Root, 'checkpoints/active.term', TermPath),
-      as_path(Root, 'checkpoints/active.json', MetaPath),
-      ( \+ exists_file(TermPath), \+ exists_file(MetaPath) -> Snapshot='no-checkpoint'
-      ; exists_file(TermPath), exists_file(MetaPath),
-        miter_store_read_json(MetaPath, Meta),
-        get_dict(sha256, Meta, Expected0), as_sha256(Expected0, Expected),
-        crypto_file_hash(TermPath, Actual, [algorithm(sha256),encoding(octet)]),
-        Actual==Expected,
-        as_read_checkpoint(Meta, TermPath, Term),
+    ( catch((as_root(Root0, Root), as_path(Root, 'checkpoints/active.json', MetaPath),
+      ( \+ exists_file(MetaPath) -> Snapshot='no-checkpoint'
+      ; miter_store_read_json(MetaPath, Meta),
+        as_restore_checkpoint(Root, Meta, Term),
         Term=['assistant-snapshot',_,_], ground(Term), acyclic_term(Term),
         Snapshot=Term )), _, fail) -> true
     ; Snapshot='checkpoint-invalid' ), !.
 
-% V1 remains readable for existing runtime roots. New checkpoints use V2. The
-% factor list is inert data and is unified explicitly; it is never called as a
-% sequence of Prolog goals.
+as_restore_checkpoint(Root, Meta, Term) :-
+    as_dict_atom(Meta, schema, 'miter-assistant-checkpoint-v3'), !,
+    get_dict(snapshot_sha256, Meta, SnapshotHash0),
+    as_sha256(SnapshotHash0, SnapshotHash),
+    atomic_list_concat(['checkpoints/objects/',SnapshotHash,'.term'], ExpectedRelative),
+    get_dict(checkpoint_object, Meta, Relative0),
+    miter_store_nonempty_atom(Relative0, Relative), Relative == ExpectedRelative,
+    as_path(Root, ExpectedRelative, TermPath), exists_file(TermPath),
+    get_dict(checkpoint_object_sha256, Meta, ExpectedFileHash0),
+    as_sha256(ExpectedFileHash0, ExpectedFileHash),
+    crypto_file_hash(TermPath, ActualFileHash,[algorithm(sha256),encoding(octet)]),
+    ActualFileHash == ExpectedFileHash,
+    as_read_factorized_checkpoint(TermPath, Meta, Term),
+    miter_runtime_continuity_term_hash(Term, SnapshotHash),
+    miter_runtime_continuity_verify(Root, Term, Meta).
+as_restore_checkpoint(Root, Meta, Term) :-
+    as_path(Root, 'checkpoints/active.term', TermPath), exists_file(TermPath),
+    get_dict(sha256, Meta, Expected0), as_sha256(Expected0, Expected),
+    crypto_file_hash(TermPath, Actual,[algorithm(sha256),encoding(octet)]),
+    Actual == Expected,
+    as_read_checkpoint(Meta, TermPath, Term).
+
+% V1/V2 remain readable for existing runtime roots. V3 uses an immutable
+% content-addressed object plus an exact continuity manifest. The factor list
+% is inert data and is unified explicitly; it is never called as Prolog goals.
 as_read_checkpoint(Meta, TermPath, Term) :-
     as_dict_atom(Meta, schema, 'miter-assistant-checkpoint-v1'),
     setup_call_cleanup(open(TermPath,read,Stream,[encoding(utf8)]),
       read_term(Stream,Term,[syntax_errors(error)]),close(Stream)), !.
 as_read_checkpoint(Meta, TermPath, Term) :-
     as_dict_atom(Meta, schema, 'miter-assistant-checkpoint-v2'),
+    as_dict_atom(Meta, encoding, 'prolog-factorized-term-v1'),
+    get_dict(factor_count, Meta, ExpectedFactorCount),
+    integer(ExpectedFactorCount), ExpectedFactorCount>=0,
+    setup_call_cleanup(open(TermPath,read,Stream,[encoding(utf8)]),
+      read_term(Stream,Carrier,[syntax_errors(error)]),close(Stream)),
+    Carrier=['miter-factorized-checkpoint-v1',Skeleton,Factors],
+    is_list(Factors), length(Factors,ExpectedFactorCount),
+    as_checkpoint_factors_well_formed(Factors),
+    maplist(as_unify_checkpoint_factor, Factors),
+    ground(Skeleton), acyclic_term(Skeleton), Term=Skeleton.
+
+as_read_factorized_checkpoint(TermPath, Meta, Term) :-
     as_dict_atom(Meta, encoding, 'prolog-factorized-term-v1'),
     get_dict(factor_count, Meta, ExpectedFactorCount),
     integer(ExpectedFactorCount), ExpectedFactorCount>=0,
@@ -894,6 +929,19 @@ as_write_factorized_checkpoint_atomic(Path, Snapshot, FactorCount) :-
     length(Factors, FactorCount),
     Carrier=['miter-factorized-checkpoint-v1',Skeleton,Factors],
     as_write_term_atomic(Path, Carrier).
+
+as_write_checkpoint_object(Root, Snapshot, SnapshotHash, Relative, FileHash,
+                           FactorCount) :-
+    atomic_list_concat(['checkpoints/objects/',SnapshotHash,'.term'], Relative),
+    as_path(Root, Relative, Path),
+    term_factorized(Snapshot, Skeleton, Factors), length(Factors,FactorCount),
+    Carrier=['miter-factorized-checkpoint-v1',Skeleton,Factors],
+    ( exists_file(Path) ->
+        setup_call_cleanup(open(Path,read,Stream,[encoding(utf8)]),
+          read_term(Stream,Existing,[syntax_errors(error)]),close(Stream)),
+        Existing =@= Carrier
+    ; as_write_term_atomic(Path,Carrier) ),
+    crypto_file_hash(Path, FileHash,[algorithm(sha256),encoding(octet)]).
 
 as_write_json_durable(Path, Dict) :-
     file_directory_name(Path, Directory), make_directory_path(Directory),

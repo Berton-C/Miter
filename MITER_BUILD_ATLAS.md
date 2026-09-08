@@ -164,19 +164,19 @@ consumer is absent. No status is upgraded by assertion.
 | Start/status/stop/panic | E | `bin/miter`, operator membrane | Installer and host service registration are absent. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | No promoted external surface adapter is active. |
-| Checkpoint and same-runtime restart | E | reactor + store membrane | The semantic episode, consequence-earned transfer, later developmental-memory participation, a Soul-formed endogenous undertaking, and autonomous expressed-Soul regeneration now restore without replay; complete long-term memory and incomplete undertakings are not yet one writable continuity organization. |
+| Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
 | M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C3 must now learn from their provisional composition. |
 | Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 alignment/semantic inquiry, transfer, developmental memory, and endogenous opportunity formation | Soul-selected flourishing relations generate contact-differentiated alignment families, constrain optional semantic participation, enter consequence interpretation, remain available to later memory, and now participate in one Soul-formed undertaking when an exact persisted partial opening remains and no human undertaking is live; regeneration remains open. |
 | Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 alignment/semantic inquiry, transfer, developmental memory, partial-overlap comparison, and endogenous opportunity formation | Fact9/flourishing organization generates plural native alignment movements, constrains model-assisted inquiry, discloses exact and partial-overlap transfer/differentiation/unresolved standing, permits consequence-earned episodes to alter later unfamiliar cuts, and now carries the exact opening into a new internally generated occurrence without a behavioral branch; regeneration remains open. |
 | One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; independent returned contact has changed a model-assisted inquiry into durable native development and distinguishes transfer, differentiation, and unresolved standing across non-identical overlap. |
-| Exact project/relationship continuity | P | continuity adapters | Read-only controlled sources exist; writeback and live scope bindings are absent. |
+| Exact project/relationship continuity | E | native checkpoint capsules + continuity adapters | Every live scope now writes exact relationship, undertaking, attention, developmental, next-movement, and raw-source-reference organization with indefinite retention; legacy external imports remain separately unbound. |
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
 | LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | GLM 5.3 candidates now enter a Soul-owned inquiry and returned candidate contact changes the next persisted cut without provider self-certification; a mechanical grant can no longer trigger a call unless native MeTTa exposes unresolved R/A/P plus selected Fact9/flourishing and returned-contact material. General language rendering remains absent. |
 | Mattermost | A | none in clean runtime | General scoped transport and delivery reconciliation must be recovered. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, and regenerative Soul; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; one exact persisted partial opening can form a provenance-bearing Soul undertaking; and injured expressed Soul can form and complete its own repair RNA. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
-| Full Continuity of Mind | A/P | checkpoints plus read-only adapters | Exact capsules, semantic memory, undertakings, relationships, and growth are not one writable restored organization. |
+| Full Continuity of Mind | P | native checkpoint capsules plus semantic adapter | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. Live Chroma retrieval/update and later consequence-sensitive memory participation remain to complete the four-plane capability. |
 
 ## 6. Four additive stages
 
@@ -281,6 +281,22 @@ SHA-256 `c686ecf759ea18828de90f498c8b106c6de5fecac033c28284bbc719f9820b52`.
 Outbound Mattermost remains disabled until general model participation,
 VoiceRNA rendering, and uncertain-delivery reconciliation are one certified
 path.
+
+The Continuity cut makes Continuity of Mind intrinsic to that same reactor.
+Every native checkpoint first writes immutable content-addressed snapshot, per-scope
+capsule, and manifest objects, then advances one atomic active pointer binding
+the generation. Each scope capsule preserves exact relationship, undertaking,
+attention, next-movement, developmental-history, and raw-source-reference
+organization with no age expiry; only explicit authorized erasure, repair, or
+migration may remove it. Cold restart re-forms the exact snapshot only when
+the manifest and every capsule match. Altered capsule content is rejected, and
+Chroma is explicitly recorded as a rebuildable projection rather than memory
+authority. A live Mattermost contact produced and cold-restored one exact
+scope capsule at snapshot semantic SHA-256
+`fb79914acca237ed126f8afa9631ea4bc31d5a40a443c66f89ca0255ef2a60b3`
+without replay. The operator file-submit boundary now accepts consequences
+only; authenticated Mattermost polling is the sole ingress for Mattermost
+contact.
 
 ## 7. The only build cycle
 
@@ -1493,21 +1509,19 @@ Already carried:
 
 Next movement:
 
-1. complete the admitted Mattermost carrier with general Soul-formed model
-   participation, VoiceRNA rendering, and pending-before-send delivery
-   reconciliation in the existing `bin/miter` service; no second loop and no
-   preselected conversational behavior;
-2. make relationship, project, undertaking, attention, and developmental
-   continuity one writable, indefinitely durable, restart-restored
-   organization, with Chroma remaining a rebuildable semantic index;
-3. connect general authorized model participation and VoiceRNA rendering to
+1. connect general Soul-formed model participation and VoiceRNA rendering to
    the live movement rather than fixed canary language, then exercise
    unfamiliar conversation, multi-user isolation, model/surface failure, and
-   consequence-sensitive resumption through Mattermost;
-4. package the resulting always-on organism for SNET evaluation with one
+   consequence-sensitive resumption through Mattermost; complete the admitted
+   carrier with pending-before-send delivery reconciliation in the existing
+   `bin/miter` service, with no second loop and no preselected conversational
+   behavior;
+2. add live Chroma retrieval/update only as a rebuildable semantic projection
+   of the now-writable exact continuity organization;
+3. package the resulting always-on organism for SNET evaluation with one
    human-editable configuration surface and supported install/start/status/
    stop/panic operations;
-5. only after explicit human acceptance of the complete clean candidate,
+4. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

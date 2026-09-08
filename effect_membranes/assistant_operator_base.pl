@@ -134,7 +134,8 @@ as_swipl_ld(Path) :-
 as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
   receipts,outbox,proofs,intents,lib,logs,'model/claims','model/requests',
   'model/raw','model/observations','surface/raw','surface/events',
-  'surface/effects']).
+  'surface/effects','checkpoints/objects','continuity/native/manifests',
+  'continuity/native/scopes']).
 
 as_bootstrap(Root, Reply) :-
     ( exists_directory(Root) ->
@@ -381,7 +382,8 @@ as_status_heartbeat(Root, Heartbeat) :-
 as_submit(Root, Event, Reply) :-
     ( catch((as_root(Root,_),as_verify_lkg(Root,verified),
         size_file(Event,Size),as_config(Root,max_input_bytes,Max),Size=<Max,
-        miter_store_read_json(Event,Dict),as_input_dict(Root,Dict,_,InputId)),_,fail)
+        miter_store_read_json(Event,Dict),as_input_dict(Root,Dict,Input,InputId),
+        Input=['assistant-input',consequence,_,_]),_,fail)
     -> atom_concat(InputId,'.json',Name),
        ( as_existing_input(Root,Name,Existing) ->
            miter_store_read_json(Existing,Prior),
@@ -442,7 +444,7 @@ as_evidence_bundle(Root, Output, Reply) :-
     as_root(Root,_),as_verify_lkg(Root,Lkg),as_status(Root,Status),
     as_directory_count(Root,receipts,ReceiptCount),as_directory_count(Root,consumed,ConsumedCount),
     as_directory_count(Root,rejected,RejectedCount),as_directory_count(Root,outbox,OutboxCount),
-    as_optional_hash(Root,'checkpoints/active.term',CheckpointHash),
+    as_checkpoint_identity(Root,CheckpointHash),
     as_trajectory_standing(Root,Trajectory),
     directory_file_path(Root,'lkg.json',LkgPath),
     crypto_file_hash(LkgPath,LkgHash,[algorithm(sha256),encoding(octet)]),
@@ -468,6 +470,15 @@ as_optional_hash(Root, Relative, HashString) :-
     directory_file_path(Root,Relative,Path),
     (exists_file(Path)->crypto_file_hash(Path,Hash,[algorithm(sha256),encoding(octet)]),
       atom_string(Hash,HashString);HashString=null).
+
+as_checkpoint_identity(Root, HashString) :-
+    directory_file_path(Root,'checkpoints/active.json',MetaPath),
+    ( exists_file(MetaPath), catch(miter_store_read_json(MetaPath,Meta),_,fail),
+      get_dict(schema,Meta,"miter-assistant-checkpoint-v3"),
+      get_dict(snapshot_sha256,Meta,Hash0),
+      miter_store_nonempty_atom(Hash0,Hash), as_sha256(Hash,Hash)
+    -> atom_string(Hash,HashString)
+    ; as_optional_hash(Root,'checkpoints/active.term',HashString) ).
 
 as_trajectory_standing(Root, Standing) :-
     directory_file_path(Root,store,Store),
