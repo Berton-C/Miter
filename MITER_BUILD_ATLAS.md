@@ -493,6 +493,23 @@ under a new run identity and stopped cleanly. This closes mechanical freeze
 detection. It does not implement hot self-upgrade, choose repair meaning, or
 establish semantic recovery merely because a process restarted.
 
+The first activated AMA-1.2 contact exposed a real C4 integration defect. The
+same service admitted and natively incorporated the unfamiliar Mattermost
+contact, checkpointed it, and committed only a local expression; it made zero
+model calls and zero external posts. The cause was an exact contract mismatch:
+native MeTTa included the prior-active-organization standing in its continuity
+surface, while the model membrane's structural validator still expected the
+older surface without it. The repaired membrane accepts and validates that
+native continuity element without interpreting it. Before any renewed remote
+call, it also derives a provider-facing carrier which retains the authorized
+utterance and the Soul-selected Fact9/flourishing meanings while withholding
+Mattermost identifiers, local proof references, raw paths, exact continuity
+identities, and private memory content. The original local question remains
+exact for native binding and later VoiceRNA certification. A reconstruction of
+the admitted contact now passes the complete pre-transmission boundary without
+making a provider call; deployment, live rendering, delivery, and restart/no-
+replay evidence remain open.
+
 ## 7. The only build cycle
 
 Every additive cut follows the same four movements. This is a builder method,

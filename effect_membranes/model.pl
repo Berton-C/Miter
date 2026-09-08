@@ -152,14 +152,25 @@ as_model_c4_flourishing_value(['c4-flourishing-entry',Value,_],Value).
 
 as_model_c4_continuity(
     ['continuity-participation',['predecessor',Predecessor],
+      ['active-organization',ActiveOrganization],
       ['live-undertakings',Undertakings],['present',Present],
       ['retrieved-memory-candidates',MemoryCandidates],
       'exact-native-capsule-authority-not-provider-memory']) :-
     (Predecessor=='no-predecessor';Predecessor=['source-cut',_]),
+    as_model_c4_active_organization(ActiveOrganization,Predecessor),
     is_list(Undertakings), maplist(as_symbol,Undertakings,_),
     Present=['present-context',_,_], ground(Present),
     is_list(MemoryCandidates),length(MemoryCandidates,MemoryCount),
     MemoryCount=<4,maplist(as_model_c4_memory_candidate,MemoryCandidates).
+
+as_model_c4_active_organization('no-prior-active-organization',
+    'no-predecessor').
+as_model_c4_active_organization(
+    ['prior-active',['source-cut',CutId],MovementReference,
+      ['live-undertakings',Undertakings]],['source-cut',CutId]) :-
+    as_symbol(CutId,_), MovementReference=['movement-reference'|_],
+    length(MovementReference,5), is_list(Undertakings),
+    maplist(as_symbol,Undertakings,_).
 
 as_model_c4_memory_candidate(
     ['c4-memory-reference',MemoryId,SourceKind,
@@ -605,6 +616,7 @@ as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
     % exact Soul-selected R/A/P, Fact9, flourishing and returned-contact surface
     % leaves the machine.
     as_model_public_question(Question,PublicQuestion),
+    as_model_public_question_valid(Question,PublicQuestion),
     term_string(PublicQuestion,QuestionText,[quoted(true),ignore_ops(true)]),
     with_output_to(string(User), json_write_dict(current_output,
       _{native_question:QuestionText,
@@ -681,25 +693,167 @@ as_model_public_question(
     ['c3-semantic-question-v1',QuestionRef,
       [scope,_,_,_],Movement,Source,Openings,Facts,Flourishings,Uncertainty,
       Contract,Resource],
-    ['c3-semantic-question-v1',QuestionRef,
-      [scope,'private-principal-redacted','private-audience-redacted',
-        'private-project-redacted'],
-      Movement,Source,Openings,Facts,Flourishings,Uncertainty,Contract,
-      Resource]).
+    PublicQuestion) :-
+    as_model_public_redact_local_identifiers(
+      ['c3-semantic-question-v1',QuestionRef,
+        [scope,'private-principal-redacted','private-audience-redacted',
+          'private-project-redacted'],
+        Movement,Source,Openings,Facts,Flourishings,Uncertainty,Contract,
+        Resource],PublicQuestion).
 as_model_public_question(
     ['c4-contact-semantic-question-v1',QuestionRef,[scope,_,_,_],
-      Source,Text,Movement,Facts,Flourishings,Continuity,Contract,Resource],
-    ['c4-contact-semantic-question-v1',QuestionRef,
+      _Source,['exact-contact-text',_,Text,_],_Movement,
+      ['fact9-participation',FactEntries,FactStanding],
+      ['flourishing-participation',FlourishingEntries,FlourishingStanding],
+      Continuity,Contract,Resource],
+    ['c4-contact-semantic-question-v1',
+      ['question-reference','current-contact','general-contact-semantics'],
       [scope,'private-principal-redacted','private-audience-redacted',
         'private-project-redacted'],
-      Source,Text,Movement,Facts,Flourishings,Continuity,Contract,Resource]).
+      ['source-contact','current-contact',
+        ['payload-reference','private-local-reference-redacted']],
+      ['exact-contact-text','private-content-hash-redacted',Text,
+        'private-local-reference-redacted'],
+      ['preliminary-movement',
+        ['current-native-movement','local-proof-reference-withheld']],
+      ['fact9-participation',PublicFactEntries,FactStanding],
+      ['flourishing-participation',PublicFlourishingEntries,
+        FlourishingStanding],
+      PublicContinuity,Contract,Resource]) :-
+    QuestionRef=['question-reference',_,'general-contact-semantics'],
+    as_model_public_c4_fact_entries(FactEntries,PublicFactEntries),
+    as_model_public_c4_flourishing_entries(FlourishingEntries,
+      PublicFlourishingEntries),
+    as_model_public_c4_continuity(Continuity,PublicContinuity).
 as_model_public_question(
     ['c4-voice-render-question-v1',QuestionRef,[scope,_,_,_],
-      Source,Text,Movement,Readings,Intention,Commitments,Contract,Resource],
-    ['c4-voice-render-question-v1',QuestionRef,
+      _Source,['exact-contact-text',_,Text,_],_Movement,Readings,Intention,
+      Commitments,Contract,Resource],
+    ['c4-voice-render-question-v1',
+      ['question-reference','current-contact','voice-rendering'],
       [scope,'private-principal-redacted','private-audience-redacted',
         'private-project-redacted'],
-      Source,Text,Movement,Readings,Intention,Commitments,Contract,Resource]).
+      ['source-contact','current-contact',
+        ['payload-reference','private-local-reference-redacted']],
+      ['exact-contact-text','private-content-hash-redacted',Text,
+        'private-local-reference-redacted'],
+      ['native-movement',
+        ['current-native-movement','local-proof-reference-withheld']],
+      Readings,Intention,Commitments,Contract,Resource]) :-
+    QuestionRef=['question-reference',_,'voice-rendering'].
+
+as_model_public_c4_fact_entries([],[]).
+as_model_public_c4_fact_entries(
+    [['c4-fact9-entry',_,['roles',Roles],['material-relations',_],_]|Rest],
+    [['c4-fact9-entry','current-contact-fact-expression',['roles',Roles],
+      ['material-relations',['current-contact-relation']],
+      ['composition','finite-contact-relative-expression']]|PublicRest]) :-
+    as_model_public_c4_fact_entries(Rest,PublicRest).
+
+as_model_public_c4_flourishing_entries([],[]).
+as_model_public_c4_flourishing_entries(
+    [['c4-flourishing-entry',Value,
+      ['current-relational-standings',Standings]]|Rest],
+    [['c4-flourishing-entry',Value,
+      ['current-relational-standings',PublicStandings]]|PublicRest]) :-
+    as_model_public_c4_flourishing_standings(Standings,PublicStandings),
+    as_model_public_c4_flourishing_entries(Rest,PublicRest).
+
+as_model_public_c4_flourishing_standings([],[]).
+as_model_public_c4_flourishing_standings(
+    [['flourishing-standing',_,Standing,_]|Rest],
+    [['flourishing-standing','current-contact-relation',Standing,
+      'native-evidence-present']|PublicRest]) :-
+    as_model_public_c4_flourishing_standings(Rest,PublicRest).
+
+as_model_public_c4_continuity(
+    ['continuity-participation',['predecessor',Predecessor],
+      ['active-organization',ActiveOrganization],
+      ['live-undertakings',Undertakings],['present',_],
+      ['retrieved-memory-candidates',MemoryCandidates],
+      'exact-native-capsule-authority-not-provider-memory'],
+    ['continuity-participation',
+      ['predecessor',PublicPredecessor],
+      ['active-organization',PublicActive],
+      ['live-undertaking-count',UndertakingCount],
+      ['present',['present-context','current-contact-present',
+        'native-present-evidence']],
+      ['retrieved-memory-candidate-count',MemoryCount],
+      'exact-native-capsule-and-memory-content-withheld']) :-
+    as_model_public_c4_presence(Predecessor,'no-predecessor',
+      'prior-cut-present',PublicPredecessor),
+    as_model_public_c4_presence(ActiveOrganization,
+      'no-prior-active-organization','prior-active-organization-present',
+      PublicActive),
+    length(Undertakings,UndertakingCount),
+    length(MemoryCandidates,MemoryCount).
+
+as_model_public_c4_presence(Value,Absent,_,Absent) :- Value==Absent, !.
+as_model_public_c4_presence(_,_,Present,Present).
+
+as_model_public_question_valid(Question,PublicQuestion) :-
+    as_model_public_question_shape_valid(Question,PublicQuestion),
+    \+ as_model_public_has_private_local_identifier(PublicQuestion).
+
+as_model_public_question_shape_valid(
+    ['c4-contact-semantic-question-v1',_,_,_,
+      ['exact-contact-text',_,Text,_],_,_,_,_,Contract,Resource],
+    ['c4-contact-semantic-question-v1',
+      ['question-reference','current-contact','general-contact-semantics'],
+      [scope,'private-principal-redacted','private-audience-redacted',
+        'private-project-redacted'],
+      ['source-contact','current-contact',
+        ['payload-reference','private-local-reference-redacted']],
+      ['exact-contact-text','private-content-hash-redacted',Text,
+        'private-local-reference-redacted'],
+      ['preliminary-movement',
+        ['current-native-movement','local-proof-reference-withheld']],
+      ['fact9-participation',[_|_],_],
+      ['flourishing-participation',PublicFlourishings,_],
+      ['continuity-participation'|_],Contract,Resource]) :-
+    length(PublicFlourishings,9).
+as_model_public_question_shape_valid(
+    ['c4-voice-render-question-v1',_,_,_,
+      ['exact-contact-text',_,Text,_],_,Readings,Intention,Commitments,
+      Contract,Resource],
+    ['c4-voice-render-question-v1',
+      ['question-reference','current-contact','voice-rendering'],
+      [scope,'private-principal-redacted','private-audience-redacted',
+        'private-project-redacted'],
+      ['source-contact','current-contact',
+        ['payload-reference','private-local-reference-redacted']],
+      ['exact-contact-text','private-content-hash-redacted',Text,
+        'private-local-reference-redacted'],
+      ['native-movement',
+        ['current-native-movement','local-proof-reference-withheld']],
+      Readings,Intention,Commitments,Contract,Resource]).
+as_model_public_question_shape_valid(
+    ['c3-semantic-question-v1',_,[scope,_,_,_],_,_,_,_,_,_,Contract,
+      Resource],
+    ['c3-semantic-question-v1',_,
+      [scope,'private-principal-redacted','private-audience-redacted',
+        'private-project-redacted'],_,_,_,_,_,_,Contract,Resource]).
+
+as_model_public_redact_local_identifiers(Value,Redacted) :-
+    is_list(Value), !,
+    maplist(as_model_public_redact_local_identifiers,Value,Redacted).
+as_model_public_redact_local_identifiers(Value,
+    'private-local-identifier-redacted') :-
+    as_model_private_local_identifier(Value), !.
+as_model_public_redact_local_identifiers(Value,Value).
+
+as_model_public_has_private_local_identifier(Value) :-
+    is_list(Value), !, member(Item,Value),
+    as_model_public_has_private_local_identifier(Item).
+as_model_public_has_private_local_identifier(Value) :-
+    as_model_private_local_identifier(Value).
+
+as_model_private_local_identifier(Value) :-
+    atom(Value),
+    ( sub_atom(Value,0,3,_,mm_)
+    ; sub_atom(Value,0,_,_,'surface/raw/')
+    ; is_absolute_file_name(Value)
+    ).
 
 as_model_request_valid(Profile,Body) :-
     as_dict_atom(Profile,kind,remote),
