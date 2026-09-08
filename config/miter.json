@@ -158,8 +158,10 @@
         "qwen-local",
         "nemotron-local"
       ],
+      "private_continuity_resource": "qwen-local",
+      "private_continuity_standing": "authorized-local-candidate-selected-natively-only-when-exact-scoped-memory-is-material",
       "direction_scopes": ["next-model-calls", "bounded-duration", "until-replaced"],
-      "soul_choice": "not-yet-embodied-must-be-native-relational-comparison-among-authorized-resources",
+      "soul_choice": "bounded-private-continuity-choice-embodied;general-relational-resource-comparison-remains-open",
       "selected_model_output_authority": "none",
       "fallback_policy": "explicit-native-comparison-only",
       "silent_model_substitution": false
@@ -223,7 +225,8 @@
     ],
     "operator_notes": [
       "Store secrets outside this file; credential_reference is only a lookup location.",
-      "Human direction selects a live resource, never meaning, movement, memory admission, or effects; Soul-directed resource choice remains unimplemented until it is embodied as native relational comparison.",
+      "Human direction selects a preferred live resource, never meaning, movement, memory admission, or effects.",
+      "When the formed encounter says exact scoped continuity is materially needed, native MeTTa may select the configured authorized local continuity resource; this is explicit Soul-owned resource choice, never silent transport fallback.",
       "Every remote call additionally requires a current runtime-local grant."
     ]
   },

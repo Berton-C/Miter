@@ -828,13 +828,16 @@ as_evaluation_model_grants(Root,Config,Now,Expiry,Document) :-
        get_dict(limits,Profile,Limits),
        get_dict(deadline_seconds,Limits,Deadline),
        format(string(Id),'ama-1.2-~s-~s',[ResourceString,Principal]),
-       ( get_dict(kind,Profile,"remote") -> MaxCalls=50 ; MaxCalls=1000 ),
+       ( get_dict(kind,Profile,"remote") ->
+           MaxCalls=50,PublicSafe=true,LocalPrivate=false
+       ; MaxCalls=1000,PublicSafe=false,LocalPrivate=true ),
        Grant=_{id:Id,standing:"active",resource_id:ResourceString,
          purposes:["semantic-reading","language-rendering"],
          scope:_{principal:Principal,audience:Config.scope.audience,
            project:Config.scope.project},max_calls:MaxCalls,
          max_output_tokens:2048,
-         deadline_seconds:Deadline,public_safe_only:true,
+         deadline_seconds:Deadline,public_safe_only:PublicSafe,
+         local_scoped_private_context:LocalPrivate,
          activated_at_epoch:Now,expires_at_epoch:Expiry,
          evaluation_grant_id:"ama-1.2"}),Grants),
     Document=_{schema:"miter-model-grants-v2",

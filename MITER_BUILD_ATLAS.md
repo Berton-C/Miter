@@ -171,14 +171,14 @@ consumer is absent. No status is upgraded by assertion.
 | One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; independent returned contact has changed a model-assisted inquiry into durable native development and distinguishes transfer, differentiation, and unresolved standing across non-identical overlap. |
 | Exact project/relationship continuity | E | native checkpoint capsules + continuity adapters | Every live scope now writes exact relationship, undertaking, attention, developmental, next-movement, and raw-source-reference organization with indefinite retention; legacy external imports remain separately unbound. |
 | Chroma semantic participation | E | `chroma.pl`, `dialogue_participation.metta`, native continuity capsules | Every authoritative checkpoint projects exact eligible capsule material into an isolated loopback Chroma collection. A later exact-scope query verifies runtime, principal, audience, project, source capsule bytes, semantic hash, and body hash before admitting results as unresolved memory participants. Chroma rank is never authority; another principal receives no result. Private memory content remains native and is withheld from the remote-provider question. |
-| LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA certificate. Live GLM 5.3 semantic and rendering calls produced a certified response that both authorized evaluators reportedly valued. The live question carries the exact human-directed resource/model identity; OpenRouter GLM 5.3, local Qwen, and local Nemotron share one native admission boundary without silent substitution. Soul-directed resource comparison and broader held-out dialogue remain open. |
+| LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA certificate. Live GLM 5.3 semantic and rendering calls produced a certified response that both authorized evaluators reportedly valued. A bounded native choice now selects an authorized loopback model when a derived reading says exact scoped continuity is material; broader resource comparison remains open. Voice audit must still causally reject or revise a semantically unfaithful rendering rather than relying on one-pass instructions. |
 | VAD language-cue participation | A | constitutional C-051--C-053 and Soul S-303/S-804/S-902; historical licensed-asset implementation outside clean room | The clean runtime preserves the non-diagnostic authority boundary but does not yet compute sentence/trajectory VAD cues or let them participate in VoiceRNA. Recover the bounded cue surface without its old uncalibrated thresholds, private lexicon, fixed presence lookup, or Python seam. The licensed asset and any derived collection remain outside public Git. |
 | Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Exact stable-ID scope, authenticated contact, certified outbound, pending-before-send, unique reconciliation, and restart/no-replay are embodied in the live service. Poll freshness is now distinct from human content identity, so a thread-metadata update cannot become a second contact while a genuine edit remains versioned. Returned-consequence participation, scope/failure trials, and sustained use remain open. |
 | Open growth environment | P | `capability_environment.metta`, mechanical environment observer, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path receives a source-qualified native participant stating the configured web/terminal/workspace field, actual process identity, genuine human-authority boundaries, and its current availability. The private credential membrane now supports installer-materialized mode-0600 runtime files without making a GUI Keychain a boot dependency; missing credentials hold only the affected surface. Typed execution, returned tool consequence, durable capability uptake, and completed service migration to `claritymiter` remain open. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, and regenerative Soul; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; one exact persisted partial opening can form a provenance-bearing Soul undertaking; and injured expressed Soul can form and complete its own repair RNA. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
-| Full Continuity of Mind | P | native checkpoint capsules plus scoped Chroma projection and native memory participation | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. Live Chroma retrieval/update now contributes locally verified, unresolved prior-contact memory to a later cut after restart without cross-principal or cross-runtime leakage. General conversational use of private recall still requires a local-model path or an exact human-approved disclosure grant; no private memory is sent to OpenRouter. |
+| Full Continuity of Mind | P | native checkpoint capsules, scoped Chroma projection, native memory participation, and bounded local continuity rendering | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. A provider-derived continuity requirement can now participate in native formation; MeTTa then selects the configured authorized loopback resource and exposes exact scope/capsule/hash-verified memory only on that local route. Live conversational recall, restart, and correction evidence remain required; no private memory is sent to OpenRouter. |
 
 ## 6. Four additive stages
 
@@ -482,12 +482,15 @@ the OpenRouter direction verified the existing Keychain reference without a
 provider call. Synthetic exact carrier/parser probes accepted Qwen identity
 and its typed observation. No probe material entered Git.
 
-This cut does not pretend that `soul-choice` exists. A future Soul-directed
-resource decision must be a native, situation-bearing comparison among
-authorized resource participants under C-004/S-901; Prolog may only execute an
-already formed direction. The live AMA-1.2 activation, real unfamiliar
-conversation, effect reconciliation, restart/no-replay, and consequence return
-remain the C4 closure trial.
+This cut did not yet pretend that general `soul-choice` existed. General
+resource comparison still requires a native, situation-bearing comparison
+among authorized resource participants under C-004/S-901; Prolog may only
+execute an already formed direction. A later bounded continuity repair now
+embodies one such choice for an exact material distinction: remote semantic
+participation can disclose that earlier content is needed without receiving
+that content, and native MeTTa may then select the human-authorized loopback
+continuity resource. That choice is part of the question and audit trail; it
+is neither a silent fallback nor model authority.
 
 The operator-identity cut makes checkout ambiguity visible without adding a
 new runtime. `status` reports the exact loaded `assistant_operator.pl` path and
@@ -612,6 +615,39 @@ mechanics. It does not yet establish returned consequence because those posts
 were new roots rather than replies in the delivered thread; nor does it close
 the remaining scope-isolation, model/surface-failure, sustained-undertaking,
 or Open Growth Environment obligations.
+
+A later live story-revision request exposed the precise remaining gap between
+semantic memory and expressed Continuity of Mind. Chroma had already returned
+four exact-scope, capsule-verified candidates, including the prior story and
+the human's smoke-alarm / `house timer` material. The native contact retained
+their exact bodies, but the remote VoiceRNA renderer received only hashes and
+therefore said it could not verify the earlier story. It also described a
+smile it had not expressed, and the older octet transport rendered an em dash
+as mojibake. This is evidence against the implementation, not against durable
+memory: retrieval succeeded and expression failed.
+
+The source repair makes continuity need an explicit part of each derived
+semantic reading. That reading re-enters the same complete encounter. Only
+when at least one reading says prior content is materially needed and exact
+scope-verified memory exists may native MeTTa select the configured authorized
+loopback continuity resource. The local question carries the exact source
+capsule, body hash, snapshot hash, and memory identity; the membrane rechecks
+all of them against the authoritative runtime before transmission. Any memory
+used in the rendering must be named in its bindings. Remote grants reject a
+question containing private continuity, local grants name that capability
+explicitly, and the remote projection contains neither bodies nor stable
+identifiers. A real set of eleven stored semantic-memory observations—zero to
+four results each—passed the strengthened source/capsule/hash boundary. Native
+held-out reductions returned `true` for `candidate-content-needed`, `false`
+for otherwise identical `not-material` readings, and retained both semantic
+and memory provenance bindings. A fresh frozen runtime installed, loaded the
+complete current PeTTa source with empty error logs, cycled, and stopped.
+
+This repair is not yet promoted into the live evaluation runtime and does not
+close VoiceRNA. A semantic voice audit must still cause a defective candidate
+to be revised and re-rendered—or held—before external expression. The live
+story-revision, restart, no-replay, and exact recalled-content trial remains
+the next evidence for this seam.
 
 ## 7. The only build cycle
 

@@ -37,7 +37,7 @@ as_model_checked(Root0, Question, Observation) :-
           as_model_unavailable(Question, uncertain_prior_transmission,
             Observation)
       ; as_model_profile(Root, ResourceId, Profile),
-        as_model_grant(Root, QuestionHash, Scope, Purpose, ResourceId,
+        as_model_grant(Root, Question, QuestionHash, Scope, Purpose, ResourceId,
           MaxTokens, Deadline, Grant),
         as_evaluation_model_available(Root,Scope,ResourceId),
         as_model_claim(Root, QuestionHash, QuestionRef, Scope, ResourceId,
@@ -56,8 +56,7 @@ as_model_checked(Root0, Question, Observation) :-
 as_model_current_direction_authorizes(Root,Question,Scope,Purpose,ResourceId,
     MaxTokens,Deadline) :-
     Question=[Kind|_],
-    ( memberchk(Kind,['c4-contact-semantic-question-v1',
-          'c4-voice-render-question-v1']) ->
+    ( Kind=='c4-contact-semantic-question-v1' ->
         as_model_direction_checked(Root,Scope,Purpose,Direction),
         Direction=['model-resource-direction-v1',ResourceId,ModelId,
           'human-operator-direction-not-cognitive-authority',Purpose,
@@ -65,6 +64,17 @@ as_model_current_direction_authorizes(Root,Question,Scope,Purpose,ResourceId,
         last(Question,['resource-request',ResourceId,ModelId,
           'human-operator-direction-not-cognitive-authority',Purpose,
           MaxTokens,Deadline])
+    ; Kind=='c4-voice-render-question-v1' ->
+        last(Question,['resource-request',ResourceId,ModelId,Authority,Purpose,
+          MaxTokens,Deadline]),
+        ( Authority=='human-operator-direction-not-cognitive-authority' ->
+            as_model_direction_checked(Root,Scope,Purpose,Direction)
+        ; Authority=='native-private-continuity-choice-within-human-authorized-resources',
+          as_model_private_continuity_direction_checked(Root,Scope,Purpose,
+            Direction),
+          as_model_private_voice_context_verified(Root,Question,Scope) ),
+        Direction=['model-resource-direction-v1',ResourceId,ModelId,Authority,
+          Purpose,MaxTokens,Deadline]
     ; true ).
 
 as_model_question_carrier(
@@ -188,13 +198,16 @@ as_model_c4_memory_candidate(
 as_model_c4_semantic_reading(
     ['c4-semantic-reading-v1',Id,Understanding,ResponsePurpose,
       ['fact9-roles',Fact9Roles],['flourishing-values',Flourishings],
-      Counterfactual,'model-proposal-only']) :-
+      ['continuity-requirement',ContinuityRequirement],Counterfactual,
+      'model-proposal-only']) :-
     as_symbol(Id,_), as_model_bounded_text(Understanding,1,1200),
     as_model_bounded_text(ResponsePurpose,1,900),
     is_list(Fact9Roles), Fact9Roles=[_|_],
     maplist(as_model_fact9_role,Fact9Roles), sort(Fact9Roles,Fact9Roles),
     is_list(Flourishings), Flourishings=[_|_],
     maplist(as_flourishing,Flourishings), sort(Flourishings,Flourishings),
+    memberchk(ContinuityRequirement,
+      ['not-material','candidate-content-needed','uncertain']),
     as_model_bounded_text(Counterfactual,1,1200).
 
 as_model_question_carrier(
@@ -205,8 +218,7 @@ as_model_question_carrier(
       ['semantic-readings',Readings],NativeIntention,VoiceCommitments,
       ['request-contract',Instructions,'rendering-not-movement',
         'candidate-utterance-not-effect','no-contact-no-authority-no-choice'],
-      ['resource-request',ResourceId,ModelId,
-        'human-operator-direction-not-cognitive-authority',
+      ['resource-request',ResourceId,ModelId,DirectionAuthority,
         'language-rendering',MaxTokens,Deadline]],
     QuestionRef,Scope,Instructions,'language-rendering',ResourceId,MaxTokens,
     Deadline) :-
@@ -217,13 +229,50 @@ as_model_question_carrier(
     is_list(Readings), length(Readings,Count), between(2,3,Count),
     maplist(as_model_c4_semantic_reading,Readings),
     NativeIntention=['native-intention'|_], ground(NativeIntention),
-    VoiceCommitments=['voice-commitments'|_], ground(VoiceCommitments),
+    as_model_c4_voice_commitments(VoiceCommitments),
     as_local_scope(Scope), string(Instructions),
     string_length(Instructions,InstructionLength),
     InstructionLength>=100, InstructionLength=<4096,
     as_symbol(ResourceId,_),as_model_identifier(ModelId),
+    memberchk(DirectionAuthority,
+      ['human-operator-direction-not-cognitive-authority',
+       'native-private-continuity-choice-within-human-authorized-resources']),
     integer(MaxTokens),MaxTokens>=1,MaxTokens=<800,
     number(Deadline),Deadline>=1,Deadline=<300.
+
+as_model_c4_voice_commitments(
+    ['voice-commitments','source-bound','scope-bound','movement-bound',
+      Disclosure,'relational-not-fixed-style',
+      'no-unsupported-internal-state-claim',PrivateContext]) :-
+    memberchk(Disclosure,
+      ['disclosure-current-contact-only',
+       'disclosure-current-contact-and-scoped-local-continuity']),
+    as_model_c4_private_context(PrivateContext,Entries),
+    ( Entries==[] -> Disclosure=='disclosure-current-contact-only'
+    ; Disclosure=='disclosure-current-contact-and-scoped-local-continuity' ).
+
+as_model_c4_private_context(
+    ['private-continuity-context',Entries,
+      'scope-verified-native-candidates-not-authority'],Entries) :-
+    is_list(Entries),length(Entries,Count),Count=<4,
+    maplist(as_model_c4_private_memory_entry,Entries),
+    findall(Id,member(['c4-private-memory-evidence-v1',Id|_],Entries),Ids),
+    sort(Ids,Unique),same_length(Ids,Unique).
+
+as_model_c4_private_memory_entry(
+    ['c4-private-memory-evidence-v1',MemoryId,SourceKind,
+      ['source-capsule',SourceReference,SourceHash,CapsuleHash,
+        ['source-occurrence',SourceKey],['runtime-id',RuntimeId]],
+      ['body',BodyHash,Body],['snapshot-sha256',SnapshotHash],
+      'scope-and-capsule-verified','rank-not-authority']) :-
+    as_symbol(MemoryId,_),
+    memberchk(SourceKind,['human-contact','certified-expression']),
+    as_model_raw_reference(SourceReference),as_sha256(SourceHash,_),
+    as_sha256(CapsuleHash,_),as_model_raw_reference(SourceKey),
+    atom(RuntimeId),re_match('^[0-9a-f-]{36}$',RuntimeId),
+    as_sha256(BodyHash,_),as_model_bounded_text(Body,1,8000),
+    crypto_data_hash(Body,BodyHash,[algorithm(sha256),encoding(utf8)]),
+    as_sha256(SnapshotHash,_).
 
 as_model_returned_material_valid(Material) :-
     is_list(Material), Material=['c3-returned-material-v1'|_],
@@ -411,6 +460,57 @@ as_model_direction_limits('language-rendering',Profile,MaxTokens,Deadline) :-
     MaxTokens is min(800,Limits.max_output_tokens),
     Deadline=Limits.deadline_seconds.
 
+% The human-edited registry bounds which local resource is available for exact
+% scoped continuity.  Native MeTTa decides whether the formed encounter needs
+% that resource.  This is an explicit cognitive resource choice, not transport
+% fallback and not permission for a remote provider to receive memory bodies.
+as_model_private_continuity_direction(Root0,Scope,Purpose0,Direction) :-
+    catch((as_model_private_continuity_direction_checked(Root0,Scope,Purpose0,
+          Direction0) -> true ; throw(error(private_continuity_hold,_))),_,
+      Direction0=['model-resource-direction-unavailable',
+        'no-authorized-local-private-continuity-resource']),
+    Direction=Direction0, !.
+
+as_model_private_continuity_direction_checked(Root0,Scope,Purpose0,
+    ['model-resource-direction-v1',ResourceId,ModelId,
+      'native-private-continuity-choice-within-human-authorized-resources',
+      Purpose,MaxTokens,Deadline]) :-
+    as_root(Root0,Root),as_local_scope(Scope),as_symbol(Purpose0,Purpose),
+    Purpose=='language-rendering',
+    as_path(Root,'model-resources.json',Path),
+    miter_store_read_json(Path,Registry),is_dict(Registry),
+    as_dict_atom(Registry,schema,'miter-model-resource-registry-v1'),
+    get_dict(selection,Registry,Selection),is_dict(Selection),
+    as_dict_atom(Selection,private_continuity_resource,ResourceId),
+    as_dict_atom(Selection,private_continuity_standing,
+      'authorized-local-candidate-selected-natively-only-when-exact-scoped-memory-is-material'),
+    get_dict(authorized_directions,Selection,AuthorizedStrings),
+    maplist(as_symbol,AuthorizedStrings,Authorized),memberchk(ResourceId,Authorized),
+    as_model_profile(Root,ResourceId,Profile),
+    as_dict_atom(Profile,kind,local),
+    get_dict(model,Profile,ModelString),atom_string(ModelId,ModelString),
+    atom_string(Purpose,PurposeString),memberchk(PurposeString,Profile.roles),
+    as_model_direction_limits(Purpose,Profile,MaxTokens,Deadline).
+
+as_model_private_voice_context_verified(Root,Question,Scope) :-
+    Question=['c4-voice-render-question-v1',_,Scope,_,_,_,_,_,Commitments,_,_],
+    as_model_c4_voice_commitments(Commitments),
+    last(Commitments,PrivateContext),
+    as_model_c4_private_context(PrivateContext,Entries),Entries=[_|_],
+    maplist(as_model_private_memory_entry_verified(Root,Scope),Entries).
+
+as_model_private_memory_entry_verified(Root,Scope,
+    ['c4-private-memory-evidence-v1',MemoryId,SourceKind,
+      ['source-capsule',SourceReference,SourceHash,CapsuleHash,
+        ['source-occurrence',SourceKey],['runtime-id',RuntimeId]],
+      ['body',BodyHash,_],['snapshot-sha256',_],
+      'scope-and-capsule-verified','rank-not-authority']) :-
+    miter_chroma_runtime_id(Root,RuntimeId),
+    miter_chroma_verified_capsule(Root,SourceReference,SourceHash,CapsuleHash,
+      Scope),
+    miter_chroma_memory_id(RuntimeId,Scope,SourceKind,SourceKey,BodyHash,
+      MemoryId).
+
 as_model_direction_claim_count(Root,ResourceId,Activated,Count) :-
     as_path(Root,'model/claims',Directory),directory_files(Directory,Entries),
     findall(Owner,
@@ -492,7 +592,7 @@ as_model_secret_free(String) :-
     string(String), !, \+ sub_string(String,_,_,_,"sk-or-v1-").
 as_model_secret_free(_).
 
-as_model_grant(Root, QuestionHash, Scope, Purpose, ResourceId, MaxTokens,
+as_model_grant(Root, Question, QuestionHash, Scope, Purpose, ResourceId, MaxTokens,
     Deadline, Grant) :-
     as_path(Root,'model-grants.json',Path),
     miter_store_read_json(Path,Document), is_dict(Document),
@@ -501,15 +601,16 @@ as_model_grant(Root, QuestionHash, Scope, Purpose, ResourceId, MaxTokens,
     get_dict(grants,Document,Grants), is_list(Grants),
     ( as_dict_atom(Document,schema,'miter-model-grants-v1') ->
         findall(G,(member(G,Grants),is_dict(G),
-          as_model_grant_exact(G,QuestionHash,Scope,Purpose,ResourceId,
+          as_model_grant_exact(G,Question,QuestionHash,Scope,Purpose,ResourceId,
             MaxTokens,Deadline)),[Grant])
     ; as_dict_atom(Document,schema,'miter-model-grants-v2'),
       findall(G,(member(G,Grants),is_dict(G),
-        as_model_grant_scoped(Root,G,Scope,Purpose,ResourceId,MaxTokens,
+        as_model_grant_scoped(Root,G,Question,Scope,Purpose,ResourceId,MaxTokens,
           Deadline)),[Grant])
     ).
 
-as_model_grant_exact(Grant,QuestionHash,[scope,Principal,Audience,Project],
+as_model_grant_exact(Grant,Question,QuestionHash,
+    [scope,Principal,Audience,Project],
     Purpose,ResourceId,MaxTokens,Deadline) :-
     as_dict_atom(Grant,id,_), as_dict_atom(Grant,standing,active),
     as_dict_atom(Grant,resource_id,ResourceId),
@@ -523,10 +624,12 @@ as_model_grant_exact(Grant,QuestionHash,[scope,Principal,Audience,Project],
     get_dict(max_output_tokens,Grant,MaxTokens),
     get_dict(deadline_seconds,Grant,Deadline),
     get_dict(public_safe_only,Grant,true),
+    \+ as_model_question_has_private_continuity(Question),
     get_dict(expires_at_epoch,Grant,Expiry), number(Expiry),
     get_time(Now), Now=<Expiry.
 
-as_model_grant_scoped(Root,Grant,[scope,Principal,Audience,Project],Purpose,
+as_model_grant_scoped(Root,Grant,Question,
+    [scope,Principal,Audience,Project],Purpose,
     ResourceId,MaxTokens,Deadline) :-
     as_dict_atom(Grant,id,GrantId), as_dict_atom(Grant,standing,active),
     as_dict_atom(Grant,resource_id,ResourceId),
@@ -542,9 +645,25 @@ as_model_grant_scoped(Root,Grant,[scope,Principal,Audience,Project],Purpose,
     MaxTokens=<GrantedTokens,
     get_dict(deadline_seconds,Grant,GrantedDeadline), number(GrantedDeadline),
     Deadline=<GrantedDeadline,
-    get_dict(public_safe_only,Grant,true),
+    as_model_grant_disclosure(Root,Grant,ResourceId,Question),
     get_dict(expires_at_epoch,Grant,Expiry), number(Expiry),
     get_time(Now), Now=<Expiry.
+
+as_model_question_has_private_continuity(
+    ['c4-voice-render-question-v1',_,_,_,_,_,_,_,Commitments,_,_]) :-
+    last(Commitments,PrivateContext),
+    as_model_c4_private_context(PrivateContext,[_|_]).
+
+as_model_grant_disclosure(Root,Grant,ResourceId,Question) :-
+    as_model_profile(Root,ResourceId,Profile),
+    ( as_dict_atom(Profile,kind,remote) ->
+        get_dict(public_safe_only,Grant,true),
+        \+ as_model_question_has_private_continuity(Question)
+    ; as_dict_atom(Profile,kind,local),
+      ( as_model_question_has_private_continuity(Question) ->
+          get_dict(local_scoped_private_context,Grant,true)
+      ; ( get_dict(public_safe_only,Grant,true)
+        ; get_dict(local_scoped_private_context,Grant,true) ) ) ).
 
 as_model_grant_claim_count(Root,GrantId,Count) :-
     as_path(Root,'model/claims',Directory), directory_files(Directory,Entries),
@@ -617,14 +736,15 @@ as_model_claim(_Root, Hash, QuestionRef, Scope, ResourceId, Purpose, Grant,
       standing:"claimed-before-transmission",claimed_at_epoch:Now}).
 
 as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
-    % Scope is required locally for grant matching and continuity isolation, but
-    % it contributes nothing to the provider's semantic reading.  The membrane
-    % therefore removes principal, audience and project identifiers before the
-    % exact Soul-selected R/A/P, Fact9, flourishing and returned-contact surface
-    % leaves the machine.
-    as_model_public_question(Question,PublicQuestion),
-    as_model_public_question_valid(Question,PublicQuestion),
-    term_string(PublicQuestion,QuestionText,[quoted(true),ignore_ops(true)]),
+    % Remote providers receive only the validated public projection.  An
+    % explicitly selected loopback resource may receive the exact native
+    % question, including scope-verified continuity bodies, because those bytes
+    % never leave the host and the scoped local grant is checked separately.
+    ( as_dict_atom(Profile,kind,remote) ->
+        as_model_public_question(Question,ProviderQuestion),
+        as_model_public_question_valid(Question,ProviderQuestion)
+    ; as_dict_atom(Profile,kind,local),ProviderQuestion=Question ),
+    term_string(ProviderQuestion,QuestionText,[quoted(true),ignore_ops(true)]),
     with_output_to(string(User), json_write_dict(current_output,
       _{native_question:QuestionText,
         interpretation_boundary:"Derived readings only. Miter retains contact, authority, comparison, movement, and consequence interpretation."},
@@ -675,12 +795,14 @@ as_model_local_response_schema('c4-contact-semantic-question-v1',
       "WonderPreservation"]},
     Reading=_{type:"object",additionalProperties:false,
       required:["understanding","response_purpose","fact9_roles",
-        "flourishing_values","counterfactual"],
+        "flourishing_values","continuity_requirement","counterfactual"],
       properties:_{understanding:_{type:"string",minLength:1,maxLength:300},
         response_purpose:_{type:"string",minLength:1,maxLength:240},
         fact9_roles:_{type:"array",minItems:1,uniqueItems:true,items:FactRole},
         flourishing_values:_{type:"array",minItems:1,uniqueItems:true,
           items:Flourishing},
+        continuity_requirement:_{type:"string",enum:["not-material",
+          "candidate-content-needed","uncertain"]},
         counterfactual:_{type:"string",minLength:1,maxLength:300}}},
     Schema=_{type:"object",additionalProperties:false,
       required:["readings","uncertainty"],
@@ -746,8 +868,18 @@ as_model_public_question(
         'private-local-reference-redacted'],
       ['native-movement',
         ['current-native-movement','local-proof-reference-withheld']],
-      Readings,Intention,Commitments,Contract,Resource]) :-
+      Readings,Intention,PublicCommitments,Contract,Resource]) :-
+    as_model_public_c4_voice_commitments(Commitments,PublicCommitments),
     QuestionRef=['question-reference',_,'voice-rendering'].
+
+as_model_public_c4_voice_commitments(
+    ['voice-commitments',SourceBound,ScopeBound,MovementBound,Disclosure,
+      Relational,InternalClaim,PrivateContext],
+    ['voice-commitments',SourceBound,ScopeBound,MovementBound,Disclosure,
+      Relational,InternalClaim,
+      ['private-continuity-context-redacted',['candidate-count',Count],
+        'exact-content-and-identifiers-withheld']]) :-
+    as_model_c4_private_context(PrivateContext,Entries),length(Entries,Count).
 
 as_model_public_c4_fact_entries([],[]).
 as_model_public_c4_fact_entries(
@@ -833,7 +965,8 @@ as_model_public_question_shape_valid(
         'private-local-reference-redacted'],
       ['native-movement',
         ['current-native-movement','local-proof-reference-withheld']],
-      Readings,Intention,Commitments,Contract,Resource]).
+      Readings,Intention,PublicCommitments,Contract,Resource]) :-
+    as_model_public_c4_voice_commitments(Commitments,PublicCommitments).
 as_model_public_question_shape_valid(
     ['c3-semantic-question-v1',_,[scope,_,_,_],_,_,_,_,_,_,Contract,
       Resource],
@@ -1115,10 +1248,11 @@ as_model_c4_semantic_result(Result,Question,Readings) :-
 as_model_c4_semantic_row(Question,Row,
     ['c4-semantic-reading-v1',Id,Understanding,ResponsePurpose,
       ['fact9-roles',Fact9Roles],['flourishing-values',Flourishings],
-      Counterfactual,'model-proposal-only']) :-
+      ['continuity-requirement',ContinuityRequirement],Counterfactual,
+      'model-proposal-only']) :-
     is_dict(Row), as_model_exact_keys(Row,
-      [counterfactual,fact9_roles,flourishing_values,response_purpose,
-        understanding]),
+      [continuity_requirement,counterfactual,fact9_roles,flourishing_values,
+        response_purpose,understanding]),
     get_dict(understanding,Row,Understanding),
     as_model_bounded_text(Understanding,1,300),
     get_dict(response_purpose,Row,ResponsePurpose),
@@ -1137,6 +1271,10 @@ as_model_c4_semantic_row(Question,Row,
     same_length(FlourishingStrings,Flourishings), Flourishings=[_|_],
     as_model_c4_question_flourishings(Question,AllowedFlourishings),
     forall(member(Value,Flourishings),memberchk(Value,AllowedFlourishings)),
+    get_dict(continuity_requirement,Row,ContinuityString),
+    as_model_string_atom(ContinuityString,ContinuityRequirement),
+    memberchk(ContinuityRequirement,
+      ['not-material','candidate-content-needed','uncertain']),
     with_output_to(string(Canonical),json_write_dict(current_output,Row,
       [width(0)])),
     crypto_data_hash(Canonical,Hash,[algorithm(sha256),encoding(utf8)]),
@@ -1172,13 +1310,18 @@ as_model_c4_voice_result(Result,Question,Utterance,Bindings,Uncertainty) :-
     get_dict(bindings,Result,BindingStrings), is_list(BindingStrings),
     BindingStrings=[_|_], maplist(as_model_string_atom,BindingStrings,Bindings0),
     sort(Bindings0,Bindings), same_length(BindingStrings,Bindings),
-    as_model_c4_voice_reading_ids(Question,Available),
+    as_model_c4_voice_binding_ids(Question,Available),
     forall(member(Binding,Bindings),memberchk(Binding,Available)).
 
-as_model_c4_voice_reading_ids(
+as_model_c4_voice_binding_ids(
     ['c4-voice-render-question-v1',_,_,_,_,_,
-      ['semantic-readings',Readings]|_],Ids) :-
-    maplist(as_model_c4_reading_id,Readings,Ids).
+      ['semantic-readings',Readings],_,Commitments|_],Ids) :-
+    maplist(as_model_c4_reading_id,Readings,ReadingIds),
+    last(Commitments,PrivateContext),
+    as_model_c4_private_context(PrivateContext,Entries),
+    findall(MemoryId,
+      member(['c4-private-memory-evidence-v1',MemoryId|_],Entries),MemoryIds),
+    append(ReadingIds,MemoryIds,Ids).
 
 as_model_string_atom(String,Atom) :-
     string(String), string_length(String,Length), Length>=1, Length=<256,

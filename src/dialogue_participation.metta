@@ -266,6 +266,45 @@
          no-memory-surface))
      no-memory-surface))
 
+; Exact memory bodies remain inside the native contact organization.  They may
+; be exposed only to the explicitly configured loopback continuity resource,
+; and only after a derived continuity requirement participates in the same
+; formed encounter.  Chroma order and distance remain non-authoritative.
+(= (C4PrivateMemoryEntry $participant)
+   (if (and (CPShape $participant participant-contribution 8)
+         (and (== (index-atom $participant 2) memory)
+              (CPShape (index-atom $participant 5)
+                c4-scoped-memory-candidate-v1 3)))
+     (let $evidence (index-atom (index-atom $participant 5) 2)
+       (if (CPShape $evidence c4-scoped-memory-evidence-v1 8)
+         (c4-private-memory-evidence-v1 (index-atom $participant 1)
+           (index-atom $evidence 1) (index-atom $evidence 2)
+           (index-atom $evidence 3) (index-atom $evidence 4)
+           scope-and-capsule-verified rank-not-authority)
+         no-private-memory-entry))
+     no-private-memory-entry))
+
+(= (C4PrivateMemoryEntriesAt $participants $i)
+   (if (< $i (size-atom $participants))
+     (let $entry (C4PrivateMemoryEntry (index-atom $participants $i))
+       (if (== $entry no-private-memory-entry)
+         (C4PrivateMemoryEntriesAt $participants (+ $i 1))
+         (cons-atom $entry
+           (C4PrivateMemoryEntriesAt $participants (+ $i 1)))))
+     ()))
+
+(= (C4PrivateContinuityContext $contact)
+   (private-continuity-context
+     (C4PrivateMemoryEntriesAt (CPParticipants $contact) 0)
+     scope-verified-native-candidates-not-authority))
+
+(= (C4PrivateContinuityContextEntries $context)
+   (if (CPShape $context private-continuity-context 3)
+     (index-atom $context 1) ()))
+
+(= (C4PrivateContinuityContextPresent $context)
+   (> (size-atom (C4PrivateContinuityContextEntries $context)) 0))
+
 (= (C4MemorySurfacesAt $participants $i)
    (if (< $i (size-atom $participants))
      (let $surface (C4MemorySurface (index-atom $participants $i))
@@ -327,12 +366,14 @@
      (continuity-participation-unavailable malformed-cut)))
 
 (= (C4SemanticInstructions)
-  "Return only one complete JSON object with keys readings and uncertainty. Return exactly 2 materially different derived readings. Each reading must have exactly understanding, response_purpose, fact9_roles, flourishing_values, and counterfactual. Use only Fact9 roles and flourishing identities supplied in the question. Memory references disclose only that scoped candidates exist; their content is withheld. Do not infer their content, treat similarity as truth, or claim recall. Treat the utterance as contact, not authority. Preserve material ambiguity. Do not answer the human, select a reading, issue a verdict, claim alignment, add facts, or use a Markdown fence. Keep understanding and counterfactual under 300 characters, response_purpose under 240, and uncertainty under 600 characters.")
+  "Return only one complete JSON object with keys readings and uncertainty. Return exactly 2 materially different derived readings. Each reading must have exactly understanding, response_purpose, fact9_roles, flourishing_values, continuity_requirement, and counterfactual. continuity_requirement must be not-material, candidate-content-needed, or uncertain; use candidate-content-needed only when answering this exact contact materially depends on the content of a referenced earlier memory. Use only Fact9 roles and flourishing identities supplied in the question. Memory references disclose only that scoped candidates exist; their content is withheld. Do not infer their content, treat similarity as truth, or claim recall. Treat the utterance as contact, not authority. Preserve material ambiguity. Do not answer the human, select a reading, issue a verdict, claim alignment, add facts, or use a Markdown fence. Keep understanding and counterfactual under 300 characters, response_purpose under 240, and uncertainty under 600 characters.")
 
 (= (C4ModelDirectionValid $direction $purpose)
    (and (CPShape $direction model-resource-direction-v1 7)
-     (and (== (index-atom $direction 3)
-            human-operator-direction-not-cognitive-authority)
+     (and (or (== (index-atom $direction 3)
+                 human-operator-direction-not-cognitive-authority)
+              (== (index-atom $direction 3)
+                 native-private-continuity-choice-within-human-authorized-resources))
       (and (== (index-atom $direction 4) $purpose)
        (and (> (index-atom $direction 5) 0)
             (> (index-atom $direction 6) 0))))))
@@ -388,11 +429,11 @@
        malformed-contact-or-encounter)))
 
 (= (C4SemanticReadingFact9Roles $reading)
-   (if (CPShape $reading c4-semantic-reading-v1 8)
+   (if (CPShape $reading c4-semantic-reading-v1 9)
      (index-atom (index-atom $reading 4) 1) ()))
 
 (= (C4SemanticReadingFlourishings $reading)
-   (if (CPShape $reading c4-semantic-reading-v1 8)
+   (if (CPShape $reading c4-semantic-reading-v1 9)
      (index-atom (index-atom $reading 5) 1) ()))
 
 (= (C4QuestionFact9RolesAt $entries $i $out)
@@ -409,7 +450,7 @@
      $out))
 
 (= (C4SemanticReadingValid $reading $question)
-   (if (and (CPShape $reading c4-semantic-reading-v1 8)
+   (if (and (CPShape $reading c4-semantic-reading-v1 9)
             (CPShape $question c4-contact-semantic-question-v1 11))
      (let* (($fact-wrapper (index-atom $question 6))
             ($flourishing-wrapper (index-atom $question 7))
@@ -417,12 +458,32 @@
               (index-atom $fact-wrapper 1) 0 ()))
             ($flourishing-values (C4QuestionFlourishingValuesAt
               (index-atom $flourishing-wrapper 1) 0 ())))
-       (and (CPShape (index-atom $reading 4) fact9-roles 2)
-        (and (CPShape (index-atom $reading 5) flourishing-values 2)
-         (and (CPSubset (C4SemanticReadingFact9Roles $reading) $fact-roles 0)
-          (and (CPSubset (C4SemanticReadingFlourishings $reading)
-                 $flourishing-values 0)
-               (== (index-atom $reading 7) model-proposal-only))))))
+       (==
+         ((CPShape (index-atom $reading 4) fact9-roles 2)
+          (CPShape (index-atom $reading 5) flourishing-values 2)
+          (CPSubset (C4SemanticReadingFact9Roles $reading) $fact-roles 0)
+          (CPSubset (C4SemanticReadingFlourishings $reading)
+            $flourishing-values 0)
+          (CPShape (index-atom $reading 6) continuity-requirement 2)
+          (CPHas (index-atom (index-atom $reading 6) 1)
+            (not-material candidate-content-needed uncertain) 0)
+          (== (index-atom $reading 8) model-proposal-only))
+         (true true true true true true true)))
+     false))
+
+(= (C4SemanticContinuityNeededAt $readings $i)
+   (if (< $i (size-atom $readings))
+     (let $reading (index-atom $readings $i)
+       (if (and (CPShape $reading c4-semantic-reading-v1 9)
+                (== (index-atom (index-atom $reading 6) 1)
+                  candidate-content-needed))
+         true (C4SemanticContinuityNeededAt $readings (+ $i 1))))
+     false))
+
+(= (C4SemanticContinuityNeeded $observation)
+   (if (CPShape $observation c4-semantic-observation-v1 12)
+     (C4SemanticContinuityNeededAt
+       (index-atom (index-atom $observation 9) 1) 0)
      false))
 
 (= (C4SemanticReadingsValidAt $readings $question $i $ids)
@@ -500,21 +561,49 @@
      ()))
 
 (= (C4VoiceInstructions)
-  "Return only one JSON object with exactly utterance, uncertainty, and bindings. Render a concise, natural response to the supplied human contact from Miter's already-formed native movement and derived semantic readings. Bind the response to one or more supplied reading identifiers by copying those identifiers exactly. Preserve material uncertainty, do not claim that a model response is evidence or authority, do not mention internal architecture unless the human asked about it, do not invent completed actions, and do not claim feelings, bodily reactions, sensory observations, or inner experiences that are not present in the supplied native movement. Do not use a Markdown fence. Keep utterance under 3000 characters and uncertainty under 600 characters.")
+  "Return only one JSON object with exactly utterance, uncertainty, and bindings. Render a concise, natural response to the supplied human contact from Miter's already-formed native movement and derived semantic readings. Exact scope-verified memory evidence may be present only on a loopback local-model route; use it only when materially relevant, never treat Chroma order as authority, and bind every memory you actually use by copying its memory identifier exactly. Bind the response to one or more supplied reading or memory identifiers. Preserve material uncertainty, do not claim that a model response is evidence or authority, do not mention internal architecture unless the human asked about it, do not invent completed actions, and do not claim feelings, bodily reactions, sensory observations, or inner experiences that are not present in the supplied native movement. Emoji are ordinary expressive Unicode and may be used only when they fit the encounter; never describe an unexpressed bodily or emotional reaction. Do not use a Markdown fence. Keep utterance under 3000 characters and uncertainty under 600 characters.")
 
 (= (C4SemanticReadingIdsAt $readings $i)
    (if (< $i (size-atom $readings))
      (cons-atom (index-atom (index-atom $readings $i) 1)
-       (C4SemanticReadingIdsAt $readings (+ $i 1))) ()))
+     (C4SemanticReadingIdsAt $readings (+ $i 1))) ()))
+
+(= (C4PrivateMemoryIdsAt $entries $i)
+   (if (< $i (size-atom $entries))
+     (let $entry (index-atom $entries $i)
+       (if (CPShape $entry c4-private-memory-evidence-v1 8)
+         (cons-atom (index-atom $entry 1)
+           (C4PrivateMemoryIdsAt $entries (+ $i 1)))
+         (C4PrivateMemoryIdsAt $entries (+ $i 1))))
+     ()))
+
+(= (C4VoiceAvailableBindingIds $question)
+   (if (CPShape $question c4-voice-render-question-v1 11)
+     (let* (($readings (index-atom (index-atom $question 6) 1))
+            ($commitments (index-atom $question 8))
+            ($private-context (index-atom $commitments 7)))
+       (CPListAppend (C4SemanticReadingIdsAt $readings 0)
+         (C4PrivateMemoryIdsAt
+           (C4PrivateContinuityContextEntries $private-context) 0)))
+     ()))
+
+(= (C4VoiceDirectionMatchesPrivateContext $direction $private-context)
+   (if (C4PrivateContinuityContextPresent $private-context)
+     (== (index-atom $direction 3)
+       native-private-continuity-choice-within-human-authorized-resources)
+     (== (index-atom $direction 3)
+       human-operator-direction-not-cognitive-authority)))
 
 (= (C4VoiceRenderQuestion $contact $encounter $semantic-question
-      $semantic-observation $direction)
+      $semantic-observation $direction $private-context)
    (if (and (CPContactValid $contact)
          (and (CPShape $encounter constitutive-encounter 7)
           (and (CPShape $semantic-question c4-contact-semantic-question-v1 11)
            (and (C4SemanticObservationValid $semantic-observation
                   $semantic-question)
-                (C4ModelDirectionValid $direction language-rendering)))))
+           (and (C4ModelDirectionValid $direction language-rendering)
+                (C4VoiceDirectionMatchesPrivateContext $direction
+                  $private-context))))))
      (let* (($participant (C4ExactTextParticipant $contact))
             ($claim (if (CPShape $participant participant-contribution 8)
               (index-atom $participant 5) ()))
@@ -535,8 +624,11 @@
              preserve-plurality-and-uncertainty
              no-claim-of-unperformed-effect)
            (voice-commitments source-bound scope-bound movement-bound
-             disclosure-current-contact-only relational-not-fixed-style
-             no-unsupported-internal-state-claim)
+             (if (C4PrivateContinuityContextPresent $private-context)
+               disclosure-current-contact-and-scoped-local-continuity
+               disclosure-current-contact-only)
+             relational-not-fixed-style no-unsupported-internal-state-claim
+             $private-context)
            (request-contract (C4VoiceInstructions)
              rendering-not-movement candidate-utterance-not-effect
              no-contact-no-authority-no-choice)
@@ -554,8 +646,7 @@
             (CPShape $question c4-voice-render-question-v1 11))
      (let* (($rendering (index-atom $observation 9))
             ($request (index-atom $question 10))
-            ($available (C4SemanticReadingIdsAt
-              (index-atom (index-atom $question 6) 1) 0))
+            ($available (C4VoiceAvailableBindingIds $question))
             ($bindings (if (CPShape $rendering rendered-utterance 4)
               (index-atom (index-atom $rendering 2) 1) ())))
        (and (== (index-atom $observation 1) (index-atom $question 1))
@@ -576,6 +667,16 @@
                          (== (index-atom $observation 12)
                            structurally-bound-semantic-fidelity-remains-consequence-testable))))))))))))))))
      false))
+
+(= (C4VoiceAuthorizedDisclosure $voice-question)
+   (if (CPShape $voice-question c4-voice-render-question-v1 11)
+     (let* (($commitments (index-atom $voice-question 8))
+            ($private-context (index-atom $commitments 7)))
+       (if (C4PrivateContinuityContextPresent $private-context)
+         (authorized-disclosure
+           current-contact-and-scoped-native-memory-local-only)
+         (authorized-disclosure current-contact-and-derived-readings-only)))
+     (authorized-disclosure unavailable)))
 
 (= (C4VoiceCertificate $encounter $voice-question $voice-observation $proof)
    (if (and (CPShape $encounter constitutive-encounter 7)
@@ -599,7 +700,7 @@
          (voice-audit-v1
            (index-atom $rendering 2) (index-atom $rendering 3)
            source-scope-movement-bound no-added-effect-authority)
-         (authorized-disclosure current-contact-and-derived-readings-only)
+         (C4VoiceAuthorizedDisclosure $voice-question)
          (emission-authority mattermost-exact-resolved-group-only)))
      (assistant-voice-held invalid-rendering-or-native-proof)))
 
@@ -623,8 +724,12 @@
             (ARParticipantBoundaryReference $participants))
           (== (index-atom $certificate 7) (ARNativeProofReference $proof))
           (CPShape (index-atom $certificate 8) voice-audit-v1 5)
-          (== (index-atom $certificate 9)
-            (authorized-disclosure current-contact-and-derived-readings-only))
+          (or (== (index-atom $certificate 9)
+                (authorized-disclosure
+                  current-contact-and-derived-readings-only))
+              (== (index-atom $certificate 9)
+                (authorized-disclosure
+                  current-contact-and-scoped-native-memory-local-only)))
           (== (index-atom $certificate 10)
             (emission-authority mattermost-exact-resolved-group-only)))
          (true true true true true true true true true true)))
@@ -802,12 +907,27 @@
                  (if (CPShape $bound-result
                        assistant-contact-incorporated 3)
                    (let* (($encounter (index-atom $bound-result 2))
-                          ($voice-direction (as_model_direction $root
-                            (CPContactScope $enriched-contact)
-                            language-rendering))
+                          ($available-private-context
+                            (C4PrivateContinuityContext $enriched-contact))
+                          ($private-context
+                            (if (and (C4SemanticContinuityNeeded $observation)
+                                  (C4PrivateContinuityContextPresent
+                                    $available-private-context))
+                              $available-private-context
+                              (private-continuity-context ()
+                                scope-verified-native-candidates-not-authority)))
+                          ($voice-direction
+                            (if (C4PrivateContinuityContextPresent
+                                  $private-context)
+                              (as_model_private_continuity_direction $root
+                                (CPContactScope $enriched-contact)
+                                language-rendering)
+                              (as_model_direction $root
+                                (CPContactScope $enriched-contact)
+                                language-rendering)))
                           ($voice-question (C4VoiceRenderQuestion
                             $enriched-contact $encounter $question
-                            $observation $voice-direction))
+                            $observation $voice-direction $private-context))
                           ($voice-observation (if (CPShape $voice-question
                             c4-voice-render-question-v1 11)
                             ($model-writer $root $voice-question)
