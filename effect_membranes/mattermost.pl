@@ -26,8 +26,10 @@ as_mattermost_poll(Root0, Inputs) :-
            ( Config.enabled == true,
              as_mattermost_due(Root, Config.inbound.poll_seconds) ->
                as_mattermost_binding_local(Root, Config, Binding),
-               as_mattermost_poll_ready(Root, Config, Binding, Inputs0),
-               Inputs=Inputs0
+               ( as_evaluation_group_active(Root,Config,Binding,_) ->
+                   as_mattermost_poll_ready(Root, Config, Binding, Inputs0),
+                   Inputs=Inputs0
+               ; Inputs=[] )
            ; Inputs=[] )), _, Inputs=[]), !.
 
 as_mattermost_root(Root0, Root) :-
@@ -222,6 +224,13 @@ as_mattermost_commit_post_checked(Root0, EffectId0, _Scope, _ReplyContact0,
     as_mattermost_root(Root0,Root), as_symbol(EffectId0,EffectId),
     as_mattermost_config(Root,Config),
     ( Config.enabled \== true ; Config.outbound.enabled \== true ), !.
+as_mattermost_commit_post_checked(Root0, EffectId0, _Scope, _ReplyContact0,
+    _Utterance, _CertificateHash0, _ProofHash0,
+    ['mattermost-effect-held',EffectId,'evaluation-grant-inactive']) :-
+    as_mattermost_root(Root0,Root), as_symbol(EffectId0,EffectId),
+    as_mattermost_config(Root,Config),
+    as_mattermost_binding_local(Root,Config,Binding),
+    \+ as_evaluation_effect_available(Root,Config,Binding,EffectId,_), !.
 as_mattermost_commit_post_checked(Root0, EffectId0, Scope, ReplyContact0,
     Utterance, CertificateHash0, ProofHash0, Result) :-
     as_mattermost_root(Root0,Root), as_symbol(EffectId0,EffectId),
@@ -232,8 +241,8 @@ as_mattermost_commit_post_checked(Root0, EffectId0, Scope, ReplyContact0,
     UtteranceLength>=1, UtteranceLength=<3000,
     as_sha256(CertificateHash0,CertificateHash),
     as_sha256(ProofHash0,ProofHash),
-    as_mattermost_effect_context(Root,Scope,SourcePostId,Config,Binding,Token,
-      ChannelId,BotId,RootPostId),
+    as_mattermost_effect_context(Root,Scope,SourcePostId,EffectId,Config,Binding,
+      Token,ChannelId,BotId,RootPostId,GrantId),
     crypto_data_hash(Utterance,MessageHash,
       [algorithm(sha256),encoding(utf8)]),
     as_mattermost_effect_path(Root,EffectId,Path),
@@ -241,19 +250,21 @@ as_mattermost_commit_post_checked(Root0, EffectId0, Scope, ReplyContact0,
         miter_store_read_json(Path,State),
         as_mattermost_effect_state_matches(State,EffectId,Scope,SourcePostId,
           ChannelId,BotId,RootPostId,Utterance,MessageHash,CertificateHash,
-          ProofHash),
+          ProofHash,GrantId),
         as_mattermost_resume_effect(Path,State,Config,Binding,Token,Result)
     ; as_mattermost_prepare_effect(Path,EffectId,Scope,SourcePostId,ChannelId,
-        BotId,RootPostId,Utterance,MessageHash,CertificateHash,ProofHash,State),
+        BotId,RootPostId,Utterance,MessageHash,CertificateHash,ProofHash,GrantId,
+        State),
       as_mattermost_transmit_effect(Path,State,Config,Binding,Token,Result)
     ).
 
-as_mattermost_effect_context(Root,Scope,SourcePostId,Config,Binding,Token,
-    ChannelId,BotId,RootPostId) :-
+as_mattermost_effect_context(Root,Scope,SourcePostId,EffectId,Config,Binding,Token,
+    ChannelId,BotId,RootPostId,GrantId) :-
     as_mattermost_config(Root,Config), Config.enabled==true,
     Config.outbound.enabled==true,
     as_mattermost_binding_local(Root,Config,Binding),
     as_mattermost_binding_live(Config,Binding),
+    as_evaluation_effect_available(Root,Config,Binding,EffectId,GrantId),
     as_mattermost_token(Config,Token),
     as_mattermost_id(Binding.channel_id,ChannelId),
     as_mattermost_id(Binding.bot_id,BotId),
@@ -285,7 +296,7 @@ as_mattermost_effect_path(Root,EffectId,Path) :-
     directory_file_path(Root,Relative,Path).
 
 as_mattermost_prepare_effect(Path,EffectId,Scope,SourcePostId,ChannelId,BotId,
-    RootPostId,Utterance,MessageHash,CertificateHash,ProofHash,State) :-
+    RootPostId,Utterance,MessageHash,CertificateHash,ProofHash,GrantId,State) :-
     get_time(Now),
     term_string(Scope,ScopeText,[quoted(true),ignore_ops(true)]),
     State=_{schema:"miter-mattermost-effect-v1",effect_id:EffectId,
@@ -293,13 +304,14 @@ as_mattermost_prepare_effect(Path,EffectId,Scope,SourcePostId,ChannelId,BotId,
       channel_id:ChannelId,bot_id:BotId,root_post_id:RootPostId,
       message:Utterance,message_sha256:MessageHash,
       certificate_sha256:CertificateHash,native_proof_sha256:ProofHash,
+      grant_id:GrantId,
       pending_post_id:EffectId,response_post_id:"",prepared_at_epoch:Now,
       transmission_started_at_epoch:0,observed_at_epoch:Now,
       standing:"prepared-before-transmission"},
     as_write_json_durable(Path,State).
 
 as_mattermost_effect_state_matches(State,EffectId,Scope,SourcePostId,ChannelId,
-    BotId,RootPostId,Utterance,MessageHash,CertificateHash,ProofHash) :-
+    BotId,RootPostId,Utterance,MessageHash,CertificateHash,ProofHash,GrantId) :-
     is_dict(State), State.schema=="miter-mattermost-effect-v1",
     miter_store_nonempty_atom(State.effect_id,EffectId),
     miter_store_nonempty_atom(State.idempotency_key,EffectId),
@@ -313,6 +325,7 @@ as_mattermost_effect_state_matches(State,EffectId,Scope,SourcePostId,ChannelId,
     as_sha256(State.message_sha256,MessageHash),
     as_sha256(State.certificate_sha256,CertificateHash),
     as_sha256(State.native_proof_sha256,ProofHash),
+    miter_store_nonempty_atom(State.grant_id,GrantId),
     miter_store_nonempty_atom(State.pending_post_id,EffectId),
     number(State.prepared_at_epoch), State.prepared_at_epoch>0,
     number(State.transmission_started_at_epoch),
@@ -440,6 +453,7 @@ as_mattermost_effect_receipt(EffectPath,State,Standing) :-
         effect_id:State.effect_id,idempotency_key:State.effect_id,
         certificate_sha256:State.certificate_sha256,
         native_proof_sha256:State.native_proof_sha256,
+        grant_id:State.grant_id,
         capability:"mattermost-create-post",standing:Standing,
         network_access:true,external_effect:true,
         response_post_id:State.response_post_id,observed_at_epoch:Now}).
@@ -511,6 +525,7 @@ as_mattermost_post_input(Root,Config,Binding,Since,Post,Input) :-
     as_mattermost_id(Binding.bot_id,BotId), UserId \== BotId,
     member(Principal,Binding.principals), as_mattermost_id(Principal.id,UserId),
     memberchk(Principal.username,Config.authorized_humans),
+    as_evaluation_principal_active(Root,Config,Binding,Principal.username,_),
     as_mattermost_post_version(Post,Version), Version>Since,
     string(Post.message), string_codes(Post.message,Codes),
     length(Codes,ByteApprox), ByteApprox=<Config.inbound.max_event_bytes,
@@ -687,6 +702,7 @@ miter_mattermost_scope_bind(Root,Surface,DeclaredScope,Result) :-
       as_mattermost_surface_matches(Config,Surface,Binding,Principal),
       miter_assistant_declared_scope(DeclaredScope,Scope),
       miter_store_nonempty_atom(Principal.username,PrincipalName),
+      as_evaluation_principal_active(Root,Config,Binding,PrincipalName,_),
       miter_store_nonempty_atom(Config.scope.audience,Audience),
       miter_store_nonempty_atom(Config.scope.project,Project),
       Scope=[scope,PrincipalName,Audience,Project],
@@ -719,3 +735,103 @@ as_mattermost_surface_matches(Config,Surface,Binding,Principal) :-
     as_mattermost_prefixed(PrincipalId,ExpectedPrincipal),
     atom_string(ExpectedPrincipal,Surface.principal_id),
     memberchk(Principal.username,Config.authorized_humans).
+
+% AMA-1.2 is a mechanical reach boundary.  It can admit a principal or effect
+% only while the separately witnessed evaluation segment is active.  It never
+% interprets contact, chooses a model, forms movement, or decides what to say.
+as_evaluation_group_active(Root,Config,Binding,GrantId) :-
+    as_evaluation_grant(Root,Config,Binding,GrantId,Grant),
+    memberchk("mattermost-new-event",Grant.capabilities),
+    as_evaluation_event_available(Root,Grant).
+
+as_evaluation_principal_active(Root,Config,Binding,Principal0,GrantId) :-
+    miter_store_nonempty_atom(Principal0,Principal),
+    atom_string(Principal,PrincipalString),
+    as_evaluation_grant(Root,Config,Binding,GrantId,Grant),
+    memberchk(PrincipalString,Grant.principals),
+    memberchk("mattermost-new-event",Grant.capabilities),
+    as_evaluation_event_available(Root,Grant).
+
+as_evaluation_effect_available(Root,Config,Binding,EffectId0,GrantId) :-
+    miter_store_nonempty_atom(EffectId0,EffectId),
+    as_evaluation_grant(Root,Config,Binding,GrantId,Grant),
+    memberchk("mattermost-create-post",Grant.capabilities),
+    as_evaluation_effect_counts(Root,Grant,Total,Recent),
+    Total<Grant.limits.outbound_posts,
+    Recent<Grant.limits.outbound_per_hour,
+    \+ as_evaluation_other_pending_effect(Root,EffectId).
+
+as_evaluation_grant(Root,Config,Binding,GrantId,Grant) :-
+    as_mattermost_binding_matches_config(Config,Binding),
+    directory_file_path(Root,'evaluation-grants.json',Path),
+    miter_store_read_json(Path,Document),is_dict(Document),
+    Document.schema=="miter-evaluation-grants-v1",
+    Document.standing=="active-explicit-grants",
+    Document.authority=="AMA-1.2-ratified-by-berton",
+    get_dict(grants,Document,[Grant]),is_dict(Grant),
+    Grant.standing=="active",
+    miter_store_nonempty_atom(Grant.id,GrantId),GrantId=='ama-1.2',
+    Grant.scope==Config.scope,
+    Grant.principals==Config.authorized_humans,
+    Grant.required_group_members==Config.required_group_members,
+    as_mattermost_binding_sha256(Root,BindingHash),
+    as_sha256(Grant.binding_sha256,BindingHash),
+    number(Grant.activated_at_epoch),number(Grant.segment_expires_at_epoch),
+    number(Grant.maximum_expires_at_epoch),get_time(Now),
+    Now>=Grant.activated_at_epoch,Now=<Grant.segment_expires_at_epoch,
+    Now=<Grant.maximum_expires_at_epoch,
+    as_evaluation_control_allows(Root),
+    as_evaluation_limits_valid(Grant.limits).
+
+as_evaluation_limits_valid(Limits) :-
+    is_dict(Limits),
+    Limits.admitted_events==1000,
+    Limits.outbound_posts==500,
+    Limits.outbound_per_hour==60,
+    Limits.remote_calls==50.
+
+as_evaluation_control_allows(Root) :-
+    directory_file_path(Root,'control.json',Path),
+    miter_store_read_json(Path,Control),is_dict(Control),
+    Control.schema=="miter-assistant-control-v1",
+    Control.command=="continue".
+
+as_mattermost_binding_sha256(Root,Hash) :-
+    directory_file_path(Root,'surface/mattermost-binding.json',Path),
+    crypto_file_hash(Path,Hash,[algorithm(sha256),encoding(octet)]).
+
+as_evaluation_event_available(Root,Grant) :-
+    as_evaluation_json_count(Root,'surface/events',Count),
+    Count<Grant.limits.admitted_events.
+
+as_evaluation_json_count(Root,Relative,Count) :-
+    directory_file_path(Root,Relative,Directory),directory_files(Directory,Names),
+    include(as_mattermost_json_name,Names,JsonNames),length(JsonNames,Count).
+
+as_mattermost_json_name(Name) :- file_name_extension(_,json,Name).
+
+as_evaluation_effect_counts(Root,_Grant,Total,Recent) :-
+    directory_file_path(Root,'surface/effects',Directory),directory_files(Directory,Names),
+    get_time(Now),Threshold is Now-3600,
+    findall(Started,
+      (member(Name,Names),as_mattermost_json_name(Name),
+       directory_file_path(Directory,Name,Path),
+       catch(miter_store_read_json(Path,State),_,fail),is_dict(State),
+       State.schema=="miter-mattermost-effect-v1",
+       number(State.transmission_started_at_epoch),
+       State.transmission_started_at_epoch>0,
+       Started=State.transmission_started_at_epoch),StartedTimes),
+    length(StartedTimes,Total),include(as_evaluation_since(Threshold),StartedTimes,RecentTimes),
+    length(RecentTimes,Recent).
+
+as_evaluation_since(Threshold,Value) :- Value>=Threshold.
+
+as_evaluation_other_pending_effect(Root,EffectId) :-
+    directory_file_path(Root,'surface/effects',Directory),directory_files(Directory,Names),
+    member(Name,Names),as_mattermost_json_name(Name),
+    directory_file_path(Directory,Name,Path),
+    catch(miter_store_read_json(Path,State),_,fail),is_dict(State),
+    State.schema=="miter-mattermost-effect-v1",
+    miter_store_nonempty_atom(State.effect_id,Other),Other\==EffectId,
+    memberchk(State.standing,
+      ["transmission-started-outcome-unknown","outcome-unknown-held"]),!.

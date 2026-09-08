@@ -4,6 +4,7 @@
 % contact meaning, select movement, diagnose the Soul or grant network effects.
 
 :- ensure_loaded('assistant_service.pl').
+:- ensure_loaded('model.pl').
 :- use_module(library(process)).
 :- use_module(library(readutil)).
 :- use_module(library(uuid)).
@@ -24,7 +25,7 @@ as_dispatch([Command0|Args], Reply, Code) :-
     miter_store_nonempty_atom(Command0, Command),
     as_command(Command, Args, Reply, Code), !.
 as_dispatch(_, _{schema:"miter-assistant-operator-result-v1",status:"usage-error",
-  usage:"miter <install|bootstrap|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--event FILE|--output FILE]"}, 64).
+  usage:"miter <install|bootstrap|evaluation-disclosure|activate-evaluation|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
 
 as_command(install, Args, Reply, Code) :-
     !,
@@ -37,6 +38,20 @@ as_command(bootstrap, Args, Reply, Code) :-
     as_exact_options(Args, ['--runtime-root']),
     as_required_option(Args, '--runtime-root', Root0),
     as_runtime_path(Root0, Root), as_bootstrap(Root, Reply), as_reply_code(Reply, Code).
+as_command('evaluation-disclosure', Args, Reply, Code) :-
+    !,
+    as_exact_options(Args, ['--runtime-root']),
+    as_required_option(Args, '--runtime-root', Root0),
+    as_runtime_path(Root0, Root),as_evaluation_disclosure(Root,Reply),
+    as_reply_code(Reply,Code).
+as_command('activate-evaluation', Args, Reply, Code) :-
+    !,
+    as_exact_options(Args,
+      ['--runtime-root','--haley-affirmation-post-id']),
+    as_required_option(Args,'--runtime-root',Root0),
+    as_required_option(Args,'--haley-affirmation-post-id',PostId0),
+    as_runtime_path(Root0,Root),
+    as_activate_evaluation(Root,PostId0,Reply),as_reply_code(Reply,Code).
 as_command(start, Args, Reply, Code) :-
     !,
     as_exact_options(Args, ['--runtime-root']),
@@ -77,7 +92,8 @@ as_reply_code(Reply, 0) :- get_dict(status, Reply, Status),
     memberchk(Status, [installed,'already-installed',bootstrapped,'already-bootstrapped',started,starting,running,stopped,
       panicked,'stop-pending','panic-pending','processing-unconfirmed',
       'liveness-unconfirmed','existing-process-unconfirmed',queued,duplicate,
-      'evidence-stored']), !.
+      'evidence-stored','evaluation-disclosure','evaluation-activated',
+      'evaluation-already-active']), !.
 as_reply_code(_, 1).
 
 as_exact_options(Args, Allowed) :-
@@ -140,11 +156,11 @@ as_swipl_ld(Path) :-
     ).
 
 as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
-  receipts,outbox,proofs,intents,lib,logs,'model/claims','model/requests',
-  'model/raw','model/observations','surface/raw','surface/events',
-  'surface/effects','checkpoints/objects','continuity/native/manifests',
-  'continuity/native/scopes','semantic/queries','semantic/projections',
-  'lkg/source']).
+  receipts,outbox,proofs,intents,lib,logs,model,surface,continuity,semantic,lkg,
+  'model/claims','model/requests','model/raw','model/observations','surface/raw',
+  'surface/events','surface/effects','checkpoints/objects','continuity/native',
+  'continuity/native/manifests','continuity/native/scopes','semantic/queries',
+  'semantic/projections','lkg/source']).
 
 as_lkg_source_relative('lkg/source').
 
@@ -175,12 +191,14 @@ as_dot_entry('.').
 as_dot_entry('..').
 
 as_bootstrap_new(Root, Reply) :-
+    chmod(Root,0o700),
     as_runtime_directories(Directories), maplist(as_make_runtime_directory(Root),Directories),
     as_compile_extension(Root),
     as_operator_repo_root(Repo),
     directory_file_path(Repo,'config/miter.json',ConfigSource),
     miter_store_read_json(ConfigSource,HumanConfig),
-    as_human_config_sections(HumanConfig,Config,Mattermost,Memory,Models,Grants),
+    as_human_config_sections(HumanConfig,Config,Mattermost,Memory,Models,Grants,
+      EvaluationGrants),
     directory_file_path(Root,'config.json',ConfigTarget),
     miter_store_write_json_atomic(ConfigTarget,Config),
     directory_file_path(Repo,'config/continuity.json',BindingsSource),
@@ -191,6 +209,8 @@ as_bootstrap_new(Root, Reply) :-
     miter_store_write_json_atomic(ModelsTarget,Models),
     directory_file_path(Root,'model-grants.json',GrantsTarget),
     miter_store_write_json_atomic(GrantsTarget,Grants),
+    directory_file_path(Root,'evaluation-grants.json',EvaluationGrantsTarget),
+    miter_store_write_json_atomic(EvaluationGrantsTarget,EvaluationGrants),
     directory_file_path(Root,'semantic-memory.json',MemoryTarget),
     miter_store_write_json_atomic(MemoryTarget,Memory),
     directory_file_path(Root,'mattermost.json',MattermostTarget),
@@ -210,12 +230,28 @@ as_bootstrap_new(Root, Reply) :-
       runtime_id:BootId,lkg_sha256:LkgHash,external_effects:ExternalEffects,
       network_access:NetworkAccess}),
     as_write_control(Root,continue,'bootstrap'),
+    as_secure_runtime_tree(Root),
     Reply=_{schema:"miter-assistant-operator-result-v1",status:bootstrapped,
       runtime_root:Root,lkg_sha256:LkgHash,network_access:NetworkAccess,
       external_effects:ExternalEffects}.
 
 as_make_runtime_directory(Root, Relative) :-
     directory_file_path(Root,Relative,Path), make_directory_path(Path), chmod(Path,0o700).
+
+as_secure_runtime_tree(Root) :-
+    chmod(Root,0o700),as_secure_runtime_directory(Root).
+
+as_secure_runtime_directory(Directory) :-
+    directory_files(Directory,Entries),
+    forall((member(Name,Entries),Name\=='.',Name\=='..'),
+      (directory_file_path(Directory,Name,Path),\+ read_link(Path,_,_),
+       ( exists_directory(Path) ->
+           chmod(Path,0o700),as_secure_runtime_directory(Path)
+       ; exists_file(Path) ->
+           ( sub_atom(Path,_,_,0,'libmiter_store_posix.dylib') ->
+               chmod(Path,0o700)
+           ; chmod(Path,0o600) )
+       ; fail ))).
 
 % The service executes from an immutable runtime-local copy of the verified
 % source closure. Repository edits therefore cannot silently change a running
@@ -251,12 +287,14 @@ as_validate_config(Config) :-
 % Humans edit one repository surface. Installation validates and materializes
 % narrow private runtime views so individual membranes need no authority over
 % the repository configuration or unrelated settings.
-as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants) :-
+as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants,
+    EvaluationGrants) :-
     is_dict(Human),
     as_mattermost_exact_keys(Human,
       [external_effects,human_editable,idle_base_seconds,idle_cap_seconds,
-       initial_model_grants,mattermost,max_input_batch,max_input_bytes,memory,
-       models,network_access,operator_notes,runtime_root,schema]),
+       initial_evaluation_grants,initial_model_grants,mattermost,max_input_batch,
+       max_input_bytes,memory,models,network_access,operator_notes,runtime_root,
+       schema]),
     as_dict_atom(Human,schema,'miter-assistant-config-v1'),
     Human.human_editable==true,
     is_list(Human.operator_notes),maplist(string,Human.operator_notes),
@@ -273,7 +311,213 @@ as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants) :-
     as_dict_atom(Models,schema,'miter-model-resource-registry-v1'),
     Grants=Human.initial_model_grants,is_dict(Grants),
     as_dict_atom(Grants,schema,'miter-model-grants-v1'),
+    EvaluationGrants=Human.initial_evaluation_grants,
+    as_evaluation_grants_inactive_valid(EvaluationGrants),
     as_mattermost_secret_free(Human).
+
+as_evaluation_grants_inactive_valid(Document) :-
+    is_dict(Document),
+    as_mattermost_exact_keys(Document,
+      [authority,authority_separation,bounds,grants,haley_disclosure,
+       required_affirmations,schema,standing]),
+    as_dict_atom(Document,schema,'miter-evaluation-grants-v1'),
+    as_dict_atom(Document,standing,'inactive-awaiting-participant-disclosure'),
+    as_dict_atom(Document,authority,'AMA-1.2-ratified-by-berton'),
+    get_dict(grants,Document,[]),
+    Document.bounds=_{first_segment_hours:72,maximum_hours:168,
+      admitted_events:1000,outbound_posts:500,outbound_per_hour:60,
+      remote_calls:50},
+    Document.required_affirmations=_{
+      berton_c:"affirmed-by-ratification",
+      haley:"required-before-payload-cognition-memory-model-or-egress"},
+    is_dict(Document.haley_disclosure),
+    as_mattermost_exact_keys(Document.haley_disclosure,
+      [exact_text,required_author,required_surface]),
+    string(Document.haley_disclosure.exact_text),
+    string_length(Document.haley_disclosure.exact_text,DisclosureLength),
+    DisclosureLength>=200,DisclosureLength=<1200,
+    Document.haley_disclosure.required_author=="haley",
+    Document.haley_disclosure.required_surface==
+      "exact-berton-haley-miter-group",
+    as_dict_atom(Document,authority_separation,
+      'grant-bounds-reach-not-meaning-or-movement').
+
+as_evaluation_disclosure(Root,Reply) :-
+    as_root(Root,_),directory_file_path(Root,'evaluation-grants.json',Path),
+    miter_store_read_json(Path,Document),is_dict(Document),
+    get_dict(haley_disclosure,Document,Disclosure),is_dict(Disclosure),
+    get_dict(exact_text,Disclosure,Text),string(Text),
+    Reply=_{schema:"miter-assistant-operator-result-v1",
+      status:'evaluation-disclosure',required_author:"haley",
+      exact_text:Text,
+      next:"Have Haley post this exact text in the bound three-person Mattermost group, then activate using that post ID."}.
+
+as_activate_evaluation(Root,PostId0,Reply) :-
+    ( catch(as_activate_evaluation_checked(Root,PostId0,Reply0),_,fail) ->
+        Reply=Reply0
+    ; Reply=_{schema:"miter-assistant-operator-result-v1",
+        status:'evaluation-activation-held',
+        reason:"exact-affirmation-or-complete-preflight-not-established"} ), !.
+
+as_activate_evaluation_checked(Root,PostId0,Reply) :-
+    as_root(Root,_),as_verify_lkg(Root,verified),
+    as_mattermost_id(PostId0,PostId),
+    ( as_evaluation_already_active(Root,PostId,Grant) ->
+        Reply=_{schema:"miter-assistant-operator-result-v1",
+          status:'evaluation-already-active',grant_id:Grant.id,
+          segment_expires_at_epoch:Grant.segment_expires_at_epoch}
+    ; as_evaluation_activation_preflight(Root,PostId,Inactive,Config,Binding,
+        Affirmation,BindingHash),
+      as_write_evaluation_activation(Root,Inactive,Config,Binding,Affirmation,
+        BindingHash,Reply) ).
+
+as_evaluation_already_active(Root,PostId,Grant) :-
+    directory_file_path(Root,'evaluation-grants.json',Path),
+    miter_store_read_json(Path,Document),is_dict(Document),
+    Document.schema=="miter-evaluation-grants-v1",
+    Document.standing=="active-explicit-grants",
+    get_dict(grants,Document,[Grant]),
+    as_mattermost_id(Grant.disclosure_witness.post_id,PostId).
+
+as_evaluation_activation_preflight(Root,PostId,Inactive,Config,Binding,
+    Affirmation,BindingHash) :-
+    \+ (as_process_state(Root,State,_),State\==dead),
+    directory_file_path(Root,'evaluation-grants.json',GrantPath),
+    miter_store_read_json(GrantPath,Inactive),
+    as_evaluation_grants_inactive_valid(Inactive),
+    as_mattermost_config(Root,Config),Config.enabled==true,
+    as_mattermost_resolve_live(Root,Config,Binding),
+    as_mattermost_binding_sha256(Root,BindingHash),
+    as_evaluation_affirmation(Config,Binding,Inactive,PostId,Affirmation),
+    as_evaluation_private_modes(Root),
+    as_evaluation_no_unresolved_effect(Root),
+    as_evaluation_memory_health(Root),
+    as_evaluation_model_health(Root),
+    as_write_control(Root,continue,'evaluation-activation-preflight'),
+    as_evaluation_control_allows(Root).
+
+as_evaluation_affirmation(Config,Binding,Inactive,PostId,Affirmation) :-
+    as_mattermost_token(Config,Token),
+    format(atom(Path),'/api/v4/posts/~w',[PostId]),
+    as_mattermost_get(Config,Token,Path,Post,200),is_dict(Post),
+    as_mattermost_id(Post.id,PostId),
+    as_mattermost_id(Post.channel_id,ChannelId),
+    as_mattermost_id(Binding.channel_id,ChannelId),
+    as_mattermost_id(Post.user_id,UserId),
+    member(Principal,Binding.principals),Principal.username=="haley",
+    as_mattermost_id(Principal.id,UserId),
+    Post.message==Inactive.haley_disclosure.exact_text,
+    as_mattermost_post_version(Post,Version),
+    crypto_data_hash(Post.message,Hash,[algorithm(sha256),encoding(utf8)]),
+    atom_string(HashString,Hash),
+    Affirmation=_{post_id:Post.id,event_version:Version,
+      author_username:"haley",content_sha256:HashString,
+      standing:"exact-current-disclosure-affirmed"}.
+
+as_evaluation_private_modes(Root) :-
+    as_evaluation_private_mode(Root,700),
+    as_evaluation_private_directory(Root).
+
+as_evaluation_private_directory(Directory) :-
+    directory_files(Directory,Entries),
+    forall((member(Name,Entries),Name\=='.',Name\=='..'),
+      (directory_file_path(Directory,Name,Path),\+ read_link(Path,_,_),
+       ( exists_directory(Path) ->
+           as_evaluation_private_mode(Path,700),
+           as_evaluation_private_directory(Path)
+       ; exists_file(Path) ->
+           ( sub_atom(Path,_,_,0,'libmiter_store_posix.dylib') ->
+               as_evaluation_private_mode(Path,700)
+           ; as_evaluation_private_mode(Path,600) )
+       ; fail ))).
+
+as_evaluation_private_mode(Path,Expected) :-
+    setup_call_cleanup(
+      process_create('/usr/bin/stat',['-f','%Lp',Path],
+        [stdin(null),stdout(pipe(Stream)),stderr(null),process(Pid)]),
+      read_string(Stream,64,Raw),close(Stream)),
+    process_wait(Pid,exit(0)),normalize_space(string(Text),Raw),
+    number_string(Expected,Text).
+
+as_evaluation_no_unresolved_effect(Root) :-
+    directory_file_path(Root,'surface/effects',Directory),
+    directory_files(Directory,Names),
+    \+ (member(Name,Names),as_mattermost_json_name(Name),
+      directory_file_path(Directory,Name,Path),
+      catch(miter_store_read_json(Path,State),_,fail),is_dict(State),
+      memberchk(State.standing,
+        ["transmission-started-outcome-unknown","outcome-unknown-held"])).
+
+as_evaluation_memory_health(Root) :-
+    miter_chroma_config(Root,Config),Config.enabled==true,
+    miter_chroma_collection(Config,_),
+    miter_chroma_embedding(Config,"Miter AMA-1.2 local activation health probe",Embedding),
+    length(Embedding,Config.embedding.dimension).
+
+as_evaluation_model_health(Root) :-
+    as_model_profile(Root,'openrouter-glm53',Profile),
+    as_model_keychain(Profile,Key),string_length(Key,Length),Length>=16.
+
+as_write_evaluation_activation(Root,Inactive,Config,_Binding,Affirmation,
+    BindingHash,Reply) :-
+    get_time(Now),SegmentExpiry is Now+72*3600,MaximumExpiry is Now+168*3600,
+    term_string([ama12,Now,BindingHash,Affirmation],WitnessText,
+      [quoted(true),ignore_ops(true)]),
+    crypto_data_hash(WitnessText,WitnessHash,[algorithm(sha256),encoding(utf8)]),
+    atom_string(BindingHashString,BindingHash),
+    atom_string(WitnessHashString,WitnessHash),
+    Grant=_{id:"ama-1.2",standing:"active",scope:Config.scope,
+      principals:Config.authorized_humans,
+      required_group_members:Config.required_group_members,
+      capabilities:["mattermost-new-event","mattermost-create-post",
+        "shared-continuity","scoped-semantic-memory","authorized-model-participation"],
+      limits:Inactive.bounds,binding_sha256:BindingHashString,
+      activated_at_epoch:Now,segment_expires_at_epoch:SegmentExpiry,
+      maximum_expires_at_epoch:MaximumExpiry,
+      disclosure_witness:Affirmation,activation_witness_sha256:WitnessHashString,
+      authority_separation:"grant-bounds-reach-not-meaning-or-movement"},
+    as_evaluation_model_grants(Config,Now,SegmentExpiry,ModelGrants),
+    directory_file_path(Root,'mattermost.json',MattermostPath),
+    put_dict(enabled,Config.outbound,true,Outbound),
+    put_dict(outbound,Config,Outbound,ActiveMattermost),
+    as_write_json_durable(MattermostPath,ActiveMattermost),
+    directory_file_path(Root,'model-grants.json',ModelGrantPath),
+    as_write_json_durable(ModelGrantPath,ModelGrants),
+    directory_file_path(Root,'runtime.json',RuntimePath),
+    miter_store_read_json(RuntimePath,Runtime),
+    put_dict(_{external_effects:"evaluation-grant-only",
+      evaluation_grant_id:"ama-1.2"},Runtime,ActiveRuntime),
+    as_write_json_durable(RuntimePath,ActiveRuntime),
+    directory_file_path(Root,'evaluation-grants.json',GrantPath),
+    Active=_{schema:"miter-evaluation-grants-v1",
+      standing:"active-explicit-grants",authority:Inactive.authority,
+      authority_separation:Inactive.authority_separation,
+      haley_disclosure:Inactive.haley_disclosure,
+      required_affirmations:_{berton_c:"affirmed-by-ratification",
+        haley:"affirmed-by-exact-mattermost-disclosure"},
+      bounds:Inactive.bounds,grants:[Grant]},
+    as_write_json_durable(GrantPath,Active),
+    Reply=_{schema:"miter-assistant-operator-result-v1",
+      status:'evaluation-activated',grant_id:"ama-1.2",
+      activated_at_epoch:Now,segment_expires_at_epoch:SegmentExpiry,
+      maximum_expires_at_epoch:MaximumExpiry,
+      disclosure_post_id:Affirmation.post_id,
+      activation_witness_sha256:WitnessHashString}.
+
+as_evaluation_model_grants(Config,Now,Expiry,Document) :-
+    findall(Grant,
+      (member(Principal,Config.authorized_humans),
+       format(string(Id),'ama-1.2-openrouter-~s',[Principal]),
+       Grant=_{id:Id,standing:"active",resource_id:"openrouter-glm53",
+         purposes:["general-contact-semantics","language-rendering",
+           "partial-alignment-inquiry"],
+         scope:_{principal:Principal,audience:Config.scope.audience,
+           project:Config.scope.project},max_calls:50,max_output_tokens:2048,
+         deadline_seconds:120,public_safe_only:true,
+         activated_at_epoch:Now,expires_at_epoch:Expiry,
+         evaluation_grant_id:"ama-1.2"}),Grants),
+    Document=_{schema:"miter-model-grants-v2",
+      standing:"active-explicit-grants",grants:Grants}.
 
 as_compile_extension(Root) :-
     as_operator_repo_root(Repo),
@@ -467,13 +711,36 @@ as_status(Root, Reply) :-
           ;as_unconfirmed_status(Root,State))
         ;Pid=0,State=stopped),
         as_status_heartbeat(Root,Heartbeat),
+        as_evaluation_status(Root,Evaluation),
         Reply=_{schema:"miter-assistant-operator-result-v1",status:State,pid:Pid,
-          lkg:Lkg,heartbeat:Heartbeat,semantic_health:"not-claimed"}
+          lkg:Lkg,heartbeat:Heartbeat,evaluation:Evaluation,
+          semantic_health:"not-claimed"}
     ; Reply=_{schema:"miter-assistant-operator-result-v1",status:'not-bootstrapped'} ).
 
 as_status_heartbeat(Root, Heartbeat) :-
     directory_file_path(Root,'heartbeat.json',Path),
     (exists_file(Path)->miter_store_read_json(Path,Heartbeat);Heartbeat=null).
+
+as_evaluation_status(Root,Standing) :-
+    directory_file_path(Root,'evaluation-grants.json',Path),
+    ( catch(miter_store_read_json(Path,Document),_,fail),is_dict(Document),
+      Document.schema=="miter-evaluation-grants-v1",
+      Document.standing=="active-explicit-grants",
+      get_dict(grants,Document,[Grant]),is_dict(Grant) ->
+        get_time(Now),
+        ( Now>Grant.segment_expires_at_epoch -> State="paused-segment-expired"
+        ; State="active" ),
+        as_evaluation_json_count(Root,'surface/events',Events),
+        as_evaluation_effect_counts(Root,Grant,Posts,PostsLastHour),
+        as_evaluation_model_claim_count(Root,RemoteCalls),
+        Standing=_{grant_id:Grant.id,standing:State,
+          activated_at_epoch:Grant.activated_at_epoch,
+          segment_expires_at_epoch:Grant.segment_expires_at_epoch,
+          maximum_expires_at_epoch:Grant.maximum_expires_at_epoch,
+          counts:_{admitted_events:Events,outbound_posts:Posts,
+            outbound_last_hour:PostsLastHour,remote_calls:RemoteCalls},
+          limits:Grant.limits}
+    ; Standing=_{standing:"inactive-awaiting-participant-disclosure"} ).
 
 as_unconfirmed_status(Root, Status) :-
     ( as_pending_control(Root,panic) -> Status='panic-pending'
@@ -566,6 +833,7 @@ as_evidence_bundle(Root, Output, Reply) :-
     as_directory_count(Root,rejected,RejectedCount),as_directory_count(Root,outbox,OutboxCount),
     as_checkpoint_identity(Root,CheckpointHash),
     as_trajectory_standing(Root,Trajectory),
+    as_evaluation_status(Root,Evaluation),
     directory_file_path(Root,'lkg.json',LkgPath),
     crypto_file_hash(LkgPath,LkgHash,[algorithm(sha256),encoding(octet)]),
     directory_file_path(Root,'runtime.json',RuntimePath),
@@ -576,6 +844,7 @@ as_evidence_bundle(Root, Output, Reply) :-
       recorded_at_epoch:Now,lkg:Lkg,lkg_sha256:LkgHash,status:Status,
       counts:_{receipts:ReceiptCount,consumed:ConsumedCount,rejected:RejectedCount,
         outbox:OutboxCount},checkpoint_sha256:CheckpointHash,trajectory:Trajectory,
+      evaluation:Evaluation,
       network_access:NetworkAccess,external_effects:ExternalEffects,
       private_content_included:false,
       semantic_health_claimed:false},

@@ -152,9 +152,34 @@
     "standing": "inactive-no-live-model-authority",
     "grants": []
   },
+  "initial_evaluation_grants": {
+    "schema": "miter-evaluation-grants-v1",
+    "standing": "inactive-awaiting-participant-disclosure",
+    "authority": "AMA-1.2-ratified-by-berton",
+    "grants": [],
+    "bounds": {
+      "first_segment_hours": 72,
+      "maximum_hours": 168,
+      "admitted_events": 1000,
+      "outbound_posts": 500,
+      "outbound_per_hour": 60,
+      "remote_calls": 50
+    },
+    "required_affirmations": {
+      "berton_c": "affirmed-by-ratification",
+      "haley": "required-before-payload-cognition-memory-model-or-egress"
+    },
+    "haley_disclosure": {
+      "exact_text": "I understand that Miter is an alpha; this shared conversation enters durable shared-project memory; local models may process it; authorized bounded material may be sent to OpenRouter GLM 5.3; credentials, unrelated private memory, and stable IDs will not be sent; either participant may panic or revoke future operation; corrections are additive; and comprehensive private-payload erasure is not yet complete. I affirm participation in AMA-1.2.",
+      "required_author": "haley",
+      "required_surface": "exact-berton-haley-miter-group"
+    },
+    "authority_separation": "grant-bounds-reach-not-meaning-or-movement"
+  },
   "operator_notes": [
     "This is the only human-edited repository configuration file.",
     "It contains names and Keychain references, never secrets or private stable IDs.",
-    "Installation materializes validated private runtime views from these settings."
+    "Installation materializes validated private runtime views from these settings.",
+    "The evaluation grant installs inactive and can activate only after both participant disclosures and complete preflight."
   ]
 }

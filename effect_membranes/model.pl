@@ -37,6 +37,7 @@ as_model_checked(Root0, Question, Observation) :-
       ; as_model_profile(Root, ResourceId, Profile),
         as_model_grant(Root, QuestionHash, Scope, Purpose, ResourceId,
           MaxTokens, Deadline, Grant),
+        as_evaluation_model_available(Root,Scope,ResourceId),
         as_model_claim(Root, QuestionHash, QuestionRef, Scope, ResourceId,
           Purpose, Grant, ClaimPath),
         as_model_request(Profile, Question, Instructions, MaxTokens, Body),
@@ -435,6 +436,37 @@ as_model_grant_claim_count(Root,GrantId,Count) :-
       directory_file_path(Claim,'owner.json',Owner),exists_file(Owner),
       catch((miter_store_read_json(Owner,Dict),
         as_dict_atom(Dict,grant_id,GrantId)),_,fail)),Owners),
+    length(Owners,Count).
+
+% The per-question model grant and the AMA-1.2 evaluation window are distinct
+% mechanical authorities.  Both must be current before a new transmission.
+% This aggregate counter enforces the shared remote-call ceiling; it does not
+% decide whether the Soul asks a question or which returned reading matters.
+as_evaluation_model_available(Root,[scope,Principal,Audience,Project],ResourceId) :-
+    as_mattermost_config(Root,Config),
+    as_mattermost_binding_local(Root,Config,Binding),
+    as_evaluation_grant(Root,Config,Binding,_GrantId,EvaluationGrant),
+    memberchk("authorized-model-participation",EvaluationGrant.capabilities),
+    miter_store_nonempty_atom(Principal,PrincipalAtom),
+    atom_string(PrincipalAtom,PrincipalString),
+    memberchk(PrincipalString,EvaluationGrant.principals),
+    miter_store_nonempty_atom(Audience,AudienceAtom),
+    miter_store_nonempty_atom(Project,ProjectAtom),
+    atom_string(AudienceAtom,Config.scope.audience),
+    atom_string(ProjectAtom,Config.scope.project),
+    miter_store_nonempty_atom(ResourceId,'openrouter-glm53'),
+    as_evaluation_model_claim_count(Root,Used),
+    Used<EvaluationGrant.limits.remote_calls.
+
+as_evaluation_model_claim_count(Root,Count) :-
+    as_path(Root,'model/claims',Directory),directory_files(Directory,Entries),
+    findall(Owner,
+      (member(Name,Entries),Name\=='.',Name\=='..',
+       directory_file_path(Directory,Name,Claim),exists_directory(Claim),
+       directory_file_path(Claim,'owner.json',Owner),exists_file(Owner),
+       catch((miter_store_read_json(Owner,Dict),
+         as_dict_atom(Dict,grant_id,GrantId),
+         sub_atom(GrantId,0,8,_,'ama-1.2-')),_,fail)),Owners),
     length(Owners,Count).
 
 as_model_claim_path(Root, Hash, Path) :-

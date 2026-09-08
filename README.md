@@ -101,6 +101,10 @@ Use an explicit runtime directory outside this repository. Do not use
 
 ```sh
 bin/miter install --runtime-root /absolute/private/runtime/path
+bin/miter evaluation-disclosure --runtime-root /absolute/private/runtime/path
+# After Haley posts the exact disclosure in the bound three-person group:
+bin/miter activate-evaluation --runtime-root /absolute/private/runtime/path \
+  --haley-affirmation-post-id EXACT_MATTERMOST_POST_ID
 bin/miter start   --runtime-root /absolute/private/runtime/path
 bin/miter status  --runtime-root /absolute/private/runtime/path
 bin/miter stop    --runtime-root /absolute/private/runtime/path
@@ -114,8 +118,14 @@ grant set. It never contains a secret or private stable identifier. Install
 validates that file and materializes narrow private runtime views for the
 individual membranes. Every remote call still requires an exact,
 time-bounded runtime-local grant, and outbound Mattermost remains disabled by
-default. `config/continuity.json` and `config/constitutive-projection.json` are
-internal authority projections, not operator settings.
+default. The AMA-1.2 evaluation grant is installed inactive. Activation is
+fail-closed and requires the exact current Haley-authored disclosure post in
+the uniquely resolved Berton/Haley/Miter group, verified private runtime modes,
+healthy local memory/model dependencies, a clean effect-reconciliation state,
+and a durable 72-hour activation witness. `status` reports its standing and
+resource counts without exposing conversation content or stable IDs.
+`config/continuity.json` and `config/constitutive-projection.json` are internal
+authority projections, not operator settings.
 
 If Chroma or the embedding service is unavailable, exact native continuity
 remains authoritative and semantic recall reports a degraded/unavailable

@@ -386,6 +386,25 @@ reported `already-installed` on exact repetition, and passed start/status/stop
 with the live surface disabled. Host registration and a fresh-clone evaluator
 walkthrough remain before this packaging requirement is complete.
 
+The evaluation reach boundary is now embodied independently of cognition.
+Installation materializes AMA-1.2 inactive. While inactive, expired, stopped,
+panicked, binding-mismatched, or resource-exhausted, the Mattermost membrane
+does not fetch ordinary payloads, the model membrane cannot transmit a new
+question, and a VoiceRNA-certified descriptor still cannot become an external
+post. `bin/miter evaluation-disclosure` exposes the exact public-safe text that
+Haley must personally post in the uniquely bound three-person group;
+`activate-evaluation` accepts only that exact current post identity and author,
+then rechecks stable membership, frozen LKG integrity, mode-0700/0600 private
+state, local Chroma/embedding health, the OpenRouter Keychain reference, panic
+control, and absence of an unresolved prior effect. Only after those checks
+does it atomically expose an active 72-hour reach witness, scoped model grants,
+and outbound capability. Aggregate event, post, per-hour post, and remote-call
+bounds are enforced mechanically and reported by `status`. Synthetic private
+runtime trials distinguished inactive, active, and expired standing; an
+invalid live affirmation ID remained held and changed no grant or outbound
+standing. The real activation and live no-replay trial remain held solely on
+Haley's required disclosure affirmation, not on a missing code path.
+
 ## 7. The only build cycle
 
 Every additive cut follows the same four movements. This is a builder method,
