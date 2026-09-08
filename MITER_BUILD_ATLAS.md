@@ -348,6 +348,30 @@ Repository source drift after bootstrap does not change restart meaning;
 tampering with a frozen source member produces `lkg:mismatch`, while stop and
 panic remain available so integrity damage cannot strand the process.
 
+The first sustained-dialogue cut is now embodied through the same constitutive
+runtime rather than a conversational side loop. A later Mattermost reply may
+carry one proposed chronological relation to a prior response, but that
+relation changes movement only when native MeTTa joins it to exactly one
+persisted compact VoiceRNA proof and effect witness under the exact active
+source cut, parent contact, audience, and project. In a three-contact held-out
+reduction, the first unfamiliar contact formed inquiry; the two subsequently
+verified returned contacts each formed an undertaking on the same live thread.
+A failed surface write created no proof/effect history, exact duplicate
+delivery retained one proof and one effect, a forged effect acquired no native
+participant, and a copied effect under another audience/project acquired no
+native participant. A separate authorized-principal contact remained natively
+incorporated when the semantic provider was unavailable; no model candidate or
+effect was fabricated. Semantic readings and Chroma candidates remain bounded,
+provenance-bearing candidate participation rather than unresolved relational
+claims that mechanically force inquiry. Their exact content remains in the
+constitutive participant organization and movement basis without becoming
+contact, authority, or choice. A fresh frozen `bin/miter` runtime with live
+surfaces disabled consumed a held-out contact, checkpointed, stopped, and cold
+restored to waiting with no replay and byte-identical checkpoint SHA-256
+`59301e866207d17c0e0aa8c39176d3e2353dc3b207d3155e9aa30b0004371c3e`.
+C4 remains open for the explicitly authorized live pending-before-send /
+no-replay trial and the SNET evaluation package.
+
 ## 7. The only build cycle
 
 Every additive cut follows the same four movements. This is a builder method,
@@ -1559,17 +1583,14 @@ Already carried:
 
 Next movement:
 
-1. extend general Soul-formed dialogue into sustained, consequence-sensitive
-   multi-turn undertakings and exercise model/surface failure plus exact
-   principal/audience/project isolation through the same runtime;
-2. complete the admitted Mattermost carrier with an explicitly authorized
+1. complete the admitted Mattermost carrier with an explicitly authorized
    live pending-before-send/no-replay delivery trial; do not reuse the expired
    canary or bypass the unresolved Haley disclosure boundary;
-3. package the resulting always-on organism for SNET evaluation with one
+2. package the resulting always-on organism for SNET evaluation with one
    human-editable configuration surface and supported install/start/status/
    stop/panic operations, bounded crash-loop containment, and frozen-LKG
    recovery;
-4. only after explicit human acceptance of the complete clean candidate,
+3. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

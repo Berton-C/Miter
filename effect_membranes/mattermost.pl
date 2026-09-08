@@ -519,8 +519,9 @@ as_mattermost_post_input(Root,Config,Binding,Since,Post,Input) :-
     directory_file_path(EventDirectory,Name,EventPath), \+ exists_file(EventPath),
     crypto_data_hash(Post.message,ContentHash,[algorithm(sha256),encoding(utf8)]),
     as_mattermost_raw_post(Root,PostId,Version,Post.message,ContentHash,RawRef),
+    as_mattermost_returned_effect(Root,Binding,Post,ReturnedEffect),
     as_mattermost_contact_dict(Config,Binding,Principal,Post,PostId,Version,
-      ContentHash,RawRef,Dict),
+      ContentHash,RawRef,ReturnedEffect,Dict),
     as_input_dict_v3(Root,Dict,Input,_),
     as_write_json_durable(EventPath,_{schema:"miter-mattermost-ingress-v1",
       post_id:PostId,event_version:Version,content_sha256:ContentHash,
@@ -540,8 +541,53 @@ as_mattermost_raw_post(Root,PostId,Version,Text,ContentHash,RawRef) :-
 as_mattermost_prefixed(Id, Prefixed) :- atom_concat(mm_,Id,Prefixed).
 as_mattermost_version_symbol(Version, Symbol) :- format(atom(Symbol),'v~d',[Version]).
 
+% A reply becomes returned-contact material only when it follows exactly one
+% durable, delivered Miter effect in the same resolved group thread.  This is
+% carrier chronology, not an interpretation of what the reply means.  Native
+% MeTTa must still join the carrier witness to the matching persisted
+% VoiceRNA/effect proof before the relation can affect movement.
+as_mattermost_returned_effect(Root,Binding,Post,Returned) :-
+    ( Post.root_id=="" -> Returned=no_returned_effect
+    ; as_mattermost_id(Post.root_id,RootPostId),
+      as_mattermost_id(Post.channel_id,ChannelId),
+      as_mattermost_post_version(Post,PostVersion),
+      directory_file_path(Root,'surface/effects',EffectsDirectory),
+      ( exists_directory(EffectsDirectory) ->
+          directory_files(EffectsDirectory,Names),
+          findall(Observed-State,
+            ( member(Name,Names), file_name_extension(_,json,Name),
+              directory_file_path(EffectsDirectory,Name,Path),
+              catch(miter_store_read_json(Path,State),_,fail),
+              as_mattermost_returned_effect_state(State,Binding,ChannelId,
+                RootPostId,PostVersion,Observed) ),
+            Candidates),
+          as_mattermost_unique_latest_effect(Candidates,Returned)
+      ; Returned=no_returned_effect )
+    ), !.
+
+as_mattermost_returned_effect_state(State,Binding,ChannelId,RootPostId,
+    PostVersion,Observed) :-
+    is_dict(State), State.schema=="miter-mattermost-effect-v1",
+    State.standing=="delivered-and-verified",
+    as_mattermost_id(State.channel_id,ChannelId),
+    as_mattermost_id(Binding.channel_id,ChannelId),
+    as_mattermost_id(State.root_post_id,RootPostId),
+    as_mattermost_id(State.source_post_id,_),
+    as_mattermost_id(State.response_post_id,_),
+    miter_store_nonempty_atom(State.effect_id,_),
+    number(State.observed_at_epoch), Observed=State.observed_at_epoch,
+    Observed*1000=<PostVersion.
+
+as_mattermost_unique_latest_effect([],no_returned_effect).
+as_mattermost_unique_latest_effect(Candidates,Returned) :-
+    Candidates=[_|_], pairs_keys(Candidates,ObservedValues),
+    max_list(ObservedValues,Latest),
+    findall(State,member(Latest-State,Candidates),LatestStates),
+    ( LatestStates=[Only] -> Returned=Only
+    ; Returned=ambiguous_returned_effect ), !.
+
 as_mattermost_contact_dict(Config,Binding,Principal,Post,PostId,Version,
-    ContentHash,RawRef,Dict) :-
+    ContentHash,RawRef,ReturnedEffect,Dict) :-
     as_mattermost_prefixed(PostId,ContactId),
     as_mattermost_prefixed(Binding.team_id,TeamId),
     as_mattermost_prefixed(Binding.channel_id,ChannelId),
@@ -557,7 +603,18 @@ as_mattermost_contact_dict(Config,Binding,Principal,Post,PostId,Version,
     format(atom(Weave),'mm_thread_~w',[ThreadRaw]),
     atom_string(ContentHashString,ContentHash), atom_string(RawRefString,RawRef),
     Roles=["Balance"],
-    as_mattermost_flourishing_views(Whole,Flourishings),
+    as_mattermost_returned_contact_material(ReturnedEffect,PostId,Relations0,
+      Parents,ReturnedParticipants,FlourishingStanding,FlourishingEvidence),
+    append([_{id:Material,kind:"surface-contact",standing:"support",
+      evidence:"exact-payload-preserved"}],Relations0,Relations),
+    as_mattermost_flourishing_views(Whole,FlourishingStanding,
+      FlourishingEvidence,Flourishings),
+    append([_{id:ContactId,kind:"human",
+      lineage:["mattermost",ContactId,VersionId],
+      claim:_{kind:"text",content_sha256:ContentHashString,
+        text:Post.message,raw_ref:RawRefString},standing:"candidate",
+      authority:"no-contact-no-movement-authority"}],ReturnedParticipants,
+      Participants),
     format(atom(PayloadRef),'sha256_~w',[ContentHash]),
     Dict=_{schema:"miter-assistant-input-v3",input_id:InputId,
       input_kind:"surface-contact",
@@ -568,9 +625,8 @@ as_mattermost_contact_dict(Config,Binding,Principal,Post,PostId,Version,
         principal:Principal.username,audience:Config.scope.audience,
         project:Config.scope.project,occurrence:Occurrence,
         proto:"mattermost_unfamiliar_contact",payload_ref:PayloadRef,
-        parents:[],configuration:_{
-          d_relations:[_{id:Material,kind:"surface-contact",standing:"support",
-            evidence:"exact-payload-preserved"}],
+        parents:Parents,configuration:_{
+          d_relations:Relations,
           d_distinctions:[_{id:"contact-meaning-vs-carrier-bytes",
             standing:"available",evidence:"membrane-noninterpretation"}],
           omega_relations:[_{id:Whole,roles:Roles,standing:"support",
@@ -584,16 +640,40 @@ as_mattermost_contact_dict(Config,Binding,Principal,Post,PostId,Version,
           fact_views:[_{id:Fact,support:Roles,relation_ids:[Whole],
             recognition:"recognized",evidence:"finite-balance-contact-expression"}],
           flourishing_views:Flourishings,possibilities:[],
-          participants:[_{id:ContactId,kind:"human",
-            lineage:["mattermost",ContactId,VersionId],
-            claim:_{kind:"text",content_sha256:ContentHashString,
-              text:Post.message,raw_ref:RawRefString},standing:"candidate",
-            authority:"no-contact-no-movement-authority"}]}}}.
+          participants:Participants}}}.
 
-as_mattermost_flourishing_views(Whole,Views) :-
+as_mattermost_returned_contact_material(no_returned_effect,_PostId,[],[],[],
+    "unresolved","contact-relative-standing-not-yet-formed").
+as_mattermost_returned_contact_material(ambiguous_returned_effect,_PostId,[],
+    [],[],"unresolved","ambiguous-prior-effect-held-for-native-inquiry").
+as_mattermost_returned_contact_material(State,PostId,[Relation],Parents,
+    [Participant],"unknown","verified-return-reopens-flourishing-inquiry") :-
+    is_dict(State), miter_store_nonempty_atom(State.effect_id,EffectId),
+    as_mattermost_id(State.source_post_id,SourcePostId),
+    as_mattermost_id(State.response_post_id,ResponsePostId),
+    as_mattermost_prefixed(SourcePostId,SourceContactId),
+    as_mattermost_prefixed(ResponsePostId,ResponseContactId),
+    as_mattermost_prefixed(PostId,CurrentContactId),
+    format(atom(ParticipantId),'returned_~w_~w',[EffectId,CurrentContactId]),
+    atom_string(EffectIdString,EffectId),
+    atom_string(ParticipantIdString,ParticipantId),
+    atom_string(SourceContactString,SourceContactId),
+    atom_string(ResponseContactString,ResponseContactId),
+    atom_string(CurrentContactString,CurrentContactId),
+    Parents=[SourceContactString,ResponseContactString],
+    Relation=_{id:EffectIdString,kind:"returned-mattermost-effect",
+      standing:"support",evidence:"verified-delivered-response-in-same-thread"},
+    Participant=_{id:ParticipantIdString,kind:"tool",
+      lineage:["mattermost-return",EffectIdString,CurrentContactString],
+      claim:_{kind:"relation",target:EffectIdString,
+        proposed_standing:"support",
+        evidence:"verified-delivered-response-in-same-thread"},
+      standing:"supported",authority:"no-contact-no-movement-authority"}.
+
+as_mattermost_flourishing_views(Whole,Standing,Evidence,Views) :-
     atom_string(WholeString,Whole),
-    findall(_{value:Value,relation_id:WholeString,standing:"unresolved",
-      evidence:"contact-relative-standing-not-yet-formed"},
+    findall(_{value:Value,relation_id:WholeString,standing:Standing,
+      evidence:Evidence},
       member(Value,["AgencyBalance","AttentionStewardship","CognitiveResilience",
         "ConnectionDepth","CreativeTranscendence","PurposeBeyondUtility",
         "SharedUnderstanding","TimeCoherence","WonderPreservation"]),Views).

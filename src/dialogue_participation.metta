@@ -27,6 +27,113 @@
        (index-atom $rows 0)
        (c4-text-participant-unavailable expected-exactly-one))))
 
+; Mattermost chronology is admitted by the membrane as one proposed relation.
+; It becomes material only when native history contains exactly one matching
+; compact VoiceRNA proof/effect pair.  The two lineages remain separately
+; attributable; a carrier file alone cannot manufacture continuation.
+(= (C4ContactDRelations $contact)
+   (index-atom (index-atom (CPContactConfiguration $contact) 1) 1))
+
+(= (C4ReturnedRelationValid $contact $claim)
+   (if (CPShape $claim participant-relation-claim 4)
+     (let* (($effect-id (index-atom $claim 1))
+            ($relations (CPFind (C4ContactDRelations $contact) $effect-id)))
+       (and (== (index-atom $claim 2) support)
+        (and (== (index-atom $claim 3)
+               verified-delivered-response-in-same-thread)
+         (and (== (size-atom $relations) 1)
+          (== (index-atom $relations 0)
+            (relation $effect-id returned-mattermost-effect support
+              verified-delivered-response-in-same-thread))))))
+     false))
+
+(= (C4ReturnedCarrierParticipantValid $contact $participant)
+   (if (CPShape $participant participant-contribution 8)
+     (and (== (index-atom $participant 2) tool)
+      (and (== (index-atom $participant 3) (CPContactScope $contact))
+           (C4ReturnedRelationValid $contact (index-atom $participant 5))))
+     false))
+
+(= (C4ReturnedCarrierParticipantsAt $contact $participants $i)
+   (if (< $i (size-atom $participants))
+     (let $participant (index-atom $participants $i)
+       (if (C4ReturnedCarrierParticipantValid $contact $participant)
+         (cons-atom $participant
+           (C4ReturnedCarrierParticipantsAt $contact $participants (+ $i 1)))
+         (C4ReturnedCarrierParticipantsAt $contact $participants (+ $i 1))))
+     ()))
+
+(= (C4VoiceHistoryForEffect $effect-id)
+   (collapse (match &assistant_history
+     (assistant-history voice-proof $effect-id $scope $payload)
+     (c4-voice-history $scope $payload))))
+
+(= (C4EffectHistoryForEffect $effect-id)
+   (collapse (match &assistant_history
+     (assistant-history effect $effect-id $scope $payload)
+     (c4-effect-history $scope $payload))))
+
+(= (C4AudienceProjectSame $left $right)
+   (and (== (index-atom $left 2) (index-atom $right 2))
+        (== (index-atom $left 3) (index-atom $right 3))))
+
+; Same-principal continuation must name the exact currently active source cut.
+; A different authorized principal may join the shared audience/project only
+; when that principal has no unrelated active organization to overwrite.
+(= (C4ReturnedScopeCompatible $prior-scope $current-scope $proof-reference)
+   (if (C4AudienceProjectSame $prior-scope $current-scope)
+     (let $current-active (ARActiveRows $current-scope)
+       (if (== (index-atom $prior-scope 1) (index-atom $current-scope 1))
+         (and (== (size-atom $current-active) 1)
+              (== (index-atom (index-atom
+                    (index-atom $current-active 0) 2) 1)
+                (index-atom $proof-reference 1)))
+         (== (size-atom $current-active) 0)))
+     false))
+
+(= (C4ReturnedNativeParticipant $contact $carrier)
+   (let* (($claim (index-atom $carrier 5))
+          ($effect-id (index-atom $claim 1))
+          ($voices (C4VoiceHistoryForEffect $effect-id))
+          ($effects (C4EffectHistoryForEffect $effect-id))
+          ($current-scope (CPContactScope $contact)))
+     (if (and (== (size-atom $voices) 1) (== (size-atom $effects) 1))
+       (let* (($voice-row (index-atom $voices 0))
+              ($effect-row (index-atom $effects 0))
+              ($prior-scope (index-atom $voice-row 1))
+              ($voice (index-atom $voice-row 2))
+              ($effect (index-atom $effect-row 2))
+              ($proof-reference (if (ARVoiceProofReferenceRecordValid $voice)
+                (index-atom $voice 1) ())))
+         (if (and (== $prior-scope (index-atom $effect-row 1))
+               (and (AR2CompactVoiceEffectPairValid $voice $effect $effect-id)
+                (and (C4ReturnedScopeCompatible $prior-scope $current-scope
+                       $proof-reference)
+                 (and (CPShape (index-atom $proof-reference 1) cut-of 3)
+                      (CPHas (index-atom (index-atom $proof-reference 1) 1)
+                        (CPContactParents $contact) 0)))))
+           (participant-contribution
+             (c4-native-returned-effect-participation
+               (index-atom $contact 1) $effect-id)
+             native-authority $current-scope
+             (lineage c4 persisted-voice-effect $effect-id $prior-scope)
+             (participant-relation-claim $effect-id support
+               (c4-returned-effect-proof-v1 $proof-reference $prior-scope
+                 current-contact (index-atom $contact 1)))
+             supported no-contact-no-movement-authority)
+           no-native-returned-effect-participant))
+       no-native-returned-effect-participant)))
+
+(= (C4ContactWithReturnedEffect $contact)
+   (let $carriers (C4ReturnedCarrierParticipantsAt $contact
+          (CPParticipants $contact) 0)
+     (if (== (size-atom $carriers) 1)
+       (let $native (C4ReturnedNativeParticipant $contact
+              (index-atom $carriers 0))
+         (if (CPShape $native participant-contribution 8)
+           (CP2ContactWithAuthorityParticipants $contact ($native)) $contact))
+       $contact)))
+
 ; Associative recall is requested by the Soul as a scoped candidate surface.
 ; Exact continuity remains in the native capsule; neither Chroma distance nor
 ; result order has native standing.
@@ -106,8 +213,8 @@
    (participant-contribution (index-atom $result 1) memory $scope
      (lineage chroma-local miter-cleanroom-continuity-v1 $query-hash
        (index-atom $result 1))
-     (participant-relation-claim
-       (c4-continuity-memory (index-atom $result 1)) unresolved
+     (c4-scoped-memory-candidate-v1
+       (c4-continuity-memory (index-atom $result 1))
        (c4-scoped-memory-evidence-v1
          (index-atom $result 2) (index-atom $result 3)
          (index-atom $result 4) (index-atom $result 5)
@@ -127,8 +234,9 @@
      (c4-memory-availability (index-atom (index-atom $question 1) 1))
      memory (index-atom $question 2)
      (lineage chroma-local (index-atom $question 1))
-     (participant-relation-claim relation-semantic-memory-availability
-       unresolved (c4-memory-availability-observation $observation))
+     (c4-memory-availability-candidate-v1
+       relation-semantic-memory-availability
+       (c4-memory-availability-observation $observation))
      unresolved no-contact-no-movement-authority))
 
 (= (C4MemoryParticipants $observation $question)
@@ -145,8 +253,8 @@
    (if (and (CPShape $participant participant-contribution 8)
          (and (== (index-atom $participant 2) memory)
               (CPShape (index-atom $participant 5)
-                participant-relation-claim 4)))
-     (let $evidence (index-atom (index-atom $participant 5) 3)
+                c4-scoped-memory-candidate-v1 3)))
+     (let $evidence (index-atom (index-atom $participant 5) 2)
        (if (CPShape $evidence c4-scoped-memory-evidence-v1 8)
          (c4-memory-reference (index-atom $participant 1)
            (index-atom $evidence 1)
@@ -201,6 +309,16 @@
      (continuity-participation
        (predecessor (if (CPCutValid (index-atom $cut 2))
          (source-cut (index-atom (index-atom $cut 2) 1)) no-predecessor))
+       (active-organization
+         (let $active (ARActiveRows (index-atom $cut 3))
+           (if (== (size-atom $active) 1)
+             (let* (($row (index-atom $active 0))
+                    ($prior-cut (index-atom $row 2))
+                    ($prior-movement (index-atom $row 3)))
+               (prior-active (source-cut (index-atom $prior-cut 1))
+                 (ARMovementReference $prior-cut $prior-movement)
+                 (live-undertakings (CPLiveThreadIds $prior-cut))))
+             no-prior-active-organization)))
        (live-undertakings (CPLiveThreadIds $cut))
        (present (index-atom $cut 11))
        (retrieved-memory-candidates
@@ -330,8 +448,8 @@
          (participant-contribution (index-atom $reading 1) model $scope
            (lineage openrouter-glm53 z-ai/glm-5.3
              (index-atom $question 1) (index-atom $reading 1))
-           (participant-relation-claim
-             (c4-dialogue-reading (index-atom $reading 1)) unresolved
+           (c4-derived-semantic-reading-claim-v1
+             (c4-dialogue-reading (index-atom $reading 1))
              (c4-derived-semantic-reading-v1 (index-atom $question 1)
                $reading proposal-requires-native-formation-and-consequence))
            candidate no-contact-no-movement-authority)
@@ -352,7 +470,7 @@
           (index-atom (index-atom $question 1) 1))
         native-authority (index-atom $question 2)
         (lineage c4 semantic-question-from-complete-preliminary-cut)
-        (participant-relation-claim c4-semantic-question-grounding unresolved
+        (c4-native-semantic-question-claim-v1 c4-semantic-question-grounding
           (c4-native-semantic-question-basis-v1 $question
             fact9-flourishing-continuity-and-movement-selected-natively
             no-provider-relevance-authority))
@@ -360,7 +478,7 @@
      ()))
 
 (= (C4VoiceInstructions)
-  "Return only one JSON object with exactly utterance, uncertainty, and bindings. Render a concise, natural response to the supplied human contact from Miter's already-formed inquiry movement and derived semantic readings. Bind the response to one or more supplied reading identifiers by copying those identifiers exactly. Preserve material uncertainty, do not claim that a model response is evidence or authority, do not mention internal architecture unless the human asked about it, do not invent completed actions, and do not use a Markdown fence. Keep utterance under 3000 characters and uncertainty under 600 characters.")
+  "Return only one JSON object with exactly utterance, uncertainty, and bindings. Render a concise, natural response to the supplied human contact from Miter's already-formed native movement and derived semantic readings. Bind the response to one or more supplied reading identifiers by copying those identifiers exactly. Preserve material uncertainty, do not claim that a model response is evidence or authority, do not mention internal architecture unless the human asked about it, do not invent completed actions, and do not use a Markdown fence. Keep utterance under 3000 characters and uncertainty under 600 characters.")
 
 (= (C4SemanticReadingIdsAt $readings $i)
    (if (< $i (size-atom $readings))
@@ -592,14 +710,15 @@
          (index-atom $prepared 1) unknown-contact)
        semantic-reformation-prerequisites-unavailable)))
 
-(= (C4BoundContactWithModelV1 $root $binding $contact)
+(= (C4BoundContactUsingV1 $root $binding $contact $memory-writer $model-writer)
    (let $initial-context (AR4BoundContactContextV1 $binding $contact)
      (if (AR4BoundContactContextValid $initial-context)
-       (let* (($initial-contact (index-atom $initial-context 5))
+       (let* (($initial-contact
+                (C4ContactWithReturnedEffect (index-atom $initial-context 5)))
               ($memory-question (C4MemoryQuery $initial-contact))
               ($memory-observation (if (CPShape $memory-question
                 c4-memory-query-v1 6)
-                (as_chroma $root $memory-question)
+                ($memory-writer $root $memory-question)
                 (c4-memory-observation-unavailable-v1
                   (question-reference (index-atom $contact 1)
                     continuity-recall)
@@ -626,7 +745,7 @@
                     $preliminary))
                   ($observation (if (CPShape $question
                     c4-contact-semantic-question-v1 11)
-                    (as_model $root $question)
+                    ($model-writer $root $question)
                     (c4-model-observation-unavailable-v1
                       (question-reference (index-atom $contact 1)
                         general-contact-semantics)
@@ -652,7 +771,7 @@
                             $observation))
                           ($voice-observation (if (CPShape $voice-question
                             c4-voice-render-question-v1 11)
-                            (as_model $root $voice-question)
+                            ($model-writer $root $voice-question)
                             (c4-model-observation-unavailable-v1
                               (question-reference (index-atom $contact 1)
                                 voice-rendering)
@@ -695,3 +814,6 @@
              (index-atom $initial-context 2))
            (assistant-contact-rejected stable-identity-scope-mismatch))
          model-participation-not-requested))))
+
+(= (C4BoundContactWithModelV1 $root $binding $contact)
+   (C4BoundContactUsingV1 $root $binding $contact as_chroma as_model))
