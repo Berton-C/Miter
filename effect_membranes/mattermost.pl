@@ -17,7 +17,9 @@ as_mattermost_prepare(Root0, Standing) :-
     catch((as_mattermost_root(Root0, Root),
            as_mattermost_config(Root, Config),
            ( Config.enabled == true ->
-               as_mattermost_resolve_live(Root, Config, _), Standing=ready
+               as_mattermost_resolve_live(Root, Config, Binding),
+               as_mattermost_reconcile_pending_effects(Root,Config,Binding),
+               Standing=ready
            ; Standing=disabled )), _, Standing=held), !.
 
 as_mattermost_poll(Root0, Inputs) :-
@@ -118,6 +120,34 @@ as_mattermost_binding_local(Root,Config,Binding) :-
     directory_file_path(Root,'surface/mattermost-binding.json',Path),
     miter_store_read_json(Path,Binding),
     as_mattermost_binding_matches_config(Config,Binding).
+
+% Startup reconciliation is a recovery read over transmissions that have
+% already begun.  It can recognize a unique delivered post or retain unknown
+% standing; it can never create or resend a post.
+as_mattermost_reconcile_pending_effects(Root,Config,Binding) :-
+    directory_file_path(Root,'surface/effects',Directory),
+    ( exists_directory(Directory) ->
+        directory_files(Directory,Names),
+        findall(Path-State,
+          ( member(Name,Names), file_name_extension(_,json,Name),
+            directory_file_path(Directory,Name,Path),
+            miter_store_read_json(Path,State),
+            is_dict(State), State.schema=="miter-mattermost-effect-v1",
+            memberchk(State.standing,
+              ["transmission-started-outcome-unknown","outcome-unknown-held"]) ),
+          Pending),
+        ( Pending=[] -> true
+        ; as_mattermost_token(Config,Token),
+          maplist(as_mattermost_reconcile_pending_effect(Config,Binding,Token),
+            Pending) )
+    ; true ).
+
+as_mattermost_reconcile_pending_effect(Config,Binding,Token,Path-State) :-
+    as_mattermost_id(State.channel_id,ChannelId),
+    as_mattermost_id(Binding.channel_id,ChannelId),
+    as_mattermost_id(State.bot_id,BotId),
+    as_mattermost_id(Binding.bot_id,BotId),
+    as_mattermost_reconcile_effect(Path,State,Config,Binding,Token,_).
 
 as_mattermost_binding_matches_config(Config,Binding) :-
     is_dict(Binding), Binding.schema=="miter-mattermost-private-binding-v1",
@@ -373,7 +403,7 @@ as_mattermost_post_json(Config,Token,Path,Body,Status,Reply) :-
 
 as_mattermost_finish_transmission(Path,State,Config,_Binding,Token,
     ['http-result',201,Reply],Result) :-
-    as_mattermost_delivered_post_valid(State,Reply), !,
+    as_mattermost_delivered_post_identity(State,Reply), !,
     as_mattermost_mark_delivered(Path,State,Reply.id,Delivered),
     as_mattermost_verify_stored_delivery(Config,Token,Delivered),
     as_mattermost_effect_receipt(Path,Delivered,delivered),
@@ -397,6 +427,11 @@ as_mattermost_mark_delivered(Path,State,ResponsePostId0,Delivered) :-
     as_write_json_durable(Path,Delivered).
 
 as_mattermost_delivered_post_valid(State,Post) :-
+    as_mattermost_delivered_post_identity(State,Post),
+    miter_store_nonempty_atom(Post.pending_post_id,PendingPostId),
+    miter_store_nonempty_atom(State.pending_post_id,PendingPostId).
+
+as_mattermost_delivered_post_identity(State,Post) :-
     is_dict(Post), as_mattermost_id(Post.id,_),
     as_mattermost_id(Post.channel_id,ChannelId),
     as_mattermost_id(State.channel_id,ChannelId),
@@ -404,14 +439,15 @@ as_mattermost_delivered_post_valid(State,Post) :-
     Post.message==State.message,
     as_mattermost_id(Post.root_id,RootPostId),
     as_mattermost_id(State.root_post_id,RootPostId),
-    miter_store_nonempty_atom(Post.pending_post_id,PendingPostId),
-    miter_store_nonempty_atom(State.pending_post_id,PendingPostId).
+    number(Post.create_at), Post.create_at>0,
+    number(Post.delete_at), Post.delete_at=:=0.
 
 as_mattermost_verify_stored_delivery(Config,Token,State) :-
     as_mattermost_id(State.response_post_id,ResponsePostId),
     format(atom(Path),'/api/v4/posts/~w',[ResponsePostId]),
     as_mattermost_get(Config,Token,Path,Post,200),
-    as_mattermost_delivered_post_valid(State,Post).
+    as_mattermost_delivered_post_identity(State,Post),
+    as_mattermost_id(Post.id,ResponsePostId).
 
 as_mattermost_reconcile_effect(Path,State,Config,_Binding,Token,Result) :-
     Since0 is floor(State.prepared_at_epoch*1000)-5000,
@@ -422,7 +458,7 @@ as_mattermost_reconcile_effect(Path,State,Config,_Binding,Token,Result) :-
     ( catch(as_mattermost_get(Config,Token,PostsPath,Reply,200),_,fail),
       as_mattermost_posts(Reply,Posts),
       findall(Post,(member(Post,Posts),
-        as_mattermost_delivered_post_valid(State,Post)),Matches),
+        as_mattermost_reconciliation_post_valid(State,Post)),Matches),
       Matches=[Only] ->
         as_mattermost_mark_delivered(Path,State,Only.id,Delivered),
         as_mattermost_effect_receipt(Path,Delivered,reconciled),
@@ -431,6 +467,16 @@ as_mattermost_reconcile_effect(Path,State,Config,_Binding,Token,Result) :-
         observed_at_epoch:Now},State,Held), as_write_json_durable(Path,Held),
       Result=['mattermost-effect-held',State.effect_id,
         'outcome-unknown-no-blind-resend'] ).
+
+% Mattermost's stored post representation does not necessarily retain the
+% client pending_post_id.  Reconciliation therefore requires one and only one
+% server post with the exact bytes, bot, channel, root thread, and a creation
+% time inside this transmission's bounded chronology.  Zero or plural matches
+% remain outcome-unknown and are never resent blindly.
+as_mattermost_reconciliation_post_valid(State,Post) :-
+    as_mattermost_delivered_post_identity(State,Post),
+    Start is floor(State.transmission_started_at_epoch*1000)-5000,
+    Post.create_at>=Start.
 
 as_mattermost_effect_result(State,Kind,Result) :-
     miter_store_nonempty_atom(State.effect_id,EffectId),
@@ -493,16 +539,24 @@ as_mattermost_posts(Reply, Posts) :-
     dict_pairs(PostDict,_,Pairs), pairs_values(Pairs,Posts).
 
 as_mattermost_post_version(Post, Version) :-
+    Create=Post.create_at, Edit=Post.edit_at,
+    Version is max(Create,Edit).
+
+% Mattermost may advance update_at when thread metadata changes, including
+% when Miter replies to an otherwise unchanged human root post.  That change
+% must wake and advance the poller, but it is not a new semantic contact.
+% Only create_at/edit_at may participate in the contact identity below.
+as_mattermost_poll_version(Post, Version) :-
     Create=Post.create_at, Update=Post.update_at,
     Version is max(Create,Update).
 
 as_mattermost_post_order(Order,A,B) :-
-    as_mattermost_post_version(A,AV), as_mattermost_post_version(B,BV),
+    as_mattermost_poll_version(A,AV), as_mattermost_poll_version(B,BV),
     compare(Order,AV,BV).
 
 as_mattermost_max_version([],Since,Since).
 as_mattermost_max_version([Post|Rest],Since,Max) :-
-    as_mattermost_post_version(Post,Version), Next is max(Since,Version),
+    as_mattermost_poll_version(Post,Version), Next is max(Since,Version),
     as_mattermost_max_version(Rest,Next,Max).
 
 as_mattermost_posts_to_inputs(_,_,_,_,[],[]).
@@ -522,7 +576,8 @@ as_mattermost_post_input(Root,Config,Binding,Since,Post,Input) :-
     member(Principal,Binding.principals), as_mattermost_id(Principal.id,UserId),
     memberchk(Principal.username,Config.authorized_humans),
     as_evaluation_principal_active(Root,Config,Binding,Principal.username,_),
-    as_mattermost_post_version(Post,Version), Version>Since,
+    as_mattermost_poll_version(Post,PollVersion), PollVersion>Since,
+    as_mattermost_post_version(Post,Version),
     string(Post.message), string_codes(Post.message,Codes),
     length(Codes,ByteApprox), ByteApprox=<Config.inbound.max_event_bytes,
     as_mattermost_event_name(PostId,Version,Name),

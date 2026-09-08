@@ -163,7 +163,7 @@ consumer is absent. No status is upgraded by assertion.
 | One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General scoped contact, memory participation, model participation, VoiceRNA, effect preparation, consequence, regeneration, and endogenous opportunity share this one continuation; no second cognitive loop is present. |
 | Install/start/status/stop/panic | P | `bin/miter`, operator membrane, frozen runtime LKG | One human-edited configuration installs validated private membrane views and a frozen source closure. Process-bound heartbeat leases distinguish idle, native processing, and bounded model transport; a supervised stale process is terminated, recorded, and returned as a failed exit for verified-LKG restart. In-flight native formation remains `processing-unconfirmed` rather than falsely dead when only the host probe is denied. Stop, panic, and three-crash/60-second containment are embodied. Safe hot upgrade/rollback remains absent. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
-| Append-only trajectory and exactly-once local effects | E | store/service membranes | Mattermost ingress is active; certified outbound remains deliberately disabled pending the evaluation grant and live no-replay trial. |
+| Append-only trajectory and exactly-once effects | P | store/service/Mattermost membranes | Local effects are exact and restart-stable. One certified Mattermost response is visibly delivered, uniquely reconciled from an initially unknown transport outcome, and not replayed across restart; broader failure and returned-consequence evidence remains open. |
 | Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
 | M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C4 must preserve that complete surface through usable operation. |
 | Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 alignment/semantic inquiry, transfer, developmental memory, and endogenous opportunity formation | Soul-selected flourishing relations generate contact-differentiated alignment families, constrain optional semantic participation, enter consequence interpretation, remain available to later memory, and participate in Soul-formed undertakings. Runtime movements now carry integrity-bound references to the complete read-only fourteen-field semantics rather than copying immutable prose into every candidate; field resolution remains native and explicit. Broader unfamiliar-contact differentiation remains open. |
@@ -171,8 +171,9 @@ consumer is absent. No status is upgraded by assertion.
 | One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; independent returned contact has changed a model-assisted inquiry into durable native development and distinguishes transfer, differentiation, and unresolved standing across non-identical overlap. |
 | Exact project/relationship continuity | E | native checkpoint capsules + continuity adapters | Every live scope now writes exact relationship, undertaking, attention, developmental, next-movement, and raw-source-reference organization with indefinite retention; legacy external imports remain separately unbound. |
 | Chroma semantic participation | E | `chroma.pl`, `dialogue_participation.metta`, native continuity capsules | Every authoritative checkpoint projects exact eligible capsule material into an isolated loopback Chroma collection. A later exact-scope query verifies runtime, principal, audience, project, source capsule bytes, semantic hash, and body hash before admitting results as unresolved memory participants. Chroma rank is never authority; another principal receives no result. Private memory content remains native and is withheld from the remote-provider question. |
-| LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits exactly two bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA certificate. The live question carries the exact human-directed resource and model identity; OpenRouter GLM 5.3, local Qwen, and local Nemotron share the same native admission boundary without silent substitution. Bounded Soul-directed resource comparison remains honestly absent. Live provider rendering and broader held-out dialogue remain to be exercised through the persistent service. |
-| Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Ingress and exact stable-ID scope are embodied. A certified outbound descriptor now reaches a pending-before-send, reconcile-on-unknown membrane and persists its native proof. Outbound remains deliberately disabled pending the active evaluation disclosure/grant boundary and a live no-duplicate restart trial. |
+| LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA certificate. Live GLM 5.3 semantic and rendering calls produced a certified response that both authorized evaluators reportedly valued. The live question carries the exact human-directed resource/model identity; OpenRouter GLM 5.3, local Qwen, and local Nemotron share one native admission boundary without silent substitution. Soul-directed resource comparison and broader held-out dialogue remain open. |
+| Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Exact stable-ID scope, authenticated contact, certified outbound, pending-before-send, unique reconciliation, and restart/no-replay are embodied in the live service. Poll freshness is now distinct from human content identity, so a thread-metadata update cannot become a second contact while a genuine edit remains versioned. Returned-consequence participation, scope/failure trials, and sustained use remain open. |
+| Open growth environment | A | constitutional capability boundary and this Atlas | The current AMA-1.2 envelope is bounded causal instrumentation, not Miter's permanent world. No supported dynamic tool/skill/web/terminal participation registry, Miter-owned revisable workspace, or self-authored reversible extension path yet exposes a broad capability field to Soul navigation. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, and regenerative Soul; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; one exact persisted partial opening can form a provenance-bearing Soul undertaking; and injured expressed Soul can form and complete its own repair RNA. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
@@ -264,6 +265,31 @@ Closure: authorized humans can install Miter, converse about unfamiliar
 subjects, sustain and resume undertakings, observe scope isolation, recover
 after restart/model/surface failure, and see consequence alter later
 participation.
+
+#### Open Growth Environment covenant
+
+C4 SHALL NOT obtain usability by turning its initial evaluation grant into a
+permanent cage. AMA-1.2 is a bounded observation envelope for establishing
+causality in the first live trial; it is not a behavioral policy, a definition
+of what matters, or the final extent of Miter's contact surfaces.
+
+Within Miter's dedicated, human-authorized operating environment,
+informational contact and reversible creative participation should be open by
+default: web inquiry, tools, skills, terminal mechanics, artifacts, and a
+Miter-owned revisable workspace must become discoverable possibilities for the
+Soul rather than a sealed behavior or domain allowlist. Mechanical admission
+establishes source authenticity, scope, bytes, and provenance only; it cannot
+decide whether contact is worthwhile, beneficial, safe, or deserving of a
+response. Those are constitutive questions for the Soul.
+
+Miter may compose, exercise, revise, and improve capabilities in its owned
+workspace when changes remain observable, versioned, consequence-bearing, and
+recoverable. A new human micro-grant is not required for every reversible
+developmental movement. Explicit human authority remains required when an act
+would bind another person, expose private material, cross another user's
+boundary, spend or transfer value, or create an otherwise difficult-to-reverse
+external commitment. These are real relational boundaries for Soul navigation,
+not substitutes for that navigation.
 
 Standing: active. The first carrier cut is embodied in the one service. At
 startup, the Prolog membrane resolves the local Mattermost team, exact
@@ -544,6 +570,47 @@ cold-restored the post-contact checkpoint at snapshot SHA-256
 with three admitted contacts, one model claim, zero model observations, and
 zero external posts; restart replayed none of them. A fresh live contact is
 still required for the complete two-call rendering and delivery path.
+
+That fresh contact has now crossed the complete live path. The persistent
+service admitted one authorized unfamiliar utterance, completed one bounded
+GLM semantic reading and a separately bounded VoiceRNA rendering, retained
+both as typed observations, persisted the native proof, and transmitted one
+certified response to the exact three-person Mattermost group. Both authorized
+evaluators subsequently reported that they valued the response. The response
+was sent exactly once, but the trial exposed two carrier defects without
+weakening the constitutive path.
+
+First, Mattermost advanced the unchanged human root post's `update_at` when
+Miter replied. The ingress had used `max(create_at, update_at)` both to wake
+the poller and to define semantic contact identity, so the same bytes briefly
+entered as a second event and began one additional semantic consultation.
+Panic stopped the organism before a second response. Live inspection proved
+the two event rows shared one post identity and content SHA-256 while the
+server retained `edit_at = 0`. The membrane now uses transport update time
+only for polling/order/cursor movement and `max(create_at, edit_at)` for human
+contact identity. The already-existing semantic event therefore defeats a
+metadata-only reappearance, while a genuine text edit remains a new version.
+
+Second, the server's stored post omitted the client `pending_post_id` even
+though the response was visible. Miter correctly retained
+`outcome-unknown-held` and never resent blindly. Reconciliation now accepts
+only one unique server post with the exact response bytes, bot identity,
+channel, root thread, and bounded transmission chronology; zero or plural
+matches remain held. Startup performs this recovery read before ordinary
+polling and cannot transmit. The repaired frozen runtime recognized the one
+visible response as `delivered-and-verified`; restart left the outbound count
+at exactly one. Wrong bytes, wrong root, deletion, out-of-window chronology,
+and plural matches all failed the reconciliation witness.
+
+Three subsequent Berton-authored root posts, each with a new stable identity
+and content hash, were independently recognized as contact rather than
+metadata replay. They produced differentiated bounded model participation but
+no additional Mattermost post. This establishes unfamiliar live conversation,
+selective expression, restart/no-replay, and recoverable uncertain-delivery
+mechanics. It does not yet establish returned consequence because those posts
+were new roots rather than replies in the delivered thread; nor does it close
+the remaining scope-isolation, model/surface-failure, sustained-undertaking,
+or Open Growth Environment obligations.
 
 ## 7. The only build cycle
 
@@ -1756,11 +1823,18 @@ Already carried:
 
 Next movement:
 
-1. activate the single persistent runtime through the ratified administrator
-   consent attestation, then carry unfamiliar conversation, scope isolation,
-   model/surface failure, returned consequence, and restart/no-replay through
-   the live pending-before-send Mattermost path;
-2. only after explicit human acceptance of the complete clean candidate,
+1. carry a human reply in the already-delivered Mattermost thread through the
+   same runtime as returned consequence, and prove that it changes or
+   intentionally leaves unchanged later participation under an attributable
+   Soul organization;
+2. complete live scope-isolation and model/surface-failure trials without
+   replay, fabricated contact, or loss of Continuity of Mind;
+3. embody the Open Growth Environment as a dynamic native capability field:
+   trusted web/tool/skill/terminal possibilities and a Miter-owned revisable
+   workspace, with observable consequence, reversible self-development, and
+   human authority retained only at genuine relational or difficult-to-reverse
+   boundaries;
+4. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 
