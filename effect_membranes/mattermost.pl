@@ -227,7 +227,9 @@ as_mattermost_get(Config,Token,Path,Reply,Expected) :-
     as_mattermost_auth(Token,Authorization),
     setup_call_cleanup(http_open(Url,Stream,
       [request_header('Authorization'=Authorization),status_code(Status),
-       timeout(5),encoding(utf8)]),json_read_dict(Stream,Reply),close(Stream)),
+       timeout(5),encoding(utf8)]),
+      (set_stream(Stream,encoding(utf8)),json_read_dict(Stream,Reply)),
+      close(Stream)),
     Status==Expected.
 
 % Commit one already-certified response to the exact resolved group.  The
@@ -394,7 +396,8 @@ as_mattermost_post_json(Config,Token,Path,Body,Status,Reply) :-
        request_header('Authorization'=Authorization),
        request_header('Content-Type'='application/json'),
        request_header('Accept'='application/json')]),
-      read_string(Stream,262145,Raw),close(Stream)),
+      (set_stream(Stream,encoding(utf8)),read_string(Stream,262145,Raw)),
+      close(Stream)),
     string_length(Raw,Length), Length=<262144,
     catch(atom_json_dict(Raw,Reply,[]),_,Reply=_{raw:"unparseable"}).
 

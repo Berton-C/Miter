@@ -542,6 +542,7 @@ miter_chroma_post_json(Url,Body,Status,Reply) :-
        request_header('Accept'='application/json')]),
       miter_chroma_read_json(Stream,Reply),close(Stream)).
 miter_chroma_read_json(Stream,Reply) :-
+    set_stream(Stream,encoding(utf8)),
     read_string(Stream,4194305,Raw),string_length(Raw,Length),Length=<4194304,
     ( Raw=="" -> Reply=_{} ; atom_json_dict(Raw,Reply,[]) ).
 

@@ -927,7 +927,7 @@ as_model_resource_health(_Root,Profile,'local-model-available') :-
       http_open("http://127.0.0.1:1234/v1/models",In,
         [method(get),status_code(Status),timeout(5),redirect(false),
          request_header('Accept'='application/json')]),
-      json_read_dict(In,Document),close(In)),
+      (set_stream(In,encoding(utf8)),json_read_dict(In,Document)),close(In)),
     Status=:=200,is_dict(Document),get_dict(data,Document,Rows),is_list(Rows),
     get_dict(model,Profile,Model),
     findall(Id,(member(Row,Rows),is_dict(Row),get_dict(id,Row,Id),Id==Model),
@@ -945,7 +945,8 @@ as_model_execute(Root,Hash,QuestionRef,Scope,Question,ResourceId,Profile,Body,
       catch(call_with_time_limit(Deadline,
         setup_call_cleanup(
           http_open(Profile.endpoint,In,HttpOptions),
-          read_string(In,ReadLimit,Captured),close(In))),
+          (set_stream(In,encoding(utf8)),
+           read_string(In,ReadLimit,Captured)),close(In))),
         Error,true),
       (get_time(TransportEnded),
        as_heartbeat(Root,'assistant-processing',TransportEnded))),
@@ -1188,7 +1189,12 @@ as_model_perspective_string_atom(String,Atom) :-
 
 as_model_bounded_text(Text,Min,Max) :-
     string(Text), string_length(Text,Length), Length>=Min, Length=<Max,
-    string_codes(Text,Codes), \+ member(0,Codes).
+    string_codes(Text,Codes), maplist(as_model_supported_text_code,Codes).
+
+as_model_supported_text_code(Code) :-
+    integer(Code), Code>=0,
+    ( memberchk(Code,[9,10,13])
+    ; Code>=32, \+ between(127,159,Code) ).
 
 as_model_raw_reference(Value) :-
     miter_store_nonempty_atom(Value,Reference),

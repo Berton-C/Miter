@@ -500,7 +500,7 @@
      ()))
 
 (= (C4VoiceInstructions)
-  "Return only one JSON object with exactly utterance, uncertainty, and bindings. Render a concise, natural response to the supplied human contact from Miter's already-formed native movement and derived semantic readings. Bind the response to one or more supplied reading identifiers by copying those identifiers exactly. Preserve material uncertainty, do not claim that a model response is evidence or authority, do not mention internal architecture unless the human asked about it, do not invent completed actions, and do not use a Markdown fence. Keep utterance under 3000 characters and uncertainty under 600 characters.")
+  "Return only one JSON object with exactly utterance, uncertainty, and bindings. Render a concise, natural response to the supplied human contact from Miter's already-formed native movement and derived semantic readings. Bind the response to one or more supplied reading identifiers by copying those identifiers exactly. Preserve material uncertainty, do not claim that a model response is evidence or authority, do not mention internal architecture unless the human asked about it, do not invent completed actions, and do not claim feelings, bodily reactions, sensory observations, or inner experiences that are not present in the supplied native movement. Do not use a Markdown fence. Keep utterance under 3000 characters and uncertainty under 600 characters.")
 
 (= (C4SemanticReadingIdsAt $readings $i)
    (if (< $i (size-atom $readings))
@@ -535,7 +535,8 @@
              preserve-plurality-and-uncertainty
              no-claim-of-unperformed-effect)
            (voice-commitments source-bound scope-bound movement-bound
-             disclosure-current-contact-only relational-not-fixed-style)
+             disclosure-current-contact-only relational-not-fixed-style
+             no-unsupported-internal-state-claim)
            (request-contract (C4VoiceInstructions)
              rendering-not-movement candidate-utterance-not-effect
              no-contact-no-authority-no-choice)
