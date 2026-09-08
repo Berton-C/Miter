@@ -80,7 +80,7 @@
     },
     {
       "path": "src/provisional_dynamics.metta",
-      "sha256": "88b54ccfd32390a4fdb87f9ff2916ed98d334a07e939d16b6f01705844173c3c"
+      "sha256": "53a6e079955c862463a013cf49020ea378002255b8c85391ca53a252d1ab299d"
     },
     {
       "path": "src/model_participation.metta",
@@ -88,7 +88,7 @@
     },
     {
       "path": "src/constitutive_authority_joint.metta",
-      "sha256": "4f8bb3791978dc91178906ff21bfffd75a37fde1c6a30b84bd656cfe17264eaa"
+      "sha256": "a37e20be4a05330f667e50d3850221b326c6c57381cd72cc201b55a639e3ac81"
     },
     {
       "path": "effect_membranes/integrity.pl",

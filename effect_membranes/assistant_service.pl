@@ -55,6 +55,16 @@ as_symbol(Value, Atom) :-
     miter_store_nonempty_atom(Value, Atom),
     re_match('^[A-Za-z][A-Za-z0-9_.:-]{0,127}$', Atom).
 
+% Deterministic identifiers are a mechanical hashing service. The caller
+% supplies the complete ground provenance-bearing term; this membrane neither
+% inspects its meaning nor decides whether an endogenous occurrence exists.
+as_native_id(Prefix0, Term, Id) :-
+    as_symbol(Prefix0, Prefix), ground(Term), acyclic_term(Term),
+    term_string(Term, Text, [quoted(true),ignore_ops(true)]),
+    string_length(Text, Length), Length>0, Length=<1048576,
+    crypto_data_hash(Text, Hash, [algorithm(sha256),encoding(utf8)]),
+    atomic_list_concat([Prefix,Hash], '-', Id), !.
+
 as_sha256(Value, Atom) :-
     miter_store_nonempty_atom(Value, Atom),
     atom_length(Atom, 64),

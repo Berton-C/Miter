@@ -1,7 +1,8 @@
 ; Continuously recurring native assistant reactor.
-; The reactor processes typed contact and consequence; it does not invent work,
-; select by scenario, or grant effects. Mechanical callbacks may carry bytes,
-; wait, checkpoint, and report control, but they cannot choose movement.
+; The reactor processes typed contact and consequence. A later C3 extension may
+; form endogenous contact from exact persisted Soul openings, but no timer
+; invents work and no scenario selects behavior. Mechanical callbacks may carry
+; bytes, wait, checkpoint, and report control, but they cannot choose movement.
 
 (= (ARActiveRows $scope)
    (collapse (match &assistant_state

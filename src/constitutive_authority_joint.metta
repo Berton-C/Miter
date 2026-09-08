@@ -9,22 +9,35 @@
 
 (= (CP2M24Contact $contact)
    (if (and (CPContactValid $contact)
-            (== (index-atom $contact 2) human-contact))
+         (or (== (index-atom $contact 2) human-contact)
+             (and (== (index-atom $contact 2) endogenous-contact)
+                  (> (size-atom (CPContactParents $contact)) 0))))
      (let* (($id (index-atom $contact 1))
+            ($source (index-atom $contact 2))
             ($occurrence (index-atom $contact 6))
             ($proto (index-atom $contact 7))
             ($payload (CP2PayloadReference $contact))
             ($parents (CPContactParents $contact))
             ($route-id (route-of $id))
             ($seal (contact-seal $id $occurrence $route-id $payload))
+            ($route-standing (if (== $source human-contact)
+              authorized-before-payload-cognition
+              soul-formed-from-persisted-opening-before-continuation))
+            ($derivations (if (== $source human-contact)
+              ((derivation (derivation-of $id) testimony-external-input
+                 human-contact $id (prov-contact $seal)))
+              ((derivation (derivation-of $id) internal-generation
+                 (index-atom $parents 0) $id
+                 (prov-generate (derivation-of $id)
+                   ((prov-contact (index-atom $parents 0))))))))
             ($represented (source principal audience project occurrence proto
               payload-reference configuration))
             ($omitted (unrepresented-actuality)))
        (m24-contact $id
          (event $occurrence $proto $parents)
-         (governed-route $route-id human-contact $payload
+         (governed-route $route-id $source $payload
            (source principal audience project occurrence proto payload-reference configuration)
-           authorized-before-payload-cognition)
+           $route-standing)
          $seal
          (raw-field
            (source principal audience project occurrence proto payload-reference
@@ -37,9 +50,8 @@
            $occurrence (prov-contact $seal)
            (domain-witness $represented $omitted partial-and-explicit))
          (standing (prov-contact $seal) contact-warrant $parents () fresh-current-cycle)
-         ((derivation (derivation-of $id) testimony-external-input human-contact
-            $id (prov-contact $seal)))))
-     (m24-contact-unresolved non-human-or-malformed-contact $contact)))
+         $derivations))
+     (m24-contact-unresolved malformed-or-ungrounded-contact $contact)))
 
 (= (CP2M260OrganizationFor $id $occurrence $payload $scope)
    (M260OccurrenceOrganizationFor $id $occurrence $payload $scope))

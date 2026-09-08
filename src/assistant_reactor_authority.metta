@@ -1795,6 +1795,106 @@
      (assistant-cycle-step-v3 ((assistant-input-rejected malformed-batch))
        (model-participation-not-requested) (AssistantSnapshot))))
 
+; Endogenous movement is not a timer policy. On an idle pass the one reactor
+; asks whether a persisted active organization contains a genuine partial
+; R/A/P opening and no live assigned undertaking. The Soul either forms a
+; provenance-bearing internal occurrence from that exact opening or remains
+; quiescent. Hashing supplies only a stable carrier identifier.
+(= (AR3CutSourceIsEndogenous $cut)
+   (let $provenance (index-atom $cut 12)
+     (if (or (CPShape $provenance contact-provenance 4)
+             (CPShape $provenance contact-provenance-v2 5))
+       (== (index-atom $provenance 1) endogenous-contact)
+       false)))
+
+(= (AR3EndogenousMaterialDRelationsAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (and (CPShape $row relation 5)
+             (CPHas (index-atom $row 2)
+               (participant-derived m24-authority-derived
+                 m260-authority-derived m263-authority-derived) 0))
+         (AR3EndogenousMaterialDRelationsAt $rows (+ $i 1))
+         (cons-atom $row
+           (AR3EndogenousMaterialDRelationsAt $rows (+ $i 1)))))
+     ()))
+
+(= (AR3EndogenousPreconditions $active)
+   (if (CPShape $active active-organization 4)
+     (let* (($cut (index-atom $active 2))
+            ($movement (index-atom $active 3)))
+       (and (CPCutValid $cut)
+        (and (ARMovementValid $movement)
+         (and (== (size-atom (CPLiveThreadIds $cut)) 0)
+              (== (AR3CutSourceIsEndogenous $cut) false)))))
+     false))
+
+(= (AR3EndogenousContact $active $id)
+   (let* (($scope (index-atom $active 1))
+          ($cut (index-atom $active 2))
+          ($movement (index-atom $active 3))
+          ($basis (C3MovementBasisFromReadings $movement))
+          ($developmental (if (CPShape $basis continuation-basis-v3 6)
+            (index-atom $basis 5)
+            (m24-developmental-organization-unresolved missing-basis)))
+          ($openings (if (M24DevelopmentalOrganizationValid $developmental)
+            (C3OpeningsFromMovement $movement $cut $developmental) ()))
+          ($opening (if (== (size-atom $openings) 1)
+            (index-atom $openings 0) ()))
+          ($eligible (and (AR3EndogenousPreconditions $active)
+            (and (CPShape $basis continuation-basis-v3 6)
+                 (CPShape $opening c3-partial-alignment-opening-v2 9)))))
+     (if $eligible
+       (contact-v2 $id endogenous-contact
+         (index-atom $scope 1) (index-atom $scope 2) (index-atom $scope 3)
+         (endogenous-occurrence-of (index-atom $cut 1))
+         soul-formed-from-persisted-partial-alignment
+         (native-endogenous-opportunity (index-atom $cut 1))
+         (encounter-configuration
+           (D
+             (CPProjectRow
+               (AR3EndogenousMaterialDRelationsAt (CPDRelations $cut) 0)
+               (relation c3-endogenous-opportunity-grounding
+                 internal-generation support (source-opening $opening)))
+             (CPProjectRow (CPDDistinctions $cut)
+               (distinction endogenous-opportunity-vs-compelled-activity
+                 available source-opening-preserved)))
+           (index-atom $cut 7) (index-atom $cut 8)
+           (W ((thread $id open
+             (soul-formed-from-partial-alignment $opening))))
+           (index-atom $cut 10)
+           (present-context (endogenous-present-of (index-atom $cut 1))
+             native-reflection)
+           (index-atom $basis 1) (index-atom $basis 2) () ())
+         ((index-atom $cut 1)))
+       (endogenous-contact-unavailable
+         no-single-partial-opening-or-live-undertaking))))
+
+(= (AR3EndogenousContactsAt $actives $i)
+   (if (< $i (size-atom $actives))
+     (let $active (index-atom $actives $i)
+       (if (AR3EndogenousPreconditions $active)
+         (let* (($identity-basis (endogenous-opportunity
+                  (index-atom $active 1)
+                  (index-atom (index-atom $active 2) 1)
+                  (ARMovementReference (index-atom $active 2)
+                    (index-atom $active 3))))
+                ($id (as_native_id c3-endogenous $identity-basis))
+                ($contact (AR3EndogenousContact $active $id)))
+           (if (CPShape $contact contact-v2 11)
+             (cons-atom $contact
+               (AR3EndogenousContactsAt $actives (+ $i 1)))
+             (AR3EndogenousContactsAt $actives (+ $i 1))))
+         (AR3EndogenousContactsAt $actives (+ $i 1))))
+     ()))
+
+(= (AssistantEndogenousCycleStepV3)
+   (let* (($actives (collapse (match &assistant_state $atom $atom)))
+          ($contacts (AR3EndogenousContactsAt $actives 0))
+          ($results (collapse (let $contact (superpose $contacts)
+            (AssistantEncounterV2 $contact)))))
+     (assistant-endogenous-cycle-step-v1 $results (AssistantSnapshot))))
+
 (= (AssistantCycleWithV3 $root $idle $interval $base $cap
       $control-reader $input-reader $checkpoint-writer $waiter $recorder
       $effect-writer $model-writer)
@@ -1831,10 +1931,30 @@
                           (held-outcomes $model-outcomes $effects))
                      (assistant-service-held
                        (model-or-effect-outcomes $model-outcomes $effects)))))
-               (let $wait ($waiter $root $interval)
-                 (AssistantCycleWithV3 $root true $next $base $cap
-                   $control-reader $input-reader $checkpoint-writer $waiter
-                   $recorder $effect-writer $model-writer))))))
+               (let* (($endogenous-step (AssistantEndogenousCycleStepV3))
+                      ($endogenous-results (index-atom $endogenous-step 1)))
+                 (if (> (size-atom $endogenous-results) 0)
+                   (let* (($effects (AREffectsAt $root $endogenous-results
+                              $effect-writer 0))
+                          ($valid (AREffectsValidAt $effects 0)))
+                     (if $valid
+                       (let* (($snapshot (AssistantSnapshot))
+                              ($checkpoint ($checkpoint-writer $root $snapshot))
+                              ($record ($recorder $root assistant-endogenous-cycle-v1
+                                (cycle-standing soul-formed-opportunity
+                                  $idle $checkpoint))))
+                         (if (== $checkpoint checkpointed)
+                           (AssistantCycleWithV3 $root false $base $base $cap
+                             $control-reader $input-reader $checkpoint-writer
+                             $waiter $recorder $effect-writer $model-writer)
+                           (assistant-service-held (checkpoint $checkpoint))))
+                       (let $record ($recorder $root
+                              assistant-endogenous-cycle-held-v1 $effects)
+                         (assistant-service-held (endogenous-effects $effects)))))
+                   (let $wait ($waiter $root $interval)
+                     (AssistantCycleWithV3 $root true $next $base $cap
+                       $control-reader $input-reader $checkpoint-writer $waiter
+                       $recorder $effect-writer $model-writer))))))))
        (assistant-cycle-held malformed-control))))
 
 (= (AssistantCycleWithV2 $root $idle $interval $base $cap
