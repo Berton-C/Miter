@@ -173,6 +173,16 @@ cut reaches its safe boundary. Stop and panic remain available when source
 verification fails. This recovery layer carries process mechanics only and
 does not operate another cognitive loop.
 
+The registered host-service wrapper also watches process-bound heartbeat
+leases. Idle and native-processing leases are finite, while a model transport
+receives only its already-authorized request deadline plus a bounded cleanup
+margin. If the exact process/run lease expires, the wrapper records a
+mechanical liveness event, terminates the unresponsive process, and exits as a
+failure so launchd can restart the same verified last-known-good closure.
+Three failures in sixty seconds remain contained. This is crash/freeze
+recovery, not Soul diagnosis, semantic repair, hot upgrade, or proof that a
+restarted process has recovered cognition.
+
 `prepare-service` writes and validates a runtime-local macOS launchd profile;
 it changes no host registration. `register-service` explicitly loads that
 profile and starts the same frozen PeTTa runtime. launchd retries only failed
@@ -190,7 +200,10 @@ erase continuity. `unregister-service` removes only the launchd registration.
 - `src/`: PeTTa/MeTTa cognition and the single recurring runtime.
 - `effect_membranes/`: non-cognitive Prolog/C mechanics.
 - `config/miter.json`: the one public-safe human-edited configuration;
-  neighboring files are internal authority projections.
+  neighboring files are internal authority projections. Its `supervision`
+  section controls finite startup, idle, native-processing, model-margin,
+  termination, and polling durations without giving the supervisor cognitive
+  authority.
 - `bin/miter`: the only supported operator entry.
 
 ## License

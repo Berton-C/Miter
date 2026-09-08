@@ -59,6 +59,21 @@ as_config_value(max_input_batch, Value) :-
     integer(Value), Value >= 1, Value =< 64.
 as_config_value(max_input_bytes, Value) :-
     integer(Value), Value >= 1024, Value =< 16777216.
+as_config_value(supervision, Value) :-
+    is_dict(Value),
+    dict_pairs(Value,_,Pairs),pairs_keys(Pairs,Keys),sort(Keys,Sorted),
+    Sorted==[model_lease_margin_seconds,poll_seconds,
+      processing_lease_seconds,startup_grace_seconds,
+      termination_grace_seconds,waiting_lease_seconds],
+    as_bounded_integer(Value.startup_grace_seconds,5,120),
+    as_bounded_integer(Value.waiting_lease_seconds,5,60),
+    as_bounded_integer(Value.processing_lease_seconds,30,600),
+    as_bounded_integer(Value.model_lease_margin_seconds,10,120),
+    as_bounded_integer(Value.termination_grace_seconds,1,30),
+    as_bounded_integer(Value.poll_seconds,1,5).
+
+as_bounded_integer(Value,Minimum,Maximum) :-
+    integer(Value),Value>=Minimum,Value=<Maximum.
 
 % Calibrated against the complete C3 Fact9/flourishing/R/A/P proof carrier.
 % This remains a finite mechanical envelope, not authority to truncate or
@@ -993,9 +1008,45 @@ as_local_effect_receipt(Root, EffectId, CertificateHash, ProofHash, Standing) :-
       network_access:false,external_effect:false,observed_at_epoch:Now}).
 
 as_heartbeat(Root, Kind, Now) :-
-    as_path(Root, 'heartbeat.json', Path),
-    as_write_json_durable(Path, _{schema:"miter-assistant-heartbeat-v1",
-      state:Kind,observed_at_epoch:Now}).
+    as_heartbeat_lease_seconds(Root,Kind,Seconds,LeaseKind),
+    ValidUntil is Now+Seconds,
+    as_heartbeat_write(Root,Kind,Now,ValidUntil,LeaseKind).
+
+% A blocking model transport receives only the exact finite deadline already
+% present in the Soul-formed question plus a small mechanical cleanup margin.
+% This prevents a valid slow inference from resembling a frozen reactor.  The
+% lease grants no model call and contributes no cognitive standing.
+as_heartbeat_model_lease(Root, Deadline) :-
+    number(Deadline),Deadline>=1,Deadline=<300,
+    as_config(Root,supervision,Supervision),
+    Seconds is Deadline+Supervision.model_lease_margin_seconds,
+    get_time(Now),ValidUntil is Now+Seconds,
+    as_heartbeat_write(Root,'assistant-model-transport',Now,ValidUntil,
+      'bounded-model-transport').
+
+as_heartbeat_lease_seconds(Root,'assistant-waiting',Seconds,'idle-cycle') :- !,
+    as_config(Root,supervision,Supervision),
+    Seconds=Supervision.waiting_lease_seconds.
+as_heartbeat_lease_seconds(_Root,Kind,0,'terminal') :-
+    memberchk(Kind,['assistant-stopped','assistant-panicked']),!.
+as_heartbeat_lease_seconds(Root,_Kind,Seconds,'native-processing') :-
+    as_config(Root,supervision,Supervision),
+    Seconds=Supervision.processing_lease_seconds.
+
+as_heartbeat_write(Root,Kind,Now,ValidUntil,LeaseKind) :-
+    as_path(Root,'pid.json',PidPath),miter_store_read_json(PidPath,PidState),
+    as_dict_atom(PidState,schema,'miter-assistant-pid-v1'),
+    get_dict(pid,PidState,Pid),integer(Pid),Pid>1,
+    get_dict(run_id,PidState,RunId0),as_run_id(RunId0,RunId),
+    as_path(Root,'heartbeat.json',Path),
+    as_write_json_durable(Path,_{schema:"miter-assistant-heartbeat-v2",
+      state:Kind,pid:Pid,run_id:RunId,lease_kind:LeaseKind,
+      observed_at_epoch:Now,valid_until_epoch:ValidUntil}).
+
+as_run_id(Value,RunId) :-
+    miter_store_nonempty_atom(Value,RunId),
+    re_match('^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$',
+      RunId).
 
 as_receipt(Root, InputId0, Standing, Name) :-
     ( as_symbol(InputId0, InputId) -> true ; InputId='unknown-input' ),

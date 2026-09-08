@@ -5,6 +5,14 @@
   "idle_cap_seconds": 0.4,
   "max_input_batch": 8,
   "max_input_bytes": 1048576,
+  "supervision": {
+    "startup_grace_seconds": 30,
+    "waiting_lease_seconds": 10,
+    "processing_lease_seconds": 90,
+    "model_lease_margin_seconds": 30,
+    "termination_grace_seconds": 5,
+    "poll_seconds": 1
+  },
   "external_effects": "none",
   "network_access": "explicit-model-grant-only",
   "runtime_root": "explicit-required",

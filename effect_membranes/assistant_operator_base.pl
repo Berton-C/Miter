@@ -405,7 +405,8 @@ as_safe_lkg_relative_path(Relative) :-
 
 as_validate_config(Config) :-
     is_dict(Config), as_dict_atom(Config,schema,'miter-assistant-config-v1'),
-    forall(member(Key,[idle_base_seconds,idle_cap_seconds,max_input_batch,max_input_bytes]),
+    forall(member(Key,[idle_base_seconds,idle_cap_seconds,max_input_batch,
+        max_input_bytes,supervision]),
       (get_dict(Key,Config,Value),as_config_value(Key,Value))),
     Config.idle_base_seconds =< Config.idle_cap_seconds,
     as_dict_atom(Config,external_effects,none),
@@ -422,14 +423,15 @@ as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants,
       [external_effects,human_editable,idle_base_seconds,idle_cap_seconds,
        initial_evaluation_grants,initial_model_grants,mattermost,max_input_batch,
        max_input_bytes,memory,models,network_access,operator_notes,runtime_root,
-       schema]),
+       schema,supervision]),
     as_dict_atom(Human,schema,'miter-assistant-config-v1'),
     Human.human_editable==true,
     is_list(Human.operator_notes),maplist(string,Human.operator_notes),
     Runtime=_{schema:Human.schema,idle_base_seconds:Human.idle_base_seconds,
       idle_cap_seconds:Human.idle_cap_seconds,max_input_batch:Human.max_input_batch,
       max_input_bytes:Human.max_input_bytes,external_effects:Human.external_effects,
-      network_access:Human.network_access,runtime_root:Human.runtime_root},
+      network_access:Human.network_access,runtime_root:Human.runtime_root,
+      supervision:Human.supervision},
     as_validate_config(Runtime),
     Mattermost=Human.mattermost,is_dict(Mattermost),
     as_dict_atom(Mattermost,schema,'miter-mattermost-surface-v1'),
@@ -926,7 +928,84 @@ as_spawn_foreground(Root,Pid,ProcessStatus) :-
          as_write_json_durable(PidPath,_{schema:"miter-assistant-pid-v1",
            pid:Pid,run_id:RunId,started_at_epoch:StartedAt,
            stdout:StdoutRelative,stderr:StderrRelative}),
-         process_wait(Pid,ProcessStatus)),close(Err)),close(Out)).
+         as_supervise_foreground(Root,Pid,StartedAt,ProcessStatus)),
+        close(Err)),close(Out)).
+
+% The wrapper polls only process and lease state.  It cannot inspect contact,
+% Soul organization, model output or movement.  A stale lease causes a
+% mechanical termination; launchd may then restore the same verified LKG.
+as_supervise_foreground(Root,Pid,StartedAt,ProcessStatus) :-
+    as_config(Root,supervision,Supervision),
+    as_supervise_foreground_loop(Root,Pid,StartedAt,Supervision,ProcessStatus).
+
+as_supervise_foreground_loop(Root,Pid,StartedAt,Supervision,ProcessStatus) :-
+    Poll=Supervision.poll_seconds,
+    % SWI-Prolog on Unix supports process_wait/3 polling only at timeout(0).
+    % The bounded sleep belongs to this non-cognitive liveness observer.
+    process_wait(Pid,Observed,[timeout(0)]),
+    ( Observed\==timeout -> ProcessStatus=Observed
+    ; get_time(Now),
+      ( as_supervisor_lease_active(Root,Pid,StartedAt,Now,Supervision) ->
+          sleep(Poll),
+          as_supervise_foreground_loop(Root,Pid,StartedAt,Supervision,
+            ProcessStatus)
+      ; as_watchdog_terminate(Root,Pid,StartedAt,Now,Supervision,
+          TerminationStanding),
+        ProcessStatus=watchdog_stale_heartbeat(TerminationStanding) ) ).
+
+as_supervisor_lease_active(_Root,_Pid,StartedAt,Now,Supervision) :-
+    Now-StartedAt=<Supervision.startup_grace_seconds,!.
+as_supervisor_lease_active(Root,Pid,StartedAt,Now,Supervision) :-
+    as_supervisor_heartbeat(Root,Pid,StartedAt,Heartbeat),
+    ( Now=<Heartbeat.valid_until_epoch
+    ; memberchk(Heartbeat.state,["assistant-stopped","assistant-panicked"]),
+      Now-Heartbeat.observed_at_epoch=<Supervision.termination_grace_seconds ).
+
+as_supervisor_heartbeat(Root,Pid,StartedAt,Heartbeat) :-
+    directory_file_path(Root,'heartbeat.json',Path),exists_file(Path),
+    catch(miter_store_read_json(Path,Heartbeat),_,fail),is_dict(Heartbeat),
+    Heartbeat.schema=="miter-assistant-heartbeat-v2",
+    get_dict(pid,Heartbeat,Pid),
+    get_dict(observed_at_epoch,Heartbeat,Observed),number(Observed),
+    Observed>=StartedAt,
+    get_dict(valid_until_epoch,Heartbeat,ValidUntil),number(ValidUntil),
+    ValidUntil>=Observed,
+    as_dict_atom(Heartbeat,state,_),get_dict(run_id,Heartbeat,RunId0),
+    as_run_id(RunId0,RunId),
+    as_pid_run_id(Root,Pid,RunId).
+
+as_pid_run_id(Root,Pid,RunId) :-
+    directory_file_path(Root,'pid.json',Path),
+    miter_store_read_json(Path,Dict),get_dict(pid,Dict,Pid),
+    get_dict(run_id,Dict,RunId0),as_run_id(RunId0,RunId).
+
+as_watchdog_terminate(Root,Pid,StartedAt,ObservedAt,Supervision,Standing) :-
+    as_watchdog_heartbeat_summary(Root,Heartbeat),
+    directory_file_path(Root,'service/watchdog-last.json',Path),
+    as_write_json_durable(Path,_{schema:"miter-watchdog-event-v1",
+      standing:"stale-heartbeat-termination",pid:Pid,
+      process_started_at_epoch:StartedAt,observed_at_epoch:ObservedAt,
+      heartbeat:Heartbeat,
+      boundary:"mechanical-liveness-only-no-semantic-diagnosis"}),
+    catch(process_kill(Pid,term),_,true),
+    Grace=Supervision.termination_grace_seconds,
+    get_time(TermStarted),TermDeadline is TermStarted+Grace,
+    as_wait_process_exit_until(Pid,TermDeadline,TermStatus),
+    ( TermStatus\==timeout -> Standing=terminated(TermStatus)
+    ; catch(process_kill(Pid,kill),_,true),
+      process_wait(Pid,KillStatus),Standing=killed(KillStatus) ).
+
+as_wait_process_exit_until(Pid,Deadline,Status) :-
+    process_wait(Pid,Observed,[timeout(0)]),
+    ( Observed\==timeout -> Status=Observed
+    ; get_time(Now),
+      ( Now>=Deadline -> Status=timeout
+      ; sleep(0.05),as_wait_process_exit_until(Pid,Deadline,Status) ) ).
+
+as_watchdog_heartbeat_summary(Root,Heartbeat) :-
+    directory_file_path(Root,'heartbeat.json',Path),
+    ( exists_file(Path),catch(miter_store_read_json(Path,Dict),_,fail),
+      is_dict(Dict) -> Heartbeat=Dict ; Heartbeat=null ).
 
 as_supervised_outcome(Root,Pid,_ProcessStatus,Reply) :-
     as_clean_exit(Root,Pid),!,
@@ -937,8 +1016,14 @@ as_supervised_outcome(Root,Pid,ProcessStatus,Reply) :-
     ( Count>=3 -> Status='crash-loop-contained'
     ; Status='supervised-crash' ),
     term_string(ProcessStatus,ProcessStanding,[quoted(true),ignore_ops(true)]),
+    as_supervised_failure_kind(ProcessStatus,FailureKind),
     Reply=_{schema:"miter-assistant-operator-result-v1",status:Status,pid:Pid,
-      crash_count_in_window:Count,process_standing:ProcessStanding}.
+      crash_count_in_window:Count,process_standing:ProcessStanding,
+      failure_kind:FailureKind}.
+
+as_supervised_failure_kind(watchdog_stale_heartbeat(_),
+    "stale-heartbeat-watchdog") :- !.
+as_supervised_failure_kind(_,"process-exit-without-clean-boundary").
 
 as_start(Root, Reply) :-
     as_root(Root,_), as_verify_lkg(Root,Lkg),
@@ -984,7 +1069,7 @@ as_clean_exit(Root, Pid) :-
     as_pid_started(Root,Pid,Started),
     directory_file_path(Root,'heartbeat.json',Path),exists_file(Path),
     catch(miter_store_read_json(Path,Dict),_,fail),
-    as_dict_atom(Dict,schema,'miter-assistant-heartbeat-v1'),
+    as_heartbeat_schema(Dict),
     as_dict_atom(Dict,state,State),memberchk(State,['assistant-stopped','assistant-panicked']),
     get_dict(observed_at_epoch,Dict,Observed),number(Observed),Observed>=Started.
 
@@ -1034,7 +1119,7 @@ as_wait_started(Root, Pid, StartedAt, Seconds) :-
     End is StartedAt+Seconds,as_wait_started_until(Root,Pid,StartedAt,End).
 as_wait_started_until(Root,Pid,StartedAt,End) :-
     ( directory_file_path(Root,'heartbeat.json',Heartbeat),exists_file(Heartbeat),
-      miter_store_read_json(Heartbeat,Dict),as_dict_atom(Dict,schema,'miter-assistant-heartbeat-v1'),
+      miter_store_read_json(Heartbeat,Dict),as_heartbeat_schema(Dict),
       get_dict(observed_at_epoch,Dict,Observed),number(Observed),Observed>=StartedAt
     -> true
     ; as_pid_probe(Pid,dead) -> fail
@@ -1060,13 +1145,27 @@ as_heartbeat_active(Root, Pid) :-
     as_pid_started(Root,Pid,Started),
     directory_file_path(Root,'heartbeat.json',Path),exists_file(Path),
     catch(miter_store_read_json(Path,Dict),_,fail),
-    as_dict_atom(Dict,schema,'miter-assistant-heartbeat-v1'),
+    as_heartbeat_schema(Dict),
     as_dict_atom(Dict,state,State),
     \+ memberchk(State,['assistant-stopped','assistant-panicked']),
     get_dict(observed_at_epoch,Dict,Observed),number(Observed),Observed>=Started,
     get_time(Now),Now>=Observed,
+    as_heartbeat_active_until(Root,Pid,Dict,Observed,Until),
+    Now=<Until.
+
+as_heartbeat_schema(Dict) :-
+    as_dict_atom(Dict,schema,Schema),
+    memberchk(Schema,['miter-assistant-heartbeat-v1',
+      'miter-assistant-heartbeat-v2']).
+
+as_heartbeat_active_until(Root,Pid,Dict,_Observed,Until) :-
+    as_dict_atom(Dict,schema,'miter-assistant-heartbeat-v2'),!,
+    get_dict(pid,Dict,Pid),get_dict(run_id,Dict,RunId0),as_run_id(RunId0,RunId),
+    as_pid_run_id(Root,Pid,RunId),
+    get_dict(valid_until_epoch,Dict,Until),number(Until).
+as_heartbeat_active_until(Root,_Pid,_Dict,Observed,Until) :-
     as_config(Root,idle_cap_seconds,Cap),Freshness is max(5,Cap*4+1),
-    Now-Observed=<Freshness.
+    Until is Observed+Freshness.
 
 as_pid_alive(Pid) :-
     as_pid_probe(Pid,alive).
@@ -1103,10 +1202,11 @@ as_status(Root, Reply) :-
         ; ModelSelection=_{standing:"unavailable"} ),
         as_host_service_status(Root,HostService),
         as_operator_source_status(Root,OperatorSource),
+        as_config(Root,supervision,Supervision),
         Reply=_{schema:"miter-assistant-operator-result-v1",status:State,pid:Pid,
           lkg:Lkg,heartbeat:Heartbeat,evaluation:Evaluation,
           host_service:HostService,model_selection:ModelSelection,
-          operator_source:OperatorSource,
+          operator_source:OperatorSource,supervision:Supervision,
           semantic_health:"not-claimed"}
     ; Reply=_{schema:"miter-assistant-operator-result-v1",status:'not-bootstrapped'} ).
 

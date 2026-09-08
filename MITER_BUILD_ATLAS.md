@@ -161,7 +161,7 @@ consumer is absent. No status is upgraded by assertion.
 | Capability | Standing | Current site | Exact gap |
 |---|---:|---|---|
 | One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General scoped contact, memory participation, model participation, VoiceRNA, effect preparation, consequence, regeneration, and endogenous opportunity share this one continuation; no second cognitive loop is present. |
-| Install/start/status/stop/panic | P | `bin/miter`, operator membrane, frozen runtime LKG | One human-edited configuration now installs validated private membrane views and a frozen source closure; in-flight native formation is reported as `processing-unconfirmed` rather than dead when the host denies process probes. Stop remains available across source mismatch and becomes `stop-pending` until the current cut reaches its safe boundary. Frozen-source restart, panic, and bounded three-crash/60-second containment are embodied; host service registration remains for final packaging. |
+| Install/start/status/stop/panic | P | `bin/miter`, operator membrane, frozen runtime LKG | One human-edited configuration installs validated private membrane views and a frozen source closure. Process-bound heartbeat leases distinguish idle, native processing, and bounded model transport; a supervised stale process is terminated, recorded, and returned as a failed exit for verified-LKG restart. In-flight native formation remains `processing-unconfirmed` rather than falsely dead when only the host probe is denied. Stop, panic, and three-crash/60-second containment are embodied. Safe hot upgrade/rollback remains absent. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | Mattermost ingress is active; certified outbound remains deliberately disabled pending the evaluation grant and live no-replay trial. |
 | Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
@@ -479,6 +479,19 @@ live heartbeat in the same reactor, and stopped cleanly. Service removal now
 loads and verifies the runtime extension before its durable registration
 update. This is surface-failure containment, not permission to fabricate
 contact or claim successful Mattermost conversation.
+
+The frozen-process cut now gives the non-cognitive host wrapper an exact
+process/run-bound heartbeat lease rather than an unbounded wait. Waiting and
+native-processing leases have separately human-editable finite envelopes; an
+actual model transport extends liveness only through the deadline already
+present in the Soul-formed request plus a bounded cleanup margin. Expiry
+records a private mechanical watchdog event, terminates the exact child, and
+returns a failed wrapper exit so launchd can restart only the same verified
+LKG. A deliberately suspended PeTTa child expired its idle lease, was killed,
+and produced `stale-heartbeat-watchdog`; the same frozen runtime then restarted
+under a new run identity and stopped cleanly. This closes mechanical freeze
+detection. It does not implement hot self-upgrade, choose repair meaning, or
+establish semantic recovery merely because a process restarted.
 
 ## 7. The only build cycle
 
