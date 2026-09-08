@@ -62,7 +62,8 @@ class InstallError(RuntimeError):
 
 
 def run(argv: list[str], *, check: bool = True, capture: bool = True,
-        user: str | None = None, env: dict[str, str] | None = None) -> subprocess.CompletedProcess[str]:
+        user: str | None = None, env: dict[str, str] | None = None,
+        cwd: pathlib.Path | str | None = None) -> subprocess.CompletedProcess[str]:
     command = list(argv)
     if user is not None and os.geteuid() == 0 and user != "root":
         command = ["/usr/bin/sudo", "-u", user, "-H", *command]
@@ -74,6 +75,7 @@ def run(argv: list[str], *, check: bool = True, capture: bool = True,
         stderr=subprocess.PIPE if capture else None,
         text=True,
         env=env,
+        cwd=cwd,
     )
 
 
@@ -662,13 +664,15 @@ def miter_environment(petta: pathlib.Path) -> dict[str, str]:
 
 def miter_command(application: pathlib.Path, deployment: dict, petta: pathlib.Path,
                   command: str, *, check: bool = True) -> subprocess.CompletedProcess[str]:
+    private_working_directory = pathlib.Path(deployment["runtime_root"]).parent
     return run([
         "/usr/bin/env",
         f"MITER_PETTA_MAIN={petta / 'src' / 'main.pl'}",
         f"MITER_SWIPL_LD={command_path('swipl-ld')}",
         str(application / "bin" / "miter"), command,
         "--runtime-root", deployment["runtime_root"],
-    ], check=check, user=deployment["runtime_user"])
+    ], check=check, user=deployment["runtime_user"],
+       cwd=private_working_directory)
 
 
 def store_secret(runtime: pathlib.Path, relative: str, value: str,

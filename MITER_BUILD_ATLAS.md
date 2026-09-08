@@ -726,10 +726,17 @@ The installer now captures bounded child stdout/stderr, preserves a newly
 created failed bootstrap under an explicit incomplete-runtime quarantine name,
 automatically recovers only a target with no valid runtime marker and no
 possible durable file, and refuses to move anything that may contain runtime
-state. Ephemeral checks passed for empty partial recovery, material-state
-refusal, and valid-runtime preservation. A fresh dedicated-user installation,
-cold restore, no-replay check, and live latency measurement remain required;
-the repair does not turn this failed Carry into a successful migration.
+state. A second bounded attempt exposed the exact pre-cognition cause: the
+dedicated user inherited the operator's working directory under `/Users/bcb`,
+which it cannot traverse, so SWI-Prolog failed while obtaining its current
+directory before Miter initialization. Every installer-launched Miter command
+now begins from the dedicated user's private Miter application-support parent;
+this changes process mechanics only and contributes no cognitive standing.
+Ephemeral checks passed for empty partial recovery, material-state refusal,
+valid-runtime preservation, and the explicit working-directory binding. A
+fresh dedicated-user installation, cold restore, no-replay check, and live
+latency measurement remain required; the repair does not turn either failed
+Carry into a successful migration.
 
 ## 7. The only build cycle
 
