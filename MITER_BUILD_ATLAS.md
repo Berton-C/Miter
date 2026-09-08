@@ -734,9 +734,26 @@ now begins from the dedicated user's private Miter application-support parent;
 this changes process mechanics only and contributes no cognitive standing.
 Ephemeral checks passed for empty partial recovery, material-state refusal,
 valid-runtime preservation, and the explicit working-directory binding. A
-fresh dedicated-user installation, cold restore, no-replay check, and live
-latency measurement remain required; the repair does not turn either failed
-Carry into a successful migration.
+third attempt then reached native extension compilation and disclosed that
+`swipl-ld` splits space-bearing absolute input/output arguments internally;
+the configured `Application Support` runtime therefore produced fragmented
+compiler paths and the operator collapsed that internal failure into its usage
+fallback. The extension build now uses the already-bound private build
+directory plus relative source/output arguments, preserving the identical C
+grounding while removing the compiler wrapper's path ambiguity. Before repair,
+the supported space-bearing install ended at exit 64 without an LKG. After
+repair, `bin/miter install` completed in 0.59 seconds real / 0.20 user / 0.09
+system and about 51 MB maximum resident memory, against 0.49 / 0.24 / 0.11 and
+about 51 MB for the plain-path control. Both emitted the identical arm64
+grounding SHA-256 `f6296e6df5f85a36afd7bbbb17003a67158ac2e349ff442a2a8bcf580bacd9b0`.
+Two start/status/stop cycles in each runtime retained verified LKG and an
+`assistant-waiting` heartbeat; each stood at 2,072 KiB and 85 files afterward,
+with zero model calls, zero constitutive formations, and no checkpoint,
+receipt, consumed event, or outbox effect. The invalidation closure is only
+the native-extension compiler carrier; no Soul, R/A/P, continuity, or effect
+meaning changed. A fresh dedicated-user installation, cold restore, no-replay
+check, and live latency measurement remain required; these repairs do not turn
+any failed Carry into a successful migration.
 
 ## 7. The only build cycle
 
