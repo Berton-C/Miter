@@ -1812,6 +1812,7 @@
 ; C4 dialogue depends on the complete AR4 pure-preparation and incorporation
 ; seam above.  Import it at the first point where all dependencies exist and
 ; before any dispatcher compiles calls to its functions.
+!(import! &self "./src/capability_environment.metta")
 !(import! &self "./src/dialogue_participation.metta")
 
 (= (C4AnyEffectDescriptor $contact-result)

@@ -29,9 +29,11 @@ consequence-sensitive multi-turn undertaking continuity, and supported
 install/start/status/stop/panic operations.
 
 It is **not yet the usable Miter alpha**. Live authorized Mattermost delivery,
-evaluation packaging, earned self-extension, hot upgrade, and rollback remain
-to be integrated into this same runtime. [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md)
-is the single operations map for that additive work.
+one-command dependency/service provisioning, migration to the dedicated
+`claritymiter` runtime identity, earned self-extension, hot upgrade, and
+rollback remain to be integrated into this same runtime.
+[MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single operations map for
+that additive work.
 
 The current C4 cut can resolve the configured local Mattermost group and its
 authorized principals, admit new versioned contacts into the one reactor,
@@ -93,6 +95,14 @@ Point Miter at that pinned PeTTa checkout without copying it into this repo:
 ```sh
 export MITER_PETTA_MAIN=/absolute/path/to/PeTTa/src/main.pl
 ```
+
+This manual dependency/runtime layout is the current builder interface, not the
+SNET distribution. C4 remains open until one finite installer in this repository
+fetches the pinned dependency outside Git, provisions the non-admin Miter user,
+creates private runtime state, starts isolated local services, verifies the
+complete assistant, and prints the supported operator commands. Python is
+permitted for that installer only; it exits before the PeTTa/MeTTa organism runs
+and is not a core or core-service seam.
 
 ## Install and operate
 

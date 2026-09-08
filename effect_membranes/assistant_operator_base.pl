@@ -206,7 +206,7 @@ as_swipl_ld(Path) :-
 
 as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
   receipts,outbox,proofs,intents,lib,logs,model,surface,continuity,semantic,lkg,
-  service,
+  service,workspace,capabilities,
   'model/claims','model/requests','model/raw','model/observations','surface/raw',
   'surface/events','surface/effects','checkpoints/objects','continuity/native',
   'continuity/native/manifests','continuity/native/scopes','semantic/queries',
@@ -248,7 +248,7 @@ as_bootstrap_new(Root, Reply) :-
     directory_file_path(Repo,'config/miter.json',ConfigSource),
     miter_store_read_json(ConfigSource,HumanConfig),
     as_human_config_sections(HumanConfig,Config,Mattermost,Memory,Models,Grants,
-      EvaluationGrants),
+      EvaluationGrants,GrowthEnvironment),
     directory_file_path(Root,'config.json',ConfigTarget),
     miter_store_write_json_atomic(ConfigTarget,Config),
     directory_file_path(Repo,'config/continuity.json',BindingsSource),
@@ -268,6 +268,8 @@ as_bootstrap_new(Root, Reply) :-
     miter_store_write_json_atomic(MemoryTarget,Memory),
     directory_file_path(Root,'mattermost.json',MattermostTarget),
     miter_store_write_json_atomic(MattermostTarget,Mattermost),
+    directory_file_path(Root,'growth-environment.json',GrowthTarget),
+    miter_store_write_json_atomic(GrowthTarget,GrowthEnvironment),
     as_dict_atom(Config,network_access,NetworkAccess),
     as_dict_atom(Config,external_effects,ExternalEffects),
     uuid(BootId),
@@ -410,18 +412,18 @@ as_validate_config(Config) :-
       (get_dict(Key,Config,Value),as_config_value(Key,Value))),
     Config.idle_base_seconds =< Config.idle_cap_seconds,
     as_dict_atom(Config,external_effects,none),
-    as_dict_atom(Config,network_access,'explicit-model-grant-only'),
+    as_dict_atom(Config,network_access,'dedicated-user-open-growth-environment'),
     as_dict_atom(Config,runtime_root,'explicit-required').
 
 % Humans edit one repository surface. Installation validates and materializes
 % narrow private runtime views so individual membranes need no authority over
 % the repository configuration or unrelated settings.
 as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants,
-    EvaluationGrants) :-
+    EvaluationGrants, GrowthEnvironment) :-
     is_dict(Human),
     as_mattermost_exact_keys(Human,
       [external_effects,human_editable,idle_base_seconds,idle_cap_seconds,
-       initial_evaluation_grants,initial_model_grants,mattermost,max_input_batch,
+       growth_environment,initial_evaluation_grants,initial_model_grants,mattermost,max_input_batch,
        max_input_bytes,memory,models,network_access,operator_notes,runtime_root,
        schema,supervision]),
     as_dict_atom(Human,schema,'miter-assistant-config-v1'),
@@ -443,7 +445,30 @@ as_human_config_sections(Human, Runtime, Mattermost, Memory, Models, Grants,
     as_dict_atom(Grants,schema,'miter-model-grants-v1'),
     EvaluationGrants=Human.initial_evaluation_grants,
     as_evaluation_grants_inactive_valid(EvaluationGrants),
+    GrowthEnvironment=Human.growth_environment,
+    as_growth_environment_config_valid(GrowthEnvironment),
     as_mattermost_secret_free(Human).
+
+as_growth_environment_config_valid(Config) :-
+    is_dict(Config),
+    as_mattermost_exact_keys(Config,
+      [credential_access,enabled,expected_runtime_user,human_authority_boundaries,
+       human_editable,informational_network,operator_notes,reversible_writes,
+       schema,terminal,workspace_relative]),
+    as_dict_atom(Config,schema,'miter-open-growth-environment-v1'),
+    Config.human_editable==true,Config.enabled==true,
+    as_dict_atom(Config,expected_runtime_user,claritymiter),
+    as_dict_atom(Config,workspace_relative,workspace),
+    as_dict_atom(Config,informational_network,'open-http-https'),
+    as_dict_atom(Config,terminal,'typed-direct-argv-broker'),
+    as_dict_atom(Config,credential_access,'named-reference-only'),
+    as_dict_atom(Config,reversible_writes,'versioned-owned-workspace'),
+    Config.human_authority_boundaries==[
+      "bind-other-principal","cross-user-private-material",
+      "use-named-credential","spend-or-transfer-value",
+      "external-publication-or-message",
+      "difficult-to-reverse-external-commitment"],
+    is_list(Config.operator_notes),maplist(string,Config.operator_notes).
 
 as_evaluation_grants_inactive_valid(Document) :-
     is_dict(Document),

@@ -14,8 +14,32 @@
     "poll_seconds": 1
   },
   "external_effects": "none",
-  "network_access": "explicit-model-grant-only",
+  "network_access": "dedicated-user-open-growth-environment",
   "runtime_root": "explicit-required",
+  "growth_environment": {
+    "schema": "miter-open-growth-environment-v1",
+    "human_editable": true,
+    "enabled": true,
+    "expected_runtime_user": "claritymiter",
+    "workspace_relative": "workspace",
+    "informational_network": "open-http-https",
+    "terminal": "typed-direct-argv-broker",
+    "credential_access": "named-reference-only",
+    "reversible_writes": "versioned-owned-workspace",
+    "human_authority_boundaries": [
+      "bind-other-principal",
+      "cross-user-private-material",
+      "use-named-credential",
+      "spend-or-transfer-value",
+      "external-publication-or-message",
+      "difficult-to-reverse-external-commitment"
+    ],
+    "operator_notes": [
+      "Surface availability is not cognitive authority; the Soul forms every tool movement.",
+      "No per-command or per-site microgrant is required inside this durable class.",
+      "The environment remains held unless the running process is the dedicated claritymiter user."
+    ]
+  },
   "mattermost": {
     "schema": "miter-mattermost-surface-v1",
     "human_editable": true,

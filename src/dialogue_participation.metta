@@ -748,8 +748,15 @@
                   native-memory-question-unavailable no-candidate-admitted)))
               ($memory-participants
                 (C4MemoryParticipants $memory-observation $memory-question))
-              ($effective-contact
+              ($memory-contact
                 (C4ContactWithMemory $initial-contact $memory-participants))
+              ($capability-observation (as_capability_environment $root))
+              ($capability-participants
+                (C4CapabilityEnvironmentParticipants $memory-contact
+                  $capability-observation))
+              ($effective-contact
+                (C4ContactWithCapabilityEnvironment $memory-contact
+                  $capability-participants))
               ($context (bound-contact-context-v1
                 (index-atom $initial-context 1)
                 (index-atom $initial-context 2)

@@ -172,8 +172,9 @@ consumer is absent. No status is upgraded by assertion.
 | Exact project/relationship continuity | E | native checkpoint capsules + continuity adapters | Every live scope now writes exact relationship, undertaking, attention, developmental, next-movement, and raw-source-reference organization with indefinite retention; legacy external imports remain separately unbound. |
 | Chroma semantic participation | E | `chroma.pl`, `dialogue_participation.metta`, native continuity capsules | Every authoritative checkpoint projects exact eligible capsule material into an isolated loopback Chroma collection. A later exact-scope query verifies runtime, principal, audience, project, source capsule bytes, semantic hash, and body hash before admitting results as unresolved memory participants. Chroma rank is never authority; another principal receives no result. Private memory content remains native and is withheld from the remote-provider question. |
 | LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA certificate. Live GLM 5.3 semantic and rendering calls produced a certified response that both authorized evaluators reportedly valued. The live question carries the exact human-directed resource/model identity; OpenRouter GLM 5.3, local Qwen, and local Nemotron share one native admission boundary without silent substitution. Soul-directed resource comparison and broader held-out dialogue remain open. |
+| VAD language-cue participation | A | constitutional C-051--C-053 and Soul S-303/S-804/S-902; historical licensed-asset implementation outside clean room | The clean runtime preserves the non-diagnostic authority boundary but does not yet compute sentence/trajectory VAD cues or let them participate in VoiceRNA. Recover the bounded cue surface without its old uncalibrated thresholds, private lexicon, fixed presence lookup, or Python seam. The licensed asset and any derived collection remain outside public Git. |
 | Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Exact stable-ID scope, authenticated contact, certified outbound, pending-before-send, unique reconciliation, and restart/no-replay are embodied in the live service. Poll freshness is now distinct from human content identity, so a thread-metadata update cannot become a second contact while a genuine edit remains versioned. Returned-consequence participation, scope/failure trials, and sustained use remain open. |
-| Open growth environment | A | constitutional capability boundary and this Atlas | The current AMA-1.2 envelope is bounded causal instrumentation, not Miter's permanent world. No supported dynamic tool/skill/web/terminal participation registry, Miter-owned revisable workspace, or self-authored reversible extension path yet exposes a broad capability field to Soul navigation. |
+| Open growth environment | P | `capability_environment.metta`, mechanical environment observer, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path now receives a source-qualified native participant stating the configured web/terminal/workspace field, actual process identity, genuine human-authority boundaries, and its current availability. A fresh supported runtime exposes the present `bcb`/`claritymiter` mismatch and unfinished request broker as held—not as absent contact or false capability. Typed execution, returned tool consequence, durable capability uptake, and service migration to `claritymiter` remain open. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, and regenerative Soul; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; one exact persisted partial opening can form a provenance-bearing Soul undertaking; and injured expressed Soul can form and complete its own repair RNA. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
@@ -840,16 +841,59 @@ Priority order:
    Keychain references and no committed secrets;
 3. general semantic participation and VoiceRNA construction/certification;
 4. generic Mattermost input/effect/reconciliation with scoped principals;
-5. isolated workshop, versioned interfaces, compatibility check, activation,
+5. bounded VAD language-cue participation in the same encounter and VoiceRNA
+   path, with the restricted lexicon outside Git and no person-state verdict;
+6. isolated workshop, versioned interfaces, compatibility check, activation,
    last-known-good rollback, and recovery;
-6. consequence-earned NACE/NAL/PLN revision in explicitly separated reasoning
+7. consequence-earned NACE/NAL/PLN revision in explicitly separated reasoning
    spaces with qualified adapters;
-7. regenerative Soul expression and 26.6/26.9 laboratory instrumentation.
+8. regenerative Soul expression and 26.6/26.9 laboratory instrumentation.
 
 Admission condition for every recovered capability: imported by
 `src/bootstrap.metta`, reachable from `bin/miter`, causally used by the primary
 encounter/consequence cycle, and preserved across restart. Otherwise it remains
 outside the clean repository.
+
+### Bounded old-tree extraction audit — 2026-09-08
+
+The 2.4 GB historical checkout contains about 2.3 GB and 28,902 files under
+`evidence/`; Git tracks 28,900 evidence files, 394 documentation files, 325
+builder scripts, 157 fixtures/tests, 90 MeTTa sources, and 61 Prolog membranes.
+Bulk size is therefore not unexamined runtime capacity. The clean repository
+does not copy those artifacts or claim that evidence volume is cognition.
+
+The source-level audit found these remaining load-bearing inheritances:
+
+- **VAD:** retain provenance-bound sentence/trajectory cues, coverage and
+  unknown-term standing, exact asset identity, and the prohibition on treating
+  affect as permission or inner-state knowledge. Reject fixed presence actions,
+  uncalibrated routing thresholds, committed lexicon rows, and the historical
+  Python route.
+- **Workshop and upgrade:** retain typed requests, direct argument vectors,
+  bounded process/output lifetimes, idempotent receipts, isolated Git
+  worktrees, pinned candidate lineage, versioned activation, last-known-good
+  projection, and recoverable rollback. Reject the G27/G28 absolute paths,
+  fixed candidate/test identities, builder-lab scopes, architecture-specific
+  Docker image, and promotion evidence bindings.
+- **NACE/NAL/PLN:** retain qualified native operator closures, explicit truth
+  semantics, independent-evidence-family accounting, pending-before-durable
+  revision, consequence-sensitive later use, and the discovered global-name
+  collision hazard between pinned PLN and NARS/NAL libraries. Reject the
+  voice-policy-only efficacy target, G24 evidence paths, numeric ranking as
+  movement authority, broad unqualified `|-`, and any claim that separate
+  source AtomSpaces isolate compiled operators without execution evidence.
+- **Generated modules and surface extension:** retain inert candidate standing,
+  provenance manifests, source/bytes binding, syntax and contract trials,
+  consequence-bearing repair, and no automatic activation. Reject the fixed
+  VoicePolicy/Mattermost prompts, first-match policy experiment, gate-specific
+  schemas, and model-authored authority.
+
+All other historical runtime families are either embodied in the consolidated
+clean runtime or superseded by a more complete constitutive implementation.
+This is a bounded source-and-history disposition, not permission to destroy the
+historical checkout. The old tree remains read-only provenance until the three
+unrecovered capability families above are embodied or explicitly declined and
+the clean installer has reproduced the one runtime under `claritymiter`.
 
 ## 10. Active cut and next movement
 
@@ -1833,8 +1877,29 @@ Next movement:
    trusted web/tool/skill/terminal possibilities and a Miter-owned revisable
    workspace, with observable consequence, reversible self-development, and
    human authority retained only at genuine relational or difficult-to-reverse
-   boundaries;
-4. only after explicit human acceptance of the complete clean candidate,
+   boundaries. The first integrated cut now carries the configured field and
+   actual runtime-user/workspace standing through the live contact organization;
+   it deliberately reports `held-runtime-identity-mismatch` under the current
+   `bcb` service and `held-request-broker-unimplemented` until executable typed
+   requests exist. Next, implement the direct-argument/web request broker,
+   return its observations as contact, and migrate the same service to the
+   dedicated `claritymiter` identity;
+4. recover the three remaining capability families through this same organism:
+   VAD as a bounded non-diagnostic language participant; qualified,
+   consequence-sensitive NACE/NAL/PLN reasoning; and isolated self-extension
+   with versioned activation, hot upgrade, last-known-good rollback, and
+   restart continuity. Historical gate-specific implementations are design
+   inputs only and are not copied;
+5. complete one-distribution packaging inside this clean repository: a single
+   human-facing installer may use Python as finite bootstrap machinery, but it
+   must exit before cognition runs. It fetches and verifies the pinned PeTTa
+   dependency outside Git, provisions or validates the non-admin `claritymiter`
+   user, creates the private runtime outside the checkout, brings up isolated
+   Mattermost/Chroma dependencies, performs end-to-end health checks, and prints
+   start/status/stop/panic commands. Downloaded dependencies, runtime state,
+   credentials, logs, and local provenance never become repositories or tracked
+   product files;
+6. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

@@ -377,11 +377,17 @@ External effects use four stages:
 
 Internal rollback is never treated as undoing an external effect.
 
-## C-067 — No unrestricted shell in the cognitive core
+## C-067 — No shell sovereignty or inherited human authority
 
-Miter does not inherit Headlong's “Bash as the only tool” authority. The core has no generic host shell capability.
+Miter does not inherit Headlong's “Bash as the only tool” authority. A shell, browser, model, or generated program is a participating surface, never the location of cognition or authority. Raw model text cannot execute, and no tool may silently inherit the human operator's account, secrets, administrator standing, or unrelated private files.
 
-Generated extension work may use a brokered workshop whose operations, paths, environment, network, and credentials are constrained and logged.
+This does not prohibit broad terminal, web, filesystem, or workshop participation. Native Soul-grounded cognition may form exact typed tool movements, and non-cognitive membranes may perform their mechanics under Miter's dedicated operating-system identity. Returned stdout, stderr, content, failure, and worldly consequence re-enter as provenance-bearing contact. The membrane limits mechanics and identity; it does not select purpose, sites, commands, meaning, or the next movement.
+
+## C-068 — Dedicated-user open growth environment
+
+Within the dedicated `claritymiter` user environment, Miter may inspect, browse, create, revise, execute, test, learn, and compose across informational and reversible surfaces without a new human microgrant for every step. This durable authority exists to make genuine Soul navigation, skill acquisition, creative work, and consequence-earned development observable rather than replacing them with a builder-authored allowlist.
+
+Explicit human authority remains necessary when a proposed effect would bind another principal, cross into another person's private material, use a named credential, spend or transfer value, publish or message externally, or create a difficult-to-reverse external commitment. These are relational authority boundaries, not a behavioral policy engine. Ambiguity at such a boundary remains visible to the Soul and may lead to inquiry, a narrower movement, or a request for authority; it does not justify pretending the entire learning environment is forbidden.
 
 ---
 
@@ -505,6 +511,8 @@ Merge, activation, rollback, or replacement does not erase what occurred during 
 ## C-098 — Human approval gates live external reach
 
 The first live activation of a networked, credentialed, externally communicative, or irreversible extension requires explicit human approval after Miter has surfaced purpose, scope, permissions, persistence, ongoing access, reversibility, and test evidence.
+
+Approval may ratify a durable class such as the dedicated-user open growth environment. Once ratified, activity already inside that class does not require command-by-command or site-by-site approval. A new approval is required only when a movement crosses the class's named relational authority boundary or materially changes its reach.
 
 ## C-099 — Mattermost is the first omitted-part proof
 

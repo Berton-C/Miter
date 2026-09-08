@@ -9,6 +9,8 @@
     as_chroma))
 !(import_prolog_functions_from_file "./effect_membranes/model.pl"
   (as_model as_model_direction))
+!(import_prolog_functions_from_file "./effect_membranes/capability_environment.pl"
+  (as_capability_environment))
 ; The functions remain MeTTa-owned cognitive reductions. This pinned runtime
 ; extension only schedules independent alternatives concurrently and returns
 ; them in their original order; it has no selection or semantic authority.
