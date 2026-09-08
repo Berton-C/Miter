@@ -903,7 +903,7 @@
             (CPShape $effect effect-witness-v2 4))
      (let* (($result (index-atom $effect 1))
             ($proof-reference (index-atom $effect 3)))
-       (if (ARLocalEffectResultValid $result)
+       (if (ARAnyEffectResultValid $result)
          (==
            ((== (index-atom $result 1) $id)
             (== (index-atom $voice 1) $proof-reference)
@@ -1432,15 +1432,16 @@
          (assistant-contact-held $id $history)))
      (assistant-contact-held $id freshly-constructed-grounding-invalid)))
 
-(= (AssistantEncounterV2 $contact)
+(= (AR4PrepareEncounterV1 $contact)
    (let $contact-valid (CPContactValid $contact)
      (if $contact-valid
        (let* (($id (index-atom $contact 1))
               ($scope (CPContactScope $contact))
               ($prior (ARActiveRows $scope))
               ($duplicate (ARHistoryHas encounter $id)))
-         (if $duplicate (assistant-contact-duplicate $id)
-           (if (> (size-atom $prior) 1) (assistant-contact-held $id state-conflict)
+         (if $duplicate (prepared-encounter-held $id duplicate-contact)
+           (if (> (size-atom $prior) 1)
+             (prepared-encounter-held $id state-conflict)
              (let* (($predecessor (if (== (size-atom $prior) 1)
                       (index-atom (index-atom $prior 0) 2) ()))
                     ($developmental-participants
@@ -1456,41 +1457,102 @@
                       $contact))
                     ($grounded (CP2Encounter $participating-contact
                       $predecessor)))
-               (AR2IncorporateFreshlyGrounded $id $scope $grounded)))))
+               (prepared-encounter-v1 $id $scope $participating-contact
+                 $grounded)))))
+       (prepared-encounter-held unknown-contact
+         malformed-or-unauthorized-contact))))
+
+(= (AR4PreparedEncounterValid $prepared)
+   (if (CPShape $prepared prepared-encounter-v1 5)
+     (let* (($id (index-atom $prepared 1))
+            ($scope (index-atom $prepared 2))
+            ($contact (index-atom $prepared 3))
+            ($grounded (index-atom $prepared 4)))
+       (and (CPContactValid $contact)
+        (and (== (index-atom $contact 1) $id)
+         (and (== (CPContactScope $contact) $scope)
+              (CPShape $grounded authority-grounded-encounter 3)))))
+     false))
+
+(= (AR4IncorporatePreparedEncounter $prepared)
+   (if (AR4PreparedEncounterValid $prepared)
+     (AR2IncorporateFreshlyGrounded (index-atom $prepared 1)
+       (index-atom $prepared 2) (index-atom $prepared 4))
+     (if (CPShape $prepared prepared-encounter-held 3)
+       (if (== (index-atom $prepared 2) duplicate-contact)
+         (assistant-contact-duplicate (index-atom $prepared 1))
+         (assistant-contact-held (index-atom $prepared 1)
+           (index-atom $prepared 2)))
        (assistant-contact-rejected malformed-or-unauthorized-contact))))
 
-(= (ACBoundEncounterV2 $binding $contact)
+(= (AssistantEncounterV2 $contact)
+   (AR4IncorporatePreparedEncounter (AR4PrepareEncounterV1 $contact)))
+
+(= (AR4BoundContactContextV1 $binding $contact)
    (if (ACScopeBindingValid $binding $contact)
      (let* (($scope (CPContactScope $contact))
             ($continuity (ACContinuityForScope $scope))
             ($semantic (ASSemanticForScope $scope)))
-       (if (== $continuity (continuity-standing conflicting-sources-for-scope))
-         (assistant-contact-rejected conflicting-continuity-sources)
+       (if (== $continuity
+             (continuity-standing conflicting-sources-for-scope))
+         (bound-contact-context-held (index-atom $contact 1)
+           conflicting-continuity-sources)
          (let* (($continuity-contact (if (ACContinuityValid $continuity)
                   (ACContactWithContinuity $contact $continuity) $contact))
-                ($effective-contact (ASContactWithSemantic $continuity-contact $semantic))
-                ($result (AssistantEncounterV2 $effective-contact)))
+                ($effective-contact
+                  (ASContactWithSemantic $continuity-contact $semantic)))
            (if (CPShape $effective-contact semantic-contact-held 2)
-             (assistant-contact-held (index-atom $contact 1) $effective-contact)
-             (if (CPShape $result assistant-contact-incorporated 3)
-               (let* (($binding-history (ARRecord scope-binding
-                         (index-atom $contact 1) $scope $binding))
-                      ($continuity-history (ARRecord continuity
-                         (index-atom $contact 1) $scope $continuity))
-                      ($semantic-history (ARRecord semantic
-                         (index-atom $contact 1) $scope
-                         (ASSemanticStandingSummary $semantic))))
-                 (if (and (CPHas $binding-history
-                           (assistant-history-recorded assistant-history-duplicate) 0)
-                      (and (CPHas $continuity-history
-                             (assistant-history-recorded assistant-history-duplicate) 0)
-                           (CPHas $semantic-history
-                             (assistant-history-recorded assistant-history-duplicate) 0)))
-                   $result
-                   (assistant-contact-held (index-atom $contact 1)
-                     scope-continuity-or-semantic-history-failed)))
-               $result)))))
-     (assistant-contact-rejected stable-identity-scope-mismatch)))
+             (bound-contact-context-held (index-atom $contact 1)
+               $effective-contact)
+             (bound-contact-context-v1 $binding $scope $continuity $semantic
+               $effective-contact)))))
+     (bound-contact-context-held (index-atom $contact 1)
+       stable-identity-scope-mismatch)))
+
+(= (AR4BoundContactContextValid $context)
+   (if (CPShape $context bound-contact-context-v1 6)
+     (let* (($binding (index-atom $context 1))
+            ($scope (index-atom $context 2))
+            ($contact (index-atom $context 5)))
+       (and (CPContactValid $contact)
+        (and (== (CPContactScope $contact) $scope)
+             (ACScopeBindingValid $binding $contact))))
+     false))
+
+(= (AR4RecordBoundContextV1 $context $result)
+   (if (and (AR4BoundContactContextValid $context)
+            (CPShape $result assistant-contact-incorporated 3))
+     (let* (($binding (index-atom $context 1))
+            ($scope (index-atom $context 2))
+            ($continuity (index-atom $context 3))
+            ($semantic (index-atom $context 4))
+            ($contact (index-atom $context 5))
+            ($id (index-atom $contact 1))
+            ($binding-history (ARRecord scope-binding $id $scope $binding))
+            ($continuity-history
+              (ARRecord continuity $id $scope $continuity))
+            ($semantic-history (ARRecord semantic $id $scope
+              (ASSemanticStandingSummary $semantic))))
+       (if (and (CPHas $binding-history
+                   (assistant-history-recorded assistant-history-duplicate) 0)
+             (and (CPHas $continuity-history
+                    (assistant-history-recorded assistant-history-duplicate) 0)
+                  (CPHas $semantic-history
+                    (assistant-history-recorded assistant-history-duplicate) 0)))
+         $result
+         (assistant-contact-held $id
+           scope-continuity-or-semantic-history-failed)))
+     $result))
+
+(= (ACBoundEncounterV2 $binding $contact)
+   (let $context (AR4BoundContactContextV1 $binding $contact)
+     (if (AR4BoundContactContextValid $context)
+       (AR4RecordBoundContextV1 $context
+         (AssistantEncounterV2 (index-atom $context 5)))
+       (if (CPShape $context bound-contact-context-held 3)
+         (assistant-contact-held (index-atom $context 1)
+           (index-atom $context 2))
+         (assistant-contact-rejected stable-identity-scope-mismatch)))))
 
 (= (AssistantInputV2 $input)
    (if (CPShape $input assistant-input 3)
@@ -1747,22 +1809,97 @@
        (assistant-consequence-rejected malformed-scope-or-consequence)
        model-participation-not-requested)))
 
-(= (AssistantInputWithModelV3 $root $input $model-writer)
+; C4 dialogue depends on the complete AR4 pure-preparation and incorporation
+; seam above.  Import it at the first point where all dependencies exist and
+; before any dispatcher compiles calls to its functions.
+!(import! &self "./src/dialogue_participation.metta")
+
+(= (C4AnyEffectDescriptor $contact-result)
+   (if (CPShape $contact-result assistant-contact-incorporated-v4 5)
+     (C4MattermostEffectDescriptor $contact-result)
+     (ARLocalEffectDescriptor $contact-result)))
+
+(= (C4AnyEffectDescriptorValid $descriptor)
+   (or (ARLocalEffectDescriptorValid $descriptor)
+       (C4MattermostEffectDescriptorValid $descriptor)))
+
+(= (C4AnyEffectProof $descriptor)
+   (if (CPShape $descriptor mattermost-effect-descriptor-v1 9)
+     (index-atom (index-atom $descriptor 6) 1)
+     (index-atom (index-atom $descriptor 5) 1)))
+
+(= (C4AnyEffectCertificateWrapper $descriptor)
+   (if (CPShape $descriptor mattermost-effect-descriptor-v1 9)
+     (index-atom $descriptor 5)
+     (index-atom $descriptor 4)))
+
+(= (C4EffectOne $root $contact-result $effect-writer)
+   (let $descriptor (C4AnyEffectDescriptor $contact-result)
+     (if (C4AnyEffectDescriptorValid $descriptor)
+       (let* (($effect-id (index-atom $descriptor 1))
+              ($scope (index-atom $descriptor 3))
+              ($proof (C4AnyEffectProof $descriptor))
+              ($result ($effect-writer $root $descriptor)))
+         (if (ARAnyEffectResultValid $result)
+           (let* (($proof-history (ARRecordVoiceProofReference $effect-id
+                    $scope $proof $result))
+                  ($history (if (CPHas $proof-history
+                     (assistant-history-recorded assistant-history-duplicate) 0)
+                    (ARRecord effect $effect-id $scope
+                      (effect-witness-v2 $result
+                        (C4AnyEffectCertificateWrapper $descriptor)
+                        (ARNativeProofReference $proof)))
+                    assistant-history-conflict)))
+             (if (and (CPHas $proof-history
+                        (assistant-history-recorded assistant-history-duplicate) 0)
+                      (CPHas $history
+                        (assistant-history-recorded assistant-history-duplicate) 0))
+               (local-effect-result $result $proof-history $history)
+               (local-effect-held $effect-id
+                 (history $proof-history $history))))
+           (local-effect-held $effect-id $result)))
+       $descriptor)))
+
+(= (C4EffectsAt $root $results $effect-writer $i)
+   (if (< $i (size-atom $results))
+     (cons-atom (C4EffectOne $root (index-atom $results $i) $effect-writer)
+       (C4EffectsAt $root $results $effect-writer (+ $i 1))) ()))
+
+(= (C4EffectOutcomeValid $outcome)
+   (if (== $outcome no-local-effect) true
+     (if (CPShape $outcome local-effect-result 4)
+       (and (ARAnyEffectResultValid (index-atom $outcome 1))
+        (and (CPHas (index-atom $outcome 2)
+               (assistant-history-recorded assistant-history-duplicate) 0)
+             (CPHas (index-atom $outcome 3)
+               (assistant-history-recorded assistant-history-duplicate) 0)))
+       false)))
+
+(= (C4EffectsValidAt $effects $i)
+   (if (< $i (size-atom $effects))
+     (and (C4EffectOutcomeValid (index-atom $effects $i))
+          (C4EffectsValidAt $effects (+ $i 1))) true))
+
+(= (AssistantInputWithModelV3 $root $input)
    (if (and (CPShape $input assistant-input 4)
             (== (index-atom $input 1) consequence))
      (AssistantConsequenceV3 $root (index-atom $input 2)
-       (index-atom $input 3) $model-writer)
-     (assistant-processed-v3 (AssistantInputV2 $input)
-       model-participation-not-requested)))
+       (index-atom $input 3) as_model)
+     (if (and (CPShape $input assistant-input 4)
+              (== (index-atom $input 1) contact))
+       (C4BoundContactWithModelV1 $root (index-atom $input 2)
+         (index-atom $input 3))
+       (assistant-processed-v3 (AssistantInputV2 $input)
+         model-participation-not-requested))))
 
 ; Inputs remain sequential inside the one supported reactor cycle. A returned
 ; consequence and its optional thought-partner participation therefore complete
 ; before another contact can replace the active constitutive organization.
-(= (AssistantProcessWithModelAt $root $inputs $model-writer $i)
+(= (AssistantProcessWithModelAt $root $inputs $i)
    (if (< $i (size-atom $inputs))
      (cons-atom
-       (AssistantInputWithModelV3 $root (index-atom $inputs $i) $model-writer)
-       (AssistantProcessWithModelAt $root $inputs $model-writer (+ $i 1)))
+       (AssistantInputWithModelV3 $root (index-atom $inputs $i))
+       (AssistantProcessWithModelAt $root $inputs (+ $i 1)))
      ()))
 
 (= (AR3InputResultsAt $rows $i)
@@ -1780,16 +1917,17 @@
      (or (CPShape $outcome assistant-model-reading-incorporated 4)
       (or (CPShape $outcome assistant-model-reading-unavailable 4)
        (or (CPShape $outcome assistant-model-reading-duplicate 2)
-           (CPShape $outcome assistant-model-reading-held 3))))))
+        (or (CPShape $outcome assistant-model-reading-held 3)
+            (C4DialogueModelOutcomeValid $outcome)))))))
 
 (= (AR3ModelOutcomesValidAt $outcomes $i)
    (if (< $i (size-atom $outcomes))
      (and (AR3ModelOutcomeValid (index-atom $outcomes $i))
           (AR3ModelOutcomesValidAt $outcomes (+ $i 1))) true))
 
-(= (AssistantCycleStepV3 $root $inputs $model-writer)
+(= (AssistantCycleStepV3 $root $inputs)
    (if (is-expr $inputs)
-     (let $rows (AssistantProcessWithModelAt $root $inputs $model-writer 0)
+     (let $rows (AssistantProcessWithModelAt $root $inputs 0)
        (assistant-cycle-step-v3 (AR3InputResultsAt $rows 0)
          (AR3ModelOutcomesAt $rows 0) (AssistantSnapshot)))
      (assistant-cycle-step-v3 ((assistant-input-rejected malformed-batch))
@@ -1915,12 +2053,12 @@
                   ($active (> (size-atom $inputs) 0))
                   ($next (if $active $base (ARNextInterval $interval $cap))))
              (if $active
-               (let* (($step (AssistantCycleStepV3 $root $inputs $model-writer))
+               (let* (($step (AssistantCycleStepV3 $root $inputs))
                       ($results (index-atom $step 1))
                       ($model-outcomes (index-atom $step 2))
-                      ($effects (AREffectsAt $root $results $effect-writer 0))
+                      ($effects (C4EffectsAt $root $results $effect-writer 0))
                       ($valid (and (AR3ModelOutcomesValidAt $model-outcomes 0)
-                                   (AREffectsValidAt $effects 0))))
+                                   (C4EffectsValidAt $effects 0))))
                  (if $valid
                    (let* (($snapshot (AssistantSnapshot))
                           ($checkpoint ($checkpoint-writer $root $snapshot))

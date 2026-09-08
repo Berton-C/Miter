@@ -696,19 +696,46 @@ as_record(Root0, Kind0, Payload, Result) :-
       Append=='event-appended', as_heartbeat(Root,Kind,Now)), _,fail)
     -> Result=recorded ; Result='record-failed' ), !.
 
-% Commit an already-formed native VoiceRNA certificate to the isolated local
-% outbox. This membrane validates the carrier and durability boundary only. It
-% does not interpret the movement, compare participants, render language, or
-% gain network/external-effect authority.
+% Commit an already-formed native VoiceRNA certificate either to the isolated
+% local outbox or, when the human-editable surface grant is active, to the
+% exact resolved Mattermost group.  This membrane validates the carrier and
+% durability boundary only.  It does not interpret the movement, compare
+% participants, render language, or choose whether an effect should exist.
 as_effect(Root0, Descriptor, Result) :-
     ( catch((as_root(Root0, Root),
-      as_local_effect_descriptor(Descriptor, EffectId, Scope, Certificate,
-        CertificateHash, ProofText, ProofHash),
-      as_commit_local_effect(Root, EffectId, Scope, Certificate,
-        CertificateHash, ProofText, ProofHash, Result0),
+      as_effect_descriptor(Descriptor, Kind, EffectId, Scope, Certificate,
+        CertificateHash, ProofText, ProofHash, EffectMaterial),
+      as_commit_native_proof(Root, EffectId, ProofText, ProofHash),
+      as_commit_effect_kind(Kind, Root, EffectId, Scope, Certificate,
+        CertificateHash, ProofText, ProofHash, EffectMaterial, Result0),
       Result=Result0), _, fail)
     -> true ; as_effect_id_or_unknown(Descriptor, EffectId0),
-      Result=['local-effect-held',EffectId0,'mechanical-boundary'] ), !.
+      as_effect_hold_kind(Descriptor, EffectKind),
+      Result=[EffectKind,EffectId0,'mechanical-boundary'] ), !.
+
+as_effect_descriptor(Descriptor, local, EffectId, Scope, Certificate,
+    CertificateHash, ProofText, ProofHash, none) :-
+    as_local_effect_descriptor(Descriptor, EffectId, Scope, Certificate,
+      CertificateHash, ProofText, ProofHash).
+as_effect_descriptor(Descriptor, mattermost, EffectId, Scope, Certificate,
+    CertificateHash, ProofText, ProofHash,
+    ['mattermost-effect-material',ReplyContact,Utterance]) :-
+    as_mattermost_effect_descriptor(Descriptor, EffectId, Scope, Certificate,
+      ReplyContact, Utterance, CertificateHash, ProofText, ProofHash).
+
+as_commit_effect_kind(local, Root, EffectId, Scope, Certificate,
+    CertificateHash, ProofText, ProofHash, none, Result) :-
+    as_commit_local_effect(Root, EffectId, Scope, Certificate,
+      CertificateHash, ProofText, ProofHash, Result).
+as_commit_effect_kind(mattermost, Root, EffectId, Scope, _Certificate,
+    CertificateHash, _ProofText, ProofHash,
+    ['mattermost-effect-material',ReplyContact,Utterance], Result) :-
+    as_mattermost_commit_post(Root, EffectId, Scope, ReplyContact, Utterance,
+      CertificateHash, ProofHash, Result).
+
+as_effect_hold_kind(['mattermost-effect-descriptor-v1'|_],
+    'mattermost-effect-held') :- !.
+as_effect_hold_kind(_, 'local-effect-held').
 
 as_effect_id_or_unknown(Descriptor, EffectId) :-
     ( is_list(Descriptor), Descriptor=[_,Candidate|_], as_symbol(Candidate,EffectId)
@@ -733,6 +760,56 @@ as_local_effect_descriptor(
     string_length(ProofText, ProofLength),
     as_max_native_proof_bytes(MaxProofLength), ProofLength=<MaxProofLength,
     crypto_data_hash(ProofText, ProofHash, [algorithm(sha256),encoding(utf8)]).
+
+as_mattermost_effect_descriptor(
+    ['mattermost-effect-descriptor-v1',EffectId0,IdempotencyKey0,Scope,
+     ['reply-to-contact',ReplyContact0],
+     [payload,Certificate],
+     ['native-proof',Proof],
+     [capability,'mattermost-create-post','exact-resolved-group-only',
+       'pending-before-send-reconcile-unknown'],
+     prepared], EffectId, Scope, Certificate, ReplyContact, Utterance,
+     CertificateHash, ProofText, ProofHash) :-
+    as_symbol(EffectId0, EffectId), as_symbol(IdempotencyKey0, IdempotencyKey),
+    EffectId==IdempotencyKey,
+    as_local_scope(Scope), as_symbol(ReplyContact0, ReplyContact),
+    atom_concat(mm_,RawPostId,ReplyContact), as_mattermost_id(RawPostId,_),
+    as_mattermost_voice_certificate(Certificate, Scope, Proof, ReplyContact,
+      Utterance),
+    term_string(Certificate, CertificateText, [quoted(true),ignore_ops(true)]),
+    string_length(CertificateText, CertificateLength), CertificateLength=<65536,
+    crypto_data_hash(CertificateText, CertificateHash,
+      [algorithm(sha256),encoding(utf8)]),
+    term_string(Proof, ProofText, [quoted(true),ignore_ops(true)]),
+    string_length(ProofText, ProofLength),
+    as_max_native_proof_bytes(MaxProofLength), ProofLength=<MaxProofLength,
+    crypto_data_hash(ProofText, ProofHash, [algorithm(sha256),encoding(utf8)]).
+
+as_mattermost_voice_certificate(
+    ['assistant-voice-certificate-v3',
+     ['VoiceRNA','situated-model-rendering'],
+     ['source-cut',CutId0],Scope,
+     ['movement-source-reference',MovementReference],
+     ['intended-expression',
+       ['mattermost-response',ReplyContact,Utterance]],
+     ParticipantReference,
+     ProofReference,
+     ['voice-audit-v1',['bindings',Bindings],['uncertainty',Uncertainty],
+       'source-scope-movement-bound','no-added-effect-authority'],
+     ['authorized-disclosure','current-contact-and-derived-readings-only'],
+     ['emission-authority','mattermost-exact-resolved-group-only']],
+    Scope, Proof, ReplyContact, Utterance) :-
+    as_local_native_movement_proof(Proof, Scope, CutId, MovementReference,
+      _Summary, ParticipantReference, ProofReference),
+    CutId0=CutId,
+    as_symbol(ReplyContact,_), atom_concat(mm_,RawPostId,ReplyContact),
+    as_mattermost_id(RawPostId,_),
+    string(Utterance), string_length(Utterance,UtteranceLength),
+    UtteranceLength>=1, UtteranceLength=<3000,
+    is_list(Bindings), Bindings=[_|_], maplist(as_symbol,Bindings,_),
+    sort(Bindings,UniqueBindings), same_length(Bindings,UniqueBindings),
+    string(Uncertainty), string_length(Uncertainty,UncertaintyLength),
+    UncertaintyLength=<600.
 
 as_local_scope([scope,Principal0,Audience0,Project0]) :-
     as_symbol(Principal0,_), as_symbol(Audience0,_), as_symbol(Project0,_).

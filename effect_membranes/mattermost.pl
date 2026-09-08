@@ -202,8 +202,247 @@ as_mattermost_get(Config,Token,Path,Reply,Expected) :-
     as_mattermost_auth(Token,Authorization),
     setup_call_cleanup(http_open(Url,Stream,
       [request_header('Authorization'=Authorization),status_code(Status),
-       timeout(10)]),json_read_dict(Stream,Reply),close(Stream)),
+       timeout(10),encoding(utf8)]),json_read_dict(Stream,Reply),close(Stream)),
     Status==Expected.
+
+% Commit one already-certified response to the exact resolved group.  The
+% effect state is durable before transmission.  A transmission whose outcome
+% cannot be proven is reconciled against the remote group and is never blindly
+% repeated.  No language interpretation or movement selection occurs here.
+as_mattermost_commit_post(Root0, EffectId0, Scope, ReplyContact0, Utterance,
+    CertificateHash0, ProofHash0, Result) :-
+    catch(as_mattermost_commit_post_checked(Root0,EffectId0,Scope,
+      ReplyContact0,Utterance,CertificateHash0,ProofHash0,Result0),_,
+      Result0=['mattermost-effect-held',EffectId0,'mechanical-boundary']),
+    Result=Result0, !.
+
+as_mattermost_commit_post_checked(Root0, EffectId0, _Scope, _ReplyContact0,
+    _Utterance, _CertificateHash0, _ProofHash0,
+    ['mattermost-effect-held',EffectId,'outbound-disabled']) :-
+    as_mattermost_root(Root0,Root), as_symbol(EffectId0,EffectId),
+    as_mattermost_config(Root,Config),
+    ( Config.enabled \== true ; Config.outbound.enabled \== true ), !.
+as_mattermost_commit_post_checked(Root0, EffectId0, Scope, ReplyContact0,
+    Utterance, CertificateHash0, ProofHash0, Result) :-
+    as_mattermost_root(Root0,Root), as_symbol(EffectId0,EffectId),
+    as_symbol(ReplyContact0,ReplyContact),
+    atom_concat(mm_,SourcePostId,ReplyContact),
+    as_mattermost_id(SourcePostId,_),
+    string(Utterance), string_length(Utterance,UtteranceLength),
+    UtteranceLength>=1, UtteranceLength=<3000,
+    as_sha256(CertificateHash0,CertificateHash),
+    as_sha256(ProofHash0,ProofHash),
+    as_mattermost_effect_context(Root,Scope,SourcePostId,Config,Binding,Token,
+      ChannelId,BotId,RootPostId),
+    crypto_data_hash(Utterance,MessageHash,
+      [algorithm(sha256),encoding(utf8)]),
+    as_mattermost_effect_path(Root,EffectId,Path),
+    ( exists_file(Path) ->
+        miter_store_read_json(Path,State),
+        as_mattermost_effect_state_matches(State,EffectId,Scope,SourcePostId,
+          ChannelId,BotId,RootPostId,Utterance,MessageHash,CertificateHash,
+          ProofHash),
+        as_mattermost_resume_effect(Path,State,Config,Binding,Token,Result)
+    ; as_mattermost_prepare_effect(Path,EffectId,Scope,SourcePostId,ChannelId,
+        BotId,RootPostId,Utterance,MessageHash,CertificateHash,ProofHash,State),
+      as_mattermost_transmit_effect(Path,State,Config,Binding,Token,Result)
+    ).
+
+as_mattermost_effect_context(Root,Scope,SourcePostId,Config,Binding,Token,
+    ChannelId,BotId,RootPostId) :-
+    as_mattermost_config(Root,Config), Config.enabled==true,
+    Config.outbound.enabled==true,
+    as_mattermost_binding_local(Root,Config,Binding),
+    as_mattermost_binding_live(Config,Binding),
+    as_mattermost_token(Config,Token),
+    as_mattermost_id(Binding.channel_id,ChannelId),
+    as_mattermost_id(Binding.bot_id,BotId),
+    format(atom(SourcePath),'/api/v4/posts/~w',[SourcePostId]),
+    as_mattermost_get(Config,Token,SourcePath,Post,200),
+    as_mattermost_source_post_valid(Config,Binding,Scope,SourcePostId,Post,
+      ChannelId,RootPostId).
+
+as_mattermost_source_post_valid(Config,Binding,
+    [scope,Principal0,Audience0,Project0],SourcePostId,Post,ChannelId,
+    RootPostId) :-
+    is_dict(Post), as_mattermost_id(Post.id,SourcePostId),
+    as_mattermost_id(Post.channel_id,ChannelId),
+    as_mattermost_id(Post.user_id,UserId),
+    member(Principal,Binding.principals),
+    as_mattermost_id(Principal.id,UserId),
+    memberchk(Principal.username,Config.authorized_humans),
+    miter_store_nonempty_atom(Principal.username,PrincipalName),
+    miter_store_nonempty_atom(Config.scope.audience,Audience),
+    miter_store_nonempty_atom(Config.scope.project,Project),
+    miter_store_nonempty_atom(Principal0,PrincipalName),
+    miter_store_nonempty_atom(Audience0,Audience),
+    miter_store_nonempty_atom(Project0,Project),
+    ( Post.root_id=="" -> RootPostId=SourcePostId
+    ; as_mattermost_id(Post.root_id,RootPostId) ).
+
+as_mattermost_effect_path(Root,EffectId,Path) :-
+    format(atom(Relative),'surface/effects/~w.json',[EffectId]),
+    directory_file_path(Root,Relative,Path).
+
+as_mattermost_prepare_effect(Path,EffectId,Scope,SourcePostId,ChannelId,BotId,
+    RootPostId,Utterance,MessageHash,CertificateHash,ProofHash,State) :-
+    get_time(Now),
+    term_string(Scope,ScopeText,[quoted(true),ignore_ops(true)]),
+    State=_{schema:"miter-mattermost-effect-v1",effect_id:EffectId,
+      idempotency_key:EffectId,scope:ScopeText,source_post_id:SourcePostId,
+      channel_id:ChannelId,bot_id:BotId,root_post_id:RootPostId,
+      message:Utterance,message_sha256:MessageHash,
+      certificate_sha256:CertificateHash,native_proof_sha256:ProofHash,
+      pending_post_id:EffectId,response_post_id:"",prepared_at_epoch:Now,
+      transmission_started_at_epoch:0,observed_at_epoch:Now,
+      standing:"prepared-before-transmission"},
+    as_write_json_durable(Path,State).
+
+as_mattermost_effect_state_matches(State,EffectId,Scope,SourcePostId,ChannelId,
+    BotId,RootPostId,Utterance,MessageHash,CertificateHash,ProofHash) :-
+    is_dict(State), State.schema=="miter-mattermost-effect-v1",
+    miter_store_nonempty_atom(State.effect_id,EffectId),
+    miter_store_nonempty_atom(State.idempotency_key,EffectId),
+    term_string(Scope,ScopeText,[quoted(true),ignore_ops(true)]),
+    State.scope==ScopeText,
+    as_mattermost_id(State.source_post_id,SourcePostId),
+    as_mattermost_id(State.channel_id,ChannelId),
+    as_mattermost_id(State.bot_id,BotId),
+    as_mattermost_id(State.root_post_id,RootPostId),
+    State.message==Utterance,
+    as_sha256(State.message_sha256,MessageHash),
+    as_sha256(State.certificate_sha256,CertificateHash),
+    as_sha256(State.native_proof_sha256,ProofHash),
+    miter_store_nonempty_atom(State.pending_post_id,EffectId),
+    number(State.prepared_at_epoch), State.prepared_at_epoch>0,
+    number(State.transmission_started_at_epoch),
+    number(State.observed_at_epoch), string(State.standing).
+
+as_mattermost_resume_effect(_Path,State,Config,_Binding,Token,Result) :-
+    State.standing=="delivered-and-verified", !,
+    as_mattermost_verify_stored_delivery(Config,Token,State),
+    as_mattermost_effect_result(State,'mattermost-effect-duplicate',Result).
+as_mattermost_resume_effect(Path,State,Config,Binding,Token,Result) :-
+    memberchk(State.standing,
+      ["transmission-started-outcome-unknown","outcome-unknown-held"]), !,
+    as_mattermost_reconcile_effect(Path,State,Config,Binding,Token,Result).
+as_mattermost_resume_effect(Path,State,Config,Binding,Token,Result) :-
+    memberchk(State.standing,
+      ["prepared-before-transmission","confirmed-not-delivered"]), !,
+    as_mattermost_transmit_effect(Path,State,Config,Binding,Token,Result).
+as_mattermost_resume_effect(_Path,State,_Config,_Binding,_Token,
+    ['mattermost-effect-held',State.effect_id,'unrecognized-effect-standing']).
+
+as_mattermost_transmit_effect(Path,State,Config,Binding,Token,Result) :-
+    get_time(Now),
+    put_dict(_{standing:"transmission-started-outcome-unknown",
+      transmission_started_at_epoch:Now,observed_at_epoch:Now},State,Started),
+    as_write_json_durable(Path,Started),
+    as_mattermost_post_outcome(Config,Token,Started,Outcome),
+    as_mattermost_finish_transmission(Path,Started,Config,Binding,Token,Outcome,
+      Result).
+
+as_mattermost_post_outcome(Config,Token,State,Outcome) :-
+    Body=_{channel_id:State.channel_id,root_id:State.root_post_id,
+      message:State.message,pending_post_id:State.pending_post_id},
+    catch(as_mattermost_post_json(Config,Token,'/api/v4/posts',Body,Status,Reply),
+      _, Outcome=unknown),
+    ( var(Outcome) -> Outcome=['http-result',Status,Reply] ; true ).
+
+as_mattermost_post_json(Config,Token,Path,Body,Status,Reply) :-
+    miter_store_nonempty_atom(Config.origin,Origin), atom_concat(Origin,Path,Url),
+    as_mattermost_auth(Token,Authorization),
+    setup_call_cleanup(http_open(Url,Stream,
+      [method(post),post(json(Body)),status_code(Status),timeout(20),
+       redirect(false),encoding(utf8),
+       request_header('Authorization'=Authorization),
+       request_header('Content-Type'='application/json'),
+       request_header('Accept'='application/json')]),
+      read_string(Stream,262145,Raw),close(Stream)),
+    string_length(Raw,Length), Length=<262144,
+    catch(atom_json_dict(Raw,Reply,[]),_,Reply=_{raw:"unparseable"}).
+
+as_mattermost_finish_transmission(Path,State,Config,_Binding,Token,
+    ['http-result',201,Reply],Result) :-
+    as_mattermost_delivered_post_valid(State,Reply), !,
+    as_mattermost_mark_delivered(Path,State,Reply.id,Delivered),
+    as_mattermost_verify_stored_delivery(Config,Token,Delivered),
+    as_mattermost_effect_receipt(Path,Delivered,delivered),
+    as_mattermost_effect_result(State,'mattermost-effect-delivered',Result).
+as_mattermost_finish_transmission(Path,State,_Config,_Binding,_Token,
+    ['http-result',Status,_],
+    ['mattermost-effect-held',State.effect_id,'remote-rejected-no-delivery']) :-
+    integer(Status), Status=\=201, !,
+    get_time(Now), put_dict(_{standing:"confirmed-not-delivered",
+      observed_at_epoch:Now},State,Held), as_write_json_durable(Path,Held).
+as_mattermost_finish_transmission(Path,State,Config,Binding,Token,_Outcome,
+    Result) :-
+    get_time(Now), put_dict(_{standing:"outcome-unknown-held",
+      observed_at_epoch:Now},State,Unknown), as_write_json_durable(Path,Unknown),
+    as_mattermost_reconcile_effect(Path,Unknown,Config,Binding,Token,Result).
+
+as_mattermost_mark_delivered(Path,State,ResponsePostId0,Delivered) :-
+    as_mattermost_id(ResponsePostId0,ResponsePostId), get_time(Now),
+    put_dict(_{response_post_id:ResponsePostId,
+      standing:"delivered-and-verified",observed_at_epoch:Now},State,Delivered),
+    as_write_json_durable(Path,Delivered).
+
+as_mattermost_delivered_post_valid(State,Post) :-
+    is_dict(Post), as_mattermost_id(Post.id,_),
+    as_mattermost_id(Post.channel_id,ChannelId),
+    as_mattermost_id(State.channel_id,ChannelId),
+    as_mattermost_id(Post.user_id,BotId), as_mattermost_id(State.bot_id,BotId),
+    Post.message==State.message,
+    as_mattermost_id(Post.root_id,RootPostId),
+    as_mattermost_id(State.root_post_id,RootPostId),
+    miter_store_nonempty_atom(Post.pending_post_id,PendingPostId),
+    miter_store_nonempty_atom(State.pending_post_id,PendingPostId).
+
+as_mattermost_verify_stored_delivery(Config,Token,State) :-
+    as_mattermost_id(State.response_post_id,ResponsePostId),
+    format(atom(Path),'/api/v4/posts/~w',[ResponsePostId]),
+    as_mattermost_get(Config,Token,Path,Post,200),
+    as_mattermost_delivered_post_valid(State,Post).
+
+as_mattermost_reconcile_effect(Path,State,Config,_Binding,Token,Result) :-
+    Since0 is floor(State.prepared_at_epoch*1000)-5000,
+    Since is max(0,Since0),
+    as_mattermost_id(State.channel_id,ChannelId),
+    format(atom(PostsPath),'/api/v4/channels/~w/posts?since=~d&per_page=200',
+      [ChannelId,Since]),
+    ( catch(as_mattermost_get(Config,Token,PostsPath,Reply,200),_,fail),
+      as_mattermost_posts(Reply,Posts),
+      findall(Post,(member(Post,Posts),
+        as_mattermost_delivered_post_valid(State,Post)),Matches),
+      Matches=[Only] ->
+        as_mattermost_mark_delivered(Path,State,Only.id,Delivered),
+        as_mattermost_effect_receipt(Path,Delivered,reconciled),
+        as_mattermost_effect_result(State,'mattermost-effect-duplicate',Result)
+    ; get_time(Now), put_dict(_{standing:"outcome-unknown-held",
+        observed_at_epoch:Now},State,Held), as_write_json_durable(Path,Held),
+      Result=['mattermost-effect-held',State.effect_id,
+        'outcome-unknown-no-blind-resend'] ).
+
+as_mattermost_effect_result(State,Kind,Result) :-
+    miter_store_nonempty_atom(State.effect_id,EffectId),
+    as_sha256(State.certificate_sha256,CertificateHash),
+    as_sha256(State.native_proof_sha256,ProofHash),
+    Result=[Kind,EffectId,CertificateHash,ProofHash].
+
+as_mattermost_effect_receipt(EffectPath,State,Standing) :-
+    file_directory_name(EffectPath,EffectsDirectory),
+    file_directory_name(EffectsDirectory,SurfaceDirectory),
+    file_directory_name(SurfaceDirectory,Root),
+    format(atom(Relative),'receipts/effect-~w.json',[State.effect_id]),
+    directory_file_path(Root,Relative,ReceiptPath), get_time(Now),
+    as_write_json_durable(ReceiptPath,
+      _{schema:"miter-assistant-effect-receipt-v3",
+        effect_id:State.effect_id,idempotency_key:State.effect_id,
+        certificate_sha256:State.certificate_sha256,
+        native_proof_sha256:State.native_proof_sha256,
+        capability:"mattermost-create-post",standing:Standing,
+        network_access:true,external_effect:true,
+        response_post_id:State.response_post_id,observed_at_epoch:Now}).
 
 as_mattermost_id(Value, Id) :-
     miter_store_nonempty_atom(Value,Id), atom_length(Id,26),
@@ -371,9 +610,16 @@ miter_mattermost_scope_bind(Root,Surface,DeclaredScope,Result) :-
       miter_store_nonempty_atom(Config.scope.audience,Audience),
       miter_store_nonempty_atom(Config.scope.project,Project),
       Scope=[scope,PrincipalName,Audience,Project],
+      miter_store_nonempty_atom(Surface.server_id,ServerId),
+      miter_store_nonempty_atom(Surface.team_id,TeamId),
+      miter_store_nonempty_atom(Surface.channel_id,ChannelId),
+      miter_store_nonempty_atom(Surface.principal_id,PrincipalId),
+      miter_store_nonempty_atom(Surface.post_id,PostId),
+      miter_store_nonempty_atom(Surface.thread_id,ThreadId),
+      miter_store_nonempty_atom(Surface.event_version,EventVersion),
       Route=['surface-route',mattermost,
-        Surface.server_id,Surface.team_id,Surface.channel_id,Surface.principal_id],
-      Event=['surface-event',Surface.post_id,Surface.thread_id,Surface.event_version],
+        ServerId,TeamId,ChannelId,PrincipalId],
+      Event=['surface-event',PostId,ThreadId,EventVersion],
       Result=['scope-binding-v1',Route,Scope,Event,
         'authorized-before-payload-cognition',
         ['binding-record','mattermost-runtime-binding',mattermost]]),_,

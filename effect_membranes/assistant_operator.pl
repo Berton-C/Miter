@@ -35,6 +35,7 @@ as_lkg_relative_paths([
   'src/constitutive_authority_joint.metta',
   'src/assistant_reactor_foundation.metta','src/scope_continuity.metta',
   'src/semantic_participation.metta','src/assistant_reactor_authority.metta',
+  'src/dialogue_participation.metta',
   'src/bootstrap.metta',
   'effect_membranes/integrity.pl','effect_membranes/store.pl',
   'effect_membranes/continuity.pl','effect_membranes/continuity_adapter.pl',

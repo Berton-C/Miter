@@ -153,7 +153,7 @@
 ; AtomSpace history. Older full-proof history remains valid for restoration.
 (= (ARVoiceProofReferenceRecord $proof $effect-result)
    (if (and (ARNativeMovementProofValid $proof)
-         (ARLocalEffectResultValid $effect-result))
+         (ARAnyEffectResultValid $effect-result))
      (native-movement-proof-record-v2
        (ARNativeProofReference $proof)
        (certificate-sha256 (index-atom $effect-result 2))
@@ -506,20 +506,53 @@
        (CPHas (index-atom $result 0)
          (local-effect-committed local-effect-duplicate) 0))))
 
+(= (C4MattermostEffectResultValid $result)
+   (and (is-expr $result)
+     (and (== (size-atom $result) 4)
+       (CPHas (index-atom $result 0)
+         (mattermost-effect-delivered mattermost-effect-duplicate) 0))))
+
+(= (ARAnyEffectResultValid $result)
+   (or (ARLocalEffectResultValid $result)
+       (and (is-expr $result)
+         (and (== (size-atom $result) 4)
+           (CPHas (index-atom $result 0)
+             (mattermost-effect-delivered mattermost-effect-duplicate) 0)))))
+
+(= (ARAnyEffectDescriptor $contact-result)
+   (if (CPShape $contact-result assistant-contact-incorporated-v4 5)
+     (C4MattermostEffectDescriptor $contact-result)
+     (ARLocalEffectDescriptor $contact-result)))
+
+(= (ARAnyEffectDescriptorValid $descriptor)
+   (or (ARLocalEffectDescriptorValid $descriptor)
+       (C4MattermostEffectDescriptorValid $descriptor)))
+
+(= (ARAnyEffectProof $descriptor)
+   (if (CPShape $descriptor mattermost-effect-descriptor-v1 9)
+     (index-atom (index-atom $descriptor 6) 1)
+     (index-atom (index-atom $descriptor 5) 1)))
+
+(= (ARAnyEffectCertificateWrapper $descriptor)
+   (if (CPShape $descriptor mattermost-effect-descriptor-v1 9)
+     (index-atom $descriptor 5)
+     (index-atom $descriptor 4)))
+
 (= (AREffectOne $root $contact-result $effect-writer)
-   (let $descriptor (ARLocalEffectDescriptor $contact-result)
-     (if (ARLocalEffectDescriptorValid $descriptor)
+   (let $descriptor (ARAnyEffectDescriptor $contact-result)
+     (if (ARAnyEffectDescriptorValid $descriptor)
        (let* (($effect-id (index-atom $descriptor 1))
               ($scope (index-atom $descriptor 3))
-              ($proof (index-atom (index-atom $descriptor 5) 1))
+              ($proof (ARAnyEffectProof $descriptor))
               ($result ($effect-writer $root $descriptor)))
-         (if (ARLocalEffectResultValid $result)
+         (if (ARAnyEffectResultValid $result)
            (let* (($proof-history (ARRecordVoiceProofReference $effect-id
                     $scope $proof $result))
                   ($history (if (CPHas $proof-history
                      (assistant-history-recorded assistant-history-duplicate) 0)
                     (ARRecord effect $effect-id $scope
-                      (effect-witness-v2 $result (index-atom $descriptor 4)
+                      (effect-witness-v2 $result
+                        (ARAnyEffectCertificateWrapper $descriptor)
                         (ARNativeProofReference $proof)))
                     assistant-history-conflict)))
              (if (and (CPHas $proof-history
@@ -540,7 +573,7 @@
 (= (AREffectOutcomeValid $outcome)
    (if (== $outcome no-local-effect) true
      (if (CPShape $outcome local-effect-result 4)
-       (and (ARLocalEffectResultValid (index-atom $outcome 1))
+       (and (ARAnyEffectResultValid (index-atom $outcome 1))
         (and (CPHas (index-atom $outcome 2)
                (assistant-history-recorded assistant-history-duplicate) 0)
              (CPHas (index-atom $outcome 3)

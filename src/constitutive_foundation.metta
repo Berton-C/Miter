@@ -663,12 +663,28 @@
           (CPAllCompassSemanticsPresent $rows $names (+ $i 1))) true))
 
 (= (CPCompassSemantics $value)
-   (let* (($rows (CPCompassSemanticRows $value))
-          ($names (CPCompassSemanticNames)))
-     (if (and (== (size-atom $rows) 14)
-              (CPAllCompassSemanticsPresent $rows $names 0))
-       (compass-semantics $value complete-fourteen-fields $rows)
-       (compass-semantics-unresolved $value expected-complete-fourteen-fields $rows))))
+   (let $source (CPCompassRef $value)
+     (if (!= $source missing-compass-value)
+       (compass-semantics-reference $value complete-fourteen-fields $source
+         immutable-loaded-compass)
+       (compass-semantics-unresolved $value expected-loaded-compass-value ()))))
+
+; Resolve a compact reference only against the loaded read-only compass.  The
+; reference prevents immutable prose from being copied into every movement;
+; it does not weaken availability of any of the fourteen semantic fields.
+(= (CPResolveCompassSemantics $reference)
+   (if (CPShape $reference compass-semantics-reference 5)
+     (let* (($value (index-atom $reference 1))
+            ($rows (CPCompassSemanticRows $value))
+            ($names (CPCompassSemanticNames)))
+       (if (and (== (index-atom $reference 2) complete-fourteen-fields)
+             (and (== (index-atom $reference 3) (CPCompassRef $value))
+              (and (== (index-atom $reference 4) immutable-loaded-compass)
+               (and (== (size-atom $rows) 14)
+                    (CPAllCompassSemanticsPresent $rows $names 0)))))
+         (compass-semantics $value complete-fourteen-fields $rows)
+         (compass-semantics-unresolved $value invalid-reference $rows)))
+     (compass-semantics-unresolved unknown malformed-reference ())))
 
 (= (CPFlourishingOneV2 $cut $views $value)
    (let* (($semantics (CPCompassSemantics $value))
