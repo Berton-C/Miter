@@ -751,9 +751,41 @@ Two start/status/stop cycles in each runtime retained verified LKG and an
 with zero model calls, zero constitutive formations, and no checkpoint,
 receipt, consumed event, or outbox effect. The invalidation closure is only
 the native-extension compiler carrier; no Soul, R/A/P, continuity, or effect
-meaning changed. A fresh dedicated-user installation, cold restore, no-replay
-check, and live latency measurement remain required; these repairs do not turn
-any failed Carry into a successful migration.
+meaning changed. At that point a fresh dedicated-user installation, cold
+restore, no-replay check, and live latency measurement remained required;
+those repairs alone did not turn any failed Carry into a successful migration.
+
+The dedicated-user migration then completed through the supported installer.
+It preserved runtime ID `76c25246-c914-4018-a5e8-bf5bcdef3f26`, retained exact
+active-checkpoint SHA-256
+`9e97c2c328e45ede5a7812e9c0f66bf87a9f38d5a17d65066305c33b10e693ba`,
+created the external migration backup, imported private credentials at their
+required ownership and mode, reused healthy loopback Mattermost and Chroma,
+and recorded `cold-restore-verified-no-replay`. Launchd then held exactly one
+system supervisor plus one pinned PeTTa child under `claritymiter`; the prior
+GUI service remained unregistered. The human operator wrapper still inherited
+an inaccessible caller directory when changing identity; it now uses sudo's
+run-as working-directory option to establish the dedicated private Miter
+parent before invoking SWI-Prolog. This is an operator-access repair only.
+
+The first mandatory post-migration hygiene audit found 29 obsolete builder
+fixtures surviving for roughly twenty hours to three days. Four were each
+consuming approximately one full CPU core and the other idle reactors together
+consumed substantial additional CPU. Every exact process was traced to a
+disposable Miter fixture and stopped gracefully; neither dedicated-runtime
+process was signaled. The migrated PeTTa child itself then measured roughly
+17--39% CPU and grew from about 1.8 GB to 2.7 GB resident memory while the
+first live contact remained unanswered beyond ordinary conversational time.
+Status later proved that one contact was admitted and one model call completed,
+while outbound posts remained unchanged and the reactor returned to
+`assistant-waiting`. The runtime recorded a normal `assistant-cycle-v3`, and
+the sole call persisted a valid `c4-semantic-observation-v1`; no rendering or
+audit claim followed. The silence is therefore inside the native joint after
+semantic participation and before VoiceRNA transport, not an active model
+wait, transport failure, malformed semantic artifact, or effect-transmission
+failure. Its exact native standing and the supported runtime's idle/cycle cost
+remain open C4 proportionality evidence; no second stimulus is introduced
+until those causes are known.
 
 ## 7. The only build cycle
 
@@ -853,6 +885,27 @@ predicates are pure and all inputs are ground, but their tables must be cleared
 or demonstrably bounded at a named lifecycle boundary. Semantic readings,
 R/A/P standing, Soul participation, movement choice, and consequence meaning
 are never memoized as host verdicts.
+
+### Post-commit process-hygiene waypoint
+
+After every commit and before the next source edit, inspect the host process
+table for the supported Miter service and every process created by the just-
+completed builder trial. When Miter is intended to be running, exactly one
+supported supervisor and its expected pinned PeTTa child may remain. No
+process whose source, runtime, fixture, or working path belongs to
+`/private/tmp`, `/var/folders`, a test fixture, or another disposable trial may
+survive its bounded cleanup. Confirm exact identity and parentage before
+signaling any process; stop only named obsolete trial processes gracefully,
+then verify their exit. This is builder hygiene, not runtime authority or Soul
+behavior.
+
+Record a compact CPU/RSS and elapsed-time observation for the supported
+runtime at this waypoint. Compare it with the pre-commit baseline and check
+that no unexpected child, duplicated clock, runaway reduction, unbounded
+table, or fixture remains. A material survivor, continuously saturated
+reduction, or unexplained memory growth reopens the active cut until its
+launcher or lifecycle is corrected. Raw process listings remain ephemeral;
+only the discrepancy, disposition, and current standing enter this Atlas.
 
 One cut is active at a time. A cut closes only if it creates the prerequisite
 for the next named cut. If evidence reopens an earlier cut, repair that exact

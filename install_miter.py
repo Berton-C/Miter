@@ -14,6 +14,7 @@ import json
 import os
 import pathlib
 import platform
+import plistlib
 import pwd
 import secrets
 import shutil
@@ -787,27 +788,115 @@ def install_launchd(application: pathlib.Path, deployment: dict, petta: pathlib.
     run(["/bin/launchctl", "bootstrap", "system", str(LAUNCHD_PATH)])
 
 
-def install_operator_wrapper(application: pathlib.Path, deployment: dict, petta: pathlib.Path) -> None:
-    if os.geteuid() != 0:
-        raise InstallError("Run install with sudo so it can install the operator command")
+def operator_wrapper_text(application: pathlib.Path, deployment: dict,
+                          petta: pathlib.Path) -> str:
     runtime = deployment["runtime_root"]
+    working_directory = str(pathlib.Path(runtime).parent)
     user = deployment["runtime_user"]
-    text = f'''#!/bin/sh
+    return f'''#!/bin/sh
 set -eu
 command=${{1:-}}
 if [ "$command" = start ]; then
   exec /usr/bin/sudo /bin/launchctl kickstart -k system/{LAUNCHD_LABEL}
 fi
-exec /usr/bin/sudo -u {user} -H /usr/bin/env \\
+exec /usr/bin/sudo -u {user} -H -D {shell_quote(working_directory)} /usr/bin/env \\
   MITER_PETTA_MAIN={shell_quote(str(petta / 'src' / 'main.pl'))} \\
   MITER_SWIPL_LD={shell_quote(command_path('swipl-ld'))} \\
   {shell_quote(str(application / 'bin' / 'miter'))} "$@" \\
   --runtime-root {shell_quote(runtime)}
 '''
+
+
+def install_operator_wrapper(application: pathlib.Path, deployment: dict,
+                             petta: pathlib.Path) -> None:
+    if os.geteuid() != 0:
+        raise InstallError("Run install with sudo so it can install the operator command")
+    text = operator_wrapper_text(application, deployment, petta)
     OPERATOR_PATH.parent.mkdir(parents=True, exist_ok=True)
     OPERATOR_PATH.write_text(text, encoding="utf-8")
     os.chown(OPERATOR_PATH, 0, 0)
     OPERATOR_PATH.chmod(0o755)
+
+
+def installed_service_paths(deployment: dict) -> tuple[pathlib.Path, pathlib.Path]:
+    if not LAUNCHD_PATH.is_file() or LAUNCHD_PATH.is_symlink():
+        raise InstallError("The installed Miter system service profile is unavailable")
+    try:
+        with LAUNCHD_PATH.open("rb") as stream:
+            profile = plistlib.load(stream)
+    except (OSError, plistlib.InvalidFileException) as exc:
+        raise InstallError(f"Cannot read the installed Miter service profile: {exc}") from exc
+    arguments = profile.get("ProgramArguments")
+    environment = profile.get("EnvironmentVariables")
+    if (
+        profile.get("Label") != LAUNCHD_LABEL
+        or profile.get("UserName") != deployment["runtime_user"]
+        or not isinstance(arguments, list)
+        or len(arguments) != 10
+        or arguments[1:5] != ["-q", "-f", "none", "-s"]
+        or arguments[6:9] != ["--", "run-supervised", "--runtime-root"]
+        or arguments[9] != deployment["runtime_root"]
+        or not isinstance(environment, dict)
+    ):
+        raise InstallError("The installed Miter service profile has an unexpected shape")
+    operator = pathlib.Path(arguments[5])
+    application = operator.parent.parent
+    releases = pathlib.Path(deployment["application_root"]) / "releases"
+    try:
+        release_relative = application.relative_to(releases)
+    except ValueError as exc:
+        raise InstallError("The installed Miter application escaped its release root") from exc
+    if (
+        len(release_relative.parts) != 1
+        or len(application.name) != 40
+        or any(character not in "0123456789abcdef" for character in application.name)
+        or operator != application / "effect_membranes" / "assistant_operator.pl"
+        or not operator.is_file()
+        or operator.is_symlink()
+    ):
+        raise InstallError("The installed Miter application release is not exact")
+    petta_main_value = environment.get("MITER_PETTA_MAIN")
+    if not isinstance(petta_main_value, str):
+        raise InstallError("The installed Miter service does not name its PeTTa dependency")
+    petta_main = pathlib.Path(petta_main_value)
+    petta = petta_main.parent.parent
+    expected_petta = (
+        pathlib.Path(deployment["dependency_root"])
+        / "PeTTa"
+        / deployment["petta"]["commit"]
+    )
+    if (
+        petta != expected_petta
+        or petta_main != petta / "src" / "main.pl"
+        or not petta_main.is_file()
+        or petta_main.is_symlink()
+    ):
+        raise InstallError("The installed Miter service does not use the pinned PeTTa dependency")
+    return application, petta
+
+
+def repair_operator(config: dict) -> dict:
+    if os.geteuid() != 0:
+        raise InstallError("Run this command with sudo so it can repair the operator command")
+    source_identity()
+    deployment = config["deployment"]
+    account = runtime_account(deployment["runtime_user"])
+    if account is None:
+        raise InstallError("The dedicated Miter runtime identity is unavailable")
+    runtime = pathlib.Path(deployment["runtime_root"])
+    if not runtime_marker_valid(runtime):
+        raise InstallError("The dedicated Miter runtime is unavailable or incomplete")
+    application, petta = installed_service_paths(deployment)
+    install_operator_wrapper(application, deployment, petta)
+    return {
+        "schema": "miter-installation-result-v1",
+        "status": "operator-repaired",
+        "operator": str(OPERATOR_PATH),
+        "application": str(application),
+        "petta": str(petta),
+        "runtime": str(runtime),
+        "service_interrupted": False,
+    }
 
 
 def shell_quote(value: str) -> str:
@@ -996,6 +1085,8 @@ def main() -> int:
                                 help="Import the exact named Keychain sources into the private runtime without printing them")
     install_parser.add_argument("--migrate-runtime", metavar="ABSOLUTE_PATH",
                                 help="Preserve one stopped Miter runtime's exact identity, continuity, developmental state, and receipts")
+    subparsers.add_parser("repair-operator",
+                          help="Repair the ordinary operator command without restarting Miter")
     subparsers.add_parser("validate", help="Read-only installation validation")
     subparsers.add_parser("commands", help="Print ordinary operator commands")
     args = parser.parse_args()
@@ -1007,6 +1098,8 @@ def main() -> int:
             result = install(config, args.reuse_local_services,
                              args.import_keychain_credentials,
                              args.migrate_runtime)
+        elif args.command == "repair-operator":
+            result = repair_operator(config)
         elif args.command == "validate":
             result = validate(config)
         else:
