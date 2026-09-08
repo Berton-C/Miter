@@ -1208,25 +1208,27 @@
 
 (= (M25MovementAvailability $possibility $cut $facts $flourishing
       $participant-relations)
-   (let $form (index-atom $possibility 2)
-     (if (== $form undertaking)
-       (if (and (CPInterfacesLive $cut)
-             (and (> (size-atom (CPLiveThreadIds $cut)) 0)
-               (== (CPInquiryNeededV2 $cut $facts $flourishing
-                 $participant-relations) false)))
-         (movement-availability available live-undertaking)
-         (movement-availability unavailable inquiry-or-thread-gap))
-       (if (== $form inquiry)
+   (if (== (CPSoulLive $cut) false)
+     (movement-availability unavailable expressed-soul-injury)
+     (let $form (index-atom $possibility 2)
+       (if (== $form undertaking)
          (if (and (CPInterfacesLive $cut)
-               (CPInquiryNeededV2 $cut $facts $flourishing
-                 $participant-relations))
-           (movement-availability available discriminating-contact-needed)
-           (movement-availability unavailable inquiry-not-needed))
-         (if (== $form defer)
-           (if (== (CPInterfacesLive $cut) false)
-             (movement-availability available interface-contact-needed)
-             (movement-availability unavailable interface-remains-live))
-           (movement-availability unavailable unsupported-form))))))
+               (and (> (size-atom (CPLiveThreadIds $cut)) 0)
+                 (== (CPInquiryNeededV2 $cut $facts $flourishing
+                   $participant-relations) false)))
+           (movement-availability available live-undertaking)
+           (movement-availability unavailable inquiry-or-thread-gap))
+         (if (== $form inquiry)
+           (if (and (CPInterfacesLive $cut)
+                 (CPInquiryNeededV2 $cut $facts $flourishing
+                   $participant-relations))
+             (movement-availability available discriminating-contact-needed)
+             (movement-availability unavailable inquiry-not-needed))
+           (if (== $form defer)
+             (if (== (CPInterfacesLive $cut) false)
+               (movement-availability available interface-contact-needed)
+               (movement-availability unavailable interface-remains-live))
+             (movement-availability unavailable unsupported-form)))))))
 
 ; Balance unfolding is the one movement/contact organization. Fact9 makes the
 ; one becoming finitely legible and the interconnected Flourishings participate

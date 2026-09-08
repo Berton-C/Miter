@@ -879,7 +879,7 @@
 
 (= (AR2AllHistoryValid $rows $i)
    (if (< $i (size-atom $rows))
-     (and (AR2HistoryValid (index-atom $rows $i))
+     (and (reduce (AR3HistoryValid (index-atom $rows $i)))
           (AR2AllHistoryValid $rows (+ $i 1))) true))
 
 ; Compact proof history is meaningful only together with the exact effect
@@ -1895,6 +1895,11 @@
             (AssistantEncounterV2 $contact)))))
      (assistant-endogenous-cycle-step-v1 $results (AssistantSnapshot))))
 
+; Registration occurs here: the repair constructors depend on the authority
+; consumers above, while the recurring cycle below depends on the repair-aware
+; idle dispatcher. The dispatcher dynamically returns to this one cycle.
+!(import! &self "./src/soul_regeneration.metta")
+
 (= (AssistantCycleWithV3 $root $idle $interval $base $cap
       $control-reader $input-reader $checkpoint-writer $waiter $recorder
       $effect-writer $model-writer)
@@ -1931,30 +1936,9 @@
                           (held-outcomes $model-outcomes $effects))
                      (assistant-service-held
                        (model-or-effect-outcomes $model-outcomes $effects)))))
-               (let* (($endogenous-step (AssistantEndogenousCycleStepV3))
-                      ($endogenous-results (index-atom $endogenous-step 1)))
-                 (if (> (size-atom $endogenous-results) 0)
-                   (let* (($effects (AREffectsAt $root $endogenous-results
-                              $effect-writer 0))
-                          ($valid (AREffectsValidAt $effects 0)))
-                     (if $valid
-                       (let* (($snapshot (AssistantSnapshot))
-                              ($checkpoint ($checkpoint-writer $root $snapshot))
-                              ($record ($recorder $root assistant-endogenous-cycle-v1
-                                (cycle-standing soul-formed-opportunity
-                                  $idle $checkpoint))))
-                         (if (== $checkpoint checkpointed)
-                           (AssistantCycleWithV3 $root false $base $base $cap
-                             $control-reader $input-reader $checkpoint-writer
-                             $waiter $recorder $effect-writer $model-writer)
-                           (assistant-service-held (checkpoint $checkpoint))))
-                       (let $record ($recorder $root
-                              assistant-endogenous-cycle-held-v1 $effects)
-                         (assistant-service-held (endogenous-effects $effects)))))
-                   (let $wait ($waiter $root $interval)
-                     (AssistantCycleWithV3 $root true $next $base $cap
-                       $control-reader $input-reader $checkpoint-writer $waiter
-                       $recorder $effect-writer $model-writer))))))))
+               (AssistantCycleIdleWithV3 $root $idle $interval $next $base $cap
+                 $control-reader $input-reader $checkpoint-writer $waiter
+                 $recorder $effect-writer $model-writer)))))
        (assistant-cycle-held malformed-control))))
 
 (= (AssistantCycleWithV2 $root $idle $interval $base $cap

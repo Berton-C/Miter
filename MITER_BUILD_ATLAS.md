@@ -164,7 +164,7 @@ consumer is absent. No status is upgraded by assertion.
 | Start/status/stop/panic | E | `bin/miter`, operator membrane | Installer and host service registration are absent. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once local effects | E | store/service membranes | No promoted external surface adapter is active. |
-| Checkpoint and same-runtime restart | E | reactor + store membrane | The semantic episode, consequence-earned transfer, later developmental-memory participation, and a Soul-formed endogenous undertaking now restore without replay; complete long-term memory and incomplete undertakings are not yet one writable continuity organization. |
+| Checkpoint and same-runtime restart | E | reactor + store membrane | The semantic episode, consequence-earned transfer, later developmental-memory participation, a Soul-formed endogenous undertaking, and autonomous expressed-Soul regeneration now restore without replay; complete long-term memory and incomplete undertakings are not yet one writable continuity organization. |
 | M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C3 must now learn from their provisional composition. |
 | Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 alignment/semantic inquiry, transfer, developmental memory, and endogenous opportunity formation | Soul-selected flourishing relations generate contact-differentiated alignment families, constrain optional semantic participation, enter consequence interpretation, remain available to later memory, and now participate in one Soul-formed undertaking when an exact persisted partial opening remains and no human undertaking is live; regeneration remains open. |
 | Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 alignment/semantic inquiry, transfer, developmental memory, partial-overlap comparison, and endogenous opportunity formation | Fact9/flourishing organization generates plural native alignment movements, constrains model-assisted inquiry, discloses exact and partial-overlap transfer/differentiation/unresolved standing, permits consequence-earned episodes to alter later unfamiliar cuts, and now carries the exact opening into a new internally generated occurrence without a behavioral branch; regeneration remains open. |
@@ -173,8 +173,8 @@ consumer is absent. No status is upgraded by assertion.
 | Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
 | LLM participation and VoiceRNA | P | `model_participation.metta`, `model.pl`, participant/voice certificate structures | GLM 5.3 candidates now enter a Soul-owned inquiry and returned candidate contact changes the next persisted cut without provider self-certification; a mechanical grant can no longer trigger a call unless native MeTTa exposes unresolved R/A/P plus selected Fact9/flourishing and returned-contact material. General language rendering remains absent. |
 | Mattermost | A | none in clean runtime | General scoped transport and delivery reconciliation must be recovered. |
-| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, and same-reactor endogenous formation; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; and one exact persisted partial opening can now form a provenance-bearing Soul undertaking on the recurring clock while immediate recurrence remains quiescent. Regeneration, broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
-| Regenerative Soul | A | control specification only | Detection, quarantined reconstruction, rejection, and restoration are absent. |
+| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, and regenerative Soul; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; one exact persisted partial opening can form a provenance-bearing Soul undertaking; and injured expressed Soul can form and complete its own repair RNA. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
+| Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
 | Full Continuity of Mind | A/P | checkpoints plus read-only adapters | Exact capsules, semantic memory, undertakings, relationships, and growth are not one writable restored organization. |
 
@@ -205,7 +205,7 @@ surface; multiple lawful continuations remain live; materially different
 contact or consequence changes the resulting movement; restart preserves the
 organization; no new behavioral branch is added for the case.
 
-### C3 — Provisional 26.6/26.9 laboratory dynamics
+### C3 — Provisional 26.6/26.9 laboratory dynamics (closed)
 
 Add explicitly labeled provisional computation-through-mathematics and living
 Soul dynamics to the same persisted AtomSpace organization. The PoC is the
@@ -506,7 +506,7 @@ outside the clean repository.
 
 ## 10. Active cut and next movement
 
-Active cut: **C3 provisional 26.6/26.9 laboratory dynamics**.
+Active cut: **C4 usable always-on assistant and evaluation release**.
 
 Already carried:
 
@@ -1451,17 +1451,45 @@ Already carried:
   grounding relation, live RNA thread, and source history with zero replayable
   endogenous results. Stop/start left the checkpoint byte-identical at SHA-256
   `76ef06afa1a056f6074bf1638ef294e73424abda4c7cd644c6db0a554717ac97`.
+- Regenerative Soul now participates before further endogenous formation on
+  that same idle continuation. A polished but lineage-severed `C` relation
+  makes the exact `constitutive-soul-participation` expression unavailable and
+  removes M25 admissibility; mere carrier non-emptiness no longer substitutes
+  for living Soul. Miter derives a repair class from the immutable germline,
+  surviving D/Ω/I/W organization, provenance, scoped history and consequence
+  references, then tests every native or contributed reconstruction in a
+  bounded quarantine AtomSpace. In the held-out trial, one GLM-shaped fluent
+  proposal retained `no-contact-no-movement-authority` and was rejected, while
+  exactly one germline/weave reconstruction restored a formed movement. No
+  model call or external effect occurred. A fresh `bin/miter` run recorded the
+  injury cycle and autonomous repair cycle; cold restart revalidated one
+  admitted and one rejected trial, identical before/after germline witnesses,
+  an empty repair space, restored M25 capacity, and zero replay. Stop/start kept
+  the checkpoint byte-identical at SHA-256
+  `304f34e24ccc35a450c1134c678e360b90682b226d00ffd97f86c89feef072ab`.
+- C3 is closed as one integrated runtime result: consequence-earned
+  development alters later possibility and survives restart; an exact partial
+  opening can form one Soul-grounded endogenous undertaking without compulsory
+  activity; and severed expressed Soul autonomously regenerates without
+  constitutional mutation. These are provisional 26.6/26.9 laboratory
+  dynamics, not claims that those later formalizations are complete.
 
 Next movement:
 
-1. add autonomous expressed-Soul integrity detection, quarantined
-   reconstruction, adversarial false-repair rejection, causal restoration,
-   and restart persistence without mutation of the constitutional germline;
-2. close C3 only when both additions pass through `bin/miter`, then begin C4
-   by connecting general Mattermost contact, writable Continuity of Mind,
-   general model/VoiceRNA participation, and capability-governed effects to
-   this same runtime;
-3. only after explicit human acceptance of the complete clean candidate,
+1. recover the smallest general Mattermost carrier and delivery reconciler
+   into the existing `bin/miter` service, preserving stable principal/channel
+   scope and exactly-once effects without creating another loop;
+2. make relationship, project, undertaking, attention, and developmental
+   continuity one writable, indefinitely durable, restart-restored
+   organization, with Chroma remaining a rebuildable semantic index;
+3. connect general authorized model participation and VoiceRNA rendering to
+   the live movement rather than fixed canary language, then exercise
+   unfamiliar conversation, multi-user isolation, model/surface failure, and
+   consequence-sensitive resumption through Mattermost;
+4. package the resulting always-on organism for SNET evaluation with one
+   human-editable configuration surface and supported install/start/status/
+   stop/panic operations;
+5. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

@@ -19,7 +19,8 @@ miter_integrity_sources([
  'src/fact9_composition.metta',
  'src/provisional_dynamics.metta',
  'src/model_participation.metta',
- 'src/constitutive_authority_joint.metta','effect_membranes/integrity.pl']).
+ 'src/constitutive_authority_joint.metta','src/soul_regeneration.metta',
+ 'effect_membranes/integrity.pl']).
 miter_integrity_snapshot(Output, Result) :-
  catch((miter_integrity_measure(D), miter_integrity_write(Output,D)
         -> Result='soul-snapshot-stored'; Result='soul-integrity-error'),

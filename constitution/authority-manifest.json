@@ -48,7 +48,7 @@
     },
     {
       "path": "src/constitutive_foundation.metta",
-      "sha256": "286b24ab8fd015bbe159f233e0ce0ca6c31b68c38d44ac2ea881e5df0fb93a46"
+      "sha256": "274eeaad1be4a7d72d88c684b0726d73715596650586cfd4ac233e583c7e6296"
     },
     {
       "path": "src/generative_invariance.metta",
@@ -60,7 +60,7 @@
     },
     {
       "path": "src/authority_inheritance.metta",
-      "sha256": "b40358239a7d57531e45005291599b1cd5c1d16bbd6b56c3730ae5ed02d4036b"
+      "sha256": "19c62d51649958811294fde873172a2cd407814a7887604ca6e6d5de05fbd8d3"
     },
     {
       "path": "src/m24_completion.metta",
@@ -91,8 +91,12 @@
       "sha256": "a37e20be4a05330f667e50d3850221b326c6c57381cd72cc201b55a639e3ac81"
     },
     {
+      "path": "src/soul_regeneration.metta",
+      "sha256": "8c58a94fb0c859a30961bef9bafcadd33e633669fbe277fb5b8eebd49bb495ab"
+    },
+    {
       "path": "effect_membranes/integrity.pl",
-      "sha256": "b07b8149d8095a52025d7f90bda8798cd459222856354cd694fd3eba69521a64"
+      "sha256": "5579a354eaed9d23e078c36d56017dd2815b04c26d68d8d81530495d73f068a1"
     }
   ],
   "schema": "miter-constitutional-integrity-v2",

@@ -20,6 +20,7 @@
 !(bind! &assistant_history (new-space))
 !(bind! &assistant_continuity (new-space))
 !(bind! &assistant_semantic (new-space))
+!(bind! &assistant_repair (new-space))
 !(import! &soul "./constitution/soul.metta")
 !(import! &fact9 "./constitution/fact9_projection.metta")
 !(import! &compass "./constitution/soul_compass.metta")

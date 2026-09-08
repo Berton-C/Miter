@@ -927,7 +927,20 @@
    (CPFactExpressionsUnresolvedAt $facts 0))
 
 (= (CPDLive $cut) (CPRowsNonempty (CPDRelations $cut)))
-(= (CPSoulLive $cut) (CPRowsNonempty (CPCSoulRows $cut)))
+; A nonempty C carrier is not itself living Soul expression.  The one required
+; constitutive relation must be present exactly once with causal support;
+; unrelated, duplicated, proposed, or contradicted rows remain an injury.
+(= (CPSoulExpressionRows $cut)
+   (if (CPCutValid $cut)
+     (CPFind (CPCSoulRows $cut) constitutive-soul-participation) ()))
+
+(= (CPSoulLive $cut)
+   (let $rows (CPSoulExpressionRows $cut)
+     (if (== (size-atom $rows) 1)
+       (let $row (index-atom $rows 0)
+         (and (CPShape $row soul-relation 4)
+              (== (index-atom $row 2) support)))
+       false)))
 
 (= (CPInterfacesLive $cut)
    (let $interfaces (CPInterfaces $cut)

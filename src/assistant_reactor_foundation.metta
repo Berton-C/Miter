@@ -79,7 +79,8 @@
 
 (= (ARSpacesEmpty)
    (and (== (size-atom (collapse (match &assistant_state $atom $atom))) 0)
-        (== (size-atom (collapse (match &assistant_history $atom $atom))) 0)))
+     (and (== (size-atom (collapse (match &assistant_history $atom $atom))) 0)
+          (== (size-atom (collapse (match &assistant_repair $atom $atom))) 0))))
 
 (= (AssistantSnapshot)
    (assistant-snapshot
