@@ -713,6 +713,24 @@ into the live evaluation runtime. The live story-revision, exact recalled
 content, restart/no-replay, and returned-consequence trial remains the next
 evidence for this seam.
 
+The first dedicated-user migration attempt exposed an installer failure before
+any durable state was copied. The old GUI service was unregistered at an idle
+boundary, the `claritymiter` child bootstrap exited nonzero, and the Python
+wrapper discarded the child's diagnostic by raising `CalledProcessError`.
+The old runtime was immediately re-registered with verified LKG, active
+AMA-1.2 standing, no inbox or leased input, nine already-committed outbox
+records, and unchanged active-checkpoint SHA-256
+`9e97c2c328e45ede5a7812e9c0f66bf87a9f38d5a17d65066305c33b10e693ba`.
+No model call or constitutive formation participated in this packaging failure.
+The installer now captures bounded child stdout/stderr, preserves a newly
+created failed bootstrap under an explicit incomplete-runtime quarantine name,
+automatically recovers only a target with no valid runtime marker and no
+possible durable file, and refuses to move anything that may contain runtime
+state. Ephemeral checks passed for empty partial recovery, material-state
+refusal, and valid-runtime preservation. A fresh dedicated-user installation,
+cold restore, no-replay check, and live latency measurement remain required;
+the repair does not turn this failed Carry into a successful migration.
+
 ## 7. The only build cycle
 
 Every additive cut follows the same four movements. This is a builder method,

@@ -398,6 +398,64 @@ def create_private_runtime_parent(deployment: dict, account: pwd.struct_passwd) 
         path.chmod(0o700)
 
 
+def runtime_marker_valid(runtime: pathlib.Path) -> bool:
+    try:
+        marker = json_document(runtime / "runtime.json")
+    except InstallError:
+        return False
+    lkg = marker.get("lkg_sha256")
+    return (
+        marker.get("schema") == "miter-assistant-runtime-v1"
+        and isinstance(lkg, str)
+        and len(lkg) == 64
+        and (runtime / "lkg.json").is_file()
+    )
+
+
+def incomplete_runtime_has_material_state(runtime: pathlib.Path) -> bool:
+    for relative in DURABLE_RUNTIME_DIRECTORIES:
+        path = runtime / relative
+        if path.is_file() or (path.is_dir() and any(
+                candidate.is_file() or candidate.is_symlink()
+                for candidate in path.rglob("*")
+        )):
+            return True
+    return any((runtime / name).exists() for name in (
+        "runtime.json", "migration.json", "pid.json", "continuity-manifest.json",
+    ))
+
+
+def quarantine_incomplete_runtime(runtime: pathlib.Path) -> pathlib.Path | None:
+    if not runtime.exists() or runtime_marker_valid(runtime):
+        return None
+    if not runtime.is_dir() or runtime.is_symlink():
+        raise InstallError(f"Configured runtime target is not a safe directory: {runtime}")
+    if incomplete_runtime_has_material_state(runtime):
+        raise InstallError(
+            "Configured runtime is incomplete but contains possible durable state; "
+            f"refusing automatic recovery: {runtime}"
+        )
+    timestamp = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+    target = runtime.with_name(f"{runtime.name}.incomplete-{timestamp}-{os.getpid()}")
+    if target.exists():
+        raise InstallError(f"Incomplete-runtime quarantine already exists: {target}")
+    runtime.rename(target)
+    return target
+
+
+def child_failure(result: subprocess.CompletedProcess[str], context: str,
+                  quarantine: pathlib.Path | None = None) -> InstallError:
+    def bounded(value: str | None) -> str:
+        text = (value or "").strip()
+        return text[-4000:] if text else "<empty>"
+
+    suffix = f"; incomplete runtime preserved at {quarantine}" if quarantine else ""
+    return InstallError(
+        f"{context} exited {result.returncode}{suffix}; "
+        f"stdout={bounded(result.stdout)!r}; stderr={bounded(result.stderr)!r}"
+    )
+
+
 def json_document(path: pathlib.Path) -> dict:
     try:
         document = json.loads(path.read_text(encoding="utf-8"))
@@ -834,11 +892,26 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
     service_standing = install_services(config, reuse=reuse_services)
     create_private_runtime_parent(deployment, account)
     runtime = pathlib.Path(deployment["runtime_root"])
+    recovered_incomplete_runtime = quarantine_incomplete_runtime(runtime)
     if not runtime.exists():
-        result = miter_command(application, deployment, petta, "install")
-        response = json.loads(result.stdout)
+        result = miter_command(application, deployment, petta, "install",
+                               check=False)
+        if result.returncode != 0:
+            quarantine = quarantine_incomplete_runtime(runtime)
+            raise child_failure(result, "Dedicated-user runtime bootstrap",
+                                quarantine)
+        try:
+            response = json.loads(result.stdout)
+        except json.JSONDecodeError as exc:
+            quarantine = quarantine_incomplete_runtime(runtime)
+            raise child_failure(result, "Dedicated-user runtime bootstrap returned invalid JSON",
+                                quarantine) from exc
         if response.get("status") != "installed":
-            raise InstallError(f"Runtime installation failed: {response.get('status')}")
+            quarantine = quarantine_incomplete_runtime(runtime)
+            raise InstallError(
+                f"Runtime installation failed: {response.get('status')}; "
+                f"incomplete runtime preserved at {quarantine}"
+            )
     migration = None
     migration_pending_restore = False
     if migrate_runtime:
@@ -859,6 +932,10 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
             "petta": str(petta),
             "runtime": str(runtime),
             "services": service_standing,
+            "recovered_incomplete_runtime": (
+                str(recovered_incomplete_runtime)
+                if recovered_incomplete_runtime else None
+            ),
             "migration": migration,
             "missing": missing,
             "next": "Run the same install command interactively to finish without replacing existing state.",
@@ -870,7 +947,8 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
     try:
         start = miter_command(application, deployment, petta, "start", check=False)
         if start.returncode != 0:
-            raise InstallError("Miter could not complete its pre-registration start validation")
+            raise child_failure(start,
+              "Miter could not complete its pre-registration start validation")
         try:
             start_reply = json.loads(start.stdout)
         except json.JSONDecodeError as exc:
@@ -880,7 +958,8 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
             raise InstallError("Mattermost bot/group identity could not be validated; no service was registered")
         stopped = miter_command(application, deployment, petta, "stop", check=False)
         if stopped.returncode != 0:
-            raise InstallError("Miter did not reach a clean post-restore stop boundary")
+            raise child_failure(stopped,
+              "Miter did not reach a clean post-restore stop boundary")
         if migration_pending_restore:
             migration = mark_migration_restored(runtime,migration,account)
     finally:
@@ -893,6 +972,10 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
         "status": "installed-and-started" if report["complete"] else "installed-validation-held",
         "application": str(application), "petta": str(petta),
         "runtime": str(runtime), "services": service_standing,
+        "recovered_incomplete_runtime": (
+            str(recovered_incomplete_runtime)
+            if recovered_incomplete_runtime else None
+        ),
         "migration": migration,
     })
     return report
