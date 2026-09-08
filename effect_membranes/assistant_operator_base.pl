@@ -647,8 +647,14 @@ as_host_uid(Uid) :-
     number_string(Uid,Text),integer(Uid),Uid>=0.
 
 as_register_host_service(Root,Reply) :-
+    as_root(Root,_),as_verify_lkg(Root,verified),
     as_host_service_material(Root,Label,PlistPath,Target),
-    ( as_launchd_registered(Target,Label) -> true
+    ( as_launchd_registered(Target,Label) ->
+        ( as_process_state(Root,State,_),State\==dead -> true
+        ; format(atom(ServiceTarget),'~w/~w',[Target,Label]),
+          process_create('/bin/launchctl',['kickstart',ServiceTarget],
+            [stdin(null),stdout(null),stderr(null),process(KickPid)]),
+          process_wait(KickPid,exit(0)) )
     ; process_create('/bin/launchctl',['bootstrap',Target,PlistPath],
         [stdin(null),stdout(null),stderr(null),process(Pid)]),
       process_wait(Pid,exit(0)) ),

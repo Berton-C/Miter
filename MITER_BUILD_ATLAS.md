@@ -384,7 +384,7 @@ not operator settings. A fresh install returned verified LKG SHA-256
 `2adffa4dd2ae8397ed6583f430ba1cf94f8aceabd51a431f11e3b0760b5630c1`,
 reported `already-installed` on exact repetition, and passed start/status/stop
 with the live surface disabled. Host registration and a fresh-clone evaluator
-walkthrough remain before this packaging requirement is complete.
+walkthrough are embodied in the subsequent packaging cut.
 
 The evaluation reach boundary is now embodied independently of cognition.
 Installation materializes AMA-1.2 inactive. While inactive, expired, stopped,
@@ -416,8 +416,14 @@ remain clean exits and preserve continuity. A fresh private install produced a
 valid property list, reported its host-service standing, ran through the
 foreground supervisor, and completed clean start/status/stop without another
 cognitive process. Host registration is available but was not silently applied
-to this development host. A fresh-clone evaluator walkthrough remains before
-packaging closure.
+to this development host. A new clone of remote commit `fbfa281` contained 52
+tracked files and no test, log, evidence, gate, or campaign tree. From that
+clone, a fresh private runtime installed with verified LKG SHA-256
+`6831a0731947653aaa7e46e7183b9b046429565ef2ef9d6b8e77c9bb9f964931`,
+generated a valid service profile and exact disclosure, completed
+start/status/stop with the evaluation grant inactive, left the clone clean,
+and wrote no runtime data into Git. Evaluation packaging is therefore closed;
+the live activation/no-replay trial remains the only open C4 closure evidence.
 
 ## 7. The only build cycle
 

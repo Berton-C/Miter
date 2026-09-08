@@ -102,12 +102,12 @@ Use an explicit runtime directory outside this repository. Do not use
 ```sh
 bin/miter install --runtime-root /absolute/private/runtime/path
 bin/miter prepare-service --runtime-root /absolute/private/runtime/path
-# Optional macOS always-on registration; registration starts Miter.
-bin/miter register-service --runtime-root /absolute/private/runtime/path
 bin/miter evaluation-disclosure --runtime-root /absolute/private/runtime/path
 # After Haley posts the exact disclosure in the bound three-person group:
 bin/miter activate-evaluation --runtime-root /absolute/private/runtime/path \
   --haley-affirmation-post-id EXACT_MATTERMOST_POST_ID
+# Optional macOS always-on registration; registration starts Miter.
+bin/miter register-service --runtime-root /absolute/private/runtime/path
 bin/miter start   --runtime-root /absolute/private/runtime/path
 bin/miter status  --runtime-root /absolute/private/runtime/path
 bin/miter stop    --runtime-root /absolute/private/runtime/path
