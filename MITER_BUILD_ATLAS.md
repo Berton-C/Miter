@@ -677,16 +677,61 @@ evidence fixture makes zero model calls: the intended direct live path requires
 one render plus one audit, while the one permitted material-revision path
 requires one additional render plus final audit. A zero-finding audit creates
 no additional full constitutive formation; a material finding invalidates and
-re-forms exactly one affected movement organization. The tables are cleared at
-every recurring-reactor boundary; a three-cycle trial left zero live subgoals
-after each reset, with 18,480 bytes of additional reserved table arena across
-the three cycles and no live table remaining. The present native fixture
+re-forms exactly one affected movement organization. The initial table
+lifecycle cleared every exact structural table at every recurring-reactor
+boundary; a three-cycle trial left zero live subgoals after each reset, with
+18,480 bytes of additional reserved table arena across the three cycles and no
+live table remaining. That result established a memory bound but also discarded
+safe exact reuse on every unchanged idle pass. The present native fixture
 envelope is therefore about five seconds for direct construction and twelve
 seconds for the combined expression/revision/falsifier workload at this state
 size. Live GLM, history-growth, checkpoint-size, provider/native split, and
 restore measurements remain open, so C4 performance is improved but not
 closed. Those are the next performance measurements; they may not be replaced
 by another isolated favorable fixture.
+
+The next bounded performance repair moves that exact-table reset from every
+clock pass to material-change boundaries: immediately before a new external
+input enters native formation and immediately after a successful endogenous or regenerative
+transition. Only three pure ground M25.5 structural validators are reused while
+the active organization is unchanged; no semantic reading, Soul participation,
+R/A/P standing, movement selection, or consequence meaning is tabled. The
+regenerative idle probe now enumerates the C carrier directly instead of
+revalidating the complete cut merely to distinguish exact-one, severed,
+ambiguous, and causally absent expressed-Soul organization. A focused native
+falsifier returned respectively `no-injury`, `severed-expression`,
+`corrupted-or-ambiguous-expression`, and `causally-absent-expression`; it also
+exposed and repaired the prior first-match lookup that could hide a second
+constitutive-Soul row. Endogenous eligibility now rejects a live undertaking
+or already-endogenous cut before invoking full cut/movement validation. The
+mechanical idle backoff reaches two seconds, matching the configured local
+Mattermost poll cadence instead of reforming an unchanged empty pass five times
+more often than the surface can supply contact.
+
+Through `bin/miter`, a fresh runtime then consumed one valid consequence,
+cleared the structural tables at that material boundary, returned to the same
+recurring waiting cycle, wrote one 825-byte active pointer and one 111-byte
+factorized checkpoint object, and made zero model calls and zero effects. After
+warm-up its empty-state child held approximately 77--79 MiB RSS; RSS remained
+unchanged over the final eighty-second observation while CPU time increased by
+2.65 seconds. Exact stop/start retained byte-identical active pointer SHA-256
+`13f5a10f76e89784e12d6106afc27362a8a08ce5f8705bc3473dcf5a91b9f487`,
+one consumed input, and zero replay/effects. The immediately preceding small
+disposable baseline used roughly 4.5% CPU at 75 MiB RSS; the repaired empty
+runtime averaged about 3.3% over the final interval. This is an accepted bounded
+idle and correctness improvement, not C4 performance closure: the migrated
+live multi-scope state must still prove that the cheap expressed-Soul scan and
+early endogenous exclusion remove its 17--39% idle load without table/state
+growth, and ordinary full contact latency remains open.
+
+The immediate post-commit host audit found no surviving disposable process or
+duplicated clock. Only the superseded split-layout installation remained: one
+idle supervisor at about 21 MiB RSS and its one pinned PeTTa child at 19.6% CPU,
+983,824 KiB RSS, and 1:57:41 elapsed. That child still executes release
+`065383132f57c83e7240ba634a4c9b4c720357c8`; its measurement is a legacy
+baseline, not evidence for this source repair. The next proportionality claim
+therefore remains the same-state single-root migration and observation.
+
 A separate claimed-but-unobserved model call
 was retained as uncertain
 transmission; a repeat made no second claim, returned a typed unavailable
@@ -1169,6 +1214,17 @@ The source-level audit found these remaining load-bearing inheritances:
   voice-policy-only efficacy target, G24 evidence paths, numeric ranking as
   movement authority, broad unqualified `|-`, and any claim that separate
   source AtomSpaces isolate compiled operators without execution evidence.
+- Here **qualified** means that each reasoning contribution names its operator
+  family, source doctrine, exact premises, provenance, uncertainty/truth
+  semantics, and the contact/movement dependency it may inform. PLN and
+  NARS/NAL execute through separately loaded, explicitly named adapters so
+  overlapping operators such as `Truth_Revision` and `|-` cannot capture one
+  another. Their results return to native formation as attributable unresolved
+  participants, never a verdict, score-based movement choice, or executable
+  act. Only independently returned consequence may warrant revision and later
+  reuse. NACE likewise records pending change before durable incorporation and
+  must demonstrate a changed later perception or movement without treating
+  repetition or self-derived support as new evidence.
 - **Generated modules and surface extension:** retain inert candidate standing,
   provenance manifests, source/bytes binding, syntax and contract trials,
   consequence-bearing repair, and no automatic activation. Reject the fixed

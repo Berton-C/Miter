@@ -5,14 +5,36 @@
 ; promotes only one independently warranted reconstruction into the existing
 ; active cut, and records the complete diagnosis and adjudication in history.
 
+(= (SRExpressionRowsAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (and (CPShape $row soul-relation 4)
+                (== (index-atom $row 1)
+                  constitutive-soul-participation))
+         (cons-atom $row (SRExpressionRowsAt $rows (+ $i 1)))
+         (SRExpressionRowsAt $rows (+ $i 1))))
+     ()))
+
 (= (SRExpressionRows $cut)
-   (CPSoulExpressionRows $cut))
+   (if (CPShape $cut constitutive-cut 14)
+     (let $carrier (index-atom $cut 10)
+       (if (CPShape $carrier C 2)
+         (SRExpressionRowsAt (index-atom $carrier 1) 0)
+         ()))
+     ()))
 
 (= (SRExpressedSoulValid $cut)
-   (CPSoulLive $cut))
+   (let $rows (SRExpressionRows $cut)
+     (if (== (size-atom $rows) 1)
+       (let $row (index-atom $rows 0)
+         (and (CPShape $row soul-relation 4)
+              (== (index-atom $row 2) support)))
+       false)))
 
 (= (SRSoulInjury $cut)
-   (let $rows (if (CPCutValid $cut) (CPCSoulRows $cut) ())
+   (let $rows (if (CPShape $cut constitutive-cut 14)
+     (let $carrier (index-atom $cut 10)
+       (if (CPShape $carrier C 2) (index-atom $carrier 1) ())) ())
      (if (== (size-atom $rows) 0) severed-expression
        (if (!= (size-atom (SRExpressionRows $cut)) 1)
          corrupted-or-ambiguous-expression
@@ -356,9 +378,13 @@
                   (cycle-standing autonomous-expressed-soul-restoration
                     $idle $checkpoint))))
            (if (== $checkpoint checkpointed)
-             (reduce (AssistantCycleWithV3 $root false $base $base $cap
-               $control-reader $input-reader $checkpoint-writer $waiter
-               $recorder $effect-writer $model-writer))
+             (let $tables (miter_petta_clear_exact_validation_tables)
+               (if (== $tables exact-native-validation-tables-cleared)
+                 (reduce (AssistantCycleWithV3 $root false $base $base $cap
+                   $control-reader $input-reader $checkpoint-writer $waiter
+                   $recorder $effect-writer $model-writer))
+                 (assistant-service-held
+                   exact-native-validation-table-reset-failed)))
              (assistant-service-held (checkpoint $checkpoint))))
          (let $record ($recorder $root assistant-soul-regeneration-held-v1
                 $regenerative-results)
@@ -377,9 +403,14 @@
                         (cycle-standing soul-formed-opportunity
                           $idle $checkpoint))))
                  (if (== $checkpoint checkpointed)
-                   (reduce (AssistantCycleWithV3 $root false $base $base $cap
-                     $control-reader $input-reader $checkpoint-writer
-                     $waiter $recorder $effect-writer $model-writer))
+                   (let $tables (miter_petta_clear_exact_validation_tables)
+                     (if (== $tables exact-native-validation-tables-cleared)
+                       (reduce (AssistantCycleWithV3 $root false $base $base
+                         $cap $control-reader $input-reader
+                         $checkpoint-writer $waiter $recorder $effect-writer
+                         $model-writer))
+                       (assistant-service-held
+                         exact-native-validation-table-reset-failed)))
                    (assistant-service-held (checkpoint $checkpoint))))
                (let $record ($recorder $root
                       assistant-endogenous-cycle-held-v1 $effects)

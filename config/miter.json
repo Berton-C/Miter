@@ -41,7 +41,7 @@
     ]
   },
   "idle_base_seconds": 0.05,
-  "idle_cap_seconds": 0.4,
+  "idle_cap_seconds": 2.0,
   "max_input_batch": 8,
   "max_input_bytes": 1048576,
   "supervision": {

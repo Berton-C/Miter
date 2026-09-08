@@ -10,8 +10,12 @@
 % These predicates are pure MeTTa-defined structural validators over ground,
 % immutable carriers. SWI tabling changes only repeated evaluation, never the
 % returned truth value or the native definitions. Tables are process-local and
-% cleared at every reactor-cycle boundary below so exact carrier growth cannot
-% become an unbounded host-memory leak.
+% cleared only at a material-change boundary: immediately before new external
+% input enters native formation, or after an endogenous/regenerative transition changes the
+% active organization. An unchanged idle pass may therefore reuse only exact
+% ground structural results; semantic, Soul, R/A/P, and movement results are
+% never tabled here. The material-change boundary also prevents unbounded
+% carrier growth across successive contacts.
 :- table 'M255GenSigStructuralValid'/2.
 :- table 'M255GenTranslationValid'/2.
 :- table 'M255TranslationLawWitnessValid'/3.

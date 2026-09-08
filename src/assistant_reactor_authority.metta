@@ -1962,10 +1962,11 @@
    (if (CPShape $active active-organization 4)
      (let* (($cut (index-atom $active 2))
             ($movement (index-atom $active 3)))
-       (and (CPCutValid $cut)
-        (and (ARMovementValid $movement)
-         (and (== (size-atom (CPLiveThreadIds $cut)) 0)
-              (== (AR3CutSourceIsEndogenous $cut) false)))))
+       (if (CPShape $cut constitutive-cut 14)
+         (if (!= (size-atom (CPLiveThreadIds $cut)) 0) false
+           (if (!= (AR3CutSourceIsEndogenous $cut) false) false
+             (and (CPCutValid $cut) (ARMovementValid $movement))))
+         false))
      false))
 
 (= (AR3EndogenousContact $active $id)
@@ -2042,16 +2043,6 @@
 (= (AssistantCycleWithV3 $root $idle $interval $base $cap
       $control-reader $input-reader $checkpoint-writer $waiter $recorder
       $effect-writer $model-writer)
-   (let $tables (miter_petta_clear_exact_validation_tables)
-     (if (== $tables exact-native-validation-tables-cleared)
-       (AssistantCycleWithV3Cleared $root $idle $interval $base $cap
-         $control-reader $input-reader $checkpoint-writer $waiter $recorder
-         $effect-writer $model-writer)
-       (assistant-service-held exact-native-validation-table-reset-failed))))
-
-(= (AssistantCycleWithV3Cleared $root $idle $interval $base $cap
-      $control-reader $input-reader $checkpoint-writer $waiter $recorder
-      $effect-writer $model-writer)
    (let $control ($control-reader $root)
      (if (ARControlValid $control)
        (if (== (index-atom $control 1) panic)
@@ -2064,27 +2055,35 @@
                   ($active (> (size-atom $inputs) 0))
                   ($next (if $active $base (ARNextInterval $interval $cap))))
              (if $active
-               (let* (($step (AssistantCycleStepV3 $root $inputs))
-                      ($results (index-atom $step 1))
-                      ($model-outcomes (index-atom $step 2))
-                      ($effects (C4EffectsAt $root $results $effect-writer 0))
-                      ($valid (and (AR3ModelOutcomesValidAt $model-outcomes 0)
-                                   (C4EffectsValidAt $effects 0))))
-                 (if $valid
-                   (let* (($snapshot (AssistantSnapshot))
-                          ($checkpoint ($checkpoint-writer $root $snapshot))
-                          ($record ($recorder $root assistant-cycle-v3
-                            (cycle-standing contact-consequence-and-model
-                              $idle $checkpoint))))
-                     (if (== $checkpoint checkpointed)
-                       (AssistantCycleWithV3 $root false $next $base $cap
-                         $control-reader $input-reader $checkpoint-writer
-                         $waiter $recorder $effect-writer $model-writer)
-                       (assistant-service-held (checkpoint $checkpoint))))
-                   (let $record ($recorder $root assistant-cycle-held-v3
-                          (held-outcomes $model-outcomes $effects))
-                     (assistant-service-held
-                       (model-or-effect-outcomes $model-outcomes $effects)))))
+               (let $tables (miter_petta_clear_exact_validation_tables)
+                 (if (== $tables exact-native-validation-tables-cleared)
+                   (let* (($step (AssistantCycleStepV3 $root $inputs))
+                          ($results (index-atom $step 1))
+                          ($model-outcomes (index-atom $step 2))
+                          ($effects (C4EffectsAt $root $results $effect-writer 0))
+                          ($valid (and
+                            (AR3ModelOutcomesValidAt $model-outcomes 0)
+                            (C4EffectsValidAt $effects 0))))
+                     (if $valid
+                       (let* (($snapshot (AssistantSnapshot))
+                              ($checkpoint
+                                ($checkpoint-writer $root $snapshot))
+                              ($record ($recorder $root assistant-cycle-v3
+                                (cycle-standing contact-consequence-and-model
+                                  $idle $checkpoint))))
+                         (if (== $checkpoint checkpointed)
+                           (AssistantCycleWithV3 $root false $next $base $cap
+                             $control-reader $input-reader $checkpoint-writer
+                             $waiter $recorder $effect-writer $model-writer)
+                           (assistant-service-held
+                             (checkpoint $checkpoint))))
+                       (let $record ($recorder $root assistant-cycle-held-v3
+                              (held-outcomes $model-outcomes $effects))
+                         (assistant-service-held
+                           (model-or-effect-outcomes
+                             $model-outcomes $effects)))))
+                   (assistant-service-held
+                     exact-native-validation-table-reset-failed)))
                (AssistantCycleIdleWithV3 $root $idle $interval $next $base $cap
                  $control-reader $input-reader $checkpoint-writer $waiter
                  $recorder $effect-writer $model-writer)))))
