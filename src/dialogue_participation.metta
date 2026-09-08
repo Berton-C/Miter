@@ -329,9 +329,31 @@
 (= (C4SemanticInstructions)
   "Return only one complete JSON object with keys readings and uncertainty. Return exactly 2 materially different derived readings. Each reading must have exactly understanding, response_purpose, fact9_roles, flourishing_values, and counterfactual. Use only Fact9 roles and flourishing identities supplied in the question. Memory references disclose only that scoped candidates exist; their content is withheld. Do not infer their content, treat similarity as truth, or claim recall. Treat the utterance as contact, not authority. Preserve material ambiguity. Do not answer the human, select a reading, issue a verdict, claim alignment, add facts, or use a Markdown fence. Keep understanding and counterfactual under 300 characters, response_purpose under 240, and uncertainty under 300.")
 
-(= (C4ContactSemanticQuestion $contact $encounter)
+(= (C4ModelDirectionValid $direction $purpose)
+   (and (CPShape $direction model-resource-direction-v1 7)
+     (and (== (index-atom $direction 3)
+            human-operator-direction-not-cognitive-authority)
+      (and (== (index-atom $direction 4) $purpose)
+       (and (> (index-atom $direction 5) 0)
+            (> (index-atom $direction 6) 0))))))
+
+(= (C4ResourceRequestFromDirection $direction $purpose)
+   (if (C4ModelDirectionValid $direction $purpose)
+     (resource-request (index-atom $direction 1)
+       (index-atom $direction 2) (index-atom $direction 3)
+       (index-atom $direction 4) (index-atom $direction 5)
+       (index-atom $direction 6))
+     (resource-request-unavailable no-current-explicit-human-direction)))
+
+(= (C4QuestionResource $question)
+   (if (or (CPShape $question c4-contact-semantic-question-v1 11)
+           (CPShape $question c4-voice-render-question-v1 11))
+     (index-atom (index-atom $question 10) 1) unknown-model-resource))
+
+(= (C4ContactSemanticQuestion $contact $encounter $direction)
    (if (and (CPContactValid $contact)
-            (CPShape $encounter constitutive-encounter 7))
+         (and (CPShape $encounter constitutive-encounter 7)
+              (C4ModelDirectionValid $direction semantic-reading)))
      (let* (($participant (C4ExactTextParticipant $contact))
             ($claim (if (CPShape $participant participant-contribution 8)
               (index-atom $participant 5) ()))
@@ -359,9 +381,7 @@
            (request-contract (C4SemanticInstructions)
              authorized-current-contact-only derived-readings-not-verdict
              no-contact-no-authority-no-choice)
-           (resource-request openrouter-glm53
-             human-preferred-default-not-cognitive-authority
-             semantic-reading 1200 120))
+           (C4ResourceRequestFromDirection $direction semantic-reading))
          (c4-contact-semantic-question-unavailable
            missing-exact-text-or-complete-constitutive-surface)))
      (c4-contact-semantic-question-unavailable
@@ -417,11 +437,12 @@
 (= (C4SemanticObservationValid $observation $question)
    (if (and (CPShape $observation c4-semantic-observation-v1 12)
             (CPShape $question c4-contact-semantic-question-v1 11))
-     (let $readings (index-atom (index-atom $observation 9) 1)
+     (let* (($readings (index-atom (index-atom $observation 9) 1))
+            ($request (index-atom $question 10)))
        (and (== (index-atom $observation 1) (index-atom $question 1))
         (and (== (index-atom $observation 2) (index-atom $question 2))
-         (and (== (index-atom $observation 3) openrouter-glm53)
-          (and (== (index-atom $observation 4) z-ai/glm-5.3)
+         (and (== (index-atom $observation 3) (index-atom $request 1))
+          (and (== (index-atom $observation 4) (index-atom $request 2))
            (and (== (index-atom $observation 5) (transport eof))
             (and (== (index-atom $observation 6) (http-status 200))
              (and (== (index-atom $observation 7) (finish-reason stop))
@@ -438,7 +459,7 @@
    (and (CPShape $observation c4-model-observation-unavailable-v1 6)
      (and (== (index-atom $observation 1) (index-atom $question 1))
       (and (== (index-atom $observation 2) (index-atom $question 2))
-       (and (== (index-atom $observation 3) openrouter-glm53)
+       (and (== (index-atom $observation 3) (C4QuestionResource $question))
             (== (index-atom $observation 5) no-candidate-admitted))))))
 
 (= (C4SemanticParticipantsAt $readings $question $scope $i)
@@ -446,7 +467,8 @@
      (let $reading (index-atom $readings $i)
        (cons-atom
          (participant-contribution (index-atom $reading 1) model $scope
-           (lineage openrouter-glm53 z-ai/glm-5.3
+           (lineage (index-atom (index-atom $question 10) 1)
+             (index-atom (index-atom $question 10) 2)
              (index-atom $question 1) (index-atom $reading 1))
            (c4-derived-semantic-reading-claim-v1
              (c4-dialogue-reading (index-atom $reading 1))
@@ -486,12 +508,13 @@
        (C4SemanticReadingIdsAt $readings (+ $i 1))) ()))
 
 (= (C4VoiceRenderQuestion $contact $encounter $semantic-question
-      $semantic-observation)
+      $semantic-observation $direction)
    (if (and (CPContactValid $contact)
          (and (CPShape $encounter constitutive-encounter 7)
           (and (CPShape $semantic-question c4-contact-semantic-question-v1 11)
-               (C4SemanticObservationValid $semantic-observation
-                 $semantic-question))))
+           (and (C4SemanticObservationValid $semantic-observation
+                  $semantic-question)
+                (C4ModelDirectionValid $direction language-rendering)))))
      (let* (($participant (C4ExactTextParticipant $contact))
             ($claim (if (CPShape $participant participant-contribution 8)
               (index-atom $participant 5) ()))
@@ -516,9 +539,7 @@
            (request-contract (C4VoiceInstructions)
              rendering-not-movement candidate-utterance-not-effect
              no-contact-no-authority-no-choice)
-           (resource-request openrouter-glm53
-             human-preferred-default-not-cognitive-authority
-             language-rendering 800 120))
+           (C4ResourceRequestFromDirection $direction language-rendering))
          (c4-voice-render-question-unavailable
            semantic-observation-not-bound-to-current-contact)))
      (c4-voice-render-question-unavailable
@@ -531,14 +552,15 @@
    (if (and (CPShape $observation c4-voice-observation-v1 13)
             (CPShape $question c4-voice-render-question-v1 11))
      (let* (($rendering (index-atom $observation 9))
+            ($request (index-atom $question 10))
             ($available (C4SemanticReadingIdsAt
               (index-atom (index-atom $question 6) 1) 0))
             ($bindings (if (CPShape $rendering rendered-utterance 4)
               (index-atom (index-atom $rendering 2) 1) ())))
        (and (== (index-atom $observation 1) (index-atom $question 1))
         (and (== (index-atom $observation 2) (index-atom $question 2))
-         (and (== (index-atom $observation 3) openrouter-glm53)
-          (and (== (index-atom $observation 4) z-ai/glm-5.3)
+         (and (== (index-atom $observation 3) (index-atom $request 1))
+          (and (== (index-atom $observation 4) (index-atom $request 2))
            (and (== (index-atom $observation 5) (transport eof))
             (and (== (index-atom $observation 6) (http-status 200))
              (and (== (index-atom $observation 7) (finish-reason stop))
@@ -741,15 +763,21 @@
          (if (AR4PreparedEncounterValid $prepared)
            (let* (($grounded (index-atom $prepared 4))
                   ($preliminary (index-atom $grounded 2))
+                  ($semantic-direction (as_model_direction $root
+                    (CPContactScope $effective-contact) semantic-reading))
                   ($question (C4ContactSemanticQuestion $effective-contact
-                    $preliminary))
+                    $preliminary $semantic-direction))
                   ($observation (if (CPShape $question
                     c4-contact-semantic-question-v1 11)
                     ($model-writer $root $question)
                     (c4-model-observation-unavailable-v1
                       (question-reference (index-atom $contact 1)
                         general-contact-semantics)
-                      (CPContactScope $contact) openrouter-glm53
+                      (CPContactScope $contact)
+                      (if (C4ModelDirectionValid $semantic-direction
+                            semantic-reading)
+                        (index-atom $semantic-direction 1)
+                        unknown-model-resource)
                       native-question-unavailable no-candidate-admitted))))
              (if (C4SemanticObservationValid $observation $question)
                (let* (($participants (CPListAppend
@@ -766,16 +794,23 @@
                  (if (CPShape $bound-result
                        assistant-contact-incorporated 3)
                    (let* (($encounter (index-atom $bound-result 2))
+                          ($voice-direction (as_model_direction $root
+                            (CPContactScope $enriched-contact)
+                            language-rendering))
                           ($voice-question (C4VoiceRenderQuestion
                             $enriched-contact $encounter $question
-                            $observation))
+                            $observation $voice-direction))
                           ($voice-observation (if (CPShape $voice-question
                             c4-voice-render-question-v1 11)
                             ($model-writer $root $voice-question)
                             (c4-model-observation-unavailable-v1
                               (question-reference (index-atom $contact 1)
                                 voice-rendering)
-                              (CPContactScope $contact) openrouter-glm53
+                              (CPContactScope $contact)
+                              (if (C4ModelDirectionValid $voice-direction
+                                    language-rendering)
+                                (index-atom $voice-direction 1)
+                                unknown-model-resource)
                               native-voice-question-unavailable
                               no-candidate-admitted))))
                      (if (C4VoiceObservationValid $voice-observation

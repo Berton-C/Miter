@@ -78,17 +78,16 @@
     "schema": "miter-model-resource-registry-v1",
     "human_editable": true,
     "selection": {
-      "mode": "human-direction-or-native-relational",
+      "mode": "human-operator-direction",
       "operator_preference": "openrouter-glm53",
       "preference_standing": "human-preferred-default-not-cognitive-authority",
       "authorized_directions": [
         "openrouter-glm53",
         "qwen-local",
-        "nemotron-local",
-        "soul-choice"
+        "nemotron-local"
       ],
-      "direction_scopes": ["one-call", "conversation", "undertaking", "until-time"],
-      "soul_choice": "native-relational-comparison-among-authorized-resources",
+      "direction_scopes": ["next-model-calls", "bounded-duration", "until-replaced"],
+      "soul_choice": "not-yet-embodied-must-be-native-relational-comparison-among-authorized-resources",
       "selected_model_output_authority": "none",
       "fallback_policy": "explicit-native-comparison-only",
       "silent_model_substitution": false
@@ -127,7 +126,12 @@
         "adapter": "lm-studio",
         "model": "qwen/qwen3.8-27b",
         "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
-        "roles": ["semantic-reading"],
+        "roles": ["semantic-reading", "language-rendering"],
+        "limits": {
+          "max_output_tokens": 2048,
+          "deadline_seconds": 300,
+          "capture_bytes": 262144
+        },
         "credential_reference": null
       },
       {
@@ -137,13 +141,18 @@
         "adapter": "lm-studio",
         "model": "nemotron-3.5-30b-a3b-antislop-ftpo-i1",
         "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
-        "roles": ["semantic-reading"],
+        "roles": ["semantic-reading", "language-rendering"],
+        "limits": {
+          "max_output_tokens": 2048,
+          "deadline_seconds": 300,
+          "capture_bytes": 262144
+        },
         "credential_reference": null
       }
     ],
     "operator_notes": [
       "Store secrets outside this file; credential_reference is only a lookup location.",
-      "Human direction or Soul choice selects a resource, never meaning, movement, memory admission, or effects.",
+      "Human direction selects a live resource, never meaning, movement, memory admission, or effects; Soul-directed resource choice remains unimplemented until it is embodied as native relational comparison.",
       "Every remote call additionally requires a current runtime-local grant."
     ]
   },

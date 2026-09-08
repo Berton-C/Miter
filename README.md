@@ -102,6 +102,10 @@ Use an explicit runtime directory outside this repository. Do not use
 ```sh
 bin/miter install --runtime-root /absolute/private/runtime/path
 bin/miter prepare-service --runtime-root /absolute/private/runtime/path
+bin/miter model-selection --runtime-root /absolute/private/runtime/path
+# Use Qwen for the next two calls or ten minutes, whichever comes first:
+bin/miter select-model --runtime-root /absolute/private/runtime/path \
+  --resource qwen-local --duration-seconds 600 --max-calls 2
 bin/miter evaluation-disclosure --runtime-root /absolute/private/runtime/path
 # After Haley posts the exact disclosure in the bound three-person group:
 bin/miter activate-evaluation --runtime-root /absolute/private/runtime/path \
@@ -131,6 +135,15 @@ and a durable 72-hour activation witness. `status` reports its standing and
 resource counts without exposing conversation content or stable IDs.
 `config/continuity.json` and `config/constitutive-projection.json` are internal
 authority projections, not operator settings.
+
+The installed model default is `openrouter-glm53`. `select-model` accepts
+`openrouter-glm53`, `qwen-local`, or `nemotron-local` only after checking that
+the chosen credential or loopback model is available. Set either bound to `0`
+for “until replaced”; otherwise the first exhausted call or time bound ends
+the direction without silent fallback. The direction controls transport only:
+the Soul still forms the question and retains all meaning, movement, memory,
+and effect authority. Native Soul-directed comparison among model resources is
+not yet implemented and is not simulated by the Prolog membrane.
 
 If Chroma or the embedding service is unavailable, exact native continuity
 remains authoritative and semantic recall reports a degraded/unavailable

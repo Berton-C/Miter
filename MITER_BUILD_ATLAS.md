@@ -171,7 +171,7 @@ consumer is absent. No status is upgraded by assertion.
 | One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; independent returned contact has changed a model-assisted inquiry into durable native development and distinguishes transfer, differentiation, and unresolved standing across non-identical overlap. |
 | Exact project/relationship continuity | E | native checkpoint capsules + continuity adapters | Every live scope now writes exact relationship, undertaking, attention, developmental, next-movement, and raw-source-reference organization with indefinite retention; legacy external imports remain separately unbound. |
 | Chroma semantic participation | E | `chroma.pl`, `dialogue_participation.metta`, native continuity capsules | Every authoritative checkpoint projects exact eligible capsule material into an isolated loopback Chroma collection. A later exact-scope query verifies runtime, principal, audience, project, source capsule bytes, semantic hash, and body hash before admitting results as unresolved memory participants. Chroma rank is never authority; another principal receives no result. Private memory content remains native and is withheld from the remote-provider question. |
-| LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact now forms a native semantic question, admits exactly two bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA certificate. Live provider UTF-8 rendering and broader held-out dialogue remain to be exercised through the persistent service. |
+| LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits exactly two bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA certificate. The live question carries the exact human-directed resource and model identity; OpenRouter GLM 5.3, local Qwen, and local Nemotron share the same native admission boundary without silent substitution. Bounded Soul-directed resource comparison remains honestly absent. Live provider rendering and broader held-out dialogue remain to be exercised through the persistent service. |
 | Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Ingress and exact stable-ID scope are embodied. A certified outbound descriptor now reaches a pending-before-send, reconcile-on-unknown membrane and persists its native proof. Outbound remains deliberately disabled pending the active evaluation disclosure/grant boundary and a live no-duplicate restart trial. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, and regenerative Soul; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; one exact persisted partial opening can form a provenance-bearing Soul undertaking; and injured expressed Soul can form and complete its own repair RNA. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
@@ -422,8 +422,42 @@ clone, a fresh private runtime installed with verified LKG SHA-256
 `6831a0731947653aaa7e46e7183b9b046429565ef2ef9d6b8e77c9bb9f964931`,
 generated a valid service profile and exact disclosure, completed
 start/status/stop with the evaluation grant inactive, left the clone clean,
-and wrote no runtime data into Git. Evaluation packaging is therefore closed;
-the live activation/no-replay trial remains the only open C4 closure evidence.
+and wrote no runtime data into Git. Evaluation packaging is therefore closed.
+Live activation must still carry unfamiliar conversation, model/surface
+failure, scope isolation, consequence return, and restart/no-replay through the
+supported service before C4 closes.
+
+The resource-direction cut removes the fixed OpenRouter choice from the live
+C4 dialogue path. The one human-edited configuration establishes an explicit
+default; `select-model` may replace it for a bounded number of model calls, a
+bounded duration, or until another direction replaces it. Native MeTTa
+incorporates the exact resource and model identity into each semantic or
+VoiceRNA question before the membrane can transmit it. At transmission time
+the membrane rechecks that the same unexpired, unexhausted direction remains
+current, then requires the separate scope/purpose/model grant and AMA-1.2 reach
+boundary. A changed resource changes the question identity; cached output from
+one resource cannot masquerade as another. There is no automatic fallback.
+
+OpenRouter GLM 5.3 retains its exact credential and provider envelope. The two
+configured LM Studio resources support both semantic reading and language
+rendering through loopback-only OpenAI-compatible transport with strict JSON
+schemas and no credential header. A fresh runtime installed with GLM as its
+default, switched to Qwen for exactly two calls or ten minutes, exposed that
+standing through `status`, entered the same recurring PeTTa service, and
+stopped cleanly with the evaluation grant inactive. Both configured local
+model identities were present at the loopback endpoint; Qwen accepted the
+strict JSON-schema request form. A one-second Nemotron direction expired into
+`model-resource-direction-unavailable` rather than silently falling back, and
+the OpenRouter direction verified the existing Keychain reference without a
+provider call. Synthetic exact carrier/parser probes accepted Qwen identity
+and its typed observation. No probe material entered Git.
+
+This cut does not pretend that `soul-choice` exists. A future Soul-directed
+resource decision must be a native, situation-bearing comparison among
+authorized resource participants under C-004/S-901; Prolog may only execute an
+already formed direction. The live AMA-1.2 activation, real unfamiliar
+conversation, effect reconciliation, restart/no-replay, and consequence return
+remain the C4 closure trial.
 
 ## 7. The only build cycle
 

@@ -26,6 +26,8 @@ as_model_checked(Root0, Question, Observation) :-
     ground(Question),
     as_model_question_carrier(Question, QuestionRef, Scope, Instructions,
       Purpose, ResourceId, MaxTokens, Deadline),
+    as_model_current_direction_authorizes(Root,Question,Scope,Purpose,
+      ResourceId,MaxTokens,Deadline),
     as_model_question_sha256(Question, QuestionHash),
     as_model_observation_path(Root, QuestionHash, ObservationPath),
     ( exists_file(ObservationPath) ->
@@ -50,6 +52,20 @@ as_model_checked(Root0, Question, Observation) :-
         Observation=Observation0
       )
     ).
+
+as_model_current_direction_authorizes(Root,Question,Scope,Purpose,ResourceId,
+    MaxTokens,Deadline) :-
+    Question=[Kind|_],
+    ( memberchk(Kind,['c4-contact-semantic-question-v1',
+          'c4-voice-render-question-v1']) ->
+        as_model_direction_checked(Root,Scope,Purpose,Direction),
+        Direction=['model-resource-direction-v1',ResourceId,ModelId,
+          'human-operator-direction-not-cognitive-authority',Purpose,
+          MaxTokens,Deadline],
+        last(Question,['resource-request',ResourceId,ModelId,
+          'human-operator-direction-not-cognitive-authority',Purpose,
+          MaxTokens,Deadline])
+    ; true ).
 
 as_model_question_carrier(
     ['c3-semantic-question-v1', QuestionRef, Scope, _, _,
@@ -79,7 +95,8 @@ as_model_question_carrier(
     as_model_returned_material_valid(ReturnedMaterial),
     string(Instructions), string_length(Instructions, InstructionLength),
     InstructionLength>=100, InstructionLength=<4096,
-    ResourceId='openrouter-glm53', MaxTokens=2048, Deadline=120.
+    as_symbol(ResourceId,_),integer(MaxTokens),MaxTokens>=1,MaxTokens=<2048,
+    number(Deadline),Deadline>=1,Deadline=<300.
 
 as_model_question_carrier(
     ['c4-contact-semantic-question-v1',QuestionRef,Scope,
@@ -91,8 +108,8 @@ as_model_question_carrier(
       Continuity,
       ['request-contract',Instructions,'authorized-current-contact-only',
         'derived-readings-not-verdict','no-contact-no-authority-no-choice'],
-      ['resource-request',ResourceId,
-        'human-preferred-default-not-cognitive-authority',
+      ['resource-request',ResourceId,ModelId,
+        'human-operator-direction-not-cognitive-authority',
         'semantic-reading',MaxTokens,Deadline]],
     QuestionRef, Scope,Instructions,'semantic-reading',ResourceId,MaxTokens,
     Deadline) :-
@@ -106,7 +123,9 @@ as_model_question_carrier(
     as_local_scope(Scope), string(Instructions),
     string_length(Instructions,InstructionLength),
     InstructionLength>=100, InstructionLength=<4096,
-    ResourceId='openrouter-glm53', MaxTokens=1200, Deadline=120.
+    as_symbol(ResourceId,_),as_model_identifier(ModelId),
+    integer(MaxTokens),MaxTokens>=1,MaxTokens=<1200,
+    number(Deadline),Deadline>=1,Deadline=<300.
 
 as_model_c4_fact_entries(Entries) :-
     is_list(Entries), Entries=[_|_], maplist(as_model_c4_fact_entry,Entries).
@@ -171,8 +190,8 @@ as_model_question_carrier(
       ['semantic-readings',Readings],NativeIntention,VoiceCommitments,
       ['request-contract',Instructions,'rendering-not-movement',
         'candidate-utterance-not-effect','no-contact-no-authority-no-choice'],
-      ['resource-request',ResourceId,
-        'human-preferred-default-not-cognitive-authority',
+      ['resource-request',ResourceId,ModelId,
+        'human-operator-direction-not-cognitive-authority',
         'language-rendering',MaxTokens,Deadline]],
     QuestionRef,Scope,Instructions,'language-rendering',ResourceId,MaxTokens,
     Deadline) :-
@@ -187,7 +206,9 @@ as_model_question_carrier(
     as_local_scope(Scope), string(Instructions),
     string_length(Instructions,InstructionLength),
     InstructionLength>=100, InstructionLength=<4096,
-    ResourceId='openrouter-glm53', MaxTokens=800, Deadline=120.
+    as_symbol(ResourceId,_),as_model_identifier(ModelId),
+    integer(MaxTokens),MaxTokens>=1,MaxTokens=<800,
+    number(Deadline),Deadline>=1,Deadline=<300.
 
 as_model_returned_material_valid(Material) :-
     is_list(Material), Material=['c3-returned-material-v1'|_],
@@ -331,6 +352,67 @@ as_model_question_sha256(Question, Hash) :-
     term_string(Question, Text, [quoted(true),ignore_ops(true)]),
     crypto_data_hash(Text, Hash, [algorithm(sha256),encoding(utf8)]).
 
+% A human model direction selects only the transport resource for a bounded
+% live scope.  It cannot form a question or decide what any returned text
+% means.  The direction is read by native MeTTa before it constructs the exact
+% resource request, so the membrane cannot silently substitute a provider.
+as_model_direction(Root0,Scope,Purpose0,Direction) :-
+    catch((as_model_direction_checked(Root0,Scope,Purpose0,Direction0)->true
+          ; throw(error(model_direction_hold,_))),_,
+      Direction0=['model-resource-direction-unavailable',
+        'no-current-explicit-human-resource-direction']),
+    Direction=Direction0, !.
+
+as_model_direction_checked(Root0,Scope,Purpose0,
+    ['model-resource-direction-v1',ResourceId,ModelId,
+      'human-operator-direction-not-cognitive-authority',Purpose,
+      MaxTokens,Deadline]) :-
+    as_root(Root0,Root),as_local_scope(Scope),as_symbol(Purpose0,Purpose),
+    memberchk(Purpose,['semantic-reading','language-rendering']),
+    as_path(Root,'model-direction.json',Path),
+    miter_store_read_json(Path,Document),is_dict(Document),
+    as_dict_atom(Document,schema,'miter-model-direction-v1'),
+    as_dict_atom(Document,standing,'active-human-direction'),
+    as_dict_atom(Document,resource_id,ResourceId),
+    get_dict(purposes,Document,PurposeStrings),is_list(PurposeStrings),
+    maplist(as_symbol,PurposeStrings,Purposes),memberchk(Purpose,Purposes),
+    get_dict(activated_at_epoch,Document,Activated),number(Activated),
+    get_dict(expires_at_epoch,Document,Expiry),number(Expiry),
+    get_time(Now),(Expiry=:=0;Now=<Expiry),
+    get_dict(max_calls,Document,MaxCalls),integer(MaxCalls),MaxCalls>=0,
+    as_model_direction_claim_count(Root,ResourceId,Activated,Used),
+    (MaxCalls=:=0;Used<MaxCalls),
+    as_model_profile(Root,ResourceId,Profile),
+    get_dict(model,Profile,ModelString),atom_string(ModelId,ModelString),
+    atom_string(Purpose,PurposeString),memberchk(PurposeString,Profile.roles),
+    as_model_direction_limits(Purpose,Profile,MaxTokens,Deadline).
+
+as_model_direction_limits('semantic-reading',Profile,MaxTokens,Deadline) :-
+    get_dict(limits,Profile,Limits),
+    MaxTokens is min(1200,Limits.max_output_tokens),
+    Deadline=Limits.deadline_seconds.
+as_model_direction_limits('language-rendering',Profile,MaxTokens,Deadline) :-
+    get_dict(limits,Profile,Limits),
+    MaxTokens is min(800,Limits.max_output_tokens),
+    Deadline=Limits.deadline_seconds.
+
+as_model_direction_claim_count(Root,ResourceId,Activated,Count) :-
+    as_path(Root,'model/claims',Directory),directory_files(Directory,Entries),
+    findall(Owner,
+      (member(Name,Entries),Name\=='.',Name\=='..',
+       directory_file_path(Directory,Name,Claim),exists_directory(Claim),
+       directory_file_path(Claim,'owner.json',Owner),exists_file(Owner),
+       catch((miter_store_read_json(Owner,Dict),
+         as_dict_atom(Dict,resource_id,ResourceId),
+         get_dict(claimed_at_epoch,Dict,Claimed),number(Claimed),
+         Claimed>=Activated),_,fail)),Owners),
+    length(Owners,Count).
+
+as_model_identifier(Value) :-
+    miter_store_nonempty_atom(Value,Atom),
+    atom_length(Atom,Length),Length=<256,
+    re_match('^[A-Za-z][A-Za-z0-9_./:-]{0,255}$',Atom).
+
 as_model_profile(Root, ResourceId, Profile) :-
     as_path(Root,'model-resources.json',Path),
     miter_store_read_json(Path,Registry),
@@ -363,6 +445,23 @@ as_model_profile_exact(Profile) :-
     get_dict(source,Credential,"macos-keychain"),
     get_dict(account,Credential,"bcb"),
     get_dict(service,Credential,"ai.bgi.miter.openrouter").
+as_model_profile_exact(Profile) :-
+    as_dict_atom(Profile,id,ResourceId),
+    memberchk(ResourceId,['qwen-local','nemotron-local']),
+    as_dict_atom(Profile,kind,local),get_dict(enabled,Profile,true),
+    as_dict_atom(Profile,adapter,'lm-studio'),
+    as_model_local_identity(ResourceId,Model),get_dict(model,Profile,Model),
+    get_dict(endpoint,Profile,"http://127.0.0.1:1234/v1/chat/completions"),
+    get_dict(roles,Profile,["semantic-reading","language-rendering"]),
+    get_dict(limits,Profile,Limits),is_dict(Limits),
+    get_dict(max_output_tokens,Limits,2048),
+    get_dict(deadline_seconds,Limits,300),
+    get_dict(capture_bytes,Limits,262144),
+    get_dict(credential_reference,Profile,null).
+
+as_model_local_identity('qwen-local',"qwen/qwen3.8-27b").
+as_model_local_identity('nemotron-local',
+    "nemotron-3.5-30b-a3b-antislop-ftpo-i1").
 
 as_model_secret_free(Dict) :-
     is_dict(Dict), !, dict_pairs(Dict,_,Pairs),
@@ -454,9 +553,11 @@ as_evaluation_model_available(Root,[scope,Principal,Audience,Project],ResourceId
     miter_store_nonempty_atom(Project,ProjectAtom),
     atom_string(AudienceAtom,Config.scope.audience),
     atom_string(ProjectAtom,Config.scope.project),
-    miter_store_nonempty_atom(ResourceId,'openrouter-glm53'),
-    as_evaluation_model_claim_count(Root,Used),
-    Used<EvaluationGrant.limits.remote_calls.
+    as_model_profile(Root,ResourceId,Profile),
+    ( as_dict_atom(Profile,kind,local) -> true
+    ; as_dict_atom(Profile,kind,remote),
+      as_evaluation_model_claim_count(Root,Used),
+      Used<EvaluationGrant.limits.remote_calls ).
 
 as_evaluation_model_claim_count(Root,Count) :-
     as_path(Root,'model/claims',Directory),directory_files(Directory,Entries),
@@ -466,7 +567,10 @@ as_evaluation_model_claim_count(Root,Count) :-
        directory_file_path(Claim,'owner.json',Owner),exists_file(Owner),
        catch((miter_store_read_json(Owner,Dict),
          as_dict_atom(Dict,grant_id,GrantId),
-         sub_atom(GrantId,0,8,_,'ama-1.2-')),_,fail)),Owners),
+         sub_atom(GrantId,0,8,_,'ama-1.2-'),
+         as_dict_atom(Dict,resource_id,ResourceId),
+         as_model_profile(Root,ResourceId,Profile),
+         as_dict_atom(Profile,kind,remote)),_,fail)),Owners),
     length(Owners,Count).
 
 as_model_claim_path(Root, Hash, Path) :-
@@ -507,13 +611,71 @@ as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
         interpretation_boundary:"Derived readings only. Miter retains contact, authority, comparison, movement, and consequence interpretation."},
       [width(0)])),
     get_dict(model,Profile,Model),
-    get_dict(reasoning_effort,Profile,Reasoning),
-    get_dict(provider,Profile,Provider),
-    Body=_{model:Model,messages:[_{role:"system",content:Instructions},
+    as_model_response_format(Profile,Question,ResponseFormat),
+    Common=_{model:Model,messages:[_{role:"system",content:Instructions},
       _{role:"user",content:User}],temperature:0,top_p:1,
-      max_tokens:MaxTokens,reasoning_effort:Reasoning,stream:false,
-      response_format:_{type:"json_object"},provider:Provider},
-    as_model_request_valid(Body).
+      max_tokens:MaxTokens,stream:false,
+      response_format:ResponseFormat},
+    ( as_dict_atom(Profile,kind,remote) ->
+        get_dict(reasoning_effort,Profile,Reasoning),
+        get_dict(provider,Profile,Provider),
+        put_dict(_{reasoning_effort:Reasoning,provider:Provider},Common,Body)
+    ; as_dict_atom(Profile,kind,local),Body=Common ),
+    as_model_request_valid(Profile,Body).
+
+as_model_response_format(Profile,_Question,_{type:"json_object"}) :-
+    as_dict_atom(Profile,kind,remote).
+as_model_response_format(Profile,Question,
+    _{type:"json_schema",json_schema:_{name:Name,strict:true,schema:Schema}}) :-
+    as_dict_atom(Profile,kind,local),Question=[Kind|_],
+    as_model_local_response_schema(Kind,Name,Schema).
+
+as_model_local_response_schema('c3-semantic-question-v1',
+    "miter_c3_semantic_readings",Schema) :-
+    Perspective=_{type:"string",enum:["Relatedness","Appropriateness","Precision"]},
+    Candidate=_{type:"object",additionalProperties:false,
+      required:["summary","preserve","explore","counterfactual"],
+      properties:_{summary:_{type:"string",minLength:1,maxLength:1200},
+        preserve:_{type:"array",minItems:1,maxItems:2,uniqueItems:true,
+          items:Perspective},
+        explore:_{type:"array",minItems:1,maxItems:2,uniqueItems:true,
+          items:Perspective},
+        counterfactual:_{type:"string",minLength:1,maxLength:1200}}},
+    Schema=_{type:"object",additionalProperties:false,
+      required:["candidates","uncertainty"],
+      properties:_{candidates:_{type:"array",minItems:2,maxItems:3,
+          items:Candidate},
+        uncertainty:_{type:"string",minLength:1,maxLength:1000}}}.
+as_model_local_response_schema('c4-contact-semantic-question-v1',
+    "miter_c4_semantic_readings",Schema) :-
+    FactRole=_{type:"string",enum:["Balance","Connection","Effortlessness",
+      "Gravity","Love","Precision","Sacred","Transformation"]},
+    Flourishing=_{type:"string",enum:["AgencyBalance","AttentionStewardship",
+      "CognitiveResilience","ConnectionDepth","CreativeTranscendence",
+      "PurposeBeyondUtility","SharedUnderstanding","TimeCoherence",
+      "WonderPreservation"]},
+    Reading=_{type:"object",additionalProperties:false,
+      required:["understanding","response_purpose","fact9_roles",
+        "flourishing_values","counterfactual"],
+      properties:_{understanding:_{type:"string",minLength:1,maxLength:300},
+        response_purpose:_{type:"string",minLength:1,maxLength:240},
+        fact9_roles:_{type:"array",minItems:1,uniqueItems:true,items:FactRole},
+        flourishing_values:_{type:"array",minItems:1,uniqueItems:true,
+          items:Flourishing},
+        counterfactual:_{type:"string",minLength:1,maxLength:300}}},
+    Schema=_{type:"object",additionalProperties:false,
+      required:["readings","uncertainty"],
+      properties:_{readings:_{type:"array",minItems:2,maxItems:2,
+          items:Reading},
+        uncertainty:_{type:"string",minLength:1,maxLength:300}}}.
+as_model_local_response_schema('c4-voice-render-question-v1',
+    "miter_c4_voice_rendering",Schema) :-
+    Schema=_{type:"object",additionalProperties:false,
+      required:["utterance","uncertainty","bindings"],
+      properties:_{utterance:_{type:"string",minLength:1,maxLength:3000},
+        uncertainty:_{type:"string",minLength:1,maxLength:600},
+        bindings:_{type:"array",minItems:1,uniqueItems:true,
+          items:_{type:"string",minLength:1,maxLength:256}}}}.
 
 as_model_public_question(
     ['c3-semantic-question-v1',QuestionRef,
@@ -539,7 +701,8 @@ as_model_public_question(
         'private-project-redacted'],
       Source,Text,Movement,Readings,Intention,Commitments,Contract,Resource]).
 
-as_model_request_valid(Body) :-
+as_model_request_valid(Profile,Body) :-
+    as_dict_atom(Profile,kind,remote),
     is_dict(Body), dict_pairs(Body,_,Pairs), pairs_keys(Pairs,Keys),
     Keys==[max_tokens,messages,model,provider,reasoning_effort,
       response_format,stream,temperature,top_p],
@@ -556,19 +719,40 @@ as_model_request_valid(Body) :-
     Body.provider.require_parameters==true,
     Body.provider.allow_fallbacks==true,
     \+ get_dict(authorization,Body,_).
+as_model_request_valid(Profile,Body) :-
+    as_dict_atom(Profile,kind,local),
+    is_dict(Body),dict_pairs(Body,_,Pairs),pairs_keys(Pairs,Keys),
+    Keys==[max_tokens,messages,model,response_format,stream,temperature,top_p],
+    Body.model==Profile.model,integer(Body.max_tokens),
+    Body.max_tokens>=1,Body.max_tokens=<2048,
+    Body.stream==false,Body.temperature=:=0,Body.top_p=:=1,
+    is_dict(Body.response_format),Body.response_format.type=="json_schema",
+    get_dict(json_schema,Body.response_format,JsonSchema),is_dict(JsonSchema),
+    JsonSchema.strict==true,is_dict(JsonSchema.schema),
+    Body.messages=[System,User],System.role=="system",User.role=="user",
+    string(System.content),string(User.content),
+    \+ get_dict(authorization,Body,_),\+ get_dict(provider,Body,_),
+    \+ get_dict(reasoning_effort,Body,_).
 
 as_model_write_request(Root,Hash,QuestionRef,Scope,Purpose,ResourceId,Profile,
     Body) :-
     as_model_named_json(Root,requests,Hash,Path), \+ exists_file(Path),
     term_string(QuestionRef,QuestionRefText,[quoted(true),ignore_ops(true)]),
     term_string(Scope,ScopeText,[quoted(true),ignore_ops(true)]),
+    as_model_authorization_standing(Profile,AuthorizationStanding),
     as_write_json_durable(Path,_{schema:"miter-model-request-v1",
       question_sha256:Hash,question_reference:QuestionRefText,scope:ScopeText,
       purpose:Purpose,resource_id:ResourceId,endpoint:Profile.endpoint,body:Body,
-      authorization:"macos-keychain-redacted",
+      authorization:AuthorizationStanding,
       standing:"claimed-not-yet-observed"}).
 
+as_model_authorization_standing(Profile,"macos-keychain-redacted") :-
+    as_dict_atom(Profile,kind,remote).
+as_model_authorization_standing(Profile,"none-loopback-local") :-
+    as_dict_atom(Profile,kind,local).
+
 as_model_keychain(Profile,Key) :-
+    as_dict_atom(Profile,kind,remote),
     Credential=Profile.credential_reference,
     process_create('/usr/bin/security',
       ['find-generic-password','-a',Credential.account,'-s',Credential.service,
@@ -578,24 +762,43 @@ as_model_keychain(Profile,Key) :-
     process_wait(Pid,exit(0),[timeout(15)]),
     normalize_space(string(Key),Raw), string_length(Key,Length),
     Length>=16, Length=<512.
+as_model_keychain(Profile,'no-authorization-loopback-local') :-
+    as_dict_atom(Profile,kind,local).
+
+as_model_resource_health(Profile,'remote-credential-available') :-
+    as_dict_atom(Profile,kind,remote),as_model_keychain(Profile,_).
+as_model_resource_health(Profile,'local-model-available') :-
+    as_dict_atom(Profile,kind,local),
+    get_dict(endpoint,Profile,"http://127.0.0.1:1234/v1/chat/completions"),
+    setup_call_cleanup(
+      http_open("http://127.0.0.1:1234/v1/models",In,
+        [method(get),status_code(Status),timeout(5),redirect(false),
+         request_header('Accept'='application/json')]),
+      json_read_dict(In,Document),close(In)),
+    Status=:=200,is_dict(Document),get_dict(data,Document,Rows),is_list(Rows),
+    get_dict(model,Profile,Model),
+    findall(Id,(member(Row,Rows),is_dict(Row),get_dict(id,Row,Id),Id==Model),
+      [Model]).
 
 as_model_execute(Root,Hash,QuestionRef,Scope,Question,ResourceId,Profile,Body,
     Key,Deadline,Observation) :-
-    string_concat("Bearer ",Key,Authorization), get_time(Start),
+    as_model_http_options(Profile,Body,Key,Deadline,Status,HttpOptions),
+    get_dict(limits,Profile,Limits),
+    get_dict(capture_bytes,Limits,CaptureBytes),
+    ReadLimit is CaptureBytes+1,
+    get_time(Start),
     catch(call_with_time_limit(Deadline,
       setup_call_cleanup(
-        http_open(Profile.endpoint,In,
-          [method(post),post(json(Body)),status_code(Status),timeout(Deadline),
-           redirect(false),encoding(utf8),
-           request_header('Authorization'=Authorization),
-           request_header('Content-Type'='application/json'),
-           request_header('Accept'='application/json')]),
-        read_string(In,262145,Captured),close(In))),Error,true),
+        http_open(Profile.endpoint,In,HttpOptions),
+        read_string(In,ReadLimit,Captured),close(In))),
+      Error,true),
     get_time(End), ElapsedMs is round((End-Start)*1000),
     ( var(Error) ->
         string_length(Captured,Bytes),
-        ( Bytes=<262144 -> Raw=Captured, Transport=eof, ErrorClass=none
-        ; sub_string(Captured,0,262144,_,Raw), Transport='capture-limit',
+        ( Bytes=<CaptureBytes ->
+            Raw=Captured,Transport=eof,ErrorClass=none
+        ; sub_string(Captured,0,CaptureBytes,_,Raw),
+          Transport='capture-limit',
           ErrorClass='response-truncated' )
     ; Raw="", Bytes=0,
       as_model_error_class(Error,Transport,ErrorClass), Status=0 ),
@@ -604,11 +807,25 @@ as_model_execute(Root,Hash,QuestionRef,Scope,Question,ResourceId,Profile,Body,
     crypto_data_hash(Raw,RawHash,[algorithm(sha256),encoding(utf8)]),
     ( Transport==eof, Status=:=200 ->
         ( as_model_provider_observation(Raw,Question,QuestionRef,Scope,
-              ResourceId,RawHash,Observation) -> true
+              ResourceId,Profile,RawHash,Observation) -> true
         ; as_model_provider_failure(Raw,Failure),
           throw(error(model_provider_hold(Failure,ElapsedMs,Bytes),_)) )
     ; throw(error(model_transport_or_schema_hold(Transport,Status,ErrorClass,
         ElapsedMs,Bytes),_)) ).
+
+as_model_http_options(Profile,Body,Key,Deadline,Status,
+    [method(post),post(json(Body)),status_code(Status),timeout(Deadline),
+     redirect(false),encoding(utf8),
+     request_header('Authorization'=Authorization),
+     request_header('Content-Type'='application/json'),
+     request_header('Accept'='application/json')]) :-
+    as_dict_atom(Profile,kind,remote),string_concat("Bearer ",Key,Authorization).
+as_model_http_options(Profile,Body,_Key,Deadline,Status,
+    [method(post),post(json(Body)),status_code(Status),timeout(Deadline),
+     redirect(false),encoding(utf8),
+     request_header('Content-Type'='application/json'),
+     request_header('Accept'='application/json')]) :-
+    as_dict_atom(Profile,kind,local).
 
 as_model_provider_failure(Raw,'provider-output-truncated') :-
     catch(atom_json_dict(Raw,Response,[]),_,fail), is_dict(Response),
@@ -627,9 +844,9 @@ as_model_error_class(error(timeout_error(_,_),_),timeout,
     'deadline-exceeded') :- !.
 as_model_error_class(_,transport_error,'redacted-transport-error').
 
-as_model_provider_envelope(Raw,Content,Finish,Usage) :-
+as_model_provider_envelope(Raw,ExpectedModel,Content,Finish,Usage) :-
     atom_json_dict(Raw,Response,[]), is_dict(Response),
-    get_dict(model,Response,"z-ai/glm-5.3"),
+    get_dict(model,Response,ExpectedModel),
     get_dict(choices,Response,[Choice]), is_dict(Choice),
     as_dict_atom(Choice,finish_reason,Finish), Finish==stop,
     get_dict(message,Choice,Message), is_dict(Message),
@@ -637,36 +854,42 @@ as_model_provider_envelope(Raw,Content,Finish,Usage) :-
     \+ sub_string(Content,_,_,_,"```"),
     as_model_usage(Response,Usage).
 
-as_model_provider_observation(Raw,Question,QuestionRef,Scope,ResourceId,
+as_model_provider_observation(Raw,Question,QuestionRef,Scope,ResourceId,Profile,
     RawHash,Observation) :-
-    as_model_provider_envelope(Raw,Content,Finish,Usage),
+    get_dict(model,Profile,ExpectedModel),
+    as_model_provider_envelope(Raw,ExpectedModel,Content,Finish,Usage),
+    atom_string(ModelId,ExpectedModel),
     Question=['c3-semantic-question-v1'|_],
     atom_json_dict(Content,Result,[]), as_model_result(Result,Candidates),
     as_model_candidates_match_question(Candidates,Question),
     Observation=['c3-model-observation-v1',QuestionRef,Scope,ResourceId,
-      'z-ai/glm-5.3',['transport',eof],['http-status',200],
+      ModelId,['transport',eof],['http-status',200],
       ['finish-reason',Finish],['raw-sha256',RawHash],
       [candidates,Candidates],Usage,
       'provider-reading-no-contact-no-authority-no-choice'].
-as_model_provider_observation(Raw,Question,QuestionRef,Scope,ResourceId,
+as_model_provider_observation(Raw,Question,QuestionRef,Scope,ResourceId,Profile,
     RawHash,Observation) :-
-    as_model_provider_envelope(Raw,Content,Finish,Usage),
+    get_dict(model,Profile,ExpectedModel),
+    as_model_provider_envelope(Raw,ExpectedModel,Content,Finish,Usage),
+    atom_string(ModelId,ExpectedModel),
     Question=['c4-contact-semantic-question-v1'|_],
     atom_json_dict(Content,Result,[]),
     as_model_c4_semantic_result(Result,Question,Readings),
     Observation=['c4-semantic-observation-v1',QuestionRef,Scope,ResourceId,
-      'z-ai/glm-5.3',['transport',eof],['http-status',200],
+      ModelId,['transport',eof],['http-status',200],
       ['finish-reason',Finish],['raw-sha256',RawHash],
       [readings,Readings],Usage,
       'provider-reading-no-contact-no-authority-no-choice'].
-as_model_provider_observation(Raw,Question,QuestionRef,Scope,ResourceId,
+as_model_provider_observation(Raw,Question,QuestionRef,Scope,ResourceId,Profile,
     RawHash,Observation) :-
-    as_model_provider_envelope(Raw,Content,Finish,Usage),
+    get_dict(model,Profile,ExpectedModel),
+    as_model_provider_envelope(Raw,ExpectedModel,Content,Finish,Usage),
+    atom_string(ModelId,ExpectedModel),
     Question=['c4-voice-render-question-v1'|_],
     atom_json_dict(Content,Result,[]),
     as_model_c4_voice_result(Result,Question,Utterance,Bindings,Uncertainty),
     Observation=['c4-voice-observation-v1',QuestionRef,Scope,ResourceId,
-      'z-ai/glm-5.3',['transport',eof],['http-status',200],
+      ModelId,['transport',eof],['http-status',200],
       ['finish-reason',Finish],['raw-sha256',RawHash],
       ['rendered-utterance',Utterance,[bindings,Bindings],
         [uncertainty,Uncertainty]],Usage,
@@ -853,18 +1076,26 @@ as_model_write_text_durable(Path,Text) :-
 
 as_model_unavailable(Question,Error,
     ['c4-model-observation-unavailable-v1',QuestionRef,Scope,
-      'openrouter-glm53',Reason,'no-candidate-admitted']) :-
+      ResourceId,Reason,'no-candidate-admitted']) :-
     Question=[Kind,QuestionRef,Scope|_],
     memberchk(Kind,['c4-contact-semantic-question-v1',
       'c4-voice-render-question-v1']), !,
+    as_model_question_resource(Question,ResourceId),
     as_model_failure_reason(Error,Reason).
 as_model_unavailable(Question,Error,
     ['c3-model-observation-unavailable-v1',QuestionRef,Scope,
-      'openrouter-glm53',Reason,'no-candidate-admitted']) :-
+      ResourceId,Reason,'no-candidate-admitted']) :-
     ( Question=['c3-semantic-question-v1',QuestionRef,Scope|_] -> true
     ; QuestionRef=['question-reference',unknown,'partial-rap-alignment'],
       Scope=[scope,unknown,unknown,unknown] ),
+    as_model_question_resource(Question,ResourceId),
     as_model_failure_reason(Error,Reason).
+
+as_model_question_resource(Question,ResourceId) :-
+    is_list(Question),last(Question,Request),
+    Request=['resource-request',Candidate|_],
+    as_symbol(Candidate,ResourceId),!.
+as_model_question_resource(_,'unknown-model-resource').
 
 as_model_failure_reason(uncertain_prior_transmission,
     'uncertain-prior-transmission-no-replay') :- !.

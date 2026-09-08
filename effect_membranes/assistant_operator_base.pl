@@ -25,7 +25,7 @@ as_dispatch([Command0|Args], Reply, Code) :-
     miter_store_nonempty_atom(Command0, Command),
     as_command(Command, Args, Reply, Code), !.
 as_dispatch(_, _{schema:"miter-assistant-operator-result-v1",status:"usage-error",
-  usage:"miter <install|bootstrap|prepare-service|register-service|unregister-service|evaluation-disclosure|activate-evaluation|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
+  usage:"miter <install|bootstrap|model-selection|select-model|prepare-service|register-service|unregister-service|evaluation-disclosure|activate-evaluation|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--resource ID --duration-seconds N --max-calls N|--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
 
 as_command(install, Args, Reply, Code) :-
     !,
@@ -38,6 +38,23 @@ as_command(bootstrap, Args, Reply, Code) :-
     as_exact_options(Args, ['--runtime-root']),
     as_required_option(Args, '--runtime-root', Root0),
     as_runtime_path(Root0, Root), as_bootstrap(Root, Reply), as_reply_code(Reply, Code).
+as_command('model-selection',Args,Reply,Code) :-
+    !,
+    as_exact_options(Args,['--runtime-root']),
+    as_required_option(Args,'--runtime-root',Root0),
+    as_runtime_path(Root0,Root),as_model_selection(Root,Reply),
+    as_reply_code(Reply,Code).
+as_command('select-model',Args,Reply,Code) :-
+    !,
+    as_exact_options(Args,
+      ['--runtime-root','--resource','--duration-seconds','--max-calls']),
+    as_required_option(Args,'--runtime-root',Root0),
+    as_required_option(Args,'--resource',Resource0),
+    as_required_option(Args,'--duration-seconds',Duration0),
+    as_required_option(Args,'--max-calls',MaxCalls0),
+    as_runtime_path(Root0,Root),
+    as_select_model(Root,Resource0,Duration0,MaxCalls0,Reply),
+    as_reply_code(Reply,Code).
 as_command('evaluation-disclosure', Args, Reply, Code) :-
     !,
     as_exact_options(Args, ['--runtime-root']),
@@ -118,7 +135,8 @@ as_reply_code(Reply, 0) :- get_dict(status, Reply, Status),
       'liveness-unconfirmed','existing-process-unconfirmed',queued,duplicate,
       'evidence-stored','evaluation-disclosure','evaluation-activated',
       'evaluation-already-active','service-profile-ready','service-registered',
-      'service-unregistered','supervised-clean-exit','crash-loop-contained']), !.
+      'service-unregistered','supervised-clean-exit','crash-loop-contained',
+      'model-selection','model-selected']), !.
 as_reply_code(_, 1).
 
 as_exact_options(Args, Allowed) :-
@@ -233,6 +251,9 @@ as_bootstrap_new(Root, Reply) :-
     miter_store_write_json_atomic(BindingsTarget,Bindings),
     directory_file_path(Root,'model-resources.json',ModelsTarget),
     miter_store_write_json_atomic(ModelsTarget,Models),
+    as_initial_model_direction(Models,ModelDirection),
+    directory_file_path(Root,'model-direction.json',DirectionTarget),
+    miter_store_write_json_atomic(DirectionTarget,ModelDirection),
     directory_file_path(Root,'model-grants.json',GrantsTarget),
     miter_store_write_json_atomic(GrantsTarget,Grants),
     directory_file_path(Root,'evaluation-grants.json',EvaluationGrantsTarget),
@@ -260,6 +281,81 @@ as_bootstrap_new(Root, Reply) :-
     Reply=_{schema:"miter-assistant-operator-result-v1",status:bootstrapped,
       runtime_root:Root,lkg_sha256:LkgHash,network_access:NetworkAccess,
       external_effects:ExternalEffects}.
+
+as_initial_model_direction(Models,Direction) :-
+    get_dict(selection,Models,Selection),is_dict(Selection),
+    as_dict_atom(Selection,mode,'human-operator-direction'),
+    as_dict_atom(Selection,operator_preference,ResourceId),
+    get_dict(authorized_directions,Selection,AuthorizedStrings),
+    maplist(as_symbol,AuthorizedStrings,Authorized),memberchk(ResourceId,Authorized),
+    Direction=_{schema:"miter-model-direction-v1",
+      standing:"active-human-direction",direction_id:"installed-default",
+      resource_id:ResourceId,
+      purposes:["semantic-reading","language-rendering"],
+      activated_at_epoch:0,expires_at_epoch:0,max_calls:0,
+      authority:"human-edited-install-configuration",
+      authority_boundary:"resource-only-no-meaning-movement-or-effect-authority"}.
+
+as_model_selection(Root,Reply) :-
+    as_root(Root,_),as_verify_lkg(Root,verified),
+    directory_file_path(Root,'model-direction.json',Path),
+    miter_store_read_json(Path,Direction),
+    as_dict_atom(Direction,schema,'miter-model-direction-v1'),
+    as_dict_atom(Direction,resource_id,ResourceId),
+    get_dict(activated_at_epoch,Direction,Activated),number(Activated),
+    as_model_direction_claim_count(Root,ResourceId,Activated,Used),
+    get_dict(max_calls,Direction,MaxCalls),
+    get_dict(expires_at_epoch,Direction,Expiry),get_time(Now),
+    ( Expiry=:=0 -> TimeStanding='until-replaced'
+    ; Now=<Expiry -> TimeStanding='active-bounded-duration'
+    ; TimeStanding=expired ),
+    ( MaxCalls=:=0 -> CallStanding='unbounded-until-replaced',CallAvailable=true
+    ; Remaining is max(0,MaxCalls-Used),
+      format(atom(CallStanding),'~d-model-calls-remaining',[Remaining]),
+      (Remaining>0->CallAvailable=true;CallAvailable=false) ),
+    ( TimeStanding==expired -> EffectiveStanding='expired-no-model-call'
+    ; CallAvailable==false -> EffectiveStanding='exhausted-no-model-call'
+    ; EffectiveStanding='active-resource-direction' ),
+    Reply=_{schema:"miter-assistant-operator-result-v1",
+      status:'model-selection',resource_id:ResourceId,
+      direction_id:Direction.direction_id,standing:Direction.standing,
+      effective_standing:EffectiveStanding,
+      time_standing:TimeStanding,call_standing:CallStanding,
+      used_model_calls:Used,max_calls:MaxCalls,
+      activated_at_epoch:Activated,expires_at_epoch:Expiry,
+      authority_boundary:Direction.authority_boundary}.
+
+as_select_model(Root,Resource0,Duration0,MaxCalls0,Reply) :-
+    as_root(Root,_),as_verify_lkg(Root,verified),
+    miter_store_nonempty_atom(Resource0,ResourceId),
+    miter_store_nonempty_atom(Duration0,DurationAtom),
+    miter_store_nonempty_atom(MaxCalls0,MaxCallsAtom),
+    atom_number(DurationAtom,Duration),integer(Duration),Duration>=0,
+    atom_number(MaxCallsAtom,MaxCalls),integer(MaxCalls),MaxCalls>=0,
+    as_path(Root,'model-resources.json',RegistryPath),
+    miter_store_read_json(RegistryPath,Registry),
+    get_dict(selection,Registry,Selection),
+    get_dict(authorized_directions,Selection,AuthorizedStrings),
+    maplist(as_symbol,AuthorizedStrings,Authorized),memberchk(ResourceId,Authorized),
+    as_model_profile(Root,ResourceId,Profile),
+    as_model_resource_health(Profile,Health),
+    get_time(Now),(Duration=:=0->Expiry=0;Expiry is Now+Duration),
+    uuid(DirectionId),atom_string(DirectionId,DirectionIdString),
+    atom_string(ResourceId,ResourceString),
+    Direction=_{schema:"miter-model-direction-v1",
+      standing:"active-human-direction",direction_id:DirectionIdString,
+      resource_id:ResourceString,
+      purposes:["semantic-reading","language-rendering"],
+      activated_at_epoch:Now,expires_at_epoch:Expiry,max_calls:MaxCalls,
+      authority:"explicit-human-operator-direction",
+      authority_boundary:"resource-only-no-meaning-movement-or-effect-authority"},
+    directory_file_path(Root,'model-direction.json',Path),
+    as_write_json_durable(Path,Direction),as_secure_runtime_tree(Root),
+    Reply=_{schema:"miter-assistant-operator-result-v1",status:'model-selected',
+      resource_id:ResourceString,direction_id:DirectionIdString,
+      activated_at_epoch:Now,expires_at_epoch:Expiry,max_calls:MaxCalls,
+      health:Health,
+      authority_boundary:"resource-only-no-meaning-movement-or-effect-authority"}.
 
 as_make_runtime_directory(Root, Relative) :-
     directory_file_path(Root,Relative,Path), make_directory_path(Path), chmod(Path,0o700).
@@ -481,8 +577,12 @@ as_evaluation_memory_health(Root) :-
     length(Embedding,Config.embedding.dimension).
 
 as_evaluation_model_health(Root) :-
-    as_model_profile(Root,'openrouter-glm53',Profile),
-    as_model_keychain(Profile,Key),string_length(Key,Length),Length>=16.
+    directory_file_path(Root,'model-direction.json',Path),
+    miter_store_read_json(Path,Direction),
+    as_dict_atom(Direction,standing,'active-human-direction'),
+    as_dict_atom(Direction,resource_id,ResourceId),
+    as_model_profile(Root,ResourceId,Profile),
+    as_model_resource_health(Profile,_).
 
 as_write_evaluation_activation(Root,Inactive,Config,_Binding,Affirmation,
     BindingHash,Reply) :-
@@ -502,7 +602,7 @@ as_write_evaluation_activation(Root,Inactive,Config,_Binding,Affirmation,
       maximum_expires_at_epoch:MaximumExpiry,
       disclosure_witness:Affirmation,activation_witness_sha256:WitnessHashString,
       authority_separation:"grant-bounds-reach-not-meaning-or-movement"},
-    as_evaluation_model_grants(Config,Now,SegmentExpiry,ModelGrants),
+    as_evaluation_model_grants(Root,Config,Now,SegmentExpiry,ModelGrants),
     directory_file_path(Root,'mattermost.json',MattermostPath),
     put_dict(enabled,Config.outbound,true,Outbound),
     put_dict(outbound,Config,Outbound,ActiveMattermost),
@@ -530,16 +630,25 @@ as_write_evaluation_activation(Root,Inactive,Config,_Binding,Affirmation,
       disclosure_post_id:Affirmation.post_id,
       activation_witness_sha256:WitnessHashString}.
 
-as_evaluation_model_grants(Config,Now,Expiry,Document) :-
+as_evaluation_model_grants(Root,Config,Now,Expiry,Document) :-
+    directory_file_path(Root,'model-resources.json',RegistryPath),
+    miter_store_read_json(RegistryPath,Registry),
+    get_dict(resources,Registry,Resources),is_list(Resources),
     findall(Grant,
       (member(Principal,Config.authorized_humans),
-       format(string(Id),'ama-1.2-openrouter-~s',[Principal]),
-       Grant=_{id:Id,standing:"active",resource_id:"openrouter-glm53",
-         purposes:["general-contact-semantics","language-rendering",
-           "partial-alignment-inquiry"],
+       member(Profile,Resources),is_dict(Profile),get_dict(enabled,Profile,true),
+       as_model_profile_exact(Profile),
+       get_dict(id,Profile,ResourceString),
+       get_dict(limits,Profile,Limits),
+       get_dict(deadline_seconds,Limits,Deadline),
+       format(string(Id),'ama-1.2-~s-~s',[ResourceString,Principal]),
+       ( get_dict(kind,Profile,"remote") -> MaxCalls=50 ; MaxCalls=1000 ),
+       Grant=_{id:Id,standing:"active",resource_id:ResourceString,
+         purposes:["semantic-reading","language-rendering"],
          scope:_{principal:Principal,audience:Config.scope.audience,
-           project:Config.scope.project},max_calls:50,max_output_tokens:2048,
-         deadline_seconds:120,public_safe_only:true,
+           project:Config.scope.project},max_calls:MaxCalls,
+         max_output_tokens:2048,
+         deadline_seconds:Deadline,public_safe_only:true,
          activated_at_epoch:Now,expires_at_epoch:Expiry,
          evaluation_grant_id:"ama-1.2"}),Grants),
     Document=_{schema:"miter-model-grants-v2",
@@ -888,10 +997,13 @@ as_status(Root, Reply) :-
         ;Pid=0,State=stopped),
         as_status_heartbeat(Root,Heartbeat),
         as_evaluation_status(Root,Evaluation),
+        ( catch(as_model_selection(Root,ModelSelection0),_,fail) ->
+            ModelSelection=ModelSelection0
+        ; ModelSelection=_{standing:"unavailable"} ),
         as_host_service_status(Root,HostService),
         Reply=_{schema:"miter-assistant-operator-result-v1",status:State,pid:Pid,
           lkg:Lkg,heartbeat:Heartbeat,evaluation:Evaluation,
-          host_service:HostService,
+          host_service:HostService,model_selection:ModelSelection,
           semantic_health:"not-claimed"}
     ; Reply=_{schema:"miter-assistant-operator-result-v1",status:'not-bootstrapped'} ).
 
