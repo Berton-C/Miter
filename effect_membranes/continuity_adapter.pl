@@ -20,6 +20,12 @@ miter_assistant_scope_bind(Root0, Surface, DeclaredScope, Result) :-
 miter_assistant_scope_bind_checked(Root0, Surface, DeclaredScope, Result) :-
     miter_store_nonempty_atom(Root0, Root),
     is_absolute_file_name(Root), exists_directory(Root),
+    is_dict(Surface), get_dict(carrier_kind,Surface,Kind0),
+    miter_store_nonempty_atom(Kind0,mattermost), !,
+    miter_mattermost_scope_bind(Root,Surface,DeclaredScope,Result).
+miter_assistant_scope_bind_checked(Root0, Surface, DeclaredScope, Result) :-
+    miter_store_nonempty_atom(Root0, Root),
+    is_absolute_file_name(Root), exists_directory(Root),
     miter_assistant_surface(Surface, Route, EventIdentity),
     miter_assistant_declared_scope(DeclaredScope, Scope),
     directory_file_path(Root, 'scope-bindings.json', BindingsPath),

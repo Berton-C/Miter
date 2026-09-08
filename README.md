@@ -26,10 +26,16 @@ effect preparation, and start/status/stop/panic operations.
 
 It is **not yet the usable Miter alpha**. General conversational contact,
 durable read/write Continuity of Mind, live Chroma retrieval, general
-LLM/VoiceRNA composition, Mattermost transport,
+LLM/VoiceRNA composition, Mattermost response delivery,
 earned self-extension, hot upgrade, and rollback remain to be integrated into
 this same runtime. [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single
 operations map for that additive work.
+
+The current C4 cut can resolve the configured local Mattermost group and its
+authorized principals, admit new versioned contacts into the one reactor, and
+restore them after restart. It deliberately cannot emit a Mattermost response
+yet; outbound remains disabled until general VoiceRNA and delivery
+reconciliation are causally joined.
 
 ## Runtime boundary
 

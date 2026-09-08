@@ -133,7 +133,8 @@ as_swipl_ld(Path) :-
 
 as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
   receipts,outbox,proofs,intents,lib,logs,'model/claims','model/requests',
-  'model/raw','model/observations']).
+  'model/raw','model/observations','surface/raw','surface/events',
+  'surface/effects']).
 
 as_bootstrap(Root, Reply) :-
     ( exists_directory(Root) ->
@@ -171,6 +172,10 @@ as_bootstrap_new(Root, Reply) :-
     miter_store_read_json(GrantsSource,Grants),
     directory_file_path(Root,'model-grants.json',GrantsTarget),
     miter_store_write_json_atomic(GrantsTarget,Grants),
+    directory_file_path(Repo,'config/mattermost.json',MattermostSource),
+    miter_store_read_json(MattermostSource,Mattermost),
+    directory_file_path(Root,'mattermost.json',MattermostTarget),
+    miter_store_write_json_atomic(MattermostTarget,Mattermost),
     as_dict_atom(Config,network_access,NetworkAccess),
     as_dict_atom(Config,external_effects,ExternalEffects),
     uuid(BootId),
@@ -245,6 +250,10 @@ as_start(Root, Reply) :-
     ; as_process_state(Root,alive,Pid) ->
         Reply=_{schema:"miter-assistant-operator-result-v1",status:running,pid:Pid,
           semantic_health:"not-claimed"}
+    ; as_mattermost_prepare(Root,MattermostStanding),
+      MattermostStanding == held ->
+        Reply=_{schema:"miter-assistant-operator-result-v1",
+          status:'surface-preflight-held',surface:mattermost}
     ; as_crash_admit(Root,CrashStanding),
       ( CrashStanding == blocked ->
           Reply=_{schema:"miter-assistant-operator-result-v1",

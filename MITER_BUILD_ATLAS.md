@@ -265,6 +265,23 @@ subjects, sustain and resume undertakings, observe scope isolation, recover
 after restart/model/surface failure, and see consequence alter later
 participation.
 
+Standing: active. The first carrier cut is embodied in the one service. At
+startup, the Prolog membrane resolves the local Mattermost team, exact
+three-member group, bot, and authorized human usernames to stable IDs using a
+Keychain reference; stable IDs remain only in the private runtime root. The
+same reactor input read then polls at the configured bounded interval, rejects
+bot and non-allowlisted authors before payload cognition, preserves exact raw
+bytes and version identity, and constructs a contact whose only initial Fact9
+witness is the universal contact-relative `Balance` participation. All nine
+flourishing standings remain explicitly unresolved for native Soul formation;
+the carrier does not preselect a value interpretation to obtain movement. A
+prior group post traversed the complete constitutive path through `bin/miter`,
+formed a nonempty 113,890-byte checkpoint, and cold-restored without replay at
+SHA-256 `c686ecf759ea18828de90f498c8b106c6de5fecac033c28284bbc719f9820b52`.
+Outbound Mattermost remains disabled until general model participation,
+VoiceRNA rendering, and uncertain-delivery reconciliation are one certified
+path.
+
 ## 7. The only build cycle
 
 Every additive cut follows the same four movements. This is a builder method,
@@ -1476,9 +1493,10 @@ Already carried:
 
 Next movement:
 
-1. recover the smallest general Mattermost carrier and delivery reconciler
-   into the existing `bin/miter` service, preserving stable principal/channel
-   scope and exactly-once effects without creating another loop;
+1. complete the admitted Mattermost carrier with general Soul-formed model
+   participation, VoiceRNA rendering, and pending-before-send delivery
+   reconciliation in the existing `bin/miter` service; no second loop and no
+   preselected conversational behavior;
 2. make relationship, project, undertaking, attention, and developmental
    continuity one writable, indefinitely durable, restart-restored
    organization, with Chroma remaining a rebuildable semantic index;

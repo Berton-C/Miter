@@ -43,8 +43,9 @@ as_lkg_relative_paths([
   'effect_membranes/runtime_extensions/store_posix.c',
   'effect_membranes/runtime_extensions/petta_parallel.pl',
   'effect_membranes/model.pl',
+  'effect_membranes/mattermost.pl',
   'config/constitutive-projection.json','config/miter.json','config/continuity.json',
-  'config/models.json','config/model-grants.json'
+  'config/models.json','config/model-grants.json','config/mattermost.json'
 ]).
 
 as_write_lkg(Root, LkgHash) :-

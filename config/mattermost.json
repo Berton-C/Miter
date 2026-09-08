@@ -1,0 +1,38 @@
+{
+  "schema": "miter-mattermost-surface-v1",
+  "human_editable": true,
+  "enabled": true,
+  "origin": "http://127.0.0.1:8065",
+  "origin_policy": "loopback-only",
+  "team_slug": "clarityclaw",
+  "bot_username": "miter",
+  "authorized_humans": ["berton_c", "haley"],
+  "required_group_members": ["berton_c", "haley", "miter"],
+  "scope": {
+    "audience": "berton-haley-shared-local",
+    "project": "miter-evaluation-v1"
+  },
+  "credential_reference": {
+    "source": "macos-keychain",
+    "account": "bcb",
+    "service": "ai.bgi.miter.mattermost"
+  },
+  "inbound": {
+    "new_events_only": true,
+    "history_backfill": false,
+    "bot_posts_are_contact": false,
+    "max_event_bytes": 32768,
+    "poll_seconds": 2
+  },
+  "outbound": {
+    "enabled": false,
+    "certificate": "VoiceRNA-required",
+    "destination": "resolved-exact-group-only",
+    "unknown_outcome": "hold-and-reconcile-never-blind-resend"
+  },
+  "operator_notes": [
+    "This file contains human-editable names and Keychain references, never credential values or private stable IDs.",
+    "Stable IDs are resolved into the private runtime root and revalidated before payload cognition.",
+    "The Mattermost membrane carries bytes and effects; it does not interpret contact or select movement."
+  ]
+}

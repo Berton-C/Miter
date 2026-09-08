@@ -7,6 +7,7 @@
 :- ensure_loaded('store.pl').
 :- ensure_loaded('integrity.pl').
 :- ensure_loaded('continuity_adapter.pl').
+:- ensure_loaded('mattermost.pl').
 :- ensure_loaded('semantic_adapter.pl').
 :- use_module(library(crypto)).
 :- use_module(library(filesex)).
@@ -235,6 +236,16 @@ as_participant_claim(Dict,
     as_dict_atom(Dict, proposed_standing, Proposed),
     as_member(Proposed, [support,contradiction,unresolved]),
     as_dict_atom(Dict, evidence, Evidence).
+as_participant_claim(Dict,
+    ['participant-text-claim',ContentHash,Text,RawRef,
+      'exact-human-utterance-not-movement-authority']) :-
+    is_dict(Dict), as_dict_atom(Dict,kind,text),
+    get_dict(content_sha256,Dict,Hash0), miter_store_nonempty_atom(Hash0,ContentHash),
+    as_sha256(ContentHash,ContentHash),
+    get_dict(text,Dict,Text), string(Text), string_length(Text,Length),
+    Length>=1, Length=<32768,
+    get_dict(raw_ref,Dict,Raw0), miter_store_nonempty_atom(Raw0,RawRef),
+    \+ is_absolute_file_name(RawRef), \+ sub_atom(RawRef,_,_,_,'..').
 
 as_participant_v2(Scope, Dict,
                   ['participant-contribution', Id, Kind, Scope, Lineage,
@@ -498,11 +509,14 @@ as_control(Root0, Control) :-
 
 as_input(Root0, Inputs) :-
     ( catch((as_root(Root0, Root),
+      as_mattermost_poll(Root, SurfaceInputs),
       as_json_carriers(Root, leased, Leased),
       as_json_carriers(Root, inbox, Inbox),
       append(Leased, Inbox, Files), as_config(Root, max_input_batch, Max),
       as_take_limit(Files, Max, Selected),
-      as_take_inputs(Root, Selected, Inputs)), _, fail) -> true ; Inputs=[] ), !.
+      as_take_inputs(Root, Selected, FileInputs),
+      append(SurfaceInputs,FileInputs,Combined),
+      as_take_limit(Combined,Max,Inputs)), _, fail) -> true ; Inputs=[] ), !.
 
 as_json_carriers(Root, Kind, Carriers) :-
     as_path(Root, Kind, Directory), directory_files(Directory, Files0),
