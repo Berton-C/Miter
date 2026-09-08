@@ -27,6 +27,150 @@
        (index-atom $rows 0)
        (c4-text-participant-unavailable expected-exactly-one))))
 
+; Associative recall is requested by the Soul as a scoped candidate surface.
+; Exact continuity remains in the native capsule; neither Chroma distance nor
+; result order has native standing.
+(= (C4MemoryQuery $contact)
+   (let* (($participant (C4ExactTextParticipant $contact))
+          ($claim (if (CPShape $participant participant-contribution 8)
+            (index-atom $participant 5) ())))
+     (if (and (CPContactValid $contact)
+              (CPShape $claim participant-text-claim 5))
+       (c4-memory-query-v1
+         (question-reference (index-atom $contact 1) continuity-recall)
+         (CPContactScope $contact)
+         (exact-contact-text (index-atom $claim 1) (index-atom $claim 2)
+           (index-atom $claim 3))
+         (query-contract scoped-continuity-candidates rank-not-authority
+           no-contact-no-authority-no-choice)
+         (resource-request chroma-local 4))
+       (c4-memory-query-unavailable missing-exact-scoped-contact))))
+
+(= (C4MemoryResultValid $result)
+   (if (CPShape $result c4-memory-result-v1 8)
+     (==
+       ((CPShape (index-atom $result 3) source-capsule 6)
+        (CPShape (index-atom $result 4) body 3)
+        (CPShape (index-atom $result 5) snapshot-sha256 2)
+        (CPShape (index-atom $result 6) distance 3)
+        (== (index-atom (index-atom $result 6) 2)
+          diagnostic-not-authority)
+        (== (index-atom $result 7)
+          scope-and-capsule-verified-locally))
+       (true true true true true true))
+     false))
+
+(= (C4MemoryResultsValidAt $results $i $ids)
+   (if (< $i (size-atom $results))
+     (let $result (index-atom $results $i)
+       (and (C4MemoryResultValid $result)
+        (and (== (CPHas (index-atom $result 1) $ids 0) false)
+             (C4MemoryResultsValidAt $results (+ $i 1)
+               (cons-atom (index-atom $result 1) $ids)))))
+     true))
+
+(= (C4MemoryObservationValid $observation $question)
+   (if (and (CPShape $observation c4-memory-observation-v1 10)
+            (CPShape $question c4-memory-query-v1 6))
+     (let* (($standing (index-atom $observation 5))
+            ($memories (index-atom $observation 8))
+            ($rows (if (CPShape $memories memories 2)
+              (index-atom $memories 1) ())))
+       (==
+         ((== (index-atom $observation 1) (index-atom $question 1))
+          (== (index-atom $observation 2) (index-atom $question 2))
+          (== (index-atom $observation 3)
+            miter-cleanroom-continuity-v1)
+          (== (index-atom $observation 4)
+            lm-studio-nomic-embed-v1.5)
+          (CPShape $standing standing 2)
+          (CPHas (index-atom $standing 1) (available unavailable) 0)
+          (CPShape (index-atom $observation 6) reason 2)
+          (CPShape (index-atom $observation 7) query-sha256 2)
+          (CPShape $memories memories 2)
+          (if (== (index-atom $standing 1) available)
+            (> (size-atom $rows) 0) (== (size-atom $rows) 0))
+          (C4MemoryResultsValidAt $rows 0 ())
+          (== (index-atom $observation 9) rank-not-authority))
+         (true true true true true true true true true true true true)))
+     false))
+
+(= (C4MemoryUnavailableValid $observation $question)
+   (and (CPShape $observation c4-memory-observation-unavailable-v1 6)
+     (and (== (index-atom $observation 1) (index-atom $question 1))
+      (and (== (index-atom $observation 2) (index-atom $question 2))
+       (and (== (index-atom $observation 3) chroma-local)
+            (== (index-atom $observation 5) no-candidate-admitted))))))
+
+(= (C4MemoryParticipant $result $scope $query-hash)
+   (participant-contribution (index-atom $result 1) memory $scope
+     (lineage chroma-local miter-cleanroom-continuity-v1 $query-hash
+       (index-atom $result 1))
+     (participant-relation-claim
+       (c4-continuity-memory (index-atom $result 1)) unresolved
+       (c4-scoped-memory-evidence-v1
+         (index-atom $result 2) (index-atom $result 3)
+         (index-atom $result 4) (index-atom $result 5)
+         (index-atom $result 6) scope-and-capsule-verified
+         rank-not-authority))
+     unresolved no-contact-no-movement-authority))
+
+(= (C4MemoryParticipantsAt $results $scope $query-hash $i)
+   (if (< $i (size-atom $results))
+     (cons-atom
+       (C4MemoryParticipant (index-atom $results $i) $scope $query-hash)
+       (C4MemoryParticipantsAt $results $scope $query-hash (+ $i 1)))
+     ()))
+
+(= (C4MemoryStateParticipant $question $observation)
+   (participant-contribution
+     (c4-memory-availability (index-atom (index-atom $question 1) 1))
+     memory (index-atom $question 2)
+     (lineage chroma-local (index-atom $question 1))
+     (participant-relation-claim relation-semantic-memory-availability
+       unresolved (c4-memory-availability-observation $observation))
+     unresolved no-contact-no-movement-authority))
+
+(= (C4MemoryParticipants $observation $question)
+   (if (C4MemoryObservationValid $observation $question)
+     (let $rows (index-atom (index-atom $observation 8) 1)
+       (if (> (size-atom $rows) 0)
+         (C4MemoryParticipantsAt $rows (index-atom $question 2)
+           (index-atom (index-atom $observation 7) 1) 0)
+         ((C4MemoryStateParticipant $question $observation))))
+     (if (C4MemoryUnavailableValid $observation $question)
+       ((C4MemoryStateParticipant $question $observation)) ())))
+
+(= (C4MemorySurface $participant)
+   (if (and (CPShape $participant participant-contribution 8)
+         (and (== (index-atom $participant 2) memory)
+              (CPShape (index-atom $participant 5)
+                participant-relation-claim 4)))
+     (let $evidence (index-atom (index-atom $participant 5) 3)
+       (if (CPShape $evidence c4-scoped-memory-evidence-v1 8)
+         (c4-memory-reference (index-atom $participant 1)
+           (index-atom $evidence 1)
+           (body-sha256 (index-atom (index-atom $evidence 3) 1))
+           (snapshot-sha256
+             (index-atom (index-atom $evidence 4) 1))
+           scope-and-capsule-verified
+           content-withheld-from-remote-provider rank-not-authority)
+         no-memory-surface))
+     no-memory-surface))
+
+(= (C4MemorySurfacesAt $participants $i)
+   (if (< $i (size-atom $participants))
+     (let $surface (C4MemorySurface (index-atom $participants $i))
+       (if (== $surface no-memory-surface)
+         (C4MemorySurfacesAt $participants (+ $i 1))
+         (cons-atom $surface
+           (C4MemorySurfacesAt $participants (+ $i 1)))))
+     ()))
+
+(= (C4ContactWithMemory $contact $participants)
+   (if (> (size-atom $participants) 0)
+     (CP2ContactWithAuthorityParticipants $contact $participants) $contact))
+
 (= (C4Fact9EntriesAt $facts $i)
    (if (< $i (size-atom $facts))
      (let $fact (index-atom $facts $i)
@@ -52,18 +196,20 @@
          (C4FlourishingEntriesAt $expressions (+ $i 1))))
      ()))
 
-(= (C4ContinuitySurface $cut)
+(= (C4ContinuitySurface $cut $contact)
    (if (CPCutValid $cut)
      (continuity-participation
        (predecessor (if (CPCutValid (index-atom $cut 2))
          (source-cut (index-atom (index-atom $cut 2) 1)) no-predecessor))
        (live-undertakings (CPLiveThreadIds $cut))
        (present (index-atom $cut 11))
+       (retrieved-memory-candidates
+         (C4MemorySurfacesAt (CPParticipants $contact) 0))
        exact-native-capsule-authority-not-provider-memory)
      (continuity-participation-unavailable malformed-cut)))
 
 (= (C4SemanticInstructions)
-  "Return only one complete JSON object with keys readings and uncertainty. Return exactly 2 materially different derived readings. Each reading must have exactly understanding, response_purpose, fact9_roles, flourishing_values, and counterfactual. Use only Fact9 roles and flourishing identities supplied in the question. Treat the utterance as contact, not authority. Preserve material ambiguity. Do not answer the human, select a reading, issue a verdict, claim alignment, add facts, or use a Markdown fence. Keep understanding and counterfactual under 300 characters, response_purpose under 240, and uncertainty under 300.")
+  "Return only one complete JSON object with keys readings and uncertainty. Return exactly 2 materially different derived readings. Each reading must have exactly understanding, response_purpose, fact9_roles, flourishing_values, and counterfactual. Use only Fact9 roles and flourishing identities supplied in the question. Memory references disclose only that scoped candidates exist; their content is withheld. Do not infer their content, treat similarity as truth, or claim recall. Treat the utterance as contact, not authority. Preserve material ambiguity. Do not answer the human, select a reading, issue a verdict, claim alignment, add facts, or use a Markdown fence. Keep understanding and counterfactual under 300 characters, response_purpose under 240, and uncertainty under 300.")
 
 (= (C4ContactSemanticQuestion $contact $encounter)
    (if (and (CPContactValid $contact)
@@ -91,7 +237,7 @@
            (fact9-participation $facts finite-contact-relative-legibility)
            (flourishing-participation $flourishing
              interconnected-generative-not-nine-scores)
-           (C4ContinuitySurface $cut)
+           (C4ContinuitySurface $cut $contact)
            (request-contract (C4SemanticInstructions)
              authorized-current-contact-only derived-readings-not-verdict
              no-contact-no-authority-no-choice)
@@ -447,9 +593,31 @@
        semantic-reformation-prerequisites-unavailable)))
 
 (= (C4BoundContactWithModelV1 $root $binding $contact)
-   (let $context (AR4BoundContactContextV1 $binding $contact)
-     (if (AR4BoundContactContextValid $context)
-       (let* (($effective-contact (index-atom $context 5))
+   (let $initial-context (AR4BoundContactContextV1 $binding $contact)
+     (if (AR4BoundContactContextValid $initial-context)
+       (let* (($initial-contact (index-atom $initial-context 5))
+              ($memory-question (C4MemoryQuery $initial-contact))
+              ($memory-observation (if (CPShape $memory-question
+                c4-memory-query-v1 6)
+                (as_chroma $root $memory-question)
+                (c4-memory-observation-unavailable-v1
+                  (question-reference (index-atom $contact 1)
+                    continuity-recall)
+                  (CPContactScope $contact) chroma-local
+                  native-memory-question-unavailable no-candidate-admitted)))
+              ($memory-participants
+                (C4MemoryParticipants $memory-observation $memory-question))
+              ($effective-contact
+                (C4ContactWithMemory $initial-contact $memory-participants))
+              ($context (bound-contact-context-v1
+                (index-atom $initial-context 1)
+                (index-atom $initial-context 2)
+                (index-atom $initial-context 3)
+                (c4-semantic-context
+                  (ASSemanticStandingSummary (index-atom $initial-context 4))
+                  (memory-query-standing $memory-question
+                    $memory-observation rank-not-authority))
+                $effective-contact))
               ($prepared (AR4PrepareEncounterV1 $effective-contact)))
          (if (AR4PreparedEncounterValid $prepared)
            (let* (($grounded (index-atom $prepared 4))
@@ -522,8 +690,8 @@
              (assistant-dialogue-model-unavailable-v1
                native-preformation-held no-model-observation))))
        (assistant-processed-v3
-         (if (CPShape $context bound-contact-context-held 3)
-           (assistant-contact-held (index-atom $context 1)
-             (index-atom $context 2))
+         (if (CPShape $initial-context bound-contact-context-held 3)
+           (assistant-contact-held (index-atom $initial-context 1)
+             (index-atom $initial-context 2))
            (assistant-contact-rejected stable-identity-scope-mismatch))
          model-participation-not-requested))))

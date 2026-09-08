@@ -22,20 +22,23 @@ constitutional integrity admission, typed contact/consequence carriers, the
 complete causal M24–M26.3 projection, provisional partial-alignment inquiry,
 explicitly granted GLM 5.3 thought-partner participation, append-only
 trajectory storage, stable scope boundaries, writable per-scope Continuity of
-Mind capsules, exact checkpoint/capsule restoration, local effect preparation,
+Mind capsules, exact checkpoint/capsule restoration, scoped live Chroma
+projection/retrieval, general Soul-formed semantic participation, native
+VoiceRNA certification, pending-before-send Mattermost effect preparation,
 and start/status/stop/panic operations.
 
-It is **not yet the usable Miter alpha**. General conversational response,
-live Chroma retrieval, general LLM/VoiceRNA composition, Mattermost delivery,
-earned self-extension, hot upgrade, and rollback remain to be integrated into
-this same runtime. [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single
-operations map for that additive work.
+It is **not yet the usable Miter alpha**. Live authorized Mattermost delivery,
+sustained multi-turn undertakings, complete multi-user isolation, host-service
+recovery/packaging, earned self-extension, hot upgrade, and rollback remain to
+be integrated into this same runtime. [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md)
+is the single operations map for that additive work.
 
 The current C4 cut can resolve the configured local Mattermost group and its
-authorized principals, admit new versioned contacts into the one reactor, and
-restore them after restart. It deliberately cannot emit a Mattermost response
-yet; outbound remains disabled until general VoiceRNA and delivery
-reconciliation are causally joined.
+authorized principals, admit new versioned contacts into the one reactor,
+form general semantic readings and a VoiceRNA-certified response candidate,
+and restore the resulting organization after restart. It deliberately cannot
+emit a Mattermost response yet; outbound remains disabled pending the active
+evaluation disclosure/grant boundary and a live no-duplicate restart trial.
 
 Every native checkpoint now writes immutable, content-addressed continuity
 capsules for each exact principal/audience/project scope. A capsule carries the
@@ -45,6 +48,10 @@ checkpoint pointer binds the complete snapshot to its capsule manifest;
 restart rejects altered or mismatched continuity. Capsules have no age expiry
 and remain until explicit authorized erasure, repair, or migration. Chroma is
 only a rebuildable semantic index and can never substitute for these records.
+Its loopback query is bound to the exact runtime, principal, audience, and
+project; every result is checked against the source capsule before it can
+participate. Private recalled content remains inside native cognition and is
+not disclosed to OpenRouter.
 
 ## Runtime boundary
 
@@ -75,6 +82,8 @@ and has no authority to inspect, filter, rank, join, or select their results.
 - macOS on Apple Silicon for the current native store extension
 - SWI-Prolog with `swipl` and `swipl-ld` on `PATH`
 - PeTTa commit `ae66fa8e41dcd5539d614706bd4e5cfb34f9608d`
+- ChromaDB reachable on loopback for semantic recall
+- a loopback OpenAI-compatible embedding endpoint for the configured model
 
 Point Miter at that pinned PeTTa checkout without copying it into this repo:
 
@@ -104,6 +113,11 @@ read-only import bindings and is intentionally unbound; native writable
 continuity is intrinsic to every checkpoint. These files store references and
 scope bindings, never secrets. Runtime bytes, memories, credentials, model
 files, Chroma data, logs, and evidence stay outside Git.
+
+`config/memory.json` selects the loopback Chroma collection and embedding
+endpoint. It contains no memory content or credential. If either local service
+is unavailable, exact native continuity remains authoritative and semantic
+recall reports a degraded/unavailable standing rather than fabricating memory.
 
 ## Source map
 

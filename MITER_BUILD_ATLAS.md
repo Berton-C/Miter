@@ -160,23 +160,23 @@ consumer is absent. No status is upgraded by assertion.
 
 | Capability | Standing | Current site | Exact gap |
 |---|---:|---|---|
-| One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General conversational input is not connected. |
-| Start/status/stop/panic | E | `bin/miter`, operator membrane | Installer and host service registration are absent. |
+| One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General scoped contact, memory participation, model participation, VoiceRNA, effect preparation, consequence, regeneration, and endogenous opportunity share this one continuation; no second cognitive loop is present. |
+| Start/status/stop/panic | P | `bin/miter`, operator membrane | Commands are supported, but in-flight native formation can outlive the heartbeat freshness window on hosts that deny process probes, and ordinary stop currently requires a matching source LKG. Truthful health and recovery remain open. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
-| Append-only trajectory and exactly-once local effects | E | store/service membranes | No promoted external surface adapter is active. |
+| Append-only trajectory and exactly-once local effects | E | store/service membranes | Mattermost ingress is active; certified outbound remains deliberately disabled pending the evaluation grant and live no-replay trial. |
 | Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
-| M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C3 must now learn from their provisional composition. |
+| M24–M26.3 native projection | E | authority completion certificates in the V8 joint | All inherited exports are causal in one runtime; C4 must preserve that complete surface through usable operation. |
 | Nine-flourishing compass | P | `soul_compass.metta`, `CPFlourishing*`, C3 alignment/semantic inquiry, transfer, developmental memory, and endogenous opportunity formation | Soul-selected flourishing relations generate contact-differentiated alignment families, constrain optional semantic participation, enter consequence interpretation, remain available to later memory, and participate in Soul-formed undertakings. Runtime movements now carry integrity-bound references to the complete read-only fourteen-field semantics rather than copying immutable prose into every candidate; field resolution remains native and explicit. Broader unfamiliar-contact differentiation remains open. |
-| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 alignment/semantic inquiry, transfer, developmental memory, partial-overlap comparison, and endogenous opportunity formation | Fact9/flourishing organization generates plural native alignment movements, constrains model-assisted inquiry, discloses exact and partial-overlap transfer/differentiation/unresolved standing, permits consequence-earned episodes to alter later unfamiliar cuts, and now carries the exact opening into a new internally generated occurrence without a behavioral branch; regeneration remains open. |
+| Fact9–flourishing participation joint | P | `constitutive_foundation.metta`, `fact9_composition.metta`, C3 alignment/semantic inquiry, transfer, developmental memory, partial-overlap comparison, endogenous opportunity formation, and Soul regeneration | Fact9/flourishing organization generates plural native alignment movements, constrains model-assisted inquiry, discloses exact and partial-overlap transfer/differentiation/unresolved standing, permits consequence-earned episodes to alter later unfamiliar cuts, carries exact openings into new internal occurrences, and regenerates severed expression without a behavioral branch. Broader unfamiliar multi-turn composition remains open. |
 | One simultaneous R/A/P surface | E | `M25RAPReadings`, `CPRAPReadingsV2`, `M25ConstitutiveCertificate`, `C3AlignmentInquiryFamily` | Partial alignment now forms recursive native, model-assisted, cross-contact, and consequence-earned possibilities without splitting or scoring; independent returned contact has changed a model-assisted inquiry into durable native development and distinguishes transfer, differentiation, and unresolved standing across non-identical overlap. |
 | Exact project/relationship continuity | E | native checkpoint capsules + continuity adapters | Every live scope now writes exact relationship, undertaking, attention, developmental, next-movement, and raw-source-reference organization with indefinite retention; legacy external imports remain separately unbound. |
-| Chroma semantic participation | P | semantic adapter | Live Chroma query, admission, persistence, and disclosure path are absent. |
+| Chroma semantic participation | E | `chroma.pl`, `dialogue_participation.metta`, native continuity capsules | Every authoritative checkpoint projects exact eligible capsule material into an isolated loopback Chroma collection. A later exact-scope query verifies runtime, principal, audience, project, source capsule bytes, semantic hash, and body hash before admitting results as unresolved memory participants. Chroma rank is never authority; another principal receives no result. Private memory content remains native and is withheld from the remote-provider question. |
 | LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact now forms a native semantic question, admits exactly two bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA certificate. Live provider UTF-8 rendering and broader held-out dialogue remain to be exercised through the persistent service. |
 | Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Ingress and exact stable-ID scope are embodied. A certified outbound descriptor now reaches a pending-before-send, reconcile-on-unknown membrane and persists its native proof. Outbound remains deliberately disabled pending the active evaluation disclosure/grant boundary and a live no-duplicate restart trial. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, and regenerative Soul; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; one exact persisted partial opening can form a provenance-bearing Soul undertaking; and injured expressed Soul can form and complete its own repair RNA. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
-| Full Continuity of Mind | P | native checkpoint capsules plus semantic adapter | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. Live Chroma retrieval/update and later consequence-sensitive memory participation remain to complete the four-plane capability. |
+| Full Continuity of Mind | P | native checkpoint capsules plus scoped Chroma projection and native memory participation | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. Live Chroma retrieval/update now contributes locally verified, unresolved prior-contact memory to a later cut after restart without cross-principal or cross-runtime leakage. General conversational use of private recall still requires a local-model path or an exact human-approved disclosure grant; no private memory is sent to OpenRouter. |
 
 ## 6. Four additive stages
 
@@ -307,9 +307,25 @@ of Mattermost effect
 The membrane returned the explicit `outbound-disabled` standing and emitted
 nothing. Unknown delivery is represented by durable pending state and can
 only be reconciled against exact remote post identity; it is never blindly
-resent. C4 remains open for live Chroma participation, persistent-service
-recovery, the authorized live delivery/restart trial, unfamiliar multi-turn
-undertakings, scope isolation, and evaluation packaging.
+resent.
+
+The scoped semantic-memory cut is now embodied without making similarity a
+second mind. A fresh supported runtime admitted one Mattermost-carried contact,
+wrote its exact native continuity capsule, and projected only its eligible
+human utterance into the isolated loopback Chroma collection. After a clean
+stop and cold restart, a materially different second contact retrieved that
+first occurrence under the exact same runtime/principal/audience/project
+scope. The result's runtime identity, source capsule bytes, capsule semantic
+hash, body hash, and stable occurrence were verified before it entered the new
+cut as an unresolved participant. The resulting checkpoint retained the
+memory relation through the complete constitutive formation. The identical
+query under principal `haley` returned no candidate. Chroma loss can degrade
+associative recall but cannot alter or invalidate authoritative native
+continuity. Provider-facing questions carry only opaque memory identity and
+hashes; private remembered content is withheld pending a local-model path or
+an exact human disclosure grant. C4 remains open for persistent-service health
+and recovery, unfamiliar multi-turn undertakings, broader scope isolation,
+the authorized live delivery/restart trial, and evaluation packaging.
 
 ## 7. The only build cycle
 
@@ -1522,19 +1538,19 @@ Already carried:
 
 Next movement:
 
-1. connect general Soul-formed model participation and VoiceRNA rendering to
-   the live movement rather than fixed canary language, then exercise
-   unfamiliar conversation, multi-user isolation, model/surface failure, and
-   consequence-sensitive resumption through Mattermost; complete the admitted
-   carrier with pending-before-send delivery reconciliation in the existing
-   `bin/miter` service, with no second loop and no preselected conversational
-   behavior;
-2. add live Chroma retrieval/update only as a rebuildable semantic projection
-   of the now-writable exact continuity organization;
-3. package the resulting always-on organism for SNET evaluation with one
+1. make the operator's liveness report and stop/panic recovery truthful while
+   a long native reduction is in flight; add bounded crash-loop containment
+   and last-known-good recovery without creating a second cognitive clock;
+2. extend general Soul-formed dialogue into sustained, consequence-sensitive
+   multi-turn undertakings and exercise model/surface failure plus exact
+   principal/audience/project isolation through the same runtime;
+3. complete the admitted Mattermost carrier with an explicitly authorized
+   live pending-before-send/no-replay delivery trial; do not reuse the expired
+   canary or bypass the unresolved Haley disclosure boundary;
+4. package the resulting always-on organism for SNET evaluation with one
    human-editable configuration surface and supported install/start/status/
    stop/panic operations;
-4. only after explicit human acceptance of the complete clean candidate,
+5. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
 

@@ -10,6 +10,7 @@
 :- ensure_loaded('mattermost.pl').
 :- ensure_loaded('runtime_continuity.pl').
 :- ensure_loaded('semantic_adapter.pl').
+:- ensure_loaded('chroma.pl').
 :- use_module(library(crypto)).
 :- use_module(library(filesex)).
 :- use_module(library(http/json)).
@@ -585,7 +586,9 @@ as_checkpoint(Root0, Snapshot, Result) :-
         retention_standing:"indefinite-no-age-expiry-explicit-authorized-erasure-repair-or-migration-only",
         semantic_index_standing:"rebuildable-projection-never-continuity-authority",
         recorded_at_epoch:Now}),
-      as_commit_leases(Root)), _, fail) -> Result=checkpointed
+      as_commit_leases(Root),
+      catch(miter_chroma_project_checkpoint(Root, Snapshot, SnapshotHash,
+        ContinuityRelative, _), _, true)), _, fail) -> Result=checkpointed
     ; Result='checkpoint-failed' ), !.
 
 as_restore(Root0, Snapshot) :-

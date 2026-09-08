@@ -135,7 +135,7 @@ as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
   receipts,outbox,proofs,intents,lib,logs,'model/claims','model/requests',
   'model/raw','model/observations','surface/raw','surface/events',
   'surface/effects','checkpoints/objects','continuity/native/manifests',
-  'continuity/native/scopes']).
+  'continuity/native/scopes','semantic/queries','semantic/projections']).
 
 as_bootstrap(Root, Reply) :-
     ( exists_directory(Root) ->
@@ -173,6 +173,10 @@ as_bootstrap_new(Root, Reply) :-
     miter_store_read_json(GrantsSource,Grants),
     directory_file_path(Root,'model-grants.json',GrantsTarget),
     miter_store_write_json_atomic(GrantsTarget,Grants),
+    directory_file_path(Repo,'config/memory.json',MemorySource),
+    miter_store_read_json(MemorySource,Memory),
+    directory_file_path(Root,'semantic-memory.json',MemoryTarget),
+    miter_store_write_json_atomic(MemoryTarget,Memory),
     directory_file_path(Repo,'config/mattermost.json',MattermostSource),
     miter_store_read_json(MattermostSource,Mattermost),
     directory_file_path(Root,'mattermost.json',MattermostTarget),

@@ -5,7 +5,8 @@
 !(import_prolog_functions_from_file "./effect_membranes/assistant_service.pl"
   (as_config as_integrity as_control as_input as_checkpoint as_restore as_wait as_record as_effect
     as_native_id
-    miter_assistant_continuity_restore miter_assistant_semantic_restore))
+    miter_assistant_continuity_restore miter_assistant_semantic_restore
+    as_chroma))
 !(import_prolog_functions_from_file "./effect_membranes/model.pl"
   (as_model))
 ; The functions remain MeTTa-owned cognitive reductions. This pinned runtime

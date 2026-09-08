@@ -133,10 +133,22 @@ as_model_c4_flourishing_value(['c4-flourishing-entry',Value,_],Value).
 as_model_c4_continuity(
     ['continuity-participation',['predecessor',Predecessor],
       ['live-undertakings',Undertakings],['present',Present],
+      ['retrieved-memory-candidates',MemoryCandidates],
       'exact-native-capsule-authority-not-provider-memory']) :-
     (Predecessor=='no-predecessor';Predecessor=['source-cut',_]),
     is_list(Undertakings), maplist(as_symbol,Undertakings,_),
-    Present=['present-context',_,_], ground(Present).
+    Present=['present-context',_,_], ground(Present),
+    is_list(MemoryCandidates),length(MemoryCandidates,MemoryCount),
+    MemoryCount=<4,maplist(as_model_c4_memory_candidate,MemoryCandidates).
+
+as_model_c4_memory_candidate(
+    ['c4-memory-reference',MemoryId,SourceKind,
+      ['body-sha256',BodyHash],['snapshot-sha256',SnapshotHash],
+      'scope-and-capsule-verified','content-withheld-from-remote-provider',
+      'rank-not-authority']) :-
+    as_symbol(MemoryId,_),
+    memberchk(SourceKind,['human-contact','certified-expression']),
+    as_sha256(BodyHash,_),as_sha256(SnapshotHash,_).
 
 as_model_c4_semantic_reading(
     ['c4-semantic-reading-v1',Id,Understanding,ResponsePurpose,
