@@ -116,6 +116,20 @@ printing their bytes. Installation is re-entrant: if a new Mattermost instance
 still needs its users, team, bot, or exact group configured, no service is
 registered and the same installer resumes after that setup is complete.
 
+The one-time migration from the currently supported runtime is explicit and
+requires that source runtime to be stopped at a clean cycle boundary:
+
+```sh
+sudo ./install_miter.py install --reuse-local-services \
+  --import-keychain-credentials \
+  --migrate-runtime /Users/bcb/Documents/Miter_Runtime
+```
+
+Before restoring, the installer makes an immutable backup, verifies the exact
+checkpoint and continuity manifest, preserves the runtime identity and durable
+developmental state, performs one cold restore with Mattermost polling held,
+and refuses any replay or checkpoint change before registering the service.
+
 ## Install and operate
 
 Use an explicit runtime directory outside this repository. Do not use

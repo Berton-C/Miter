@@ -47,6 +47,14 @@ APPLICATION_MEMBERS = (
     "effect_membranes",
     "src",
 )
+DURABLE_RUNTIME_DIRECTORIES = (
+    "inbox", "leased", "consumed", "rejected", "store", "checkpoints",
+    "continuity", "receipts", "outbox", "proofs", "intents", "model",
+    "surface", "semantic", "workspace", "capabilities",
+)
+DURABLE_RUNTIME_FILES = (
+    "evaluation-grants.json", "model-direction.json", "model-grants.json",
+)
 
 
 class InstallError(RuntimeError):
@@ -390,6 +398,203 @@ def create_private_runtime_parent(deployment: dict, account: pwd.struct_passwd) 
         path.chmod(0o700)
 
 
+def json_document(path: pathlib.Path) -> dict:
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise InstallError(f"Cannot read required JSON {path}: {exc}") from exc
+    if not isinstance(document, dict):
+        raise InstallError(f"Expected a JSON object at {path}")
+    return document
+
+
+def ensure_runtime_stopped(source: pathlib.Path) -> None:
+    if not source.is_absolute() or source == pathlib.Path("/"):
+        raise InstallError("Migration source must be an explicit absolute runtime path")
+    runtime = json_document(source / "runtime.json")
+    if runtime.get("schema") != "miter-assistant-runtime-v1":
+        raise InstallError("Migration source is not a Miter runtime")
+    pid_path = source / "pid.json"
+    if pid_path.exists():
+        pid = json_document(pid_path).get("pid")
+        if isinstance(pid, int) and pid > 1:
+            try:
+                os.kill(pid, 0)
+            except ProcessLookupError:
+                pass
+            except PermissionError:
+                raise InstallError("Cannot establish whether the migration source process is stopped")
+            else:
+                raise InstallError(f"Migration source is still running as PID {pid}; stop it at a safe cycle boundary first")
+    leased = source / "leased"
+    if leased.is_dir() and any(leased.iterdir()):
+        raise InstallError("Migration source contains an in-flight leased input")
+
+
+def verify_runtime_checkpoint(source: pathlib.Path) -> str:
+    active_path = source / "checkpoints" / "active.json"
+    active = json_document(active_path)
+    if active.get("schema") != "miter-assistant-checkpoint-v3":
+        raise InstallError("Migration source has no supported active checkpoint")
+    for path_key, hash_key in (
+        ("checkpoint_object", "checkpoint_object_sha256"),
+        ("continuity_manifest", "continuity_manifest_sha256"),
+    ):
+        relative = active.get(path_key)
+        expected = active.get(hash_key)
+        if not isinstance(relative, str) or relative.startswith("/") or ".." in pathlib.PurePosixPath(relative).parts:
+            raise InstallError(f"Unsafe checkpoint reference: {relative}")
+        path = source / relative
+        if not path.is_file() or path.is_symlink() or sha256_file(path) != expected:
+            raise InstallError(f"Checkpoint identity mismatch for {relative}")
+    return sha256_file(active_path)
+
+
+def secure_owned_tree(root: pathlib.Path, account: pwd.struct_passwd) -> None:
+    for path in [root, *root.rglob("*")]:
+        if path.is_symlink():
+            raise InstallError(f"Private runtime contains an unsupported symlink: {path}")
+        if path.is_dir():
+            path.chmod(0o700)
+        elif path.is_file():
+            path.chmod(0o700 if path.name == "libmiter_store_posix.dylib" else 0o600)
+        os.chown(path, account.pw_uid, account.pw_gid)
+
+
+def copy_durable_directory(source: pathlib.Path, target: pathlib.Path) -> None:
+    if not source.exists():
+        return
+    for path in [source, *source.rglob("*")]:
+        if path.is_symlink():
+            raise InstallError(f"Migration source contains an unsupported symlink: {path}")
+    for path in sorted(source.rglob("*")):
+        relative = path.relative_to(source)
+        destination = target / relative
+        if path.is_dir():
+            destination.mkdir(parents=True, exist_ok=True)
+        elif path.is_file():
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            if destination.exists() and destination.read_bytes() != path.read_bytes():
+                raise InstallError(f"Fresh runtime unexpectedly contains mutable state at {destination}")
+            if not destination.exists():
+                shutil.copy2(path, destination)
+
+
+def backup_runtime(source: pathlib.Path, deployment: dict) -> pathlib.Path:
+    runtime = json_document(source / "runtime.json")
+    runtime_id = runtime.get("runtime_id")
+    if not isinstance(runtime_id, str) or not runtime_id:
+        raise InstallError("Migration source has no runtime identity")
+    backup_root = pathlib.Path(deployment["services_root"]).parent / "migration-backups"
+    backup_root.mkdir(parents=True, exist_ok=True)
+    timestamp = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+    target = backup_root / f"{runtime_id}-{timestamp}"
+    if target.exists():
+        raise InstallError(f"Migration backup already exists: {target}")
+    shutil.copytree(source, target, symlinks=False)
+    marker = target / "MIGRATION_BACKUP.json"
+    marker.write_text(json.dumps({
+        "schema": "miter-runtime-migration-backup-v1",
+        "runtime_id": runtime_id,
+        "source": str(source),
+        "checkpoint_active_sha256": verify_runtime_checkpoint(source),
+        "created_at_epoch": time.time(),
+        "standing": "immutable-pre-migration-backup",
+    }, sort_keys=True) + "\n", encoding="utf-8")
+    make_read_only_tree(target)
+    return target
+
+
+def migrate_runtime_state(source: pathlib.Path, target: pathlib.Path,
+                          deployment: dict, account: pwd.struct_passwd) -> dict:
+    ensure_runtime_stopped(source)
+    source_checkpoint_hash = verify_runtime_checkpoint(source)
+    marker_path = target / "migration.json"
+    if marker_path.exists():
+        marker = json_document(marker_path)
+        if marker.get("source_checkpoint_active_sha256") != source_checkpoint_hash:
+            raise InstallError("Existing migration marker names a different source checkpoint")
+        return marker
+    backup = backup_runtime(source, deployment)
+    for relative in DURABLE_RUNTIME_DIRECTORIES:
+        copy_durable_directory(source / relative, target / relative)
+    for relative in DURABLE_RUNTIME_FILES:
+        source_file = source / relative
+        if source_file.is_file() and not source_file.is_symlink():
+            shutil.copy2(source_file, target / relative)
+    source_runtime = json_document(source / "runtime.json")
+    target_runtime = json_document(target / "runtime.json")
+    migrated_runtime = {
+        "schema": "miter-assistant-runtime-v1",
+        "runtime_id": source_runtime["runtime_id"],
+        "lkg_sha256": target_runtime["lkg_sha256"],
+        "external_effects": source_runtime.get("external_effects", "none"),
+        "network_access": "dedicated-user-open-growth-environment",
+    }
+    if isinstance(source_runtime.get("evaluation_grant_id"), str):
+        migrated_runtime["evaluation_grant_id"] = source_runtime["evaluation_grant_id"]
+    (target / "runtime.json").write_text(json.dumps(migrated_runtime, sort_keys=True) + "\n", encoding="utf-8")
+    evaluation = json_document(target / "evaluation-grants.json")
+    if evaluation.get("standing") == "active-explicit-grants":
+        mattermost_path = target / "mattermost.json"
+        mattermost = json_document(mattermost_path)
+        mattermost["outbound"]["enabled"] = True
+        mattermost_path.write_text(json.dumps(mattermost, sort_keys=True) + "\n", encoding="utf-8")
+    marker = {
+        "schema": "miter-runtime-migration-v1",
+        "source_runtime": str(source),
+        "source_runtime_id": source_runtime["runtime_id"],
+        "source_checkpoint_active_sha256": source_checkpoint_hash,
+        "backup": str(backup),
+        "standing": "durable-state-copied-awaiting-cold-restore",
+    }
+    marker_path.write_text(json.dumps(marker, sort_keys=True) + "\n", encoding="utf-8")
+    secure_owned_tree(target, account)
+    return marker
+
+
+def suspend_surface_poll(runtime: pathlib.Path, account: pwd.struct_passwd) -> bytes | None:
+    path = runtime / "surface" / "mattermost-poll.json"
+    prior = path.read_bytes() if path.exists() else None
+    held = {
+        "schema": "miter-mattermost-poll-v1",
+        "observed_at_epoch": time.time() + 3600,
+        "standing": "migration-cold-restore-poll-held",
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(held, sort_keys=True) + "\n", encoding="utf-8")
+    os.chown(path, account.pw_uid, account.pw_gid)
+    path.chmod(0o600)
+    return prior
+
+
+def restore_surface_poll(runtime: pathlib.Path, prior: bytes | None,
+                         account: pwd.struct_passwd) -> None:
+    path = runtime / "surface" / "mattermost-poll.json"
+    if prior is None:
+        path.unlink(missing_ok=True)
+        return
+    path.write_bytes(prior)
+    os.chown(path, account.pw_uid, account.pw_gid)
+    path.chmod(0o600)
+
+
+def mark_migration_restored(runtime: pathlib.Path, marker: dict,
+                            account: pwd.struct_passwd) -> dict:
+    expected = marker["source_checkpoint_active_sha256"]
+    actual = sha256_file(runtime / "checkpoints" / "active.json")
+    if actual != expected:
+        raise InstallError("Cold restore changed the migration checkpoint before contact resumed")
+    restored = dict(marker)
+    restored["standing"] = "cold-restore-verified-no-replay"
+    restored["restored_at_epoch"] = time.time()
+    path = runtime / "migration.json"
+    path.write_text(json.dumps(restored, sort_keys=True) + "\n", encoding="utf-8")
+    os.chown(path, account.pw_uid, account.pw_gid)
+    path.chmod(0o600)
+    return restored
+
+
 def miter_environment(petta: pathlib.Path) -> dict[str, str]:
     environment = os.environ.copy()
     environment["MITER_PETTA_MAIN"] = str(petta / "src" / "main.pl")
@@ -615,7 +820,8 @@ def plan(config: dict) -> dict:
     }
 
 
-def install(config: dict, reuse_services: bool, import_keychain: bool) -> dict:
+def install(config: dict, reuse_services: bool, import_keychain: bool,
+            migrate_runtime: str | None) -> dict:
     if os.geteuid() != 0:
         raise InstallError("Run this command with sudo; plan and validate are read-only")
     require_supported_host()
@@ -633,6 +839,17 @@ def install(config: dict, reuse_services: bool, import_keychain: bool) -> dict:
         response = json.loads(result.stdout)
         if response.get("status") != "installed":
             raise InstallError(f"Runtime installation failed: {response.get('status')}")
+    migration = None
+    migration_pending_restore = False
+    if migrate_runtime:
+        source_runtime = pathlib.Path(migrate_runtime).resolve()
+        if source_runtime == runtime.resolve():
+            raise InstallError("Migration source and destination are identical")
+        migration = migrate_runtime_state(source_runtime,runtime,deployment,account)
+        migration_pending_restore = (
+            migration.get("standing") ==
+            "durable-state-copied-awaiting-cold-restore"
+        )
     missing = provision_credentials(config, account, import_keychain)
     if missing:
         return {
@@ -642,20 +859,33 @@ def install(config: dict, reuse_services: bool, import_keychain: bool) -> dict:
             "petta": str(petta),
             "runtime": str(runtime),
             "services": service_standing,
+            "migration": migration,
             "missing": missing,
             "next": "Run the same install command interactively to finish without replacing existing state.",
         }
-    start = miter_command(application, deployment, petta, "start", check=False)
-    if start.returncode != 0:
-        raise InstallError("Miter could not complete its pre-registration start validation")
+    prior_poll = (
+        suspend_surface_poll(runtime,account)
+        if migration_pending_restore else None
+    )
     try:
-        start_reply = json.loads(start.stdout)
-    except json.JSONDecodeError as exc:
-        raise InstallError("Miter returned an invalid start validation result") from exc
-    if start_reply.get("mattermost_preflight") != "ready":
-        miter_command(application, deployment, petta, "stop", check=False)
-        raise InstallError("Mattermost bot/group identity could not be validated; no service was registered")
-    miter_command(application, deployment, petta, "stop", check=False)
+        start = miter_command(application, deployment, petta, "start", check=False)
+        if start.returncode != 0:
+            raise InstallError("Miter could not complete its pre-registration start validation")
+        try:
+            start_reply = json.loads(start.stdout)
+        except json.JSONDecodeError as exc:
+            raise InstallError("Miter returned an invalid start validation result") from exc
+        if start_reply.get("mattermost_preflight") != "ready":
+            miter_command(application, deployment, petta, "stop", check=False)
+            raise InstallError("Mattermost bot/group identity could not be validated; no service was registered")
+        stopped = miter_command(application, deployment, petta, "stop", check=False)
+        if stopped.returncode != 0:
+            raise InstallError("Miter did not reach a clean post-restore stop boundary")
+        if migration_pending_restore:
+            migration = mark_migration_restored(runtime,migration,account)
+    finally:
+        if migration_pending_restore:
+            restore_surface_poll(runtime,prior_poll,account)
     install_launchd(application, deployment, petta)
     install_operator_wrapper(application, deployment, petta)
     report = validate(config, application, petta)
@@ -663,6 +893,7 @@ def install(config: dict, reuse_services: bool, import_keychain: bool) -> dict:
         "status": "installed-and-started" if report["complete"] else "installed-validation-held",
         "application": str(application), "petta": str(petta),
         "runtime": str(runtime), "services": service_standing,
+        "migration": migration,
     })
     return report
 
@@ -676,6 +907,8 @@ def main() -> int:
                                 help="Explicitly preserve and reuse healthy configured Mattermost and Chroma services")
     install_parser.add_argument("--import-keychain-credentials", action="store_true",
                                 help="Import the exact named Keychain sources into the private runtime without printing them")
+    install_parser.add_argument("--migrate-runtime", metavar="ABSOLUTE_PATH",
+                                help="Preserve one stopped Miter runtime's exact identity, continuity, developmental state, and receipts")
     subparsers.add_parser("validate", help="Read-only installation validation")
     subparsers.add_parser("commands", help="Print ordinary operator commands")
     args = parser.parse_args()
@@ -685,7 +918,8 @@ def main() -> int:
             result = plan(config)
         elif args.command == "install":
             result = install(config, args.reuse_local_services,
-                             args.import_keychain_credentials)
+                             args.import_keychain_credentials,
+                             args.migrate_runtime)
         elif args.command == "validate":
             result = validate(config)
         else:
