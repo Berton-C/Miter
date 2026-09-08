@@ -764,9 +764,13 @@ required ownership and mode, reused healthy loopback Mattermost and Chroma,
 and recorded `cold-restore-verified-no-replay`. Launchd then held exactly one
 system supervisor plus one pinned PeTTa child under `claritymiter`; the prior
 GUI service remained unregistered. The human operator wrapper still inherited
-an inaccessible caller directory when changing identity; it now uses sudo's
-run-as working-directory option to establish the dedicated private Miter
-parent before invoking SWI-Prolog. This is an operator-access repair only.
+an inaccessible caller directory when changing identity. A first repair using
+sudo's run-as working-directory option proved incompatible with the host sudo
+policy. The corrected wrapper establishes `/private/tmp` as an accessible,
+non-persistent operator working directory before changing identity, while all
+application, dependency, and runtime paths remain absolute. It writes no Miter
+state there and does not change the supervised service's private LKG working
+directory. This is an operator-access repair only.
 
 The first mandatory post-migration hygiene audit found 29 obsolete builder
 fixtures surviving for roughly twenty hours to three days. Four were each

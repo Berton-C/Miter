@@ -791,7 +791,6 @@ def install_launchd(application: pathlib.Path, deployment: dict, petta: pathlib.
 def operator_wrapper_text(application: pathlib.Path, deployment: dict,
                           petta: pathlib.Path) -> str:
     runtime = deployment["runtime_root"]
-    working_directory = str(pathlib.Path(runtime).parent)
     user = deployment["runtime_user"]
     return f'''#!/bin/sh
 set -eu
@@ -799,7 +798,8 @@ command=${{1:-}}
 if [ "$command" = start ]; then
   exec /usr/bin/sudo /bin/launchctl kickstart -k system/{LAUNCHD_LABEL}
 fi
-exec /usr/bin/sudo -u {user} -H -D {shell_quote(working_directory)} /usr/bin/env \\
+cd /private/tmp
+exec /usr/bin/sudo -u {user} -H /usr/bin/env \\
   MITER_PETTA_MAIN={shell_quote(str(petta / 'src' / 'main.pl'))} \\
   MITER_SWIPL_LD={shell_quote(command_path('swipl-ld'))} \\
   {shell_quote(str(application / 'bin' / 'miter'))} "$@" \\
