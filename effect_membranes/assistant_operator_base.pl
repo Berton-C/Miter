@@ -484,7 +484,7 @@ as_deployment_config_valid(Deployment) :-
     Deployment.runtime_user=="claritymiter",
     Deployment.service_mode=="isolated-docker-compose",
     Deployment.docker_project=="miter",
-    Deployment.install_root=="/Users/claritymiter/Documents/Miter",
+    Deployment.install_root=="/Users/claritymiter/Miter",
     Deployment.petta.commit==
       "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
     Deployment.petta.archive_sha256==

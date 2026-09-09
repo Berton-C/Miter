@@ -161,7 +161,7 @@ consumer is absent. No status is upgraded by assertion.
 | Capability | Standing | Current site | Exact gap |
 |---|---:|---|---|
 | One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General scoped contact, memory participation, model participation, VoiceRNA, effect preparation, consequence, regeneration, and endogenous opportunity share this one continuation; no second cognitive loop is present. |
-| Install/start/status/stop/panic | P | `install_miter.py`, single-root operator membrane, frozen runtime LKG | The finite installer derives every Miter-owned path beneath `/Users/claritymiter/Documents/Miter`, validates a clean source, exact PeTTa archive hash, digest-pinned service and workshop images, non-admin runtime identity, private credential references, and port ownership. One CLI start detaches Miter's own persistent non-cognitive supervisor; child crash recovery and clean stop pass without launchd. Single-root continuity migration, installed-identity workshop transport, application-release rollback, and live proportionality remain to be proven. |
+| Install/start/status/stop/panic | P | `install_miter.py`, single-root operator membrane, frozen runtime LKG | The finite installer derives every Miter-owned path beneath `/Users/claritymiter/Miter`, validates a clean source, exact PeTTa archive hash, digest-pinned service and workshop images, non-admin runtime identity, private credential references, and port ownership. One CLI start detaches Miter's own persistent non-cognitive supervisor; child crash recovery and clean stop pass without launchd. Single-root continuity migration, installed-identity workshop transport, application-release rollback, and live proportionality remain to be proven. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once effects | P | store/service/Mattermost membranes | Local effects are exact and restart-stable. One certified Mattermost response is visibly delivered, uniquely reconciled from an initially unknown transport outcome, and not replayed across restart; broader failure and returned-consequence evidence remains open. |
 | Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
@@ -798,7 +798,7 @@ across `/Library/Application Support`, the `claritymiter` Library,
 `/Users/Shared`, `/usr/local`, and a launch-service record is not the accepted
 product boundary. The human correction requires every Miter-owned application,
 dependency, runtime, service, backup, and operator path to derive beneath
-`/Users/claritymiter/Documents/Miter`, with no launchd dependency. The running
+`/Users/claritymiter/Miter`, with no launchd dependency. The running
 temporary installation remains a migration source only until the single-root
 replacement preserves its exact continuity and passes rollback.
 
@@ -2519,6 +2519,35 @@ Already carried:
   encounter, so it remains part of C4 whole-runtime optimization rather than
   being hidden by a thinned validator.
 
+- The one-root packaging cut has crossed its non-privileged migration and
+  lifecycle falsifiers. The dedicated root is now exactly
+  `/Users/claritymiter/Miter`; every application, dependency, private runtime,
+  immutable backup, service and operator path is derived beneath it, with no
+  launchd or global-operator path. A stopped 108 MB historical runtime with
+  688 files produced a private immutable 108 MB backup and a 318-file durable
+  target while deliberately excluding legacy launch-service registration and
+  logs. Source and target retained the same active-checkpoint-file SHA-256
+  `9e97c2c328e45ede5a7812e9c0f66bf87a9f38d5a17d65066305c33b10e693ba`,
+  16 model claims, 12 receipts and nine outbox records through cold restore and
+  clean stop; no call or effect replayed. The installed application snapshot
+  operated that target directly, and two stopped status reads took 0.22 and
+  0.21 seconds.
+
+  That carry exposed and repaired a false lifecycle success: the installer had
+  accepted `stop-pending` as if a stopped cycle boundary existed and did not
+  require the restored child to publish its own live heartbeat. Installation
+  now requires a current process-bound non-terminal heartbeat, waits through
+  the configured processing/model envelope for an actual stopped state, and
+  only then marks migration restored. A fresh current-source lifecycle reached
+  its own `assistant-started-v3` heartbeat and an actual stopped boundary in
+  2.48 seconds. Migration source trees containing symlinks or non-regular file
+  kinds are rejected before immutable backup. The exact 1,612,583-byte private
+  NRC VAD source is available locally at its pinned SHA-256
+  `42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45`.
+  The privileged carry of the latest dedicated runtime, installed-identity
+  workshop trial and live restart/latency observation remain open; these are
+  the exact remaining item-5 closure limbs.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
@@ -2551,7 +2580,7 @@ Next movement:
    installer fetches and verifies pinned PeTTa, validates the non-admin
    `claritymiter` identity, and derives application releases, dependencies,
    private runtime, private immutable backups, services, and the CLI operator
-   beneath `/Users/claritymiter/Documents/Miter`. `start` owns one persistent
+   beneath `/Users/claritymiter/Miter`. `start` owns one persistent
    non-cognitive supervisor with bounded child recovery; no launchd or system
    application/operator path participates. Migrate the current temporary
    dedicated runtime into that root with exact checkpoint, continuity,

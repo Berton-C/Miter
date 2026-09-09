@@ -91,10 +91,10 @@ def load_config() -> dict:
     if not isinstance(root_text, str):
         raise InstallError("The deployment must name one absolute install_root")
     install_root = pathlib.Path(root_text)
-    expected_root = pathlib.Path("/Users") / deployment["runtime_user"] / "Documents" / "Miter"
+    expected_root = pathlib.Path("/Users") / deployment["runtime_user"] / "Miter"
     if not install_root.is_absolute() or install_root != expected_root:
         raise InstallError(
-            f"Miter must remain in its dedicated document root: {expected_root}"
+            f"Miter must remain in its dedicated account root: {expected_root}"
         )
     forbidden_roots = {
         "runtime_root", "application_root", "dependency_root", "services_root",
@@ -196,14 +196,11 @@ def ensure_runtime_account(name: str) -> pwd.struct_passwd:
 
 def ensure_install_root(deployment: dict, account: pwd.struct_passwd) -> pathlib.Path:
     root = pathlib.Path(deployment["install_root"])
-    documents = root.parent
-    if documents.is_symlink() or (documents.exists() and not documents.is_dir()):
-        raise InstallError(f"Dedicated Documents path is not a safe directory: {documents}")
-    if not documents.exists():
-        documents.mkdir(mode=0o700, parents=False)
-        os.chown(documents, account.pw_uid, account.pw_gid)
-    if documents.stat().st_uid != account.pw_uid:
-        raise InstallError(f"Dedicated Documents path is not owned by {account.pw_name}")
+    account_home = root.parent
+    if account_home.is_symlink() or not account_home.is_dir():
+        raise InstallError(f"Dedicated account home is not a safe directory: {account_home}")
+    if account_home.stat().st_uid != account.pw_uid:
+        raise InstallError(f"Dedicated account home is not owned by {account.pw_name}")
     if root.is_symlink() or (root.exists() and not root.is_dir()):
         raise InstallError(f"Miter install root is not a safe directory: {root}")
     if not root.exists():
@@ -617,7 +614,18 @@ def copy_durable_directory(source: pathlib.Path, target: pathlib.Path) -> None:
                 shutil.copy2(path, destination)
 
 
+def require_plain_runtime_tree(source: pathlib.Path) -> None:
+    if source.is_symlink() or not source.is_dir():
+        raise InstallError(f"Migration source is not a plain runtime directory: {source}")
+    for path in source.rglob("*"):
+        if path.is_symlink():
+            raise InstallError(f"Migration source contains an unsupported symlink: {path}")
+        if not path.is_dir() and not path.is_file():
+            raise InstallError(f"Migration source contains an unsupported file kind: {path}")
+
+
 def backup_runtime(source: pathlib.Path, deployment: dict) -> pathlib.Path:
+    require_plain_runtime_tree(source)
     runtime = json_document(source / "runtime.json")
     runtime_id = runtime.get("runtime_id")
     if not isinstance(runtime_id, str) or not runtime_id:
@@ -753,6 +761,82 @@ def miter_command(application: pathlib.Path, deployment: dict, petta: pathlib.Pa
         "--runtime-root", deployment["runtime_root"],
     ], check=check, user=deployment["runtime_user"],
        cwd=private_working_directory)
+
+
+def miter_reply(result: subprocess.CompletedProcess[str], context: str) -> dict:
+    try:
+        reply = json.loads(result.stdout or "{}")
+    except json.JSONDecodeError as exc:
+        raise child_failure(result, f"{context} returned invalid JSON") from exc
+    if not isinstance(reply, dict) or reply.get("schema") != "miter-assistant-operator-result-v1":
+        raise child_failure(result, f"{context} returned an invalid operator result")
+    return reply
+
+
+def runtime_ready(reply: dict) -> bool:
+    heartbeat = reply.get("heartbeat")
+    pid = reply.get("pid")
+    valid_until = heartbeat.get("valid_until_epoch") if isinstance(heartbeat, dict) else None
+    return (
+        reply.get("status") in {"running", "processing-unconfirmed"}
+        and reply.get("lkg") == "verified"
+        and isinstance(pid, int) and pid > 1
+        and isinstance(heartbeat, dict)
+        and heartbeat.get("pid") == pid
+        and heartbeat.get("state") not in {"assistant-stopped", "assistant-panicked"}
+        and isinstance(valid_until, (int, float)) and valid_until >= time.time()
+    )
+
+
+def wait_runtime_ready(config: dict, application: pathlib.Path, deployment: dict,
+                       petta: pathlib.Path) -> dict:
+    grace = config["supervision"]["startup_grace_seconds"]
+    deadline = time.monotonic() + grace + 15
+    last: dict = {}
+    while time.monotonic() < deadline:
+        result = miter_command(application, deployment, petta, "status", check=False)
+        if result.returncode == 0:
+            last = miter_reply(result, "Miter readiness status")
+            if runtime_ready(last):
+                return last
+        time.sleep(0.25)
+    raise InstallError(
+        "Miter did not expose a process-bound non-terminal heartbeat after cold restore; "
+        f"last status was {last.get('status', 'unavailable')}"
+    )
+
+
+def stop_runtime_at_boundary(config: dict, application: pathlib.Path,
+                             deployment: dict, petta: pathlib.Path) -> dict:
+    result = miter_command(application, deployment, petta, "stop", check=False)
+    if result.returncode != 0:
+        raise child_failure(result, "Miter stop request")
+    reply = miter_reply(result, "Miter stop request")
+    if reply.get("status") == "stopped":
+        return reply
+
+    model_deadlines = [
+        profile.get("limits", {}).get("deadline_seconds", 0)
+        for profile in config["models"]["resources"]
+    ]
+    supervision = config["supervision"]
+    timeout = max(
+        supervision["processing_lease_seconds"],
+        max(model_deadlines, default=0) + supervision["model_lease_margin_seconds"],
+    ) + supervision["termination_grace_seconds"] + 15
+    deadline = time.monotonic() + timeout
+    last = reply
+    while time.monotonic() < deadline:
+        status = miter_command(application, deployment, petta, "status", check=False)
+        if status.returncode == 0:
+            last = miter_reply(status, "Miter stop-boundary status")
+            if last.get("status") == "stopped":
+                return last
+        time.sleep(0.5)
+    raise InstallError(
+        "Miter did not reach an actual stopped cycle boundary within its configured "
+        f"processing/model envelope; last status was {last.get('status', 'unavailable')}"
+    )
 
 
 def store_secret(runtime: pathlib.Path, relative: str, value: str,
@@ -1087,24 +1171,33 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
         suspend_surface_poll(runtime,account)
         if migration_pending_restore else None
     )
+    cold_restore_started = False
     try:
         start = miter_command(application, deployment, petta, "start", check=False)
         if start.returncode != 0:
             raise child_failure(start,
-              "Miter could not complete its pre-registration start validation")
-        try:
-            start_reply = json.loads(start.stdout)
-        except json.JSONDecodeError as exc:
-            raise InstallError("Miter returned an invalid start validation result") from exc
+              "Miter could not begin its migration cold-restore validation")
+        start_reply = miter_reply(start, "Miter migration cold-restore start")
+        if start_reply.get("status") not in {"started", "starting", "running"}:
+            raise InstallError(
+                "Miter migration cold-restore start was held: "
+                f"{start_reply.get('status', 'unknown')}"
+            )
+        cold_restore_started = True
         if start_reply.get("mattermost_preflight") != "ready":
-            miter_command(application, deployment, petta, "stop", check=False)
-            raise InstallError("Mattermost bot/group identity could not be validated; no service was registered")
-        stopped = miter_command(application, deployment, petta, "stop", check=False)
-        if stopped.returncode != 0:
-            raise child_failure(stopped,
-              "Miter did not reach a clean post-restore stop boundary")
+            stop_runtime_at_boundary(config, application, deployment, petta)
+            raise InstallError(
+                "Mattermost bot/group identity could not be validated; installation remains held"
+            )
+        wait_runtime_ready(config, application, deployment, petta)
+        stop_runtime_at_boundary(config, application, deployment, petta)
+        cold_restore_started = False
         if migration_pending_restore:
             migration = mark_migration_restored(runtime,migration,account)
+    except Exception:
+        if cold_restore_started:
+            miter_command(application, deployment, petta, "stop", check=False)
+        raise
     finally:
         if migration_pending_restore:
             restore_surface_poll(runtime,prior_poll,account)
@@ -1112,6 +1205,16 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
     started = miter_command(application, deployment, petta, "start", check=False)
     if started.returncode != 0:
         raise child_failure(started, "Miter CLI supervisor could not start")
+    started_reply = miter_reply(started, "Miter final CLI start")
+    if started_reply.get("status") not in {"started", "starting", "running"}:
+        raise InstallError(
+            f"Miter final CLI start was held: {started_reply.get('status', 'unknown')}"
+        )
+    try:
+        wait_runtime_ready(config, application, deployment, petta)
+    except Exception:
+        miter_command(application, deployment, petta, "stop", check=False)
+        raise
     report = validate(config, application, petta)
     report.update({
         "status": "installed-and-started" if report["complete"] else "installed-validation-held",

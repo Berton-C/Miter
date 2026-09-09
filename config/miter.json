@@ -5,7 +5,7 @@
     "schema": "miter-installation-v1",
     "human_editable": true,
     "runtime_user": "claritymiter",
-    "install_root": "/Users/claritymiter/Documents/Miter",
+    "install_root": "/Users/claritymiter/Miter",
     "service_mode": "isolated-docker-compose",
     "docker_project": "miter",
     "credential_imports": [

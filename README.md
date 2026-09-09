@@ -145,7 +145,7 @@ sudo ./install_miter.py install \
 ```
 
 Every Miter-owned installed path is derived from the one human-edited root
-`/Users/claritymiter/Documents/Miter`. Application releases, the pinned PeTTa
+`/Users/claritymiter/Miter`. Application releases, the pinned PeTTa
 dependency, private runtime and continuity, private immutable backups, service
 data, and the operator command remain beneath that tree. No Miter code or state
 is installed in `/usr/local`, `/Library/Application Support`, the
@@ -168,7 +168,7 @@ requires that source runtime to be stopped at a clean cycle boundary:
 sudo ./install_miter.py install --reuse-local-services \
   --import-keychain-credentials \
   --vad-asset /absolute/path/to/NRC-VAD-Lexicon-v2.1.txt \
-  --migrate-runtime /Users/bcb/Documents/Miter_Runtime
+  --migrate-runtime "/Users/claritymiter/Library/Application Support/Miter/runtime"
 ```
 
 Before restoring, the installer makes an immutable backup, verifies the exact
@@ -185,22 +185,22 @@ The installed operator binds the derived private runtime automatically. Do not
 create or use `~/.miter`.
 
 ```sh
-sudo "/Users/claritymiter/Documents/Miter/bin/miter" model-selection
+sudo "/Users/claritymiter/Miter/bin/miter" model-selection
 # Use Qwen for the next two calls or ten minutes, whichever comes first:
-sudo "/Users/claritymiter/Documents/Miter/bin/miter" select-model \
+sudo "/Users/claritymiter/Miter/bin/miter" select-model \
   --resource qwen-local --duration-seconds 600 --max-calls 2
-sudo "/Users/claritymiter/Documents/Miter/bin/miter" evaluation-disclosure
+sudo "/Users/claritymiter/Miter/bin/miter" evaluation-disclosure
 # Activate under Berton's ratified system-administrator attestation of Haley's
 # consent. Haley's direct Mattermost disclosure remains available as a stronger
 # later confirmation, but is no longer an activation precondition.
-sudo "/Users/claritymiter/Documents/Miter/bin/miter" activate-evaluation-admin
+sudo "/Users/claritymiter/Miter/bin/miter" activate-evaluation-admin
 # Alternative direct-confirmation path:
-sudo "/Users/claritymiter/Documents/Miter/bin/miter" activate-evaluation \
+sudo "/Users/claritymiter/Miter/bin/miter" activate-evaluation \
   --haley-affirmation-post-id EXACT_MATTERMOST_POST_ID
-sudo "/Users/claritymiter/Documents/Miter/bin/miter" start
-sudo "/Users/claritymiter/Documents/Miter/bin/miter" status
-sudo "/Users/claritymiter/Documents/Miter/bin/miter" stop
-sudo "/Users/claritymiter/Documents/Miter/bin/miter" panic
+sudo "/Users/claritymiter/Miter/bin/miter" start
+sudo "/Users/claritymiter/Miter/bin/miter" status
+sudo "/Users/claritymiter/Miter/bin/miter" stop
+sudo "/Users/claritymiter/Miter/bin/miter" panic
 ```
 
 `config/miter.json` is the only human-edited repository configuration. It
