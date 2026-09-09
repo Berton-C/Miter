@@ -36,23 +36,27 @@
        true)))
 
 (= (ARActiveValid $active)
-   (and (CPShape $active active-organization 4)
-     (and (CPShape (index-atom $active 1) scope 4)
-       (and (CPCutValid (index-atom $active 2))
-        (and (ARMovementValid (index-atom $active 3))
-             (ARMovementConstitutivelyConsistent
-               (index-atom $active 2) (index-atom $active 3)))))))
+   (if (CPShape $active active-capability-module 6)
+     (WHActiveCapabilityValid $active)
+     (and (CPShape $active active-organization 4)
+       (and (CPShape (index-atom $active 1) scope 4)
+         (and (CPCutValid (index-atom $active 2))
+          (and (ARMovementValid (index-atom $active 3))
+               (ARMovementConstitutivelyConsistent
+                 (index-atom $active 2) (index-atom $active 3))))))))
 
 (= (ARHistoryValid $row)
    (and (CPShape $row assistant-history 5)
      (and (CPHas (index-atom $row 1)
             (encounter consequence restoration effect voice-proof scope-binding continuity semantic
-              nace-pending nace-development) 0)
+              nace-pending nace-development workshop) 0)
           (and (CPShape (index-atom $row 3) scope 4)
-            (if (== (index-atom $row 1) voice-proof)
-              (or (ARNativeMovementProofValid (index-atom $row 4))
-                  (ARVoiceProofReferenceRecordValid (index-atom $row 4)))
-              true)))))
+            (if (== (index-atom $row 1) workshop)
+              (CPShape (index-atom $row 4) workshop-transition-v1 8)
+              (if (== (index-atom $row 1) voice-proof)
+                (or (ARNativeMovementProofValid (index-atom $row 4))
+                    (ARVoiceProofReferenceRecordValid (index-atom $row 4)))
+                true))))))
 
 (= (ARAllValid $rows $validator $i)
    (if (< $i (size-atom $rows))
@@ -67,9 +71,15 @@
 
 (= (ARStateScopesUnique $rows $i $seen)
    (if (< $i (size-atom $rows))
-     (let $scope (index-atom (index-atom $rows $i) 1)
-       (if (CPHas $scope $seen 0) false
-         (ARStateScopesUnique $rows (+ $i 1) (cons-atom $scope $seen)))) true))
+     (let* (($row (index-atom $rows $i))
+            ($key (if (CPShape $row active-organization 4)
+              (organization-state-key (index-atom $row 1))
+              (if (CPShape $row active-capability-module 6)
+                (capability-state-key (index-atom $row 1)
+                  (index-atom (index-atom $row 2) 1))
+                malformed-state-key))))
+       (if (or (== $key malformed-state-key) (CPHas $key $seen 0)) false
+         (ARStateScopesUnique $rows (+ $i 1) (cons-atom $key $seen)))) true))
 
 (= (ARHistoryKeysUnique $rows $i $seen)
    (if (< $i (size-atom $rows))

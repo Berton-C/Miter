@@ -22,6 +22,7 @@ miter_integrity_sources([
  'src/capability_environment.metta',
  'src/vad.metta',
  'src/qualified_reasoning.metta',
+ 'src/declarative_capability.metta',
  'src/constitutive_authority_joint.metta','src/soul_regeneration.metta',
  'effect_membranes/capability_environment.pl',
  'effect_membranes/vad.pl',

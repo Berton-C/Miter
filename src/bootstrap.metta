@@ -34,6 +34,7 @@
 !(import! &self "./src/constitutive_foundation.metta")
 !(import! &self "./src/scope_continuity.metta")
 !(import! &self "./src/semantic_participation.metta")
+!(import! &self "./src/declarative_capability.metta")
 !(import! &self "./src/assistant_reactor_foundation.metta")
 ; Capability possibility constructors must be known before the provisional
 ; dynamics compile inside authority_inheritance.  Otherwise PeTTa correctly

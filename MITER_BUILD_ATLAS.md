@@ -161,7 +161,7 @@ consumer is absent. No status is upgraded by assertion.
 | Capability | Standing | Current site | Exact gap |
 |---|---:|---|---|
 | One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General scoped contact, memory participation, model participation, VoiceRNA, effect preparation, consequence, regeneration, and endogenous opportunity share this one continuation; no second cognitive loop is present. |
-| Install/start/status/stop/panic | P | `install_miter.py`, single-root operator membrane, frozen runtime LKG | The finite installer derives every Miter-owned path beneath `/Users/claritymiter/Documents/Miter`, validates a clean source, exact PeTTa archive hash, digest-pinned service images, non-admin runtime identity, private credential references, and port ownership. One CLI start detaches Miter's own persistent non-cognitive supervisor; child crash recovery and clean stop pass without launchd. Single-root continuity migration, live proportionality, and safe hot upgrade/rollback remain to be proven. |
+| Install/start/status/stop/panic | P | `install_miter.py`, single-root operator membrane, frozen runtime LKG | The finite installer derives every Miter-owned path beneath `/Users/claritymiter/Documents/Miter`, validates a clean source, exact PeTTa archive hash, digest-pinned service images, non-admin runtime identity, private credential references, and port ownership. One CLI start detaches Miter's own persistent non-cognitive supervisor; child crash recovery and clean stop pass without launchd. Single-root continuity migration and live proportionality remain to be proven; the first declarative hot-capability lifecycle is embodied, while general executable-source upgrade remains open. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once effects | P | store/service/Mattermost membranes | Local effects are exact and restart-stable. One certified Mattermost response is visibly delivered, uniquely reconciled from an initially unknown transport outcome, and not replayed across restart; broader failure and returned-consequence evidence remains open. |
 | Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
@@ -174,10 +174,10 @@ consumer is absent. No status is upgraded by assertion.
 | LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA candidate. GLM's strict-schema audit can contribute zero to four source/candidate-bound fidelity findings plus uncertainty; it is not asked for a pass/revise/hold verdict or a revision instruction. A material finding enters fresh native movement formation; a zero-finding contribution is bound at the expression joint to the exact unchanged proof and may not manufacture a new movement. Native MeTTa retains express/revise/hold possibilities and forms a disposition only after binding the exact candidate to the authority-complete movement proof, its existing one simultaneous R/A/P carrier, the live contact-relative Fact9 expression, and all nine interconnected flourishing expressions. The selected native disposition travels in the certificate; Prolog checks only its closed shape and proof identity. Native positive/revision/bypass/falsified-reuse checks pass. A restored exact-memory diagnostic now carries four scope/capsule/hash-verified contacts through private-context verification, valid render/audit observations, and native `express-current-candidate`. Content-free stage standings distinguish semantic transport, VoiceRNA formation, native audit, and mechanical preflight holds without exporting payloads or assigning them cognitive authority. Promotion through the single-root live Mattermost runtime, restart, and returned consequence remains open. |
 | VAD language-cue participation | P | `vad.metta`, `vad.pl`, semantic-question and VoiceRNA carriers, private exact asset provision | The clean runtime computes provenance-bound clause and within-contact trajectory cues from the exact licensed NRC VAD 2.1 asset and makes the cue available before semantic inquiry and VoiceRNA rendering. Native validation preserves coverage, source, asset, limitations, and scope; remote projection withholds contact/principal/hash identity while retaining aggregate cue evidence. VAD cannot classify a person or SNS/PNS standing, grant permission, choose movement, or optimize positivity. The lexicon remains private runtime state and no term or row enters Git, a checkpoint, or a model prompt. Live Mattermost carry and longitudinal consequence use remain open. |
 | Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Exact stable-ID scope, authenticated contact, certified outbound, pending-before-send, unique reconciliation, and restart/no-replay are embodied in the live service. Poll freshness is now distinct from human content identity, so a thread-metadata update cannot become a second contact while a genuine edit remains versioned. Returned-consequence participation, scope/failure trials, and sustained use remain open. |
-| Open growth environment | P | `capability_environment.metta`, mechanical environment observer and proof-bound informational GET/HEAD broker, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path receives a source-qualified native participant stating the configured web/terminal/workspace field, actual process identity, genuine human-authority boundaries, and its current availability. A native movement may now form one exact informational HTTP operation; only its complete source-contact/source-movement/R/A/P/Fact9/flourishing proof becomes an executable descriptor. Prolog durably claims the request before transmission, returns bounded untrusted bytes as contact, and never follows a redirect as if it were the same operation. Native MeTTa then reforms the complete encounter and VoiceRNA path from the returned contact. The wrong runtime identity, malformed proof, unsupported method, constructed URL, or malformed returned evidence forms no request or continuation. Direct-argument terminal/workspace execution, dedicated-user live network carry, durable capability uptake, and completed single-root service migration remain open. |
+| Open growth environment | P | `capability_environment.metta`, `declarative_capability.metta`, mechanical environment observer and proof-bound informational GET/HEAD broker, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path receives a source-qualified native participant stating the configured web/terminal/workspace field, actual process identity, genuine human-authority boundaries, and its current availability. A native movement may now form one exact informational HTTP operation; only its complete source-contact/source-movement/R/A/P/Fact9/flourishing proof becomes an executable descriptor. Prolog durably claims the request before transmission, returns bounded untrusted bytes as contact, and never follows a redirect as if it were the same operation. Native MeTTa then reforms the complete encounter and VoiceRNA path from the returned contact. An admitted declarative module can now add a later native movement possibility and survive version replacement, rollback, and restart without acquiring effects. The wrong runtime identity, malformed proof, unsupported method, constructed URL, malformed returned evidence, or authority-bearing module remains unresolved and gains no capability. Direct-argument terminal/workspace execution, executable workshop isolation, dedicated-user live network carry, and completed single-root service migration remain open. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, regenerative Soul, and `qualified_reasoning.metta` | NACE now records the exact expectation before returned consequence, preserves the full typed outcome family, admits only independent returned evidence to an explicitly pinned NARS/NAL revision closure, and returns the qualified product as a non-authoritative participant that changes later possibility formation and survives restart. Correlated repetition is held and ambiguous/delayed outcomes remain pending rather than negative. Broader skill transfer and a materially warranted, separately qualified PLN premise/consumer remain open; decorative PLN import is prohibited. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
-| Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
+| Hot self-upgrade and rollback | P | `declarative_capability.metta`, native workshop history, checkpoint restore, historical workshop candidates outside clean room | One inert, stateless, no-effect declarative MeTTa capability can enter as a provenance-bearing unresolved participant, pass exact independent native positive/negative trials, form activation through the same Fact9/flourishing/M24–M26.3/R/A/P encounter, alter later native possibility formation, replace an exact prior version, roll back to that immediately prior version, and restore with all transition history and no replay. A malformed or authority-bearing carrier becomes unresolved and cannot activate. This does not yet establish isolated source construction, arbitrary executable code loading, state-schema migration, versioned interface compatibility, effect-capability acquisition, or rollback of the application runtime itself. |
 | Full Continuity of Mind | P | native checkpoint capsules, scoped Chroma projection, native memory participation, and bounded selected-model rendering | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. A provider-derived continuity requirement may participate only as unresolved material; native formation determines whether exact scope/capsule/hash-verified memory is material. The current human resource direction remains authoritative only over transport selection: GLM is the installed default, local models are explicit alternatives, and continuity cannot silently switch resources. Under the ratified disclosure grant, ordinary conversation, continuity, project, and personal context may reach GLM while credentials, authentication material, and concrete security-risk content remain excluded. Live story recall, correction, restart, and later-use evidence remain required. |
 
 ## 6. Four additive stages
@@ -2352,6 +2352,44 @@ Already carried:
   live independent outcome, long-history slope, and calibrated PLN consumer
   remain open. The next recovery bottleneck is isolated versioned
   self-extension with hot activation and rollback in this same runtime.
+- The first bounded hot-capability lifecycle now participates in that same
+  runtime rather than a separate workshop harness. Its semantic invalidation
+  boundary is the exact candidate or rollback carrier, scope, current version,
+  declared relation contract, independent trial pair, and the contact's
+  material organization. Its dirtiness closure is the unresolved participant,
+  workshop possibility, complete Fact9/flourishing/M24--M26.3 encounter and
+  one simultaneous R/A/P read, active declarative module, later movement
+  possibility, workshop history, and continuity checkpoint. A fresh current-
+  source LKG activated v1 in a twelve-second contact cycle, replaced it with
+  v2 in five seconds while carrying the exact v1 predecessor, and restored v1
+  in an eight-second rollback cycle. Reusing the old material relation for the
+  replacement left two lawful movements live and did not silently make
+  upgrade win; a distinct, source-grounded upgrade pressure was required to
+  form the later single movement. A carrier requesting network authority
+  remained unresolved, completed its contact cycle in eleven seconds, added
+  no workshop transition, and left the active v1 module unchanged. All four
+  contacts made zero model calls and no external effects. The final checkpoint
+  held 975 factors; its eight immutable objects occupied 933,569 bytes and its
+  largest object was 141,656 bytes. Direct current-source restoration took
+  5.84 seconds wall / 11.13 seconds CPU and recovered one active capability,
+  one active Soul organization, and three causally consistent transitions.
+  Removing those transition records while retaining the active module was
+  rejected as false reconstruction in 4.30 seconds. Supported stop/start
+  reached a new waiting heartbeat in seven seconds while preserving the exact
+  snapshot, four consumed carriers, eight local outbox records, and zero model
+  claims with no replay. Each contact was followed by a separate endogenous
+  cycle costing roughly six to fifteen additional seconds; that sequential
+  overhead and the unmeasured growth slope keep performance open. Three
+  obsolete disposable supervisors and their PeTTa children were stopped
+  before the final measurement; the installed evaluation runtime was not
+  interrupted. At the pre-commit hygiene waypoint no disposable runtime
+  remained; the unchanged installed PeTTa child was using 795,200 KiB RSS and
+  a point observation of 46% of one core. The accepted envelope is therefore
+  one stateless, no-effect, declarative capability lifecycle with exact
+  lineage-bound restore. It is
+  not evidence of general source construction, arbitrary skill acquisition,
+  state-schema migration, versioned executable-interface compatibility,
+  application-runtime rollback, or proportionate long-history operation.
 
 Next movement:
 
@@ -2372,12 +2410,15 @@ Next movement:
    through that identity remains unmeasured. Next, carry this web path through
    the installed dedicated runtime, then add direct-argument terminal and
    versioned-workspace operations through the same proof/claim/return joint;
-4. recover isolated self-extension with versioned activation, hot upgrade,
-   last-known-good rollback, and restart continuity through this same organism;
-   then add a separately qualified PLN closure only where a calibrated
-   relational premise set and material M24--M26.3 consumer have been earned.
-   NACE/NAL now participates causally; historical gate-specific implementations
-   remain design inputs only and are not copied;
+4. extend the admitted declarative capability substrate into isolated
+   executable construction with a versioned interface, explicit state-
+   compatibility/migration standing, hot source activation, last-known-good
+   application rollback, and restart continuity through this same organism.
+   Do not infer those general capabilities from the first stateless data
+   interpreter. Then add a separately qualified PLN closure only where a
+   calibrated relational premise set and material M24--M26.3 consumer have
+   been earned. NACE/NAL now participates causally; historical gate-specific
+   implementations remain design inputs only and are not copied;
 5. complete the one-distribution, one-root packaging cut: the finite Python
    installer fetches and verifies pinned PeTTa, validates the non-admin
    `claritymiter` identity, and derives application releases, dependencies,

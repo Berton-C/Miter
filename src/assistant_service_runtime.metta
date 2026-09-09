@@ -77,6 +77,16 @@
      (and (AS4EffectOutcomeValid (index-atom $effects $i))
           (AS4EffectsValidAt $effects (+ $i 1))) true))
 
+(= (AS4ControlledFixtureContact $input)
+   (if (and (CPShape $input assistant-input 4)
+            (== (index-atom $input 1) contact))
+     (let* (($binding (index-atom $input 2))
+            ($route (if (CPShape $binding scope-binding-v1 6)
+              (index-atom $binding 1) ())))
+       (and (CPShape $route surface-route 6)
+            (== (index-atom $route 1) controlled-fixture)))
+     false))
+
 (= (AS4InputWithModel $root $input)
    (if (and (CPShape $input assistant-input 4)
             (== (index-atom $input 1) consequence))
@@ -84,8 +94,14 @@
        (index-atom $input 3) as_model)
      (if (and (CPShape $input assistant-input 4)
               (== (index-atom $input 1) contact))
-       (C4BoundContactWithModelV1 $root (index-atom $input 2)
-         (index-atom $input 3))
+       ; Carrier-kind routing is mechanical. A controlled native fixture has
+       ; no conversational payload and therefore enters the same complete
+       ; constitutive path without invoking dialogue/VAD/model renderers.
+       (if (AS4ControlledFixtureContact $input)
+         (assistant-processed-v3 (AssistantInputV2 $input)
+           model-participation-not-requested)
+         (C4BoundContactWithModelV1 $root (index-atom $input 2)
+           (index-atom $input 3)))
        (assistant-processed-v3 (AssistantInputV2 $input)
          model-participation-not-requested))))
 
@@ -215,9 +231,14 @@
                           ($endogenous-results
                             (index-atom $endogenous-step 1)))
                      (if (> (size-atom $endogenous-results) 0)
-                       (let* (($effects (AREffectsAt $root
+                       ; The final service-owned effect family is compiled
+                       ; after both local and Mattermost descriptor species.
+                       ; Reuse it for endogenous results as well: the earlier
+                       ; higher-order legacy family can lose its callback
+                       ; specialization under the pinned PeTTa compiler.
+                       (let* (($effects (AS4EffectsAt $root
                                   $endogenous-results $effect-writer 0))
-                              ($valid (AREffectsValidAt $effects 0)))
+                              ($valid (AS4EffectsValidAt $effects 0)))
                          (if $valid
                            (let* (($snapshot (AssistantSnapshot))
                                   ($checkpoint

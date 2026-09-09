@@ -27,15 +27,22 @@ projection/retrieval, general Soul-formed semantic participation, native
 VoiceRNA construction with bounded semantic audit and native reformation,
 pending-before-send Mattermost effect preparation,
 consequence-sensitive multi-turn undertaking continuity, and supported
-install/start/status/stop/panic operations.
+install/start/status/stop/panic operations. The first bounded self-extension
+surface can also receive an inert declarative MeTTa capability, construct its
+activation through the complete constitutive encounter, execute independent
+positive/negative native trials, make the admitted module available to later
+movement formation, replace it with an exact version, restore the immediately
+prior version, and preserve that organization across restart.
 
 It is **not yet the usable Miter alpha**. Dedicated-identity migration is
-proven, but the accepted product installation is now one CLI-managed tree;
-earned self-extension, hot upgrade, rollback, and the open live dialogue repair
-remain to be integrated into this same runtime. A finite macOS installer
-validates the clean source, pinned dependencies, dedicated identity, private
-credential boundary, and isolated services. Its single-root fresh-host and
-continuity-preserving migration trials remain open.
+proven, but the accepted product installation is now one CLI-managed tree. The
+declarative hot-capability layer is not yet general source-code self-upgrade or
+arbitrary skill acquisition: isolated executable builds, versioned state and
+interface compatibility, recoverable source activation, and the open live
+dialogue repair remain to be integrated into this same runtime. A finite macOS
+installer validates the clean source, pinned dependencies, dedicated identity,
+private credential boundary, and isolated services. Its single-root fresh-host
+and continuity-preserving migration trials remain open.
 [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single operations map for
 that additive work.
 

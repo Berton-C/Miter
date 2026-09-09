@@ -337,9 +337,15 @@
 
 (= (SRRepairActivesAt $actives $i)
    (if (< $i (size-atom $actives))
-     (let $result (SRRepairOne (index-atom $actives $i))
-       (if (!= $result no-soul-repair-required)
-         (cons-atom $result (SRRepairActivesAt $actives (+ $i 1)))
+     (let $active (index-atom $actives $i)
+       ; The shared state space also contains independently validated mutable
+       ; capability rows. Regeneration concerns expressed Soul organization,
+       ; so a different state species is neither an injury nor a repair target.
+       (if (CPShape $active active-organization 4)
+         (let $result (SRRepairOne $active)
+           (if (!= $result no-soul-repair-required)
+             (cons-atom $result (SRRepairActivesAt $actives (+ $i 1)))
+             (SRRepairActivesAt $actives (+ $i 1))))
          (SRRepairActivesAt $actives (+ $i 1))))
      ()))
 

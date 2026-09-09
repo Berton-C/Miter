@@ -426,17 +426,25 @@
           ($capability-result
             (C4CapabilityResultPossibilities $cut $participant-relations))
           ($nace-inquiry (C3NACEInquiryPossibilities $cut))
+          ($workshop-transition
+            (WHCapabilityTransitionPossibilities $cut $flourishing
+              $participant-relations))
+          ($active-capabilities
+            (WHActiveCapabilityPossibilities $cut $flourishing
+              $participant-relations))
           ; The semantic inquiry is the same source inquiry enriched by its
           ; returned candidate family, so retaining both would duplicate one
           ; cognitive possibility. A transfer inquiry has a different source
           ; contact and remains independently live when present.
-          ($base-source-inquiry (if (> (size-atom $capability-result) 0)
-            $capability-result
-            (if (> (size-atom $capability-inquiry) 0)
-            $capability-inquiry
-            (if (> (size-atom $semantic-inquiry) 0)
-              $semantic-inquiry
-              (if (> (size-atom $alignment) 0) $alignment $learned)))))
+          ($base-source-inquiry (if (> (size-atom $workshop-transition) 0)
+            $workshop-transition
+            (if (> (size-atom $capability-result) 0)
+              $capability-result
+              (if (> (size-atom $capability-inquiry) 0)
+                $capability-inquiry
+                (if (> (size-atom $semantic-inquiry) 0)
+                  $semantic-inquiry
+                  (if (> (size-atom $alignment) 0) $alignment $learned))))))
           ; A later memory-standing inquiry is the exact source-grounded
           ; refinement of the generic alignment inquiry on this contact.  Keep
           ; one rather than duplicating the same cognitive opening.
@@ -451,6 +459,7 @@
                     (CPListAppend $unjoined-transfer-result
                       (CPListAppend $transfer-memory
                         $unjoined-memory-result))))))))))
+     (CPListAppend $active-capabilities
      (CPListAppend
        ; Exact returned alignment contact refines the generic undertaking
        ; surface. It does not add a second scheduler or first-match branch:
@@ -468,7 +477,7 @@
              $participant-relations))
          (CPListAppend
            (C3ModelPossibilities $cut $participant-relations)
-           (CPNativeDeferralsV2 $cut $flourishing))))))
+           (CPNativeDeferralsV2 $cut $flourishing)))))))
 
 (= (C3LaboratoryBoundary)
    (c3-provisional-boundary-v1

@@ -80,7 +80,7 @@
     },
     {
       "path": "src/provisional_dynamics.metta",
-      "sha256": "7a543bbe67b77a2a46c953b287f8a9296a092cc8c3b1640eb04fcc952de33cdf"
+      "sha256": "5662899cfaf74d3890b70dd049d9e681dc8e20187d2c4ec282dc9735e7f4bdc3"
     },
     {
       "path": "src/model_participation.metta",
@@ -99,12 +99,16 @@
       "sha256": "2a7a8854a7b6940e99ca4cdc64eeb26b3f990413bed5ce9eefa89554840e87bb"
     },
     {
+      "path": "src/declarative_capability.metta",
+      "sha256": "603000397801aae861823ad4030cfcf84fe6f7de090cf788387f1edc7e0f11e4"
+    },
+    {
       "path": "src/constitutive_authority_joint.metta",
       "sha256": "a37e20be4a05330f667e50d3850221b326c6c57381cd72cc201b55a639e3ac81"
     },
     {
       "path": "src/soul_regeneration.metta",
-      "sha256": "edf270aacbae271d35a2795300c3dd25d8e493bb817a90ced58bca9faaedea59"
+      "sha256": "75505359dce307c608de2d5db0901abb44490352cada42f086dcbfeda3b179b3"
     },
     {
       "path": "effect_membranes/capability_environment.pl",
@@ -116,7 +120,7 @@
     },
     {
       "path": "effect_membranes/integrity.pl",
-      "sha256": "84e9cf32e93afbf43477fc185d75b56f6b59554f222b574e839507f941fdc549"
+      "sha256": "7b3aa29d2d46b3bbc852c38f8ffaf055804f629c3772f3b8f06e5ce79c668588"
     }
   ],
   "schema": "miter-constitutional-integrity-v2",

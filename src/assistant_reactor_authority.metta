@@ -810,6 +810,11 @@
               ($payload-valid
                 (AR2EncounterHistoryPayloadValid (index-atom $row 4))))
          (and $scope-valid $payload-valid))
+       (if (and $row-valid (== (index-atom $row 1) workshop))
+         (and (CPShape (index-atom $row 3) scope 4)
+          (and (WHHistoryPayloadValid (index-atom $row 4))
+               (== (index-atom $row 3)
+                   (index-atom (index-atom $row 4) 3))))
        (if (and $row-valid (== (index-atom $row 1) voice-proof))
          (and (CPShape (index-atom $row 3) scope 4)
            (or (AR2NativeMovementProofValid (index-atom $row 4))
@@ -875,7 +880,7 @@
                                         (index-atom $payload 8))
                                       (index-atom $row 2)))))))
                          (ARHistoryValid $row))))))))
-           (ARHistoryValid $row)))))))
+           (ARHistoryValid $row))))))))
 
 (= (AR2AllHistoryValid $rows $i)
    (if (< $i (size-atom $rows))
@@ -966,14 +971,57 @@
      false))
 
 (= (AR2ActiveValid $active)
+   (if (CPShape $active active-capability-module 6)
+     (WHActiveCapabilityValid $active)
+     (and (CPShape $active active-organization 4)
+       (and (CPShape (index-atom $active 1) scope 4)
+        (and (CPCutValid (index-atom $active 2))
+         (and (ARMovementValid (index-atom $active 3))
+              (AR2MovementConstitutivelyConsistent
+                (index-atom $active 2) (index-atom $active 3))))))))
+
+(= (AR2CapabilityStateRowsAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (CPShape $row active-capability-module 6)
+         (cons-atom $row (AR2CapabilityStateRowsAt $rows (+ $i 1)))
+         (AR2CapabilityStateRowsAt $rows (+ $i 1))))
+     ()))
+
+(= (AR2OrganizationStateRowsAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (if (CPShape $row active-organization 4)
+         (cons-atom $row (AR2OrganizationStateRowsAt $rows (+ $i 1)))
+         (AR2OrganizationStateRowsAt $rows (+ $i 1))))
+     ()))
+
+(= (AR2StateSpeciesKnownAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (and (or (CPShape $row active-organization 4)
+                (CPShape $row active-capability-module 6))
+            (AR2StateSpeciesKnownAt $rows (+ $i 1))))
+     true))
+
+(= (AR2ActiveCarrierShapeValid $active)
    (and (CPShape $active active-organization 4)
      (and (CPShape (index-atom $active 1) scope 4)
       (and (CPCutValid (index-atom $active 2))
-       (and (ARMovementValid (index-atom $active 3))
-            (AR2MovementConstitutivelyConsistent
-              (index-atom $active 2) (index-atom $active 3)))))))
+           (ARMovementValid (index-atom $active 3))))))
 
-(= (AR2RestoreValid $state-wrapper $history-wrapper $state $history)
+(= (AR2RemoveStateRowsAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let* (($removed (remove-atom &assistant_state
+                       (index-atom $rows $i))))
+       (AR2RemoveStateRowsAt $rows (+ $i 1)))
+     assistant-staged-state-cleared))
+
+; Capability modules are state dependencies of later movement formation.
+; Restore therefore validates their inert carrier and the whole envelope,
+; stages only those capability rows, and then re-forms active organizations
+; against the exact staged versions. No candidate is executed during restore.
+(= (AR2RestoreEnvelopeValid $state-wrapper $history-wrapper $state $history)
    (and (ARSpacesEmpty)
      (and (CPShape $state-wrapper state 2)
       (and (CPShape $history-wrapper history 2)
@@ -981,11 +1029,17 @@
         (and (is-expr $history)
          (and (CPUniq $state 0 ())
           (and (CPUniq $history 0 ())
-           (and (ARAllValid $state AR2ActiveValid 0)
-            (and (AR2AllHistoryValid $history 0)
-             (and (AR2VoiceEffectReferencesConsistentAt $history 0)
-              (and (ARStateScopesUnique $state 0 ())
-                   (ARHistoryKeysUnique $history 0 ())))))))))))))
+           (and (AR2StateSpeciesKnownAt $state 0)
+            (and (ARAllValid (AR2CapabilityStateRowsAt $state 0)
+                   WHActiveCapabilityValid 0)
+             (and (ARAllValid (AR2OrganizationStateRowsAt $state 0)
+                    AR2ActiveCarrierShapeValid 0)
+              (and (WHCapabilityStateHistorySupportedAt
+                     (AR2CapabilityStateRowsAt $state 0) $history 0)
+               (and (AR2AllHistoryValid $history 0)
+                (and (AR2VoiceEffectReferencesConsistentAt $history 0)
+                 (and (ARStateScopesUnique $state 0 ())
+                      (ARHistoryKeysUnique $history 0 ()))))))))))))))))
 
 (= (AssistantRestoreV2 $snapshot)
    (if (CPShape $snapshot assistant-snapshot 3)
@@ -993,10 +1047,19 @@
             ($history-wrapper (index-atom $snapshot 2))
             ($state (index-atom $state-wrapper 1))
             ($history (index-atom $history-wrapper 1)))
-       (if (AR2RestoreValid $state-wrapper $history-wrapper $state $history)
-         (let* (($s (ARAddAll &assistant_state $state 0))
-                ($h (ARAddAll &assistant_history $history 0)))
-           assistant-state-restored-v2)
+       (if (AR2RestoreEnvelopeValid $state-wrapper $history-wrapper
+             $state $history)
+         (let* (($capabilities (AR2CapabilityStateRowsAt $state 0))
+                ($organizations (AR2OrganizationStateRowsAt $state 0))
+                ($staged (ARAddAll &assistant_state $capabilities 0))
+                ($organizations-valid
+                  (ARAllValid $organizations AR2ActiveValid 0)))
+           (if $organizations-valid
+             (let* (($s (ARAddAll &assistant_state $organizations 0))
+                    ($h (ARAddAll &assistant_history $history 0)))
+               assistant-state-restored-v2)
+             (let $cleared (AR2RemoveStateRowsAt $capabilities 0)
+               assistant-restore-rejected-v2)))
          assistant-restore-rejected-v2))
      assistant-restore-rejected-v2))
 
@@ -1431,14 +1494,24 @@
             ($pending-history
               (if (MiterNACEPendingValid $pending $scope $cut $movement)
                 (ARRecord nace-pending $id $scope $pending)
-                nace-pending-not-applicable)))
+                nace-pending-not-applicable))
+            ($workshop-transition (WHTransitionFromEncounter $encounter $id))
+            ($workshop-history (if (CPShape $workshop-transition
+                  workshop-transition-v1 8)
+              (ARRecord workshop (workshop-transition $id) $scope
+                $workshop-transition)
+              workshop-transition-not-applicable)))
        (if (and (== $history assistant-history-recorded)
-                (CPHas $pending-history
-                  (assistant-history-recorded assistant-history-duplicate
-                    nace-pending-not-applicable) 0))
+             (and (CPHas $pending-history
+                    (assistant-history-recorded assistant-history-duplicate
+                      nace-pending-not-applicable) 0)
+                  (CPHas $workshop-history
+                    (assistant-history-recorded assistant-history-duplicate
+                      workshop-transition-not-applicable) 0)))
          (assistant-contact-incorporated $id $encounter)
          (assistant-contact-held $id
-           (history $history pending $pending-history))))
+           (history $history pending $pending-history
+             workshop $workshop-history))))
      (assistant-contact-held $id freshly-constructed-grounding-invalid)))
 
 (= (AR4PrepareEncounterV1 $contact)
