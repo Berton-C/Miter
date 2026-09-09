@@ -46,7 +46,8 @@
 (= (ARHistoryValid $row)
    (and (CPShape $row assistant-history 5)
      (and (CPHas (index-atom $row 1)
-            (encounter consequence restoration effect voice-proof scope-binding continuity semantic) 0)
+            (encounter consequence restoration effect voice-proof scope-binding continuity semantic
+              nace-pending nace-development) 0)
           (and (CPShape (index-atom $row 3) scope 4)
             (if (== (index-atom $row 1) voice-proof)
               (or (ARNativeMovementProofValid (index-atom $row 4))

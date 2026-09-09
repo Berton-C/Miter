@@ -1426,10 +1426,19 @@
             ($summary (AR2EncounterSummary $encounter $joint))
             ($history (if (== $state assistant-active-replaced)
               (ARRecord encounter $id $scope $summary)
-              state-not-recorded)))
-       (if (== $history assistant-history-recorded)
+              state-not-recorded))
+            ($pending (MiterNACEPending $scope $cut $movement))
+            ($pending-history
+              (if (MiterNACEPendingValid $pending $scope $cut $movement)
+                (ARRecord nace-pending $id $scope $pending)
+                nace-pending-not-applicable)))
+       (if (and (== $history assistant-history-recorded)
+                (CPHas $pending-history
+                  (assistant-history-recorded assistant-history-duplicate
+                    nace-pending-not-applicable) 0))
          (assistant-contact-incorporated $id $encounter)
-         (assistant-contact-held $id $history)))
+         (assistant-contact-held $id
+           (history $history pending $pending-history))))
      (assistant-contact-held $id freshly-constructed-grounding-invalid)))
 
 (= (AR4PrepareEncounterV1 $contact)
@@ -1449,7 +1458,9 @@
                         (AR3SemanticDevelopmentParticipantsForScope $scope)
                         (CPListAppend
                           (AR3TransferDevelopmentParticipantsForScope $scope)
-                          (AR3MemoryApplicationParticipantsForScope $scope))))
+                          (CPListAppend
+                            (AR3MemoryApplicationParticipantsForScope $scope)
+                            (MiterNACEHistoricalParticipantsForScope $scope)))))
                     ($participating-contact (if
                       (> (size-atom $developmental-participants) 0)
                       (CP2ContactWithAuthorityParticipants $contact
@@ -1644,14 +1655,20 @@
               $consequence))
           ($overlap-participants
             (C3DevelopmentalOverlapConsequenceParticipants $scope $movement
-              $consequence)))
+              $consequence))
+          ($nace-development
+            (MiterNACEDevelopment $scope $movement $consequence))
+          ($nace-participants
+            (MiterNACEParticipantsFromDevelopment $scope $nace-development)))
      (if (and (or (CPShape $basis continuation-basis-v2 5)
                   (CPShape $basis continuation-basis-v3 6))
            (and (M24DevelopmentalTransitionValid $transition)
                 (CPCutValid $base-next-cut)))
        (let* (($evolved (index-atom $transition 2))
-              ($source-facts (CPFactExpressionsAt $cut
-                (index-atom $basis 1) 0))
+              ($fact-views (CPListAppend (index-atom $basis 1)
+                (C3ConsequenceFactViews $consequence)))
+              ($source-facts (CPFactExpressionsAt $base-next-cut
+                $fact-views 0))
               ($source-flourishing (CPFlourishingOrganizationV2 $cut
                 (index-atom $basis 2)))
               ; A semantic provider's returned candidate is new contact for
@@ -1699,21 +1716,22 @@
                            (CPListAppend $memory-participants
                             (CPListAppend $overlap-participants
                              (CPListAppend $semantic-participants
+                              (CPListAppend $nace-participants
                              (CPListAppend
                                (AR3PreformationQuestionParticipants
                                  $model-reading)
                                (AR3PreformationModelParticipants
-                                 $model-reading))))))))))))
+                                 $model-reading)))))))))))))
                   ($next (M25ConstitutiveEncounter $base-next-cut
-                    (index-atom $basis 1) $flourishing-views
+                    $fact-views $flourishing-views
                     $participant-source (index-atom (index-atom $basis 4) 1)
                     $evolved)))
              (if (and (CPShape $next constitutive-encounter 7)
                       (CPDRelationKnown (index-atom $next 1)
                         m24-consequence-developmental-grounding))
-               (ar3-next-constitutive-result-v1
+               (ar3-next-constitutive-result-v2
                  (next-constitutive-organization-v3 $next $transition)
-                 $model-reading)
+                 $model-reading $nace-development)
                (ar3-next-constitutive-result-unresolved
                  developmental-participation-not-causal $model-reading)))
            (ar3-next-constitutive-result-unresolved
@@ -1754,9 +1772,10 @@
       $model-writer)
    (let $result (AR3ReconstituteAfterConsequence $root $scope $cut $movement
           $consequence $model-writer)
-     (if (CPShape $result ar3-next-constitutive-result-v1 3)
+     (if (CPShape $result ar3-next-constitutive-result-v2 4)
        (let* (($next-organization (index-atom $result 1))
               ($model-reading (index-atom $result 2))
+              ($nace-development (index-atom $result 3))
               ($encounter (index-atom $next-organization 1))
               ($next-cut (index-atom $encounter 1))
               ($next-movement (AREncounterMovement $encounter))
@@ -1768,11 +1787,22 @@
                     $consequence))
                 state-not-recorded)))
          (if (== $history assistant-history-recorded)
-           (let $model-outcome (AR3RecordModelReading $id $scope $next-cut
-                  $next-movement $model-reading)
-             (assistant-processed-v3
-               (assistant-consequence-incorporated $id $next-organization)
-               $model-outcome))
+           (let* (($model-outcome (AR3RecordModelReading $id $scope $next-cut
+                    $next-movement $model-reading))
+                  ($nace-history
+                    (if (MiterNACEDevelopmentPayloadValid $nace-development)
+                      (ARRecord nace-development $id $scope $nace-development)
+                      nace-development-not-applicable)))
+             (if (CPHas $nace-history
+                   (assistant-history-recorded assistant-history-duplicate
+                     nace-development-not-applicable) 0)
+               (assistant-processed-v3
+                 (assistant-consequence-incorporated $id $next-organization)
+                 $model-outcome)
+               (assistant-processed-v3
+                 (assistant-consequence-held $id
+                   (nace-history $nace-history))
+                 $model-outcome)))
            (assistant-processed-v3
              (assistant-consequence-held $id $history)
              model-participation-not-requested)))

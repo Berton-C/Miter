@@ -6,6 +6,130 @@
 ; movements are one self-recurring reduction here rather than mutually
 ; recursive definitions spread across modules.
 
+; Final service link.  Contact/dialogue participation is imported after the
+; authority module because it consumes the completed AR4 preparation seam.
+; These dispatch and effect functions must therefore compile here, after both
+; sides exist, rather than capture unresolved function names in an earlier
+; module.  They add no cognition: they connect the one already-defined path.
+(= (AS4AnyEffectDescriptor $contact-result)
+   (if (CPShape $contact-result assistant-contact-incorporated-v4 5)
+     (C4MattermostEffectDescriptor $contact-result)
+     (ARLocalEffectDescriptor $contact-result)))
+
+(= (AS4AnyEffectDescriptorValid $descriptor)
+   (or (ARLocalEffectDescriptorValid $descriptor)
+       (C4MattermostEffectDescriptorValid $descriptor)))
+
+(= (AS4AnyEffectProof $descriptor)
+   (if (CPShape $descriptor mattermost-effect-descriptor-v1 9)
+     (index-atom (index-atom $descriptor 6) 1)
+     (index-atom (index-atom $descriptor 5) 1)))
+
+(= (AS4AnyEffectCertificateWrapper $descriptor)
+   (if (CPShape $descriptor mattermost-effect-descriptor-v1 9)
+     (index-atom $descriptor 5)
+     (index-atom $descriptor 4)))
+
+(= (AS4EffectOne $root $contact-result $effect-writer)
+   (let $descriptor (AS4AnyEffectDescriptor $contact-result)
+     (if (AS4AnyEffectDescriptorValid $descriptor)
+       (let* (($effect-id (index-atom $descriptor 1))
+              ($scope (index-atom $descriptor 3))
+              ($proof (AS4AnyEffectProof $descriptor))
+              ($result ($effect-writer $root $descriptor)))
+         (if (ARAnyEffectResultValid $result)
+           (let* (($proof-history (ARRecordVoiceProofReference $effect-id
+                    $scope $proof $result))
+                  ($history (if (CPHas $proof-history
+                     (assistant-history-recorded assistant-history-duplicate) 0)
+                    (ARRecord effect $effect-id $scope
+                      (effect-witness-v2 $result
+                        (AS4AnyEffectCertificateWrapper $descriptor)
+                        (ARNativeProofReference $proof)))
+                    assistant-history-conflict)))
+             (if (and (CPHas $proof-history
+                        (assistant-history-recorded assistant-history-duplicate) 0)
+                      (CPHas $history
+                        (assistant-history-recorded assistant-history-duplicate) 0))
+               (local-effect-result $result $proof-history $history)
+               (local-effect-held $effect-id
+                 (history $proof-history $history))))
+           (local-effect-held $effect-id $result)))
+       $descriptor)))
+
+(= (AS4EffectsAt $root $results $effect-writer $i)
+   (if (< $i (size-atom $results))
+     (cons-atom (AS4EffectOne $root (index-atom $results $i) $effect-writer)
+       (AS4EffectsAt $root $results $effect-writer (+ $i 1))) ()))
+
+(= (AS4EffectOutcomeValid $outcome)
+   (if (== $outcome no-local-effect) true
+     (if (CPShape $outcome local-effect-result 4)
+       (and (ARAnyEffectResultValid (index-atom $outcome 1))
+        (and (CPHas (index-atom $outcome 2)
+               (assistant-history-recorded assistant-history-duplicate) 0)
+             (CPHas (index-atom $outcome 3)
+               (assistant-history-recorded assistant-history-duplicate) 0)))
+       false)))
+
+(= (AS4EffectsValidAt $effects $i)
+   (if (< $i (size-atom $effects))
+     (and (AS4EffectOutcomeValid (index-atom $effects $i))
+          (AS4EffectsValidAt $effects (+ $i 1))) true))
+
+(= (AS4InputWithModel $root $input)
+   (if (and (CPShape $input assistant-input 4)
+            (== (index-atom $input 1) consequence))
+     (AssistantConsequenceV3 $root (index-atom $input 2)
+       (index-atom $input 3) as_model)
+     (if (and (CPShape $input assistant-input 4)
+              (== (index-atom $input 1) contact))
+       (C4BoundContactWithModelV1 $root (index-atom $input 2)
+         (index-atom $input 3))
+       (assistant-processed-v3 (AssistantInputV2 $input)
+         model-participation-not-requested))))
+
+(= (AS4ProcessInputsAt $root $inputs $i)
+   (if (< $i (size-atom $inputs))
+     (cons-atom (AS4InputWithModel $root (index-atom $inputs $i))
+       (AS4ProcessInputsAt $root $inputs (+ $i 1))) ()))
+
+(= (AS4InputResultsAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (cons-atom (index-atom (index-atom $rows $i) 1)
+       (AS4InputResultsAt $rows (+ $i 1))) ()))
+
+(= (AS4ModelOutcomesAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (cons-atom (index-atom (index-atom $rows $i) 2)
+       (AS4ModelOutcomesAt $rows (+ $i 1))) ()))
+
+(= (AS4ModelOutcomeValid $outcome)
+   (or (== $outcome model-participation-not-requested)
+     (or (CPShape $outcome assistant-model-reading-incorporated 4)
+      (or (CPShape $outcome assistant-model-reading-unavailable 4)
+       (or (CPShape $outcome assistant-model-reading-duplicate 2)
+        (or (CPShape $outcome assistant-model-reading-held 3)
+            (C4DialogueModelOutcomeValid $outcome)))))))
+
+(= (AS4ModelOutcomesValidAt $outcomes $i)
+   (if (< $i (size-atom $outcomes))
+     (and (AS4ModelOutcomeValid (index-atom $outcomes $i))
+          (AS4ModelOutcomesValidAt $outcomes (+ $i 1))) true))
+
+(= (AS4ModelStageStandingsAt $outcomes $i)
+   (if (< $i (size-atom $outcomes))
+     (cons-atom (C4DialogueStageStanding (index-atom $outcomes $i))
+       (AS4ModelStageStandingsAt $outcomes (+ $i 1))) ()))
+
+(= (AS4CycleStep $root $inputs)
+   (if (is-expr $inputs)
+     (let $rows (AS4ProcessInputsAt $root $inputs 0)
+       (assistant-cycle-step-v3 (AS4InputResultsAt $rows 0)
+         (AS4ModelOutcomesAt $rows 0) (AssistantSnapshot)))
+     (assistant-cycle-step-v3 ((assistant-input-rejected malformed-batch))
+       (model-participation-not-requested) (AssistantSnapshot))))
+
 (= (AssistantCycleWithV3 $root $idle $interval $base $cap
       $control-reader $input-reader $checkpoint-writer $waiter $recorder
       $effect-writer $model-writer)
@@ -23,14 +147,14 @@
              (if $active
                (let $tables (miter_petta_clear_exact_validation_tables)
                  (if (== $tables exact-native-validation-tables-cleared)
-                   (let* (($step (AssistantCycleStepV3 $root $inputs))
+                   (let* (($step (AS4CycleStep $root $inputs))
                           ($results (index-atom $step 1))
                           ($model-outcomes (index-atom $step 2))
-                          ($effects (C4EffectsAt $root $results
+                          ($effects (AS4EffectsAt $root $results
                             $effect-writer 0))
                           ($valid (and
-                            (AR3ModelOutcomesValidAt $model-outcomes 0)
-                            (C4EffectsValidAt $effects 0))))
+                            (AS4ModelOutcomesValidAt $model-outcomes 0)
+                            (AS4EffectsValidAt $effects 0))))
                      (if $valid
                        (let* (($snapshot (AssistantSnapshot))
                               ($checkpoint
@@ -39,7 +163,7 @@
                                 (cycle-standing contact-consequence-and-model
                                   $idle $checkpoint
                                   (model-stage-standings
-                                    (AR3ModelStageStandingsAt
+                                    (AS4ModelStageStandingsAt
                                       $model-outcomes 0))))))
                          (if (== $checkpoint checkpointed)
                            (AssistantCycleWithV3 $root false $next $base $cap

@@ -173,6 +173,33 @@
      (index-atom $consequence 9) (index-atom $consequence 10)
      (index-atom $consequence 11) (index-atom $consequence 12)))
 
+; A returned Omega relation already carries an exact, bounded first-eight role
+; support and provenance.  Re-form it as a finite contact-relative Fact9 view
+; for the next cut so previously unseen lawful compositions can participate
+; without a new behavioral branch.  This is recognition of the supplied
+; relation, not reconstruction of actuality or invention of a missing role.
+(= (C3ConsequenceFactViewsAt $relations $consequence-id $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (and (CPShape $relation material-relation 5)
+                (CPSupportValid (index-atom $relation 2)))
+         (cons-atom
+           (fact-view (index-atom $relation 1)
+             (index-atom $relation 2)
+             ((index-atom $relation 1)) recognized
+             (returned-consequence-explicit-role-recognition
+               $consequence-id (index-atom $relation 4)))
+           (C3ConsequenceFactViewsAt $relations $consequence-id (+ $i 1)))
+         (C3ConsequenceFactViewsAt $relations $consequence-id (+ $i 1))))
+     ()))
+
+(= (C3ConsequenceFactViews $consequence)
+   (if (CPConsequenceV2Valid $consequence)
+     (C3ConsequenceFactViewsAt
+       (index-atom (index-atom $consequence 6) 1)
+       (index-atom $consequence 1) 0)
+     ()))
+
 (= (C3ConsequenceHasMaterial $consequence)
    (if (CPConsequenceV2Valid $consequence)
      (or (> (size-atom (index-atom (index-atom $consequence 5) 1)) 0)
@@ -317,6 +344,40 @@
 ; replaced by its source-grounded refinement. Undertaking and deferral remain
 ; available as independently constructed alternatives. This is refinement by
 ; persisted relational evidence, not first-match behavioral selection.
+(= (C3NACERevisionProductsAt $claims $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($evidence (if (CPShape $claim participant-relation-evidence 7)
+              (index-atom $claim 6) ())))
+       ; PeTTa's `and` evaluates both operands, so indexing a non-qualified
+       ; claim here would erase the whole family. Guard the product read
+       ; structurally before inspecting it.
+       (if (CPShape $evidence qualified-reasoning-evidence 3)
+         (if (CPShape (index-atom $evidence 2)
+               nace-revision-product-v1 11)
+           (cons-atom (index-atom $evidence 2)
+             (C3NACERevisionProductsAt $claims (+ $i 1)))
+           (C3NACERevisionProductsAt $claims (+ $i 1)))
+         (C3NACERevisionProductsAt $claims (+ $i 1))))
+     ()))
+
+(= (C3NACEInquiryPossibilities $cut)
+   (let $products (C3NACERevisionProductsAt
+          (M255ParticipantClaimsForTargetAtCut $cut
+            nace-contextual-development) 0)
+     (if (> (size-atom $products) 0)
+       ((possible-movement nace-consequence-discrimination inquiry
+          (CPNativeRequirementRelations $cut)
+          (CPNativeRequirementDistinctions $cut)
+          (CPNativeRequirementInterfaces $cut)
+          (CPFlourishingValues)
+          (consequence-route
+            (nace-discriminating-contact
+              (qualified-revision-products $products))
+            non-certifying)
+          l2425-supported))
+       ())))
+
 (= (C3NativePossibilities $cut $facts $flourishing $participant-relations)
    (let* (($learned (C3LearnedPossibilities $cut))
           ($alignment (C3AlignmentInquiryPossibilities $cut $facts
@@ -364,6 +425,7 @@
             (C4CapabilityProposalPossibilities $cut $participant-relations))
           ($capability-result
             (C4CapabilityResultPossibilities $cut $participant-relations))
+          ($nace-inquiry (C3NACEInquiryPossibilities $cut))
           ; The semantic inquiry is the same source inquiry enriched by its
           ; returned candidate family, so retaining both would duplicate one
           ; cognitive possibility. A transfer inquiry has a different source
@@ -380,14 +442,15 @@
           ; one rather than duplicating the same cognitive opening.
           ($source-inquiry (if (> (size-atom $memory-continuation) 0)
             () $base-source-inquiry))
-          ($specialized (CPListAppend $memory-continuation
+          ($specialized (CPListAppend $nace-inquiry
+            (CPListAppend $memory-continuation
             (CPListAppend $source-inquiry
               (CPListAppend $overlap-result
                 (CPListAppend $overlap-comparison
                   (CPListAppend $transfer
                     (CPListAppend $unjoined-transfer-result
                       (CPListAppend $transfer-memory
-                        $unjoined-memory-result)))))))))
+                        $unjoined-memory-result))))))))))
      (CPListAppend
        ; Exact returned alignment contact refines the generic undertaking
        ; surface. It does not add a second scheduler or first-match branch:

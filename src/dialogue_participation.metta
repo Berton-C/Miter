@@ -1585,7 +1585,9 @@
                   (CPContactScope $contact) chroma-local
                   native-memory-question-unavailable no-candidate-admitted)))
               ($memory-participants
-                (C4MemoryParticipants $memory-observation $memory-question))
+                (if (CPShape $memory-question c4-memory-query-v1 6)
+                  (C4MemoryParticipants $memory-observation $memory-question)
+                  ()))
               ($memory-contact
                 (C4ContactWithMemory $cue-contact $memory-participants))
               ($environment-observation

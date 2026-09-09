@@ -356,11 +356,19 @@
      (assistant-regenerative-cycle-step-v1 $results (AssistantSnapshot))))
 
 (= (AR3HistoryValid $row)
-   (if (and (CPShape $row assistant-history 5)
-         (== (index-atom $row 1) soul-regeneration))
-     (and (CPShape (index-atom $row 3) scope 4)
-          (SRSoulRegenerationRecordValid (index-atom $row 4)))
-     (AR2HistoryValid $row)))
+   (if (CPShape $row assistant-history 5)
+     (if (== (index-atom $row 1) soul-regeneration)
+       (and (CPShape (index-atom $row 3) scope 4)
+            (SRSoulRegenerationRecordValid (index-atom $row 4)))
+       (if (== (index-atom $row 1) nace-pending)
+         (and (CPShape (index-atom $row 3) scope 4)
+              (CPShape (index-atom $row 4)
+                nace-pending-expectation-v1 7))
+         (if (== (index-atom $row 1) nace-development)
+           (and (CPShape (index-atom $row 3) scope 4)
+                (MiterNACEDevelopmentPayloadValid (index-atom $row 4)))
+           (AR2HistoryValid $row))))
+     false))
 
 ; The recurring V3 scheduler is assembled only after this module has supplied
 ; its regenerative functions.  It lives in assistant_service_runtime.metta so

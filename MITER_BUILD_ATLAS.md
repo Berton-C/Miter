@@ -175,7 +175,7 @@ consumer is absent. No status is upgraded by assertion.
 | VAD language-cue participation | P | `vad.metta`, `vad.pl`, semantic-question and VoiceRNA carriers, private exact asset provision | The clean runtime computes provenance-bound clause and within-contact trajectory cues from the exact licensed NRC VAD 2.1 asset and makes the cue available before semantic inquiry and VoiceRNA rendering. Native validation preserves coverage, source, asset, limitations, and scope; remote projection withholds contact/principal/hash identity while retaining aggregate cue evidence. VAD cannot classify a person or SNS/PNS standing, grant permission, choose movement, or optimize positivity. The lexicon remains private runtime state and no term or row enters Git, a checkpoint, or a model prompt. Live Mattermost carry and longitudinal consequence use remain open. |
 | Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Exact stable-ID scope, authenticated contact, certified outbound, pending-before-send, unique reconciliation, and restart/no-replay are embodied in the live service. Poll freshness is now distinct from human content identity, so a thread-metadata update cannot become a second contact while a genuine edit remains versioned. Returned-consequence participation, scope/failure trials, and sustained use remain open. |
 | Open growth environment | P | `capability_environment.metta`, mechanical environment observer and proof-bound informational GET/HEAD broker, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path receives a source-qualified native participant stating the configured web/terminal/workspace field, actual process identity, genuine human-authority boundaries, and its current availability. A native movement may now form one exact informational HTTP operation; only its complete source-contact/source-movement/R/A/P/Fact9/flourishing proof becomes an executable descriptor. Prolog durably claims the request before transmission, returns bounded untrusted bytes as contact, and never follows a redirect as if it were the same operation. Native MeTTa then reforms the complete encounter and VoiceRNA path from the returned contact. The wrong runtime identity, malformed proof, unsupported method, constructed URL, or malformed returned evidence forms no request or continuation. Direct-argument terminal/workspace execution, dedicated-user live network carry, durable capability uptake, and completed single-root service migration remain open. |
-| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, and regenerative Soul; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; one exact persisted partial opening can form a provenance-bearing Soul undertaking; and injured expressed Soul can form and complete its own repair RNA. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
+| Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, regenerative Soul, and `qualified_reasoning.metta` | NACE now records the exact expectation before returned consequence, preserves the full typed outcome family, admits only independent returned evidence to an explicitly pinned NARS/NAL revision closure, and returns the qualified product as a non-authoritative participant that changes later possibility formation and survives restart. Correlated repetition is held and ambiguous/delayed outcomes remain pending rather than negative. Broader skill transfer and a materially warranted, separately qualified PLN premise/consumer remain open; decorative PLN import is prohibited. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
 | Full Continuity of Mind | P | native checkpoint capsules, scoped Chroma projection, native memory participation, and bounded selected-model rendering | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. A provider-derived continuity requirement may participate only as unresolved material; native formation determines whether exact scope/capsule/hash-verified memory is material. The current human resource direction remains authoritative only over transport selection: GLM is the installed default, local models are explicit alternatives, and continuity cannot silently switch resources. Under the ratified disclosure grant, ordinary conversation, continuity, project, and personal context may reach GLM while credentials, authentication material, and concrete security-risk content remain excluded. Live story recall, correction, restart, and later-use evidence remain required. |
@@ -2323,6 +2323,35 @@ Already carried:
   20,720 KiB RSS, while its PeTTa child used 2.8% CPU and 76,560 KiB RSS; both
   stopped cleanly. Live Mattermost cue/consequence carry and growing-history
   slope remain unmeasured, so VAD remains `P` rather than `E`.
+- Qualified NACE/NAL participation now crosses the one supported consequence
+  path. Its invalidation boundary is the exact pending movement/criterion,
+  returned typed outcome, evidence-family provenance, and prior independent
+  observations for that same target; its dirtiness closure is the qualified
+  revision product, two-source participant relation, returned-consequence
+  Fact9 view, affected M25 possibility family, active organization, and
+  continuity checkpoint. A fresh LKG consumed one controlled contact and one
+  independent `confirmed` consequence, formed one valid NACE development,
+  retained two attributable claims and one qualified revision product, added
+  the exact returned `Connection`/`Transformation` relation, and exposed one
+  `nace-consequence-discrimination` possibility through the complete M25
+  encounter. Native direct reconstitution took 2.5 seconds; the service
+  completed each full formation inside a seven-second polling observation,
+  made zero provider calls and zero effects, and grew its factorized checkpoint
+  from 92,964 to 143,047 bytes (1,032 factors after consequence). Stop/start
+  preserved checkpoint SHA-256
+  `ac7c27830e9fdf26bd57a856c8bf734a2c7c2c8d71be9d8affac37b9a743fe79`,
+  the NACE product and possibility, and exactly two consumed carriers with no
+  replay. A PeTTa totality defect discovered by the full participant family
+  was repaired by guarding qualified evidence before indexing; unsupported
+  participant claims remain present and no longer erase the reduction. The
+  hygiene waypoint found one obsolete two-process NACE probe still consuming
+  99% of one core after nearly two hours; both exact disposable PIDs exited on
+  `TERM`. Only the previously installed supported supervisor and its pinned
+  PeTTa child remained; they were not interrupted. The
+  accepted envelope proves one independent observation and restart; a second
+  live independent outcome, long-history slope, and calibrated PLN consumer
+  remain open. The next recovery bottleneck is isolated versioned
+  self-extension with hot activation and rollback in this same runtime.
 
 Next movement:
 
@@ -2343,11 +2372,12 @@ Next movement:
    through that identity remains unmeasured. Next, carry this web path through
    the installed dedicated runtime, then add direct-argument terminal and
    versioned-workspace operations through the same proof/claim/return joint;
-4. recover the two remaining capability families through this same organism:
-   qualified, consequence-sensitive NACE/NAL/PLN reasoning; and isolated
-   self-extension with versioned activation, hot upgrade, last-known-good
-   rollback, and restart continuity. Historical gate-specific implementations
-   are design inputs only and are not copied;
+4. recover isolated self-extension with versioned activation, hot upgrade,
+   last-known-good rollback, and restart continuity through this same organism;
+   then add a separately qualified PLN closure only where a calibrated
+   relational premise set and material M24--M26.3 consumer have been earned.
+   NACE/NAL now participates causally; historical gate-specific implementations
+   remain design inputs only and are not copied;
 5. complete the one-distribution, one-root packaging cut: the finite Python
    installer fetches and verifies pinned PeTTa, validates the non-admin
    `claritymiter` identity, and derives application releases, dependencies,
