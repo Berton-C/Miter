@@ -9,6 +9,9 @@
 ; The qualified NAL closure is derived from PeTTa lib/lib_nars.metta at commit
 ; ae66fa8e41dcd5539d614706bd4e5cfb34f9608d, file SHA-256
 ; f2a1ab3be59c59128894367a2f52a12c0fafdf1fb26b4affedd48270b47d4b43.
+; The qualified PLN closure below is derived from PeTTa lib/lib_pln.metta at
+; the same commit, file SHA-256
+; 6b980321bbe9b49e5b12e2fcee0479ab1d5c7550c2104a67b0722a5b473da4ee.
 ;
 ; MIT License
 ; Copyright (c) 2025 Patrick Hammer
@@ -49,6 +52,83 @@
        (and (>= $frequency 0.0)
          (and (<= $frequency 1.0)
           (and (>= $confidence 0.0) (< $confidence 1.0)))))
+     false))
+
+; This is the one PLN operator presently earned by a calibrated Miter
+; consumer. It is namespaced rather than importing lib_pln.metta alongside
+; lib_nars.metta: both pinned libraries publish Truth_Revision and |- in the
+; global namespace. The 0.02 term is inherited PLN semantics, not a movement
+; score or policy threshold.
+(= (MiterPLNTruthModusPonens (stv $f1 $c1) (stv $f2 $c2))
+   (stv (+ (* $f1 $f2) (* 0.02 (- 1 $f1))) (* $c1 $c2)))
+
+; One returned developmental-transfer observation becomes one explicitly
+; named evidential premise. Unresolved standing remains non-numerical.
+(= (MiterPLNTransferStandingTruth $standing)
+   (if (== $standing support) (stv 1.0 0.5)
+     (if (== $standing contradiction) (stv 0.0 0.5)
+       (pln-truth-unavailable unresolved-transfer-standing))))
+
+(= (MiterPLNCutContainsConsequence $cut-id $consequence-id)
+   (if (== $cut-id $consequence-id) true
+     (if (CPShape $cut-id next-cut 3)
+       (if (== (index-atom $cut-id 2) $consequence-id) true
+         (MiterPLNCutContainsConsequence
+           (index-atom $cut-id 1) $consequence-id))
+       false)))
+
+; Structural validation is deliberately available before provisional
+; dynamics compile. The later history adapter additionally validates the full
+; C3 transfer record and constructs this product from exact stored premises.
+(= (MiterPLNRelationalTransferProductStructurallyValid $product)
+   (if (CPShape $product pln-relational-transfer-product-v1 13)
+     (let* (($inference (index-atom $product 1))
+            ($scope (index-atom $product 2))
+            ($nace-wrapper (index-atom $product 3))
+            ($transfer-wrapper (index-atom $product 4))
+            ($source-wrapper (index-atom $product 5))
+            ($relation-wrapper (index-atom $product 6))
+            ($families (index-atom $product 7))
+            ($hypothesis-wrapper (index-atom $product 9))
+            ($source-truth (if
+              (CPShape $source-wrapper source-contextual-efficacy 2)
+              (index-atom $source-wrapper 1) unavailable))
+            ($relation-truth (if
+              (CPShape $relation-wrapper relational-transfer-premise 2)
+              (index-atom $relation-wrapper 1) unavailable))
+            ($hypothesis (if
+              (CPShape $hypothesis-wrapper contextual-transfer-hypothesis 2)
+              (index-atom $hypothesis-wrapper 1) unavailable)))
+       (==
+         ((== $inference
+            (qualified-inference-v1 PLN
+              ae66fa8e41dcd5539d614706bd4e5cfb34f9608d
+              6b980321bbe9b49e5b12e2fcee0479ab1d5c7550c2104a67b0722a5b473da4ee
+              MiterPLNTruthModusPonens))
+          (CPShape $scope scope 4)
+          (CPShape $nace-wrapper source-nace-revision 2)
+          (CPShape (index-atom $nace-wrapper 1)
+            nace-revision-product-v1 11)
+          (CPShape $transfer-wrapper developmental-transfer-premise 2)
+          (CPShape (index-atom $transfer-wrapper 1)
+            c3-developmental-transfer-development-v1 8)
+          (MiterTruthValueValid $source-truth)
+          (MiterTruthValueValid $relation-truth)
+          (CPShape $families independent-evidence-families 3)
+          (!= (index-atom $families 1) (index-atom $families 2))
+          (== (index-atom $product 8)
+            (truth-semantics PLN-simple-truth-value
+              miter-pln-transfer-standing-adapter-v1
+              exact-independent-returned-consequences))
+          (MiterTruthValueValid $hypothesis)
+          (== $hypothesis
+            (MiterPLNTruthModusPonens $source-truth $relation-truth))
+          (CPShape (index-atom $product 10) dependency 4)
+          (== (index-atom $product 11) unresolved-native-participant)
+          (== (index-atom $product 12)
+            no-permission-no-authority-no-numeric-movement-choice))
+         (true true true true true true true true true true true true true true
+           true true)))
      false))
 
 (= (MiterNACEOutcomeTyped $outcome)
@@ -358,7 +438,7 @@
 (= (MiterQualifiedReasoningBoundary)
    (qualified-reasoning-boundary-v1
      NAL consequence-earned-contextual-revision
-     PLN no-current-calibrated-relational-premise-set-no-decorative-call
+     PLN consequence-earned-relational-transfer-hypothesis
      namespace broad-unqualified-library-import-prohibited
      outputs attributable-supported-non-authoritative-native-participants
      prohibitions permission authority scalar-choice contact-fabrication

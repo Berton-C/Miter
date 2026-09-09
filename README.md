@@ -27,7 +27,12 @@ projection/retrieval, general Soul-formed semantic participation, native
 VoiceRNA construction with bounded semantic audit and native reformation,
 pending-before-send Mattermost effect preparation,
 consequence-sensitive multi-turn undertaking continuity, and supported
-install/start/status/stop/panic operations. The first bounded self-extension
+install/start/status/stop/panic operations. Qualified, separately namespaced
+NARS/NAL and PLN closures now let independent returned consequence revise a
+contextual efficacy standing and form a later relational-transfer hypothesis.
+Both support and counterevidence persist; the result remains a non-certifying
+participant in the complete native encounter and never selects a movement.
+The first bounded self-extension
 surface can also receive an inert declarative MeTTa capability, construct its
 activation through the complete constitutive encounter, execute independent
 positive/negative native trials, make the admitted module available to later

@@ -378,6 +378,118 @@
           l2425-supported))
        ())))
 
+; A qualified PLN product is not a supported D relation and never becomes a
+; movement score. It remains a proposed participant relation until this
+; constitutive consumer finds the exact consequence-earned transfer record
+; applicable to the current, materially different contact. Even then it can
+; form only a fresh inquiry containing every premise and counterfactual.
+(= (C3PLNProductsFromClaimsAt $claims $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($evidence (if (CPShape $claim participant-relation-evidence 7)
+              (index-atom $claim 6) unavailable)))
+       (if (CPShape $evidence qualified-pln-relational-transfer-evidence 2)
+         (let $product (index-atom $evidence 1)
+           (if (MiterPLNRelationalTransferProductStructurallyValid $product)
+             (cons-atom $product
+               (C3PLNProductsFromClaimsAt $claims (+ $i 1)))
+             (C3PLNProductsFromClaimsAt $claims (+ $i 1))))
+         (C3PLNProductsFromClaimsAt $claims (+ $i 1))))
+     ()))
+
+(= (C3PLNProductsFromRelationsAt $relations $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (or (CPShape $relation participant-proposed-relation 4)
+               (CPShape $relation participant-proposed-relation 5))
+         (let* (($target (index-atom $relation 1))
+                ($claims (if (CPShape $relation
+                               participant-proposed-relation 4)
+                  (index-atom $relation 3) (index-atom $relation 4))))
+           (if (CPShape $target pln-relational-transfer-hypothesis 3)
+             (CPListAppend (C3PLNProductsFromClaimsAt $claims 0)
+               (C3PLNProductsFromRelationsAt $relations (+ $i 1)))
+             (C3PLNProductsFromRelationsAt $relations (+ $i 1))))
+         (C3PLNProductsFromRelationsAt $relations (+ $i 1))))
+     ()))
+
+(= (C3PLNRelationalTransferProducts $participant-relations)
+   (if (CPShape $participant-relations participant-relation-organization 2)
+     (C3PLNProductsFromRelationsAt (index-atom $participant-relations 1) 0)
+     ()))
+
+(= (C3PLNProductApplicable $product $cut $facts $flourishing)
+   (if (MiterPLNRelationalTransferProductStructurallyValid $product)
+     (let* (($scope (index-atom $product 2))
+            ($transfer (index-atom (index-atom $product 4) 1)))
+       (and (== $scope (index-atom $cut 3))
+            ; Applicability performs the complete transfer-record proof. A
+            ; separate identical validation here previously doubled that
+            ; expensive recursive read without adding evidence.
+            (C3TransferDevelopmentApplicable $transfer $cut $facts
+              $flourishing)))
+     false))
+
+(= (C3PLNApplicableProductsAt $products $cut $facts $flourishing $i)
+   (if (< $i (size-atom $products))
+     (let $product (index-atom $products $i)
+       (if (C3PLNProductApplicable $product $cut $facts $flourishing)
+         (cons-atom $product
+           (C3PLNApplicableProductsAt $products $cut $facts $flourishing
+             (+ $i 1)))
+         (C3PLNApplicableProductsAt $products $cut $facts $flourishing
+           (+ $i 1))))
+     ()))
+
+(= (C3PLNInquiryPossibilities $cut $facts $flourishing
+      $participant-relations)
+   (let $products (C3PLNApplicableProductsAt
+          (C3PLNRelationalTransferProducts $participant-relations)
+          $cut $facts $flourishing 0)
+     (if (> (size-atom $products) 0)
+       ((possible-movement pln-relational-transfer-discrimination inquiry
+          (CPNativeRequirementRelations $cut)
+          (CPNativeRequirementDistinctions $cut)
+          (CPNativeRequirementInterfaces $cut)
+          (CPBeneficialFlourishingValues $flourishing)
+          (consequence-route
+            (pln-relational-transfer-discriminating-contact
+              (qualified-transfer-products $products)
+              (target-cut (index-atom $cut 1))
+              hypothesis-remains-non-certifying)
+            non-certifying)
+          l2425-supported))
+       ())))
+
+(= (C3PLNTransferReferenceIdsAt $products $i)
+   (if (< $i (size-atom $products))
+     (let* (($product (index-atom $products $i))
+            ($transfer (index-atom (index-atom $product 4) 1))
+            ($reference (index-atom $transfer 1)))
+       (cons-atom (index-atom $reference 1)
+         (C3PLNTransferReferenceIdsAt $products (+ $i 1))))
+     ()))
+
+(= (C3TransferPossibilitiesWithoutIdsAt $possibilities $ids $i)
+   (if (< $i (size-atom $possibilities))
+     (let $possibility (index-atom $possibilities $i)
+       (if (CPHas (index-atom $possibility 1) $ids 0)
+         (C3TransferPossibilitiesWithoutIdsAt $possibilities $ids (+ $i 1))
+         (cons-atom $possibility
+           (C3TransferPossibilitiesWithoutIdsAt $possibilities $ids
+             (+ $i 1)))))
+     ()))
+
+(= (C3TransferPossibilitiesRefinedByPLN $transfer $pln)
+   (if (> (size-atom $pln) 0)
+     (let* (($route (index-atom (index-atom $pln 0) 7))
+            ($discrimination (index-atom $route 1))
+            ($products-wrapper (index-atom $discrimination 1))
+            ($products (index-atom $products-wrapper 1))
+            ($ids (C3PLNTransferReferenceIdsAt $products 0)))
+       (C3TransferPossibilitiesWithoutIdsAt $transfer $ids 0))
+     $transfer))
+
 (= (C3NativePossibilities $cut $facts $flourishing $participant-relations)
    (let* (($learned (C3LearnedPossibilities $cut))
           ($alignment (C3AlignmentInquiryPossibilities $cut $facts
@@ -413,9 +525,16 @@
               () $memory-result))
           ($alignment-result
             (C3AlignmentResultPossibilities $cut $participant-relations))
-          ($transfer-memory
+          ($transfer-memory-unrefined
             (C3TransferDevelopmentMemoryPossibilities $cut $facts
               $flourishing $participant-relations))
+          ($pln-inquiry (C3PLNInquiryPossibilities $cut $facts $flourishing
+            $participant-relations))
+          ; The PLN inquiry carries the exact transfer record plus the added
+          ; independent NACE premise. It refines only matching ordinary
+          ; transfer-memory inquiries; unrelated transfer openings remain.
+          ($transfer-memory (C3TransferPossibilitiesRefinedByPLN
+            $transfer-memory-unrefined $pln-inquiry))
           ($memory-continuation
             (C3MemoryApplicationContinuationPossibilities $cut $facts
               $flourishing $participant-relations))
@@ -451,7 +570,8 @@
           ; one rather than duplicating the same cognitive opening.
           ($source-inquiry (if (> (size-atom $memory-continuation) 0)
             () $base-source-inquiry))
-          ($specialized (CPListAppend $nace-inquiry
+          ($specialized (CPListAppend $pln-inquiry
+            (CPListAppend $nace-inquiry
             (CPListAppend $memory-continuation
             (CPListAppend $source-inquiry
               (CPListAppend $overlap-result
@@ -459,7 +579,7 @@
                   (CPListAppend $transfer
                     (CPListAppend $unjoined-transfer-result
                       (CPListAppend $transfer-memory
-                        $unjoined-memory-result))))))))))
+                        $unjoined-memory-result)))))))))))
      (CPListAppend $active-capabilities
      (CPListAppend
        ; Exact returned alignment contact refines the generic undertaking

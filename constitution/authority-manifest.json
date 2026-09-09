@@ -80,7 +80,7 @@
     },
     {
       "path": "src/provisional_dynamics.metta",
-      "sha256": "ea596090af0ae7176b7693b53f9bc28c49a532c4f7ff344ab58b09afa5e30ff0"
+      "sha256": "ad40efecea0738fee74887447523ff1b62e85a4976f33f21da40c9a7029004d5"
     },
     {
       "path": "src/model_participation.metta",
@@ -100,7 +100,11 @@
     },
     {
       "path": "src/qualified_reasoning.metta",
-      "sha256": "2a7a8854a7b6940e99ca4cdc64eeb26b3f990413bed5ce9eefa89554840e87bb"
+      "sha256": "86a04cc8afcedabd0b1de059cb5393e7d94e0747dbdcef924e824f1fc6ab8426"
+    },
+    {
+      "path": "src/qualified_transfer.metta",
+      "sha256": "567d052ada8f30a129c39e902ccfb8eba29ef8c803d7daee0655fd5cf55eb1f4"
     },
     {
       "path": "src/declarative_capability.metta",
@@ -128,7 +132,7 @@
     },
     {
       "path": "effect_membranes/integrity.pl",
-      "sha256": "66c680e406b5161a121b29d47cada8cc6206c3c4deb378098be11b61727addd1"
+      "sha256": "46c82e1daefdee13a6ecf699dcdc5e34238a3680cfc6d47361514e4cb0c11445"
     }
   ],
   "schema": "miter-constitutional-integrity-v2",

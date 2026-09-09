@@ -822,6 +822,8 @@
          (if (and $row-valid (== (index-atom $row 1) model-reading))
            (and (CPShape (index-atom $row 3) scope 4)
                 (AR3ModelHistoryPayloadValid (index-atom $row 4)))
+         (if (and $row-valid (== (index-atom $row 1) pln-development))
+           (MiterPLNDevelopmentHistoryValid $row)
          (if (and $row-valid (== (index-atom $row 1) consequence))
            (let $payload (index-atom $row 4)
              (if (AR2PayloadHead $payload consequence-incorporation-v3)
@@ -880,7 +882,7 @@
                                         (index-atom $payload 8))
                                       (index-atom $row 2)))))))
                          (ARHistoryValid $row))))))))
-           (ARHistoryValid $row))))))))
+           (ARHistoryValid $row)))))))))
 
 (= (AR2AllHistoryValid $rows $i)
    (if (< $i (size-atom $rows))
@@ -1533,7 +1535,9 @@
                           (AR3TransferDevelopmentParticipantsForScope $scope)
                           (CPListAppend
                             (AR3MemoryApplicationParticipantsForScope $scope)
-                            (MiterNACEHistoricalParticipantsForScope $scope)))))
+                            (CPListAppend
+                              (MiterNACEHistoricalParticipantsForScope $scope)
+                              (MiterPLNHistoricalParticipantsForScope $scope))))))
                     ($participating-contact (if
                       (> (size-atom $developmental-participants) 0)
                       (CP2ContactWithAuthorityParticipants $contact
@@ -1852,12 +1856,12 @@
               ($encounter (index-atom $next-organization 1))
               ($next-cut (index-atom $encounter 1))
               ($next-movement (AREncounterMovement $encounter))
+              ($history-payload (AR3ConsequenceHistoryV8 $scope $cut
+                $movement $next-cut $next-movement
+                (index-atom $next-organization 2) $consequence))
               ($state (ARReplaceActive $scope $next-cut $next-movement))
               ($history (if (== $state assistant-active-replaced)
-                (ARRecord consequence $id $scope
-                  (AR3ConsequenceHistoryV8 $scope $cut $movement $next-cut
-                    $next-movement (index-atom $next-organization 2)
-                    $consequence))
+                (ARRecord consequence $id $scope $history-payload)
                 state-not-recorded)))
          (if (== $history assistant-history-recorded)
            (let* (($model-outcome (AR3RecordModelReading $id $scope $next-cut
@@ -1865,16 +1869,20 @@
                   ($nace-history
                     (if (MiterNACEDevelopmentPayloadValid $nace-development)
                       (ARRecord nace-development $id $scope $nace-development)
-                      nace-development-not-applicable)))
-             (if (CPHas $nace-history
-                   (assistant-history-recorded assistant-history-duplicate
-                     nace-development-not-applicable) 0)
+                      nace-development-not-applicable))
+                  ($transfer-development (index-atom $history-payload 6))
+                  ($pln-history (MiterPLNRecordProductsForTransfer $scope
+                    $transfer-development)))
+             (if (and (CPHas $nace-history
+                        (assistant-history-recorded assistant-history-duplicate
+                          nace-development-not-applicable) 0)
+                      (MiterPLNRecordStandingValid $pln-history))
                (assistant-processed-v3
                  (assistant-consequence-incorporated $id $next-organization)
                  $model-outcome)
                (assistant-processed-v3
                  (assistant-consequence-held $id
-                   (nace-history $nace-history))
+                   (nace-history $nace-history pln-history $pln-history))
                  $model-outcome)))
            (assistant-processed-v3
              (assistant-consequence-held $id $history)

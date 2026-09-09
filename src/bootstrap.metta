@@ -42,9 +42,13 @@
 ; executable cognition.
 !(import! &self "./src/capability_environment.metta")
 !(import! &self "./src/vad.metta")
+; Qualified operator meanings must be known before provisional dynamics
+; compile. The history-to-participant PLN adapter is loaded later, after the
+; completed developmental-transfer ontology is present.
+!(import! &self "./src/qualified_reasoning.metta")
 !(import! &self "./src/authority_inheritance.metta")
 !(import! &self "./src/constitutive_authority_joint.metta")
-!(import! &self "./src/qualified_reasoning.metta")
+!(import! &self "./src/qualified_transfer.metta")
 !(import! &self "./src/assistant_reactor_authority.metta")
 ; These modules depend on the completed AR4 preparation/incorporation seam.
 ; They must be imported here, not through nested import expressions, so their
