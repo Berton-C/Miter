@@ -120,11 +120,11 @@
     },
     {
       "path": "effect_membranes/capability_environment.pl",
-      "sha256": "1a6b48ec2e41681efc7a54f3811fc069da25db66ad960504b1e894a0ba3cf7b1"
+      "sha256": "02022fbb7f4fdc39201e240773b6c36fe70a2a3941c014b088c9c600f7f978f2"
     },
     {
       "path": "effect_membranes/workshop.pl",
-      "sha256": "8113b11e98c66fbd94e2aed16ca2e64054545f18a18cd4dab64a35445f224ed3"
+      "sha256": "30d49a6641ca9539705144f45f621c0f3bb0235d834a57b0ec8a83db5202c642"
     },
     {
       "path": "effect_membranes/vad.pl",

@@ -2583,6 +2583,20 @@ Already carried:
   stage/trial/activate/invoke/rollback cycle remain to be proven after the
   commit enables the clean-source installer.
 
+  The first privileged carry then exercised the startup falsifier and was
+  correctly held: the changed capability and workshop membranes still had
+  their predecessor SHA-256 identities in the constitutional authority
+  manifest, so all three supervised attempts returned
+  `soul-startup-blocked` and no heartbeat or contact was admitted. The repair
+  changes only those two exact file pins; it neither relaxes integrity nor
+  changes an atom, movement, R/A/P read, Fact9/flourishing participant,
+  checkpoint, memory, model call, or effect. A fresh supported runtime with
+  the repaired manifest reached a process-bound `assistant-waiting` heartbeat
+  in 1.42 seconds after `start`, remained live at three seconds, and stopped
+  cleanly in 0.79 seconds. The failed installed target and source continuity
+  remain unchanged; installed-identity broker transport and the complete live
+  workshop lifecycle remain the next carry.
+
 - The archive preflight exposed that macOS resolves the historical
   `/Users/claritymiter/miter` checkout and the proposed
   `/Users/claritymiter/Miter` install root to the same inode. The 2.4 GB tree is
