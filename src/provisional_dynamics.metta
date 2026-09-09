@@ -360,13 +360,21 @@
               $flourishing $participant-relations))
           ($semantic-inquiry
             (C3SemanticInquiryPossibilities $cut $participant-relations))
+          ($capability-inquiry
+            (C4CapabilityProposalPossibilities $cut $participant-relations))
+          ($capability-result
+            (C4CapabilityResultPossibilities $cut $participant-relations))
           ; The semantic inquiry is the same source inquiry enriched by its
           ; returned candidate family, so retaining both would duplicate one
           ; cognitive possibility. A transfer inquiry has a different source
           ; contact and remains independently live when present.
-          ($base-source-inquiry (if (> (size-atom $semantic-inquiry) 0)
-            $semantic-inquiry
-            (if (> (size-atom $alignment) 0) $alignment $learned)))
+          ($base-source-inquiry (if (> (size-atom $capability-result) 0)
+            $capability-result
+            (if (> (size-atom $capability-inquiry) 0)
+            $capability-inquiry
+            (if (> (size-atom $semantic-inquiry) 0)
+              $semantic-inquiry
+              (if (> (size-atom $alignment) 0) $alignment $learned)))))
           ; A later memory-standing inquiry is the exact source-grounded
           ; refinement of the generic alignment inquiry on this contact.  Keep
           ; one rather than duplicating the same cognitive opening.

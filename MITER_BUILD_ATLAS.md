@@ -174,7 +174,7 @@ consumer is absent. No status is upgraded by assertion.
 | LLM participation and VoiceRNA | P | `model_participation.metta`, `dialogue_participation.metta`, `model.pl` | General scoped contact forms a native semantic question, admits bounded provider readings only as unresolved participants, re-forms the complete constitutive encounter, and constructs a source/scope/movement-bound VoiceRNA candidate. GLM's strict-schema audit can contribute zero to four source/candidate-bound fidelity findings plus uncertainty; it is not asked for a pass/revise/hold verdict or a revision instruction. A material finding enters fresh native movement formation; a zero-finding contribution is bound at the expression joint to the exact unchanged proof and may not manufacture a new movement. Native MeTTa retains express/revise/hold possibilities and forms a disposition only after binding the exact candidate to the authority-complete movement proof, its existing one simultaneous R/A/P carrier, the live contact-relative Fact9 expression, and all nine interconnected flourishing expressions. The selected native disposition travels in the certificate; Prolog checks only its closed shape and proof identity. Native positive/revision/bypass/falsified-reuse checks pass. A restored exact-memory diagnostic now carries four scope/capsule/hash-verified contacts through private-context verification, valid render/audit observations, and native `express-current-candidate`. Content-free stage standings distinguish semantic transport, VoiceRNA formation, native audit, and mechanical preflight holds without exporting payloads or assigning them cognitive authority. Promotion through the single-root live Mattermost runtime, restart, and returned consequence remains open. |
 | VAD language-cue participation | A | constitutional C-051--C-053 and Soul S-303/S-804/S-902; historical licensed-asset implementation outside clean room | The clean runtime preserves the non-diagnostic authority boundary but does not yet compute sentence/trajectory VAD cues or let them participate in VoiceRNA. Recover the bounded cue surface without its old uncalibrated thresholds, private lexicon, fixed presence lookup, or Python seam. The licensed asset and any derived collection remain outside public Git. |
 | Mattermost | P | `mattermost.pl`, `dialogue_participation.metta`, `assistant_service.pl` | Exact stable-ID scope, authenticated contact, certified outbound, pending-before-send, unique reconciliation, and restart/no-replay are embodied in the live service. Poll freshness is now distinct from human content identity, so a thread-metadata update cannot become a second contact while a genuine edit remains versioned. Returned-consequence participation, scope/failure trials, and sustained use remain open. |
-| Open growth environment | P | `capability_environment.metta`, mechanical environment observer, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path receives a source-qualified native participant stating the configured web/terminal/workspace field, actual process identity, genuine human-authority boundaries, and its current availability. The private credential membrane now supports installer-materialized mode-0600 runtime files without making a GUI Keychain a boot dependency; missing credentials hold only the affected surface. Typed execution, returned tool consequence, durable capability uptake, and completed service migration to `claritymiter` remain open. |
+| Open growth environment | P | `capability_environment.metta`, mechanical environment observer and proof-bound informational GET/HEAD broker, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path receives a source-qualified native participant stating the configured web/terminal/workspace field, actual process identity, genuine human-authority boundaries, and its current availability. A native movement may now form one exact informational HTTP operation; only its complete source-contact/source-movement/R/A/P/Fact9/flourishing proof becomes an executable descriptor. Prolog durably claims the request before transmission, returns bounded untrusted bytes as contact, and never follows a redirect as if it were the same operation. Native MeTTa then reforms the complete encounter and VoiceRNA path from the returned contact. The wrong runtime identity, malformed proof, unsupported method, constructed URL, or malformed returned evidence forms no request or continuation. Direct-argument terminal/workspace execution, dedicated-user live network carry, durable capability uptake, and completed single-root service migration remain open. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, and regenerative Soul; qualified reasoning vocabulary | Consequence-earned discrimination transfers to newly named compositions; returned support becomes a durable developmental episode; that episode changes later possibility formation; one exact persisted partial opening can form a provenance-bearing Soul undertaking; and injured expressed Soul can form and complete its own repair RNA. Broader skill transfer, NACE, and qualified PLN/NAL consumers remain absent. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
 | Hot self-upgrade and rollback | A | control specification; historical workshop candidates outside clean room | No general active isolated build, activation, compatibility, rollback path exists. |
@@ -2265,6 +2265,36 @@ Already carried:
   free `semantic-reading-held / credential-unavailable` stage, checkpointed,
   and cold-restored once without replay. The old live release's precise hold
   remains unknown; no behavioral explanation was manufactured for it.
+- The first executable Open Growth limb now carries one informational web
+  operation through the same constitutive joint: Mattermost-shaped contact,
+  complete M24--M26.3 formation, Soul-grounded semantic inquiry, a contributed
+  exact-operation proposal, native movement construction, proof-bound GET/HEAD
+  request, durable claim-before-transmission, bounded untrusted return contact,
+  complete affected reformation, and VoiceRNA audit. Prolog neither chooses the
+  URL nor interprets returned bytes; GLM-shaped readings remain unresolved
+  participants. The invalidation boundary is the exact source contact,
+  movement reference, operation, limit envelope, observation bytes, or returned
+  consequence; its dirtiness closure is the request descriptor, returned tool
+  participant, capability-result possibility, affected constitutive encounter,
+  and expression candidate. Every other exact organization remains unchanged.
+  Direct native validators reject POST, expression-valued URLs, missing native
+  proof, and malformed returned evidence. A single shared-carrier proof formed
+  three complete constitutive organizations and reached
+  `assistant-processed-v3 / assistant-contact-incorporated /
+  assistant-dialogue-model-participation-v1` in 15.04 seconds, using zero real
+  model calls and zero effects. The proof used synthetic model and HTTP
+  observations, so provider and live network time, returned-contact checkpoint
+  growth, failure/revision carry, and history-growth slope remain unmeasured and
+  may not be inferred from it. A prior diagnostic accidentally reconstructed
+  the complete encounter once per printed field and exceeded two minutes; it
+  was terminated, not admitted, and replaced with the one shared carrier.
+  Through `bin/miter`, current source cold-started in 1.3 seconds, verified its
+  LKG, waited, stopped, and restarted without replay. Across a twenty-second
+  warm idle interval its PeTTa child used 0.62 CPU-seconds and grew from 78,720
+  to 79,344 KiB RSS; this cut created no checkpoint, model call, or effect. The
+  concurrently installed superseded release remained at roughly 1 GiB RSS and
+  26--44% of one core; it is an unchanged legacy baseline that keeps the final
+  single-root migration and same-state live proportionality limb open.
 
 Next movement:
 
@@ -2280,10 +2310,11 @@ Next movement:
    human authority retained only at genuine relational or difficult-to-reverse
    boundaries. The first integrated cut now carries the configured field and
    actual runtime-user/workspace standing through the live contact organization.
-   Dedicated `claritymiter` identity is achieved; the remaining exact standing
-   is `held-request-broker-unimplemented` until executable typed requests exist.
-   Next, implement the direct-argument/web request broker and return its
-   observations as contact through this same organism;
+   Dedicated `claritymiter` identity is achieved. Proof-bound informational
+   GET/HEAD execution and returned-contact reformation now exist; live transport
+   through that identity remains unmeasured. Next, carry this web path through
+   the installed dedicated runtime, then add direct-argument terminal and
+   versioned-workspace operations through the same proof/claim/return joint;
 4. recover the three remaining capability families through this same organism:
    VAD as a bounded non-diagnostic language participant; qualified,
    consequence-sensitive NACE/NAL/PLN reasoning; and isolated self-extension

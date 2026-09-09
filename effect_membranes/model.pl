@@ -269,9 +269,10 @@ as_model_c4_memory_candidate(
     as_sha256(BodyHash,_),as_sha256(SnapshotHash,_).
 
 as_model_c4_semantic_reading(
-    ['c4-semantic-reading-v1',Id,Understanding,ResponsePurpose,
+    ['c4-semantic-reading-v2',Id,Understanding,ResponsePurpose,
       ['fact9-roles',Fact9Roles],['flourishing-values',Flourishings],
       ['continuity-requirement',ContinuityRequirement],Counterfactual,
+      CapabilityProposal,
       'model-proposal-only']) :-
     as_symbol(Id,_), as_model_bounded_text(Understanding,1,1200),
     as_model_bounded_text(ResponsePurpose,1,900),
@@ -281,7 +282,21 @@ as_model_c4_semantic_reading(
     maplist(as_flourishing,Flourishings), sort(Flourishings,Flourishings),
     memberchk(ContinuityRequirement,
       ['not-material','candidate-content-needed','uncertain']),
-    as_model_bounded_text(Counterfactual,1,1200).
+    as_model_bounded_text(Counterfactual,1,1200),
+    as_model_c4_capability_proposal(CapabilityProposal).
+
+as_model_c4_capability_proposal(
+    ['capability-proposal-v1','not-material',"",none]).
+as_model_c4_capability_proposal(
+    ['capability-proposal-v1',uncertain,Purpose,none]) :-
+    as_model_bounded_text(Purpose,1,400).
+as_model_c4_capability_proposal(
+    ['capability-proposal-v1',proposed,Purpose,
+      ['informational-http-v1',Method,Url]]) :-
+    as_model_bounded_text(Purpose,1,400),memberchk(Method,[get,head]),
+    as_model_bounded_text(Url,10,4096),
+    re_match("^https?://[^[:space:]]+$",Url),\+ sub_string(Url,_,_,_,'@'),
+    \+ re_match('(?i)(api[_-]?key|access[_-]?token|token|password|secret|signature|authorization|auth)=',Url).
 
 as_model_question_carrier(
     ['c4-voice-render-question-v1',QuestionRef,Scope,
@@ -314,14 +329,39 @@ as_model_question_carrier(
 as_model_c4_voice_commitments(
     ['voice-commitments','source-bound','scope-bound','movement-bound',
       Disclosure,'relational-not-fixed-style',
-      'no-unsupported-internal-state-claim',PrivateContext,RevisionContext]) :-
+      'no-unsupported-internal-state-claim',PrivateContext,CapabilityContext,
+      RevisionContext]) :-
     memberchk(Disclosure,
       ['disclosure-current-contact-only',
        'disclosure-current-contact-and-scoped-continuity']),
     as_model_c4_private_context(PrivateContext,Entries),
+    as_model_c4_capability_context(CapabilityContext,_),
     as_model_c4_voice_revision_context(RevisionContext),
     ( Entries==[] -> Disclosure=='disclosure-current-contact-only'
     ; Disclosure=='disclosure-current-contact-and-scoped-continuity' ).
+
+as_model_c4_capability_context(
+    ['capability-contact-context-v1',['request-id',RequestId],
+      ['source-movement',MovementReference],['native-purpose',Purpose],
+      ['exact-operation',['informational-http-v1',Method,Url]],
+      ['resource','open-http-https'],['transport',Transport],
+      ['http-status',HttpStatus],['body',BodyHash,Body],
+      ['elapsed-milliseconds',Elapsed],['failure',Failure],
+      'untrusted-returned-contact-no-authority'],RequestId) :-
+    as_symbol(RequestId,_),ground(MovementReference),
+    as_model_bounded_text(Purpose,1,400),memberchk(Method,[get,head]),
+    as_model_bounded_text(Url,10,4096),
+    re_match('^https?://[^[:space:]]+$',Url),\+ sub_string(Url,_,_,_,'@'),
+    \+ re_match('(?i)(api[_-]?key|access[_-]?token|token|password|secret|signature|authorization|auth)=',Url),
+    memberchk(Transport,[eof,truncated,deadline,failed]),
+    ( integer(HttpStatus),HttpStatus>=100,HttpStatus=<599
+    ; HttpStatus==unknown ),
+    as_sha256(BodyHash,_),as_model_bounded_text(Body,0,32768),
+    crypto_data_hash(Body,BodyHash,[algorithm(sha256),encoding(utf8)]),
+    integer(Elapsed),Elapsed>=0,as_symbol(Failure,_).
+as_model_c4_capability_context(
+    ['capability-contact-context-v1','no-capability-request',
+      'no-returned-capability-contact'],none).
 
 as_model_c4_voice_revision_context(
     ['voice-revision-context','initial-no-prior-defect']).
@@ -901,9 +941,18 @@ as_model_local_response_schema('c4-contact-semantic-question-v1',
       "CognitiveResilience","ConnectionDepth","CreativeTranscendence",
       "PurposeBeyondUtility","SharedUnderstanding","TimeCoherence",
       "WonderPreservation"]},
+    CapabilityProposal=_{type:"object",additionalProperties:false,
+      required:["standing","purpose","kind","method","url"],
+      properties:_{standing:_{type:"string",enum:["not-material","proposed",
+          "uncertain"]},
+        purpose:_{type:"string",maxLength:400},
+        kind:_{type:"string",enum:["none","informational-http"]},
+        method:_{type:"string",enum:["none","get","head"]},
+        url:_{type:"string",maxLength:4096}}},
     Reading=_{type:"object",additionalProperties:false,
       required:["understanding","response_purpose","fact9_roles",
-        "flourishing_values","continuity_requirement","counterfactual"],
+        "flourishing_values","continuity_requirement","counterfactual",
+        "capability_proposal"],
       properties:_{understanding:_{type:"string",minLength:1,maxLength:300},
         response_purpose:_{type:"string",minLength:1,maxLength:240},
         fact9_roles:_{type:"array",minItems:1,uniqueItems:true,items:FactRole},
@@ -911,7 +960,8 @@ as_model_local_response_schema('c4-contact-semantic-question-v1',
           items:Flourishing},
         continuity_requirement:_{type:"string",enum:["not-material",
           "candidate-content-needed","uncertain"]},
-        counterfactual:_{type:"string",minLength:1,maxLength:300}}},
+        counterfactual:_{type:"string",minLength:1,maxLength:300},
+        capability_proposal:CapabilityProposal}},
     Schema=_{type:"object",additionalProperties:false,
       required:["readings","uncertainty"],
       properties:_{readings:_{type:"array",minItems:2,maxItems:2,
@@ -1023,12 +1073,26 @@ as_model_public_question(
 
 as_model_public_c4_voice_commitments(
     ['voice-commitments',SourceBound,ScopeBound,MovementBound,Disclosure,
-      Relational,InternalClaim,PrivateContext,RevisionContext],
+      Relational,InternalClaim,PrivateContext,CapabilityContext,
+      RevisionContext],
     ['voice-commitments',SourceBound,ScopeBound,MovementBound,Disclosure,
       Relational,InternalClaim,
-      PublicContext,RevisionContext]) :-
+      PublicContext,PublicCapabilityContext,RevisionContext]) :-
     as_model_c4_private_context(PrivateContext,_),
-    as_model_public_c4_continuity_context(PrivateContext,PublicContext).
+    as_model_public_c4_continuity_context(PrivateContext,PublicContext),
+    as_model_public_c4_capability_context(CapabilityContext,
+      PublicCapabilityContext).
+
+as_model_public_c4_capability_context(
+    ['capability-contact-context-v1',['request-id',RequestId],_,Purpose,
+      Operation,Resource,Transport,HttpStatus,Body,Elapsed,Failure,Standing],
+    ['capability-contact-context-v1',['request-id',RequestId],
+      ['source-movement',['current-native-movement',
+        'local-proof-reference-withheld']],Purpose,Operation,Resource,Transport,
+      HttpStatus,Body,Elapsed,Failure,Standing]) :- !.
+as_model_public_c4_capability_context(Context,Context) :-
+    Context==['capability-contact-context-v1','no-capability-request',
+      'no-returned-capability-contact'].
 
 as_model_public_c4_continuity_context(
     ['private-continuity-context',Entries,
@@ -1448,13 +1512,14 @@ as_model_c4_semantic_result(Result,Question,Readings) :-
     sort(Ids,Unique), same_length(Ids,Unique).
 
 as_model_c4_semantic_row(Question,Row,
-    ['c4-semantic-reading-v1',Id,Understanding,ResponsePurpose,
+    ['c4-semantic-reading-v2',Id,Understanding,ResponsePurpose,
       ['fact9-roles',Fact9Roles],['flourishing-values',Flourishings],
       ['continuity-requirement',ContinuityRequirement],Counterfactual,
+      CapabilityProposal,
       'model-proposal-only']) :-
     is_dict(Row), as_model_exact_keys(Row,
-      [continuity_requirement,counterfactual,fact9_roles,flourishing_values,
-        response_purpose,understanding]),
+      [capability_proposal,continuity_requirement,counterfactual,fact9_roles,
+        flourishing_values,response_purpose,understanding]),
     get_dict(understanding,Row,Understanding),
     as_model_bounded_text(Understanding,1,300),
     get_dict(response_purpose,Row,ResponsePurpose),
@@ -1477,12 +1542,37 @@ as_model_c4_semantic_row(Question,Row,
     as_model_string_atom(ContinuityString,ContinuityRequirement),
     memberchk(ContinuityRequirement,
       ['not-material','candidate-content-needed','uncertain']),
+    get_dict(capability_proposal,Row,CapabilityValue),
+    as_model_c4_capability_proposal_json(CapabilityValue,CapabilityProposal),
     with_output_to(string(Canonical),json_write_dict(current_output,Row,
       [width(0)])),
     crypto_data_hash(Canonical,Hash,[algorithm(sha256),encoding(utf8)]),
     sub_atom(Hash,0,24,_,Prefix), atom_concat('dialogue-reading-',Prefix,Id).
 
-as_model_c4_reading_id(['c4-semantic-reading-v1',Id|_],Id).
+as_model_c4_reading_id(['c4-semantic-reading-v2',Id|_],Id).
+
+as_model_c4_capability_proposal_json(Row,
+    ['capability-proposal-v1','not-material',"",none]) :-
+    is_dict(Row),as_model_exact_keys(Row,[kind,method,purpose,standing,url]),
+    Row.standing=="not-material",Row.purpose=="",Row.kind=="none",
+    Row.method=="none",Row.url=="",!.
+as_model_c4_capability_proposal_json(Row,
+    ['capability-proposal-v1',uncertain,Purpose,none]) :-
+    is_dict(Row),as_model_exact_keys(Row,[kind,method,purpose,standing,url]),
+    Row.standing=="uncertain",get_dict(purpose,Row,Purpose),
+    as_model_bounded_text(Purpose,1,400),Row.kind=="none",
+    Row.method=="none",Row.url=="",!.
+as_model_c4_capability_proposal_json(Row,
+    ['capability-proposal-v1',proposed,Purpose,
+      ['informational-http-v1',Method,Url]]) :-
+    is_dict(Row),as_model_exact_keys(Row,[kind,method,purpose,standing,url]),
+    Row.standing=="proposed",get_dict(purpose,Row,Purpose),
+    as_model_bounded_text(Purpose,1,400),Row.kind=="informational-http",
+    get_dict(method,Row,MethodString),as_model_string_atom(MethodString,Method),
+    memberchk(Method,[get,head]),get_dict(url,Row,Url),
+    as_model_bounded_text(Url,10,4096),
+    re_match("^https?://[^[:space:]]+$",Url),\+ sub_string(Url,_,_,_,'@'),
+    \+ re_match('(?i)(api[_-]?key|access[_-]?token|token|password|secret|signature|authorization|auth)=',Url).
 
 as_model_c4_question_fact_roles(
     ['c4-contact-semantic-question-v1',_,_,_,_,_,
@@ -1549,6 +1639,7 @@ as_model_c4_voice_binding_ids(
       ['semantic-readings',Readings],_,Commitments|_],Profile,Ids) :-
     maplist(as_model_c4_reading_id,Readings,ReadingIds),
     nth0(7,Commitments,PrivateContext),
+    nth0(8,Commitments,CapabilityContext),
     as_model_c4_private_context(PrivateContext,Entries),
     ( as_dict_atom(Profile,kind,remote) ->
         include(as_model_remote_memory_entry_safe,Entries,BindableEntries)
@@ -1556,7 +1647,10 @@ as_model_c4_voice_binding_ids(
     findall(MemoryId,
       member(['c4-private-memory-evidence-v1',MemoryId|_],BindableEntries),
       MemoryIds),
-    append(ReadingIds,MemoryIds,Ids).
+    as_model_c4_capability_context(CapabilityContext,CapabilityId),
+    ( CapabilityId==none -> CapabilityIds=[]
+    ; CapabilityIds=[CapabilityId] ),
+    append(ReadingIds,MemoryIds,BaseIds),append(BaseIds,CapabilityIds,Ids).
 
 as_model_string_atom(String,Atom) :-
     string(String), string_length(String,Length), Length>=1, Length=<256,

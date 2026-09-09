@@ -10,7 +10,7 @@
 !(import_prolog_functions_from_file "./effect_membranes/model.pl"
   (as_model as_model_direction))
 !(import_prolog_functions_from_file "./effect_membranes/capability_environment.pl"
-  (as_capability_environment))
+  (as_capability_environment as_capability_request))
 ; The functions remain MeTTa-owned cognitive reductions. This pinned runtime
 ; extension only schedules independent alternatives concurrently and returns
 ; them in their original order; it has no selection or semantic authority.
@@ -33,6 +33,11 @@
 !(import! &self "./src/scope_continuity.metta")
 !(import! &self "./src/semantic_participation.metta")
 !(import! &self "./src/assistant_reactor_foundation.metta")
+; Capability possibility constructors must be known before the provisional
+; dynamics compile inside authority_inheritance.  Otherwise PeTTa correctly
+; preserves their names as inert atoms rather than silently treating them as
+; executable cognition.
+!(import! &self "./src/capability_environment.metta")
 !(import! &self "./src/authority_inheritance.metta")
 !(import! &self "./src/constitutive_authority_joint.metta")
 !(import! &self "./src/assistant_reactor_authority.metta")
