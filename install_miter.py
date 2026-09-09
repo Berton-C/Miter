@@ -421,7 +421,8 @@ def install_services(config: dict, *, reuse: bool) -> str:
             os.chown(marker, operator_account.pw_uid, operator_account.pw_gid)
     docker = command_path("docker")
     run([docker, "compose", "--project-name", deployment["docker_project"],
-         "--file", str(compose), "up", "--detach"], user=operator)
+         "--file", str(compose), "up", "--detach"], user=operator,
+        cwd="/private/tmp")
     deadline = time.monotonic() + 180
     while time.monotonic() < deadline:
         if endpoint_available(mattermost) and endpoint_available(chroma):
@@ -438,14 +439,21 @@ def ensure_workshop_image(config: dict) -> str:
         raise InstallError("Workshop image identity differs across configuration surfaces")
     docker = command_path("docker")
     operator = invoking_user(deployment["runtime_user"])
-    inspect = run([docker, "image", "inspect", image], check=False, user=operator)
+    inspect = run([docker, "image", "inspect", image], check=False,
+                  user=operator, cwd="/private/tmp")
     if inspect.returncode != 0:
-        run([docker, "pull", image], user=operator)
+        run([docker, "pull", image], user=operator, cwd="/private/tmp")
         inspect = run([docker, "image", "inspect", image], check=False,
-                      user=operator)
+                      user=operator, cwd="/private/tmp")
     if inspect.returncode != 0:
         raise InstallError("Exact workshop runner image is unavailable after acquisition")
-    return "exact-digest-present"
+    runtime_inspect = run([docker, "image", "inspect", image], check=False,
+                          user=deployment["runtime_user"], cwd="/private/tmp")
+    if runtime_inspect.returncode != 0:
+        raise InstallError(
+            "The dedicated runtime identity cannot reach the exact workshop runner image"
+        )
+    return "exact-digest-present-and-runtime-readable"
 
 
 def preflight_services(config: dict, *, reuse: bool) -> None:

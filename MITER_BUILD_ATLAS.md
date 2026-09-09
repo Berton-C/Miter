@@ -2548,6 +2548,23 @@ Already carried:
   workshop trial and live restart/latency observation remain open; these are
   the exact remaining item-5 closure limbs.
 
+- The one-root installer now treats workshop reachability by the dedicated
+  runtime identity as a pre-migration prerequisite. Service and image
+  operations run from the neutral `/private/tmp` boundary, the invoking
+  operator may acquire the exact digest-pinned image, and `claritymiter` must
+  independently inspect that same image before installation can touch durable
+  continuity. The prior installer only established operator-side image
+  presence and could therefore install a runtime whose hot-workshop transport
+  was unusable. With an empty Docker client home, the exact operator-side
+  inspection completed in 0.01 seconds and returned the pinned image object;
+  the socket is owned by `bcb:staff`, `claritymiter` is a `staff` member, and
+  the remaining runtime-identity execution is deliberately left to the
+  privileged one-root installation. This packaging-only guard performs zero
+  model calls and zero constitutive formations, changes no checkpoint or
+  semantic dependency, and leaves no Miter or disposable workshop process.
+  The exact next bottleneck remains the latest-runtime migration followed by a
+  real installed-identity stage/trial/activate/invoke/rollback cycle.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
