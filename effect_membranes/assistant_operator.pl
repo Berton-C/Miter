@@ -56,7 +56,9 @@ as_lkg_relative_paths([
   'effect_membranes/chroma.pl',
   'effect_membranes/mattermost.pl',
   'effect_membranes/capability_environment.pl',
+  'effect_membranes/process.pl',
   'effect_membranes/workshop.pl',
+  'effect_membranes/workshop_broker.pl',
   'effect_membranes/vad.pl',
   'config/constitutive-projection.json','config/miter.json','config/continuity.json'
 ]).
@@ -133,7 +135,9 @@ as_lkg_required_paths([
   'effect_membranes/model.pl','effect_membranes/chroma.pl',
   'effect_membranes/mattermost.pl',
   'effect_membranes/capability_environment.pl',
+  'effect_membranes/process.pl',
   'effect_membranes/workshop.pl',
+  'effect_membranes/workshop_broker.pl',
   'effect_membranes/runtime_extensions/petta_parallel.pl',
   'effect_membranes/runtime_extensions/store_posix.c'
 ]).

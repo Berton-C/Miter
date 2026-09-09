@@ -4,6 +4,7 @@
 
 :- ensure_loaded('store.pl').
 :- ensure_loaded('workshop.pl').
+:- ensure_loaded('process.pl').
 :- use_module(library(crypto)).
 :- use_module(library(filesex)).
 :- use_module(library(http/http_open)).
@@ -462,79 +463,8 @@ ce_http_failure(Error,failed,unknown,"",Class) :-
 % native movement; this code only observes the exact vector it receives.
 ce_process_observe(Executable,Arguments,Directory,Deadline,MaximumBytes,
     Transport,ExitCode,Stdout,Stderr,Failure) :-
-    directory_file_path(Directory,'.miter-tmp',Temporary),
-    make_directory_path(Temporary),chmod(Temporary,0o700),
-    atom_string(Directory,Home),atom_string(Temporary,Tmp),
-    Environment=['HOME'=Home,'TMPDIR'=Tmp,
-      'PATH'='/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin',
-      'LANG'='en_US.UTF-8','LC_ALL'='en_US.UTF-8'],
-    message_queue_create(Queue),
-    setup_call_cleanup(
-      process_create(Executable,Arguments,
-        [cwd(Directory),stdin(null),stdout(pipe(Out)),stderr(pipe(Err)),
-         process(Pid),environment(Environment)]),
-      ce_process_collect(Pid,Out,Err,Deadline,MaximumBytes,Queue,
-        Transport,ExitCode,Stdout,Stderr,Failure),
-      ce_process_cleanup(Pid,Out,Err,Queue)).
-
-ce_process_collect(Pid,Out,Err,Deadline,MaximumBytes,Queue,Transport,
-    ExitCode,Stdout,Stderr,Failure) :-
-    ReadLimit is MaximumBytes+1,
-    thread_create(ce_process_read(Out,ReadLimit,Queue,stdout),OutThread,[]),
-    thread_create(ce_process_read(Err,ReadLimit,Queue,stderr),ErrThread,[]),
-    ce_process_wait_deadline(Pid,Deadline,Status),
-    thread_get_message(Queue,stream(stdout,Stdout0,OutTruncated)),
-    thread_get_message(Queue,stream(stderr,Stderr0,ErrTruncated)),
-    thread_join(OutThread,_),thread_join(ErrThread,_),
-    ce_process_status(Status,OutTruncated,ErrTruncated,Transport,ExitCode,
-      Failure),
-    ce_truncate_text(Stdout0,MaximumBytes,Stdout),
-    ce_truncate_text(Stderr0,MaximumBytes,Stderr).
-
-ce_process_read(Stream,Limit,Queue,Kind) :-
-    catch(read_string(Stream,Limit,Text),_,Text=""),
-    string_length(Text,Length),(Length>=Limit->Truncated=true;Truncated=false),
-    catch(close(Stream),_,true),
-    thread_send_message(Queue,stream(Kind,Text,Truncated)).
-
-ce_process_wait_deadline(Pid,Deadline,Status) :-
-    get_time(Start),End is Start+Deadline,
-    ce_process_wait_until(Pid,End,Status).
-
-ce_process_wait_until(Pid,End,Status) :-
-    catch(process_wait(Pid,Observed,[timeout(0)]),_,Observed=timeout),
-    ( Observed\==timeout -> Status=Observed
-    ; get_time(Now),Now>=End ->
-        catch(process_kill(Pid,term),_,true),
-        sleep(0.2),
-        catch(process_wait(Pid,AfterTerm,[timeout(0)]),_,AfterTerm=timeout),
-        ( AfterTerm==timeout ->
-            catch(process_kill(Pid,kill),_,true),
-            catch(process_wait(Pid,_,[]),_,true)
-        ; true ),
-        Status=deadline_exceeded
-    ; sleep(0.02),ce_process_wait_until(Pid,End,Status) ).
-
-ce_process_status(deadline_exceeded,_,_,deadline,unknown,
-    deadline-exceeded) :- !.
-ce_process_status(exit(Code),true,_,truncated,Code,output-truncated) :- !.
-ce_process_status(exit(Code),_,true,truncated,Code,output-truncated) :- !.
-ce_process_status(exit(0),false,false,eof,0,none) :- !.
-ce_process_status(exit(Code),false,false,failed,Code,nonzero-exit) :- !.
-ce_process_status(killed(Signal),_,_,failed,killed,Signal) :- !.
-ce_process_status(_,_,_,failed,unknown,process-status-unavailable).
-
-ce_process_cleanup(Pid,Out,Err,Queue) :-
-    catch(close(Out,[force(true)]),_,true),
-    catch(close(Err,[force(true)]),_,true),
-    catch(process_wait(Pid,Observed,[timeout(0)]),_,Observed=finished),
-    ( Observed==timeout -> catch(process_kill(Pid,kill),_,true) ; true ),
-    catch(message_queue_destroy(Queue),_,true).
-
-ce_truncate_text(Text,Maximum,Truncated) :-
-    string_length(Text,Length),
-    ( Length=<Maximum -> Truncated=Text
-    ; sub_string(Text,0,Maximum,_,Truncated) ).
+    miter_process_observe(Executable,Arguments,Directory,Deadline,MaximumBytes,
+      Transport,ExitCode,Stdout,Stderr,Failure).
 
 ce_workspace_directory(Root,Relative,Path) :-
     directory_file_path(Root,workspace,Workspace),
@@ -836,7 +766,7 @@ ce_config_valid(Config) :-
 ce_workshop_config_valid(Workshop) :-
     is_dict(Workshop),
     ce_exact_keys(Workshop,
-      [cpus,image,memory_megabytes,network,operator_notes,pids_limit,
+      [broker,cpus,image,memory_megabytes,network,operator_notes,pids_limit,
         platform,root_filesystem,runner]),
     Workshop.runner=="docker-isolated-v1",
     Workshop.platform=="linux/arm64",Workshop.network=="none",
@@ -846,6 +776,16 @@ ce_workshop_config_valid(Workshop) :-
     number(Workshop.cpus),Workshop.cpus>0,Workshop.cpus=<2,
     integer(Workshop.pids_limit),Workshop.pids_limit>=8,
     Workshop.pids_limit=<128,
+    is_dict(Workshop.broker),
+    ce_exact_keys(Workshop.broker,
+      [credential_reference,maximum_request_bytes,origin,schema]),
+    Workshop.broker.schema=="miter-workshop-broker-client-v1",
+    Workshop.broker.origin=="http://127.0.0.1:17891",
+    Workshop.broker.maximum_request_bytes=:=4194304,
+    is_dict(Workshop.broker.credential_reference),
+    ce_exact_keys(Workshop.broker.credential_reference,[path,source]),
+    Workshop.broker.credential_reference.source=="private-runtime-file",
+    string(Workshop.broker.credential_reference.path),
     string(Workshop.image),string_length(Workshop.image,ImageLength),
     ImageLength>=72,ImageLength=<512,
     re_match('^[A-Za-z0-9][A-Za-z0-9._/-]*(:[A-Za-z0-9._-]+)?@sha256:[a-f0-9]{64}$',

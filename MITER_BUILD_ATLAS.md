@@ -177,7 +177,7 @@ consumer is absent. No status is upgraded by assertion.
 | Open growth environment | P | `capability_environment.metta`, `declarative_capability.metta`, `executable_extension.metta`, mechanical environment/workshop observers, proof-bound HTTP/direct-argv/workspace brokers, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path receives a source-qualified native participant stating the configured web/terminal/workspace/workshop field, actual process identity, genuine human-authority boundaries, and current availability. Exact informational HTTP, direct-argument process, versioned workspace, declarative module, and executable workshop operations can become descriptors only through their complete source-contact/source-movement/R/A/P/Fact9/flourishing proof. The executable workshop now isolates exact source in Git worktrees, uses independent digest-pinned no-network container trials, checks interface/state compatibility, hot-activates at a serialized cut, invokes the exact active version, and restores its predecessor across restart. Prolog durably claims operations, performs mechanics, and returns bounded untrusted contact without assigning meaning or choosing a successor. Wrong identity, malformed proof, constructed URL, incompatible interface/state, unsupported authority, or malformed returned evidence remains unresolved. Installed-identity transport, state migration, newly earned effect authority, broad held-out skill transfer, and completed single-root migration remain open. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, regenerative Soul, `qualified_reasoning.metta`, and `qualified_transfer.metta` | NACE records the exact expectation before returned consequence, preserves the full typed outcome family, and admits only independent returned evidence to the pinned NARS/NAL revision closure. A separately namespaced PLN modus-ponens closure now combines that earned contextual efficacy only with a later, independent developmental-transfer premise; both support and contradiction remain exact non-authoritative participants, while only material support can form a fresh non-certifying M25 inquiry. The qualified product is persisted once at consequence time and survives restart rather than rebuilding a growing NACE×transfer cross-product on every contact. Correlated repetition is held and ambiguous/delayed outcomes remain pending rather than negative. Broader held-out skill transfer remains open; decorative PLN import is prohibited. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
-| Hot self-upgrade and rollback | P | `declarative_capability.metta`, `executable_extension.metta`, `workshop.pl`, native workshop history, checkpoint restore | Declarative MeTTa modules and one bounded executable extension class now enter as provenance-bearing unresolved participants, require the complete Fact9/flourishing/M24–M26.3/single-R/A/P encounter, and remain distinct from independent trial, activation, invocation, returned consequence, replacement, and rollback. The executable class uses isolated Git worktrees, exact file hashes, a versioned interface, explicit state standing, two or more independent digest-pinned no-network container trials, an atomic active registry, durable prepared transitions, exact predecessor rollback, restart continuity, and no blind invocation replay. Malformed, authority-bearing, interface-changing, or unproven-migration carriers remain unresolved or held. This does not yet establish general skill acquisition, state migration, newly earned effect authority, installed-identity Docker access, or rollback of Miter's application release. |
+| Hot self-upgrade and rollback | P | `declarative_capability.metta`, `executable_extension.metta`, `workshop.pl`, `workshop_broker.pl`, native workshop history, checkpoint restore | Declarative MeTTa modules and one bounded executable extension class now enter as provenance-bearing unresolved participants, require the complete Fact9/flourishing/M24–M26.3/single-R/A/P encounter, and remain distinct from independent trial, activation, invocation, returned consequence, replacement, and rollback. The executable class uses isolated Git worktrees, exact file hashes, a versioned interface, explicit state standing, two or more independent digest-pinned no-network container trials, an atomic active registry, durable prepared transitions, exact predecessor rollback, restart continuity, and no blind invocation replay. The dedicated runtime holds no Docker socket; an operator-owned, token-authenticated Prolog broker reconstructs the one exact container envelope from a closed request. Malformed, authority-bearing, interface-changing, unproven-migration, unauthenticated, or field-injected carriers remain unresolved or held. This does not yet establish general skill acquisition, state migration, newly earned effect authority, installed-identity broker transport, or rollback of Miter's application release. |
 | Full Continuity of Mind | P | native checkpoint capsules, scoped Chroma projection, native memory participation, and bounded selected-model rendering | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. A provider-derived continuity requirement may participate only as unresolved material; native formation determines whether exact scope/capsule/hash-verified memory is material. The current human resource direction remains authoritative only over transport selection: GLM is the installed default, local models are explicit alternatives, and continuity cannot silently switch resources. Under the ratified disclosure grant, ordinary conversation, continuity, project, and personal context may reach GLM while credentials, authentication material, and concrete security-risk content remain excluded. Live story recall, correction, restart, and later-use evidence remain required. |
 
 ## 6. Four additive stages
@@ -2548,22 +2548,40 @@ Already carried:
   workshop trial and live restart/latency observation remain open; these are
   the exact remaining item-5 closure limbs.
 
-- The one-root installer now treats workshop reachability by the dedicated
-  runtime identity as a pre-migration prerequisite. Service and image
-  operations run from the neutral `/private/tmp` boundary, the invoking
-  operator may acquire the exact digest-pinned image, and `claritymiter` must
-  independently inspect that same image before installation can touch durable
-  continuity. The prior installer only established operator-side image
-  presence and could therefore install a runtime whose hot-workshop transport
-  was unusable. With an empty Docker client home, the exact operator-side
-  inspection completed in 0.01 seconds and returned the pinned image object;
-  the socket is owned by `bcb:staff`, `claritymiter` is a `staff` member, and
-  the remaining runtime-identity execution is deliberately left to the
-  privileged one-root installation. This packaging-only guard performs zero
-  model calls and zero constitutive formations, changes no checkpoint or
-  semantic dependency, and leaves no Miter or disposable workshop process.
-  The exact next bottleneck remains the latest-runtime migration followed by a
-  real installed-identity stage/trial/activate/invoke/rollback cycle.
+- The direct Docker-identity prerequisite exposed an incorrect authority
+  topology and has been replaced before continuity migration. Giving
+  `claritymiter` the Docker socket would give every process under the cognitive
+  identity general administration over unrelated containers, volumes,
+  networks, and host bind mounts. The installer now acquires the exact pinned
+  image through the signed-in Docker-owning operator and provisions a
+  separately owned, token-authenticated Prolog broker under the same Miter
+  installation root. The runtime receives only a mode-0600 bearer reference.
+  A closed broker request can carry the exact source bytes and hashes, direct
+  program/argument vector, deadline, and output bound; the broker reconstructs
+  the fixed no-network, read-only, capability-free, resource-bounded container
+  command. It accepts no Docker verb, image, mount, network, capability, or
+  arbitrary field from Miter.
+
+  The source-level path has crossed its bounded preliminary falsifiers. One
+  exact source file ran through `workshop.pl` and the broker in the
+  digest-pinned arm64 image and returned `broker-ok` with exit 0. A wrong
+  bearer and a request attempting to add `docker_arguments` both returned a
+  typed pre-Docker rejection. Restart orphan cleanup returned clean through the
+  same broker. Direct process observation now receives only its explicit
+  HOME/TMPDIR/PATH/locale environment, so inherited host variables cannot
+  redirect the Docker endpoint or leak into candidates. This change performs
+  no model call or constitutive formation and does not alter a checkpoint.
+  Broker cold start took 0.12 seconds; three warm complete client/broker/
+  container observations took 0.221, 0.187, and 0.188 seconds, within the prior
+  direct-workshop 2--899 millisecond envelope. A one-second candidate deadline
+  returned the exact structured deadline observation in 1.35 seconds and left
+  no labeled container, source export, or request directory. The semantic
+  invalidation boundary is transport only: manifest, candidate, trial,
+  activation, movement, R/A/P, Fact9, flourishing, and consequence terms are
+  unchanged.
+  Installed-identity transport and the full live
+  stage/trial/activate/invoke/rollback cycle remain to be proven after the
+  commit enables the clean-source installer.
 
 - The archive preflight exposed that macOS resolves the historical
   `/Users/claritymiter/miter` checkout and the proposed
@@ -2613,8 +2631,9 @@ Next movement:
 5. complete the one-distribution, one-root packaging cut: the finite Python
    installer fetches and verifies pinned PeTTa, validates the non-admin
    `claritymiter` identity, and derives application releases, dependencies,
-   private runtime, private immutable backups, services, and the CLI operator
-   beneath `/Users/claritymiter/Miter`. `start` owns one persistent
+   private runtime, private immutable backups, services, the narrow Prolog
+   workshop broker, and the CLI operator beneath `/Users/claritymiter/Miter`.
+   `claritymiter` receives no Docker-socket authority. `start` owns one persistent
    non-cognitive supervisor with bounded child recovery; no launchd or system
    application/operator path participates. Migrate the current temporary
    dedicated runtime into that root with exact checkpoint, continuity,

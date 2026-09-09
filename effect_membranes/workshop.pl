@@ -5,12 +5,16 @@
 % atomic active-version transitions and mechanical rollback.
 
 :- ensure_loaded('store.pl').
+:- use_module(library(base64)).
 :- use_module(library(crypto)).
 :- use_module(library(filesex)).
+:- use_module(library(http/http_client)).
+:- use_module(library(http/http_json)).
 :- use_module(library(lists)).
 :- use_module(library(pcre)).
 :- use_module(library(process)).
 :- use_module(library(readutil)).
+:- use_module(library(uuid)).
 
 miter_workshop_operation(Operation0,Operation,
     ['capability','executable-extension-workshop','no-credential',
@@ -477,32 +481,22 @@ mw_container_observe(Candidate,Manifest,Arguments,Deadline,
     Maximum,Transport,ExitCode,Stdout,Stderr,Failure) :-
     mw_runtime(Manifest,Candidate,Image,Program,_Prefix,_ManifestDeadline,
       _ManifestMaximum),
-    mw_workshop_configuration(Candidate,Image,Docker,Platform,Memory,Cpus,Pids),
-    current_prolog_flag(pid,Pid),get_time(Now),Stamp is round(Now*1000),
-    format(atom(Container),'miter-extension-~d-~d',[Pid,Stamp]),
-    atom_concat(Container,'-loader',Loader),
-    atom_concat(Container,'-source',Volume),
-    format(atom(MemoryArg),'~dm',[Memory]),format(atom(CpuArg),'~w',[Cpus]),
-    format(atom(PidsArg),'~d',[Pids]),
-    format(atom(SourceMount),
-      'type=volume,src=~w,dst=/workspace/extension,readonly',[Volume]),
-    append([
-      ['create','--name',Container,'--platform',Platform,
-       '--label','io.singularitynet.miter.workshop=true',
-       '--network','none','--read-only','--cap-drop','ALL','--security-opt',
-       'no-new-privileges','--memory',MemoryArg,'--cpus',CpuArg,
-       '--pids-limit',PidsArg,'--tmpfs','/tmp:rw,noexec,nosuid,size=16m',
-       '--tmpfs','/workspace/state:rw,noexec,nosuid,size=16m',
-       '--mount',SourceMount,'--workdir',
-       '/workspace/extension','--entrypoint',Program,Image],Arguments],DockerArgs),
-    mw_candidate_export(Candidate,Manifest,Container,Export),
+    mw_workshop_configuration(Candidate,Image,BrokerOrigin,TokenPath,
+      MaximumRequestBytes),
+    uuid(Uuid),atom_concat('extension-',Uuid,RequestId),
+    mw_candidate_export(Candidate,Manifest,RequestId,Export),
     setup_call_cleanup(true,
-      ( mw_prepare_source_volume(Docker,Export,Image,Platform,Loader,Volume,
-          Deadline,Maximum),
-        mw_container_lifecycle(Docker,DockerArgs,Container,Candidate,Deadline,
-          Maximum,Transport,ExitCode,Stdout,Stderr,Failure) ),
-      ( mw_remove_container_resources(Docker,Container,Loader,Volume,Candidate),
-        mw_remove_candidate_export(Export) )).
+      ( mw_broker_files(Export,Manifest,Files,TotalBytes),
+        TotalBytes=<MaximumRequestBytes,
+        mw_broker_token(TokenPath,Token),
+        maplist(atom_string,Arguments,ArgumentStrings),atom_string(Program,ProgramString),
+        Request=_{schema:"miter-workshop-broker-request-v1",
+          action:"container-observe",bearer:Token,request_id:RequestId,
+          program:ProgramString,arguments:ArgumentStrings,files:Files,
+          deadline_seconds:Deadline,maximum_output_bytes:Maximum},
+        mw_broker_post(BrokerOrigin,Request,Deadline,Reply),
+        mw_broker_reply(Reply,Transport,ExitCode,Stdout,Stderr,Failure) ),
+      mw_remove_candidate_export(Export)).
 
 % Export only the exact manifest-enumerated candidate bytes.  The Git control
 % file, workshop bookkeeping and unrelated runtime state never enter the
@@ -535,63 +529,54 @@ mw_remove_candidate_export(Export) :-
     catch((exists_directory(Export),\+ read_link(Export,_,_),
       delete_directory_and_contents(Export)),_,true).
 
-mw_prepare_source_volume(Docker,Export,Image,Platform,Loader,Volume,Deadline,
-    Maximum) :-
-    ce_process_observe(Docker,
-      ['volume','create','--label','io.singularitynet.miter.workshop=true',Volume],
-      Export,Deadline,Maximum,eof,0,_VolumeOut,_VolumeErr,none),
-    format(atom(SourceMount),'type=volume,src=~w,dst=/workspace/extension',
-      [Volume]),
-    ce_process_observe(Docker,
-      ['create','--name',Loader,'--platform',Platform,'--network','none',
-       '--label','io.singularitynet.miter.workshop=true',
-       '--cap-drop','ALL','--security-opt','no-new-privileges','--mount',
-       SourceMount,'--entrypoint','/bin/true',Image],Export,Deadline,Maximum,
-      eof,0,_LoaderOut,_LoaderErr,none),
-    atom_concat(Loader,':/workspace/extension',ContainerTarget),
-    atom_concat(Export,'/.',CandidateSource),
-    ce_process_observe(Docker,['cp',CandidateSource,ContainerTarget],Export,
-      Deadline,Maximum,eof,0,_CopyOut,_CopyErr,none),
-    mw_remove_container(Docker,Loader,Export).
-
-mw_container_lifecycle(Docker,CreateArguments,Container,Candidate,Deadline,
-    Maximum,Transport,ExitCode,Stdout,Stderr,Failure) :-
-    ce_process_observe(Docker,CreateArguments,Candidate,Deadline,Maximum,
-      CreateTransport,CreateExit,_CreateOut,CreateErr,CreateFailure),
-    ( CreateTransport==eof,CreateExit==0 ->
-        ce_process_observe(Docker,['start','--attach',Container],Candidate,
-          Deadline,Maximum,Transport,ExitCode,Stdout,Stderr,Failure)
-    ; Transport=failed,ExitCode=CreateExit,Stdout="",Stderr=CreateErr,
-      Failure=['container-create-failed',CreateFailure] ).
-
-mw_workshop_configuration(Candidate,Image,Docker,Platform,Memory,Cpus,Pids) :-
+mw_workshop_configuration(Candidate,Image,Origin,TokenPath,MaximumRequestBytes) :-
     mw_candidate_root(Candidate,Root),
+    mw_workshop_configuration_root(Root,Image,Origin,TokenPath,
+      MaximumRequestBytes).
+
+mw_workshop_configuration_root(Root,Image,Origin,TokenPath,MaximumRequestBytes) :-
     directory_file_path(Root,'growth-environment.json',ConfigPath),
     miter_store_read_json(ConfigPath,Config),Workshop=Config.workshop,
     Workshop.runner=="docker-isolated-v1",Workshop.network=="none",
     Workshop.root_filesystem=="read-only",
-    atom_string(Image,Workshop.image),atom_string(Platform,Workshop.platform),
-    Memory=Workshop.memory_megabytes,integer(Memory),Memory>=32,Memory=<1024,
-    Cpus=Workshop.cpus,number(Cpus),Cpus>0,Cpus=<2,
-    Pids=Workshop.pids_limit,integer(Pids),Pids>=8,Pids=<128,
-    mw_docker_executable(Docker).
+    atom_string(Image,Workshop.image),Broker=Workshop.broker,
+    atom_string(Origin,Broker.origin),atom_string(TokenPath,Broker.credential_reference.path),
+    MaximumRequestBytes=Broker.maximum_request_bytes,
+    exists_file(TokenPath),\+ read_link(TokenPath,_,_).
 
-mw_docker_executable('/Applications/Docker.app/Contents/Resources/bin/docker') :-
-    access_file('/Applications/Docker.app/Contents/Resources/bin/docker',execute),!.
-mw_docker_executable('/usr/local/bin/docker') :-
-    access_file('/usr/local/bin/docker',execute),!.
-mw_docker_executable('/opt/homebrew/bin/docker') :-
-    access_file('/opt/homebrew/bin/docker',execute).
+mw_broker_files(Export,Manifest,Files,TotalBytes) :-
+    nth0(5,Manifest,['source-files',SourceFiles]),
+    nth0(6,Manifest,['entrypoint',Entrypoint]),
+    maplist(mw_broker_file(Export,Entrypoint),SourceFiles,Files,Sizes),
+    sum_list(Sizes,TotalBytes).
 
-mw_remove_container(Docker,Container,Directory) :-
-    catch(ce_process_observe(Docker,['rm','--force',Container],Directory,10,4096,
-      _Transport,_Exit,_Out,_Err,_Failure),_,true).
+mw_broker_file(Export,Entrypoint,['extension-file',_,Relative,Hash],File,Size) :-
+    directory_file_path(Export,Relative,Path),
+    setup_call_cleanup(open(Path,read,In,[type(binary),encoding(octet)]),
+      read_stream_to_codes(In,Bytes),close(In)),
+    length(Bytes,Size),phrase(base64(Bytes),EncodedCodes),
+    string_codes(Encoded,EncodedCodes),atom_string(Relative,RelativeString),
+    atom_string(Hash,HashString),(Relative==Entrypoint->Executable=true;Executable=false),
+    File=_{schema:"miter-workshop-source-v1",path:RelativeString,
+      sha256:HashString,content_base64:Encoded,executable:Executable}.
 
-mw_remove_container_resources(Docker,Container,Loader,Volume,Directory) :-
-    mw_remove_container(Docker,Container,Directory),
-    mw_remove_container(Docker,Loader,Directory),
-    catch(ce_process_observe(Docker,['volume','rm','--force',Volume],Directory,
-      10,4096,_Transport,_Exit,_Out,_Err,_Failure),_,true).
+mw_broker_token(Path,Token) :-
+    setup_call_cleanup(open(Path,read,In,[encoding(octet)]),
+      read_string(In,4097,Raw),close(In)),
+    normalize_space(string(Token),Raw),string_length(Token,Length),
+    Length>=32,Length=<4096.
+
+mw_broker_post(Origin,Request,Deadline,Reply) :-
+    atom_concat(Origin,'/v1/observe',URL),Timeout is Deadline+10,
+    http_post(URL,json(Request),Reply,[json_object(dict),timeout(Timeout)]).
+
+mw_broker_reply(Reply,Transport,ExitCode,Stdout,Stderr,Failure) :-
+    is_dict(Reply),Reply.schema=="miter-workshop-broker-observation-v1",
+    atom_string(Transport,Reply.transport),
+    ( integer(Reply.exit_code) -> ExitCode=Reply.exit_code
+    ; atom_string(ExitCode,Reply.exit_code) ),
+    string(Reply.stdout),Stdout=Reply.stdout,string(Reply.stderr),Stderr=Reply.stderr,
+    term_string(Failure,Reply.failure,[quoted(true),ignore_ops(true)]).
 
 % A supervisor restart can follow a hard kill between container creation and
 % cleanup.  The exact Miter workshop label is the sole recovery selector; no
@@ -603,50 +588,36 @@ miter_workshop_cleanup_orphans(Root0,Result) :-
     ; Result=['workshop-orphan-recovery-v1',held,
         'docker-unavailable-or-recovery-failed'] ),!.
 
+miter_workshop_broker_status(Root0,Status) :-
+    ( catch((miter_store_nonempty_atom(Root0,Root),
+        mw_workshop_configuration_root(Root,_Image,Origin,TokenPath,_Maximum),
+        mw_broker_token(TokenPath,Token),
+        Request=_{schema:"miter-workshop-broker-request-v1",action:"probe",
+          bearer:Token,request_id:"runtime-status-probe"},
+        atom_concat(Origin,'/v1/observe',URL),
+        http_post(URL,json(Request),Reply,[json_object(dict),timeout(0.5)]),
+        Reply.schema=="miter-workshop-broker-observation-v1",
+        Reply.standing=="ready",Reply.failure=="none"),_,fail) ->
+        Standing="ready"
+    ; Standing="unavailable" ),
+    Status=_{standing:Standing,
+      authority_boundary:"mechanical-workshop-observation-only"},!.
+
 mw_cleanup_orphans_checked(Root0,
     ['workshop-orphan-recovery-v1',Standing,
       ['removed-containers',ContainerCount],['removed-volumes',VolumeCount]]) :-
     miter_store_nonempty_atom(Root0,Root),is_absolute_file_name(Root),
     exists_directory(Root),directory_file_path(Root,workspace,Workspace),
-    exists_directory(Workspace),mw_docker_executable(Docker),
-    mw_labeled_docker_objects(Docker,Workspace,containers,Containers),
-    mw_labeled_docker_objects(Docker,Workspace,volumes,Volumes),
-    maplist(mw_remove_labeled_container(Docker,Workspace),Containers),
-    maplist(mw_remove_labeled_volume(Docker,Workspace),Volumes),
-    mw_labeled_docker_objects(Docker,Workspace,containers,RemainingContainers),
-    mw_labeled_docker_objects(Docker,Workspace,volumes,RemainingVolumes),
-    length(Containers,ContainerCount),length(Volumes,VolumeCount),
-    ( RemainingContainers==[],RemainingVolumes==[] -> Standing=clean
-    ; Standing=held ).
-
-mw_labeled_docker_objects(Docker,Directory,containers,Objects) :-
-    ce_process_observe(Docker,
-      ['ps','-aq','--filter','label=io.singularitynet.miter.workshop=true'],
-      Directory,10,65536,eof,0,Output,_Error,none),
-    mw_docker_object_lines(Output,Objects).
-mw_labeled_docker_objects(Docker,Directory,volumes,Objects) :-
-    ce_process_observe(Docker,
-      ['volume','ls','-q','--filter',
-        'label=io.singularitynet.miter.workshop=true'],
-      Directory,10,65536,eof,0,Output,_Error,none),
-    mw_docker_object_lines(Output,Objects).
-
-mw_docker_object_lines(Output,Objects) :-
-    normalize_space(string(Normalized),Output),
-    ( Normalized=="" -> Objects=[]
-    ; split_string(Normalized,"\n"," \t\r\n",Values),
-      maplist(mw_docker_object_atom,Values,Objects) ).
-
-mw_docker_object_atom(Value,Object) :-
-    atom_string(Object,Value),atom_length(Object,Length),Length>=1,Length=<128,
-    re_match('^[A-Za-z0-9][A-Za-z0-9_.:-]*$',Object).
-
-mw_remove_labeled_container(Docker,Directory,Container) :-
-    ce_process_observe(Docker,['rm','--force',Container],Directory,10,4096,
-      eof,0,_Output,_Error,none).
-mw_remove_labeled_volume(Docker,Directory,Volume) :-
-    ce_process_observe(Docker,['volume','rm','--force',Volume],Directory,10,4096,
-      eof,0,_Output,_Error,none).
+    exists_directory(Workspace),
+    mw_workshop_configuration_root(Root,_Image,BrokerOrigin,TokenPath,_Maximum),
+    mw_broker_token(TokenPath,Token),
+    uuid(Uuid),atom_concat('cleanup-',Uuid,RequestId),
+    Request=_{schema:"miter-workshop-broker-request-v1",action:"cleanup",
+      bearer:Token,request_id:RequestId},
+    mw_broker_post(BrokerOrigin,Request,10,Reply),
+    Reply.schema=="miter-workshop-broker-observation-v1",
+    StandingString=Reply.standing,atom_string(Standing,StandingString),
+    ContainerCount=Reply.removed_containers,VolumeCount=Reply.removed_volumes.
 
 mw_candidate_verified(Root,CandidateRelative,Commit,Manifest,Candidate) :-
     directory_file_path(Root,CandidateRelative,Candidate),

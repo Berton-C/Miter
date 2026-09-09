@@ -435,7 +435,8 @@ as_human_config_sections(Root, Human, Runtime, Mattermost, Memory, Vad, Models,
     as_dict_atom(Grants,schema,'miter-model-grants-v1'),
     EvaluationGrants=Human.initial_evaluation_grants,
     as_evaluation_grants_inactive_valid(EvaluationGrants),
-    GrowthEnvironment=Human.growth_environment,
+    as_materialize_growth_environment(Root,Human.growth_environment,
+      GrowthEnvironment),
     as_growth_environment_config_valid(GrowthEnvironment),
     as_mattermost_secret_free(Human).
 
@@ -532,6 +533,16 @@ as_materialize_credential_reference(Root,
 as_materialize_credential_reference(_Root,Reference,Reference) :-
     is_dict(Reference),Reference.source=="macos-keychain".
 
+as_materialize_growth_environment(Root,Environment0,Environment) :-
+    is_dict(Environment0),is_dict(Environment0.workshop),
+    is_dict(Environment0.workshop.broker),
+    as_materialize_credential_reference(Root,
+      Environment0.workshop.broker.credential_reference,BrokerReference),
+    put_dict(credential_reference,Environment0.workshop.broker,
+      BrokerReference,Broker),
+    put_dict(broker,Environment0.workshop,Broker,Workshop),
+    put_dict(workshop,Environment0,Workshop,Environment).
+
 as_growth_environment_config_valid(Config) :-
     is_dict(Config),
     as_mattermost_exact_keys(Config,
@@ -548,7 +559,7 @@ as_growth_environment_config_valid(Config) :-
     as_dict_atom(Config,reversible_writes,'versioned-owned-workspace'),
     is_dict(Config.workshop),
     as_mattermost_exact_keys(Config.workshop,
-      [cpus,image,memory_megabytes,network,operator_notes,pids_limit,platform,
+      [broker,cpus,image,memory_megabytes,network,operator_notes,pids_limit,platform,
        root_filesystem,runner]),
     Config.workshop.runner=="docker-isolated-v1",
     Config.workshop.image==
@@ -558,6 +569,15 @@ as_growth_environment_config_valid(Config) :-
     Config.workshop.root_filesystem=="read-only",
     Config.workshop.memory_megabytes=:=128,Config.workshop.cpus=:=0.5,
     Config.workshop.pids_limit=:=32,
+    is_dict(Config.workshop.broker),
+    as_mattermost_exact_keys(Config.workshop.broker,
+      [credential_reference,maximum_request_bytes,origin,schema]),
+    Config.workshop.broker.schema=="miter-workshop-broker-client-v1",
+    Config.workshop.broker.origin=="http://127.0.0.1:17891",
+    Config.workshop.broker.maximum_request_bytes=:=4194304,
+    is_dict(Config.workshop.broker.credential_reference),
+    Config.workshop.broker.credential_reference.source=="private-runtime-file",
+    string(Config.workshop.broker.credential_reference.path),
     is_list(Config.workshop.operator_notes),
     maplist(string,Config.workshop.operator_notes),
     Config.human_authority_boundaries==[
@@ -1256,10 +1276,12 @@ as_status(Root, Reply) :-
               authority_boundary:"mechanical-liveness-only"}
         ; Supervisor=_{standing:"absent"} ),
         as_operator_source_status(Root,OperatorSource),
+        miter_workshop_broker_status(Root,WorkshopBroker),
         as_config(Root,supervision,Supervision),
         Reply=_{schema:"miter-assistant-operator-result-v1",status:State,pid:Pid,
           lkg:Lkg,heartbeat:Heartbeat,evaluation:Evaluation,
           supervisor:Supervisor,model_selection:ModelSelection,
+          workshop_broker:WorkshopBroker,
           operator_source:OperatorSource,supervision:Supervision,
           semantic_health:"not-claimed"}
     ; Reply=_{schema:"miter-assistant-operator-result-v1",status:'not-bootstrapped'} ).

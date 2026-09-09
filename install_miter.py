@@ -110,6 +110,7 @@ def load_config() -> dict:
         "runtime_root": str(install_root / "private" / "runtime"),
         "services_root": str(install_root / "services"),
         "backup_root": str(install_root / "private-backups"),
+        "broker_root": str(install_root / "broker"),
         "operator_path": str(install_root / "bin" / "miter"),
     })
     return document
@@ -218,7 +219,7 @@ def ensure_install_root(deployment: dict, account: pwd.struct_passwd) -> pathlib
     }
     allowed = {
         "installation-root.json", "application", "dependencies", "private",
-        "private-backups", "services", "bin",
+        "private-backups", "services", "broker", "bin",
     }
     unexpected = sorted(path.name for path in root.iterdir()
                         if path.name not in allowed)
@@ -480,13 +481,7 @@ def ensure_workshop_image(config: dict) -> str:
                       user=operator, cwd="/private/tmp")
     if inspect.returncode != 0:
         raise InstallError("Exact workshop runner image is unavailable after acquisition")
-    runtime_inspect = run([docker, "image", "inspect", image], check=False,
-                          user=deployment["runtime_user"], cwd="/private/tmp")
-    if runtime_inspect.returncode != 0:
-        raise InstallError(
-            "The dedicated runtime identity cannot reach the exact workshop runner image"
-        )
-    return "exact-digest-present-and-runtime-readable"
+    return "exact-digest-present-to-operator-broker"
 
 
 def preflight_services(config: dict, *, reuse: bool) -> None:
@@ -1014,17 +1009,155 @@ def provision_vad_asset(config: dict, account: pwd.struct_passwd,
     return True
 
 
+def broker_command(application: pathlib.Path, deployment: dict, command: str,
+                   *, check: bool = True) -> subprocess.CompletedProcess[str]:
+    operator = invoking_user(deployment["runtime_user"])
+    if operator in {"root", deployment["runtime_user"]}:
+        raise InstallError(
+            "The Docker broker must be owned by the signed-in installing operator, "
+            "not root or the dedicated runtime identity"
+        )
+    return run([
+        command_path("swipl"), "-q", "-f", "none", "-s",
+        str(application / "effect_membranes" / "workshop_broker.pl"), "--",
+        command, "--config", str(pathlib.Path(deployment["broker_root"]) / "config.json"),
+    ], check=check, user=operator, cwd="/private/tmp")
+
+
+def provision_workshop_broker(config: dict, application: pathlib.Path,
+                              account: pwd.struct_passwd) -> dict:
+    """Create one operator-owned narrow broker and one runtime-readable token."""
+    if os.geteuid() != 0:
+        raise InstallError("Workshop broker provisioning requires the installer boundary")
+    deployment = config["deployment"]
+    operator = invoking_user(deployment["runtime_user"])
+    if operator in {"root", deployment["runtime_user"]}:
+        raise InstallError(
+            "Run the installer with sudo from the macOS user that owns Docker Desktop"
+        )
+    operator_account = pwd.getpwnam(operator)
+    broker_root = pathlib.Path(deployment["broker_root"])
+    if broker_root.is_symlink() or (broker_root.exists() and not broker_root.is_dir()):
+        raise InstallError("Workshop broker root is not a safe directory")
+    broker_root.mkdir(parents=True, exist_ok=True)
+    os.chown(broker_root, operator_account.pw_uid, operator_account.pw_gid)
+    broker_root.chmod(0o700)
+
+    token_path = broker_root / "token"
+    if token_path.exists():
+        if (not token_path.is_file() or token_path.is_symlink()
+                or token_path.stat().st_uid != operator_account.pw_uid
+                or stat.S_IMODE(token_path.stat().st_mode) != 0o600):
+            raise InstallError("Existing workshop broker token has unsafe ownership or mode")
+        token = token_path.read_text(encoding="utf-8").strip()
+        if len(token) < 32:
+            raise InstallError("Existing workshop broker token is invalid")
+    else:
+        token = secrets.token_urlsafe(48)
+        descriptor = os.open(token_path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        try:
+            os.write(descriptor, token.encode("utf-8") + b"\n")
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
+        os.chown(token_path, operator_account.pw_uid, operator_account.pw_gid)
+
+    runtime = pathlib.Path(deployment["runtime_root"])
+    relative = config["growth_environment"]["workshop"]["broker"][
+        "credential_reference"]["relative_path"]
+    runtime_token = runtime / relative
+    if runtime_token.exists():
+        if (not runtime_token.is_file() or runtime_token.is_symlink()
+                or runtime_token.stat().st_uid != account.pw_uid
+                or stat.S_IMODE(runtime_token.stat().st_mode) != 0o600
+                or runtime_token.read_text(encoding="utf-8").strip() != token):
+            raise InstallError("Runtime workshop broker token is unsafe or disagrees with the broker")
+    else:
+        store_secret(runtime, relative, token, account)
+
+    old_config = broker_root / "config.json"
+    if old_config.exists():
+        old_stop = broker_command(application, deployment, "stop", check=False)
+        if old_stop.returncode not in {0, 3}:
+            raise child_failure(old_stop, "Existing workshop broker stop")
+    workshop = config["growth_environment"]["workshop"]
+    broker = workshop["broker"]
+    document = {
+        "schema": "miter-workshop-broker-config-v1",
+        "origin": broker["origin"],
+        "port": urllib.parse.urlparse(broker["origin"]).port,
+        "root": str(broker_root),
+        "token_path": str(token_path),
+        "pid_path": str(broker_root / "pid.json"),
+        "log_path": str(broker_root / "broker.log"),
+        "docker_path": command_path("docker"),
+        "image": workshop["image"],
+        "platform": workshop["platform"],
+        "network": workshop["network"],
+        "root_filesystem": workshop["root_filesystem"],
+        "memory_megabytes": workshop["memory_megabytes"],
+        "cpus": workshop["cpus"],
+        "pids_limit": workshop["pids_limit"],
+        "maximum_request_bytes": broker["maximum_request_bytes"],
+        "standing": "non-cognitive-exact-workshop-observer",
+    }
+    temporary = broker_root / f".config.{os.getpid()}.json"
+    temporary.write_text(json.dumps(document, sort_keys=True) + "\n", encoding="utf-8")
+    os.chown(temporary, operator_account.pw_uid, operator_account.pw_gid)
+    temporary.chmod(0o600)
+    os.replace(temporary, old_config)
+
+    start = broker_command(application, deployment, "start", check=False)
+    if start.returncode != 0:
+        raise child_failure(start, "Workshop broker start")
+    try:
+        reply = json.loads(start.stdout)
+    except json.JSONDecodeError as exc:
+        raise child_failure(start, "Workshop broker returned invalid JSON") from exc
+    if reply.get("status") not in {"started", "already-running"}:
+        raise InstallError("Workshop broker did not become ready")
+    return {
+        "schema": "miter-workshop-broker-installation-v1",
+        "status": reply["status"],
+        "origin": broker["origin"],
+        "operator": operator,
+        "runtime_has_docker_socket": False,
+    }
+
+
 def operator_wrapper_text(application: pathlib.Path, deployment: dict,
-                          petta: pathlib.Path) -> str:
+                          petta: pathlib.Path, operator: str) -> str:
     runtime = deployment["runtime_root"]
     user = deployment["runtime_user"]
+    broker = application / "effect_membranes" / "workshop_broker.pl"
+    broker_config = pathlib.Path(deployment["broker_root"]) / "config.json"
     return f'''#!/bin/sh
 set -eu
 cd /private/tmp
+command=${{1:-}}
+if [ "$command" = start ]; then
+  /usr/bin/sudo -u {operator} -H {shell_quote(command_path('swipl'))} -q -f none \
+    -s {shell_quote(str(broker))} -- start --config {shell_quote(str(broker_config))} \
+    >/dev/null
+fi
 if [ "$(/usr/bin/id -un)" = {user} ]; then
   run_as_runtime=
 else
   run_as_runtime="/usr/bin/sudo -u {user} -H"
+fi
+if [ "$command" = stop ] || [ "$command" = panic ]; then
+  set +e
+  $run_as_runtime /usr/bin/env \\
+    MITER_PETTA_MAIN={shell_quote(str(petta / 'src' / 'main.pl'))} \\
+    MITER_SWIPL_LD={shell_quote(command_path('swipl-ld'))} \\
+    {shell_quote(str(application / 'bin' / 'miter'))} "$@" \\
+    --runtime-root {shell_quote(runtime)}
+  result=$?
+  set -e
+  /usr/bin/sudo -u {operator} -H {shell_quote(command_path('swipl'))} -q -f none \\
+    -s {shell_quote(str(broker))} -- stop --config {shell_quote(str(broker_config))} \\
+    >/dev/null 2>&1 || true
+  exit "$result"
 fi
 exec $run_as_runtime /usr/bin/env \\
   MITER_PETTA_MAIN={shell_quote(str(petta / 'src' / 'main.pl'))} \\
@@ -1038,7 +1171,10 @@ def install_operator_wrapper(application: pathlib.Path, deployment: dict,
                              petta: pathlib.Path) -> None:
     if os.geteuid() != 0:
         raise InstallError("Run install with sudo so it can install the operator command")
-    text = operator_wrapper_text(application, deployment, petta)
+    operator = invoking_user(deployment["runtime_user"])
+    if operator in {"root", deployment["runtime_user"]}:
+        raise InstallError("The installed operator must retain the Docker-owning macOS user")
+    text = operator_wrapper_text(application, deployment, petta, operator)
     operator_path = pathlib.Path(deployment["operator_path"])
     operator_path.parent.mkdir(parents=True, exist_ok=True)
     operator_path.write_text(text, encoding="utf-8")
@@ -1089,14 +1225,20 @@ def validate(config: dict, application: pathlib.Path | None = None,
     checks["chroma"] = "healthy" if endpoint_available(config["memory"]["chroma"]["origin"] + "/api/v2/heartbeat") else "unavailable"
     checks["mattermost"] = "healthy" if endpoint_available(config["mattermost"]["origin"] + "/api/v4/system/ping") else "unavailable"
     if application and petta and account and runtime_ready:
+        checks["workshop_broker"] = "stopped-or-invalid"
         result = miter_command(application, deployment, petta, "status", check=False)
         try:
             status = json.loads(result.stdout or "{}")
+            broker = status.get("workshop_broker", {})
+            checks["workshop_broker"] = (
+                "running" if isinstance(broker, dict) and broker.get("standing") == "ready"
+                else "stopped-or-invalid"
+            )
             checks["miter"] = f"{status.get('status','unknown')};lkg={status.get('lkg','unknown')}"
         except json.JSONDecodeError:
             checks["miter"] = "operator-invalid"
     complete = all(
-        value in {"present-non-admin", "private-present", "healthy"}
+        value in {"present-non-admin", "private-present", "healthy", "running"}
         or value.startswith(("running;lkg=verified", "stopped;lkg=verified"))
         for value in checks.values()
     )
@@ -1129,6 +1271,7 @@ def plan(config: dict) -> dict:
         "dependency_root": deployment["dependency_root"],
         "services_root": deployment["services_root"],
         "backup_root": deployment["backup_root"],
+        "broker_root": deployment["broker_root"],
         "operator_path": deployment["operator_path"],
         "configured_ports": {
             "mattermost": "occupied" if mattermost else "available",
@@ -1208,6 +1351,7 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
             "missing": missing,
             "next": "Run the same install command interactively to finish without replacing existing state.",
         }
+    broker_standing = provision_workshop_broker(config, application, account)
     prior_poll = (
         suspend_surface_poll(runtime,account)
         if migration_pending_restore else None
@@ -1238,6 +1382,7 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
     except Exception:
         if cold_restore_started:
             miter_command(application, deployment, petta, "stop", check=False)
+        broker_command(application, deployment, "stop", check=False)
         raise
     finally:
         if migration_pending_restore:
@@ -1255,6 +1400,7 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
         wait_runtime_ready(config, application, deployment, petta)
     except Exception:
         miter_command(application, deployment, petta, "stop", check=False)
+        broker_command(application, deployment, "stop", check=False)
         raise
     report = validate(config, application, petta)
     report.update({
@@ -1262,6 +1408,7 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
         "application": str(application), "petta": str(petta),
         "runtime": str(runtime), "services": service_standing,
         "workshop_image": workshop_image,
+        "workshop_broker": broker_standing,
         "recovered_incomplete_runtime": (
             str(recovered_incomplete_runtime)
             if recovered_incomplete_runtime else None

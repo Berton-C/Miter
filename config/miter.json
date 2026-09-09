@@ -75,10 +75,20 @@
       "memory_megabytes": 128,
       "cpus": 0.5,
       "pids_limit": 32,
+      "broker": {
+        "schema": "miter-workshop-broker-client-v1",
+        "origin": "http://127.0.0.1:17891",
+        "maximum_request_bytes": 4194304,
+        "credential_reference": {
+          "source": "private-runtime-file",
+          "relative_path": "secrets/workshop-broker-token"
+        }
+      },
       "operator_notes": [
-        "Candidate trials and invocations receive only a read-only candidate mount and an extension-specific state mount.",
+        "Candidate trials and invocations receive only a read-only exact-source mount and an ephemeral extension-specific state mount.",
         "No network, host credential, runtime-state, or unrelated workspace mount enters the candidate container.",
-        "The image is exact-digest pinned and the operator-owned Docker broker remains non-cognitive."
+        "The image is exact-digest pinned and the operator-owned Prolog Docker broker remains non-cognitive.",
+        "The dedicated runtime identity has no Docker socket access; the broker reconstructs the one supported container operation and accepts no Docker flags, mounts, images, networks, or verbs from Miter."
       ]
     },
     "human_authority_boundaries": [

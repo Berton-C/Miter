@@ -38,8 +38,9 @@ activation through the complete constitutive encounter, execute independent
 positive/negative native trials, make the admitted module available to later
 movement formation, replace it with an exact version, restore the immediately
 prior version, and preserve that organization across restart. The executable
-workshop can now stage exact source bytes in an isolated Git worktree, run two
-or more independent trials in a digest-pinned no-network container, activate a
+workshop can now stage exact source bytes in an isolated Git worktree, ask an
+operator-owned Prolog broker to run two or more independent trials in a
+digest-pinned no-network container, activate a
 version only at a serialized capability cut, invoke the exact active version,
 hot-replace it under an unchanged interface and compatible state contract, and
 restore the exact predecessor after restart.
@@ -123,6 +124,7 @@ and has no authority to inspect, filter, rank, join, or select their results.
 
 - macOS on Apple Silicon for the current native store extension
 - SWI-Prolog with `swipl` and `swipl-ld` on `PATH`
+- Docker Desktop running for the signed-in installing operator
 - PeTTa commit `ae66fa8e41dcd5539d614706bd4e5cfb34f9608d`
 - ChromaDB reachable on loopback for semantic recall
 - a loopback OpenAI-compatible embedding endpoint for the configured model
@@ -147,7 +149,8 @@ sudo ./install_miter.py install \
 Every Miter-owned installed path is derived from the one human-edited root
 `/Users/claritymiter/Miter`. Application releases, the pinned PeTTa
 dependency, private runtime and continuity, private immutable backups, service
-data, and the operator command remain beneath that tree. No Miter code or state
+data, the narrow workshop broker, and the operator command remain beneath that
+tree. No Miter code or state
 is installed in `/usr/local`, `/Library/Application Support`, the
 `claritymiter` Library, or `/Users/Shared`. Miter is a CLI-started application;
 it does not install or depend on a macOS launch service.
@@ -178,6 +181,16 @@ and refuses any replay or checkpoint change before starting the CLI supervisor.
 The licensed VAD lexicon is copied only into the dedicated user's mode-0600
 private runtime; its rows and terms never enter the repository, checkpoints,
 Chroma, model prompts, or public evidence.
+
+The `claritymiter` account is deliberately not granted the Docker socket. The
+installer starts a token-authenticated Prolog broker on loopback under the
+signed-in Docker-owning operator. Miter can submit only an exact source bundle,
+direct program/argument vector, deadline, and output bound. The broker fixes
+the image, platform, network isolation, read-only root, capabilities, mounts,
+memory, CPU, PID limit, and Docker lifecycle itself; unknown request fields are
+rejected before Docker. This is a mechanical effect membrane, not a second
+cognitive runtime: the Soul still forms the undertaking and decides whether
+returned observations participate in another movement.
 
 ## Install and operate
 
