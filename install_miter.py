@@ -209,6 +209,39 @@ def ensure_install_root(deployment: dict, account: pwd.struct_passwd) -> pathlib
     if root.stat().st_uid != 0:
         raise InstallError("The Miter install root must remain root-owned")
     root.chmod(0o755)
+    marker_path = root / "installation-root.json"
+    marker = {
+        "schema": "miter-installation-root-v1",
+        "install_root": str(root),
+        "runtime_user": deployment["runtime_user"],
+        "standing": "single-miter-owned-root",
+    }
+    allowed = {
+        "installation-root.json", "application", "dependencies", "private",
+        "private-backups", "services", "bin",
+    }
+    unexpected = sorted(path.name for path in root.iterdir()
+                        if path.name not in allowed)
+    if unexpected:
+        raise InstallError(
+            "Miter install root contains non-distribution entries: "
+            + ", ".join(unexpected)
+        )
+    if marker_path.exists():
+        if (not marker_path.is_file() or marker_path.is_symlink()
+                or marker_path.stat().st_uid != 0
+                or stat.S_IMODE(marker_path.stat().st_mode) != 0o644
+                or json_document(marker_path) != marker):
+            raise InstallError("Miter install root marker is missing or invalid")
+    else:
+        if any(root.iterdir()):
+            raise InstallError(
+                "Existing Miter install root has no installation-root marker"
+            )
+        marker_path.write_text(json.dumps(marker, sort_keys=True) + "\n",
+                               encoding="utf-8")
+        os.chown(marker_path, 0, 0)
+        marker_path.chmod(0o644)
     return root
 
 

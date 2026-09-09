@@ -2565,6 +2565,23 @@ Already carried:
   The exact next bottleneck remains the latest-runtime migration followed by a
   real installed-identity stage/trial/activate/invoke/rollback cycle.
 
+- The archive preflight exposed that macOS resolves the historical
+  `/Users/claritymiter/miter` checkout and the proposed
+  `/Users/claritymiter/Miter` install root to the same inode. The 2.4 GB tree is
+  the old `main` checkout at `ec06bfbe` and also contains two untracked
+  `initial_canon` provenance additions; it is therefore preserved intact by an
+  atomic same-volume rename before installation, not copied into the clean
+  distribution. The installer already rejected that occupied tree by owner and
+  now additionally requires an exact root-owned installation marker and a
+  closed top-level distribution vocabulary. An unrelated, mixed, or markerless
+  nonempty root is held before application, dependency, runtime, backup, or
+  service installation. This changes no cognitive dependency, model call,
+  constitutive formation, checkpoint, or running process. The active source
+  and remote branch remain 63 tracked files / about 13 MB including Git; the
+  historical tree remains external provenance. The next operation is the
+  privileged atomic archive rename, followed by the already-named continuity
+  migration into the newly created single root.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
