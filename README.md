@@ -50,12 +50,15 @@ proven, but the accepted product installation is now one CLI-managed tree. The
 declarative hot-capability layer is not yet general source-code self-upgrade or
 arbitrary skill acquisition. The first executable proof is deliberately a
 stateless, local-observation-only extension: state migration, newly earned
-effect authority, application-release rollback, installed-identity workshop
-transport, and open live dialogue repair remain to be integrated into this
-same runtime. A finite macOS installer validates the clean source, pinned
+effect authority, broad skill transfer, and open live dialogue repair remain
+to be integrated into this same runtime. Recoverable application-release
+activation and rollback are implemented in the source installer but still
+require the installed continuity carry before they count as proven. A finite
+macOS installer validates the clean source, pinned
 dependencies, dedicated identity, private credential boundary, exact workshop
 image, and isolated services. Its single-root fresh-host and
-continuity-preserving migration trials remain open.
+continuity-preserving migration have passed; the current release promotion and
+live conversational closure remain open.
 [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single operations map for
 that additive work.
 
@@ -181,6 +184,23 @@ and refuses any replay or checkpoint change before starting the CLI supervisor.
 The licensed VAD lexicon is copied only into the dedicated user's mode-0600
 private runtime; its rows and terms never enter the repository, checkpoints,
 Chroma, model prompts, or public evidence.
+
+After the initial installation, activate one exact committed application
+release through the same continuity-preserving boundary:
+
+```sh
+sudo ./install_miter.py upgrade
+```
+
+The installer stops at a real cycle boundary, preserves an immutable recovery
+backup, cold-restores the same runtime identity and checkpoint under the new
+release while Mattermost polling is suspended, and starts live only after the
+restore passes. A release rollback carries the *current* durable mind through
+the recorded predecessor rather than discarding post-activation continuity:
+
+```sh
+sudo ./install_miter.py rollback-release
+```
 
 The `claritymiter` account is deliberately not granted the Docker socket. The
 installer starts a token-authenticated Prolog broker on loopback under the

@@ -1042,26 +1042,7 @@ as_model_local_response_schema('c4-contact-semantic-question-v1',
       "CognitiveResilience","ConnectionDepth","CreativeTranscendence",
       "PurposeBeyondUtility","SharedUnderstanding","TimeCoherence",
       "WonderPreservation"]},
-    CapabilityProposal=_{type:"object",additionalProperties:false,
-      required:["standing","purpose","kind","method","url","executable",
-        "arguments","working_directory","path","contents",
-        "expected_sha256","source_request_id"],
-      properties:_{standing:_{type:"string",enum:["not-material","proposed",
-          "uncertain"]},
-        purpose:_{type:"string",maxLength:400},
-        kind:_{type:"string",enum:["none","informational-http","direct-argv",
-          "workspace-write","workspace-read","workspace-list",
-          "workspace-rollback"]},
-        method:_{type:"string",enum:["none","get","head"]},
-        url:_{type:"string",maxLength:4096},
-        executable:_{type:"string",maxLength:4096},
-        arguments:_{type:"array",maxItems:64,
-          items:_{type:"string",maxLength:8192}},
-        working_directory:_{type:"string",maxLength:4096},
-        path:_{type:"string",maxLength:4096},
-        contents:_{type:"string",maxLength:32768},
-        expected_sha256:_{type:"string",maxLength:64},
-        source_request_id:_{type:"string",maxLength:256}}},
+    as_model_c4_capability_response_schema(CapabilityProposal),
     Reading=_{type:"object",additionalProperties:false,
       required:["understanding","response_purpose","fact9_roles",
         "flourishing_values","continuity_requirement","counterfactual",
@@ -1080,6 +1061,7 @@ as_model_local_response_schema('c4-contact-semantic-question-v1',
       properties:_{readings:_{type:"array",minItems:2,maxItems:2,
           items:Reading},
         uncertainty:_{type:"string",minLength:1,maxLength:600}}}.
+
 as_model_local_response_schema('c4-voice-render-question-v1',
     "miter_c4_voice_rendering",Schema) :-
     Schema=_{type:"object",additionalProperties:false,
@@ -1110,6 +1092,82 @@ as_model_local_response_schema('c4-voice-audit-question-v1',
       required:["findings","uncertainty"],
       properties:_{findings:_{type:"array",maxItems:4,items:Finding},
         uncertainty:_{type:"string",minLength:1,maxLength:600}}}.
+
+% The semantic validator has always required a coherent capability tuple.  The
+% provider schema must express the same dependency rather than independently
+% allowing values that become contradictory in combination (for example,
+% `not-material` plus HTTP `get`).  These alternatives constrain generation;
+% they do not select a capability or assign it authority.
+as_model_c4_capability_response_schema(_{oneOf:Alternatives}) :-
+    as_model_c4_capability_required(Required),
+    as_model_c4_empty_capability_properties("not-material",_{const:""},
+      NotMaterialProperties),
+    as_model_c4_empty_capability_properties("uncertain",
+      _{type:"string",minLength:1,maxLength:400},UncertainProperties),
+    as_model_c4_capability_properties("proposed",
+      _{type:"string",minLength:1,maxLength:400},"informational-http",
+      _{type:"string",enum:["get","head"]},
+      _{type:"string",minLength:10,maxLength:4096},_{const:""},
+      _{type:"array",maxItems:0,items:_{type:"string"}},
+      _{const:""},_{const:""},_{const:""},
+      _{const:""},_{const:""},HttpProperties),
+    as_model_c4_capability_properties("proposed",
+      _{type:"string",minLength:1,maxLength:400},"direct-argv",
+      _{const:"none"},_{const:""},
+      _{type:"string",minLength:1,maxLength:4096},
+      _{type:"array",maxItems:64,
+        items:_{type:"string",maxLength:8192}},
+      _{type:"string",minLength:1,maxLength:4096},_{const:""},_{const:""},
+      _{const:""},_{const:""},ArgvProperties),
+    as_model_c4_capability_properties("proposed",
+      _{type:"string",minLength:1,maxLength:400},"workspace-write",
+      _{const:"none"},_{const:""},_{const:""},
+      _{type:"array",maxItems:0,items:_{type:"string"}},_{const:""},
+      _{type:"string",minLength:1,maxLength:4096},
+      _{type:"string",maxLength:32768},
+      _{type:"string",maxLength:64},_{const:""},WriteProperties),
+    as_model_c4_workspace_read_properties("workspace-read",ReadProperties),
+    as_model_c4_workspace_read_properties("workspace-list",ListProperties),
+    as_model_c4_capability_properties("proposed",
+      _{type:"string",minLength:1,maxLength:400},"workspace-rollback",
+      _{const:"none"},_{const:""},_{const:""},
+      _{type:"array",maxItems:0,items:_{type:"string"}},_{const:""},
+      _{type:"string",minLength:1,maxLength:4096},_{const:""},
+      _{type:"string",minLength:64,maxLength:64},
+      _{type:"string",minLength:1,maxLength:256},RollbackProperties),
+    maplist(as_model_c4_capability_alternative(Required),
+      [NotMaterialProperties,UncertainProperties,HttpProperties,
+        ArgvProperties,WriteProperties,ReadProperties,ListProperties,
+        RollbackProperties],Alternatives).
+
+as_model_c4_capability_required(["standing","purpose","kind","method",
+  "url","executable","arguments","working_directory","path","contents",
+  "expected_sha256","source_request_id"]).
+
+as_model_c4_capability_alternative(Required,Properties,
+    _{type:"object",additionalProperties:false,required:Required,
+      properties:Properties}).
+
+as_model_c4_empty_capability_properties(Standing,Purpose,Properties) :-
+    as_model_c4_capability_properties(Standing,Purpose,"none",_{const:"none"},
+      _{const:""},_{const:""},
+      _{type:"array",maxItems:0,items:_{type:"string"}},_{const:""},
+      _{const:""},_{const:""},_{const:""},_{const:""},Properties).
+
+as_model_c4_workspace_read_properties(Kind,Properties) :-
+    as_model_c4_capability_properties("proposed",
+      _{type:"string",minLength:1,maxLength:400},Kind,_{const:"none"},
+      _{const:""},_{const:""},
+      _{type:"array",maxItems:0,items:_{type:"string"}},_{const:""},
+      _{type:"string",minLength:1,maxLength:4096},_{const:""},_{const:""},
+      _{const:""},Properties).
+
+as_model_c4_capability_properties(Standing,Purpose,Kind,Method,Url,Executable,
+    Arguments,WorkingDirectory,Path,Contents,Expected,SourceRequest,
+    _{standing:_{const:Standing},purpose:Purpose,kind:_{const:Kind},
+      method:Method,url:Url,executable:Executable,arguments:Arguments,
+      working_directory:WorkingDirectory,path:Path,contents:Contents,
+      expected_sha256:Expected,source_request_id:SourceRequest}).
 
 as_model_public_question(
     ['c3-semantic-question-v1',QuestionRef,
@@ -1493,7 +1551,7 @@ as_model_execute(Root,Hash,QuestionRef,Scope,Question,ResourceId,Profile,Body,
     ( Transport==eof, Status=:=200 ->
         ( as_model_provider_observation(Raw,Question,QuestionRef,Scope,
               ResourceId,Profile,RawHash,Observation) -> true
-        ; as_model_provider_failure(Raw,Failure),
+        ; as_model_provider_failure(Raw,Question,Failure),
           throw(error(model_provider_hold(Failure,ElapsedMs,Bytes),_)) )
     ; throw(error(model_transport_or_schema_hold(Transport,Status,ErrorClass,
         ElapsedMs,Bytes),_)) ).
@@ -1512,17 +1570,28 @@ as_model_http_options(Profile,Body,_Key,Deadline,Status,
      request_header('Accept'='application/json')]) :-
     as_dict_atom(Profile,kind,local).
 
-as_model_provider_failure(Raw,'provider-output-truncated') :-
+as_model_provider_failure(Raw,_Question,'provider-output-truncated') :-
     catch(atom_json_dict(Raw,Response,[]),_,fail), is_dict(Response),
     get_dict(choices,Response,[Choice]), is_dict(Choice),
     as_dict_atom(Choice,finish_reason,length), !.
-as_model_provider_failure(Raw,'provider-finish-held') :-
+as_model_provider_failure(Raw,_Question,'provider-finish-held') :-
     catch(atom_json_dict(Raw,Response,[]),_,fail), is_dict(Response),
     get_dict(choices,Response,[Choice]), is_dict(Choice),
-    get_dict(finish_reason,Choice,_), !.
-as_model_provider_failure(Raw,'provider-artifact-malformed') :-
+    as_dict_atom(Choice,finish_reason,Finish), Finish\==stop, !.
+as_model_provider_failure(Raw,Question,'provider-artifact-semantic-invalid') :-
+    catch(atom_json_dict(Raw,Response,[]),_,fail), is_dict(Response),
+    get_dict(choices,Response,[Choice]),is_dict(Choice),
+    as_dict_atom(Choice,finish_reason,stop),
+    get_dict(message,Choice,Message),is_dict(Message),
+    get_dict(content,Message,Content),string(Content),
+    catch(atom_json_dict(Content,Result,[]),_,fail),is_dict(Result),
+    is_list(Question),Question=[Kind|_],
+    memberchk(Kind,['c3-semantic-question-v1',
+      'c4-contact-semantic-question-v1','c4-voice-render-question-v1',
+      'c4-voice-audit-question-v1']), !.
+as_model_provider_failure(Raw,_Question,'provider-artifact-malformed') :-
     catch(atom_json_dict(Raw,Response,[]),_,fail), is_dict(Response), !.
-as_model_provider_failure(_,'provider-envelope-malformed').
+as_model_provider_failure(_,_Question,'provider-envelope-malformed').
 
 as_model_error_class(time_limit_exceeded,timeout,'deadline-exceeded') :- !.
 as_model_error_class(error(timeout_error(_,_),_),timeout,

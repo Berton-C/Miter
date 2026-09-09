@@ -199,7 +199,7 @@ consumer is absent. No status is upgraded by assertion.
 | Capability | Standing | Current site | Exact gap |
 |---|---:|---|---|
 | One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General scoped contact, memory participation, model participation, VoiceRNA, effect preparation, consequence, regeneration, and endogenous opportunity share this one continuation; no second cognitive loop is present. |
-| Install/start/status/stop/panic | P | `install_miter.py`, single-root operator membrane, frozen runtime LKG | The finite installer derives every Miter-owned path beneath `/Users/claritymiter/Miter`, validates a clean source, exact PeTTa archive hash, digest-pinned service and workshop images, non-admin runtime identity, private credential references, and port ownership. One CLI start detaches Miter's own persistent non-cognitive supervisor; child crash recovery, clean stop, single-root continuity migration, and installed-identity workshop transport pass without launchd. Application-release rollback and live proportionality remain open. |
+| Install/start/status/stop/panic | P | `install_miter.py`, single-root operator membrane, frozen runtime LKG | The finite installer derives every Miter-owned path beneath `/Users/claritymiter/Miter`, validates a clean source, exact PeTTa archive hash, digest-pinned service and workshop images, non-admin runtime identity, private credential references, and port ownership. One CLI start detaches Miter's own persistent non-cognitive supervisor; child crash recovery, clean stop, single-root continuity migration, and installed-identity workshop transport pass without launchd. Recoverable application-release activation/rollback is embodied in the committed-source candidate; its privileged installed carry and live proportionality remain open. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once effects | P | store/service/Mattermost membranes | Local effects are exact and restart-stable. One certified Mattermost response is visibly delivered, uniquely reconciled from an initially unknown transport outcome, and not replayed across restart; broader failure and returned-consequence evidence remains open. |
 | Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
@@ -215,7 +215,7 @@ consumer is absent. No status is upgraded by assertion.
 | Open growth environment | P | `capability_environment.metta`, `declarative_capability.metta`, `executable_extension.metta`, mechanical environment/workshop observers, proof-bound HTTP/direct-argv/workspace brokers, private runtime workspace, Constitution C-067/C-068 and S-1308 | The one C4 contact path receives a source-qualified native participant stating the configured web/terminal/workspace/workshop field, actual process identity, genuine human-authority boundaries, and current availability. Exact informational HTTP, direct-argument process, versioned workspace, declarative module, and executable workshop operations can become descriptors only through their complete source-contact/source-movement/R/A/P/Fact9/flourishing proof. The executable workshop now isolates exact source in Git worktrees, uses independent digest-pinned no-network container trials, checks interface/state compatibility, hot-activates at a serialized cut, invokes the exact active version, and restores its predecessor across restart. Prolog durably claims operations, performs mechanics, and returns bounded untrusted contact without assigning meaning or choosing a successor. Wrong identity, malformed proof, constructed URL, incompatible interface/state, unsupported authority, or malformed returned evidence remains unresolved. Single-root installed-identity transport passes. State migration, newly earned effect authority, broad held-out skill transfer, and proportional growing-history operation remain open. |
 | Endogenous growth / NACE / PLN / NAL | P | C3 discrimination, semantic episode, transfer consequence, developmental memory, fourth-contact application, same-reactor endogenous formation, regenerative Soul, `qualified_reasoning.metta`, and `qualified_transfer.metta` | NACE records the exact expectation before returned consequence, preserves the full typed outcome family, and admits only independent returned evidence to the pinned NARS/NAL revision closure. A separately namespaced PLN modus-ponens closure now combines that earned contextual efficacy only with a later, independent developmental-transfer premise; both support and contradiction remain exact non-authoritative participants, while only material support can form a fresh non-certifying M25 inquiry. The qualified product is persisted once at consequence time and survives restart rather than rebuilding a growing NACE×transfer cross-product on every contact. Correlated repetition is held and ambiguous/delayed outcomes remain pending rather than negative. Broader held-out skill transfer remains open; decorative PLN import is prohibited. |
 | Regenerative Soul | E | `soul_regeneration.metta`, M25 expressed-Soul availability, repair-aware idle continuation | A corrupted expressed-Soul relation removes M25 admissibility; the one reactor detects it, composes germline/weave/history/consequence-grounded candidates, tests them in a bounded quarantine AtomSpace, rejects an unsupported GLM proposal, promotes exactly one native reconstruction, restores causal movement, and cold-restores the repair record without germline change or replay. |
-| Hot self-upgrade and rollback | P | `declarative_capability.metta`, `executable_extension.metta`, `workshop.pl`, `workshop_broker.pl`, native workshop history, checkpoint restore | Declarative MeTTa modules and one bounded executable extension class now enter as provenance-bearing unresolved participants, require the complete Fact9/flourishing/M24–M26.3/single-R/A/P encounter, and remain distinct from independent trial, activation, invocation, returned consequence, replacement, and rollback. The executable class uses isolated Git worktrees, exact file hashes, a versioned interface, explicit state standing, two or more independent digest-pinned no-network container trials, an atomic active registry, durable prepared transitions, exact predecessor rollback, restart continuity, and no blind invocation replay. The dedicated runtime holds no Docker socket; an operator-owned, token-authenticated Prolog broker reconstructs the one exact container envelope from a closed request, and the installed identity has exercised the complete stateless lifecycle through it. Malformed, authority-bearing, interface-changing, unproven-migration, unauthenticated, or field-injected carriers remain unresolved or held. This does not yet establish general skill acquisition, state migration, newly earned effect authority, or rollback of Miter's application release. |
+| Hot self-upgrade and rollback | P | `declarative_capability.metta`, `executable_extension.metta`, `workshop.pl`, `workshop_broker.pl`, native workshop history, checkpoint restore, `install_miter.py` | Declarative MeTTa modules and one bounded executable extension class now enter as provenance-bearing unresolved participants, require the complete Fact9/flourishing/M24–M26.3/single-R/A/P encounter, and remain distinct from independent trial, activation, invocation, returned consequence, replacement, and rollback. The executable class uses isolated Git worktrees, exact file hashes, a versioned interface, explicit state standing, two or more independent digest-pinned no-network container trials, an atomic active registry, durable prepared transitions, exact predecessor rollback, restart continuity, and no blind invocation replay. The dedicated runtime holds no Docker socket; an operator-owned, token-authenticated Prolog broker reconstructs the one exact container envelope from a closed request, and the installed identity has exercised the complete stateless lifecycle through it. The finite installer now has a candidate whole-application transition that preserves current continuity in either upgrade or rollback direction; installed carry is still required. Malformed, authority-bearing, interface-changing, unproven-migration, unauthenticated, or field-injected carriers remain unresolved or held. This does not yet establish general skill acquisition, state migration for arbitrary extensions, or newly earned effect authority. |
 | Full Continuity of Mind | P | native checkpoint capsules, scoped Chroma projection, native memory participation, and bounded selected-model rendering | Exact capsules, undertakings, relationships, attention, growth, and restart are one writable restored organization. A provider-derived continuity requirement may participate only as unresolved material; native formation determines whether exact scope/capsule/hash-verified memory is material. The current human resource direction remains authoritative only over transport selection: GLM is the installed default, local models are explicit alternatives, and continuity cannot silently switch resources. Under the ratified disclosure grant, ordinary conversation, continuity, project, and personal context may reach GLM while credentials, authentication material, and concrete security-risk content remain excluded. Live story recall, correction, restart, and later-use evidence remain required. |
 
 ## 6. Four additive stages
@@ -2712,6 +2712,62 @@ Already carried:
   semantic verdict participated. This earns the source optimization; it does
   not close growing-history or installed live-contact performance, which must
   be measured after recoverable release activation.
+
+- The first post-migration live conversation attempt exposed a provider-
+  contract defect rather than a Mattermost or Continuity failure. Installed
+  release `6a675255a5f3608892811833a9dc66cbc8824ede` remained supervised and
+  waiting under active AMA-1.2. Its counters advanced from 14 to 15 admitted
+  events and from 17 to 18 remote calls while outbound posts remained exactly
+  three. The cycle checkpointed with
+  `semantic-reading-held / provider-finish-held`. Content-free inspection of
+  the preserved raw envelope established the exact model
+  `z-ai/glm-5.3`, `finish_reason: stop`, 2,516 content characters, 825 reasoning
+  characters, and 1,921 prompt / 643 completion tokens. Both returned semantic
+  rows were structurally complete, but each combined
+  `standing: not-material`, `kind: none`, and `method: get`. The native
+  capability tuple validator correctly rejected that contradiction; no
+  VoiceRNA candidate, effect, or response was fabricated. The old diagnostic
+  name had collapsed any post-envelope validation failure into a finish hold.
+
+  The source repair makes the provider response schema express the same
+  dependent capability relations already required by the semantic validator.
+  Eight closed alternatives now distinguish not-material, uncertain,
+  informational HTTP, direct argv, workspace write/read/list, and rollback
+  tuples. This constrains a model artifact but neither selects a capability nor
+  assigns authority. A completed, parseable but semantically invalid artifact
+  now reports `provider-artifact-semantic-invalid`; non-stop finish, truncation,
+  malformed artifact, and malformed envelope remain separate. The preserved
+  failed artifact remains diagnostic material only and is not replayed or
+  admitted after repair. Prolog load and exact schema construction passed; the
+  generated schema contained all eight alternatives, accepted the valid
+  not-material tuple, and rejected the observed `not-material + get`
+  contradiction. A synthetic completed malformed semantic artifact produced
+  the new exact standing. These checks made zero provider calls and performed
+  zero constitutive formations.
+
+  The same source cut adds finite application-release activation and rollback
+  machinery to the installer. It resolves the active immutable release only by
+  exact equality with the runtime LKG, stops at a real cycle boundary, preserves
+  the predecessor runtime, creates an immutable continuity backup, bootstraps
+  the candidate at the one accepted runtime path, copies durable state, suspends
+  Mattermost polling, and requires byte-identical active-checkpoint and runtime
+  identity through cold restore before enabling live contact. A later rollback
+  migrates the then-current state through the predecessor release instead of
+  restoring a stale pre-activation snapshot. Any candidate failure must stop
+  the candidate and restore/restart the exact predecessor; an unconfirmed stop
+  leaves both trees preserved rather than deleting state. Ephemeral success and
+  deliberately failed transition simulations exercised activation and automatic
+  predecessor recovery, and their temporary trees and harness were removed.
+  The privileged installed-runtime carry necessarily remains the immediate
+  post-commit check because application identity is the Git commit and the
+  installer refuses a dirty source. Ordinary live latency, a successful new
+  semantic/VoiceRNA response, returned consequence, and restart/no-replay
+  remain unmeasured and keep C4 open. The pre-commit supported-host observation
+  found only the expected broker, supervisor, and one PeTTa child; no disposable
+  release-trial process or directory remained. The older installed child had
+  reached 735,216 KiB RSS and 66.5% of one core after 1:34:59 elapsed while its
+  status reported `assistant-waiting`. This is the installed predecessor
+  baseline for the immediate release carry, not an accepted idle envelope.
 
 - The archive preflight exposed that macOS resolves the historical
   `/Users/claritymiter/miter` checkout and the proposed

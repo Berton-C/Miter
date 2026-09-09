@@ -53,6 +53,7 @@ DURABLE_RUNTIME_FILES = (
     "evaluation-grants.json", "model-direction.json", "model-grants.json",
     "private-assets/NRC-VAD-Lexicon-v2.1.txt",
 )
+RELEASE_STATE_SCHEMA = "miter-application-release-state-v1"
 
 
 class InstallError(RuntimeError):
@@ -648,6 +649,91 @@ def runtime_lkg_matches_application(runtime: pathlib.Path,
         return True
     except (InstallError, OSError, PermissionError):
         return False
+
+
+def release_identity(application: pathlib.Path) -> str:
+    identity = application.name
+    if (len(identity) != 40
+            or any(character not in "0123456789abcdef" for character in identity)):
+        raise InstallError(f"Invalid installed application release identity: {application}")
+    return identity
+
+
+def active_application(deployment: dict, runtime: pathlib.Path) -> pathlib.Path:
+    """Resolve the one release whose source bytes match the runtime's exact LKG."""
+    releases = pathlib.Path(deployment["application_root"]) / "releases"
+    if not releases.is_dir() or releases.is_symlink():
+        raise InstallError("The installed application release root is missing or unsafe")
+    matches = [
+        path for path in sorted(releases.iterdir())
+        if path.is_dir() and not path.is_symlink()
+        and runtime_lkg_matches_application(runtime, path)
+    ]
+    if len(matches) != 1:
+        raise InstallError(
+            "The live runtime LKG must match exactly one installed application release; "
+            f"found {len(matches)}"
+        )
+    release_identity(matches[0])
+    return matches[0]
+
+
+def release_state_path(deployment: dict) -> pathlib.Path:
+    return pathlib.Path(deployment["application_root"]) / "release-state.json"
+
+
+def read_release_state(deployment: dict) -> dict | None:
+    path = release_state_path(deployment)
+    if not path.exists():
+        return None
+    if (not path.is_file() or path.is_symlink() or path.stat().st_uid != 0
+            or stat.S_IMODE(path.stat().st_mode) != 0o644):
+        raise InstallError("The application release-state marker is unsafe")
+    state = json_document(path)
+    if state.get("schema") != RELEASE_STATE_SCHEMA:
+        raise InstallError("The application release-state marker has an unknown schema")
+    releases = pathlib.Path(deployment["application_root"]) / "releases"
+    for key in ("active_release", "previous_release"):
+        identity = state.get(key)
+        if identity is None and key == "previous_release":
+            continue
+        if not isinstance(identity, str):
+            raise InstallError(f"The application release-state marker has no valid {key}")
+        release_identity(releases / identity)
+        if not (releases / identity).is_dir():
+            raise InstallError(f"The application release-state marker names a missing {key}")
+    return state
+
+
+def write_release_state(deployment: dict, *, active: pathlib.Path,
+                        previous: pathlib.Path | None, transition: str,
+                        checkpoint_sha256: str, runtime_id: str,
+                        backup: pathlib.Path) -> dict:
+    document = {
+        "schema": RELEASE_STATE_SCHEMA,
+        "active_release": release_identity(active),
+        "previous_release": release_identity(previous) if previous else None,
+        "transition": transition,
+        "runtime_id": runtime_id,
+        "checkpoint_active_sha256": checkpoint_sha256,
+        "continuity_backup": str(backup),
+        "activated_at_epoch": time.time(),
+        "standing": "active-after-cold-restore-no-replay",
+    }
+    path = release_state_path(deployment)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    temporary.write_text(json.dumps(document, sort_keys=True) + "\n",
+                         encoding="utf-8")
+    os.chown(temporary, 0, 0)
+    temporary.chmod(0o644)
+    os.replace(temporary, path)
+    descriptor = os.open(path.parent, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+    return document
 
 
 def validated_migration_backup(source: pathlib.Path, backup: pathlib.Path,
@@ -1368,6 +1454,9 @@ def print_commands(config: dict) -> None:
     print(f"  sudo {operator} stop")
     print(f"  sudo {operator} panic")
     print(f"  sudo {operator} model-selection")
+    print("Application release commands (from the clean source repository):")
+    print("  sudo ./install_miter.py upgrade")
+    print("  sudo ./install_miter.py rollback-release")
 
 
 def plan(config: dict) -> dict:
@@ -1397,6 +1486,247 @@ def plan(config: dict) -> dict:
         "private_vad_asset": "required-by-exact-SHA-256; supply with --vad-asset; never copied into source",
         "destructive_actions": [],
     }
+
+
+def remove_transition_runtime(path: pathlib.Path, expected_parent: pathlib.Path,
+                              expected_prefix: str) -> None:
+    """Remove only a stopped, derived runtime created by this transition."""
+    if (path.parent != expected_parent or not path.name.startswith(expected_prefix)
+            or path.is_symlink() or not path.is_dir()):
+        raise InstallError(f"Refusing to remove unexpected transition runtime: {path}")
+    ensure_runtime_stopped(path)
+    shutil.rmtree(path)
+
+
+def restore_previous_release_after_failure(
+        config: dict, deployment: dict, petta: pathlib.Path,
+        account: pwd.struct_passwd, previous_application: pathlib.Path,
+        source_runtime: pathlib.Path, failed_runtime: pathlib.Path | None,
+        expected_checkpoint: str, expected_runtime_id: str) -> None:
+    """Restore the pre-transition runtime and operator without inventing state."""
+    runtime = pathlib.Path(deployment["runtime_root"])
+    if runtime.exists():
+        raise InstallError(
+            "Release rollback cannot restore over an occupied live runtime path"
+        )
+    source_runtime.rename(runtime)
+    if verify_runtime_checkpoint(runtime) != expected_checkpoint:
+        raise InstallError("Restored predecessor runtime checkpoint changed")
+    if json_document(runtime / "runtime.json").get("runtime_id") != expected_runtime_id:
+        raise InstallError("Restored predecessor runtime identity changed")
+    if not runtime_lkg_matches_application(runtime, previous_application):
+        raise InstallError("Restored predecessor runtime no longer matches its release")
+    provision_workshop_broker(config, previous_application, account)
+    install_operator_wrapper(previous_application, deployment, petta)
+    started = miter_command(previous_application, deployment, petta, "start",
+                            check=False)
+    if started.returncode != 0:
+        raise child_failure(started, "Predecessor release recovery start")
+    wait_runtime_ready(config, previous_application, deployment, petta)
+    if failed_runtime is not None and failed_runtime.exists():
+        remove_transition_runtime(
+            failed_runtime, runtime.parent, "runtime.failed-release-"
+        )
+
+
+def transition_application_release(config: dict, target_application: pathlib.Path,
+                                   transition: str) -> dict:
+    """Move one durable runtime across an immutable application release.
+
+    This is finite installation/recovery machinery.  It never selects a
+    movement or interprets contact.  Polling is suspended during cold restore,
+    and the active checkpoint must remain byte-identical before external
+    contact is re-enabled.
+    """
+    if os.geteuid() != 0:
+        raise InstallError("Application release transitions must run with sudo")
+    require_supported_host()
+    deployment = config["deployment"]
+    preflight_services(config, reuse=True)
+    account = ensure_runtime_account(deployment["runtime_user"])
+    ensure_install_root(deployment, account)
+    petta = install_petta(deployment)
+    ensure_workshop_image(config)
+    runtime = pathlib.Path(deployment["runtime_root"])
+    if not runtime_marker_valid(runtime):
+        raise InstallError("No complete installed Miter runtime is available to transition")
+    current_application = active_application(deployment, runtime)
+    if current_application == target_application:
+        return {
+            "schema": "miter-application-release-transition-v1",
+            "status": "already-active",
+            "transition": transition,
+            "active_release": release_identity(current_application),
+            "runtime": str(runtime),
+        }
+
+    state = read_release_state(deployment)
+    if state is not None and state.get("active_release") != release_identity(current_application):
+        raise InstallError("Release-state marker disagrees with the live runtime LKG")
+
+    stop_runtime_at_boundary(config, current_application, deployment, petta)
+    ensure_runtime_stopped(runtime)
+    checkpoint_before = verify_runtime_checkpoint(runtime)
+    runtime_before = json_document(runtime / "runtime.json")
+    runtime_id = runtime_before.get("runtime_id")
+    if not isinstance(runtime_id, str) or not runtime_id:
+        raise InstallError("The live runtime has no durable identity")
+
+    timestamp = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+    source_runtime = runtime.with_name(
+        f"runtime.release-source-{release_identity(current_application)[:12]}-"
+        f"{timestamp}-{os.getpid()}"
+    )
+    if source_runtime.exists():
+        raise InstallError(f"Release source preservation path already exists: {source_runtime}")
+    runtime.rename(source_runtime)
+    failed_runtime: pathlib.Path | None = None
+    migration: dict | None = None
+    poll_prior: bytes | None = None
+    poll_suspended = False
+    candidate_started = False
+    try:
+        bootstrap = miter_command(target_application, deployment, petta,
+                                  "install", check=False)
+        if bootstrap.returncode != 0:
+            raise child_failure(bootstrap, "Candidate release runtime bootstrap")
+        bootstrap_reply = miter_reply(bootstrap, "Candidate release runtime bootstrap")
+        if bootstrap_reply.get("status") != "installed":
+            raise InstallError(
+                "Candidate release runtime bootstrap did not create a fresh runtime: "
+                f"{bootstrap_reply.get('status', 'unknown')}"
+            )
+        migration = migrate_runtime_state(
+            source_runtime, runtime, deployment, account
+        )
+        if migration.get("standing") != "durable-state-copied-awaiting-cold-restore":
+            raise InstallError("Candidate release migration did not reach its restore boundary")
+        if not provision_vad_asset(config, account, None):
+            raise InstallError("Candidate release did not retain the exact private VAD asset")
+        missing = provision_credentials(config, account, True)
+        if missing:
+            raise InstallError(
+                "Candidate release could not recover private credentials: "
+                + ", ".join(missing)
+            )
+        broker = provision_workshop_broker(config, target_application, account)
+        poll_prior = suspend_surface_poll(runtime, account)
+        poll_suspended = True
+        started = miter_command(target_application, deployment, petta, "start",
+                                check=False)
+        if started.returncode != 0:
+            raise child_failure(started, "Candidate release cold-restore start")
+        candidate_started = True
+        start_reply = miter_reply(started, "Candidate release cold-restore start")
+        if start_reply.get("mattermost_preflight") != "ready":
+            raise InstallError("Candidate release Mattermost identity preflight was held")
+        wait_runtime_ready(config, target_application, deployment, petta)
+        stop_runtime_at_boundary(config, target_application, deployment, petta)
+        candidate_started = False
+        migration = mark_migration_restored(runtime, migration, account)
+        if verify_runtime_checkpoint(runtime) != checkpoint_before:
+            raise InstallError("Candidate release cold restore changed the active checkpoint")
+        if json_document(runtime / "runtime.json").get("runtime_id") != runtime_id:
+            raise InstallError("Candidate release changed the durable runtime identity")
+        restore_surface_poll(runtime, poll_prior, account)
+        poll_suspended = False
+
+        install_operator_wrapper(target_application, deployment, petta)
+        live = miter_command(target_application, deployment, petta, "start",
+                             check=False)
+        if live.returncode != 0:
+            raise child_failure(live, "Candidate release live start")
+        candidate_started = True
+        ready = wait_runtime_ready(config, target_application, deployment, petta)
+        report = validate(config, target_application, petta)
+        if not report.get("complete"):
+            raise InstallError("Candidate release did not pass complete installed validation")
+        backup = pathlib.Path(migration["backup"])
+        release_state = write_release_state(
+            deployment, active=target_application, previous=current_application,
+            transition=transition, checkpoint_sha256=checkpoint_before,
+            runtime_id=runtime_id, backup=backup
+        )
+        remove_transition_runtime(
+            source_runtime, runtime.parent, "runtime.release-source-"
+        )
+        report.update({
+            "schema": "miter-application-release-transition-v1",
+            "status": "application-release-active",
+            "transition": transition,
+            "active_release": release_identity(target_application),
+            "previous_release": release_identity(current_application),
+            "runtime": str(runtime),
+            "runtime_id": runtime_id,
+            "checkpoint_active_sha256": checkpoint_before,
+            "migration": migration,
+            "release_state": release_state,
+            "heartbeat": ready.get("heartbeat"),
+            "workshop_broker": broker,
+        })
+        return report
+    except Exception as original:
+        if poll_suspended and runtime.exists():
+            restore_surface_poll(runtime, poll_prior, account)
+            poll_suspended = False
+        if candidate_started and runtime.exists():
+            try:
+                stop_runtime_at_boundary(config, target_application,
+                                         deployment, petta)
+            except Exception as stop_error:
+                raise InstallError(
+                    "Candidate release failed and could not be stopped safely; "
+                    f"predecessor remains preserved at {source_runtime}; "
+                    f"original failure: {original}; stop failure: {stop_error}"
+                ) from stop_error
+        if runtime.exists():
+            ensure_runtime_stopped(runtime)
+            failed_runtime = runtime.with_name(
+                f"runtime.failed-release-{release_identity(target_application)[:12]}-"
+                f"{timestamp}-{os.getpid()}"
+            )
+            if failed_runtime.exists():
+                raise InstallError(
+                    f"Candidate release preservation path already exists: {failed_runtime}"
+                ) from original
+            runtime.rename(failed_runtime)
+        try:
+            restore_previous_release_after_failure(
+                config, deployment, petta, account, current_application,
+                source_runtime, failed_runtime, checkpoint_before, runtime_id
+            )
+        except Exception as recovery_error:
+            raise InstallError(
+                "Application release transition failed and automatic predecessor "
+                f"recovery also failed; original failure: {original}; "
+                f"recovery failure: {recovery_error}; preserved source: {source_runtime}; "
+                f"failed candidate: {failed_runtime}"
+            ) from recovery_error
+        raise InstallError(
+            "Application release transition failed; the predecessor release was "
+            f"restored and restarted without checkpoint change: {original}"
+        ) from original
+
+
+def upgrade(config: dict) -> dict:
+    if os.geteuid() != 0:
+        raise InstallError("Application release upgrade must run with sudo")
+    deployment = config["deployment"]
+    identity = source_identity()
+    target = install_application(deployment, identity)
+    return transition_application_release(config, target, "upgrade")
+
+
+def rollback_release(config: dict) -> dict:
+    if os.geteuid() != 0:
+        raise InstallError("Application release rollback must run with sudo")
+    deployment = config["deployment"]
+    state = read_release_state(deployment)
+    if state is None or not isinstance(state.get("previous_release"), str):
+        raise InstallError("No verified predecessor application release is recorded")
+    target = (pathlib.Path(deployment["application_root"]) / "releases"
+              / state["previous_release"])
+    return transition_application_release(config, target, "rollback")
 
 
 def install(config: dict, reuse_services: bool, import_keychain: bool,
@@ -1564,6 +1894,14 @@ def main() -> int:
                                 help="Provision the exact licensed NRC VAD 2.1 file into private runtime state")
     subparsers.add_parser("validate", help="Read-only installation validation")
     subparsers.add_parser("commands", help="Print ordinary operator commands")
+    subparsers.add_parser(
+        "upgrade",
+        help="Cold-restore the live mind under the exact committed source release",
+    )
+    subparsers.add_parser(
+        "rollback-release",
+        help="Carry current continuity back through the verified predecessor release",
+    )
     args = parser.parse_args()
     try:
         config = load_config()
@@ -1575,6 +1913,10 @@ def main() -> int:
                              args.migrate_runtime, args.vad_asset)
         elif args.command == "validate":
             result = validate(config)
+        elif args.command == "upgrade":
+            result = upgrade(config)
+        elif args.command == "rollback-release":
+            result = rollback_release(config)
         else:
             print_commands(config)
             return 0
