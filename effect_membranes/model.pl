@@ -158,7 +158,7 @@ as_model_question_carrier(
     InstructionLength>=100,InstructionLength=<4096,
     as_symbol(ResourceId,_),as_model_identifier(ModelId),
     DirectionAuthority='human-operator-direction-not-cognitive-authority',
-    integer(MaxTokens),MaxTokens>=1,MaxTokens=<800,
+    integer(MaxTokens),MaxTokens>=1,MaxTokens=<2048,
     number(Deadline),Deadline>=1,Deadline=<300.
 
 as_model_c4_rendering(
@@ -357,7 +357,7 @@ as_model_question_carrier(
     InstructionLength>=100, InstructionLength=<4096,
     as_symbol(ResourceId,_),as_model_identifier(ModelId),
     DirectionAuthority='human-operator-direction-not-cognitive-authority',
-    integer(MaxTokens),MaxTokens>=1,MaxTokens=<800,
+    integer(MaxTokens),MaxTokens>=1,MaxTokens=<2048,
     number(Deadline),Deadline>=1,Deadline=<300.
 
 as_model_c4_voice_commitments(
@@ -700,7 +700,7 @@ as_model_direction_limits('semantic-reading',Profile,MaxTokens,Deadline) :-
     Deadline=Limits.deadline_seconds.
 as_model_direction_limits('language-rendering',Profile,MaxTokens,Deadline) :-
     get_dict(limits,Profile,Limits),
-    MaxTokens is min(800,Limits.max_output_tokens),
+    MaxTokens is min(2048,Limits.max_output_tokens),
     Deadline=Limits.deadline_seconds.
 
 as_model_continuity_context_verified_if_present(Root,Question,Scope) :-
@@ -765,7 +765,8 @@ as_model_profile_exact(Profile) :-
     get_dict(model,Profile,"z-ai/glm-5.3"),
     get_dict(endpoint,Profile,"https://openrouter.ai/api/v1/chat/completions"),
     get_dict(roles,Profile,["semantic-reading","language-rendering"]),
-    get_dict(reasoning_effort,Profile,"high"),
+    get_dict(reasoning_effort,Profile,ReasoningEffort),
+    memberchk(ReasoningEffort,["low","high","max"]),
     get_dict(limits,Profile,Limits), is_dict(Limits),
     get_dict(max_output_tokens,Limits,2048),
     get_dict(deadline_seconds,Limits,120),
@@ -1452,7 +1453,8 @@ as_model_request_valid(Profile,Body) :-
       response_format,stream,temperature,top_p],
     Body.model=="z-ai/glm-5.3", integer(Body.max_tokens),
     Body.max_tokens>=1, Body.max_tokens=<2048,
-    Body.reasoning_effort=="high", Body.stream==false,
+    memberchk(Body.reasoning_effort,["low","high","max"]),
+    Body.stream==false,
     Body.temperature=:=0, Body.top_p=:=1,
     is_dict(Body.response_format),
     Body.response_format.type=="json_schema",

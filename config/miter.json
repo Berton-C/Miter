@@ -229,7 +229,7 @@
         "model": "z-ai/glm-5.3",
         "endpoint": "https://openrouter.ai/api/v1/chat/completions",
         "roles": ["semantic-reading", "language-rendering"],
-        "reasoning_effort": "high",
+        "reasoning_effort": "low",
         "limits": {
           "max_output_tokens": 2048,
           "deadline_seconds": 120,

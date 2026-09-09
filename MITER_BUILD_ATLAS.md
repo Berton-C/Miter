@@ -2840,6 +2840,43 @@ Already carried:
   retained RSS, returned consequence, restart/no-replay, growing-history slope,
   and whole-application rollback remain the exact unmeasured limbs.
 
+- A second live regression observation localized the still-missing response to
+  the post-contact model/VoiceRNA envelope rather than to Mattermost ingress,
+  identity, or effect transport.  Release `682f17d` retained exactly one
+  broker, one supervisor, and one pinned PeTTa child; after about 24 minutes
+  the processes respectively used approximately 13,040, 21,616, and 324,416
+  KiB RSS, with the child at 2.3 percent of one core.  No disposable trial or
+  duplicate clock remained.  The newly introduced VoiceRNA render and audit
+  questions were nevertheless hard-clamped to 800 completion tokens while the
+  remote GLM profile requested high reasoning effort.  That is a strictly
+  narrower envelope than both the 2,048-token active grant and the semantic
+  question, and it can consume the completion in provider reasoning before a
+  certifiable utterance exists.  A human then receives no response even though
+  Mattermost contact was admitted.  This is a regression against the earlier
+  responding supported path and is not reclassified as an unfinished
+  Mattermost feature.
+
+  The bounded source repair changes only model-resource allocation and carrier
+  validation.  The human-editable installed GLM default now requests low
+  reasoning effort, and semantic, render, and audit questions may each use the
+  same existing 2,048-token ceiling.  The active AMA-1.2 grant is not enlarged;
+  no new model, disclosure, call, purpose, contact, cognitive authority, or
+  effect authority is introduced.  The provider can still be configured for
+  low, high, or maximum reasoning within that grant, and the membrane continues
+  to reject any request above 2,048.  Prolog load passed.  An ephemeral exact-
+  profile check resolved both purposes to 2,048 tokens / 120 seconds with low
+  reasoning; a request-schema check accepted all three supported reasoning
+  settings and rejected 2,049 tokens.  These checks made zero provider calls,
+  performed zero constitutive formations, and left no fixture or runtime
+  behind.  Installed live response, VoiceRNA audit/revision, returned
+  consequence, restart/no-replay, and latency remain unmeasured, so this commit
+  does not close C4.  The next exact resilience seam is to make completed model
+  stages durable and resumable, allowing a typed failed stage to be reconsidered
+  without reconstructing or losing the admitted contact and all earlier exact
+  organizations.  A later ratified resource revision must replace 2,048 as a
+  universal long-term ceiling with purpose-specific human-editable grants;
+  this repair does not silently make that authority change.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
