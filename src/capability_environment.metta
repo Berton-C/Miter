@@ -87,7 +87,7 @@
               (and (== (is-expr (index-atom $operation 2)) false)
                    (CPShape (index-atom $operation 3)
                      expected-current-sha256 2)))
-             false))))))
+             (C4ExecutableExtensionOperationValid $operation)))))))
 
 (= (C4CapabilityForOperation $operation)
    (if (CPShape $operation informational-http-v1 3)
@@ -101,7 +101,7 @@
                  (CPShape $operation workspace-rollback-v1 4))))
          (capability versioned-owned-workspace no-credential
            reversible-local-artifact)
-         no-capability-for-operation))))
+         (C4ExecutableExtensionCapability $operation)))))
 
 (= (C4CapabilityResourceForOperation $operation)
    (if (CPShape $operation informational-http-v1 3)
@@ -113,7 +113,7 @@
              (or (CPShape $operation workspace-list-v1 2)
                  (CPShape $operation workspace-rollback-v1 4))))
          (resource versioned-owned-workspace)
-         (resource unavailable-capability)))))
+         (C4ExecutableExtensionResource $operation)))))
 
 (= (C4CapabilityRouteFromMovement $movement)
    (if (and (CPShape $movement movement-formed 7)
@@ -320,7 +320,7 @@
        (and (CPShape $outcome workspace-result-v1 6)
             (CPHas (index-atom $outcome 1)
               (written read listed rolled-back conflict failed) 0))
-       false)))
+       (C4ExecutableExtensionOutcomeValid $outcome $operation))))
 
 (= (C4CapabilityObservationV2Valid $observation $descriptor)
    (if (and (CPShape $observation capability-observation-v2 9)

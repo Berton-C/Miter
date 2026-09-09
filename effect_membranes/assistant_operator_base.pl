@@ -5,6 +5,7 @@
 
 :- ensure_loaded('assistant_service.pl').
 :- ensure_loaded('model.pl').
+:- ensure_loaded('capability_environment.pl').
 :- use_module(library(process)).
 :- use_module(library(readutil)).
 :- use_module(library(uuid)).
@@ -191,7 +192,9 @@ as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
   'model/claims','model/requests','model/raw','model/observations','surface/raw',
   'surface/events','surface/effects','checkpoints/objects','continuity/native',
   'continuity/native/manifests','continuity/native/scopes','semantic/queries',
-  'semantic/projections','lkg/source']).
+  'semantic/projections','lkg/source','workshop','workshop/repository',
+  'workshop/candidates','workshop/staged','workshop/trials',
+  'workshop/active','workshop/prepared','workshop/exports']).
 
 as_lkg_source_relative('lkg/source').
 
@@ -493,6 +496,8 @@ as_deployment_config_valid(Deployment) :-
       "mattermost/mattermost-team-edition:11.7.7@sha256:3ecc659553b14335e382a3d4b673afe84f4368ea1ed4cccdb44805add8dedbd7",
     Deployment.images.postgres==
       "postgres:16-alpine@sha256:57c72fd2a128e416c7fcc499958864df5301e940bca0a56f58fddf30ffc07777",
+    Deployment.images.workshop==
+      "python:3.11-slim@sha256:a3ab0b966bc4e91546a033e22093cb840908979487a9fc0e6e38295747e49ac0",
     is_list(Deployment.credential_imports),
     maplist(as_deployment_credential_import_valid,Deployment.credential_imports),
     is_list(Deployment.operator_notes),maplist(string,Deployment.operator_notes).
@@ -532,7 +537,7 @@ as_growth_environment_config_valid(Config) :-
     as_mattermost_exact_keys(Config,
       [credential_access,enabled,expected_runtime_user,human_authority_boundaries,
        human_editable,informational_network,operator_notes,reversible_writes,
-       schema,terminal,workspace_relative]),
+       schema,terminal,workshop,workspace_relative]),
     as_dict_atom(Config,schema,'miter-open-growth-environment-v1'),
     Config.human_editable==true,Config.enabled==true,
     as_dict_atom(Config,expected_runtime_user,claritymiter),
@@ -541,6 +546,20 @@ as_growth_environment_config_valid(Config) :-
     as_dict_atom(Config,terminal,'typed-direct-argv-broker'),
     as_dict_atom(Config,credential_access,'named-reference-only'),
     as_dict_atom(Config,reversible_writes,'versioned-owned-workspace'),
+    is_dict(Config.workshop),
+    as_mattermost_exact_keys(Config.workshop,
+      [cpus,image,memory_megabytes,network,operator_notes,pids_limit,platform,
+       root_filesystem,runner]),
+    Config.workshop.runner=="docker-isolated-v1",
+    Config.workshop.image==
+      "python:3.11-slim@sha256:a3ab0b966bc4e91546a033e22093cb840908979487a9fc0e6e38295747e49ac0",
+    Config.workshop.platform=="linux/arm64",
+    Config.workshop.network=="none",
+    Config.workshop.root_filesystem=="read-only",
+    Config.workshop.memory_megabytes=:=128,Config.workshop.cpus=:=0.5,
+    Config.workshop.pids_limit=:=32,
+    is_list(Config.workshop.operator_notes),
+    maplist(string,Config.workshop.operator_notes),
     Config.human_authority_boundaries==[
       "bind-other-principal","cross-user-private-material",
       "use-named-credential","spend-or-transfer-value",
@@ -914,7 +933,8 @@ as_supervised_cycle(Root,Reply) :-
     ( CrashStanding==blocked ->
         Reply=_{schema:"miter-assistant-operator-result-v1",
           status:'crash-loop-contained'}
-    ; as_spawn_foreground(Root,ChildPid,ProcessStatus),
+    ; miter_workshop_cleanup_orphans(Root,_WorkshopRecovery),
+      as_spawn_foreground(Root,ChildPid,ProcessStatus),
       as_supervised_outcome(Root,ChildPid,ProcessStatus,Outcome),
       ( Outcome.status=='supervised-crash' ->
           sleep(1),as_supervised_cycle(Root,Reply)

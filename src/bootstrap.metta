@@ -35,6 +35,7 @@
 !(import! &self "./src/semantic_participation.metta")
 !(import! &self "./src/declarative_capability.metta")
 !(import! &self "./src/assistant_reactor_foundation.metta")
+!(import! &self "./src/executable_extension.metta")
 ; Capability possibility constructors must be known before the provisional
 ; dynamics compile inside authority_inheritance.  Otherwise PeTTa correctly
 ; preserves their names as inert atoms rather than silently treating them as

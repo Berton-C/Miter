@@ -38,6 +38,7 @@ as_lkg_relative_paths([
   'src/assistant_reactor_foundation.metta','src/scope_continuity.metta',
   'src/semantic_participation.metta','src/assistant_reactor_authority.metta',
   'src/dialogue_participation.metta',
+  'src/executable_extension.metta',
   'src/capability_environment.metta',
   'src/vad.metta',
   'src/qualified_reasoning.metta',
@@ -54,6 +55,7 @@ as_lkg_relative_paths([
   'effect_membranes/chroma.pl',
   'effect_membranes/mattermost.pl',
   'effect_membranes/capability_environment.pl',
+  'effect_membranes/workshop.pl',
   'effect_membranes/vad.pl',
   'config/constitutive-projection.json','config/miter.json','config/continuity.json'
 ]).
@@ -121,12 +123,15 @@ as_lkg_required_paths([
   'src/soul_regeneration.metta',
   'src/assistant_service_runtime.metta',
   'src/constitutive_authority_joint.metta','src/dialogue_participation.metta',
+  'src/executable_extension.metta',
   'src/qualified_reasoning.metta',
   'src/declarative_capability.metta',
   'effect_membranes/assistant_service.pl','effect_membranes/store.pl',
   'effect_membranes/integrity.pl','effect_membranes/runtime_continuity.pl',
   'effect_membranes/model.pl','effect_membranes/chroma.pl',
   'effect_membranes/mattermost.pl',
+  'effect_membranes/capability_environment.pl',
+  'effect_membranes/workshop.pl',
   'effect_membranes/runtime_extensions/petta_parallel.pl',
   'effect_membranes/runtime_extensions/store_posix.c'
 ]).

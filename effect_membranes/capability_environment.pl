@@ -3,6 +3,7 @@
 % It does not choose a tool, command, site, purpose, credential or movement.
 
 :- ensure_loaded('store.pl').
+:- ensure_loaded('workshop.pl').
 :- use_module(library(crypto)).
 :- use_module(library(filesex)).
 :- use_module(library(http/http_open)).
@@ -245,6 +246,8 @@ ce_operation(['workspace-rollback-v1',SourceRequest0,Relative0,
     ce_symbol(SourceRequest0,SourceRequest),
     ce_workspace_relative(Relative0,Relative),
     miter_store_nonempty_atom(Expected0,Expected),ce_sha256(Expected),!.
+ce_operation(Operation0,Operation,Capability) :-
+    miter_workshop_operation(Operation0,Operation,Capability),!.
 
 ce_expected_prior('no-prior-content','no-prior-content').
 ce_expected_prior(['prior-sha256',Hash0],['prior-sha256',Hash]) :-
@@ -306,6 +309,21 @@ ce_request_once(Root,_Descriptor,RequestId,_Scope,_Operation,_Capability,
     ce_claim_matches(ClaimPath,RequestId,DescriptorHash),
     ce_read_term(ObservationPath,Observation),
     ce_observation_identity(Observation,RequestId,DescriptorHash).
+ce_request_once(Root,_Descriptor,RequestId,Scope,Operation,_Capability,
+    _Deadline,_MaximumBytes,DescriptorHash,Observation) :-
+    ce_claim_path(Root,RequestId,ClaimPath),exists_file(ClaimPath),
+    ce_claim_matches(ClaimPath,RequestId,DescriptorHash),
+    miter_workshop_reconcile(Root,RequestId,Operation,_Standing,Outcome,
+      Failure,Completion),!,
+    Observation=['capability-observation-v2',RequestId,Scope,
+      ['request-descriptor-sha256',DescriptorHash],
+      ['resource','executable-extension-workshop'],Outcome,
+      ['elapsed-milliseconds',0],['failure',Failure],
+      'mechanical-observation-no-meaning-no-movement-authority'],
+    ce_observation_identity(Observation,RequestId,DescriptorHash),
+    ce_observation_path(Root,RequestId,ObservationPath),
+    ce_write_term_durable(ObservationPath,Observation),
+    ce_record_completion(ClaimPath,RequestId,DescriptorHash,Completion,0).
 ce_request_once(Root,_Descriptor,RequestId,_Scope,_Operation,_Capability,
     _Deadline,_MaximumBytes,DescriptorHash,
     ['capability-observation-held-v1',RequestId,
@@ -364,6 +382,17 @@ ce_operation_observe(Root,RequestId,
     Outcome=['process-result-v1',Transport,['exit-code',ExitCode],
       ['stdout',StdoutHash,Stdout],['stderr',StderrHash,Stderr],
       'direct-argv-no-shell-string'],!.
+ce_operation_observe(Root,RequestId,Operation,Scope,DescriptorHash,_Capability,
+    Deadline,MaximumBytes,
+    ['capability-observation-v2',RequestId,Scope,
+      ['request-descriptor-sha256',DescriptorHash],
+      ['resource','executable-extension-workshop'],Outcome,
+      ['elapsed-milliseconds',pending],['failure',Failure],
+      'mechanical-observation-no-meaning-no-movement-authority'],
+    Completion) :-
+    miter_workshop_operation(Operation,Operation,_),
+    miter_workshop_observe(Root,RequestId,Operation,Deadline,MaximumBytes,
+      _Standing,Outcome,Failure,Completion),!.
 ce_operation_observe(Root,RequestId,Operation,Scope,DescriptorHash,_Capability,
     _Deadline,MaximumBytes,
     ['capability-observation-v2',RequestId,Scope,
@@ -787,10 +816,10 @@ ce_config_valid(Config) :-
     ce_exact_keys(Config,
       [credential_access,enabled,expected_runtime_user,human_authority_boundaries,
        human_editable,informational_network,operator_notes,reversible_writes,
-       schema,terminal,workspace_relative]),
+       schema,terminal,workshop,workspace_relative]),
     Config.schema=="miter-open-growth-environment-v1",
     Config.human_editable==true,memberchk(Config.enabled,[true,false]),
-    Config.expected_runtime_user=="claritymiter",
+    ce_symbol(Config.expected_runtime_user,_ExpectedRuntimeUser),
     Config.workspace_relative=="workspace",
     Config.informational_network=="open-http-https",
     Config.terminal=="typed-direct-argv-broker",
@@ -801,7 +830,27 @@ ce_config_valid(Config) :-
       "use-named-credential","spend-or-transfer-value",
       "external-publication-or-message",
       "difficult-to-reverse-external-commitment"],
-    is_list(Config.operator_notes),maplist(string,Config.operator_notes).
+    is_list(Config.operator_notes),maplist(string,Config.operator_notes),
+    ce_workshop_config_valid(Config.workshop).
+
+ce_workshop_config_valid(Workshop) :-
+    is_dict(Workshop),
+    ce_exact_keys(Workshop,
+      [cpus,image,memory_megabytes,network,operator_notes,pids_limit,
+        platform,root_filesystem,runner]),
+    Workshop.runner=="docker-isolated-v1",
+    Workshop.platform=="linux/arm64",Workshop.network=="none",
+    Workshop.root_filesystem=="read-only",
+    integer(Workshop.memory_megabytes),Workshop.memory_megabytes>=32,
+    Workshop.memory_megabytes=<1024,
+    number(Workshop.cpus),Workshop.cpus>0,Workshop.cpus=<2,
+    integer(Workshop.pids_limit),Workshop.pids_limit>=8,
+    Workshop.pids_limit=<128,
+    string(Workshop.image),string_length(Workshop.image,ImageLength),
+    ImageLength>=72,ImageLength=<512,
+    re_match('^[A-Za-z0-9][A-Za-z0-9._/-]*(:[A-Za-z0-9._-]+)?@sha256:[a-f0-9]{64}$',
+      Workshop.image),
+    is_list(Workshop.operator_notes),maplist(string,Workshop.operator_notes).
 
 ce_exact_keys(Dict,Expected) :-
     dict_keys(Dict,Keys),sort(Keys,Sorted),sort(Expected,Sorted).

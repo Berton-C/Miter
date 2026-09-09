@@ -19,12 +19,14 @@ miter_integrity_sources([
  'src/fact9_composition.metta',
  'src/provisional_dynamics.metta',
  'src/model_participation.metta',
+ 'src/executable_extension.metta',
  'src/capability_environment.metta',
  'src/vad.metta',
  'src/qualified_reasoning.metta',
  'src/declarative_capability.metta',
  'src/constitutive_authority_joint.metta','src/soul_regeneration.metta',
  'effect_membranes/capability_environment.pl',
+ 'effect_membranes/workshop.pl',
  'effect_membranes/vad.pl',
  'effect_membranes/integrity.pl']).
 miter_integrity_snapshot(Output, Result) :-

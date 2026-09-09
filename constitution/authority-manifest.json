@@ -87,8 +87,12 @@
       "sha256": "8077097ca0df9dd06053fea92421018b0f677c8ec6308f5f38cf92021b52a49a"
     },
     {
+      "path": "src/executable_extension.metta",
+      "sha256": "1ba2f23dd0b5639b8fe6df75f6463dbeddb80e668df7e779b7aab7d7fec9a4ce"
+    },
+    {
       "path": "src/capability_environment.metta",
-      "sha256": "6930af451eb903a246ea30eb49c0ea4655d32dd389d8ee6143bf8764790ec685"
+      "sha256": "3a64cd19644b1b8912f816427fec36f182b191ea2eecd505da59c040dac1756d"
     },
     {
       "path": "src/vad.metta",
@@ -112,7 +116,11 @@
     },
     {
       "path": "effect_membranes/capability_environment.pl",
-      "sha256": "5b34db008097cb49150e36f34032e66540a7f68f79eadf5647d2f6614660318b"
+      "sha256": "1a6b48ec2e41681efc7a54f3811fc069da25db66ad960504b1e894a0ba3cf7b1"
+    },
+    {
+      "path": "effect_membranes/workshop.pl",
+      "sha256": "8113b11e98c66fbd94e2aed16ca2e64054545f18a18cd4dab64a35445f224ed3"
     },
     {
       "path": "effect_membranes/vad.pl",
@@ -120,7 +128,7 @@
     },
     {
       "path": "effect_membranes/integrity.pl",
-      "sha256": "7b3aa29d2d46b3bbc852c38f8ffaf055804f629c3772f3b8f06e5ce79c668588"
+      "sha256": "66c680e406b5161a121b29d47cada8cc6206c3c4deb378098be11b61727addd1"
     }
   ],
   "schema": "miter-constitutional-integrity-v2",

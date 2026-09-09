@@ -433,6 +433,24 @@ def install_services(config: dict, *, reuse: bool) -> str:
     raise InstallError("Isolated services did not become healthy within 180 seconds")
 
 
+def ensure_workshop_image(config: dict) -> str:
+    """Acquire the exact non-cognitive candidate runner during installation."""
+    deployment = config["deployment"]
+    image = deployment["images"].get("workshop")
+    if image != config["growth_environment"]["workshop"].get("image"):
+        raise InstallError("Workshop image identity differs across configuration surfaces")
+    docker = command_path("docker")
+    operator = invoking_user(deployment["runtime_user"])
+    inspect = run([docker, "image", "inspect", image], check=False, user=operator)
+    if inspect.returncode != 0:
+        run([docker, "pull", image], user=operator)
+        inspect = run([docker, "image", "inspect", image], check=False,
+                      user=operator)
+    if inspect.returncode != 0:
+        raise InstallError("Exact workshop runner image is unavailable after acquisition")
+    return "exact-digest-present"
+
+
 def preflight_services(config: dict, *, reuse: bool) -> None:
     deployment = config["deployment"]
     mattermost = config["mattermost"]["origin"] + "/api/v4/system/ping"
@@ -1011,6 +1029,7 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
     petta = install_petta(deployment)
     application = install_application(deployment, identity)
     service_standing = install_services(config, reuse=reuse_services)
+    workshop_image = ensure_workshop_image(config)
     create_private_runtime_parent(deployment, account)
     runtime = pathlib.Path(deployment["runtime_root"])
     recovered_incomplete_runtime = quarantine_incomplete_runtime(runtime)
@@ -1098,6 +1117,7 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
         "status": "installed-and-started" if report["complete"] else "installed-validation-held",
         "application": str(application), "petta": str(petta),
         "runtime": str(runtime), "services": service_standing,
+        "workshop_image": workshop_image,
         "recovered_incomplete_runtime": (
             str(recovered_incomplete_runtime)
             if recovered_incomplete_runtime else None

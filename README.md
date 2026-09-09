@@ -32,17 +32,24 @@ surface can also receive an inert declarative MeTTa capability, construct its
 activation through the complete constitutive encounter, execute independent
 positive/negative native trials, make the admitted module available to later
 movement formation, replace it with an exact version, restore the immediately
-prior version, and preserve that organization across restart.
+prior version, and preserve that organization across restart. The executable
+workshop can now stage exact source bytes in an isolated Git worktree, run two
+or more independent trials in a digest-pinned no-network container, activate a
+version only at a serialized capability cut, invoke the exact active version,
+hot-replace it under an unchanged interface and compatible state contract, and
+restore the exact predecessor after restart.
 
 It is **not yet the usable Miter alpha**. Dedicated-identity migration is
 proven, but the accepted product installation is now one CLI-managed tree. The
 declarative hot-capability layer is not yet general source-code self-upgrade or
-arbitrary skill acquisition: isolated executable builds, versioned state and
-interface compatibility, recoverable source activation, and the open live
-dialogue repair remain to be integrated into this same runtime. A finite macOS
-installer validates the clean source, pinned dependencies, dedicated identity,
-private credential boundary, and isolated services. Its single-root fresh-host
-and continuity-preserving migration trials remain open.
+arbitrary skill acquisition. The first executable proof is deliberately a
+stateless, local-observation-only extension: state migration, newly earned
+effect authority, application-release rollback, installed-identity workshop
+transport, and open live dialogue repair remain to be integrated into this
+same runtime. A finite macOS installer validates the clean source, pinned
+dependencies, dedicated identity, private credential boundary, exact workshop
+image, and isolated services. Its single-root fresh-host and
+continuity-preserving migration trials remain open.
 [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single operations map for
 that additive work.
 

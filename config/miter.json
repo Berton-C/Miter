@@ -30,7 +30,8 @@
     "images": {
       "chroma": "docker.io/chromadb/chroma:1.5.9@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6",
       "mattermost": "mattermost/mattermost-team-edition:11.7.7@sha256:3ecc659553b14335e382a3d4b673afe84f4368ea1ed4cccdb44805add8dedbd7",
-      "postgres": "postgres:16-alpine@sha256:57c72fd2a128e416c7fcc499958864df5301e940bca0a56f58fddf30ffc07777"
+      "postgres": "postgres:16-alpine@sha256:57c72fd2a128e416c7fcc499958864df5301e940bca0a56f58fddf30ffc07777",
+      "workshop": "python:3.11-slim@sha256:a3ab0b966bc4e91546a033e22093cb840908979487a9fc0e6e38295747e49ac0"
     },
     "operator_notes": [
       "The installer is finite packaging machinery and exits before Miter runs.",
@@ -65,6 +66,21 @@
     "terminal": "typed-direct-argv-broker",
     "credential_access": "named-reference-only",
     "reversible_writes": "versioned-owned-workspace",
+    "workshop": {
+      "runner": "docker-isolated-v1",
+      "image": "python:3.11-slim@sha256:a3ab0b966bc4e91546a033e22093cb840908979487a9fc0e6e38295747e49ac0",
+      "platform": "linux/arm64",
+      "network": "none",
+      "root_filesystem": "read-only",
+      "memory_megabytes": 128,
+      "cpus": 0.5,
+      "pids_limit": 32,
+      "operator_notes": [
+        "Candidate trials and invocations receive only a read-only candidate mount and an extension-specific state mount.",
+        "No network, host credential, runtime-state, or unrelated workspace mount enters the candidate container.",
+        "The image is exact-digest pinned and the operator-owned Docker broker remains non-cognitive."
+      ]
+    },
     "human_authority_boundaries": [
       "bind-other-principal",
       "cross-user-private-material",
