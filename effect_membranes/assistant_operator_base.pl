@@ -187,7 +187,7 @@ as_swipl_ld(Path) :-
 
 as_runtime_directories([inbox,leased,consumed,rejected,store,checkpoints,
   receipts,outbox,proofs,intents,lib,logs,model,surface,continuity,semantic,lkg,
-  service,workspace,capabilities,secrets,
+  service,workspace,capabilities,secrets,'private-assets',
   'model/claims','model/requests','model/raw','model/observations','surface/raw',
   'surface/events','surface/effects','checkpoints/objects','continuity/native',
   'continuity/native/manifests','continuity/native/scopes','semantic/queries',
@@ -228,8 +228,8 @@ as_bootstrap_new(Root, Reply) :-
     as_operator_repo_root(Repo),
     directory_file_path(Repo,'config/miter.json',ConfigSource),
     miter_store_read_json(ConfigSource,HumanConfig),
-    as_human_config_sections(Root,HumanConfig,Config,Mattermost,Memory,Models,Grants,
-      EvaluationGrants,GrowthEnvironment),
+    as_human_config_sections(Root,HumanConfig,Config,Mattermost,Memory,Vad,
+      Models,Grants,EvaluationGrants,GrowthEnvironment),
     directory_file_path(Root,'config.json',ConfigTarget),
     miter_store_write_json_atomic(ConfigTarget,Config),
     directory_file_path(Repo,'config/continuity.json',BindingsSource),
@@ -247,6 +247,8 @@ as_bootstrap_new(Root, Reply) :-
     miter_store_write_json_atomic(EvaluationGrantsTarget,EvaluationGrants),
     directory_file_path(Root,'semantic-memory.json',MemoryTarget),
     miter_store_write_json_atomic(MemoryTarget,Memory),
+    directory_file_path(Root,'vad.json',VadTarget),
+    miter_store_write_json_atomic(VadTarget,Vad),
     directory_file_path(Root,'mattermost.json',MattermostTarget),
     miter_store_write_json_atomic(MattermostTarget,Mattermost),
     directory_file_path(Root,'growth-environment.json',GrowthTarget),
@@ -399,13 +401,13 @@ as_validate_config(Config) :-
 % Humans edit one repository surface. Installation validates and materializes
 % narrow private runtime views so individual membranes need no authority over
 % the repository configuration or unrelated settings.
-as_human_config_sections(Root, Human, Runtime, Mattermost, Memory, Models, Grants,
-    EvaluationGrants, GrowthEnvironment) :-
+as_human_config_sections(Root, Human, Runtime, Mattermost, Memory, Vad, Models,
+    Grants, EvaluationGrants, GrowthEnvironment) :-
     is_dict(Human),
     as_mattermost_exact_keys(Human,
       [deployment,external_effects,human_editable,idle_base_seconds,idle_cap_seconds,
        growth_environment,initial_evaluation_grants,initial_model_grants,mattermost,max_input_batch,
-       max_input_bytes,memory,models,network_access,operator_notes,runtime_root,
+       max_input_bytes,memory,models,network_access,operator_notes,runtime_root,vad,
        schema,supervision]),
     as_dict_atom(Human,schema,'miter-assistant-config-v1'),
     Human.human_editable==true,
@@ -423,6 +425,7 @@ as_human_config_sections(Root, Human, Runtime, Mattermost, Memory, Models, Grant
     as_dict_atom(Mattermost,schema,'miter-mattermost-surface-v1'),
     Memory=Human.memory,is_dict(Memory),
     as_dict_atom(Memory,schema,'miter-semantic-memory-config-v1'),
+    as_materialize_vad_config(Root,Human.vad,Vad),
     is_dict(Models),
     as_dict_atom(Models,schema,'miter-model-resource-registry-v1'),
     Grants=Human.initial_model_grants,is_dict(Grants),
@@ -432,6 +435,41 @@ as_human_config_sections(Root, Human, Runtime, Mattermost, Memory, Models, Grant
     GrowthEnvironment=Human.growth_environment,
     as_growth_environment_config_valid(GrowthEnvironment),
     as_mattermost_secret_free(Human).
+
+as_materialize_vad_config(Root,Vad0,Vad) :-
+    is_dict(Vad0),
+    as_mattermost_exact_keys(Vad0,
+      [asset,enabled,human_editable,limits,matching,operator_notes,schema]),
+    Vad0.schema=="miter-vad-language-cue-config-v1",
+    Vad0.human_editable==true,Vad0.enabled==true,
+    Vad0.matching=="longest-exact-only",
+    is_dict(Vad0.asset),
+    as_mattermost_exact_keys(Vad0.asset,
+      [redistribution,relative_path,sha256,source,version]),
+    Vad0.asset.version=="NRC-VAD-2.1",
+    Vad0.asset.sha256==
+      "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+    Vad0.asset.source=="private-runtime-file",
+    Vad0.asset.redistribution==
+      "prohibited-no-lexicon-rows-in-public-repository",
+    string(Vad0.asset.relative_path),
+    atom_string(Relative,Vad0.asset.relative_path),
+    as_safe_lkg_relative_path(Relative),
+    sub_atom(Relative,0,15,_,'private-assets/'),
+    directory_file_path(Root,Relative,AssetPath),
+    atom_string(AssetPath,AssetPathString),
+    put_dict(_{path:AssetPathString},Vad0.asset,Asset),
+    del_dict(relative_path,Asset,_,MaterializedAsset),
+    is_dict(Vad0.limits),
+    as_mattermost_exact_keys(Vad0.limits,
+      [maximum_clauses,maximum_ngram_tokens,maximum_text_characters,
+       maximum_tokens]),
+    Vad0.limits.maximum_clauses=:=32,
+    Vad0.limits.maximum_ngram_tokens=:=3,
+    Vad0.limits.maximum_text_characters=:=32768,
+    Vad0.limits.maximum_tokens=:=4096,
+    is_list(Vad0.operator_notes),maplist(string,Vad0.operator_notes),
+    put_dict(asset,Vad0,MaterializedAsset,Vad).
 
 as_deployment_config_valid(Deployment) :-
     is_dict(Deployment),

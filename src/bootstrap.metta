@@ -11,6 +11,8 @@
   (as_model as_model_direction))
 !(import_prolog_functions_from_file "./effect_membranes/capability_environment.pl"
   (as_capability_environment as_capability_request))
+!(import_prolog_functions_from_file "./effect_membranes/vad.pl"
+  (as_vad))
 ; The functions remain MeTTa-owned cognitive reductions. This pinned runtime
 ; extension only schedules independent alternatives concurrently and returns
 ; them in their original order; it has no selection or semantic authority.
@@ -38,6 +40,13 @@
 ; preserves their names as inert atoms rather than silently treating them as
 ; executable cognition.
 !(import! &self "./src/capability_environment.metta")
+!(import! &self "./src/vad.metta")
 !(import! &self "./src/authority_inheritance.metta")
 !(import! &self "./src/constitutive_authority_joint.metta")
 !(import! &self "./src/assistant_reactor_authority.metta")
+; These modules depend on the completed AR4 preparation/incorporation seam.
+; They must be imported here, not through nested import expressions, so their
+; definitions causally inhabit the one runtime AtomSpace under pinned PeTTa.
+!(import! &self "./src/dialogue_participation.metta")
+!(import! &self "./src/soul_regeneration.metta")
+!(import! &self "./src/assistant_service_runtime.metta")

@@ -144,6 +144,30 @@
       "Distance and result order never select or certify movement."
     ]
   },
+  "vad": {
+    "schema": "miter-vad-language-cue-config-v1",
+    "human_editable": true,
+    "enabled": true,
+    "asset": {
+      "version": "NRC-VAD-2.1",
+      "sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+      "source": "private-runtime-file",
+      "relative_path": "private-assets/NRC-VAD-Lexicon-v2.1.txt",
+      "redistribution": "prohibited-no-lexicon-rows-in-public-repository"
+    },
+    "limits": {
+      "maximum_text_characters": 32768,
+      "maximum_clauses": 32,
+      "maximum_tokens": 4096,
+      "maximum_ngram_tokens": 3
+    },
+    "matching": "longest-exact-only",
+    "operator_notes": [
+      "VAD measures lexical associations and within-contact language trajectory only.",
+      "No VAD value diagnoses a person, infers hidden inner state, authorizes action, selects movement, or classifies SNS/PNS.",
+      "The licensed asset remains a private runtime input and is never copied into source, checkpoints, Chroma, model prompts, or public evidence."
+    ]
+  },
   "models": {
     "schema": "miter-model-resource-registry-v1",
     "human_editable": true,

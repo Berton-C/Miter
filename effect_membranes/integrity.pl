@@ -20,8 +20,10 @@ miter_integrity_sources([
  'src/provisional_dynamics.metta',
  'src/model_participation.metta',
  'src/capability_environment.metta',
+ 'src/vad.metta',
  'src/constitutive_authority_joint.metta','src/soul_regeneration.metta',
  'effect_membranes/capability_environment.pl',
+ 'effect_membranes/vad.pl',
  'effect_membranes/integrity.pl']).
 miter_integrity_snapshot(Output, Result) :-
  catch((miter_integrity_measure(D), miter_integrity_write(Output,D)

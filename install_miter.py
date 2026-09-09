@@ -51,6 +51,7 @@ DURABLE_RUNTIME_DIRECTORIES = (
 )
 DURABLE_RUNTIME_FILES = (
     "evaluation-grants.json", "model-direction.json", "model-grants.json",
+    "private-assets/NRC-VAD-Lexicon-v2.1.txt",
 )
 
 
@@ -478,6 +479,8 @@ def incomplete_runtime_has_material_state(runtime: pathlib.Path) -> bool:
                 for candidate in path.rglob("*")
         )):
             return True
+    if any((runtime / relative).exists() for relative in DURABLE_RUNTIME_FILES):
+        return True
     return any((runtime / name).exists() for name in (
         "runtime.json", "migration.json", "pid.json", "continuity-manifest.json",
     ))
@@ -803,6 +806,71 @@ def provision_credentials(config: dict, account: pwd.struct_passwd,
     return missing
 
 
+def provision_vad_asset(config: dict, account: pwd.struct_passwd,
+                        supplied_path: str | None) -> bool:
+    """Install the exact licensed VAD asset without admitting it to source.
+
+    The destination is stable private runtime state.  Existing bytes are never
+    replaced implicitly: their identity and ownership must already be exact.
+    """
+    vad = config.get("vad")
+    if not isinstance(vad, dict) or vad.get("enabled") is not True:
+        return True
+    asset = vad.get("asset")
+    if not isinstance(asset, dict):
+        raise InstallError("The enabled VAD configuration has no asset descriptor")
+    relative = asset.get("relative_path")
+    expected = asset.get("sha256")
+    relative_path = pathlib.PurePosixPath(relative) if isinstance(relative, str) else None
+    if (relative_path is None or relative_path.is_absolute()
+            or relative_path.parts[:1] != ("private-assets",)
+            or ".." in relative_path.parts):
+        raise InstallError("The VAD asset must remain beneath runtime/private-assets")
+    if not isinstance(expected, str) or len(expected) != 64:
+        raise InstallError("The VAD asset has no exact SHA-256 identity")
+    runtime = pathlib.Path(config["deployment"]["runtime_root"])
+    destination = runtime / relative
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if destination.exists():
+        if (not destination.is_file() or destination.is_symlink()
+                or sha256_file(destination) != expected
+                or destination.stat().st_uid != account.pw_uid
+                or stat.S_IMODE(destination.stat().st_mode) != 0o600):
+            raise InstallError(
+                "Existing private VAD asset has the wrong identity, ownership, or mode"
+            )
+        return True
+    if supplied_path is None:
+        return False
+    source = pathlib.Path(supplied_path)
+    if not source.is_absolute() or not source.is_file() or source.is_symlink():
+        raise InstallError("--vad-asset must name one absolute regular file")
+    if sha256_file(source) != expected:
+        raise InstallError("Supplied VAD asset does not match the pinned NRC VAD 2.1 identity")
+    descriptor, temporary_text = tempfile.mkstemp(
+        prefix=".NRC-VAD-Lexicon-v2.1.", dir=destination.parent
+    )
+    temporary = pathlib.Path(temporary_text)
+    try:
+        with os.fdopen(descriptor, "wb") as output, source.open("rb") as input_file:
+            shutil.copyfileobj(input_file, output, length=1024 * 1024)
+            output.flush()
+            os.fsync(output.fileno())
+        if sha256_file(temporary) != expected:
+            raise InstallError("Private VAD asset changed while it was being copied")
+        os.chown(temporary, account.pw_uid, account.pw_gid)
+        temporary.chmod(0o600)
+        os.replace(temporary, destination)
+        directory = os.open(destination.parent, os.O_RDONLY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
+    finally:
+        temporary.unlink(missing_ok=True)
+    return True
+
+
 def operator_wrapper_text(application: pathlib.Path, deployment: dict,
                           petta: pathlib.Path) -> str:
     runtime = deployment["runtime_root"]
@@ -860,6 +928,21 @@ def validate(config: dict, application: pathlib.Path | None = None,
     else:
         missing_credentials = [label for label, _ in credential_references(config)]
     checks["credentials"] = "private-present" if not missing_credentials else "missing:" + ",".join(missing_credentials)
+    vad = config.get("vad")
+    vad_asset = vad.get("asset") if isinstance(vad, dict) else None
+    vad_relative = vad_asset.get("relative_path") if isinstance(vad_asset, dict) else None
+    vad_path = runtime / vad_relative if isinstance(vad_relative, str) else None
+    try:
+        vad_ready = (
+            vad_path is not None
+            and vad_path.is_file() and not vad_path.is_symlink()
+            and sha256_file(vad_path) == vad_asset.get("sha256")
+            and account is not None and vad_path.stat().st_uid == account.pw_uid
+            and stat.S_IMODE(vad_path.stat().st_mode) == 0o600
+        )
+    except (OSError, PermissionError):
+        vad_ready = False
+    checks["vad_asset"] = "private-present" if vad_ready else "missing-or-invalid"
     checks["chroma"] = "healthy" if endpoint_available(config["memory"]["chroma"]["origin"] + "/api/v2/heartbeat") else "unavailable"
     checks["mattermost"] = "healthy" if endpoint_available(config["mattermost"]["origin"] + "/api/v4/system/ping") else "unavailable"
     if application and petta and account and runtime_ready:
@@ -910,12 +993,13 @@ def plan(config: dict) -> dict:
         },
         "default_service_action": "refuse-unowned-collision;create-isolated-when-available",
         "migration_alternative": "--reuse-local-services preserves the explicitly selected healthy local services",
+        "private_vad_asset": "required-by-exact-SHA-256; supply with --vad-asset; never copied into source",
         "destructive_actions": [],
     }
 
 
 def install(config: dict, reuse_services: bool, import_keychain: bool,
-            migrate_runtime: str | None) -> dict:
+            migrate_runtime: str | None, vad_asset: str | None) -> dict:
     if os.geteuid() != 0:
         raise InstallError("Run this command with sudo; plan and validate are read-only")
     require_supported_host()
@@ -960,11 +1044,14 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
             migration.get("standing") ==
             "durable-state-copied-awaiting-cold-restore"
         )
+    vad_ready = provision_vad_asset(config, account, vad_asset)
     missing = provision_credentials(config, account, import_keychain)
+    if not vad_ready:
+        missing.append("NRC VAD 2.1 private lexical asset (--vad-asset)")
     if missing:
         return {
             "schema": "miter-installation-result-v1",
-            "status": "awaiting-private-credentials",
+            "status": "awaiting-private-inputs",
             "application": str(application),
             "petta": str(petta),
             "runtime": str(runtime),
@@ -1031,6 +1118,8 @@ def main() -> int:
                                 help="Import the exact named Keychain sources into the private runtime without printing them")
     install_parser.add_argument("--migrate-runtime", metavar="ABSOLUTE_PATH",
                                 help="Preserve one stopped Miter runtime's exact identity, continuity, developmental state, and receipts")
+    install_parser.add_argument("--vad-asset", metavar="ABSOLUTE_PATH",
+                                help="Provision the exact licensed NRC VAD 2.1 file into private runtime state")
     subparsers.add_parser("validate", help="Read-only installation validation")
     subparsers.add_parser("commands", help="Print ordinary operator commands")
     args = parser.parse_args()
@@ -1041,7 +1130,7 @@ def main() -> int:
         elif args.command == "install":
             result = install(config, args.reuse_local_services,
                              args.import_keychain_credentials,
-                             args.migrate_runtime)
+                             args.migrate_runtime, args.vad_asset)
         elif args.command == "validate":
             result = validate(config)
         else:

@@ -362,60 +362,6 @@
           (SRSoulRegenerationRecordValid (index-atom $row 4)))
      (AR2HistoryValid $row)))
 
-; Regeneration has priority over new endogenous opportunity because a damaged
-; living Soul must not originate further movement. Both remain reductions of
-; this same recurring reactor; neither is a second loop.
-(= (AssistantCycleIdleWithV3 $root $idle $interval $next $base $cap
-      $control-reader $input-reader $checkpoint-writer $waiter $recorder
-      $effect-writer $model-writer)
-   (let* (($regenerative-step (AssistantRegenerativeCycleStepV1))
-          ($regenerative-results (index-atom $regenerative-step 1)))
-     (if (> (size-atom $regenerative-results) 0)
-       (if (SRRepairResultsCompletedAt $regenerative-results 0)
-         (let* (($snapshot (AssistantSnapshot))
-                ($checkpoint ($checkpoint-writer $root $snapshot))
-                ($record ($recorder $root assistant-soul-regeneration-v1
-                  (cycle-standing autonomous-expressed-soul-restoration
-                    $idle $checkpoint))))
-           (if (== $checkpoint checkpointed)
-             (let $tables (miter_petta_clear_exact_validation_tables)
-               (if (== $tables exact-native-validation-tables-cleared)
-                 (reduce (AssistantCycleWithV3 $root false $base $base $cap
-                   $control-reader $input-reader $checkpoint-writer $waiter
-                   $recorder $effect-writer $model-writer))
-                 (assistant-service-held
-                   exact-native-validation-table-reset-failed)))
-             (assistant-service-held (checkpoint $checkpoint))))
-         (let $record ($recorder $root assistant-soul-regeneration-held-v1
-                $regenerative-results)
-           (assistant-service-held
-             (soul-regeneration $regenerative-results))))
-       (let* (($endogenous-step (AssistantEndogenousCycleStepV3))
-              ($endogenous-results (index-atom $endogenous-step 1)))
-         (if (> (size-atom $endogenous-results) 0)
-           (let* (($effects (AREffectsAt $root $endogenous-results
-                      $effect-writer 0))
-                  ($valid (AREffectsValidAt $effects 0)))
-             (if $valid
-               (let* (($snapshot (AssistantSnapshot))
-                      ($checkpoint ($checkpoint-writer $root $snapshot))
-                      ($record ($recorder $root assistant-endogenous-cycle-v1
-                        (cycle-standing soul-formed-opportunity
-                          $idle $checkpoint))))
-                 (if (== $checkpoint checkpointed)
-                   (let $tables (miter_petta_clear_exact_validation_tables)
-                     (if (== $tables exact-native-validation-tables-cleared)
-                       (reduce (AssistantCycleWithV3 $root false $base $base
-                         $cap $control-reader $input-reader
-                         $checkpoint-writer $waiter $recorder $effect-writer
-                         $model-writer))
-                       (assistant-service-held
-                         exact-native-validation-table-reset-failed)))
-                   (assistant-service-held (checkpoint $checkpoint))))
-               (let $record ($recorder $root
-                      assistant-endogenous-cycle-held-v1 $effects)
-                 (assistant-service-held (endogenous-effects $effects)))))
-           (let $wait ($waiter $root $interval)
-             (reduce (AssistantCycleWithV3 $root true $next $base $cap
-               $control-reader $input-reader $checkpoint-writer $waiter
-               $recorder $effect-writer $model-writer))))))))
+; The recurring V3 scheduler is assembled only after this module has supplied
+; its regenerative functions.  It lives in assistant_service_runtime.metta so
+; PeTTa cannot compile a mutually recursive call as an inert expression.

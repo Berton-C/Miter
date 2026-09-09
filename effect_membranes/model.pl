@@ -188,7 +188,7 @@ as_model_question_carrier(
       ['preliminary-movement',MovementReference],
       ['fact9-participation',FactEntries,FactStanding],
       ['flourishing-participation',FlourishingEntries,FlourishingStanding],
-      Continuity,
+      VadSurface,Continuity,
       ['request-contract',Instructions,'authorized-current-contact-only',
         'derived-readings-not-verdict','no-contact-no-authority-no-choice'],
       ['resource-request',ResourceId,ModelId,
@@ -202,7 +202,8 @@ as_model_question_carrier(
     MovementReference=['movement-reference'|_], length(MovementReference,5),
     as_model_c4_fact_entries(FactEntries),
     as_symbol(FactStanding,_), as_model_c4_flourishing_entries(FlourishingEntries),
-    as_symbol(FlourishingStanding,_), as_model_c4_continuity(Continuity),
+    as_symbol(FlourishingStanding,_),as_model_c4_vad_surface(VadSurface),
+    as_model_c4_continuity(Continuity),
     as_local_scope(Scope), string(Instructions),
     string_length(Instructions,InstructionLength),
     InstructionLength>=100, InstructionLength=<4096,
@@ -330,12 +331,13 @@ as_model_c4_voice_commitments(
     ['voice-commitments','source-bound','scope-bound','movement-bound',
       Disclosure,'relational-not-fixed-style',
       'no-unsupported-internal-state-claim',PrivateContext,CapabilityContext,
-      RevisionContext]) :-
+      VadSurface,RevisionContext]) :-
     memberchk(Disclosure,
       ['disclosure-current-contact-only',
        'disclosure-current-contact-and-scoped-continuity']),
     as_model_c4_private_context(PrivateContext,Entries),
     as_model_c4_capability_context(CapabilityContext,_),
+    as_model_c4_vad_surface(VadSurface),
     as_model_c4_voice_revision_context(RevisionContext),
     ( Entries==[] -> Disclosure=='disclosure-current-contact-only'
     ; Disclosure=='disclosure-current-contact-and-scoped-continuity' ).
@@ -362,6 +364,55 @@ as_model_c4_capability_context(
 as_model_c4_capability_context(
     ['capability-contact-context-v1','no-capability-request',
       'no-returned-capability-contact'],none).
+
+as_model_c4_vad_surface(
+    ['language-cue-participation','cue-unavailable','no-affective-inference']).
+as_model_c4_vad_surface(
+    ['language-cue-participation',Cue,
+      'lexical-association-not-person-state-or-authority']) :-
+    as_model_c4_vad_cue(Cue).
+
+as_model_c4_vad_cue(
+    ['vad-language-cue-v1',CueId,Scope,
+      ['source-contact',ContactId,['text-sha256',TextHash]],
+      [asset,'NRC-VAD-2.1',AssetHash,
+        'private-read-only-checksum-verified'],
+      ['coverage-ratio',Coverage],['clause-readings',ClauseReadings],
+      Trajectory,
+      [limitations,'lexical-association-only','no-person-state-claim',
+        'no-sns-pns-classification','no-permission-effect',
+        'exact-matching-only','negation-irony-and-context-unresolved'],
+      'cue-not-person-state-not-permission-not-movement-authority']) :-
+    as_symbol(CueId,_),as_local_scope(Scope),as_symbol(ContactId,_),
+    as_sha256(TextHash,_),as_sha256(AssetHash,_),number(Coverage),
+    Coverage>=0,Coverage=<1,is_list(ClauseReadings),ClauseReadings=[_|_],
+    length(ClauseReadings,Count),Count=<32,
+    maplist(as_model_c4_vad_clause_reading,ClauseReadings),
+    as_model_c4_vad_trajectory(Trajectory).
+
+as_model_c4_vad_clause_reading(
+    ['vad-clause-reading-v1',Index,['token-count',Tokens],
+      ['covered-token-count',Covered],['matched-expression-count',Matches],
+      ['axis-means',['valence',V],['arousal',A],['dominance',D]]]) :-
+    integer(Index),Index>=0,integer(Tokens),Tokens>0,
+    integer(Covered),Covered>=0,Covered=<Tokens,
+    integer(Matches),Matches>=0,
+    maplist(as_model_c4_vad_axis,[V,A,D]).
+
+as_model_c4_vad_axis(unresolved).
+as_model_c4_vad_axis(Value) :- number(Value),Value>= -1,Value=<1.
+
+as_model_c4_vad_trajectory(
+    ['within-contact-trajectory-unresolved',Standing]) :-
+    memberchk(Standing,['single-covered-clause','no-covered-clause']).
+as_model_c4_vad_trajectory(
+    ['within-contact-trajectory-v1',['from-clause',From],['to-clause',To],
+      ['axis-delta',['valence',V],['arousal',A],['dominance',D]],
+      'numeric-language-cue-no-direction-or-person-state-verdict']) :-
+    integer(From),integer(To),From>=0,To>From,
+    maplist(as_model_c4_vad_delta,[V,A,D]).
+
+as_model_c4_vad_delta(Value) :- number(Value),Value>= -2,Value=<2.
 
 as_model_c4_voice_revision_context(
     ['voice-revision-context','initial-no-prior-defect']).
@@ -1014,7 +1065,7 @@ as_model_public_question(
       _Source,['exact-contact-text',_,Text,_],_Movement,
       ['fact9-participation',FactEntries,FactStanding],
       ['flourishing-participation',FlourishingEntries,FlourishingStanding],
-      Continuity,Contract,Resource],
+      VadSurface,Continuity,Contract,Resource],
     ['c4-contact-semantic-question-v1',
       ['question-reference','current-contact','general-contact-semantics'],
       [scope,'private-principal-redacted','private-audience-redacted',
@@ -1028,11 +1079,12 @@ as_model_public_question(
       ['fact9-participation',PublicFactEntries,FactStanding],
       ['flourishing-participation',PublicFlourishingEntries,
         FlourishingStanding],
-      PublicContinuity,Contract,Resource]) :-
+      PublicVadSurface,PublicContinuity,Contract,Resource]) :-
     QuestionRef=['question-reference',_,'general-contact-semantics'],
     as_model_public_c4_fact_entries(FactEntries,PublicFactEntries),
     as_model_public_c4_flourishing_entries(FlourishingEntries,
       PublicFlourishingEntries),
+    as_model_public_c4_vad_surface(VadSurface,PublicVadSurface),
     as_model_public_c4_continuity(Continuity,PublicContinuity).
 as_model_public_question(
     ['c4-voice-render-question-v1',QuestionRef,[scope,_,_,_],
@@ -1074,14 +1126,33 @@ as_model_public_question(
 as_model_public_c4_voice_commitments(
     ['voice-commitments',SourceBound,ScopeBound,MovementBound,Disclosure,
       Relational,InternalClaim,PrivateContext,CapabilityContext,
-      RevisionContext],
+      VadSurface,RevisionContext],
     ['voice-commitments',SourceBound,ScopeBound,MovementBound,Disclosure,
       Relational,InternalClaim,
-      PublicContext,PublicCapabilityContext,RevisionContext]) :-
+      PublicContext,PublicCapabilityContext,PublicVadSurface,RevisionContext]) :-
     as_model_c4_private_context(PrivateContext,_),
     as_model_public_c4_continuity_context(PrivateContext,PublicContext),
     as_model_public_c4_capability_context(CapabilityContext,
-      PublicCapabilityContext).
+      PublicCapabilityContext),
+    as_model_public_c4_vad_surface(VadSurface,PublicVadSurface).
+
+as_model_public_c4_vad_surface(
+    ['language-cue-participation','cue-unavailable','no-affective-inference'],
+    ['language-cue-participation','cue-unavailable','no-affective-inference']).
+as_model_public_c4_vad_surface(
+    ['language-cue-participation',Cue,
+      'lexical-association-not-person-state-or-authority'],
+    ['language-cue-participation',PublicCue,
+      'lexical-association-not-person-state-or-authority']) :-
+    Cue=['vad-language-cue-v1',_,_,_,Asset,Coverage,Clauses,Trajectory,
+      Limitations,Standing],
+    PublicCue=['vad-language-cue-v1','current-contact-language-cue',
+      [scope,'private-principal-redacted','private-audience-redacted',
+        'private-project-redacted'],
+      ['source-contact','current-contact',
+        ['text-sha256','private-content-hash-redacted']],
+      Asset,Coverage,Clauses,Trajectory,Limitations,Standing],
+    as_model_c4_vad_cue(Cue).
 
 as_model_public_c4_capability_context(
     ['capability-contact-context-v1',['request-id',RequestId],_,Purpose,
@@ -1168,7 +1239,7 @@ as_model_public_question_valid(Question,PublicQuestion) :-
 
 as_model_public_question_shape_valid(
     ['c4-contact-semantic-question-v1',_,_,_,
-      ['exact-contact-text',_,Text,_],_,_,_,_,Contract,Resource],
+      ['exact-contact-text',_,Text,_],_,_,_,VadSurface,_,Contract,Resource],
     ['c4-contact-semantic-question-v1',
       ['question-reference','current-contact','general-contact-semantics'],
       [scope,'private-principal-redacted','private-audience-redacted',
@@ -1181,8 +1252,10 @@ as_model_public_question_shape_valid(
         ['current-native-movement','local-proof-reference-withheld']],
       ['fact9-participation',[_|_],_],
       ['flourishing-participation',PublicFlourishings,_],
+      PublicVadSurface,
       ['continuity-participation'|_],Contract,Resource]) :-
-    length(PublicFlourishings,9).
+    length(PublicFlourishings,9),
+    as_model_public_c4_vad_surface(VadSurface,PublicVadSurface).
 as_model_public_question_shape_valid(
     ['c4-voice-render-question-v1',_,_,_,
       ['exact-contact-text',_,Text,_],_,Readings,Intention,Commitments,

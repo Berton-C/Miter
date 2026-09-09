@@ -33,11 +33,13 @@ as_lkg_relative_paths([
   'src/provisional_dynamics.metta',
   'src/model_participation.metta',
   'src/soul_regeneration.metta',
+  'src/assistant_service_runtime.metta',
   'src/constitutive_authority_joint.metta',
   'src/assistant_reactor_foundation.metta','src/scope_continuity.metta',
   'src/semantic_participation.metta','src/assistant_reactor_authority.metta',
   'src/dialogue_participation.metta',
   'src/capability_environment.metta',
+  'src/vad.metta',
   'src/bootstrap.metta',
   'effect_membranes/integrity.pl','effect_membranes/store.pl',
   'effect_membranes/continuity.pl','effect_membranes/continuity_adapter.pl',
@@ -50,6 +52,7 @@ as_lkg_relative_paths([
   'effect_membranes/chroma.pl',
   'effect_membranes/mattermost.pl',
   'effect_membranes/capability_environment.pl',
+  'effect_membranes/vad.pl',
   'config/constitutive-projection.json','config/miter.json','config/continuity.json'
 ]).
 
@@ -114,6 +117,7 @@ as_lkg_required_paths([
   'constitution/soul_compass.metta','constitution/fact9_projection.metta',
   'src/bootstrap.metta','src/assistant_reactor_authority.metta',
   'src/soul_regeneration.metta',
+  'src/assistant_service_runtime.metta',
   'src/constitutive_authority_joint.metta','src/dialogue_participation.metta',
   'effect_membranes/assistant_service.pl','effect_membranes/store.pl',
   'effect_membranes/integrity.pl','effect_membranes/runtime_continuity.pl',

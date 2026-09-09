@@ -107,6 +107,7 @@ and has no authority to inspect, filter, rank, join, or select their results.
 - PeTTa commit `ae66fa8e41dcd5539d614706bd4e5cfb34f9608d`
 - ChromaDB reachable on loopback for semantic recall
 - a loopback OpenAI-compatible embedding endpoint for the configured model
+- the privately held NRC VAD Lexicon 2.1 file matching the configured SHA-256
 
 Point Miter at that pinned PeTTa checkout without copying it into this repo:
 
@@ -120,7 +121,8 @@ not a core or core-service seam. Inspect its non-destructive plan first:
 
 ```sh
 ./install_miter.py plan
-sudo ./install_miter.py install
+sudo ./install_miter.py install \
+  --vad-asset /absolute/path/to/NRC-VAD-Lexicon-v2.1.txt
 ```
 
 Every Miter-owned installed path is derived from the one human-edited root
@@ -146,6 +148,7 @@ requires that source runtime to be stopped at a clean cycle boundary:
 ```sh
 sudo ./install_miter.py install --reuse-local-services \
   --import-keychain-credentials \
+  --vad-asset /absolute/path/to/NRC-VAD-Lexicon-v2.1.txt \
   --migrate-runtime /Users/bcb/Documents/Miter_Runtime
 ```
 
@@ -153,6 +156,9 @@ Before restoring, the installer makes an immutable backup, verifies the exact
 checkpoint and continuity manifest, preserves the runtime identity and durable
 developmental state, performs one cold restore with Mattermost polling held,
 and refuses any replay or checkpoint change before starting the CLI supervisor.
+The licensed VAD lexicon is copied only into the dedicated user's mode-0600
+private runtime; its rows and terms never enter the repository, checkpoints,
+Chroma, model prompts, or public evidence.
 
 ## Install and operate
 

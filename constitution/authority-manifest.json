@@ -91,20 +91,28 @@
       "sha256": "7fd63a003a596f5320d0a733b3d4863a832000930bc85787b3c418c5423d29b6"
     },
     {
+      "path": "src/vad.metta",
+      "sha256": "787810237effa5cb68831e3566b08f1da05ec2d1cada078d618906bbad2ac070"
+    },
+    {
       "path": "src/constitutive_authority_joint.metta",
       "sha256": "a37e20be4a05330f667e50d3850221b326c6c57381cd72cc201b55a639e3ac81"
     },
     {
       "path": "src/soul_regeneration.metta",
-      "sha256": "e2dc76aecf9b42261ad820a61c54693903316e1fac06e96f1514e39239a7f008"
+      "sha256": "24725ba71d0dc75d4c9e7180a6f5a8dc4d08f7ee39b1bd7badfeaba14daceee7"
     },
     {
       "path": "effect_membranes/capability_environment.pl",
       "sha256": "6b5c65a3d518d3eb0434461cf8be9ad8b728e4231301acdc6db49011bd761f0d"
     },
     {
+      "path": "effect_membranes/vad.pl",
+      "sha256": "164d3cb69958d1d844ac5e740f250f68da17533ab127d84cde152af79b33937a"
+    },
+    {
       "path": "effect_membranes/integrity.pl",
-      "sha256": "b875cf279c7e1f9ffecbeb1aa6ec2963525ca2fe99d4de75ad10419efa786e79"
+      "sha256": "e238cb7980071816d4c0396050e62e8904545a831677ae110d3ee46c76f3baed"
     }
   ],
   "schema": "miter-constitutional-integrity-v2",
