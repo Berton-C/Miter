@@ -76,7 +76,9 @@
     "operator_notes": [
       "Surface availability is not cognitive authority; the Soul forms every tool movement.",
       "No per-command or per-site microgrant is required inside this durable class.",
-      "The environment remains held unless the running process is the dedicated claritymiter user."
+      "The environment remains held unless the running process is the dedicated claritymiter user.",
+      "Terminal operations are exact direct argument vectors with a sanitized environment, bounded lifetime and output, and an owned-workspace working directory.",
+      "Workspace writes use exact prior-content identity, immutable rollback lineage, and durable completion observations."
     ]
   },
   "mattermost": {

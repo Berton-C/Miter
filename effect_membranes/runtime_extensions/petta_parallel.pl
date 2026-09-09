@@ -7,25 +7,6 @@
 
 :- use_module(library(thread)).
 
-% These predicates are pure MeTTa-defined structural validators over ground,
-% immutable carriers. SWI tabling changes only repeated evaluation, never the
-% returned truth value or the native definitions. Tables are process-local and
-% cleared only at a material-change boundary: immediately before new external
-% input enters native formation, or after an endogenous/regenerative transition changes the
-% active organization. An unchanged idle pass may therefore reuse only exact
-% ground structural results; semantic, Soul, R/A/P, and movement results are
-% never tabled here. The material-change boundary also prevents unbounded
-% carrier growth across successive contacts.
-:- table 'M255GenSigStructuralValid'/2.
-:- table 'M255GenTranslationValid'/2.
-:- table 'M255TranslationLawWitnessValid'/3.
-
-miter_petta_clear_exact_validation_tables(
-      'exact-native-validation-tables-cleared') :-
-    abolish_table_subgoals('M255GenSigStructuralValid'(_,_)),
-    abolish_table_subgoals('M255GenTranslationValid'(_,_)),
-    abolish_table_subgoals('M255TranslationLawWitnessValid'(_,_,_)).
-
 miter_petta_parallel_m25_readings(Primaries, Cut, Developmental, Readings) :-
     is_list(Primaries),
     concurrent_maplist(miter_petta_m25_reading(Cut, Developmental),

@@ -18,6 +18,7 @@
 :- use_module(library(pcre)).
 :- use_module(library(readutil)).
 :- discontiguous as_mattermost_voice_certificate/5.
+:- discontiguous as_participant_claim/2.
 :- use_module(library(time)).
 :- use_module(library(terms)).
 :- use_module(library(uuid)).
@@ -329,6 +330,88 @@ as_participant_claim(Dict,
     Length>=1, Length=<32768,
     get_dict(raw_ref,Dict,Raw0), miter_store_nonempty_atom(Raw0,RawRef),
     \+ is_absolute_file_name(RawRef), \+ sub_atom(RawRef,_,_,_,'..').
+
+% A typed operation proposal is inert contact.  It supplies an exact possible
+% mechanical operation but no movement, permission, selection or authority.
+% The complete native encounter must decide whether this proposal participates
+% and form the proof-bound descriptor before any membrane can execute it.
+as_participant_claim(Dict,
+    ['participant-relation-claim','open-growth-capability-request-proposal',
+      unresolved,
+      ['c4-capability-proposal-evidence-v2',
+        ['source-capability-proposal',Provenance,Lineage],Purpose,Operation,
+        'candidate-not-authority']]) :-
+    is_dict(Dict),as_dict_atom(Dict,kind,'capability-operation-proposal'),
+    get_dict(purpose,Dict,Purpose),as_capability_text(Purpose,1,400),
+    as_dict_atom(Dict,provenance,Provenance),as_dict_atom(Dict,lineage,Lineage),
+    get_dict(operation,Dict,OperationDict),
+    as_capability_operation_dict(OperationDict,Operation).
+
+as_capability_operation_dict(Dict,
+    ['informational-http-v1',Method,Url]) :-
+    is_dict(Dict),as_mattermost_exact_keys(Dict,[kind,method,url]),
+    as_dict_atom(Dict,kind,'informational-http'),
+    as_dict_atom(Dict,method,Method),memberchk(Method,[get,head]),
+    get_dict(url,Dict,Url),as_capability_text(Url,10,4096),!.
+as_capability_operation_dict(Dict,
+    ['direct-argv-v1',Executable,Arguments,WorkingDirectory]) :-
+    is_dict(Dict),
+    as_mattermost_exact_keys(Dict,
+      [arguments,executable,kind,working_directory]),
+    as_dict_atom(Dict,kind,'direct-argv'),
+    get_dict(executable,Dict,Executable),
+    as_capability_text(Executable,1,4096),
+    get_dict(arguments,Dict,ArgumentValues),is_list(ArgumentValues),
+    length(ArgumentValues,ArgumentCount),ArgumentCount=<64,
+    maplist(as_capability_argument,ArgumentValues,Arguments),
+    get_dict(working_directory,Dict,WorkingDirectory),
+    as_capability_text(WorkingDirectory,1,4096),!.
+as_capability_operation_dict(Dict,
+    ['workspace-write-v1',RelativePath,Contents,Expected]) :-
+    is_dict(Dict),
+    as_mattermost_exact_keys(Dict,
+      [contents,expected_prior_sha256,kind,path]),
+    as_dict_atom(Dict,kind,'workspace-write'),
+    get_dict(path,Dict,RelativePath),
+    as_capability_text(RelativePath,1,4096),
+    get_dict(contents,Dict,Contents),as_capability_text(Contents,0,1048576),
+    get_dict(expected_prior_sha256,Dict,ExpectedValue),
+    as_capability_expected_prior(ExpectedValue,Expected),!.
+as_capability_operation_dict(Dict,['workspace-read-v1',RelativePath]) :-
+    is_dict(Dict),as_mattermost_exact_keys(Dict,[kind,path]),
+    as_dict_atom(Dict,kind,'workspace-read'),
+    get_dict(path,Dict,RelativePath),
+    as_capability_text(RelativePath,1,4096),!.
+as_capability_operation_dict(Dict,['workspace-list-v1',RelativePath]) :-
+    is_dict(Dict),as_mattermost_exact_keys(Dict,[kind,path]),
+    as_dict_atom(Dict,kind,'workspace-list'),
+    get_dict(path,Dict,RelativePath),
+    as_capability_text(RelativePath,1,4096),!.
+as_capability_operation_dict(Dict,
+    ['workspace-rollback-v1',SourceRequest,RelativePath,
+      ['expected-current-sha256',Expected]]) :-
+    is_dict(Dict),
+    as_mattermost_exact_keys(Dict,
+      [expected_current_sha256,kind,path,source_request_id]),
+    as_dict_atom(Dict,kind,'workspace-rollback'),
+    as_dict_atom(Dict,source_request_id,SourceRequest),
+    get_dict(path,Dict,RelativePath),
+    as_capability_text(RelativePath,1,4096),
+    get_dict(expected_current_sha256,Dict,ExpectedValue),
+    miter_store_nonempty_atom(ExpectedValue,Expected),as_sha256(Expected,_),!.
+
+as_capability_expected_prior("absent",'no-prior-content') :- !.
+as_capability_expected_prior(Value,['prior-sha256',Hash]) :-
+    miter_store_nonempty_atom(Value,Hash),as_sha256(Hash,_).
+
+as_capability_argument(Value,Value) :- as_capability_text(Value,0,8192).
+
+as_capability_text(Value,Minimum,Maximum) :-
+    string(Value),string_length(Value,Length),Length>=Minimum,Length=<Maximum,
+    string_codes(Value,Codes),maplist(as_capability_text_code,Codes).
+
+as_capability_text_code(Code) :-
+    integer(Code),Code>=9,Code=<1114111,\+ memberchk(Code,[11,12,127]).
 
 % The carrier translates an exact declarative manifest to inert native data.
 % It neither tests nor admits the module; those remain MeTTa reductions inside
@@ -858,31 +941,31 @@ as_record(Root0, Kind0, Payload, Result) :-
 as_effect(Root0, Descriptor, Result) :-
     ( catch((as_root(Root0, Root),
       as_effect_descriptor(Descriptor, Kind, EffectId, Scope, Certificate,
-        CertificateHash, ProofText, ProofHash, EffectMaterial),
-      as_commit_native_proof(Root, EffectId, ProofText, ProofHash),
+        CertificateHash, Proof, EffectMaterial),
+      as_commit_native_proof(Root, EffectId, Proof, ProofHash),
       as_commit_effect_kind(Kind, Root, EffectId, Scope, Certificate,
-        CertificateHash, ProofText, ProofHash, EffectMaterial, Result0),
+        CertificateHash, ProofHash, EffectMaterial, Result0),
       Result=Result0), _, fail)
     -> true ; as_effect_id_or_unknown(Descriptor, EffectId0),
       as_effect_hold_kind(Descriptor, EffectKind),
       Result=[EffectKind,EffectId0,'mechanical-boundary'] ), !.
 
 as_effect_descriptor(Descriptor, local, EffectId, Scope, Certificate,
-    CertificateHash, ProofText, ProofHash, none) :-
+    CertificateHash, Proof, none) :-
     as_local_effect_descriptor(Descriptor, EffectId, Scope, Certificate,
-      CertificateHash, ProofText, ProofHash).
+      CertificateHash, Proof).
 as_effect_descriptor(Descriptor, mattermost, EffectId, Scope, Certificate,
-    CertificateHash, ProofText, ProofHash,
+    CertificateHash, Proof,
     ['mattermost-effect-material',ReplyContact,Utterance]) :-
     as_mattermost_effect_descriptor(Descriptor, EffectId, Scope, Certificate,
-      ReplyContact, Utterance, CertificateHash, ProofText, ProofHash).
+      ReplyContact, Utterance, CertificateHash, Proof).
 
 as_commit_effect_kind(local, Root, EffectId, Scope, Certificate,
-    CertificateHash, ProofText, ProofHash, none, Result) :-
+    CertificateHash, ProofHash, none, Result) :-
     as_commit_local_effect(Root, EffectId, Scope, Certificate,
-      CertificateHash, ProofText, ProofHash, Result).
+      CertificateHash, ProofHash, Result).
 as_commit_effect_kind(mattermost, Root, EffectId, Scope, _Certificate,
-    CertificateHash, _ProofText, ProofHash,
+    CertificateHash, ProofHash,
     ['mattermost-effect-material',ReplyContact,Utterance], Result) :-
     as_mattermost_commit_post(Root, EffectId, Scope, ReplyContact, Utterance,
       CertificateHash, ProofHash, Result).
@@ -900,8 +983,7 @@ as_local_effect_descriptor(
      [payload,Certificate],
      ['native-proof',Proof],
      [capability,'local-isolated-outbox','no-network','no-external-authority'],
-     prepared], EffectId, Scope, Certificate, CertificateHash, ProofText,
-     ProofHash) :-
+     prepared], EffectId, Scope, Certificate, CertificateHash, Proof) :-
     as_symbol(EffectId0, EffectId), as_symbol(IdempotencyKey0, IdempotencyKey),
     EffectId==IdempotencyKey,
     as_local_scope(Scope),
@@ -909,11 +991,7 @@ as_local_effect_descriptor(
     term_string(Certificate, CertificateText, [quoted(true),ignore_ops(true)]),
     string_length(CertificateText, CertificateLength), CertificateLength=<65536,
     crypto_data_hash(CertificateText, CertificateHash,
-      [algorithm(sha256),encoding(utf8)]),
-    term_string(Proof, ProofText, [quoted(true),ignore_ops(true)]),
-    string_length(ProofText, ProofLength),
-    as_max_native_proof_bytes(MaxProofLength), ProofLength=<MaxProofLength,
-    crypto_data_hash(ProofText, ProofHash, [algorithm(sha256),encoding(utf8)]).
+      [algorithm(sha256),encoding(utf8)]).
 
 as_mattermost_effect_descriptor(
     ['mattermost-effect-descriptor-v1',EffectId0,IdempotencyKey0,Scope,
@@ -923,7 +1001,7 @@ as_mattermost_effect_descriptor(
      [capability,'mattermost-create-post','exact-resolved-group-only',
        'pending-before-send-reconcile-unknown'],
      prepared], EffectId, Scope, Certificate, ReplyContact, Utterance,
-     CertificateHash, ProofText, ProofHash) :-
+     CertificateHash, Proof) :-
     as_symbol(EffectId0, EffectId), as_symbol(IdempotencyKey0, IdempotencyKey),
     EffectId==IdempotencyKey,
     as_local_scope(Scope), as_symbol(ReplyContact0, ReplyContact),
@@ -933,11 +1011,7 @@ as_mattermost_effect_descriptor(
     term_string(Certificate, CertificateText, [quoted(true),ignore_ops(true)]),
     string_length(CertificateText, CertificateLength), CertificateLength=<65536,
     crypto_data_hash(CertificateText, CertificateHash,
-      [algorithm(sha256),encoding(utf8)]),
-    term_string(Proof, ProofText, [quoted(true),ignore_ops(true)]),
-    string_length(ProofText, ProofLength),
-    as_max_native_proof_bytes(MaxProofLength), ProofLength=<MaxProofLength,
-    crypto_data_hash(ProofText, ProofHash, [algorithm(sha256),encoding(utf8)]).
+      [algorithm(sha256),encoding(utf8)]).
 
 as_mattermost_voice_certificate(
     ['assistant-voice-certificate-v3',
@@ -1130,8 +1204,7 @@ as_local_movement_summary(
     ['movement-standing',unresolved,Reason]) :- ground(Rest).
 
 as_commit_local_effect(Root, EffectId, Scope, Certificate, CertificateHash,
-    ProofText, ProofHash, Result) :-
-    as_commit_native_proof(Root, EffectId, ProofText, ProofHash),
+    ProofHash, Result) :-
     atomic_list_concat(['outbox/',EffectId,'.json'], Relative),
     as_path(Root, Relative, Path),
     ( exists_file(Path) ->
@@ -1147,19 +1220,37 @@ as_commit_local_effect(Root, EffectId, Scope, Certificate, CertificateHash,
       Result=['local-effect-committed',EffectId,CertificateHash,ProofHash] ).
 
 % Persist the complete already-certified native proof before making its compact
-% effect reference observable. This is byte mechanics only: MeTTa formed the
-% proof and its reference; the membrane writes and verifies the exact carrier.
-as_commit_native_proof(Root, EffectId, ProofText, ProofHash) :-
+% effect reference observable. Repeated substructure is factorized inside one
+% immutable carrier; reconstruction is exact and is verified before the hash is
+% returned. Existing raw proof carriers remain readable for continuity.
+as_commit_native_proof(Root, EffectId, Proof, ProofHash) :-
+    ground(Proof),acyclic_term(Proof),
     atomic_list_concat(['proofs/',EffectId,'.term'], Relative),
     as_path(Root, Relative, Path),
     ( exists_file(Path) ->
-        read_file_to_string(Path, Stored, [encoding(utf8)]),
-        crypto_data_hash(Stored, StoredHash,
-          [algorithm(sha256),encoding(utf8)]), StoredHash==ProofHash,
-        Stored==ProofText
-    ; as_write_native_proof_durable(Path, ProofText),
-      crypto_file_hash(Path, StoredHash,
-        [algorithm(sha256),encoding(octet)]), StoredHash==ProofHash ).
+        true
+    ; term_factorized(Proof,Skeleton,Factors),
+      Carrier=['miter-factorized-native-proof-v1',Skeleton,Factors],
+      term_string(Carrier,ProofObjectText,[quoted(true),ignore_ops(true)]),
+      string_length(ProofObjectText,ProofObjectLength),
+      as_max_native_proof_bytes(Maximum),ProofObjectLength=<Maximum,
+      as_write_native_proof_durable(Path,ProofObjectText) ),
+    crypto_file_hash(Path,ProofHash,[algorithm(sha256),encoding(octet)]),
+    as_read_native_proof(Path,StoredProof),StoredProof==Proof.
+
+as_read_native_proof(Path,Proof) :-
+    exists_file(Path),\+ read_link(Path,_,_),size_file(Path,Length),
+    Length>0,Length=<134217728,
+    read_file_to_string(Path,Text,[encoding(utf8)]),
+    term_string(Carrier,Text,[quoted(true),ignore_ops(true)]),
+    as_native_proof_carrier(Carrier,Proof),ground(Proof),acyclic_term(Proof).
+
+as_native_proof_carrier(
+    ['miter-factorized-native-proof-v1',Skeleton,Factors],Proof) :- !,
+    is_list(Factors),as_checkpoint_factors_well_formed(Factors),
+    maplist(as_unify_checkpoint_factor,Factors),
+    ground(Skeleton),acyclic_term(Skeleton),Proof=Skeleton.
+as_native_proof_carrier(Proof,Proof) :- ground(Proof),acyclic_term(Proof).
 
 as_write_native_proof_durable(Path, Text) :-
     file_directory_name(Path, Directory), make_directory_path(Directory),

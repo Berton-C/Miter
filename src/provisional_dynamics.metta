@@ -422,7 +422,8 @@
           ($semantic-inquiry
             (C3SemanticInquiryPossibilities $cut $participant-relations))
           ($capability-inquiry
-            (C4CapabilityProposalPossibilities $cut $participant-relations))
+            (C4CapabilityProposalPossibilities $cut $flourishing
+              $participant-relations))
           ($capability-result
             (C4CapabilityResultPossibilities $cut $participant-relations))
           ($nace-inquiry (C3NACEInquiryPossibilities $cut))

@@ -298,6 +298,39 @@ as_model_c4_capability_proposal(
     as_model_bounded_text(Url,10,4096),
     re_match("^https?://[^[:space:]]+$",Url),\+ sub_string(Url,_,_,_,'@'),
     \+ re_match('(?i)(api[_-]?key|access[_-]?token|token|password|secret|signature|authorization|auth)=',Url).
+as_model_c4_capability_proposal(
+    ['capability-proposal-v1',proposed,Purpose,
+      ['direct-argv-v1',Executable,Arguments,WorkingDirectory]]) :-
+    as_model_bounded_text(Purpose,1,400),
+    as_model_bounded_text(Executable,1,4096),
+    is_list(Arguments),length(Arguments,Count),Count=<64,
+    maplist(as_model_capability_argument,Arguments),
+    as_model_bounded_text(WorkingDirectory,1,4096).
+as_model_c4_capability_proposal(
+    ['capability-proposal-v1',proposed,Purpose,
+      ['workspace-write-v1',Path,Contents,Expected]]) :-
+    as_model_bounded_text(Purpose,1,400),
+    as_model_bounded_text(Path,1,4096),
+    as_model_bounded_text(Contents,0,1048576),
+    as_model_capability_expected(Expected).
+as_model_c4_capability_proposal(
+    ['capability-proposal-v1',proposed,Purpose,
+      ['workspace-read-v1',Path]]) :-
+    as_model_bounded_text(Purpose,1,400),as_model_bounded_text(Path,1,4096).
+as_model_c4_capability_proposal(
+    ['capability-proposal-v1',proposed,Purpose,
+      ['workspace-list-v1',Path]]) :-
+    as_model_bounded_text(Purpose,1,400),as_model_bounded_text(Path,1,4096).
+as_model_c4_capability_proposal(
+    ['capability-proposal-v1',proposed,Purpose,
+      ['workspace-rollback-v1',SourceRequest,Path,
+        ['expected-current-sha256',Expected]]]) :-
+    as_model_bounded_text(Purpose,1,400),as_symbol(SourceRequest,_),
+    as_model_bounded_text(Path,1,4096),as_sha256(Expected,_).
+
+as_model_capability_argument(Value) :- as_model_bounded_text(Value,0,8192).
+as_model_capability_expected('no-prior-content').
+as_model_capability_expected(['prior-sha256',Hash]) :- as_sha256(Hash,_).
 
 as_model_question_carrier(
     ['c4-voice-render-question-v1',QuestionRef,Scope,
@@ -364,6 +397,23 @@ as_model_c4_capability_context(
 as_model_c4_capability_context(
     ['capability-contact-context-v1','no-capability-request',
       'no-returned-capability-contact'],none).
+as_model_c4_capability_context(
+    ['capability-contact-context-v2',['request-id',RequestId],
+      ['source-movement',MovementReference],['native-purpose',Purpose],
+      ['exact-operation',Operation],Resource,Outcome,
+      ['elapsed-milliseconds',Elapsed],['failure',Failure],
+      'untrusted-returned-contact-no-authority'],RequestId) :-
+    as_symbol(RequestId,_),ground(MovementReference),
+    as_model_bounded_text(Purpose,1,400),
+    as_model_c4_capability_proposal(
+      ['capability-proposal-v1',proposed,Purpose,Operation]),
+    memberchk(Resource,
+      [['resource','typed-direct-argv'],
+       ['resource','versioned-owned-workspace']]),
+    ground(Outcome),term_string(Outcome,OutcomeText,
+      [quoted(true),ignore_ops(true)]),
+    string_length(OutcomeText,OutcomeLength),OutcomeLength=<2097152,
+    integer(Elapsed),Elapsed>=0,as_symbol(Failure,_).
 
 as_model_c4_vad_surface(
     ['language-cue-participation','cue-unavailable','no-affective-inference']).
@@ -993,13 +1043,25 @@ as_model_local_response_schema('c4-contact-semantic-question-v1',
       "PurposeBeyondUtility","SharedUnderstanding","TimeCoherence",
       "WonderPreservation"]},
     CapabilityProposal=_{type:"object",additionalProperties:false,
-      required:["standing","purpose","kind","method","url"],
+      required:["standing","purpose","kind","method","url","executable",
+        "arguments","working_directory","path","contents",
+        "expected_sha256","source_request_id"],
       properties:_{standing:_{type:"string",enum:["not-material","proposed",
           "uncertain"]},
         purpose:_{type:"string",maxLength:400},
-        kind:_{type:"string",enum:["none","informational-http"]},
+        kind:_{type:"string",enum:["none","informational-http","direct-argv",
+          "workspace-write","workspace-read","workspace-list",
+          "workspace-rollback"]},
         method:_{type:"string",enum:["none","get","head"]},
-        url:_{type:"string",maxLength:4096}}},
+        url:_{type:"string",maxLength:4096},
+        executable:_{type:"string",maxLength:4096},
+        arguments:_{type:"array",maxItems:64,
+          items:_{type:"string",maxLength:8192}},
+        working_directory:_{type:"string",maxLength:4096},
+        path:_{type:"string",maxLength:4096},
+        contents:_{type:"string",maxLength:32768},
+        expected_sha256:_{type:"string",maxLength:64},
+        source_request_id:_{type:"string",maxLength:256}}},
     Reading=_{type:"object",additionalProperties:false,
       required:["understanding","response_purpose","fact9_roles",
         "flourishing_values","continuity_requirement","counterfactual",
@@ -1161,6 +1223,13 @@ as_model_public_c4_capability_context(
       ['source-movement',['current-native-movement',
         'local-proof-reference-withheld']],Purpose,Operation,Resource,Transport,
       HttpStatus,Body,Elapsed,Failure,Standing]) :- !.
+as_model_public_c4_capability_context(
+    ['capability-contact-context-v2',['request-id',RequestId],_,Purpose,
+      Operation,Resource,Outcome,Elapsed,Failure,Standing],
+    ['capability-contact-context-v2',['request-id',RequestId],
+      ['source-movement',['current-native-movement',
+        'local-proof-reference-withheld']],Purpose,Operation,Resource,Outcome,
+      Elapsed,Failure,Standing]) :- !.
 as_model_public_c4_capability_context(Context,Context) :-
     Context==['capability-contact-context-v1','no-capability-request',
       'no-returned-capability-contact'].
@@ -1626,26 +1695,96 @@ as_model_c4_reading_id(['c4-semantic-reading-v2',Id|_],Id).
 
 as_model_c4_capability_proposal_json(Row,
     ['capability-proposal-v1','not-material',"",none]) :-
-    is_dict(Row),as_model_exact_keys(Row,[kind,method,purpose,standing,url]),
+    is_dict(Row),as_model_c4_capability_proposal_keys(Row),
     Row.standing=="not-material",Row.purpose=="",Row.kind=="none",
-    Row.method=="none",Row.url=="",!.
+    as_model_c4_capability_empty_fields(Row),!.
 as_model_c4_capability_proposal_json(Row,
     ['capability-proposal-v1',uncertain,Purpose,none]) :-
-    is_dict(Row),as_model_exact_keys(Row,[kind,method,purpose,standing,url]),
+    is_dict(Row),as_model_c4_capability_proposal_keys(Row),
     Row.standing=="uncertain",get_dict(purpose,Row,Purpose),
     as_model_bounded_text(Purpose,1,400),Row.kind=="none",
-    Row.method=="none",Row.url=="",!.
+    as_model_c4_capability_empty_fields(Row),!.
 as_model_c4_capability_proposal_json(Row,
     ['capability-proposal-v1',proposed,Purpose,
       ['informational-http-v1',Method,Url]]) :-
-    is_dict(Row),as_model_exact_keys(Row,[kind,method,purpose,standing,url]),
+    is_dict(Row),as_model_c4_capability_proposal_keys(Row),
     Row.standing=="proposed",get_dict(purpose,Row,Purpose),
     as_model_bounded_text(Purpose,1,400),Row.kind=="informational-http",
     get_dict(method,Row,MethodString),as_model_string_atom(MethodString,Method),
     memberchk(Method,[get,head]),get_dict(url,Row,Url),
     as_model_bounded_text(Url,10,4096),
     re_match("^https?://[^[:space:]]+$",Url),\+ sub_string(Url,_,_,_,'@'),
-    \+ re_match('(?i)(api[_-]?key|access[_-]?token|token|password|secret|signature|authorization|auth)=',Url).
+    \+ re_match('(?i)(api[_-]?key|access[_-]?token|token|password|secret|signature|authorization|auth)=',Url),
+    Row.executable=="",Row.arguments==[],Row.working_directory=="",
+    Row.path=="",Row.contents=="",Row.expected_sha256=="",
+    Row.source_request_id=="",!.
+as_model_c4_capability_proposal_json(Row,
+    ['capability-proposal-v1',proposed,Purpose,
+      ['direct-argv-v1',Executable,Arguments,WorkingDirectory]]) :-
+    is_dict(Row),as_model_c4_capability_proposal_keys(Row),
+    Row.standing=="proposed",get_dict(purpose,Row,Purpose),
+    as_model_bounded_text(Purpose,1,400),Row.kind=="direct-argv",
+    Row.method=="none",Row.url=="",
+    get_dict(executable,Row,Executable),
+    as_model_bounded_text(Executable,1,4096),
+    get_dict(arguments,Row,Arguments),is_list(Arguments),
+    length(Arguments,Count),Count=<64,
+    maplist(as_model_capability_argument,Arguments),
+    get_dict(working_directory,Row,WorkingDirectory),
+    as_model_bounded_text(WorkingDirectory,1,4096),
+    Row.path=="",Row.contents=="",Row.expected_sha256=="",
+    Row.source_request_id=="",!.
+as_model_c4_capability_proposal_json(Row,
+    ['capability-proposal-v1',proposed,Purpose,
+      ['workspace-write-v1',Path,Contents,Expected]]) :-
+    is_dict(Row),as_model_c4_capability_proposal_keys(Row),
+    Row.standing=="proposed",get_dict(purpose,Row,Purpose),
+    as_model_bounded_text(Purpose,1,400),Row.kind=="workspace-write",
+    Row.method=="none",Row.url=="",Row.executable=="",Row.arguments==[],
+    Row.working_directory=="",get_dict(path,Row,Path),
+    as_model_bounded_text(Path,1,4096),get_dict(contents,Row,Contents),
+    as_model_bounded_text(Contents,0,32768),
+    get_dict(expected_sha256,Row,ExpectedString),
+    as_model_capability_expected_json(ExpectedString,Expected),
+    Row.source_request_id=="",!.
+as_model_c4_capability_proposal_json(Row,
+    ['capability-proposal-v1',proposed,Purpose,Operation]) :-
+    is_dict(Row),as_model_c4_capability_proposal_keys(Row),
+    Row.standing=="proposed",get_dict(purpose,Row,Purpose),
+    as_model_bounded_text(Purpose,1,400),
+    Row.method=="none",Row.url=="",Row.executable=="",Row.arguments==[],
+    Row.working_directory=="",get_dict(path,Row,Path),
+    as_model_bounded_text(Path,1,4096),Row.contents=="",
+    as_model_c4_workspace_operation_json(Row,Path,Operation),!.
+
+as_model_c4_capability_proposal_keys(Row) :-
+    as_model_exact_keys(Row,
+      [arguments,contents,executable,expected_sha256,kind,method,path,purpose,
+       source_request_id,standing,url,working_directory]).
+
+as_model_c4_capability_empty_fields(Row) :-
+    Row.method=="none",Row.url=="",Row.executable=="",Row.arguments==[],
+    Row.working_directory=="",Row.path=="",Row.contents=="",
+    Row.expected_sha256=="",Row.source_request_id=="".
+
+as_model_capability_expected_json("absent",'no-prior-content').
+as_model_capability_expected_json(Value,['prior-sha256',Hash]) :-
+    as_model_string_atom(Value,Hash),as_sha256(Hash,_).
+
+as_model_c4_workspace_operation_json(Row,Path,['workspace-read-v1',Path]) :-
+    Row.kind=="workspace-read",Row.expected_sha256=="",
+    Row.source_request_id=="",!.
+as_model_c4_workspace_operation_json(Row,Path,['workspace-list-v1',Path]) :-
+    Row.kind=="workspace-list",Row.expected_sha256=="",
+    Row.source_request_id=="",!.
+as_model_c4_workspace_operation_json(Row,Path,
+    ['workspace-rollback-v1',SourceRequest,Path,
+      ['expected-current-sha256',Expected]]) :-
+    Row.kind=="workspace-rollback",
+    get_dict(source_request_id,Row,SourceString),
+    as_model_string_atom(SourceString,SourceRequest),as_symbol(SourceRequest,_),
+    get_dict(expected_sha256,Row,ExpectedString),
+    as_model_string_atom(ExpectedString,Expected),as_sha256(Expected,_).
 
 as_model_c4_question_fact_roles(
     ['c4-contact-semantic-question-v1',_,_,_,_,_,

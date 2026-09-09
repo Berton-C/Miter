@@ -87,6 +87,58 @@
             (== (index-atom $route 1) controlled-fixture)))
      false))
 
+; A controlled fixture bypasses conversational VAD/model rendering, but it
+; must still encounter the same live capability environment as every other
+; contact.  The observation contributes availability only; the exact
+; operation remains inert until the complete native encounter forms it.
+(= (AS4ControlledFixtureInput $root $input)
+   (let* (($binding (index-atom $input 2))
+          ($contact (index-atom $input 3))
+          ($initial-context (AR4BoundContactContextV1 $binding $contact)))
+     (if (AR4BoundContactContextValid $initial-context)
+       (let* (($bound-contact (index-atom $initial-context 5))
+              ($environment (as_capability_environment $root))
+              ($participants
+                (C4CapabilityEnvironmentParticipants
+                  $bound-contact $environment))
+              ($effective-contact
+                (C4ContactWithCapabilityEnvironment
+                  $bound-contact $participants))
+              ($context (bound-contact-context-v1
+                (index-atom $initial-context 1)
+                (index-atom $initial-context 2)
+                (index-atom $initial-context 3)
+                (index-atom $initial-context 4)
+                $effective-contact))
+              ($prepared (AR4PrepareEncounterV1 $effective-contact)))
+         (if (AR4PreparedEncounterValid $prepared)
+           (let* (($encounter (index-atom (index-atom $prepared 4) 2))
+                  ($proof (ARNativeMovementProof $encounter))
+                  ($proof-record (as_capability_proof $root
+                    (C4CapabilityProofId $encounter) $proof))
+                  ($descriptor (C4CapabilityRequestDescriptor
+                    $effective-contact $encounter $proof-record))
+                  ($observation (if
+                    (C4CapabilityRequestDescriptorValid $descriptor
+                      $effective-contact $encounter)
+                    (as_capability_request $root $descriptor)
+                    (capability-observation-held-v1
+                      (index-atom $contact 1)
+                      no-proof-bound-exact-operation)))
+                  ($participant (C4CapabilityObservationParticipant
+                    $descriptor $observation))
+                  ($final-prepared (if (CPShape $participant
+                        participant-contribution 8)
+                    (C4ReformPreparedWithParticipants $prepared
+                      ($participant))
+                    $prepared))
+                  ($result
+                    (AR4IncorporatePreparedEncounter $final-prepared)))
+             (AR4RecordBoundContextV1 $context $result))
+           (AR4IncorporatePreparedEncounter $prepared)))
+       (assistant-contact-held (index-atom $contact 1)
+         stable-identity-scope-mismatch))))
+
 (= (AS4InputWithModel $root $input)
    (if (and (CPShape $input assistant-input 4)
             (== (index-atom $input 1) consequence))
@@ -98,7 +150,7 @@
        ; no conversational payload and therefore enters the same complete
        ; constitutive path without invoking dialogue/VAD/model renderers.
        (if (AS4ControlledFixtureContact $input)
-         (assistant-processed-v3 (AssistantInputV2 $input)
+         (assistant-processed-v3 (AS4ControlledFixtureInput $root $input)
            model-participation-not-requested)
          (C4BoundContactWithModelV1 $root (index-atom $input 2)
            (index-atom $input 3)))
@@ -161,9 +213,7 @@
                   ($active (> (size-atom $inputs) 0))
                   ($next (if $active $base (ARNextInterval $interval $cap))))
              (if $active
-               (let $tables (miter_petta_clear_exact_validation_tables)
-                 (if (== $tables exact-native-validation-tables-cleared)
-                   (let* (($step (AS4CycleStep $root $inputs))
+               (let* (($step (AS4CycleStep $root $inputs))
                           ($results (index-atom $step 1))
                           ($model-outcomes (index-atom $step 2))
                           ($effects (AS4EffectsAt $root $results
@@ -191,8 +241,6 @@
                          (assistant-service-held
                            (model-or-effect-outcomes
                              $model-outcomes $effects)))))
-                   (assistant-service-held
-                     exact-native-validation-table-reset-failed)))
                (let* (($regenerative-step
                         (AssistantRegenerativeCycleStepV1))
                       ($regenerative-results
@@ -209,16 +257,10 @@
                                 autonomous-expressed-soul-restoration
                                 $idle $checkpoint))))
                        (if (== $checkpoint checkpointed)
-                         (let $tables
-                           (miter_petta_clear_exact_validation_tables)
-                           (if (== $tables
-                                 exact-native-validation-tables-cleared)
-                             (reduce (AssistantCycleWithV3 $root false
-                               $base $base $cap $control-reader $input-reader
-                               $checkpoint-writer $waiter $recorder
-                               $effect-writer $model-writer))
-                             (assistant-service-held
-                               exact-native-validation-table-reset-failed)))
+                         (AssistantCycleWithV3 $root false
+                           $base $base $cap $control-reader $input-reader
+                           $checkpoint-writer $waiter $recorder
+                           $effect-writer $model-writer)
                          (assistant-service-held
                            (checkpoint $checkpoint))))
                      (let $record ($recorder $root
@@ -248,17 +290,11 @@
                                     (cycle-standing soul-formed-opportunity
                                       $idle $checkpoint))))
                              (if (== $checkpoint checkpointed)
-                               (let $tables
-                                 (miter_petta_clear_exact_validation_tables)
-                                 (if (== $tables
-                                       exact-native-validation-tables-cleared)
-                                   (reduce (AssistantCycleWithV3 $root false
-                                     $base $base $cap $control-reader
-                                     $input-reader $checkpoint-writer
-                                     $waiter $recorder $effect-writer
-                                     $model-writer))
-                                   (assistant-service-held
-                                     exact-native-validation-table-reset-failed)))
+                               (AssistantCycleWithV3 $root false
+                                 $base $base $cap $control-reader
+                                 $input-reader $checkpoint-writer
+                                 $waiter $recorder $effect-writer
+                                 $model-writer)
                                (assistant-service-held
                                  (checkpoint $checkpoint))))
                            (let $record ($recorder $root
@@ -267,10 +303,10 @@
                              (assistant-service-held
                                (endogenous-effects $effects)))))
                        (let $wait ($waiter $root $interval)
-                         (reduce (AssistantCycleWithV3 $root true $next
+                         (AssistantCycleWithV3 $root true $next
                            $base $cap $control-reader $input-reader
                            $checkpoint-writer $waiter $recorder
-                           $effect-writer $model-writer)))))))))))
+                           $effect-writer $model-writer))))))))))
        (assistant-cycle-held malformed-control))))
 
 (= (AssistantServiceStartV3 $root)

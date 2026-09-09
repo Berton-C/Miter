@@ -10,7 +10,7 @@
 !(import_prolog_functions_from_file "./effect_membranes/model.pl"
   (as_model as_model_direction))
 !(import_prolog_functions_from_file "./effect_membranes/capability_environment.pl"
-  (as_capability_environment as_capability_request))
+  (as_capability_environment as_capability_proof as_capability_request))
 !(import_prolog_functions_from_file "./effect_membranes/vad.pl"
   (as_vad))
 ; The functions remain MeTTa-owned cognitive reductions. This pinned runtime
@@ -20,8 +20,7 @@
   "./effect_membranes/runtime_extensions/petta_parallel.pl"
   (miter_petta_parallel_m25_primaries
     miter_petta_parallel_m25_readings
-    miter_petta_parallel_m255_bridge_components
-    miter_petta_clear_exact_validation_tables))
+    miter_petta_parallel_m255_bridge_components))
 !(bind! &assistant_state (new-space))
 !(bind! &assistant_history (new-space))
 !(bind! &assistant_continuity (new-space))

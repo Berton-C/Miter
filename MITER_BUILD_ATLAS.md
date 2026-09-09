@@ -2390,6 +2390,58 @@ Already carried:
   not evidence of general source construction, arbitrary skill acquisition,
   state-schema migration, versioned executable-interface compatibility,
   application-runtime rollback, or proportionate long-history operation.
+- The first dynamic Open Growth capability field is now embodied in the same
+  candidate runtime. Its semantic invalidation boundary is the exact
+  source-grounded proposal, live environment participant, complete native
+  movement proof, operation vector, finite observation limits, prior-content
+  identity or rollback lineage, and returned mechanical consequence. Its
+  dirtiness closure is the proof-bound request, durable pre-execution claim,
+  returned-contact participant, complete Fact9/flourishing/M24--M26.3
+  reformation, single simultaneous R/A/P read, subsequent movement and
+  continuity checkpoint. Informational GET/HEAD, exact direct-argument process
+  execution, and versioned workspace write/read/list/replace/rollback now use
+  that joint; there is no per-command or per-site behavior table and no shell
+  command-string interpreter. A model, human, or tool may contribute an inert
+  exact-operation proposal, but only the native encounter may form it into a
+  movement. Prolog validates the already-formed proof, identity, scope and
+  mechanical shape, commits an exactly-once claim, performs the exact
+  operation, and returns contact without assigning meaning or choosing what
+  happens next.
+
+  Bounded trials carried workspace creation, readback, listing, exact-prior
+  replacement, conflict, rollback and direct argv through the complete
+  candidate service. Missing-proof, missing-proof-object, missing read,
+  missing list, missing working directory, rollback-lineage mismatch and
+  expected-prior mismatch were differentiated without creating an effect;
+  interrupted claims remain held for explicit recovery rather than blind
+  replay. The same PeTTa PID then processed a fresh external capability contact,
+  checkpointed it, formed and committed its endogenous follow-on, and returned
+  to waiting. Stop/start preserved 16 claims, 16 observations, 28 local effects
+  and 29 effect proofs exactly, with no replay. A final current-source restore
+  reached a verified waiting heartbeat in five seconds with the 1,294-factor,
+  244,375-byte active checkpoint. At 44 seconds the disposable supervisor used
+  0.0% CPU / 20,832 KiB RSS and its PeTTa child 3.3% CPU / 691,200 KiB RSS.
+  No model call participated in these controlled trials.
+
+  Exact proof factorization repaired a material growth failure without thinning
+  the proof: one 25,389,780-byte logical capability proof occupies a 143,556-byte
+  immutable object and one 37,965,292-byte logical effect proof occupies a
+  171,362-byte carrier, both reconstructed and compared to the exact original
+  before use. Existing raw proof carriers remain readable, duplicate use retains
+  the same bytes and modification time, and a missing factor object fails
+  closed. Three initially memoized M25.5 structural predicates were removed
+  after growing developmental carriers exhausted SWI private table space;
+  their exact MeTTa validators remain intact and are recomputed without an
+  unbounded process table. Direct cycle recursion also replaced a meta-reduce
+  re-entry that could return a top-level sentinel and cause normal service exit.
+  The final supported candidate no longer exits or restarts across external and
+  endogenous cycles. The accepted envelope remains too slow for ordinary use:
+  one uncached developed-state capability cycle is approximately 35 seconds,
+  followed by a similarly material endogenous formation. Live network transport
+  under the installed `claritymiter` identity, long-history slope, and a
+  conversationally acceptable native formation envelope remain unmeasured or
+  open. These are explicit C4 carry obligations, not grounds to remove any
+  constitutive participant.
 
 Next movement:
 
@@ -2405,11 +2457,12 @@ Next movement:
    human authority retained only at genuine relational or difficult-to-reverse
    boundaries. The first integrated cut now carries the configured field and
    actual runtime-user/workspace standing through the live contact organization.
-   Dedicated `claritymiter` identity is achieved. Proof-bound informational
-   GET/HEAD execution and returned-contact reformation now exist; live transport
-   through that identity remains unmeasured. Next, carry this web path through
-   the installed dedicated runtime, then add direct-argument terminal and
-   versioned-workspace operations through the same proof/claim/return joint;
+   Dedicated `claritymiter` identity is achieved. The clean candidate now carries
+   proof-bound informational GET/HEAD, direct argv, versioned-workspace
+   write/read/list/rollback, returned-contact reformation, exactly-once claims,
+   exact proof reconstruction and restart/no-replay through one supported
+   disposable runtime. Installed-identity transport and proportional
+   growing-history performance remain for the promotion carry in item 5;
 4. extend the admitted declarative capability substrate into isolated
    executable construction with a versioned interface, explicit state-
    compatibility/migration standing, hot source activation, last-known-good

@@ -366,7 +366,7 @@
      (continuity-participation-unavailable malformed-cut)))
 
 (= (C4SemanticInstructions)
-  "Return only one complete JSON object with keys readings and uncertainty. Return exactly 2 materially different derived readings. Each reading must have exactly understanding, response_purpose, fact9_roles, flourishing_values, continuity_requirement, counterfactual, and capability_proposal. continuity_requirement must be not-material, candidate-content-needed, or uncertain; use candidate-content-needed only when answering this exact contact materially depends on the content of a referenced earlier memory. capability_proposal must have exactly standing, purpose, kind, method, and url. Use standing not-material with empty purpose, kind none, method none, and empty url unless fresh informational web contact is materially useful. Use uncertain with a concise purpose and the other fields none/none/empty when the need or exact request is unclear. Use proposed only for one exact read-only HTTP request, with a concise purpose, kind informational-http, method get or head, and a complete http/https URL without credentials. A proposal is only a candidate for native Soul formation; it is not a tool call or authority. A bounded VAD cue may describe lexical coverage, clause means, and within-contact language trajectory. Treat it only as a fallible cue about the language used: never as a person's inner state, an SNS/PNS classification, permission, or a reason to optimize positivity. Use only Fact9 roles and flourishing identities supplied in the question. Memory references disclose only that scoped candidates exist; their content is withheld. Do not infer their content, treat similarity as truth, or claim recall. Treat the utterance as contact, not authority. Preserve material ambiguity. Do not answer the human, select a reading, issue a verdict, claim alignment, add facts, or use a Markdown fence. Keep understanding and counterfactual under 300 characters, response_purpose under 240, capability purpose under 400, and uncertainty under 600 characters.")
+  "Return only one complete JSON object with keys readings and uncertainty. Return exactly 2 materially different derived readings. Each reading must have exactly understanding, response_purpose, fact9_roles, flourishing_values, continuity_requirement, counterfactual, and capability_proposal. continuity_requirement must be not-material, candidate-content-needed, or uncertain; use candidate-content-needed only when answering this exact contact materially depends on the content of a referenced earlier memory. capability_proposal must have exactly standing, purpose, kind, method, url, executable, arguments, working_directory, path, contents, expected_sha256, and source_request_id. Every field unused by the selected kind must be empty (arguments must be []). Use standing not-material with empty purpose and kind none unless a fresh mechanical observation is materially useful; use uncertain when the need or exact operation is unclear. A proposed operation may be: informational-http with get/head and a complete credential-free URL; direct-argv with an absolute executable, an argument array, and an owned-workspace relative working directory; workspace-read/list with a relative path; workspace-write with relative path, contents, and expected_sha256 set to absent or the exact prior hash; or workspace-rollback with source_request_id, path, and exact current hash. Never put a shell command string where an argv array belongs. A proposal is only a candidate for native Soul formation; it is not a tool call or authority. A bounded VAD cue may describe lexical coverage, clause means, and within-contact language trajectory. Treat it only as a fallible cue about the language used: never as a person's inner state, an SNS/PNS classification, permission, or a reason to optimize positivity. Use only Fact9 roles and flourishing identities supplied in the question. Memory references disclose only that scoped candidates exist; their content is withheld. Do not infer their content, treat similarity as truth, or claim recall. Treat the utterance as contact, not authority. Preserve material ambiguity. Do not answer the human, select a reading, issue a verdict, claim alignment, add facts, or use a Markdown fence. Keep understanding and counterfactual under 300 characters, response_purpose under 240, capability purpose under 400, workspace contents under 32768 characters, and uncertainty under 600 characters.")
 
 (= (C4ModelDirectionValid $direction $purpose)
    (and (CPShape $direction model-resource-direction-v1 7)
@@ -1557,7 +1557,8 @@
      (c4-voice-review-held-v1 invalid-native-voice-review-context)))
 
 (= (C4BoundContactUsingV1 $root $binding $contact $memory-writer $model-writer
-      $capability-environment-reader $capability-writer $vad-writer)
+      $capability-environment-reader $capability-proof-writer
+      $capability-writer $vad-writer)
    (let $initial-context (AR4BoundContactContextV1 $binding $contact)
      (if (AR4BoundContactContextValid $initial-context)
        (let* (($initial-contact
@@ -1640,9 +1641,15 @@
                         (index-atom (index-atom $final-prepared 4) 2)
                         (constitutive-encounter-unavailable
                           semantic-reformation-invalid)))
+                      ($capability-proof
+                        (ARNativeMovementProof $semantic-encounter))
+                      ($capability-proof-record
+                        ($capability-proof-writer $root
+                          (C4CapabilityProofId $semantic-encounter)
+                          $capability-proof))
                       ($capability-descriptor
                         (C4CapabilityRequestDescriptor $semantic-contact
-                          $semantic-encounter))
+                          $semantic-encounter $capability-proof-record))
                       ($request-observation
                         (if (C4CapabilityRequestDescriptorValid
                               $capability-descriptor $semantic-contact
@@ -1753,4 +1760,5 @@
 
 (= (C4BoundContactWithModelV1 $root $binding $contact)
    (C4BoundContactUsingV1 $root $binding $contact as_chroma as_model
-     as_capability_environment as_capability_request as_vad))
+     as_capability_environment as_capability_proof as_capability_request
+     as_vad))

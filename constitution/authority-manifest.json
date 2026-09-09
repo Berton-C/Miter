@@ -80,7 +80,7 @@
     },
     {
       "path": "src/provisional_dynamics.metta",
-      "sha256": "5662899cfaf74d3890b70dd049d9e681dc8e20187d2c4ec282dc9735e7f4bdc3"
+      "sha256": "ea596090af0ae7176b7693b53f9bc28c49a532c4f7ff344ab58b09afa5e30ff0"
     },
     {
       "path": "src/model_participation.metta",
@@ -88,7 +88,7 @@
     },
     {
       "path": "src/capability_environment.metta",
-      "sha256": "7fd63a003a596f5320d0a733b3d4863a832000930bc85787b3c418c5423d29b6"
+      "sha256": "6930af451eb903a246ea30eb49c0ea4655d32dd389d8ee6143bf8764790ec685"
     },
     {
       "path": "src/vad.metta",
@@ -112,7 +112,7 @@
     },
     {
       "path": "effect_membranes/capability_environment.pl",
-      "sha256": "6b5c65a3d518d3eb0434461cf8be9ad8b728e4231301acdc6db49011bd761f0d"
+      "sha256": "5b34db008097cb49150e36f34032e66540a7f68f79eadf5647d2f6614660318b"
     },
     {
       "path": "effect_membranes/vad.pl",
