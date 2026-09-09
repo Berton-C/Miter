@@ -241,10 +241,11 @@
                          (assistant-service-held
                            (model-or-effect-outcomes
                              $model-outcomes $effects)))))
-               (let* (($regenerative-step
-                        (AssistantRegenerativeCycleStepV1))
+               (let* (($active-organizations
+                        (AR3ActiveOrganizations))
                       ($regenerative-results
-                        (index-atom $regenerative-step 1)))
+                        (AssistantRegenerativeResultsFromActivesV1
+                          $active-organizations)))
                  (if (> (size-atom $regenerative-results) 0)
                    (if (SRRepairResultsCompletedAt
                          $regenerative-results 0)
@@ -268,10 +269,9 @@
                             $regenerative-results)
                        (assistant-service-held
                          (soul-regeneration $regenerative-results))))
-                   (let* (($endogenous-step
-                            (AssistantEndogenousCycleStepV3))
-                          ($endogenous-results
-                            (index-atom $endogenous-step 1)))
+                   (let $endogenous-results
+                          (AssistantEndogenousResultsFromActivesV3
+                            $active-organizations)
                      (if (> (size-atom $endogenous-results) 0)
                        ; The final service-owned effect family is compiled
                        ; after both local and Mattermost descriptor species.

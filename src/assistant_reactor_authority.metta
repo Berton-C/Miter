@@ -2052,6 +2052,11 @@
 ; R/A/P opening and no live assigned undertaking. The Soul either forms a
 ; provenance-bearing internal occurrence from that exact opening or remains
 ; quiescent. Hashing supplies only a stable carrier identifier.
+(= (AR3ActiveOrganizations)
+   (collapse (match &assistant_state
+     (active-organization $scope $cut $movement)
+     (active-organization $scope $cut $movement))))
+
 (= (AR3CutSourceIsEndogenous $cut)
    (let $provenance (index-atom $cut 12)
      (if (or (CPShape $provenance contact-provenance 4)
@@ -2141,12 +2146,19 @@
          (AR3EndogenousContactsAt $actives (+ $i 1))))
      ()))
 
-(= (AssistantEndogenousCycleStepV3)
-   (let* (($actives (collapse (match &assistant_state $atom $atom)))
-          ($contacts (AR3EndogenousContactsAt $actives 0))
+(= (AssistantEndogenousResultsFromActivesV3 $actives)
+   (let* (($contacts (AR3EndogenousContactsAt $actives 0))
           ($results (collapse (let $contact (superpose $contacts)
             (AssistantEncounterV2 $contact)))))
-     (assistant-endogenous-cycle-step-v1 $results (AssistantSnapshot))))
+     $results))
+
+(= (AssistantEndogenousCycleStepFromActivesV3 $actives)
+   (assistant-endogenous-cycle-step-v1
+     (AssistantEndogenousResultsFromActivesV3 $actives)
+     (AssistantSnapshot)))
+
+(= (AssistantEndogenousCycleStepV3)
+   (AssistantEndogenousCycleStepFromActivesV3 (AR3ActiveOrganizations)))
 
 ; The sole bootstrap imports Soul regeneration after this module, then imports
 ; the final recurring service assembly. Keeping that dependency order visible

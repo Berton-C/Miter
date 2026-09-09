@@ -356,10 +356,16 @@
           (SRRepairResultsCompletedAt $results (+ $i 1)))
      true))
 
+(= (AssistantRegenerativeResultsFromActivesV1 $actives)
+   (SRRepairActivesAt $actives 0))
+
+(= (AssistantRegenerativeCycleStepFromActivesV1 $actives)
+   (assistant-regenerative-cycle-step-v1
+     (AssistantRegenerativeResultsFromActivesV1 $actives)
+     (AssistantSnapshot)))
+
 (= (AssistantRegenerativeCycleStepV1)
-   (let* (($actives (collapse (match &assistant_state $atom $atom)))
-          ($results (SRRepairActivesAt $actives 0)))
-     (assistant-regenerative-cycle-step-v1 $results (AssistantSnapshot))))
+   (AssistantRegenerativeCycleStepFromActivesV1 (AR3ActiveOrganizations)))
 
 (= (AR3HistoryValid $row)
    (if (CPShape $row assistant-history 5)

@@ -129,6 +129,44 @@ The constitutional manifest distinguishes three spaces:
 These counts are integrity observations, not measures of Soul completeness.
 The compact 78-atom kernel is not to be described as “the Soul.”
 
+### Repository and workspace hygiene law
+
+There SHALL be exactly one persistent local Git working repository for Miter,
+and it SHALL correspond to the clean source that will replace remote `main`.
+The installed `/Users/claritymiter/Miter` product root is not a second source
+repository: it is a derived installation containing immutable application
+releases and dependencies, private live state, recovery backups, and the
+operator-owned workshop broker. Historical provenance may remain as a
+non-checkout archive, but it may not remain another active Git working tree.
+
+Only distributable runtime source, native membranes, required configuration,
+the finite installer and operator entry, the Constitution, Soul specification,
+five mathematical authorities, this Atlas, a concise README, the license, and
+the public-safe ignore file may be tracked. Tests, fixture forests, logs,
+evidence trees, gate or campaign paperwork, generated reports, duplicate
+checkpoints, runtime state, model material, private memory, credentials, and
+obsolete implementations SHALL NOT enter the repository.
+
+Builder-only trials SHALL use exact, bounded paths beneath the operating
+system temporary directory, SHALL NOT create a persistent second checkout,
+and SHALL be stopped and removed at the same verification waypoint. A commit
+is held if an unaccounted Miter process, disposable runtime, Git worktree, or
+generated artifact remains. The post-commit hygiene read repeats that check.
+This law constrains the builder and distribution footprint; it does not remove
+the living organism's private continuity, workspace, growth, or recovery
+state from its one installed product root.
+
+One explicitly human-directed recovery exception applies to scratch material
+that predates this law. Existing scattered `Miter*` / `miter*` material is
+preserved without reuse or enlargement until the clean source has replaced
+remote `main` and that exact installed release has proved a functional live
+Mattermost conversation, restart/no-replay, and Continuity of Mind. It remains
+untrusted recovery material, not runtime, source, evidence of completion, or a
+second repository. No cleanup claim may be made before that closure; once it
+holds, the preserved paths must be inventoried against the accepted source and
+live state before the human authorizes deletion. New work receives no such
+exception and must clean up its exact temporary paths at its own waypoint.
+
 ## 4. One runtime topology
 
 ```text
@@ -2652,6 +2690,29 @@ Already carried:
   native invalidation of repeated regeneration/endogenous examination and
   application-release rollback are the next packaging/performance seams.
 
+  The next source repair removes duplicate native work without caching or
+  relocating cognition. One selective AtomSpace read now supplies the exact
+  live active organizations to both regenerative and endogenous inquiry; the
+  service asks those organs for results rather than also constructing two
+  diagnostic snapshots that it discards. The public diagnostic wrappers and
+  all semantic constructors remain available and unchanged. Against the exact
+  accepted `d1722b9` baseline, both candidates restored the same synthetic
+  707-factor contact checkpoint, autonomously produced the same regenerative
+  event, and converged on the same 740-factor snapshot SHA-256
+  `bbde0d4431268f41e990e61465cb65b71d880ea05847bc1c35c02be1f667312b`,
+  continuity-manifest SHA-256
+  `5298a1aaeff6327ed6001b2cfaf239c82ef63d0f15f01d064051deff1c8f5010`,
+  and causal payload hash
+  `d080ffc842be37c3634a6ce06d3dbb2dc386f0f533b9334e10b3e9ba9029406c`.
+  Over the same subsequent 30-second unchanged-state interval, the repaired
+  child consumed 1.06 CPU seconds versus 2.02 for baseline, a 47.5% reduction;
+  RSS remained comparable at 130,656 versus 131,440 KiB. Restore then showed
+  one active organization, zero further repair or endogenous result, and
+  byte-equivalent diagnostic snapshots. No provider call, external effect, or
+  semantic verdict participated. This earns the source optimization; it does
+  not close growing-history or installed live-contact performance, which must
+  be measured after recoverable release activation.
+
 - The archive preflight exposed that macOS resolves the historical
   `/Users/claritymiter/miter` checkout and the proposed
   `/Users/claritymiter/Miter` install root to the same inode. The 2.4 GB tree is
@@ -2667,7 +2728,18 @@ Already carried:
   and remote branch remain 63 tracked files / about 13 MB including Git; the
   historical tree remains external provenance. The privileged archive rename
   and continuity migration were subsequently completed in the one-root carry
-  recorded above.
+  recorded above. Repository hygiene subsequently converted that historical
+  checkout's complete old graph into a verified 25,919,402-byte Git bundle at
+  SHA-256
+  `7dad6e9204a683323034c46d2a96c50ebc8d5765afc62ccca5a29b6eb03cae23`
+  inside the same archive, then removed only its `.git` metadata. Its untracked
+  `initial_canon` provenance remains ordinary readable files. The clean,
+  replaceable PeTTa development clone was also removed after its `main.pl`
+  matched the installed pinned dependency at SHA-256
+  `80d9cd8d68c9ed6b5646587b42ad8d55080e6d2c9a1c973f827dd4bcc6833678`.
+  `/Users/bcb/Documents/Miter_Cleanroom` is therefore the sole persistent local
+  Miter Git repository; `/Users/claritymiter/Miter` is the one derived product
+  root and contains no Git checkout.
 
 Next movement:
 
@@ -2702,10 +2774,18 @@ Next movement:
    now pass under `/Users/claritymiter/Miter` with no launchd and no Docker
    socket under the runtime identity. Add recoverable application-release
    activation/rollback without losing post-activation continuity or erasing an
-   external effect; eliminate causally unnecessary unchanged-idle native
-   recomputation; then measure ordinary live contact, restart, and growing
+   external effect; carry the accepted selective unchanged-idle computation
+   into that release; then measure ordinary live contact, restart, and growing
    history through this installed runtime before calling the distribution
-   complete;
+   complete. Earlier predecessor-layout Mattermost, continuity, VoiceRNA,
+   regenerative, and workshop results remain inherited evidence; these final
+   carries prove them through the one-root product and do not reopen their
+   already accepted cognition. Closure requires a new contact in the authorized
+   three-person Mattermost conversation, one VoiceRNA-certified response, a
+   human reply carried as returned consequence, an attributable changed or
+   intentionally unchanged next movement, exact continuity across restart, and
+   zero replay. Only this installed-release evidence—not a fixture or an
+   inherited predecessor result—permits the clean source to replace `main`;
 6. only after explicit human acceptance of the complete clean candidate,
    replace `main` history and remove old remote branches/tags in a separate
    destructive operation.
