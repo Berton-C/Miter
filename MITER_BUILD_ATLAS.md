@@ -2797,6 +2797,49 @@ Already carried:
   Miter Git repository; `/Users/claritymiter/Miter` is the one derived product
   root and contains no Git checkout.
 
+- Installed release `89b49e8e0e8e0b691f399e55f3bac0b821fc22d3`
+  completed the first real whole-application upgrade from `6a675255`, retained
+  that exact predecessor for rollback, preserved runtime identity
+  `76c25246-c914-4018-a5e8-bf5bcdef3f26` and active-checkpoint SHA-256
+  `e403e6cd77d8e8edd8ef0edcdef6adab45635b66ef6d12a422883611dbc6978c`,
+  and cold-restored with no replay. Chroma, Mattermost, VAD, private
+  credentials, the workshop broker, LKG, supervisor, and pinned PeTTa child
+  all passed from the one `/Users/claritymiter/Miter` product root. Its warm
+  unchanged-state samples settled near 4--5 percent of one core and 266,208
+  KiB RSS, materially better than the installed predecessor baseline.
+
+  The first new three-person-group contact then advanced exactly once from 16
+  to 17 admitted events and 19 to 20 model claims while outbound effects
+  remained three. The corrected diagnostic reported
+  `semantic-reading-held / provider-output-truncated`: GLM 5.3 used all 1,200
+  completion tokens as reasoning, emitted zero content, and returned
+  `finish_reason: length`. No semantic observation, VoiceRNA candidate, or
+  Mattermost response was fabricated. This establishes that the dependent
+  response schema is accepted by the provider but the hidden 1,200-token
+  purpose cap is not a feasible envelope for the configured high-reasoning
+  resource. It also exposed two unnecessary native costs on the failure path:
+  the already-prepared complete encounter was constructed again before
+  incorporation, and `AS4CycleStep` constructed a full diagnostic snapshot
+  that its sole consumer discarded before creating the real commit snapshot.
+  During that cycle the pinned child saturated one core, peaked at 2,686,480
+  KiB RSS, and retained about 1,381,904 KiB after collection. This is an
+  unacceptable ordinary-contact envelope and keeps C4 open.
+
+  The bounded repair changes no semantic constructor or participant. Semantic
+  reading now receives the human-edited resource's existing 2,048-token
+  ceiling; that exact grant remains in the native question identity. A held
+  provider observation incorporates the exact already-prepared M24--M26.3
+  encounter, and the cycle defers its snapshot to the sole checkpoint boundary.
+  The invalidation closure is therefore the semantic resource request identity,
+  the provider-hold incorporation branch, and the cycle's discarded diagnostic
+  snapshot only. Pinned-PeTTa load passed; an ephemeral hold-path check consumed
+  the supplied prepared carrier directly; an empty-cycle check returned
+  `snapshot-deferred-to-commit-boundary`; and Prolog resolved the semantic grant
+  to 2,048/120. No provider call, external effect, or committed fixture entered
+  these checks. The installed successful semantic/VoiceRNA carry, live peak and
+  retained RSS, returned consequence, restart/no-replay, growing-history slope,
+  and whole-application rollback remain the exact unmeasured limbs.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
@@ -2828,12 +2871,14 @@ Next movement:
 5. complete the remaining one-distribution promotion seams. The one-root
    continuity migration and installed-identity stateless workshop lifecycle
    now pass under `/Users/claritymiter/Miter` with no launchd and no Docker
-   socket under the runtime identity. Add recoverable application-release
-   activation/rollback without losing post-activation continuity or erasing an
-   external effect; carry the accepted selective unchanged-idle computation
-   into that release; then measure ordinary live contact, restart, and growing
-   history through this installed runtime before calling the distribution
-   complete. Earlier predecessor-layout Mattermost, continuity, VoiceRNA,
+   socket under the runtime identity. Recoverable application-release
+   activation has carried the accepted selective unchanged-idle computation
+   into the installed product without losing continuity or replaying an effect;
+   exact-predecessor rollback remains to be carried. Commit and upgrade the
+   current bounded semantic/failure-path repair, then measure ordinary live
+   contact, restart, and growing history through this installed runtime before
+   calling the distribution complete. Earlier predecessor-layout Mattermost,
+   continuity, VoiceRNA,
    regenerative, and workshop results remain inherited evidence; these final
    carries prove them through the one-root product and do not reopen their
    already accepted cognition. Closure requires a new contact in the authorized

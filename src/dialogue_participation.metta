@@ -1367,10 +1367,8 @@
 ; M24--M26.3 joint has formed again.  The provider emits no action label;
 ; native cognition carries its source/candidate-bound findings as a relational
 ; obstruction standing through that reformation.
-(= (C4IncorporateBoundContactWithoutModel $context)
-   (let* (($contact (index-atom $context 5))
-          ($result (AR4IncorporatePreparedEncounter
-            (AR4PrepareEncounterV1 $contact))))
+(= (C4IncorporateBoundContactWithoutModel $context $prepared)
+   (let $result (AR4IncorporatePreparedEncounter $prepared)
      (AR4RecordBoundContextV1 $context $result)))
 
 (= (C4DialogueModelOutcomeValid $outcome)
@@ -1743,7 +1741,8 @@
                          (voice-rendering-unavailable $voice-question
                            $reviewed))))))
                (let* (($incorporated
-                        (C4IncorporateBoundContactWithoutModel $context))
+                        (C4IncorporateBoundContactWithoutModel $context
+                          $prepared))
                       ($outcome (assistant-dialogue-model-unavailable-v1
                         $question $observation)))
                  (assistant-processed-v3 $incorporated $outcome))))

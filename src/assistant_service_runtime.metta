@@ -194,9 +194,10 @@
    (if (is-expr $inputs)
      (let $rows (AS4ProcessInputsAt $root $inputs 0)
        (assistant-cycle-step-v3 (AS4InputResultsAt $rows 0)
-         (AS4ModelOutcomesAt $rows 0) (AssistantSnapshot)))
+         (AS4ModelOutcomesAt $rows 0) snapshot-deferred-to-commit-boundary))
      (assistant-cycle-step-v3 ((assistant-input-rejected malformed-batch))
-       (model-participation-not-requested) (AssistantSnapshot))))
+       (model-participation-not-requested)
+       snapshot-deferred-to-commit-boundary)))
 
 (= (AssistantCycleWithV3 $root $idle $interval $base $cap
       $control-reader $input-reader $checkpoint-writer $waiter $recorder
