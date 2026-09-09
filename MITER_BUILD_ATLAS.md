@@ -2616,7 +2616,18 @@ Already carried:
   target intact. This recovery changes no cognitive source, AtomSpace content,
   constitutional standing, movement, R/A/P read, Fact9/flourishing
   participation, memory meaning, model call, or effect. The privileged retry
-  and its cleanup standing remain the immediate unmeasured carry.
+  then completed from release `6a675255a5f3608892811833a9dc66cbc8824ede`.
+  It reused the existing root-private backup, restored runtime identity
+  `76c25246-c914-4018-a5e8-bf5bcdef3f26` and active-checkpoint-file SHA-256
+  `5f1d10e2963acfc09f4bb71cc52eecfd2890c523aab855602e6ecf222cbdd788`,
+  reached `cold-restore-verified-no-replay`, restarted through the installed
+  CLI, and passed the complete installation validation with VAD, credentials,
+  Mattermost, Chroma, LKG, and broker present. Only then did it remove the
+  preserved failed derived target. The live topology contains exactly one
+  bcb-owned broker, one claritymiter-owned non-cognitive supervisor, and its
+  one PeTTa child; neither a launch service nor Docker-socket access
+  participates. Installed-identity stage/trial/activate/invoke/rollback and
+  its restart/latency carry remain immediate.
 
 - The archive preflight exposed that macOS resolves the historical
   `/Users/claritymiter/miter` checkout and the proposed
