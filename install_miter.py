@@ -620,6 +620,119 @@ def verify_runtime_checkpoint(source: pathlib.Path) -> str:
     return sha256_file(active_path)
 
 
+def runtime_lkg_matches_application(runtime: pathlib.Path,
+                                    application: pathlib.Path) -> bool:
+    """Compare the stopped runtime snapshot with the selected application release."""
+    try:
+        runtime_marker = json_document(runtime / "runtime.json")
+        lkg_path = runtime / "lkg.json"
+        lkg = json_document(runtime / "lkg.json")
+        files = lkg.get("files")
+        if (lkg.get("schema") != "miter-assistant-lkg-v3"
+                or not isinstance(files, list)
+                or runtime_marker.get("lkg_sha256") != sha256_file(lkg_path)):
+            return False
+        for entry in files:
+            if not isinstance(entry, dict):
+                return False
+            relative = entry.get("path")
+            expected = entry.get("sha256")
+            if (not isinstance(relative, str) or not isinstance(expected, str)
+                    or relative.startswith("/")
+                    or ".." in pathlib.PurePosixPath(relative).parts):
+                return False
+            source = application / relative
+            if (not source.is_file() or source.is_symlink()
+                    or sha256_file(source) != expected):
+                return False
+        return True
+    except (InstallError, OSError, PermissionError):
+        return False
+
+
+def validated_migration_backup(source: pathlib.Path, backup: pathlib.Path,
+                               deployment: dict) -> pathlib.Path:
+    backup_root = pathlib.Path(deployment["backup_root"]).resolve()
+    if (not backup.is_absolute() or backup.parent.resolve() != backup_root
+            or backup.is_symlink() or not backup.is_dir()):
+        raise InstallError("Prior migration backup is outside the exact private backup root")
+    if backup.stat().st_uid != 0 or stat.S_IMODE(backup.stat().st_mode) != 0o700:
+        raise InstallError("Prior migration backup has unsafe ownership or mode")
+    marker_path = backup / "MIGRATION_BACKUP.json"
+    marker = json_document(marker_path)
+    source_runtime = json_document(source / "runtime.json")
+    runtime_id = source_runtime.get("runtime_id")
+    if not isinstance(runtime_id, str) or not runtime_id:
+        raise InstallError("Migration source has no runtime identity")
+    expected_checkpoint = verify_runtime_checkpoint(source)
+    if marker != {
+        "schema": "miter-runtime-migration-backup-v1",
+        "runtime_id": runtime_id,
+        "source": str(source),
+        "checkpoint_active_sha256": expected_checkpoint,
+        "created_at_epoch": marker.get("created_at_epoch"),
+        "standing": "immutable-pre-migration-backup",
+    } or not isinstance(marker.get("created_at_epoch"), (int, float)):
+        raise InstallError("Prior migration backup marker does not match the exact source")
+    if (marker_path.stat().st_uid != 0
+            or stat.S_IMODE(marker_path.stat().st_mode) != 0o400
+            or verify_runtime_checkpoint(backup) != expected_checkpoint):
+        raise InstallError("Prior migration backup failed identity or immutability checks")
+    return backup
+
+
+def prepare_failed_migration_retry(runtime: pathlib.Path, source: pathlib.Path,
+                                   deployment: dict, application: pathlib.Path) -> dict | None:
+    """Preserve one failed pre-contact target before rebuilding its current LKG."""
+    if (not runtime_marker_valid(runtime)
+            or runtime_lkg_matches_application(runtime, application)):
+        return None
+    marker_path = runtime / "migration.json"
+    if not marker_path.is_file() or marker_path.is_symlink():
+        raise InstallError(
+            "Existing runtime differs from the selected release and is not a retryable migration"
+        )
+    marker = json_document(marker_path)
+    source_checkpoint = verify_runtime_checkpoint(source)
+    backup_value = marker.get("backup")
+    if (marker.get("schema") != "miter-runtime-migration-v1"
+            or marker.get("standing") != "durable-state-copied-awaiting-cold-restore"
+            or marker.get("source_runtime") != str(source)
+            or marker.get("source_checkpoint_active_sha256") != source_checkpoint
+            or not isinstance(backup_value, str)
+            or verify_runtime_checkpoint(runtime) != source_checkpoint):
+        raise InstallError(
+            "Existing runtime differs from the selected release outside the failed cold-restore boundary"
+        )
+    ensure_runtime_stopped(runtime)
+    backup = validated_migration_backup(source, pathlib.Path(backup_value), deployment)
+    timestamp = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+    preserved = runtime.with_name(
+        f"{runtime.name}.failed-cold-restore-{timestamp}-{os.getpid()}"
+    )
+    if preserved.exists():
+        raise InstallError(f"Failed-runtime preservation target already exists: {preserved}")
+    runtime.rename(preserved)
+    return {
+        "schema": "miter-failed-migration-retry-v1",
+        "preserved": str(preserved),
+        "backup": str(backup),
+        "standing": "preserved-awaiting-verified-replacement",
+    }
+
+
+def remove_verified_failed_runtime(recovery: dict, runtime: pathlib.Path) -> dict:
+    preserved = pathlib.Path(recovery["preserved"])
+    expected_prefix = runtime.name + ".failed-cold-restore-"
+    if (preserved.parent != runtime.parent or not preserved.name.startswith(expected_prefix)
+            or preserved.is_symlink() or not preserved.is_dir()):
+        raise InstallError("Refusing to remove an unexpected failed-runtime preservation path")
+    shutil.rmtree(preserved)
+    result = dict(recovery)
+    result["standing"] = "removed-after-verified-replacement"
+    return result
+
+
 def secure_owned_tree(root: pathlib.Path, account: pwd.struct_passwd) -> None:
     for path in [root, *root.rglob("*")]:
         if path.is_symlink():
@@ -690,7 +803,8 @@ def backup_runtime(source: pathlib.Path, deployment: dict) -> pathlib.Path:
 
 
 def migrate_runtime_state(source: pathlib.Path, target: pathlib.Path,
-                          deployment: dict, account: pwd.struct_passwd) -> dict:
+                          deployment: dict, account: pwd.struct_passwd,
+                          prior_backup: pathlib.Path | None = None) -> dict:
     ensure_runtime_stopped(source)
     source_checkpoint_hash = verify_runtime_checkpoint(source)
     marker_path = target / "migration.json"
@@ -699,7 +813,8 @@ def migrate_runtime_state(source: pathlib.Path, target: pathlib.Path,
         if marker.get("source_checkpoint_active_sha256") != source_checkpoint_hash:
             raise InstallError("Existing migration marker names a different source checkpoint")
         return marker
-    backup = backup_runtime(source, deployment)
+    backup = (validated_migration_backup(source, prior_backup, deployment)
+              if prior_backup is not None else backup_runtime(source, deployment))
     for relative in DURABLE_RUNTIME_DIRECTORIES:
         copy_durable_directory(source / relative, target / relative)
     for relative in DURABLE_RUNTIME_FILES:
@@ -1300,6 +1415,11 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
     workshop_image = ensure_workshop_image(config)
     create_private_runtime_parent(deployment, account)
     runtime = pathlib.Path(deployment["runtime_root"])
+    migration_source = pathlib.Path(migrate_runtime).resolve() if migrate_runtime else None
+    failed_migration_recovery = (
+        prepare_failed_migration_retry(runtime, migration_source, deployment, application)
+        if migration_source is not None and runtime.exists() else None
+    )
     recovered_incomplete_runtime = quarantine_incomplete_runtime(runtime)
     if not runtime.exists():
         result = miter_command(application, deployment, petta, "install",
@@ -1322,11 +1442,15 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
             )
     migration = None
     migration_pending_restore = False
-    if migrate_runtime:
-        source_runtime = pathlib.Path(migrate_runtime).resolve()
+    if migration_source is not None:
+        source_runtime = migration_source
         if source_runtime == runtime.resolve():
             raise InstallError("Migration source and destination are identical")
-        migration = migrate_runtime_state(source_runtime,runtime,deployment,account)
+        prior_backup = (pathlib.Path(failed_migration_recovery["backup"])
+                        if failed_migration_recovery else None)
+        migration = migrate_runtime_state(
+            source_runtime,runtime,deployment,account,prior_backup=prior_backup
+        )
         migration_pending_restore = (
             migration.get("standing") ==
             "durable-state-copied-awaiting-cold-restore"
@@ -1348,6 +1472,7 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
                 if recovered_incomplete_runtime else None
             ),
             "migration": migration,
+            "failed_migration_recovery": failed_migration_recovery,
             "missing": missing,
             "next": "Run the same install command interactively to finish without replacing existing state.",
         }
@@ -1415,6 +1540,12 @@ def install(config: dict, reuse_services: bool, import_keychain: bool,
         ),
         "migration": migration,
     })
+    if report["complete"] and failed_migration_recovery is not None:
+        report["failed_migration_recovery"] = remove_verified_failed_runtime(
+            failed_migration_recovery, runtime
+        )
+    else:
+        report["failed_migration_recovery"] = failed_migration_recovery
     return report
 
 

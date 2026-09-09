@@ -2597,6 +2597,27 @@ Already carried:
   remain unchanged; installed-identity broker transport and the complete live
   workshop lifecycle remain the next carry.
 
+  A direct rerun against that failed target would still have retained its
+  constitutionally valid but superseded LKG, so installation recovery is now
+  explicitly re-entrant at one narrow pre-contact boundary. Recovery is
+  permitted only when the target has the exact
+  `durable-state-copied-awaiting-cold-restore` marker, names the requested
+  authoritative source and its unchanged active-checkpoint hash, remains
+  stopped with no leased input, and names the already-created root-owned,
+  mode-0700 immutable backup whose marker and checkpoint independently match
+  that source. The failed derived target is first preserved beside the target;
+  a fresh runtime is then bootstrapped from the selected current application
+  release and receives the same durable source state while reusing—not
+  duplicating—the verified backup. The preserved derived target may be removed
+  only after the replacement reaches a process-bound non-terminal heartbeat,
+  stops at a real cycle boundary, retains the exact checkpoint without replay,
+  restarts through the installed operator, and passes the full installation
+  validation. Any mismatch holds with the source, immutable backup, and failed
+  target intact. This recovery changes no cognitive source, AtomSpace content,
+  constitutional standing, movement, R/A/P read, Fact9/flourishing
+  participation, memory meaning, model call, or effect. The privileged retry
+  and its cleanup standing remain the immediate unmeasured carry.
+
 - The archive preflight exposed that macOS resolves the historical
   `/Users/claritymiter/miter` checkout and the proposed
   `/Users/claritymiter/Miter` install root to the same inode. The 2.4 GB tree is
