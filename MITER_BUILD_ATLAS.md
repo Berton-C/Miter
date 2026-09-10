@@ -3555,12 +3555,43 @@ Already carried:
   required; the preserved Mattermost lease remains the sole acceptance
   stimulus.
 
+- Git history identifies `34fd733` as the last installed release with a live
+  Mattermost response, VoiceRNA certificate, returned consequence, and
+  restart/no-replay. That release already embedded the complete predecessor
+  cut in every new contact cut. The representation worked while lineage was
+  shallow but caused every later cut to contain another recursively copied
+  history. In a 26-predecessor accumulated organization, the active row
+  serialized to approximately 41.2 million characters before the next
+  semantic participant re-entry. The live 300-second collapse is therefore a
+  growing-state lineage defect latent in the known-good implementation, not a
+  reason to rewrite M24--M26.3 or the Mattermost transport.
+
+  The bounded repair makes `CPMakeCut` carry the predecessor cut's exact
+  identity. The append-only checkpoint, history, continuity capsule, and
+  source lineage still retain the complete prior organization; no history is
+  summarized, discarded, or inferred. Legacy full-predecessor cuts and new
+  identity-only cuts resolve to the same `source-cut` continuity reference.
+  Under pinned PeTTa, the exact compatibility witness returned all seven
+  validity/identity observations as `true`. In the accumulated 26-deep
+  organization, a complete new semantic-participant reformation retained a
+  valid contact, prepared encounter, semantic question, two readings, three
+  participants, and valid reformed encounter and completed in 45.13 seconds;
+  the new prepared carrier serialized to approximately 5.14 million
+  characters. No Fact9 role, flourishing, Generated alternative, M25 primary,
+  simultaneous R/A/P read, movement, VoiceRNA rule, or effect rule changed.
+  The committed source also installed through `bin/miter` into one fresh
+  disposable runtime, reached native `assistant-waiting` with verified LKG,
+  inactive evaluation, and zero model calls or effects, then stopped cleanly.
+  Mattermost preflight was held only because that disposable runtime contained
+  no private credentials. Its process family and exact temporary runtime were
+  removed at the same waypoint. Installed response delivery and
+  restart/no-replay remain the acceptance boundary.
+
 Next movement:
 
-1. commit and install the exact constitutional manifest pins for the already
-   committed operator-control/no-restart and construction-only M25.5 repairs,
-   then resume the one already leased Mattermost contact without introducing
-   another stimulus. Require the
+1. commit and install the exact compact-lineage repair, then resume the one
+   already leased Mattermost contact without introducing another stimulus.
+   Require the
    supported runtime either to produce one certified response/effect or to
    preserve a typed native unresolved standing without process or query
    collapse. Only after a delivered response may a human reply become returned

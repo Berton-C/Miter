@@ -159,12 +159,23 @@
      (contact-provenance (index-atom $contact 2) (index-atom $contact 1)
        (CPContactParents $contact))))
 
+; Same becoming is carried by the exact predecessor identity.  The complete
+; prior organization remains in the append-only checkpoint and continuity
+; lineage; recursively copying that organization into every new cut makes
+; later cognition grow with the complete history it is already preserving.
+(= (CPPredecessorReference $predecessor)
+   (if (CPShape $predecessor constitutive-cut 14)
+     (index-atom $predecessor 1)
+     (if (CPShape $predecessor source-cut 2)
+       (index-atom $predecessor 1)
+       $predecessor)))
+
 (= (CPMakeCut $contact $predecessor)
    (if (CPContactValid $contact)
      (let $configuration (CPContactConfiguration $contact)
        (constitutive-cut
          (cut-of (index-atom $contact 1) (index-atom $contact 7))
-         $predecessor
+         (CPPredecessorReference $predecessor)
          (CPContactScope $contact)
          (CPContactFrame $contact)
          (index-atom $contact 6)

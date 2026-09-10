@@ -48,7 +48,7 @@
     },
     {
       "path": "src/constitutive_foundation.metta",
-      "sha256": "bf13907d5aea207b673f1dee0a482dc85b609c83a05dba826e087ea704aa1415"
+      "sha256": "a897f74a2f0e86a7e87f9d2f2f58ab794b3a01506a0b6c9d8116aa00263f084b"
     },
     {
       "path": "src/generative_invariance.metta",

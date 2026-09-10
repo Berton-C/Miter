@@ -343,11 +343,21 @@
          (C4FlourishingEntriesAt $expressions (+ $i 1))))
      ()))
 
+(= (C4CutPredecessorReference $cut)
+   (if (CPCutValid $cut)
+     (let $predecessor (index-atom $cut 2)
+       (if (CPShape $predecessor constitutive-cut 14)
+         (source-cut (index-atom $predecessor 1))
+         (if (CPShape $predecessor source-cut 2)
+           $predecessor
+           (if (== $predecessor ()) no-predecessor
+             (source-cut $predecessor)))))
+     no-predecessor))
+
 (= (C4ContinuitySurface $cut $contact)
    (if (CPCutValid $cut)
      (continuity-participation
-       (predecessor (if (CPCutValid (index-atom $cut 2))
-         (source-cut (index-atom (index-atom $cut 2) 1)) no-predecessor))
+       (predecessor (C4CutPredecessorReference $cut))
        (active-organization
          (let $active (ARActiveRows (index-atom $cut 3))
            (if (== (size-atom $active) 1)
