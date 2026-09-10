@@ -58,10 +58,58 @@
            (local-effect-held $effect-id $result)))
        $descriptor)))
 
+; The direct V5 dialogue result reaches this function only after the complete
+; same-cut result/outcome joint has validated.  Its descriptor, certificate,
+; proof and proof reference are exact fields of that joint.  Re-running the
+; restored-artifact validators here would add no cognition and was the dominant
+; whole-turn cost.  The membrane still receives the complete proof-bearing
+; descriptor and remains exactly-once.
+(= (AS4EffectOneFromValidatedDialogue $root $contact-result $effect-writer)
+   (let* (($descriptor (index-atom $contact-result 5))
+          ($effect-id (index-atom $descriptor 1))
+          ($scope (index-atom $descriptor 3))
+          ($certificate (index-atom (index-atom $descriptor 5) 1))
+          ($proof-reference (index-atom $certificate 7))
+          ($result ($effect-writer $root $descriptor)))
+     (if (and (ARAnyEffectResultValid $result)
+              (CPShape $proof-reference native-proof-reference 5))
+       (let* (($proof-record (native-movement-proof-record-v2
+                $proof-reference
+                (certificate-sha256 (index-atom $result 2))
+                (proof-sha256 (index-atom $result 3))
+                persisted-by-effect-membrane-before-observation))
+              ($proof-history (ARRecordVoiceProof $effect-id $scope
+                $proof-record))
+              ($history (if (CPHas $proof-history
+                    (assistant-history-recorded assistant-history-duplicate) 0)
+                (ARRecord effect $effect-id $scope
+                  (effect-witness-v2 $result
+                    (index-atom $descriptor 5) $proof-reference))
+                assistant-history-conflict)))
+         (if (and (CPHas $proof-history
+                    (assistant-history-recorded assistant-history-duplicate) 0)
+                  (CPHas $history
+                    (assistant-history-recorded assistant-history-duplicate) 0))
+           (local-effect-result $result $proof-history $history)
+           (local-effect-held $effect-id (history $proof-history $history))))
+       (local-effect-held $effect-id $result))))
+
 (= (AS4EffectsAt $root $results $effect-writer $i)
    (if (< $i (size-atom $results))
      (cons-atom (AS4EffectOne $root (index-atom $results $i) $effect-writer)
        (AS4EffectsAt $root $results $effect-writer (+ $i 1))) ()))
+
+(= (AS4EffectsFromValidatedRowsAt $root $rows $effect-writer $i)
+   (if (< $i (size-atom $rows))
+     (let* (($row (index-atom $rows $i))
+            ($result (index-atom $row 1))
+            ($effect (if (CPShape $result
+                  assistant-contact-incorporated-v5 6)
+              (AS4EffectOneFromValidatedDialogue $root $result $effect-writer)
+              (AS4EffectOne $root $result $effect-writer))))
+       (cons-atom $effect
+         (AS4EffectsFromValidatedRowsAt $root $rows $effect-writer (+ $i 1))))
+     ()))
 
 (= (AS4EffectOutcomeValid $outcome)
    (if (== $outcome no-local-effect) true
@@ -186,19 +234,42 @@
      (and (AS4ModelOutcomeValid (index-atom $outcomes $i))
           (AS4ModelOutcomesValidAt $outcomes (+ $i 1))) true))
 
+(= (AS4ProcessedRowValid $row)
+   (if (CPShape $row assistant-processed-v3 3)
+     (let* (($result (index-atom $row 1))
+            ($outcome (index-atom $row 2)))
+       (if (CPShape $result assistant-contact-incorporated-v5 6)
+         (C4FreshDialogueResultOutcomeValid $result $outcome)
+         (AS4ModelOutcomeValid $outcome)))
+     false))
+
+(= (AS4ProcessedRowsValidAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (and (AS4ProcessedRowValid (index-atom $rows $i))
+          (AS4ProcessedRowsValidAt $rows (+ $i 1))) true))
+
 (= (AS4ModelStageStandingsAt $outcomes $i)
    (if (< $i (size-atom $outcomes))
      (cons-atom
        (C4DialogueStageStandingFromValidated (index-atom $outcomes $i))
        (AS4ModelStageStandingsAt $outcomes (+ $i 1))) ()))
 
+(= (AS4ModelStageStandingsFromRowsAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (cons-atom
+       (C4DialogueStageStandingFromValidated
+         (index-atom (index-atom $rows $i) 2))
+       (AS4ModelStageStandingsFromRowsAt $rows (+ $i 1))) ()))
+
 (= (AS4CycleStep $root $inputs)
    (if (is-expr $inputs)
      (let $rows (AS4ProcessInputsAt $root $inputs 0)
-       (assistant-cycle-step-v3 (AS4InputResultsAt $rows 0)
-         (AS4ModelOutcomesAt $rows 0) snapshot-deferred-to-commit-boundary))
-     (assistant-cycle-step-v3 ((assistant-input-rejected malformed-batch))
-       (model-participation-not-requested)
+       (assistant-cycle-step-v4 $rows
+         (if (AS4ProcessedRowsValidAt $rows 0)
+           same-cut-rows-valid same-cut-rows-invalid)
+         snapshot-deferred-to-commit-boundary))
+     (assistant-cycle-step-v4 ()
+       same-cut-rows-invalid
        snapshot-deferred-to-commit-boundary)))
 
 (= (AssistantCycleWithV3 $root $idle $interval $base $cap
@@ -217,12 +288,15 @@
                   ($next (if $active $base (ARNextInterval $interval $cap))))
              (if $active
                (let* (($step (AS4CycleStep $root $inputs))
-                          ($results (index-atom $step 1))
-                          ($model-outcomes (index-atom $step 2))
-                          ($effects (AS4EffectsAt $root $results
-                            $effect-writer 0))
+                          ($rows (index-atom $step 1))
+                          ($same-cut-standing (index-atom $step 2))
+                          ($effects (if (== $same-cut-standing
+                                same-cut-rows-valid)
+                            (AS4EffectsFromValidatedRowsAt $root $rows
+                              $effect-writer 0)
+                            ()))
                           ($valid (and
-                            (AS4ModelOutcomesValidAt $model-outcomes 0)
+                            (== $same-cut-standing same-cut-rows-valid)
                             (AS4EffectsValidAt $effects 0))))
                      (if $valid
                        (let* (($snapshot (AssistantSnapshot))
@@ -232,18 +306,17 @@
                                 (cycle-standing contact-consequence-and-model
                                   $idle $checkpoint
                                   (model-stage-standings
-                                    (AS4ModelStageStandingsAt
-                                      $model-outcomes 0))))))
+                                    (AS4ModelStageStandingsFromRowsAt
+                                      $rows 0))))))
                          (if (== $checkpoint checkpointed)
                            (AssistantCycleWithV3 $root false $next $base $cap
                              $control-reader $input-reader $checkpoint-writer
                              $waiter $recorder $effect-writer $model-writer)
                            (assistant-service-held (checkpoint $checkpoint))))
                        (let $record ($recorder $root assistant-cycle-held-v3
-                              (held-outcomes $model-outcomes $effects))
+                              (held-rows $rows $effects))
                          (assistant-service-held
-                           (model-or-effect-outcomes
-                             $model-outcomes $effects)))))
+                           (model-or-effect-outcomes $rows $effects)))))
                (let* (($active-organizations
                         (AR3ActiveOrganizations))
                       ($regenerative-results

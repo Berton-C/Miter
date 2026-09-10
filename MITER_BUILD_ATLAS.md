@@ -3098,6 +3098,57 @@ Already carried:
   expected operator-owned workshop broker.  The exact `45d9940` activation and
   carried-input result remain the acceptance boundary.
 
+- Installed release `baf5b74fc3390daf906e4de252dd090f48a9c4ed`
+  successfully carried the one exact leased Mattermost input across another
+  cold application transition: runtime identity, active-checkpoint SHA-256,
+  4,162-byte carrier and carrier SHA-256 all remained exact, and the migration
+  reported no replay.  The source and remote candidate branch were identical.
+  The restarted PeTTa child nevertheless climbed to approximately 487 percent
+  CPU and 2,055,584 KiB RSS before the supervisor and child left the process
+  table under consecutive-failure containment.  The input was not treated as
+  answered, consumed, rejected, or grounds for another stimulus.  This proves
+  release carry but falsifies the prior same-cut VoiceRNA cost repair.
+
+  Dependency tracing found that the active review path still re-ran the same
+  proof-bearing formation through basis construction, disposition validation,
+  reviewed-voice validation, independent model-outcome validation, descriptor
+  validation, proof-history construction, and effect-history construction.
+  These were validations of unchanged ground terms, not new Fact9/flourishing
+  participation, a new simultaneous R/A/P read, new model evidence, changed
+  consequence, or a changed cut.  The bounded source repair introduces a
+  direct same-cut refinement joint.  `C4VoiceAuditSoulFormation` still performs
+  the complete native proof validation after the provider audit participates.
+  The reviewed disposition still arises natively from the exact candidate,
+  relational audit standing, one simultaneous R/A/P, Fact9 organization, all
+  nine interconnected flourishings, and the three retained continuations.
+  The cycle then requires the result, semantic observation, reviewed voice,
+  incorporated encounter, source contact, certificate, proof reference, and
+  effect descriptor to be one exact organization before the descriptor can
+  reach the effect membrane.  The cycle retains that row once rather than
+  expanding it again into duplicate result and model-outcome lists.  Direct
+  downstream consumers project that
+  already-validated ground organization; general and restored artifacts retain
+  their complete validators.
+
+  The invalidation closure is the fresh audit basis/disposition, direct
+  reviewed carrier, result/outcome joint, effect dispatch, and proof/effect
+  history for that one cut.  No question, provider observation, Soul meaning,
+  movement choice, authority, effect capability, checkpoint, or restart
+  identity changes.  The active no-revision path falls from repeated complete
+  proof/basis walks at every layer to one complete native proof validation plus
+  exact structural and identity checks downstream.  A materially obstructed
+  audit still creates and validates a freshly reformed movement before the one
+  permitted revision.  Pinned-PeTTa bootstrap parsing passed; empty and
+  malformed refinement checks returned their exact typed standings; all
+  Prolog membranes loaded; the installer plan remained non-destructive; and
+  whitespace checks passed.  These source checks made zero model calls,
+  effects, checkpoints, or live constitutive formations and left no new
+  fixture or generated repository artifact.  Process hygiene found no Miter
+  supervisor or PeTTa child after the contained predecessor run and exactly one
+  expected operator-owned workshop broker.  Installed live wall time, peak and
+  retained RSS, exact single response/effect, checkpoint, restart/no-replay,
+  and returned consequence remain required; until those pass, C4 remains open.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the

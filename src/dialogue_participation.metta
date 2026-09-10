@@ -1014,6 +1014,86 @@
      (c4-native-voice-audit-basis-unavailable
        invalid-soul-formation-or-candidate-binding)))
 
+; Same-cut projection from a formation produced immediately by
+; C4VoiceAuditSoulFormation.  That constructor has already required the exact
+; prepared encounter and its native movement proof to validate.  Repeating the
+; restored-artifact validator here recursively walks the unchanged M24--M26.3
+; organization without adding a participant or changing the cut.  This narrow
+; projection therefore checks the material fields it consumes and preserves
+; their exact identities; it is never used for restored or externally supplied
+; formations.
+(= (C4VoiceNativeAuditBasisFromFreshFormation $formation $voice-question
+      $voice-observation)
+   (if (and (CPShape $formation c4-voice-audit-soul-formation-v2 5)
+         (and (CPShape $voice-question c4-voice-render-question-v1 11)
+              (CPShape $voice-observation c4-voice-observation-v1 13)))
+     (let* (($prepared (index-atom $formation 1))
+            ($proof (index-atom $formation 2))
+            ($encounter (index-atom (index-atom $prepared 4) 2))
+            ($movement (index-atom $encounter 5))
+            ($rap (C4VoiceMovementRAP $movement))
+            ($facts (index-atom $encounter 2))
+            ($flourishing (index-atom $encounter 3))
+            ($rendering (index-atom $voice-observation 9))
+            ($cut (index-atom $proof 1)))
+       (if (and (== $proof (ARNativeMovementProof $encounter))
+             (and (CPShape $rap rap-read-v2 6)
+              (and (> (size-atom $facts) 0)
+               (and (CPFactExpressionsLive $facts)
+                (and (CPShape $flourishing flourishing-organization 3)
+                     (== (size-atom (index-atom $flourishing 2)) 9))))))
+         (c4-native-voice-audit-basis-v1
+           (native-proof-reference (index-atom $cut 1)
+             (ARMovementReference $cut $movement) native-proof-store
+             persisted-before-effect)
+           (one-simultaneous-rap $rap)
+           (fact9-participation $facts)
+           (interconnected-flourishing-participation $flourishing)
+           (candidate-source-binding
+             (index-atom $voice-question 1)
+             (index-atom $voice-question 2)
+             (index-atom $voice-question 3)
+             (index-atom $voice-observation 8)
+             (index-atom $rendering 2)))
+         (c4-native-voice-audit-basis-unavailable
+           incomplete-fresh-constitutive-or-one-surface-rap-organization)))
+     (c4-native-voice-audit-basis-unavailable
+       invalid-fresh-formation-or-candidate-binding)))
+
+; The fresh formation already established the expensive proof-bearing basis.
+; Native disposition still arises from the exact provider contribution and all
+; three retained continuations; this constructor merely avoids validating the
+; same immutable basis a second time inside the same reduction.
+(= (C4VoiceNativeDispositionFromFreshFormation $formation $voice-question
+      $voice-observation $audit-observation)
+   (let* (($basis (C4VoiceNativeAuditBasisFromFreshFormation $formation
+            $voice-question $voice-observation))
+          ($standing (C4VoiceAuditRelationalStanding $audit-observation))
+          ($continuations (retained-voice-continuations
+            express-current-candidate revise-candidate-once
+            hold-expression-and-continue-inquiry)))
+     (if (CPShape $basis c4-native-voice-audit-basis-v1 6)
+       (if (CPShape $standing voice-fidelity-standing 4)
+         (if (== (index-atom $standing 1)
+               no-material-obstruction-contributed)
+           (c4-native-voice-disposition-v1 express-current-candidate $basis
+             (provider-audit-participation $standing) $continuations
+             native-soul-disposition-not-provider-verdict)
+           (if (== (index-atom $standing 1)
+                 unresolved-material-obstruction)
+             (c4-native-voice-disposition-v1 revise-candidate-once $basis
+               (provider-audit-participation $standing) $continuations
+               native-soul-disposition-not-provider-verdict)
+             (c4-native-voice-disposition-v1 hold-expression $basis
+               (provider-audit-participation $standing) $continuations
+               unresolved-audit-standing)))
+         (c4-native-voice-disposition-v1 hold-expression $basis
+           (provider-audit-participation $standing) $continuations
+           malformed-audit-standing))
+       (c4-native-voice-disposition-v1 hold-expression $basis
+         (provider-audit-participation $standing) $continuations
+         constitutive-basis-unavailable))))
+
 (= (C4VoiceNativeAuditBasisValid $basis $formation $voice-question
       $voice-observation)
    (if (and (CPShape $basis c4-native-voice-audit-basis-v1 6)
@@ -1223,6 +1303,35 @@
                   $voice-question)))))))
      (C4ReviewedVoiceV2Valid $reviewed)))
 
+; A bounded refinement check for the direct result of C4ReviewVoiceUsingV1.
+; The full native proof has already validated while forming the exact audit
+; organization.  This check preserves every consumed relation by exact
+; identity without recursively validating that unchanged proof again.  General
+; and restored reviewed carriers continue to use C4ReviewedVoiceValid.
+(= (C4FreshReviewedVoiceValid $reviewed)
+   (if (CPShape $reviewed c4-voice-reviewed-v3 8)
+     (let* (($voice-question (index-atom $reviewed 1))
+            ($voice-observation (index-atom $reviewed 2))
+            ($audit-question (index-atom $reviewed 3))
+            ($audit-observation (index-atom $reviewed 4))
+            ($revision-standing (index-atom $reviewed 5))
+            ($formation (index-atom $reviewed 6))
+            ($disposition (index-atom $reviewed 7))
+            ($expected-disposition
+              (C4VoiceNativeDispositionFromFreshFormation $formation
+                $voice-question $voice-observation $audit-observation)))
+       (==
+         ((C4VoiceObservationValid $voice-observation $voice-question)
+          (== $audit-question
+            (C4VoiceAuditQuestion $voice-question $voice-observation))
+          (C4VoiceAuditObservationValid $audit-observation $audit-question)
+          (CPShape $formation c4-voice-audit-soul-formation-v2 5)
+          (== $disposition $expected-disposition)
+          (== (index-atom $disposition 1) express-current-candidate)
+          (C4VoiceRevisionStandingValid $revision-standing $voice-question))
+         (true true true true true true true)))
+     false))
+
 (= (C4ReviewedVoiceDispositionFromValid $reviewed)
    (if (CPShape $reviewed c4-voice-reviewed-v3 8)
      (index-atom $reviewed 7)
@@ -1286,12 +1395,19 @@
            (mattermost-response (index-atom $source 1)
              (index-atom $rendering 1)))
          (ARParticipantBoundaryReference $participants)
-         (ARNativeProofReference $proof)
+         (let $cut (index-atom $proof 1)
+           (native-proof-reference (index-atom $cut 1)
+             (ARMovementReference $cut (index-atom $proof 3))
+             native-proof-store persisted-before-effect))
          (voice-audit-v3
            (index-atom $rendering 2) (index-atom $rendering 3)
            (index-atom $audit-observation 9) $revision-standing
            (native-audit-formation
-             (ARNativeProofReference (index-atom $soul-formation 2))
+             (let* (($soul-proof (index-atom $soul-formation 2))
+                    ($soul-cut (index-atom $soul-proof 1)))
+               (native-proof-reference (index-atom $soul-cut 1)
+                 (ARMovementReference $soul-cut (index-atom $soul-proof 3))
+                 native-proof-store persisted-before-effect))
              $disposition)
            source-scope-movement-bound no-added-effect-authority)
          (C4VoiceAuthorizedDisclosure $voice-question)
@@ -1433,6 +1549,44 @@
          (true true true true true true true true true true true true)))
      false))
 
+; One direct dialogue row is the refinement boundary for the current cut.  The
+; review constructor has already performed the complete native proof check.
+; This joint requires the independently carried result, model outcome, reviewed
+; voice, incorporated encounter, contact source and effect descriptor to be the
+; same exact organization.  It is intentionally unavailable to restored or
+; externally supplied artifacts, which retain the general deep validators.
+(= (C4FreshDialogueResultOutcomeValid $result $outcome)
+   (if (and (CPShape $result assistant-contact-incorporated-v5 6)
+         (CPShape $outcome assistant-dialogue-model-participation-v1 4))
+     (let* (($contact-id (index-atom $result 1))
+            ($incorporated-encounter (index-atom $result 2))
+            ($voice-question (index-atom $result 3))
+            ($reviewed (index-atom $result 4))
+            ($descriptor (index-atom $result 5))
+            ($semantic-question (index-atom $outcome 1))
+            ($semantic-observation (index-atom $outcome 2))
+            ($voice-standing (index-atom $outcome 3))
+            ($formation (index-atom $reviewed 6))
+            ($prepared (index-atom $formation 1))
+            ($reviewed-encounter (index-atom (index-atom $prepared 4) 2))
+            ($source (index-atom $voice-question 3))
+            ($expected-descriptor
+              (C4MattermostEffectDescriptorFromValidReviewed
+                $contact-id $reviewed)))
+       (==
+         ((C4SemanticObservationValid $semantic-observation
+            $semantic-question)
+          (C4FreshReviewedVoiceValid $reviewed)
+          (== $voice-standing (voice-rendering-v2 $reviewed))
+          (== $voice-question (index-atom $reviewed 1))
+          (== $incorporated-encounter $reviewed-encounter)
+          (CPShape $source source-contact 3)
+          (== (index-atom $source 1) $contact-id)
+          (CPShape $descriptor mattermost-effect-descriptor-v1 9)
+          (== $descriptor $expected-descriptor))
+         (true true true true true true true true true)))
+     false))
+
 ; This is one turn inside the existing reactor, not a new conversational loop.
 ; The preliminary encounter is pure construction.  Active state changes once,
 ; only after the model readings have re-entered as participants and the full
@@ -1571,13 +1725,13 @@
               (C4VoiceAuditSoulFormation $prepared $initial-audit-question
                 $initial-audit-observation))
             ($initial-disposition
-              (C4VoiceNativeDisposition $initial-soul-formation
+              (C4VoiceNativeDispositionFromFreshFormation
+                $initial-soul-formation
                 $initial-question $initial-observation
                 $initial-audit-observation))
             ($initial-disposition-valid
-              (C4VoiceNativeDispositionValid $initial-disposition
-                $initial-soul-formation $initial-question
-                $initial-observation $initial-audit-observation)))
+              (CPShape $initial-disposition
+                c4-native-voice-disposition-v1 6)))
        (if (and $initial-disposition-valid
                 (== (index-atom $initial-disposition 1)
                   express-current-candidate))
@@ -1632,13 +1786,13 @@
                       $revision-audit-question
                       $revision-audit-observation))
                   ($revision-disposition
-                    (C4VoiceNativeDisposition $revision-soul-formation
+                    (C4VoiceNativeDispositionFromFreshFormation
+                      $revision-soul-formation
                       $revision-question $revision-observation
                       $revision-audit-observation))
                   ($revision-disposition-valid
-                    (C4VoiceNativeDispositionValid $revision-disposition
-                      $revision-soul-formation $revision-question
-                      $revision-observation $revision-audit-observation)))
+                    (CPShape $revision-disposition
+                      c4-native-voice-disposition-v1 6)))
              (if (and (C4VoiceObservationValid $revision-observation
                         $revision-question)
                       (and $revision-disposition-valid
@@ -1818,7 +1972,7 @@
                           $capability-prepared $encounter $question $observation
                           $voice-direction $private-context $voice-question
                           $voice-observation) $model-writer)))
-                 (if (C4ReviewedVoiceValid $reviewed)
+                 (if (CPShape $reviewed c4-voice-reviewed-v3 8)
                    (let* (($reviewed-formation (index-atom $reviewed 6))
                           ($reviewed-prepared
                             (index-atom $reviewed-formation 1))
