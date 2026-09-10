@@ -60,7 +60,7 @@
     },
     {
       "path": "src/authority_inheritance.metta",
-      "sha256": "19c62d51649958811294fde873172a2cd407814a7887604ca6e6d5de05fbd8d3"
+      "sha256": "a047d437d8500a258e247a040126140c0aba33b35e579afe1d143ab4582abf0b"
     },
     {
       "path": "src/m24_completion.metta",
@@ -112,7 +112,7 @@
     },
     {
       "path": "src/constitutive_authority_joint.metta",
-      "sha256": "a37e20be4a05330f667e50d3850221b326c6c57381cd72cc201b55a639e3ac81"
+      "sha256": "4ccd027223f661d2dc1e3adefdfe72a951e3c4061fbc3c7a7c1f9a2315883a5b"
     },
     {
       "path": "src/soul_regeneration.metta",

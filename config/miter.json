@@ -48,7 +48,7 @@
   "supervision": {
     "startup_grace_seconds": 30,
     "waiting_lease_seconds": 10,
-    "processing_lease_seconds": 90,
+    "processing_lease_seconds": 300,
     "model_lease_margin_seconds": 30,
     "termination_grace_seconds": 5,
     "poll_seconds": 1

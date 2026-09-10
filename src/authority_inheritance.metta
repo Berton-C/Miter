@@ -3245,7 +3245,7 @@
             $revised-cut $facts $flourishing $participant-relations $bridge
             $fact-views $flourishing-views $participant-source $payload-ref
             $developmental))
-          ($readings (miter_petta_parallel_m25_readings $primaries
+          ($readings (miter_petta_bounded_m25_readings $primaries
             $revised-cut $developmental))
           ; These are the exact outputs of the native constructors immediately
           ; above. Movement formation checks their joined family once rather

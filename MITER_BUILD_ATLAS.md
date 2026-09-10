@@ -3149,6 +3149,57 @@ Already carried:
   retained RSS, exact single response/effect, checkpoint, restart/no-replay,
   and returned consequence remain required; until those pass, C4 remains open.
 
+- Installed release `edf6329580120db48e5a5a9fa05d9d10e3eaaba5` carried the
+  same exact leased Mattermost input, runtime identity and checkpoint without
+  replay, but did not reach VoiceRNA or an effect.  Its first pinned PeTTa
+  child was terminated at the 90-second native-processing lease and its
+  replacement was terminated on the same boundary.  The rolling crash record
+  named both exact PIDs; service stderr was empty.  The prior live sample had
+  reached approximately 2.1 GiB RSS.  This distinguishes a watchdog-enforced
+  native reduction overrun from Mattermost transport failure, provider error,
+  Soul refusal, or completed silence.  The input remains leased and no new
+  stimulus is permitted.
+
+  Profiling then separated one complete base encounter from participant
+  re-entry.  A small unfamiliar held-out contact took 14.24 seconds to form;
+  adding two model participants through the full same-cut path took 27.20
+  seconds total.  The inherited scheduler nested one outer worker per live
+  M25 possibility with eight inner M25.5 bridge workers per reading.  That
+  multiplied thread stacks with growing history and explains the live
+  CPU/RSS failure.  Fully serializing the bridges exceeded the useful profile
+  envelope, so it was rejected rather than committed.
+
+  The bounded candidate preserves outer independent primary construction,
+  lets exactly one complete M25 reading at a time own the eight-way bridge
+  worker family, and preserves original list order.  No membrane sees,
+  filters, ranks, selects, or omits a result.  The same-cut participant
+  constructor now retains exact M24, M26.0 and M26.3 certificate relations
+  from the freshly formed authority cut while rebuilding M25 and M25.5 over
+  every enriched participant.  Thus every live possibility still receives
+  its complete new primary and one simultaneous R/A/P read.  A held-out
+  equivalence trial proved the incremental and former complete constructors
+  return the exact same ground term.  The bounded two-formation profile took
+  27.51 seconds and, near completion, used approximately 76 MiB RSS rather
+  than the live predecessor's multi-gigabyte growth.  It made zero model
+  calls, effects, checkpoints, or runtime writes and all temporary profile
+  sources were removed at the same waypoint.
+
+  The semantic invalidation boundary is only participant organization and its
+  transitive M25/M25.5 consumers.  Contact, predecessor, D/Omega/I/W/C,
+  Fact9 and flourishing views, M24/M26.0/M26.3 authorities, model evidence,
+  movement authority, effect authority, and continuity identity remain exact.
+  The processing lease is calibrated to 300 seconds for the first growing-
+  history carry so the bounded native work can be observed without another
+  premature replacement; that envelope is acceptance evidence, not a Soul
+  rule or a substitute for purpose-stage durability.  Pinned-PeTTa bootstrap,
+  the exact reformation equivalence, JSON syntax, the scheduling membrane,
+  whitespace, and repository hygiene pass.  Only the expected operator-owned
+  workshop broker remains; no trial process or file survives.  The installed
+  growing-history wall time, peak/retained RSS, exact single response/effect,
+  checkpoint, restart/no-replay and returned consequence remain open.  Once
+  this carry succeeds, completed semantic and VoiceRNA stages must become
+  durable restart work rather than requiring whole-contact recomputation.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the

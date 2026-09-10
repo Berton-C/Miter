@@ -7,10 +7,9 @@
 
 :- use_module(library(thread)).
 
-miter_petta_parallel_m25_readings(Primaries, Cut, Developmental, Readings) :-
+miter_petta_bounded_m25_readings(Primaries, Cut, Developmental, Readings) :-
     is_list(Primaries),
-    concurrent_maplist(miter_petta_m25_reading(Cut, Developmental),
-      Primaries, Readings).
+    maplist(miter_petta_m25_reading(Cut, Developmental), Primaries, Readings).
 
 miter_petta_m25_reading(Cut, Developmental, Primary, Reading) :-
     once('M25MovementReading'(Primary, Cut, Developmental, Reading)).
@@ -32,10 +31,11 @@ miter_petta_m25_primary(Cut, Facts, Flourishing, ParticipantRelations,
       ParticipantRelations, Bridge, FactViews, FlourishingViews,
       ParticipantSource, PayloadRef, Developmental, Primary)).
 
-% Each component is an independent MeTTa-defined projection over the same
-% already-formed primary/read surface.  This membrane fixes only their
-% scheduling order and returns the eight opaque results.  MeTTa retains sole
-% ownership of the bridge-family composition and every semantic boundary.
+% A complete M25 reading contains eight independent MeTTa-defined bridge
+% projections.  They may run concurrently, but readings themselves are mapped
+% above in input order so there can be only one such worker family at a time.
+% This bounds thread stacks independently of the number of live possibilities;
+% the membrane still cannot inspect, filter, rank, select, or change a result.
 miter_petta_parallel_m255_bridge_components(Primary, Cut, Developmental, Rap,
       Alignment, Interface, Components) :-
     Tags = [harmonic, interface, obstruction, stuck, reorganization,
