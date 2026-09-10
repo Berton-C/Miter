@@ -1664,9 +1664,10 @@
              voice-rendering-standing-unavailable))))
      (C4DialogueStageStanding $outcome)))
 
-; Re-form the same occurrence after semantic participants arrive without
-; recomputing its already-established M24 and M26.0 authority organizations.
-; The final M25/M25.5 construction is still fresh: every resulting possibility
+; Re-form the same occurrence after new participants arrive.  The native
+; constructor proves that this exact extension leaves every M24/M26.0/Fact9
+; input unchanged before retaining their established authority basis.  The
+; final M25/M25.5 construction is still fresh: every resulting possibility
 ; receives one new simultaneous R/A/P read on the enriched contact surface.
 (= (C4ReformPreparedWithParticipants $prepared $additional-participants)
    (if (and (AR4PreparedEncounterValid $prepared)
@@ -1675,15 +1676,10 @@
             ($scope (index-atom $prepared 2))
             ($contact (index-atom $prepared 3))
             ($grounded (index-atom $prepared 4))
-            ($joint (index-atom $grounded 1))
-            ($encounter (index-atom $grounded 2))
-            ($cut (index-atom $encounter 1))
             ($enriched-contact (CP2ContactWithAuthorityParticipants $contact
               $additional-participants))
             ($reformed (miter_petta_c4_reformed_encounter
-              $enriched-contact (index-atom $cut 2)
-              (index-atom $joint 2) (index-atom $joint 3)
-              (index-atom $joint 4) (index-atom $joint 5))))
+              $contact $additional-participants $grounded)))
        (if (CPShape $reformed authority-grounded-encounter 3)
          (prepared-encounter-v1 $id $scope $enriched-contact $reformed)
          (prepared-encounter-held $id

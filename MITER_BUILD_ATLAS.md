@@ -3422,9 +3422,46 @@ Already carried:
   restart/no-replay remain unmeasured, so the same lease remains the next and
   only acceptance stimulus.
 
+- Installed release `226450f64c475e0a501eee59257ebf0d810ff3a6`
+  admitted the now-complete dialogue source and resumed the same exact lease,
+  but three supervised workers each remained inside native semantic
+  participant reformation for the full 300-second processing lease without a
+  response, effect, model call, checkpoint change, or typed terminal result.
+  The human then requested a clean stop; no replacement stimulus was created.
+  This establishes a computational obstruction in complete reformation, not a
+  Mattermost, identity, provider, syntax, or source-admission failure.
+
+  The bounded repair does not remove or rewrite an M24--M26.3 authority. It
+  makes participant re-entry's exact dependency boundary explicit in MeTTa.
+  A native witness proves that the contact identity, predecessor, scope,
+  frame, occurrence, provenance, M24 contact and organization, M26.0
+  organization, Fact9 views, flourishing views, Generated possibilities, and
+  the M24/M26.0/M26.3 certificate relations are unchanged when the returned
+  semantic participant is appended. Only after that witness holds does the
+  same constructor retain the established M24/M26.0/M26.3 basis, freshly form
+  every M25 primary and M25.5 reading over the enlarged participant
+  organization, and produce the one simultaneous R/A/P read for each live
+  possibility. A false enriched-contact witness returns `false`.
+
+  An exact held-out control formed both a wholly fresh enriched encounter and
+  the dependency-bounded reformation and proved their complete ground terms
+  identical. All seven validity/equality/falsifier observations held. The
+  complete base, fresh-enriched control, and bounded reformation took 10.54
+  seconds together; the bounded reformation path took approximately 8.55
+  seconds in isolation, versus approximately 45.27 seconds before exact
+  structural sharing. The sharing tables cover only three pure M25.5
+  structural validators and are opened and destroyed by
+  `setup_call_cleanup/3` around one named `AS4CycleStep`; they cannot survive a
+  completed, held, failed, or interrupted PeTTa process cycle. Soul, Fact9,
+  flourishing, R/A/P, movement, semantic standing, expression, and effect
+  results are never tabled, inspected, filtered, ranked, or selected by
+  Prolog. This directly closes the earlier unbounded process-table failure
+  while retaining its exact repeated-work benefit. Installed accumulated-state
+  latency and the sole live response remain the acceptance boundary.
+
 Next movement:
 
-1. install the exact semantic-reformation totalizer and resume the one already
+1. install the exact dependency-bounded semantic reformation and resume the one already
    leased Mattermost contact without introducing another stimulus. Require the
    supported runtime either to produce one certified response/effect or to
    preserve a typed native unresolved standing without process or query

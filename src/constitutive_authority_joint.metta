@@ -1093,6 +1093,155 @@
      (authority-grounded-encounter-unresolved
        contact-or-authority-organization-not-grounded)))
 
+; A participant extension changes exactly one field of the contact
+; configuration: its participant list. M24 and M26.0 do not consume that
+; field, while the Fact9 views, flourishing views and Generated possibilities
+; remain byte-identical. This witness proves the exact dependency inputs by
+; identity. It does not recompute an unchanged certificate merely to establish
+; the substitutive law f(x) == f(x); that would defeat dependency-bounded
+; reformation. The prior grounded encounter supplies the already-validated
+; authority products and their causal certificate relations.
+(= (CP2ParticipantExtensionAuthorityInputsStable $contact $additional
+      $enriched $grounded)
+   (if (and (CPContactValid $contact)
+         (and (> (size-atom $additional) 0)
+          (and (== $enriched
+                 (CP2ContactWithAuthorityParticipants $contact $additional))
+           (and (CPShape $grounded authority-grounded-encounter 3)
+                (CPShape (index-atom $grounded 1)
+                  authority-participation-joint-v8 16)))))
+     (let* (($old-joint (index-atom $grounded 1))
+            ($old-encounter (index-atom $grounded 2))
+            ($old-cut (if (CPShape $old-encounter constitutive-encounter 7)
+              (index-atom $old-encounter 1) ()))
+            ($old-m24 (index-atom $old-joint 2))
+            ($old-m24-organization (index-atom $old-joint 3))
+            ($old-m260 (index-atom $old-joint 4))
+            ($old-m260-pre (index-atom $old-joint 5))
+            ($old-m260-certificate (index-atom $old-joint 11))
+            ($old-m263-certificate (index-atom $old-joint 12))
+            ($old-m24-certificate (index-atom $old-joint 13))
+            ($authority-cut (CPBaseCutWithoutParticipantRelations $old-cut))
+            ($base-configuration (CPContactConfiguration $contact))
+            ($enriched-configuration (CPContactConfiguration $enriched)))
+       (==
+         ((CPCutValid $old-cut)
+          (== (index-atom $old-joint 1) (index-atom $contact 1))
+          (== (index-atom $old-cut 1)
+            (cut-of (index-atom $contact 1) (index-atom $contact 7)))
+          (== (index-atom $old-cut 3) (CPContactScope $contact))
+          (== (index-atom $old-cut 4) (CPContactFrame $contact))
+          (== (index-atom $old-cut 5) (index-atom $contact 6))
+          (== (index-atom $old-cut 12) (CPContactProvenance $contact))
+          (== (CP2M24Contact $contact) $old-m24)
+          (== (CP2M24Contact $enriched) $old-m24)
+          (CPShape $old-m24-organization m24-contact-organization 7)
+          (== (CP2M260Organization $contact) $old-m260)
+          (== (CP2M260Organization $enriched) $old-m260)
+          (CPShape $old-m260-pre pre-movement-occurrence-organization-v2 9)
+          (== (index-atom $base-configuration 7)
+            (index-atom $enriched-configuration 7))
+          (== (index-atom $base-configuration 8)
+            (index-atom $enriched-configuration 8))
+          (== (index-atom $base-configuration 9)
+            (index-atom $enriched-configuration 9))
+          (== (index-atom $enriched-configuration 10)
+            (CPListAppend (index-atom $base-configuration 10) $additional))
+          (CP2M24CertificateRelationKnown $authority-cut $old-m24-certificate)
+          (CP2M260CertificateRelationKnown $authority-cut
+            $old-m260-certificate)
+          (CP2M263CertificateRelationKnown $authority-cut
+            $old-m263-certificate))
+         (true true true true true true true true true true true true true true
+           true true true true true true)))
+     false))
+
+; Participant re-entry remains one complete constitutive movement.  The
+; unchanged M24/M26.0 basis and its certificate relations are retained only
+; after the dependency witness above succeeds. The exact Fact9 inputs and
+; retained certificate relation are preserved, and its exports must remain
+; causal in every fresh primary. M25 and M25.5 are always constructed anew over
+; the enriched participants, so every lawful possibility receives a fresh
+; primary and one simultaneous R/A/P read.
+(= (CP2ReformFreshGroundedWithParticipants $contact $additional $grounded)
+   (if (and (CPContactValid $contact)
+         (and (> (size-atom $additional) 0)
+          (and (CPShape $grounded authority-grounded-encounter 3)
+               (CPShape (index-atom $grounded 1)
+                 authority-participation-joint-v8 16))))
+     (let* (($old-joint (index-atom $grounded 1))
+            ($old-encounter (index-atom $grounded 2))
+            ($old-cut (if (CPShape $old-encounter constitutive-encounter 7)
+              (index-atom $old-encounter 1) ()))
+            ($m24 (index-atom $old-joint 2))
+            ($m24-organization (index-atom $old-joint 3))
+            ($m260 (index-atom $old-joint 4))
+            ($m260-pre (index-atom $old-joint 5))
+            ($m260-certificate (index-atom $old-joint 11))
+            ($m263-certificate (index-atom $old-joint 12))
+            ($m24-certificate (index-atom $old-joint 13))
+            ($authority-cut (CPBaseCutWithoutParticipantRelations $old-cut))
+            ($enriched-contact
+              (CP2ContactWithAuthorityParticipants $contact $additional))
+            ($authority-inputs-stable
+              (CP2ParticipantExtensionAuthorityInputsStable $contact
+                $additional $enriched-contact $grounded))
+            ($authority-participants (CP2AuthorityParticipants
+              $enriched-contact $m24-organization $m260-pre))
+            ($participating-contact (CP2ContactWithAuthorityParticipants
+              $enriched-contact $authority-participants))
+            ($configuration (CPContactConfiguration $participating-contact))
+            ($developmental
+              (CP2M24DevelopmentalOrganization $m24-organization))
+            ($encounter (M25ConstitutiveEncounter $authority-cut
+              (index-atom $configuration 7) (index-atom $configuration 8)
+              (index-atom $configuration 10) (index-atom $contact 8)
+              $developmental)))
+       (if (and $authority-inputs-stable
+             (and (== (index-atom $contact 1) (index-atom $old-joint 1))
+                  (CPCutValid $authority-cut)))
+         (if (CPShape $encounter constitutive-encounter 7)
+           (let* (($cut (index-atom $encounter 1))
+                  ($movement (index-atom $encounter 5))
+                  ($family (CP2M260BridgeFamilyForEncounter $encounter))
+                  ($standing (CP2M260MovementOccurrenceStanding $cut $movement
+                    $m260 $family))
+                  ($m25-certificate
+                    (M25ConstitutiveCertificate $encounter $developmental))
+                  ($m255-certificate
+                    (M255ConstitutiveCertificate $encounter $developmental
+                      $m25-certificate))
+                  ($joint (authority-participation-joint-v8
+                    (index-atom $contact 1) $m24 $m24-organization $m260
+                    $m260-pre
+                    (CPDRelationKnown $cut contact-occurrence-grounding)
+                    $family $standing (index-atom $m24-organization 3)
+                    finite-non-reconstruction $m260-certificate
+                    $m263-certificate $m24-certificate $m25-certificate
+                    $m255-certificate))
+                  ($checks
+                    ((CP2M24ExportsCausalInEncounter $encounter $developmental
+                       $m24-certificate)
+                     (CP2M260ExportsCausalInEncounter $encounter
+                       $m260-certificate)
+                     (CP2M263ExportsCausalInEncounter $encounter
+                       $m263-certificate)
+                     (M25ConstructedCertificateMatchesEncounter
+                       $m25-certificate $encounter $developmental)
+                     (M255ConstitutiveCertificateDependentValid
+                       $m255-certificate $encounter $developmental
+                       $m25-certificate))))
+             (if (== $checks (true true true true true))
+               (authority-grounded-encounter $joint $encounter)
+               (authority-grounded-encounter-unresolved
+                 participant-reentry-not-causal $joint)))
+           (authority-grounded-encounter-unresolved
+             participant-reentry-not-formed $encounter))
+         (authority-grounded-encounter-unresolved
+           participant-reentry-authority-basis-mismatch)))
+     (authority-grounded-encounter-unresolved
+       participant-reentry-prerequisites-unavailable)))
+
 (= (CP2EncounterFromAuthority $contact $predecessor $m24 $m260)
    (let* (($m24-organization (M24ContactOrganization $m24))
           ($m260-valid (M260OrganizationValid $m260))

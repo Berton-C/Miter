@@ -287,7 +287,7 @@
                   ($active (> (size-atom $inputs) 0))
                   ($next (if $active $base (ARNextInterval $interval $cap))))
              (if $active
-               (let* (($step (AS4CycleStep $root $inputs))
+               (let* (($step (miter_petta_c4_cycle_step $root $inputs))
                           ($rows (index-atom $step 1))
                           ($same-cut-standing (index-atom $step 2))
                           ($effects (if (== $same-cut-standing
