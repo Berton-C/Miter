@@ -1,16 +1,31 @@
 % Narrow PeTTa/SWI scheduling groundings for independent native reductions.
 %
 % The cognitive constructors invoked here are defined in MeTTa. This layer
-% preserves input order and applies each exact constructor once. It does not
-% inspect, filter, score, rank, join, or select returned primaries/readings and
-% cannot invoke an arbitrary predicate supplied by a model or surface.
+% preserves input order and invokes each exact constructor for one complete
+% result family.  Exact cardinality is part of the mechanical grounding
+% contract: one result is carried unchanged; zero or plural results are carried
+% as unresolved native evidence with their exact source.  This prevents a
+% failed once/1 from erasing the whole service query and prevents once/1 from
+% silently selecting one result.  MeTTa remains responsible for interpreting
+% the unresolved carrier.  This layer does not inspect, filter, score, rank,
+% join, or select returned primaries/readings and cannot invoke an arbitrary
+% predicate supplied by a model or surface.
 
 miter_petta_bounded_m25_readings(Primaries, Cut, Developmental, Readings) :-
     is_list(Primaries),
     maplist(miter_petta_m25_reading(Cut, Developmental), Primaries, Readings).
 
 miter_petta_m25_reading(Cut, Developmental, Primary, Reading) :-
-    once('M25MovementReading'(Primary, Cut, Developmental, Reading)).
+    findall(Candidate,
+      'M25MovementReading'(Primary, Cut, Developmental, Candidate),
+      Candidates),
+    ( Candidates = [Only] ->
+        Reading = Only
+    ; length(Candidates, Count),
+      Reading = ['m25-native-reading-reduction-unresolved-v1',
+        ['source-primary', Primary], ['result-count', Count],
+        'native-cardinality-observation-no-movement-authority']
+    ).
 
 miter_petta_parallel_m25_primaries(Possibilities, Cut, Facts, Flourishing,
       ParticipantRelations, Bridge, FactViews, FlourishingViews,
@@ -43,15 +58,23 @@ miter_petta_m25_primaries_in_order([Possibility|Rest], Cut, Facts, Flourishing,
 miter_petta_m25_primary(Cut, Facts, Flourishing, ParticipantRelations,
       Bridge, FactViews, FlourishingViews, ParticipantSource, PayloadRef,
       Developmental, Possibility, Primary) :-
-    once('M25PrimaryMovement'(Possibility, Cut, Facts, Flourishing,
-      ParticipantRelations, Bridge, FactViews, FlourishingViews,
-      ParticipantSource, PayloadRef, Developmental, Primary)).
+    findall(Candidate,
+      'M25PrimaryMovement'(Possibility, Cut, Facts, Flourishing,
+        ParticipantRelations, Bridge, FactViews, FlourishingViews,
+        ParticipantSource, PayloadRef, Developmental, Candidate),
+      Candidates),
+    ( Candidates = [Only] ->
+        Primary = Only
+    ; length(Candidates, Count),
+      Primary = ['m25-native-primary-reduction-unresolved-v1',
+        ['source-possibility', Possibility], ['result-count', Count],
+        'native-cardinality-observation-no-movement-authority']
+    ).
 
 % A complete M25 reading contains eight independent MeTTa-defined bridge
-% projections.  They may run concurrently, but readings themselves are mapped
-% above in input order so there can be only one such worker family at a time.
-% This bounds thread stacks independently of the number of live possibilities;
-% the membrane still cannot inspect, filter, rank, select, or change a result.
+% projections.  They are carried one at a time in input order so the living
+% AtomSpace is never multiplied across worker stacks.  The membrane still
+% cannot inspect, filter, rank, select, or change a result.
 miter_petta_parallel_m255_bridge_components(Primary, Cut, Developmental, Rap,
       Alignment, Interface, Components) :-
     Tags = [harmonic, interface, obstruction, stuck, reorganization,

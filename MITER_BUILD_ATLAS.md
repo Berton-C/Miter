@@ -3318,12 +3318,55 @@ Already carried:
   `assistant-started-v3` and stopped cleanly. The unchanged leased Mattermost
   contact remains the sole installed acceptance stimulus.
 
+- Installed release `4e33ed098f0a51fe402fe6b0c771e99a929ef7b4`
+  crossed the corrected startup-integrity boundary and carried the exact leased
+  Mattermost contact, runtime identity and active checkpoint without replay.
+  It nevertheless produced no terminal service result and no Mattermost reply.
+  Three supervised PeTTa children returned normally with `exit(0)` after
+  approximately 57 seconds each; stderr remained empty, the model-call count
+  remained 23, outbound-post count remained 3, and the active-checkpoint
+  SHA-256 remained
+  `efc609c57e07bc52d6d065acf4aee9d9632bca79b736734400e2bbc055559aa7`.
+  This localizes the failure to native semantic re-entry before VoiceRNA, not
+  Mattermost ingress/egress, GLM transport, startup integrity, the processing
+  lease, or an effect.
+
+  The scheduling membrane wrapped `M25PrimaryMovement` and
+  `M25MovementReading` in `once/1`. A zero-result native reduction therefore
+  failed its enclosing list construction and erased the complete service
+  query; a plural reduction would silently have selected its first result.
+  The bounded repair now enumerates each exact native result family. Exactly
+  one result is carried unchanged. Zero or plural results retain their exact
+  source possibility or primary plus observed cardinality in an unresolved
+  native carrier. The membrane cannot interpret that carrier or create a
+  movement; native MeTTa preserves it as `movement-unresolved` for subsequent
+  Soul participation. This changes only the native-reduction cardinality
+  boundary and its transitive M25 construction. Contact, all Fact9 and
+  flourishing participation, one simultaneous R/A/P, authority organization,
+  model evidence, movement authority, effect authority, checkpoint and
+  continuity identity remain unchanged.
+
+  Direct exact-one, zero-result and plural-result checks passed for the primary
+  and reading wrappers. A pinned-PeTTa native carry proved that non-exact
+  cardinality reaches an explicit unresolved M25 movement rather than erasing
+  the query. A fresh supported runtime completed bootstrap, established a
+  verified waiting heartbeat, and stopped cleanly. These checks made zero model
+  calls, effects, checkpoints, or persistent runtime changes; all temporary
+  sources and runtimes were removed. No installed Miter supervisor or PeTTa
+  child remains after the contained failed carry, and only the expected
+  operator-owned workshop broker remains. Installed handling of the same exact
+  lease, exact one VoiceRNA response/effect, returned consequence and
+  restart/no-replay remain the acceptance boundary; C4 stays open.
+
 Next movement:
 
-1. carry a human reply in the already-delivered Mattermost thread through the
-   same runtime as returned consequence, and prove that it changes or
-   intentionally leaves unchanged later participation under an attributable
-   Soul organization;
+1. install the exact native-cardinality repair and resume the one already
+   leased Mattermost contact without introducing another stimulus. Require the
+   supported runtime either to produce one certified response/effect or to
+   preserve a typed native unresolved standing without process or query
+   collapse. Only after a delivered response may a human reply become returned
+   consequence and test later participation under attributable Soul
+   organization;
 2. complete live scope-isolation and model/surface-failure trials without
    replay, fabricated contact, or loss of Continuity of Mind;
 3. embody the Open Growth Environment as a dynamic native capability field:
