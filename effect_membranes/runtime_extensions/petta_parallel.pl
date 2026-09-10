@@ -71,6 +71,28 @@ miter_petta_m25_primary(Cut, Facts, Flourishing, ParticipantRelations,
         'native-cardinality-observation-no-movement-authority']
     ).
 
+% Semantic evidence re-enters one complete, named constitutive constructor.
+% Treat its result cardinality exactly like the lower M25 reductions above so
+% an empty native family cannot erase the enclosing always-on service query and
+% a plural family cannot be silently narrowed by the host.  The complete input
+% organization remains present in the unresolved carrier for native MeTTa.
+miter_petta_c4_reformed_encounter(Contact, Predecessor, M24,
+      M24Organization, M260, M260Pre, Reformed) :-
+    findall(Candidate,
+      'CP2EncounterFromAuthorityOrganizations'(Contact, Predecessor, M24,
+        M24Organization, M260, M260Pre, Candidate),
+      Candidates),
+    ( Candidates = [Only] ->
+        Reformed = Only
+    ; length(Candidates, Count),
+      Reformed = ['c4-native-reformation-reduction-unresolved-v1',
+        ['source-contact', Contact], ['source-predecessor', Predecessor],
+        ['source-m24', M24], ['source-m24-organization', M24Organization],
+        ['source-m260', M260], ['source-m260-pre', M260Pre],
+        ['result-count', Count],
+        'native-cardinality-observation-no-movement-authority']
+    ).
+
 % A complete M25 reading contains eight independent MeTTa-defined bridge
 % projections.  They are carried one at a time in input order so the living
 % AtomSpace is never multiplied across worker stacks.  The membrane still

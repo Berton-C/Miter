@@ -1680,11 +1680,14 @@
             ($cut (index-atom $encounter 1))
             ($enriched-contact (CP2ContactWithAuthorityParticipants $contact
               $additional-participants))
-            ($reformed (CP2EncounterFromAuthorityOrganizations
+            ($reformed (miter_petta_c4_reformed_encounter
               $enriched-contact (index-atom $cut 2)
               (index-atom $joint 2) (index-atom $joint 3)
               (index-atom $joint 4) (index-atom $joint 5))))
-       (prepared-encounter-v1 $id $scope $enriched-contact $reformed))
+       (if (CPShape $reformed authority-grounded-encounter 3)
+         (prepared-encounter-v1 $id $scope $enriched-contact $reformed)
+         (prepared-encounter-held $id
+           (semantic-reformation-native-standing $reformed))))
      (prepared-encounter-held
        (if (CPShape $prepared prepared-encounter-v1 5)
          (index-atom $prepared 1) unknown-contact)
@@ -1894,7 +1897,9 @@
                         (C4SemanticParticipants $observation $question)))
                       ($final-prepared
                         (C4ReformPreparedWithParticipants $prepared
-                          $participants))
+                          $participants)))
+                 (if (AR4PreparedEncounterValid $final-prepared)
+                   (let* (
                       ($semantic-contact (index-atom $final-prepared 3))
                       ($semantic-encounter (if
                         (AR4PreparedEncounterValid $final-prepared)
@@ -2026,7 +2031,16 @@
                        (assistant-dialogue-model-participation-v1 $question
                          $observation
                          (voice-rendering-unavailable $voice-question
-                           $reviewed))))))
+                           $reviewed)))))
+                   (assistant-processed-v3
+                     (assistant-contact-held (index-atom $contact 1)
+                       (semantic-reformation-held $final-prepared))
+                     (assistant-dialogue-model-participation-v1 $question
+                       $observation
+                       (voice-rendering-unavailable
+                         native-voice-question-not-formed
+                         (c4-voice-review-held-v1
+                           semantic-reformation-native-standing-held))))))
                (let* (($incorporated
                         (C4IncorporateBoundContactWithoutModel $context
                           $prepared))

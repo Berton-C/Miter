@@ -3358,9 +3358,45 @@ Already carried:
   lease, exact one VoiceRNA response/effect, returned consequence and
   restart/no-replay remain the acceptance boundary; C4 stays open.
 
+- Installed release `a965527678a0b3181aabb042cff9a8f8e0335241`
+  carried the same lease and preserved the same runtime/checkpoint identity,
+  but its supervisor and PeTTa child again left the process table within two
+  minutes and the exact Mattermost thread still contained only the human root
+  post. Thus neither individual M25 result-family cardinality was the whole
+  failure. The repair did establish the correct lower boundary, but the
+  enclosing semantic reformation could itself return a non-grounded result and
+  the dialogue path then indexed that result as if it were a valid prepared
+  encounter. On that branch PeTTa could erase the outer query before forming a
+  typed hold.
+
+  The next bounded repair totalizes only the named
+  `CP2EncounterFromAuthorityOrganizations` re-entry. Exactly one native result
+  passes unchanged; zero or plural results retain the complete contact,
+  predecessor, and M24/M26.0 organizations plus cardinality as unresolved
+  native evidence. `C4ReformPreparedWithParticipants` accepts only the exact
+  `authority-grounded-encounter` shape. The dialogue continuation now checks
+  that prepared standing before indexing its contact or movement; a failed
+  reformation becomes a valid content-free VoiceRNA-stage hold rather than a
+  missing service result. Prolog neither validates the organization nor chooses
+  its meaning, movement, or effect. The semantic invalidation closure remains
+  the returned-model participant re-entry and its transitive complete
+  M24--M26.3 encounter; the original contact, one simultaneous R/A/P contract,
+  all Fact9/flourishing participation, model observation, checkpoint and
+  continuity identity are retained.
+
+  Exact-one, zero-result, and plural-result host-cardinality checks passed. The
+  complete pinned-PeTTa bootstrap parsed, and a fresh supported runtime reached
+  a verified waiting heartbeat and stopped cleanly. That check made zero model
+  calls, effects, or checkpoints and its exact disposable runtime was removed.
+  The failed installed service left no supervisor or PeTTa child; the expected
+  workshop broker was the only Miter process. Live result cardinality, response
+  delivery, returned consequence, and restart/no-replay remain unmeasured. A
+  later capability-bearing reformation must receive the same explicit standing
+  guard before that optional path can be accepted as resilient.
+
 Next movement:
 
-1. install the exact native-cardinality repair and resume the one already
+1. install the exact semantic-reformation totalizer and resume the one already
    leased Mattermost contact without introducing another stimulus. Require the
    supported runtime either to produce one certified response/effect or to
    preserve a typed native unresolved standing without process or query
