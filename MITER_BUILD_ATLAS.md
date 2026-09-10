@@ -2877,6 +2877,37 @@ Already carried:
   universal long-term ceiling with purpose-specific human-editable grants;
   this repair does not silently make that authority change.
 
+- The first installed `faad322` carry exposed a separate restart-durability
+  defect at Mattermost ingress.  The exact diagnostic post was present in the
+  authorized three-person group, the original pinned PeTTa child was replaced
+  after exceeding its processing lease, and no response appeared.  Source
+  inspection found that the poller persisted raw/event evidence and advanced
+  its durable cursor while returning the native input only as an in-process
+  term.  Unlike file-submitted inputs, a Mattermost contact therefore had no
+  leased carrier to survive replacement before the next native checkpoint.
+  Avoiding replay could consequently strand already-admitted work.  This is a
+  regression in the supported input lifecycle, not a Soul decision to defer.
+
+  The bounded repair changes only that mechanical ownership boundary.  Before
+  a Mattermost cursor may advance, the exact validated V3 input dictionary is
+  now written durably under the ordinary leased-input identity.  The service
+  ignores the poller's transient return and reads the same carrier through its
+  existing leased/inbox path.  The existing checkpoint remains the only point
+  that moves the carrier to consumed.  A duplicate observation must resolve to
+  byte-equivalent canonical JSON in leased, inbox, consumed, or rejected; it
+  cannot manufacture a second work item.  Contact meaning, Fact9/flourishing
+  participation, one simultaneous R/A/P formation, model choice, VoiceRNA,
+  movement, and effect authority are unchanged.
+
+  Both affected Prolog membranes load.  An ephemeral filesystem check wrote
+  the same exact carrier twice and retained one lease, then simulated the
+  checkpoint move to consumed and proved that a later observation did not
+  recreate the lease.  The check made zero model calls, performed zero native
+  constitutive formations, and left no fixture or process.  The installed
+  ingress/replacement/restart carry remains required.  Even after this loss
+  boundary is closed, purpose-stage resumability and unacceptable whole-turn
+  latency remain the next C4 resilience and proportionality bottlenecks.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the

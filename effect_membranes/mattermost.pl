@@ -588,10 +588,40 @@ as_mattermost_post_input(Root,Config,Binding,Since,Post,Input) :-
     as_mattermost_returned_effect(Root,Binding,Post,ReturnedEffect),
     as_mattermost_contact_dict(Config,Binding,Principal,Post,PostId,Version,
       ContentHash,RawRef,ReturnedEffect,Dict),
-    as_input_dict_v3(Root,Dict,Input,_),
+    as_input_dict_v3(Root,Dict,Input,InputId),
+    % Cursor advancement is safe only after the exact admitted carrier has a
+    % restart-visible owner.  The continuously cycling service consumes this
+    % same file through its ordinary leased-input path; no separate Mattermost
+    % clock or cognitive path is introduced.
+    as_mattermost_persist_input(Root,InputId,Dict,CarrierName),
     as_write_json_durable(EventPath,_{schema:"miter-mattermost-ingress-v1",
-      post_id:PostId,event_version:Version,content_sha256:ContentHash,
-      raw_ref:RawRef,standing:"admitted-after-stable-id-scope-binding"}).
+      post_id:PostId,event_version:Version,input_id:InputId,
+      input_carrier:CarrierName,content_sha256:ContentHash,
+      raw_ref:RawRef,
+      standing:"durably-leased-after-stable-id-scope-binding"}).
+
+as_mattermost_persist_input(Root,InputId,Dict,CarrierName) :-
+    miter_store_nonempty_atom(InputId,InputId),
+    atom_concat(InputId,'.json',CarrierName),
+    ( as_mattermost_existing_input(Root,CarrierName,Existing) ->
+        miter_store_read_json(Existing,Prior),
+        as_mattermost_same_json(Prior,Dict)
+    ; directory_file_path(Root,leased,Leased),
+      directory_file_path(Leased,CarrierName,Target),
+      as_write_json_durable(Target,Dict) ).
+
+as_mattermost_existing_input(Root,Name,Path) :-
+    member(Directory,[leased,inbox,consumed,rejected]),
+    directory_file_path(Root,Directory,Base),
+    directory_file_path(Base,Name,Path),
+    exists_file(Path), !.
+
+as_mattermost_same_json(Left,Right) :-
+    with_output_to(string(LeftText),
+      json_write_dict(current_output,Left,[width(0)])),
+    with_output_to(string(RightText),
+      json_write_dict(current_output,Right,[width(0)])),
+    LeftText==RightText.
 
 as_mattermost_event_name(PostId,Version,Name) :-
     format(atom(Name),'~w-~d.json',[PostId,Version]).

@@ -915,14 +915,18 @@ as_control(Root0, Control) :-
 
 as_input(Root0, Inputs) :-
     ( catch((as_root(Root0, Root),
-      as_mattermost_poll(Root, SurfaceInputs),
+      % Mattermost persists each admitted carrier into the ordinary leased
+      % input path before its poll cursor advances.  The poll return remains
+      % useful to bounded membrane diagnostics, but the running service reads
+      % only that durable carrier so a process replacement cannot lose or
+      % duplicate the contact between ingress and native checkpoint.
+      as_mattermost_poll(Root, _SurfaceInputs),
       as_json_carriers(Root, leased, Leased),
       as_json_carriers(Root, inbox, Inbox),
       append(Leased, Inbox, Files), as_config(Root, max_input_batch, Max),
       as_take_limit(Files, Max, Selected),
       as_take_inputs(Root, Selected, FileInputs),
-      append(SurfaceInputs,FileInputs,Combined),
-      as_take_limit(Combined,Max,Inputs),
+      as_take_limit(FileInputs,Max,Inputs),
       (Inputs=[]->true;get_time(Now),as_heartbeat(Root,'assistant-processing',Now))),
       _, fail) -> true ; Inputs=[] ), !.
 
