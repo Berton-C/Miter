@@ -722,10 +722,28 @@ def release_identity(application: pathlib.Path) -> str:
 
 
 def active_application(deployment: dict, runtime: pathlib.Path) -> pathlib.Path:
-    """Resolve the one release whose source bytes match the runtime's exact LKG."""
+    """Resolve the recorded release and verify it against the runtime's exact LKG.
+
+    Distinct immutable releases can intentionally have identical runtime LKG
+    bytes when a commit changes only finite installer or documentation
+    machinery.  Once a release-state marker exists, exact recorded identity is
+    therefore the selector and LKG equality is its integrity check.  A unique
+    content search remains only for installations predating that marker.
+    """
     releases = pathlib.Path(deployment["application_root"]) / "releases"
     if not releases.is_dir() or releases.is_symlink():
         raise InstallError("The installed application release root is missing or unsafe")
+
+    state = read_release_state(deployment)
+    if state is not None:
+        recorded = releases / state["active_release"]
+        release_identity(recorded)
+        if not runtime_lkg_matches_application(runtime, recorded):
+            raise InstallError(
+                "The recorded active application release does not match the live runtime LKG"
+            )
+        return recorded
+
     matches = [
         path for path in sorted(releases.iterdir())
         if path.is_dir() and not path.is_symlink()
@@ -733,7 +751,8 @@ def active_application(deployment: dict, runtime: pathlib.Path) -> pathlib.Path:
     ]
     if len(matches) != 1:
         raise InstallError(
-            "The live runtime LKG must match exactly one installed application release; "
+            "The unrecorded live runtime LKG must match exactly one installed "
+            "application release; "
             f"found {len(matches)}"
         )
     release_identity(matches[0])
