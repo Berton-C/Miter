@@ -1675,10 +1675,15 @@
             ($scope (index-atom $prepared 2))
             ($contact (index-atom $prepared 3))
             ($grounded (index-atom $prepared 4))
+            ($joint (index-atom $grounded 1))
+            ($encounter (index-atom $grounded 2))
+            ($cut (index-atom $encounter 1))
             ($enriched-contact (CP2ContactWithAuthorityParticipants $contact
               $additional-participants))
-            ($reformed (CP2ReformFreshGroundedWithParticipants
-              $enriched-contact $grounded)))
+            ($reformed (CP2EncounterFromAuthorityOrganizations
+              $enriched-contact (index-atom $cut 2)
+              (index-atom $joint 2) (index-atom $joint 3)
+              (index-atom $joint 4) (index-atom $joint 5))))
        (prepared-encounter-v1 $id $scope $enriched-contact $reformed))
      (prepared-encounter-held
        (if (CPShape $prepared prepared-encounter-v1 5)

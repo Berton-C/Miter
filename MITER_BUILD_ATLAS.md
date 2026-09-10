@@ -3273,6 +3273,27 @@ Already carried:
   installed serial release before that hypothesis is accepted. Purpose-stage
   durability remains required even if the serial carry succeeds.
 
+- Installed release `a512a681fb6397260cacc50e6c49e2bf7b72509f`
+  retained one AtomSpace and serialized every M25/M25.5 formation, but the
+  exact leased contact still returned no service result before VoiceRNA. This
+  falsifies concurrent scheduling as the complete cause. Review then found
+  that `ff83ad9` had also introduced an incremental participant-reentry
+  constructor which retained earlier M24/M26.0/M26.3 certificates while
+  rebuilding M25/M25.5. Although an isolated ground-term comparison had
+  matched, live equivalence with accumulated organization was not established;
+  optimization authority did not authorize accepting that shortcut as a
+  replacement for the complete constitutive constructor.
+
+  The shortcut is therefore removed. Semantic participant re-entry again uses
+  `CP2EncounterFromAuthorityOrganizations`, reconstructing the complete
+  M24--M26.3 joint over the enriched contact while keeping serial one-AtomSpace
+  scheduling. The five authority documents and their completion definitions
+  remain unchanged. An exact current-post reduction with two valid derived
+  participants formed exactly one valid enriched encounter through the
+  restored constructor, and the complete pinned-PeTTa bootstrap and Prolog
+  membranes load. This is a correctness restoration, not yet a live response
+  claim; the unchanged lease remains the acceptance stimulus.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
