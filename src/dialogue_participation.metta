@@ -930,12 +930,13 @@
             ($proof (index-atom $formation 2))
             ($participant (index-atom $formation 3))
             ($mode (index-atom $formation 4))
-            ($grounded (if (AR4PreparedEncounterValid $prepared)
+            ($prepared-valid (AR4PreparedEncounterValid $prepared))
+            ($grounded (if $prepared-valid
               (index-atom $prepared 4) ()))
             ($encounter (if (CPShape $grounded authority-grounded-encounter 3)
               (index-atom $grounded 2) ()))
             ($standing (C4VoiceAuditParticipantStanding $participant)))
-       (and (AR4PreparedEncounterValid $prepared)
+       (and $prepared-valid
         (and (ARNativeMovementProofValid $proof)
          (and (== $proof (ARNativeMovementProof $encounter))
           (if (== $mode
@@ -984,7 +985,8 @@
 (= (C4VoiceNativeAuditBasis $formation $voice-question $voice-observation)
    (if (and (C4VoiceAuditSoulFormationValid $formation)
          (C4VoiceObservationValid $voice-observation $voice-question))
-     (let* (($encounter (C4VoiceAuditSoulEncounter $formation))
+     (let* (($prepared (index-atom $formation 1))
+            ($encounter (index-atom (index-atom $prepared 4) 2))
             ($proof (index-atom $formation 2))
             ($movement (index-atom $encounter 5))
             ($rap (C4VoiceMovementRAP $movement))
@@ -1017,7 +1019,8 @@
    (if (and (CPShape $basis c4-native-voice-audit-basis-v1 6)
          (and (C4VoiceAuditSoulFormationValid $formation)
               (C4VoiceObservationValid $voice-observation $voice-question)))
-     (let* (($encounter (C4VoiceAuditSoulEncounter $formation))
+     (let* (($prepared (index-atom $formation 1))
+            ($encounter (index-atom (index-atom $prepared 4) 2))
             ($proof (index-atom $formation 2))
             ($movement (index-atom $encounter 5))
             ($rendering (index-atom $voice-observation 9)))
@@ -1171,7 +1174,7 @@
                native-proof-reference 5)))
        false)))
 
-(= (C4ReviewedVoiceValid $reviewed)
+(= (C4ReviewedVoiceV2Valid $reviewed)
    (if (CPShape $reviewed c4-voice-reviewed-v2 7)
      (let* (($voice-question (index-atom $reviewed 1))
             ($voice-observation (index-atom $reviewed 2))
@@ -1191,6 +1194,47 @@
                  (== (C4VoiceAuditSoulPrepared $soul-formation)
                    (index-atom $soul-formation 1))))))))
      false))
+
+; The V3 carrier preserves the exact native disposition already formed for
+; this audit cut.  This is not a persisted semantic verdict or a host cache:
+; it is one MeTTa term inside the same reduction, and its validator reconstructs
+; every proof, candidate, audit, one-surface R/A/P, Fact9, and flourishing
+; dependency.  Downstream certificate construction can therefore consume the
+; validated term without repeatedly reforming the same disposition.
+(= (C4ReviewedVoiceValid $reviewed)
+   (if (CPShape $reviewed c4-voice-reviewed-v3 8)
+     (let* (($voice-question (index-atom $reviewed 1))
+            ($voice-observation (index-atom $reviewed 2))
+            ($audit-question (index-atom $reviewed 3))
+            ($audit-observation (index-atom $reviewed 4))
+            ($revision-standing (index-atom $reviewed 5))
+            ($soul-formation (index-atom $reviewed 6))
+            ($disposition (index-atom $reviewed 7)))
+       (and (C4VoiceObservationValid $voice-observation $voice-question)
+        (and (== $audit-question
+               (C4VoiceAuditQuestion $voice-question $voice-observation))
+         (and (C4VoiceAuditObservationValid $audit-observation
+                $audit-question)
+          (and (C4VoiceNativeDispositionValid $disposition $soul-formation
+                 $voice-question $voice-observation $audit-observation)
+           (and (== (index-atom $disposition 1)
+                  express-current-candidate)
+                (C4VoiceRevisionStandingValid $revision-standing
+                  $voice-question)))))))
+     (C4ReviewedVoiceV2Valid $reviewed)))
+
+(= (C4ReviewedVoiceDispositionFromValid $reviewed)
+   (if (CPShape $reviewed c4-voice-reviewed-v3 8)
+     (index-atom $reviewed 7)
+     (if (CPShape $reviewed c4-voice-reviewed-v2 7)
+       (C4VoiceNativeDisposition (index-atom $reviewed 6)
+         (index-atom $reviewed 1) (index-atom $reviewed 2)
+         (index-atom $reviewed 4))
+       (c4-native-voice-disposition-v1 hold-expression
+         unavailable-constitutive-basis unavailable-audit-participation
+         (retained-voice-continuations express-current-candidate
+           revise-candidate-once hold-expression-and-continue-inquiry)
+         invalid-reviewed-voice))))
 
 (= (C4ReviewedVoiceQuestion $reviewed)
    (if (C4ReviewedVoiceValid $reviewed) (index-atom $reviewed 1)
@@ -1221,16 +1265,13 @@
          (authorized-disclosure current-contact-and-derived-readings-only)))
      (authorized-disclosure unavailable)))
 
-(= (C4VoiceCertificate $encounter $reviewed $proof)
-   (if (and (CPShape $encounter constitutive-encounter 7)
-         (and (ARNativeMovementProofValid $proof)
-          (and (C4ReviewedVoiceValid $reviewed)
-               (== $encounter (C4ReviewedVoiceEncounter $reviewed)))))
-     (let* (($voice-question (C4ReviewedVoiceQuestion $reviewed))
-            ($voice-observation (C4ReviewedVoiceObservation $reviewed))
+(= (C4VoiceCertificateFromValidReviewed $encounter $reviewed $proof)
+   (let* (($voice-question (index-atom $reviewed 1))
+            ($voice-observation (index-atom $reviewed 2))
             ($audit-observation (index-atom $reviewed 4))
             ($revision-standing (index-atom $reviewed 5))
             ($soul-formation (index-atom $reviewed 6))
+            ($disposition (C4ReviewedVoiceDispositionFromValid $reviewed))
             ($cut (index-atom $encounter 1))
             ($movement (index-atom $encounter 5))
             ($participants (index-atom $encounter 6))
@@ -1251,11 +1292,23 @@
            (index-atom $audit-observation 9) $revision-standing
            (native-audit-formation
              (ARNativeProofReference (index-atom $soul-formation 2))
-             (C4VoiceNativeDisposition $soul-formation $voice-question
-               $voice-observation $audit-observation))
+             $disposition)
            source-scope-movement-bound no-added-effect-authority)
          (C4VoiceAuthorizedDisclosure $voice-question)
-         (emission-authority mattermost-exact-resolved-group-only)))
+         (emission-authority mattermost-exact-resolved-group-only))))
+
+(= (C4VoiceCertificate $encounter $reviewed $proof)
+   (if (and (CPShape $encounter constitutive-encounter 7)
+         (and (ARNativeMovementProofValid $proof)
+              (C4ReviewedVoiceValid $reviewed)))
+     (let* (($soul-formation (index-atom $reviewed 6))
+            ($prepared (index-atom $soul-formation 1))
+            ($reviewed-encounter (if (AR4PreparedEncounterValid $prepared)
+              (index-atom (index-atom $prepared 4) 2)
+              (constitutive-encounter-unavailable invalid-reviewed-voice))))
+       (if (== $encounter $reviewed-encounter)
+         (C4VoiceCertificateFromValidReviewed $encounter $reviewed $proof)
+         (assistant-voice-held reviewed-encounter-mismatch)))
      (assistant-voice-held invalid-rendering-or-native-proof)))
 
 (= (C4VoiceCertificateValid $certificate $proof)
@@ -1311,27 +1364,32 @@
 (= (C4MattermostEffectDescriptor $contact-result)
    (if (CPShape $contact-result assistant-contact-incorporated-v4 5)
      (let* (($contact-id (index-atom $contact-result 1))
-            ($reviewed (index-atom $contact-result 4))
-            ($encounter (C4ReviewedVoiceEncounter $reviewed))
-            ($voice-observation (C4ReviewedVoiceObservation $reviewed))
-            ($movement (AREncounterMovement $encounter))
-            ($proof (ARNativeMovementProof $encounter))
-            ($certificate (C4VoiceCertificate $encounter $reviewed $proof))
-            ($effect-id (as_native_id c4-mattermost-effect
-              ($contact-id (index-atom $voice-observation 8)
-                (ARMovementReference (index-atom $encounter 1) $movement)))))
-       (if (and (CPShape $movement movement-formed 7)
-                (C4VoiceCertificateValid $certificate $proof))
-         (mattermost-effect-descriptor-v1 $effect-id $effect-id
-           (index-atom $certificate 3)
-           (reply-to-contact $contact-id)
-           (payload $certificate)
-           (native-proof $proof)
-           (capability mattermost-create-post exact-resolved-group-only
-             pending-before-send-reconcile-unknown)
-           prepared)
-         (mattermost-effect-held $contact-id
-           unresolved-or-uncertified-native-movement)))
+            ($reviewed (index-atom $contact-result 4)))
+       (if (C4ReviewedVoiceValid $reviewed)
+         (let* (($soul-formation (index-atom $reviewed 6))
+                ($prepared (index-atom $soul-formation 1))
+                ($encounter (index-atom (index-atom $prepared 4) 2))
+                ($voice-observation (index-atom $reviewed 2))
+                ($movement (AREncounterMovement $encounter))
+                ($proof (ARNativeMovementProof $encounter))
+                ($certificate (C4VoiceCertificateFromValidReviewed
+                  $encounter $reviewed $proof))
+                ($effect-id (as_native_id c4-mattermost-effect
+                  ($contact-id (index-atom $voice-observation 8)
+                    (ARMovementReference (index-atom $encounter 1) $movement)))))
+           (if (and (CPShape $movement movement-formed 7)
+                    (C4VoiceCertificateValid $certificate $proof))
+             (mattermost-effect-descriptor-v1 $effect-id $effect-id
+               (index-atom $certificate 3)
+               (reply-to-contact $contact-id)
+               (payload $certificate)
+               (native-proof $proof)
+               (capability mattermost-create-post exact-resolved-group-only
+                 pending-before-send-reconcile-unknown)
+               prepared)
+             (mattermost-effect-held $contact-id
+               unresolved-or-uncertified-native-movement)))
+         (mattermost-effect-held $contact-id invalid-reviewed-voice)))
      no-local-effect))
 
 (= (C4MattermostEffectDescriptorValid $descriptor)
@@ -1479,21 +1537,31 @@
                   no-candidate-admitted)))
             ($initial-soul-formation
               (C4VoiceAuditSoulFormation $prepared $initial-audit-question
-                $initial-audit-observation)))
-       (if (C4VoiceAuditSoulSupportsExpression $initial-soul-formation
-             $initial-question $initial-observation
-             $initial-audit-observation)
-         (c4-voice-reviewed-v2 $initial-question $initial-observation
+                $initial-audit-observation))
+            ($initial-disposition
+              (C4VoiceNativeDisposition $initial-soul-formation
+                $initial-question $initial-observation
+                $initial-audit-observation))
+            ($initial-disposition-valid
+              (C4VoiceNativeDispositionValid $initial-disposition
+                $initial-soul-formation $initial-question
+                $initial-observation $initial-audit-observation)))
+       (if (and $initial-disposition-valid
+                (== (index-atom $initial-disposition 1)
+                  express-current-candidate))
+         (c4-voice-reviewed-v3 $initial-question $initial-observation
            $initial-audit-question $initial-audit-observation
            initial-candidate-soul-formed-after-audit-participation
-           $initial-soul-formation)
-         (if (C4VoiceAuditSoulSupportsRevision $initial-soul-formation
-               $initial-question $initial-observation
-               $initial-audit-observation)
+           $initial-soul-formation $initial-disposition)
+         (if (and $initial-disposition-valid
+                  (== (index-atom $initial-disposition 1)
+                    revise-candidate-once))
            (let* (($initial-audit-result
                     (index-atom $initial-audit-observation 9))
+                  ($initial-audit-prepared
+                    (index-atom $initial-soul-formation 1))
                   ($initial-audit-encounter
-                    (C4VoiceAuditSoulEncounter $initial-soul-formation))
+                    (index-atom (index-atom $initial-audit-prepared 4) 2))
                   ($revision-question (C4VoiceRenderQuestion $contact
                     $initial-audit-encounter $semantic-question
                     $semantic-observation
@@ -1528,22 +1596,30 @@
                         no-candidate-admitted)))
                   ($revision-soul-formation
                     (C4VoiceAuditSoulFormation
-                      (C4VoiceAuditSoulPrepared $initial-soul-formation)
+                      $initial-audit-prepared
                       $revision-audit-question
-                      $revision-audit-observation)))
+                      $revision-audit-observation))
+                  ($revision-disposition
+                    (C4VoiceNativeDisposition $revision-soul-formation
+                      $revision-question $revision-observation
+                      $revision-audit-observation))
+                  ($revision-disposition-valid
+                    (C4VoiceNativeDispositionValid $revision-disposition
+                      $revision-soul-formation $revision-question
+                      $revision-observation $revision-audit-observation)))
              (if (and (C4VoiceObservationValid $revision-observation
                         $revision-question)
-                      (C4VoiceAuditSoulSupportsExpression
-                        $revision-soul-formation $revision-question
-                        $revision-observation $revision-audit-observation))
-               (c4-voice-reviewed-v2 $revision-question
+                      (and $revision-disposition-valid
+                        (== (index-atom $revision-disposition 1)
+                          express-current-candidate)))
+               (c4-voice-reviewed-v3 $revision-question
                  $revision-observation $revision-audit-question
                  $revision-audit-observation
                  (revised-once-by-soul-after-audit-participation
                    $initial-audit-result (index-atom $initial-observation 8)
                    (ARNativeProofReference
                      (index-atom $initial-soul-formation 2)))
-                 $revision-soul-formation)
+                 $revision-soul-formation $revision-disposition)
                (c4-voice-review-held-v1
                  revised-candidate-not-supported-by-final-soul-formation)))
            (c4-voice-review-held-v1
@@ -1711,8 +1787,9 @@
                           $voice-direction $private-context $voice-question
                           $voice-observation) $model-writer)))
                  (if (C4ReviewedVoiceValid $reviewed)
-                   (let* (($reviewed-prepared
-                            (C4ReviewedVoicePrepared $reviewed))
+                   (let* (($reviewed-formation (index-atom $reviewed 6))
+                          ($reviewed-prepared
+                            (index-atom $reviewed-formation 1))
                           ($incorporated (AR4IncorporatePreparedEncounter
                             $reviewed-prepared))
                           ($bound-result
@@ -1723,7 +1800,7 @@
                          (assistant-contact-incorporated-v4
                            (index-atom $contact 1)
                            (index-atom $bound-result 2)
-                           (C4ReviewedVoiceQuestion $reviewed) $reviewed)
+                           (index-atom $reviewed 1) $reviewed)
                          (assistant-dialogue-model-participation-v1 $question
                            $observation (voice-rendering-v2 $reviewed)))
                        (assistant-processed-v3 $bound-result

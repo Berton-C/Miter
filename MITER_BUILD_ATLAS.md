@@ -2939,6 +2939,42 @@ Already carried:
   and durably resume completed model stages.  Enlarging the model envelope or
   timeout cannot substitute for that repair.
 
+- The immediate VoiceRNA dependency-dirtiness repair now has a source
+  candidate.  The active V3 reviewed-voice carrier retains the one native
+  disposition already formed for that exact audit cut, while the V2 validator
+  remains available for continuity restored from earlier releases.  Initial
+  audit construction now forms and validates one disposition, then observes
+  its retained `express-current-candidate`, `revise-candidate-once`, or hold
+  possibility; it no longer reconstructs the same disposition once for an
+  expression predicate and again for a revision predicate.  A material first
+  audit still reforms the full prepared M24--M26.3 encounter exactly once, a
+  revised rendering still receives an independent final audit, and the final
+  audit still forms and validates its own exact native disposition.  Within a
+  valid reviewed carrier, certificate and effect construction consume that
+  same proof-bearing disposition and direct prepared/encounter fields instead
+  of repeatedly invoking the complete reviewed-voice validator through each
+  accessor.  Formation and basis validation similarly reuse only already-
+  validated structural fields inside the same reduction.  Nothing is shared
+  across contacts, cuts, changed dependencies, or restart; no Prolog cache,
+  semantic verdict table, R/A/P result cache, provider decision, or new effect
+  authority exists.
+
+  Direct parsing of the complete changed MeTTa module under pinned PeTTa
+  passed.  Static dependency inspection leaves the legacy expression/revision
+  wrappers reachable only through the retained V2 restoration validator; the
+  active review constructor emits V3 and carries its exact disposition.  No
+  model call, Mattermost effect, checkpoint mutation, runtime-state write, or
+  persistent fixture participated in this source check.  The builder-created
+  load probes were removed at the same waypoint.  Process hygiene found only
+  the operator-owned workshop broker, the one installed supervisor, and its
+  one pinned PeTTa child; the still-installed predecessor child remained at a
+  full core and approximately 3 GB RSS while retrying the leased diagnostic.
+  This source candidate is not accepted performance evidence: it must be
+  installed recoverably, resume that exact lease, produce or explicitly hold a
+  VoiceRNA outcome without a child crash, and demonstrate bounded CPU/RSS and
+  latency before the repair is earned.  Purpose-stage durability remains the
+  next resilience seam even if this within-cut consolidation succeeds.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
