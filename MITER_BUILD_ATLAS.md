@@ -3587,9 +3587,57 @@ Already carried:
   removed at the same waypoint. Installed response delivery and
   restart/no-replay remain the acceptance boundary.
 
+- Installed release `4af3c0634afae5005a920058a5b72ae796715377`
+  preserved the exact runtime identity, active-checkpoint SHA-256, and one
+  4,162-byte leased Mattermost input across cold restore. Its reported
+  `assistant-started-v3` heartbeat established process-bound startup only; it
+  did not establish a completed contact row, certified effect, delivery, or
+  returned consequence. Commit history comparison then identified
+  `34fd733` as predating native VoiceRNA audit participation and `51b4967` as
+  the introduction point of the remaining review failure. Rolling back to the
+  old working conversation path would therefore remove required native audit
+  participation and is not a faithful repair.
+
+  The exact defect is one field projection in
+  `C4VoiceRevisionStandingValid`: the `voice-commitments` carrier places
+  private continuity, capability context, VAD cue, and revision context at
+  indices 7, 8, 9, and 10 respectively, but the validator read index 8 and
+  compared the capability context with a revision context. The bounded repair
+  reads index 10. Its semantic invalidation boundary is only the exact
+  revision-context/standing relation of the already-formed VoiceRNA candidate;
+  contact, M24--M26.3 formation, the one simultaneous R/A/P read, Fact9,
+  flourishing, movement, provider observations, effect authority, and
+  continuity are unchanged.
+
+  On a read-only 163,422-byte accumulated checkpoint with one active state and
+  66 history rows, a zero-finding VoiceRNA path formed two complete
+  constitutive encounters (initial preparation and semantic reformation), then
+  passed all seven fresh-review clauses, incorporation, effect-descriptor
+  construction, the complete same-cut result/outcome joint, and the general
+  descriptor validator. Preparation and semantic reformation took about 3.15
+  and 3.49 seconds in one run; the post-review same-cut validator and descriptor
+  validator were below the millisecond reporting boundary. A material audit
+  finding formed a third complete encounter in about 3.29 seconds, selected
+  `revise-candidate-once`, retained the exact resulting prepared encounter for
+  the second audit, selected `express-current-candidate` after the material
+  obstruction was absent, and passed final fresh review. Substituting a
+  revision context while retaining the initial standing was rejected. These
+  observations made zero model calls, external effects, persistent state
+  writes, or checkpoint changes.
+
+  Whole-tree MeTTa lexical balance and the complete pinned-PeTTa bootstrap
+  passed. A fresh 2.4-MiB supported runtime with inactive evaluation reached a
+  verified native `assistant-waiting` heartbeat twice and stopped cleanly. At
+  the process waypoint its supervisor used approximately 0.1% CPU / 11.5 MiB
+  RSS and its sole PeTTa child 2.4% CPU / 26.7 MiB RSS; after stop neither
+  remained. The only unmeasured limb is the preserved installed lease through
+  GLM, native review, certified Mattermost delivery, returned consequence, and
+  restart/no-replay. That exact lease remains the sole acceptance stimulus.
+
 Next movement:
 
-1. commit and install the exact compact-lineage repair, then resume the one
+1. commit and install the exact VoiceRNA revision-context projection repair,
+   then resume the one
    already leased Mattermost contact without introducing another stimulus.
    Require the
    supported runtime either to produce one certified response/effect or to

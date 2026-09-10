@@ -1239,7 +1239,7 @@
            (index-atom $disposition 1) unavailable)))))
 
 (= (C4VoiceRevisionStandingValid $standing $voice-question)
-   (let $revision-context (index-atom (index-atom $voice-question 8) 8)
+   (let $revision-context (index-atom (index-atom $voice-question 8) 10)
      (if (== $standing initial-candidate-soul-formed-after-audit-participation)
        (== $revision-context
          (voice-revision-context initial-no-prior-defect))
