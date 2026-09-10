@@ -3390,9 +3390,12 @@ Already carried:
   calls, effects, or checkpoints and its exact disposable runtime was removed.
   The failed installed service left no supervisor or PeTTa child; the expected
   workshop broker was the only Miter process. Live result cardinality, response
-  delivery, returned consequence, and restart/no-replay remain unmeasured. A
-  later capability-bearing reformation must receive the same explicit standing
-  guard before that optional path can be accepted as resilient.
+  delivery, returned consequence, and restart/no-replay remain unmeasured. The
+  same explicit prepared-standing guard now surrounds optional capability
+  reformation before any contact or movement indexing, so an invalid
+  capability-bearing reformation also remains a typed no-effect hold. That
+  optional branch parses but still requires a later live capability-bearing
+  carry before it can be accepted as resilient.
 
 Next movement:
 

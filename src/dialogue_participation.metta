@@ -1952,7 +1952,9 @@
                               participant-contribution 8)
                           (C4ReformPreparedWithParticipants $final-prepared
                             ($capability-participant))
-                          $final-prepared))
+                          $final-prepared)))
+                 (if (AR4PreparedEncounterValid $capability-prepared)
+                   (let* (
                       ($enriched-contact (index-atom $capability-prepared 3))
                       ($encounter (if
                         (AR4PreparedEncounterValid $capability-prepared)
@@ -2032,6 +2034,15 @@
                          $observation
                          (voice-rendering-unavailable $voice-question
                            $reviewed)))))
+                   (assistant-processed-v3
+                     (assistant-contact-held (index-atom $contact 1)
+                       (capability-reformation-held $capability-prepared))
+                     (assistant-dialogue-model-participation-v1 $question
+                       $observation
+                       (voice-rendering-unavailable
+                         native-voice-question-not-formed
+                         (c4-voice-review-held-v1
+                           capability-reformation-native-standing-held))))))
                    (assistant-processed-v3
                      (assistant-contact-held (index-atom $contact 1)
                        (semantic-reformation-held $final-prepared))
