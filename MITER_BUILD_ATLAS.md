@@ -199,7 +199,7 @@ consumer is absent. No status is upgraded by assertion.
 | Capability | Standing | Current site | Exact gap |
 |---|---:|---|---|
 | One recurring PeTTa/MeTTa process | E | `AssistantServiceStartV3` / `AssistantCycleWithV3` | General scoped contact, memory participation, model participation, VoiceRNA, effect preparation, consequence, regeneration, and endogenous opportunity share this one continuation; no second cognitive loop is present. |
-| Install/start/status/stop/panic | P | `install_miter.py`, single-root operator membrane, frozen runtime LKG | The finite installer derives every Miter-owned path beneath `/Users/claritymiter/Miter`, validates a clean source, exact PeTTa archive hash, digest-pinned service and workshop images, non-admin runtime identity, private credential references, and port ownership. One CLI start detaches Miter's own persistent non-cognitive supervisor; child crash recovery, clean stop, single-root continuity migration, and installed-identity workshop transport pass without launchd. Recoverable application-release activation/rollback is embodied in the committed-source candidate; its privileged installed carry and live proportionality remain open. |
+| Install/start/status/stop/panic | P | `install_miter.py`, single-root operator membrane, frozen runtime LKG | The finite installer derives every Miter-owned path beneath `/Users/claritymiter/Miter`, validates a clean source, exact PeTTa archive hash, digest-pinned service and workshop images, non-admin runtime identity, private credential references, and port ownership. One CLI start detaches Miter's own persistent non-cognitive supervisor; child crash recovery, clean stop, single-root continuity migration, and installed-identity workshop transport pass without launchd. Same-installation release transitions may carry exact hash-bound restart-owned leases while external migration remains strict; recoverable activation/rollback and live proportionality still require installed carry. |
 | Constitutional byte and loaded-space integrity | E | `integrity.pl`, `SoulStartup` | Integrity proves identity/readback, not Soul efficacy. |
 | Append-only trajectory and exactly-once effects | P | store/service/Mattermost membranes | Local effects are exact and restart-stable. One certified Mattermost response is visibly delivered, uniquely reconciled from an initially unknown transport outcome, and not replayed across restart; broader failure and returned-consequence evidence remains open. |
 | Checkpoint and same-runtime restart | E | reactor + store + runtime-continuity membrane | Every checkpoint atomically binds its exact native snapshot to immutable per-scope continuity capsules; consequence-earned transfer, developmental-memory participation, Soul-formed endogenous undertakings, and autonomous expressed-Soul regeneration restore without replay. |
@@ -2974,6 +2974,54 @@ Already carried:
   VoiceRNA outcome without a child crash, and demonstrate bounded CPU/RSS and
   latency before the repair is earned.  Purpose-stage durability remains the
   next resilience seam even if this within-cut consolidation succeeds.
+
+- The first clean upgrade attempt after the VoiceRNA consolidation correctly
+  refused an uncommitted source tree.  After commit, the next attempt exposed a
+  release-transition contradiction: the now restart-durable Mattermost contact
+  remained in the ordinary `leased` directory, while the installer still
+  treated every lease as evidence that no migration could occur.  That rule is
+  appropriate for a separately selected external runtime import, but it makes
+  it impossible to deliver a repair for the exact failed contact whose durable
+  ownership the preceding source change established.  Release `9fde2e0` and
+  the exact carrier remained active/unanswered; no replacement contact or
+  response was manufactured.  The refused transition left `9fde2e0` selected
+  and the organism stopped at its safe cycle boundary; the durable lease is
+  therefore restart work for the repaired release, not evidence to discard.
+
+  The bounded installer repair distinguishes those relations rather than
+  weakening migration generally.  External imports still reject any leased
+  carrier.  A transition between immutable releases of this same installed
+  organism may carry only ordinary `miter-assistant-input-v1` through V3 JSON
+  whose filename equals its exact `input_id`; every carried file is bound by
+  name, byte count, and SHA-256 in the migration marker and a new private
+  read-only backup schema.  The candidate copy must match that manifest
+  exactly.  During cold-restore validation, the copied carriers are atomically
+  held outside the service's `leased` path while Mattermost polling is also
+  suspended, so neither old work nor new contact can enter cognition before
+  checkpoint and runtime identity are proved unchanged.  The exact carrier set
+  is restored before the candidate's live start.  Before the predecessor copy
+  can be removed, every carried input must have exactly one byte-identical
+  owner in either the live `leased` or checkpoint-committed `consumed`
+  lifecycle; missing, duplicated, altered, inbox-only, or rejected standing
+  holds the transition.  A failed candidate containing restart-owned work is
+  preserved for explicit recovery review instead of being automatically
+  deleted.
+
+  Python syntax and whitespace checks pass.  A bounded temporary check proved
+  that external import still refuses one lease, same-installation carry
+  preserves its exact bytes and manifest across hold/restore (including an
+  idempotent recovery read), and a complete synthetic migration writes the V2
+  immutable backup marker while retaining runtime identity.  A separate owner
+  check accepted the exact carrier in `leased` and after an atomic move to
+  `consumed`, while rejecting simultaneous duplicate ownership.  The checks used no
+  Miter process, model, network, checkpoint mutation, or effect and removed its
+  temporary tree at the same waypoint.  Pre-commit process hygiene found no
+  Miter or disposable check process, as expected after the refused upgrade
+  stopped the prior release.  This is source-level mechanical evidence only.
+  The privileged upgrade must still carry the live
+  `mm_77ns7msxib8hbqnk1ptmcb1n8w` lease into the consolidated VoiceRNA release;
+  its resulting native standing, resource use, effect, and zero replay remain
+  the next acceptance evidence.
 
 Next movement:
 

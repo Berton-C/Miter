@@ -53,6 +53,7 @@ DURABLE_RUNTIME_FILES = (
     "evaluation-grants.json", "model-direction.json", "model-grants.json",
     "private-assets/NRC-VAD-Lexicon-v2.1.txt",
 )
+INPUT_LIFECYCLE_DIRECTORIES = ("inbox", "leased", "consumed", "rejected")
 RELEASE_STATE_SCHEMA = "miter-application-release-state-v1"
 
 
@@ -579,7 +580,67 @@ def json_document(path: pathlib.Path) -> dict:
     return document
 
 
-def ensure_runtime_stopped(source: pathlib.Path) -> None:
+def durable_leased_input_manifest(runtime: pathlib.Path) -> list[dict]:
+    """Identify restart-owned input carriers without interpreting their payload."""
+    leased = runtime / "leased"
+    if not leased.exists():
+        return []
+    if leased.is_symlink() or not leased.is_dir():
+        raise InstallError("Runtime leased-input path is not a plain directory")
+    manifest = []
+    for path in sorted(leased.iterdir(), key=lambda candidate: candidate.name):
+        if path.is_symlink() or not path.is_file() or path.suffix != ".json":
+            raise InstallError(f"Runtime contains an unsafe leased-input carrier: {path}")
+        document = json_document(path)
+        schema = document.get("schema")
+        input_id = document.get("input_id")
+        if (schema not in {
+                "miter-assistant-input-v1",
+                "miter-assistant-input-v2",
+                "miter-assistant-input-v3",
+        } or not isinstance(input_id, str) or not input_id
+                or path.name != f"{input_id}.json"):
+            raise InstallError(f"Runtime contains an invalid leased-input carrier: {path}")
+        manifest.append({
+            "name": path.name,
+            "sha256": sha256_file(path),
+            "bytes": path.stat().st_size,
+        })
+    return manifest
+
+
+def verify_carried_inputs_present(runtime: pathlib.Path,
+                                  expected: list[dict]) -> list[dict]:
+    """Prove each transition-carried input still has one exact lifecycle owner."""
+    standings = []
+    for entry in expected:
+        if (not isinstance(entry, dict)
+                or not isinstance(entry.get("name"), str)
+                or not isinstance(entry.get("sha256"), str)
+                or not isinstance(entry.get("bytes"), int)):
+            raise InstallError("Release-transition leased-input manifest is malformed")
+        matches = []
+        for directory in INPUT_LIFECYCLE_DIRECTORIES:
+            path = runtime / directory / entry["name"]
+            if not path.exists():
+                continue
+            if (path.is_symlink() or not path.is_file()
+                    or path.stat().st_size != entry["bytes"]
+                    or sha256_file(path) != entry["sha256"]):
+                raise InstallError(
+                    f"Transition-carried input changed in {directory}: {entry['name']}"
+                )
+            matches.append(directory)
+        if len(matches) != 1 or matches[0] not in {"leased", "consumed"}:
+            raise InstallError(
+                f"Transition-carried input has no unique live owner: {entry['name']}"
+            )
+        standings.append({"name": entry["name"], "standing": matches[0]})
+    return standings
+
+
+def ensure_runtime_stopped(source: pathlib.Path, *,
+                           allow_durable_leases: bool = False) -> list[dict]:
     if not source.is_absolute() or source == pathlib.Path("/"):
         raise InstallError("Migration source must be an explicit absolute runtime path")
     runtime = json_document(source / "runtime.json")
@@ -597,9 +658,10 @@ def ensure_runtime_stopped(source: pathlib.Path) -> None:
                 raise InstallError("Cannot establish whether the migration source process is stopped")
             else:
                 raise InstallError(f"Migration source is still running as PID {pid}; stop it at a safe cycle boundary first")
-    leased = source / "leased"
-    if leased.is_dir() and any(leased.iterdir()):
+    leased_manifest = durable_leased_input_manifest(source)
+    if leased_manifest and not allow_durable_leases:
         raise InstallError("Migration source contains an in-flight leased input")
+    return leased_manifest
 
 
 def verify_runtime_checkpoint(source: pathlib.Path) -> str:
@@ -751,18 +813,30 @@ def validated_migration_backup(source: pathlib.Path, backup: pathlib.Path,
     if not isinstance(runtime_id, str) or not runtime_id:
         raise InstallError("Migration source has no runtime identity")
     expected_checkpoint = verify_runtime_checkpoint(source)
-    if marker != {
-        "schema": "miter-runtime-migration-backup-v1",
+    source_leases = durable_leased_input_manifest(source)
+    expected_common = {
         "runtime_id": runtime_id,
         "source": str(source),
         "checkpoint_active_sha256": expected_checkpoint,
         "created_at_epoch": marker.get("created_at_epoch"),
         "standing": "immutable-pre-migration-backup",
-    } or not isinstance(marker.get("created_at_epoch"), (int, float)):
+    }
+    actual_common = {key: marker.get(key) for key in expected_common}
+    schema = marker.get("schema")
+    leases_valid = (
+        schema == "miter-runtime-migration-backup-v2"
+        and marker.get("leased_inputs") == source_leases
+    ) or (
+        schema == "miter-runtime-migration-backup-v1"
+        and not source_leases and "leased_inputs" not in marker
+    )
+    if (actual_common != expected_common or not leases_valid
+            or not isinstance(marker.get("created_at_epoch"), (int, float))):
         raise InstallError("Prior migration backup marker does not match the exact source")
     if (marker_path.stat().st_uid != 0
             or stat.S_IMODE(marker_path.stat().st_mode) != 0o400
-            or verify_runtime_checkpoint(backup) != expected_checkpoint):
+            or verify_runtime_checkpoint(backup) != expected_checkpoint
+            or durable_leased_input_manifest(backup) != source_leases):
         raise InstallError("Prior migration backup failed identity or immutability checks")
     return backup
 
@@ -877,10 +951,11 @@ def backup_runtime(source: pathlib.Path, deployment: dict) -> pathlib.Path:
     shutil.copytree(source, target, symlinks=False)
     marker = target / "MIGRATION_BACKUP.json"
     marker.write_text(json.dumps({
-        "schema": "miter-runtime-migration-backup-v1",
+        "schema": "miter-runtime-migration-backup-v2",
         "runtime_id": runtime_id,
         "source": str(source),
         "checkpoint_active_sha256": verify_runtime_checkpoint(source),
+        "leased_inputs": durable_leased_input_manifest(source),
         "created_at_epoch": time.time(),
         "standing": "immutable-pre-migration-backup",
     }, sort_keys=True) + "\n", encoding="utf-8")
@@ -890,14 +965,20 @@ def backup_runtime(source: pathlib.Path, deployment: dict) -> pathlib.Path:
 
 def migrate_runtime_state(source: pathlib.Path, target: pathlib.Path,
                           deployment: dict, account: pwd.struct_passwd,
-                          prior_backup: pathlib.Path | None = None) -> dict:
-    ensure_runtime_stopped(source)
+                          prior_backup: pathlib.Path | None = None, *,
+                          allow_durable_leases: bool = False) -> dict:
+    source_leases = ensure_runtime_stopped(
+        source, allow_durable_leases=allow_durable_leases
+    )
     source_checkpoint_hash = verify_runtime_checkpoint(source)
     marker_path = target / "migration.json"
     if marker_path.exists():
         marker = json_document(marker_path)
         if marker.get("source_checkpoint_active_sha256") != source_checkpoint_hash:
             raise InstallError("Existing migration marker names a different source checkpoint")
+        if (marker.get("source_leased_inputs", []) != source_leases
+                or durable_leased_input_manifest(target) != source_leases):
+            raise InstallError("Existing migration marker names different durable leased work")
         return marker
     backup = (validated_migration_backup(source, prior_backup, deployment)
               if prior_backup is not None else backup_runtime(source, deployment))
@@ -907,6 +988,8 @@ def migrate_runtime_state(source: pathlib.Path, target: pathlib.Path,
         source_file = source / relative
         if source_file.is_file() and not source_file.is_symlink():
             shutil.copy2(source_file, target / relative)
+    if durable_leased_input_manifest(target) != source_leases:
+        raise InstallError("Migration changed the exact durable leased-input set")
     source_runtime = json_document(source / "runtime.json")
     target_runtime = json_document(target / "runtime.json")
     migrated_runtime = {
@@ -930,6 +1013,11 @@ def migrate_runtime_state(source: pathlib.Path, target: pathlib.Path,
         "source_runtime": str(source),
         "source_runtime_id": source_runtime["runtime_id"],
         "source_checkpoint_active_sha256": source_checkpoint_hash,
+        "source_leased_inputs": source_leases,
+        "leased_input_standing": (
+            "durable-restart-work-copied"
+            if source_leases else "no-leased-input"
+        ),
         "backup": str(backup),
         "standing": "durable-state-copied-awaiting-cold-restore",
     }
@@ -962,6 +1050,61 @@ def restore_surface_poll(runtime: pathlib.Path, prior: bytes | None,
     path.write_bytes(prior)
     os.chown(path, account.pw_uid, account.pw_gid)
     path.chmod(0o600)
+
+
+def hold_leased_inputs_for_cold_restore(
+        runtime: pathlib.Path, account: pwd.struct_passwd) -> dict | None:
+    """Keep exact restart work dormant while a candidate release proves restore."""
+    manifest = durable_leased_input_manifest(runtime)
+    if not manifest:
+        return None
+    leased = runtime / "leased"
+    held = runtime / f".release-transition-leased-{os.getpid()}"
+    if held.exists():
+        raise InstallError(f"Release-transition lease hold already exists: {held}")
+    leased.rename(held)
+    leased.mkdir(mode=0o700)
+    os.chown(leased, account.pw_uid, account.pw_gid)
+    descriptor = os.open(runtime, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+    return {"path": held, "manifest": manifest}
+
+
+def restore_held_leased_inputs(runtime: pathlib.Path, hold: dict | None,
+                               account: pwd.struct_passwd) -> list[dict]:
+    if hold is None:
+        return []
+    held = hold.get("path")
+    expected = hold.get("manifest")
+    leased = runtime / "leased"
+    if (not isinstance(held, pathlib.Path) or held.parent != runtime
+            or not held.name.startswith(".release-transition-leased-")
+            or not isinstance(expected, list)):
+        raise InstallError("Release-transition lease hold is malformed")
+    if not held.exists():
+        actual = durable_leased_input_manifest(runtime)
+        if actual == expected:
+            return actual
+        raise InstallError("Release-transition lease hold is missing")
+    if held.is_symlink() or not held.is_dir():
+        raise InstallError("Release-transition lease hold is not a plain directory")
+    if durable_leased_input_manifest(runtime):
+        raise InstallError("Candidate admitted new work while leased inputs were held")
+    leased.rmdir()
+    held.rename(leased)
+    secure_owned_tree(leased, account)
+    actual = durable_leased_input_manifest(runtime)
+    if actual != expected:
+        raise InstallError("Cold restore changed the exact durable leased-input set")
+    descriptor = os.open(runtime, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+    return actual
 
 
 def mark_migration_restored(runtime: pathlib.Path, marker: dict,
@@ -1489,12 +1632,13 @@ def plan(config: dict) -> dict:
 
 
 def remove_transition_runtime(path: pathlib.Path, expected_parent: pathlib.Path,
-                              expected_prefix: str) -> None:
+                              expected_prefix: str, *,
+                              allow_durable_leases: bool = False) -> None:
     """Remove only a stopped, derived runtime created by this transition."""
     if (path.parent != expected_parent or not path.name.startswith(expected_prefix)
             or path.is_symlink() or not path.is_dir()):
         raise InstallError(f"Refusing to remove unexpected transition runtime: {path}")
-    ensure_runtime_stopped(path)
+    ensure_runtime_stopped(path, allow_durable_leases=allow_durable_leases)
     shutil.rmtree(path)
 
 
@@ -1524,6 +1668,17 @@ def restore_previous_release_after_failure(
         raise child_failure(started, "Predecessor release recovery start")
     wait_runtime_ready(config, previous_application, deployment, petta)
     if failed_runtime is not None and failed_runtime.exists():
+        failed_leases = durable_leased_input_manifest(failed_runtime)
+        if failed_leases:
+            if failed_leases != durable_leased_input_manifest(runtime):
+                raise InstallError(
+                    "Failed candidate and restored predecessor disagree on durable leased work"
+                )
+            # A failed candidate containing restart-owned work is retained for
+            # explicit recovery review even when it byte-matches the restored
+            # predecessor.  Automatic deletion is not an acceptable failure
+            # response for a carrier that has not yet reached a checkpoint.
+            return
         remove_transition_runtime(
             failed_runtime, runtime.parent, "runtime.failed-release-"
         )
@@ -1565,7 +1720,9 @@ def transition_application_release(config: dict, target_application: pathlib.Pat
         raise InstallError("Release-state marker disagrees with the live runtime LKG")
 
     stop_runtime_at_boundary(config, current_application, deployment, petta)
-    ensure_runtime_stopped(runtime)
+    source_leases = ensure_runtime_stopped(
+        runtime, allow_durable_leases=True
+    )
     checkpoint_before = verify_runtime_checkpoint(runtime)
     runtime_before = json_document(runtime / "runtime.json")
     runtime_id = runtime_before.get("runtime_id")
@@ -1584,6 +1741,7 @@ def transition_application_release(config: dict, target_application: pathlib.Pat
     migration: dict | None = None
     poll_prior: bytes | None = None
     poll_suspended = False
+    lease_hold: dict | None = None
     candidate_started = False
     try:
         bootstrap = miter_command(target_application, deployment, petta,
@@ -1597,7 +1755,8 @@ def transition_application_release(config: dict, target_application: pathlib.Pat
                 f"{bootstrap_reply.get('status', 'unknown')}"
             )
         migration = migrate_runtime_state(
-            source_runtime, runtime, deployment, account
+            source_runtime, runtime, deployment, account,
+            allow_durable_leases=True
         )
         if migration.get("standing") != "durable-state-copied-awaiting-cold-restore":
             raise InstallError("Candidate release migration did not reach its restore boundary")
@@ -1610,6 +1769,7 @@ def transition_application_release(config: dict, target_application: pathlib.Pat
                 + ", ".join(missing)
             )
         broker = provision_workshop_broker(config, target_application, account)
+        lease_hold = hold_leased_inputs_for_cold_restore(runtime, account)
         poll_prior = suspend_surface_poll(runtime, account)
         poll_suspended = True
         started = miter_command(target_application, deployment, petta, "start",
@@ -1628,6 +1788,10 @@ def transition_application_release(config: dict, target_application: pathlib.Pat
             raise InstallError("Candidate release cold restore changed the active checkpoint")
         if json_document(runtime / "runtime.json").get("runtime_id") != runtime_id:
             raise InstallError("Candidate release changed the durable runtime identity")
+        restored_leases = restore_held_leased_inputs(runtime, lease_hold, account)
+        lease_hold = None
+        if restored_leases != source_leases:
+            raise InstallError("Candidate release did not preserve exact restart-owned work")
         restore_surface_poll(runtime, poll_prior, account)
         poll_suspended = False
 
@@ -1641,6 +1805,9 @@ def transition_application_release(config: dict, target_application: pathlib.Pat
         report = validate(config, target_application, petta)
         if not report.get("complete"):
             raise InstallError("Candidate release did not pass complete installed validation")
+        carried_input_standings = verify_carried_inputs_present(
+            runtime, source_leases
+        )
         backup = pathlib.Path(migration["backup"])
         release_state = write_release_state(
             deployment, active=target_application, previous=current_application,
@@ -1648,7 +1815,8 @@ def transition_application_release(config: dict, target_application: pathlib.Pat
             runtime_id=runtime_id, backup=backup
         )
         remove_transition_runtime(
-            source_runtime, runtime.parent, "runtime.release-source-"
+            source_runtime, runtime.parent, "runtime.release-source-",
+            allow_durable_leases=True
         )
         report.update({
             "schema": "miter-application-release-transition-v1",
@@ -1663,12 +1831,10 @@ def transition_application_release(config: dict, target_application: pathlib.Pat
             "release_state": release_state,
             "heartbeat": ready.get("heartbeat"),
             "workshop_broker": broker,
+            "carried_inputs": carried_input_standings,
         })
         return report
     except Exception as original:
-        if poll_suspended and runtime.exists():
-            restore_surface_poll(runtime, poll_prior, account)
-            poll_suspended = False
         if candidate_started and runtime.exists():
             try:
                 stop_runtime_at_boundary(config, target_application,
@@ -1680,7 +1846,13 @@ def transition_application_release(config: dict, target_application: pathlib.Pat
                     f"original failure: {original}; stop failure: {stop_error}"
                 ) from stop_error
         if runtime.exists():
-            ensure_runtime_stopped(runtime)
+            if lease_hold is not None:
+                restore_held_leased_inputs(runtime, lease_hold, account)
+                lease_hold = None
+            if poll_suspended:
+                restore_surface_poll(runtime, poll_prior, account)
+                poll_suspended = False
+            ensure_runtime_stopped(runtime, allow_durable_leases=True)
             failed_runtime = runtime.with_name(
                 f"runtime.failed-release-{release_identity(target_application)[:12]}-"
                 f"{timestamp}-{os.getpid()}"
