@@ -13,10 +13,11 @@
 
 % These three predicates are pure MeTTa structural validators over exact
 % ground carriers. They are tabled only so repeated validation inside one
-% material contact can share the identical result. The complete cycle wrapper
-% below opens and destroys that scope with setup_call_cleanup/3; unlike the
-% former process-lifetime cache, no developmental carrier can accumulate
-% across contacts, held returns, or idle cycles.
+% material participant reformation can share the identical result. The
+% reformation wrapper below opens and destroys that scope with
+% setup_call_cleanup/3; unlike the former process-lifetime cache, no
+% developmental carrier can accumulate across contacts, held returns, or idle
+% cycles.
 :- table 'M255GenSigStructuralValid'/2.
 :- table 'M255GenTranslationValid'/2.
 :- table 'M255TranslationLawWitnessValid'/3.
@@ -25,24 +26,6 @@ miter_petta_clear_cycle_validation_tables :-
     abolish_table_subgoals('M255GenSigStructuralValid'(_,_)),
     abolish_table_subgoals('M255GenTranslationValid'(_,_)),
     abolish_table_subgoals('M255TranslationLawWitnessValid'(_,_,_)).
-
-% Execute exactly the one named native cycle constructor inside a bounded
-% structural-validation scope. This membrane neither inspects its rows nor
-% interprets a standing: it carries the sole result unchanged and makes zero
-% or plural native results explicit. Soul, R/A/P, movement, and effect
-% formation remain wholly inside AS4CycleStep in MeTTa.
-miter_petta_c4_cycle_step(Root, Inputs, Step) :-
-    setup_call_cleanup(
-      miter_petta_clear_cycle_validation_tables,
-      findall(Candidate, 'AS4CycleStep'(Root, Inputs, Candidate), Candidates),
-      miter_petta_clear_cycle_validation_tables),
-    ( Candidates = [Only] ->
-        Step = Only
-    ; length(Candidates, Count),
-      Step = ['c4-native-cycle-reduction-unresolved-v1',
-        ['result-count', Count],
-        'native-cardinality-observation-no-movement-authority']
-    ).
 
 miter_petta_bounded_m25_readings(Primaries, Cut, Developmental, Readings) :-
     is_list(Primaries),
@@ -110,10 +93,13 @@ miter_petta_m25_primary(Cut, Facts, Flourishing, ParticipantRelations,
 % a plural family cannot be silently narrowed by the host.  The complete input
 % organization remains present in the unresolved carrier for native MeTTa.
 miter_petta_c4_reformed_encounter(Contact, Additional, Grounded, Reformed) :-
-    findall(Candidate,
-      'CP2ReformFreshGroundedWithParticipants'(Contact, Additional, Grounded,
-        Candidate),
-      Candidates),
+    setup_call_cleanup(
+      miter_petta_clear_cycle_validation_tables,
+      findall(Candidate,
+        'CP2ReformFreshGroundedWithParticipants'(Contact, Additional, Grounded,
+          Candidate),
+        Candidates),
+      miter_petta_clear_cycle_validation_tables),
     ( Candidates = [Only] ->
         Reformed = Only
     ; length(Candidates, Count),

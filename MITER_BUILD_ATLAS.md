@@ -3459,10 +3459,47 @@ Already carried:
   while retaining its exact repeated-work benefit. Installed accumulated-state
   latency and the sole live response remain the acceptance boundary.
 
+- Installed release `d6b550aa16621f88ab58707d73abedaf194ba682`
+  carried the exact 4,162-byte leased Mattermost contact, its SHA-256, runtime
+  identity, and active checkpoint without replay. At the first independent
+  process inspection after activation, neither the supervisor nor PeTTa child
+  remained; the local Mattermost API showed that the exact root post still had
+  no reply. The release therefore did not earn its live acceptance boundary.
+  This is a supported-service lifecycle failure after exact ingress, not a
+  Mattermost UI or transport ambiguity.
+
+  Review found that the new structural-table scope surrounded
+  `AS4CycleStep` itself in Prolog `findall/3`. The live cycle includes native
+  VoiceRNA and certified effect construction, and its returned ground carrier
+  contains the complete constitutive organization. Enumerating that entire
+  cycle copied the largest carrier at the outermost boundary and placed an
+  effectful sequence inside result enumeration. Neither behavior is required
+  by M24--M26.3, and neither is an acceptable way to totalize native failure.
+
+  The repair removes that wrapper. `AS4CycleStep` again runs directly and once
+  in MeTTa. The `setup_call_cleanup/3` table lifetime now surrounds only the
+  pure `CP2ReformFreshGroundedWithParticipants` result family it accelerates.
+  Exact-one reformation is returned unchanged; zero/plural reformation remains
+  explicit native cardinality evidence. The three shared predicates remain
+  pure M25.5 structural validators, and all their tables are absent after the
+  reformation returns. No contact, Fact9, flourishing, R/A/P, movement,
+  VoiceRNA, effect, or checkpoint result is tabled or interpreted by Prolog.
+
+  Mechanical exact-one/plural/table-cleanup checks passed. Pinned PeTTa loaded
+  the complete bootstrap and returned the dialogue end-of-file witness; direct
+  `AS4CycleStep` returned its typed V4 cycle carrier. A fresh supported runtime
+  reached a verified waiting heartbeat and stopped cleanly. MeTTa lexical
+  balance and the Prolog membrane load passed. These checks made zero model
+  calls, external effects, or checkpoints; their temporary source and runtime
+  were removed at the same waypoint. The unchanged leased contact remains the
+  sole installed acceptance stimulus. Exact in-flight stage durability remains
+  the next resilience seam after this outer lifecycle defect is carried.
+
 Next movement:
 
-1. install the exact dependency-bounded semantic reformation and resume the one already
-   leased Mattermost contact without introducing another stimulus. Require the
+1. install the direct native cycle with reformation-scoped structural sharing
+   and resume the one already leased Mattermost contact without introducing
+   another stimulus. Require the
    supported runtime either to produce one certified response/effect or to
    preserve a typed native unresolved standing without process or query
    collapse. Only after a delivered response may a human reply become returned

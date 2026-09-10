@@ -22,7 +22,6 @@
   "./effect_membranes/runtime_extensions/petta_parallel.pl"
   (miter_petta_parallel_m25_primaries
     miter_petta_bounded_m25_readings
-    miter_petta_c4_cycle_step
     miter_petta_c4_reformed_encounter
     miter_petta_parallel_m255_bridge_components))
 !(bind! &assistant_state (new-space))
