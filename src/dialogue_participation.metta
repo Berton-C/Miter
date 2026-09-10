@@ -1361,36 +1361,50 @@
            true true true true)))
      false))
 
+; This constructor is called only in the same branch that has just established
+; C4ReviewedVoiceValid for this exact ground term.  It shares the immutable
+; reviewed formation, proof and certificate within that cut; it does not cache
+; a semantic verdict or bypass the one full descriptor validation performed at
+; the effect boundary.
+(= (C4MattermostEffectDescriptorFromValidReviewed $contact-id $reviewed)
+   (let* (($soul-formation (index-atom $reviewed 6))
+          ($prepared (index-atom $soul-formation 1))
+          ($encounter (index-atom (index-atom $prepared 4) 2))
+          ($voice-observation (index-atom $reviewed 2))
+          ($movement (AREncounterMovement $encounter))
+          ($proof (ARNativeMovementProof $encounter))
+          ($certificate (C4VoiceCertificateFromValidReviewed
+            $encounter $reviewed $proof))
+          ($effect-id (as_native_id c4-mattermost-effect
+            ($contact-id (index-atom $voice-observation 8)
+              (ARMovementReference (index-atom $encounter 1) $movement)))))
+     (if (CPShape $movement movement-formed 7)
+       (mattermost-effect-descriptor-v1 $effect-id $effect-id
+         (index-atom $certificate 3)
+         (reply-to-contact $contact-id)
+         (payload $certificate)
+         (native-proof $proof)
+         (capability mattermost-create-post exact-resolved-group-only
+           pending-before-send-reconcile-unknown)
+         prepared)
+       (mattermost-effect-held $contact-id unresolved-native-movement))))
+
 (= (C4MattermostEffectDescriptor $contact-result)
-   (if (CPShape $contact-result assistant-contact-incorporated-v4 5)
-     (let* (($contact-id (index-atom $contact-result 1))
-            ($reviewed (index-atom $contact-result 4)))
-       (if (C4ReviewedVoiceValid $reviewed)
-         (let* (($soul-formation (index-atom $reviewed 6))
-                ($prepared (index-atom $soul-formation 1))
-                ($encounter (index-atom (index-atom $prepared 4) 2))
-                ($voice-observation (index-atom $reviewed 2))
-                ($movement (AREncounterMovement $encounter))
-                ($proof (ARNativeMovementProof $encounter))
-                ($certificate (C4VoiceCertificateFromValidReviewed
-                  $encounter $reviewed $proof))
-                ($effect-id (as_native_id c4-mattermost-effect
-                  ($contact-id (index-atom $voice-observation 8)
-                    (ARMovementReference (index-atom $encounter 1) $movement)))))
-           (if (and (CPShape $movement movement-formed 7)
-                    (C4VoiceCertificateValid $certificate $proof))
-             (mattermost-effect-descriptor-v1 $effect-id $effect-id
-               (index-atom $certificate 3)
-               (reply-to-contact $contact-id)
-               (payload $certificate)
-               (native-proof $proof)
-               (capability mattermost-create-post exact-resolved-group-only
-                 pending-before-send-reconcile-unknown)
-               prepared)
-             (mattermost-effect-held $contact-id
-               unresolved-or-uncertified-native-movement)))
-         (mattermost-effect-held $contact-id invalid-reviewed-voice)))
-     no-local-effect))
+   (if (CPShape $contact-result assistant-contact-incorporated-v5 6)
+     (index-atom $contact-result 5)
+     (if (CPShape $contact-result assistant-contact-incorporated-v4 5)
+       (let* (($contact-id (index-atom $contact-result 1))
+              ($reviewed (index-atom $contact-result 4)))
+         (if (C4ReviewedVoiceValid $reviewed)
+           (let $descriptor
+             (C4MattermostEffectDescriptorFromValidReviewed
+               $contact-id $reviewed)
+             (if (C4MattermostEffectDescriptorValid $descriptor)
+               $descriptor
+               (mattermost-effect-held $contact-id
+                 unresolved-or-uncertified-native-movement)))
+           (mattermost-effect-held $contact-id invalid-reviewed-voice)))
+       no-local-effect)))
 
 (= (C4MattermostEffectDescriptorValid $descriptor)
    (if (CPShape $descriptor mattermost-effect-descriptor-v1 9)
@@ -1477,6 +1491,24 @@
              native-question-or-observation-unavailable)))
        (dialogue-stage-standing-v1 model-participation-not-requested
          no-voice-standing))))
+
+; The cycle calls this only after C4DialogueModelOutcomeValid has accepted the
+; exact ground outcome. This content-free operator witness observes that
+; already-established species and does not trigger another deep reviewed-voice
+; validation. It cannot authorize an effect or alter a cut.
+(= (C4DialogueStageStandingFromValidated $outcome)
+   (if (CPShape $outcome assistant-dialogue-model-participation-v1 4)
+     (let $voice (index-atom $outcome 3)
+       (dialogue-stage-standing-v1 semantic-reading-incorporated
+         (if (CPShape $voice voice-rendering-v2 2)
+           voice-certified
+           (if (CPShape $voice voice-rendering-unavailable 3)
+             (let $review (index-atom $voice 2)
+               (if (CPShape $review c4-voice-review-held-v1 2)
+                 (C4VoiceReviewStageStanding $review)
+                 voice-rendering-held-nonreview-standing))
+             voice-rendering-standing-unavailable))))
+     (C4DialogueStageStanding $outcome)))
 
 ; Re-form the same occurrence after semantic participants arrive without
 ; recomputing its already-established M24 and M26.0 authority organizations.
@@ -1796,13 +1828,16 @@
                             (AR4RecordBoundContextV1 $context $incorporated)))
                      (if (CPShape $bound-result
                            assistant-contact-incorporated 3)
-                       (assistant-processed-v3
-                         (assistant-contact-incorporated-v4
-                           (index-atom $contact 1)
-                           (index-atom $bound-result 2)
-                           (index-atom $reviewed 1) $reviewed)
-                         (assistant-dialogue-model-participation-v1 $question
-                           $observation (voice-rendering-v2 $reviewed)))
+                       (let $descriptor
+                         (C4MattermostEffectDescriptorFromValidReviewed
+                           (index-atom $contact 1) $reviewed)
+                         (assistant-processed-v3
+                           (assistant-contact-incorporated-v5
+                             (index-atom $contact 1)
+                             (index-atom $bound-result 2)
+                             (index-atom $reviewed 1) $reviewed $descriptor)
+                           (assistant-dialogue-model-participation-v1 $question
+                             $observation (voice-rendering-v2 $reviewed))))
                        (assistant-processed-v3 $bound-result
                          (assistant-dialogue-model-participation-v1 $question
                            $observation

@@ -12,7 +12,8 @@
 ; sides exist, rather than capture unresolved function names in an earlier
 ; module.  They add no cognition: they connect the one already-defined path.
 (= (AS4AnyEffectDescriptor $contact-result)
-   (if (CPShape $contact-result assistant-contact-incorporated-v4 5)
+   (if (or (CPShape $contact-result assistant-contact-incorporated-v5 6)
+           (CPShape $contact-result assistant-contact-incorporated-v4 5))
      (C4MattermostEffectDescriptor $contact-result)
      (ARLocalEffectDescriptor $contact-result)))
 
@@ -187,7 +188,8 @@
 
 (= (AS4ModelStageStandingsAt $outcomes $i)
    (if (< $i (size-atom $outcomes))
-     (cons-atom (C4DialogueStageStanding (index-atom $outcomes $i))
+     (cons-atom
+       (C4DialogueStageStandingFromValidated (index-atom $outcomes $i))
        (AS4ModelStageStandingsAt $outcomes (+ $i 1))) ()))
 
 (= (AS4CycleStep $root $inputs)

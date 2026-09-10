@@ -531,7 +531,8 @@
              (mattermost-effect-delivered mattermost-effect-duplicate) 0)))))
 
 (= (ARAnyEffectDescriptor $contact-result)
-   (if (CPShape $contact-result assistant-contact-incorporated-v4 5)
+   (if (or (CPShape $contact-result assistant-contact-incorporated-v5 6)
+           (CPShape $contact-result assistant-contact-incorporated-v4 5))
      (C4MattermostEffectDescriptor $contact-result)
      (ARLocalEffectDescriptor $contact-result)))
 

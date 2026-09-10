@@ -3023,6 +3023,54 @@ Already carried:
   its resulting native standing, resource use, effect, and zero replay remain
   the next acceptance evidence.
 
+- Installed release `f3d83da41a2ca567f595b16b4dddaf696efe2caa`
+  successfully carried the exact 4,162-byte restart-owned Mattermost input
+  `mm_77ns7msxib8hbqnk1ptmcb1n8w_v1789024304164.json` under its original
+  `leased` ownership.  The migration marker bound its SHA-256
+  `59dd6b2871257f96383670d5d965652cd1c141d0d8d745019bbde4a68c4b752b`,
+  retained runtime identity and checkpoint identity, and reported no replay.
+  The resulting service again entered native processing, but after the
+  bounded observation interval neither its supervisor nor PeTTa child remained
+  in the process table.  This is consistent with consecutive-failure
+  containment rather than completion; the private lifecycle/failure record and
+  any Mattermost effect remain to be confirmed by the operator.  The live
+  consolidation is therefore not earned, and the exact input remains the sole
+  stimulus for the next release.
+
+  Static dependency tracing exposed the remaining same-cut repetition after
+  reviewed-voice formation.  The active path reconstructed a Mattermost
+  certificate from the complete reviewed formation, validated that certificate
+  inside construction, validated it again at effect dispatch, and deeply
+  revalidated the same reviewed voice merely to emit a content-free operator
+  stage label.  The bounded V5 carrier now constructs one exact descriptor in
+  the already-valid native review branch and carries it with the incorporated
+  contact.  Effect dispatch still performs one complete native certificate and
+  proof validation before any membrane call.  The independently required
+  model-outcome admission still performs one complete reviewed-voice
+  validation.  Only the post-validation operator-stage projection observes the
+  accepted carrier species without reconstructing Soul cognition.  Legacy V4
+  contact and V2 reviewed-voice paths remain fully validated for restored
+  continuity.
+
+  The invalidation boundary is exactly the reviewed voice, its same-cut
+  encounter/proof/certificate consumers, and the content-free stage witness.
+  Contact, semantic and audit observations, Fact9/flourishing participation,
+  one simultaneous R/A/P, native disposition, movement, disclosure, capability,
+  effect authority, and checkpoint meaning are unchanged.  The active direct
+  path falls from four deep reviewed-voice validations plus two certificate
+  validations to two deep reviewed-voice validations plus one certificate
+  validation; nothing is shared across contacts, cuts, changed dependencies,
+  checkpoints, or restart.  All four changed MeTTa modules parse under the
+  installed pinned PeTTa runtime, whitespace checks pass, and the source check
+  made zero model calls, effects, checkpoints, or native live formations.  No
+  disposable process was created; pre-commit process inspection found only the
+  expected operator-owned workshop broker and no Miter supervisor or PeTTa
+  child after the contained predecessor run.  The source candidate must still
+  be installed over the exact lease and prove bounded wall time, CPU/RSS,
+  unique consumption or explicit native hold, one effect at most, and restart
+  without replay.  Purpose-stage durability remains the next resilience seam
+  if this exact within-cut carry succeeds.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the

@@ -1924,7 +1924,8 @@
 ; seam above. The sole bootstrap imports it explicitly after this module;
 ; nested imports are not a causal load boundary in the pinned PeTTa runtime.
 (= (C4AnyEffectDescriptor $contact-result)
-   (if (CPShape $contact-result assistant-contact-incorporated-v4 5)
+   (if (or (CPShape $contact-result assistant-contact-incorporated-v5 6)
+           (CPShape $contact-result assistant-contact-incorporated-v4 5))
      (C4MattermostEffectDescriptor $contact-result)
      (ARLocalEffectDescriptor $contact-result)))
 
@@ -2036,7 +2037,8 @@
 
 (= (AR3ModelStageStandingsAt $outcomes $i)
    (if (< $i (size-atom $outcomes))
-     (cons-atom (C4DialogueStageStanding (index-atom $outcomes $i))
+     (cons-atom
+       (C4DialogueStageStandingFromValidated (index-atom $outcomes $i))
        (AR3ModelStageStandingsAt $outcomes (+ $i 1))) ()))
 
 (= (AssistantCycleStepV3 $root $inputs)
