@@ -3533,11 +3533,34 @@ Already carried:
   accumulated-state latency and the sole certified Mattermost response remain
   unmeasured and therefore open.
 
+- Candidate release `ac354af` was held during installed cold restore before
+  native readiness and the installer restored release `758e669` without
+  checkpoint change. The candidate published only the process-bound
+  `assistant-starting-v3` heartbeat before stopping. Exact source identity
+  inspection found that both changed cognitive files still carried their
+  predecessor SHA-256 values in `constitution/authority-manifest.json`.
+  `SoulStartup` therefore enforced the intended constitutional integrity
+  boundary; the candidate did not reach the leased contact, model, VoiceRNA,
+  effect, or checkpoint path.
+
+  The bounded repair updates only the two exact manifest pins for
+  `src/m255_completion.metta` and
+  `src/constitutive_authority_joint.metta`. It does not change a theorem,
+  authority document, Fact9 or flourishing participant, R/A/P read, movement,
+  contact, model standing, effect grant, or continuity state. A fresh
+  current-source supported runtime reached native `assistant-waiting`, then
+  returned `stopped` and left no supervisor or child to respawn. It made zero
+  model calls, effects, or contact checkpoints, and its disposable runtime was
+  removed at the same waypoint. The installed accumulated-state carry remains
+  required; the preserved Mattermost lease remains the sole acceptance
+  stimulus.
+
 Next movement:
 
-1. commit and install the operator-control/no-restart boundary plus the
-   construction-only M25.5 self-equality repair, then resume the one already
-   leased Mattermost contact without introducing another stimulus. Require the
+1. commit and install the exact constitutional manifest pins for the already
+   committed operator-control/no-restart and construction-only M25.5 repairs,
+   then resume the one already leased Mattermost contact without introducing
+   another stimulus. Require the
    supported runtime either to produce one certified response/effect or to
    preserve a typed native unresolved standing without process or query
    collapse. Only after a delivered response may a human reply become returned
