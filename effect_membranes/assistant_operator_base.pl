@@ -949,6 +949,15 @@ as_supervised_run(Root,Reply) :-
       as_supervised_cycle(Root,Reply) ), !.
 
 as_supervised_cycle(Root,Reply) :-
+    as_supervised_cycle(Root,0,Reply).
+
+% A failure window alone cannot contain a child that consumes substantial CPU
+% or memory for long enough that the previous failure ages out before the next
+% one.  Retain that persisted window as cross-invocation evidence, while also
+% bounding consecutive failures owned by this exact supervisor process.  This
+% counter observes only process outcomes; it has no contact, Soul, model,
+% movement, retry-meaning, or effect authority.
+as_supervised_cycle(Root,Consecutive0,Reply) :-
     as_crash_admit(Root,CrashStanding),
     ( CrashStanding==blocked ->
         Reply=_{schema:"miter-assistant-operator-result-v1",
@@ -956,9 +965,20 @@ as_supervised_cycle(Root,Reply) :-
     ; miter_workshop_cleanup_orphans(Root,_WorkshopRecovery),
       as_spawn_foreground(Root,ChildPid,ProcessStatus),
       as_supervised_outcome(Root,ChildPid,ProcessStatus,Outcome),
-      ( Outcome.status=='supervised-crash' ->
-          sleep(1),as_supervised_cycle(Root,Reply)
-      ; Reply=Outcome ) ).
+      as_supervised_crash_decision(Outcome,Consecutive0,Decision),
+      ( Decision=restart(Consecutive) ->
+          sleep(1),as_supervised_cycle(Root,Consecutive,Reply)
+      ; Decision=finish(Reply) ) ).
+
+as_supervised_crash_decision(Outcome,Consecutive0,Decision) :-
+    ( Outcome.status=='supervised-crash' ->
+        Consecutive is Consecutive0+1,
+        ( Consecutive>=3 ->
+            put_dict(_{status:'crash-loop-contained',
+              crash_count_in_supervisor_run:Consecutive},Outcome,Reply),
+            Decision=finish(Reply)
+        ; Decision=restart(Consecutive) )
+    ; Decision=finish(Outcome) ).
 
 as_spawn_foreground(Root,Pid,ProcessStatus) :-
     as_lkg_source_root(Root,SourceRoot),as_petta_main(Petta),

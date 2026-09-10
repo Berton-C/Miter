@@ -2908,6 +2908,37 @@ Already carried:
   boundary is closed, purpose-stage resumability and unacceptable whole-turn
   latency remain the next C4 resilience and proportionality bottlenecks.
 
+- Installed release `9fde2e09522280f8ab36ff64b01d4bfedd8a2e22`
+  proved the ingress carry and exposed the next exact failure boundary.  The
+  new operator-authored diagnostic contact
+  `mm_77ns7msxib8hbqnk1ptmcb1n8w` remained as one durable leased carrier
+  through repeated pinned-PeTTa child replacement; it was neither consumed,
+  rejected, duplicated, nor answered.  Evaluation counters reached exactly 20
+  admitted events, 23 remote calls, and three outbound posts.  The live
+  supervisor reported native processing while its rolling crash record held
+  two child failures roughly 42 seconds apart.  Later inspection showed a new
+  child and at least eight recent service run records, each with only the
+  ordinary PeTTa top-level `true` output.  Durable ingress therefore works, but
+  the complete post-model VoiceRNA reduction is still failing before the one
+  checkpoint/effect boundary.  No response is fabricated and C4 remains open.
+
+  This observation also falsified the supervisor's existing containment
+  assumption.  A rolling 60-second window cannot bound consecutive expensive
+  failures when an earlier failure expires before the third child terminates.
+  The supervisor now carries a second, process-local consecutive-failure count
+  and terminates after three failed children regardless of their duration,
+  while retaining the persisted rolling record for cross-invocation evidence.
+  The counter observes only exact process outcomes and cannot classify the
+  contact, choose a retry meaning, alter Soul organization, invoke a model, or
+  authorize an effect.  Prolog load passed, and a pure no-process check proved
+  first-failure restart, third-failure containment, and clean-exit passthrough.
+  The leased contact remains live work rather than evidence for this source
+  check.  The constitutive VoiceRNA reduction still requires a separate exact
+  dependency-dirtiness repair: form each material M24--M26.3 audit
+  participation once, share only its within-cut exact structural validation,
+  and durably resume completed model stages.  Enlarging the model envelope or
+  timeout cannot substitute for that repair.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
