@@ -1896,15 +1896,36 @@
                         (index-atom (index-atom $final-prepared 4) 2)
                         (constitutive-encounter-unavailable
                           semantic-reformation-invalid)))
+                      ; Capability proof persistence belongs only to an exact
+                      ; operation selected through the already formed native
+                      ; movement.  General dialogue has no capability request
+                      ; to prove, so constructing and repeatedly walking its
+                      ; complete M24--M26.3 proof here would add no participant,
+                      ; consequence or next-cut change.  A tool-bearing movement
+                      ; retains the unchanged proof-bound membrane path below.
+                      ($capability-route (C4CapabilityRouteFromMovement
+                        (index-atom $semantic-encounter 5)))
+                      ($capability-request-present
+                        (CPShape $capability-route
+                          c4-capability-request-route-v1 5))
                       ($capability-proof
-                        (ARNativeMovementProof $semantic-encounter))
+                        (if $capability-request-present
+                          (ARNativeMovementProof $semantic-encounter)
+                          capability-native-proof-not-required))
                       ($capability-proof-record
-                        ($capability-proof-writer $root
-                          (C4CapabilityProofId $semantic-encounter)
-                          $capability-proof))
+                        (if $capability-request-present
+                          ($capability-proof-writer $root
+                            (C4CapabilityProofId $semantic-encounter)
+                            $capability-proof)
+                          (capability-native-proof-held-v1
+                            no-capability-request not-required)))
                       ($capability-descriptor
-                        (C4CapabilityRequestDescriptor $semantic-contact
-                          $semantic-encounter $capability-proof-record))
+                        (if $capability-request-present
+                          (C4CapabilityRequestDescriptor $semantic-contact
+                            $semantic-encounter $capability-proof-record)
+                          (capability-request-held
+                            (index-atom $contact 1)
+                            no-proof-bound-exact-operation)))
                       ($request-observation
                         (if (C4CapabilityRequestDescriptorValid
                               $capability-descriptor $semantic-contact

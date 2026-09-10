@@ -3200,6 +3200,22 @@ Already carried:
   this carry succeeds, completed semantic and VoiceRNA stages must become
   durable restart work rather than requiring whole-contact recomputation.
 
+- Installed release `ff83ad97584a4bf9825b43857cefc379b265d94a`
+  carried the same exact leased Mattermost contact and entered native
+  processing, but again exhausted the PeTTa child before VoiceRNA or an effect.
+  The failure is not at Mattermost ingress, identity, the GLM transport, or a
+  Soul-formed hold: the already preserved semantic contact had no exact
+  capability route, yet the active dialogue path still constructed, persisted,
+  reconstructed, and validated its complete M24--M26.3 capability proof before
+  it could continue to ordinary voice formation. That proof is required only
+  before an actual Soul-formed capability request. The bounded repair now
+  tests the already formed movement for that exact route first. A tool-bearing
+  movement retains the complete proof-bound path unchanged; general dialogue
+  constructs no unused capability proof, changes no cognition or effect
+  authority, and continues directly toward VoiceRNA. The changed MeTTa module
+  parses under pinned PeTTa, and all temporary diagnostic sources were removed.
+  The existing leased contact remains the sole live acceptance stimulus.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
