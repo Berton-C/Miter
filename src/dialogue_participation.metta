@@ -2067,9 +2067,14 @@
            (assistant-contact-held (index-atom $initial-context 1)
              (index-atom $initial-context 2))
            (assistant-contact-rejected stable-identity-scope-mismatch))
-         model-participation-not-requested))))
+         model-participation-not-requested)))))
 
 (= (C4BoundContactWithModelV1 $root $binding $contact)
    (C4BoundContactUsingV1 $root $binding $contact as_chroma as_model
      as_capability_environment as_capability_proof as_capability_request
      as_vad))
+
+; Runtime-load witness only.  It carries no contact meaning or authority; its
+; presence proves that PeTTa reached the complete dialogue module boundary.
+(= (C4DialogueParticipationLoadedV1)
+   c4-dialogue-participation-loaded-v1)

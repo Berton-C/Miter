@@ -125,7 +125,81 @@ def command_path(name: str) -> str:
     return found
 
 
+def validate_metta_source_balance() -> None:
+    """Reject a release whose MeTTa source ends inside a partial form.
+
+    PeTTa currently does not propagate every nested ``import!`` parse failure
+    to the outer bootstrap process.  This packaging-only scan therefore checks
+    the lexical form boundary before an application identity can be admitted.
+    It assigns no runtime meaning and does not evaluate cognition.
+    """
+    source_roots = (SOURCE_ROOT / "constitution", SOURCE_ROOT / "src")
+    paths = sorted(
+        path
+        for root in source_roots
+        for path in root.rglob("*.metta")
+        if path.is_file()
+    )
+    for path in paths:
+        openings: list[tuple[int, int]] = []
+        in_string = False
+        escaped = False
+        line_number = 1
+        column_number = 0
+        try:
+            source = path.read_text(encoding="utf-8")
+        except OSError as exc:
+            raise InstallError(f"Cannot validate MeTTa source {path}: {exc}") from exc
+        index = 0
+        while index < len(source):
+            character = source[index]
+            column_number += 1
+            if character == "\n":
+                line_number += 1
+                column_number = 0
+                escaped = False
+                index += 1
+                continue
+            if in_string:
+                if escaped:
+                    escaped = False
+                elif character == "\\":
+                    escaped = True
+                elif character == '"':
+                    in_string = False
+                index += 1
+                continue
+            if character == ";":
+                newline = source.find("\n", index)
+                if newline < 0:
+                    index = len(source)
+                else:
+                    index = newline
+                continue
+            if character == '"':
+                in_string = True
+            elif character == "(":
+                openings.append((line_number, column_number))
+            elif character == ")":
+                if not openings:
+                    relative = path.relative_to(SOURCE_ROOT)
+                    raise InstallError(
+                        f"Unmatched ')' in {relative}:{line_number}:{column_number}"
+                    )
+                openings.pop()
+            index += 1
+        relative = path.relative_to(SOURCE_ROOT)
+        if in_string:
+            raise InstallError(f"Unterminated string in {relative}")
+        if openings:
+            opening_line, opening_column = openings[-1]
+            raise InstallError(
+                f"Unclosed MeTTa form in {relative}:{opening_line}:{opening_column}"
+            )
+
+
 def source_identity() -> str:
+    validate_metta_source_balance()
     git = shutil.which("git")
     if git and (SOURCE_ROOT / ".git").exists():
         status = run([git, "status", "--porcelain"], check=True).stdout.strip()

@@ -3397,6 +3397,31 @@ Already carried:
   optional branch parses but still requires a later live capability-bearing
   carry before it can be accepted as resilient.
 
+- Installed release `b2f45ff7cdcf9a2fe515a874f31d6f314fdb5d0d`
+  resumed the exact preserved Mattermost lease without another stimulus. It
+  made no model call, effect, or checkpoint change and preserved the lease, but
+  the service recorded `C4BoundContactWithModelV1(...)` itself as its held row
+  before three slow `exit(0)` boundaries were contained. Direct pinned-PeTTa
+  parsing then exposed an unclosed form at `C4BoundContactUsingV1`: the outer
+  bootstrap had returned success despite the nested module parse stopping
+  before the final callable wrapper. This is a source-admission defect, not a
+  semantic invalidation of contact, R/A/P, Fact9, flourishing, movement, or
+  VoiceRNA.
+
+  The bounded repair closes that exact form and adds two mechanical admission
+  witnesses: the installer rejects unmatched MeTTa source forms before release
+  identity is established, and service startup requires the dialogue module's
+  end-of-file load witness. The scanner rejected a deliberately unclosed
+  ephemeral source at its exact opening location. The complete bootstrap now
+  contains callable clauses for `C4BoundContactWithModelV1`, the load witness,
+  and `AssistantServiceStartV3`; it completed in 1.56 seconds real / 1.41 user /
+  0.12 system. All Prolog membranes loaded and all committed JSON parsed. The
+  dependency-dirtiness closure is only release parsing and startup reachability;
+  all cognitive definitions and the checkpoint identity remain unchanged.
+  Live response latency, delivered effect, returned consequence, and
+  restart/no-replay remain unmeasured, so the same lease remains the next and
+  only acceptance stimulus.
+
 Next movement:
 
 1. install the exact semantic-reformation totalizer and resume the one already

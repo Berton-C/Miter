@@ -387,9 +387,12 @@
 
 (= (AssistantServiceStartV3 $root)
    (let* (($integrity (as_integrity $root))
-          ($boot (SoulStartup $integrity)))
-     (if (!= $boot soul-ready)
-       (assistant-service-held $boot)
+          ($boot (SoulStartup $integrity))
+          ($dialogue-module (C4DialogueParticipationLoadedV1)))
+     (if (or (!= $boot soul-ready)
+             (!= $dialogue-module c4-dialogue-participation-loaded-v1))
+       (assistant-service-held
+         (startup-readiness $boot $dialogue-module))
        (let* (($restoration (AR2ServiceRestore $root))
               ($continuity-source
                 (miter_assistant_continuity_restore $root))
