@@ -18,11 +18,42 @@ miter_petta_parallel_m25_primaries(Possibilities, Cut, Facts, Flourishing,
       ParticipantRelations, Bridge, FactViews, FlourishingViews,
       ParticipantSource, PayloadRef, Developmental, Primaries) :-
     is_list(Possibilities),
-    concurrent_maplist(
-      miter_petta_m25_primary(Cut, Facts, Flourishing,
-        ParticipantRelations, Bridge, FactViews, FlourishingViews,
-        ParticipantSource, PayloadRef, Developmental),
-      Possibilities, Primaries).
+    miter_petta_m25_primaries_in_pairs(Possibilities, Cut, Facts,
+      Flourishing, ParticipantRelations, Bridge, FactViews,
+      FlourishingViews, ParticipantSource, PayloadRef, Developmental,
+      Primaries).
+
+% Each PeTTa worker receives a copy of the complete ground contact surface.
+% Dispatching one worker per host core therefore multiplies the largest native
+% term without changing any mathematical result.  Two independent primaries
+% may still reduce concurrently, but the next ordered pair is not admitted
+% until both exact results return.  Every possibility remains present and in
+% source order; this membrane has no result-dependent branch.
+miter_petta_m25_primaries_in_pairs([], _Cut, _Facts, _Flourishing,
+      _ParticipantRelations, _Bridge, _FactViews, _FlourishingViews,
+      _ParticipantSource, _PayloadRef, _Developmental, []).
+miter_petta_m25_primaries_in_pairs([Possibility], Cut, Facts, Flourishing,
+      ParticipantRelations, Bridge, FactViews, FlourishingViews,
+      ParticipantSource, PayloadRef, Developmental, [Primary]) :-
+    miter_petta_m25_primary(Cut, Facts, Flourishing, ParticipantRelations,
+      Bridge, FactViews, FlourishingViews, ParticipantSource, PayloadRef,
+      Developmental, Possibility, Primary).
+miter_petta_m25_primaries_in_pairs([PossibilityA,PossibilityB|Rest], Cut,
+      Facts, Flourishing, ParticipantRelations, Bridge, FactViews,
+      FlourishingViews, ParticipantSource, PayloadRef, Developmental,
+      [PrimaryA,PrimaryB|Primaries]) :-
+    concurrent(2,
+      [miter_petta_m25_primary(Cut, Facts, Flourishing,
+         ParticipantRelations, Bridge, FactViews, FlourishingViews,
+         ParticipantSource, PayloadRef, Developmental, PossibilityA,
+         PrimaryA),
+       miter_petta_m25_primary(Cut, Facts, Flourishing,
+         ParticipantRelations, Bridge, FactViews, FlourishingViews,
+         ParticipantSource, PayloadRef, Developmental, PossibilityB,
+         PrimaryB)], []),
+    miter_petta_m25_primaries_in_pairs(Rest, Cut, Facts, Flourishing,
+      ParticipantRelations, Bridge, FactViews, FlourishingViews,
+      ParticipantSource, PayloadRef, Developmental, Primaries).
 
 miter_petta_m25_primary(Cut, Facts, Flourishing, ParticipantRelations,
       Bridge, FactViews, FlourishingViews, ParticipantSource, PayloadRef,
@@ -40,9 +71,27 @@ miter_petta_parallel_m255_bridge_components(Primary, Cut, Developmental, Rap,
       Alignment, Interface, Components) :-
     Tags = [harmonic, interface, obstruction, stuck, reorganization,
       equivalence, recognition, align9],
-    concurrent_maplist(
-      miter_petta_m255_bridge_component(Primary, Cut, Developmental, Rap,
-        Alignment, Interface), Tags, Components).
+    miter_petta_m255_bridge_components_in_pairs(Tags, Primary, Cut,
+      Developmental, Rap, Alignment, Interface, Components).
+
+% The eight projections are all retained, but only two copies of their shared
+% primary/cut carrier inhabit worker stacks at once.  This keeps scheduling
+% proportional to the live native surface instead of to the host core count.
+miter_petta_m255_bridge_components_in_pairs([], _Primary, _Cut,
+      _Developmental, _Rap, _Alignment, _Interface, []).
+miter_petta_m255_bridge_components_in_pairs([Tag], Primary, Cut,
+      Developmental, Rap, Alignment, Interface, [Result]) :-
+    miter_petta_m255_bridge_component(Primary, Cut, Developmental, Rap,
+      Alignment, Interface, Tag, Result).
+miter_petta_m255_bridge_components_in_pairs([TagA,TagB|Rest], Primary, Cut,
+      Developmental, Rap, Alignment, Interface, [ResultA,ResultB|Results]) :-
+    concurrent(2,
+      [miter_petta_m255_bridge_component(Primary, Cut, Developmental, Rap,
+         Alignment, Interface, TagA, ResultA),
+       miter_petta_m255_bridge_component(Primary, Cut, Developmental, Rap,
+         Alignment, Interface, TagB, ResultB)], []),
+    miter_petta_m255_bridge_components_in_pairs(Rest, Primary, Cut,
+      Developmental, Rap, Alignment, Interface, Results).
 
 miter_petta_m255_bridge_component(Primary, Cut, Developmental, Rap,
       Alignment, Interface, Tag, Result) :-

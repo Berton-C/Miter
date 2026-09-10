@@ -3216,6 +3216,33 @@ Already carried:
   parses under pinned PeTTa, and all temporary diagnostic sources were removed.
   The existing leased contact remains the sole live acceptance stimulus.
 
+- Installed release `15e8bf6589df6544cd0f9f749c6c1599a0ac151c`
+  carried that exact lease, runtime identity and active checkpoint without
+  replay, then failed twice roughly 47 seconds apart before the supervisor's
+  consecutive-failure containment stopped the child family.  Mattermost held
+  no reply.  The most recent model claim for this contact remained its already
+  durable semantic reading at epoch `1789024327`; no language-rendering or
+  voice-audit claim was made.  This places the failure after semantic evidence
+  returned but before VoiceRNA requested rendering: the fresh semantic
+  participant reformation exhausted the process, not ingress, GLM transport,
+  VoiceRNA disposition, effect certification, or Mattermost egress.
+
+  That reformation was still copying its complete contact/cut carrier into up
+  to one outer primary worker per host core and then into eight bridge workers
+  per reading.  The resource repair now admits native scheduling in ordered
+  pairs at both boundaries.  Every M25 possibility and every M25.5/M26 bridge
+  projection remains present exactly once and in source order; the scheduler
+  has no branch over returned content and cannot rank, filter, select, join, or
+  reinterpret any result.  M25 still constructs every primary and complete
+  reading, and R/A/P remains one simultaneous three-perspective read of the
+  same contact surface.  This bounds live worker-stack copies independently of
+  Mac core count without moving cognition into Prolog.  A direct scheduler
+  check retained three ordered primary results and all eight ordered bridge
+  results, the Prolog extension loads, complete pinned-PeTTa bootstrap parsing
+  succeeds, and no fixture or runtime artifact was retained.  Installed wall
+  time, peak/retained RSS, exact one VoiceRNA response/effect, checkpoint and
+  restart/no-replay remain the acceptance boundary; C4 is still open.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
