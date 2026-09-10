@@ -1176,13 +1176,19 @@ def runtime_ready(reply: dict) -> bool:
     heartbeat = reply.get("heartbeat")
     pid = reply.get("pid")
     valid_until = heartbeat.get("valid_until_epoch") if isinstance(heartbeat, dict) else None
+    state = heartbeat.get("state") if isinstance(heartbeat, dict) else None
     return (
         reply.get("status") in {"running", "processing-unconfirmed"}
         and reply.get("lkg") == "verified"
         and isinstance(pid, int) and pid > 1
         and isinstance(heartbeat, dict)
         and heartbeat.get("pid") == pid
-        and heartbeat.get("state") not in {"assistant-stopped", "assistant-panicked"}
+        # A process-bound starting lease prevents a legitimate native restore
+        # from being killed as stale, but is deliberately not semantic
+        # readiness and cannot certify a release transition.
+        and state not in {
+            "assistant-starting-v3", "assistant-stopped", "assistant-panicked"
+        }
         and isinstance(valid_until, (int, float)) and valid_until >= time.time()
     )
 
@@ -1190,7 +1196,8 @@ def runtime_ready(reply: dict) -> bool:
 def wait_runtime_ready(config: dict, application: pathlib.Path, deployment: dict,
                        petta: pathlib.Path) -> dict:
     grace = config["supervision"]["startup_grace_seconds"]
-    deadline = time.monotonic() + grace + 15
+    processing = config["supervision"]["processing_lease_seconds"]
+    deadline = time.monotonic() + max(grace, processing) + 15
     last: dict = {}
     while time.monotonic() < deadline:
         result = miter_command(application, deployment, petta, "status", check=False)
@@ -1198,10 +1205,17 @@ def wait_runtime_ready(config: dict, application: pathlib.Path, deployment: dict
             last = miter_reply(result, "Miter readiness status")
             if runtime_ready(last):
                 return last
+            supervisor = last.get("supervisor")
+            if (last.get("status") == "stopped"
+                    and isinstance(supervisor, dict)
+                    and supervisor.get("standing") in {"dead", "absent"}):
+                break
         time.sleep(0.25)
     raise InstallError(
-        "Miter did not expose a process-bound non-terminal heartbeat after cold restore; "
-        f"last status was {last.get('status', 'unavailable')}"
+        "Miter did not expose a native-ready process-bound heartbeat after cold restore; "
+        f"last status was {last.get('status', 'unavailable')}; "
+        f"last heartbeat state was "
+        f"{(last.get('heartbeat') or {}).get('state', 'unavailable')}"
     )
 
 

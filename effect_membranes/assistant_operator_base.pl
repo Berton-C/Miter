@@ -998,6 +998,13 @@ as_spawn_foreground(Root,Pid,ProcessStatus) :-
          as_write_json_durable(PidPath,_{schema:"miter-assistant-pid-v1",
            pid:Pid,run_id:RunId,started_at_epoch:StartedAt,
            stdout:StdoutRelative,stderr:StderrRelative}),
+         % The child may spend materially longer than the short spawn grace
+         % restoring the one native Soul/continuity organization before it can
+         % record assistant-started-v3.  Publish only process-bound mechanical
+         % liveness here.  Readiness still belongs to the native start record;
+         % this lease cannot admit contact, checkpoint state, or certify a
+         % release.
+         as_heartbeat(Root,'assistant-starting-v3',StartedAt),
          as_supervise_foreground(Root,Pid,StartedAt,ProcessStatus)),
         close(Err)),close(Out)).
 

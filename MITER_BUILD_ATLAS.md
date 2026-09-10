@@ -3294,6 +3294,30 @@ Already carried:
   membranes load. This is a correctness restoration, not yet a live response
   claim; the unchanged lease remains the acceptance stimulus.
 
+- Candidate release `3bfd80d038fdb6a732dbb76cce78d26e4c02c689`
+  restored that complete constructor but did not produce a native-ready
+  heartbeat during its installed cold-restore activation window. The installer
+  rejected it, preserved the active checkpoint, and restored the predecessor.
+  An exact fresh-runtime replay identified the immediate cause:
+  `SoulStartup` correctly blocked because the restored
+  `src/constitutive_authority_joint.metta` no longer matched its constitutional
+  integrity pin. The file is byte-identical to its pre-shortcut version; the
+  manifest now names that exact SHA-256 and no other authority or constitutional
+  identity changed.
+
+  The failed carry also exposed a distinct mechanical ambiguity: the supervisor
+  previously published no process-bound liveness until `assistant-started-v3`,
+  after the entire Soul, continuity, and semantic organization had restored.
+  It now writes `assistant-starting-v3` immediately after binding the exact child
+  PID and run identity. Its lease uses the already configured native-processing
+  envelope and has no contact, checkpoint, semantic-readiness, movement, or
+  effect standing. Release activation explicitly refuses to treat that starting
+  lease as readiness; it waits for a later native service heartbeat, fails early
+  if both child and supervisor are gone, and reports the last heartbeat state.
+  A fresh complete runtime then progressed from that starting carrier to native
+  `assistant-started-v3` and stopped cleanly. The unchanged leased Mattermost
+  contact remains the sole installed acceptance stimulus.
+
 Next movement:
 
 1. carry a human reply in the already-delivered Mattermost thread through the
