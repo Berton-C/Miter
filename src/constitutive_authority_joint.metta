@@ -1083,7 +1083,7 @@
                    (and (CP2AuthorityJointMatchesEncounter $v6 $encounter)
                     (and (M25ConstructedCertificateMatchesEncounter
                            $m25-certificate $encounter $developmental)
-                         (M255ConstitutiveCertificateDependentValid
+                         (M255ConstructedCertificateMatchesEncounter
                            $m255-certificate $encounter $developmental
                            $m25-certificate))))))
            (if $constructed-match
@@ -1228,7 +1228,7 @@
                        $m263-certificate)
                      (M25ConstructedCertificateMatchesEncounter
                        $m25-certificate $encounter $developmental)
-                     (M255ConstitutiveCertificateDependentValid
+                     (M255ConstructedCertificateMatchesEncounter
                        $m255-certificate $encounter $developmental
                        $m25-certificate))))
              (if (== $checks (true true true true true))

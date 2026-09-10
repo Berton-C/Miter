@@ -3495,11 +3495,49 @@ Already carried:
   sole installed acceptance stimulus. Exact in-flight stage durability remains
   the next resilience seam after this outer lifecycle defect is carried.
 
+- Installed release `758e669c7f2d95587a7fd4f0587da3df8a21d9c7`
+  carried the same exact leased Mattermost contact, runtime identity, and
+  checkpoint without another stimulus. The direct outer cycle no longer
+  collapsed immediately: one PeTTa child remained process-bound and CPU-active
+  for the complete 300-second native-processing lease. It nevertheless formed
+  no response, model call, effect, checkpoint, or typed terminal standing, and
+  the exact Mattermost thread still contained only its human root. The
+  supervisor then replaced that child and a later `stop-pending` request did
+  not prevent another replacement. The exact process family is now absent and
+  the durable lease remains the sole acceptance input. This release is not
+  accepted.
+
+  The result distinguishes two remaining faults. First, the supervisor checked
+  stop/panic only inside the child at a completed native cycle boundary; its
+  mechanical watchdog/restart loop did not consult an already-recorded
+  operator command. The bounded repair now checks that command before spawn,
+  during process supervision, and before restart; it terminates only the exact
+  child process family, leaves the leased carrier durable, records no semantic
+  diagnosis, and waits for both child and supervisor before reporting stopped.
+  A disposable active-process control returned
+  `operator_control(stop,terminated(killed(15)))`, produced the typed
+  `operator-control-no-restart` result, and left no supervisor or child.
+
+  Second, participant reformation constructed the complete M25.5 certificate
+  and then invoked its restored-artifact validator, whose final equality
+  reconstructed that same complete bridge family. This was duplicated work,
+  not a new constitutional observation. A construction-only matcher now checks
+  the exact source cut, certificate shapes, reading/closure cardinalities, and
+  presence of a complete closure for certificates bound directly to
+  `M255ConstitutiveCertificate` in the same native `let*`. Restored, supplied,
+  and adversarial certificates still pass through the unchanged full dependent
+  validator. M24--M26.3 authority, the nine Fact9 roles, the nine
+  flourishings, Generated alternatives, movement, and the one simultaneous
+  R/A/P read are unchanged. Complete bootstrap, whole-tree MeTTa lexical
+  balance, and all Prolog membrane loads pass in current source. Installed
+  accumulated-state latency and the sole certified Mattermost response remain
+  unmeasured and therefore open.
+
 Next movement:
 
-1. install the direct native cycle with reformation-scoped structural sharing
-   and resume the one already leased Mattermost contact without introducing
-   another stimulus. Require the
+1. commit and install the operator-control/no-restart boundary plus the
+   construction-only M25.5 self-equality repair, then resume the one already
+   leased Mattermost contact without introducing another stimulus. Require the
    supported runtime either to produce one certified response/effect or to
    preserve a typed native unresolved standing without process or query
    collapse. Only after a delivered response may a human reply become returned

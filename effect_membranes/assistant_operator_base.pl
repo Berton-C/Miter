@@ -958,17 +958,41 @@ as_supervised_cycle(Root,Reply) :-
 % counter observes only process outcomes; it has no contact, Soul, model,
 % movement, retry-meaning, or effect authority.
 as_supervised_cycle(Root,Consecutive0,Reply) :-
-    as_crash_admit(Root,CrashStanding),
-    ( CrashStanding==blocked ->
+    ( as_supervised_control_finish(Root,0,Reply) -> true
+    ; as_crash_admit(Root,CrashStanding),
+      ( CrashStanding==blocked ->
         Reply=_{schema:"miter-assistant-operator-result-v1",
           status:'crash-loop-contained'}
-    ; miter_workshop_cleanup_orphans(Root,_WorkshopRecovery),
-      as_spawn_foreground(Root,ChildPid,ProcessStatus),
-      as_supervised_outcome(Root,ChildPid,ProcessStatus,Outcome),
-      as_supervised_crash_decision(Outcome,Consecutive0,Decision),
-      ( Decision=restart(Consecutive) ->
-          sleep(1),as_supervised_cycle(Root,Consecutive,Reply)
-      ; Decision=finish(Reply) ) ).
+      ; miter_workshop_cleanup_orphans(Root,_WorkshopRecovery),
+        as_spawn_foreground(Root,ChildPid,ProcessStatus),
+        as_supervised_outcome(Root,ChildPid,ProcessStatus,Outcome),
+        ( get_dict(control,Outcome,_) -> Reply=Outcome
+        ; as_supervised_control_finish(Root,ChildPid,Reply) -> true
+        ; as_supervised_crash_decision(Outcome,Consecutive0,Decision),
+          ( Decision=restart(Consecutive) ->
+              sleep(1),as_supervised_cycle(Root,Consecutive,Reply)
+          ; Decision=finish(Reply) ) ) ) ).
+
+as_supervised_shutdown_control(Root,Command) :-
+    as_pending_control(Root,Command),memberchk(Command,[stop,panic]).
+
+% An operator stop or panic is authority to end the process family, not a
+% semantic diagnosis of the in-flight contact.  The leased carrier remains
+% durable.  Checking this boundary before spawn and before restart prevents a
+% watchdog replacement from outrunning an already-recorded operator command.
+as_supervised_control_finish(Root,Pid,Reply) :-
+    as_supervised_shutdown_control(Root,Command),
+    as_supervised_control_reply(Root,Pid,Command,Reply).
+
+as_supervised_control_reply(Root,Pid,Command,Reply) :-
+    ( Pid>1 ->
+        ( Command==panic -> Kind=panic ; Kind='clean-stop' ),
+        as_write_exit(Root,Pid,Kind)
+    ; true ),
+    atom_string(Command,CommandString),
+    Reply=_{schema:"miter-assistant-operator-result-v1",
+      status:'supervised-clean-exit',pid:Pid,
+      reason:"operator-control-no-restart",control:CommandString}.
 
 as_supervised_crash_decision(Outcome,Consecutive0,Decision) :-
     ( Outcome.status=='supervised-crash' ->
@@ -1020,16 +1044,28 @@ as_supervise_foreground_loop(Root,Pid,StartedAt,Supervision,ProcessStatus) :-
     Poll=Supervision.poll_seconds,
     % SWI-Prolog on Unix supports process_wait/3 polling only at timeout(0).
     % The bounded sleep belongs to this non-cognitive liveness observer.
-    process_wait(Pid,Observed,[timeout(0)]),
-    ( Observed\==timeout -> ProcessStatus=Observed
-    ; get_time(Now),
-      ( as_supervisor_lease_active(Root,Pid,StartedAt,Now,Supervision) ->
-          sleep(Poll),
-          as_supervise_foreground_loop(Root,Pid,StartedAt,Supervision,
-            ProcessStatus)
-      ; as_watchdog_terminate(Root,Pid,StartedAt,Now,Supervision,
-          TerminationStanding),
-        ProcessStatus=watchdog_stale_heartbeat(TerminationStanding) ) ).
+    ( as_supervised_shutdown_control(Root,Command) ->
+        as_control_terminate(Pid,Supervision,TerminationStanding),
+        ProcessStatus=operator_control(Command,TerminationStanding)
+    ; process_wait(Pid,Observed,[timeout(0)]),
+      ( Observed\==timeout -> ProcessStatus=Observed
+      ; get_time(Now),
+        ( as_supervisor_lease_active(Root,Pid,StartedAt,Now,Supervision) ->
+            sleep(Poll),
+            as_supervise_foreground_loop(Root,Pid,StartedAt,Supervision,
+              ProcessStatus)
+        ; as_watchdog_terminate(Root,Pid,StartedAt,Now,Supervision,
+            TerminationStanding),
+          ProcessStatus=watchdog_stale_heartbeat(TerminationStanding) ) ) ).
+
+as_control_terminate(Pid,Supervision,Standing) :-
+    catch(process_kill(Pid,term),_,true),
+    Grace=Supervision.termination_grace_seconds,
+    get_time(TermStarted),TermDeadline is TermStarted+Grace,
+    as_wait_process_exit_until(Pid,TermDeadline,TermStatus),
+    ( TermStatus\==timeout -> Standing=terminated(TermStatus)
+    ; catch(process_kill(Pid,kill),_,true),
+      process_wait(Pid,KillStatus),Standing=killed(KillStatus) ).
 
 as_supervisor_lease_active(_Root,_Pid,StartedAt,Now,Supervision) :-
     Now-StartedAt=<Supervision.startup_grace_seconds,!.
@@ -1085,6 +1121,10 @@ as_watchdog_heartbeat_summary(Root,Heartbeat) :-
     ( exists_file(Path),catch(miter_store_read_json(Path,Dict),_,fail),
       is_dict(Dict) -> Heartbeat=Dict ; Heartbeat=null ).
 
+as_supervised_outcome(Root,Pid,operator_control(Command,_),Reply) :-
+    as_supervised_control_reply(Root,Pid,Command,Reply),!.
+as_supervised_outcome(Root,Pid,_ProcessStatus,Reply) :-
+    as_supervised_control_finish(Root,Pid,Reply),!.
 as_supervised_outcome(Root,Pid,_ProcessStatus,Reply) :-
     as_clean_exit(Root,Pid),!,
     Reply=_{schema:"miter-assistant-operator-result-v1",
@@ -1385,17 +1425,41 @@ as_stop(Root, Reply) :-
     as_root(Root,_),
     ( as_process_state(Root,State,Pid),State\==dead ->
         as_write_control(Root,stop,operator),
-        (as_wait_dead(Root,Pid,5)->Status=stopped,as_write_exit(Root,Pid,'clean-stop')
+        (as_wait_runtime_family_stopped(Root,8)->
+          Status=stopped,as_write_exit(Root,Pid,'clean-stop')
+        ;Status='stop-pending')
+    ; as_supervisor_state(Root,SupervisorState,SupervisorPid),
+        SupervisorState\==dead ->
+        Pid=SupervisorPid,as_write_control(Root,stop,operator),
+        (as_wait_runtime_family_stopped(Root,8)->Status=stopped
         ;Status='stop-pending')
     ; Pid=0,Status=stopped ),
     as_verify_lkg(Root,Lkg),
     Reply=_{schema:"miter-assistant-operator-result-v1",status:Status,pid:Pid,
       lkg:Lkg}.
 
+as_runtime_family_stopped(Root) :-
+    \+ (as_process_state(Root,ChildState,_),ChildState\==dead),
+    \+ (as_supervisor_state(Root,SupervisorState,_),SupervisorState\==dead).
+
+as_wait_runtime_family_stopped(Root,Seconds) :-
+    get_time(Start),End is Start+Seconds,
+    as_wait_runtime_family_stopped_until(Root,End).
+as_wait_runtime_family_stopped_until(Root,_) :-
+    as_runtime_family_stopped(Root),!.
+as_wait_runtime_family_stopped_until(Root,End) :-
+    get_time(Now),Now<End,sleep(0.05),
+    as_wait_runtime_family_stopped_until(Root,End).
+
 as_panic(Root, Reply) :-
     as_root(Root,_),
     ( as_process_state(Root,State,Pid),State\==dead ->
         as_panic_active_process(Root,Pid,Standing)
+    ; as_supervisor_state(Root,SupervisorState,SupervisorPid),
+        SupervisorState\==dead ->
+        Pid=SupervisorPid,as_write_control(Root,panic,operator),
+        (as_wait_runtime_family_stopped(Root,8)->Standing=panicked
+        ;Standing='panic-pending')
     ; Pid=0,Standing=panicked ),
     (Standing==panicked->as_write_exit(Root,Pid,panic);true),
     Reply=_{schema:"miter-assistant-operator-result-v1",status:Standing,pid:Pid,
@@ -1403,11 +1467,11 @@ as_panic(Root, Reply) :-
 
 as_panic_active_process(Root, Pid, Standing) :-
     as_write_control(Root,panic,operator),
-    ( as_wait_dead(Root,Pid,2) -> Standing=panicked
+    ( as_wait_runtime_family_stopped(Root,2) -> Standing=panicked
     ; as_signal(Pid,'-TERM'),
-      ( as_wait_dead(Root,Pid,1) -> Standing=panicked
+      ( as_wait_runtime_family_stopped(Root,2) -> Standing=panicked
       ; as_signal(Pid,'-KILL'),
-        (as_wait_dead(Root,Pid,1)->Standing=panicked
+        (as_wait_runtime_family_stopped(Root,2)->Standing=panicked
         ;Standing='panic-pending') ) ).
 
 as_wait_dead(Root, Pid, Seconds) :-

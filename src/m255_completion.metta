@@ -428,6 +428,34 @@
                    $m25-certificate)))))))
      false))
 
+; This matcher is only for a certificate bound directly to
+; M255ConstitutiveCertificate in the same native let*.  The constructor has
+; already made every closure from the exact reading, M25 certificate and
+; encounter.  Reconstructing the entire certificate again at that point adds
+; no discrimination and duplicates the most expensive complete bridge family.
+; Restored, supplied and adversarial certificates continue through the full
+; dependent validator above.
+(= (M255ConstructedCertificateMatchesEncounter $certificate $encounter
+      $developmental $m25-certificate)
+   (if (and (M255ConstitutiveCertificateStructuralValid $certificate)
+        (and (CPShape $encounter constitutive-encounter 7)
+             (and (CPShape $developmental
+                    m24-developmental-organization-v1 14)
+                  (M25ConstitutiveCertificateStructuralValid
+                    $m25-certificate))))
+     (let* (($readings (index-atom (index-atom $encounter 4) 3))
+            ($m25-reading-certificates
+              (index-atom (index-atom $m25-certificate 3) 1))
+            ($closures (index-atom (index-atom $certificate 4) 1)))
+       (and (> (size-atom $readings) 0)
+        (and (== (index-atom $certificate 1)
+               (source-cut (index-atom (index-atom $encounter 1) 1)))
+         (and (== (size-atom $closures) (size-atom $readings))
+          (and (== (size-atom $m25-reading-certificates)
+                 (size-atom $readings))
+               (M255AtLeastOneCompleteReadingAt $closures 0))))))
+     false))
+
 (= (M255ConstitutiveCertificateValid $certificate $encounter $developmental
       $m25-certificate)
    (and (M25ConstitutiveCertificateValid $m25-certificate $encounter
