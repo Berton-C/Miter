@@ -3166,8 +3166,13 @@ Already carried:
   seconds total.  The inherited scheduler nested one outer worker per live
   M25 possibility with eight inner M25.5 bridge workers per reading.  That
   multiplied thread stacks with growing history and explains the live
-  CPU/RSS failure.  Fully serializing the bridges exceeded the useful profile
-  envelope, so it was rejected rather than committed.
+  CPU/RSS failure. Fully serializing the bridges exceeded that isolated
+  profile's preferred wall-time envelope and was initially rejected. The later
+  installed `580bccb` carry showed that this decision over-weighted isolated
+  latency: bounded concurrent workers still caused the living service query to
+  return no result. Serial formation is therefore reopened below as the
+  functional baseline; safe acceleration must be earned from that baseline,
+  not assumed from a fixture.
 
   The bounded candidate preserves outer independent primary construction,
   lets exactly one complete M25 reading at a time own the eight-way bridge
@@ -3242,6 +3247,31 @@ Already carried:
   succeeds, and no fixture or runtime artifact was retained.  Installed wall
   time, peak/retained RSS, exact one VoiceRNA response/effect, checkpoint and
   restart/no-replay remain the acceptance boundary; C4 is still open.
+
+- Installed release `580bccb0f70b52af897ceca7f82a84821b024edc`
+  disproved the remaining resource-exhaustion description. It carried the same
+  exact lease and preserved the same runtime/checkpoint identity, but its three
+  supervised PeTTa children returned no result for the service query before
+  VoiceRNA. Each process exited normally with status `exit(0)`, an empty error
+  stream, and only the bootstrap import's `true` on standard output. The last
+  two exits were approximately 57 seconds apart. The supervisor correctly
+  treated those non-terminal returns as failures and contained the family;
+  Mattermost still held exactly the one human post and no response.
+
+  Ordered pairs bounded term-copy count but still ran two native reductions
+  concurrently against one live PeTTa/AtomSpace organization. That concurrency
+  is not part of M24--M26.3 and cannot justify losing the entire live cut when
+  an isolated scheduling call succeeds but the accumulated organism returns no
+  result. The next repair therefore carries every M25 primary and each of the
+  eight M25.5/M26 bridge projections serially through the same AtomSpace, once,
+  in source order. It retains every alternative and projection and has no
+  result-dependent branch, ranking, filtering, joining, interpretation, or
+  movement authority. A direct check preserved three ordered primary/readings
+  and all eight ordered bridge results; the complete pinned-PeTTa bootstrap
+  loads successfully. This is not yet live evidence that concurrency caused
+  the failed reduction: the unchanged leased contact must pass through the
+  installed serial release before that hypothesis is accepted. Purpose-stage
+  durability remains required even if the serial carry succeeds.
 
 Next movement:
 

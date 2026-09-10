@@ -14,10 +14,10 @@
 !(import_prolog_functions_from_file "./effect_membranes/vad.pl"
   (as_vad))
 ; The functions remain MeTTa-owned cognitive reductions. This pinned runtime
-; extension schedules independent primary alternatives concurrently and lets
-; one complete reading at a time own its bounded bridge-worker family. It
-; returns everything in original order and has no selection or semantic
-; authority; worker families never nest as the possibility set grows.
+; extension carries each primary alternative and bridge projection through the
+; one live PeTTa/AtomSpace organization in source order. It returns everything
+; and has no selection or semantic authority; no worker duplicates or races
+; the complete native contact surface.
 !(import_prolog_functions_from_file
   "./effect_membranes/runtime_extensions/petta_parallel.pl"
   (miter_petta_parallel_m25_primaries
