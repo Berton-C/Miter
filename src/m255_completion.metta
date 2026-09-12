@@ -214,8 +214,8 @@
                        (index-atom $constrained 3))
                      (== $witness
                        (M255CoherenceWitness $reading
-                         $encounter)))))))))))))
-     false)))
+                         $encounter))))))))))))))
+     false))
 
 (= (M255SuccessLedgerReference $reading)
    (let* (($primary (index-atom $reading 1))

@@ -3701,14 +3701,54 @@ Already carried:
   same waypoint. Live continuation, restart, and a new Mattermost contact remain
   the immediate acceptance boundary.
 
+- History-led diagnosis of the next admitted Mattermost contact localized a
+  syntactic regression in `C4BoundContactUsingV1`. The known-working `34fd733`
+  assembly reached the memory adapter in 0.001 seconds with the same captured
+  contact and restored organization; the current assembly exceeded a bounded
+  45-second check before reaching either VAD or memory. Five nested `let*`
+  forms had a third argument: each fallback was inside the binding form rather
+  than its enclosing `if`. PeTTa consequently compiled partial applications
+  instead of binding those locals. Moving one closing parenthesis restores
+  all five forms without changing any non-parenthesis token, branch, model
+  envelope, authority, mathematical clause, or one-surface R/A/P meaning.
+
+  With the exact captured 309,035-byte checkpoint (one state, 93 history rows),
+  contact, VAD observation, and environment observation, the corrected native
+  assembly reaches a valid model question in 3.1 seconds. With explicitly
+  diagnostic unavailable-memory/model observations it returns a valid processed
+  row in 3.2--3.3 seconds. These trials make one complete initial formation,
+  zero model calls, zero external effects, and no live-state writes. Native
+  checkpoint restoration takes about 4.8 seconds. This establishes the repaired
+  dataflow and failure branch, not live retrieval, successful provider output,
+  VoiceRNA delivery, or later consequence.
+
+  The existing packaging scan now also checks native `let*` arity. It rejects
+  the defective predecessor and found one further misplaced closing parenthesis
+  in `M255CoherenceWitnessValid`. That equally bounded syntax correction retains
+  every logical clause; the native validator accepts the exact witness and
+  rejects an altered clause and malformed witness (about 0.27 seconds for the
+  substantive checks). All source forms and manifest hashes pass. No test,
+  profile, model material, or additional document enters Git. Installed
+  continuation has already succeeded within the original maximum; the new
+  unanswered contact remains restart-owned work, and the live runtime is
+  deliberately stopped pending this repair's installation.
+
+  The corrected source also installed through `bin/miter` into a single
+  2.4-MiB temporary runtime, reached native `assistant-waiting` before and after
+  restart with verified LKG and zero model calls, and stopped cleanly. Its
+  supervisor/child used approximately 0%/6.1% CPU and 21/78 MiB RSS at the
+  observation waypoint. The temporary runtime and trial process families were
+  removed; the private captured input remains only for the still-open live
+  comparison. Ordinary live latency, real memory/provider participation,
+  delivery, and no-replay on the installed release remain unmeasured here.
+
 Next movement:
 
-1. commit and install the corrected maximum-bounded continuation validator,
-   explicitly continue AMA-1.2 while its original 168-hour maximum remains
-   current, restart the one runtime, and introduce one new Mattermost contact.
-   The prior contact
-   is terminally rejected and may not be moved, replayed, or presented as a new
-   stimulus. Require the
+1. install the bounded dialogue-binding syntax repair and carry the currently
+   leased contact through the one supported runtime under the already-continued
+   AMA-1.2 grant. Preserve its exact input and checkpoint through upgrade; do
+   not introduce another message to bypass it. The older terminally rejected
+   contact may not be moved, replayed, or presented as a new stimulus. Require the
    supported runtime either to produce one certified response/effect or to
    preserve a typed native unresolved standing without process or query
    collapse. Only after a delivered response may a human reply become returned

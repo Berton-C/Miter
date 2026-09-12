@@ -2039,7 +2039,7 @@
                        (assistant-dialogue-model-participation-v1 $question
                          $observation
                          (voice-rendering-unavailable $voice-question
-                           $reviewed)))))
+                           $reviewed))))))
                    (assistant-processed-v3
                      (assistant-contact-held (index-atom $contact 1)
                        (capability-reformation-held $capability-prepared))
@@ -2073,7 +2073,7 @@
            (assistant-contact-held (index-atom $initial-context 1)
              (index-atom $initial-context 2))
            (assistant-contact-rejected stable-identity-scope-mismatch))
-         model-participation-not-requested)))))
+         model-participation-not-requested))))
 
 (= (C4BoundContactWithModelV1 $root $binding $contact)
    (C4BoundContactUsingV1 $root $binding $contact as_chroma as_model

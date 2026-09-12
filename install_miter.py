@@ -126,11 +126,11 @@ def command_path(name: str) -> str:
 
 
 def validate_metta_source_balance() -> None:
-    """Reject a release whose MeTTa source ends inside a partial form.
+    """Reject partial forms and malformed native let* binding syntax.
 
     PeTTa currently does not propagate every nested ``import!`` parse failure
     to the outer bootstrap process.  This packaging-only scan therefore checks
-    the lexical form boundary before an application identity can be admitted.
+    lexical boundaries and let* arity before an application identity is admitted.
     It assigns no runtime meaning and does not evaluate cognition.
     """
     source_roots = (SOURCE_ROOT / "constitution", SOURCE_ROOT / "src")
@@ -142,6 +142,13 @@ def validate_metta_source_balance() -> None:
     )
     for path in paths:
         openings: list[tuple[int, int]] = []
+        forms: list[tuple[str | None, int]] = []
+
+        def note_child(symbol: str | None = None) -> None:
+            if forms:
+                head, count = forms[-1]
+                forms[-1] = (symbol if count == 0 else head, count + 1)
+
         in_string = False
         escaped = False
         line_number = 1
@@ -177,16 +184,34 @@ def validate_metta_source_balance() -> None:
                     index = newline
                 continue
             if character == '"':
+                note_child()
                 in_string = True
             elif character == "(":
+                note_child()
                 openings.append((line_number, column_number))
+                forms.append((None, 0))
             elif character == ")":
                 if not openings:
                     relative = path.relative_to(SOURCE_ROOT)
                     raise InstallError(
                         f"Unmatched ')' in {relative}:{line_number}:{column_number}"
                     )
-                openings.pop()
+                opening_line, opening_column = openings.pop()
+                head, count = forms.pop()
+                if head == "let*" and count != 3:
+                    relative = path.relative_to(SOURCE_ROOT)
+                    raise InstallError(
+                        f"Malformed let* in {relative}:{opening_line}:{opening_column}: "
+                        f"expected bindings and one body, found {count - 1} arguments"
+                    )
+            elif not character.isspace():
+                end = index + 1
+                while end < len(source) and not source[end].isspace() and source[end] not in '();"':
+                    end += 1
+                note_child(source[index:end])
+                column_number += end - index - 1
+                index = end
+                continue
             index += 1
         relative = path.relative_to(SOURCE_ROOT)
         if in_string:
