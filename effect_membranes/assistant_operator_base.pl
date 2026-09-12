@@ -693,9 +693,7 @@ as_evaluation_continuation_bound(Root,Document,Grant,Config,Binding) :-
     Grant.capabilities==["mattermost-new-event","mattermost-create-post",
       "shared-continuity","scoped-semantic-memory",
       "authorized-model-participation"],
-    Grant.limits==_{first_segment_hours:72,maximum_hours:168,
-      admitted_events:1000,outbound_posts:500,outbound_per_hour:60,
-      remote_calls:50},
+    as_evaluation_continuation_limits_valid(Grant.limits),
     Grant.authority_separation==
       "grant-bounds-reach-not-meaning-or-movement",
     as_sha256(Grant.activation_witness_sha256,_),
@@ -707,6 +705,11 @@ as_evaluation_continuation_bound(Root,Document,Grant,Config,Binding) :-
     as_mattermost_binding_local(Root,Config,Binding),
     as_evaluation_grant_bound(Root,Config,Binding,'ama-1.2',BoundGrant),
     BoundGrant==Grant.
+
+as_evaluation_continuation_limits_valid(
+    _{first_segment_hours:72,maximum_hours:168,
+      admitted_events:1000,outbound_posts:500,outbound_per_hour:60,
+      remote_calls:50}).
 
 as_evaluation_continuation_admin_witness(Witness) :-
     is_dict(Witness),

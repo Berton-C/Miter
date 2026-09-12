@@ -3674,11 +3674,39 @@ Already carried:
   registration must be unloaded and archived without touching the accepted
   runtime before the one-runtime distribution can close.
 
+- Installed release `aea8bde1ed69d039c5d5da57a144759c89758df2`
+  replaced `ce5949f` through the supported upgrade path with the exact runtime
+  identity and active-checkpoint SHA-256 unchanged, no carried input, and no
+  replay. The obsolete system launch daemon was unloaded and its plist moved
+  into the preserved historical archive; it is no longer a competing runtime.
+  The current service then stopped cleanly, but the new administrative
+  continuation was held before writing any grant state.
+
+  The exact failure was a Prolog representation error in the continuation
+  binding check. It compared a JSON dictionary with an anonymous-tag dictionary
+  by term identity; the concrete JSON tag and anonymous source tag can never be
+  identical even when all six limit fields match. The bounded repair replaces
+  only that impossible comparison with explicit validation of the four existing
+  event/effect/model limits plus the ratified 72-hour segment and 168-hour
+  maximum. It does not alter the grant, contact admission, Soul formation,
+  M24--M26.3, R/A/P, memory, VoiceRNA, effect, or continuity semantics.
+
+  Against a disposable byte-for-byte copy of the preserved grant state, the
+  repaired binding accepted the exact original witness and limits. A durable
+  continuation write preserved the activation epoch, original maximum, all
+  limit values, grant identity, and 16 existing model claims; it added exactly
+  one segment-history row and bounded the new segment at the unchanged original
+  maximum. Whole-source Prolog loading, MeTTa lexical balance, and whitespace
+  checks pass. The disposable copy and diagnostic source were removed at the
+  same waypoint. Live continuation, restart, and a new Mattermost contact remain
+  the immediate acceptance boundary.
+
 Next movement:
 
-1. commit and install the exact paused-lease and maximum-bounded continuation
-   repair, explicitly continue AMA-1.2 while its original 168-hour maximum
-   remains current, and introduce one new Mattermost contact. The prior contact
+1. commit and install the corrected maximum-bounded continuation validator,
+   explicitly continue AMA-1.2 while its original 168-hour maximum remains
+   current, restart the one runtime, and introduce one new Mattermost contact.
+   The prior contact
    is terminally rejected and may not be moved, replayed, or presented as a new
    stimulus. Require the
    supported runtime either to produce one certified response/effect or to
