@@ -843,6 +843,16 @@ as_evaluation_effect_available(Root,Config,Binding,EffectId0,GrantId) :-
     \+ as_evaluation_other_pending_effect(Root,EffectId).
 
 as_evaluation_grant(Root,Config,Binding,GrantId,Grant) :-
+    as_evaluation_grant_bound(Root,Config,Binding,GrantId,Grant),
+    get_time(Now),
+    Now>=Grant.activated_at_epoch,Now=<Grant.segment_expires_at_epoch,
+    Now=<Grant.maximum_expires_at_epoch,
+    as_evaluation_control_allows(Root).
+
+% The bound grant identity is separated from its current temporal reach so a
+% pause can preserve already leased bytes without admitting them to cognition.
+% This predicate does not authorize a contact, model call or effect.
+as_evaluation_grant_bound(Root,Config,Binding,GrantId,Grant) :-
     as_mattermost_binding_matches_config(Config,Binding),
     directory_file_path(Root,'evaluation-grants.json',Path),
     miter_store_read_json(Path,Document),is_dict(Document),
@@ -858,11 +868,18 @@ as_evaluation_grant(Root,Config,Binding,GrantId,Grant) :-
     as_mattermost_binding_sha256(Root,BindingHash),
     as_sha256(Grant.binding_sha256,BindingHash),
     number(Grant.activated_at_epoch),number(Grant.segment_expires_at_epoch),
-    number(Grant.maximum_expires_at_epoch),get_time(Now),
-    Now>=Grant.activated_at_epoch,Now=<Grant.segment_expires_at_epoch,
-    Now=<Grant.maximum_expires_at_epoch,
-    as_evaluation_control_allows(Root),
+    number(Grant.maximum_expires_at_epoch),
     as_evaluation_limits_valid(Grant.limits).
+
+as_evaluation_contact_reach_paused(Root) :-
+    as_mattermost_config(Root,Config),
+    as_mattermost_binding_local(Root,Config,Binding),
+    as_evaluation_grant_bound(Root,Config,Binding,_,Grant),
+    get_time(Now),
+    ( Now<Grant.activated_at_epoch
+    ; Now>Grant.segment_expires_at_epoch
+    ; Now>Grant.maximum_expires_at_epoch
+    ; \+ as_evaluation_control_allows(Root) ), !.
 
 as_evaluation_limits_valid(Limits) :-
     is_dict(Limits),

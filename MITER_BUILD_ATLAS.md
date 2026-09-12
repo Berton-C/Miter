@@ -3632,14 +3632,55 @@ Already carried:
   RSS and its sole PeTTa child 2.4% CPU / 26.7 MiB RSS; after stop neither
   remained. The only unmeasured limb is the preserved installed lease through
   GLM, native review, certified Mattermost delivery, returned consequence, and
-  restart/no-replay. That exact lease remains the sole acceptance stimulus.
+  restart/no-replay.
+
+- The retained Mattermost carrier did not reach release `ce5949f` as a live
+  lease. Three pre-expiry cycles durably held the exact contact because the
+  then-installed VoiceRNA validator left `C4BoundContactWithModelV1`
+  unreduced. After the 72-hour evaluation segment expired, the service reread
+  the still-leased carrier through the current-authority scope binder and
+  reclassified it as rejected. That exposed a separate reach-lifecycle defect:
+  temporal pause was incorrectly treated as retroactive carrier malformation.
+
+  The bounded repair now separates a grant's exact binding from its current
+  temporal reach. While that bound grant is paused, a V3 surface carrier already
+  under a durable lease remains leased and supplies no native input; malformed
+  carriers are still rejected when reach is available. A disposable installed
+  runtime proved both branches, reached verified native `assistant-waiting`,
+  and stopped cleanly. No model call, effect, checkpoint change, or persistent
+  process survived the trial.
+
+  A new explicit `continue-evaluation-admin` operator path supplies the missing
+  72-hour segment transition. It requires the service to be stopped, the exact
+  original administrator consent witness and stable Mattermost binding, healthy
+  live Mattermost, Chroma, embedding, and selected-model dependencies, private
+  runtime modes, and no unresolved effect. It preserves the original activation
+  epoch, unchanged 168-hour maximum, grant identifiers, aggregate remote-call
+  counts, and per-grant claim accounting; its new segment expiry is the lesser
+  of 72 hours from continuation and that original maximum. A disposable write
+  trial retained an existing GLM claim under the same grant id and recorded the
+  original and continued segments without admitting contact. Whole-source
+  Prolog loading and a fresh complete LKG bootstrap passed. The live operator
+  continuation, new Mattermost contact, certified response, returned
+  consequence, and restart/no-replay remain the acceptance boundary.
+
+  The pre-commit host waypoint found no disposable-runtime survivor. The
+  accepted `/Users/claritymiter/Miter` supervisor used about 0.1% CPU / 22 MiB
+  RSS and its sole PeTTa child about 3.4% CPU / 745 MiB RSS at that instant.
+  It also exposed an independent obsolete pre-cleanroom launch daemon at
+  `/Library/LaunchDaemons/io.singularitynet.miter.plist`, running the superseded
+  `/Library/Application Support/Miter` source and continuity roots after host
+  reboot; its child used about 19% CPU / 744 MiB RSS. That exact legacy
+  registration must be unloaded and archived without touching the accepted
+  runtime before the one-runtime distribution can close.
 
 Next movement:
 
-1. commit and install the exact VoiceRNA revision-context projection repair,
-   then resume the one
-   already leased Mattermost contact without introducing another stimulus.
-   Require the
+1. commit and install the exact paused-lease and maximum-bounded continuation
+   repair, explicitly continue AMA-1.2 while its original 168-hour maximum
+   remains current, and introduce one new Mattermost contact. The prior contact
+   is terminally rejected and may not be moved, replayed, or presented as a new
+   stimulus. Require the
    supported runtime either to produce one certified response/effect or to
    preserve a typed native unresolved standing without process or query
    collapse. Only after a delivered response may a human reply become returned

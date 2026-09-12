@@ -230,6 +230,9 @@ sudo "/Users/claritymiter/Miter/bin/miter" activate-evaluation-admin
 # Alternative direct-confirmation path:
 sudo "/Users/claritymiter/Miter/bin/miter" activate-evaluation \
   --haley-affirmation-post-id EXACT_MATTERMOST_POST_ID
+# After a 72-hour segment pauses, stop Miter and explicitly continue only
+# within the original ratified 168-hour maximum:
+sudo "/Users/claritymiter/Miter/bin/miter" continue-evaluation-admin
 sudo "/Users/claritymiter/Miter/bin/miter" start
 sudo "/Users/claritymiter/Miter/bin/miter" status
 sudo "/Users/claritymiter/Miter/bin/miter" stop
@@ -253,7 +256,11 @@ clean effect-reconciliation state, and a durable 72-hour activation witness.
 The administrative path is an explicit reach-authority record, not a Soul
 decision and not an inference of consent. `status` reports its standing,
 operator source, and resource counts without exposing conversation content or
-stable IDs.
+stable IDs. `continue-evaluation-admin` requires Miter to be stopped, repeats
+the live dependency and private-state checks, preserves prior model-call
+accounting, and can open another segment only up to the activation's unchanged
+168-hour maximum. It changes reach time only; it cannot choose meaning,
+movement, memory use, wording, or an effect.
 `config/continuity.json` and `config/constitutive-projection.json` are internal
 authority projections, not operator settings.
 

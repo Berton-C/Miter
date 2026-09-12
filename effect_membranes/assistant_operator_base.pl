@@ -26,7 +26,7 @@ as_dispatch([Command0|Args], Reply, Code) :-
     miter_store_nonempty_atom(Command0, Command),
     as_command(Command, Args, Reply, Code), !.
 as_dispatch(_, _{schema:"miter-assistant-operator-result-v1",status:"usage-error",
-  usage:"miter <install|bootstrap|model-selection|select-model|evaluation-disclosure|activate-evaluation|activate-evaluation-admin|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--resource ID --duration-seconds N --max-calls N|--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
+  usage:"miter <install|bootstrap|model-selection|select-model|evaluation-disclosure|activate-evaluation|activate-evaluation-admin|continue-evaluation-admin|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--resource ID --duration-seconds N --max-calls N|--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
 
 as_command(install, Args, Reply, Code) :-
     !,
@@ -76,6 +76,12 @@ as_command('activate-evaluation-admin', Args, Reply, Code) :-
     as_required_option(Args,'--runtime-root',Root0),
     as_runtime_path(Root0,Root),
     as_activate_evaluation_admin(Root,Reply),as_reply_code(Reply,Code).
+as_command('continue-evaluation-admin', Args, Reply, Code) :-
+    !,
+    as_exact_options(Args,['--runtime-root']),
+    as_required_option(Args,'--runtime-root',Root0),
+    as_runtime_path(Root0,Root),
+    as_continue_evaluation_admin(Root,Reply),as_reply_code(Reply,Code).
 as_command('run-supervised', Args, Reply, Code) :-
     !,
     as_exact_options(Args,['--runtime-root']),
@@ -123,7 +129,8 @@ as_reply_code(Reply, 0) :- get_dict(status, Reply, Status),
       panicked,'stop-pending','panic-pending','processing-unconfirmed',
       'liveness-unconfirmed','existing-process-unconfirmed',queued,duplicate,
       'evidence-stored','evaluation-disclosure','evaluation-activated',
-      'evaluation-already-active','supervised-clean-exit','crash-loop-contained',
+      'evaluation-already-active','evaluation-segment-already-current',
+      'evaluation-segment-continued','supervised-clean-exit','crash-loop-contained',
       'model-selection','model-selected']), !.
 as_reply_code(_, 1).
 
@@ -649,6 +656,115 @@ as_activate_evaluation_admin(Root,Reply) :-
     ; Reply=_{schema:"miter-assistant-operator-result-v1",
         status:'evaluation-activation-held',
         reason:"ratified-administrator-attestation-or-complete-preflight-not-established"} ), !.
+
+as_continue_evaluation_admin(Root,Reply) :-
+    ( catch(as_continue_evaluation_admin_checked(Root,Reply0),_,fail) ->
+        Reply=Reply0
+    ; Reply=_{schema:"miter-assistant-operator-result-v1",
+        status:'evaluation-continuation-held',
+        reason:"current-ratified-segment-or-complete-preflight-not-established"} ), !.
+
+as_continue_evaluation_admin_checked(Root,Reply) :-
+    as_root(Root,_),as_verify_lkg(Root,verified),
+    as_evaluation_continuation_bound(Root,Document,Grant,Config,Binding),
+    get_time(Now),
+    ( Now>Grant.maximum_expires_at_epoch ->
+        Reply=_{schema:"miter-assistant-operator-result-v1",
+          status:'evaluation-continuation-held',grant_id:Grant.id,
+          reason:"ratified-maximum-expired",
+          maximum_expires_at_epoch:Grant.maximum_expires_at_epoch}
+    ; Now=<Grant.segment_expires_at_epoch ->
+        Reply=_{schema:"miter-assistant-operator-result-v1",
+          status:'evaluation-segment-already-current',grant_id:Grant.id,
+          segment_expires_at_epoch:Grant.segment_expires_at_epoch,
+          maximum_expires_at_epoch:Grant.maximum_expires_at_epoch}
+    ; as_evaluation_continuation_preflight(Root,Config,Binding),
+      as_write_evaluation_continuation(Root,Document,Grant,Config,Now,Reply) ).
+
+as_evaluation_continuation_bound(Root,Document,Grant,Config,Binding) :-
+    directory_file_path(Root,'evaluation-grants.json',GrantPath),
+    miter_store_read_json(GrantPath,Document),is_dict(Document),
+    Document.schema=="miter-evaluation-grants-v1",
+    Document.standing=="active-explicit-grants",
+    Document.authority=="AMA-1.2-ratified-by-berton",
+    Document.authority_separation==
+      "grant-bounds-reach-not-meaning-or-movement",
+    get_dict(grants,Document,[Grant]),is_dict(Grant),
+    Grant.capabilities==["mattermost-new-event","mattermost-create-post",
+      "shared-continuity","scoped-semantic-memory",
+      "authorized-model-participation"],
+    Grant.limits==_{first_segment_hours:72,maximum_hours:168,
+      admitted_events:1000,outbound_posts:500,outbound_per_hour:60,
+      remote_calls:50},
+    Grant.authority_separation==
+      "grant-bounds-reach-not-meaning-or-movement",
+    as_sha256(Grant.activation_witness_sha256,_),
+    as_evaluation_continuation_admin_witness(Grant.disclosure_witness),
+    Grant.segment_expires_at_epoch=<Grant.maximum_expires_at_epoch,
+    Maximum is Grant.activated_at_epoch+168*3600,
+    Grant.maximum_expires_at_epoch=:=Maximum,
+    as_mattermost_config(Root,Config),Config.enabled==true,
+    as_mattermost_binding_local(Root,Config,Binding),
+    as_evaluation_grant_bound(Root,Config,Binding,'ama-1.2',BoundGrant),
+    BoundGrant==Grant.
+
+as_evaluation_continuation_admin_witness(Witness) :-
+    is_dict(Witness),
+    Witness.witness_kind=="administrator-attested-participant-consent",
+    Witness.attestor_username=="berton_c",
+    Witness.participant_username=="haley",
+    Witness.authority=="system-administrator-and-evaluation-owner",
+    Witness.scope=="AMA-1.2-only",
+    Witness.standing=="ratified-consent-attestation-current",
+    number(Witness.attested_at_epoch),
+    as_sha256(Witness.content_sha256,_).
+
+as_evaluation_continuation_preflight(Root,Config,Binding) :-
+    \+ (as_process_state(Root,State,_),State\==dead),
+    as_mattermost_binding_live(Root,Config,Binding),
+    as_secure_runtime_tree(Root),
+    as_evaluation_private_modes(Root),
+    as_evaluation_no_unresolved_effect(Root),
+    as_evaluation_memory_health(Root),
+    as_evaluation_model_health(Root).
+
+as_write_evaluation_continuation(Root,Document,Grant,Config,Now,Reply) :-
+    RequestedExpiry is Now+72*3600,
+    SegmentExpiry is min(RequestedExpiry,Grant.maximum_expires_at_epoch),
+    SegmentExpiry>Now,
+    as_evaluation_model_grants(Root,Config,Grant.activated_at_epoch,
+      SegmentExpiry,ModelGrants),
+    directory_file_path(Root,'model-grants.json',ModelGrantPath),
+    as_write_json_durable(ModelGrantPath,ModelGrants),
+    put_dict(segment_expires_at_epoch,Grant,SegmentExpiry,ContinuedGrant),
+    as_evaluation_segment_history(Document,Grant,History0),
+    append(History0,[_{continued_at_epoch:Now,
+      prior_segment_expires_at_epoch:Grant.segment_expires_at_epoch,
+      segment_expires_at_epoch:SegmentExpiry,
+      maximum_expires_at_epoch:Grant.maximum_expires_at_epoch,
+      authority:"explicit-system-administrator-continuation-within-ratified-maximum"}],
+      History),
+    put_dict(_{grants:[ContinuedGrant],segment_history:History},Document,Continued),
+    directory_file_path(Root,'evaluation-grants.json',GrantPath),
+    as_write_json_durable(GrantPath,Continued),
+    as_write_control(Root,continue,'evaluation-segment-continuation-admin'),
+    as_secure_runtime_tree(Root),
+    Reply=_{schema:"miter-assistant-operator-result-v1",
+      status:'evaluation-segment-continued',grant_id:Grant.id,
+      continued_at_epoch:Now,
+      prior_segment_expires_at_epoch:Grant.segment_expires_at_epoch,
+      segment_expires_at_epoch:SegmentExpiry,
+      maximum_expires_at_epoch:Grant.maximum_expires_at_epoch,
+      authority_boundary:
+        "reach-time-only-no-meaning-movement-memory-or-effect-choice-authority"}.
+
+as_evaluation_segment_history(Document,Grant,History) :-
+    ( get_dict(segment_history,Document,Existing) ->
+        is_list(Existing),History=Existing
+    ; History=[_{activated_at_epoch:Grant.activated_at_epoch,
+        segment_expires_at_epoch:Grant.segment_expires_at_epoch,
+        maximum_expires_at_epoch:Grant.maximum_expires_at_epoch,
+        authority:"original-ratified-activation"}] ).
 
 as_activate_evaluation_checked(Root,PostId0,Reply) :-
     as_root(Root,_),as_verify_lkg(Root,verified),
@@ -1372,7 +1488,8 @@ as_evaluation_status(Root,Standing) :-
       Document.standing=="active-explicit-grants",
       get_dict(grants,Document,[Grant]),is_dict(Grant) ->
         get_time(Now),
-        ( Now>Grant.segment_expires_at_epoch -> State="paused-segment-expired"
+        ( Now>Grant.maximum_expires_at_epoch -> State="maximum-expired"
+        ; Now>Grant.segment_expires_at_epoch -> State="paused-segment-expired"
         ; State="active" ),
         as_evaluation_json_count(Root,'surface/events',Events),
         as_evaluation_effect_counts(Root,Grant,Posts,PostsLastHour),

@@ -953,8 +953,10 @@ as_take_inputs(Root, [Name|Rest], Inputs) :-
 as_take_input(Root, carrier(leased,Name), Outcome) :-
     as_path(Root, leased, Leased), directory_file_path(Leased, Name, Source),
     ( catch((size_file(Source, Size), as_config(Root, max_input_bytes, Max), Size =< Max,
-      miter_store_read_json(Source, Dict), as_input_dict(Root, Dict, Input, InputId),
-      Outcome=accepted(Input), as_receipt(Root, InputId, leased, Name)), _,fail)
+      miter_store_read_json(Source, Dict),
+      ( as_surface_contact_reach_paused(Root,Dict) -> Outcome=held
+      ; as_input_dict(Root, Dict, Input, InputId),
+        Outcome=accepted(Input), as_receipt(Root, InputId, leased, Name) )), _,fail)
     -> true ; as_reject_input(Root, Name, Source, Outcome) ), !.
 as_take_input(Root, carrier(inbox,Name), Outcome) :-
     as_path(Root, inbox, Inbox), directory_file_path(Inbox, Name, Source),
@@ -964,6 +966,16 @@ as_take_input(Root, carrier(inbox,Name), Outcome) :-
       \+ exists_file(Destination), rename_file(Source, Destination),
       Outcome=accepted(Input), as_receipt(Root, InputId, leased, Name)), _,fail)
     -> true ; as_reject_input(Root, Name, Source, Outcome) ), !.
+
+% A temporal or operator pause closes new Mattermost reach, model use and
+% effects.  It does not retroactively make an already durable surface carrier
+% malformed.  Leave that carrier under its existing lease so an explicit
+% continuation can revalidate it against the then-current exact binding.
+as_surface_contact_reach_paused(Root,Dict) :-
+    is_dict(Dict),
+    as_dict_atom(Dict,schema,'miter-assistant-input-v3'),
+    as_dict_atom(Dict,input_kind,'surface-contact'),
+    as_evaluation_contact_reach_paused(Root).
 
 as_reject_input(Root, Name, Source, rejected) :-
     as_path(Root, rejected, Rejected), directory_file_path(Rejected, Name, Destination),
