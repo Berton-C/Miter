@@ -116,8 +116,10 @@
          (C4ExecutableExtensionResource $operation)))))
 
 (= (C4CapabilityRouteFromMovement $movement)
-   (if (and (CPShape $movement movement-formed 7)
-            (== (index-atom $movement 1) inquiry))
+   ; PeTTa evaluates both `and` operands: shape checks must guard field access
+   ; with `if`, including a lawful inquiry with no structured tool route.
+   (if (if (CPShape $movement movement-formed 7)
+         (== (index-atom $movement 1) inquiry) false)
      (let* (($answerability (index-atom $movement 5))
             ($o-star (if (CPShape $answerability answerability 2)
               (index-atom $answerability 1) ()))
@@ -125,13 +127,15 @@
               (index-atom $o-star 1) ()))
             ($route (if (CPShape $route-wrapper consequence-route 3)
               (index-atom $route-wrapper 1) ())))
-       (if (and (CPShape $route c4-capability-request-route-v1 5)
-             (and (CPShape (index-atom $route 2) native-purpose 2)
-              (and (!= (index-atom (index-atom $route 2) 1) "")
-               (and (C4CapabilityOperationValid (index-atom $route 3))
-                (and (== (index-atom $route 4)
-                     dedicated-user-open-growth-environment)
-                     (== (index-atom $route-wrapper 2) non-certifying))))))
+       (if (if (CPShape $route c4-capability-request-route-v1 5)
+             (if (CPShape (index-atom $route 2) native-purpose 2)
+               (and (!= (index-atom (index-atom $route 2) 1) "")
+                (and (C4CapabilityOperationValid (index-atom $route 3))
+                 (and (== (index-atom $route 4)
+                      dedicated-user-open-growth-environment)
+                      (== (index-atom $route-wrapper 2) non-certifying))))
+               false)
+             false)
          $route
          (c4-capability-request-route-unavailable
            movement-answerability-is-not-an-exact-tool-request)))

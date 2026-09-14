@@ -3742,9 +3742,55 @@ Already carried:
   comparison. Ordinary live latency, real memory/provider participation,
   delivery, and no-replay on the installed release remain unmeasured here.
 
+- The installed `ee9c48d` syntax repair reached and stored a complete GLM
+  semantic observation, but still exited before VoiceRNA. The private export
+  of the exact pending contact, checkpoint and cached memory now reproduces
+  its model-question SHA-256 exactly. Four verified memory participants and
+  both saved semantic readings pass native validation and full reformation.
+  The first failing continuation is `C4CapabilityRouteFromMovement`: the
+  lawful inquiry has the atomic route `discriminating-contact`. Its eager
+  `and` condition nevertheless indexes that atom as a tool-request structure,
+  so the query has no solution instead of returning its existing unavailable
+  standing. History locates this extractor in `6840dc1`; `15e8bf6` placed its
+  call directly on ordinary dialogue. This is not evidence that either commit
+  alone explains all earlier failures.
+
+  The bounded repair replaces only shape-dependent eager conjunctions in
+  that extractor with native conditional guards. It changes no mathematical
+  clause, formed movement, one-surface R/A/P read, Soul expression, model
+  budget, effect permission or checkpoint schema. Existing valid HTTP and
+  argv routes return exactly unchanged; wrong environment, certifying route,
+  empty purpose and invalid operation remain unavailable. Sixteen native
+  cases each return exactly one expected result, including atomic, empty and
+  truncated carriers that previously erased the continuation.
+
+  Against the captured 309,035-byte checkpoint (one state, 93 history rows),
+  bootstrap takes about 1.1 seconds, restore 4.7--4.9 seconds, and initial
+  formation/reformation about 2.9--3.2 seconds each. The repaired extractor
+  and next VoiceRNA question return in under 0.001 seconds. The complete
+  `C4BoundContactUsingV1` assembly also returns a typed processed/voice-held
+  result in 6.3 seconds with those saved observations and an explicitly
+  unavailable renderer. Its diagnostic binding/resource direction are not
+  live admission; no voice, audit approval, certificate or successful effect
+  was fabricated. Two complete formations remain on that path, with zero
+  network/model calls and no live-state writes. The dependency change is
+  confined to inspecting an already-formed movement, not its construction;
+  no new state, cache, formation or persistent representation is introduced.
+  Whole-source syntax, Prolog loading, all 33 source hashes and the exact
+  loaded native constitutional manifest pass.
+
+  This repairs the reproduced query collapse, not the Mattermost acceptance
+  claim. Installed positive rendering/audit/delivery, returned consequence,
+  restart/no-replay, live CPU/RSS and growing-history latency remain open.
+  The pre-commit process read finds no live Miter supervisor/child or surviving
+  diagnostic; only the expected workshop broker remains (0% CPU, about 6 MiB
+  RSS). Keep the private capture only until the pending installed comparison
+  completes. The immediate carry is the same leased contact through the
+  guard-repaired release; do not send a replacement stimulus or reset claims.
+
 Next movement:
 
-1. install the bounded dialogue-binding syntax repair and carry the currently
+1. install the bounded optional-capability guard repair and carry the currently
    leased contact through the one supported runtime under the already-continued
    AMA-1.2 grant. Preserve its exact input and checkpoint through upgrade; do
    not introduce another message to bypass it. The older terminally rejected
