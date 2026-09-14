@@ -146,7 +146,7 @@ as_model_question_carrier(
     as_model_c4_audit_contract(AuditContract,Instructions),
     QuestionRef=['question-reference',ContactId,'voice-audit'],
     as_symbol(ContactId,_),as_symbol(PayloadRef,_),as_sha256(ContentHash,_),
-    as_model_bounded_text(Text,1,32768),as_model_raw_reference(RawRef),
+    as_model_bounded_source_text(Text,1,32768),as_model_raw_reference(RawRef),
     MovementReference=['movement-reference'|_],length(MovementReference,5),
     is_list(Readings),length(Readings,Count),between(2,3,Count),
     maplist(as_model_c4_semantic_reading,Readings),
@@ -211,7 +211,7 @@ as_model_question_carrier(
     Deadline) :-
     QuestionRef=['question-reference',ContactId,'general-contact-semantics'],
     as_symbol(ContactId,_), as_symbol(PayloadRef,_), as_sha256(ContentHash,_),
-    as_model_bounded_text(Text,1,32768), as_model_raw_reference(RawRef),
+    as_model_bounded_source_text(Text,1,32768), as_model_raw_reference(RawRef),
     MovementReference=['movement-reference'|_], length(MovementReference,5),
     as_model_c4_fact_entries(FactEntries),
     as_symbol(FactStanding,_), as_model_c4_flourishing_entries(FlourishingEntries),
@@ -359,7 +359,7 @@ as_model_question_carrier(
     Deadline) :-
     QuestionRef=['question-reference',ContactId,'voice-rendering'],
     as_symbol(ContactId,_), as_symbol(PayloadRef,_), as_sha256(ContentHash,_),
-    as_model_bounded_text(Text,1,32768), as_model_raw_reference(RawRef),
+    as_model_bounded_source_text(Text,1,32768), as_model_raw_reference(RawRef),
     MovementReference=['movement-reference'|_], length(MovementReference,5),
     is_list(Readings), length(Readings,Count), between(2,3,Count),
     maplist(as_model_c4_semantic_reading,Readings),
@@ -534,7 +534,7 @@ as_model_c4_private_memory_entry(
     as_model_raw_reference(SourceReference),as_sha256(SourceHash,_),
     as_sha256(CapsuleHash,_),as_model_raw_reference(SourceKey),
     atom(RuntimeId),re_match('^[0-9a-f-]{36}$',RuntimeId),
-    as_sha256(BodyHash,_),as_model_bounded_archival_text(Body,1,8000),
+    as_sha256(BodyHash,_),as_model_bounded_source_text(Body,1,8000),
     crypto_data_hash(Body,BodyHash,[algorithm(sha256),encoding(utf8)]),
     as_sha256(SnapshotHash,_).
 
@@ -1996,17 +1996,18 @@ as_model_bounded_text(Text,Min,Max) :-
     string(Text), string_length(Text,Length), Length>=Min, Length=<Max,
     string_codes(Text,Codes), maplist(as_model_supported_text_code,Codes).
 
-% An exact historical body is evidence, not a newly rendered utterance. Older
-% UTF-8 decoding defects can leave C1 characters in an otherwise verified
-% capsule. Preserve those characters and their hash through JSON transport;
-% do not normalize, omit the memory, or apply a fresh-output character filter
-% to the archive. Scope/capsule verification and remote security screening
-% still apply. New model readings and utterances keep the stricter check above.
-as_model_bounded_archival_text(Text,Min,Max) :-
+% Exact human contact and historical bodies are source evidence, not fresh
+% model output. Legacy decoding defects can leave C1 characters in a verified
+% capsule or text pasted by a human. Preserve the same bounded source through
+% semantic reading, rendering and audit, including its JSON round trip; do not
+% normalize it, omit it, or decide its meaning here. Scope/capsule verification,
+% hashes and remote security screening still apply. New model readings,
+% renderings and audit findings keep the stricter output check above.
+as_model_bounded_source_text(Text,Min,Max) :-
     string(Text), string_length(Text,Length), Length>=Min, Length=<Max,
-    string_codes(Text,Codes), maplist(as_model_archival_text_code,Codes).
+    string_codes(Text,Codes), maplist(as_model_source_text_code,Codes).
 
-as_model_archival_text_code(Code) :-
+as_model_source_text_code(Code) :-
     integer(Code), Code>0, Code=<0x10ffff, \+ between(0xd800,0xdfff,Code).
 
 as_model_supported_text_code(Code) :-

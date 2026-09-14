@@ -3896,6 +3896,44 @@ Already carried:
   elapsed), with no disposable survivor. C4 remains open pending installation
   and a fresh live carry; the consumed offer must not be replayed.
 
+  Installed `e13e22c` preserves that archive but the subsequent human-pasted
+  story (`n6gue9dagpdk7fg88a5d8coxsw`) exposes an omission in the repair:
+  exact incoming text still uses the fresh-output filter in all three C4
+  question carriers. The visible source contains U+0080/U+0094. Its installed
+  cycle holds at `semantic-reading-held / question-carrier-invalid`, before
+  any model claim; cumulative use stays 34/50 and outbound posts stay four.
+  The contact is consumed/native-checkpointed, with no source-specific
+  Mattermost effect. A local-only receipt is not a reply. The same child and
+  supervisor remain alive; neither a timeout nor Mattermost transport is
+  implicated by this result.
+
+  Complete the source/output distinction at semantic reading, voice rendering
+  and voice audit. All three exact-contact fields and verified historical
+  bodies use one bounded, non-NUL Unicode-scalar source check. This does not
+  normalize source text or change its meaning, scope, provenance, security
+  screening, native selection, certification, or resource limits. The only
+  invalidation is mechanical carrier acceptance; existing native organization
+  and terminal receipts are not reconstructed or replayed by the repair.
+  With only source text/hash varied in the captured carrier dependencies,
+  all three predecessor carriers reject the legacy characters and all three
+  repaired carriers preserve them through real request JSON round trips.
+  Ordinary Unicode/emoji, unchanged exact memory hashes, and rejection of
+  NUL, empty/oversized source, non-scalars, tampered memory, duplicate memory,
+  security-risk text and malformed fresh readings/renderings/findings pass.
+  This is bounded dependency testing, not proof of the new live conversation.
+
+  Source syntax and pinned bootstrap pass (1.07 s). The same 100-run render
+  carrier mean changes from 0.676 ms to 0.658 ms wall (CPU 0.666 to 0.650 ms).
+  At 1,308 source characters the three carriers take 0.26--1.18 ms each;
+  at the unchanged 32,768-character bound, 3.75--4.68 ms (20 runs each).
+  No full constitutive formation, model call, live write, persistent cache or
+  state growth is introduced by these checks. Live turn, growing-history and
+  restart costs remain open. The process waypoint finds only the expected
+  broker, supervisor and unchanged child (7.2% CPU, about 799 MiB RSS,
+  14 minutes elapsed); the bounded probe exits and is removed from temporary
+  storage. Only the model membrane and this Atlas enter the commit. Installed
+  conversation, human consequence and restart/no-replay still govern closure.
+
 Next movement:
 
 1. the installed VoiceRNA repair has delivered the fresh diagnostic above.
@@ -3905,7 +3943,7 @@ Next movement:
    or scripted acceptance. Carry its correction/request as returned consequence
    into attributable later native participation, then verify exact continuity
    and zero effect replay across restart. Keep the current installed release
-   unchanged except for the now-proved archival-text carrier repair above.
+   unchanged except for completing the proved source-text carrier repair above.
    Install that bounded repair, then use a fresh human continuation and check
    the finite AMA-1.2 authority before further contact/model/effect work.
    Investigate the still-unrecovered story
