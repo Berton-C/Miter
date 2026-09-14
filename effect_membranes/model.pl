@@ -534,7 +534,7 @@ as_model_c4_private_memory_entry(
     as_model_raw_reference(SourceReference),as_sha256(SourceHash,_),
     as_sha256(CapsuleHash,_),as_model_raw_reference(SourceKey),
     atom(RuntimeId),re_match('^[0-9a-f-]{36}$',RuntimeId),
-    as_sha256(BodyHash,_),as_model_bounded_text(Body,1,8000),
+    as_sha256(BodyHash,_),as_model_bounded_archival_text(Body,1,8000),
     crypto_data_hash(Body,BodyHash,[algorithm(sha256),encoding(utf8)]),
     as_sha256(SnapshotHash,_).
 
@@ -1995,6 +1995,19 @@ as_model_perspective_string_atom(String,Atom) :-
 as_model_bounded_text(Text,Min,Max) :-
     string(Text), string_length(Text,Length), Length>=Min, Length=<Max,
     string_codes(Text,Codes), maplist(as_model_supported_text_code,Codes).
+
+% An exact historical body is evidence, not a newly rendered utterance. Older
+% UTF-8 decoding defects can leave C1 characters in an otherwise verified
+% capsule. Preserve those characters and their hash through JSON transport;
+% do not normalize, omit the memory, or apply a fresh-output character filter
+% to the archive. Scope/capsule verification and remote security screening
+% still apply. New model readings and utterances keep the stricter check above.
+as_model_bounded_archival_text(Text,Min,Max) :-
+    string(Text), string_length(Text,Length), Length>=Min, Length=<Max,
+    string_codes(Text,Codes), maplist(as_model_archival_text_code,Codes).
+
+as_model_archival_text_code(Code) :-
+    integer(Code), Code>0, Code=<0x10ffff, \+ between(0xd800,0xdfff,Code).
 
 as_model_supported_text_code(Code) :-
     integer(Code), Code>=0,

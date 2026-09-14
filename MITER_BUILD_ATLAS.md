@@ -3867,6 +3867,35 @@ Already carried:
   retain only the still-needed private continuity inputs until that separate
   carry completes. No new fixture or runtime edit is needed for human reply.
 
+  The subsequent genuine top-level human offer (`uiujqs3n1jgmjm44xzmp4zazte`)
+  is consumed/checkpointed but has no Mattermost delivery. It uses one semantic
+  call (cumulative 34/50), then holds before the first rendering claim; the
+  existing child remains alive. Its read-only captured proof identifies the
+  obstruction: one of four recalled bodies is a 628-character earlier certified
+  expression containing U+0080/U+0094 from legacy garbled punctuation. Its
+  body hash passes, but the fresh-output character filter rejects it. History
+  identifies `5ecabc1` as the introduction of that filter. Native selection of
+  continuity is not the defect, and historical bytes must not be rewritten.
+
+  A one-variable disposable comparison reconstructs the render constructor's
+  exact cut/movement/participant dependencies: the unchanged question fails
+  the predecessor carrier and passes when only archival-body validation is
+  separated from fresh-output validation. Both render and audit requests then
+  serialize all four exact bodies with unchanged hashes. NUL, non-scalar,
+  empty/oversized archive, altered body/hash, duplicate memory ID, security-risk
+  text, and malformed fresh-output rejection checks pass. The repair
+  changes only this mechanical text-carrier distinction, not native choice,
+  R/A/P, disclosure authority, memory selection, model limits, or certification.
+  Source syntax and pinned bootstrap pass (1.02 s). A 100-run full-carrier mean
+  is 0.66 ms wall/CPU; archive checks average 0.08 ms for one entry and 0.37 ms
+  for four. No full native reformation, model call, or live write is added by
+  this check. Installed comparison, conversation, growing-history and restart
+  costs remain unmeasured for this repair; dependency projection is not runtime
+  closure. The pre-commit process check finds only the expected broker,
+  supervisor and unchanged child (2.7% CPU, about 690 MiB RSS, 89 minutes
+  elapsed), with no disposable survivor. C4 remains open pending installation
+  and a fresh live carry; the consumed offer must not be replayed.
+
 Next movement:
 
 1. the installed VoiceRNA repair has delivered the fresh diagnostic above.
@@ -3876,8 +3905,10 @@ Next movement:
    or scripted acceptance. Carry its correction/request as returned consequence
    into attributable later native participation, then verify exact continuity
    and zero effect replay across restart. Keep the current installed release
-   unchanged for this comparison, and check the finite AMA-1.2 authority before
-   further contact/model/effect work. Investigate the still-unrecovered story
+   unchanged except for the now-proved archival-text carrier repair above.
+   Install that bounded repair, then use a fresh human continuation and check
+   the finite AMA-1.2 authority before further contact/model/effect work.
+   Investigate the still-unrecovered story
    through its actual persisted provenance, not by fabricating missing text;
 2. complete live scope-isolation and model/surface-failure trials without
    replay, fabricated contact, or loss of Continuity of Mind;
