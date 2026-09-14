@@ -1196,10 +1196,29 @@ as_mattermost_effect_descriptor(
     atom_concat(mm_,RawPostId,ReplyContact), as_mattermost_id(RawPostId,_),
     as_mattermost_voice_certificate(Certificate, Scope, Proof, ReplyContact,
       Utterance),
-    term_string(Certificate, CertificateText, [quoted(true),ignore_ops(true)]),
-    string_length(CertificateText, CertificateLength), CertificateLength=<65536,
+    as_mattermost_certificate_text(Certificate, CertificateText),
     crypto_data_hash(CertificateText, CertificateHash,
       [algorithm(sha256),encoding(utf8)]).
+
+% Keep every previously accepted certificate hash unchanged. Larger exact
+% terms may share repeated structure, within the same envelope; no field is
+% summarized or removed. Canonical variable names make the hash restart-stable.
+% This is a byte representation after native certification, not cognition.
+as_mattermost_certificate_text(Certificate, Text) :-
+    ground(Certificate),acyclic_term(Certificate),
+    term_string(Certificate,Legacy,[quoted(true),ignore_ops(true)]),
+    string_length(Legacy,Length),
+    ( Length=<65536 -> Text=Legacy
+    ; term_factorized(Certificate,Skeleton,Factors),
+      copy_term(Skeleton-Factors,CanonicalSkeleton-CanonicalFactors),
+      numbervars(CanonicalSkeleton-CanonicalFactors,0,_),
+      term_string(['miter-factorized-voice-certificate-v1',
+        CanonicalSkeleton,CanonicalFactors],Text,
+        [quoted(true),ignore_ops(true),numbervars(true)]),
+      string_length(Text,EncodedLength),EncodedLength=<65536,
+      term_string(['miter-factorized-voice-certificate-v1',Restored,Bindings],
+        Text,[quoted(true),ignore_ops(true)]),
+      maplist(as_unify_checkpoint_factor,Bindings),Restored==Certificate ).
 
 as_mattermost_voice_certificate(
     ['assistant-voice-certificate-v3',
@@ -1268,6 +1287,14 @@ as_mattermost_voice_audit_reading(
     UncertaintyLength>=1,UncertaintyLength=<600.
 
 as_mattermost_voice_finding(
+    ['voice-audit-finding-v3',Kind,Source,Span,Alteration,Material,Dependency,
+      ['source-access-premise',Id,Access]]) :-
+    as_symbol(Id,_),memberchk(Access,
+      ['native-render-context','audit-only','not-material']),
+    (Access=='not-material' -> Id==none ; Id\==none),
+    as_mattermost_voice_finding(
+      ['voice-audit-finding-v2',Kind,Source,Span,Alteration,Material,Dependency]).
+as_mattermost_voice_finding(
     ['voice-audit-finding-v2',Kind,['source-basis',SourceBasis],
       ['candidate-span',CandidateSpan],['inferred-alteration',Alteration],
       ['why-material',WhyMaterial],['affected-dependency',Dependency]]) :-
@@ -1284,6 +1311,12 @@ as_mattermost_voice_finding_text(Text) :-
     string(Text),string_length(Text,Length),Length>=1,Length=<600.
 
 as_mattermost_voice_revision_standing(
+    ['source-challenged-voice-standing-v1',Standing,Witnesses]) :-
+    Standing\=['source-challenged-voice-standing-v1'|_],
+    as_mattermost_voice_revision_standing(Standing),
+    is_list(Witnesses),length(Witnesses,N),between(1,2,N),
+    maplist(as_mattermost_voice_challenge_witness,Witnesses).
+as_mattermost_voice_revision_standing(
     'initial-candidate-soul-formed-after-audit-participation').
 as_mattermost_voice_revision_standing(
     ['revised-once-by-soul-after-audit-participation',InitialAudit,
@@ -1291,6 +1324,20 @@ as_mattermost_voice_revision_standing(
     as_mattermost_voice_audit_reading(InitialAudit,Findings),Findings=[_|_],
     as_sha256(Hash,_),
     as_mattermost_compact_native_proof_reference(InitialProofReference).
+
+as_mattermost_voice_challenge_witness(
+    ['audit-source-challenge-witness-v1',['question-reference',Id,'voice-audit'],
+      Scope,['source-contact',Id,['payload-reference',Ref]],
+      ['raw-sha256',Candidate],['raw-sha256',Prior],['raw-sha256',Returned],
+      ['native-source-access-counterfacts',Facts]]) :-
+    as_symbol(Id,_),as_symbol(Ref,_),as_local_scope(Scope),
+    maplist(as_mattermost_voice_hash,[Candidate,Prior,Returned]),
+    is_list(Facts),Facts=[_|_],length(Facts,N),N=<4,
+    forall(member(Fact,Facts),
+      (Fact=['finding-source-access-contradiction',Index,Source,
+         'audit-only','native-render-context'],
+       integer(Index),between(0,3,Index),as_symbol(Source,_))).
+as_mattermost_voice_hash(Hash) :- as_sha256(Hash,_).
 
 as_mattermost_compact_native_proof_reference(
     ['native-proof-reference',CutId,MovementReference,

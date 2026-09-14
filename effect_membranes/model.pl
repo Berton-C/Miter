@@ -138,12 +138,12 @@ as_model_question_carrier(
       ['semantic-readings',Readings],
       ['candidate-rendering',['raw-sha256',CandidateHash],Rendering],
       VoiceCommitments,
-      ['request-contract',Instructions,'audit-not-movement',
-        'candidate-reading-not-effect','no-contact-no-authority-no-choice'],
+      AuditContract,
       ['resource-request',ResourceId,ModelId,DirectionAuthority,
         'language-rendering',MaxTokens,Deadline]],
     QuestionRef,Scope,Instructions,'language-rendering',ResourceId,MaxTokens,
     Deadline) :-
+    as_model_c4_audit_contract(AuditContract,Instructions),
     QuestionRef=['question-reference',ContactId,'voice-audit'],
     as_symbol(ContactId,_),as_symbol(PayloadRef,_),as_sha256(ContentHash,_),
     as_model_bounded_text(Text,1,32768),as_model_raw_reference(RawRef),
@@ -160,6 +160,19 @@ as_model_question_carrier(
     DirectionAuthority='human-operator-direction-not-cognitive-authority',
     integer(MaxTokens),MaxTokens>=1,MaxTokens=<2048,
     number(Deadline),Deadline>=1,Deadline=<300.
+
+% Contract shape only. MeTTa constructs and verifies the evidence challenge;
+% this membrane neither interprets a finding nor decides its standing.
+as_model_c4_audit_contract(
+    ['request-contract',Instructions,'audit-not-movement',
+      'candidate-reading-not-effect','no-contact-no-authority-no-choice'],Instructions).
+as_model_c4_audit_contract(
+    ['request-contract',Instructions,'audit-not-movement',
+      'candidate-reading-not-effect','no-contact-no-authority-no-choice',
+      ['native-source-access-challenge-v1',Prior,Counterfacts]],Instructions) :-
+    Prior=['c4-voice-audit-observation-v1'|_],length(Prior,13),
+    ground(Prior),Counterfacts=['native-source-access-counterfacts',Rows],
+    is_list(Rows),Rows=[_|_],length(Rows,N),N=<4,ground(Rows).
 
 as_model_c4_rendering(
     ['rendered-utterance',Utterance,['bindings',Bindings],
@@ -478,6 +491,14 @@ as_model_c4_voice_audit_reading(
     maplist(as_model_c4_voice_finding,Findings),
     as_model_bounded_text(Uncertainty,1,600).
 
+as_model_c4_voice_finding(
+    ['voice-audit-finding-v3',Kind,Source,Span,Alteration,Material,Dependency,
+      ['source-access-premise',Id,Access]]) :-
+    as_symbol(Id,_),memberchk(Access,
+      ['native-render-context','audit-only','not-material']),
+    (Access=='not-material' -> Id==none ; Id\==none),
+    as_model_c4_voice_finding(
+      ['voice-audit-finding-v2',Kind,Source,Span,Alteration,Material,Dependency]).
 as_model_c4_voice_finding(
     ['voice-audit-finding-v2',Kind,['source-basis',SourceBasis],
       ['candidate-span',CandidateSpan],['inferred-alteration',Alteration],
@@ -1082,13 +1103,17 @@ as_model_local_response_schema('c4-voice-audit-question-v1',
       "voice-displacement"]},
     Finding=_{type:"object",additionalProperties:false,
       required:["kind","source_basis","candidate_span",
-        "inferred_alteration","why_material","affected_dependency"],
+        "inferred_alteration","why_material","affected_dependency",
+        "evidence_source","evidence_access"],
       properties:_{kind:Kind,
         source_basis:_{type:"string",minLength:1,maxLength:600},
         candidate_span:_{type:"string",minLength:1,maxLength:600},
         inferred_alteration:_{type:"string",minLength:1,maxLength:600},
         why_material:_{type:"string",minLength:1,maxLength:600},
-        affected_dependency:_{type:"string",minLength:1,maxLength:600}}},
+        affected_dependency:_{type:"string",minLength:1,maxLength:600},
+        evidence_source:_{type:"string",minLength:1,maxLength:256},
+        evidence_access:_{type:"string",enum:["native-render-context",
+          "audit-only","not-material"]}}},
     Schema=_{type:"object",additionalProperties:false,
       required:["findings","uncertainty"],
       properties:_{findings:_{type:"array",maxItems:4,items:Finding},
@@ -1240,9 +1265,19 @@ as_model_public_question(
         ['current-native-movement','local-proof-reference-withheld']],
       Readings,
       ['candidate-rendering',['raw-sha256','private-hash-redacted'],Rendering],
-      PublicCommitments,Contract,Resource]) :-
+      PublicCommitments,PublicContract,Resource]) :-
     as_model_public_c4_voice_commitments(Commitments,PublicCommitments),
+    as_model_public_c4_audit_contract(Contract,PublicContract),
     QuestionRef=['question-reference',_,'voice-audit'].
+
+as_model_public_c4_audit_contract(
+    ['request-contract',Instructions,A,B,C,
+      ['native-source-access-challenge-v1',Prior,Counterfacts]],
+    ['request-contract',Instructions,A,B,C,
+      ['native-source-access-challenge-v1',
+        ['prior-fallible-reading',Reading],Counterfacts]]) :- !,
+    nth0(9,Prior,Reading).
+as_model_public_c4_audit_contract(Contract,Contract).
 
 as_model_public_c4_voice_commitments(
     ['voice-commitments',SourceBound,ScopeBound,MovementBound,Disclosure,
@@ -1899,6 +1934,21 @@ as_model_c4_voice_audit_json(Result,AuditResult) :-
       ['uncertainty',Uncertainty],'candidate-fidelity-reading-not-verdict'],
     as_model_c4_voice_audit_reading(AuditResult,Findings).
 
+as_model_c4_voice_finding_json(Row,
+    ['voice-audit-finding-v3',Kind,Source,Span,Alteration,Material,Dependency,
+      ['source-access-premise',Id,Access]]) :-
+    is_dict(Row),get_dict(evidence_source,Row,IdString),!,
+    as_model_exact_keys(Row,[affected_dependency,candidate_span,evidence_access,
+      evidence_source,inferred_alteration,kind,source_basis,why_material]),
+    as_model_string_atom(IdString,Id),
+    get_dict(evidence_access,Row,AccessString),as_model_string_atom(AccessString,Access),
+    del_dict(evidence_source,Row,_,WithoutId),
+    del_dict(evidence_access,WithoutId,_,Legacy),
+    as_model_c4_voice_finding_json(Legacy,
+      ['voice-audit-finding-v2',Kind,Source,Span,Alteration,Material,Dependency]),
+    as_model_c4_voice_finding(
+      ['voice-audit-finding-v3',Kind,Source,Span,Alteration,Material,Dependency,
+        ['source-access-premise',Id,Access]]).
 as_model_c4_voice_finding_json(Row,
     ['voice-audit-finding-v2',Kind,['source-basis',SourceBasis],
       ['candidate-span',CandidateSpan],['inferred-alteration',Alteration],

@@ -3788,13 +3788,66 @@ Already carried:
   completes. The immediate carry is the same leased contact through the
   guard-repaired release; do not send a replacement stimulus or reset claims.
 
+- The installed optional-capability repair (`e137013`) carried that contact to
+  a terminal native-checkpointed receipt without process collapse. All four
+  actual render/audit returns are complete and readable. No Mattermost effect
+  followed: the initial and revised candidates both retained audit findings,
+  ending in `revised-candidate-not-supported-by-final-soul-formation`. The
+  local-only outbox is not a delivered reply. Exact reconstructed questions
+  match all four recorded question hashes. One audit premise is contradicted
+  by those requests: it calls prior-message evidence audit-only although the
+  renderer and auditor both received those bodies. That does not establish
+  recovery of the absent full story or dismiss other semantic objections.
+
+  The bounded correction is native VoiceRNA source-access challenge handling,
+  under C-054--057 and S-902. New findings name their source-access premise;
+  legacy findings remain readable. MeTTa compares that premise with the exact
+  native rendering context and may request one reconsideration per candidate.
+  A contradicted premise cannot directly certify expression. Independent
+  objections still participate in full reformation; repeated contradiction,
+  malformed return or exhausted authority remains held. The final certificate
+  retains the challenged source, candidate and prior/returned audit references.
+  Native access does not assert remote disclosure after privacy projection or
+  task fulfillment. Membranes only carry and validate the new closed shapes.
+
+  Builder trials use the same 309,035-byte captured checkpoint and actual
+  observations, with explicitly constructed source premises/reconsideration
+  replies, not invented live acceptance. Legacy readability, exact question
+  binding, both challenges within one rendering revision, unchanged independent
+  objections, finite repeated contradiction, and rejection of stripped or
+  altered provenance pass. The unchanged recorded objections still end held.
+  Bootstrap is 1.1--1.2 seconds, restore 4.8--5.0 seconds, and each material
+  formation about 3.1--3.2 seconds. Native challenge construction is under
+  0.004 seconds; it adds no full formation or cache. The ordinary path adds no
+  call; the worst once-revised path permits two extra audit calls (seven model
+  calls total including semantic reading), within unchanged grant accounting.
+  No checkpoint schema or mathematical/constitutional source changes. Live
+  candidate latency/CPU/RSS, growth slope, restart and actual provider behavior
+  remain unmeasured until installed carry. The predecessor remains one child
+  under one supervisor, about 3.4% CPU/940 MiB RSS at the pre-commit read; no
+  disposable process survives. New trial source is removed at this waypoint.
+
+  Carry to the actual effect adapter exposed a second, mechanical obstruction:
+  the certified term was 146,071 characters (145,279 without the challenge),
+  above the unchanged 65,536-character certificate envelope present since
+  `eeda8d0`. All certificate structural checks passed before that size check.
+  Exact factorization reduces it to 40,075 characters and reconstructs the
+  original term by identity. The adapter now uses that lossless representation
+  only when the legacy encoding exceeds the envelope; accepted legacy hashes
+  remain unchanged. Canonical variable names preserve restart-stable hashes;
+  irreducibly oversized terms still fail. No native judgment or certificate
+  field is removed, and neither envelope nor effect authority is enlarged.
+  The complete adapter, both-challenge/revision path and independent-objection
+  hold now pass; the bounded adapter/round-trip check is about 0.08 seconds.
+  Installed delivery and subsequent human/restart carry remain required.
+
 Next movement:
 
-1. install the bounded optional-capability guard repair and carry the currently
-   leased contact through the one supported runtime under the already-continued
-   AMA-1.2 grant. Preserve its exact input and checkpoint through upgrade; do
-   not introduce another message to bypass it. The older terminally rejected
-   contact may not be moved, replayed, or presented as a new stimulus. Require the
+1. install the bounded native VoiceRNA challenge repair, preserving the current
+   checkpoint and terminal receipts. The last contact is now consumed/held;
+   neither it nor the older rejected contact may be moved or replayed. After
+   checking the unchanged AMA-1.2 grant is still active, use one new explicitly
+   attributed diagnostic contact in the authorized Mattermost group. Require the
    supported runtime either to produce one certified response/effect or to
    preserve a typed native unresolved standing without process or query
    collapse. Only after a delivered response may a human reply become returned

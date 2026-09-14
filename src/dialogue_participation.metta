@@ -749,13 +749,21 @@
      false))
 
 (= (C4VoiceAuditInstructions)
-  "Return only one JSON object with exactly findings and uncertainty. Contribute a fallible fidelity reading of the candidate rendering against the exact current contact, native movement, supplied semantic readings, VoiceRNA commitments, and any exact scoped continuity evidence present. Do not decide pass, revise, hold, lawfulness, or effect authority; do not answer or rewrite the message. Return zero to four materially supported findings. Each finding must have exactly kind, source_basis, candidate_span, inferred_alteration, why_material, and affected_dependency. Allowed kinds are semantic-drift, soul-absence, person-not-seen, task-smearing, unsupported-certainty, authority-inflation, coercive-dominance, hidden-scope, tone-mismatch, lost-tension, unsupported-inner-state, unsupported-action, memory-misstatement, source-fidelity, uncertainty-erasure, ungrounded-authority-claim, and voice-displacement. source_basis and candidate_span identify the exact relevant excerpt or say none when the finding concerns an unsupported addition or omission. Treat claimed feelings, bodily reactions, sensory observations, or actions not established by supplied material as findings. Check recalled details against supplied sources and preserve uncertainty. Emoji are ordinary Unicode expression, not evidence of an inner state. Keep every finding field under 600 characters and uncertainty under 600 characters. Do not use a Markdown fence.")
+  "Return only one JSON object with exactly findings and uncertainty. Contribute a fallible fidelity reading, not an approval, rejection, or rewrite. Return zero to four materially supported findings against the exact contact, candidate, native movement, derived semantic readings and VoiceRNA commitments. Each finding has exactly kind, source_basis, candidate_span, inferred_alteration, why_material, affected_dependency, evidence_source, and evidence_access. The first six fields explain the precise alteration and its material consequence. evidence_source is the exact supplied reading, memory or returned-contact identifier, current-contact, or none. evidence_access is native-render-context, audit-only, or not-material; use none/not-material together when access is not a premise. These commitments are Miter’s native rendering context, not evidence reserved for its auditor. Native source access does not establish which bytes a provider saw after privacy projection, or whether a task was fulfilled. A retrieved request establishes what was requested or referenced, not its fulfillment or recovery of absent task content. Distinguish accessing a prior message from verifying the event described in it. Earlier semantic readings remain fallible, especially when they preceded disclosure of the exact bodies now present. Allowed kinds: semantic-drift, soul-absence, person-not-seen, task-smearing, unsupported-certainty, authority-inflation, coercive-dominance, hidden-scope, tone-mismatch, lost-tension, unsupported-inner-state, unsupported-action, memory-misstatement, source-fidelity, uncertainty-erasure, ungrounded-authority-claim, voice-displacement. source_basis and candidate_span give exact relevant excerpts or none for an omission/addition. Claims of feelings, bodily or sensory experiences and completed actions require evidence; referring to reading supplied text does not itself assert a bodily experience. Preserve genuine uncertainty. Emoji are ordinary Unicode expression, not evidence of an inner state. Keep the first six finding fields and uncertainty under 600 characters, evidence_source under 256. No Markdown fence.")
+
 
 (= (C4VoiceAuditFindingsValidAt $findings $i)
    (if (< $i (size-atom $findings))
      (let $finding (index-atom $findings $i)
        (==
-         ((CPShape $finding voice-audit-finding-v2 7)
+         ((or (CPShape $finding voice-audit-finding-v2 7)
+            (if (CPShape $finding voice-audit-finding-v3 8)
+              (let $premise (index-atom $finding 7)
+                (if (CPShape $premise source-access-premise 3)
+                  (and (CPHas (index-atom $premise 2)
+                         (native-render-context audit-only not-material) 0)
+                    (== (== (index-atom $premise 1) none)
+                        (== (index-atom $premise 2) not-material))) false)) false))
           (CPHas (index-atom $finding 1)
             (semantic-drift soul-absence person-not-seen task-smearing
               unsupported-certainty authority-inflation coercive-dominance
@@ -833,6 +841,92 @@
          (true true true true true true true true true true true true)))
      false))
 
+; An access contradiction is computable from the exact shared question, not
+; from a keyword in prose or a model's approval. It invalidates that premise,
+; never certifies the candidate. Other semantic disputes remain unresolved.
+(= (C4VoiceAuditSharedSources $question)
+   (cons-atom current-contact
+     (CPListAppend
+       (C4SemanticReadingIdsAt (index-atom (index-atom $question 6) 1) 0)
+       (C4PrivateMemoryIdsAt (C4PrivateContinuityContextEntries
+         (index-atom (index-atom $question 8) 7)) 0))))
+
+(= (C4VoiceAuditCounterfactsAt $findings $sources $i)
+   (if (< $i (size-atom $findings))
+     (let* (($finding (index-atom $findings $i))
+            ($rest (C4VoiceAuditCounterfactsAt $findings $sources (+ $i 1))))
+       (if (CPShape $finding voice-audit-finding-v3 8)
+         (let $premise (index-atom $finding 7)
+           (if (and (== (index-atom $premise 2) audit-only)
+                    (CPHas (index-atom $premise 1) $sources 0))
+             (cons-atom (finding-source-access-contradiction $i
+               (index-atom $premise 1) audit-only native-render-context) $rest)
+             $rest)) $rest)) ()))
+
+(= (C4VoiceAuditCounterfacts $question $observation)
+   (if (C4VoiceAuditObservationValid $observation $question)
+     (C4VoiceAuditCounterfactsAt
+       (index-atom (index-atom (index-atom $observation 9) 1) 1)
+       (C4VoiceAuditSharedSources $question) 0) ()))
+
+(= (C4VoiceAuditChallengeInstructions)
+  "Re-examine this same candidate against the same supplied evidence. Native source-access counterfacts contradict a premise of the prior fallible audit; they do NOT establish candidate fidelity or order you to withdraw any other finding. Retain any independently supported semantic objection, distinguish access to a message from fulfillment of its content, and leave unresolved what the evidence cannot settle. Return exactly findings and uncertainty using the same eight-field finding schema: kind, source_basis, candidate_span, inferred_alteration, why_material, affected_dependency, evidence_source, evidence_access. Evidence access is native-render-context, audit-only, or not-material; use none/not-material when access is not a premise. Each of the original six text fields and uncertainty is under 600 characters; evidence_source under 256. Do not approve, reject, rewrite, or answer the human. This is one bounded reconsideration of an audit premise, not permission to produce a preferred verdict.")
+
+(= (C4VoiceAuditChallengeQuestion $base $prior)
+   (let $counterfacts (C4VoiceAuditCounterfacts $base $prior)
+     (if (> (size-atom $counterfacts) 0)
+       (c4-voice-audit-question-v1
+         (index-atom $base 1) (index-atom $base 2) (index-atom $base 3)
+         (index-atom $base 4) (index-atom $base 5) (index-atom $base 6)
+         (index-atom $base 7) (index-atom $base 8)
+         (request-contract (C4VoiceAuditChallengeInstructions) audit-not-movement
+           candidate-reading-not-effect no-contact-no-authority-no-choice
+           (native-source-access-challenge-v1 $prior
+             (native-source-access-counterfacts $counterfacts)))
+         (index-atom $base 10))
+       (c4-voice-audit-question-unavailable no-native-access-counterfact))))
+
+(= (C4VoiceAuditQuestionMatches $audit $voice $candidate)
+   (let $base (C4VoiceAuditQuestion $voice $candidate)
+     (if (== $audit $base) true
+       (if (CPShape $audit c4-voice-audit-question-v1 11)
+         (let $contract (index-atom $audit 9)
+           (if (CPShape $contract request-contract 6)
+             (let $challenge (index-atom $contract 5)
+               (if (CPShape $challenge native-source-access-challenge-v1 3)
+                 (== $audit (C4VoiceAuditChallengeQuestion $base
+                   (index-atom $challenge 1))) false)) false)) false))))
+
+(= (C4ChallengeVoiceAuditUsingV1 $root $base $prior $writer)
+   (let $counterfacts (C4VoiceAuditCounterfacts $base $prior)
+     (if (> (size-atom $counterfacts) 0)
+       (let* (($challenge (C4VoiceAuditChallengeQuestion $base $prior))
+              ($returned ($writer $root $challenge)))
+         (c4-resolved-voice-audit-v1 $challenge $returned))
+       (c4-resolved-voice-audit-v1 $base $prior))))
+
+(= (C4VoiceAuditChallengeWitness $question $observation)
+   (if (C4VoiceAuditObservationValid $observation $question)
+    (let $contract (index-atom $question 9)
+     (if (CPShape $contract request-contract 6)
+       (let* (($challenge (index-atom $contract 5))
+              ($prior (index-atom $challenge 1)))
+         ((audit-source-challenge-witness-v1
+           (index-atom $question 1) (index-atom $question 2)
+           (index-atom $question 3) (index-atom (index-atom $question 7) 1)
+           (index-atom $prior 8) (index-atom $observation 8)
+           (index-atom $challenge 2)))) ())) ()))
+
+(= (C4VoiceStandingWithChallenges $standing $witnesses)
+   (if (> (size-atom $witnesses) 0)
+     (source-challenged-voice-standing-v1 $standing $witnesses) $standing))
+
+(= (C4VoiceStandingBindsChallenge $standing $question $observation)
+   (let $current (C4VoiceAuditChallengeWitness $question $observation)
+     (if (> (size-atom $current) 0)
+       (if (CPShape $standing source-challenged-voice-standing-v1 3)
+         (CPHas (index-atom $current 0) (index-atom $standing 2) 0) false) true)))
+
 ; Native cognition does not receive a provider verdict.  MeTTa carries the
 ; material relational standing: either no obstruction was contributed, or one
 ; or more unresolved fidelity obstructions were contributed.  This standing
@@ -858,7 +952,8 @@
 ; The complete constitutive joint must form again with its relational standing
 ; before native VoiceRNA can support either expression or revision.
 (= (C4VoiceAuditParticipant $question $observation)
-   (if (C4VoiceAuditObservationValid $observation $question)
+   (if (and (C4VoiceAuditObservationValid $observation $question)
+            (== (size-atom (C4VoiceAuditCounterfacts $question $observation)) 0))
      (participant-contribution
        (c4-voice-audit-participation
          (index-atom (index-atom $question 1) 1)
@@ -1238,7 +1333,43 @@
          (if (CPShape $disposition c4-native-voice-disposition-v1 6)
            (index-atom $disposition 1) unavailable)))))
 
-(= (C4VoiceRevisionStandingValid $standing $voice-question)
+(= (C4VoiceChallengeWitnessShape $witness)
+   (if (CPShape $witness audit-source-challenge-witness-v1 8)
+     (and (CPShape (index-atom $witness 1) question-reference 3)
+      (and (CPShape (index-atom $witness 2) scope 4)
+       (and (CPShape (index-atom $witness 3) source-contact 3)
+        (and (CPShape (index-atom $witness 4) raw-sha256 2)
+         (and (CPShape (index-atom $witness 5) raw-sha256 2)
+          (and (CPShape (index-atom $witness 6) raw-sha256 2)
+           (if (CPShape (index-atom $witness 7) native-source-access-counterfacts 2)
+             (and (> (size-atom (index-atom (index-atom $witness 7) 1)) 0)
+                  (< (size-atom (index-atom (index-atom $witness 7) 1)) 5)) false))))))) false))
+
+(= (C4VoiceWitnessCounterfactsValidAt $facts $sources $i)
+   (if (< $i (size-atom $facts))
+     (let $fact (index-atom $facts $i)
+       (if (CPShape $fact finding-source-access-contradiction 5)
+         (and (and (CPHas (index-atom $fact 1) (0 1 2 3) 0)
+                   (CPHas (index-atom $fact 2) $sources 0))
+          (and (== (index-atom $fact 3) audit-only)
+           (and (== (index-atom $fact 4) native-render-context)
+                (C4VoiceWitnessCounterfactsValidAt $facts $sources (+ $i 1))))) false)) true))
+
+(= (C4VoiceChallengeWitnessesValidAt $witnesses $voice $i)
+   (if (< $i (size-atom $witnesses))
+     (let $witness (index-atom $witnesses $i)
+       (if (C4VoiceChallengeWitnessShape $witness)
+         (and (== (index-atom $witness 1)
+                (question-reference (index-atom (index-atom $voice 1) 1) voice-audit))
+          (and (== (index-atom $witness 2) (index-atom $voice 2))
+           (and (== (index-atom $witness 3) (index-atom $voice 3))
+            (and (C4VoiceWitnessCounterfactsValidAt
+                   (index-atom (index-atom $witness 7) 1)
+                   (C4VoiceAuditSharedSources $voice) 0)
+                 (C4VoiceChallengeWitnessesValidAt $witnesses $voice (+ $i 1)))))) false)) true))
+
+
+(= (C4VoiceUnchallengedRevisionStandingValid $standing $voice-question)
    (let $revision-context (index-atom (index-atom $voice-question 8) 10)
      (if (== $standing initial-candidate-soul-formed-after-audit-participation)
        (== $revision-context
@@ -1254,7 +1385,13 @@
                      (index-atom $standing 1))))))
          false))))
 
-(= (C4VoiceRevisionEvidenceValid $standing)
+(= (C4VoiceChallengeEvidenceValidAt $witnesses $i)
+   (if (< $i (size-atom $witnesses))
+     (and (C4VoiceChallengeWitnessShape (index-atom $witnesses $i))
+          (C4VoiceChallengeEvidenceValidAt $witnesses (+ $i 1))) true))
+
+
+(= (C4VoiceUnchallengedRevisionEvidenceValid $standing)
    (if (== $standing initial-candidate-soul-formed-after-audit-participation)
      true
      (if (CPShape $standing revised-once-by-soul-after-audit-participation 4)
@@ -1263,6 +1400,22 @@
              (CPShape (index-atom $standing 3)
                native-proof-reference 5)))
        false)))
+
+(= (C4VoiceRevisionStandingValid $standing $voice-question)
+   (if (CPShape $standing source-challenged-voice-standing-v1 3)
+     (and (C4VoiceUnchallengedRevisionStandingValid (index-atom $standing 1) $voice-question)
+       (and (> (size-atom (index-atom $standing 2)) 0)
+         (and (< (size-atom (index-atom $standing 2)) 3)
+           (C4VoiceChallengeWitnessesValidAt (index-atom $standing 2) $voice-question 0))))
+     (C4VoiceUnchallengedRevisionStandingValid $standing $voice-question)))
+
+(= (C4VoiceRevisionEvidenceValid $standing)
+   (if (CPShape $standing source-challenged-voice-standing-v1 3)
+     (and (C4VoiceUnchallengedRevisionEvidenceValid (index-atom $standing 1))
+       (and (> (size-atom (index-atom $standing 2)) 0)
+         (and (< (size-atom (index-atom $standing 2)) 3)
+           (C4VoiceChallengeEvidenceValidAt (index-atom $standing 2) 0))))
+     (C4VoiceUnchallengedRevisionEvidenceValid $standing)))
 
 (= (C4ReviewedVoiceV2Valid $reviewed)
    (if (CPShape $reviewed c4-voice-reviewed-v2 7)
@@ -1273,8 +1426,8 @@
             ($revision-standing (index-atom $reviewed 5))
             ($soul-formation (index-atom $reviewed 6)))
        (and (C4VoiceObservationValid $voice-observation $voice-question)
-        (and (== $audit-question
-               (C4VoiceAuditQuestion $voice-question $voice-observation))
+        (and (and (C4VoiceAuditQuestionMatches $audit-question $voice-question $voice-observation)
+                  (C4VoiceStandingBindsChallenge $revision-standing $audit-question $audit-observation))
          (and (C4VoiceAuditObservationValid $audit-observation
                 $audit-question)
           (and (C4VoiceAuditSoulSupportsExpression $soul-formation
@@ -1301,8 +1454,8 @@
             ($soul-formation (index-atom $reviewed 6))
             ($disposition (index-atom $reviewed 7)))
        (and (C4VoiceObservationValid $voice-observation $voice-question)
-        (and (== $audit-question
-               (C4VoiceAuditQuestion $voice-question $voice-observation))
+        (and (and (C4VoiceAuditQuestionMatches $audit-question $voice-question $voice-observation)
+                  (C4VoiceStandingBindsChallenge $revision-standing $audit-question $audit-observation))
          (and (C4VoiceAuditObservationValid $audit-observation
                 $audit-question)
           (and (C4VoiceNativeDispositionValid $disposition $soul-formation
@@ -1332,8 +1485,8 @@
                 $voice-question $voice-observation $audit-observation)))
        (==
          ((C4VoiceObservationValid $voice-observation $voice-question)
-          (== $audit-question
-            (C4VoiceAuditQuestion $voice-question $voice-observation))
+          (and (C4VoiceAuditQuestionMatches $audit-question $voice-question $voice-observation)
+               (C4VoiceStandingBindsChallenge $revision-standing $audit-question $audit-observation))
           (C4VoiceAuditObservationValid $audit-observation $audit-question)
           (CPShape $formation c4-voice-audit-soul-formation-v2 5)
           (== $disposition $expected-disposition)
@@ -1718,18 +1871,24 @@
             ($initial-question (index-atom $review-context 8))
             ($initial-observation (index-atom $review-context 9)))
        (if (C4VoiceObservationValid $initial-observation $initial-question)
-     (let* (($initial-audit-question
+     (let* (($initial-audit-base
               (C4VoiceAuditQuestion $initial-question $initial-observation))
-            ($initial-audit-observation
-              (if (CPShape $initial-audit-question
+            ($initial-audit-prior
+              (if (CPShape $initial-audit-base
                     c4-voice-audit-question-v1 11)
-                ($model-writer $root $initial-audit-question)
+                ($model-writer $root $initial-audit-base)
                 (c4-model-observation-unavailable-v1
                   (question-reference (index-atom $contact 1) voice-audit)
                   (CPContactScope $contact)
                   (C4QuestionResource $initial-question)
                   native-voice-audit-question-unavailable
                   no-candidate-admitted)))
+            ($initial-audit-resolved (C4ChallengeVoiceAuditUsingV1 $root
+              $initial-audit-base $initial-audit-prior $model-writer))
+            ($initial-audit-question (index-atom $initial-audit-resolved 1))
+            ($initial-audit-observation (index-atom $initial-audit-resolved 2))
+            ($initial-challenges (C4VoiceAuditChallengeWitness
+              $initial-audit-question $initial-audit-observation))
             ($initial-soul-formation
               (C4VoiceAuditSoulFormation $prepared $initial-audit-question
                 $initial-audit-observation))
@@ -1746,7 +1905,8 @@
                   express-current-candidate))
          (c4-voice-reviewed-v3 $initial-question $initial-observation
            $initial-audit-question $initial-audit-observation
-           initial-candidate-soul-formed-after-audit-participation
+           (C4VoiceStandingWithChallenges
+             initial-candidate-soul-formed-after-audit-participation $initial-challenges)
            $initial-soul-formation $initial-disposition)
          (if (and $initial-disposition-valid
                   (== (index-atom $initial-disposition 1)
@@ -1775,13 +1935,13 @@
                         (C4QuestionResource $initial-question)
                         native-voice-revision-question-unavailable
                         no-candidate-admitted)))
-                  ($revision-audit-question
+                  ($revision-audit-base
                     (C4VoiceAuditQuestion $revision-question
                       $revision-observation))
-                  ($revision-audit-observation
-                    (if (CPShape $revision-audit-question
+                  ($revision-audit-prior
+                    (if (CPShape $revision-audit-base
                           c4-voice-audit-question-v1 11)
-                      ($model-writer $root $revision-audit-question)
+                      ($model-writer $root $revision-audit-base)
                       (c4-model-observation-unavailable-v1
                         (question-reference (index-atom $contact 1)
                           voice-audit)
@@ -1789,6 +1949,10 @@
                         (C4QuestionResource $initial-question)
                         native-revision-audit-question-unavailable
                         no-candidate-admitted)))
+                  ($revision-audit-resolved (C4ChallengeVoiceAuditUsingV1 $root
+                    $revision-audit-base $revision-audit-prior $model-writer))
+                  ($revision-audit-question (index-atom $revision-audit-resolved 1))
+                  ($revision-audit-observation (index-atom $revision-audit-resolved 2))
                   ($revision-soul-formation
                     (C4VoiceAuditSoulFormation
                       $initial-audit-prepared
@@ -1810,10 +1974,13 @@
                (c4-voice-reviewed-v3 $revision-question
                  $revision-observation $revision-audit-question
                  $revision-audit-observation
-                 (revised-once-by-soul-after-audit-participation
-                   $initial-audit-result (index-atom $initial-observation 8)
-                   (ARNativeProofReference
-                     (index-atom $initial-soul-formation 2)))
+                 (C4VoiceStandingWithChallenges
+                   (revised-once-by-soul-after-audit-participation
+                     $initial-audit-result (index-atom $initial-observation 8)
+                     (ARNativeProofReference (index-atom $initial-soul-formation 2)))
+                   (CPListAppend $initial-challenges
+                     (C4VoiceAuditChallengeWitness $revision-audit-question
+                       $revision-audit-observation)))
                  $revision-soul-formation $revision-disposition)
                (c4-voice-review-held-v1
                  revised-candidate-not-supported-by-final-soul-formation)))
