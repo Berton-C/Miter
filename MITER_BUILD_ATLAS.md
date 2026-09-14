@@ -3839,20 +3839,46 @@ Already carried:
   field is removed, and neither envelope nor effect authority is enlarged.
   The complete adapter, both-challenge/revision path and independent-objection
   hold now pass; the bounded adapter/round-trip check is about 0.08 seconds.
-  Installed delivery and subsequent human/restart carry remain required.
+  Installed `c8f76cd` now carries one fresh, explicitly attributed diagnostic
+  through semantic incorporation, native `voice-certified`, and one verified
+  Mattermost delivery. The source post is `k1mk9de33tf53q8oq3mxi3s67w`; the
+  visible reply is `timxgdsofigxtcsd7jqni6opge`. The input is consumed with a
+  `native-checkpointed` receipt. Exactly one matching surface effect is
+  `delivered-and-verified`; its delivered external-effect receipt agrees on
+  the response, certificate and native-proof hashes, and its proof is present.
+  Mattermost persists effects in `surface/effects`, not the local-only outbox;
+  absence of a local outbox artifact is not a delivery defect.
+
+  On the September 14 installed carry, source-to-delivery is 70.7 seconds and
+  source-to-input-checkpoint is 79.9 seconds. Five completed GLM calls bring
+  cumulative use from 28 to 33 of the unchanged 50-call grant. The same child
+  PID 75112 and supervisor PID 75099 remain alive and return to idle; no
+  crash-history record is reported. The documentation waypoint finds one
+  supported child (8% CPU, about 917 MiB RSS, 49 minutes elapsed), its
+  supervisor, and the expected broker; no disposable process remains. These
+  are process snapshots, not peak-resource or growth-slope measurements.
+  This proves the tested conversation path
+  reaches a real certified effect, not that ordinary latency is acceptable.
+  The reply recognizes references to the earlier story but cannot recover its
+  full text. Full story recall, genuine returned human consequence, subsequent
+  native participation, and restart/no-replay remain open. No challenge-path
+  coverage, semantic adequacy, or complete Continuity of Mind is inferred from
+  delivery alone. The installed comparison is complete for this diagnostic;
+  retain only the still-needed private continuity inputs until that separate
+  carry completes. No new fixture or runtime edit is needed for human reply.
 
 Next movement:
 
-1. install the bounded native VoiceRNA challenge repair, preserving the current
-   checkpoint and terminal receipts. The last contact is now consumed/held;
-   neither it nor the older rejected contact may be moved or replayed. After
-   checking the unchanged AMA-1.2 grant is still active, use one new explicitly
-   attributed diagnostic contact in the authorized Mattermost group. Require the
-   supported runtime either to produce one certified response/effect or to
-   preserve a typed native unresolved standing without process or query
-   collapse. Only after a delivered response may a human reply become returned
-   consequence and test later participation under attributable Soul
-   organization;
+1. the installed VoiceRNA repair has delivered the fresh diagnostic above.
+   Preserve all terminal receipts; neither the consumed contacts nor the older
+   rejected contact may be moved or replayed. The next stimulus is a genuine
+   human reply in that same Mattermost thread, not another builder diagnostic
+   or scripted acceptance. Carry its correction/request as returned consequence
+   into attributable later native participation, then verify exact continuity
+   and zero effect replay across restart. Keep the current installed release
+   unchanged for this comparison, and check the finite AMA-1.2 authority before
+   further contact/model/effect work. Investigate the still-unrecovered story
+   through its actual persisted provenance, not by fabricating missing text;
 2. complete live scope-isolation and model/surface-failure trials without
    replay, fabricated contact, or loss of Continuity of Mind;
 3. embody the Open Growth Environment as a dynamic native capability field:
@@ -3881,8 +3907,8 @@ Next movement:
    socket under the runtime identity. Recoverable application-release
    activation has carried the accepted selective unchanged-idle computation
    into the installed product without losing continuity or replaying an effect;
-   exact-predecessor rollback remains to be carried. Commit and upgrade the
-   current bounded semantic/failure-path repair, then measure ordinary live
+   exact-predecessor rollback remains to be carried. The bounded semantic and
+   VoiceRNA repair is installed; retain it for the live follow-up, then measure
    contact, restart, and growing history through this installed runtime before
    calling the distribution complete. Earlier predecessor-layout Mattermost,
    continuity, VoiceRNA,
