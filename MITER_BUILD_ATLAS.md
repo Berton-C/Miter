@@ -3934,20 +3934,45 @@ Already carried:
   storage. Only the model membrane and this Atlas enter the commit. Installed
   conversation, human consequence and restart/no-replay still govern closure.
 
+  Installed `66d997c` now answers the genuine human follow-up
+  `64gwdqw7mfyx9d5kxi38rocdfr` with reply `58ew1fy5n38tiyi5ieig3rf5uh`.
+  The browser and exact effect record agree: one `delivered-and-verified`
+  Mattermost effect, matching native proof/certificate receipt, consumed input,
+  and `semantic-reading-incorporated / voice-certified`. Delivery takes
+  57.8 seconds from the source timestamp; input checkpointing takes 68.1
+  seconds. Three completed calls (semantic, render, audit) move cumulative
+  use from 34 to 37/50, with no truncation or provider error. The unchanged
+  child 42906 and supervisor 42896 return to idle. Process inspection finds
+  only this pair and the expected broker; the child is about 814 MiB RSS,
+  9.7% CPU and 12 minutes elapsed, not a peak-memory measurement.
+
+  This establishes delivered conversation, not adequate continuity: the reply
+  recalls the human's offer but asks for the story already pasted in the
+  preceding contact. Do not ask the human to compensate by pasting it again.
+  Source inspection shows an exact-text query returning four scoped Chroma
+  candidates; it does not establish whether the story was absent from durable
+  native storage, projection, the returned candidate set, or provider context.
+  The targeted read confirms the exact 1,315-character story in both its
+  consumed source and the current native capsule, with a successful projection
+  receipt for 12 records. Loss of that stored source is ruled out; actual
+  retrieval membership and provider access remain to be established.
+  The next read-only observation must distinguish those stages before any
+  repair. No larger result limit, automatic prompt injection, forced model
+  assertion, message replay, or further upgrade follows from delivery alone.
+
 Next movement:
 
-1. the installed VoiceRNA repair has delivered the fresh diagnostic above.
+1. the installed VoiceRNA repair has delivered the genuine human follow-up.
    Preserve all terminal receipts; neither the consumed contacts nor the older
-   rejected contact may be moved or replayed. The next stimulus is a genuine
-   human reply in that same Mattermost thread, not another builder diagnostic
-   or scripted acceptance. Carry its correction/request as returned consequence
-   into attributable later native participation, then verify exact continuity
-   and zero effect replay across restart. Keep the current installed release
-   unchanged except for completing the proved source-text carrier repair above.
-   Install that bounded repair, then use a fresh human continuation and check
-   the finite AMA-1.2 authority before further contact/model/effect work.
-   Investigate the still-unrecovered story
-   through its actual persisted provenance, not by fabricating missing text;
+   rejected contact may be moved or replayed. Keep installed `66d997c` unchanged
+   while tracing the already-pasted story through its exact native capsule,
+   semantic projection, cached candidates and actual provider context. Repair
+   only the proved loss of availability, with native relevance and uncertainty
+   retained; neither fabricated content nor a broader retrieval envelope is a
+   substitute. Then carry a genuine human continuation into attributable later
+   native participation and verify exact continuity and zero effect replay
+   across restart. Check finite AMA-1.2 authority before further contact/model/
+   effect work. No general recall, restart or C4 closure is claimed yet;
 2. complete live scope-isolation and model/surface-failure trials without
    replay, fabricated contact, or loss of Continuity of Mind;
 3. embody the Open Growth Environment as a dynamic native capability field:
