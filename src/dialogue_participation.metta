@@ -691,6 +691,19 @@
        (and (== (index-atom $observation 3) (C4QuestionResource $question))
             (== (index-atom $observation 5) no-candidate-admitted))))))
 
+; The question is already native-formed and still unanswered. One completed
+; empty provider return permits one new attempt at that exact question, not
+; a search for a preferred verdict. No retry follows the retry's result.
+; The membrane separately verifies the persisted completion and current reach.
+(= (C4ModelQuestionUsingV1 $root $question $writer)
+   (let $observed ($writer $root $question)
+     (if (C4ModelUnavailableValid $observed $question)
+       (if (== (index-atom $observed 4) provider-empty-completion)
+         ($writer $root
+           (c4-empty-completion-retry-v1 $question $observed))
+         $observed)
+       $observed)))
+
 (= (C4SemanticParticipantsAt $readings $question $scope $i)
    (if (< $i (size-atom $readings))
      (let $reading (index-atom $readings $i)
@@ -1036,7 +1049,7 @@
    (let $counterfacts (C4VoiceAuditCounterfacts $base $prior)
      (if (> (size-atom $counterfacts) 0)
        (let* (($challenge (C4VoiceAuditChallengeQuestion $base $prior))
-              ($returned ($writer $root $challenge)))
+              ($returned (C4ModelQuestionUsingV1 $root $challenge $writer)))
          (c4-resolved-voice-audit-v1 $challenge $returned))
        (c4-resolved-voice-audit-v1 $base $prior))))
 
@@ -2011,7 +2024,7 @@
             ($initial-audit-prior
               (if (CPShape $initial-audit-base
                     c4-voice-audit-question-v1 11)
-                ($model-writer $root $initial-audit-base)
+                (C4ModelQuestionUsingV1 $root $initial-audit-base $model-writer)
                 (c4-model-observation-unavailable-v1
                   (question-reference (index-atom $contact 1) voice-audit)
                   (CPContactScope $contact)
@@ -2062,7 +2075,7 @@
                   ($revision-observation
                     (if (CPShape $revision-question
                           c4-voice-render-question-v1 11)
-                      ($model-writer $root $revision-question)
+                      (C4ModelQuestionUsingV1 $root $revision-question $model-writer)
                       (c4-model-observation-unavailable-v1
                         (question-reference (index-atom $contact 1)
                           voice-rendering)
@@ -2076,7 +2089,7 @@
                   ($revision-audit-prior
                     (if (CPShape $revision-audit-base
                           c4-voice-audit-question-v1 11)
-                      ($model-writer $root $revision-audit-base)
+                      (C4ModelQuestionUsingV1 $root $revision-audit-base $model-writer)
                       (c4-model-observation-unavailable-v1
                         (question-reference (index-atom $contact 1)
                           voice-audit)
@@ -2196,7 +2209,7 @@
                     $preliminary $semantic-direction))
                   ($observation (if (CPShape $question
                     c4-contact-semantic-question-v1 12)
-                    ($model-writer $root $question)
+                    (C4ModelQuestionUsingV1 $root $question $model-writer)
                     (c4-model-observation-unavailable-v1
                       (question-reference (index-atom $contact 1)
                         general-contact-semantics)
@@ -2299,7 +2312,7 @@
                         (voice-revision-context initial-no-prior-defect)))
                       ($voice-observation (if (CPShape $voice-question
                         c4-voice-render-question-v1 11)
-                        ($model-writer $root $voice-question)
+                        (C4ModelQuestionUsingV1 $root $voice-question $model-writer)
                         (c4-model-observation-unavailable-v1
                           (question-reference (index-atom $contact 1)
                             voice-rendering)

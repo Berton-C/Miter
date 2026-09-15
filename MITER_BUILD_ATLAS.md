@@ -4210,6 +4210,61 @@ Already carried:
   child 10249; child RSS is about 609 MiB, sampled CPU 5.5--9.6%, elapsed
   about five minutes. No disposable process or duplicate organism remains.
 
+  **Active repair — completed-but-empty provider response (2026-09-15):**
+  The first post-amendment exchange replied swiftly; the next creative
+  invitation did not. The exact saved request/raw pair for contact
+  `beriswmsnpy55mssg15deju5pe` proves GLM 5.3 / Io Net returned a normal
+  `stop` with `content: null`, no tool call and no refusal. The native cycle
+  recorded `semantic-reading-held / provider-artifact-malformed`, checkpointed
+  the contact and returned to waiting. There was no VoiceRNA candidate or
+  Mattermost delivery, not thirteen minutes of ongoing cognition. Open reach
+  remained active beyond 50 calls. This is distinct from the earlier repaired
+  VoiceRNA evidence challenge and is not grounds to rewrite that work, raise
+  timeouts, or change M24--M26.3.
+
+  Berton explicitly authorizes one separately recorded retry of a confirmed
+  empty completion with the same GLM route, scoped context and privacy
+  settings. `C4ModelQuestionUsingV1` makes that choice in native MeTTa for an
+  already formed, still-unanswered semantic/render/audit question. It never
+  recurses into another retry. Prolog preserves the completed empty observation,
+  verifies its exact question/scope/resource and persisted raw response, then
+  carries the native retry with a distinct deterministic spend claim and
+  `retry-of.term` lineage inside the existing claim directory. All current
+  direction, disclosure, grant and reach checks remain. The provider body,
+  model, token envelope and privacy settings do not change. Reasoning text is
+  never substituted for an answer. Refusal, tool use, truncation, malformed
+  content and uncertain prior transmission cannot trigger this retry; a legacy
+  raw file without a persisted terminal witness is insufficient. Existing
+  consumed/rejected contacts and terminal receipts are not moved or replayed.
+
+  Local carry against installed `5336d3b` / source `dbcbc38`: supported
+  `bin/miter install` and the complete pinned-PeTTa bootstrap pass, as do native
+  empty-then-answer, two-empty-stop, ordinary-answer, wrong-scope and nonempty
+  failure distinctions. A valid retry result still passes the unchanged native
+  semantic validator. A fresh process reads the original empty completion and
+  retry result, holds an uncertain retry, and preserves all five fixture claim
+  counts. An exact one-call grant cannot authorize the retry identity. A bounded
+  synthetic loopback HTTP 200 empty response persists as the explicit empty
+  observation; HTTP failure does not. No paid call, live write, live checkpoint
+  change or external message occurs in these checks. All-source syntax/balance
+  and diff checks pass; no fixture or diagnostic enters Git.
+
+  Efficiency boundary: ordinary successful transport retains its original
+  parsing path and adds zero model calls or full constitutive formations. Empty
+  completion invalidates no semantic product, so the retry does not reform
+  the preliminary encounter; any returned candidate follows the existing full
+  native integration and VoiceRNA path. The recovery adds at most one bounded
+  call per exact question, one normal request/raw/observation set and a 311-byte
+  lineage in the small fixture; it creates no history scan, semantic cache,
+  checkpoint schema, table or background worker. Final local bootstrap is
+  1.078 s, native/persistence checks 0.022 s, and synthetic empty HTTP transport
+  0.013 s. These are local seam observations, not installed whole-turn latency
+  or growing-history claims. Pre-commit live child 10249 remains under
+  supervisor 10238, sampled CPU 1.4%, RSS about 1,194 MiB at 12:55:43 elapsed;
+  broker 9925 remains separate mechanical transport. The Atlas artifact/version
+  addition is paused. **Installed upgrade and a new ordinary reply remain the
+  next carry; this repair and whole C4 are not declared closed.**
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -4270,9 +4325,10 @@ Next movement:
    intentionally unchanged next movement, exact continuity across restart, and
    zero replay. These remain whole-C4 claims, not additional prerequisites for
    the human-accepted working-alpha publication recorded above;
-6. **active movement:** the operator-authorized open conversation policy is
-   carried into the installed runtime, preserving conversation and history.
-   Continue C4 with the native older-artifact/version-resolution seam identified
+6. **active movement:** carry the authorized empty-completion repair above
+   into the installed runtime and confirm ordinary conversation. Preserve the
+   already-active open conversation policy and all terminal history. Only then
+   resume C4 with the native older-artifact/version-resolution seam identified
    above and its growing-history proportionality obligation; do not interrupt
    ordinary conversation for unrelated trials. Main publication is complete,
    not a standing blocker. Future live

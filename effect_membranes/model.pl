@@ -31,6 +31,17 @@ as_model_preflight(Stage, _) :-
     throw(error(model_preflight_hold(Stage),_)).
 
 as_model_checked(Root0, Question, Observation) :-
+    Question=['c4-empty-completion-retry-v1',Original,Prior], !,
+    as_model_preflight('runtime-root-invalid',as_root(Root0,Root)),
+    as_model_preflight('empty-completion-witness-invalid',
+      as_model_empty_retry_witness(Root,Original,Prior)),
+    as_model_checked_attempt(Root,Original,Question,Observation).
+as_model_checked(Root0, Question, Observation) :-
+    as_model_checked_attempt(Root0,Question,Question,Observation).
+
+% The native caller alone requests a retry. Its distinct, deterministic
+% attempt identity never replaces the question or its original spend claim.
+as_model_checked_attempt(Root0, Question, Attempt, Observation) :-
     as_model_preflight('runtime-root-invalid', as_root(Root0, Root)),
     as_model_preflight('question-not-ground', ground(Question)),
     as_model_preflight('question-carrier-invalid',
@@ -42,7 +53,7 @@ as_model_checked(Root0, Question, Observation) :-
       as_model_current_direction_authorizes(Root,Question,Scope,Purpose,
         ResourceId,MaxTokens,Deadline)),
     as_model_preflight('question-identity-unavailable',
-      as_model_question_sha256(Question, QuestionHash)),
+      as_model_question_sha256(Attempt, QuestionHash)),
     as_model_preflight('observation-path-unavailable',
       as_model_observation_path(Root, QuestionHash, ObservationPath)),
     ( exists_file(ObservationPath) ->
@@ -63,6 +74,8 @@ as_model_checked(Root0, Question, Observation) :-
         as_model_preflight('model-spend-claim-held',
           as_model_claim(Root, QuestionHash, QuestionRef, Scope, ResourceId,
             Purpose, Grant, ClaimPath)),
+        as_model_preflight('attempt-lineage-persistence-held',
+          as_model_write_attempt_lineage(ClaimPath,Question,Attempt)),
         as_model_preflight('request-schema-invalid',
           as_model_request(Profile, Question, Instructions, MaxTokens, Body)),
         as_model_preflight('request-persistence-held',
@@ -77,6 +90,38 @@ as_model_checked(Root0, Question, Observation) :-
         Observation=Observation0
       )
     ).
+
+as_model_empty_retry_witness(Root,Question,Prior) :-
+    ground([Question,Prior]),
+    as_model_c4_question(Question),
+    as_model_unavailable(Question,
+      error(model_provider_hold('provider-empty-completion',0,0),_),Expected),
+    Prior==Expected,
+    as_model_question_sha256(Question,Hash),
+    as_model_observation_path(Root,Hash,Path),
+    as_model_read_observation(Path,Stored), Stored==Prior,
+    as_model_claim_path(Root,Hash,Claim),exists_directory(Claim),
+    as_model_named_text(Root,raw,Hash,RawPath),
+    read_file_to_string(RawPath,Raw,[]),
+    as_model_question_expected_model(Question,Model),
+    as_model_empty_completion(Raw,Model).
+
+as_model_c4_question([Kind|_]) :-
+    memberchk(Kind,['c4-contact-semantic-question-v1',
+      'c4-voice-render-question-v1','c4-voice-audit-question-v1']).
+
+as_model_question_expected_model(Question,Model) :-
+    last(Question,['resource-request',_,ModelId,_,_,_,_]),
+    atom_string(ModelId,Model).
+
+as_model_write_attempt_lineage(_Claim,Question,Attempt) :-
+    Attempt==Question, !.
+as_model_write_attempt_lineage(Claim,Question,
+    ['c4-empty-completion-retry-v1',Question,Prior]) :-
+    as_model_question_sha256(Question,OriginalHash),
+    directory_file_path(Claim,'retry-of.term',Path),
+    as_model_write_observation(Path,
+      ['c4-model-empty-retry-lineage-v1',OriginalHash,Prior]).
 
 as_model_current_direction_authorizes(Root,Question,Scope,Purpose,ResourceId,
     MaxTokens,Deadline) :-
@@ -1623,7 +1668,13 @@ as_model_execute(Root,Hash,QuestionRef,Scope,Question,ResourceId,Profile,Body,
         ( as_model_provider_observation(Raw,Question,QuestionRef,Scope,
               ResourceId,Profile,RawHash,Observation) -> true
         ; as_model_provider_failure(Raw,Question,Failure),
-          throw(error(model_provider_hold(Failure,ElapsedMs,Bytes),_)) )
+          ( Failure=='provider-empty-completion',
+            as_model_empty_completion(Raw,Profile.model) ->
+              % This EOF / HTTP 200 outcome is persisted by the normal
+              % observation writer, unlike an uncertain transmission.
+              as_model_unavailable(Question,
+                error(model_provider_hold(Failure,ElapsedMs,Bytes),_),Observation)
+          ; throw(error(model_provider_hold(Failure,ElapsedMs,Bytes),_)) ) )
     ; throw(error(model_transport_or_schema_hold(Transport,Status,ErrorClass,
         ElapsedMs,Bytes),_)) ).
 
@@ -1649,6 +1700,10 @@ as_model_provider_failure(Raw,_Question,'provider-finish-held') :-
     catch(atom_json_dict(Raw,Response,[]),_,fail), is_dict(Response),
     get_dict(choices,Response,[Choice]), is_dict(Choice),
     as_dict_atom(Choice,finish_reason,Finish), Finish\==stop, !.
+as_model_provider_failure(Raw,Question,'provider-empty-completion') :-
+    as_model_c4_question(Question),
+    as_model_question_expected_model(Question,Model),
+    as_model_empty_completion(Raw,Model), !.
 as_model_provider_failure(Raw,Question,'provider-artifact-semantic-invalid') :-
     catch(atom_json_dict(Raw,Response,[]),_,fail), is_dict(Response),
     get_dict(choices,Response,[Choice]),is_dict(Choice),
@@ -1678,6 +1733,26 @@ as_model_provider_envelope(Raw,ExpectedModel,Content,Finish,Usage) :-
     get_dict(content,Message,Content), string(Content),
     \+ sub_string(Content,_,_,_,"```"),
     as_model_usage(Response,Usage).
+
+% A completed empty response is not truncation, refusal, a tool call, a
+% semantic rejection, or permission to expose the separate reasoning field.
+as_model_empty_completion(Raw,ExpectedModel) :-
+    catch(atom_json_dict(Raw,Response,[]),_,fail),is_dict(Response),
+    get_dict(model,Response,ExpectedModel),
+    as_model_absent_or_null(Response,error),
+    get_dict(choices,Response,[Choice]),is_dict(Choice),
+    as_model_absent_or_null(Choice,error),
+    as_dict_atom(Choice,finish_reason,stop),
+    get_dict(message,Choice,Message),is_dict(Message),
+    as_dict_atom(Message,role,assistant),
+    as_model_absent_or_null(Message,refusal),
+    as_model_absent_or_null(Message,function_call),
+    (get_dict(tool_calls,Message,Tools)->memberchk(Tools,[null,[]]);true),
+    get_dict(content,Message,Content),
+    (Content==null;string(Content),normalize_space(string(""),Content)).
+
+as_model_absent_or_null(Dict,Key) :-
+    (get_dict(Key,Dict,Value)->Value==null;true).
 
 as_model_provider_observation(Raw,Question,QuestionRef,Scope,ResourceId,Profile,
     RawHash,Observation) :-
@@ -2076,8 +2151,10 @@ as_model_read_observation(Path,Observation) :-
     setup_call_cleanup(open(Path,read,Stream,[encoding(utf8)]),
       read_term(Stream,Observation,[syntax_errors(error)]),close(Stream)),
     ground(Observation), Observation=[Kind|_],
-    memberchk(Kind,['c3-model-observation-v1','c4-semantic-observation-v1',
-      'c4-voice-observation-v1','c4-voice-audit-observation-v1']).
+    ( memberchk(Kind,['c3-model-observation-v1','c4-semantic-observation-v1',
+        'c4-voice-observation-v1','c4-voice-audit-observation-v1'])
+    ; Observation=['c4-model-observation-unavailable-v1',_,_,_,
+        'provider-empty-completion','no-candidate-admitted'] ).
 
 as_model_write_text_durable(Path,Text) :-
     \+ exists_file(Path), file_directory_name(Path,Directory),
@@ -2090,6 +2167,9 @@ as_model_write_text_durable(Path,Text) :-
        rename_file(Temporary,Path)),
       (exists_file(Temporary)->delete_file(Temporary);true)).
 
+as_model_unavailable(['c4-empty-completion-retry-v1',Question,_],Error,
+    Observation) :- !,
+    as_model_unavailable(Question,Error,Observation).
 as_model_unavailable(Question,Error,
     ['c4-model-observation-unavailable-v1',QuestionRef,Scope,
       ResourceId,Reason,'no-candidate-admitted']) :-
@@ -2124,7 +2204,8 @@ as_model_failure_reason(error(model_preflight_hold(Stage),_),Stage) :-
       'scope-purpose-grant-unavailable','evaluation-reach-unavailable',
       'model-spend-claim-held','request-schema-invalid',
       'request-persistence-held','credential-unavailable',
-      'observation-persistence-held']), !.
+      'observation-persistence-held','empty-completion-witness-invalid',
+      'attempt-lineage-persistence-held']), !.
 as_model_failure_reason(error(model_transport_or_schema_hold(_,_,_,_,_),_),
     'transport-or-schema-held') :- !.
 as_model_failure_reason(error(model_provider_hold(Reason,_,_),_),Reason) :- !.
