@@ -4024,19 +4024,45 @@ Already carried:
   (4.2% CPU, about 662 MiB RSS, 59:49 elapsed), unchanged identities and stable
   RSS relative to the earlier check. No disposable process or trial tree remains.
 
+  Installed `a8025af` now delivers the genuine human recall contact
+  `edf9kwptjj899npd1sbyk8345e` as reply `6khzw8xqhtrr7qb8qb9h3wsg8a`.
+  The visible title and requested detail match the previously supplied edited
+  source, without asking for another paste. One delivered-and-verified effect
+  has matching certificate/proof identities in its delivered receipt; the input
+  is consumed and native-checkpointed with `voice-certified`. Source-to-delivery
+  is 60.3 s and source-to-checkpoint is 71.4 s, versus the prior 57.8/68.1 s
+  turn that omitted the story. Five completed provider calls, without provider
+  error or truncation, move use from 37 to 42/50. These different human turns
+  are not a controlled performance comparison; per-arm formation counts and
+  the exact live source-participation lineage remain to be inspected.
+
+  The supported stop/start carry then passes: the old child exits, a new run
+  reaches native idle readiness and remains stable for the bounded observation.
+  Active checkpoint `0100835ef092263badf23a6240649dfc8810f5cf94720f742a623c69ccb0bd57`,
+  its object and manifest, LKG, consumed input, input receipt, delivery record,
+  effect receipt and native proof remain byte-identical. All model-spend claim
+  and surface-effect records are unchanged; counters remain 26 admitted,
+  six outbound and 42 model calls. This proves restored checkpoint integrity
+  and no replay in this restart, not yet a new post-restart recall or complete
+  Continuity of Mind. Process hygiene finds only broker 73034, supervisor 73049
+  and child 73061 (2.2% CPU, about 522 MiB RSS, 1:13 elapsed); no builder process
+  survives. The completed temporary restart instrument is removed, with no
+  runtime/source change. Preserve installed `a8025af` for the next genuine
+  human continuation; no upgrade is required for this Atlas-only record.
+
 Next movement:
 
-1. the installed VoiceRNA repair has delivered the genuine human follow-up.
+1. installed `a8025af` has delivered correct edited-source recall and passed
+   the supported stop/start checkpoint-integrity and no-replay carry.
    Preserve all terminal receipts; neither the consumed contacts nor the older
-   rejected contact may be moved or replayed. Keep installed `66d997c` unchanged
-   until the human installs the now locally verified native exact-source
-   consumer alongside associative candidates. Preserve ambiguity, source
-   identity, scope, explicit omissions and computational proportionality.
+   rejected contact may be moved or replayed. Keep the installed release
+   unchanged while a new human continuation asks for a different source detail
+   after restart. Verify its attributable native source participation and later
+   movement, preserving ambiguity, scope, explicit omissions and proportionality.
    The bounded conversation working set is not completion of older artifact /
-   version resolution. Carry a genuine human continuation into attributable later
-   native participation and verify exact continuity and zero effect replay
-   across restart. Check finite AMA-1.2 authority before further contact/model/
-   effect work. No general recall, restart or C4 closure is claimed yet;
+   version resolution. Check finite AMA-1.2 authority before further contact /
+   model / effect work; eight model calls remain at this waypoint. No general
+   recall or C4 closure is claimed yet;
 2. complete live scope-isolation and model/surface-failure trials without
    replay, fabricated contact, or loss of Continuity of Mind;
 3. embody the Open Growth Environment as a dynamic native capability field:
