@@ -9,7 +9,7 @@ bytes. A minimal C grounding exposes only the POSIX `fsync()` primitive needed
 for durable storage. Neither decides what contact means or which movement
 Miter takes.
 
-This branch is the lean clean-room recovery baseline. It contains the one
+This repository is the lean Miter working alpha. It contains the one
 supported runtime and its controlling authorities. It deliberately excludes
 the former repository's gate evidence, test archives, logs, campaign papers,
 duplicate checkpoints, generated reports, and `initial_canon/` provenance.
@@ -45,20 +45,24 @@ version only at a serialized capability cut, invoke the exact active version,
 hot-replace it under an unchanged interface and compatible state contract, and
 restore the exact predecessor after restart.
 
-It is **not yet the usable Miter alpha**. Dedicated-identity migration is
-proven, but the accepted product installation is now one CLI-managed tree. The
-declarative hot-capability layer is not yet general source-code self-upgrade or
-arbitrary skill acquisition. The first executable proof is deliberately a
-stateless, local-observation-only extension: state migration, newly earned
-effect authority, broad skill transfer, and open live dialogue repair remain
-to be integrated into this same runtime. Recoverable application-release
-activation and rollback are implemented in the source installer but still
-require the installed continuity carry before they count as proven. A finite
-macOS installer validates the clean source, pinned
-dependencies, dedicated identity, private credential boundary, exact workshop
-image, and isolated services. Its single-root fresh-host and
-continuity-preserving migration have passed; the current release promotion and
-live conversational closure remain open.
+The installed alpha now supports ordinary three-person Mattermost
+conversation, exact recall of retained conversation sources through VoiceRNA,
+checkpoint-preserving restart without replay, and continued native cycling
+through a temporary Mattermost outage. These have been observed in the one
+CLI-managed installation under `/Users/claritymiter/Miter`.
+
+This is not a claim that all C4 development is complete. General source-code
+self-upgrade and arbitrary skill acquisition are not established by the
+bounded declarative and stateless executable workshop capabilities. Broader
+state migration, newly earned effect authority, skill transfer, older artifact
+version resolution, and growing-history performance remain additive work.
+Application-release upgrades have carried the installed continuity; deliberate
+exact-predecessor rollback of the current installation remains unverified.
+Additional live scope-isolation and mid-turn failure trials are not claimed.
+The finite macOS installer validates clean source, pinned dependencies, the
+dedicated identity, private credential boundary, exact workshop image, and
+services. Working-alpha publication on `main` does not turn these remaining
+limitations into completed capabilities.
 [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single operations map for
 that additive work.
 
@@ -79,8 +83,9 @@ principal/audience/project scope, remain cognitively live under model or
 surface failure, and restore the resulting organization after restart. It
 installs with outbound and model grants inactive. The effect membrane can emit
 only under an independently active evaluation grant and an exact resolved
-destination; the current source has not yet replaced the older live evaluation
-runtime.
+destination. The installed clean runtime has replaced the older evaluation
+runtime; historical material is retained separately for recovery, not executed
+as another Miter.
 
 Every native checkpoint now writes immutable, content-addressed continuity
 capsules for each exact principal/audience/project scope. A capsule carries the

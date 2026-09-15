@@ -1,6 +1,7 @@
 # Miter Build Atlas
 
-Status: clean-room recovery candidate  
+Status: working alpha accepted for main; broader C4 development remains open
+
 Purpose: the one operations map for building one coherent Miter runtime  
 Controlling authorities: `CONSTITUTION.md`, `MITER_SOUL_CONSTITUTIVE_SPEC.md`,
 and `authority/M24.md` through `authority/M26_3.md`
@@ -132,7 +133,7 @@ The compact 78-atom kernel is not to be described as “the Soul.”
 ### Repository and workspace hygiene law
 
 There SHALL be exactly one persistent local Git working repository for Miter,
-and it SHALL correspond to the clean source that will replace remote `main`.
+and it SHALL correspond to the clean source published on remote `main`.
 The installed `/Users/claritymiter/Miter` product root is not a second source
 repository: it is a derived installation containing immutable application
 releases and dependencies, private live state, recovery backups, and the
@@ -4092,6 +4093,32 @@ Already carried:
   1:15:57 elapsed finds only the expected broker, supervisor and child (2.0%
   CPU, about 786 MiB RSS); no builder trial survives.
 
+  A further ordinary group question receives exactly one delivered reply
+  `96sfw7m6zp8bjx8z8y91p119iw`: its native proof and effect receipt agree and
+  the input is native-checkpointed. Delivery takes 33.7 s, checkpointing 45.0 s,
+  and three completed model calls move use to 48/50. The same restarted child
+  and supervisor remain live. This is positive unfamiliar conversation after
+  outage recovery, not the proposed outside-group scope trial.
+
+  **Human acceptance / promotion decision (2026-09-14):** Berton confirms
+  Mattermost is working, declines the proposed negative verification, and
+  directs progress to committing and publishing the clean runtime on `main`.
+  That trial is removed as a publication prerequisite, not relabeled passed.
+  Promote this working alpha without declaring every broader C4 capability
+  complete. Runtime source remains identical to installed `a8025af`; only
+  README and Atlas standing change. The preserved historical Git bundle is
+  verified complete and contains the exact current old remote `main`
+  `ec06bfbe6d34444310577b54e5906b9a4973afa0` and both legacy tags; its SHA-256
+  remains `7dad6e9204a683323034c46d2a96c50ebc8d5765afc62ccca5a29b6eb03cae23`.
+  Replace only `main` using that exact expected remote tip. Preserve historical
+  files, local `initial_canon`, installed state, and legacy remote tags for
+  separately scoped cleanup. The sole source tree contains 65 distributable
+  files, about 2.65 MB; no diagnostic or runtime-state file is added. Before
+  this documentation-only promotion, process hygiene finds only the expected
+  broker, supervisor and PeTTa child (6.3% CPU, about 731 MiB RSS, 1:52:55
+  elapsed). Two model calls remain in the existing grant; publication does
+  not extend its finite call or time authority.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -4104,14 +4131,14 @@ Next movement:
    Preserve ambiguity, scope, explicit omissions and proportionality.
    The bounded conversation working set is not completion of older artifact /
    version resolution. Check finite AMA-1.2 authority before further contact /
-   model / effect work; five model calls remain at this waypoint. No general
+   model / effect work; two model calls remain at the latest waypoint. No general
    recall or C4 closure is claimed yet;
-2. **active next cut:** installed idle Mattermost outage/recovery is carried.
-   Inspect the remaining scope-isolation and mid-turn model/delivery-failure
-   paths and inherited evidence, identify one unproved boundary, then complete
-   its supported-runtime trial without replay, fabricated contact, or loss of
-   Continuity of Mind. State the hypothesis before the bounded trial; change
-   runtime source only if that trial proves a defect;
+2. installed idle Mattermost outage/recovery is carried. The proposed negative
+   outside-group test is declined by Berton and SHALL NOT block publication
+   or be reported as passed. Additional live scope-isolation and mid-turn
+   model/delivery-failure coverage remains unclaimed. Existing scope and Soul
+   obligations are unchanged; repair a concrete observed defect if one arises,
+   rather than requiring more human failure trials to re-prove working chat;
 3. embody the Open Growth Environment as a dynamic native capability field:
    trusted web/tool/skill/terminal possibilities and a Miter-owned revisable
    workspace, with observable consequence, reversible self-development, and
@@ -4149,11 +4176,15 @@ Next movement:
    three-person Mattermost conversation, one VoiceRNA-certified response, a
    human reply carried as returned consequence, an attributable changed or
    intentionally unchanged next movement, exact continuity across restart, and
-   zero replay. Only this installed-release evidence—not a fixture or an
-   inherited predecessor result—permits the clean source to replace `main`;
-6. only after explicit human acceptance of the complete clean candidate,
-   replace `main` history and remove old remote branches/tags in a separate
-   destructive operation.
+   zero replay. These remain whole-C4 claims, not additional prerequisites for
+   the human-accepted working-alpha publication recorded above;
+6. **active movement:** publish the accepted clean source to `main`, protected
+   by the verified historical bundle and exact-tip force-with-lease. Continue
+   substantive additive C4 work on that one source repository. Promotion does
+   not alter or reinstall the already working runtime, renew its grant, delete
+   local recovery material, or authorize general filesystem cleanup. Removal
+   of legacy remote tags and other old material remains separately scoped.
 
-The old repository and remote `main` remain untouched until a separately
-authorized destructive operation.
+The historical archive and local `initial_canon` remain untouched. The human-
+accepted main replacement above supersedes the earlier candidate-only hold;
+it does not claim that unimplemented or unverified capabilities are complete.
