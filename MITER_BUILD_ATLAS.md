@@ -4062,25 +4062,40 @@ Already carried:
   to idle. At 18:59 elapsed the child is 5.2% CPU and about 853 MiB RSS,
   versus about 522 MiB before this contact: retained post-turn residency and
   growing-history cost remain open, not demonstrated proportionality. This
-  verifies usable edited-source recall after restart; exact source-to-native-
-  participant-to-provider attribution can now be read from this completed
-  turn without further model calls, input replay or installation changes.
+  verifies usable edited-source recall after restart. Read-only inspection of
+  this completed turn now finds exactly one native participant for the exact
+  1,315-character source, with its scope and body hash verified. Both stored
+  VoiceRNA render and audit requests contain six memory entries, exactly one
+  with that source body and the same native participant identity. Together
+  with the delivered proof/receipt above, this closes the bounded source-to-
+  native-participant-to-provider-to-delivery attribution; it observes existing
+  certification rather than creating a new native certificate. All inspected
+  records remain unchanged, with zero writes, network requests or model calls.
+  The completed temporary lineage inspector is removed. Process hygiene at
+  56:36 elapsed finds only broker 73034, supervisor 73049 and child 73061
+  (4.9% CPU, about 853 MiB RSS); no builder process survives. Installed
+  `a8025af` remains unchanged; the next cut is scope/failure carry, not a
+  repetition of this accepted story-recall check.
 
 Next movement:
 
-1. installed `a8025af` has delivered correct edited-source recall both before
-   and after restart, and passed checkpoint-integrity and no-replay carry.
+1. **completed bounded recall repair:** installed `a8025af` has delivered
+   correct edited-source recall both before and after restart, passed
+   checkpoint-integrity and no-replay carry, and preserved exact source
+   participation through native proof and stored render/audit requests.
    Preserve all terminal receipts; neither the consumed contacts nor the older
    rejected contact may be moved or replayed. Keep the installed release
-   unchanged. Close the remaining exact source-participation attribution from
-   this completed turn's proof and stored provider requests, not another human
-   repetition. Preserve ambiguity, scope, explicit omissions and proportionality.
+   unchanged; no further human repetition or upgrade is needed for this cut.
+   Preserve ambiguity, scope, explicit omissions and proportionality.
    The bounded conversation working set is not completion of older artifact /
    version resolution. Check finite AMA-1.2 authority before further contact /
    model / effect work; five model calls remain at this waypoint. No general
    recall or C4 closure is claimed yet;
-2. complete live scope-isolation and model/surface-failure trials without
-   replay, fabricated contact, or loss of Continuity of Mind;
+2. **active next cut:** inspect the existing scope-isolation and model/surface-
+   failure paths and inherited carry evidence, identify one unproved boundary,
+   then complete its supported-runtime trial without replay, fabricated
+   contact, or loss of Continuity of Mind. State the hypothesis before the
+   bounded trial; change runtime source only if that trial proves a defect;
 3. embody the Open Growth Environment as a dynamic native capability field:
    trusted web/tool/skill/terminal possibilities and a Miter-owned revisable
    workspace, with observable consequence, reversible self-development, and
