@@ -4266,7 +4266,7 @@ Already carried:
   the pending-upgrade standing; empty-completion recovery is not yet exercised
   by that observation and whole C4 remains open.
 
-  **Active repair — preserve native intention through VoiceRNA audit:**
+  **Prior repair — preserve native intention through VoiceRNA audit:**
   Installed `0b7c012` processed contact `g69syw5547gcjk8f55xgw47xyw`
   through five nonempty GLM completions: semantic reading, render, audit,
   revision, final audit. It checkpointed and returned to waiting in about
@@ -4314,6 +4314,47 @@ Already carried:
   If it remains held, use its exact final findings and supplied native
   intention to locate the remaining semantic disagreement; do not force an
   approval, ignore findings, enlarge timeouts, or replay consumed inputs.
+
+  **Active repair — make the VoiceRNA binding request match its receiver:**
+  Installed `c241670` processed `1r6ww76857gi3nqfusjbn7wgia` in about 83 s,
+  checkpointed and returned to waiting without a Mattermost effect. Its four
+  calls reached semantic reading, render, audit and revision render, not final
+  audit. The captured audit request contains the exact native-intention context
+  added above. The revision returned nonempty JSON but included the invented
+  binding `voice-audit-finding-v3/unsupported-inner-state`. The outgoing schema
+  permitted arbitrary strings; the receiving validator correctly required an
+  exact supplied source ID. This is a mechanical contract mismatch, not a
+  Mattermost transport failure or evidence that the audit should be approved.
+
+  One-variable proof: the saved envelope, keys, text bounds and unique bindings
+  pass; that label is the sole out-of-domain binding. Removing only that label
+  from an in-memory diagnostic copy makes the unchanged parser pass. This copy
+  is neither persisted nor certified. The fix instead supplies the exact
+  binding domain in the request schema, derived only from the already privacy-
+  projected provider question. It advertises no additional private identifier.
+  The receiver still rejects the saved invalid response. Native judgment,
+  revision limits, R/A/P, provider settings and terminal history are unchanged.
+
+  Carry: supported disposable `bin/miter install`, pinned bootstrap and two
+  fresh-process reads of its installed source pass. Checks cover exact source
+  membership, initial/revision equivalence, full request serialization, hidden
+  remote-memory exclusion, unchanged local membership and unchanged audit
+  schema. No network/model call, effect or live-state write occurs. Syntax and
+  diff checks pass; no diagnostic enters Git. This is a local request-contract
+  carry, not installed provider compliance or complete conversation recovery.
+
+  Efficiency against `c241670`: only the outgoing rendering schema changes;
+  native question/observation/proof meaning and checkpoint formats do not.
+  Seven already-transmitted IDs add 558 schema characters, zero model calls,
+  full formations, workers, caches or history scans. A thousand schema builds
+  take 0.0002--0.0003 s previously, 0.0045--0.0049 s at two IDs and
+  0.0058--0.0062 s at seven IDs; CPU is comparable. Fresh bootstrap takes
+  1.077--1.128 s. Live whole-turn latency and new checkpoint size remain
+  unmeasured. Pre-commit child 94554 under supervisor 94544 has RSS about
+  1,158 MiB, unchanged between observations; sampled CPU 6.1% at 2:53:35.
+  Broker 94209 is separate mechanical transport; no trial process survives.
+  Install recoverably, then observe one new ordinary contact. Do not replay
+  this checkpointed contact or relax receiving validation to manufacture a reply.
 
 Next movement:
 
@@ -4375,7 +4416,7 @@ Next movement:
    intentionally unchanged next movement, exact continuity across restart, and
    zero replay. These remain whole-C4 claims, not additional prerequisites for
    the human-accepted working-alpha publication recorded above;
-6. **active movement:** carry the native-intention audit repair above into
+6. **active movement:** carry the exact binding-domain request repair above into
    the installed runtime and confirm ordinary conversation. Preserve the
    already-active open conversation policy and all terminal history. Only then
    resume C4 with the native older-artifact/version-resolution seam identified

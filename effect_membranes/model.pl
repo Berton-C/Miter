@@ -1125,7 +1125,7 @@ as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
         interpretation_boundary:"Derived readings only. Miter retains contact, authority, comparison, movement, and consequence interpretation."},
       [width(0)])),
     get_dict(model,Profile,Model),
-    as_model_response_format(Profile,Question,ResponseFormat),
+    as_model_response_format(Profile,ProviderQuestion,ResponseFormat),
     Common=_{model:Model,messages:[_{role:"system",content:Instructions},
       _{role:"user",content:User}],temperature:0,top_p:1,
       max_tokens:MaxTokens,stream:false,
@@ -1140,8 +1140,42 @@ as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
 as_model_response_format(Profile,Question,
     _{type:"json_schema",json_schema:_{name:Name,strict:true,schema:Schema}}) :-
     (as_dict_atom(Profile,kind,remote);as_dict_atom(Profile,kind,local)),
+    as_model_response_schema(Profile,Question,Name,Schema).
+
+% The schema repeats only IDs already in this exact provider-visible question.
+% Remote calls arrive here AFTER privacy projection; no private memory store
+% or hidden identity is consulted. Receiving validation remains unchanged.
+as_model_response_schema(Profile,Question,Name,Schema) :-
+    Question=['c4-voice-render-question-v1'|_], !,
+    as_model_local_response_schema('c4-voice-render-question-v1',Name,Base),
+    as_model_provider_voice_binding_ids(Profile,Question,Ids0),sort(Ids0,Ids),
+    Ids=[_|_],maplist(atom_string,Ids,Strings),
+    Bindings=Base.properties.bindings,
+    put_dict(enum,Bindings.items,Strings,Items),
+    put_dict(items,Bindings,Items,BoundBindings),
+    put_dict(bindings,Base.properties,BoundBindings,Properties),
+    put_dict(properties,Base,Properties,Schema).
+as_model_response_schema(_Profile,Question,Name,Schema) :-
     Question=[Kind|_],
     as_model_local_response_schema(Kind,Name,Schema).
+
+as_model_provider_voice_binding_ids(Profile,Question,Ids) :-
+    as_dict_atom(Profile,kind,local), !,
+    as_model_c4_voice_binding_ids(Question,Profile,Ids).
+as_model_provider_voice_binding_ids(Profile,
+    ['c4-voice-render-question-v1',_,_,_,_,_,
+      ['semantic-readings',Readings],_,Commitments|_],Ids) :-
+    as_dict_atom(Profile,kind,remote),
+    maplist(as_model_c4_reading_id,Readings,ReadingIds),
+    nth0(7,Commitments,['authorized-continuity-context',Entries,
+      'conversation-project-and-personal-context-authorized',
+      'credentials-authentication-and-concrete-security-risk-excluded']),
+    findall(Id,member(['c4-continuity-evidence-v1',Id|_],Entries),MemoryIds),
+    nth0(8,Commitments,Capability),
+    ( Capability=[_,['request-id',Id]|_] -> CapabilityIds=[Id]
+    ; Capability=['capability-contact-context-v1','no-capability-request',
+        'no-returned-capability-contact'],CapabilityIds=[] ),
+    append(ReadingIds,MemoryIds,Base),append(Base,CapabilityIds,Ids).
 
 as_model_local_response_schema('c3-semantic-question-v1',
     "miter_c3_semantic_readings",Schema) :-
