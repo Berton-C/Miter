@@ -4077,6 +4077,21 @@ Already carried:
   `a8025af` remains unchanged; the next cut is scope/failure carry, not a
   repetition of this accepted story-recall check.
 
+  Installed idle surface-outage carry now passes on unchanged `a8025af`:
+  the exact existing Mattermost container was briefly paused, its health
+  request failed, and the same PeTTa child 73061 / run
+  `c33d7417-fd5d-4851-80fb-fd7e3a47f2ca` advanced its idle heartbeat while the
+  surface was unavailable. Unpause restored Mattermost health; supervisor
+  73049 and the child remained unchanged. Checkpoint, consumed/rejected input,
+  proof, outbox, receipt, surface-effect and model-spend-claim records stayed
+  byte-identical; counts remained 27 admitted, seven outbound and 45 model
+  calls. No new message, model call, replay or runtime edit was needed. This
+  carries the earlier `e27ca02` outage behavior into the installed one-root
+  product; it does not test scope isolation or mid-turn model/delivery failure.
+  The completed temporary outage inspector is removed. Process hygiene at
+  1:15:57 elapsed finds only the expected broker, supervisor and child (2.0%
+  CPU, about 786 MiB RSS); no builder trial survives.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -4091,11 +4106,12 @@ Next movement:
    version resolution. Check finite AMA-1.2 authority before further contact /
    model / effect work; five model calls remain at this waypoint. No general
    recall or C4 closure is claimed yet;
-2. **active next cut:** inspect the existing scope-isolation and model/surface-
-   failure paths and inherited carry evidence, identify one unproved boundary,
-   then complete its supported-runtime trial without replay, fabricated
-   contact, or loss of Continuity of Mind. State the hypothesis before the
-   bounded trial; change runtime source only if that trial proves a defect;
+2. **active next cut:** installed idle Mattermost outage/recovery is carried.
+   Inspect the remaining scope-isolation and mid-turn model/delivery-failure
+   paths and inherited evidence, identify one unproved boundary, then complete
+   its supported-runtime trial without replay, fabricated contact, or loss of
+   Continuity of Mind. State the hypothesis before the bounded trial; change
+   runtime source only if that trial proves a defect;
 3. embody the Open Growth Environment as a dynamic native capability field:
    trusted web/tool/skill/terminal possibilities and a Miter-owned revisable
    workspace, with observable consequence, reversible self-development, and
