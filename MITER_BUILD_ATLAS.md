@@ -3949,27 +3949,46 @@ Already carried:
   This establishes delivered conversation, not adequate continuity: the reply
   recalls the human's offer but asks for the story already pasted in the
   preceding contact. Do not ask the human to compensate by pasting it again.
-  Source inspection shows an exact-text query returning four scoped Chroma
-  candidates; it does not establish whether the story was absent from durable
-  native storage, projection, the returned candidate set, or provider context.
   The targeted read confirms the exact 1,315-character story in both its
   consumed source and the current native capsule, with a successful projection
-  receipt for 12 records. Loss of that stored source is ruled out; actual
-  retrieval membership and provider access remain to be established.
-  The next read-only observation must distinguish those stages before any
-  repair. No larger result limit, automatic prompt injection, forced model
-  assertion, message replay, or further upgrade follows from delivery alone.
+  receipt for 12 records. The completed read-only trace now proves that the
+  cached four-candidate set excludes the story: it contains two human requests
+  and two certified expressions instead. Render and audit receive exactly those
+  same four bodies and hashes. This turn's absence therefore precedes provider
+  rendering; storage loss and a later render/audit filter are ruled out. The
+  receipt does not independently prove the story's current Chroma row or rank.
+
+  Git comparison with `f5aadcd` confirms that `C4MemoryQuery` has always queried
+  the current utterance alone for four similarity candidates. Retained native
+  encounter history separately carries exact source identities/payload hashes;
+  these are not a readable exact-source recall path in the current dialogue
+  context. C-034/035/036 and S-801/802 require that connection, not semantic
+  rank as the sole gate to usable continuity. Recentness, prior refusal, and
+  similarity must not become native relevance or truth. Keep the working
+  installed release unchanged while comparing a native exact-source consumer
+  against this same private capsule/contact/cache, including unrelated-source,
+  duplicate, scope, hash and unavailable-source falsifiers. Temporary export
+  instruments stay in the existing private diagnostic directory; no model
+  calls, service changes, live writes, or new repository fixtures are needed
+  for that comparison. No larger search limit, forced assertion or replay is
+  accepted as a repair. Source and installed runtime are unchanged at this
+  evidence waypoint; only this Atlas records the new finding.
+  The process waypoint retains only broker 42606, supervisor 42896 and child
+  42906 (6.9% CPU, about 665 MiB RSS, 26:49 elapsed); the diagnostic exits and
+  its helper-validation copies are removed. These are process snapshots, not
+  a growing-history performance result.
 
 Next movement:
 
 1. the installed VoiceRNA repair has delivered the genuine human follow-up.
    Preserve all terminal receipts; neither the consumed contacts nor the older
    rejected contact may be moved or replayed. Keep installed `66d997c` unchanged
-   while tracing the already-pasted story through its exact native capsule,
-   semantic projection, cached candidates and actual provider context. Repair
-   only the proved loss of availability, with native relevance and uncertainty
-   retained; neither fabricated content nor a broader retrieval envelope is a
-   substitute. Then carry a genuine human continuation into attributable later
+   while repairing the proved recall-context omission with an exact-source
+   consumer in native cognition, alongside associative candidates. Use the
+   existing private records for the bounded comparison; preserve ambiguity,
+   source identity, scope, explicit omissions and computational proportionality.
+   Neither fabricated content nor a broader retrieval envelope is a substitute.
+   Then carry a genuine human continuation into attributable later
    native participation and verify exact continuity and zero effect replay
    across restart. Check finite AMA-1.2 authority before further contact/model/
    effect work. No general recall, restart or C4 closure is claimed yet;
