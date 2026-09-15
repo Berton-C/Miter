@@ -4148,9 +4148,22 @@ Already carried:
   and a fresh `bin/miter` process reads the persisted open policy. Scope,
   malformed amendment, security-sensitive text and per-request resource
   checks retain their prior distinctions. No paid model call, external post,
-  live-state edit or checkpoint reformation occurs. The initial live binding
-  read and activation through the dedicated-user install remain pending the
-  operator's upgrade/enable command, not reported as already carried.
+  live-state edit or checkpoint reformation occurs in this local carry.
+
+  **Installed activation carried:** Berton's returned upgrade/enable output
+  installs `5336d3bc3e42d8cf7869682fb2fd80b5169e404c` and confirms
+  `open-until-revoked`, `zero-means-unlimited`, all four effective conversation
+  quotas zero, and both effective expiry fields zero. Original AMA-1.2 limits
+  remain historical, not a second active cap. Runtime identity is unchanged;
+  checkpoint `48915f51d45d76742561b5251ecb612c70494887ceabe03998ee8b2151aa967c`
+  and counts 28 contacts / 8 posts / 48 model calls survive the supported
+  upgrade. The subsequent policy amendment reports no service interruption;
+  `start` preserves the same child 10249 and run
+  `2e43cac2-13c4-403a-8a78-0ffd0bc9e96d`. Status retains GLM 5.3 as the active
+  until-replaced resource, verified LKG, live supervisor and ready broker.
+  This carries installed activation and persisted accounting, not a new
+  post-amendment response or whole-C4 closure. Ordinary conversation may
+  proceed without another diagnostic or renewal command.
 
   Efficiency boundary: only human reach authority changes; native MeTTa,
   Constitution, Soul, all mathematical authorities, question identity,
@@ -4161,11 +4174,41 @@ Already carried:
   51 and then 151 fixture claims, 100 allowance reads take 0.107 s at each
   size. Explicit finite model-direction limits and operator stop still hold.
   This is a mechanical allowance sample, not a whole-turn or growing-memory
-  performance claim. Whole-runtime restart remains an installed carry.
+  performance claim. The supported upgrade/restart is carried above; a
+  separate restart after policy activation has not been exercised.
   Pre-cut installed process
   hygiene finds only broker/supervisor/child, child 5.4% CPU and about 717 MiB
   RSS at 2:20:30 elapsed. The bounded temporary policy trials are removed
   before commit; no test fixture or log enters Git.
+
+  **Next cut — Understand/Weave:** C-034--040 and S-801--803 require exact
+  artifact lineage, not recency as authority. Commit `a8025af` deliberately
+  supplies four recent exact human sources alongside associative recall;
+  `C4ExactRecallQuery` retains that bound and explicit omissions. Existing
+  `runtime_continuity.pl` already persists the actual scoped native
+  organization and raw references. Separately, `continuity.pl` preserves
+  immutable artifact capsules, explicit predecessor/supersession IDs and a
+  current pointer; `continuity_adapter.pl` restores declared project sources.
+  Source inspection finds no native caller/import of the legacy capsule
+  write/select functions. Their presence is not evidence of a conversation-
+  earned version lifecycle. Public empty source defaults do not establish the
+  installed private registry's contents.
+
+  The next additive seam is native artifact/version formation and resolution
+  inside the existing undertaking and checkpoint organization, followed by
+  exact named-source access into the same encounter and VoiceRNA path. Reuse
+  the existing identity, scope, hash and persistence mechanics where their
+  contracts fit; do not connect fixture writers as cognitive authority or
+  establish a parallel store/clock. A newer unrelated message must not
+  supersede an artifact, competing revisions must remain distinguishable,
+  and an older exact version must remain addressable after restart. Compare
+  increasing unrelated history without rescanning/reforming unchanged proof
+  graphs. This is the identified implementation gap, not an implemented or
+  verified resolver. The present follow-up changes only this Atlas: no live
+  state, model call, fixture, native meaning or running process is changed.
+  Process check finds only broker 9925, supervisor 10238 and its pinned PeTTa
+  child 10249; child RSS is about 609 MiB, sampled CPU 5.5--9.6%, elapsed
+  about five minutes. No disposable process or duplicate organism remains.
 
 Next movement:
 
@@ -4179,9 +4222,9 @@ Next movement:
    amendment is a separate mechanical C4 addition.
    Preserve ambiguity, scope, explicit omissions and proportionality.
    The bounded conversation working set is not completion of older artifact /
-   version resolution. Enable the explicitly authorized open conversation
-   policy without resetting prior accounting. No general recall or C4 closure
-   is claimed yet;
+   version resolution. The explicitly authorized open conversation policy is
+   now installed and active with prior accounting preserved. No general recall
+   or C4 closure is claimed yet;
 2. installed idle Mattermost outage/recovery is carried. The proposed negative
    outside-group test is declined by Berton and SHALL NOT block publication
    or be reported as passed. Additional live scope-isolation and mid-turn
@@ -4227,12 +4270,12 @@ Next movement:
    intentionally unchanged next movement, exact continuity across restart, and
    zero replay. These remain whole-C4 claims, not additional prerequisites for
    the human-accepted working-alpha publication recorded above;
-6. **active movement:** carry the operator-authorized open conversation policy
-   into the installed runtime while preserving the existing conversation and
-   all history. Continue C4 work from that working installation, beginning with
-   the remaining older-artifact/version-resolution and growing-history
-   proportionality seam; do not interrupt ordinary conversation for unrelated
-   trials. Main publication is complete, not a standing blocker. Future live
+6. **active movement:** the operator-authorized open conversation policy is
+   carried into the installed runtime, preserving conversation and history.
+   Continue C4 with the native older-artifact/version-resolution seam identified
+   above and its growing-history proportionality obligation; do not interrupt
+   ordinary conversation for unrelated trials. Main publication is complete,
+   not a standing blocker. Future live
    upgrades use the supported recoverable release transition and must identify
    any brief interruption. Legacy-tag and filesystem cleanup remain separately
    scoped; no cleanup is authorized by this policy change.
