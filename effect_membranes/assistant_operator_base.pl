@@ -26,7 +26,7 @@ as_dispatch([Command0|Args], Reply, Code) :-
     miter_store_nonempty_atom(Command0, Command),
     as_command(Command, Args, Reply, Code), !.
 as_dispatch(_, _{schema:"miter-assistant-operator-result-v1",status:"usage-error",
-  usage:"miter <install|bootstrap|model-selection|select-model|evaluation-disclosure|activate-evaluation|activate-evaluation-admin|continue-evaluation-admin|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--resource ID --duration-seconds N --max-calls N|--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
+  usage:"miter <install|bootstrap|model-selection|select-model|evaluation-disclosure|activate-evaluation|activate-evaluation-admin|continue-evaluation-admin|open-conversation-admin|revoke-conversation-admin|start|status|submit|stop|panic|evidence-bundle> --runtime-root ABSOLUTE_PATH [--resource ID --duration-seconds N --max-calls N|--haley-affirmation-post-id ID|--event FILE|--output FILE]"}, 64).
 
 as_command(install, Args, Reply, Code) :-
     !,
@@ -82,6 +82,14 @@ as_command('continue-evaluation-admin', Args, Reply, Code) :-
     as_required_option(Args,'--runtime-root',Root0),
     as_runtime_path(Root0,Root),
     as_continue_evaluation_admin(Root,Reply),as_reply_code(Reply,Code).
+as_command(Command,Args,Reply,Code) :-
+    memberchk(Command,['open-conversation-admin','revoke-conversation-admin']),!,
+    as_exact_options(Args,['--runtime-root']),
+    as_required_option(Args,'--runtime-root',Root0),
+    as_runtime_path(Root0,Root),
+    ( Command=='open-conversation-admin' -> Mode="open-until-revoked"
+    ; Mode="revoked" ),
+    as_set_conversation_policy(Root,Mode,Reply),as_reply_code(Reply,Code).
 as_command('run-supervised', Args, Reply, Code) :-
     !,
     as_exact_options(Args,['--runtime-root']),
@@ -131,7 +139,8 @@ as_reply_code(Reply, 0) :- get_dict(status, Reply, Status),
       'evidence-stored','evaluation-disclosure','evaluation-activated',
       'evaluation-already-active','evaluation-segment-already-current',
       'evaluation-segment-continued','supervised-clean-exit','crash-loop-contained',
-      'model-selection','model-selected']), !.
+      'model-selection','model-selected','conversation-policy-updated',
+      'conversation-policy-already-current']), !.
 as_reply_code(_, 1).
 
 as_exact_options(Args, Allowed) :-
@@ -663,6 +672,57 @@ as_continue_evaluation_admin(Root,Reply) :-
     ; Reply=_{schema:"miter-assistant-operator-result-v1",
         status:'evaluation-continuation-held',
         reason:"current-ratified-segment-or-complete-preflight-not-established"} ), !.
+
+% A separately explicit operator amendment, not a new activation and not a
+% reset of spend, contact, memory or delivery history. One atomic grant-file
+% replacement makes it effective to the existing reactor on its next read.
+as_set_conversation_policy(Root,Mode,Reply) :-
+    ( catch(as_set_conversation_policy_checked(Root,Mode,Reply0),_,fail) ->
+        Reply=Reply0
+    ; Reply=_{schema:"miter-assistant-operator-result-v1",
+        status:'conversation-policy-held',
+        reason:"existing-bound-authority-or-policy-write-not-established"} ),!.
+
+as_set_conversation_policy_checked(Root,Mode,Reply) :-
+    as_root(Root,_),as_verify_lkg(Root,verified),
+    as_mattermost_config(Root,Config),
+    as_mattermost_binding_local(Root,Config,Binding),
+    as_evaluation_grant_bound(Root,Config,Binding,_,Grant),
+    ( get_dict(conversation_policy,Grant,Current),Current.standing==Mode ->
+        Status='conversation-policy-already-current'
+    ; ( Mode=="open-until-revoked" ->
+          as_mattermost_binding_live(Root,Config,Binding)
+      ; true ),
+      as_write_conversation_policy(Root,Grant,Mode),
+      Status='conversation-policy-updated' ),
+    Reply=_{schema:"miter-assistant-operator-result-v1",status:Status,
+      conversation_policy:Mode,
+      scope:"existing-bound-three-member-conversation",
+      authority_boundary:"reach-only-no-cognitive-authority",
+      accounting:"preserved-no-reset",service_interrupted:false}.
+
+as_write_conversation_policy(Root,Grant,Mode) :-
+    directory_file_path(Root,'evaluation-grants.json',Path),
+    miter_store_read_json(Path,Document),Document.grants==[Grant],
+    get_time(Now),
+    Policy=_{schema:"miter-conversation-policy-v1",standing:Mode,
+      authority:"explicit-operator-authorization",authorized_at_epoch:Now,
+      authority_separation:"reach-only-no-cognitive-authority",
+      binding_sha256:Grant.binding_sha256,scope:Grant.scope,
+      principals:Grant.principals,required_group_members:Grant.required_group_members,
+      expires_at_epoch:0,
+      limits:_{admitted_events:0,outbound_posts:0,outbound_per_hour:0,remote_calls:0}},
+    as_conversation_policy_valid(Grant,Policy),
+    ( get_dict(conversation_policy_history,Document,Prior) -> is_list(Prior)
+    ; Prior=[] ),
+    append(Prior,[Policy],History),
+    put_dict(conversation_policy,Grant,Policy,UpdatedGrant),
+    put_dict(_{grants:[UpdatedGrant],conversation_policy_history:History},
+      Document,Updated),
+    as_write_json_durable(Path,Updated),
+    miter_store_read_json(Path,Stored),
+    miter_store_canonical_json(Updated,ExpectedJSON),
+    miter_store_canonical_json(Stored,ExpectedJSON).
 
 as_continue_evaluation_admin_checked(Root,Reply) :-
     as_root(Root,_),as_verify_lkg(Root,verified),
@@ -1491,19 +1551,34 @@ as_evaluation_status(Root,Standing) :-
       Document.standing=="active-explicit-grants",
       get_dict(grants,Document,[Grant]),is_dict(Grant) ->
         get_time(Now),
-        ( Now>Grant.maximum_expires_at_epoch -> State="maximum-expired"
+        ( get_dict(conversation_policy,Grant,Policy) ->
+            ( as_conversation_open(Grant) -> State="active"
+            ; as_conversation_policy_valid(Grant,Policy),Policy.standing=="revoked" ->
+                State="conversation-revoked"
+            ; State="conversation-policy-invalid" )
+        ; Now>Grant.maximum_expires_at_epoch -> State="maximum-expired"
         ; Now>Grant.segment_expires_at_epoch -> State="paused-segment-expired"
         ; State="active" ),
         as_evaluation_json_count(Root,'surface/events',Events),
         as_evaluation_effect_counts(Root,Grant,Posts,PostsLastHour),
         as_evaluation_model_claim_count(Root,RemoteCalls),
-        Standing=_{grant_id:Grant.id,standing:State,
+        Trial=_{grant_id:Grant.id,standing:State,
           activated_at_epoch:Grant.activated_at_epoch,
           segment_expires_at_epoch:Grant.segment_expires_at_epoch,
           maximum_expires_at_epoch:Grant.maximum_expires_at_epoch,
           counts:_{admitted_events:Events,outbound_posts:Posts,
             outbound_last_hour:PostsLastHour,remote_calls:RemoteCalls},
-          limits:Grant.limits}
+          limits:Grant.limits},
+        ( as_conversation_open(Grant) ->
+            put_dict(_{conversation_policy:"open-until-revoked",
+              limit_semantics:"zero-means-unlimited",
+              segment_expires_at_epoch:0,maximum_expires_at_epoch:0,
+              limits:Policy.limits,
+              original_evaluation:_{limits:Grant.limits,
+                segment_expires_at_epoch:Grant.segment_expires_at_epoch,
+                maximum_expires_at_epoch:Grant.maximum_expires_at_epoch}},
+              Trial,Standing)
+        ; Standing=Trial )
     ; Standing=_{standing:"inactive-awaiting-authorized-activation"} ).
 
 as_unconfirmed_status(Root, Status) :-

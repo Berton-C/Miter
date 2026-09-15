@@ -266,6 +266,33 @@ the live dependency and private-state checks, preserves prior model-call
 accounting, and can open another segment only up to the activation's unchanged
 168-hour maximum. It changes reach time only; it cannot choose meaning,
 movement, memory use, wording, or an effect.
+
+For ongoing conversation after the initial trial has been activated, the
+operator may explicitly remove its cumulative model-call, incoming-message,
+total-post, hourly-post, and time-expiry limits:
+
+```sh
+sudo "/Users/claritymiter/Miter/bin/miter" open-conversation-admin
+```
+
+This works even after the original trial expires. It applies to the existing
+bound three-member conversation and its model participation, until revoked;
+it does not authorize new recipients, unrelated effects, or change Soul
+judgment. GLM 5.3 remains the default, and model selection remains operator
+controlled. Provider availability, per-request token/deadline envelopes,
+finite VoiceRNA repair, credential protections and exactly-once delivery still
+apply. There is no new lifetime or per-hour conversation quota.
+
+The amendment and its history are stored atomically alongside the unchanged
+trial in private `evaluation-grants.json`. Existing counts, memory, receipts,
+and model claims are preserved, including across upgrades and restarts.
+`status` reports `conversation_policy: "open-until-revoked"` and effective
+zero limits/expiry with `limit_semantics: "zero-means-unlimited"`; old trial
+limits are labeled `original_evaluation`. Repeating the command is harmless.
+`revoke-conversation-admin` withdraws this authority without deleting history;
+`stop` and `panic` remain available. Policy updates do not restart the service
+or silently clear a stop/panic command. Ordinary provider charges still apply.
+
 `config/continuity.json` and `config/constitutive-projection.json` are internal
 authority projections, not operator settings.
 

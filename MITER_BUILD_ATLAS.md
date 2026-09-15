@@ -4119,6 +4119,54 @@ Already carried:
   elapsed). Two model calls remain in the existing grant; publication does
   not extend its finite call or time authority.
 
+  **Main publication completed:** `7953633` is verified on remote `main` and
+  the same sole local checkout now tracks it. No runtime, private state, local
+  archive, or legacy tag was removed by publication.
+
+  **Open conversation authorization (2026-09-14):** Berton explicitly requests
+  ongoing conversation without the trial's artificial constraints while C4
+  development proceeds. This supersedes the finite AMA-1.2 conversation
+  quotas and expiry for the existing authorized three-member group, not
+  native Soul judgment, security-sensitive disclosure protections, scope,
+  finite per-request resource envelopes, or exactly-once delivery. C5 is not
+  defined in this Atlas; do not silently invent a new stage. Keep one C4 cut
+  active, with live conversation supplying observations during development.
+
+  `open-conversation-admin` records a scope-bound, until-revoked operator
+  amendment in the existing private evaluation document; its original trial,
+  activation, cumulative accounting and append-only amendment history remain.
+  It neither reactivates the trial nor resets claims. The same admission,
+  model and delivery consumers use this amendment; no new cognitive route is
+  introduced. `revoke-conversation-admin` withdraws it, and stop/panic remain
+  effective. An expired trial can be amended. Status shows the effective
+  unlimited policy separately from the old trial. No installer default grants
+  a new user this authority automatically.
+
+  Local bounded carry: the supported installer creates the disposable runtime;
+  its actual Prolog consumers pass with an expired trial and 51 persisted
+  model claims. The operator dispatch passes idempotent opening and revocation,
+  and a fresh `bin/miter` process reads the persisted open policy. Scope,
+  malformed amendment, security-sensitive text and per-request resource
+  checks retain their prior distinctions. No paid model call, external post,
+  live-state edit or checkpoint reformation occurs. The initial live binding
+  read and activation through the dedicated-user install remain pending the
+  operator's upgrade/enable command, not reported as already carried.
+
+  Efficiency boundary: only human reach authority changes; native MeTTa,
+  Constitution, Soul, all mathematical authorities, question identity,
+  VoiceRNA and checkpoint schemas are byte-unchanged from the working
+  baseline. An open allowance no longer scans cumulative history merely to
+  compare it to an absent quota; the already-unbounded model direction also
+  avoids that unnecessary count. Status retains truthful accounting. With
+  51 and then 151 fixture claims, 100 allowance reads take 0.107 s at each
+  size. Explicit finite model-direction limits and operator stop still hold.
+  This is a mechanical allowance sample, not a whole-turn or growing-memory
+  performance claim. Whole-runtime restart remains an installed carry.
+  Pre-cut installed process
+  hygiene finds only broker/supervisor/child, child 5.4% CPU and about 717 MiB
+  RSS at 2:20:30 elapsed. The bounded temporary policy trials are removed
+  before commit; no test fixture or log enters Git.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -4126,13 +4174,14 @@ Next movement:
    checkpoint-integrity and no-replay carry, and preserved exact source
    participation through native proof and stored render/audit requests.
    Preserve all terminal receipts; neither the consumed contacts nor the older
-   rejected contact may be moved or replayed. Keep the installed release
-   unchanged; no further human repetition or upgrade is needed for this cut.
+   rejected contact may be moved or replayed. No further human repetition or
+   upgrade is needed for the recall cut itself; the newly authorized policy
+   amendment is a separate mechanical C4 addition.
    Preserve ambiguity, scope, explicit omissions and proportionality.
    The bounded conversation working set is not completion of older artifact /
-   version resolution. Check finite AMA-1.2 authority before further contact /
-   model / effect work; two model calls remain at the latest waypoint. No general
-   recall or C4 closure is claimed yet;
+   version resolution. Enable the explicitly authorized open conversation
+   policy without resetting prior accounting. No general recall or C4 closure
+   is claimed yet;
 2. installed idle Mattermost outage/recovery is carried. The proposed negative
    outside-group test is declined by Berton and SHALL NOT block publication
    or be reported as passed. Additional live scope-isolation and mid-turn
@@ -4178,12 +4227,15 @@ Next movement:
    intentionally unchanged next movement, exact continuity across restart, and
    zero replay. These remain whole-C4 claims, not additional prerequisites for
    the human-accepted working-alpha publication recorded above;
-6. **active movement:** publish the accepted clean source to `main`, protected
-   by the verified historical bundle and exact-tip force-with-lease. Continue
-   substantive additive C4 work on that one source repository. Promotion does
-   not alter or reinstall the already working runtime, renew its grant, delete
-   local recovery material, or authorize general filesystem cleanup. Removal
-   of legacy remote tags and other old material remains separately scoped.
+6. **active movement:** carry the operator-authorized open conversation policy
+   into the installed runtime while preserving the existing conversation and
+   all history. Continue C4 work from that working installation, beginning with
+   the remaining older-artifact/version-resolution and growing-history
+   proportionality seam; do not interrupt ordinary conversation for unrelated
+   trials. Main publication is complete, not a standing blocker. Future live
+   upgrades use the supported recoverable release transition and must identify
+   any brief interruption. Legacy-tag and filesystem cleanup remain separately
+   scoped; no cleanup is authorized by this policy change.
 
 The historical archive and local `initial_canon` remain untouched. The human-
 accepted main replacement above supersedes the earlier candidate-only hold;

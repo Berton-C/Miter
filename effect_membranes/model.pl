@@ -710,8 +710,8 @@ as_model_direction_checked(Root0,Scope,Purpose0,
     get_dict(expires_at_epoch,Document,Expiry),number(Expiry),
     get_time(Now),(Expiry=:=0;Now=<Expiry),
     get_dict(max_calls,Document,MaxCalls),integer(MaxCalls),MaxCalls>=0,
-    as_model_direction_claim_count(Root,ResourceId,Activated,Used),
-    (MaxCalls=:=0;Used<MaxCalls),
+    ( MaxCalls=:=0 -> true
+    ; as_model_direction_claim_count(Root,ResourceId,Activated,Used),Used<MaxCalls ),
     as_model_profile(Root,ResourceId,Profile),
     get_dict(model,Profile,ModelString),atom_string(ModelId,ModelString),
     atom_string(Purpose,PurposeString),memberchk(PurposeString,Profile.roles),
@@ -895,14 +895,32 @@ as_model_grant_scoped(Root,Grant,Question,
     as_dict_atom(Scope,audience,Audience),
     as_dict_atom(Scope,project,Project),
     get_dict(max_calls,Grant,MaxCalls), integer(MaxCalls), MaxCalls>=1,
-    as_model_grant_claim_count(Root,GrantId,Used), Used<MaxCalls,
+    ( as_model_open_conversation_grant(Root,Grant) -> Open=true ; Open=false ),
+    ( Open==true -> true
+    ; as_model_grant_claim_count(Root,GrantId,Used), Used<MaxCalls ),
     get_dict(max_output_tokens,Grant,GrantedTokens), integer(GrantedTokens),
     MaxTokens=<GrantedTokens,
     get_dict(deadline_seconds,Grant,GrantedDeadline), number(GrantedDeadline),
     Deadline=<GrantedDeadline,
     as_model_grant_disclosure(Root,Grant,ResourceId,Question),
     get_dict(expires_at_epoch,Grant,Expiry), number(Expiry),
-    get_time(Now), Now=<Expiry.
+    get_time(Now),
+    ( Open==true -> true
+    ; Now=<Expiry ).
+
+% Only a model grant belonging to the exactly bound conversational authority
+% inherits its operator amendment. Other grants retain their original limits.
+as_model_open_conversation_grant(Root,Grant) :-
+    get_dict(evaluation_grant_id,Grant,"ama-1.2"),
+    as_mattermost_config(Root,Config),
+    as_mattermost_binding_local(Root,Config,Binding),
+    as_evaluation_grant(Root,Config,Binding,_,Evaluation),
+    as_conversation_open(Evaluation),
+    memberchk(Grant.scope.principal,Evaluation.principals),
+    Grant.scope.audience==Evaluation.scope.audience,
+    Grant.scope.project==Evaluation.scope.project,
+    format(string(Expected),'ama-1.2-~s-~s',
+      [Grant.resource_id,Grant.scope.principal]),Grant.id==Expected.
 
 as_model_question_has_private_continuity(
     [Kind,_,_,_,_,_,_,_,Commitments,_,_]) :-
@@ -977,6 +995,7 @@ as_evaluation_model_available(Root,[scope,Principal,Audience,Project],ResourceId
     atom_string(ProjectAtom,Config.scope.project),
     as_model_profile(Root,ResourceId,Profile),
     ( as_dict_atom(Profile,kind,local) -> true
+    ; as_dict_atom(Profile,kind,remote),as_conversation_open(EvaluationGrant) -> true
     ; as_dict_atom(Profile,kind,remote),
       as_evaluation_model_claim_count(Root,Used),
       Used<EvaluationGrant.limits.remote_calls ).

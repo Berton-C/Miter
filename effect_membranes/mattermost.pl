@@ -817,8 +817,8 @@ as_mattermost_surface_matches(Config,Surface,Binding,Principal) :-
     atom_string(ExpectedPrincipal,Surface.principal_id),
     memberchk(Principal.username,Config.authorized_humans).
 
-% AMA-1.2 is a mechanical reach boundary.  It can admit a principal or effect
-% only while the separately witnessed evaluation segment is active.  It never
+% Conversation reach is mechanical: the original finite AMA-1.2 segment or
+% its explicit, scope-bound until-revoked operator amendment. Neither ever
 % interprets contact, chooses a model, forms movement, or decides what to say.
 as_evaluation_group_active(Root,Config,Binding,GrantId) :-
     as_evaluation_grant(Root,Config,Binding,GrantId,Grant),
@@ -837,16 +837,13 @@ as_evaluation_effect_available(Root,Config,Binding,EffectId0,GrantId) :-
     miter_store_nonempty_atom(EffectId0,EffectId),
     as_evaluation_grant(Root,Config,Binding,GrantId,Grant),
     memberchk("mattermost-create-post",Grant.capabilities),
-    as_evaluation_effect_counts(Root,Grant,Total,Recent),
-    Total<Grant.limits.outbound_posts,
-    Recent<Grant.limits.outbound_per_hour,
+    as_evaluation_post_allowance(Root,Grant),
     \+ as_evaluation_other_pending_effect(Root,EffectId).
 
 as_evaluation_grant(Root,Config,Binding,GrantId,Grant) :-
     as_evaluation_grant_bound(Root,Config,Binding,GrantId,Grant),
     get_time(Now),
-    Now>=Grant.activated_at_epoch,Now=<Grant.segment_expires_at_epoch,
-    Now=<Grant.maximum_expires_at_epoch,
+    as_evaluation_time_current(Grant,Now),
     as_evaluation_control_allows(Root).
 
 % The bound grant identity is separated from its current temporal reach so a
@@ -869,16 +866,54 @@ as_evaluation_grant_bound(Root,Config,Binding,GrantId,Grant) :-
     as_sha256(Grant.binding_sha256,BindingHash),
     number(Grant.activated_at_epoch),number(Grant.segment_expires_at_epoch),
     number(Grant.maximum_expires_at_epoch),
-    as_evaluation_limits_valid(Grant.limits).
+    as_evaluation_limits_valid(Grant.limits),
+    ( get_dict(conversation_policy,Grant,Policy) ->
+        as_conversation_policy_valid(Grant,Policy)
+    ; true ).
+
+% Operator reach only. The historical trial, scope and accounting remain
+% intact; an explicit amendment removes quotas, not native certification.
+% A malformed or revoked amendment never falls back to the old trial.
+as_conversation_policy_valid(Grant,Policy) :-
+    is_dict(Policy),
+    as_mattermost_exact_keys(Policy,
+      [authority,authority_separation,authorized_at_epoch,binding_sha256,
+       expires_at_epoch,limits,principals,required_group_members,schema,scope,
+       standing]),
+    Policy.schema=="miter-conversation-policy-v1",
+    memberchk(Policy.standing,["open-until-revoked","revoked"]),
+    Policy.authority=="explicit-operator-authorization",
+    Policy.authority_separation=="reach-only-no-cognitive-authority",
+    number(Policy.authorized_at_epoch),Policy.authorized_at_epoch>0,
+    Policy.binding_sha256==Grant.binding_sha256,
+    Policy.scope==Grant.scope,Policy.principals==Grant.principals,
+    Policy.required_group_members==Grant.required_group_members,
+    Policy.expires_at_epoch==0,
+    Policy.limits=_{admitted_events:0,outbound_posts:0,
+      outbound_per_hour:0,remote_calls:0}.
+
+as_conversation_open(Grant) :-
+    get_dict(conversation_policy,Grant,Policy),
+    as_conversation_policy_valid(Grant,Policy),
+    Policy.standing=="open-until-revoked",
+    get_time(Now),Now>=Policy.authorized_at_epoch.
+
+as_evaluation_time_current(Grant,Now) :-
+    ( get_dict(conversation_policy,Grant,_) -> as_conversation_open(Grant)
+    ; Now>=Grant.activated_at_epoch,Now=<Grant.segment_expires_at_epoch,
+      Now=<Grant.maximum_expires_at_epoch ).
+
+as_evaluation_post_allowance(Root,Grant) :-
+    ( as_conversation_open(Grant) -> true
+    ; as_evaluation_effect_counts(Root,Grant,Total,Recent),
+      Total<Grant.limits.outbound_posts,Recent<Grant.limits.outbound_per_hour ).
 
 as_evaluation_contact_reach_paused(Root) :-
     as_mattermost_config(Root,Config),
     as_mattermost_binding_local(Root,Config,Binding),
     as_evaluation_grant_bound(Root,Config,Binding,_,Grant),
     get_time(Now),
-    ( Now<Grant.activated_at_epoch
-    ; Now>Grant.segment_expires_at_epoch
-    ; Now>Grant.maximum_expires_at_epoch
+    ( \+ as_evaluation_time_current(Grant,Now)
     ; \+ as_evaluation_control_allows(Root) ), !.
 
 as_evaluation_limits_valid(Limits) :-
@@ -899,8 +934,9 @@ as_mattermost_binding_sha256(Root,Hash) :-
     crypto_file_hash(Path,Hash,[algorithm(sha256),encoding(octet)]).
 
 as_evaluation_event_available(Root,Grant) :-
-    as_evaluation_json_count(Root,'surface/events',Count),
-    Count<Grant.limits.admitted_events.
+    ( as_conversation_open(Grant) -> true
+    ; as_evaluation_json_count(Root,'surface/events',Count),
+      Count<Grant.limits.admitted_events ).
 
 as_evaluation_json_count(Root,Relative,Count) :-
     directory_file_path(Root,Relative,Directory),directory_files(Directory,Names),
