@@ -15,6 +15,149 @@
 :- use_module(library(lists)).
 :- use_module(library(pcre)).
 :- use_module(library(pairs)).
+:- use_module(library(time)).
+
+% Exact source access does not call Chroma or an embedding/model service.
+% MeTTa supplies the scoped source identities. This membrane only checks the
+% committed capsule, membership, and exact bytes; it does not choose sources,
+% infer relevance, or turn an earlier expression into an independent fact.
+as_continuity_sources(Root,Question,Observation) :-
+    catch((call_with_time_limit(10,
+        miter_continuity_sources_checked(Root,Question,Rows))
+      -> Failure=none
+      ; Failure='canonical-source-binding-not-established'),
+      Error,miter_continuity_source_failure(Error,Failure)),
+    (Failure==none -> true
+    ; (miter_continuity_source_question(Question,_,Sources)
+      -> maplist(miter_continuity_source_unavailable(Failure),Sources,Rows)
+      ; Rows=[])),
+    Observation=['c4-exact-recall-observation-v1',Question,Rows,
+      'bytes-not-relevance-or-authority'], !.
+
+miter_continuity_source_question(
+    ['c4-exact-recall-query-v1',
+      ['question-reference',ContactId,'exact-continuity-recall'],Scope,
+      [sources,Sources],
+      ['omitted-native-sources',Omitted,'retained-in-scoped-history'],
+      ['recall-contract','exact-retained-encounter-sources',
+        'newest-admission-first-not-relevance','no-contact-no-authority-no-choice']],
+    Scope,Sources) :-
+    ground(Sources),acyclic_term(Sources),miter_chroma_symbol(ContactId),
+    miter_chroma_scope(Scope),is_list(Sources),length(Sources,N),N=<4,
+    maplist(miter_continuity_source_descriptor,Sources),
+    sort(Sources,Unique),same_length(Sources,Unique),
+    integer(Omitted),Omitted>=0.
+
+miter_continuity_source_descriptor(
+    ['c4-retained-source-v1',Id,['payload-reference',Payload]]) :-
+    miter_chroma_symbol(Id),atom(Payload),atom_concat(sha256_,Hash,Payload),
+    miter_chroma_sha256(Hash).
+
+miter_continuity_source_failure(time_limit_exceeded,'source-read-time-bound') :- !.
+miter_continuity_source_failure(error(exact_source_held(Reason),_),Reason) :- !.
+miter_continuity_source_failure(error(permission_error(_,_,_),_),
+    'source-read-permission-denied') :- !.
+miter_continuity_source_failure(error(syntax_error(_),_),
+    'source-carrier-malformed') :- !.
+miter_continuity_source_failure(_,'source-read-or-integrity-not-established').
+
+miter_continuity_source_unavailable(Reason,Source,
+    ['exact-source-result',Source,
+      ['exact-source-unavailable',Reason]]).
+
+miter_continuity_sources_checked(Root0,Question,Rows) :-
+    ground(Question),acyclic_term(Question),
+    miter_continuity_source_question(Question,Scope,Sources),
+    (Sources==[] -> Rows=[]
+    ; miter_chroma_root(Root0,Root),miter_chroma_runtime_id(Root,RuntimeId),
+      directory_file_path(Root,'checkpoints/active.json',ActivePath),
+      miter_continuity_regular_file(ActivePath,65536),
+      crypto_file_hash(ActivePath,PointerHash,[algorithm(sha256),encoding(octet)]),
+      miter_store_read_json(ActivePath,Active),
+      Active.schema=="miter-assistant-checkpoint-v3",
+      miter_store_nonempty_atom(Active.continuity_manifest,ManifestRelative),
+      miter_chroma_relative_reference(ManifestRelative),
+      miter_store_nonempty_atom(Active.continuity_manifest_sha256,ManifestHash),
+      miter_store_nonempty_atom(Active.snapshot_sha256,SnapshotHash),
+      directory_file_path(Root,ManifestRelative,ManifestPath),
+      miter_continuity_regular_file(ManifestPath,1048576),
+      crypto_file_hash(ManifestPath,ManifestHash,[algorithm(sha256),encoding(octet)]),
+      miter_runtime_continuity_read_factorized(ManifestPath,
+        ['miter-continuity-manifest-v1',SnapshotHash,References,_,_]),
+      findall(CH-CR,member(['continuity-capsule-reference',Scope,CH,CR],References),
+        [CapsuleHash-CapsuleRelative]),
+      miter_chroma_relative_capsule_reference(CapsuleRelative),
+      directory_file_path(Root,CapsuleRelative,CapsulePath),
+      miter_continuity_read_sources(CapsulePath,CapsuleHash,Scope,Capsule,Nodes),
+      crypto_file_hash(CapsulePath,FileHash,[algorithm(sha256),encoding(octet)]),
+      Context=source_context(RuntimeId,Scope,CapsuleRelative,FileHash,
+        CapsuleHash,SnapshotHash,Capsule,Nodes),
+      maplist(miter_continuity_source_result(Context),Sources,Rows),
+      crypto_file_hash(ActivePath,PointerHash,[algorithm(sha256),encoding(octet)]) ).
+
+miter_continuity_regular_file(Path,Max) :-
+    (read_link(Path,_,_) -> throw(error(exact_source_held('source-is-symlink'),_))
+    ; \+exists_file(Path) -> throw(error(exact_source_held('source-file-missing'),_))
+    ; size_file(Path,N),
+      (N=<Max -> true
+      ; throw(error(exact_source_held('source-read-size-bound'),_)))).
+
+miter_continuity_read_sources(Path,CapsuleHash,Scope,Capsule,Nodes) :-
+    miter_continuity_regular_file(Path,8388608),
+    setup_call_cleanup(open(Path,read,S,[encoding(utf8)]),
+      read_term(S,Carrier,[syntax_errors(error)]),close(S)),
+    Carrier=['miter-factorized-continuity-v1',Capsule,Factors],
+    as_checkpoint_factors_well_formed(Factors),
+    % Traverse the finite on-disk factors before resolving their shared terms.
+    % Walking the expanded cognitive graph repeatedly would duplicate work.
+    miter_continuity_source_nodes(Carrier,Nodes,[]),
+    maplist(as_unify_checkpoint_factor,Factors),
+    ground(Capsule),acyclic_term(Capsule),
+    Capsule=['miter-continuity-capsule-v1',Scope|_],
+    miter_runtime_continuity_term_hash(Capsule,CapsuleHash).
+
+miter_continuity_source_nodes(X,T,T) :- var(X),!.
+miter_continuity_source_nodes(X,T,T) :- atomic(X),!.
+miter_continuity_source_nodes(X,[X|T],T) :-
+    X=[H|_],nonvar(H),H=='participant-contribution',!.
+miter_continuity_source_nodes(X,N,T) :-
+    compound_name_arguments(X,_,Args),miter_continuity_source_args(Args,N,T).
+miter_continuity_source_args([],T,T).
+miter_continuity_source_args([X|Xs],N,T) :-
+    miter_continuity_source_nodes(X,N,R),miter_continuity_source_args(Xs,R,T).
+
+miter_continuity_source_result(Context,Source,Row) :-
+    (miter_continuity_source_material(Context,Source,Result)
+    -> Row=['exact-source-result',Source,Result]
+    ; miter_continuity_source_unavailable(
+        'source-membership-or-body-integrity-not-established',Source,Row)).
+
+miter_continuity_source_material(
+    source_context(RuntimeId,Scope,Relative,FileHash,CapsuleHash,SnapshotHash,
+      Capsule,Nodes),
+    ['c4-retained-source-v1',Id,['payload-reference',Payload]],
+    ['c4-memory-result-v1',MemoryId,'human-contact',
+      ['source-capsule',Relative,FileHash,CapsuleHash,
+        ['source-occurrence',RawReference],['runtime-id',RuntimeId]],
+      [body,BodyHash,Body],['snapshot-sha256',SnapshotHash],
+      [distance,'not-ranked','diagnostic-not-authority'],
+      'scope-and-capsule-verified-locally']) :-
+    nth0(6,Capsule,['developmental-organization',History]),
+    member(['assistant-history',encounter,Id,Scope,Encounter],History),
+    nth0(3,Encounter,['contact-provenance-v2','human-contact',Id,
+      ['payload-reference',Payload],_]),
+    atom_concat(sha256_,BodyHash,Payload),
+    findall(Body0-Raw0,
+      (member(['participant-contribution',Id,human,Scope,_,
+         ['participant-text-claim',BodyHash,Body0,Raw0,
+           'exact-human-utterance-not-movement-authority'],_,
+         'no-contact-no-movement-authority'],Nodes),
+       string(Body0),string_length(Body0,N),N>=1,N=<8000,
+       miter_chroma_source_key(Raw0),
+       crypto_data_hash(Body0,BodyHash,[algorithm(sha256),encoding(utf8)])),Matches),
+    sort(Matches,[Body-RawReference]),
+    miter_chroma_memory_id(RuntimeId,Scope,'human-contact',RawReference,BodyHash,
+      MemoryId).
 
 as_chroma(Root0, Question, Observation) :-
     catch(

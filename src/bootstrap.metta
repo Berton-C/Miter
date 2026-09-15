@@ -6,7 +6,7 @@
   (as_config as_integrity as_control as_input as_checkpoint as_restore as_wait as_record as_effect
     as_native_id
     miter_assistant_continuity_restore miter_assistant_semantic_restore
-    as_chroma))
+    as_chroma as_continuity_sources))
 !(import_prolog_functions_from_file "./effect_membranes/model.pl"
   (as_model as_model_direction))
 !(import_prolog_functions_from_file "./effect_membranes/capability_environment.pl"

@@ -3978,17 +3978,62 @@ Already carried:
   its helper-validation copies are removed. These are process snapshots, not
   a growing-history performance result.
 
+  The exact private export now supports a bounded source repair in the same
+  `C4BoundContactUsingV1` path. Native MeTTa requests the four most recently
+  admitted, retained human sources in this principal/audience/project scope,
+  excluding the current contact; it records older-source omissions explicitly.
+  This is verbatim conversation working context, not relevance, event-time
+  ordering, artifact supersession, or a complete long-term project resolver.
+  Prolog resolves only those identities against the committed native capsule,
+  checking scope, membership, body hash and active-pointer stability. Missing,
+  inaccessible, malformed, size/time-bounded or unestablished reads stay
+  unavailable rather than becoming evidence of absence. The unchanged four
+  associative candidates join these exact sources through native occurrence
+  deduplication; all remain unresolved participants before full formation.
+  The provider carrier consequently permits at most eight distinct entries,
+  not a larger Chroma search or forced recall claim. Ordinary personal source
+  bytes still pass the existing credential/security exclusion boundary.
+
+  Against installed-source baseline `66d997c`, the captured follow-up's local
+  context now contains seven distinct sources including the exact story. Its
+  public JSON projection grows from 2,746 to 5,330 characters. Bootstrap takes
+  1.1 s; exact capsule resolution takes 1.6–1.7 s. Full native preparation is
+  about 3 s in both baseline and repaired comparisons, including repeated warm
+  runs; independent full joint validation passes. Shared-capsule integrity is
+  checked once per question, not once per occurrence (1.6–1.7 s versus
+  6.2–6.7 s for four occurrences). This shares bytes, not semantic verdicts.
+  The native source scan visits each entry once: 190/1,900 repeated history
+  payloads take 0.54/5.28 ms, with selected identities preserved and omissions
+  explicit.
+  Factorized prepared carriers are 137,972/148,995 characters (931/947 factors),
+  not measurements of a new live checkpoint. Scope/question/hash/runtime/ID,
+  missing-body, unrelated-source, duplicate and conflicting-body checks pass;
+  source order also survives a local history serialization/restoration check.
+  No model call, additional full formation, live write or effect is introduced
+  by the source-access mechanism. Newly available participants invalidate their
+  existing native formation and VoiceRNA consumers, not M24–M26.3 semantics.
+  The captured capsule is 678,731 bytes; the 8 MiB/10 s mechanical read envelope
+  and 8,000-character per-source carrier report unavailable outside their
+  bounds. Large-capsule scaling, older artifact/version resolution, installed
+  latency/checkpoint growth and actual restart/no-replay remain open. The
+  installed release is unchanged; this commit is readiness for a human-run
+  upgrade and genuine continuation, not C4 closure. Only runtime source and
+  this Atlas are committed. The bounded trial and its program are removed;
+  the user's exact private export is retained for the pending installed carry.
+  Pre-commit hygiene finds only broker 42606, supervisor 42896 and child 42906
+  (4.2% CPU, about 662 MiB RSS, 59:49 elapsed), unchanged identities and stable
+  RSS relative to the earlier check. No disposable process or trial tree remains.
+
 Next movement:
 
 1. the installed VoiceRNA repair has delivered the genuine human follow-up.
    Preserve all terminal receipts; neither the consumed contacts nor the older
    rejected contact may be moved or replayed. Keep installed `66d997c` unchanged
-   while repairing the proved recall-context omission with an exact-source
-   consumer in native cognition, alongside associative candidates. Use the
-   existing private records for the bounded comparison; preserve ambiguity,
-   source identity, scope, explicit omissions and computational proportionality.
-   Neither fabricated content nor a broader retrieval envelope is a substitute.
-   Then carry a genuine human continuation into attributable later
+   until the human installs the now locally verified native exact-source
+   consumer alongside associative candidates. Preserve ambiguity, source
+   identity, scope, explicit omissions and computational proportionality.
+   The bounded conversation working set is not completion of older artifact /
+   version resolution. Carry a genuine human continuation into attributable later
    native participation and verify exact continuity and zero effect replay
    across restart. Check finite AMA-1.2 authority before further contact/model/
    effect work. No general recall, restart or C4 closure is claimed yet;

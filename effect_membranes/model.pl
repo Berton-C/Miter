@@ -258,7 +258,7 @@ as_model_c4_continuity(
     is_list(Undertakings), maplist(as_symbol,Undertakings,_),
     Present=['present-context',_,_], ground(Present),
     is_list(MemoryCandidates),length(MemoryCandidates,MemoryCount),
-    MemoryCount=<4,maplist(as_model_c4_memory_candidate,MemoryCandidates).
+    MemoryCount=<8,maplist(as_model_c4_memory_candidate,MemoryCandidates).
 
 as_model_c4_predecessor('no-predecessor').
 as_model_c4_predecessor(['source-cut',CutId]) :-
@@ -518,7 +518,9 @@ as_model_bounded_finding_text(Text) :-
 as_model_c4_private_context(
     ['private-continuity-context',Entries,
       'scope-verified-native-candidates-not-authority'],Entries) :-
-    is_list(Entries),length(Entries,Count),Count=<4,
+    % At most four exact native conversation sources plus four associative
+    % candidates; native identity-based deduplication can make the union smaller.
+    is_list(Entries),length(Entries,Count),Count=<8,
     maplist(as_model_c4_private_memory_entry,Entries),
     findall(Id,member(['c4-private-memory-evidence-v1',Id|_],Entries),Ids),
     sort(Ids,Unique),same_length(Ids,Unique).
@@ -736,19 +738,32 @@ as_model_continuity_context_verified(Root,Question,Scope) :-
     as_model_c4_voice_commitments(Commitments),
     nth0(7,Commitments,PrivateContext),
     as_model_c4_private_context(PrivateContext,Entries),Entries=[_|_],
-    maplist(as_model_private_memory_entry_verified(Root,Scope),Entries).
+    as_model_private_memory_entries_verified(Root,Scope,Entries).
 
-as_model_private_memory_entry_verified(Root,Scope,
+% Several exact/associative occurrences can share one immutable capsule.
+% Verify every distinct (path, file hash, capsule hash) once per question, then
+% check every occurrence identity. This is local byte-integrity work only:
+% no persistent cache, relevance verdict, or cross-question approval is reused.
+as_model_private_memory_entries_verified(Root,Scope,Entries) :-
+    miter_chroma_runtime_id(Root,RuntimeId),
+    findall(capsule(Reference,FileHash,CapsuleHash),
+      member(['c4-private-memory-evidence-v1',_,_,
+        ['source-capsule',Reference,FileHash,CapsuleHash,_,_]|_],Entries),
+      Capsules),
+    sort(Capsules,Unique),
+    maplist(as_model_private_capsule_verified(Root,Scope),Unique),
+    maplist(as_model_private_memory_identity_verified(RuntimeId,Scope),Entries).
+
+as_model_private_capsule_verified(Root,Scope, capsule(Reference,FileHash,Hash)) :-
+    miter_chroma_verified_capsule(Root,Reference,FileHash,Hash,Scope).
+
+as_model_private_memory_identity_verified(RuntimeId,Scope,
     ['c4-private-memory-evidence-v1',MemoryId,SourceKind,
-      ['source-capsule',SourceReference,SourceHash,CapsuleHash,
-        ['source-occurrence',SourceKey],['runtime-id',RuntimeId]],
+      ['source-capsule',_,_,_,['source-occurrence',SourceKey],
+        ['runtime-id',RuntimeId]],
       ['body',BodyHash,_],['snapshot-sha256',_],
       'scope-and-capsule-verified','rank-not-authority']) :-
-    miter_chroma_runtime_id(Root,RuntimeId),
-    miter_chroma_verified_capsule(Root,SourceReference,SourceHash,CapsuleHash,
-      Scope),
-    miter_chroma_memory_id(RuntimeId,Scope,SourceKind,SourceKey,BodyHash,
-      MemoryId).
+    miter_chroma_memory_id(RuntimeId,Scope,SourceKind,SourceKey,BodyHash,MemoryId).
 
 as_model_direction_claim_count(Root,ResourceId,Activated,Count) :-
     as_path(Root,'model/claims',Directory),directory_files(Directory,Entries),

@@ -318,6 +318,141 @@
    (if (> (size-atom $participants) 0)
      (CP2ContactWithAuthorityParticipants $contact $participants) $contact))
 
+; Exact conversation context and associative recall are different surfaces.
+; Native history order is retained admission order, not relevance, event time,
+; or artifact supersession. A bounded verbatim working set cannot substitute
+; for a project's exact artifact/version resolver. Older sources remain in
+; history and the omitted region is explicit in the native request/participant.
+(= (C4RetainedSource $payload $current-id)
+   (if (and (is-expr $payload) (> (size-atom $payload) 3))
+     (let $provenance (index-atom $payload 3)
+       (if (and (CPShape $provenance contact-provenance-v2 5)
+             (and (== (index-atom $provenance 1) human-contact)
+               (and (!= (index-atom $provenance 2) $current-id)
+                    (CPShape (index-atom $provenance 3) payload-reference 2))))
+         (c4-retained-source-v1 (index-atom $provenance 2)
+           (index-atom $provenance 3))
+         no-retained-human-source))
+     no-retained-human-source))
+
+(= (C4RetainedSources $payloads $current-id)
+   (if (!= $payloads ())
+     (let* (($source (C4RetainedSource (car-atom $payloads) $current-id))
+            ($rest (C4RetainedSources (cdr-atom $payloads) $current-id)))
+       (if (== $source no-retained-human-source) $rest
+         (cons-atom $source $rest)))
+     ()))
+
+(= (C4RecentSourcesAt $sources $i $remaining)
+   (if (and (>= $i 0) (> $remaining 0))
+     (cons-atom (index-atom $sources $i)
+       (C4RecentSourcesAt $sources (- $i 1) (- $remaining 1))) ()))
+
+(= (C4ExactRecallQuery $contact)
+   (let* (($scope (CPContactScope $contact))
+          ($sources (C4RetainedSources (AR2EncounterPayloadsForScope $scope)
+            (index-atom $contact 1)))
+          ($selected (C4RecentSourcesAt $sources (- (size-atom $sources) 1) 4)))
+     (c4-exact-recall-query-v1
+       (question-reference (index-atom $contact 1) exact-continuity-recall)
+       $scope (sources $selected)
+       (omitted-native-sources (- (size-atom $sources) (size-atom $selected))
+         retained-in-scoped-history)
+       (recall-contract exact-retained-encounter-sources
+         newest-admission-first-not-relevance no-contact-no-authority-no-choice))))
+
+(= (C4ExactRecallRowsValidAt $rows $sources $i)
+   (if (< $i (size-atom $sources))
+     (let $row (index-atom $rows $i)
+       (and (CPShape $row exact-source-result 3)
+         (and (== (index-atom $row 1) (index-atom $sources $i))
+           (and (or (C4MemoryResultValid (index-atom $row 2))
+                    (CPShape (index-atom $row 2) exact-source-unavailable 2))
+                (C4ExactRecallRowsValidAt $rows $sources (+ $i 1))))))
+     true))
+
+(= (C4ExactRecallObservationValid $observation $question)
+   (if (and (CPShape $observation c4-exact-recall-observation-v1 4)
+            (CPShape $question c4-exact-recall-query-v1 6))
+     (let* (($rows (index-atom $observation 2))
+            ($sources (index-atom (index-atom $question 3) 1)))
+       (and (== (index-atom $observation 1) $question)
+         (and (== (index-atom $observation 3) bytes-not-relevance-or-authority)
+           (and (== (size-atom $rows) (size-atom $sources))
+                (C4ExactRecallRowsValidAt $rows $sources 0)))))
+     false))
+
+(= (C4ExactRecallParticipantsAt $rows $question $i)
+   (if (< $i (size-atom $rows))
+     (let* (($row (index-atom $rows $i))
+            ($result (index-atom $row 2))
+            ($rest (C4ExactRecallParticipantsAt $rows $question (+ $i 1))))
+       (if (C4MemoryResultValid $result)
+         (let $participant (C4MemoryParticipant $result (index-atom $question 2)
+                (index-atom $question 1))
+           (cons-atom
+             (participant-contribution (index-atom $participant 1) memory
+               (index-atom $participant 3)
+               (lineage native-continuity (index-atom $question 1)
+                 (index-atom $row 1))
+               (index-atom $participant 5) unresolved
+               no-contact-no-movement-authority)
+             $rest))
+         $rest)) ()))
+
+(= (C4ExactRecallStandingsAt $rows $i)
+   (if (< $i (size-atom $rows))
+     (let $row (index-atom $rows $i)
+       (cons-atom (exact-source-standing (index-atom $row 1)
+         (if (C4MemoryResultValid (index-atom $row 2))
+           exact-bytes-available-relevance-unresolved (index-atom $row 2)))
+         (C4ExactRecallStandingsAt $rows (+ $i 1)))) ()))
+
+(= (C4ExactRecallParticipants $observation $question)
+   (let* (($valid (C4ExactRecallObservationValid $observation $question))
+          ($rows (if $valid (index-atom $observation 2) ()))
+          ($state (if $valid (C4ExactRecallStandingsAt $rows 0)
+            (exact-source-recall-unavailable)))
+          ($state-participant
+            (participant-contribution
+              (c4-exact-recall-availability (index-atom (index-atom $question 1) 1))
+              memory (index-atom $question 2)
+              (lineage native-continuity (index-atom $question 1))
+              (c4-memory-availability-candidate-v1
+                relation-exact-continuity-availability
+                (c4-memory-availability-observation
+                  (c4-exact-recall-status-v1 $question $state)))
+              unresolved no-contact-no-movement-authority)))
+     (cons-atom $state-participant
+       (C4ExactRecallParticipantsAt $rows $question 0))))
+
+; Two access paths to one occurrence do not create two independent witnesses.
+; Keep the exact-source participant only when scope, kind, source occurrence,
+; runtime and exact body agree. A conflicting same-ID entry is not discarded.
+(= (C4SameMemoryOccurrence $left $right)
+   (let* (($l (C4PrivateMemoryEntry $left))
+          ($r (C4PrivateMemoryEntry $right)))
+     (if (and (CPShape $l c4-private-memory-evidence-v1 8)
+              (CPShape $r c4-private-memory-evidence-v1 8))
+       (== ((index-atom $left 3) (index-atom $l 1) (index-atom $l 2)
+            (index-atom (index-atom $l 3) 4)
+            (index-atom (index-atom $l 3) 5) (index-atom $l 4))
+           ((index-atom $right 3) (index-atom $r 1) (index-atom $r 2)
+            (index-atom (index-atom $r 3) 4)
+            (index-atom (index-atom $r 3) 5) (index-atom $r 4))) false)))
+
+(= (C4MemoryOccurrencePresent $participant $others $i)
+   (if (< $i (size-atom $others))
+     (or (C4SameMemoryOccurrence $participant (index-atom $others $i))
+       (C4MemoryOccurrencePresent $participant $others (+ $i 1))) false))
+
+(= (C4AdditionalMemoryParticipants $associative $exact $i)
+   (if (< $i (size-atom $associative))
+     (let* (($participant (index-atom $associative $i))
+            ($rest (C4AdditionalMemoryParticipants $associative $exact (+ $i 1))))
+       (if (C4MemoryOccurrencePresent $participant $exact 0) $rest
+         (cons-atom $participant $rest))) ()))
+
 (= (C4Fact9EntriesAt $facts $i)
    (if (< $i (size-atom $facts))
      (let $fact (index-atom $facts $i)
@@ -2025,8 +2160,15 @@
                 (if (CPShape $memory-question c4-memory-query-v1 6)
                   (C4MemoryParticipants $memory-observation $memory-question)
                   ()))
+              ($exact-question (C4ExactRecallQuery $cue-contact))
+              ($exact-observation (as_continuity_sources $root $exact-question))
+              ($exact-participants
+                (C4ExactRecallParticipants $exact-observation $exact-question))
               ($memory-contact
-                (C4ContactWithMemory $cue-contact $memory-participants))
+                (C4ContactWithMemory $cue-contact
+                  (CPListAppend $exact-participants
+                    (C4AdditionalMemoryParticipants $memory-participants
+                      $exact-participants 0))))
               ($environment-observation
                 ($capability-environment-reader $root))
               ($capability-participants
