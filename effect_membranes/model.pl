@@ -214,10 +214,34 @@ as_model_c4_audit_contract(
 as_model_c4_audit_contract(
     ['request-contract',Instructions,'audit-not-movement',
       'candidate-reading-not-effect','no-contact-no-authority-no-choice',
+      Context],Instructions) :-
+    as_model_c4_audit_context(Context).
+as_model_c4_audit_contract(
+    ['request-contract',Instructions,'audit-not-movement',
+      'candidate-reading-not-effect','no-contact-no-authority-no-choice',
+      Context,Challenge],Instructions) :-
+    as_model_c4_audit_context(Context),
+    as_model_c4_audit_contract(
+      ['request-contract',Instructions,'audit-not-movement',
+        'candidate-reading-not-effect','no-contact-no-authority-no-choice',
+        Challenge],Instructions),
+    Challenge=['native-source-access-challenge-v1'|_].
+as_model_c4_audit_contract(
+    ['request-contract',Instructions,'audit-not-movement',
+      'candidate-reading-not-effect','no-contact-no-authority-no-choice',
       ['native-source-access-challenge-v1',Prior,Counterfacts]],Instructions) :-
     Prior=['c4-voice-audit-observation-v1'|_],length(Prior,13),
     ground(Prior),Counterfacts=['native-source-access-counterfacts',Rows],
     is_list(Rows),Rows=[_|_],length(Rows,N),N=<4,ground(Rows).
+
+% Shape only. MeTTa binds the exact intention and reading identities to the
+% render question; the membrane carries them without interpreting their use.
+as_model_c4_audit_context(
+    ['native-voice-audit-context-v1',Intention,
+      ['semantic-reading-standing',Ids,'fallible-alternatives-not-binding-obligations'],
+      'assess-material-alteration-against-intention-and-current-evidence']) :-
+    Intention=['native-intention'|_],ground(Intention),
+    is_list(Ids),length(Ids,N),between(2,3,N),maplist(as_symbol,Ids,_).
 
 as_model_c4_rendering(
     ['rendered-utterance',Utterance,['bindings',Bindings],
@@ -1350,6 +1374,13 @@ as_model_public_question(
     QuestionRef=['question-reference',_,'voice-audit'].
 
 as_model_public_c4_audit_contract(
+    ['request-contract',Instructions,A,B,C,Context,
+      ['native-source-access-challenge-v1',Prior,Counterfacts]],
+    ['request-contract',Instructions,A,B,C,Context,
+      ['native-source-access-challenge-v1',
+        ['prior-fallible-reading',Reading],Counterfacts]]) :- !,
+    as_model_c4_audit_context(Context),nth0(9,Prior,Reading).
+as_model_public_c4_audit_contract(
     ['request-contract',Instructions,A,B,C,
       ['native-source-access-challenge-v1',Prior,Counterfacts]],
     ['request-contract',Instructions,A,B,C,
@@ -1530,8 +1561,9 @@ as_model_public_question_shape_valid(
         ['current-native-movement','local-proof-reference-withheld']],
       Readings,
       ['candidate-rendering',['raw-sha256','private-hash-redacted'],Rendering],
-      PublicCommitments,Contract,Resource]) :-
-    as_model_public_c4_voice_commitments(Commitments,PublicCommitments).
+      PublicCommitments,PublicContract,Resource]) :-
+    as_model_public_c4_voice_commitments(Commitments,PublicCommitments),
+    as_model_public_c4_audit_contract(Contract,PublicContract).
 as_model_public_question_shape_valid(
     ['c3-semantic-question-v1',_,[scope,_,_,_],_,_,_,_,_,_,Contract,
       Resource],

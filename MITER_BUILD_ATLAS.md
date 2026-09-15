@@ -4262,8 +4262,58 @@ Already carried:
   or growing-history claims. Pre-commit live child 10249 remains under
   supervisor 10238, sampled CPU 1.4%, RSS about 1,194 MiB at 12:55:43 elapsed;
   broker 9925 remains separate mechanical transport. The Atlas artifact/version
-  addition is paused. **Installed upgrade and a new ordinary reply remain the
-  next carry; this repair and whole C4 are not declared closed.**
+  addition is paused. The subsequent installed observation below supersedes
+  the pending-upgrade standing; empty-completion recovery is not yet exercised
+  by that observation and whole C4 remains open.
+
+  **Active repair — preserve native intention through VoiceRNA audit:**
+  Installed `0b7c012` processed contact `g69syw5547gcjk8f55xgw47xyw`
+  through five nonempty GLM completions: semantic reading, render, audit,
+  revision, final audit. It checkpointed and returned to waiting in about
+  105 seconds with `revised-candidate-not-supported-by-final-soul-formation`;
+  there was no Mattermost effect. This was neither another empty completion
+  nor twenty minutes of continuing work. The private five-pair export changes
+  no live state and shows all three final findings remain unresolved.
+
+  One-variable hypothesis and result: the renderer's native intention is
+  lost by the old audit constructor. Varying only that intention produced an
+  identical audit question. The additive correction carries its exact term
+  and the identities/explicitly fallible standing of the semantic alternatives
+  into the ordinary audit and its existing bounded source-access challenge.
+  New voice carriers require that same intention; legacy carriers remain
+  readable without retroactively changing their identities. The membrane only
+  carries shape and privacy projection, including validating the already-
+  redacted challenge projection rather than comparing it with private input.
+  It makes no semantic decision. Native finding disposition, finite attempt
+  limits, certification, M24--M26.3 and the one R/A/P read are unchanged.
+
+  Carry: supported disposable `bin/miter install`, full pinned bootstrap,
+  and two fresh-process request/serialization reads pass. Wrong or stripped
+  intention, mismatched reading identity, and malformed input are rejected;
+  legacy audit/challenge readback, challenge lineage, privacy redaction and
+  unresolved-objection standing are preserved. These bounded carrier checks
+  are not a complete live constitutive proof. No network call, model spend,
+  effect, or live checkpoint write occurs. All-source syntax and diff checks
+  pass; no diagnostic enters Git.
+
+  Efficiency waypoint against `0b7c012`: the new voice-carrier marker, audit
+  context and their dependent request/observation/proof identities change;
+  semantic reading and upstream constitutive meaning do not. Existing
+  terminal history is not replayed or recertified. At two readings the added contract
+  is 428 characters. One thousand local constructors take about 0.019--0.022 s
+  legacy versus 0.022--0.025 s updated; CPU delta about 0.003 s per thousand.
+  Fresh bootstrap is about 1.1 s. This adds no model call, full formation,
+  history scan, worker, or cache; only the bounded 2--3 reading identities and
+  exact intention are carried. Live latency, growing-history costs and new
+  checkpoint size remain unmeasured, not inferred from these local timings.
+  Pre-commit: broker 63905, supervisor 64258 and child 64270 are the only
+  Miter processes; child CPU 1.6%, RSS about 765 MiB at 1:10:38 elapsed.
+  **The information-loss repair is locally carried, not a claim that the
+  saved audit is wrong or that conversation is restored.** Install through
+  the recoverable release transition, then observe one new ordinary contact.
+  If it remains held, use its exact final findings and supplied native
+  intention to locate the remaining semantic disagreement; do not force an
+  approval, ignore findings, enlarge timeouts, or replay consumed inputs.
 
 Next movement:
 
@@ -4325,8 +4375,8 @@ Next movement:
    intentionally unchanged next movement, exact continuity across restart, and
    zero replay. These remain whole-C4 claims, not additional prerequisites for
    the human-accepted working-alpha publication recorded above;
-6. **active movement:** carry the authorized empty-completion repair above
-   into the installed runtime and confirm ordinary conversation. Preserve the
+6. **active movement:** carry the native-intention audit repair above into
+   the installed runtime and confirm ordinary conversation. Preserve the
    already-active open conversation policy and all terminal history. Only then
    resume C4 with the native older-artifact/version-resolution seam identified
    above and its growing-history proportionality obligation; do not interrupt

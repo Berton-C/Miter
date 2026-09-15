@@ -849,7 +849,7 @@
            (semantic-readings $readings)
            (native-intention respond-to-authorized-contact
              preserve-plurality-and-uncertainty
-             no-claim-of-unperformed-effect)
+             no-claim-of-unperformed-effect same-intention-required-in-audit)
            (voice-commitments source-bound scope-bound movement-bound
              (if (C4PrivateContinuityContextPresent $private-context)
                disclosure-current-contact-and-scoped-continuity
@@ -947,8 +947,18 @@
    (if (C4VoiceAuditReadingValid $reading)
      (> (size-atom (index-atom (index-atom $reading 1) 1)) 0) false))
 
-(= (C4VoiceAuditQuestion $voice-question $voice-observation)
-   (if (C4VoiceObservationValid $voice-observation $voice-question)
+(= (C4VoiceAuditContext $voice-question)
+   (native-voice-audit-context-v1 (index-atom $voice-question 7)
+     (semantic-reading-standing
+       (C4SemanticReadingIdsAt (index-atom (index-atom $voice-question 6) 1) 0)
+       fallible-alternatives-not-binding-obligations)
+     assess-material-alteration-against-intention-and-current-evidence))
+
+; Exact expression intention must survive the rendering-to-audit boundary.
+; The semantic readings remain alternatives, not new obligations. This context
+; supplies evidence to the existing audit; it cannot withdraw a finding or
+; certify a candidate. The legacy constructor is only for old voice carriers.
+(= (C4VoiceAuditQuestionFromValidated $voice-question $voice-observation $contract)
      (c4-voice-audit-question-v1
        (question-reference
          (index-atom (index-atom $voice-question 1) 1) voice-audit)
@@ -960,11 +970,24 @@
        (candidate-rendering (index-atom $voice-observation 8)
          (index-atom $voice-observation 9))
        (index-atom $voice-question 8)
-       (request-contract (C4VoiceAuditInstructions)
-         audit-not-movement candidate-reading-not-effect
-         no-contact-no-authority-no-choice)
-       (index-atom $voice-question 10))
-     (c4-voice-audit-question-unavailable invalid-rendering)))
+       $contract
+       (index-atom $voice-question 10)))
+
+(= (C4VoiceAuditLegacyQuestion $voice-question $voice-observation)
+   (if (C4VoiceObservationValid $voice-observation $voice-question)
+    (C4VoiceAuditQuestionFromValidated $voice-question $voice-observation
+     (request-contract (C4VoiceAuditInstructions)
+       audit-not-movement candidate-reading-not-effect
+       no-contact-no-authority-no-choice))
+    (c4-voice-audit-question-unavailable invalid-rendering)))
+
+(= (C4VoiceAuditQuestion $voice-question $voice-observation)
+   (if (C4VoiceObservationValid $voice-observation $voice-question)
+    (C4VoiceAuditQuestionFromValidated $voice-question $voice-observation
+     (request-contract (C4VoiceAuditInstructions)
+       audit-not-movement candidate-reading-not-effect
+       no-contact-no-authority-no-choice (C4VoiceAuditContext $voice-question)))
+    (c4-voice-audit-question-unavailable invalid-rendering)))
 
 (= (C4VoiceAuditObservationValid $observation $question)
    (if (and (CPShape $observation c4-voice-audit-observation-v1 13)
@@ -1020,6 +1043,29 @@
 (= (C4VoiceAuditChallengeInstructions)
   "Re-examine this same candidate against the same supplied evidence. Native source-access counterfacts contradict a premise of the prior fallible audit; they do NOT establish candidate fidelity or order you to withdraw any other finding. Retain any independently supported semantic objection, distinguish access to a message from fulfillment of its content, and leave unresolved what the evidence cannot settle. Return exactly findings and uncertainty using the same eight-field finding schema: kind, source_basis, candidate_span, inferred_alteration, why_material, affected_dependency, evidence_source, evidence_access. Evidence access is native-render-context, audit-only, or not-material; use none/not-material when access is not a premise. Each of the original six text fields and uncertainty is under 600 characters; evidence_source under 256. Do not approve, reject, rewrite, or answer the human. This is one bounded reconsideration of an audit premise, not permission to produce a preferred verdict.")
 
+(= (C4VoiceAuditChallengeContract $base $prior $counterfacts)
+   (let* (($contract (index-atom $base 9))
+          ($challenge (native-source-access-challenge-v1 $prior
+            (native-source-access-counterfacts $counterfacts))))
+     (if (CPShape $contract request-contract 6)
+       (if (CPShape (index-atom $contract 5) native-voice-audit-context-v1 4)
+         (request-contract (C4VoiceAuditChallengeInstructions) audit-not-movement
+           candidate-reading-not-effect no-contact-no-authority-no-choice
+           (index-atom $contract 5) $challenge)
+         unavailable-audit-challenge-contract)
+       (if (CPShape $contract request-contract 5)
+         (request-contract (C4VoiceAuditChallengeInstructions) audit-not-movement
+           candidate-reading-not-effect no-contact-no-authority-no-choice $challenge)
+         unavailable-audit-challenge-contract))))
+
+(= (C4VoiceAuditContractChallenge $contract)
+   (if (CPShape $contract request-contract 7)
+     (index-atom $contract 6)
+     (if (CPShape $contract request-contract 6)
+       (let $item (index-atom $contract 5)
+         (if (CPShape $item native-source-access-challenge-v1 3)
+           $item no-audit-challenge)) no-audit-challenge)))
+
 (= (C4VoiceAuditChallengeQuestion $base $prior)
    (let $counterfacts (C4VoiceAuditCounterfacts $base $prior)
      (if (> (size-atom $counterfacts) 0)
@@ -1027,23 +1073,26 @@
          (index-atom $base 1) (index-atom $base 2) (index-atom $base 3)
          (index-atom $base 4) (index-atom $base 5) (index-atom $base 6)
          (index-atom $base 7) (index-atom $base 8)
-         (request-contract (C4VoiceAuditChallengeInstructions) audit-not-movement
-           candidate-reading-not-effect no-contact-no-authority-no-choice
-           (native-source-access-challenge-v1 $prior
-             (native-source-access-counterfacts $counterfacts)))
+         (C4VoiceAuditChallengeContract $base $prior $counterfacts)
          (index-atom $base 10))
        (c4-voice-audit-question-unavailable no-native-access-counterfact))))
 
-(= (C4VoiceAuditQuestionMatches $audit $voice $candidate)
-   (let $base (C4VoiceAuditQuestion $voice $candidate)
+(= (C4VoiceAuditQuestionMatchesBase $audit $base)
      (if (== $audit $base) true
        (if (CPShape $audit c4-voice-audit-question-v1 11)
-         (let $contract (index-atom $audit 9)
-           (if (CPShape $contract request-contract 6)
-             (let $challenge (index-atom $contract 5)
-               (if (CPShape $challenge native-source-access-challenge-v1 3)
-                 (== $audit (C4VoiceAuditChallengeQuestion $base
-                   (index-atom $challenge 1))) false)) false)) false))))
+         (let $challenge (C4VoiceAuditContractChallenge (index-atom $audit 9))
+           (if (CPShape $challenge native-source-access-challenge-v1 3)
+             (== $audit (C4VoiceAuditChallengeQuestion $base
+               (index-atom $challenge 1))) false)) false)))
+
+(= (C4VoiceAuditQuestionMatches $audit $voice $candidate)
+   (if (CPShape $voice c4-voice-render-question-v1 11)
+    (if (C4VoiceAuditQuestionMatchesBase $audit
+         (C4VoiceAuditQuestion $voice $candidate)) true
+     (if (CPHas same-intention-required-in-audit (index-atom $voice 7) 0)
+       false
+       (C4VoiceAuditQuestionMatchesBase $audit
+         (C4VoiceAuditLegacyQuestion $voice $candidate)))) false))
 
 (= (C4ChallengeVoiceAuditUsingV1 $root $base $prior $writer)
    (let $counterfacts (C4VoiceAuditCounterfacts $base $prior)
@@ -1055,10 +1104,9 @@
 
 (= (C4VoiceAuditChallengeWitness $question $observation)
    (if (C4VoiceAuditObservationValid $observation $question)
-    (let $contract (index-atom $question 9)
-     (if (CPShape $contract request-contract 6)
-       (let* (($challenge (index-atom $contract 5))
-              ($prior (index-atom $challenge 1)))
+    (let $challenge (C4VoiceAuditContractChallenge (index-atom $question 9))
+     (if (CPShape $challenge native-source-access-challenge-v1 3)
+       (let $prior (index-atom $challenge 1)
          ((audit-source-challenge-witness-v1
            (index-atom $question 1) (index-atom $question 2)
            (index-atom $question 3) (index-atom (index-atom $question 7) 1)
