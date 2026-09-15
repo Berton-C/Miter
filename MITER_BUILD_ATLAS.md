@@ -4050,18 +4050,34 @@ Already carried:
   runtime/source change. Preserve installed `a8025af` for the next genuine
   human continuation; no upgrade is required for this Atlas-only record.
 
+  The genuine post-restart contact `qkefzmhxmfdc9g6zhzy7ot7fkh` now receives
+  reply `7sr1q4gqbpndtxt3opmt8454ao`, correctly recovering a different detail
+  and its passage from the edited source without another paste. Its unique
+  delivered-and-verified effect and delivered receipt share the certificate
+  and native-proof identities; the consumed input is native-checkpointed and
+  the completed cycle is `semantic-reading-incorporated / voice-certified`.
+  Delivery takes 48.0 s and input checkpointing 59.1 s. Three provider calls
+  complete without truncation/error, taking cumulative use from 42 to 45/50.
+  The restarted child 73061 and supervisor 73049 remain unchanged and return
+  to idle. At 18:59 elapsed the child is 5.2% CPU and about 853 MiB RSS,
+  versus about 522 MiB before this contact: retained post-turn residency and
+  growing-history cost remain open, not demonstrated proportionality. This
+  verifies usable edited-source recall after restart; exact source-to-native-
+  participant-to-provider attribution can now be read from this completed
+  turn without further model calls, input replay or installation changes.
+
 Next movement:
 
-1. installed `a8025af` has delivered correct edited-source recall and passed
-   the supported stop/start checkpoint-integrity and no-replay carry.
+1. installed `a8025af` has delivered correct edited-source recall both before
+   and after restart, and passed checkpoint-integrity and no-replay carry.
    Preserve all terminal receipts; neither the consumed contacts nor the older
    rejected contact may be moved or replayed. Keep the installed release
-   unchanged while a new human continuation asks for a different source detail
-   after restart. Verify its attributable native source participation and later
-   movement, preserving ambiguity, scope, explicit omissions and proportionality.
+   unchanged. Close the remaining exact source-participation attribution from
+   this completed turn's proof and stored provider requests, not another human
+   repetition. Preserve ambiguity, scope, explicit omissions and proportionality.
    The bounded conversation working set is not completion of older artifact /
    version resolution. Check finite AMA-1.2 authority before further contact /
-   model / effect work; eight model calls remain at this waypoint. No general
+   model / effect work; five model calls remain at this waypoint. No general
    recall or C4 closure is claimed yet;
 2. complete live scope-isolation and model/surface-failure trials without
    replay, fabricated contact, or loss of Continuity of Mind;
