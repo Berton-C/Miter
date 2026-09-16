@@ -1123,13 +1123,12 @@
        (if (CPShape $standing source-challenged-voice-standing-v1 3)
          (CPHas (index-atom $current 0) (index-atom $standing 2) 0) false) true)))
 
-; Native cognition does not receive a provider verdict.  MeTTa carries the
-; material relational standing: either no obstruction was contributed, or one
-; or more unresolved fidelity obstructions were contributed.  This standing
-; still has no contact, movement, or effect authority.  A material finding must
-; participate in fresh movement formation.  A zero-finding reading is instead
-; non-material expression evidence: it may accompany, but must not recreate or
-; alter, the already-formed constitutive movement.
+; Compatibility disposition: a nonempty audit retains possible obstructions,
+; but its presence does not establish their semantic truth or materiality.
+; Finding relations below repair native participation; evidence-qualified
+; finding disposition remains a separate obligation before removing the
+; inherited nonempty-audit hold. Empty readings retain the exact existing
+; constitutive movement rather than manufacturing a new movement.
 (= (C4VoiceAuditRelationalStanding $observation)
    (if (CPShape $observation c4-voice-audit-observation-v1 13)
      (let $reading (index-atom $observation 9)
@@ -1143,10 +1142,9 @@
          (voice-fidelity-standing unavailable () malformed-provider-reading)))
      (voice-fidelity-standing unavailable () no-provider-contribution)))
 
-; A model audit is reintroduced as one scoped, provenance-bearing participant.
-; Its result is a provider proposal, never a verdict that controls expression.
-; The complete constitutive joint must form again with its relational standing
-; before native VoiceRNA can support either expression or revision.
+; The complete scoped audit envelope remains available alongside its separate
+; finding relations. Reformation is necessary participation, not by itself an
+; adjudication of the provider's prose. These products have no effect authority.
 (= (C4VoiceAuditParticipant $question $observation)
    (if (and (C4VoiceAuditObservationValid $observation $question)
             (== (size-atom (C4VoiceAuditCounterfacts $question $observation)) 0))
@@ -1172,6 +1170,48 @@
          (voice-fidelity-standing unavailable () malformed-audit-claim)))
      (voice-fidelity-standing unavailable () malformed-audit-participant)))
 
+; The audit envelope retains the exact candidate and complete provider reading.
+; Each finding also needs a relation consumed by the existing participant
+; organization; an opaque envelope alone cannot disclose a native inquiry.
+; Finding indexes identify occurrences within this exact audit, not classes of
+; human situations. No prose is matched and no model assertion becomes support.
+(= (C4VoiceAuditFindingParticipantsAt $participant $candidate $reading
+      $findings $i)
+   (if (< $i (size-atom $findings))
+     (cons-atom
+       (participant-contribution
+         (c4-voice-finding-participation (index-atom $participant 1) $i)
+         model (index-atom $participant 3) (index-atom $participant 4)
+         (participant-relation-claim
+           (c4-voice-finding-question (index-atom $participant 1)
+             (index-atom $candidate 1) $i)
+           unresolved
+           (c4-voice-finding-evidence-v1
+             (audit-envelope (index-atom $participant 1))
+             (candidate-reference (index-atom $candidate 1))
+             (index-atom $findings $i) (index-atom $reading 2)
+             interpretation-not-established-defect))
+         candidate no-contact-no-movement-authority)
+       (C4VoiceAuditFindingParticipantsAt $participant $candidate $reading
+         $findings (+ $i 1)))
+     ()))
+
+(= (C4VoiceAuditFindingParticipants $participant)
+   (if (CPShape $participant participant-contribution 8)
+     (let $claim (index-atom $participant 5)
+       (if (and (CPShape $claim c4-derived-voice-audit-reading-v2 5)
+             (and (== (index-atom $participant 2) model)
+               (and (== (index-atom $participant 7)
+                      no-contact-no-movement-authority)
+                    (C4VoiceAuditReadingValid (index-atom $claim 2)))))
+         (let $reading (index-atom $claim 2)
+           (if (CPShape (index-atom $claim 1) candidate-rendering 3)
+             (C4VoiceAuditFindingParticipantsAt $participant
+               (index-atom $claim 1) $reading
+               (index-atom (index-atom $reading 1) 1) 0) ()))
+         ()))
+     ()))
+
 (= (C4VoiceAuditParticipantPresent $participant $encounter)
    (if (and (CPShape $participant participant-contribution 8)
             (CPShape $encounter constitutive-encounter 7))
@@ -1182,6 +1222,12 @@
          (CPHas $reading (index-atom $participants 2) 0)
          false))
      false))
+
+(= (C4VoiceAuditFindingParticipantsPresentAt $participants $encounter $i)
+   (if (< $i (size-atom $participants))
+     (and (C4VoiceAuditParticipantPresent (index-atom $participants $i) $encounter)
+       (C4VoiceAuditFindingParticipantsPresentAt $participants $encounter (+ $i 1)))
+     true))
 
 ; This is verified incremental reformation, not cached cognition.  The common
 ; zero-finding path preserves the exact existing cut, movement, participants,
@@ -1208,8 +1254,10 @@
                existing-native-movement-unavailable)))
          (if (== (index-atom $standing 1)
                unresolved-material-obstruction)
-           (let* (($reformed (C4ReformPreparedWithParticipants $prepared
-                      ($participant)))
+           (let* (($finding-participants
+                      (C4VoiceAuditFindingParticipants $participant))
+                  ($reformed (C4ReformPreparedWithParticipants $prepared
+                      (cons-atom $participant $finding-participants)))
                   ($grounded (if (AR4PreparedEncounterValid $reformed)
                     (index-atom $reformed 4) ()))
                   ($encounter (if (CPShape $grounded
@@ -1218,7 +1266,7 @@
                   ($proof (ARNativeMovementProof $encounter)))
              (if (ARNativeMovementProofValid $proof)
                (c4-voice-audit-soul-formation-v2 $reformed $proof $participant
-                 audit-material-findings-enter-fresh-movement-formation)
+                 audit-finding-relations-enter-fresh-movement-formation)
                (c4-voice-audit-soul-formation-held
                  complete-native-movement-unavailable)))
            (c4-voice-audit-soul-formation-held
@@ -1251,7 +1299,16 @@
               (and (== (index-atom $standing 1)
                      unresolved-material-obstruction)
                    (C4VoiceAuditParticipantPresent $participant $encounter))
-              false))))))
+              ; Preserve old proof interpretation above; new formations require
+              ; every exact finding relation as well as the audit envelope.
+              (if (== $mode audit-finding-relations-enter-fresh-movement-formation)
+                (let $findings (C4VoiceAuditFindingParticipants $participant)
+                  (and (== (index-atom $standing 1) unresolved-material-obstruction)
+                    (and (> (size-atom $findings) 0)
+                      (and (C4VoiceAuditParticipantPresent $participant $encounter)
+                        (C4VoiceAuditFindingParticipantsPresentAt $findings
+                          $encounter 0)))))
+                false)))))))
      false))
 
 (= (C4VoiceAuditSoulPrepared $formation)
@@ -2048,13 +2105,11 @@
          (index-atom $prepared 1) unknown-contact)
        semantic-reformation-prerequisites-unavailable)))
 
-; A rendering remains a candidate until a separate bounded audit reading has
-; entered its exact native expression joint. A material finding re-enters
-; complete movement formation; a zero-finding reading preserves the exact
-; existing proof without manufacturing a new movement. The provider's token is
-; never used directly as a switch: native Soul formation must support either
-; expression or one bounded revision. A second unresolved defect, failed
-; native formation, or malformed/unavailable observation holds expression.
+; A rendering remains a candidate until its audit enters the exact expression
+; joint. Nonempty findings now enter native relation processing, while an empty
+; reading preserves the exact existing proof. The compatibility disposition
+; still uses nonempty findings to request one revision and then hold. Do not
+; mistake full reformation for completed semantic finding adjudication.
 (= (C4ReviewVoiceUsingV1 $root $review-context $model-writer)
    (if (CPShape $review-context c4-voice-review-context-v1 10)
      (let* (($contact (index-atom $review-context 1))

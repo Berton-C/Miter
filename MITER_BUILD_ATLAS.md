@@ -4416,6 +4416,47 @@ Already carried:
   and child 48004 remain, child CPU 1.7%, RSS about 407 MiB at 1:53:32 elapsed,
   with mechanical broker 47650 and no surviving probe. No upgrade is requested.
 
+  **Finding participation embodied; disposition and live carry remain open:**
+  `dialogue_participation.metta` now adds one unresolved native relation for
+  each finding alongside the unchanged complete audit envelope. Targets bind
+  the exact audit, candidate reference and finding occurrence. Source/candidate
+  spans, proposed dependency, uncertainty, scope and model lineage are retained;
+  prose is not matched, interpreted by Prolog, or promoted to supported fact.
+  New formations require all finding relations on readback. Old formation modes
+  remain readable; the empty-audit path is unchanged. This is the first runtime
+  edit in this bounded repair, not completion of semantic qualification.
+
+  The actual final three-finding capture reaches the native relation/inquiry
+  consumer. Scope/authority severance, empty findings, exact lineage retention
+  and absence of automatic support pass. A separate older saved contact and
+  checkpoint pass full native preparation and reformation: removing finding
+  relations defeats the new formation mode, and legacy formations still pass.
+  The latter uses a reconstructed audit carrier from its saved provider
+  projection; it is not a live carry or a new certification of the failed
+  creative exchange. Neither trial changes saved observations or live state.
+
+  Invalidation is confined to added audit participants, their relation/bridge
+  consumers and the existing M25/M25.5 reformation; no mathematical authority,
+  Soul meaning, transport, provider schema, timeout or revision budget changes.
+  Two local samples: baseline envelope-only reformation 3.092--3.200 s wall /
+  2.958--3.041 s CPU; finding reformation 3.055--3.143 s / 2.927--3.000 s.
+  Fresh bootstrap 1.082--1.098 s; saved-state restore 7.182--7.300 s. Twenty
+  warm projections average 0.11--0.12 ms at one finding, 0.16--0.17 ms at three,
+  and 0.19--0.20 ms at four. Factorized proof size changes from 97,917 to 99,486
+  characters with exact serialization round trips. No extra model call or full
+  reformation is added per audit; all trials use zero network/model calls.
+  Live latency, complete checkpoint size and installed restart remain unmeasured.
+  Pre-commit supervisor/child 47992/48004 remain under installed `d04979c`;
+  child CPU 5.1%, RSS 270,960 KiB at 3:49:17, broker 47650, no trial survivor.
+
+  The inherited nonempty-audit disposition STILL revises/holds. These relations
+  supply a missing consumer input, not semantic understanding of arbitrary
+  prose. Do not deploy or claim the silence fixed at this waypoint. The next
+  edit must connect source-qualified interpretive/dependency comparisons to
+  finding disposition, demonstrating supported defect versus contradicted
+  premise versus unresolved interpretation without model votes or phrase rules,
+  then exercise the full review and actual reply before closing this cut.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
