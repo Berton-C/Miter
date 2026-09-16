@@ -1247,7 +1247,19 @@ as_mattermost_voice_certificate(
     sort(Bindings,UniqueBindings), same_length(Bindings,UniqueBindings),
     string(Uncertainty), string_length(Uncertainty,UncertaintyLength),
     UncertaintyLength=<600,
-    as_mattermost_voice_audit_reading(AuditReading,[]),
+    as_mattermost_voice_audit_reading(AuditReading,Findings),
+    as_mattermost_voice_finding_derivation(Findings,
+      ['assistant-voice-certificate-v3',
+       ['VoiceRNA','situated-model-rendering'],['source-cut',CutId0],Scope,
+       ['movement-source-reference',MovementReference],
+       ['intended-expression',['mattermost-response',ReplyContact,Utterance]],
+       ParticipantReference,ProofReference,
+       ['voice-audit-v3',['bindings',Bindings],['uncertainty',Uncertainty],
+        AuditReading,RevisionStanding,
+        ['native-audit-formation',AuditProofReference,NativeDisposition],
+        'source-scope-movement-bound','no-added-effect-authority'],
+       ['authorized-disclosure',Disclosure],
+       ['emission-authority','mattermost-exact-resolved-group-only']],Proof),
     as_mattermost_voice_revision_standing(RevisionStanding),
     AuditProofReference==ProofReference,
     as_mattermost_native_voice_disposition(NativeDisposition,
@@ -1286,6 +1298,23 @@ as_mattermost_voice_audit_reading(
     string(Uncertainty),string_length(Uncertainty,UncertaintyLength),
     UncertaintyLength>=1,UncertaintyLength=<600.
 
+% Invoke one fixed native checker, never a provider-selected expression or
+% a Prolog semantic predicate. Empty legacy certificates keep their exact
+% mechanical path. Nonempty certificates require the native derivation at the
+% effect boundary as well as the shape/provenance checks above.
+as_mattermost_voice_finding_derivation([],_,_) :- !.
+as_mattermost_voice_finding_derivation([_|_],Certificate,Proof) :-
+    current_predicate(eval/2),
+    findall(Result,eval(['C4VoiceCertificateValid',Certificate,Proof],Result),
+      [true]).
+
+as_mattermost_voice_finding(
+    ['voice-audit-finding-v4',Kind,Source,Span,Alteration,Material,Dependency,
+      Premise,Comparison]) :-
+    as_mattermost_voice_finding(
+      ['voice-audit-finding-v3',Kind,Source,Span,Alteration,Material,Dependency,Premise]),
+    ground(Comparison),Comparison=['voice-finding-comparison-v2'|_],
+    length(Comparison,7).
 as_mattermost_voice_finding(
     ['voice-audit-finding-v3',Kind,Source,Span,Alteration,Material,Dependency,
       ['source-access-premise',Id,Access]]) :-
@@ -1318,6 +1347,14 @@ as_mattermost_voice_revision_standing(
     maplist(as_mattermost_voice_challenge_witness,Witnesses).
 as_mattermost_voice_revision_standing(
     'initial-candidate-soul-formed-after-audit-participation').
+as_mattermost_voice_revision_standing(
+    ['revised-once-by-soul-after-evidence-participation',InitialAudit,
+      ['raw-sha256',Hash],InitialProofReference,Guidance]) :-
+    as_mattermost_voice_audit_reading(InitialAudit,Findings),Findings=[_|_],
+    as_sha256(Hash,_),as_mattermost_compact_native_proof_reference(InitialProofReference),
+    as_model_c4_voice_revision_context(
+      ['voice-revision-context','revise-on-audit',InitialAudit,Guidance]),
+    Guidance=[_,InitialProofReference|_].
 as_mattermost_voice_revision_standing(
     ['revised-once-by-soul-after-audit-participation',InitialAudit,
       ['raw-sha256',Hash],InitialProofReference]) :-

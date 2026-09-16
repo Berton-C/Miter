@@ -1014,9 +1014,19 @@ or demonstrably bounded at a named lifecycle boundary. Semantic readings,
 R/A/P standing, Soul participation, movement choice, and consequence meaning
 are never memoized as host verdicts.
 
-### Post-commit process-hygiene waypoint
+### Every-trial and post-commit process-hygiene waypoint
 
-After every commit and before the next source edit, inspect the host process
+Every disposable diagnostic must have a named owner, an external wall-clock
+deadline, and cleanup for success, failure, timeout and interruption. A native
+timeout alone is not sufficient: its launcher must track only the process group
+it created, terminate surviving members and reap its direct child before it
+returns. Do not launch an unattended trial without that lifecycle. Run one
+bounded CPU-intensive diagnostic at a time unless parallel execution has an
+explicit, measured need.
+
+After each diagnostic and before ending a work turn, verify that its owned
+process group is gone. This check does not wait for a commit. After every
+commit and before the next source edit, also inspect the host process
 table for the supported Miter service and every process created by the just-
 completed builder trial. When Miter is intended to be running, exactly one
 supported supervisor and its expected pinned PeTTa child may remain. No
@@ -4456,6 +4466,301 @@ Already carried:
   finding disposition, demonstrating supported defect versus contradicted
   premise versus unresolved interpretation without model votes or phrase rules,
   then exercise the full review and actual reply before closing this cut.
+
+  **Source-use candidate embodied locally; actual-exchange Carry remains open:**
+  The uninstalled candidate adds versioned, fallible claim-use comparisons to
+  the existing audit, not a model approval/materiality field. Native VoiceRNA
+  binds the exact source/candidate excerpts, scope, proposed dependency and
+  interpretive alternatives. It distinguishes preserved attribution, explicit
+  source-polarity reversal, and unresolved use. Different proposition IDs do
+  not prove contradiction. A pragmatic label cannot remove an alternative.
+  These are conditional source-warrant judgments, not proof of a paraphrase's
+  meaning, the report's actuality, private experience, or universal fidelity.
+  Other obligations and unstructured legacy findings remain unresolved.
+
+  Nonempty expression requires the separately carried human-contact or memory
+  source in the same native proof, every finding relation, exact candidate
+  binding and rechecked native disposition. The audit cannot supply its own
+  independent source. Native repair targets now reach the existing revision
+  request and certificate; Prolog only carries representation, checks literal
+  excerpts and invokes a fixed native checker. No mathematical authority,
+  one-surface R/A/P meaning, transport, timeout, conversation policy or attempt
+  budget changes. The general comparison has no Mattermost scenario rule;
+  other surface integrations are not claimed as tested.
+
+  Bounded offline Carry uses a saved native checkpoint and independent memory
+  participants with explicitly synthetic claim-use readings. Preparation,
+  full audit reformation, disposition, revision, native certificate, exact
+  certificate serialization and receiving model/effect checks pass. Empty
+  findings retain the existing path. Removing the independent source or an
+  individual finding relation, changing the candidate, and retaining a
+  competing assertion defeat the relevant qualification. The full revision
+  loop changes a source reversal through native guidance and uses exactly
+  three fixture returns (audit/render/audit); unresolved final alternatives
+  remain held, without another loop or fabricated effect. A compatibility
+  test exposed a new base-versus-challenged-question mismatch at certificate
+  readback; retaining the actual formed audit question repairs that mismatch.
+
+  Local timings: bootstrap 1.11 s, saved-state restore 3.04 s, preparation
+  2.98 s; empty/nonempty audit formation 0.17/3.07 s; full revision loop
+  6.06 s wall / 5.83 s CPU; revised certificate/effect readback about 0.074 s
+  each. Factorized certificate size is 30,517 characters empty, 39,703 with
+  one qualified finding, 40,878 with its source-access challenge. Twenty warm
+  standing constructions average 0.23/0.42/0.50 ms for 1/3/4 repeated fixture
+  findings. This is bounded representation growth, not growing-history proof
+  or a controlled comparison with the last supported live baseline. There is
+  no extra full formation or model call per existing audit stage. All complete
+  native trials use zero network/model calls and zero live-state writes.
+
+  Three separate builder-side GLM interpretation probes remain fallible
+  diagnostics, not independent corroboration. Their frozen-exchange readings
+  do NOT resolve that exchange: a noncontiguous source excerpt is rejected,
+  and competing interpretations remain unresolved. A proposed single combined
+  audit-contract call was blocked before execution by tool security review;
+  the September 16 approval subsequently authorized at most three calls with
+  this captured context and no live write or Mattermost post. The private
+  capture now supplies the exact failed contact and current persisted state;
+  all four file hashes match the operator's output. Offline restore retains
+  184 history rows and 16 participants. Reconstructing this same encounter
+  preserves the exact cut, movement, source memories and original provider
+  commitments, without renaming the contact or removing its consumed history.
+  The frozen final audit still requests revision; adding the earlier fallible
+  diagnostic comparisons also leaves all three findings unresolved. This
+  demonstrates evidence reachability, NOT resolution of the silent exchange.
+
+  The actual-state preflight reproduced a new candidate-only integration
+  defect: native repair guidance carried a local proof reference through the
+  public projection, so the unchanged privacy check rejected the request.
+  The mechanical projection now withholds only that local reference, retaining
+  the full proof natively and every finding, repair target and uncertainty in
+  the provider request. Altering or dropping targets fails projection equality.
+  Complete revision and following-audit request construction now pass offline
+  in about 7--8 ms each; no privacy check or native judgment was weakened.
+  Actual-state restore takes 3.87 s and exact encounter reconstruction 3.09 s;
+  legacy/structured audit formations take 3.13/3.17 s. Restored state is
+  unchanged by the comparison. No upgrade, live response, supported restart,
+  whole-turn latency or C4 closure is claimed. No harness enters Git.
+
+  Heat investigation found no orphaned Prolog trial: only broker 47650,
+  supervisor 47992 and child 48004 remained. Child CPU was about 1--4%, RSS
+  about 42 MiB; UI processes accounted for more observed CPU. An IterBrow
+  renderer spike was not sustained in the next sample. These short samples do
+  not establish the cause of hours-long heat. Every diagnostic now has an
+  external deadline/process-group owner and verified cleanup; an intentional
+  failed parent with a surviving child also cleaned up successfully. Hygiene
+  runs after each trial and before turn exit, not merely after commits.
+
+  The approved trial has used two calls (initial audit and the existing
+  source-access challenge), returning in 12.24/32.29 s. Both have four findings;
+  the challenged return still mislabels two supplied memories as audit-only.
+  The first disposable HTTP reader omitted production's explicit UTF-8 stream
+  setting. Re-decoding its retained octets passes the unchanged parser with
+  exact byte roundtrip; the original call was not repeated. This was a probe
+  defect, not a reason to change production transport.
+
+  Frozen-return replay then proves a candidate-only partial-function defect:
+  formation correctly returns `audit-participant-unavailable`, but the new
+  standing reader indexes a success-only field, yielding no result. The
+  disposition validator also indexes a nonexistent proof on that held
+  formation. Shape guards now return unavailable standing and false validation;
+  the complete cached review returns one explicit hold in 0.43 s. It still does
+  not express a reply. Snapshot unchanged; external process cleanup verified.
+
+  The next one-variable replay identifies the inherited source-access
+  admission dependency: a challenged model must retract `audit-only` before
+  any finding can enter formation. Evidence-qualified review now retains the
+  unchanged audit plus native access counterfacts in `voice-evidence-review-v2`.
+  Those counterfacts settle native source availability only, not paraphrase,
+  fulfillment, private experience or whole-response fidelity. Legacy audit
+  admission remains unchanged. Native `native-voice-repair-guidance-v2` carries
+  the exact contradictions into revision while preserving every finding and
+  unresolved meaning; its revision readback recomputes the access facts.
+
+  The exact challenged return now forms and selects `revise-candidate-once`,
+  not expression. Full native formation takes 3.08 s, disposition/readback
+  about 0.44 s each, and complete offline revision-request construction 8 ms.
+  Deleting counterfacts or inventing a source defeats native readback. The
+  same facts survive privacy projection and the receiving revision carrier.
+  With no additional model return, the offline full review correctly holds.
+  Synthetic full-path checks retain empty/qualified/challenged expression,
+  exact certificate serialization and effect-receiver validation; a bound
+  source-use finding with contradicted access can qualify without requiring
+  model retraction, but removing its independent source still defeats support.
+  Legacy false-access handling, held-state totality, altered candidate and
+  missing-finding controls pass. Unresolved final alternatives still hold
+  after the finite three fixture returns. Revision loops remain about 6.1 s;
+  no extra reformation per audit or unbounded worker was added.
+
+  Two remote calls have occurred in this trial. Tool review blocked a bundled
+  follow-on check as an external transmission; the replacement offline reader
+  has no HTTP or credential path and completed without another call. Approval
+  has been requested for revision and final audit: at most two further calls,
+  increasing this trial's total cap from three to four, not restarting it.
+  All four private capture hashes remain unchanged. No diagnostic survives;
+  broker 47650, supervisor 47992 and child 48004 remain. Child CPU is 1.5%,
+  RSS 42,752 KiB at 18:46:59 elapsed. No new repository file, commit, deployment,
+  live-state write or Mattermost post was made at this waypoint.
+
+  Berton's subsequent direction authorizes the agreed repair end to end,
+  including necessary bounded GLM checks with the captured context, without
+  repeated approval for routine steps. Privileged deployment remains an
+  operator handoff; no consumed contact may be replayed and no semantic
+  safeguard may be weakened merely to obtain a reply.
+
+  The resumed trial reused both exact saved questions/observations and made
+  only calls three/four: revision 8.94 s, final audit 56.65 s. The final audit
+  parses with two findings, both outside the current bounded warrant domain:
+  an unsourced pragmatic offer and a source-bound report labeled semantic
+  drift. Neither is established as a defect or defeated by this result.
+  The existing review requests another source-access challenge; the trial's
+  four-call budget returns unavailable instead of transmitting a fifth call.
+  Full review therefore holds, with no certificate or effect. Native review
+  totals 68.93 s wall / 3.20 s CPU. Captured file hashes and isolated state
+  remain unchanged. Owned process group 55268 is gone; only broker 47650,
+  supervisor 47992 and child 48004 remain (child CPU 1%, RSS 42,784 KiB).
+
+  Frozen final-return formation independently passes in 3.32 s; native
+  disposition still requests revision (0.52 s), so unavailable challenge is
+  not the sole obstruction. The representation lacks non-assertive speech
+  acts and excludes a supported report when labeled semantic drift. The
+  candidate now distinguishes textual offers/expressives/questions from
+  factual assertions, binding exact candidate, native response intention and
+  independent current human contact, not inventing world evidence. A source
+  report labeled semantic drift still requires the same exact independent
+  source and preserved attribution; other drift remains unresolved.
+
+  Synthetic full-formation/readback/certificate/receiver checks pass for those
+  two additions. Removing contact support, adding a competing assertion,
+  making the offer's interpretation merely pragmatic, or substituting a
+  source-fidelity obligation defeats qualification. Unknown dependency is
+  still unresolved, not a free pass. Legacy audit behavior stays unchanged.
+  Evidence-enabled audits now carry/recheck native access counterfacts without
+  asking the provider to retract the label; no source evidence is gained by
+  that repeated call, and unavailable reconsideration no longer replaces an
+  otherwise usable observation. Exact old challenged carriers remain readable.
+  The ordinary audit/render/audit fixture uses three returns, takes 6.01 s,
+  and a genuinely unresolved final result still holds in 6.03 s. Syntax and
+  diff checks pass; process groups 56202/57543 are cleaned. These are finite
+  conditional claim-use proofs, not general semantic certification.
+
+  The next actual-state trial was blocked before transmission by tool security
+  review. An offline exact comparison proves its personal payload is identical
+  to the previously approved/transmitted initial audit: question fields 0--8
+  and 10 are equal, and only generic audit instructions change in field 9.
+  Review nevertheless requires a fresh user authorization naming the captured
+  conversation/context and OpenRouter. That specific question is pending;
+  no alternate transport, indirect execution or additional call was attempted.
+
+  Unaffected local Carry: supported `bin/miter install` packages the candidate
+  in one disposable temporary runtime with external effects disabled. Its LKG
+  source passes the same full native checks (bootstrap 1.13 s, saved restore
+  3.04 s, preparation 2.94 s; revision/unresolved loops 6.03/6.06 s).
+  A separate fresh process reads the serialized certificate/proof and passes
+  native validation and receiving checks in 0.057/0.058 s. This is installed
+  source/serialization compatibility, not a live service or Mattermost carry.
+  The temporary installation is removed after readback. No fixture enters Git.
+  All trial process groups are gone; broker 47650, supervisor 47992 and child
+  48004 remain (child CPU 1.3%, RSS 42,816 KiB, elapsed 19:16:34). Candidate
+  changes remain uncommitted and undeployed pending actual-exchange evidence.
+
+  Berton explicitly authorized repeated reuse of the safe test text. The tool
+  reviewer still refused the three-call command before execution, requiring
+  explicit approval of OpenRouter GLM 5.3 and the full captured test context,
+  candidate replies and audit findings. That exact question is now presented;
+  no transmission, alternate route or live-runtime action occurred.
+
+  Unaffected local consistency check reproduced an uncommitted defect: a
+  `none` source could accompany a defined source proposition/polarity and
+  still qualify as a non-assertive act. Native projection now requires both
+  absent-source fields to remain unresolved; contradictory source claims do
+  not qualify. This changes neither offered/questioned content nor unknown
+  candidate polarity into a factual assertion. Full formation, certificate,
+  receiving and finite revision checks pass with the two new falsifiers;
+  supported expression remains supported and final unresolved readings hold.
+  Formation is 3.08--3.12 s; revision/unresolved loops 6.16/6.17 s with exactly
+  three offline fixture returns. Syntax/diff checks pass. Owned groups
+  61922/62095 are gone; only broker 47650, supervisor 47992 and child 48004
+  remain (child CPU 2.5%, RSS 42,848 KiB, elapsed 19:30:16). No repository
+  fixture, commit, deployment, network call or live-state write was made.
+
+  Berton now explicitly authorizes the captured test conversation, scoped
+  recalled context, candidate replies and audit findings to OpenRouter GLM
+  5.3 for up to three diagnostic calls. Call one restored the exact saved cut,
+  movement and original candidate, but returned `finish_reason=length` after
+  63.09 s: all 2,048 completion tokens used, 868 reasoning tokens, and JSON
+  truncated in its final uncertainty field. No observation was admitted and
+  no native disposition or certificate was claimed. Its process group 63679
+  exited and cleanup was verified. This is an observed resource-envelope
+  defect, not evidence that the new semantic judgment succeeded or failed.
+
+  Call two changed only the request's output ceiling to 8,192: complete JSON
+  returned in 89.35 s with 1,823 completion tokens and four findings. Its
+  provider differed, so this does not isolate the ceiling as the sole cause.
+  It is a resource experiment, not an exact native request/certificate. Call
+  three used the original saved revised candidate and a newly formed exact
+  native audit question with the larger direction. Its complete return took
+  43.66 s; all four findings remain unresolved and native review held after
+  47.03 s wall / 3.22 s CPU. The three-call budget refused another call.
+  Saved state and isolated native snapshot are unchanged; no effect occurred.
+  Process groups 64898/66216 are gone. That allowance is fully consumed.
+
+  Berton explicitly authorizes three ADDITIONAL calls with the same captured
+  conversation, scoped context, candidates and findings. Before using them,
+  a local hypothesis reproduced a distinct projection error: a source-bound
+  hypothetical required established source polarity and identical proposition
+  content before being recognized as non-assertive. The candidate now derives
+  that distinction from defined content, exact source attribution and textual
+  possible/questioned force. This cannot prove source fidelity; competing
+  assertions or pragmatic interpretations still participate and remain held.
+  Full native formation, serialized certificate and receiving checks pass;
+  wrong attribution, competing assertion and source-fidelity substitution
+  falsifiers pass. Formation is 3.05--3.09 s, finite revision/unresolved loops
+  6.05/6.02 s. Groups 67286/68539 are gone.
+
+  The candidate mechanical carrier/profile ceiling now permits configured
+  output budgets up to 8,192; language direction preserves the exact configured
+  value and newly constructed grants take that same value. Semantic direction
+  remains capped at 2,048. Old 2,048 profiles/requests remain valid, zero/8,193
+  budgets are refused and an existing 2,048 grant cannot authorize 8,192.
+  Source config and live grants/defaults are unchanged. Syntax/diff and pure
+  budget checks pass; group 69013 is gone. No runtime policy was amended.
+
+  The additional authorized three-call trial completed the exact path. Initial
+  audit returned three unresolved findings in 112.58 s; native guidance caused
+  a revision (13.01 s) that retained both readings of the human's invitation,
+  qualified the pattern-based self-description and offered concrete shared
+  activities. Final audit returned no findings in 21.27 s. Native reviewed
+  expression, certificate readback and receiving boundary all pass; no post or
+  effect commit occurred. Total review is 150.32 s wall / 3.25 s CPU. The
+  snapshot and four captured state-file hashes are unchanged; owned group
+  69244 is gone. All three additional calls are consumed, not available to
+  reuse. This is an actual captured-exchange repair trial, not a live carry,
+  general semantic competence claim, or evidence of fast provider service.
+
+  **Next bounded step:** carry that exact serialized review and certificate
+  through newly installed source and a fresh process restoring the saved
+  native state, then prepare one verified commit/upgrade handoff. Remote GLM
+  default VoiceRNA ceiling is now 8,192 in candidate configuration; existing
+  live grants remain unchanged and need an explicit resource-only ceiling
+  update in that handoff, without resetting any counts, scopes or expiries.
+  No additional diagnostic transmission is authorized. No consumed input
+  replay or live write.
+  Carry now passes: supported `bin/miter install` created one disposable
+  source closure with external effects disabled; a fresh process loaded it,
+  restored the exact saved native state, revalidated the actual three-call
+  review/certificate and accepted the receiving boundary without committing
+  an effect. The restored organization is unchanged. Groups 70589/70661 are
+  gone and that disposable installation was removed. Source balance, budget
+  compatibility, resource-only handoff idempotence and shell syntax pass.
+  Pre-commit inventory contains only the one Git worktree and expected broker
+  47650 / supervisor 47992 / native child 48004 (1.2% CPU, 42,848 KiB RSS).
+  No diagnostic worker remains and no test file is tracked. The captured
+  return and temporary handoff remain only for the unfinished live carry.
+  The next action is the user-run guarded upgrade, then one new contact and
+  follow-up; C4 stays open. This commit is a verified candidate, not an assertion
+  that the currently installed release has been repaired.
+  The installed silence is NOT fixed. Do not deploy on synthetic checks alone.
+  One actual useful reply and follow-up must carry before resuming C4.
 
 Next movement:
 

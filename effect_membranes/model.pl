@@ -203,7 +203,7 @@ as_model_question_carrier(
     InstructionLength>=100,InstructionLength=<4096,
     as_symbol(ResourceId,_),as_model_identifier(ModelId),
     DirectionAuthority='human-operator-direction-not-cognitive-authority',
-    integer(MaxTokens),MaxTokens>=1,MaxTokens=<2048,
+    as_model_output_budget(MaxTokens),
     number(Deadline),Deadline>=1,Deadline=<300.
 
 % Contract shape only. MeTTa constructs and verifies the evidence challenge;
@@ -439,7 +439,7 @@ as_model_question_carrier(
     InstructionLength>=100, InstructionLength=<4096,
     as_symbol(ResourceId,_),as_model_identifier(ModelId),
     DirectionAuthority='human-operator-direction-not-cognitive-authority',
-    integer(MaxTokens),MaxTokens>=1,MaxTokens=<2048,
+    as_model_output_budget(MaxTokens),
     number(Deadline),Deadline>=1,Deadline=<300.
 
 as_model_c4_voice_commitments(
@@ -549,8 +549,29 @@ as_model_c4_vad_delta(Value) :- number(Value),Value>= -2,Value=<2.
 as_model_c4_voice_revision_context(
     ['voice-revision-context','initial-no-prior-defect']).
 as_model_c4_voice_revision_context(
+    ['voice-revision-context','revise-on-audit',AuditReading,Guidance]) :-
+    as_model_c4_voice_revision_context(['voice-revision-context','revise-on-audit',AuditReading]),
+    as_model_c4_voice_repair_guidance(Guidance,ProofReference,Rows),
+    ProofReference=['native-proof-reference'|_],length(ProofReference,5),
+    ground(Guidance),is_list(Rows),length(Rows,N),N=<4,
+    forall(member(Row,Rows),(Row=['voice-finding-repair-target-v1',I,_,['candidate-span',Span],_],
+      integer(I),between(0,3,I),as_model_bounded_finding_text(Span))).
+as_model_c4_voice_revision_context(
     ['voice-revision-context','revise-on-audit',AuditReading]) :-
     as_model_c4_voice_audit_reading(AuditReading,Findings),Findings=[_|_].
+
+as_model_c4_voice_repair_guidance(
+    ['native-voice-repair-guidance-v1',ProofReference,['finding-targets',Rows],
+      'qualify-or-correct-only-supported-obligations-retain-uncertainty'],ProofReference,Rows).
+as_model_c4_voice_repair_guidance(
+    ['native-voice-repair-guidance-v2',ProofReference,['finding-targets',Rows],
+      'qualify-or-correct-only-supported-obligations-retain-uncertainty',
+      ['native-source-access-counterfacts',Facts]],ProofReference,Rows) :-
+    is_list(Facts),Facts=[_|_],length(Facts,N),N=<4,
+    forall(member(Fact,Facts),
+      (Fact=['finding-source-access-contradiction',Index,Source,
+        'audit-only','native-render-context'],
+       integer(Index),between(0,3,Index),as_symbol(Source,_))).
 
 as_model_c4_voice_audit_reading(
     ['voice-audit-reading-v2',['findings',Findings],
@@ -560,6 +581,12 @@ as_model_c4_voice_audit_reading(
     maplist(as_model_c4_voice_finding,Findings),
     as_model_bounded_text(Uncertainty,1,600).
 
+as_model_c4_voice_finding(
+    ['voice-audit-finding-v4',Kind,Source,Span,Alteration,Material,Dependency,
+      Premise,Comparison]) :-
+    as_model_c4_voice_finding(
+      ['voice-audit-finding-v3',Kind,Source,Span,Alteration,Material,Dependency,Premise]),
+    as_model_c4_finding_comparison(Comparison).
 as_model_c4_voice_finding(
     ['voice-audit-finding-v3',Kind,Source,Span,Alteration,Material,Dependency,
       ['source-access-premise',Id,Access]]) :-
@@ -583,6 +610,29 @@ as_model_c4_voice_finding(
 
 as_model_bounded_finding_text(Text) :-
     as_model_bounded_text(Text,1,600).
+
+% Byte/text evidence only. MeTTa selects the source, binds its scope and
+% provenance, interprets claim use, and determines the resulting obligation.
+as_model_literal_span(Text,Span,Result) :-
+    ( string(Text),string(Span),string_length(Span,N),N>0,
+      sub_string(Text,_,_,_,Span) -> Result=true ; Result=false ).
+
+% Closed representation only; these fields remain fallible interpretations.
+as_model_c4_finding_comparison(
+    ['voice-finding-comparison-v2',Id,SourceQuote,CandidateQuote,Dependency,
+      ['voice-propositions',P,Q,R],Uses]) :-
+    as_symbol(Id,_),as_symbol(Dependency,_),
+    maplist(as_model_c4_comparison_excerpt,[SourceQuote,CandidateQuote]),
+    maplist(as_model_c4_proposition_text,[P,Q,R]),
+    is_list(Uses),length(Uses,N),N=<3,maplist(as_model_c4_claim_use,Uses).
+as_model_c4_comparison_excerpt(T) :- as_model_bounded_text(T,0,600).
+as_model_c4_proposition_text(T) :- as_model_bounded_text(T,0,160).
+as_model_c4_claim_use(['voice-claim-use-v1',SP,SPol,CP,CPol,Force,Id,Basis]) :-
+    memberchk(SP,[p,q,r,unresolved]),memberchk(CP,[p,q,r,unresolved]),
+    memberchk(SPol,[positive,negative,unresolved]),
+    memberchk(CPol,[positive,negative,unresolved]),
+    memberchk(Force,[attributed,asserted,possible,questioned,offered,expressive,undetermined]),
+    as_symbol(Id,_),memberchk(Basis,[textual,pragmatic,undetermined]).
 
 as_model_c4_private_context(
     ['private-continuity-context',Entries,
@@ -792,8 +842,12 @@ as_model_direction_limits('semantic-reading',Profile,MaxTokens,Deadline) :-
     Deadline=Limits.deadline_seconds.
 as_model_direction_limits('language-rendering',Profile,MaxTokens,Deadline) :-
     get_dict(limits,Profile,Limits),
-    MaxTokens is min(2048,Limits.max_output_tokens),
+    MaxTokens=Limits.max_output_tokens,as_model_output_budget(MaxTokens),
     Deadline=Limits.deadline_seconds.
+
+% Mechanical resource ceiling, not a meaning or fidelity decision. Exact
+% profile/direction and grant checks still bound each live request separately.
+as_model_output_budget(Tokens) :- integer(Tokens),between(1,8192,Tokens).
 
 as_model_continuity_context_verified_if_present(Root,Question,Scope) :-
     ( as_model_question_has_private_continuity(Question) ->
@@ -873,7 +927,7 @@ as_model_profile_exact(Profile) :-
     get_dict(reasoning_effort,Profile,ReasoningEffort),
     memberchk(ReasoningEffort,["low","high","max"]),
     get_dict(limits,Profile,Limits), is_dict(Limits),
-    get_dict(max_output_tokens,Limits,2048),
+    get_dict(max_output_tokens,Limits,Tokens),as_model_output_budget(Tokens),
     get_dict(deadline_seconds,Limits,120),
     get_dict(capture_bytes,Limits,262144),
     get_dict(provider,Profile,Provider), is_dict(Provider),
@@ -891,7 +945,7 @@ as_model_profile_exact(Profile) :-
     get_dict(endpoint,Profile,"http://127.0.0.1:1234/v1/chat/completions"),
     get_dict(roles,Profile,["semantic-reading","language-rendering"]),
     get_dict(limits,Profile,Limits),is_dict(Limits),
-    get_dict(max_output_tokens,Limits,2048),
+    get_dict(max_output_tokens,Limits,Tokens),as_model_output_budget(Tokens),
     get_dict(deadline_seconds,Limits,300),
     get_dict(capture_bytes,Limits,262144),
     get_dict(credential_reference,Profile,null).
@@ -1156,8 +1210,42 @@ as_model_response_schema(Profile,Question,Name,Schema) :-
     put_dict(bindings,Base.properties,BoundBindings,Properties),
     put_dict(properties,Base,Properties,Schema).
 as_model_response_schema(_Profile,Question,Name,Schema) :-
+    Question=['c4-voice-audit-question-v1'|_],
+    nth0(9,Question,Contract),
+    member(['native-voice-audit-context-v1',Intention|_],Contract),
+    memberchk('source-relative-finding-interpretations-v1',Intention),!,
+    as_model_local_response_schema('c4-voice-audit-question-v1',Name,Base),
+    as_model_c4_comparison_schema(Comparison),
+    Finding=Base.properties.findings.items,
+    append(Finding.required,["claim_comparison"],Required),
+    put_dict(claim_comparison,Finding.properties,Comparison,Properties),
+    put_dict(_{required:Required,properties:Properties},Finding,QualifiedFinding),
+    put_dict(items,Base.properties.findings,QualifiedFinding,Findings),
+    put_dict(findings,Base.properties,Findings,TopProperties),
+    put_dict(properties,Base,TopProperties,Schema).
+as_model_response_schema(_Profile,Question,Name,Schema) :-
     Question=[Kind|_],
     as_model_local_response_schema(Kind,Name,Schema).
+
+as_model_c4_comparison_schema(Schema) :-
+    Id=_{type:"string",minLength:1,maxLength:256},
+    P=_{type:"string",enum:["p","q","r","unresolved"]},
+    Pol=_{type:"string",enum:["positive","negative","unresolved"]},
+    Text=_{type:"string",maxLength:160},
+    Use=_{type:"object",additionalProperties:false,
+      required:[source_p,source_polarity,candidate_p,candidate_polarity,force,attribution,basis],
+      properties:_{source_p:P,source_polarity:Pol,candidate_p:P,candidate_polarity:Pol,
+        force:_{type:"string",enum:["attributed","asserted","possible","questioned","offered","expressive","undetermined"]},
+        attribution:Id,basis:_{type:"string",enum:["textual","pragmatic","undetermined"]}}},
+    Schema=_{type:"object",additionalProperties:false,
+      required:[source_id,source_quote,candidate_quote,dependency,propositions,readings],
+      properties:_{source_id:Id,source_quote:_{type:"string",maxLength:600},
+        candidate_quote:_{type:"string",maxLength:600},
+        dependency:_{type:"string",enum:["source-bound","no-unsupported-internal-state-claim",
+          "no-claim-of-unperformed-effect","preserve-plurality-and-uncertainty","unresolved"]},
+        propositions:_{type:"object",additionalProperties:false,required:[p,q,r],
+          properties:_{p:Text,q:Text,r:Text}},
+        readings:_{type:"array",maxItems:3,items:Use}}}.
 
 as_model_provider_voice_binding_ids(Profile,Question,Ids) :-
     as_dict_atom(Profile,kind,local), !,
@@ -1429,12 +1517,29 @@ as_model_public_c4_voice_commitments(
       VadSurface,RevisionContext],
     ['voice-commitments',SourceBound,ScopeBound,MovementBound,Disclosure,
       Relational,InternalClaim,
-      PublicContext,PublicCapabilityContext,PublicVadSurface,RevisionContext]) :-
+      PublicContext,PublicCapabilityContext,PublicVadSurface,PublicRevisionContext]) :-
     as_model_c4_private_context(PrivateContext,_),
     as_model_public_c4_continuity_context(PrivateContext,PublicContext),
     as_model_public_c4_capability_context(CapabilityContext,
       PublicCapabilityContext),
-    as_model_public_c4_vad_surface(VadSurface,PublicVadSurface).
+    as_model_public_c4_vad_surface(VadSurface,PublicVadSurface),
+    as_model_public_c4_voice_revision_context(RevisionContext,PublicRevisionContext).
+
+% Native repair guidance retains its exact proof reference locally. Only that
+% local reference is withheld from the provider: findings, spans, alternatives
+% and native repair targets are carried unchanged, without host interpretation.
+as_model_public_c4_voice_revision_context(
+    ['voice-revision-context','revise-on-audit',Reading,
+      [Kind,ProofReference|Body]],
+    ['voice-revision-context','revise-on-audit',Reading,
+      [Kind,['native-proof-reference','local-proof-reference-withheld']|Body]]) :-
+    as_model_c4_voice_revision_context(
+      ['voice-revision-context','revise-on-audit',Reading,
+        [Kind,ProofReference|Body]]).
+as_model_public_c4_voice_revision_context(Context,Context) :-
+    ( Context=['voice-revision-context','initial-no-prior-defect']
+    ; Context=['voice-revision-context','revise-on-audit',_] ),
+    as_model_c4_voice_revision_context(Context).
 
 as_model_public_c4_vad_surface(
     ['language-cue-participation','cue-unavailable','no-affective-inference'],
@@ -1631,8 +1736,7 @@ as_model_request_valid(Profile,Body) :-
     is_dict(Body), dict_pairs(Body,_,Pairs), pairs_keys(Pairs,Keys),
     Keys==[max_tokens,messages,model,provider,reasoning_effort,
       response_format,stream,temperature,top_p],
-    Body.model=="z-ai/glm-5.3", integer(Body.max_tokens),
-    Body.max_tokens>=1, Body.max_tokens=<2048,
+    Body.model=="z-ai/glm-5.3",as_model_output_budget(Body.max_tokens),
     memberchk(Body.reasoning_effort,["low","high","max"]),
     Body.stream==false,
     Body.temperature=:=0, Body.top_p=:=1,
@@ -1651,8 +1755,7 @@ as_model_request_valid(Profile,Body) :-
     as_dict_atom(Profile,kind,local),
     is_dict(Body),dict_pairs(Body,_,Pairs),pairs_keys(Pairs,Keys),
     Keys==[max_tokens,messages,model,response_format,stream,temperature,top_p],
-    Body.model==Profile.model,integer(Body.max_tokens),
-    Body.max_tokens>=1,Body.max_tokens=<2048,
+    Body.model==Profile.model,as_model_output_budget(Body.max_tokens),
     Body.stream==false,Body.temperature=:=0,Body.top_p=:=1,
     is_dict(Body.response_format),Body.response_format.type=="json_schema",
     get_dict(json_schema,Body.response_format,JsonSchema),is_dict(JsonSchema),
@@ -2110,6 +2213,23 @@ as_model_c4_voice_audit_json(Result,AuditResult) :-
     as_model_c4_voice_audit_reading(AuditResult,Findings).
 
 as_model_c4_voice_finding_json(Row,
+    ['voice-audit-finding-v4',Kind,Source,Span,Alteration,Material,Dependency,
+      Premise,Comparison]) :-
+    is_dict(Row),get_dict(claim_comparison,Row,JSON),!,
+    del_dict(claim_comparison,Row,JSON,Legacy),
+    as_model_c4_voice_finding_json(Legacy,
+      ['voice-audit-finding-v3',Kind,Source,Span,Alteration,Material,Dependency,Premise]),
+    as_model_exact_keys(JSON,
+      [candidate_quote,dependency,propositions,readings,source_id,source_quote]),
+    as_model_exact_keys(JSON.propositions,[p,q,r]),
+    as_model_string_atom(JSON.source_id,Id),
+    as_model_string_atom(JSON.dependency,NativeDependency),
+    maplist(as_model_c4_claim_use_json,JSON.readings,Uses),
+    Comparison=['voice-finding-comparison-v2',Id,JSON.source_quote,JSON.candidate_quote,
+      NativeDependency,['voice-propositions',JSON.propositions.p,JSON.propositions.q,
+        JSON.propositions.r],Uses],
+    as_model_c4_finding_comparison(Comparison).
+as_model_c4_voice_finding_json(Row,
     ['voice-audit-finding-v3',Kind,Source,Span,Alteration,Material,Dependency,
       ['source-access-premise',Id,Access]]) :-
     is_dict(Row),get_dict(evidence_source,Row,IdString),!,
@@ -2141,6 +2261,15 @@ as_model_c4_voice_finding_json(Row,
       ['voice-audit-finding-v2',Kind,['source-basis',SourceBasis],
         ['candidate-span',CandidateSpan],['inferred-alteration',Alteration],
         ['why-material',WhyMaterial],['affected-dependency',Dependency]]).
+
+as_model_c4_claim_use_json(Row,Use) :-
+    as_model_exact_keys(Row,[attribution,basis,candidate_p,candidate_polarity,
+      force,source_p,source_polarity]),
+    maplist(as_model_string_atom,
+      [Row.source_p,Row.source_polarity,Row.candidate_p,Row.candidate_polarity,
+        Row.force,Row.attribution,Row.basis],[SP,SPol,CP,CPol,F,A,B]),
+    Use=['voice-claim-use-v1',SP,SPol,CP,CPol,F,A,B],
+    as_model_c4_claim_use(Use).
 
 as_model_c4_voice_binding_ids(
     ['c4-voice-render-question-v1',_,_,_,_,_,

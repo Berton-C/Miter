@@ -231,7 +231,7 @@
         "roles": ["semantic-reading", "language-rendering"],
         "reasoning_effort": "low",
         "limits": {
-          "max_output_tokens": 2048,
+          "max_output_tokens": 8192,
           "deadline_seconds": 120,
           "capture_bytes": 262144
         },

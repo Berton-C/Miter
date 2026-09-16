@@ -63,6 +63,11 @@ The finite macOS installer validates clean source, pinned dependencies, the
 dedicated identity, private credential boundary, exact workshop image, and
 services. Working-alpha publication on `main` does not turn these remaining
 limitations into completed capabilities.
+
+The GLM VoiceRNA output allowance is configurable up to 8,192 tokens; this is
+a maximum, not a requested response length. Semantic reading retains its
+2,048-token limit. Existing runtime grants are preserved during upgrade and
+must explicitly allow a larger request; upgrading does not renew call counts.
 [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single operations map for
 that additive work.
 
