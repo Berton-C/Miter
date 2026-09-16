@@ -327,7 +327,9 @@ as_model_c4_continuity(
     is_list(Undertakings), maplist(as_symbol,Undertakings,_),
     Present=['present-context',_,_], ground(Present),
     is_list(MemoryCandidates),length(MemoryCandidates,MemoryCount),
-    MemoryCount=<8,maplist(as_model_c4_memory_candidate,MemoryCandidates).
+    % Same derived envelope as the private bodies: four exact human inputs,
+    % one delivered reply, and at most four associative candidates.
+    MemoryCount=<9,maplist(as_model_c4_memory_candidate,MemoryCandidates).
 
 as_model_c4_predecessor('no-predecessor').
 as_model_c4_predecessor(['source-cut',CutId]) :-
@@ -554,11 +556,24 @@ as_model_c4_voice_revision_context(
     as_model_c4_voice_repair_guidance(Guidance,ProofReference,Rows),
     ProofReference=['native-proof-reference'|_],length(ProofReference,5),
     ground(Guidance),is_list(Rows),length(Rows,N),N=<4,
-    forall(member(Row,Rows),(Row=['voice-finding-repair-target-v1',I,_,['candidate-span',Span],_],
-      integer(I),between(0,3,I),as_model_bounded_finding_text(Span))).
+    maplist(as_model_c4_voice_repair_target,Rows).
 as_model_c4_voice_revision_context(
     ['voice-revision-context','revise-on-audit',AuditReading]) :-
     as_model_c4_voice_audit_reading(AuditReading,Findings),Findings=[_|_].
+
+% Carrier checks only. MeTTa constructs and rederives the repair operation;
+% this membrane neither selects an operation nor interprets the finding.
+as_model_c4_voice_repair_target(
+    ['voice-finding-repair-target-v1',I,_,['candidate-span',Span],_]) :-
+    integer(I),between(0,3,I),as_model_bounded_finding_text(Span).
+as_model_c4_voice_repair_target(
+    ['voice-finding-repair-target-v2',I,Kind,Span,Status,
+      ['voice-claim-repair-v1',Comparison,Operation,
+        'preserve-useful-response-purpose-all-readings-and-final-audit']]) :-
+    as_model_c4_voice_repair_target(
+      ['voice-finding-repair-target-v1',I,Kind,Span,Status]),
+    (Comparison=='no-bound-claim-use';as_model_c4_finding_comparison(Comparison)),
+    as_symbol(Operation,_).
 
 as_model_c4_voice_repair_guidance(
     ['native-voice-repair-guidance-v1',ProofReference,['finding-targets',Rows],
@@ -572,6 +587,22 @@ as_model_c4_voice_repair_guidance(
       (Fact=['finding-source-access-contradiction',Index,Source,
         'audit-only','native-render-context'],
        integer(Index),between(0,3,Index),as_symbol(Source,_))).
+as_model_c4_voice_repair_guidance(
+    ['native-voice-repair-guidance-v3',ProofReference,['finding-targets',Rows],
+      'qualify-or-correct-only-supported-obligations-retain-uncertainty',
+      ['native-source-access-counterfacts',Facts],
+      ['candidate-rendering',['raw-sha256',RawHash],
+        ['rendered-utterance',Text,[bindings,Bindings],[uncertainty,Uncertainty]]]],
+    ProofReference,Rows) :-
+    (Facts==[] -> true
+    ; as_model_c4_voice_repair_guidance(
+        ['native-voice-repair-guidance-v2',ProofReference,['finding-targets',Rows],
+          'qualify-or-correct-only-supported-obligations-retain-uncertainty',
+          ['native-source-access-counterfacts',Facts]],ProofReference,Rows)),
+    as_sha256(RawHash,_),as_model_bounded_text(Text,1,3000),
+    as_model_bounded_text(Uncertainty,1,600),
+    is_list(Bindings),Bindings=[_|_],maplist(as_symbol,Bindings,_),
+    sort(Bindings,Unique),same_length(Bindings,Unique).
 
 as_model_c4_voice_audit_reading(
     ['voice-audit-reading-v2',['findings',Findings],
@@ -637,9 +668,9 @@ as_model_c4_claim_use(['voice-claim-use-v1',SP,SPol,CP,CPol,Force,Id,Basis]) :-
 as_model_c4_private_context(
     ['private-continuity-context',Entries,
       'scope-verified-native-candidates-not-authority'],Entries) :-
-    % At most four exact native conversation sources plus four associative
+    % Four human inputs, one exact delivered native reply, and four associative
     % candidates; native identity-based deduplication can make the union smaller.
-    is_list(Entries),length(Entries,Count),Count=<8,
+    is_list(Entries),length(Entries,Count),Count=<9,
     maplist(as_model_c4_private_memory_entry,Entries),
     findall(Id,member(['c4-private-memory-evidence-v1',Id|_],Entries),Ids),
     sort(Ids,Unique),same_length(Ids,Unique).
@@ -1174,10 +1205,8 @@ as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
         as_model_public_question_valid(Question,ProviderQuestion)
     ; as_dict_atom(Profile,kind,local),ProviderQuestion=Question ),
     term_string(ProviderQuestion,QuestionText,[quoted(true),ignore_ops(true)]),
-    with_output_to(string(User), json_write_dict(current_output,
-      _{native_question:QuestionText,
-        interpretation_boundary:"Derived readings only. Miter retains contact, authority, comparison, movement, and consequence interpretation."},
-      [width(0)])),
+    as_model_provider_question_envelope(ProviderQuestion,QuestionText,Envelope),
+    with_output_to(string(User),json_write_dict(current_output,Envelope,[width(0)])),
     get_dict(model,Profile,Model),
     as_model_response_format(Profile,ProviderQuestion,ResponseFormat),
     Common=_{model:Model,messages:[_{role:"system",content:Instructions},
@@ -1191,6 +1220,32 @@ as_model_request(Profile, Question, Instructions, MaxTokens, Body) :-
     ; as_dict_atom(Profile,kind,local),Body=Common ),
     as_model_request_valid(Profile,Body).
 
+% A lossless named view of the candidate ALREADY selected by the native audit
+% constructor. The full question (including revision history) is unchanged;
+% this duplicates no private data beyond that question's disclosure projection
+% and makes no finding, relevance, fidelity or permission decision.
+as_model_provider_question_envelope(Question,Text,Envelope) :-
+    Base=_{native_question:Text,
+      interpretation_boundary:"Derived readings only. Miter retains contact, authority, comparison, movement, and consequence interpretation."},
+    ( Question=['c4-voice-audit-question-v1'|_],
+      nth0(7,Question,['candidate-rendering',_,
+        ['rendered-utterance',Utterance,[bindings,Bindings],[uncertainty,Uncertainty]]]) ->
+        maplist(atom_string,Bindings,Ids),
+        put_dict(current_candidate_under_audit,Base,
+          _{utterance:Utterance,bindings:Ids,uncertainty:Uncertainty},Envelope)
+    ; Question=['c4-voice-render-question-v1'|_],
+      nth0(8,Question,Commitments),
+      nth0(10,Commitments,['voice-revision-context','revise-on-audit',_,Guidance]) ->
+        put_dict(native_revision_guidance,Base,Guidance,RepairEnvelope),
+        (Guidance=['native-voice-repair-guidance-v3',_,_,_,_,
+          ['candidate-rendering',_,['rendered-utterance',Draft,[bindings,DraftIds],[uncertainty,DraftUncertainty]]]] ->
+            maplist(atom_string,DraftIds,DraftStrings),
+            put_dict(candidate_to_revise,RepairEnvelope,
+              _{utterance:Draft,bindings:DraftStrings,uncertainty:DraftUncertainty,
+                standing:"Prior unapproved draft to revise under native guidance, not evidence or the current candidate under audit."},Envelope)
+        ; Envelope=RepairEnvelope)
+    ; Envelope=Base ).
+
 as_model_response_format(Profile,Question,
     _{type:"json_schema",json_schema:_{name:Name,strict:true,schema:Schema}}) :-
     (as_dict_atom(Profile,kind,remote);as_dict_atom(Profile,kind,local)),
@@ -1203,29 +1258,60 @@ as_model_response_schema(Profile,Question,Name,Schema) :-
     Question=['c4-voice-render-question-v1'|_], !,
     as_model_local_response_schema('c4-voice-render-question-v1',Name,Base),
     as_model_provider_voice_binding_ids(Profile,Question,Ids0),sort(Ids0,Ids),
-    Ids=[_|_],maplist(atom_string,Ids,Strings),
+    Ids=[_|_],maplist(atom_string,Ids,Strings),length(Ids,BindingLimit),
     Bindings=Base.properties.bindings,
     put_dict(enum,Bindings.items,Strings,Items),
-    put_dict(items,Bindings,Items,BoundBindings),
+    % Unique members of this finite enum cannot exceed its cardinality.
+    % State that existing bound explicitly for provider generation too.
+    put_dict(_{items:Items,maxItems:BindingLimit},Bindings,BoundBindings),
     put_dict(bindings,Base.properties,BoundBindings,Properties),
     put_dict(properties,Base,Properties,Schema).
-as_model_response_schema(_Profile,Question,Name,Schema) :-
+as_model_response_schema(Profile,Question,Name,Schema) :-
     Question=['c4-voice-audit-question-v1'|_],
     nth0(9,Question,Contract),
     member(['native-voice-audit-context-v1',Intention|_],Contract),
     memberchk('source-relative-finding-interpretations-v1',Intention),!,
     as_model_local_response_schema('c4-voice-audit-question-v1',Name,Base),
-    as_model_c4_comparison_schema(Comparison),
+    Question=[_|QuestionFields],
+    as_model_provider_voice_binding_ids(Profile,
+      ['c4-voice-render-question-v1'|QuestionFields],Ids0),
+    sort([none,'current-contact'|Ids0],Ids),maplist(as_symbol,Ids,_),
+    maplist(atom_string,Ids,Strings),
+    IdSchema=_{type:"string",enum:Strings},
+    as_model_c4_comparison_schema(Comparison0),
+    Use=Comparison0.properties.readings.items,
+    put_dict(attribution,Use.properties,IdSchema,UseProperties),
+    put_dict(properties,Use,UseProperties,BoundUse),
+    put_dict(items,Comparison0.properties.readings,BoundUse,Readings),
+    put_dict(_{source_id:IdSchema,readings:Readings},
+      Comparison0.properties,ComparisonProperties),
+    put_dict(properties,Comparison0,ComparisonProperties,Comparison),
     Finding=Base.properties.findings.items,
     append(Finding.required,["claim_comparison"],Required),
-    put_dict(claim_comparison,Finding.properties,Comparison,Properties),
+    put_dict(_{claim_comparison:Comparison,evidence_source:IdSchema},
+      Finding.properties,Properties),
     put_dict(_{required:Required,properties:Properties},Finding,QualifiedFinding),
-    put_dict(items,Base.properties.findings,QualifiedFinding,Findings),
+    as_model_c4_audit_access_schema(QualifiedFinding,Strings,PairedFinding),
+    put_dict(items,Base.properties.findings,PairedFinding,Findings),
     put_dict(findings,Base.properties,Findings,TopProperties),
     put_dict(properties,Base,TopProperties,Schema).
 as_model_response_schema(_Profile,Question,Name,Schema) :-
     Question=[Kind|_],
     as_model_local_response_schema(Kind,Name,Schema).
+
+% Repeat the receiver's none/not-material tuple without inventing evidence
+% identities or repairing a saved response. All IDs came from the exact
+% provider-visible question, after disclosure projection.
+as_model_c4_audit_access_schema(Finding,Ids,_{oneOf:[Absent,Present]}) :-
+    delete(Ids,"none",SourceIds),
+    put_dict(_{evidence_source:_{type:"string",enum:["none"]},
+      evidence_access:_{type:"string",enum:["not-material"]}},
+      Finding.properties,AbsentProperties),
+    put_dict(_{evidence_source:_{type:"string",enum:SourceIds},
+      evidence_access:_{type:"string",enum:["native-render-context","audit-only"]}},
+      Finding.properties,PresentProperties),
+    put_dict(properties,Finding,AbsentProperties,Absent),
+    put_dict(properties,Finding,PresentProperties,Present).
 
 as_model_c4_comparison_schema(Schema) :-
     Id=_{type:"string",minLength:1,maxLength:256},
@@ -1528,6 +1614,21 @@ as_model_public_c4_voice_commitments(
 % Native repair guidance retains its exact proof reference locally. Only that
 % local reference is withheld from the provider: findings, spans, alternatives
 % and native repair targets are carried unchanged, without host interpretation.
+as_model_public_c4_voice_revision_context(
+    ['voice-revision-context','revise-on-audit',Reading,
+      ['native-voice-repair-guidance-v3',Proof,Targets,Boundary,Counterfacts,
+        ['candidate-rendering',Raw,Rendering]]],
+    ['voice-revision-context','revise-on-audit',Reading,
+      ['native-voice-repair-guidance-v3',
+        ['native-proof-reference','local-proof-reference-withheld'],Targets,Boundary,Counterfacts,
+        ['candidate-rendering',['raw-sha256','private-hash-redacted'],Rendering]]]) :- !,
+    as_model_c4_voice_revision_context(
+      ['voice-revision-context','revise-on-audit',Reading,
+        ['native-voice-repair-guidance-v3',Proof,Targets,Boundary,Counterfacts,
+          ['candidate-rendering',Raw,Rendering]]]),
+    Rendering=['rendered-utterance',Text,_,[uncertainty,Uncertainty]],
+    as_model_remote_text_security_safe(Text),
+    as_model_remote_text_security_safe(Uncertainty).
 as_model_public_c4_voice_revision_context(
     ['voice-revision-context','revise-on-audit',Reading,
       [Kind,ProofReference|Body]],

@@ -4762,6 +4762,354 @@ Already carried:
   The installed silence is NOT fixed. Do not deploy on synthetic checks alone.
   One actual useful reply and follow-up must carry before resuming C4.
 
+  Installed `40a84fb` reached the end of the new live contact without a
+  Mattermost effect: five model exchanges completed, the native cut returned
+  idle, and the input was consumed. The final full provider response has no
+  parsed observation. Exact offline inspection isolates `:none` identifiers
+  allowed by the outgoing schema but rejected by the receiving symbol
+  contract. Changing only that spelling in a diagnostic copy makes parsing
+  pass; both claim-use disagreements still remain unresolved. This is NOT a
+  live observation, permission to normalize raw evidence, or a completed fix.
+  The revision retained the disputed inner-state/preference claims: span plus
+  status guidance did not make the required change in claim-use explicit.
+
+  **Active bounded repair — Understand/Weave:** align outgoing audit IDs and
+  none/access pairing with existing receiver mechanics; then derive a native
+  repair operation from each bound finding's claim-use disagreement. Preserve
+  every reading, exact source and useful response purpose. For unresolved
+  assertion obligations, request an expression that does not depend on the
+  disputed assertion, not a synonym or an assertion of the opposite. This
+  guides a candidate; it does not certify its fidelity. C-055/C-060 and
+  S-503/S-902 require the existing complete final formation to remain decisive.
+  No changed R/A/P meaning, broad authority rewrite, extra repair loop, canned
+  reply, silent raw correction or consumed-input replay is authorized by this
+  cut. Falsifiers: malformed IDs still fail reception; missing source or
+  competing reading cannot become expression; tampered repair operation fails
+  native readback; old certificates remain readable. Provider and live carry
+  remain open. All six previously authorized diagnostic calls are consumed.
+
+  **Embody / local Carry:** the candidate now emits native claim-use repair
+  operations with exact finding comparisons; substituted operations, removed
+  readings or omitted targets fail readback. Neither unresolved finding gains
+  expression authority. The outgoing audit schema repeats only provider-visible
+  IDs and the receiver's none/access pairing; the original malformed response
+  still fails receiving validation. The saved well-formed first audit and
+  empty findings remain structurally valid, not automatically certified.
+
+  The newly captured 1,291,251-byte native checkpoint restores without change.
+  Its exact persisted cut/movement reconstruct, and the first audit's complete
+  provider-visible question is unchanged, permitting saved-return reuse with
+  no call. Full formation/readback take 3.09/0.38 s; native revision-request
+  construction takes 5 ms. The new request is 20,515 bytes; the stricter audit
+  schema is 7,270 versus 2,801 bytes, an explicit prompt-cost increase whose
+  provider latency remains unmeasured. No full formation or model attempt was
+  added: bounded fixture revision/held paths remain exactly three returns,
+  6.17/6.36 s versus the prior roughly 6.05/6.02 s. Source, independent-peer,
+  competing-assertion, changed-candidate and legacy certificate checks pass.
+  Supported `bin/miter install` produced a temporary effects-disabled source
+  closure; a fresh process restored the prior saved organization and accepted
+  its real serialized review/certificate and receiving boundary. That checks
+  compatibility, not this live conversation's completion. The disposable
+  installation was removed after readback; all owned process groups exited.
+  Only broker 79839, supervisor 80281 and native child 80292 remain (child
+  1.3% CPU, 543,504 KiB RSS at 35:24 elapsed). No test is tracked, no live state
+  was changed, and no new model call, commit or deployment occurred.
+
+  **Next bounded step:** obtain the separately requested two-call diagnostic
+  allowance, reuse this exact saved initial audit, and exercise revised render
+  plus final audit through the same native review constructor. Do not spend
+  the exhausted earlier allowance or deploy on the offline results alone.
+  Actual useful live reply/follow-up and broader C4 remain open.
+
+  Berton authorizes up to ten ADDITIONAL OpenRouter GLM 5.3 repair-diagnostic
+  calls with the captured test conversation, scoped recalled context,
+  candidates and audit findings. Use only those needed; request more only
+  after this allowance is exhausted. The earlier six remain consumed. Begin
+  with a two-call trial (revised rendering/final audit), reusing the exact
+  saved first audit. Claims written before transmission count against this
+  allowance even if parsing or transport fails. No live posting or replay.
+
+  New allowance call 1 returned `length` after 23.59 s: its entire 8,192-token
+  completion repeated the six permitted binding IDs, with no utterance. The
+  existing unique-items contract already forbids those duplicates. No parsed
+  observation or native expression was accepted; group 96849 was reaped.
+  The outgoing render schema now spells out the equivalent finite-enum
+  cardinality as `maxItems`; no receiving or semantic rule changes. This is
+  an observed generation-envelope failure, not a result about claim repair.
+  One of ten calls is spent; nine remain. Check that equivalent bound locally,
+  then resume the same two-call native trial without changing its payload or
+  audit obligations.
+
+  The finite bound's JSON schema differs from the transmitted request only
+  by the equivalent `maxItems=6`; malformed-source/access and native repair
+  falsifiers still pass, as do all native-source balance and diff checks.
+  The attempted next transmission was rejected BEFORE execution by the
+  automatic security reviewer, requiring explicit consent to OpenRouter's
+  underlying GLM hosting-provider routing/fallback. A clarification is pending;
+  do not bypass that rejection. Calls remain 1/10 used, 9 available, not spent.
+  No commit, upgrade, live write or further transmission occurred. Completed
+  diagnostic groups 97522/97985/98100 are gone. Host check shows only broker
+  79839, supervisor 80281 and native child 80292 (1.5% CPU, 395,072 KiB RSS,
+  57:14 elapsed); no orphaned diagnostic. Resume the same two-call trial only
+  after this destination-routing permission is resolved, then require the
+  actual new review/certificate carry and useful live reply/follow-up.
+
+  Berton explicitly resolves the routing question: OpenRouter's underlying
+  GLM 5.3 hosting providers and fallback routing may receive the SAME approved
+  test payload with existing privacy settings retained. This is within the
+  ten-call diagnostic allowance, not a new budget; one call is already spent.
+  Routine steps within this exact repair/payload/provider/privacy/budget scope
+  do not need renewed human approval. Reconfirm only a material scope change,
+  exhausted budget, genuine new authority, or a mandatory external control;
+  do not reinterpret a continuation as loss of the existing authorization.
+  This builder consent record neither changes Miter's native authority nor
+  overrides the execution environment's security controls.
+
+  Calls 2/3 completed in 8.92/7.95 s with valid render/audit carriers. Full
+  native review correctly HELD: both final findings quote the OLD rendering,
+  not the revised candidate being audited. One has no bound candidate span;
+  the other fails its exact source/candidate binding. No certificate or effect
+  occurred. Total review 23.20 s wall / 6.00 s CPU; captured/restored state is
+  unchanged and group 22326 is gone. Three of ten calls used; seven remain.
+  Next hypothesis: the term-only provider presentation lets historical audit
+  excerpts obscure the native-selected current candidate. Add only a lossless
+  named JSON view of that exact candidate AFTER disclosure projection; retain
+  the entire native question and all history. Prove byte identity and stale
+  finding refusal locally, then reuse the saved revised render and spend one
+  call on its final audit. No invented approval, finding removal or extra live
+  repair loop.
+
+  The named current-candidate view preserves the entire previous JSON input
+  after removing that sole added field, and equals the native-selected render
+  byte-for-byte. Stale findings still fail native binding. Call 4 reused the
+  exact saved revision and returned its final audit in 12.10 s. It now names
+  current spans: native judgment defeats the source-report objection but keeps
+  two preference/meaningfulness interpretations unresolved. Review still held;
+  18.37 s wall / 5.99 s CPU, no state change or effect, group 23590 reaped.
+  Four calls used, six remain. The renderer had acknowledged the repair in its
+  uncertainty text while reintroducing the same disputed use in other clauses.
+  Next bounded hypothesis: likewise expose its already-native-constructed
+  repair targets as a named JSON view, not only inside the serialized term.
+  Preserve all comparison alternatives and native operations, without changing
+  judgment or adding a repair loop. Test identity locally before a two-call
+  render/final-audit trial from the same original first audit.
+
+  Calls 5/6 (5.81/16.09 s) show that named guidance ALONE is insufficient:
+  the renderer again substitutes a significance claim for gladness, while
+  saying it repaired the claim in its uncertainty field. The final audit now
+  correctly binds that actual replacement; native review holds. This is an
+  observed noncompliant revision, not permission to accept the explanation as
+  evidence or to dismiss its audit. Total review 28.28 s wall / 6.06 s CPU;
+  no effect/state change, group 24384 gone. Six of ten calls used, four remain.
+  Refine only the native operation's rendering explanation: optional disputed
+  self-description is to be omitted, with relational participation expressed
+  through the useful offer itself, not replaced by a different self-description.
+  No topic template, forbidden-word filter, additional revision, changed
+  native finding judgment or relaxed final formation. Re-test the same original
+  candidate/first audit, not an accumulating chain of diagnostic revisions.
+
+  Calls 7/8 (8.98/9.79 s) again return replacement self-claims despite the
+  explicit omission direction. Native final judgment holds; no certificate or
+  effect. Full review 25.17 s wall / 6.05 s CPU, checkpoint unchanged, group
+  25199 reaped. Eight of ten calls used; two remain. Inspection confirms the
+  new instructions and exact native operations reached the provider intact.
+  More prompt wording is not justified by this result. The next isolated trial
+  changes only the renderer's already-supported resource setting from low to
+  high inference effort; its request otherwise must compare identical. Final
+  audit remains low, all native judgments remain unchanged, and no additional
+  live attempt is added. This tests resource adequacy, not a new authority
+  rule. It may consume at most the two remaining calls; do not retry beyond
+  that allowance. No deployment or repair completion is claimed.
+
+  Calls 9/10 also hold: changing only renderer effort to high did not remove
+  the unsupported self-claims. Render/audit 16.47/12.21 s, full review 35.07 s
+  wall / 6.05 s CPU; no certificate, effect, or captured-state change. Group
+  26777 is gone. All ten additional calls are consumed. No more provider calls
+  are authorized by that allowance; do not deploy these failed trials.
+
+  **Understand/Weave, captured-source differential:** the earlier successful
+  diagnostic included the prior delivered self-description; the current
+  failed request carries four identical human-question bodies and omits it.
+  A read-only restore confirms that exact 1,398-character delivered expression
+  still exists in the SAME scope's native history, with its proof/effect pair.
+  `C4ExactRecallQuery` selects only four recent HUMAN encounters; subsequent
+  unanswered repetitions displace all older inputs, while delivered replies
+  depend on similarity recall. This is a concrete continuity-access defect,
+  not proof that fixing access alone resolves VoiceRNA or validates self-claims.
+  Local probe groups 27699/27838 are gone; no new model call or live write.
+  Repair this same-contact prerequisite: retain the four existing human sources
+  and the latest actually delivered native reply in the exact scoped query.
+  Native history chooses the occurrence; the membrane verifies its exact
+  capsule, receipt/proof pair and certificate bytes. No content/topic matching,
+  source-truth promotion, increased retry count, or canned response. Prove
+  mismatched scope/hash, undelivered/local-only effects, duplicate history and
+  missing proof cannot supply a reply; preserve legacy query/certificate reads.
+  Only after this local carry request a fresh bounded provider allowance to
+  test semantic reading through final audit with the corrected context.
+
+  **Embody/local Carry:** the exact query now retains four recent human
+  occurrences plus the latest proof/receipt-bound delivered expression. Its
+  receiving bounds allow that fifth exact source plus four associative sources;
+  source scope, identity, bytes and non-authority are unchanged. Wrong scope,
+  certificate/proof hash, missing proof, duplicate delivery and undelivered or
+  local-only effects fail. An effects-disabled supported installation persists
+  the captured organization and reads all five exact sources after restoration
+  (2.46 s file read; 0.003 s native query; 0.026 s reply material verification).
+  The diagnostic needed the normal C durability extension loaded before writes;
+  no runtime durability bypass was added. Prior real certificate receiving and
+  full native revision/held falsifiers pass; bounded three-return review costs
+  6.04/6.05 s. Owned groups 31131/31370/31609/31798 are gone.
+
+  Berton authorizes up to FIVE additional diagnostic calls, separately from
+  the exhausted ten, for semantic reading through optional revision/final audit
+  with this corrected context. Same captured payload, approved OpenRouter and
+  underlying/fallback providers, existing privacy settings; no live effects.
+  The complete offline preflight passes. Because the current capture is after
+  the consumed turn, its exact predecessor organization is recovered from the
+  earlier capture by matching the native predecessor identity. Only the
+  diagnostic in-memory active row is temporarily restored for reformation;
+  history/captured files/live state remain untouched, and the original row is
+  restored afterward. Saved tool observations and all four old exact memory
+  occurrences remain present; the new delivered reply is additive. This is
+  not live input replay or new admission. Zero of these five calls spent at
+  preflight completion. Group 33281 is gone; host has only the installed broker,
+  supervisor and native child (1.1% CPU), no orphaned diagnostic.
+
+  All five new calls completed: semantic 7.09 s, initial render 5.48 s,
+  initial audit 14.37 s, revision 7.59 s, final audit 11.22 s. Native continuity
+  participation includes the recovered reply, but final review still holds two
+  substituted self-claims. No certificate, effect, deployment or captured-state
+  change; group 33713 reaped. This allowance is exhausted. Restoring reply
+  access is useful but demonstrably insufficient to close the silence repair.
+
+  **Next bounded Understand/Weave:** the saved revision request contains the
+  disputed excerpts but NOT the complete candidate or its useful creative
+  proposal. `C4VoiceRepairGuidanceFromStanding` retains finding targets and
+  source counterfacts but drops the candidate carried by the very same native
+  audit participant. The model is asked to preserve useful content it cannot
+  see. Carry that exact candidate into native revision guidance, with its raw
+  identity, complete rendering and independent first-audit witness retained in
+  the final native proof. Validate unchanged byte identity and reject replaced
+  drafts/missing witnesses; preserve legacy readback, disclosure protection,
+  the one-revision limit and complete final audit. No promise that this omission
+  alone explains every failed generation. Test locally before requesting the
+  next bounded provider carry; do not rerun an exhausted allowance.
+
+  **Embody/local Carry, complete-draft repair:** native guidance v3 now carries
+  the exact first-audit candidate and retains that independent audit witness in
+  the final proof. A replaced draft or absent witness fails native validation;
+  raw/proof identities remain private, draft text passes the existing disclosure
+  check, and disclosure failure cannot fall through to an unredacted carrier.
+  The provider's named draft equals the native rendering byte-for-byte and is
+  distinct from the current candidate under final audit. Source/interpretation
+  falsifiers and legacy real-certificate readback pass. The one-revision fixture
+  remains three returns; local revision/held review costs 6.10/6.18 s, and the
+  same supported effects-disabled source closure costs 6.31/6.37 s. No new
+  formation, live retry, semantic verdict in a membrane, or relaxed audit.
+  A fresh process accepts the serialized revised fixture's new review and
+  certificate through the installed receiving boundary without committing an
+  effect; restored organization is unchanged. Group 38307 is reaped. This is
+  synthetic readback evidence, not a new successful provider or live reply.
+
+  The captured conversation preflight reuses its exact saved semantic reading,
+  initial render and first audit. All three provider requests compare unchanged;
+  the new revision includes the previously omitted 1,092-character draft and
+  its four bindings. Request size increases from 33,575 to 39,196 bytes including
+  named views: an explicit presentation cost, not an additional model call.
+  With a zero-call diagnostic budget, the native path reaches that revision
+  request and safely holds without transmission; original captured state is
+  restored unchanged. Groups 37172/37530/37839/37911/37917 exited and were reaped.
+  Host inventory finds only the installed broker, supervisor and native child
+  (2.0% CPU, 399,168 KiB RSS); no orphaned diagnostic worker.
+
+  The five-call allowance remains exhausted. The separately requested two-call
+  allowance is pending: reuse the exact first three returns and test only the
+  corrected revision plus final audit. No new provider trial, commit, deployment
+  or repair-completion claim follows from these local passes. Installed useful
+  reply/follow-up and the subsequent C4 work remain open.
+
+  Berton now authorizes up to TEN additional diagnostic calls, using only those
+  needed for this repair. This replaces the pending two-call request, not the
+  exhausted earlier allowances. Same approved payload, OpenRouter GLM 5.3 and
+  its approved hosting/fallback providers, existing privacy settings, no live
+  effects. Begin with two calls for the complete-draft revision and final audit,
+  reusing the unchanged first three returns; zero of these ten spent initially.
+
+  Calls 1/2 used the complete draft and still held (5.33/12.86 s provider;
+  25.53 s full review). The revision repaired the previously flagged claims but
+  copied a different unflagged desire claim from the same draft; the final audit
+  also retained an unsupported attribution of the human's stance. No certificate
+  or effect; captured state unchanged, group 40195 reaped. Two of ten spent.
+  Next isolated hypothesis: the native-selected revision still uses the initial
+  answer-generation task contract. Give revision its own whole-draft editing
+  contract under the SAME bound repair operations, rather than another initial
+  answer or a span-only patch. The initial question, evidence, native meaning
+  judgments, one-revision limit and final audit stay unchanged. Check exact
+  saved-return reuse and test two calls; do not deploy on this hypothesis.
+
+  Calls 3/4 still held (3.84/20.24 s; 31.42 s full review). The editing-task
+  contract reached the provider intact but was insufficient; remove that
+  experiment. Crucially, this audit uses findings as a repair checklist: its
+  own explanations say the passages are corrected/consistent or no longer
+  assert the disputed state. Git history isolates a contract regression at
+  `40a84fb`: evidence-audit instructions lost the preceding version's explicit
+  zero-to-four materially supported defects requirement. Restore current-defect
+  semantics, distinguishing historical/repaired passages from present supported
+  alterations; retain genuine unresolved findings and all native checks. This
+  is a provider-task contract repair, not host suppression of returned findings.
+  Four of ten calls used, six remain; group 41091 reaped, no live change.
+  The changed audit question cannot reuse its old return. Reuse only the exact
+  semantic and initial-render returns, then test at most three calls through
+  initial audit, native revision if needed, and final audit.
+
+  **Carry, actual captured conversation:** call 5 returns zero current defects
+  in 2.33 s. Reusing only the exact unchanged semantic/initial-render returns,
+  the complete native review now forms an expression certificate in 3.86 s
+  wall / 0.90 s CPU (wall includes that audit call); no revision is required.
+  Review readback, certificate validation and the effect receiving boundary
+  pass without posting or changing the captured organization. This is not
+  model approval: the existing native expression joint still decides standing.
+  The controlled false candidate in call 6 returns two actual defects in
+  9.22 s and DOES NOT gain native expression. Six of the ten newly authorized
+  calls are spent; four remain. No additional calls are needed for release.
+
+  The supported installer produces an effects-disabled source closure at LKG
+  `18d0dc394f1a95e73bc8dad0db03bdecf18a5f0009892837a872f6e6533a31a8`.
+  A fresh pinned-native process restores the captured organization and accepts
+  that actual serialized review/certificate through the same receiving boundary,
+  without an effect commit or organization change. Groups 42388, 42689, 42787
+  and 42792 are reaped. The failed editing-task experiment is absent from the
+  source. The repair combines current-defect audit semantics, exact delivered
+  reply access, lossless candidate/repair presentation, and independently
+  witnessed complete-draft revision. It does not alter M24--M26.3, receiving
+  meaning judgments, the one-revision limit, privacy settings or live grants.
+
+  **Release waypoint:** baseline remains installed `40a84fb`, whose captured
+  turn held. Changed scoped continuity invalidates its semantic/voice consumers;
+  changed audit instructions invalidate the old audit return, not the unchanged
+  initial semantic/render returns. Full formations are added only where the
+  existing material-finding path already requires them; zero-defect review
+  retains the unchanged movement. The complete-draft repair's presentation size
+  cost and exact-reply read cost are recorded above. Captured checkpoint bytes
+  remain unchanged. Growing-history cost and ordinary live end-to-end latency
+  remain unmeasured by these captured trials; no performance or C4 closure is
+  claimed. Next: commit the four source/Atlas files, hand off one guarded
+  upgrade, then obtain a NEW useful Mattermost reply and follow-up. No terminal
+  contact is replayed. Temporary captures remain accounted for under the
+  existing private diagnostic root until that live comparison completes; no
+  fixture, provider material, private state or new documentation file enters Git.
+
+  Final supported-source regressions pass: bootstrap 1.16 s, captured restore
+  3.02 s, ordinary preparation 3.01 s; bounded revision 6.10 s wall / 5.82 s
+  CPU and unresolved hold 6.09 / 5.83 s, still exactly three fixture returns.
+  Substituted draft, missing independent audit witness, changed source/claim
+  use, wrong attribution, unsupported certainty and disclosure fallback remain
+  refused. Full source syntax and diff checks pass. Group 43589 is reaped.
+  Pre-commit host inventory contains only the installed broker 79839,
+  supervisor 80281 and native child 80292 (1.3% CPU, 399,184 KiB RSS at 3:49:29);
+  its RSS is essentially unchanged from the earlier 399,168 KiB observation.
+  There is one Git worktree and no new tracked file.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

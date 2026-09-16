@@ -48,10 +48,32 @@ miter_continuity_source_question(
     sort(Sources,Unique),same_length(Sources,Unique),
     integer(Omitted),Omitted>=0.
 
+miter_continuity_source_question(
+    ['c4-exact-recall-query-v2',
+      ['question-reference',ContactId,'exact-continuity-recall'],Scope,
+      [sources,Sources],
+      ['omitted-native-sources',Omitted,'retained-in-scoped-history'],
+      ['recall-contract','exact-retained-conversation-sources',
+        'recent-human-inputs-and-latest-delivered-expression',
+        'no-contact-no-authority-no-choice']],Scope,Sources) :-
+    ground(Sources),acyclic_term(Sources),miter_chroma_symbol(ContactId),
+    miter_chroma_scope(Scope),is_list(Sources),length(Sources,N),N=<5,
+    partition(miter_continuity_expression_descriptor,Sources,Expressions,Humans),
+    length(Expressions,NE),NE=<1,length(Humans,NH),NH=<4,
+    maplist(miter_continuity_source_descriptor,Humans),
+    sort(Sources,Unique),same_length(Sources,Unique),
+    integer(Omitted),Omitted>=0.
+
 miter_continuity_source_descriptor(
     ['c4-retained-source-v1',Id,['payload-reference',Payload]]) :-
     miter_chroma_symbol(Id),atom(Payload),atom_concat(sha256_,Hash,Payload),
     miter_chroma_sha256(Hash).
+
+miter_continuity_expression_descriptor(
+    ['c4-retained-expression-source-v1',Id,
+      ['certificate-sha256',CertificateHash],['proof-sha256',ProofHash]]) :-
+    miter_chroma_symbol(Id),miter_chroma_sha256(CertificateHash),
+    miter_chroma_sha256(ProofHash).
 
 miter_continuity_source_failure(time_limit_exceeded,'source-read-time-bound') :- !.
 miter_continuity_source_failure(error(exact_source_held(Reason),_),Reason) :- !.
@@ -157,6 +179,39 @@ miter_continuity_source_material(
        crypto_data_hash(Body0,BodyHash,[algorithm(sha256),encoding(utf8)])),Matches),
     sort(Matches,[Body-RawReference]),
     miter_chroma_memory_id(RuntimeId,Scope,'human-contact',RawReference,BodyHash,
+      MemoryId).
+
+% The native query names this exact delivered occurrence. Validate its scoped
+% receipt/proof pair and certificate bytes; do not search for or rank replies.
+miter_continuity_source_material(
+    source_context(RuntimeId,Scope,Relative,FileHash,CapsuleHash,SnapshotHash,
+      Capsule,_Nodes),
+    ['c4-retained-expression-source-v1',Id,
+      ['certificate-sha256',CertificateHash],['proof-sha256',ProofHash]],
+    ['c4-memory-result-v1',MemoryId,'certified-expression',
+      ['source-capsule',Relative,FileHash,CapsuleHash,
+        ['source-occurrence',ReplyContact],['runtime-id',RuntimeId]],
+      [body,BodyHash,Body],['snapshot-sha256',SnapshotHash],
+      [distance,'not-ranked','diagnostic-not-authority'],
+      'scope-and-capsule-verified-locally']) :-
+    Capsule=['miter-continuity-capsule-v1',Scope|_],
+    nth0(6,Capsule,['developmental-organization',History]),
+    findall(E,member(['assistant-history',effect,Id,Scope,E],History),
+      [['effect-witness-v2',[Standing,Id,CertificateHash,ProofHash],
+        [payload,Certificate],ProofReference]]),
+    memberchk(Standing,['mattermost-effect-delivered','mattermost-effect-duplicate']),
+    findall(V,member(['assistant-history','voice-proof',Id,Scope,V],History),
+      [['native-movement-proof-record-v2',ProofReference,
+        ['certificate-sha256',CertificateHash],['proof-sha256',ProofHash],
+        'persisted-by-effect-membrane-before-observation']]),
+    nth0(3,Certificate,Scope),
+    nth0(5,Certificate,['intended-expression',['mattermost-response',ReplyContact,Body]]),
+    as_mattermost_certificate_text(Certificate,CertificateText),
+    crypto_data_hash(CertificateText,CertificateHash,[algorithm(sha256),encoding(utf8)]),
+    miter_chroma_source_key(ReplyContact),string(Body),
+    string_length(Body,N),N>=1,N=<8000,
+    crypto_data_hash(Body,BodyHash,[algorithm(sha256),encoding(utf8)]),
+    miter_chroma_memory_id(RuntimeId,Scope,'certified-expression',ReplyContact,BodyHash,
       MemoryId).
 
 as_chroma(Root0, Question, Observation) :-
