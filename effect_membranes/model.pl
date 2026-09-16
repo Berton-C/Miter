@@ -290,7 +290,7 @@ as_model_question_carrier(
     string_length(Instructions,InstructionLength),
     InstructionLength>=100, InstructionLength=<4096,
     as_symbol(ResourceId,_),as_model_identifier(ModelId),
-    integer(MaxTokens),MaxTokens>=1,MaxTokens=<2048,
+    as_model_output_budget(MaxTokens),
     number(Deadline),Deadline>=1,Deadline=<300.
 
 as_model_c4_fact_entries(Entries) :-
@@ -869,7 +869,7 @@ as_model_direction_checked(Root0,Scope,Purpose0,
 
 as_model_direction_limits('semantic-reading',Profile,MaxTokens,Deadline) :-
     get_dict(limits,Profile,Limits),
-    MaxTokens is min(2048,Limits.max_output_tokens),
+    MaxTokens=Limits.max_output_tokens,as_model_output_budget(MaxTokens),
     Deadline=Limits.deadline_seconds.
 as_model_direction_limits('language-rendering',Profile,MaxTokens,Deadline) :-
     get_dict(limits,Profile,Limits),

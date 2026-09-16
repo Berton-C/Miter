@@ -5110,6 +5110,78 @@ Already carried:
   its RSS is essentially unchanged from the earlier 399,168 KiB observation.
   There is one Git worktree and no new tracked file.
 
+  **Installed return, 2026-09-16:** `5c08379` is installed with the same
+  checkpoint and open conversation accounting. New contact
+  `pot3zfhu6pn6treact3yaf8x4h` did not reach VoiceRNA: its sole semantic call
+  returned `length`, zero content characters and 2,048 reasoning/completion
+  tokens. The exact consumed contact records `provider-output-truncated` and
+  no Mattermost effect. The same native run returned to idle; waiting longer
+  cannot complete this terminal contact. Do not replay it.
+
+  **Next bounded hypothesis:** the GLM profile already specifies 8,192 output
+  tokens, but semantic direction silently clamps it to 2,048 and the semantic
+  carrier repeats that ceiling. The earlier `40a84fb` change removed this clamp
+  for voice only. Honor the existing finite configured budget at those two
+  semantic seams. Keep local 2,048 profiles, current grant enforcement, native
+  meaning/judgment, privacy, low effort, deadlines, one-revision limit and retry
+  behavior unchanged. Test profile/carrier/request identity locally, then use
+  at most one of the four remaining diagnostic calls on the exact saved failed
+  request with only its resource budget changed. No deployment on a hypothesis.
+  The live process briefly reached 2,405,840 KiB RSS/100% CPU, then idled;
+  this is not evidence of an orphan. Conversational latency and this growing-
+  state cost remain open; no new native formation or persistent table is added.
+
+  **Local carry:** source bootstrap and profile/native-resource/carrier/request
+  checks pass in 1.22 s wall / 1.16 s CPU. The outgoing semantic payload differs
+  only in its resource budget; the change creates a distinct question/spend
+  identity, so old results are not reused. Both local models retain 2,048;
+  zero, negative, non-integer and over-ceiling budgets remain refused, as do
+  requests above a grant's token/deadline limit. All native sources balance;
+  there are two changed files and one worktree. Temporary checks initially
+  needed the installer's credential-reference materialization and a corrected
+  diagnostic symbol spelling; neither required a runtime change. Groups 51168,
+  51541 and 51736 are reaped. Installed PID 47312 is idle at 2.1% CPU /
+  1,315,376 KiB RSS after its transient peak; only its supervisor and broker
+  accompany it. Four diagnostic calls remain. Exact new-request capture and
+  the one-call comparison are pending; no commit, deployment or success claim.
+
+  **Exact-request result:** the operator's read-only capture confirms both
+  installed GLM grants and its profile already allow 8,192 tokens/120 s.
+  Diagnostic call 7 (same contact, schema, privacy, effort and fallback policy;
+  only the token budget changed) returns complete semantic JSON from Venice:
+  `stop`, 3,122 content characters, 7,777 completion tokens including 7,189
+  reasoning tokens. Production parsing and unchanged native semantic-reading
+  validation pass. No live write, post, replay or checkpoint change. Group
+  57102 is reaped; seven of ten calls spent, three remain. Preflight group
+  56972 and the operator capture group 56726 are also reaped.
+
+  **Efficiency/release decision:** that provider call took 119.86 s, versus
+  roughly 36 s for the installed truncated return. The functional benefit is
+  complete usable semantic participation instead of no content, not a speedup.
+  This is dangerously close to the unchanged 120 s deadline; provider-latency
+  reliability remains an explicit open limb, not an accepted conversational
+  performance result. OpenRouter's current parameter documentation and Venice
+  endpoint metadata both list `reasoning_effort` support; no evidence justifies
+  treating the existing low setting as ignored, disabling reasoning or changing
+  provider selection. Do not widen the timeout or retry the consumed input.
+  Sources: https://openrouter.ai/docs/api_reference/parameters and
+  https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints (2026-09-16).
+
+  The supported change remains two mechanical lines plus this Atlas. It adds
+  no formation, table, checkpoint field, memory content or per-turn model call;
+  the changed resource carrier invalidates its semantic return and downstream
+  consumers, not prior durable organization. Captured state is untouched.
+  Local profile/grant/falsifier checks, fresh native bootstrap, and the exact
+  returned-reading check pass; installed end-to-end latency and useful reply
+  remain pending. Commit this proven truncation correction, then carry one new
+  live contact through semantic interpretation AND VoiceRNA before claiming
+  resolution or resuming unrelated C4 work. No test artifacts enter Git.
+
+  Final pre-commit inventory: only broker 46955, supervisor 47301 and native
+  child 47312 remain; the child is at 1.2% CPU / 617,760 KiB RSS after 40:32,
+  down from its transient processing peak. No diagnostic group survives.
+  Source balance and diff checks pass; one worktree, two changed files.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
