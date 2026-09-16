@@ -4315,7 +4315,7 @@ Already carried:
   intention to locate the remaining semantic disagreement; do not force an
   approval, ignore findings, enlarge timeouts, or replay consumed inputs.
 
-  **Active repair — make the VoiceRNA binding request match its receiver:**
+  **Carried request repair — make the VoiceRNA binding request match its receiver:**
   Installed `c241670` processed `1r6ww76857gi3nqfusjbn7wgia` in about 83 s,
   checkpointed and returned to waiting without a Mattermost effect. Its four
   calls reached semantic reading, render, audit and revision render, not final
@@ -4355,6 +4355,43 @@ Already carried:
   Broker 94209 is separate mechanical transport; no trial process survives.
   Install recoverably, then observe one new ordinary contact. Do not replay
   this checkpointed contact or relax receiving validation to manufacture a reply.
+
+  **Active diagnosis — native audit materiality is not yet qualified:**
+  Installed `d04979c` admitted `7yksgkzykfdx5d7prar5ts6ahc`, completed all
+  five semantic/render/audit/revision/final-audit calls, checkpointed in about
+  147 s and returned to idle with zero matching Mattermost effects. The new
+  binding contract carried; the final audit is parsed, not malformed. The
+  subsequent 90-minute silence is not continuing processing or a crash loop.
+  Counts move from 32/9/63 to 33/9/68 (contacts/posts/calls). No replay occurs.
+
+  The pinned native probe reproduces the actual final three-finding standing
+  as `unresolved-material-obstruction`. One-variable diagnostic copies isolate
+  an actual initial finding that explicitly reports no material alteration,
+  and the final finding described as minor rather than material: each alone
+  still receives that same standing. An empty-list control receives
+  `no-material-obstruction-contributed`. These probes are not certifications
+  or proof that the other findings are false. None of the actual final findings
+  triggers the existing source-access challenge. No live write or model call.
+
+  Git blame dates this count-based rule to `51b4967`; comparison with the
+  known-working `c8f76cd` confirms it is inherited, not introduced by the new
+  schema repair. That successful repair added a bounded source-access-premise
+  challenge, not general materiality adjudication. Given a valid native basis,
+  the present disposition maps no findings to expression and remaining findings
+  to revision; after the revision, this contact is held. Naming a retained
+  inquiry continuation does not itself schedule another attempt for this input.
+
+  Next hypothesis must address evidence-qualified native finding disposition
+  under C-004/054--057 and S-901/902, not more transport changes, prompt-only
+  exceptions or another empty-list approval. Preserve the exact failed products
+  as the regression case. Before deployment, demonstrate meaningful native
+  distinction between a supported defect, a contradicted premise and an
+  unresolved reading, with source/candidate/dependency lineage retained; do not
+  infer any of these from a prose keyword. Then carry the full bounded review
+  path and one actual reply. This is an unimplemented repair, not C4 closure.
+  Diagnostic-only waypoint: runtime source is unchanged; one supervisor 47992
+  and child 48004 remain, child CPU 1.7%, RSS about 407 MiB at 1:53:32 elapsed,
+  with mechanical broker 47650 and no surviving probe. No upgrade is requested.
 
 Next movement:
 
@@ -4416,8 +4453,8 @@ Next movement:
    intentionally unchanged next movement, exact continuity across restart, and
    zero replay. These remain whole-C4 claims, not additional prerequisites for
    the human-accepted working-alpha publication recorded above;
-6. **active movement:** carry the exact binding-domain request repair above into
-   the installed runtime and confirm ordinary conversation. Preserve the
+6. **active movement:** resolve the evidence-qualified native audit disposition
+   diagnosed above, then confirm ordinary conversation. Preserve the
    already-active open conversation policy and all terminal history. Only then
    resume C4 with the native older-artifact/version-resolution seam identified
    above and its growing-history proportionality obligation; do not interrupt
