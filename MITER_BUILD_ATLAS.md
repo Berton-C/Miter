@@ -4381,6 +4381,29 @@ Already carried:
   to revision; after the revision, this contact is held. Naming a retained
   inquiry continuation does not itself schedule another attempt for this input.
 
+  **Bounded path, Understand closed / Weave open:** a second pinned-native
+  falsifier isolates the participant boundary. `C4VoiceAuditParticipant`
+  retains the actual final reading as `c4-derived-voice-audit-reading-v2`,
+  whereas `CPParticipantRelationReading` recognizes only
+  `participant-relation-claim`. The audit alone therefore produces an empty
+  participant relation organization and does not establish relation-driven
+  inquiry. Changing only that claim to a diagnostic relation makes the same
+  consumer produce a relation and require inquiry. Other encounter participants
+  can still support inquiry; this is not a claim that the complete encounter
+  lacks it. The probe reconstructs a carrier from the saved provider projection
+  plus the observation's exact reference/scope; it is not a full native proof
+  or live carry. The saved observation is unchanged, with no network, model
+  call, or live write. The Atlas was consulted at both step boundaries.
+
+  This rules out describing reformation alone as semantic adjudication of the
+  audit's prose. Weave must expose fallible claim/premise/dependency relations
+  to native consumers, including ambiguity, and distinguish the scope of each
+  witness: source presence/provenance cannot certify a paraphrase, an inner
+  state, or the truth of the source's contents. A model-supplied materiality
+  bit, empty-list vote, or builder-authored interpretation of this particular
+  exchange is not the missing native derivation. No runtime edit or deployment
+  is justified by this falsifier alone.
+
   Next hypothesis must address evidence-qualified native finding disposition
   under C-004/054--057 and S-901/902, not more transport changes, prompt-only
   exceptions or another empty-list approval. Preserve the exact failed products
