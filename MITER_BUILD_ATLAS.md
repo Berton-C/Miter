@@ -5811,6 +5811,70 @@ Already carried:
   and explicit initial profile update; subsequent resource edits need no build.
   This resource cut is not evidence that the unanswered research is repaired.
 
+  **Completed redirect is one continuing inquiry, 2026-09-17:** installed
+  `09cebcc` carried the `ha56aiuwnfgczmdzmjhkn4isgr` contact through a real
+  301 redirect and a separately proved 200 response. All three model exchanges
+  completed; the audit correctly objected to a draft changing a retrieved
+  $567/week rate into approximately $2,400/week. The contact was consumed with
+  a local-only receipt and no Mattermost delivery. More tokens, another retry,
+  or bypassing the audit would not repair this failure.
+
+  Exact saved capability proofs reproduce the cause: after the redirect
+  finished, `C4CapabilityResultPossibilities` exposed the predecessor 301 and
+  successor 200 as independent current results. Both before and after audit,
+  this produced `movement-plural-live`; VoiceRNA could not form its single-
+  movement R/A/P basis and held before revision. A pre-web control with the
+  identical audit reached revision. The separate source-warrant accessor does
+  not bind HTTP bodies, but that unresolved interpretation occurred in both
+  controls and was not the cause of this blocked revision.
+
+  The narrow native correction recognizes a proved redirect successor as the
+  continuation of its exact predecessor. Same scope/contact, the native
+  redirect movement identity and exact method/destination are all required.
+  Only current-result construction changes; both observations, descriptors,
+  proof lineage and all constitutional participants remain in the encounter.
+  Equal URLs, arrival order or a preferred status cannot retire an independent
+  result. Returned failure remains a consequence, not successful research.
+  The invalidation closure is this result dependency, the affected M25
+  formation and its VoiceRNA consumers. No R/A/P rule, doctrine, audit verdict,
+  resource setting, transport loop or permission is changed. One reviewed
+  source fingerprint is refreshed; constitutional atoms/spaces are unchanged.
+
+  Against `09cebcc`, the exact saved native replay now yields
+  `revise-candidate-once`, a valid revision request at the existing model
+  boundary, bound repair targets and full basis readback. Public audit input
+  is exactly unchanged. The wrong-price draft is still not authorized.
+  Final-web reformation takes 4.750–4.848 seconds wall / 4.577–4.647 CPU
+  versus 6.102–6.483 / 5.919–6.163; audit formation takes 4.807–4.828 /
+  4.642–4.653 versus 6.275–6.660 / 6.087–6.333. Bootstrap remains about
+  1.2 seconds; the saved 2,447,183-byte checkpoint restores in about 5.3
+  seconds and is unchanged. These are local saved-data measurements, not
+  new provider latency or live delivery. No diagnostic model call was used.
+
+  Native loopback regressions pass success, A/B/A loop prevention, four-request
+  containment, ordinary HTTP and zero additional-hop budget. All returned
+  observations survive in the proof; exact proof readback and repeated access
+  make no duplicate request. One/two/four-request paths take 3.392/6.668/12.679
+  seconds wall and 3.213/6.209/11.977 CPU, with factorized result sizes
+  139,179/142,426/152,791 bytes. Formation count remains one initial plus one
+  per result, with no extra model call, persistent table or clock. Fresh-process
+  readback takes 2.275 wall / 2.128 CPU. Wrong scope/hash/destination, unrelated
+  same-URL inquiry, reordered returns, absent successor and malformed evidence
+  falsifiers preserve their intended distinctions. This is bounded chain cost,
+  not a claim about general history growth or multi-source research.
+
+  Credential-free supported `bin/miter` start/restart takes 3.568/3.594 seconds
+  versus baseline 3.707/3.790. Both add 0.40 seconds child CPU and 496 KiB RSS
+  over ten idle seconds, retain zero checkpoint/effect/model records, and stop
+  their complete owned families. All bounded diagnostic groups are cleaned up;
+  scripts and captures remain outside Git. Before commit, the same installed
+  supervisor 49696 and child 49714 remain; child CPU/RSS is 5.1% / 1,387,984 KiB
+  at 51:10, versus 4.1% / 1,387,968 KiB at 37:43, with no trial survivor.
+  Installed delivery, revised model
+  output, new checkpoint growth and same-history restart are still unmeasured.
+  Next is a repeat-safe upgrade and a new human continuation, not replay of
+  the consumed contact. C4 remains paused until that concrete live carry.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5891,9 +5955,11 @@ Next movement:
    loop-prevention, exact-public-URL, fresh-process readback and supported
    disposable lifecycle checks, as recorded above. Installed `390f82b` reached
    a separate semantic-output truncation before any redirect could execute.
-   The authorized live-settings resource correction above is next for supported
-   installation and a new human continuation; no installed redirect carry is
-   yet claimed. No terminal
+   Installed `09cebcc` now carries the live settings and two proved requests
+   through redirect to a returned page. Its exact saved turn exposed the
+   completed-redirect dependency defect recorded above; the narrow native
+   correction is locally verified and next for installation and live revision
+   carry. Research delivery is not yet claimed. No terminal
    input is replayed. Full live web-research delivery remains open.
    Preserve the known-working
    baseline, open conversation authority and all terminal history; do not

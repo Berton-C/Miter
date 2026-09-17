@@ -606,8 +606,63 @@
      ; the original semantic proposal. All prior observations remain in the
      ; participant organization and the fresh movement proof.
      (if (> (size-atom $redirects) 0) $redirects
-       (C4CapabilityResultPossibilitiesAt $returned $cut 0)))
+       (C4CapabilityResultPossibilitiesAt
+         (C4CurrentReturnedClaimsAt $returned $returned 0) $cut 0)))
     ()))
+
+; A completed redirect continues the exact inquiry that produced it. Its
+; predecessor remains evidence in the participant organization, but is not a
+; second independent present result. Only the successor's proof-bound movement
+; identity, same contact/scope and exact redirected operation establish this
+; relation. Equal URLs, order, status preference or model opinion do not.
+(= (C4ReturnedRedirectContinuation $parent $child)
+   (if (and (C4CapabilityReturnedEvidenceValid $parent)
+            (C4CapabilityReturnedEvidenceValid $child))
+     (if (CPShape $parent c4-open-growth-observation-evidence-v2 6)
+       (let* (($before (index-atom (index-atom $parent 1) 1))
+              ($after (index-atom (index-atom $child 1) 1))
+              ($operation (index-atom (index-atom $before 7) 1))
+              ($outcome (index-atom $parent 3))
+              ($movement (index-atom (index-atom $after 5) 1)))
+         (if (and (CPShape $operation informational-http-v1 3)
+                  (CPShape $outcome http-result-v1 5))
+           (and (CPHas (index-atom $outcome 1) (eof truncated) 0)
+            (and (CPHas (index-atom (index-atom $outcome 2) 1)
+                   (301 302 303 307 308) 0)
+             (and (== (index-atom $parent 5) (failure none))
+              (and (== (index-atom $before 3) (index-atom $after 3))
+               (and (== (index-atom $before 4) (index-atom $after 4))
+                (and (== (index-atom $after 7)
+                       (exact-operation (informational-http-v1
+                         (index-atom $operation 1)
+                         (index-atom (index-atom $outcome 4) 1))))
+                 (if (CPShape $movement movement-reference 5)
+                   (== ((index-atom $movement 2) (index-atom $movement 3)
+                         (index-atom $movement 4))
+                       (formed inquiry
+                         (c4-http-redirect-request (index-atom $before 1))))
+                   false)))))))
+           false))
+       false)
+     false))
+
+(= (C4ReturnedContinuedAt $parent $claims $i)
+   (if (< $i (size-atom $claims))
+     (let $claim (index-atom $claims $i)
+       (if (and (== (index-atom $claim 2) tool)
+                (== (index-atom $claim 4) unresolved))
+         (if (C4ReturnedRedirectContinuation $parent (index-atom $claim 6))
+           true (C4ReturnedContinuedAt $parent $claims (+ $i 1)))
+         (C4ReturnedContinuedAt $parent $claims (+ $i 1))))
+     false))
+
+(= (C4CurrentReturnedClaimsAt $claims $all $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($tail (C4CurrentReturnedClaimsAt $claims $all (+ $i 1))))
+       (if (C4ReturnedContinuedAt (index-atom $claim 6) $all 0)
+         $tail (cons-atom $claim $tail)))
+     ()))
 
 (= (C4HTTPRedirectOperation $descriptor $observation)
    (if (C4CapabilityObservationV2Valid $observation $descriptor)
