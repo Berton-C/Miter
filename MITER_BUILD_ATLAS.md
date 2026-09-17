@@ -5182,6 +5182,54 @@ Already carried:
   down from its transient processing peak. No diagnostic group survives.
   Source balance and diff checks pass; one worktree, two changed files.
 
+  **Known-working live creative-conversation baseline, 2026-09-17 UTC:**
+  installed/main source `9e8a2b294ae30cd6951377651c1b8eec6c39cd90` answers new
+  contact `by5p4hoqtfnwjgt19ikiottxpw`; Berton confirms receipt and elects to
+  continue normal conversation. This is a successful supported turn, not only
+  an installer heartbeat or synthetic result. Do not ask for another copy of
+  this test question, replay its input, or require an upgrade for this record.
+
+  - Upgrade preserved runtime identity and checkpoint
+    `55668a2ad4fe60a0bc54db425a35c446b1deed8ee054e7a9b82abd20009de34b`.
+    Conversation remains `open-until-revoked`; no old 50-call cap or expiry
+    applies. Counters advance 35/9/74 to 36/10/79 (contacts/posts/model calls).
+  - Five original-attempt claims have saved complete `stop` returns and native
+    observations: one semantic and four language-stage calls, through the
+    bounded render/audit/revision/final-audit path. Semantic provider Decart;
+    language providers Makora/Modal. No provider error or transport retry is
+    recorded. Changing providers means this is not a controlled provider-speed
+    comparison with the earlier Venice diagnostic.
+  - Cycle `assistant-assistant-cycle-v3-2a896f1d-2d75-44b9-a3cc-90d7ab73acdf`
+    records `semantic-reading-incorporated`, `voice-certified`, `checkpointed`.
+    Input receipt is `native-checkpointed`. Exactly one source effect is
+    `delivered-and-verified`, with matching delivered receipt, response post
+    `kxe91cchbtg5fqhm5j3gi4en6w`, and a 126,068-byte native proof. Certificate
+    SHA-256: `031169fff2872699e9474316c2c3cc5d8218d455b6d91ca9ae2003d94c4d0ce7`;
+    proof SHA-256: `1ce975ec89441ed1a6185a70d1d676fb59a542220f169a18435d2654e842b0c5`.
+  - New-post timestamp to verified delivery: 114.87 s; to the input checkpoint
+    receipt: 130.69 s. Five model calls cost $0.04165369 and used 2,692 reported
+    completion tokens. Full native-formation count and provider/native timing
+    split are not measured by this metadata capture. This is a functional
+    baseline, not an acceptable-latency or general resilience claim.
+  - At capture 02:37:05Z, the same run
+    `b7752fbf-7d68-47a4-8394-aac7310d6392` is waiting with supervisor alive,
+    LKG verified and broker ready. Pre-record-commit inventory has only broker
+    7459, supervisor 7815 and native child 7827 (1.2% CPU / 1,331,792 KiB RSS,
+    elapsed 11:09). No disposable worker remains. RSS is above the post-start
+    1,034,224 KiB observation; growing-history/table proportionality remains
+    open, not inferred healthy from a single successful reply.
+
+  **Use this evidence first for a future regression:** compare the failing
+  source/settings and exact contact stage with this revision and its durable
+  request, observation, proof and delivery identities before proposing a fix.
+  The diagnostic dump includes old failed cycles; they are not failures of
+  this successful contact. Preserve concise lineage here, not copied private
+  conversations, raw dumps or fixtures in Git. This documentation-only commit
+  changes no installed code, grants, native meaning, checkpoint or live process;
+  no new model calls are made (three diagnostic calls still remain). Continue
+  naturally with the user's next conversational turn; follow-up continuity,
+  restart on this repaired path and whole-C4 closure remain separate evidence.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5242,12 +5290,15 @@ Next movement:
    intentionally unchanged next movement, exact continuity across restart, and
    zero replay. These remain whole-C4 claims, not additional prerequisites for
    the human-accepted working-alpha publication recorded above;
-6. **active movement:** resolve the evidence-qualified native audit disposition
-   diagnosed above, then confirm ordinary conversation. Preserve the
-   already-active open conversation policy and all terminal history. Only then
-   resume C4 with the native older-artifact/version-resolution seam identified
-   above and its growing-history proportionality obligation; do not interrupt
-   ordinary conversation for unrelated trials. Main publication is complete,
+6. **active movement:** the targeted creative turn now completes through native
+   VoiceRNA and verified live delivery on `9e8a2b2`, as recorded above. Preserve
+   this known-working source and let ordinary conversation continue under the
+   already-active open policy, retaining all terminal history. The user's next
+   natural turn provides follow-up evidence; do not demand another duplicate
+   diagnostic question. After that follow-up, resume C4 with the native older-
+   artifact/version-resolution seam identified above and its growing-history
+   proportionality obligation; do not interrupt ordinary conversation for
+   unrelated trials. Main publication is complete,
    not a standing blocker. Future live
    upgrades use the supported recoverable release transition and must identify
    any brief interruption. Legacy-tag and filesystem cleanup remain separately
