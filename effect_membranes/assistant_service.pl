@@ -1201,9 +1201,12 @@ as_mattermost_effect_descriptor(
       [algorithm(sha256),encoding(utf8)]).
 
 % Keep every previously accepted certificate hash unchanged. Larger exact
-% terms may share repeated structure, within the same envelope; no field is
-% summarized or removed. Canonical variable names make the hash restart-stable.
-% This is a byte representation after native certification, not cognition.
+% terms share repeated structure within the existing native-proof storage
+% budget, not the old small literal-certificate envelope. The certificate
+% contains native provenance, not just outbound text; it remains local and
+% only the reply text is sent to Mattermost. No field is summarized or removed.
+% Canonical variable names keep accepted hashes unchanged across restart. This is a byte
+% representation after native certification, not cognition or effect authority.
 as_mattermost_certificate_text(Certificate, Text) :-
     ground(Certificate),acyclic_term(Certificate),
     term_string(Certificate,Legacy,[quoted(true),ignore_ops(true)]),
@@ -1215,7 +1218,8 @@ as_mattermost_certificate_text(Certificate, Text) :-
       term_string(['miter-factorized-voice-certificate-v1',
         CanonicalSkeleton,CanonicalFactors],Text,
         [quoted(true),ignore_ops(true),numbervars(true)]),
-      string_length(Text,EncodedLength),EncodedLength=<65536,
+      string_length(Text,EncodedLength),
+      as_max_native_proof_bytes(Maximum),EncodedLength=<Maximum,
       term_string(['miter-factorized-voice-certificate-v1',Restored,Bindings],
         Text,[quoted(true),ignore_ops(true)]),
       maplist(as_unify_checkpoint_factor,Bindings),Restored==Certificate ).

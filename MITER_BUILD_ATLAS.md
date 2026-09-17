@@ -5306,6 +5306,78 @@ Already carried:
   then one new user contact. Do not claim this boundary repair establishes
   successful web research or a delivered reply until the live result exists.
 
+  **Installed web audit carry and certificate-budget mismatch, 2026-09-17:**
+  `0ae722f` reaches both audits on the new contact
+  `dwsuoz4idjbefkn3ci8mh796qo`; the earlier missing-reference obstruction is
+  no longer present. The first attempt saves semantic reading, initial render,
+  initial audit, revision and final audit. The final audit has no findings.
+  The exact held-cycle record
+  `assistant-assistant-cycle-held-v3-7227580a-232e-4caf-9eae-080a58604997`
+  contains native `express-current-candidate` and a Mattermost descriptor,
+  followed by a mechanical effect hold. A held cycle is not, by itself, a
+  native semantic refusal. Its large expanded log must not be mistaken for
+  an unreduced expression either.
+
+  **Proved first failure:** bounded extraction of that unchanged descriptor
+  passes native-proof shape and voice-certificate shape at the receiving
+  membrane. The 1,297-character reply is inside the unchanged outbound limit.
+  The certificate is 424,825 characters in literal form and 71,767 in exact
+  factorized form. Reconstruction is identical, but the separate 65,536-
+  character encoding limit rejects it before proof persistence or posting.
+  Git history and the earlier `c8f76cd` carry above identify the inherited
+  literal-envelope assumption: factorization postponed the mismatch rather
+  than aligning a growing provenance certificate with its storage contract.
+
+  **Bounded mechanical correction:** retain the legacy encoding-selection
+  threshold and canonical factorized format, but bound the latter by the
+  existing native-proof storage budget (33,554,432 characters) rather than
+  the small literal envelope. All previously accepted bytes/hashes remain
+  unchanged. The complete certificate stays local; Mattermost receives only
+  the reply and delivery identifiers. No provenance is omitted, no native
+  finding or disposition is changed, and no prompt, provider budget, reply
+  limit, retry policy, scope, grant or effect authority is changed.
+
+  The exact failed descriptor now passes unchanged, including through a fresh
+  effects-disabled `bin/miter install` (LKG
+  `28a80542339fe77d05c08be62fb8cf0cf2480a356920e7663f1f494550d96a63`).
+  The installed `as_effect` path persists and independently reads back the
+  exact proof, then correctly returns `outbound-disabled`; no network is
+  called. A previous real 42,077-character factorized certificate retains its
+  identical encoding/hash. Wrong effect identity, wrong proof reference,
+  nonground/cyclic terms, an oversized reply and a certificate exceeding the
+  retained proof-storage budget remain refused. The first old-fixture read
+  used a full-stop-requiring reader for a dotless carrier; correcting that
+  disposable instrument, not the product, resolved its parse failure.
+
+  **Efficiency and remaining carry:** there is no semantic invalidation,
+  extra formation, persistent cache, model call or checkpoint rewrite. Cold
+  bootstrap is 1.16 s. The previously failed encoding takes 0.027 s before
+  and 0.029--0.031 s after; the full repaired descriptor takes 0.036 s.
+  Three ten-iteration encoding batches take 0.153--0.165 s wall /
+  0.151--0.163 s CPU for the prior real certificate, and 0.289--0.301 s wall /
+  0.285--0.291 s CPU for the larger returned-web certificate. These are
+  mechanical costs at two observed sizes, not a whole-history growth proof.
+  The captured checkpoint is 2,037,220 bytes and untouched. Proof persistence
+  and readback take 0.170 s and 0.012 s; the installed source is byte-identical.
+  Whole-source balance and diff checks pass. No diagnostic group survives.
+  At this waypoint the supported child 56797 is at 4.2% CPU / 1,620,496 KiB
+  RSS after 13:55, with only supervisor 53717 and broker 53244 alongside it;
+  the earlier child restarted. Elevated live memory and the 76.9-million-
+  character held diagnostic remain proportionality concerns, not closed by
+  this certificate fix. Both disposable installation copies are removed after
+  verification; private exact captures stay outside Git for the live comparison.
+
+  Separately, two later saved rendering/audit calls after recovery produced
+  a visible reply `9ibd9dzkyirsumfzhgie9rjpyy` at 15:24 UTC, about eight minutes
+  after the original contact. The user has continued the conversation. That
+  reply is not the originally held web-linked candidate: its rendering context
+  lacks the returned-web binding, and it does not supply researched listings.
+  Do not use the later reply to claim that the first attempt succeeded or that
+  web research is complete. Preserve both histories and the user's follow-up;
+  do not replay either. Next: guarded supported upgrade when idle, then inspect
+  an ordinary subsequent web-contact response and its delivery receipt.
+  Live repaired-path restart and performance remain unverified until then.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5369,11 +5441,13 @@ Next movement:
 6. **active movement:** the targeted creative turn completes through native
    VoiceRNA and verified live delivery on `9e8a2b2`, as recorded above. Its next
    research turn exposed the returned-web-contact audit boundary mismatch;
-   the narrow shared-projection correction is locally carried above and awaits
-   one supported upgrade and a new live reply. Preserve the known-working
+   the shared-projection correction is installed and passes both audits. Its
+   live carry exposed the independently reproduced certificate-budget mismatch
+   documented above; that mechanical correction awaits supported installation.
+   Preserve the known-working
    baseline, open conversation authority and all terminal history; do not
    replay consumed contacts or reopen native cognition to fix a mechanical
-   reference mismatch. C4 remains paused for this concrete repair. After the
+   handoff. C4 remains paused for this concrete repair. After the
    live repair carry, resume C4 with the native older-
    artifact/version-resolution seam identified above and its growing-history
    proportionality obligation; do not interrupt ordinary conversation for
