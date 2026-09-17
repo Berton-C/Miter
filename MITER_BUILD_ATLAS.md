@@ -934,6 +934,66 @@ not a behavioral policy installed inside Miter.
    resulting source change and current atlas standing; ephemeral observations
    stay outside Git.
 
+### Failure is contact for native recovery, not automatic conversational termination
+
+**Standing build lesson, explicitly affirmed by Berton on 2026-09-17:**
+
+> The receiver must not invent a file precondition or grant write authority.
+> But Miter should be able to examine a typed failure, request a corrected
+> proposal, seek clarification, or explain the limitation within a bounded
+> process.
+
+Apply this principle across semantic interpretation, VoiceRNA, tools, memory,
+and contact surfaces. A rejected artifact must remain rejected; that does not
+by itself determine the fate of the undertaking or require silence. Failure
+is a provenance-bearing returned consequence for the same native cognitive
+organization, not an occasion for the builder to prescribe another behavior
+for each provider, wording, or surface.
+
+1. **Preserve the distinction.** Return what mechanically failed, its exact
+   request/artifact lineage, and what remains unknown. Malformed output,
+   truncation, unavailable service, inadequate evidence, denied authority,
+   and an uncertain external effect are not interchangeable. Invalid model
+   content remains unadmitted data; a failure record is not a valid reading,
+   operation proposal, or effect certificate.
+2. **Let native cognition participate.** Bring that typed consequence into
+   the same PeTTa/MeTTa encounter and constitutive formation. Preserve the
+   undertaking, supported context, all material Fact9/flourishing relations,
+   and the one simultaneous R/A/P reading. Native cognition determines
+   whether corrected input, further observation, clarification, a truthful
+   limited response, deferral, or decline is warranted. A host-language
+   retry switch or a model's preferred answer is not this judgment.
+3. **Repair within existing authority.** A corrected proposal re-enters as
+   a candidate and must pass the ordinary validation, native formation,
+   certification, and effect boundaries. Never fill in an unknown file hash,
+   treat an empty precondition as proof of absence, discard inconvenient
+   readings, weaken an audit, or grant permission merely to obtain a reply.
+   Reconcile uncertain effects before considering another execution.
+4. **Bound continuation without scripting its meaning.** Preserve attempt
+   identity, remaining resource reach, and loop prevention across restart.
+   Another call requires a material prospect of resolving the distinction,
+   not repetition until acceptance. Exhaustion must have explicit standing;
+   any human-facing explanation still follows the constitutional voice path.
+   Reasoned silence remains possible, but a parser failure or outage must
+   not be relabeled as reasoned restraint.
+5. **Keep the recovery reusable and prove it.** Test the exact captured
+   failure, lawful recovery, exhausted or unavailable recovery, unchanged
+   authority, and restart/no-duplicate-effect behavior. Producer and receiver
+   contracts must agree. A schema correction is useful prevention, not proof
+   that native recovery exists. Local fixtures do not establish installed
+   conversational success.
+
+At the start and end of each failure-repair step, and before and after its
+commit, check this principle alongside the four-movement build cycle. Record
+the cause, what Miter itself can now do with the failure, what remains a
+builder intervention, and the next falsifier in the active cut below. Do not
+close a repair merely because another malformed example has been excluded.
+
+This is implementation guidance under C-054--057 and S-607, S-705,
+S-901--905, not a constitutional amendment or a claim of implemented general
+self-repair. It does not authorize self-modification of installed code,
+expanded effect reach, or replacement of C-057's bounded fallback contract.
+
 ### Constitutive efficiency law
 
 Functional fidelity and usable computational cost are one build obligation.
@@ -5874,6 +5934,34 @@ Already carried:
   output, new checkpoint growth and same-history restart are still unmeasured.
   Next is a repeat-safe upgrade and a new human continuation, not replay of
   the consumed contact. C4 remains paused until that concrete live carry.
+
+  **Native recovery lesson and current contract failure, 2026-09-17:** after
+  installation of `f9e5be1`, fresh contact `19ajfuk8gbbnurpynfouww61ro`
+  stopped before capability execution or VoiceRNA. The runtime returned to
+  idle after consuming the contact with
+  `semantic-reading-held / provider-artifact-semantic-invalid`; there was no
+  Mattermost delivery. This does not disprove the preceding redirect repair,
+  but it does leave its installed conversational carry unproved.
+
+  The saved GLM response finished normally. One reading proposed HTTP GET;
+  another proposed a workspace write with an empty `expected_sha256`. The
+  supplied JSON schema permitted that value, while the receiver required
+  `absent` or an exact lowercase SHA-256. This producer/receiver mismatch,
+  not the token budget or Mattermost transport, is reproduced locally. An
+  empty value supplies neither an absence witness nor write authority.
+
+  A local, not-yet-committed schema correction aligns write/rollback
+  preconditions with the existing receiver. Thirty offline contract cases
+  pass without admitting the original invalid result or changing saved
+  captures; no model call, network request, or live write was made. This
+  prevents the demonstrated schema inconsistency; it is not the recovery
+  requested by Berton. The current semantic-failure branch records the hold
+  and incorporates the contact without bringing the failure into native
+  reformation. That is the next bounded repair: typed failure participation
+  and a native-warranted continuation under the standing principle in §7.
+  Do not substitute a hard-coded retry or replay the consumed contact. General
+  recovery, installed delivery, and recovery/restart cost remain unproved;
+  broader C4 work remains paused for this repair.
 
 Next movement:
 
