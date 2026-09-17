@@ -5470,6 +5470,36 @@ Already carried:
   installation, then a genuine new housing continuation and verified response.
   Preserve the consumed follow-up and its failed history; never replay it.
 
+  **Installed field-envelope carry, 2026-09-17:** the supported upgrade to
+  `14125b7` preserves runtime identity and checkpoint-pointer SHA-256
+  `bd70a92abd55e386cf2f9eace66ddf69cd751f0d424de4a4fd2bc6db931943db`,
+  carries no leased input, and starts run
+  `f79d8865-5fb2-404b-936c-0d309ad2d6d0`. The new human contact
+  `iqf9a9jkjtg8ibd4x6ak3p9fra` completes semantic reading, rendering and audit
+  with three original-attempt model calls, native `voice-certified` standing,
+  and exactly one `delivered-and-verified` surface effect. Its reply
+  `a59th959kibr8pon1cm4zu9jic` is visible in the authorized Mattermost group.
+  Delivery takes 67.4 s from the post timestamp; the input is checkpointed at
+  87.3 s. The three saved provider spans total approximately 25 s (raw-file
+  timestamps have one-second precision); the remainder is not attributed to
+  a particular native stage without measurement. The durable proof is
+  123,377 bytes. Counts advance once from 44/16/104 to 45/17/107, and the same
+  process returns to native idle with supervisor and broker ready. The bounded
+  read-only check's process group 83263 is gone. A later process observation
+  finds only broker 80447, supervisor 80856 and child 80866; the child is at
+  0% CPU / 2,786,432 KiB RSS after 14:55. This is a point observation during
+  the next conversation, not a history-growth or steady-state-memory claim.
+  This documentation cut adds no runtime work, model call or live write.
+
+  Delivery is proved; research execution is not. The visible response says
+  current listings have not been fetched and offers another scope choice.
+  Do not call that completed web research or change transport to remedy it.
+  The human's new continuation `jzohbx9gk7fctp7rym8rrmjwsw` asks to proceed
+  across the offered categories. Trace its existing capability/return/delivery
+  records next, without replay or another speculative upgrade. The earlier
+  terminal contacts remain untouched; no new builder diagnostic model calls
+  have been made for these housing turns. No upgrade is needed for this entry.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5538,9 +5568,12 @@ Next movement:
    documented above; that mechanical correction is installed as `af160d6`.
    The repeated builder-handoff stop is recovered. The existing follow-up's
    independent semantic-field-envelope rejection is reproduced and corrected
-   against the already-supported carrier capacity, as recorded above. Carry
-   this correction through supported installation and a new human continuation;
-   no terminal input is replayed. Full live web-research delivery remains open.
+   against the already-supported carrier capacity, as recorded above. Installed
+   `14125b7` now carries a new human turn through native certification and
+   verified delivery, but its response has not performed the requested search.
+   Follow the new human continuation through capability execution and returned
+   evidence; no terminal input is replayed. Full live web-research delivery
+   remains open.
    Preserve the known-working
    baseline, open conversation authority and all terminal history; do not
    replay consumed contacts or reopen native cognition to fix a mechanical
