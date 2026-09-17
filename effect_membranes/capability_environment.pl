@@ -350,16 +350,17 @@ ce_request_once(Root,Descriptor,RequestId,Scope,Operation,Capability,Deadline,
 ce_operation_observe(_Root,RequestId,
     ['informational-http-v1',Method,Url],Scope,DescriptorHash,_Capability,
     Deadline,MaximumBytes,
-    ['capability-observation-v1',RequestId,Scope,
+    ['capability-observation-v2',RequestId,Scope,
       ['request-descriptor-sha256',DescriptorHash],
-      ['resource','open-http-https'],['transport',Transport],
-      ['http-status',HttpStatus],['body',BodyHash,Body],
+      ['resource','open-http-https'],
+      ['http-result-v1',Transport,['http-status',HttpStatus],
+        ['body',BodyHash,Body],['redirect-location',Location]],
       ['elapsed-milliseconds',pending],['failure',Failure],
       'mechanical-observation-no-meaning-no-movement-authority'],
-    _{resource:"open-http-https",standing:Transport,http_status:HttpStatus,
+    _{resource:"open-http-https",transport:Transport,http_status:HttpStatus,
       body_sha256:BodyHash}) :-
-    ce_http_observe(Method,Url,Deadline,MaximumBytes,Transport,HttpStatus,
-      Body,Failure),
+    ce_http_observe_location(Method,Url,Deadline,MaximumBytes,Transport,
+      HttpStatus,Body,Location,Failure),
     crypto_data_hash(Body,BodyHash,[algorithm(sha256),encoding(utf8)]),!.
 ce_operation_observe(Root,RequestId,
     ['direct-argv-v1',Executable,Arguments,WorkingDirectory],Scope,
@@ -425,22 +426,45 @@ ce_observation_elapsed(
 
 ce_http_observe(Method,Url,Deadline,MaximumBytes,Transport,HttpStatus,
     Body,Failure) :-
+    ce_http_observe_location(Method,Url,Deadline,MaximumBytes,Transport,
+      HttpStatus,Body,_Location,Failure).
+
+% A redirect is returned contact, not permission for the HTTP library to
+% contact a new destination. Native formation must authorize its exact URL.
+ce_http_observe_location(Method,Url,Deadline,MaximumBytes,Transport,HttpStatus,
+    Body,Location,Failure) :-
     catch(call_with_time_limit(Deadline,
-      ce_http_observe_open(Method,Url,Deadline,MaximumBytes,Transport0,
-        HttpStatus0,Body0)),Error,
-      ce_http_failure(Error,Transport0,HttpStatus0,Body0,Failure0)),
+      ce_http_observe_location_open(Method,Url,Deadline,MaximumBytes,Transport0,
+        HttpStatus0,Body0,Location0,Failure0)),Error,
+      (ce_http_failure(Error,Transport0,HttpStatus0,Body0,Failure0),
+       Location0=none)),
     ( var(Failure0) -> Failure=none ; Failure=Failure0 ),
-    Transport=Transport0,HttpStatus=HttpStatus0,Body=Body0.
+    Transport=Transport0,HttpStatus=HttpStatus0,Body=Body0,Location=Location0.
 
 ce_http_observe_open(Method,Url,Deadline,MaximumBytes,Transport,HttpStatus,
     Body) :-
+    ce_http_observe_location_open(Method,Url,Deadline,MaximumBytes,Transport,
+      HttpStatus,Body,_Location,_Failure).
+
+ce_http_observe_location_open(Method,Url,Deadline,MaximumBytes,Transport,
+    HttpStatus,Body,Location,Failure) :-
     ce_http_options(Method,Deadline,HttpStatus,Options),
-    setup_call_cleanup(http_open(Url,Stream,Options),
+    setup_call_cleanup(http_open(Url,Stream,[header(location,RawLocation)|Options]),
       ce_bounded_http_body(Method,Stream,MaximumBytes,Transport,Body),
-      close(Stream)).
+      close(Stream)),
+    ce_http_location(HttpStatus,Url,RawLocation,Location,Failure).
+
+ce_http_location(Status,Url,Raw,Location,Failure) :-
+    memberchk(Status,[301,302,303,307,308]),!,
+    ( nonvar(Raw),Raw\=='',Raw\=="",
+      catch(uri_resolve(Raw,Url,Resolved),_,fail),
+      ce_http_url(Resolved,Safe) -> Location=Safe,Failure=none
+    ; Location=none,Failure='redirect-location-unavailable' ).
+ce_http_location(_,_,_,none,none).
 
 ce_http_options(Method,Deadline,HttpStatus,
-    [method(Method),status_code(HttpStatus),timeout(Deadline),max_redirect(0),
+    [method(Method),status_code(HttpStatus),timeout(Deadline),redirect(false),
+      authenticate(false),
       request_header('Accept'='*/*'),
       request_header('User-Agent'='Miter-Open-Growth/1')]).
 
@@ -453,6 +477,9 @@ ce_bounded_http_body(get,Stream,MaximumBytes,Transport,Body) :-
     ; Body=Raw,Transport=eof ).
 
 ce_http_failure(time_limit_exceeded,deadline,unknown,"",deadline-exceeded) :- !.
+ce_http_failure(error(Formal,_),failed,unknown,"",Class) :- !,
+    functor(Formal,Functor,_),
+    ( ce_symbol(Functor,Class) -> true ; Class='transport-error' ).
 ce_http_failure(Error,failed,unknown,"",Class) :-
     functor(Error,Functor,_),
     ( ce_symbol(Functor,Class) -> true ; Class='transport-error' ).
@@ -653,7 +680,8 @@ ce_claim_matches(Path,RequestId,DescriptorHash) :-
     miter_store_read_json(Path,Claim),is_dict(Claim),
     Claim.schema=="miter-capability-claim-v1",
     ce_symbol(Claim.request_id,RequestId),
-    ce_symbol(Claim.descriptor_sha256,DescriptorHash).
+    miter_store_nonempty_atom(Claim.descriptor_sha256,ClaimHash),
+    ce_sha256(ClaimHash),ClaimHash==DescriptorHash.
 
 ce_observation_identity(
     ['capability-observation-v1',RequestId,_Scope,

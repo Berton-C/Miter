@@ -312,7 +312,14 @@
      false))
 
 (= (C4CapabilityObservationV2OutcomeValid $outcome $operation)
-   (if (CPShape $operation direct-argv-v1 4)
+   (if (CPShape $operation informational-http-v1 3)
+     (and (CPShape $outcome http-result-v1 5)
+      (and (CPHas (index-atom $outcome 1)
+             (eof truncated deadline failed) 0)
+       (and (CPShape (index-atom $outcome 2) http-status 2)
+        (and (CPShape (index-atom $outcome 3) body 3)
+             (CPShape (index-atom $outcome 4) redirect-location 2)))))
+    (if (CPShape $operation direct-argv-v1 4)
      (and (CPShape $outcome process-result-v1 6)
       (and (CPHas (index-atom $outcome 1)
              (eof truncated deadline failed) 0)
@@ -324,7 +331,7 @@
        (and (CPShape $outcome workspace-result-v1 6)
             (CPHas (index-atom $outcome 1)
               (written read listed rolled-back conflict failed) 0))
-       (C4ExecutableExtensionOutcomeValid $outcome $operation))))
+       (C4ExecutableExtensionOutcomeValid $outcome $operation)))))
 
 (= (C4CapabilityObservationV2Valid $observation $descriptor)
    (if (and (CPShape $observation capability-observation-v2 9)
@@ -589,8 +596,113 @@
      ()))
 
 (= (C4CapabilityResultPossibilities $cut $participant-relations)
-   (C4CapabilityResultPossibilitiesAt
-     (C4CapabilityReturnedClaims $participant-relations) $cut 0))
+   (if (CPShape $participant-relations participant-relation-organization 2)
+    (let* (($returned (C4CapabilityReturnedClaims $participant-relations))
+          ($redirects (C4HTTPRedirectPossibilitiesAt
+            (C4HTTPRedirectClaimsAt
+              (index-atom $participant-relations 1) 0)
+            $returned $cut 0)))
+     ; A sourced redirect inquiry refines its returned-contact inquiry, not
+     ; the original semantic proposal. All prior observations remain in the
+     ; participant organization and the fresh movement proof.
+     (if (> (size-atom $redirects) 0) $redirects
+       (C4CapabilityResultPossibilitiesAt $returned $cut 0)))
+    ()))
+
+(= (C4HTTPRedirectOperation $descriptor $observation)
+   (if (C4CapabilityObservationV2Valid $observation $descriptor)
+     (let* (($operation (index-atom (index-atom $descriptor 7) 1))
+            ($outcome (index-atom $observation 5)))
+       (if (CPShape $operation informational-http-v1 3)
+         (if (and (CPHas (index-atom $outcome 1) (eof truncated) 0)
+              (and (CPHas (index-atom (index-atom $outcome 2) 1)
+                     (301 302 303 307 308) 0)
+               (and (== (index-atom $observation 7) (failure none))
+                (and (!= (index-atom (index-atom $outcome 4) 1) none)
+                 (== (is-expr
+                   (index-atom (index-atom $outcome 4) 1)) false)))))
+           (informational-http-v1 (index-atom $operation 1)
+             (index-atom (index-atom $outcome 4) 1))
+           no-http-redirect)
+         no-http-redirect))
+     no-http-redirect))
+
+(= (C4HTTPRedirectParticipant $descriptor $observation)
+   (participant-contribution
+     (c4-http-redirect-participation (index-atom $descriptor 1))
+     tool (index-atom $descriptor 3)
+     (lineage miter-open-growth-environment-v1
+       (index-atom $observation 3))
+     (participant-relation-claim open-growth-http-redirect-proposal unresolved
+       (c4-http-redirect-proposal-v1 $descriptor $observation))
+     unresolved no-contact-no-movement-authority))
+
+(= (C4HTTPRedirectClaimsAt $relations $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (CPShape $relation participant-proposed-relation 4)
+         (if (== (index-atom $relation 1) open-growth-http-redirect-proposal)
+           (index-atom $relation 3)
+           (C4HTTPRedirectClaimsAt $relations (+ $i 1)))
+         (C4HTTPRedirectClaimsAt $relations (+ $i 1))))
+     ()))
+
+(= (C4HTTPReturnedOperationAt $claims $operation $i)
+   (if (< $i (size-atom $claims))
+     (let $evidence (index-atom (index-atom $claims $i) 6)
+       (if (C4CapabilityReturnedEvidenceValid $evidence)
+         (if (== (index-atom
+               (index-atom (index-atom $evidence 1) 1) 7)
+               (exact-operation $operation))
+           true (C4HTTPReturnedOperationAt $claims $operation (+ $i 1)))
+         (C4HTTPReturnedOperationAt $claims $operation (+ $i 1))))
+     false))
+
+(= (C4HTTPReturnedEvidenceAt $claims $evidence $i)
+   (if (< $i (size-atom $claims))
+     (if (== (index-atom (index-atom $claims $i) 6) $evidence)
+       true (C4HTTPReturnedEvidenceAt $claims $evidence (+ $i 1)))
+     false))
+
+(= (C4HTTPRedirectPossibilitiesAt $claims $returned $cut $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($evidence (index-atom $claim 6))
+            ($tail (C4HTTPRedirectPossibilitiesAt
+              $claims $returned $cut (+ $i 1))))
+       (if (CPShape $evidence c4-http-redirect-proposal-v1 3)
+         (let* (($descriptor (index-atom $evidence 1))
+                ($observation (index-atom $evidence 2))
+                ($operation (C4HTTPRedirectOperation $descriptor $observation)))
+           (if (C4CapabilityOperationValid $operation)
+             (let $source (C4CapabilityObservationParticipant
+               $descriptor $observation)
+               (if (and (== (index-atom $claim 2) tool)
+                    (and (== (index-atom $claim 4) unresolved)
+                     (and (C4HTTPReturnedEvidenceAt $returned
+                       (index-atom (index-atom $source 5) 3) 0)
+                      (== (C4HTTPReturnedOperationAt $returned
+                        $operation 0) false))))
+                 (cons-atom
+                   (possible-movement
+                     (c4-http-redirect-request (index-atom $descriptor 1))
+                     inquiry
+                     (CPNativeRequirementRelations $cut)
+                     (CPNativeRequirementDistinctions $cut)
+                     (CPNativeRequirementInterfaces $cut)
+                     (C4CapabilityProofFlourishings $descriptor)
+                     (consequence-route
+                       (c4-capability-request-route-v1
+                         (c4-http-redirect-request (index-atom $descriptor 1))
+                         (index-atom $descriptor 6) $operation
+                         dedicated-user-open-growth-environment)
+                       non-certifying)
+                     l2425-supported)
+                   $tail)
+                 $tail))
+             $tail))
+         $tail))
+     ()))
 
 (= (C4CapabilityContactContext $descriptor $observation)
    (if (C4CapabilityObservationValid $observation $descriptor)

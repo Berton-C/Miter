@@ -859,8 +859,9 @@
             ($commitments (index-atom $question 8))
             ($private-context (index-atom $commitments 7))
             ($capability-context (index-atom $commitments 8))
-            ($capability-ids (if (CPShape $capability-context
+            ($capability-ids (if (or (CPShape $capability-context
               capability-contact-context-v1 12)
+              (CPShape $capability-context capability-contact-context-v2 10))
               ((index-atom (index-atom $capability-context 1) 1)) ())))
        (CPListAppend (C4SemanticReadingIdsAt $readings 0)
          (CPListAppend
@@ -2872,6 +2873,66 @@
          (c4-voice-review-held-v1 initial-rendering-unavailable-or-malformed)))
      (c4-voice-review-held-v1 invalid-native-voice-review-context)))
 
+; Each redirect is new returned contact. Only a newly formed native movement
+; may request its exact destination; the transport never follows on its own.
+; The finite resource slice is not a statement that research is complete.
+(= (C4CapabilityContactUsingV1 $root $prepared $proof-writer $writer
+      $redirects-left $visited)
+   (if (AR4PreparedEncounterValid $prepared)
+     (let* (($contact (index-atom $prepared 3))
+            ($encounter (index-atom (index-atom $prepared 4) 2))
+            ($route (C4CapabilityRouteFromMovement
+              (index-atom $encounter 5))))
+       (if (CPShape $route c4-capability-request-route-v1 5)
+         (let* (($proof-record ($proof-writer $root
+                    (C4CapabilityProofId $encounter)
+                    (ARNativeMovementProof $encounter)))
+                ($descriptor
+                  (if (CPShape $proof-record capability-native-proof-record-v2 8)
+                    (C4CapabilityRequestDescriptor $contact $encounter $proof-record)
+                    (capability-request-held
+                      (index-atom $contact 1) native-proof-persistence-held)))
+                ($observation
+                  (if (C4CapabilityRequestDescriptorValid
+                        $descriptor $contact $encounter)
+                    ($writer $root $descriptor)
+                    (capability-observation-held-v1
+                      (index-atom $contact 1) no-proof-bound-exact-operation)))
+                ($participant (C4CapabilityObservationParticipant
+                  $descriptor $observation))
+                ($context (C4CapabilityContactContext
+                  $descriptor $observation)))
+           (if (CPShape $participant participant-contribution 8)
+             (let* (($visited-now (cons-atom (index-atom $route 3) $visited))
+                    ($redirect (C4HTTPRedirectOperation $descriptor $observation))
+                    ($continue (and (> $redirects-left 0)
+                      (and (C4CapabilityOperationValid $redirect)
+                           (== (CPHas $redirect $visited-now 0) false))))
+                    ($additional (if $continue
+                      ($participant
+                        (C4HTTPRedirectParticipant $descriptor $observation))
+                      ($participant)))
+                    ($returned (C4ReformPreparedWithParticipants
+                      $prepared $additional)))
+               (if (AR4PreparedEncounterValid $returned)
+                 (let $next-route (C4CapabilityRouteFromMovement
+                   (index-atom (index-atom (index-atom $returned 4) 2) 5))
+                   (if (if $continue
+                         (if (CPShape $next-route c4-capability-request-route-v1 5)
+                           (== (index-atom $next-route 3) $redirect) false)
+                         false)
+                     (C4CapabilityContactUsingV1 $root $returned
+                       $proof-writer $writer (- $redirects-left 1) $visited-now)
+                     (c4-capability-contact-v1 $returned $context)))
+                 (c4-capability-contact-v1 $returned $context)))
+             (c4-capability-contact-v1 $prepared $context)))
+         (c4-capability-contact-v1 $prepared
+           (capability-contact-context-v1 no-capability-request
+             no-returned-capability-contact))))
+     (c4-capability-contact-v1 $prepared
+       (capability-contact-context-v1 no-capability-request
+         no-returned-capability-contact))))
+
 (= (C4BoundContactUsingV1 $root $binding $contact $memory-writer $model-writer
       $capability-environment-reader $capability-proof-writer
       $capability-writer $vad-writer)
@@ -2960,59 +3021,14 @@
                           $participants)))
                  (if (AR4PreparedEncounterValid $final-prepared)
                    (let* (
-                      ($semantic-contact (index-atom $final-prepared 3))
-                      ($semantic-encounter (if
-                        (AR4PreparedEncounterValid $final-prepared)
-                        (index-atom (index-atom $final-prepared 4) 2)
-                        (constitutive-encounter-unavailable
-                          semantic-reformation-invalid)))
-                      ; Capability proof persistence belongs only to an exact
-                      ; operation selected through the already formed native
-                      ; movement.  General dialogue has no capability request
-                      ; to prove, so constructing and repeatedly walking its
-                      ; complete M24--M26.3 proof here would add no participant,
-                      ; consequence or next-cut change.  A tool-bearing movement
-                      ; retains the unchanged proof-bound membrane path below.
-                      ($capability-route (C4CapabilityRouteFromMovement
-                        (index-atom $semantic-encounter 5)))
-                      ($capability-request-present
-                        (CPShape $capability-route
-                          c4-capability-request-route-v1 5))
-                      ($capability-proof
-                        (if $capability-request-present
-                          (ARNativeMovementProof $semantic-encounter)
-                          capability-native-proof-not-required))
-                      ($capability-proof-record
-                        (if $capability-request-present
-                          ($capability-proof-writer $root
-                            (C4CapabilityProofId $semantic-encounter)
-                            $capability-proof)
-                          (capability-native-proof-held-v1
-                            no-capability-request not-required)))
-                      ($capability-descriptor
-                        (if $capability-request-present
-                          (C4CapabilityRequestDescriptor $semantic-contact
-                            $semantic-encounter $capability-proof-record)
-                          (capability-request-held
-                            (index-atom $contact 1)
-                            no-proof-bound-exact-operation)))
-                      ($request-observation
-                        (if (C4CapabilityRequestDescriptorValid
-                              $capability-descriptor $semantic-contact
-                              $semantic-encounter)
-                          ($capability-writer $root $capability-descriptor)
-                          (capability-observation-held-v1
-                            (index-atom $contact 1)
-                            no-proof-bound-exact-operation)))
-                      ($capability-participant
-                        (C4CapabilityObservationParticipant
-                          $capability-descriptor $request-observation))
-                      ($capability-prepared
-                        (if (CPShape $capability-participant
-                              participant-contribution 8)
-                          (C4ReformPreparedWithParticipants $final-prepared
-                            ($capability-participant))
-                          $final-prepared)))
+                      ; Ordinary dialogue takes the no-request branch without
+                      ; proof persistence or another constitutive formation.
+                      ; At most three additional native-authorized redirects
+                      ; fit this contact's existing processing envelope.
+                      ($capability-result (C4CapabilityContactUsingV1 $root
+                        $final-prepared $capability-proof-writer
+                        $capability-writer 3 ()))
+                      ($capability-prepared (index-atom $capability-result 1)))
                  (if (AR4PreparedEncounterValid $capability-prepared)
                    (let* (
                       ($enriched-contact (index-atom $capability-prepared 3))
@@ -3022,8 +3038,7 @@
                         (constitutive-encounter-unavailable
                           capability-reformation-invalid)))
                       ($capability-context
-                        (C4CapabilityContactContext $capability-descriptor
-                          $request-observation))
+                        (index-atom $capability-result 2))
                       ($private-context
                         (C4SemanticSourceContext $question $observation
                           $enriched-contact))

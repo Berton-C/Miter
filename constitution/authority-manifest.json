@@ -92,7 +92,7 @@
     },
     {
       "path": "src/capability_environment.metta",
-      "sha256": "a640be867c5530210b47a1051b8cbf7e6dd8518213138313a01c46b19b078437"
+      "sha256": "1e23b1a83e2856e380eee5bcd69bf904cceaf7c148afe4a4a73f1cd9602fbc00"
     },
     {
       "path": "src/vad.metta",
@@ -120,7 +120,7 @@
     },
     {
       "path": "effect_membranes/capability_environment.pl",
-      "sha256": "02022fbb7f4fdc39201e240773b6c36fe70a2a3941c014b088c9c600f7f978f2"
+      "sha256": "5be9bf9aa32a1fd90b20d76aea921e536a78a6c619b925b02706a85be0925a3c"
     },
     {
       "path": "effect_membranes/workshop.pl",

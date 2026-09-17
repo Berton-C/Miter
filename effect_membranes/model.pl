@@ -516,12 +516,29 @@ as_model_c4_capability_context(
     as_model_c4_capability_proposal(
       ['capability-proposal-v1',proposed,Purpose,Operation]),
     memberchk(Resource,
-      [['resource','typed-direct-argv'],
+      [['resource','open-http-https'],
+       ['resource','typed-direct-argv'],
        ['resource','versioned-owned-workspace']]),
+    ( Resource==['resource','open-http-https'] ->
+        as_model_c4_http_outcome(Outcome)
+    ; true ),
     ground(Outcome),term_string(Outcome,OutcomeText,
       [quoted(true),ignore_ops(true)]),
     string_length(OutcomeText,OutcomeLength),OutcomeLength=<2097152,
     integer(Elapsed),Elapsed>=0,as_symbol(Failure,_).
+
+as_model_c4_http_outcome(
+    ['http-result-v1',Transport,['http-status',Status],
+      ['body',Hash,Body],['redirect-location',Location]]) :-
+    memberchk(Transport,[eof,truncated,deadline,failed]),
+    (integer(Status),between(100,599,Status);Status==unknown),
+    % Returned web content is source evidence, not newly generated model text.
+    % Preserve its exact hash-bound carrier; do not normalize or bless it.
+    as_sha256(Hash,_),as_model_bounded_source_text(Body,0,32768),
+    crypto_data_hash(Body,Hash,[algorithm(sha256),encoding(utf8)]),
+    ( Location==none
+    ; as_model_c4_capability_proposal(['capability-proposal-v1',proposed,
+        "Returned redirect location",['informational-http-v1',get,Location]]) ).
 
 as_model_c4_vad_surface(
     ['language-cue-participation','cue-unavailable','no-affective-inference']).

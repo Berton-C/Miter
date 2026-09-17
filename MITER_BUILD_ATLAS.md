@@ -5610,6 +5610,152 @@ Already carried:
   complete multi-source research from context availability alone. C4 remains
   paused until the concrete live repair carry closes.
 
+  **Research handoff live carry; redirect loss isolated, 2026-09-17:**
+  Installed `e7b38b7` carries the new continuation through an actual native
+  informational GET, returned evidence and verified Mattermost delivery in
+  76.475 seconds, using three model calls (semantic/render/audit). The saved
+  semantic proposal contains the scoped housing constraints before capability
+  formation. This closes the missing-context handoff, not the research task:
+  the delivered response reports a failed fetch and supplies no fresh listings.
+  The completed contact remains terminal and must not be replayed. The captured
+  checkpoint is 2,304,992 bytes versus the preceding continuation's 2,216,324
+  bytes; this single 88,668-byte increase is not a measured history-growth slope.
+
+  The exact saved capability result is `failed / unknown / error`, empty body,
+  elapsed 635 milliseconds. One bounded builder GET of that exact public URL
+  reproduces `permission_error(redirect,http,...)`: `max_redirect(0)` discards
+  the server's redirect rather than returning its status and destination as
+  contact. The adapter then reduces the exception to the uninformative outer
+  `error` name. This is a proven transport-evidence loss, not an inferred
+  Mattermost fault, model refusal, or provider timeout. Separately, the current
+  native contact path executes one capability request before VoiceRNA; exposing
+  the redirect alone does not create another proof-bound movement.
+
+  A local, not-installed correction returns HTTP outcome through the existing
+  v2 capability carrier with status, unchanged bounded body and validated
+  redirect location. The HTTP library never follows the destination. Native
+  and model carrier readers and VoiceRNA's available-binding list accept that
+  outcome; old v1 observations remain readable. Credential-bearing locations
+  are withheld and sanitized exception classes preserve failure information.
+  This changes returned-contact representation, not grants, site selection,
+  native movement authority, provider routing, or privacy settings. Its
+  invalidation closure is the new observation and its returned participant,
+  contact context and expression consumers; the existing exact request,
+  proof, claim-before-transmission and no-replay boundary remain unchanged.
+
+  Local checks pass for 302 status/body/location, no automatic follow, body
+  bound, HEAD, credential exclusion, failure/deadline handling, native and model
+  carriers, public projection, v2 voice binding and saved-v1 compatibility.
+  The final cold local check takes 1.212 seconds wall / 1.142 CPU, zero external
+  network/model calls or live writes. Against the same URL, the corrected
+  builder GET now preserves HTTP 301 and its destination in 0.248 seconds wall /
+  0.038 CPU (original exception: 0.262 / 0.036). No additional model round trip,
+  full constitutive formation, cache or persistent table is inserted by this
+  narrow correction. Live new-carrier turn/revision, checkpoint, restart and
+  growing-history costs remain unmeasured; no installed carry is claimed.
+  Test-only corrections concerned an HTTP server-generated redirect body,
+  a context field index and reading a saved term without a terminal period;
+  none was a product failure. Trial groups 8466, 13580 and 13888 and the
+  intervening failed fixture groups were cleaned up. The same installed
+  supervisor 1885, child 1896 and broker 1249 remain; child 1896 is at 1.0% CPU /
+  1,684,768 KiB RSS after 39:30, versus 14.1% / 2,269,584 KiB at the earlier
+  7:24 observation, with no disposable survivor. These snapshots do not claim
+  a controlled idle-growth measurement.
+
+  The platform review refused the proposed native multi-request contact-path
+  change because it expands core turn control and proof/request persistence,
+  creating regression risk beyond the narrower transport correction. That
+  rejected change was not applied; partial continuation helpers were removed.
+  Berton subsequently explicitly authorized bounded native redirect
+  continuation, loop prevention and regression testing before installation.
+  This authorizes the narrow contact-path repair, not a general autonomous
+  research engine or a change to disclosure/credential boundaries. The
+  installed release remains untouched during implementation. Do not silently
+  enable host redirect-following as a workaround or describe complete
+  multi-source research as repaired. Installation must follow the authorized
+  regression carry below; C4 remains paused.
+
+  **Authorized bounded native redirect carry, 2026-09-17:** the native contact
+  helper now admits at most three additional GET/HEAD redirects after the first
+  exact operation. A returned redirect contributes an unresolved, source-bound
+  inquiry possibility; a fresh full native movement and persisted proof are
+  required before its destination can execute. Prolog still does not follow
+  redirects. Exact visited operations prevent loops; the finite resource slice
+  prevents URL aliases or longer chains from creating unbounded work. It is
+  not a claim that research is complete. Prior returned observations remain
+  participants in the final proof. Missing proof persistence leaves preparation
+  intact and makes no request; ordinary dialogue still avoids capability proof
+  persistence and additional formation entirely. This is a shared native
+  contact seam, not a Mattermost-only branch or a general research planner.
+
+  The invalidation closure is the new returned status/location/body, its sourced
+  inquiry possibility, affected complete constitutive encounter, exact request
+  proof and subsequent expression context. Each returned request adds one
+  affected reformation; unchanged authority terms remain shared. No doctrine,
+  R/A/P rule, model choice, disclosure, credential or conversation grant changes.
+  Two reviewed source fingerprints are refreshed in the integrity manifest;
+  the constitutional atom manifest and all three constitutional spaces are
+  unchanged. A pre-install lifecycle check correctly refused the candidate
+  before that required fingerprint refresh; this was caught before installation.
+
+  Full native formation with real loopback HTTP passes: 302 to success (two
+  exact requests); A/B/A loop (only A and B requested); an endless redirect
+  chain (only hops zero through three requested); ordinary HTTP (one request);
+  and zero additional budget (one request). Every request reconstructs its
+  proof before transmission. Every result survives exact proof readback and
+  repeated descriptor access without another HTTP request. Fresh-process
+  readback of all five results passes in 3.601 seconds wall / 3.444 CPU, including
+  wrong-scope, wrong-hash and malformed-hash rejection. This exposed an existing
+  cache-read defect: the claim reader treated SHA-256 as an alphabetic-leading
+  symbol. Leading-digit hashes now use the exact SHA-256 validator. The observed
+  failure was a hold, not evidence of duplicate transmission.
+
+  The exact public URL now carries 301 to 200 through two separately proved
+  native requests. The 200 body reaches the unchanged 32,768-character bound
+  and remains explicitly truncated, not a complete page or verified listing.
+  The first such trial exposed a carrier mismatch: returned web characters
+  were checked as fresh model-output text. The v2 HTTP reader now uses the
+  existing exact-source text carrier, retaining hash, bound and untrusted
+  status; generated outputs retain their stricter check. Saved-body readback,
+  altered-hash rejection, NUL rejection, public projection, VoiceRNA binding,
+  credential-location exclusion and legacy-v1 observation reading pass.
+  The successful public trial takes 9.709 seconds wall / 8.878 CPU for request,
+  return and reformation after 3.041 / 2.909 seconds initial preparation and
+  1.142 / 1.092 seconds cold bootstrap. Its factorized result is 203,241 bytes.
+  Fresh-process proof/context/cache readback then passes in 0.716 / 0.687 seconds
+  without contacting either destination again. No diagnostic GLM call or live
+  state write occurs; the public HTTP trials are builder observations, not
+  installed conversation or semantic research-completion evidence.
+
+  Efficiency comparison: against installed `e7b38b7`, the same credential-absent
+  supported `bin/miter` lifecycle reaches native waiting in 3.591 seconds
+  (baseline 3.568), restarts in 3.575 (3.568), and stops both owned processes.
+  During ten-second idle intervals, candidate child CPU grows by 0.41 seconds
+  and RSS by 480 KiB (baseline 0.38 seconds / 496 KiB). A second candidate
+  lifecycle is consistent at 3.585/3.590 seconds. These empty-runtime carries
+  create no checkpoints, model claims or effects; they are not live-history
+  restart measurements. The native request seam at one/two/four loopback
+  requests takes 3.277/7.760/16.914 seconds wall and 3.116/7.376/15.982 CPU,
+  with factorized result sizes 143,262/166,038/210,797 bytes. Initial preparation
+  is about three seconds separately. The two-request loop takes 7.750/7.362
+  seconds. Formation count is one initial plus one per returned request; no
+  model round trip, semantic cache, persistent table or background clock is
+  added. These bounded sizes expose redirect-chain cost, not a general
+  history-growth slope. Installed provider/revision latency, new checkpoint
+  growth and same-history restart remain unmeasured until the human upgrade.
+
+  All disposable groups and detached service families are cleaned up, including
+  failed fixture runs. Test-only fixes concerned runtime setup, a quoted Prolog
+  atom, and catching the existing hash-mismatch exception in a negative check;
+  no harness or capture is committed. Before commit, installed supervisor 1885,
+  child 1896 and broker 1249 remain; child CPU/RSS is 1.3% / 1,684,768 KiB at
+  1:21:14, the same RSS as the earlier 39:30 observation, with no diagnostic
+  survivor. Next is one repeat-safe supported upgrade at an idle boundary,
+  followed by a new human continuation demonstrating installed redirect,
+  returned web evidence and verified reply. Do not replay the completed contact.
+  Successful page retrieval does not establish housing availability, semantic
+  extraction, general multi-source research, or C4 closure.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5684,8 +5830,13 @@ Next movement:
    The new continuation delivers a reply but no web operation: its saved
    semantic reading lacked the prior context disclosed only later to VoiceRNA.
    The authorized verified-source handoff before capability formation is now
-   implemented and locally checked above; its supported live carry is next. No
-   terminal input is replayed. Full live web-research delivery remains open.
+   installed as `e7b38b7` and now carries a real GET and verified reply. That
+   operation exposed the independently reproduced redirect-evidence loss
+   recorded above. Bounded native redirect continuation now passes native,
+   loop-prevention, exact-public-URL, fresh-process readback and supported
+   disposable lifecycle checks, as recorded above. The repeat-safe human
+   upgrade is next; no installed redirect carry is yet claimed. No terminal
+   input is replayed. Full live web-research delivery remains open.
    Preserve the known-working
    baseline, open conversation authority and all terminal history; do not
    replay consumed contacts or reopen native cognition to fix a mechanical
