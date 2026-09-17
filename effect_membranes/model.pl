@@ -269,7 +269,7 @@ as_model_question_carrier(
       ['fact9-participation',FactEntries,FactStanding],
       ['flourishing-participation',FlourishingEntries,FlourishingStanding],
       VadSurface,Continuity,
-      ['request-contract',Instructions,'authorized-current-contact-only',
+      ['request-contract',Instructions,Disclosure,
         'derived-readings-not-verdict','no-contact-no-authority-no-choice'],
       ['resource-request',ResourceId,ModelId,
         'human-operator-direction-not-cognitive-authority',
@@ -284,6 +284,7 @@ as_model_question_carrier(
     as_symbol(FactStanding,_), as_model_c4_flourishing_entries(FlourishingEntries),
     as_symbol(FlourishingStanding,_),as_model_c4_vad_surface(VadSurface),
     as_model_c4_continuity(Continuity),
+    as_model_c4_semantic_disclosure(Continuity,Disclosure),
     as_local_scope(Scope), string(Instructions),
     string_length(Instructions,InstructionLength),
     InstructionLength>=100, InstructionLength=<4096,
@@ -314,6 +315,19 @@ as_model_c4_flourishing_entry(
     maplist(as_model_flourishing_standing,Standings).
 as_model_c4_flourishing_value(['c4-flourishing-entry',Value,_],Value).
 
+as_model_c4_semantic_disclosure(
+    ['continuity-participation-v2',_,_],
+    'authorized-contact-and-scoped-sources').
+as_model_c4_semantic_disclosure(
+    ['continuity-participation'|_],'authorized-current-contact-only').
+
+as_model_c4_continuity(
+    ['continuity-participation-v2',References,PrivateContext]) :-
+    as_model_c4_continuity(References),
+    References=['continuity-participation',_,_,_,_,
+      ['retrieved-memory-candidates',MemoryCandidates],_],
+    as_model_c4_private_context(PrivateContext,Entries),
+    maplist(as_model_c4_memory_entry_reference,Entries,MemoryCandidates).
 as_model_c4_continuity(
     ['continuity-participation',['predecessor',Predecessor],
       ['active-organization',ActiveOrganization],
@@ -350,6 +364,13 @@ as_model_c4_memory_candidate(
     as_symbol(MemoryId,_),
     memberchk(SourceKind,['human-contact','certified-expression']),
     as_sha256(BodyHash,_),as_sha256(SnapshotHash,_).
+
+as_model_c4_memory_entry_reference(
+    ['c4-private-memory-evidence-v1',Id,Kind,_,['body',Hash,_],Snapshot,
+      'scope-and-capsule-verified','rank-not-authority'],
+    ['c4-memory-reference',Id,Kind,['body-sha256',Hash],Snapshot,
+      'scope-and-capsule-verified','content-withheld-from-remote-provider',
+      'rank-not-authority']).
 
 % One field envelope for provider schema, receiving parser and downstream
 % carrier. These are storage/transport bounds, never semantic judgments.
@@ -889,6 +910,10 @@ as_model_continuity_context_verified_if_present(Root,Question,Scope) :-
     ; true ).
 
 as_model_continuity_context_verified(Root,Question,Scope) :-
+    as_model_semantic_private_context(Question,Scope,PrivateContext),
+    as_model_c4_private_context(PrivateContext,Entries),Entries=[_|_],
+    as_model_private_memory_entries_verified(Root,Scope,Entries).
+as_model_continuity_context_verified(Root,Question,Scope) :-
     Question=[Kind,_,Scope,_,_,_,_,_,Commitments,_,_],
     memberchk(Kind,['c4-voice-render-question-v1',
       'c4-voice-audit-question-v1']),
@@ -1080,11 +1105,20 @@ as_model_open_conversation_grant(Root,Grant) :-
       [Grant.resource_id,Grant.scope.principal]),Grant.id==Expected.
 
 as_model_question_has_private_continuity(
+    Question) :-
+    as_model_semantic_private_context(Question,_,PrivateContext),
+    as_model_c4_private_context(PrivateContext,[_|_]).
+as_model_question_has_private_continuity(
     [Kind,_,_,_,_,_,_,_,Commitments,_,_]) :-
     memberchk(Kind,['c4-voice-render-question-v1',
       'c4-voice-audit-question-v1']),
     nth0(7,Commitments,PrivateContext),
     as_model_c4_private_context(PrivateContext,[_|_]).
+
+as_model_semantic_private_context(
+    ['c4-contact-semantic-question-v1',_,Scope,_,_,_,_,_,_,
+      ['continuity-participation-v2',_,PrivateContext],_,_],
+    Scope,PrivateContext).
 
 as_model_grant_disclosure(Root,Grant,ResourceId,Question) :-
     as_model_profile(Root,ResourceId,Profile),
@@ -1726,6 +1760,14 @@ as_model_public_c4_flourishing_standings(
     as_model_public_c4_flourishing_standings(Rest,PublicRest).
 
 as_model_public_c4_continuity(
+    ['continuity-participation-v2',References,PrivateContext],
+    ['continuity-participation-v2',PublicReferences,PublicContext]) :-
+    as_model_public_c4_continuity(References,WithheldReferences),
+    append(Prefix,[_],WithheldReferences),
+    append(Prefix,['native-capsule-withheld-scoped-source-context-below'],
+      PublicReferences),
+    as_model_public_c4_continuity_context(PrivateContext,PublicContext).
+as_model_public_c4_continuity(
     ['continuity-participation',['predecessor',Predecessor],
       ['active-organization',ActiveOrganization],
       ['live-undertakings',Undertakings],['present',_],
@@ -1756,7 +1798,7 @@ as_model_public_question_valid(Question,PublicQuestion) :-
 
 as_model_public_question_shape_valid(
     ['c4-contact-semantic-question-v1',_,_,_,
-      ['exact-contact-text',_,Text,_],_,_,_,VadSurface,_,Contract,Resource],
+      ['exact-contact-text',_,Text,_],_,_,_,VadSurface,Continuity,Contract,Resource],
     ['c4-contact-semantic-question-v1',
       ['question-reference','current-contact','general-contact-semantics'],
       [scope,'private-principal-redacted','private-audience-redacted',
@@ -1770,9 +1812,10 @@ as_model_public_question_shape_valid(
       ['fact9-participation',[_|_],_],
       ['flourishing-participation',PublicFlourishings,_],
       PublicVadSurface,
-      ['continuity-participation'|_],Contract,Resource]) :-
+      PublicContinuity,Contract,Resource]) :-
     length(PublicFlourishings,9),
-    as_model_public_c4_vad_surface(VadSurface,PublicVadSurface).
+    as_model_public_c4_vad_surface(VadSurface,PublicVadSurface),
+    as_model_public_c4_continuity(Continuity,PublicContinuity).
 as_model_public_question_shape_valid(
     ['c4-voice-render-question-v1',_,_,_,
       ['exact-contact-text',_,Text,_],_,Readings,Intention,Commitments,

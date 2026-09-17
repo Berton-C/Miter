@@ -5542,6 +5542,74 @@ Already carried:
   exact source binding, unchanged exclusions and native capability formation
   locally before a supported live carry. C4 remains paused for this repair.
 
+  **Research context handoff embodied, 2026-09-17:** Berton's subsequent
+  instruction to proceed follows the specific normal-runtime context-disclosure
+  and repository-publication questions above. This cut supplies the same
+  scope-verified recalled content already authorized for rendering to the
+  existing semantic-interpretation call, through OpenRouter GLM 5.3 and its
+  approved hosting/fallback providers. Existing privacy settings, credential
+  exclusions, per-scope grants and native execution authority remain unchanged.
+  This is not a new diagnostic-call allowance or unrestricted disclosure grant.
+
+  The native preliminary encounter now constructs a versioned continuity
+  surface containing exact source references and their existing fallible bodies.
+  The membrane requires a one-to-one reference/body binding and applies the
+  same capsule, runtime identity, scope, grant and security projection used by
+  VoiceRNA. Rendering/audit retain that exact context; a later model label cannot
+  remove the sources used to interpret the contact. Legacy reference-only
+  questions and their disclosure behavior remain readable. Capability proposal,
+  native movement formation, proof persistence and execution are unchanged.
+  No housing-specific rule, selected URL, forced operation or new model call
+  is introduced.
+
+  Local saved-evidence checks prove that all eight source occurrences from the
+  completed continuation reach the new semantic request with precisely the same
+  public context as its saved initial render request, including its budget.
+  A complete native question constructor also produces the new valid carrier
+  from the captured contact/participants and a disposable in-memory predecessor.
+  Reference/body mismatch, altered body, wrong scope, wrong occurrence identity,
+  absent capsule, public-only grant and missing security exclusion are refused;
+  credential-like source text is excluded. Provider routing/privacy settings,
+  resource limits and reasoning effort are unchanged. Scope/file verification
+  uses a minimal local capsule fixture, not a claim to have recaptured or
+  reconstructed the entire live continuity store. Fresh-process factorized
+  question readback and legacy-carrier checks pass, including rejection of a
+  new context mislabeled as legacy current-contact-only. All MeTTa source
+  balance/let-binding checks and the native bootstrap pass.
+
+  Efficiency waypoint against installed `14125b7`: the saved semantic request
+  body is 17,231 characters; the same source-bearing question is 23,251.
+  Five warm mechanical request constructions per size average 0.000718,
+  0.001600 and 0.001977 seconds for zero/four/eight sources (18,023/21,069/23,251
+  characters); corresponding CPU times are 0.000708/0.001560/0.001945 seconds.
+  The native fixture's cold bootstrap is 1.132 seconds, preliminary formation
+  3.005 seconds wall / 2.864 CPU, question construction 0.116 / 0.113 seconds.
+  The serialized source-bearing question is 17,772 bytes. These are bounded
+  local observations, not new live-turn or growing-history latency claims.
+  Semantic invalidation begins at the source-bearing question identity and
+  reaches its derived readings, native reformation, operation and voice
+  consumers; unchanged memory occurrences and authority organization remain
+  shared exact terms. No additional model round trip or full constitutive
+  formation is inserted, and no new persistent cache/table is introduced.
+  The diagnostic makes zero model/network calls or live writes. Installed
+  checkpoint growth, ordinary/revision provider latency and full runtime restart
+  remain to be observed after the supported upgrade; the cut remains open.
+
+  Disposable trial corrections are not product fixes: an altered-hash negative
+  test needed to catch the existing crypto rejection, and the native-constructor
+  fixture needed a matching in-memory predecessor. A full-history capsule
+  reconstruction exceeded the trial's 1 GiB stack and was stopped; the scoped
+  boundary fixture avoids repeating that unrelated reconstruction. External
+  process-group cleanup verified every exit, including that failure. Final
+  check/readback groups 94081 and 94411 and metadata group 94584 are gone.
+  Before commit, the same supported child 80866 under supervisor 80856 remains
+  at 4.4% CPU / 1,405,216 KiB RSS after 1:00:35, with broker 80447 and no
+  disposable survivor. No test/capture is added to Git. Next: supported upgrade,
+  then a new human continuation showing actual capability execution, returned
+  evidence and verified reply. Do not replay the completed turn or report
+  complete multi-source research from context availability alone. C4 remains
+  paused until the concrete live repair carry closes.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5615,8 +5683,8 @@ Next movement:
    verified delivery, but its response has not performed the requested search.
    The new continuation delivers a reply but no web operation: its saved
    semantic reading lacked the prior context disclosed only later to VoiceRNA.
-   Repair the verified-source handoff before capability formation, subject to
-   the explicit earlier-stage disclosure authorization recorded above. No
+   The authorized verified-source handoff before capability formation is now
+   implemented and locally checked above; its supported live carry is next. No
    terminal input is replayed. Full live web-research delivery remains open.
    Preserve the known-working
    baseline, open conversation authority and all terminal history; do not
