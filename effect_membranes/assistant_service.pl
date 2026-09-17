@@ -1590,7 +1590,7 @@ as_heartbeat(Root, Kind, Now) :-
 % This prevents a valid slow inference from resembling a frozen reactor.  The
 % lease grants no model call and contributes no cognitive standing.
 as_heartbeat_model_lease(Root, Deadline) :-
-    number(Deadline),Deadline>=1,Deadline=<300,
+    as_model_deadline(Deadline),
     as_config(Root,supervision,Supervision),
     Seconds is Deadline+Supervision.model_lease_margin_seconds,
     get_time(Now),ValidUntil is Now+Seconds,

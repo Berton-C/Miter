@@ -51,6 +51,7 @@ DURABLE_RUNTIME_DIRECTORIES = (
 )
 DURABLE_RUNTIME_FILES = (
     "evaluation-grants.json", "model-direction.json", "model-grants.json",
+    "model-resources.json",
     "private-assets/NRC-VAD-Lexicon-v2.1.txt",
 )
 INPUT_LIFECYCLE_DIRECTORIES = ("inbox", "leased", "consumed", "rejected")
@@ -1327,9 +1328,16 @@ def stop_runtime_at_boundary(config: dict, application: pathlib.Path,
     if reply.get("status") == "stopped":
         return reply
 
+    # Use installed settings, not packaged defaults. The first status below
+    # also preserves a transmitted call's lease if its profile was since lowered.
+    registry_path = pathlib.Path(deployment["runtime_root"]) / "model-resources.json"
+    registry = json_document(registry_path) if registry_path.is_file() else config["models"]
     model_deadlines = [
         profile.get("limits", {}).get("deadline_seconds", 0)
-        for profile in config["models"]["resources"]
+        for profile in registry.get("resources", [])
+        if isinstance(profile.get("limits", {}).get("deadline_seconds"), int)
+        and not isinstance(profile["limits"]["deadline_seconds"], bool)
+        and 1 <= profile["limits"]["deadline_seconds"] <= 1800
     ]
     supervision = config["supervision"]
     timeout = max(
@@ -1338,12 +1346,24 @@ def stop_runtime_at_boundary(config: dict, application: pathlib.Path,
     ) + supervision["termination_grace_seconds"] + 15
     deadline = time.monotonic() + timeout
     last = reply
+    first_status = True
     while time.monotonic() < deadline:
         status = miter_command(application, deployment, petta, "status", check=False)
         if status.returncode == 0:
             last = miter_reply(status, "Miter stop-boundary status")
             if last.get("status") == "stopped":
                 return last
+            if first_status:
+                heartbeat = last.get("heartbeat") or {}
+                expiry = heartbeat.get("valid_until_epoch")
+                if (heartbeat.get("lease_kind") == "bounded-model-transport"
+                        and heartbeat.get("pid") == last.get("pid")
+                        and isinstance(expiry, (int, float)) and not isinstance(expiry, bool)):
+                    remaining = expiry - time.time()
+                    if 0 < remaining <= 1800 + supervision["model_lease_margin_seconds"]:
+                        deadline = max(deadline, time.monotonic() + remaining
+                                       + supervision["termination_grace_seconds"] + 15)
+                first_status = False
         time.sleep(0.5)
     raise InstallError(
         "Miter did not reach an actual stopped cycle boundary within its configured "

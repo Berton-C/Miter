@@ -5756,6 +5756,61 @@ Already carried:
   Successful page retrieval does not establish housing availability, semantic
   extraction, general multi-source research, or C4 closure.
 
+  **Human-editable model envelope, 2026-09-17:** `390f82b` is installed, but
+  the new `ascamj6i8tnyxe8reo676qxqir` contact never reached its HTTP operation.
+  Its exact saved GLM/Venice response used all 8,192 completion tokens for
+  reasoning, returned zero answer characters and finished with `length`.
+  The contact is terminal/consumed and must not be replayed. The earlier
+  barely-fitting Venice response was not evidence that 8,192 was adequate.
+  Berton now explicitly directs a live user-editable settings file, 100,000
+  output tokens for GLM and 32,768 for local models. These are per-call maxima,
+  including reasoning, not required response lengths or new conversation quotas.
+
+  The existing `model-resources.json` is the single live resource settings file.
+  C4 carriers and remote/local profile readers now accept its token, deadline
+  and capture settings; defaults provide 1,800 seconds and 4,194,304 decoded
+  capture characters. Documented outer execution guards remain 131,072 tokens,
+  1,800 seconds and 4,194,304 capture units; removal of every guard was rejected
+  by platform review and was not applied. The exact already-ratified open
+  conversation uses this profile rather than stale grant resource snapshots.
+  Other grants keep their limits. Model identity, privacy, disclosure, scope,
+  revocation, native judgment, claim accounting, retry and effect authority
+  are unchanged. No cognitive module, model-selection policy or new clock is
+  introduced. Changing a budget invalidates the exact question/spend identity
+  and its downstream return consumers, not an unchanged constitutive encounter.
+
+  Offline checks pass for all three C4 question kinds, exact request creation,
+  old-carrier compatibility, hot edits without restart, stale prepared-question
+  refusal, unrelated/revoked-grant isolation and malformed/over-guard refusal.
+  A transmitted call keeps its captured settings and deadline; the model
+  heartbeat carries that deadline plus the existing 30-second margin. The
+  installer preserves exact operator settings and their backup across repeated
+  migration, and its stop wait uses installed settings plus an existing call's
+  remaining lease if the file was subsequently lowered. These migration/wait
+  checks are mechanical fixtures, not new native migration certification.
+  The final local carrier/authority/heartbeat check takes 1.566 seconds wall /
+  1.209 CPU; no network, model call or live state write occurs. Fixture-only
+  failures concerned missing runtime marker/compiled extension and a mock
+  operator schema; they did not require product-path repairs.
+
+  Against immediately preceding installed `390f82b`, the credential-absent
+  supported lifecycle reaches waiting in 3.620 seconds (baseline 3.714), and
+  restarts in 3.605 (3.730). Ten-second idle child CPU growth is 0.40 seconds
+  and RSS growth 528 KiB in both. Both stop their complete owned families and
+  preserve zero checkpoint/effect/spend records. No additional full native
+  formation, persistent table or history traversal is added. These are empty
+  supported-runtime measurements, not large-history or live provider latency.
+  Larger successful provider return, new installed turn/revision, checkpoint
+  growth and live redirect/research delivery remain unmeasured and open.
+  No diagnostic model call was spent: the attempted earlier 32k trial never
+  started and its output directory remained empty. Temporary trial groups,
+  including failed fixtures, were cleaned up; raw instruments stay outside Git.
+  Installed child 32615 remains under supervisor 32603 at 1.8% CPU /
+  1,620,656 KiB RSS after 42:41, essentially unchanged from 1,620,640 KiB at
+  34:15, with no diagnostic survivor. Next is a repeat-safe user-run upgrade
+  and explicit initial profile update; subsequent resource edits need no build.
+  This resource cut is not evidence that the unanswered research is repaired.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5834,8 +5889,11 @@ Next movement:
    operation exposed the independently reproduced redirect-evidence loss
    recorded above. Bounded native redirect continuation now passes native,
    loop-prevention, exact-public-URL, fresh-process readback and supported
-   disposable lifecycle checks, as recorded above. The repeat-safe human
-   upgrade is next; no installed redirect carry is yet claimed. No terminal
+   disposable lifecycle checks, as recorded above. Installed `390f82b` reached
+   a separate semantic-output truncation before any redirect could execute.
+   The authorized live-settings resource correction above is next for supported
+   installation and a new human continuation; no installed redirect carry is
+   yet claimed. No terminal
    input is replayed. Full live web-research delivery remains open.
    Preserve the known-working
    baseline, open conversation authority and all terminal history; do not

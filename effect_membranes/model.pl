@@ -204,7 +204,7 @@ as_model_question_carrier(
     as_symbol(ResourceId,_),as_model_identifier(ModelId),
     DirectionAuthority='human-operator-direction-not-cognitive-authority',
     as_model_output_budget(MaxTokens),
-    number(Deadline),Deadline>=1,Deadline=<300.
+    as_model_deadline(Deadline).
 
 % Contract shape only. MeTTa constructs and verifies the evidence challenge;
 % this membrane neither interprets a finding nor decides its standing.
@@ -290,7 +290,7 @@ as_model_question_carrier(
     InstructionLength>=100, InstructionLength=<4096,
     as_symbol(ResourceId,_),as_model_identifier(ModelId),
     as_model_output_budget(MaxTokens),
-    number(Deadline),Deadline>=1,Deadline=<300.
+    as_model_deadline(Deadline).
 
 as_model_c4_fact_entries(Entries) :-
     is_list(Entries), Entries=[_|_], maplist(as_model_c4_fact_entry,Entries).
@@ -466,7 +466,7 @@ as_model_question_carrier(
     as_symbol(ResourceId,_),as_model_identifier(ModelId),
     DirectionAuthority='human-operator-direction-not-cognitive-authority',
     as_model_output_budget(MaxTokens),
-    number(Deadline),Deadline>=1,Deadline=<300.
+    as_model_deadline(Deadline).
 
 as_model_c4_voice_commitments(
     ['voice-commitments','source-bound','scope-bound','movement-bound',
@@ -917,9 +917,13 @@ as_model_direction_limits('language-rendering',Profile,MaxTokens,Deadline) :-
     MaxTokens=Limits.max_output_tokens,as_model_output_budget(MaxTokens),
     Deadline=Limits.deadline_seconds.
 
-% Mechanical resource ceiling, not a meaning or fidelity decision. Exact
-% profile/direction and grant checks still bound each live request separately.
-as_model_output_budget(Tokens) :- integer(Tokens),between(1,8192,Tokens).
+% Mechanical carrier ceilings, not recommended request sizes or meaning
+% decisions. The human-editable profile supplies the actual budget, and exact
+% direction/grant checks still bound each live request separately. Reasoning
+% and answer tokens share the provider's output allowance.
+as_model_output_budget(Tokens) :- integer(Tokens),between(1,131072,Tokens).
+as_model_deadline(Seconds) :- integer(Seconds),between(1,1800,Seconds).
+as_model_capture_budget(Bytes) :- integer(Bytes),between(1,4194304,Bytes).
 
 as_model_continuity_context_verified_if_present(Root,Question,Scope) :-
     ( as_model_question_has_private_continuity(Question) ->
@@ -1004,8 +1008,8 @@ as_model_profile_exact(Profile) :-
     memberchk(ReasoningEffort,["low","high","max"]),
     get_dict(limits,Profile,Limits), is_dict(Limits),
     get_dict(max_output_tokens,Limits,Tokens),as_model_output_budget(Tokens),
-    get_dict(deadline_seconds,Limits,120),
-    get_dict(capture_bytes,Limits,262144),
+    get_dict(deadline_seconds,Limits,Deadline),as_model_deadline(Deadline),
+    get_dict(capture_bytes,Limits,Capture),as_model_capture_budget(Capture),
     get_dict(provider,Profile,Provider), is_dict(Provider),
     get_dict(zdr,Provider,true), get_dict(data_collection,Provider,"deny"),
     get_dict(require_parameters,Provider,true),
@@ -1022,8 +1026,8 @@ as_model_profile_exact(Profile) :-
     get_dict(roles,Profile,["semantic-reading","language-rendering"]),
     get_dict(limits,Profile,Limits),is_dict(Limits),
     get_dict(max_output_tokens,Limits,Tokens),as_model_output_budget(Tokens),
-    get_dict(deadline_seconds,Limits,300),
-    get_dict(capture_bytes,Limits,262144),
+    get_dict(deadline_seconds,Limits,Deadline),as_model_deadline(Deadline),
+    get_dict(capture_bytes,Limits,Capture),as_model_capture_budget(Capture),
     get_dict(credential_reference,Profile,null).
 
 as_model_local_identity('qwen-local',"qwen/qwen3.8-27b").
@@ -1097,15 +1101,27 @@ as_model_grant_scoped(Root,Grant,Question,
     ( as_model_open_conversation_grant(Root,Grant) -> Open=true ; Open=false ),
     ( Open==true -> true
     ; as_model_grant_claim_count(Root,GrantId,Used), Used<MaxCalls ),
-    get_dict(max_output_tokens,Grant,GrantedTokens), integer(GrantedTokens),
-    MaxTokens=<GrantedTokens,
-    get_dict(deadline_seconds,Grant,GrantedDeadline), number(GrantedDeadline),
-    Deadline=<GrantedDeadline,
+    as_model_grant_resource_limits(Root,ResourceId,Open,Grant,MaxTokens,Deadline),
     as_model_grant_disclosure(Root,Grant,ResourceId,Question),
     get_dict(expires_at_epoch,Grant,Expiry), number(Expiry),
     get_time(Now),
     ( Open==true -> true
     ; Now=<Expiry ).
+
+% Explicitly open conversation uses the current human-edited finite resource
+% profile rather than an obsolete grant snapshot. Scope, disclosure, model
+% identity and effect authority are still checked independently. Other grants
+% keep their own exact token/time limits; no grant or counter is rewritten.
+as_model_grant_resource_limits(Root,ResourceId,true,_Grant,Tokens,Deadline) :-
+    as_model_profile(Root,ResourceId,Profile),
+    as_model_output_budget(Tokens),as_model_deadline(Deadline),
+    Tokens=<Profile.limits.max_output_tokens,
+    Deadline=<Profile.limits.deadline_seconds.
+as_model_grant_resource_limits(_Root,_ResourceId,false,Grant,Tokens,Deadline) :-
+    get_dict(max_output_tokens,Grant,GrantedTokens),integer(GrantedTokens),
+    Tokens=<GrantedTokens,
+    get_dict(deadline_seconds,Grant,GrantedDeadline),number(GrantedDeadline),
+    Deadline=<GrantedDeadline.
 
 % Only a model grant belonging to the exactly bound conversational authority
 % inherits its operator amendment. Other grants retain their original limits.

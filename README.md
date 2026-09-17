@@ -64,10 +64,43 @@ dedicated identity, private credential boundary, exact workshop image, and
 services. Working-alpha publication on `main` does not turn these remaining
 limitations into completed capabilities.
 
-The GLM VoiceRNA output allowance is configurable up to 8,192 tokens; this is
-a maximum, not a requested response length. Semantic reading retains its
-2,048-token limit. Existing runtime grants are preserved during upgrade and
-must explicitly allow a larger request; upgrading does not renew call counts.
+### Live model settings
+
+Edit the installed runtime's `model-resources.json`, not application source,
+to change model resource settings. On this installation it is
+`/Users/claritymiter/Miter/private/runtime/model-resources.json`; operator access
+is required because the runtime is private. For example:
+
+```sh
+sudo -e '/Users/claritymiter/Miter/private/runtime/model-resources.json'
+```
+
+Each resource has `limits.max_output_tokens`, `limits.deadline_seconds`, and
+`limits.capture_bytes`; GLM also has `reasoning_effort` (`low`, `high`, `max`).
+New installations default GLM to 100,000 output tokens and local models to
+32,768; each defaults to 1,800 seconds and 4,194,304 capture units. Output
+tokens include reasoning and the final answer;
+this allowance is not a required response length. The existing UTF-8 reader
+counts decoded characters despite the historical `capture_bytes` field name.
+
+Settings are reread at each new model request; an already-transmitted call
+keeps its captured settings. Save complete valid JSON, preferably while Miter
+is idle: a change during native question preparation can correctly hold an
+old-budget question rather than silently rewriting it. No restart or rebuild
+is needed. Upgrades preserve this file, including existing values; upgrading
+does not silently replace a user's budget with new installation defaults.
+
+Values must be positive integers within the documented outer execution guards:
+131,072 tokens, 1,800 seconds, and 4,194,304 capture units. These are not daily
+quotas or recommended working values; the selected provider can impose its
+own tighter limits. Invalid settings fail validation. Greater headroom can
+increase request duration, cost, and retained-response size.
+
+In an explicitly open conversation, this live profile controls resource limits
+instead of old grant snapshots. Other grants keep their explicit limits.
+Changing resources never changes scope, privacy settings, credentials, effect
+permissions, or recorded call counts. Do not put secret values in this file.
+
 [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single operations map for
 that additive work.
 
