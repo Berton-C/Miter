@@ -5230,6 +5230,82 @@ Already carried:
   naturally with the user's next conversational turn; follow-up continuity,
   restart on this repaired path and whole-C4 closure remain separate evidence.
 
+  **Returned-web-contact audit boundary repair, 2026-09-17:** the first new
+  research contact `ray96bdde38bfgnd8mrjsdgbxc` exposes a different mechanical
+  gap on the same installed `9e8a2b2` baseline. Its semantic return
+  `26cd519e6a3ee35cce44c9dd0ace1b5c62b29bf98d64fbd68745ace8945f70f6`
+  and initial rendering
+  `72a7e9ee43f3fc7f75aaa7ce8a2a85c29bfcd0307ae80e4d4d3c94572426f860`
+  are complete saved `stop` returns with parsed observations. There is no
+  audit claim. The exact cycle records `voice-review-held`; its local-only
+  outbox receipt is not a Mattermost delivery. The consumed contact remains
+  terminal and must not be replayed. Open conversation authority is active;
+  neither policy expiry nor provider truncation explains this failure.
+
+  The saved rendering carries two semantic-reading references and one exact
+  returned-capability reference. Its source context records an HTTP 404, not
+  successful research. Renderer parsing and native binding availability both
+  accept that reference, but `as_model_c4_allowed_binding_ids/3` supplies only
+  reading/memory references to the audit's input check. Git lineage identifies
+  `6840dc1` (informational web contact) as adding returned-contact references
+  to the renderer/native path without adding them to that separate audit
+  helper. Ordinary conversation did not expose this disagreement.
+
+  **One-variable proof and correction:** with the saved candidate unchanged,
+  the predecessor audit check refuses exactly its returned-contact reference;
+  a diagnostic copy removing only that reference passes. The repair does NOT
+  remove it. Renderer and audit now share the existing context-reference
+  projection, preserving the exact web source and existing reading/memory
+  references. The saved candidate passes unchanged after the correction.
+  Its captured question is privacy-projected, so this is an exact candidate
+  boundary check, not a reconstructed live native certification. Source
+  availability does not establish fidelity, successful research or permission
+  to publish; native VoiceRNA and the independent audit still decide those.
+  No Soul/M24--M26.3 meaning, privacy filter, prompt, output budget, timeout,
+  retry/revision limit, effect authority or checkpoint format changes.
+
+  **Carry and falsifiers:** a prior valid full native audit carrier passes
+  before/after, then passes with a valid returned HTTP-404 context and binding.
+  Its provider audit schema forms with that source. Invented/duplicate source
+  IDs, an ID without its context, altered body with the old hash and invalid
+  revision context remain refused. Ordinary reading/memory IDs are identical.
+  The known-good prior review and certificate verify against restored native
+  state and at the receiving boundary, without committing an effect. A fresh
+  effects-disabled `bin/miter install` produces LKG
+  `5c6101ab38513f74870beccf35fe1c4733b1b1e0c482b8007189d568dfb8ad67`;
+  its copied model source is byte-identical and the same restored-state
+  review/certificate carry passes through that installed source closure.
+  Whole-source balance and diff checks pass. Early temporary-instrument
+  failures were a stale historical fixture, factorized-term decoding and
+  rejection-exception handling; corrected instruments pass, with no additional
+  product change justified by those instrument failures.
+
+  **Efficiency waypoint:** the dirty dependency is audit input availability
+  for a candidate that actually cites returned contact. Existing exact terms
+  and native judgments are preserved; no additional native formation, table,
+  persistent state or model call is introduced. Cold bootstrap is 1.131 s.
+  Three 100-iteration ordinary-boundary batches measure 0.0507--0.0514 s wall
+  before and 0.0504--0.0517 s after; with returned contact, 0.0544--0.0547 s.
+  CPU times are respectively 0.0502--0.0507, 0.0501--0.0508 and 0.0541--0.0543 s.
+  These are mechanical microchecks, not whole-turn latency measurements.
+  The captured checkpoint is 1,954,514 bytes and remains unchanged. This trial
+  makes zero model/network calls and no live writes. Growth slope, live audit
+  outcome, useful reply and repaired-path restart remain unmeasured; the
+  existing conversational latency/growing-history obligations remain open.
+
+  Capture lesson: counting only `claimed_at_epoch` missed completed capability
+  claims, whose records use `completed_at_epoch`. A zero count from that
+  instrument does not contradict the actual returned HTTP context. Use exact
+  returned-source lineage rather than inferring that no web contact occurred.
+  All owned test groups, including installed carry 52006, are reaped. Only
+  broker 7459, supervisor 7815 and native child 7827 remain; the child is at
+  1.5% CPU / 46,560 KiB RSS after 12:42:26. There is one worktree and no new
+  tracked file. Temporary captures/instruments remain private outside Git
+  until the live comparison; the disposable install is not another live
+  runtime. Next: one supported guarded upgrade with a brief interruption,
+  then one new user contact. Do not claim this boundary repair establishes
+  successful web research or a delivered reply until the live result exists.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5290,12 +5366,15 @@ Next movement:
    intentionally unchanged next movement, exact continuity across restart, and
    zero replay. These remain whole-C4 claims, not additional prerequisites for
    the human-accepted working-alpha publication recorded above;
-6. **active movement:** the targeted creative turn now completes through native
-   VoiceRNA and verified live delivery on `9e8a2b2`, as recorded above. Preserve
-   this known-working source and let ordinary conversation continue under the
-   already-active open policy, retaining all terminal history. The user's next
-   natural turn provides follow-up evidence; do not demand another duplicate
-   diagnostic question. After that follow-up, resume C4 with the native older-
+6. **active movement:** the targeted creative turn completes through native
+   VoiceRNA and verified live delivery on `9e8a2b2`, as recorded above. Its next
+   research turn exposed the returned-web-contact audit boundary mismatch;
+   the narrow shared-projection correction is locally carried above and awaits
+   one supported upgrade and a new live reply. Preserve the known-working
+   baseline, open conversation authority and all terminal history; do not
+   replay consumed contacts or reopen native cognition to fix a mechanical
+   reference mismatch. C4 remains paused for this concrete repair. After the
+   live repair carry, resume C4 with the native older-
    artifact/version-resolution seam identified above and its growing-history
    proportionality obligation; do not interrupt ordinary conversation for
    unrelated trials. Main publication is complete,

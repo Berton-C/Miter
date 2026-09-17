@@ -254,14 +254,12 @@ as_model_c4_rendering(
     forall(member(Binding,Bindings),memberchk(Binding,Available)).
 
 as_model_c4_allowed_binding_ids(Readings,Commitments,Ids) :-
-    maplist(as_model_c4_reading_id,Readings,ReadingIds),
     last(Commitments,RevisionContext),
     as_model_c4_voice_revision_context(RevisionContext),
-    nth0(7,Commitments,PrivateContext),
-    as_model_c4_private_context(PrivateContext,Entries),
-    findall(MemoryId,
-      member(['c4-private-memory-evidence-v1',MemoryId|_],Entries),MemoryIds),
-    append(ReadingIds,MemoryIds,Ids).
+    % The audit carries the same native candidate accepted by the renderer.
+    % Preserve its exact returned-contact IDs as well as reading/memory IDs;
+    % source availability is not evidence of fidelity or successful research.
+    as_model_c4_context_binding_ids(Readings,Commitments,_{kind:"local"},Ids).
 
 as_model_question_carrier(
     ['c4-contact-semantic-question-v1',QuestionRef,Scope,
@@ -2375,6 +2373,9 @@ as_model_c4_claim_use_json(Row,Use) :-
 as_model_c4_voice_binding_ids(
     ['c4-voice-render-question-v1',_,_,_,_,_,
       ['semantic-readings',Readings],_,Commitments|_],Profile,Ids) :-
+    as_model_c4_context_binding_ids(Readings,Commitments,Profile,Ids).
+
+as_model_c4_context_binding_ids(Readings,Commitments,Profile,Ids) :-
     maplist(as_model_c4_reading_id,Readings,ReadingIds),
     nth0(7,Commitments,PrivateContext),
     nth0(8,Commitments,CapabilityContext),
