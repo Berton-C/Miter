@@ -351,21 +351,26 @@ as_model_c4_memory_candidate(
     memberchk(SourceKind,['human-contact','certified-expression']),
     as_sha256(BodyHash,_),as_sha256(SnapshotHash,_).
 
+% One field envelope for provider schema, receiving parser and downstream
+% carrier. These are storage/transport bounds, never semantic judgments.
+as_model_c4_semantic_text_limits(1200,900,1200).
+
 as_model_c4_semantic_reading(
     ['c4-semantic-reading-v2',Id,Understanding,ResponsePurpose,
       ['fact9-roles',Fact9Roles],['flourishing-values',Flourishings],
       ['continuity-requirement',ContinuityRequirement],Counterfactual,
       CapabilityProposal,
       'model-proposal-only']) :-
-    as_symbol(Id,_), as_model_bounded_text(Understanding,1,1200),
-    as_model_bounded_text(ResponsePurpose,1,900),
+    as_model_c4_semantic_text_limits(UnderstandingMax,PurposeMax,CounterfactualMax),
+    as_symbol(Id,_), as_model_bounded_text(Understanding,1,UnderstandingMax),
+    as_model_bounded_text(ResponsePurpose,1,PurposeMax),
     is_list(Fact9Roles), Fact9Roles=[_|_],
     maplist(as_model_fact9_role,Fact9Roles), sort(Fact9Roles,Fact9Roles),
     is_list(Flourishings), Flourishings=[_|_],
     maplist(as_flourishing,Flourishings), sort(Flourishings,Flourishings),
     memberchk(ContinuityRequirement,
       ['not-material','candidate-content-needed','uncertain']),
-    as_model_bounded_text(Counterfactual,1,1200),
+    as_model_bounded_text(Counterfactual,1,CounterfactualMax),
     as_model_c4_capability_proposal(CapabilityProposal).
 
 as_model_c4_capability_proposal(
@@ -1367,6 +1372,7 @@ as_model_local_response_schema('c3-semantic-question-v1',
         uncertainty:_{type:"string",minLength:1,maxLength:1000}}}.
 as_model_local_response_schema('c4-contact-semantic-question-v1',
     "miter_c4_semantic_readings",Schema) :-
+    as_model_c4_semantic_text_limits(UnderstandingMax,PurposeMax,CounterfactualMax),
     FactRole=_{type:"string",enum:["Balance","Connection","Effortlessness",
       "Gravity","Love","Precision","Sacred","Transformation"]},
     Flourishing=_{type:"string",enum:["AgencyBalance","AttentionStewardship",
@@ -1378,14 +1384,14 @@ as_model_local_response_schema('c4-contact-semantic-question-v1',
       required:["understanding","response_purpose","fact9_roles",
         "flourishing_values","continuity_requirement","counterfactual",
         "capability_proposal"],
-      properties:_{understanding:_{type:"string",minLength:1,maxLength:300},
-        response_purpose:_{type:"string",minLength:1,maxLength:240},
+      properties:_{understanding:_{type:"string",minLength:1,maxLength:UnderstandingMax},
+        response_purpose:_{type:"string",minLength:1,maxLength:PurposeMax},
         fact9_roles:_{type:"array",minItems:1,uniqueItems:true,items:FactRole},
         flourishing_values:_{type:"array",minItems:1,uniqueItems:true,
           items:Flourishing},
         continuity_requirement:_{type:"string",enum:["not-material",
           "candidate-content-needed","uncertain"]},
-        counterfactual:_{type:"string",minLength:1,maxLength:300},
+        counterfactual:_{type:"string",minLength:1,maxLength:CounterfactualMax},
         capability_proposal:CapabilityProposal}},
     Schema=_{type:"object",additionalProperties:false,
       required:["readings","uncertainty"],
@@ -2142,15 +2148,16 @@ as_model_c4_semantic_row(Question,Row,
       ['continuity-requirement',ContinuityRequirement],Counterfactual,
       CapabilityProposal,
       'model-proposal-only']) :-
+    as_model_c4_semantic_text_limits(UnderstandingMax,PurposeMax,CounterfactualMax),
     is_dict(Row), as_model_exact_keys(Row,
       [capability_proposal,continuity_requirement,counterfactual,fact9_roles,
         flourishing_values,response_purpose,understanding]),
     get_dict(understanding,Row,Understanding),
-    as_model_bounded_text(Understanding,1,300),
+    as_model_bounded_text(Understanding,1,UnderstandingMax),
     get_dict(response_purpose,Row,ResponsePurpose),
-    as_model_bounded_text(ResponsePurpose,1,240),
+    as_model_bounded_text(ResponsePurpose,1,PurposeMax),
     get_dict(counterfactual,Row,Counterfactual),
-    as_model_bounded_text(Counterfactual,1,300),
+    as_model_bounded_text(Counterfactual,1,CounterfactualMax),
     get_dict(fact9_roles,Row,Fact9Strings), is_list(Fact9Strings),
     maplist(as_model_fact9_string_atom,Fact9Strings,Fact9Roles0),
     sort(Fact9Roles0,Fact9Roles), same_length(Fact9Strings,Fact9Roles),

@@ -5417,6 +5417,59 @@ Already carried:
   message. Native-ready idle and repaired web-linked live delivery remain to
   be verified; C4 is still paused for this repair.
 
+  **Housing follow-up field-envelope repair, 2026-09-17:** the next exact
+  contact `o6cww8e46tbntf5f18nq5men1c` was consumed/native-checkpointed before
+  the `af160d6` upgrade, with one completed semantic call and no source-bound
+  surface effect. Its cycle records `provider-artifact-semantic-invalid`.
+  This is neither a continuing wait nor a test of the later certificate fix.
+  The current run reaches idle with the original 44/16/104 contact/post/call
+  counts, so neither restart nor resending that terminal input is the remedy.
+
+  The saved response and exact request prove four offending fields:
+  understanding 326/336 characters versus 300, response purpose 257/271 versus
+  240. Each field independently fails; locally substituting four synthetic
+  short fields makes all other checks pass. No such substitution is a semantic
+  correction or enters live state. Git history (`eeda8d0`) establishes that
+  the downstream reading carrier already permits 1,200/900/1,200 characters
+  for understanding/purpose/counterfactual. The smaller intake limits were
+  implementation choices, not constitutional requirements or a demonstrated
+  performance necessity.
+
+  The bounded correction uses that existing carrier envelope consistently in
+  the provider schema, incoming parser and downstream carrier, from one shared
+  mechanical definition; the native request instruction names the same limits.
+  The exact saved response is accepted unchanged through provider decoding,
+  native reading/observation validation and durable readback in a second fresh
+  process. No text is clipped, no model reading is promoted into authority,
+  and no native movement is selected by this change. Exact maximum and
+  maximum-plus-one tests, invalid identities, extra keys, duplicate readings,
+  control characters and contradictory capability fields retain their expected
+  acceptance/refusal. The accepted short fixture's carrier hash is identical
+  before and after. No token, reply, uncertainty, privacy, grant, retry or
+  effect limit changes. General bounded recovery for malformed provider output
+  remains open; this fix does not claim to make every provider return usable.
+
+  A fresh effects-disabled `bin/miter install` has LKG
+  `fd4ffdcf96499439c168e7366c19d42f604ed5addffc6bfe1c64938432040b20`.
+  Its pinned bootstrap is 1.10--1.15 s; exact response decode is about 1.6 ms,
+  native validation 0.6 ms and persisted readback under 0.3 ms. Repeated 100-parse
+  batches of the short fixture take 0.032--0.038 s before/after; the actual
+  response takes 0.054--0.063 s and maximum-sized fields 0.174--0.182 s after.
+  These measure carrier-size cost, not whole-history scaling or full-turn
+  latency. No model/network calls, additional formations, cache or live
+  checkpoint changes occur. Newly admitted longer candidates still undergo
+  the existing full native formation; its live cost remains to be carried.
+  Disposable instrumentation corrections (schema projection evaluation, the
+  instruction function name, loading the installed fsync primitive, and moving
+  successful `halt` outside the catch that intercepted its unwind) do not
+  change product code. All native source balance/diff checks pass. Only broker
+  62606, supervisor 62624 and child 62636 remain; the child is at 4.7% CPU /
+  204,144 KiB RSS after 1:12:56, with no diagnostic survivor. The disposable
+  installation and trial program are removed; the private captured exchanges
+  remain outside Git for the pending live comparison. Next is supported
+  installation, then a genuine new housing continuation and verified response.
+  Preserve the consumed follow-up and its failed history; never replay it.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5483,8 +5536,11 @@ Next movement:
    the shared-projection correction is installed and passes both audits. Its
    live carry exposed the independently reproduced certificate-budget mismatch
    documented above; that mechanical correction is installed as `af160d6`.
-   The repeated builder-handoff stop is recovered as recorded above. Inspect
-   the existing unanswered follow-up before any further live trial.
+   The repeated builder-handoff stop is recovered. The existing follow-up's
+   independent semantic-field-envelope rejection is reproduced and corrected
+   against the already-supported carrier capacity, as recorded above. Carry
+   this correction through supported installation and a new human continuation;
+   no terminal input is replayed. Full live web-research delivery remains open.
    Preserve the known-working
    baseline, open conversation authority and all terminal history; do not
    replay consumed contacts or reopen native cognition to fix a mechanical
