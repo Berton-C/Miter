@@ -5500,6 +5500,48 @@ Already carried:
   terminal contacts remain untouched; no new builder diagnostic model calls
   have been made for these housing turns. No upgrade is needed for this entry.
 
+  **Research continuation cause, 2026-09-17:** the exact follow-up
+  `jzohbx9gk7fctp7rym8rrmjwsw` receives verified reply
+  `ed5p51qg53nd3pd656m4ff7xqh` at 17:31 UTC. Its five saved model exchanges
+  complete semantic reading, initial rendering/audit and revised
+  rendering/audit. The earlier 17:31:05 diagnostic caught the final audit
+  about nine seconds after its claim, not a terminal failure. The completed
+  turn has zero capability claim/completion records between source admission
+  and verified delivery. Its reply explicitly has not fetched listings.
+
+  The saved semantic request exposes eight memory candidates only as a count;
+  it withholds their bodies, the budget and the prior categories. Both returned
+  readings propose `not-material / none` for capability, and one explicitly
+  identifies the missing source content as necessary. Its uncertainty says
+  research cannot be scoped from the current contact alone. The subsequent
+  render/audit requests contain authorized continuity context and the budget,
+  but execution has already been considered before that disclosure. This
+  establishes the handoff failure for this follow-up: context arrives too late
+  to inform operation formation. It does not establish that supplying context
+  alone completes multi-source research or repairs every unfulfilled task.
+  Earlier saved housing readings (`ray96...` and `dwsu...`) did propose exact
+  informational HTTP operations. The capability path introduced in `6840dc1`
+  and its guarded route extraction in `e137013` must be preserved, not replaced
+  with a Mattermost-specific or model-authorized tool bypass.
+
+  Proposed bounded correction: the native preliminary encounter supplies its
+  existing scope/capsule-verified source context to semantic interpretation,
+  with the same context retained for rendering/audit. Preserve per-scope
+  disclosure grants, credential/security exclusions, candidate standing and
+  proof-bound native operation formation. This avoids an extra model round
+  trip. The security reviewer blocked the persistent earlier-stage disclosure
+  change as beyond explicit diagnostic-payload authorization; specific human
+  authorization has been requested for this normal-runtime use. The incomplete
+  source edits were removed; no runtime code or grant changed, no new model or
+  network call was made, and no upgrade is requested. Private captures remain
+  outside Git. Capture group 86387 and syntax-check group 86012 both exited.
+  The supported run remains child 80866 under supervisor 80856, with broker
+  80447; at elapsed 24:21 the child is 4.0% CPU / 1,559,424 KiB RSS, with no
+  temporary diagnostic survivor. This documentation-only entry adds no runtime
+  work or live state. Next: authorize the disclosure handoff, then verify the
+  exact source binding, unchanged exclusions and native capability formation
+  locally before a supported live carry. C4 remains paused for this repair.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5571,9 +5613,11 @@ Next movement:
    against the already-supported carrier capacity, as recorded above. Installed
    `14125b7` now carries a new human turn through native certification and
    verified delivery, but its response has not performed the requested search.
-   Follow the new human continuation through capability execution and returned
-   evidence; no terminal input is replayed. Full live web-research delivery
-   remains open.
+   The new continuation delivers a reply but no web operation: its saved
+   semantic reading lacked the prior context disclosed only later to VoiceRNA.
+   Repair the verified-source handoff before capability formation, subject to
+   the explicit earlier-stage disclosure authorization recorded above. No
+   terminal input is replayed. Full live web-research delivery remains open.
    Preserve the known-working
    baseline, open conversation authority and all terminal history; do not
    replay consumed contacts or reopen native cognition to fix a mechanical
