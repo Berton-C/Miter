@@ -1024,6 +1024,13 @@ returns. Do not launch an unattended trial without that lifecycle. Run one
 bounded CPU-intensive diagnostic at a time unless parallel execution has an
 explicit, measured need.
 
+Human-run release handoffs must be repeat-safe: identify an already-installed
+target before requesting a stop, leave its running process alone, and use the
+ordinary start command if it is stopped. `already-active` describes release
+identity, not process readiness. A handoff must verify its promised running
+postcondition before printing completion; it must not terminate the human's
+interactive shell on failure.
+
 After each diagnostic and before ending a work turn, verify that its owned
 process group is gone. This check does not wait for a commit. After every
 commit and before the next source edit, also inspect the host process
@@ -5378,6 +5385,38 @@ Already carried:
   an ordinary subsequent web-contact response and its delivery receipt.
   Live repaired-path restart and performance remain unverified until then.
 
+  **Supported installation and repeated-handoff recovery, 2026-09-17:** the
+  supplied operator output confirms `af160d6` installed successfully from
+  `0ae722f`, preserving active checkpoint
+  `bd70a92abd55e386cf2f9eace66ddf69cd751f0d424de4a4fd2bc6db931943db`
+  with no leased input and healthy local services. A second invocation of the
+  disposable handoff script then cleanly stopped the same runtime, received
+  the installer's valid `already-active` result, and incorrectly reported
+  completion while leaving Miter stopped. This was a builder-helper defect,
+  not operator misuse or evidence of checkpoint damage. The installer did
+  not repeat migration or create a second installation.
+
+  The ordinary supported `start` restores child 62636 under supervisor 62624,
+  run `9f5e64f2-e5f2-4e33-b341-4c13bdfe9776`, with LKG verified, Mattermost
+  preflight ready and workshop broker ready. All supplied before/after statuses
+  retain 44 admitted contacts, 16 outbound posts and 104 model calls. This is
+  startup/counter evidence, not new conversational acceptance or a full
+  checkpoint comparison after the repeated stop. The helper now handles the
+  already-installed target before stopping anything and verifies running
+  process/supervisor/broker standing before success. Bounded mocked-command
+  checks prove running-target no-op, stopped-target start-only, and honest
+  failure on a failed start; no live operation occurs in these tests.
+  The mock instrument is removed after verification. The pre-commit process
+  read finds only broker 62606, supervisor 62624 and its pinned child 62636;
+  after 6:40 the child uses 5.4% CPU / 871,648 KiB RSS, compared with
+  871,632 KiB at 3:35. No disposable process survives. This documentation-only
+  change adds no runtime work, model call or persistent state.
+  Do not upgrade again for this documentation-only entry. The user's existing
+  housing follow-up `o6cww8e46tbntf5f18nq5men1c` remains visibly unanswered;
+  inspect its exact saved lifecycle without replay before requesting another
+  message. Native-ready idle and repaired web-linked live delivery remain to
+  be verified; C4 is still paused for this repair.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -5443,7 +5482,9 @@ Next movement:
    research turn exposed the returned-web-contact audit boundary mismatch;
    the shared-projection correction is installed and passes both audits. Its
    live carry exposed the independently reproduced certificate-budget mismatch
-   documented above; that mechanical correction awaits supported installation.
+   documented above; that mechanical correction is installed as `af160d6`.
+   The repeated builder-handoff stop is recovered as recorded above. Inspect
+   the existing unanswered follow-up before any further live trial.
    Preserve the known-working
    baseline, open conversation authority and all terminal history; do not
    replay consumed contacts or reopen native cognition to fix a mechanical
