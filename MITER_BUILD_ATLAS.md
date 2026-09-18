@@ -7278,6 +7278,66 @@ Already carried:
   changed evidence and authority across contact families; fluent explanation
   of the comparison is not a substitute for that capacity.
 
+  **C4 shared consultation-hold consequence, 2026-09-18:**
+  Baseline `1ce0b93` records and refuses a repeated returned-contact inquiry,
+  but a typed consultation hold leaves its earlier native route unchanged.
+  The rejected-model wrapper supplies a separate correction-held participant;
+  the capability-return wrapper does not. This is a shared consequence gap,
+  not a Mattermost transport defect or justification for another retry policy.
+  The common receiver now contributes an exact question/source/return-bound
+  hold to native formation. The original source must still participate;
+  an orphaned hold cannot form a continuation. Old correction-held carriers
+  retain their original interpretation. The model wrapper uses the same new
+  participant when its consultation passes through the common consumer.
+
+  Credential-free trials retain the same question and failed evidence while
+  changing only the disposable runtime's model direction from active to
+  revoked. The actual direction preflight refuses both a returned-web inquiry
+  and a rejected-model inquiry; the normal typed unavailable carrier changes
+  both native continuations without completing a candidate, inventing a file
+  precondition or granting an operation. Restoring direction makes that
+  mechanical check pass again, but does not replay the already-observed
+  inquiry. Native proof checks, exact return binding, foreign-return refusal,
+  orphan-source refusal and limitation-source projection pass. A separately
+  supplied opening forms its own inquiry while the held route and incomplete
+  evidence remain in the encounter. This proves non-suppression, not discovery
+  of that supplied alternative. The model source is freshly reformed from its
+  saved participants; it is not represented as byte-identical historical
+  formation. No network request, GLM call, operation or live write occurs.
+
+  The new consequence invalidates only its source inquiry and dependent
+  possibility/reading/movement/expression organization through the existing
+  exact reformation path. No constitutive stage, participant or authority
+  check is removed. Matched held-web trials take 3.378/3.342 wall and
+  3.283/3.252 CPU seconds versus 3.102/3.083 and 2.982/2.970 on the parent;
+  one reformation and one fixture return remain. The approximately 0.27-second
+  cost is retained for causal consequence and source binding. Factorized
+  carriers are 168,313 versus 169,717 bytes; sharing/order and changed movement
+  explain this representation result, not less evidence. Cold loads take
+  1.213/1.173 wall/CPU versus 1.218/1.175. Supported offline ordinary one/two-
+  contact turns take 5.929/5.955 versus 5.945/5.985 wall seconds; corrected
+  turns take 9.674/9.829 versus 9.671/9.850. All four expanded snapshots remain
+  exactly identical, at 104,311/141,102 bytes ordinary and 108,647/148,730
+  corrected, with two/three fixture model callbacks respectively. Earlier
+  comparison and VoiceRNA source-lineage proofs and falsifiers still pass.
+
+  Supported disposable install/start/stop/restart reaches native waiting in
+  3.841/3.838 seconds and preserves six protected records. The new held-web
+  checkpoint restores exactly; both source-family proofs retain their holds,
+  unknowns and no-execution standing. Terminal contact and unchanged inquiry
+  replay remain refused. Five idle seconds add 0.21 child CPU seconds, with
+  RSS 344,256 to 344,576 KiB. Owned process cleanup is verified. All 34 source
+  pins, syntax/balance and the 66-file runtime/document-only tree pass; the
+  installed service is untouched. Large-history scaling, fresh installed
+  conversation and general recovery judgment are not established by this cut.
+
+  Next falsifier: carry the shared held consequence through ordinary expression
+  and a materially renewed inquiry without allowing a restored resource alone
+  to replay an old effect or fabricate new evidence. Actual discovery,
+  comparison, warranted enactment and returned consequence across families
+  remain C4 work. A typed refusal becoming causal is a prerequisite, not whole-
+  C4 closure or proof that every beneficial continuation has been exhausted.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

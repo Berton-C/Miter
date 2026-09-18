@@ -3214,13 +3214,24 @@
             ($observation (index-atom $consultation 2))
             ($focus (index-atom $warrant 4)))
        (if (C4ReturnedInquiryObservationBound $question $observation)
-         ((participant-contribution
+         (CPListAppend
+          ((participant-contribution
            (as_native_id c4-returned-inquiry-result ($question $focus))
            tool (index-atom $question 2)
            (lineage (index-atom $question 1) $focus)
            (participant-relation-claim returned-inquiry-result support
              (c4-returned-inquiry-result-v1 $question $focus $observation))
-           supported no-contact-no-movement-authority)) ())) ()))
+           supported no-contact-no-movement-authority))
+          (let $held (c4-returned-inquiry-held-v1 $question
+                  (index-atom $focus 1) $observation
+                  no-completed-candidate-no-replay-authority)
+            (if (C4RecoveryHeldReturnValid $held)
+              ((participant-contribution
+                (as_native_id c4-returned-inquiry-hold $held)
+                tool (index-atom $question 2)
+                (lineage (index-atom $question 1) $focus $observation)
+                (participant-relation-claim model-return-recovery-result support $held)
+                supported no-contact-no-movement-authority)) ()))) ())) ()))
 
 ; A completed rejection is returned contact, not automatic termination.
 ; Exactly one native-formed correction opening can be exercised here. The
@@ -3267,14 +3278,16 @@
                    $returned no-completed-candidate-no-replay-authority)
                    (if (C4RecoveryHeldReturnValid $held)
                      (C4ReformPreparedWithParticipants $failure-prepared
-                       ((participant-contribution
+                       (if (CPShape $consultation c4-returned-consultation-v1 3)
+                         (C4ReturnedInquiryResultParticipants $question $consultation)
+                         ((participant-contribution
                           (c4-model-correction-held (index-atom $observed 5))
                           tool (index-atom $question 2)
                           (lineage (index-atom $question 1)
                             (index-atom $observed 5) $returned)
                           (participant-relation-claim
                             model-return-recovery-result support $held)
-                          supported no-contact-no-movement-authority)))
+                          supported no-contact-no-movement-authority))))
                      (prepared-encounter-held (index-atom $prepared 1)
                        correction-return-binding-held)))
                  (C4PreparedWithModelFailure $failure-prepared $question $returned))

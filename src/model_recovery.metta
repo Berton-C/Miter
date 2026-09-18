@@ -163,6 +163,31 @@
    (if (CPParticipantClaimSupports $claim)
      (== (index-atom $claim 2) tool) false))
 
+; A consultation hold is a consequence of its exact source inquiry, whether
+; that source was a rejected model artifact or a returned capability contact.
+; It does not change that source into absence, success or operation authority.
+(= (C4RecoveryHeldQuestion $result)
+   (if (CPShape $result c4-returned-inquiry-held-v1 5)
+     (index-atom $result 1)
+     (index-atom (index-atom $result 1) 1)))
+
+(= (C4RecoveryHeldFocus $result)
+   (if (CPShape $result c4-returned-inquiry-held-v1 5)
+     (index-atom $result 2) (index-atom $result 1)))
+
+(= (C4RecoveryHeldObservation $result)
+   (if (CPShape $result c4-returned-inquiry-held-v1 5)
+     (index-atom $result 3) (index-atom $result 2)))
+
+(= (C4RecoveryFocusQuestionBound $focus $question)
+   (if (C4RecoveryEvidenceValid $focus)
+     (== (index-atom $focus 1) $question)
+     (if (C4CapabilityReturnedEvidenceValid $focus)
+       (let $descriptor (index-atom (index-atom $focus 1) 1)
+         (== ((index-atom $descriptor 3) (index-atom $descriptor 4))
+             ((index-atom $question 2)
+              (source-contact (index-atom (index-atom $question 1) 1))))) false)))
+
 (= (C4RecoveryResultClaimAt $claims $evidence $i)
    (if (< $i (size-atom $claims))
      (let* (($claim (index-atom $claims $i))
@@ -174,28 +199,41 @@
                 (and (== (index-atom $result 1) $evidence)
                  (as_model_semantic_bound (index-atom $evidence 1)
                    (index-atom $result 2)))) false)
-             (if (CPShape $result c4-model-correction-held-v1 4)
-               (and (== (index-atom $result 1) $evidence)
+             (if (or (CPShape $result c4-model-correction-held-v1 4)
+                     (CPShape $result c4-returned-inquiry-held-v1 5))
+               (and (== (C4RecoveryHeldFocus $result) $evidence)
                     (C4RecoveryHeldReturnValid $result)) false)))
          true (C4RecoveryResultClaimAt $claims $evidence (+ $i 1))))
      false))
 
 (= (C4RecoveryHeldReturnValid $result)
-   (if (if (CPShape $result c4-model-correction-held-v1 4)
-         (== (index-atom $result 3) no-completed-candidate-no-replay-authority)
-         false)
-     (let* (($evidence (index-atom $result 1))
-            ($return (index-atom $result 2)))
-       (if (and (C4RecoveryEvidenceValid $evidence)
+   (if (or
+         (if (CPShape $result c4-model-correction-held-v1 4)
+           (and (== (index-atom $result 3) no-completed-candidate-no-replay-authority)
+                (C4RecoveryEvidenceValid (index-atom $result 1))) false)
+         (if (CPShape $result c4-returned-inquiry-held-v1 5)
+           (and (== (index-atom $result 4) no-completed-candidate-no-replay-authority)
+             (if (CPShape (index-atom $result 1) c4-contact-semantic-question-v1 12)
+               (C4RecoveryFocusQuestionBound (index-atom $result 2)
+                 (index-atom $result 1)) false)) false))
+     (let* (($question (C4RecoveryHeldQuestion $result))
+            ($return (C4RecoveryHeldObservation $result)))
+       (if (and (CPShape $question c4-contact-semantic-question-v1 12)
                 (CPShape $return c4-model-observation-unavailable-v1 6))
-         (let* (($question (index-atom $evidence 1))
-                ($resource (index-atom $question 11)))
+         (let $resource (index-atom $question 11)
            (and (== (index-atom $return 1) (index-atom $question 1))
             (and (== (index-atom $return 2) (index-atom $question 2))
              (and (== (index-atom $return 3) (index-atom $resource 1))
                   (== (index-atom $return 5) no-candidate-admitted)))))
          false))
      false))
+
+(= (C4RecoveryFocusPresentAt $claims $focus $i)
+   (if (< $i (size-atom $claims))
+     (let $claim (index-atom $claims $i)
+       (if (== ((index-atom $claim 2) (index-atom $claim 4) (index-atom $claim 6))
+               (tool unresolved $focus))
+         true (C4RecoveryFocusPresentAt $claims $focus (+ $i 1)))) false))
 
 (= (C4RecoveryHeldPossibilitiesAt $claims $cut $flourishing $i)
    (if (< $i (size-atom $claims))
@@ -204,7 +242,7 @@
               (index-atom $claim 6) ())))
        (if (and (C4RecoverySupportedReturnClaim $claim)
              (if (C4RecoveryHeldReturnValid $result)
-               (== (index-atom (index-atom (index-atom $result 1) 1) 2)
+               (== (index-atom (C4RecoveryHeldQuestion $result) 2)
                  (index-atom $cut 3)) false))
          (cons-atom
            (possible-movement (as_native_id c4-model-recovery-held $result) defer
@@ -235,6 +273,17 @@
    (C4RecoveryResultClaimAt
      (C4RecoveryResultClaimsAt $relations $i) $evidence 0))
 
+; New generic holds require their original source to remain in this encounter.
+; Older correction records retain their historical formation contract.
+(= (C4RecoveryEligibleHeldClaimsAt $claims $source-claims $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($result (index-atom $claim 6))
+            ($rest (C4RecoveryEligibleHeldClaimsAt $claims $source-claims (+ $i 1))))
+       (if (if (CPShape $result c4-returned-inquiry-held-v1 5)
+             (C4RecoveryFocusPresentAt $source-claims (index-atom $result 2) 0) true)
+         (cons-atom $claim $rest) $rest)) ()))
+
 ; A later completed attempt changes the available evidence. Retain the old
 ; failure in the encounter, but do not offer its earlier opening again.
 (= (C4RecoveryLaterAttemptAt $claims $evidence $i)
@@ -262,7 +311,10 @@
          (C4RecoveryClaimsAt (index-atom $relations 1) 0) $cut $flourishing
            (index-atom $relations 1) 0)
        (C4RecoveryHeldPossibilitiesAt
-         (C4RecoveryResultClaimsAt (index-atom $relations 1) 0)
+         (C4RecoveryEligibleHeldClaimsAt
+           (C4RecoveryResultClaimsAt (index-atom $relations 1) 0)
+           (CPListAppend (C4RecoveryClaimsAt (index-atom $relations 1) 0)
+             (C4CapabilityReturnedClaims $relations)) 0)
          $cut $flourishing 0))
      ()))
 
@@ -337,6 +389,16 @@
 ; interpretation. This source is a narrow projection of returned consequence,
 ; not another model reading or a canned utterance. The complete evidence stays
 ; in the native encounter; only the bound limitation is available to VoiceRNA.
+(= (C4RecoveryHeldWorldKnowledge $result)
+   (let $focus (C4RecoveryHeldFocus $result)
+     (if (C4RecoveryEvidenceValid $focus)
+       (index-atom (C4RecoveryBasis $focus) 6)
+       (world-knowledge
+         (returned-contact
+           (C4CapabilityReturnedRoute
+             (index-atom (index-atom (index-atom $focus 1) 1) 1) $focus))
+         no-new-world-observation-from-consultation-hold))))
+
 (= (C4RecoveryExpressionSource $route)
    (if (CPShape $route c4-model-recovery-route-v1 3)
      (let* (($basis (C4RecoveryBasis (index-atom $route 2)))
@@ -356,14 +418,21 @@
          (if (and (C4RecoveryHeldReturnValid $result)
                (and (== (index-atom $route 2) new-contact-or-resource-change-required)
                     (== (index-atom $route 3) no-blind-repeat-no-effect-replay)))
-           (let $basis (C4RecoveryBasis (index-atom $result 1))
-             (if (CPShape $basis c4-model-recovery-basis-v1 10)
+           (if (CPShape $result c4-returned-inquiry-held-v1 5)
+             (c4-native-recovery-source-v1 (as_native_id c4-recovery-source $route)
+               (failure (index-atom (C4RecoveryHeldObservation $result) 4))
+               (C4RecoveryHeldWorldKnowledge $result)
+               (authority unchanged-no-operation-granted)
+               (continuation recovery-unavailable)
+               held-consultation-not-semantic-evidence)
+             (let $basis (C4RecoveryBasis (index-atom $result 1))
+              (if (CPShape $basis c4-model-recovery-basis-v1 10)
                (c4-native-recovery-source-v1 (as_native_id c4-recovery-source $route)
                  (failure (index-atom (index-atom $result 2) 4))
                  (index-atom $basis 6) (index-atom $basis 7)
                  (continuation recovery-unavailable)
                  rejected-artifact-not-semantic-evidence)
-               recovery-expression-source-unavailable))
+               recovery-expression-source-unavailable)))
            recovery-expression-source-unavailable))
        recovery-expression-source-unavailable)))
 
@@ -371,14 +440,14 @@
    (if (CPShape $route c4-model-recovery-route-v1 3)
      (index-atom (index-atom $route 2) 1)
      (if (CPShape $route c4-model-recovery-unavailable-v1 4)
-       (index-atom (index-atom (index-atom $route 1) 1) 1)
+       (C4RecoveryHeldQuestion (index-atom $route 1))
        recovery-question-unavailable)))
 
 (= (C4RecoveryExpressionRouteReturn $route)
    (if (CPShape $route c4-model-recovery-route-v1 3)
      (index-atom (index-atom $route 2) 2)
      (if (CPShape $route c4-model-recovery-unavailable-v1 4)
-       (index-atom (index-atom $route 1) 2)
+       (C4RecoveryHeldObservation (index-atom $route 1))
        recovery-return-unavailable)))
 
 (= (C4RecoveryExpressionValid $expression $question)
