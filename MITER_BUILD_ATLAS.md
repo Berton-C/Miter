@@ -999,6 +999,30 @@ S-901--905, not a constitutional amendment or a claim of implemented general
 self-repair. It does not authorize self-modification of installed code,
 expanded effect reach, or replacement of C-057's bounded fallback contract.
 
+**Cross-surface recovery criterion, reaffirmed by Berton on 2026-09-18:**
+Correcting a surface's factual contract is necessary when it loses or falsifies
+evidence, but it is not a separate problem-solving policy for that surface.
+The reusable capacity belongs in the same native cognitive organization:
+relate the returned failure to the undertaking, retained evidence, unknowns,
+available observations and actual authority; form and compare warranted
+continuations; integrate their consequences; and preserve or terminate the
+undertaking explicitly when further recovery is not justified. Neither a
+universal retry loop nor surface-specific prescriptions relocated into MeTTa
+establish this capacity. Model-proposed continuations remain candidates.
+
+The discriminating C4 carry must vary at least two materially different contact
+families through the same recovery consumer, then change evidence and
+authority independently. The changed continuation must follow the changed
+relations, not a surface name or the builder's expected answer. Unknown must
+remain distinct from absent/failed; uncertain effects must not be repeated;
+exhaustion and restart must retain lineage and remaining reach. A successful
+provider-contract repair, redirect, typed tool result, or fluent explanation
+alone is not this cross-surface proof. The presently inspected tool path
+re-forms returned contact and usually proceeds toward expression, with an
+explicit redirect continuation; model contract correction is separately
+bounded. Complete this shared continuation seam within C4 instead of treating
+more adapter-specific fixes as evidence that it already exists.
+
 ### Constitutive efficiency law
 
 Functional fidelity and usable computational cost are one build obligation.
@@ -6505,6 +6529,77 @@ Already carried:
   whole-C4 completion. Continue the fresh installed conversation carry and
   the open state-migration / skill-transfer / effect-authority seams below.
 
+  **C4 complete trial evidence and reusable-recovery boundary, 2026-09-18:**
+  The Atlas failure-contact principle, efficiency/hygiene laws, C-093--095
+  and S-607/904--905 are reread at stage start, changed findings and commit.
+  Inspection of the remaining state-migration seam first exposes a prerequisite:
+  the workshop uses `findall` to collect trial observations, then accepts every
+  collected row's passing label. A failed observer disappears. Against parent
+  `c2e86a8`, changing only one observer to return no observation produces one
+  passing row for two required trials and permits activation; losing both rows
+  also reports success and activates. This inherited behavior dates to the
+  original workshop, not Mattermost or the newly installed history carry.
+
+  The membrane now preserves one result per declared trial, including exact
+  typed unavailability or mechanical exception. Trial completion, activation,
+  and durable reconciliation independently check the same manifest, ordered
+  trial identities, complete coverage, expected exit and stdout hash, actual
+  stdout/stderr bytes and hashes, transport completion and result standing.
+  A saved `passed` label alone is insufficient. Earlier false-pass records
+  remain historical bytes but cannot establish passing recovery. No trial is
+  rerun by reconciliation. Held activation returns its exact required trials
+  and available observations to native cognition, not only an opaque reason.
+  It neither invents the missing observation nor grants promotion authority.
+
+  Eleven altered-record controls reject: empty, partial, duplicate, reordered,
+  wrong hash, changed stdout, changed stderr, wrong exit, incomplete transport,
+  failed label and typed unavailable observation. Existing recorded failure
+  is not promoted by otherwise passing rows. Complete trials still activate,
+  and an exact prepared activation reconciles without another execution. One
+  repeat check initially used a fixture subsequently activated by another
+  request; refusing its obsolete transition identity was correct. A fresh
+  isolated fixture passes the full repeat check without a product workaround.
+
+  Actual native capability formation and the ordinary expression consumer
+  carry held activation with the exact unavailable negative trial, then a
+  separate complete-trial control. Both returned consequences persist; fresh
+  native restore is exact and duplicate terminal contacts remain refused.
+  The turns take 6.462/6.067 and 6.664/6.234 wall/CPU seconds, two local render
+  callbacks, two full constitutive formations and zero external model calls.
+  Their factorized checkpoint is 146,919 bytes / 1,132 factors. A same-source
+  three-turn positive control compares parent 6.532/6.615/6.567 wall seconds
+  with candidate 6.492/6.558/6.728; there is no material ordinary-path regression.
+  The new independent coverage/hash check averages 0.000079 seconds for two
+  eight-byte results and 0.000995 for 32; at 65,536 bytes each those averages
+  are 0.000429 and 0.006715. Only exact trial evidence and its downstream
+  mechanical admissibility are invalidated; native meaning/authority rules
+  and unrelated organization are unchanged.
+
+  Supported disposable install/start/stop/restart reaches waiting in
+  5.128/5.712 seconds and preserves all 61 checkpoint, capability, proof,
+  receipt, workshop and workspace records byte-for-byte. Fresh independent
+  proof readback and cached operation lookup pass without activation replay.
+  Four idle seconds add 0.17 child CPU seconds and 240 KiB RSS. These are real
+  native/lifecycle and isolated shell-trial checks, not Docker availability,
+  live conversation or installed-release results. No live write, external
+  model request, network call, post, restart or upgrade is made. All temporary
+  process families are gone; stage fixtures and captures are removed before
+  commit. The installed family remains broker 88273, supervisor 88753 and
+  child 88764; at 55 minutes the child is sampled at 4.9% CPU / 986,848 KiB,
+  versus 986,816 KiB at the earlier waypoint, with no duplicate service.
+
+  This corrects missing/falsified evidence, not autonomous recovery. The
+  complete-trial control is builder-supplied changed evidence; it must not be
+  represented as Miter choosing its own repair. Berton's cross-surface concern
+  is adopted in section 7: the next C4 cut is a shared native recovery
+  continuation, tested across materially different returned contacts through
+  one consumer, with evidence/authority varied independently. Current tool
+  contact generally re-forms then proceeds to expression; only redirect has
+  explicit continuation, while model contract correction is separately bounded.
+  Do not build another surface-specific recovery policy or call these paths
+  general recovery. Verified state-schema migration, broader skill transfer,
+  earned effect authority and installed conversational carry remain open.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -6600,9 +6695,11 @@ Next movement:
    installs those changes together with exact historical artifact access and
    scoped version discovery. Fresh installed conversational carry remains
    open; local fixtures are not its substitute. The growing-history restart
-   correction above is locally verified but not installed. Continue that live
-   carry, real developmental-history proportionality and the remaining Open
-   Growth seams; do not interrupt ordinary conversation for
+   correction and complete-trial-evidence correction above are locally verified
+   but not installed. The next native C4 cut is the shared cross-surface recovery
+   continuation defined in section 7, ahead of further state-migration-specific
+   behavior. Continue fresh installed carry, real developmental-history
+   proportionality and the remaining Open Growth seams; do not interrupt ordinary conversation for
    unrelated trials. Main publication is complete,
    not a standing blocker. Future live
    upgrades use the supported recoverable release transition and must identify

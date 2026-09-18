@@ -224,10 +224,15 @@ mw_reconcile(Root,RequestId,
     ['trial',RequestId,['stage-request',StageRequest],['commit',Commit],
       ['results',Results],'recovered-from-durable-trial-record'],Failure) :-
     mw_trial_record(Root,Id,Version,RequestId,
-      ['extension-trial-record-v1',RequestId,StageRequest,Commit,_Manifest,
-        Results,Standing]),
-    ( Standing=='trial-passed' -> Failure=none
-    ; Failure='independent-trial-mismatch' ).
+      ['extension-trial-record-v1',RequestId,StageRequest,Commit,Manifest,
+        Results,RecordedStanding]),
+    mw_stage_record(Root,Id,Version,StageRequest,
+      ['extension-stage-record-v1',StageRequest,_ManifestHash,Commit,_Branch,
+        _CandidateRelative,Manifest]),
+    ( RecordedStanding=='trial-passed',mw_trials_passed(Manifest,Results) ->
+        Standing='trial-passed',Failure=none
+    ; Standing='trial-failed',
+      Failure='independent-trial-evidence-incomplete-or-failed' ).
 mw_reconcile(Root,RequestId,
     ['extension-activate-v1',Id,Version,StageRequest,TrialRequest,_Expected],
     activated,
@@ -243,7 +248,7 @@ mw_reconcile(Root,RequestId,
     mw_trial_record(Root,Id,Version,TrialRequest,
       ['extension-trial-record-v1',TrialRequest,StageRequest,Commit,Manifest,
         Results,'trial-passed']),
-    forall(member(Result,Results),nth0(6,Result,passed)),
+    mw_trials_passed(Manifest,Results),
     mw_candidate_verified(Root,CandidateRelative,Commit,Manifest,_),
     Active=['active-executable-extension-v1',Id,Version,Commit,Manifest,
       ['activation-reference',RequestId],['prior-active',Prior],
@@ -331,11 +336,8 @@ mw_run_trials(Root,RequestId,Id,Version,StageRequest,Deadline,MaximumBytes,
       CandidateRelative,Manifest],
     mw_candidate_verified(Root,CandidateRelative,Commit,Manifest,Candidate),
     nth0(11,Manifest,['independent-trials',Trials]),
-    findall(Result,(member(Trial,Trials),
-      mw_one_trial(Candidate,Manifest,Trial,Deadline,MaximumBytes,Result)),Results),
-    ( forall(member(Result,Results),nth0(6,Result,passed)) ->
-        Standing='trial-passed',Failure=none
-    ; Standing='trial-failed',Failure='independent-trial-mismatch' ),
+    maplist(mw_one_trial(Candidate,Manifest,Deadline,MaximumBytes),Trials,Results),
+    mw_trial_standing(Manifest,Results,Standing,Failure),
     Detail=['trial',RequestId,['stage-request',StageRequest],['commit',Commit],
       ['results',Results]],
     mw_trial_index(Root,Id,Version,RequestId,TrialIndex),
@@ -343,7 +345,51 @@ mw_run_trials(Root,RequestId,Id,Version,StageRequest,Deadline,MaximumBytes,
       ['extension-trial-record-v1',RequestId,StageRequest,Commit,Manifest,
         Results,Standing]).
 
-mw_one_trial(Candidate,Manifest,
+% A missing observation is evidence of unavailability, not a missing trial.
+% Keep one result for every declared trial; findall/3 would silently omit a
+% failed observer and can turn even an empty result set into a passing suite.
+mw_one_trial(Candidate,Manifest,Deadline,Maximum,Trial,Result) :-
+    Trial=['extension-trial-v1',TrialId|_],
+    catch(
+      ( once(mw_trial_observed(Candidate,Manifest,Trial,Deadline,Maximum,
+          Observed)) -> Result=Observed
+      ; Result=['extension-trial-unavailable-v1',TrialId,
+          'no-mechanical-observation'] ),
+      Error,
+      ( mw_trial_error_class(Error,Class),
+        Result=['extension-trial-unavailable-v1',TrialId,
+          ['mechanical-exception',Class]] )).
+
+mw_trial_error_class(error(Reason,_),Class) :- !,
+    functor(Reason,Class,_).
+mw_trial_error_class(Error,Class) :- functor(Error,Class,_).
+
+% Recheck the manifest's exact trial coverage and the stored observations at
+% every activation/recovery boundary.  A saved "passed" label is not proof;
+% no observation here certifies the candidate's meaning or grants authority.
+mw_trial_standing(Manifest,Results,Standing,Failure) :-
+    ( mw_trials_passed(Manifest,Results) ->
+        Standing='trial-passed',Failure=none
+    ; Standing='trial-failed',
+      Failure='independent-trial-evidence-incomplete-or-failed' ).
+
+mw_trials_passed(Manifest,Results) :-
+    nth0(11,Manifest,['independent-trials',Trials]),
+    is_list(Trials),length(Trials,Count),Count>=2,Count=<32,
+    maplist(mw_trial,Trials,Trials),mw_unique_trial_ids(Trials),
+    is_list(Results),same_length(Trials,Results),
+    maplist(mw_trial_passed,Trials,Results).
+
+mw_trial_passed(['extension-trial-v1',Id,_Arguments,ExpectedExit,ExpectedOut],
+    ['extension-trial-result-v1',Id,['exit-code',Exit],
+      ['stdout',OutHash,Out],['stderr',ErrHash,Err],eof,passed]) :-
+    Exit==ExpectedExit,OutHash==ExpectedOut,string(Out),string(Err),
+    crypto_data_hash(Out,ObservedOutHash,[algorithm(sha256),encoding(utf8)]),
+    ObservedOutHash==OutHash,
+    crypto_data_hash(Err,ObservedErrHash,[algorithm(sha256),encoding(utf8)]),
+    ObservedErrHash==ErrHash.
+
+mw_trial_observed(Candidate,Manifest,
     ['extension-trial-v1',TrialId,Arguments,ExpectedExit,ExpectedStdout],
     RequestedDeadline,RequestedMaximum,
     ['extension-trial-result-v1',TrialId,['exit-code',ExitCode],
@@ -369,13 +415,13 @@ mw_activate(Root,RequestId,Id,Version,StageRequest,TrialRequest,Expected,
       CandidateRelative,Manifest],
     mw_trial_record(Root,Id,Version,TrialRequest,Trial),
     Trial=['extension-trial-record-v1',TrialRequest,StageRequest,Commit,Manifest,
-      Results,'trial-passed'],
-    forall(member(Result,Results),nth0(6,Result,passed)),
+      Results,TrialStanding],
     mw_candidate_verified(Root,CandidateRelative,Commit,Manifest,_Candidate),
     mw_active_index(Root,Id,ActivePath),
     mw_active_or_none(ActivePath,Current),
     ( mw_expected_matches(Current,Expected),
       mw_within_open_growth_authority(Manifest),
+      TrialStanding=='trial-passed',mw_trials_passed(Manifest,Results),
       mw_compatible(Current,Manifest,Compatibility) ->
         Prepared=['extension-activation-prepared-v1',RequestId,Id,Version,
           StageRequest,TrialRequest,ManifestHash,Commit,Current,Compatibility],
@@ -388,17 +434,24 @@ mw_activate(Root,RequestId,Id,Version,StageRequest,TrialRequest,Expected,
         Standing=activated,Failure=none,
         Detail=['activation',RequestId,['active',Active],
           ['trial-request',TrialRequest],Compatibility]
-    ; mw_activation_hold(Current,Expected,Manifest,Standing,Failure),
+    ; mw_activation_hold(Current,Expected,Manifest,Results,TrialStanding,
+        Standing,Failure),
+      nth0(11,Manifest,['independent-trials',RequiredTrials]),
       Detail=['activation-held',RequestId,['current',Current],
-        ['expected',Expected],['reason',Failure]] ).
+        ['expected',Expected],['reason',Failure],
+        ['trial-evidence',TrialRequest,['recorded-standing',TrialStanding],
+          ['required-trials',RequiredTrials],['results',Results]]] ).
 
-mw_activation_hold(Current,Expected,_Manifest,held,
+mw_activation_hold(Current,Expected,_Manifest,_Results,_TrialStanding,held,
     'expected-active-version-mismatch') :-
     \+ mw_expected_matches(Current,Expected),!.
-mw_activation_hold(_Current,_Expected,Manifest,held,
+mw_activation_hold(_Current,_Expected,Manifest,_Results,_TrialStanding,held,
     'relational-authority-requires-human') :-
     \+ mw_within_open_growth_authority(Manifest),!.
-mw_activation_hold(_Current,_Expected,_Manifest,held,
+mw_activation_hold(_Current,_Expected,Manifest,Results,TrialStanding,held,
+    'independent-trial-evidence-incomplete-or-failed') :-
+    ( TrialStanding\=='trial-passed' ; \+ mw_trials_passed(Manifest,Results) ),!.
+mw_activation_hold(_Current,_Expected,_Manifest,_Results,_TrialStanding,held,
     'interface-or-state-migration-incompatible').
 
 mw_invoke(Root,RequestId,Id,Version,Arguments,RequestedDeadline,
