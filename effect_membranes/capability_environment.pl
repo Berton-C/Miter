@@ -129,10 +129,11 @@ as_capability_request_checked(Root0, Descriptor, Observation) :-
     as_capability_environment_checked(Root,Environment),
     Environment=['capability-environment-observation-v1'|_],
     last(Environment,'available-open-growth-environment'),
-    ce_request_descriptor(Root,Descriptor,RequestId,Scope,Operation,Capability,
-      Deadline,MaximumBytes,DescriptorHash),
+    ce_request_descriptor_values(Root,Descriptor,
+      [RequestId,Scope,Operation,Capability,Deadline,MaximumBytes,
+        DescriptorHash],Proof),
     with_mutex(miter_capability_request,
-      ce_request_once(Root,Descriptor,RequestId,Scope,Operation,Capability,
+      ce_request_once(Root,Proof,RequestId,Scope,Operation,Capability,
         Deadline,MaximumBytes,DescriptorHash,Observation)).
 
 ce_request_descriptor(Root,
@@ -143,6 +144,9 @@ ce_request_descriptor(Root,
         DescriptorHash]).
 
 ce_request_descriptor_values(Root,Descriptor,Values) :-
+    ce_request_descriptor_values(Root,Descriptor,Values,_Proof).
+
+ce_request_descriptor_values(Root,Descriptor,Values,Proof) :-
     Descriptor=[DescriptorVersion,RequestId0,
       IdempotencyKey0,Scope,
       ['source-contact',ContactId],
@@ -160,7 +164,7 @@ ce_request_descriptor_values(Root,Descriptor,Values) :-
     as_local_scope(Scope),ce_symbol(ContactId,_),
     ce_bounded_text(Purpose,1,400),
     ce_descriptor_native_proof(Root,DescriptorVersion,ProofCarrier,Scope,
-      CutId,ProofMovementReference,_Proof),
+      CutId,ProofMovementReference,Proof),
     CutId=['cut-of',ContactId,_],
     DescriptorMovementReference==ProofMovementReference,
     ce_operation(Operation0,Operation,Capability),Capability0==Capability,
@@ -233,6 +237,13 @@ ce_operation(['workspace-read-v1',Relative0],
     ['capability','versioned-owned-workspace','no-credential',
       'reversible-local-artifact']) :-
     ce_workspace_relative(Relative0,Relative),!.
+ce_operation(['workspace-version-read-v1',Source0,Relative0,
+      ['version-sha256',Hash0]],
+    ['workspace-version-read-v1',Source,Relative0,['version-sha256',Hash]],
+    ['capability','versioned-owned-workspace','no-credential',
+      'historical-read-only']) :-
+    ce_symbol(Source0,Source),ce_workspace_relative(Relative0,_Relative),
+    miter_store_nonempty_atom(Hash0,Hash),ce_sha256(Hash),!.
 ce_operation(['workspace-list-v1',Relative0],
     ['workspace-list-v1',Relative],
     ['capability','versioned-owned-workspace','no-credential',
@@ -331,12 +342,12 @@ ce_request_once(Root,_Descriptor,RequestId,_Scope,_Operation,_Capability,
       'claimed-without-observation-recovery-required']) :-
     ce_claim_path(Root,RequestId,ClaimPath),exists_file(ClaimPath),
     ce_claim_matches(ClaimPath,RequestId,DescriptorHash), !.
-ce_request_once(Root,Descriptor,RequestId,Scope,Operation,Capability,Deadline,
+ce_request_once(Root,Proof,RequestId,Scope,Operation,Capability,Deadline,
     MaximumBytes,DescriptorHash,Observation) :-
     ce_claim_path(Root,RequestId,ClaimPath),
     ce_write_claim(ClaimPath,RequestId,DescriptorHash),
     get_time(Start),
-    ce_operation_observe(Root,RequestId,Operation,Scope,DescriptorHash,
+    ce_operation_observe_bound(Root,Proof,RequestId,Operation,Scope,DescriptorHash,
       Capability,Deadline,MaximumBytes,Observation0,Completion),
     get_time(End),ElapsedMilliseconds is round((End-Start)*1000),
     ce_observation_elapsed(Observation0,ElapsedMilliseconds,Observation),
@@ -345,7 +356,69 @@ ce_request_once(Root,Descriptor,RequestId,Scope,Operation,Capability,Deadline,
     ce_write_term_durable(ObservationPath,Observation),
     ce_record_completion(ClaimPath,RequestId,DescriptorHash,Completion,
       ElapsedMilliseconds),
-    ground(Descriptor).
+    ground(Proof).
+
+% Historical retrieval receives the current native proof, not an unrestricted
+% lookup into another scope's files. It neither reads nor changes today's file.
+% Only a completed write source explicitly participating in this movement may
+% disclose its proposed bytes. No archive, second clock or inferred head is
+% created; the original immutable proof already retains those exact bytes.
+ce_operation_observe_bound(Root,Proof,RequestId,
+    ['workspace-version-read-v1',Source,Relative,['version-sha256',Hash]],
+    Scope,DescriptorHash,_Capability,Deadline,MaximumBytes,
+    ['capability-observation-v2',RequestId,Scope,
+      ['request-descriptor-sha256',DescriptorHash],
+      ['resource','versioned-owned-workspace'],
+      ['workspace-version-result-v1',Standing,['path',Relative],
+        ['source-request',Source],['contents',Hash,Contents],
+        ['origin','workspace-write-proposal-content'],
+        'historical-version-not-current-file-state',
+        'proof-bound-source-not-truth-or-write-authority'],
+      ['elapsed-milliseconds',pending],['failure',Failure],
+      'mechanical-observation-no-meaning-no-movement-authority'],
+    _{resource:"versioned-owned-workspace",standing:Standing,
+      source_request_id:Source,version_sha256:Hash}) :- !,
+    ( catch(call_with_time_limit(Deadline,
+        ce_workspace_version_source(Root,Proof,Scope,Source,Relative,
+          Hash,MaximumBytes,Body)),_,fail)
+    -> Standing=read,Contents=Body,Failure=none
+    ; Standing=unavailable,Contents="",
+      Failure='historical-source-unavailable-not-proof-of-absence' ).
+ce_operation_observe_bound(Root,_Descriptor,RequestId,Operation,Scope,Hash,
+    Capability,Deadline,MaximumBytes,Observation,Completion) :-
+    ce_operation_observe(Root,RequestId,Operation,Scope,Hash,Capability,
+      Deadline,MaximumBytes,Observation,Completion).
+
+ce_workspace_version_source(Root,Proof,Scope,Source,Relative0,Hash,
+    MaximumBytes,Body) :-
+    ce_workspace_relative(Relative0,Relative),
+    Proof=['native-movement-proof-v1',_,Scope,_,
+      ['participant-reentry-organization',
+        'differentiated-by-source-scope-and-lineage',Participants,
+        'repeated-same-lineage-is-not-independent-support']],
+    % Direct current participants only: do not search growing prior cut graphs
+    % for a convenient source which native formation did not make available.
+    member(['derived-participant-reading',['c4-workspace-version-source',Source],
+      tool,Scope,[lineage,'miter-open-growth-environment-v1',
+        ['request-descriptor-sha256',SourceHash]],
+      ['participant-relation-claim','workspace-version-source',unresolved,
+        ['c4-workspace-version-source-v1',SourceDescriptor,SourceObservation,
+          'historical-only-no-current-file-or-write-authority']],
+      unresolved,'no-contact','no-movement-authority'],Participants),
+    ce_request_descriptor(Root,SourceDescriptor,Source,Scope,
+      ['workspace-write-v1',Relative,Body,_],_,_,_,SourceHash),
+    ce_claim_path(Root,Source,ClaimPath),
+    ce_claim_matches(ClaimPath,Source,SourceHash),
+    ce_observation_path(Root,Source,ObservationPath),
+    ce_read_term(ObservationPath,Saved),Saved==SourceObservation,
+    Saved=['capability-observation-v2',Source,Scope,
+      ['request-descriptor-sha256',SourceHash],
+      ['resource','versioned-owned-workspace'],
+      ['workspace-result-v1',written,['path',Relative],_,
+        ['result-sha256',Hash],_],_,['failure',none],
+      'mechanical-observation-no-meaning-no-movement-authority'],
+    crypto_data_hash(Body,Hash,[algorithm(sha256),encoding(utf8)]),
+    string_bytes(Body,Bytes,utf8),length(Bytes,Size),Size=<MaximumBytes,!.
 
 ce_operation_observe(_Root,RequestId,
     ['informational-http-v1',Method,Url],Scope,DescriptorHash,_Capability,

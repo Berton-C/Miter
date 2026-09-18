@@ -92,7 +92,7 @@
     },
     {
       "path": "src/capability_environment.metta",
-      "sha256": "318cfb557f055cdd43eac4f364026e30766be8ee5cacd5026a098f77b9fd298a"
+      "sha256": "63559672c501b691c47a77631e3296b6c08e80ab4a99a6d5d2e15d0086616272"
     },
     {
       "path": "src/model_recovery.metta",
@@ -124,7 +124,7 @@
     },
     {
       "path": "effect_membranes/capability_environment.pl",
-      "sha256": "5be9bf9aa32a1fd90b20d76aea921e536a78a6c619b925b02706a85be0925a3c"
+      "sha256": "364df10249daacd4c8d4bed2c9fc413f6c191228cb7c602de3e0c3118920c340"
     },
     {
       "path": "effect_membranes/workshop.pl",

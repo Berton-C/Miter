@@ -505,6 +505,11 @@ as_model_c4_capability_proposal(
     as_model_bounded_text(Purpose,1,400),as_model_bounded_text(Path,1,4096).
 as_model_c4_capability_proposal(
     ['capability-proposal-v1',proposed,Purpose,
+      ['workspace-version-read-v1',Source,Path,['version-sha256',Hash]]]) :-
+    as_model_bounded_text(Purpose,1,400),as_symbol(Source,_),
+    as_model_bounded_text(Path,1,4096),as_sha256(Hash,_).
+as_model_c4_capability_proposal(
+    ['capability-proposal-v1',proposed,Purpose,
       ['workspace-list-v1',Path]]) :-
     as_model_bounded_text(Purpose,1,400),as_model_bounded_text(Path,1,4096).
 as_model_c4_capability_proposal(
@@ -1631,10 +1636,12 @@ as_model_c4_capability_response_schema(_{oneOf:Alternatives}) :-
       _{type:"string",minLength:1,maxLength:4096},_{const:""},
       HashSchema,
       _{type:"string",minLength:1,maxLength:256},RollbackProperties),
+    put_dict(kind,RollbackProperties,_{const:"workspace-version-read"},
+      VersionReadProperties),
     maplist(as_model_c4_capability_alternative(Required),
       [NotMaterialProperties,UncertainProperties,HttpProperties,
         ArgvProperties,WriteProperties,ReadProperties,ListProperties,
-        RollbackProperties],Alternatives).
+        RollbackProperties,VersionReadProperties],Alternatives).
 
 % Match the existing receiver's exact precondition grammar. An empty value
 % is not absence, and a syntactically valid hash is not evidence of file state.
@@ -2617,6 +2624,13 @@ as_model_c4_workspace_operation_json(Row,Path,['workspace-read-v1',Path]) :-
 as_model_c4_workspace_operation_json(Row,Path,['workspace-list-v1',Path]) :-
     Row.kind=="workspace-list",Row.expected_sha256=="",
     Row.source_request_id=="",!.
+as_model_c4_workspace_operation_json(Row,Path,
+    ['workspace-version-read-v1',SourceRequest,Path,['version-sha256',Hash]]) :-
+    Row.kind=="workspace-version-read",
+    get_dict(source_request_id,Row,SourceString),
+    as_model_string_atom(SourceString,SourceRequest),as_symbol(SourceRequest,_),
+    get_dict(expected_sha256,Row,HashString),
+    as_model_string_atom(HashString,Hash),as_sha256(Hash,_),!.
 as_model_c4_workspace_operation_json(Row,Path,
     ['workspace-rollback-v1',SourceRequest,Path,
       ['expected-current-sha256',Expected]]) :-

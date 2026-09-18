@@ -801,7 +801,7 @@
                 (index-atom $payload 2) $question)))
        false)))
 
-(= (AR2HistoryValid $row)
+(= (AR2NonArtifactHistoryValid $row)
    (let* (($row-valid (CPShape $row assistant-history 5))
           ($is-encounter (if $row-valid
             (== (index-atom $row 1) encounter) false)))
@@ -883,6 +883,12 @@
                                       (index-atom $row 2)))))))
                          (ARHistoryValid $row))))))))
            (ARHistoryValid $row)))))))))
+
+(= (AR2HistoryValid $row)
+   (if (if (CPShape $row assistant-history 5)
+         (== (index-atom $row 1) artifact-version) false)
+     (C4WorkspaceVersionHistoryValid $row)
+     (AR2NonArtifactHistoryValid $row)))
 
 (= (AR2AllHistoryValid $rows $i)
    (if (< $i (size-atom $rows))
@@ -1564,8 +1570,18 @@
 
 (= (AR4IncorporatePreparedEncounter $prepared)
    (if (AR4PreparedEncounterValid $prepared)
-     (AR2IncorporateFreshlyGrounded (index-atom $prepared 1)
-       (index-atom $prepared 2) (index-atom $prepared 4))
+     (let* (($scope (index-atom $prepared 2))
+            ($records (C4WorkspaceVersionRecordsAt
+              (CPParticipants (index-atom $prepared 3)) $scope 0)))
+       (if (C4WorkspaceVersionsCompatible $records $scope 0)
+         (let* (($result (AR2IncorporateFreshlyGrounded
+                  (index-atom $prepared 1) $scope (index-atom $prepared 4)))
+                ($stored (if (CPShape $result assistant-contact-incorporated 3)
+                  (C4RecordWorkspaceVersions $records $scope 0)
+                  workspace-versions-not-incorporated)))
+           $result)
+         (assistant-contact-held (index-atom $prepared 1)
+           conflicting-workspace-version-identity)))
      (if (CPShape $prepared prepared-encounter-held 3)
        (if (== (index-atom $prepared 2) duplicate-contact)
          (assistant-contact-duplicate (index-atom $prepared 1))

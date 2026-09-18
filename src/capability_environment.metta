@@ -87,7 +87,11 @@
               (and (== (is-expr (index-atom $operation 2)) false)
                    (CPShape (index-atom $operation 3)
                      expected-current-sha256 2)))
-             (C4ExecutableExtensionOperationValid $operation)))))))
+             (if (CPShape $operation workspace-version-read-v1 4)
+               (and (== (is-expr (index-atom $operation 1)) false)
+                (and (== (is-expr (index-atom $operation 2)) false)
+                     (CPShape (index-atom $operation 3) version-sha256 2)))
+               (C4ExecutableExtensionOperationValid $operation))))))))
 
 (= (C4CapabilityForOperation $operation)
    (if (CPShape $operation informational-http-v1 3)
@@ -101,7 +105,10 @@
                  (CPShape $operation workspace-rollback-v1 4))))
          (capability versioned-owned-workspace no-credential
            reversible-local-artifact)
-         (C4ExecutableExtensionCapability $operation)))))
+         (if (CPShape $operation workspace-version-read-v1 4)
+           (capability versioned-owned-workspace no-credential
+             historical-read-only)
+           (C4ExecutableExtensionCapability $operation))))))
 
 (= (C4CapabilityResourceForOperation $operation)
    (if (CPShape $operation informational-http-v1 3)
@@ -113,7 +120,9 @@
              (or (CPShape $operation workspace-list-v1 2)
                  (CPShape $operation workspace-rollback-v1 4))))
          (resource versioned-owned-workspace)
-         (C4ExecutableExtensionResource $operation)))))
+         (if (CPShape $operation workspace-version-read-v1 4)
+           (resource versioned-owned-workspace)
+           (C4ExecutableExtensionResource $operation))))))
 
 (= (C4CapabilityRouteFromMovement $movement)
    ; PeTTa evaluates both `and` operands: shape checks must guard field access
@@ -311,6 +320,23 @@
        (true true true true true true true true true true true))
      false))
 
+(= (C4WorkspaceVersionOutcomeValid $outcome $operation)
+   (if (CPShape $outcome workspace-version-result-v1 8)
+     (and (CPHas (index-atom $outcome 1) (read unavailable) 0)
+      (and (== (index-atom $outcome 2) (path (index-atom $operation 2)))
+       (and (== (index-atom $outcome 3)
+                (source-request (index-atom $operation 1)))
+        (and (CPShape (index-atom $outcome 4) contents 3)
+         (and (== (index-atom (index-atom $outcome 4) 1)
+                  (index-atom (index-atom $operation 3) 1))
+          (and (== (index-atom $outcome 5)
+                   (origin workspace-write-proposal-content))
+           (and (== (index-atom $outcome 6)
+                    historical-version-not-current-file-state)
+                (== (index-atom $outcome 7)
+                    proof-bound-source-not-truth-or-write-authority))))))))
+     false))
+
 (= (C4CapabilityObservationV2OutcomeValid $outcome $operation)
    (if (CPShape $operation informational-http-v1 3)
      (and (CPShape $outcome http-result-v1 5)
@@ -331,7 +357,9 @@
        (and (CPShape $outcome workspace-result-v1 6)
             (CPHas (index-atom $outcome 1)
               (written read listed rolled-back conflict failed) 0))
-       (C4ExecutableExtensionOutcomeValid $outcome $operation)))))
+       (if (CPShape $operation workspace-version-read-v1 4)
+         (C4WorkspaceVersionOutcomeValid $outcome $operation)
+         (C4ExecutableExtensionOutcomeValid $outcome $operation))))))
 
 (= (C4CapabilityObservationV2Valid $observation $descriptor)
    (if (and (CPShape $observation capability-observation-v2 9)
@@ -378,6 +406,138 @@
        unresolved no-contact-no-movement-authority)
      (participant-unresolved unknown-capability-observation
        carrier-schema-or-provenance-invalid)))
+
+; Historical source participation is not a fresh returned operation. Its exact
+; saved descriptor/observation must still be checked at the mechanical reader.
+; Keeping a distinct relation prevents old writes from becoming new requests.
+(= (C4WorkspaceVersionSourceParticipant $descriptor $observation)
+   (if (C4CapabilityObservationV2Valid $observation $descriptor)
+     (let* (($operation (index-atom (index-atom $descriptor 7) 1))
+            ($outcome (index-atom $observation 5)))
+       (if (and (CPShape $operation workspace-write-v1 4)
+             (and (CPShape $outcome workspace-result-v1 6)
+              (and (== (index-atom $outcome 1) written)
+                   (== (index-atom $observation 7) (failure none)))))
+         (participant-contribution
+           (c4-workspace-version-source (index-atom $descriptor 1))
+           tool (index-atom $descriptor 3)
+           (lineage miter-open-growth-environment-v1
+             (index-atom $observation 3))
+           (participant-relation-claim workspace-version-source unresolved
+             (c4-workspace-version-source-v1 $descriptor $observation
+               historical-only-no-current-file-or-write-authority))
+           unresolved no-contact-no-movement-authority)
+         (participant-unresolved unknown-workspace-version
+           no-completed-write-source)))
+     (participant-unresolved unknown-workspace-version
+       carrier-schema-or-provenance-invalid)))
+
+; Exact historical index in the ordinary checkpoint, never a mutable head.
+; Only incorporated returned writes enter; unrelated contacts cannot replace
+; another identity. Source lookup does not traverse earlier proof graphs.
+(= (C4WorkspaceVersionRows $scope $id)
+   (collapse (match &assistant_history
+     (assistant-history artifact-version $id $scope $record) $record)))
+
+(= (C4WorkspaceVersionRecordValid $record)
+   (if (CPShape $record c4-workspace-version-record-v1 3)
+     (CPShape (C4WorkspaceVersionSourceParticipant
+       (index-atom $record 1) (index-atom $record 2))
+       participant-contribution 8)
+     false))
+
+(= (C4WorkspaceVersionHistoryValid $row)
+   (if (CPShape $row assistant-history 5)
+     (let $record (index-atom $row 4)
+       (if (C4WorkspaceVersionRecordValid $record)
+         (and (== (index-atom $row 1) artifact-version)
+          (and (== (index-atom $row 2)
+                   (index-atom (index-atom $record 1) 1))
+               (== (index-atom $row 3)
+                   (index-atom (index-atom $record 1) 3))))
+         false))
+     false))
+
+(= (C4WorkspaceVersionFromParticipant $participant $scope)
+   (if (CPShape $participant participant-contribution 8)
+     (let* (($claim (index-atom $participant 5))
+            ($evidence (if (CPShape $claim participant-relation-claim 4)
+              (index-atom $claim 3) ())))
+       (if (and (== (index-atom $participant 2) tool)
+             (and (== (index-atom $participant 3) $scope)
+              (and (CPShape (index-atom $participant 4) lineage 3)
+               (if (CPShape $evidence c4-open-growth-observation-evidence-v2 6)
+                 (if (CPShape (index-atom $evidence 1) request-descriptor 2)
+                   (C4CapabilityRequestDescriptorStructuralValid
+                     (index-atom (index-atom $evidence 1) 1)) false)
+                 false))))
+         (let* (($descriptor (index-atom (index-atom $evidence 1) 1))
+                ($observation (capability-observation-v2
+                  (index-atom $descriptor 1) $scope
+                  (index-atom (index-atom $participant 4) 2)
+                  (index-atom $evidence 2) (index-atom $evidence 3)
+                  (index-atom $evidence 4) (index-atom $evidence 5)
+                  mechanical-observation-no-meaning-no-movement-authority))
+                ($expected (C4CapabilityObservationParticipant
+                  $descriptor $observation))
+                ($record (c4-workspace-version-record-v1
+                  $descriptor $observation)))
+           (if (and (== $participant $expected)
+                    (C4WorkspaceVersionRecordValid $record))
+             $record no-workspace-version))
+         no-workspace-version))
+     no-workspace-version))
+
+(= (C4WorkspaceVersionRecordsAt $participants $scope $i)
+   (if (< $i (size-atom $participants))
+     (let $record (C4WorkspaceVersionFromParticipant
+       (index-atom $participants $i) $scope)
+       (if (== $record no-workspace-version)
+         (C4WorkspaceVersionRecordsAt $participants $scope (+ $i 1))
+         (cons-atom $record
+           (C4WorkspaceVersionRecordsAt $participants $scope (+ $i 1)))))
+     ()))
+
+(= (C4WorkspaceVersionPeersCompatible $record $records $i)
+   (if (< $i (size-atom $records))
+     (let $other (index-atom $records $i)
+       (and (if (== (index-atom (index-atom $record 1) 1)
+                    (index-atom (index-atom $other 1) 1))
+              (== $record $other) true)
+            (C4WorkspaceVersionPeersCompatible $record $records (+ $i 1))))
+     true))
+
+(= (C4WorkspaceVersionsCompatible $records $scope $i)
+   (if (< $i (size-atom $records))
+     (let* (($record (index-atom $records $i))
+            ($id (index-atom (index-atom $record 1) 1))
+            ($rows (collapse (match &assistant_history
+              (assistant-history artifact-version $id $other-scope $other)
+              ($other-scope $other)))))
+       (and (or (== $rows ()) (== $rows (($scope $record))))
+        (and (C4WorkspaceVersionPeersCompatible $record $records (+ $i 1))
+             (C4WorkspaceVersionsCompatible $records $scope (+ $i 1)))))
+     true))
+
+(= (C4RecordWorkspaceVersions $records $scope $i)
+   (if (< $i (size-atom $records))
+     (let* (($record (index-atom $records $i))
+            ($stored (ARRecord artifact-version
+              (index-atom (index-atom $record 1) 1) $scope $record)))
+       (C4RecordWorkspaceVersions $records $scope (+ $i 1)))
+     workspace-versions-recorded))
+
+(= (C4WorkspaceVersionSourceForOperation $scope $operation)
+   (if (CPShape $operation workspace-version-read-v1 4)
+     (let $rows (C4WorkspaceVersionRows $scope (index-atom $operation 1))
+       (if (== (size-atom $rows) 1)
+         (let $record (index-atom $rows 0)
+           (C4WorkspaceVersionSourceParticipant
+             (index-atom $record 1) (index-atom $record 2)))
+         (participant-unresolved unknown-workspace-version
+           exact-source-unavailable-not-absence)))
+     (participant-unresolved unknown-workspace-version
+       not-a-version-read)))
 
 (= (C4EnvironmentAvailableClaimAt $claims $i)
    (if (< $i (size-atom $claims))

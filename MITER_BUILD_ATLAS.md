@@ -6238,6 +6238,74 @@ Already carried:
   exact-version seam and unrelated-history cost test next, using the existing
   native checkpoint and immutable source records, not recency or a new store.
 
+  **C4 exact historical workspace access, 2026-09-17:** following `dd3ea0b`,
+  the next falsifier separates an older version from today's file. The existing
+  grammar supports current read and destructive rollback, but no read-only
+  exact-version operation; a bounded pre-edit reduction confirms native and
+  mechanical rejection of that operation. The additive implementation now
+  retains completed, incorporated workspace writes as exact scoped
+  `artifact-version` history in the same canonical checkpoint. Request identity
+  is immutable; conflicting identity or scope is held before incorporation.
+  No timestamp, newer conversation message or associative rank selects a head.
+
+  `workspace-version-read-v1` participates through the existing semantic
+  proposal grammar, native movement formation, exact history lookup, source
+  reformation, proof-bound capability membrane and returned-contact/VoiceRNA
+  context. The reader requires the explicitly participating source request,
+  scope, path, content hash, independently checked original proof, durable
+  claim and exact saved observation to agree. It reads the original proposed
+  bytes already retained by that proof, not a new archive or current file.
+  The result remains historical workspace-write proposal content, not verified
+  world truth, current file state or new write permission. Missing evidence is
+  unavailable, never proof of absence. Existing checkpoints remain valid;
+  old writes without this prospective index are not silently backfilled.
+
+  Two actual isolated writes, an external change of the current file, and a
+  native older-version inquiry recover exactly the first body while leaving
+  the changed file untouched. Wrong path/hash/scope, a nonparticipating source,
+  byte overflow, missing saved observation and conflicting index identity are
+  refused. Restoring the missing observation restores exact read availability.
+  Producer schema, JSON receiver, term receiver and ordinary VoiceRNA context
+  agree. The test uses native requests and real private workspace operations,
+  not paid model calls or live conversation acceptance.
+
+  Invalidation is limited to newly incorporated returned-write indexing and
+  the requested historical source's participation: the latter adds one full
+  source reformation before the ordinary returned-contact reformation. No
+  historical proof graph is searched or re-formed merely to find an identity.
+  Two writes take 5.957/5.720 and 5.971/5.744 wall/CPU seconds versus
+  6.228/5.936 and 6.297/6.012 previously; their checkpoints are 99,436/145,224
+  bytes, 748/1,138 factors. The historical read takes 8.809/8.475 seconds,
+  three formations including initial contact, zero model calls; its checkpoint
+  is 187,349 bytes/1,348 factors. Two hundred exact native lookups take
+  0.00787, 0.00777 and 0.00781 seconds with 0/1,000/4,000 unrelated history
+  rows. This is an index slope, not a claim about all growing-history cognition.
+
+  Supported disposable `bin/miter` install/start/stop/restart preserves all
+  17 checkpoint, continuity, workspace, operation and proof files exactly;
+  fresh native restore and independent proof/cache readback pass with no replay.
+  Startup/restart reach waiting in 4.980/5.572 seconds; five idle seconds add
+  0.16 child CPU seconds and 272 KiB RSS. The initial trial correctly refused
+  stale pins for the two edited capability sources; only those runtime hashes
+  are refreshed, with doctrine bytes and loaded constitutional atoms unchanged.
+  Ordinary two-turn checks take 5.792/5.572 and 5.839/5.621 wall/CPU seconds
+  versus 6.037/5.769 and 6.147/5.843; calls and formations are unchanged.
+  Their checkpoints grow by 340 bytes for the new operation instructions,
+  with factor counts unchanged. Cold bootstrap takes 1.131/1.097 seconds.
+  No installed upgrade, external model call, post or live-state write occurs.
+
+  All trial families are stopped. Pre-commit process inspection finds only
+  installed broker 88003, supervisor 88487 and child 88498; the child is at
+  3.0% sampled CPU and 976,736 KiB RSS after 47 minutes. Source balance, diff
+  checks and the runtime-only tracked-file audit pass. The six disposable
+  runtime/workspace directories and stage-specific scripts/outputs are removed
+  from the private temporary area; retained earlier fixtures and live data are
+  untouched. The next cut remains
+  model-visible, scope/capsule-verified artifact reference selection for an
+  unfamiliar named-version request, then its ordinary conversation carry.
+  Exact lookup is now implemented; this is not full named-artifact resolution,
+  research delivery, general recovery or whole-C4 closure.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
