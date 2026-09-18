@@ -96,7 +96,7 @@
     },
     {
       "path": "src/model_recovery.metta",
-      "sha256": "cffdd9e6eaee0fa307a4556b459308f29bc4acf9ca62ffe3ba617119c99995be"
+      "sha256": "3a2623d7a9721f7bc4b4de20a27eafd739876339a58a41a28419f90cdff02960"
     },
     {
       "path": "src/vad.metta",

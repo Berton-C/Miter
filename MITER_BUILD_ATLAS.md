@@ -6761,6 +6761,91 @@ Already carried:
   state-schema migration, broader skill transfer and earned effect authority
   remain open; this correction is locally verified and not yet installed.
 
+  **C4 native returned-inquiry basis, 2026-09-18:**
+  Following `2febdf6`, the next boundary is native formation and comparison,
+  not another adapter retry. Inspection of the captured exhausted route finds
+  three partial simultaneous R/A/P openings. They preserve Relatedness and
+  Precision while Appropriateness remains open. The existing positively
+  engaged-flourishing inquiry gate does not establish an inquiry from these
+  unknown relations. Do not make it pass by fabricating beneficial support,
+  declaring an unknown relation immaterial, or treating the existence of a
+  candidate as native discovery.
+
+  The ordinary model-contract correction now carries a locally retained
+  native inquiry basis: exact returned evidence, source cut/scope/movement,
+  partial openings, Fact9 participation and all nine current flourishing
+  standings, including unresolved ones. The same constructor accepts a saved
+  model-contract failure and a saved returned web contact. The participant
+  surface must equal the derivation from the actual movement basis; a detached
+  or forged surface cannot supply inquiry evidence. Source, scope, contact,
+  typed return and no-authority distinctions remain explicit. The membrane
+  checks and persists this native basis; it does not select an alternative.
+
+  This is a shared representation and local carry prerequisite, not the
+  completed shared recovery consumer. Its integrated consumer remains the
+  previously bounded contract correction. The V2 wrapper transmits exactly
+  the V1 JSON and uses the identical attempt hash. It does not disclose the
+  new derived context, renew an allowance, replay a completed return or alter
+  model instructions. The V1 carrier remains supported. An expanded external
+  inquiry requires its own explicitly scoped disclosure authorization and
+  native relevance formation; retaining the whole compass locally is not
+  permission to send an unbounded Soul or private continuity dump.
+
+  No movement semantics are invalidated by this representation cut. Only the
+  local correction wrapper/lineage acquires the new native projection. The
+  existing failure, corrected candidate, possibility formation, simultaneous
+  judgment, returned consequence and native checkpoint remain unchanged.
+  The native projection preserves `file-precondition-unknown`; it does not
+  supply a file-state witness or write authority. On the first captured failure
+  all nine flourishing standings are `contact-relative-standing-not-yet-formed`.
+  They must not be relabeled `no-material-relation`, beneficial or harmful.
+
+  Before commit, the pinned compiler exposed a forward-definition trap:
+  referring to not-yet-defined C3/C4 projection functions produced inert terms,
+  not delayed execution. The constructor now follows those definitions;
+  reduced-output checks cover the model and web-return surfaces. A pre-effect
+  proof correctly supplies no returned-tool inquiry; the exact later redirect
+  proof supplies its one actual returned contact. Unknown, missing and returned
+  are not interchangeable merely to make a fixture pass.
+
+  Captured valid correction, repeated invalid correction, unavailable resource
+  and unlocalized findings retain their existing distinct continuations.
+  Forged inquiry, detached participants, wrong scope/contact and non-tool
+  source controls fail. Fresh readback checks the exact persisted proof,
+  original rejection, corrected candidate, unchanged attempt identity and
+  spent claim. No rejected raw artifact becomes admitted semantic evidence.
+
+  Immediate-parent ordinary two-turn comparison: 6.176/6.216 wall seconds
+  versus 6.132/6.244 (candidate CPU 5.830/5.937), cold bootstrap 1.222 versus
+  1.245 seconds. Failure/correction/expression comparison: 13.787/14.136 wall
+  seconds versus 13.719/13.890 (CPU 13.204/13.521 versus 13.142/13.332), cold
+  bootstrap 1.220 versus 1.223. Both versions use two offline callbacks per
+  ordinary turn and three per failure turn, zero external model calls.
+  Expanded native checkpoints are exactly equal in both two-turn carries.
+  Ordinary sizes remain 104,311/141,102 bytes and 761/1,141 factors; failure
+  sizes remain 106,084/153,812 bytes and 771/1,181 factors. The new local
+  correction lineage is 15,280 bytes in the captured case, including 13,129
+  characters of inquiry; the prior lineage serializes to 2,148 characters.
+  Fresh independent inquiry readback takes approximately 0.011 wall / 0.010
+  CPU seconds. This is not a broad growing-history performance closure.
+
+  Supported credential-free disposable install/start/stop/restart preserves
+  the exact recovery checkpoint, local inquiry/spend lineage and completed
+  return without replay. Both starts reach native waiting in approximately
+  5.1 seconds; all six protected checkpoint/claim/proof records remain exact.
+  The live installation, credentials, model services,
+  Mattermost and network are untouched. Temporary process families are stopped
+  and the owned stage area is removed at this commit waypoint. The unchanged
+  live child at 2h35m is sampled at 1.5% CPU / 986,848 KiB RSS, with no observed
+  growth from the previous waypoint; this is not a live conversational test.
+
+  **Next falsifier remains open:** use the source-bound partial openings to
+  form and compare inquiry/continuation candidates natively across materially
+  different failed contacts, independently varying evidence and authority.
+  Then carry ordinary enactment, consequence and restart. Neither the new
+  local record nor the old single correction establishes that judgment. No
+  C4 closure, new live research success or installation is claimed here.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

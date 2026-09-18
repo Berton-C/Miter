@@ -43,6 +43,12 @@ as_model_checked(Root0, Question, Observation) :-
       as_model_correction_witness(Root,Question)),
     as_model_checked_attempt(Root,Original,Question,Observation).
 as_model_checked(Root0, Question, Observation) :-
+    Question=['c4-model-contract-correction-v2',Original,_,_,_,_],!,
+    as_model_preflight('runtime-root-invalid',as_root(Root0,Root)),
+    as_model_preflight('contract-correction-witness-invalid',
+      as_model_correction_witness(Root,Question)),
+    as_model_checked_attempt(Root,Original,Question,Observation).
+as_model_checked(Root0, Question, Observation) :-
     as_model_checked_attempt(Root0,Question,Question,Observation).
 
 % The native caller alone requests a retry. Its distinct, deterministic
@@ -135,11 +141,26 @@ as_model_write_attempt_lineage(Claim,Question,
     directory_file_path(Claim,'correction-of.term',Path),
     as_model_write_observation(Path,
       ['c4-model-contract-correction-lineage-v1',OriginalHash,Prior,ProofRecord]).
+as_model_write_attempt_lineage(Claim,Question,
+    ['c4-model-contract-correction-v2',Question,Prior,ProofRecord,_,Inquiry]) :-
+    as_model_question_sha256(Question,OriginalHash),
+    directory_file_path(Claim,'correction-of.term',Path),
+    as_model_write_observation(Path,
+      ['c4-model-contract-correction-lineage-v2',OriginalHash,Prior,ProofRecord,Inquiry]).
 
 % Mechanical proof and persisted-return checks. The membrane neither chooses
 % this inquiry nor converts a schema defect into world evidence or authority.
 as_model_correction_witness(Root,
     ['c4-model-contract-correction-v1',Q,Prior,Record,Instructions]) :-
+    as_model_correction_proof(Root,Q,Prior,Record,Instructions,_).
+as_model_correction_witness(Root,
+    ['c4-model-contract-correction-v2',Q,Prior,Record,Instructions,Inquiry]) :-
+    ground(Inquiry),
+    as_model_correction_proof(Root,Q,Prior,Record,Instructions,Proof),
+    'C4ReturnedInquiryBasisFromValidatedProof'(Proof,Expected),
+    Inquiry==Expected,Inquiry=['c4-returned-inquiry-basis-v1'|_].
+
+as_model_correction_proof(Root,Q,Prior,Record,Instructions,Proof) :-
     Q=['c4-contact-semantic-question-v1',Ref,Scope|_],
     as_model_failure_bound(Q,Prior,true),
     Prior=['c4-model-observation-unavailable-v3',Ref,Scope,_,Reason,
@@ -162,6 +183,15 @@ as_model_correction_witness(Root,
     nth0(8,Basis,[continuation,'corrected-candidate-inquiry']),
     'C4ContractCorrectionInstructions'(Instructions).
 
+% V2 retains native inquiry locally. Its transmitted payload is deliberately
+% identical to V1: no derived inquiry context or additional private material
+% is disclosed. This is not yet the shared semantic continuation consumer.
+as_model_request_for_attempt(Profile,Q,
+    ['c4-model-contract-correction-v2',Q,Prior,Record,Correction,_Inquiry],
+    Instructions,Tokens,Body) :- !,
+    as_model_request_for_attempt(Profile,Q,
+      ['c4-model-contract-correction-v1',Q,Prior,Record,Correction],
+      Instructions,Tokens,Body).
 as_model_request_for_attempt(Profile,Q,Attempt,Instructions,Tokens,Body) :-
     as_model_request(Profile,Q,Instructions,Tokens,Ordinary),
     ( Attempt=['c4-model-contract-correction-v1',Q,Prior,_,Correction] ->
@@ -979,6 +1009,13 @@ as_model_perspective(Value) :-
 % same single correction spend identity, even if the proof record changes.
 as_model_question_sha256(
     ['c4-model-contract-correction-v1',Question,Prior,_Proof,Instructions],
+    Hash) :- !,
+    as_model_question_sha256(
+      ['c4-model-contract-attempt-v1',Question,Prior,Instructions],Hash).
+% Local inquiry retention does not renew a correction allowance. An old
+% claim/return remains the same attempt through upgrade or proof re-embodiment.
+as_model_question_sha256(
+    ['c4-model-contract-correction-v2',Question,Prior,_Proof,Instructions,_Inquiry],
     Hash) :- !,
     as_model_question_sha256(
       ['c4-model-contract-attempt-v1',Question,Prior,Instructions],Hash).
@@ -2933,6 +2970,8 @@ as_model_unavailable(['c4-empty-completion-retry-v1',Question,_],Error,
     Observation) :- !,
     as_model_unavailable(Question,Error,Observation).
 as_model_unavailable(['c4-model-contract-correction-v1',Question,_,_,_],Error,
+    Observation) :- !,as_model_unavailable(Question,Error,Observation).
+as_model_unavailable(['c4-model-contract-correction-v2',Question,_,_,_,_],Error,
     Observation) :- !,as_model_unavailable(Question,Error,Observation).
 as_model_unavailable(Question,Error,
     ['c4-model-observation-unavailable-v1',QuestionRef,Scope,

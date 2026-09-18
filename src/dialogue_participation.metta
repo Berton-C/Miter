@@ -613,6 +613,45 @@
        (if (CPShape $question c4-contact-semantic-question-v1 12) 11 10)) 1)
      unknown-model-resource))
 
+; Keep this projection after the C3/C4 constructors it executes. On the pinned
+; compiler an unknown forward name is retained as data, not deferred execution.
+; This basis retains a question's evidence; it does not choose a next action.
+(= (C4ReturnedInquiryBasisFromValidatedProof $proof)
+   (if (CPShape $proof native-movement-proof-v1 5)
+     (let* (($cut (index-atom $proof 1))
+            ($scope (index-atom $proof 2))
+            ($movement (index-atom $proof 3))
+            ($basis (C3MovementBasisFromReadings $movement))
+            ($returned (C4ReturnedInquiryEvidenceAt (index-atom (index-atom $proof 4) 2)
+              $scope (index-atom (index-atom $cut 1) 1) 0)))
+       (if (if (CPShape $basis continuation-basis-v3 6)
+             (and (> (size-atom $returned) 0)
+                  (== (index-atom (index-atom $proof 4) 2)
+                      (CPParticipantAt (CPBaseCutWithoutParticipantRelations $cut)
+                        (index-atom $basis 3) 0))) false)
+         (let* (($base-cut (CPBaseCutWithoutParticipantRelations $cut))
+                ($facts (CPFactExpressionsAt $base-cut (index-atom $basis 1) 0))
+                ($flourishing (CPFlourishingOrganizationV2 $base-cut (index-atom $basis 2))))
+           (c4-returned-inquiry-basis-v1
+             (source-cut (index-atom $cut 1) $scope)
+             (source-movement (ARMovementReference $cut $movement))
+             (returned-evidence $returned)
+             (partial-openings (C3OpeningsFromMovement $movement $cut (index-atom $basis 5)))
+             (fact9-participation (C4Fact9EntriesAt $facts 0))
+             (flourishing-participation
+               (C4FlourishingEntriesAt (index-atom $flourishing 2) 0))
+             (inquiry-standing unresolved-relevance-is-a-question-not-beneficial-evidence
+               no-material-relation-is-not-a-positive-or-negative-verdict)
+             (authority unchanged-no-operation-granted
+               proposals-require-ordinary-native-formation-and-independent-execution-checks)))
+         (c4-returned-inquiry-basis-unavailable no-bound-returned-contact)))
+     (c4-returned-inquiry-basis-unavailable malformed-native-proof)))
+
+(= (C4ReturnedInquiryBasis $proof)
+   (if (ARNativeMovementProofValid $proof)
+     (C4ReturnedInquiryBasisFromValidatedProof $proof)
+     (c4-returned-inquiry-basis-unavailable native-proof-invalid)))
+
 (= (C4ContactSemanticQuestion $contact $encounter $direction)
    (if (and (CPContactValid $contact)
          (and (CPShape $encounter constitutive-encounter 7)
@@ -2871,8 +2910,9 @@
          (let* (($proof (ARNativeMovementProof $encounter))
                 ($record ($proof-writer $root
                   (C4CapabilityProofId $encounter) $proof))
-                ($correction (c4-model-contract-correction-v1 $question
-                  $observed $record (C4ContractCorrectionInstructions)))
+                ($correction (c4-model-contract-correction-v2 $question
+                  $observed $record (C4ContractCorrectionInstructions)
+                  (C4ReturnedInquiryBasisFromValidatedProof $proof)))
                 ($returned ($writer $root $correction)))
            (if (C4SemanticObservationValid $returned $question)
              (c4-semantic-contact-v1 $failure-prepared $returned

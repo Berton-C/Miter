@@ -52,6 +52,39 @@
          true (C4RecoveryFileUnknownAt $fields (+ $i 1))))
      false))
 
+; Inquiry is not a claim that its flourishing requirements are satisfied.
+; This surface preserves the complete current compass, including identities
+; with no established material relation, beside the exact simultaneous native
+; readings. It supplies neither missing world evidence nor movement authority.
+; Callers derive it from an independently validated, exact native proof.
+(= (C4ReturnedInquiryEvidenceAt $participants $scope $contact-id $i)
+   (if (< $i (size-atom $participants))
+     (let* (($participant (index-atom $participants $i))
+            ($rest (C4ReturnedInquiryEvidenceAt $participants $scope $contact-id (+ $i 1))))
+       (if (if (CPShape $participant derived-participant-reading 9)
+             (and (== (index-atom $participant 2) tool)
+               (and (== (index-atom $participant 3) $scope)
+                 (and (== (index-atom $participant 7) no-contact)
+                   (and (== (index-atom $participant 8) no-movement-authority)
+                        (CPShape (index-atom $participant 5) participant-relation-claim 4))))) false)
+         (let* (($claim (index-atom $participant 5))
+                ($evidence (index-atom $claim 3)))
+           (if (if (== (index-atom $claim 2) unresolved)
+                 (if (== (index-atom $claim 1) model-return-failure)
+                   (if (C4RecoveryEvidenceValid $evidence)
+                     (let $question (index-atom $evidence 1)
+                       (and (== (index-atom $question 2) $scope)
+                            (== (index-atom (index-atom $question 1) 1) $contact-id))) false)
+                   (if (== (index-atom $claim 1) open-growth-request-returned)
+                     (if (C4CapabilityReturnedEvidenceValid $evidence)
+                       (let $descriptor (index-atom (index-atom $evidence 1) 1)
+                         (and (== (index-atom $descriptor 3) $scope)
+                              (== (index-atom $descriptor 4) (source-contact $contact-id)))) false)
+                     false)) false)
+             (cons-atom $evidence $rest) $rest))
+         $rest)) ()))
+
+
 (= (C4RecoveryBasis $evidence)
    ; An older carrier did not contain these contract findings. Its saved
    ; movement must remain readable under its original meaning, not acquire a
