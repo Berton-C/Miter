@@ -6375,6 +6375,67 @@ Already carried:
   judgment and current-file reconciliation must not be claimed from header
   availability alone.
 
+  **C4 backward release carry and workshop preservation, 2026-09-17:**
+  The Atlas C4/distribution seams, hygiene law, C-034--042 and S-607/801--803
+  are reread before this stage and at its verification waypoint. The bounded
+  hypothesis is that changing application code preserves the latest native
+  state, not an earlier pre-upgrade snapshot; an incompatible predecessor must
+  refuse rather than erase newer organization.
+
+  Actual installer migration, immutable backups and supported disposable
+  runtime entry points carry the two-write artifact checkpoint from `7fb6ea5`
+  to exact source parent `bff32fc` and back. Both historical identities, latest
+  workspace content, independent source proofs and exactly-once observations
+  survive. The older installed-source release `37639c4` mechanically reads the
+  bytes but natively rejects the new artifact history. Restoring the preserved
+  current runtime recovers that same checkpoint and reaches waiting again.
+  Readiness takes 5.075 seconds for the compatible predecessor, 5.077 on return
+  and 5.103 after the incompatible attempt. The return and incompatible cases
+  copy all 24/27 existing durable records exactly before startup. Subsequent
+  differences are only the two normal start/stop intents, append-only lifecycle
+  trajectory/object storage and polling time; checkpoint, workspace, operation,
+  proof, claim and effect identities stay exact. These are unprivileged actual
+  migration/native-lifecycle checks, not a claim that the installed root-owned
+  `rollback-release` wrapper or live services have been exercised. That carry
+  remains open. No consumed contact is replayed.
+
+  Inspecting the same migration path against Open Growth exposes a concrete
+  omission: `workshop` was absent from the durable-directory vocabulary even
+  though it owns staged source, candidate Git worktrees, trials, prepared
+  transitions and active-extension identity. A real mechanical stage of an
+  inert extension creates 44 workshop files; the unchanged installer drops all
+  44 while retaining the capability/checkpoint records. Adding that directory
+  alone preserves bytes but still fails independent candidate verification:
+  blanket private-file normalization changes the entrypoint's tracked mode
+  from executable to nonexecutable. This is a storage defect, not a new
+  cognitive judgment or a reason to weaken Git/proof checks.
+
+  The finite installer now carries the workshop and retains existing owner
+  execute bits when securing live copies and making read-only backups. It
+  still clears group/other and special permission bits; ordinary private JSON
+  remains nonexecutable. The actual edited functions preserve all 44 files,
+  original commit, clean candidate, staged/prepared identities and the exact
+  native artifact checkpoint. Entry modes become private 0700 in the runtime
+  and read-only 0500 in its backup, with nonexecutable files 0600/0400. The only
+  post-verification byte difference is Git's disposable index stat cache;
+  source bytes and tracked modes remain independently verified. A partial
+  runtime containing only workshop state is now recognized as material and
+  protected by the existing incomplete-runtime handling. No extension is
+  activated or invoked, no Docker/model/network call is made, and no claim of
+  newly acquired cognitive authority or state-schema migration is made.
+
+  Invalidation is confined to finite migration/quarantine storage membership
+  and permission normalization. Native constructors, doctrine, provider limits,
+  grants, formations and ordinary turn cost are unchanged. Source balance,
+  installer parsing, diff and runtime-only tracked-file checks pass. All trial
+  process families are stopped. The exact stage area, temporary release copies,
+  private backups, disposable workshop repository/worktree and separate two-write
+  fixture are removed before commit; earlier captures and live data are left
+  alone. These findings close a proved data-preservation defect, not the full
+  installed rollback, live artifact conversation, stateful extension migration
+  or whole C4 acceptance. The next installed handoff includes this correction
+  together with the preceding native recovery and artifact-discovery work.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

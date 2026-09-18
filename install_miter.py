@@ -47,7 +47,7 @@ APPLICATION_MEMBERS = (
 DURABLE_RUNTIME_DIRECTORIES = (
     "inbox", "leased", "consumed", "rejected", "store", "checkpoints",
     "continuity", "receipts", "outbox", "proofs", "intents", "model",
-    "surface", "semantic", "workspace", "capabilities",
+    "surface", "semantic", "workspace", "capabilities", "workshop",
 )
 DURABLE_RUNTIME_FILES = (
     "evaluation-grants.json", "model-direction.json", "model-grants.json",
@@ -428,7 +428,9 @@ def make_private_read_only_tree(root: pathlib.Path) -> None:
         if path.is_dir():
             path.chmod(0o700)
         elif path.is_file():
-            path.chmod(0o400)
+            # Keep existing executable identity for later exact restoration;
+            # read-only backup is not permission to erase Git's file mode.
+            path.chmod(0o500 if path.stat().st_mode & stat.S_IXUSR else 0o400)
         if os.geteuid() == 0:
             os.chown(path, 0, 0)
 
@@ -1019,7 +1021,8 @@ def secure_owned_tree(root: pathlib.Path, account: pwd.struct_passwd) -> None:
         if path.is_dir():
             path.chmod(0o700)
         elif path.is_file():
-            path.chmod(0o700 if path.name == "libmiter_store_posix.dylib" else 0o600)
+            executable = bool(path.stat().st_mode & stat.S_IXUSR)
+            path.chmod(0o700 if executable or path.name == "libmiter_store_posix.dylib" else 0o600)
         os.chown(path, account.pw_uid, account.pw_gid)
 
 
