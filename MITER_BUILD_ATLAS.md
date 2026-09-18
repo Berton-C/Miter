@@ -6436,6 +6436,75 @@ Already carried:
   or whole C4 acceptance. The next installed handoff includes this correction
   together with the preceding native recovery and artifact-discovery work.
 
+  **Installed carry and growing-history restart correction, 2026-09-18:**
+  Berton's supported upgrade installs `342ba38` from `37639c4`. The runtime
+  identity remains `76c25246-c914-4018-a5e8-bf5bcdef3f26`, and the active
+  checkpoint remains
+  `6ff0797f5353286db4b331790b77aa61ca0675caeb585580ae7221e47a2660fa`.
+  There are no carried inputs. The cold restore reports no replay; open-until-
+  revoked conversation authority and 50 admitted / 19 outbound / 120 model
+  calls are retained. The exact new operator source, verified LKG, native-ready
+  child and live supervisor are reported; Mattermost, Chroma and workshop
+  broker are ready. This establishes the installed handoff, not a new human
+  conversation or root-owned predecessor-rollback result. A process observation
+  22 minutes later finds the same installed family and no diagnostic survivors.
+
+  The Atlas's active C4 cut, hygiene and constitutive-efficiency law are reread
+  at this stage's start, after its discriminating result, and at commit. C-032,
+  C-045, C-100/104 and S-801--803 require complete, exact restoration without
+  making accumulated history an avoidable startup burden. The one-variable
+  trial retains the same contact and captured semantic response while adding
+  0, 200, 1,000 and 5,000 structurally valid, explicitly diagnostic historical
+  rows in an unrelated scope. It does not simulate thousands of earned
+  cognitive developments or claim that arbitrary proof-graph growth is solved.
+
+  On the immediately preceding supported source, ordinary turns stay near
+  6.0 seconds, but native restoration of the unrelated rows rises from
+  0.00015 seconds at zero to 0.056 at 200 and 4.02 at 1,000. Isolation assigns
+  2.06 seconds to exact-row uniqueness and 1.93 to history-key uniqueness;
+  payload validation, voice/effect checking and row installation together
+  take about 0.024 seconds. Repeated indexed scans inside prior-item scans,
+  not a model, Mattermost or new constitutive formation, cause that cost.
+
+  The V2 restore envelope now uses native PeTTa exact-identity uniqueness and
+  compares cardinalities; it still installs the original ordered history.
+  It never deduplicates, discards or promotes a row. The key remains kind plus
+  ID across scopes. All payload, effect/proof pairing, capability lineage,
+  active-organization reformation and authority checks remain in place.
+  4,681 exact equality cases (including atom/string and numeric distinctions)
+  and 781 key-conflict cases agree with the old functions. An additional
+  negative reveals an existing truncated-history-row path that erased the
+  native result through eager indexing. A native carrier-shape guard now
+  returns explicit restore rejection before that indexing. Duplicate rows,
+  altered payloads under one key, cross-scope key collisions, unknown species,
+  malformed scopes and truncated rows all reject without partial installation.
+
+  At 1,000 rows, the two uniqueness checks take about 0.004 seconds; full
+  snapshot restoration with its unchanged active organization falls from
+  5.108 seconds / 4.933 CPU to 1.047 / 1.002. Exact expanded native checkpoint
+  equality passes against the baseline. At 5,000 rows, full restoration takes
+  1.560 seconds / 1.514 CPU and still re-forms the active organization once.
+  Ordinary turns remain 5.93--6.03 seconds with two full constitutive formations,
+  two local fixture calls, no external model calls, and unchanged admitted
+  organization. Checkpoint sizes at 0 / 200 / 1,000 / 5,000 rows are
+  104,311 / 121,417 / 189,419 / 545,799 bytes; write time grows from 0.074 to
+  0.491 seconds. Deeper real developmental histories and voice/effect-pair
+  growth remain separate proportionality obligations.
+
+  Two actual supported disposable start/stop/restart cycles at 1,000 rows
+  compare exact predecessor source with this correction: native readiness
+  changes from 8.816/8.785 to 4.764/4.769 seconds. Five protected checkpoint /
+  capsule records remain byte-identical through each run; model-spend and
+  effect records remain empty. Four seconds of idle add 0.19 CPU seconds in
+  both versions, with no material RSS difference. No live service is stopped,
+  no credential copied, and no message or model request sent. Source balance,
+  all rejection controls and the ordinary native path pass. The exact new
+  temporary area, trial runtimes, source copies and instruments are removed
+  before commit; earlier captures remain untouched. Only runtime source and
+  this Atlas change. This correction is locally verified, not installed or
+  whole-C4 completion. Continue the fresh installed conversation carry and
+  the open state-migration / skill-transfer / effect-authority seams below.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -6526,11 +6595,14 @@ Next movement:
    Preserve the known-working
    baseline, open conversation authority and all terminal history; do not
    replay consumed contacts or reopen native cognition to fix a mechanical
-   handoff. C4 is active on bounded native failure recovery, with the first
-   durable-participation prerequisite and remaining judgment gap recorded
-   above. After this native recovery and its live carry, continue the older-
-   artifact/version-resolution seam identified above and its growing-history
-   proportionality obligation; do not interrupt ordinary conversation for
+   handoff. Bounded native failure participation, recovery judgment and
+   VoiceRNA expression now pass the local ordinary path, and `342ba38`
+   installs those changes together with exact historical artifact access and
+   scoped version discovery. Fresh installed conversational carry remains
+   open; local fixtures are not its substitute. The growing-history restart
+   correction above is locally verified but not installed. Continue that live
+   carry, real developmental-history proportionality and the remaining Open
+   Growth seams; do not interrupt ordinary conversation for
    unrelated trials. Main publication is complete,
    not a standing blocker. Future live
    upgrades use the supported recoverable release transition and must identify

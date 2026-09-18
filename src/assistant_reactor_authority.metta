@@ -1029,14 +1029,38 @@
 ; Restore therefore validates their inert carrier and the whole envelope,
 ; stages only those capability rows, and then re-forms active organizations
 ; against the exact staged versions. No candidate is executed during restore.
+; PeTTa's unique-atom uses exact identity, like CPHas, without repeated indexed
+; scans of every preceding row. Compare cardinalities only: no history is
+; deduplicated, discarded, reordered, or admitted by this structural check.
+(= (AR2RestoreRowsUnique $rows)
+   (if (is-expr $rows)
+     (== (size-atom $rows) (size-atom (unique-atom $rows)))
+     false))
+
+(= (AR2RestoreHistoryKeysUnique $rows)
+   (AR2RestoreRowsUnique
+     (map-atom $rows $row
+       (if (CPShape $row assistant-history 5)
+         (history-key (index-atom $row 1) (index-atom $row 2))
+         malformed-history-key))))
+
+(= (AR2RestoreHistoryCarriersValid $rows)
+   (if (is-expr $rows)
+     (not (is-member false
+       (map-atom $rows $row (CPShape $row assistant-history 5))))
+     false))
+
 (= (AR2RestoreEnvelopeValid $state-wrapper $history-wrapper $state $history)
-   (and (ARSpacesEmpty)
+   ; Guard before eager validation can index a truncated row and erase the
+   ; rejection result. Full native payload and cross-row checks still follow.
+   (if (AR2RestoreHistoryCarriersValid $history)
+    (and (ARSpacesEmpty)
      (and (CPShape $state-wrapper state 2)
       (and (CPShape $history-wrapper history 2)
        (and (is-expr $state)
         (and (is-expr $history)
          (and (CPUniq $state 0 ())
-          (and (CPUniq $history 0 ())
+          (and (AR2RestoreRowsUnique $history)
            (and (AR2StateSpeciesKnownAt $state 0)
             (and (ARAllValid (AR2CapabilityStateRowsAt $state 0)
                    WHActiveCapabilityValid 0)
@@ -1047,7 +1071,8 @@
                (and (AR2AllHistoryValid $history 0)
                 (and (AR2VoiceEffectReferencesConsistentAt $history 0)
                  (and (ARStateScopesUnique $state 0 ())
-                      (ARHistoryKeysUnique $history 0 ()))))))))))))))))
+                      (AR2RestoreHistoryKeysUnique $history)))))))))))))))
+    false))
 
 (= (AssistantRestoreV2 $snapshot)
    (if (CPShape $snapshot assistant-snapshot 3)
