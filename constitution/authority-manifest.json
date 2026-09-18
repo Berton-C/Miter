@@ -92,7 +92,7 @@
     },
     {
       "path": "src/capability_environment.metta",
-      "sha256": "869e4d9e69c1f95d16d1d209ba47570be2e471f9e434f4d1d147a930fec83097"
+      "sha256": "37a90b4de055445b66217c86de767ed6bb30cc1ab7f328428c1947de8c313c09"
     },
     {
       "path": "src/model_recovery.metta",

@@ -6997,6 +6997,79 @@ Already carried:
   routes beside independent openings, and carry its actual changed continuation
   and unfinished undertaking through consequence and restart. No C4 closure.
 
+  **C4 returned-candidate participation and installed carry, 2026-09-18:**
+  Berton's supplied installation output confirms `fa364f9` is active after
+  cold restore, with checkpoint `6ff0797f5353286db4b331790b77aa61ca0675caeb585580ae7221e47a2660fa`
+  unchanged, no carried input, the supervisor alive and workshop ready.
+  Conversation accounting remains 50 admitted / 19 outbound / 120 model
+  calls and the open-until-revoked policy remains active. This establishes
+  installation, not a fresh conversational trial or completion of C4.
+
+  The next falsifier exposes a precise participation defect: both new GET and
+  HEAD proposals from the approved saved web-inquiry return entered the
+  encounter, but their initial-interpretation V1 family was excluded by the
+  existing returned-result family. They therefore never reached the final
+  native comparison. An unchanged selected redirect was not evidence that
+  native cognition had compared and rejected those later alternatives.
+
+  A versioned V3 proposal carrier now binds later candidates to the exact
+  independently validated source proof, returned-inquiry identity, retained
+  question and returned artifact identity. It preserves the reading's exact
+  Fact9 roles and flourishing requirements. It does not recast a model
+  proposal as the earlier V2 carrier, whose flourishing requirements have a
+  different meaning. Historical V1/V2 proofs retain their original meaning.
+  The common returned-candidate admission consumer is reached by the existing
+  bounded model-correction path and exercised with the saved web-return case.
+  Only exact already-present participants are not appended again; different
+  readings, requirements and provenance remain distinct. One ordinary M25/
+  M25.5 reformation still compares all resulting possibilities, with the
+  unchanged M24/M26 dependency basis preserved by the existing native check.
+
+  Both later web proposals now occur in the final native possibility family.
+  Their full requirements do not establish an executable inquiry in this
+  case: native formation retains the unresolved choice instead of forcing an
+  operation. The saved model-failure return retains missing criteria and URL
+  as unknown and invents no operation. Same-ID substituted questions, changed
+  proof scope/projection, cross-source use and malformed source are refused;
+  malformed admission has an explicit held carrier. Same source is stable,
+  distinct returned artifacts remain distinct, and the old exact proof and
+  snapshot restore unchanged. A fresh process restores the new web snapshot
+  with exactly equal expanded native state; terminal contact cannot replay.
+
+  Efficiency against immediate parent `fa364f9`: credential-free ordinary
+  contact trials at one/two history entries take 6.268/6.339 wall seconds
+  versus 6.212/6.255 (candidate CPU 5.898/5.940). Their expanded snapshots
+  are exactly equal; carriers stay 104,311/141,102 bytes. Corrected-contact
+  trials take 10.266/10.277 versus 10.161/10.415 wall seconds (candidate CPU
+  9.672/9.882), with unchanged two semantic callbacks plus one unavailable
+  voice callback and no external calls. Source identity increases corrected
+  checkpoint carriers from 107,064/145,546 to 108,647/148,730 bytes, six
+  additional factors per contact. Cold load remains 1.221--1.250 seconds.
+  No full constitutive formation or model call is added to either supported
+  path. Saved web reformation with both alternatives takes 6.056--6.188 wall /
+  5.757--5.863 CPU seconds; its factorized diagnostic checkpoint is 211,978
+  bytes / 1,277 factors. The earlier cheaper web comparison had excluded the
+  two material alternatives and is not a faithful substitute.
+
+  Valid, repeated-invalid and unavailable correction trials still make only
+  one bounded correction; failure evidence, explicit exhaustion and held
+  resource standing persist. Supported disposable install/start/stop/restart
+  reaches waiting in 5.205/5.178 seconds and preserves all nine protected
+  checkpoint/proof/spend records. Owned processes are stopped and cleanup
+  verified. No live runtime write, new GLM call or external operation occurs
+  in this stage. Source balance and all 34 authority pins pass; only runtime
+  source, its integrity pin and this Atlas enter the unchanged 66-file tree.
+
+  **Still open:** this closes candidate suppression, not native discovery or
+  general recovery selection. The ordinary web consumer does not yet form a
+  common returned-inquiry request. Next establish when the same native
+  organization warrants that request from partial judgments and exact
+  returned evidence, bind its one attempt and result independently, and carry
+  changed evidence and actual authority through selection, consequence and
+  restart. Do not substitute an unconditional call after every failure or
+  describe availability as execution authority. Installed conversation,
+  broad history scaling and whole-C4 closure remain unclaimed.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
