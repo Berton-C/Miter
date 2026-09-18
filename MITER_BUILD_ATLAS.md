@@ -7338,6 +7338,67 @@ Already carried:
   remain C4 work. A typed refusal becoming causal is a prerequisite, not whole-
   C4 closure or proof that every beneficial continuation has been exhausted.
 
+  **C4 shared hold through ordinary expression, 2026-09-18:**
+  Baseline `e360199` makes a consultation hold causal, but the tool-return
+  wrapper still supplies its earlier semantic reading to expression; the
+  mechanical voice carrier recognizes only the older rejected-model source.
+  The ordinary tool consumer now uses the existing native limitation-opening
+  and reformation mechanism, also used by model recovery. Its exact held
+  consequence reaches the common expression consumer. The carrier admits
+  the new typed source without assigning meaning or granting an operation.
+  The successful-return path, old source species and historical proofs retain
+  their meaning. This is source-bound expression, not a canned reply, an
+  extra tool retry, or a policy selecting the next recovery action.
+
+  Both returned-web and rejected-model holds form native expression, ordinary
+  render/audit questions and independently checked certificates. Four newly
+  authorized GLM calls (two per family) pass the unchanged privacy settings,
+  parser, native audit, deep review and mechanical certificate boundary.
+  Saved returns then pass `C4ExpressPreparedUsingV1`, ordinary service-row
+  validation, incorporation and exact persistent checkpoint readback, without
+  another call or external effect. Their explanations retain incomplete
+  research and unknown world state; they ask about further participation.
+  They do not prove autonomous discovery or selection of a new route.
+  Changed reasons, invented authority and altered source bodies are refused.
+  Historical comparison/VoiceRNA proofs and their counterfacts still pass.
+
+  The new limitation opening invalidates its dependent native formation and
+  expression, not unchanged ordinary contact or authority. Matched tool-hold
+  preparation takes 8.559/8.433 wall and 8.205/8.127 CPU seconds versus
+  3.439/3.435 and 3.322/3.318 on the parent: two dependent reformations rather
+  than one, with one fixture consultation in both. The additional formation
+  grounds an explanation absent from the parent; it is not a faster equivalent
+  path. Factorized preparation is 170,807 versus 170,610 bytes. Cold load is
+  1.289/1.221 wall/CPU versus 1.287/1.222. Ordinary one/two-contact turns take
+  6.359/6.410 versus 6.329/6.425 wall seconds; corrected turns take
+  10.506/10.463 versus 10.440/10.309. All four expanded snapshots are exactly
+  identical (104,311/141,102 and 108,647/148,730 bytes), with unchanged
+  two/three fixture callbacks. Provider time remains separate: web render/audit
+  4.895/3.355 seconds; model 3.351/7.455. Saved-return outer expression,
+  incorporation and checkpoint take 11.044/10.514 wall/CPU for web and
+  10.146/8.970 for model; factorized row/state carriers are 191,033/164,917 bytes.
+
+  Supported credential-free install/start/stop/restart preserves four protected
+  checkpoint records and reaches native waiting in 9.550/9.554 seconds. Exact
+  restore retains the held source, failed operation, unknowns and unchanged
+  authority; terminal contact is not replayed. Five idle seconds add 0.26
+  child CPU seconds, with RSS 1,108,368 to 1,108,624 KiB. This full reviewed
+  expression has a higher restore footprint than the previous hold-only
+  checkpoint, not a like-for-like memory regression measurement. Its bounded
+  result is accepted as local functional carry; full-proof restore cost and
+  growing-history proportionality remain open, not hidden by the pass.
+  All trials have external deadlines and verified process cleanup; the
+  installed service is untouched. No test or log enters the 66-file repository.
+  Pre-commit host check finds only the supported broker, supervisor and its
+  pinned child; the child is at 1.3% CPU and 354,320 KiB after 3h31m.
+
+  Next falsifier: a materially changed evidence relation must renew or change
+  native inquiry through this same consumer, while unchanged/resource-only
+  contact cannot replay a completed operation. Carry native discovery,
+  comparison and warranted enactment, not just a supplied opening or fluent
+  limitation. Fresh installed conversation, larger-history cost and whole-C4
+  completion remain unclaimed.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

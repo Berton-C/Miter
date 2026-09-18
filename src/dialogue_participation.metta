@@ -3512,6 +3512,19 @@
        (capability-contact-context-v1 no-capability-request
          no-returned-capability-contact)))))
 
+; A source-bound native limitation can participate in expression regardless
+; of which contact family first disclosed the failed inquiry.
+(= (C4PreparedForRecoveryExpression $prepared $question $observation)
+   (if (AR4PreparedEncounterValid $prepared)
+     (let* (($encounter (index-atom (index-atom $prepared 4) 2))
+            ($openings (C4RecoveryExpressionOpeningsAt
+              (C4ModelRecoveryBasePossibilities (index-atom $encounter 1)
+                (index-atom $encounter 3)
+                (CPParticipantRelationOrganization (index-atom $encounter 6)))
+              $question $observation 0)))
+       (if (> (size-atom $openings) 0)
+         (C4ReformPreparedWithParticipants $prepared $openings) $prepared)) $prepared))
+
 ; A returned inquiry gets one candidate-participation slice before expression.
 ; Its result rejoins the same encounter. A new exact operation is never taken
 ; from provider text: it must be formed again, then checked by the ordinary
@@ -3535,10 +3548,18 @@
                 (C4SemanticContactParticipants $question
                   (C4ReturnedSemanticContact $prepared $question $returned
                     $result-participants)) $result-participants))
-              ($next (if (> (size-atom $participants) 0)
-                (C4ReformPreparedWithParticipants $prepared $participants) $prepared)))
+              ($returned-prepared (if (> (size-atom $participants) 0)
+                (C4ReformPreparedWithParticipants $prepared $participants) $prepared))
+              ; The same native limitation opening used after a rejected
+              ; model artifact remains available after a tool consultation.
+              ; It is not a fallback reading or permission to execute again.
+              ($next (if $valid $returned-prepared
+                (C4PreparedForRecoveryExpression $returned-prepared
+                  $question $returned))))
          (if (AR4PreparedEncounterValid $next)
            (let* (($encounter (index-atom (index-atom $next 4) 2))
+                  ($expression (if $valid $returned
+                    (C4RecoveryExpressionFor $encounter $question $returned)))
                   ($route (C4CapabilityRouteFromMovement (index-atom $encounter 5)))
                   ($returned-claims (C4CapabilityReturnedClaims
                     (CPParticipantRelationOrganization (index-atom $encounter 6))))
@@ -3551,7 +3572,9 @@
                     (c4-capability-contact-v1 $next $context))))
              (c4-capability-inquiry-contact-v1
                (index-atom $continued 1)
-               (if $valid $returned $original-observation)
+               (if $valid $returned
+                 (if (C4RecoveryExpressionValid $expression $question)
+                   $expression $original-observation))
                (index-atom $continued 2)))
            (c4-capability-inquiry-contact-v1 $next
              $original-observation $context)))
@@ -3561,17 +3584,6 @@
    (if (CPShape $observation c4-native-recovery-expression-v1 3)
      (assistant-dialogue-native-recovery-v1 $question $observation $voice-standing)
      (assistant-dialogue-model-participation-v1 $question $observation $voice-standing)))
-
-(= (C4PreparedForRecoveryExpression $prepared $question $observation)
-   (if (AR4PreparedEncounterValid $prepared)
-     (let* (($encounter (index-atom (index-atom $prepared 4) 2))
-            ($openings (C4RecoveryExpressionOpeningsAt
-              (C4ModelRecoveryBasePossibilities (index-atom $encounter 1)
-                (index-atom $encounter 3)
-                (CPParticipantRelationOrganization (index-atom $encounter 6)))
-              $question $observation 0)))
-       (if (> (size-atom $openings) 0)
-         (C4ReformPreparedWithParticipants $prepared $openings) $prepared)) $prepared))
 
 ; One expression consumer for accepted interpretations and native limitation
 ; evidence. Both use the same candidate, audit, formation and certificate.

@@ -457,6 +457,41 @@ as_model_c4_recovery_source(
     memberchk(Standing,['recovery-exhausted','recovery-evidence-insufficient',
       'recovery-unavailable']).
 
+% A consultation can be unavailable without rejecting another artifact.
+% This is only a typed carrier check; the native encounter and certificate
+% independently bind the source and determine whether expression is formed.
+as_model_c4_recovery_source(
+    ['c4-native-recovery-source-v1',Id,['failure',Reason],Knowledge,
+      ['authority','unchanged-no-operation-granted'],
+      ['continuation','recovery-unavailable'],
+      'held-consultation-not-semantic-evidence']) :-
+    as_symbol(Id,_),as_symbol(Reason,_),
+    as_model_c4_held_world_knowledge(Knowledge).
+
+as_model_c4_held_world_knowledge(
+    ['world-knowledge',Knowledge,'rejected-syntax-is-not-world-evidence']) :-
+    memberchk(Knowledge,['file-precondition-unknown','no-file-state-established']).
+as_model_c4_held_world_knowledge(
+    ['world-knowledge',['returned-contact',Return],
+      'no-new-world-observation-from-consultation-hold']) :-
+    as_model_c4_held_return_carrier(Return).
+
+as_model_c4_held_return_carrier(
+    ['returned-capability-contact',Id,Resource,Outcome,
+      ['elapsed-milliseconds',Elapsed],['failure',Failure]]) :-
+    as_symbol(Id,_),as_symbol(Failure,_),integer(Elapsed),Elapsed>=0,
+    memberchk(Resource,[[resource,'open-http-https'],[resource,'typed-direct-argv'],
+      [resource,'versioned-owned-workspace']]),
+    (Resource==[resource,'open-http-https']->as_model_c4_http_outcome(Outcome);true),
+    ground(Outcome),term_string(Outcome,Text,[quoted(true),ignore_ops(true)]),
+    string_length(Text,Length),Length=<2097152.
+as_model_c4_held_return_carrier(
+    ['returned-informational-contact',Id,[resource,'open-http-https'],
+      [transport,Transport],['http-status',Status],Body,[failure,Failure]]) :-
+    as_symbol(Id,_),as_symbol(Failure,_),
+    as_model_c4_http_outcome(['http-result-v1',Transport,['http-status',Status],
+      Body,['redirect-location',none]]).
+
 as_model_c4_rendering(
     ['rendered-utterance',Utterance,['bindings',Bindings],
       ['uncertainty',Uncertainty]],Readings,Commitments) :-
