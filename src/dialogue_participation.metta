@@ -746,8 +746,12 @@
                           provider-reading-no-contact-no-authority-no-choice))))))))))))))
      false))
 
+(= (C4CompletedModelFailureShape $observation)
+   (or (CPShape $observation c4-model-observation-unavailable-v2 9)
+       (CPShape $observation c4-model-observation-unavailable-v3 10)))
+
 (= (C4ModelUnavailableValid $observation $question)
-   (if (CPShape $observation c4-model-observation-unavailable-v2 9)
+   (if (C4CompletedModelFailureShape $observation)
      (as_model_failure_bound $question $observation)
      (and (CPShape $observation c4-model-observation-unavailable-v1 6)
      (and (== (index-atom $observation 1) (index-atom $question 1))
@@ -759,7 +763,7 @@
 ; Its bytes are not semantic readings, capability proposals or file evidence.
 ; This participant belongs to the same encounter, independent of its surface.
 (= (C4ModelFailureParticipants $question $observation)
-   (if (and (CPShape $observation c4-model-observation-unavailable-v2 9)
+   (if (and (C4CompletedModelFailureShape $observation)
             (C4ModelUnavailableValid $observation $question))
      ((participant-contribution
         (c4-model-return-failure (index-atom $observation 5))
@@ -2662,7 +2666,7 @@
 ; Failure participation is not itself a recovery decision. Preserve the full
 ; reformed native encounter; never fall back to the old proof if it is held.
 (= (C4PreparedWithModelFailure $prepared $question $observation)
-   (if (CPShape $observation c4-model-observation-unavailable-v2 9)
+   (if (C4CompletedModelFailureShape $observation)
      (if (and (AR4PreparedEncounterValid $prepared)
            (and (C4ModelUnavailableValid $observation $question)
              (and (== (index-atom (index-atom $question 1) 1)
@@ -2716,7 +2720,7 @@
      (if (CPShape $outcome assistant-dialogue-model-unavailable-v1 3)
        (let $observation (index-atom $outcome 2)
          (if (or (CPShape $observation c4-model-observation-unavailable-v1 6)
-                 (CPShape $observation c4-model-observation-unavailable-v2 9))
+                 (C4CompletedModelFailureShape $observation))
            (dialogue-stage-standing-v1 semantic-reading-held
              (index-atom $observation 4))
            (dialogue-stage-standing-v1 semantic-reading-held
@@ -2766,6 +2770,64 @@
        (if (CPShape $prepared prepared-encounter-v1 5)
          (index-atom $prepared 1) unknown-contact)
        semantic-reformation-prerequisites-unavailable)))
+
+; A completed rejection is returned contact, not automatic termination.
+; Exactly one native-formed correction opening can be exercised here. The
+; persisted proof/claim/return is checked again by the membrane, including
+; after restart. There is no recursive retry until a provider agrees.
+(= (C4SemanticRecoveryUsingV1 $root $prepared $question $observed
+      $writer $proof-writer)
+   (if (C4SemanticObservationValid $observed $question)
+     (c4-semantic-contact-v1 $prepared $observed ())
+     (let* (($failure-prepared
+               (C4PreparedWithModelFailure $prepared $question $observed))
+            ($encounter (if (AR4PreparedEncounterValid $failure-prepared)
+              (index-atom (index-atom $failure-prepared 4) 2) ()))
+            ($route (if (CPShape $encounter constitutive-encounter 7)
+              (C4RecoveryRouteFromMovement (index-atom $encounter 5))
+              (c4-model-recovery-held no-valid-encounter)))
+            ($inquiry (if (CPShape $route c4-model-recovery-route-v1 3)
+              (== (index-atom (index-atom $route 1) 8)
+                (continuation corrected-candidate-inquiry)) false)))
+       (if $inquiry
+         (let* (($proof (ARNativeMovementProof $encounter))
+                ($record ($proof-writer $root
+                  (C4CapabilityProofId $encounter) $proof))
+                ($correction (c4-model-contract-correction-v1 $question
+                  $observed $record (C4ContractCorrectionInstructions)))
+                ($returned ($writer $root $correction)))
+           (if (C4SemanticObservationValid $returned $question)
+             (c4-semantic-contact-v1 $failure-prepared $returned
+               ((participant-contribution
+                  (c4-model-correction-result (index-atom $observed 5))
+                  tool (index-atom $question 2)
+                  (lineage (index-atom $question 1)
+                    (index-atom $observed 5) (index-atom $returned 8))
+                  (participant-relation-claim model-return-recovery-result support
+                    (c4-model-correction-result-v1
+                      (c4-model-return-failure-evidence-v1 $question $observed)
+                      $returned candidate-return-not-world-evidence))
+                  supported no-contact-no-movement-authority)))
+             (c4-semantic-contact-v1
+               (if (CPShape $returned c4-model-observation-unavailable-v1 6)
+                 (let $held (c4-model-correction-held-v1
+                   (c4-model-return-failure-evidence-v1 $question $observed)
+                   $returned no-completed-candidate-no-replay-authority)
+                   (if (C4RecoveryHeldReturnValid $held)
+                     (C4ReformPreparedWithParticipants $failure-prepared
+                       ((participant-contribution
+                          (c4-model-correction-held (index-atom $observed 5))
+                          tool (index-atom $question 2)
+                          (lineage (index-atom $question 1)
+                            (index-atom $observed 5) $returned)
+                          (participant-relation-claim
+                            model-return-recovery-result support $held)
+                          supported no-contact-no-movement-authority)))
+                     (prepared-encounter-held (index-atom $prepared 1)
+                       correction-return-binding-held)))
+                 (C4PreparedWithModelFailure $failure-prepared $question $returned))
+               $returned ())))
+         (c4-semantic-contact-v1 $failure-prepared $observed ())))))
 
 ; A rendering remains a candidate until its audit enters the exact expression
 ; joint. Nonempty findings enter native relation processing and source-bound
@@ -3034,7 +3096,7 @@
                     (CPContactScope $effective-contact) semantic-reading))
                   ($question (C4ContactSemanticQuestion $effective-contact
                     $preliminary $semantic-direction))
-                  ($observation (if (CPShape $question
+                  ($initial-observation (if (CPShape $question
                     c4-contact-semantic-question-v1 12)
                     (C4ModelQuestionUsingV1 $root $question $model-writer)
                     (c4-model-observation-unavailable-v1
@@ -3045,13 +3107,20 @@
                             semantic-reading)
                         (index-atom $semantic-direction 1)
                         unknown-model-resource)
-                      native-question-unavailable no-candidate-admitted))))
+                      native-question-unavailable no-candidate-admitted)))
+                  ($semantic-contact (C4SemanticRecoveryUsingV1 $root
+                    $prepared $question $initial-observation $model-writer
+                    $capability-proof-writer))
+                  ($model-prepared (index-atom $semantic-contact 1))
+                  ($observation (index-atom $semantic-contact 2)))
              (if (C4SemanticObservationValid $observation $question)
                (let* (($participants (CPListAppend
                         (C4SemanticQuestionParticipant $question)
-                        (C4SemanticParticipants $observation $question)))
+                        (CPListAppend
+                          (C4SemanticParticipants $observation $question)
+                          (index-atom $semantic-contact 3))))
                       ($final-prepared
-                        (C4ReformPreparedWithParticipants $prepared
+                        (C4ReformPreparedWithParticipants $model-prepared
                           $participants)))
                  (if (AR4PreparedEncounterValid $final-prepared)
                    (let* (
@@ -3155,8 +3224,7 @@
                          native-voice-question-not-formed
                          (c4-voice-review-held-v1
                            semantic-reformation-native-standing-held))))))
-               (let* (($failure-prepared (C4PreparedWithModelFailure
-                         $prepared $question $observation))
+               (let* (($failure-prepared $model-prepared)
                       ($incorporated
                         (C4IncorporateBoundContactWithoutModel $context
                           $failure-prepared))

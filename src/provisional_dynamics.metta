@@ -540,6 +540,9 @@
               $flourishing $participant-relations))
           ($semantic-inquiry
             (C3SemanticInquiryPossibilities $cut $participant-relations))
+          ($model-recovery
+            (C4ModelRecoveryPossibilities $cut $flourishing
+              $participant-relations))
           ($capability-inquiry
             (C4CapabilityProposalPossibilities $cut $flourishing
               $participant-relations))
@@ -556,7 +559,9 @@
           ; returned candidate family, so retaining both would duplicate one
           ; cognitive possibility. A transfer inquiry has a different source
           ; contact and remains independently live when present.
-          ($base-source-inquiry (if (> (size-atom $workshop-transition) 0)
+          ($base-source-inquiry (if (> (size-atom $model-recovery) 0)
+            $model-recovery
+            (if (> (size-atom $workshop-transition) 0)
             $workshop-transition
             (if (> (size-atom $capability-result) 0)
               $capability-result
@@ -564,7 +569,7 @@
                 $capability-inquiry
                 (if (> (size-atom $semantic-inquiry) 0)
                   $semantic-inquiry
-                  (if (> (size-atom $alignment) 0) $alignment $learned))))))
+                  (if (> (size-atom $alignment) 0) $alignment $learned)))))))
           ; A later memory-standing inquiry is the exact source-grounded
           ; refinement of the generic alignment inquiry on this contact.  Keep
           ; one rather than duplicating the same cognitive opening.

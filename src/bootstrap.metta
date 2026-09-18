@@ -8,7 +8,8 @@
     miter_assistant_continuity_restore miter_assistant_semantic_restore
     as_chroma as_continuity_sources))
 !(import_prolog_functions_from_file "./effect_membranes/model.pl"
-  (as_model as_model_direction as_model_literal_span as_model_failure_bound))
+  (as_model as_model_direction as_model_literal_span as_model_failure_bound
+    as_model_semantic_bound))
 !(import_prolog_functions_from_file "./effect_membranes/capability_environment.pl"
   (as_capability_environment as_capability_proof as_capability_request))
 !(import_prolog_functions_from_file "./effect_membranes/vad.pl"
@@ -44,6 +45,7 @@
 ; preserves their names as inert atoms rather than silently treating them as
 ; executable cognition.
 !(import! &self "./src/capability_environment.metta")
+!(import! &self "./src/model_recovery.metta")
 !(import! &self "./src/vad.metta")
 ; Qualified operator meanings must be known before provisional dynamics
 ; compile. The history-to-participant PLN adapter is loaded later, after the

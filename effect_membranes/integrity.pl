@@ -21,6 +21,7 @@ miter_integrity_sources([
  'src/model_participation.metta',
  'src/executable_extension.metta',
  'src/capability_environment.metta',
+ 'src/model_recovery.metta',
  'src/vad.metta',
  'src/qualified_reasoning.metta',
  'src/qualified_transfer.metta',

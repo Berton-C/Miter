@@ -984,7 +984,12 @@ for each provider, wording, or surface.
    conversational success.
 
 At the start and end of each failure-repair step, and before and after its
-commit, check this principle alongside the four-movement build cycle. Record
+commit, check this principle alongside the four-movement build cycle. During
+extended stage work, revisit the active cut, its non-claims, falsifier, and
+constitutional boundary whenever a new finding changes the proposed next
+action; do not defer this alignment check until the commit. This is an ongoing
+builder check, not a request for repeated human approval or a reason to stop
+after each small prerequisite. Record
 the cause, what Miter itself can now do with the failure, what remains a
 builder intervention, and the next falsifier in the active cut below. Do not
 close a repair merely because another malformed example has been excluded.
@@ -6034,6 +6039,87 @@ Already carried:
   with the evidence and available authority through the ordinary checks and
   restart. Do not relabel failure participation as self-repair or substitute
   a predetermined retry. No live runtime was changed in this cut.
+
+  **C4 bounded contract-recovery continuation, 2026-09-17.** The new completed
+  failure carrier adds structural findings derived from the producer schema;
+  it does not admit any rejected reading or operation. The saved `19aj` empty
+  precondition exposes both legal contract alternatives while retaining
+  `file-precondition-unknown`, never an absence or present-file witness. All
+  30 existing contract variants agree across the receiver, independent JSON
+  Schema validator, and diagnostic projection. The current base C4 schema
+  keywords are covered; an unlocalized receiver constraint remains explicitly
+  unlocalized, not a fabricated diagnosis.
+
+  Native `model_recovery.metta` participates in the existing M25 possibility
+  organization. A localized, completed first failure can disclose a corrected-
+  candidate inquiry with a material prospect; unlocalized evidence, a second
+  rejected return, and an unavailable correction have distinct explicit
+  standings. The ordinary constitutive joint must actually form that inquiry.
+  Only then can the existing model membrane accept its persisted native proof,
+  independently recheck the original saved response and findings, and use the
+  current scope/resource/grant/privacy checks for one correction. A changed
+  proof carrier cannot create another spend identity for the same correction.
+  A claimed transmission without a saved return remains uncertain/no-replay.
+  A corrected candidate passes the ordinary receiver and full native
+  reformation. A supported, bound return retires its opening; a human assertion
+  or contradicted claim does not. Neither outcome grants operation authority.
+
+  **Carry and efficiency against `8f3cf7c`:** the captured invalid bytes pass
+  through the actual `C4BoundContactUsingV1` consumer with offline membranes.
+  Two successive failing contacts each make two fixture model invocations
+  instead of one, with zero real transmissions or capability executions.
+  Initial formation, failure reconsideration, and returned-failure formation
+  replace the predecessor's initial/failure pair. Native wall/CPU is
+  9.960/9.456 and 10.055/9.549 seconds, versus 6.210/5.869 and 6.176/5.862.
+  This is the measured cost of one additional material reformation and proof
+  check, not an ordinary-turn tax. Failure checkpoints are 100,990/103,180
+  bytes versus 99,224/135,029; these represent different inquiry/deferral
+  outcomes and are not evidence of a general compression improvement.
+
+  The ordinary accepted-semantic path retains exactly equal native state and
+  history at both sizes, with the same 103,950/140,741 checkpoint bytes and
+  fixture call/formation counts. Wall/CPU is 6.259/5.932 and 6.400/6.049,
+  versus 6.262/5.911 and 6.242/5.908; bootstrap is 1.210/1.148 versus
+  1.190/1.131. The ordinary-path fixture deliberately holds rendering; it does
+  not claim live expression. A separate corrected-candidate trial passes
+  ordinary semantic admission, full formation and proof checking, then
+  retires the failure opening while retaining its provenance. Its return is
+  saved valid fixture material, not a newly generated repair by GLM. Rejected
+  and unavailable corrections each lead to one explicit native deferral;
+  uncertain transmission, changed instructions, wrong scope and missing proof
+  do not open a second call.
+
+  Fresh-process model-boundary readback and supported native restore pass.
+  The real disposable `bin/miter` lifecycle restores the corrected checkpoint,
+  reaches idle in 5.204/5.206 seconds across start/restart, preserves all four
+  checkpoint/continuity records, and refuses terminal-contact replay with no
+  model or effect records. Five idle seconds add 0.19 child CPU seconds and
+  224 KiB RSS. The carry caught and corrected an omitted module in the installed
+  source list before any live upgrade. A predecessor-carrier trial also caught
+  retrospective reinterpretation of V2 failures: new recovery judgment now
+  requires V3 findings, while an old V2 checkpoint restores exactly under its
+  original meaning. No past failure is regraded or replayed.
+
+  The invalidation boundary is the returned model evidence, its participant
+  relations and dependent M25 movement; unchanged organization uses the
+  existing reformation seam. Ratified constitutional atoms and authority text
+  are unchanged. New source is included in the integrity manifest and sole
+  installed-source closure. All instruments remain temporary and every owned
+  trial family is gone. The live broker/supervisor/child remain the original
+  installed family; the child is 3.8% CPU / 42,528 KiB RSS at 5:46:03, versus
+  1.5% / 42,496 KiB at the earlier stage observation, without a surviving trial.
+
+  **Remaining, not claimed:** this establishes one reusable native contract-
+  correction opening in the semantic consumer, not general self-repair or
+  whole-C4 closure. No fresh provider call or live installation occurred.
+  Actual provider correction and installed reply remain to be carried on a
+  new contact. Exhaustion/unavailability are explicit native outcomes, not yet
+  a certified human-facing explanation; broader VoiceRNA/tool/memory recovery
+  and longer-history cost remain open. Continue the same C4 stage into that
+  expression boundary, preserving the ordinary certification path rather than
+  fabricating semantic readings to get a message out. Then continue the named
+  older-artifact/version seam; these are work obligations, not repeated
+  requests for permission to proceed.
 
 Next movement:
 

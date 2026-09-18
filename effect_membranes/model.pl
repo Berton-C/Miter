@@ -37,6 +37,12 @@ as_model_checked(Root0, Question, Observation) :-
       as_model_empty_retry_witness(Root,Original,Prior)),
     as_model_checked_attempt(Root,Original,Question,Observation).
 as_model_checked(Root0, Question, Observation) :-
+    Question=['c4-model-contract-correction-v1',Original,_,_,_],!,
+    as_model_preflight('runtime-root-invalid',as_root(Root0,Root)),
+    as_model_preflight('contract-correction-witness-invalid',
+      as_model_correction_witness(Root,Question)),
+    as_model_checked_attempt(Root,Original,Question,Observation).
+as_model_checked(Root0, Question, Observation) :-
     as_model_checked_attempt(Root0,Question,Question,Observation).
 
 % The native caller alone requests a retry. Its distinct, deterministic
@@ -77,7 +83,8 @@ as_model_checked_attempt(Root0, Question, Attempt, Observation) :-
         as_model_preflight('attempt-lineage-persistence-held',
           as_model_write_attempt_lineage(ClaimPath,Question,Attempt)),
         as_model_preflight('request-schema-invalid',
-          as_model_request(Profile, Question, Instructions, MaxTokens, Body)),
+          as_model_request_for_attempt(Profile,Question,Attempt,Instructions,
+            MaxTokens,Body)),
         as_model_preflight('request-persistence-held',
           as_model_write_request(Root, QuestionHash, QuestionRef, Scope,
             Purpose, ResourceId, Profile, Body)),
@@ -122,6 +129,53 @@ as_model_write_attempt_lineage(Claim,Question,
     directory_file_path(Claim,'retry-of.term',Path),
     as_model_write_observation(Path,
       ['c4-model-empty-retry-lineage-v1',OriginalHash,Prior]).
+as_model_write_attempt_lineage(Claim,Question,
+    ['c4-model-contract-correction-v1',Question,Prior,ProofRecord,_]) :-
+    as_model_question_sha256(Question,OriginalHash),
+    directory_file_path(Claim,'correction-of.term',Path),
+    as_model_write_observation(Path,
+      ['c4-model-contract-correction-lineage-v1',OriginalHash,Prior,ProofRecord]).
+
+% Mechanical proof and persisted-return checks. The membrane neither chooses
+% this inquiry nor converts a schema defect into world evidence or authority.
+as_model_correction_witness(Root,
+    ['c4-model-contract-correction-v1',Q,Prior,Record,Instructions]) :-
+    Q=['c4-contact-semantic-question-v1',Ref,Scope|_],
+    as_model_failure_bound(Q,Prior,true),
+    Prior=['c4-model-observation-unavailable-v3',Ref,Scope,_,Reason,
+      ['request-lineage',H,H],
+      ['completed-provider-return',eof,200,['raw-sha256',RawHash]],_,_,_],
+    as_model_observation_path(Root,H,Path),as_model_read_observation(Path,Stored),
+    Stored==Prior,as_model_claim_path(Root,H,Claim),exists_directory(Claim),
+    as_model_named_text(Root,raw,H,RawPath),read_file_to_string(RawPath,Raw,[]),
+    crypto_data_hash(Raw,RawHash,[algorithm(sha256),encoding(utf8)]),
+    as_model_provider_failure(Raw,Q,Reason),
+    as_model_contract_findings(Q,Raw,Findings),
+    last(Prior,['contract-findings',Findings]),
+    ce_capability_proof_record(Root,Record,Scope,_,_,Proof),
+    'ARNativeMovementProofValid'(Proof,true),
+    Proof=['native-movement-proof-v1',_,Scope,Movement,_],
+    Movement=['movement-formed',inquiry|_],
+    'C4RecoveryRouteFromMovement'(Movement,
+      ['c4-model-recovery-route-v1',Basis,
+        ['c4-model-return-failure-evidence-v1',Q,Prior]]),
+    nth0(8,Basis,[continuation,'corrected-candidate-inquiry']),
+    'C4ContractCorrectionInstructions'(Instructions).
+
+as_model_request_for_attempt(Profile,Q,Attempt,Instructions,Tokens,Body) :-
+    as_model_request(Profile,Q,Instructions,Tokens,Ordinary),
+    ( Attempt=['c4-model-contract-correction-v1',Q,Prior,_,Correction] ->
+        last(Prior,['contract-findings',Findings]),
+        as_model_public_value_security_safe(Findings),
+        Ordinary.messages=[System,User],atom_json_dict(User.content,Envelope,[]),
+        put_dict(native_contract_correction,Envelope,
+          _{instructions:Correction,structural_findings:Findings,
+            rejected_artifact_admitted:false,operation_authority_added:false},E),
+        with_output_to(string(Text),json_write_dict(current_output,E,[width(0)])),
+        put_dict(content,User,Text,CorrectedUser),
+        put_dict(messages,Ordinary,[System,CorrectedUser],Body),
+        as_model_request_valid(Profile,Body)
+    ; Body=Ordinary ).
 
 as_model_current_direction_authorizes(Root,Question,Scope,Purpose,ResourceId,
     MaxTokens,Deadline) :-
@@ -869,6 +923,14 @@ as_model_perspective_set(Values) :-
 as_model_perspective(Value) :-
     memberchk(Value,['Appropriateness','Precision','Relatedness']).
 
+% The validating proof may be re-embodied after restart. It is not a new
+% provider request: identical question/failure/instructions must keep the
+% same single correction spend identity, even if the proof record changes.
+as_model_question_sha256(
+    ['c4-model-contract-correction-v1',Question,Prior,_Proof,Instructions],
+    Hash) :- !,
+    as_model_question_sha256(
+      ['c4-model-contract-attempt-v1',Question,Prior,Instructions],Hash).
 as_model_question_sha256(Question, Hash) :-
     term_string(Question, Text, [quoted(true),ignore_ops(true)]),
     crypto_data_hash(Text, Hash, [algorithm(sha256),encoding(utf8)]).
@@ -2040,7 +2102,8 @@ as_model_completed_return(Raw,Question,Hash,QuestionRef,Scope,ResourceId,
           as_model_unavailable(Question,
             error(model_provider_hold(Failure,ElapsedMs,Bytes),_),Observation)
       ; as_model_c4_question(Question) ->
-          as_model_completed_failure(Question,Hash,RawHash,Failure,Observation)
+          as_model_completed_failure_with_findings(Question,Hash,RawHash,
+            Failure,Raw,Observation)
       ; throw(error(model_provider_hold(Failure,ElapsedMs,Bytes),_)) ) ).
 
 % Completed rejected returns are durable observations, not unknown sends.
@@ -2062,6 +2125,113 @@ as_model_completed_failure_reason(Reason) :-
       'provider-artifact-semantic-invalid','provider-artifact-malformed',
       'provider-envelope-malformed']).
 
+% Contract diagnostics describe rejected syntax, never a parsed proposal or
+% file-state witness. Derive them from the same producer schema, rather than
+% maintaining a second list of per-provider/per-surface error explanations.
+% Admission still belongs to the ordinary receiver above.
+as_model_completed_failure_with_findings(Q,Attempt,RawHash,Reason,Raw,O) :-
+    as_model_completed_failure(Q,Attempt,RawHash,Reason,V2),
+    as_model_contract_findings(Q,Raw,Findings),
+    V2=[_|Fields],append(Fields,[['contract-findings',Findings]],V3Fields),
+    O=['c4-model-observation-unavailable-v3'|V3Fields].
+
+as_model_contract_findings([Kind|_],Raw,Findings) :-
+    ( catch((atom_json_dict(Raw,Envelope,[]),
+        Envelope.choices=[Choice],get_dict(content,Choice.message,Text),
+        string(Text),atom_json_dict(Text,Artifact,[]),
+        as_model_local_response_schema(Kind,_,Schema)),_,fail)
+    -> as_model_schema_findings(Schema,Artifact,[],SchemaFindings),
+       ( SchemaFindings=[] -> Findings=[['receiver-constraint-unlocalized']]
+       ; Findings=SchemaFindings )
+    ; Findings=[['artifact-structure-unavailable']] ).
+
+as_model_schema_findings(Schema,Value,Path,Findings) :-
+    dict_pairs(Schema,_,Pairs),
+    findall(F,(member(Key-Expected,Pairs),
+      as_model_schema_finding(Key,Expected,Schema,Value,Path,F)),Findings).
+
+as_model_schema_finding(type,Expected,_,Value,Path,F) :-
+    \+ as_model_json_type(Expected,Value),
+    as_model_schema_violation(Path,type,Expected,Value,F).
+as_model_schema_finding(const,Expected,_,Value,Path,F) :-
+    Value\==Expected,as_model_schema_violation(Path,const,Expected,Value,F).
+as_model_schema_finding(enum,Expected,_,Value,Path,F) :-
+    \+ memberchk(Value,Expected),
+    as_model_schema_violation(Path,enum,Expected,Value,F).
+as_model_schema_finding(Key,Expected,_,Value,Path,F) :-
+    memberchk(Key,[minLength,maxLength]),string(Value),string_length(Value,N),
+    (Key==minLength->N<Expected;N>Expected),
+    as_model_schema_violation(Path,Key,Expected,Value,F).
+as_model_schema_finding(pattern,Expected,_,Value,Path,F) :-
+    string(Value),\+re_match(Expected,Value),
+    as_model_schema_violation(Path,pattern,Expected,Value,F).
+as_model_schema_finding(Key,Expected,_,Value,Path,F) :-
+    memberchk(Key,[minItems,maxItems]),is_list(Value),length(Value,N),
+    (Key==minItems->N<Expected;N>Expected),
+    as_model_schema_violation(Path,Key,Expected,Value,F).
+as_model_schema_finding(uniqueItems,true,_,Value,Path,F) :-
+    is_list(Value),sort(Value,Unique),\+same_length(Value,Unique),
+    as_model_schema_violation(Path,uniqueItems,true,Value,F).
+as_model_schema_finding(required,Names,_,Value,Path,
+    ['schema-violation-v1',['json-path'|FieldPath],required,true,missing]) :-
+    is_dict(Value),member(Name,Names),atom_string(Key,Name),
+    \+get_dict(Key,Value,_),append(Path,[Key],FieldPath).
+as_model_schema_finding(additionalProperties,false,Schema,Value,Path,
+    ['schema-violation-v1',['json-path'|FieldPath],additionalProperties,false,
+      'field-present-content-withheld']) :-
+    is_dict(Value),get_dict(properties,Schema,Properties),
+    dict_pairs(Value,_,Pairs),member(Key-_,Pairs),\+get_dict(Key,Properties,_),
+    append(Path,[Key],FieldPath).
+as_model_schema_finding(properties,Properties,_,Value,Path,F) :-
+    is_dict(Value),dict_pairs(Properties,_,Pairs),member(Key-Child,Pairs),
+    get_dict(Key,Value,Field),append(Path,[Key],FieldPath),
+    as_model_schema_findings(Child,Field,FieldPath,Rows),member(F,Rows).
+as_model_schema_finding(items,Child,_,Value,Path,F) :-
+    is_list(Value),nth0(Index,Value,Field),append(Path,[Index],FieldPath),
+    as_model_schema_findings(Child,Field,FieldPath,Rows),member(F,Rows).
+as_model_schema_finding(oneOf,Alternatives,_,Value,Path,
+    ['schema-alternatives-rejected-v1',['json-path'|Path],
+      ['matching-alternatives',Count],Reports]) :-
+    findall(I,(nth0(I,Alternatives,S),
+      as_model_schema_findings(S,Value,Path,[])),Matches),
+    length(Matches,Count),Count=\=1,
+    % Literal discriminator agreement is a mechanical schema projection, not
+    % a preference among readings. If none agree, retain every alternative.
+    findall(I-S,(nth0(I,Alternatives,S),
+      as_model_schema_constants_agree(S,Value)),Compatible),
+    (Compatible=[]->findall(I-S,nth0(I,Alternatives,S),Selected);
+      Selected=Compatible),
+    findall(['schema-alternative',I,Rows],
+      (member(I-S,Selected),as_model_schema_findings(S,Value,Path,Rows)),Reports).
+
+as_model_schema_constants_agree(Schema,Value) :-
+    (get_dict(properties,Schema,Properties),is_dict(Value)->
+      dict_pairs(Properties,_,Pairs),
+      forall((member(K-S,Pairs),get_dict(const,S,C),get_dict(K,Value,V)),V==C)
+    ; true).
+
+as_model_json_type("string",V) :- string(V).
+as_model_json_type("object",V) :- is_dict(V).
+as_model_json_type("array",V) :- is_list(V).
+as_model_json_type("integer",V) :- integer(V).
+as_model_json_type("number",V) :- number(V).
+as_model_json_type("boolean",V) :- memberchk(V,[true,false]).
+as_model_json_type("null",null).
+
+as_model_schema_violation(Path,Keyword,Expected,Value,
+    ['schema-violation-v1',['json-path'|Path],Keyword,Expected,Observed]) :-
+    as_model_json_shape(Value,Observed).
+as_model_json_shape(V,['string-length',N]) :- string(V),!,string_length(V,N).
+as_model_json_shape(V,['array-length',N]) :- is_list(V),!,length(V,N).
+as_model_json_shape(V,['object-field-count',N]) :- is_dict(V),!,
+    dict_pairs(V,_,Pairs),length(Pairs,N).
+as_model_json_shape(V,['json-scalar',V]).
+
+as_model_completed_failure_shape(Observation) :-
+    Observation=['c4-model-observation-unavailable-v3'|Fields],!,
+    append(V2Fields,[['contract-findings',Findings]],Fields),
+    as_model_completed_failure_shape(['c4-model-observation-unavailable-v2'|V2Fields]),
+    ground(Findings),acyclic_term(Findings),is_list(Findings),Findings=[_|_].
 as_model_completed_failure_shape(Observation) :-
     ground(Observation),acyclic_term(Observation),
     Observation=['c4-model-observation-unavailable-v2',QuestionRef,Scope,
@@ -2082,6 +2252,28 @@ as_model_failure_bound(Question,Observation,Standing) :-
       as_model_question_sha256(Question,Hash),
       Observation=[_,Ref,Scope,Resource,_,['request-lineage',Hash,_]|_]
     -> Standing=true ; Standing=false ), !.
+
+% Syntactic/provenance verification of an already parsed semantic carrier;
+% this establishes no truth, file state, native relevance, or effect authority.
+as_model_semantic_bound(Q,O,Standing) :-
+    ( as_model_question_carrier(Q,Ref,Scope,_, 'semantic-reading',Resource,_,_),
+      Q=['c4-contact-semantic-question-v1'|_],last(Q,[_,Resource,Model|_]),
+      O=['c4-semantic-observation-v1',Ref,Scope,Resource,Model,
+        [transport,eof],['http-status',200],['finish-reason',stop],
+        ['raw-sha256',Hash],[readings,Readings],[usage,_,_,_,_],
+        'provider-reading-no-contact-no-authority-no-choice'],
+      as_sha256(Hash,_),length(Readings,2),
+      maplist(as_model_c4_semantic_reading,Readings),
+      as_model_c4_question_fact_roles(Q,AllowedRoles),
+      as_model_c4_question_flourishings(Q,AllowedValues),
+      forall(member(Reading,Readings),
+        (nth0(4,Reading,['fact9-roles',Roles]),
+         nth0(5,Reading,['flourishing-values',Values]),
+         forall(member(Role,Roles),memberchk(Role,AllowedRoles)),
+         forall(member(Value,Values),memberchk(Value,AllowedValues)))),
+      maplist(as_model_c4_reading_id,Readings,Ids),sort(Ids,Unique),
+      same_length(Ids,Unique)
+    -> Standing=true ; Standing=false ),!.
 
 as_model_http_options(Profile,Body,Key,Deadline,Status,
     [method(post),post(json(Body)),status_code(Status),timeout(Deadline),
@@ -2606,6 +2798,8 @@ as_model_write_text_durable(Path,Text) :-
 as_model_unavailable(['c4-empty-completion-retry-v1',Question,_],Error,
     Observation) :- !,
     as_model_unavailable(Question,Error,Observation).
+as_model_unavailable(['c4-model-contract-correction-v1',Question,_,_,_],Error,
+    Observation) :- !,as_model_unavailable(Question,Error,Observation).
 as_model_unavailable(Question,Error,
     ['c4-model-observation-unavailable-v1',QuestionRef,Scope,
       ResourceId,Reason,'no-candidate-admitted']) :-
@@ -2641,7 +2835,7 @@ as_model_failure_reason(error(model_preflight_hold(Stage),_),Stage) :-
       'model-spend-claim-held','request-schema-invalid',
       'request-persistence-held','credential-unavailable',
       'observation-persistence-held','empty-completion-witness-invalid',
-      'attempt-lineage-persistence-held']), !.
+      'attempt-lineage-persistence-held','contract-correction-witness-invalid']), !.
 as_model_failure_reason(error(model_transport_or_schema_hold(_,_,_,_,_),_),
     'transport-or-schema-held') :- !.
 as_model_failure_reason(error(model_provider_hold(Reason,_,_),_),Reason) :- !.
