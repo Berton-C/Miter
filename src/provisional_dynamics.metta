@@ -573,10 +573,15 @@
           ; A later memory-standing inquiry is the exact source-grounded
           ; refinement of the generic alignment inquiry on this contact.  Keep
           ; one rather than duplicating the same cognitive opening.
-          ($source-inquiry (C4ContinuationJoinAt
+          ($unjoined-source-inquiry (C4ContinuationJoinAt
             (if (> (size-atom $memory-continuation) 0)
               () $base-source-inquiry)
             (C4ContinuationPossibilities $cut $flourishing $participant-relations) 0))
+          ; A completed native inquiry's exact returned proposals may compose
+          ; one discriminating inquiry. No member or unrelated opening is
+          ; selected, discarded, or granted execution authority by this join.
+          ($source-inquiry (C4ReturnedComparisonJoin $unjoined-source-inquiry
+            $cut $flourishing $participant-relations))
           ($specialized (CPListAppend $pln-inquiry
             (CPListAppend $nace-inquiry
             (CPListAppend $memory-continuation

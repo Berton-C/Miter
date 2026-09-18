@@ -7139,6 +7139,83 @@ Already carried:
   openings. This consumer closes the request handoff, not the broader cognitive
   judgment, live research delivery, growing-history or whole-C4 obligations.
 
+  **C4 source-bound returned-proposal comparison, 2026-09-18:**
+  The exact saved GET/HEAD return exposes three live inquiry possibilities:
+  both proposals and their original returned-source inquiry. M25 correctly
+  preserves plurality; it has not selected an operation. Missing flourishing
+  certainty is not permission to relax its obligations. Following the existing
+  C3 same-question composition, the native continuation constructor now joins
+  this complete, source-bound family into a discriminating comparison inquiry,
+  retaining every member and the union of all relation, distinction, interface
+  and flourishing requirements. No proposal wins by ordering or model preference.
+  The original return, unfinished undertaking and unrelated openings remain.
+
+  A prospective native participant binds the source, exact question, typed
+  returned focus and semantic observation. The common formation seam checks
+  their current scope/contact, artifact identity, retained original failure and
+  completed consultation receipt. Every expected proposal must be present;
+  partial membership cannot manufacture a comparison. Historical proofs have
+  no such marker and reconstruct unchanged. Model correction and capability
+  inquiry use the same returned-participant admission; this is not a separate
+  HTTP recovery policy or a change to M24--M26.3.
+
+  The saved tool return now forms the comparison through the ordinary shared
+  consumer and native R/A/P reformation. Substituted artifact identity, invented
+  returned focus and omitted proposal are refused. With environment availability
+  withdrawn, continuation changes without acquiring execution authority. An
+  independent supported opening remains beside the comparison as live plurality.
+  This is an availability variation, not proof of independently changed relational
+  authority. The comparison has no executable capability route and cannot renew
+  the unchanged model inquiry. Failure and unresolved flourishing remain exact.
+
+  Efficiency against immediate parent `71eafd2`: cold load takes
+  1.310--1.312 wall seconds versus 1.258--1.278 (candidate CPU 1.196--1.215).
+  Ordinary one/two-contact paths take 6.449/6.428 versus 6.361/6.366 wall
+  seconds (CPU 5.992/6.014); corrected paths take 10.354/10.497 versus
+  10.090/10.419 (CPU 9.586/9.866). All four expanded snapshots are exactly
+  unchanged: carriers remain 104,311/141,102 bytes ordinary and
+  108,647/148,730 corrected. Neither path adds a model call or full formation.
+  Only a newly admitted complete returned family invalidates its possibility
+  composition and dependent M25/M25.5 comparison; the existing native
+  reformation preserves M24/M26 dependencies and unrelated possibilities.
+  The affected saved-return carry takes 6.329 wall / 6.028 CPU seconds; its
+  factorized diagnostic state is 190,407 bytes versus the preceding 215,614.
+  This reduction represents shared comparison with every exact member retained,
+  not removal of a participant or requirement.
+
+  A fixture correction was necessary before expression: the earlier disposable
+  HTTP return used placeholder body/hash and status fields that native shape
+  checks tolerated but the ordinary provider projector correctly refused.
+  The current controlled fixture uses unknown status and the exact empty-body
+  hash. Its saved GLM interpretation is reused locally as an explicitly
+  controlled candidate, not a new observation from the world. Ordinary wire
+  validation now passes without bypass. Earlier native-only formation trials
+  are not retroactively described as full expression trials.
+
+  Two approved GLM calls exercise rendering and audit (7.500 and 6.065 provider
+  seconds; 13.726 wall / 0.152 CPU for the voice path). Native review and the
+  independent effect-certificate checker pass, but this is a fidelity
+  counterexample, not successful conversational acceptance: the candidate says
+  "two consecutive connection refusals" while the retained sources contain an
+  earlier unspecified fetch failure and one typed connection refusal. A reading
+  of that same returned failure is not independent evidence of another refusal.
+  The auditor supplies no finding that repairs this distinction. Nothing is
+  posted. The full comparison family is retained natively, but the current voice
+  projection exposes a movement reference and derived readings without its
+  source-comparison organization. That missing causal projection and source-use
+  distinction are the next bounded falsifier; fluent audit agreement cannot close
+  them or promote a proposal/reading into an executed consequence.
+
+  Credential-free supported install/start/stop/restart reaches native waiting
+  in 10.937/10.325 seconds, preserves ten protected records, restores the exact
+  comparison and refuses terminal contact/model replay. Five seconds idle adds
+  0.31 child CPU seconds; this is not a broad memory/history scaling result.
+  Both disposable service families stop and their owned cleanup is verified;
+  the existing installed Miter is untouched. Syntax/balance, all 34 authority
+  pins and the 66-file runtime/document-only tree pass. Instruments and captures
+  stay outside Git. Cross-family changed-authority judgment, faithful comparison
+  expression, live research, growing history and whole-C4 completion remain open.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

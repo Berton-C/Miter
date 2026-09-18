@@ -464,3 +464,167 @@
            (participant-relation-claim model-failure-expression unresolved $expression)
            candidate no-contact-no-movement-authority) $rest)
          $rest)) ()))
+
+; Returned alternatives can refine their one source inquiry into a comparison,
+; not a selected operation. Only a prospective native admission marker enables
+; this composition; historical proofs keep their original possibility family.
+(= (C4ReturnedProposalEvidence $source $question $reading)
+   (let $proposal (index-atom $reading 8)
+     (c4-capability-proposal-evidence-v3 $source
+       (index-atom $question 1) (index-atom $reading 1)
+       (index-atom $reading 4) (index-atom $reading 5)
+       (index-atom $proposal 2) (index-atom $proposal 3))))
+
+(= (C4ComparisonExpectedAt $readings $source $question $i)
+   (if (< $i (size-atom $readings))
+     (let* (($reading (index-atom $readings $i))
+            ($rest (C4ComparisonExpectedAt $readings $source $question (+ $i 1))))
+       (if (== (index-atom (index-atom $reading 8) 1) proposed)
+         (cons-atom (C4ReturnedProposalEvidence $source $question $reading) $rest)
+         $rest)) ()))
+
+(= (C4ComparisonSourceClaimsAt $claims $source $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($evidence (index-atom $claim 6))
+            ($rest (C4ComparisonSourceClaimsAt $claims $source (+ $i 1))))
+       (if (if (CPShape $evidence c4-capability-proposal-evidence-v3 8)
+             (== (index-atom $evidence 1) $source) false)
+         (cons-atom $claim $rest) $rest)) ()))
+
+(= (C4ComparisonClaimEvidenceAt $claims $i)
+   (if (< $i (size-atom $claims))
+     (cons-atom (index-atom (index-atom $claims $i) 6)
+       (C4ComparisonClaimEvidenceAt $claims (+ $i 1))) ()))
+
+(= (C4ComparisonRelationClaimsAt $relations $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (CPListAppend
+         (if (or (CPShape $relation participant-proposed-relation 4)
+               (or (CPShape $relation participant-supported-relation 4)
+                   (CPShape $relation participant-relation-conflict 4)))
+           (index-atom $relation 3)
+           (if (CPShape $relation participant-proposed-relation 5)
+             (index-atom $relation 4) ()))
+         (C4ComparisonRelationClaimsAt $relations (+ $i 1)))) ()))
+
+(= (C4ComparisonReturnedRoute $focus)
+   (if (C4RecoveryEvidenceValid $focus)
+     (c4-model-recovery-route-v1 (C4RecoveryBasis $focus) $focus)
+     (if (C4CapabilityReturnedEvidenceValid $focus)
+       (C4CapabilityReturnedRoute
+         (index-atom (index-atom (index-atom $focus 1) 1) 1) $focus)
+       no-returned-evidence-route)))
+
+(= (C4ComparisonObservedAt $claims $question $focus $observation $i)
+   (if (< $i (size-atom $claims))
+     (let $claim (index-atom $claims $i)
+       (if (if (C4RecoverySupportedReturnClaim $claim)
+             (or
+               (== (index-atom $claim 6)
+                 (c4-returned-inquiry-result-v1 $question
+                   (returned-inquiry-focus $focus) $observation))
+               (== (index-atom $claim 6)
+                 (c4-model-correction-result-v1 $focus $observation
+                   candidate-return-not-world-evidence))) false)
+         true (C4ComparisonObservedAt $claims $question $focus $observation (+ $i 1)))) false))
+
+(= (C4ComparisonFocusPresentAt $claims $focus $i)
+   (if (< $i (size-atom $claims))
+     (let $claim (index-atom $claims $i)
+       (if (== ((index-atom $claim 2) (index-atom $claim 4) (index-atom $claim 6))
+               (tool unresolved $focus))
+         true (C4ComparisonFocusPresentAt $claims $focus (+ $i 1)))) false))
+
+(= (C4ComparisonBasisValid $basis $cut $claims)
+   (if (CPShape $basis c4-returned-comparison-basis-v1 6)
+     (let* (($source (index-atom $basis 1)) ($question (index-atom $basis 2))
+            ($focus (index-atom $basis 3)) ($observed (index-atom $basis 4)))
+       (if (and (C4ReturnedProposalSourceValid $source)
+                (as_model_semantic_bound $question $observed))
+         (==
+           ((index-atom $question 2)
+            (index-atom (index-atom $question 1) 1)
+            (index-atom $source 3) (index-atom $source 4)
+            (!= (C4ComparisonReturnedRoute $focus) no-returned-evidence-route)
+            (C4ComparisonFocusPresentAt $claims $focus 0)
+            (C4ComparisonObservedAt $claims $question $focus $observed 0)
+            (index-atom $basis 5))
+           ((index-atom $cut 3) (index-atom (index-atom $cut 1) 1)
+            (index-atom $question 1) (index-atom $observed 8)
+            true true true native-joined-inquiry-no-execution-authority)) false)) false))
+
+(= (C4ComparisonMembersAt $possibilities $expected $source-route $i)
+   (if (< $i (size-atom $possibilities))
+     (let* (($p (index-atom $possibilities $i))
+            ($rest (C4ComparisonMembersAt $possibilities $expected $source-route (+ $i 1))))
+       (if (or (CPHas $p $expected 0)
+               (== (index-atom $p 7) (consequence-route $source-route non-certifying)))
+         (cons-atom $p $rest) $rest)) ()))
+
+(= (C4ComparisonRequirementsAt $members $field $i $out)
+   (if (< $i (size-atom $members))
+     (C4ComparisonRequirementsAt $members $field (+ $i 1)
+       (C4ContinuationJoinAt $out (index-atom (index-atom $members $i) $field) 0)) $out))
+
+(= (C4ComparisonRetainOthersAt $possibilities $members $i)
+   (if (< $i (size-atom $possibilities))
+     (let* (($p (index-atom $possibilities $i))
+            ($rest (C4ComparisonRetainOthersAt $possibilities $members (+ $i 1))))
+       (if (CPHas $p $members 0) $rest (cons-atom $p $rest))) ()))
+
+(= (C4ComparisonJoinBasis $possibilities $basis $cut $flourishing $relations $claims)
+   (if (C4ComparisonBasisValid $basis $cut $claims)
+     (let* (($source (index-atom $basis 1)) ($question (index-atom $basis 2))
+            ($observed (index-atom $basis 4))
+            ($expected-evidence (C4ComparisonExpectedAt
+              (index-atom (index-atom $observed 9) 1) $source $question 0))
+            ($source-claims (C4ComparisonSourceClaimsAt
+              (C4CapabilityProposalClaims $relations) $source 0))
+            ($actual-evidence (C4ComparisonClaimEvidenceAt $source-claims 0))
+            ($expected (C4CapabilityProposalPossibilitiesAt $source-claims $cut $flourishing 0)))
+       (if (and (> (size-atom $expected) 1)
+             (and (== (size-atom $expected-evidence) (size-atom $actual-evidence))
+               (and (CPSubset $expected-evidence $actual-evidence 0)
+                    (CPSubset $expected $possibilities 0))))
+         (let* (($members (C4ComparisonMembersAt $possibilities $expected
+                   (C4ComparisonReturnedRoute (index-atom $basis 3)) 0))
+                ($family (c4-returned-comparison-family-v1 $basis
+                  (exact-member-possibilities $members)
+                  all-members-retained-without-selection
+                  no-new-contact-or-operation-authority))
+                ($comparison (possible-movement (as_native_id c4-returned-comparison $family)
+                  inquiry
+                  (C4ComparisonRequirementsAt $members 3 0 ())
+                  (C4ComparisonRequirementsAt $members 4 0 ())
+                  (C4ComparisonRequirementsAt $members 5 0 ())
+                  (C4ComparisonRequirementsAt $members 6 0 ())
+                  (consequence-route (soul-formed-returned-proposal-comparison $family)
+                    non-certifying) l2425-supported)))
+           (cons-atom $comparison (C4ComparisonRetainOthersAt $possibilities $members 0)))
+         $possibilities)) $possibilities))
+
+(= (C4ReturnedComparisonJoinAt $possibilities $markers $cut $flourishing $relations $claims $i)
+   (if (< $i (size-atom $markers))
+     (let* (($claim (index-atom $markers $i))
+            ($basis (index-atom $claim 6)))
+       (C4ReturnedComparisonJoinAt
+         (if (and (== (index-atom $claim 2) native-authority)
+                  (== (index-atom $claim 4) unresolved))
+           (C4ComparisonJoinBasis $possibilities $basis $cut $flourishing $relations $claims)
+           $possibilities)
+         $markers $cut $flourishing $relations $claims (+ $i 1))) $possibilities))
+
+(= (C4ComparisonMarkersAt $relations $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (if (CPShape $relation participant-proposed-relation 4)
+             (== (index-atom $relation 1) returned-proposal-comparison) false)
+         (index-atom $relation 3) (C4ComparisonMarkersAt $relations (+ $i 1)))) ()))
+
+(= (C4ReturnedComparisonJoin $possibilities $cut $flourishing $relations)
+   (let $markers (C4ComparisonMarkersAt (index-atom $relations 1) 0)
+     (if (== (size-atom $markers) 0) $possibilities
+       (C4ReturnedComparisonJoinAt $possibilities $markers $cut $flourishing $relations
+         (C4ComparisonRelationClaimsAt (index-atom $relations 1) 0) 0))))

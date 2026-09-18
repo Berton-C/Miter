@@ -940,10 +940,7 @@
              model (index-atom $question 2)
              (lineage c4 returned-inquiry $source (index-atom $reading 1))
              (participant-relation-claim open-growth-capability-request-proposal unresolved
-               (c4-capability-proposal-evidence-v3 $source
-                 (index-atom $question 1) (index-atom $reading 1)
-                 (index-atom $reading 4) (index-atom $reading 5)
-                 (index-atom $proposal 2) (index-atom $proposal 3)))
+               (C4ReturnedProposalEvidence $source $question $reading))
              unresolved no-contact-no-movement-authority) $rest)
          $rest)) ()))
 
@@ -1056,6 +1053,22 @@
      (C4ReturnedInquiryWarrantFromValidatedProof $proof $question)
      (c4-returned-inquiry-held invalid-native-proof)))
 
+; This is prospective composition evidence, not an effect certificate. The
+; formation seam rechecks the complete returned family and its typed receipt.
+(= (C4ReturnedComparisonParticipant $proof $question $observation $source $proposals)
+   (if (> (size-atom $proposals) 1)
+    (let* (($warrant (C4ReturnedInquiryWarrantFromValidatedProof $proof $question))
+          ($focus (if (CPShape $warrant c4-returned-inquiry-warrant-v1 8)
+            (index-atom (index-atom $warrant 4) 1) no-selected-returned-inquiry)))
+     (if (!= $focus no-selected-returned-inquiry)
+       (let $basis (c4-returned-comparison-basis-v1 $source $question $focus $observation
+                    native-joined-inquiry-no-execution-authority)
+         ((participant-contribution (as_native_id c4-returned-comparison-basis $basis)
+           native-authority (index-atom $question 2)
+           (lineage c4 prospective-returned-comparison $source)
+           (participant-relation-claim returned-proposal-comparison unresolved $basis)
+           candidate no-contact-no-movement-authority))) ())) ()))
+
 (= (C4ReturnedSemanticParticipants $proof $question $observation)
    (if (and (ARNativeMovementProofValid $proof)
             (C4SemanticObservationValid $observation $question))
@@ -1072,10 +1085,12 @@
                    (ARNativeProofReference $proof)
                    (as_native_id c4-returned-inquiry $basis)
                    (index-atom $question 1) (index-atom $observation 8)))
-                ($readings (index-atom (index-atom $observation 9) 1)))
+                ($readings (index-atom (index-atom $observation 9) 1))
+                ($proposals (C4ReturnedProposalParticipantsAt $readings $question $source 0)))
            (CPListAppend
              (C4SemanticParticipantsAt $readings $question (index-atom $question 2) 0)
-             (C4ReturnedProposalParticipantsAt $readings $question $source 0)))
+             (CPListAppend $proposals
+               (C4ReturnedComparisonParticipant $proof $question $observation $source $proposals))))
          ())) ()))
 
 (= (C4VoiceInstructions)
