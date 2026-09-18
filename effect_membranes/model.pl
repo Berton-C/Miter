@@ -234,7 +234,7 @@ as_model_question_carrier(
       ['source-contact',ContactId,['payload-reference',PayloadRef]],
       ['exact-contact-text',ContentHash,Text,RawRef],
       ['native-movement',MovementReference],
-      ['semantic-readings',Readings],
+      VoiceSources,
       ['candidate-rendering',['raw-sha256',CandidateHash],Rendering],
       VoiceCommitments,
       AuditContract,
@@ -247,8 +247,7 @@ as_model_question_carrier(
     as_symbol(ContactId,_),as_symbol(PayloadRef,_),as_sha256(ContentHash,_),
     as_model_bounded_source_text(Text,1,32768),as_model_raw_reference(RawRef),
     MovementReference=['movement-reference'|_],length(MovementReference,5),
-    is_list(Readings),length(Readings,Count),between(2,3,Count),
-    maplist(as_model_c4_semantic_reading,Readings),
+    as_model_c4_voice_sources(VoiceSources,Readings),
     as_sha256(CandidateHash,_),
     as_model_c4_voice_commitments(VoiceCommitments),
     as_model_c4_rendering(Rendering,Readings,VoiceCommitments),
@@ -296,6 +295,31 @@ as_model_c4_audit_context(
       'assess-material-alteration-against-intention-and-current-evidence']) :-
     Intention=['native-intention'|_],ground(Intention),
     is_list(Ids),length(Ids,N),between(2,3,N),maplist(as_symbol,Ids,_).
+as_model_c4_audit_context(
+    ['native-voice-audit-context-v1',Intention,
+      ['native-recovery-standing',[Id],
+        'returned-limitation-not-semantic-reading-or-operation-authority'],
+      'assess-material-alteration-against-intention-and-current-evidence']) :-
+    Intention=['native-intention','explain-unresolved-native-continuation'|_],
+    ground(Intention),as_symbol(Id,_).
+
+% Distinct source species; no rejection becomes a semantic reading. Native
+% formation and certificate readback bind this projection to actual evidence.
+as_model_c4_voice_sources(['semantic-readings',Readings],Readings) :-
+    is_list(Readings),length(Readings,N),between(2,3,N),
+    maplist(as_model_c4_semantic_reading,Readings).
+as_model_c4_voice_sources(['native-recovery-evidence',[Source]],[Source]) :-
+    as_model_c4_recovery_source(Source).
+
+as_model_c4_recovery_source(
+    ['c4-native-recovery-source-v1',Id,['failure',Reason],
+      ['world-knowledge',Knowledge,'rejected-syntax-is-not-world-evidence'],
+      ['authority','unchanged-no-operation-granted'],['continuation',Standing],
+      'rejected-artifact-not-semantic-evidence']) :-
+    as_symbol(Id,_),as_symbol(Reason,_),
+    memberchk(Knowledge,['file-precondition-unknown','no-file-state-established']),
+    memberchk(Standing,['recovery-exhausted','recovery-evidence-insufficient',
+      'recovery-unavailable']).
 
 as_model_c4_rendering(
     ['rendered-utterance',Utterance,['bindings',Bindings],
@@ -499,7 +523,7 @@ as_model_question_carrier(
       ['source-contact',ContactId,['payload-reference',PayloadRef]],
       ['exact-contact-text',ContentHash,Text,RawRef],
       ['native-movement',MovementReference],
-      ['semantic-readings',Readings],NativeIntention,VoiceCommitments,
+      VoiceSources,NativeIntention,VoiceCommitments,
       ['request-contract',Instructions,'rendering-not-movement',
         'candidate-utterance-not-effect','no-contact-no-authority-no-choice'],
       ['resource-request',ResourceId,ModelId,DirectionAuthority,
@@ -510,8 +534,7 @@ as_model_question_carrier(
     as_symbol(ContactId,_), as_symbol(PayloadRef,_), as_sha256(ContentHash,_),
     as_model_bounded_source_text(Text,1,32768), as_model_raw_reference(RawRef),
     MovementReference=['movement-reference'|_], length(MovementReference,5),
-    is_list(Readings), length(Readings,Count), between(2,3,Count),
-    maplist(as_model_c4_semantic_reading,Readings),
+    as_model_c4_voice_sources(VoiceSources,_),
     NativeIntention=['native-intention'|_], ground(NativeIntention),
     as_model_c4_voice_commitments(VoiceCommitments),
     as_local_scope(Scope), string(Instructions),
@@ -1470,8 +1493,9 @@ as_model_provider_voice_binding_ids(Profile,Question,Ids) :-
     as_model_c4_voice_binding_ids(Question,Profile,Ids).
 as_model_provider_voice_binding_ids(Profile,
     ['c4-voice-render-question-v1',_,_,_,_,_,
-      ['semantic-readings',Readings],_,Commitments|_],Ids) :-
+      [SourceKind,Readings],_,Commitments|_],Ids) :-
     as_dict_atom(Profile,kind,remote),
+    memberchk(SourceKind,['semantic-readings','native-recovery-evidence']),
     maplist(as_model_c4_reading_id,Readings,ReadingIds),
     nth0(7,Commitments,['authorized-continuity-context',Entries,
       'conversation-project-and-personal-context-authorized',
@@ -2505,6 +2529,9 @@ as_model_c4_semantic_row(Question,Row,
     sub_atom(Hash,0,24,_,Prefix), atom_concat('dialogue-reading-',Prefix,Id).
 
 as_model_c4_reading_id(['c4-semantic-reading-v2',Id|_],Id).
+as_model_c4_reading_id(Source,Id) :-
+    Source=['c4-native-recovery-source-v1',Id|_],
+    as_model_c4_recovery_source(Source).
 
 as_model_c4_capability_proposal_json(Row,
     ['capability-proposal-v1','not-material',"",none]) :-
@@ -2702,7 +2729,8 @@ as_model_c4_claim_use_json(Row,Use) :-
 
 as_model_c4_voice_binding_ids(
     ['c4-voice-render-question-v1',_,_,_,_,_,
-      ['semantic-readings',Readings],_,Commitments|_],Profile,Ids) :-
+      VoiceSources,_,Commitments|_],Profile,Ids) :-
+    as_model_c4_voice_sources(VoiceSources,Readings),
     as_model_c4_context_binding_ids(Readings,Commitments,Profile,Ids).
 
 as_model_c4_context_binding_ids(Readings,Commitments,Profile,Ids) :-

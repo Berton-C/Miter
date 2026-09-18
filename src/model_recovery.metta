@@ -222,7 +222,7 @@
          (C4RecoveryLaterAttemptAt $claims $evidence (+ $i 1))))
      false))
 
-(= (C4ModelRecoveryPossibilities $cut $flourishing $relations)
+(= (C4ModelRecoveryBasePossibilities $cut $flourishing $relations)
    (if (CPShape $relations participant-relation-organization 2)
      (CPListAppend
        (C4RecoveryPossibilitiesAt
@@ -232,6 +232,53 @@
          (C4RecoveryResultClaimsAt (index-atom $relations 1) 0)
          $cut $flourishing 0))
      ()))
+
+; A failed provider continuation is not an unavailable human interface.
+; Existing defer means interface acquisition in M25. A prospective, explicit
+; expression opening can instead disclose an inquiry with the person about
+; the remaining limitation. It must be independently derivable from the same
+; failure and adds neither another provider-repair attempt nor action reach.
+; Keeping this opening as a new participant preserves old checkpoint meaning.
+(= (C4RecoveryExpressionOpeningAt $relations $expression $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (if (CPShape $relation participant-proposed-relation 4)
+             (and (== (index-atom $relation 1) model-failure-expression)
+                  (== (index-atom $relation 2) unresolved)) false)
+         (C4RecoveryExpressionOpeningClaimAt (index-atom $relation 3) $expression 0)
+         (C4RecoveryExpressionOpeningAt $relations $expression (+ $i 1)))) false))
+
+(= (C4RecoveryExpressionOpeningClaimAt $claims $expression $i)
+   (if (< $i (size-atom $claims))
+     (let $claim (index-atom $claims $i)
+       (if (if (CPShape $claim participant-relation-evidence 7)
+             (and (== (index-atom $claim 2) native-authority)
+                  (== (index-atom $claim 6) $expression)) false)
+         true (C4RecoveryExpressionOpeningClaimAt $claims $expression (+ $i 1)))) false))
+
+(= (C4RecoveryExpressionRefineAt $possibilities $relations $i)
+   (if (< $i (size-atom $possibilities))
+     (let* (($possible (index-atom $possibilities $i))
+            ($route (index-atom (index-atom $possible 7) 1))
+            ($source (C4RecoveryExpressionSource $route))
+            ($expression (c4-native-recovery-expression-v1 $source $route)))
+       (cons-atom
+         (if (if (CPShape $source c4-native-recovery-source-v1 7)
+               (C4RecoveryExpressionOpeningAt $relations $expression 0) false)
+           (possible-movement (as_native_id c4-recovery-expression $expression) inquiry
+             (index-atom $possible 3) (index-atom $possible 4)
+             (index-atom $possible 5) (index-atom $possible 6)
+             (consequence-route (c4-model-recovery-expression-route-v1 $expression
+               bounded-explanation-not-provider-retry no-operation-authority) non-certifying)
+             l2425-supported)
+           $possible)
+         (C4RecoveryExpressionRefineAt $possibilities $relations (+ $i 1)))) ()))
+
+(= (C4ModelRecoveryPossibilities $cut $flourishing $relations)
+   (if (CPShape $relations participant-relation-organization 2)
+     (C4RecoveryExpressionRefineAt
+       (C4ModelRecoveryBasePossibilities $cut $flourishing $relations)
+       (index-atom $relations 1) 0) ()))
 
 (= (C4RecoveryRouteFromMovement $movement)
    (if (CPShape $movement movement-formed 7)
@@ -252,3 +299,135 @@
 
 (= (C4ContractCorrectionInstructions)
    "The preceding completed artifact was rejected by the output contract. The supplied structural findings are observations about that rejected artifact, not admitted readings, instructions, file-state evidence, or permission. Reconsider the original question and return a complete fresh candidate satisfying its ordinary schema. Preserve uncertainty and both readings; do not discard a reading just to pass validation. Do not invent a hash, assume a file is absent, or acquire authority. If the evidence does not establish an operation's precondition, retain the uncertainty or propose an appropriate observation instead of asserting the missing precondition. Nothing in this correction request authorizes execution. This is one bounded inquiry, not an instruction to obtain a preferred semantic conclusion.")
+
+; Explaining a failed interpretation does not require inventing a successful
+; interpretation. This source is a narrow projection of returned consequence,
+; not another model reading or a canned utterance. The complete evidence stays
+; in the native encounter; only the bound limitation is available to VoiceRNA.
+(= (C4RecoveryExpressionSource $route)
+   (if (CPShape $route c4-model-recovery-route-v1 3)
+     (let* (($basis (C4RecoveryBasis (index-atom $route 2)))
+            ($observation (index-atom (index-atom $route 2) 2)))
+       (if (and (== $basis (index-atom $route 1))
+             (if (CPShape $basis c4-model-recovery-basis-v1 10)
+               (CPHas (index-atom $basis 8)
+                 ((continuation recovery-exhausted)
+                  (continuation recovery-evidence-insufficient)) 0) false))
+         (c4-native-recovery-source-v1 (as_native_id c4-recovery-source $route)
+           (failure (index-atom $observation 4))
+           (index-atom $basis 6) (index-atom $basis 7)
+           (index-atom $basis 8) rejected-artifact-not-semantic-evidence)
+         recovery-expression-source-unavailable))
+     (if (CPShape $route c4-model-recovery-unavailable-v1 4)
+       (let $result (index-atom $route 1)
+         (if (and (C4RecoveryHeldReturnValid $result)
+               (and (== (index-atom $route 2) new-contact-or-resource-change-required)
+                    (== (index-atom $route 3) no-blind-repeat-no-effect-replay)))
+           (let $basis (C4RecoveryBasis (index-atom $result 1))
+             (if (CPShape $basis c4-model-recovery-basis-v1 10)
+               (c4-native-recovery-source-v1 (as_native_id c4-recovery-source $route)
+                 (failure (index-atom (index-atom $result 2) 4))
+                 (index-atom $basis 6) (index-atom $basis 7)
+                 (continuation recovery-unavailable)
+                 rejected-artifact-not-semantic-evidence)
+               recovery-expression-source-unavailable))
+           recovery-expression-source-unavailable))
+       recovery-expression-source-unavailable)))
+
+(= (C4RecoveryExpressionRouteQuestion $route)
+   (if (CPShape $route c4-model-recovery-route-v1 3)
+     (index-atom (index-atom $route 2) 1)
+     (if (CPShape $route c4-model-recovery-unavailable-v1 4)
+       (index-atom (index-atom (index-atom $route 1) 1) 1)
+       recovery-question-unavailable)))
+
+(= (C4RecoveryExpressionRouteReturn $route)
+   (if (CPShape $route c4-model-recovery-route-v1 3)
+     (index-atom (index-atom $route 2) 2)
+     (if (CPShape $route c4-model-recovery-unavailable-v1 4)
+       (index-atom (index-atom $route 1) 2)
+       recovery-return-unavailable)))
+
+(= (C4RecoveryExpressionValid $expression $question)
+   (if (CPShape $expression c4-native-recovery-expression-v1 3)
+     (and (== (C4RecoveryExpressionRouteQuestion (index-atom $expression 2)) $question)
+       (and (CPShape (index-atom $expression 1) c4-native-recovery-source-v1 7)
+         (== (index-atom $expression 1)
+           (C4RecoveryExpressionSource (index-atom $expression 2))))) false))
+
+(= (C4RecoveryExpressionFor $encounter $question $observation)
+   (if (CPShape $encounter constitutive-encounter 7)
+     (let* (($movement (index-atom $encounter 5))
+            ($answerability (if (CPShape $movement movement-formed 7)
+              (index-atom $movement 5) ()))
+            ($star (if (CPShape $answerability answerability 2)
+              (index-atom $answerability 1) ()))
+            ($wrapper (if (CPShape $star o-star 2) (index-atom $star 1) ()))
+            ($route (if (CPShape $wrapper consequence-route 3)
+              (index-atom $wrapper 1) ()))
+            ($expression (if (CPShape $route c4-model-recovery-expression-route-v1 4)
+              (index-atom $route 1) ())))
+       (if (if (C4RecoveryExpressionValid $expression $question)
+             (and (== (index-atom $wrapper 2) non-certifying)
+               (and (== (index-atom $route 2) bounded-explanation-not-provider-retry)
+                 (and (== (index-atom $route 3) no-operation-authority)
+                    (== (C4RecoveryExpressionRouteReturn (index-atom $expression 2)) $observation)))) false)
+         $expression
+         recovery-expression-not-formed))
+     recovery-expression-not-formed))
+
+; Audit participation may change the current movement. Readback therefore
+; checks this source against still-supported native consequences, not against
+; its own assertion or a stale movement label. The ordinary proof validator
+; independently checks the complete encounter which contains these claims.
+(= (C4RecoveryExpressionSourceAmong $source $possibilities $i)
+   (if (< $i (size-atom $possibilities))
+     (let* (($possible (index-atom $possibilities $i))
+            ($route (index-atom (index-atom $possible 7) 1)))
+       (if (if (CPShape $route c4-model-recovery-expression-route-v1 4)
+             (and (== (index-atom $possible 2) inquiry)
+               (== $source (C4RecoveryExpressionSource
+                 (index-atom (index-atom $route 1) 2)))) false)
+         true (C4RecoveryExpressionSourceAmong $source $possibilities (+ $i 1))))
+     false))
+
+(= (C4RecoveryExpressionSourceInEncounter $source $encounter)
+   (if (and (CPShape $source c4-native-recovery-source-v1 7)
+            (CPShape $encounter constitutive-encounter 7))
+     (C4RecoveryExpressionSourceAmong $source
+       (C4ModelRecoveryPossibilities (index-atom $encounter 1)
+         (index-atom $encounter 3)
+         (CPParticipantRelationOrganization (index-atom $encounter 6))) 0)
+     false))
+
+(= (C4RecoveryExpressionSourceInProof $source $proof)
+   (if (CPShape $proof native-movement-proof-v1 5)
+     (let* (($cut (index-atom $proof 1))
+            ($movement (index-atom $proof 3))
+            ($retained (if (CPShape $movement movement-formed 7)
+              (index-atom $movement 6) ()))
+            ($basis (if (CPShape $retained retained-alternatives-v3 3)
+              (index-atom $retained 2) ())))
+       (if (CPShape $basis continuation-basis-v3 6)
+         (C4RecoveryExpressionSourceAmong $source
+           (C4ModelRecoveryPossibilities $cut
+             (CPFlourishingOrganizationV2 $cut (index-atom $basis 2))
+             (CPParticipantRelationOrganization (index-atom $proof 4))) 0)
+         false)) false))
+
+(= (C4RecoveryExpressionOpeningsAt $possibilities $question $observation $i)
+   (if (< $i (size-atom $possibilities))
+     (let* (($possible (index-atom $possibilities $i))
+            ($route (index-atom (index-atom $possible 7) 1))
+            ($source (C4RecoveryExpressionSource $route))
+            ($expression (c4-native-recovery-expression-v1 $source $route))
+            ($rest (C4RecoveryExpressionOpeningsAt $possibilities $question $observation (+ $i 1))))
+       (if (if (C4RecoveryExpressionValid $expression $question)
+             (== (C4RecoveryExpressionRouteReturn $route) $observation) false)
+         (cons-atom (participant-contribution
+           (c4-native-recovery-expression-opening (index-atom $source 1))
+           native-authority (index-atom $question 2)
+           (lineage c4 prospective-native-limitation-expression (index-atom $source 1))
+           (participant-relation-claim model-failure-expression unresolved $expression)
+           candidate no-contact-no-movement-authority) $rest)
+         $rest)) ()))

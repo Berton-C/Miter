@@ -6085,7 +6085,7 @@ Already carried:
   ordinary semantic admission, full formation and proof checking, then
   retires the failure opening while retaining its provenance. Its return is
   saved valid fixture material, not a newly generated repair by GLM. Rejected
-  and unavailable corrections each lead to one explicit native deferral;
+  and unavailable corrections each expose an explicit native deferral possibility;
   uncertain transmission, changed instructions, wrong scope and missing proof
   do not open a second call.
 
@@ -6120,6 +6120,76 @@ Already carried:
   fabricating semantic readings to get a message out. Then continue the named
   older-artifact/version seam; these are work obligations, not repeated
   requests for permission to proceed.
+
+  **C4 native recovery expression, 2026-09-17.** The next trial exposed an
+  important distinction in the preceding cut: an exhaustion/deferral
+  possibility was not an actually formed movement. M25's existing `defer`
+  concerns unavailable interfaces; the human interface was still available.
+  The ordinary joint therefore correctly reported no admissible primary.
+  No M24--M26.3 rule was rewritten to force acceptance. A new prospective
+  native participant now discloses a bounded limitation-expression inquiry
+  from the exact returned failure. It adds no provider-repair attempt or
+  operation authority, and must pass full ordinary formation. Old states
+  without this explicit participant retain their original meaning.
+
+  The formed intention reaches the same VoiceRNA rendering, audit, optional
+  revision, certification and effect-descriptor consumer as an ordinary
+  accepted interpretation. Its source is distinctly typed native recovery
+  evidence, never a fabricated successful semantic reading. Exact failed
+  request/return lineage stays in the native proof; the provider sees only
+  the bound limitation, current contact and ordinary commitments, not the
+  rejected proposal's contents. Independent certificate readback derives
+  the disclosed source from the supported proof participants. Unknown file
+  state remains unknown and no operation is executed by this route.
+
+  **Carry and efficiency against `32ca38d`:** two successive isolated
+  exhausted-recovery contacts pass the actual native consumer, deep voice
+  review and mechanical Mattermost certificate boundary. Wall/CPU is
+  13.095/12.622 and 13.305/12.794 seconds, versus 9.402/9.070 and 9.555/9.226
+  for the predecessor's explicit but unexpressed outcome. Each now has four
+  full formations rather than three, adding only the prospective expression
+  participation, and four fixture model invocations rather than two (one
+  interpretation, one correction, one rendering, one audit). Checkpoints
+  are 105,717/158,412 bytes versus 100,990/103,180. These different outcomes
+  are not a compression comparison. A real audit defect causes one revision
+  and fresh audit: six fixture calls, five formations, 17.409/16.623 and
+  17.942/16.989 wall/CPU seconds, 113,898/173,041 checkpoint bytes. A defect
+  persisting through final audit terminates without an effect after six calls;
+  its additional material formation takes 21.189/20.250 and 21.954/20.882.
+  Missing audit also holds publication. Unavailable correction still allows
+  an independently audited limitation, without another correction attempt.
+  Invented file absence, forged disclosure and unsupported source proofs
+  fail. All model returns here are offline fixtures, not fresh GLM evidence.
+
+  Ordinary accepted-semantic state/history is exactly equal at both sizes:
+  unchanged 103,950/140,741 bytes, model calls and formation counts. Wall/CPU
+  is 6.061/5.761 and 6.204/5.871 versus 5.899/5.662 and 5.968/5.737;
+  cold bootstrap is 1.189/1.135 versus 1.174/1.107. This ordinary fixture
+  holds rendering; installed end-to-end latency is not inferred. The
+  predecessor failure checkpoint restores exactly without acquiring the new
+  prospective opening or being regraded.
+
+  A credential-free disposable `bin/miter` install carries the full revised
+  expression checkpoint through start, stop, restart and fresh-process deep
+  certificate verification. Idle follows the start replies in 7.096/7.049
+  seconds, versus 5.204/5.206 for the smaller preceding corrected checkpoint.
+  All four checkpoint/continuity records remain identical, terminal-contact
+  replay is refused, unknown stays unknown, and no spend or effect record is
+  created. Five idle seconds add 0.21 child CPU seconds and 224 KiB RSS.
+  Every disposable process family exits. The untouched installed family
+  remains broker/supervisor/child; the child is 4.2% CPU and 42,608 KiB RSS
+  at 6:28:04 elapsed. Native source balance/let syntax and diff checks pass;
+  fixtures and raw evidence remain private outside Git.
+
+  **Standing and next falsifier:** bounded native failure-to-expression now
+  passes locally through the ordinary boundaries and supported restart. It
+  is not general self-repair, an installed provider correction, live research
+  completion or whole-C4 closure. The measured extra work is restricted to
+  new failure/expression/audit participation and its dependent movement;
+  ordinary state is unchanged. Longer-history growth and live latency remain
+  unmeasured. Carry this release on a new authorized contact without replaying
+  a terminal input. Continue C4's named artifact/version formation and
+  resolution seam while the operator performs the installation handoff.
 
 Next movement:
 

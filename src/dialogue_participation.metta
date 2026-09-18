@@ -902,6 +902,23 @@
    (== (index-atom $direction 3)
      human-operator-direction-not-cognitive-authority))
 
+(= (C4VoiceRecoveryInstructions)
+   "Return only one JSON object with exactly utterance, uncertainty, and bindings. Render Miter's native intention to explain a bounded unresolved failure in this contact. The supplied native recovery source is evidence of a limitation, not a successful semantic reading or a tool result. The original rejected content is not admitted and must not be reconstructed. Explain what remains unresolved in plain language, preserve the person's undertaking, and ask a useful clarification only if the current contact supports it. Do not invent a file hash, assert file absence, claim an operation succeeded, acquire permission, promise an automatic retry, or attribute the failure to the person. Do not pretend the requested research or task has been completed. Distinguish unknown world state from rejected syntax. Bind to the supplied recovery source identifier. Keep any materially unresolved uncertainty. Apply any supplied native voice repair direction to the whole utterance; the candidate will still be audited and is not authorized by this request. No internal technical dump unless asked. Keep utterance under 3000 characters and uncertainty under 600 characters. No Markdown fence.")
+
+(= (C4VoiceExpressionInputValid $observation $question $encounter)
+   (if (CPShape $observation c4-native-recovery-expression-v1 3)
+     (and (C4RecoveryExpressionValid $observation $question)
+       (C4RecoveryExpressionSourceInEncounter (index-atom $observation 1) $encounter))
+     (C4SemanticObservationValid $observation $question)))
+
+(= (C4VoiceSourceBoundToEncounter $question $encounter)
+   (if (CPShape (index-atom $question 6) native-recovery-evidence 2)
+     (let $sources (index-atom (index-atom $question 6) 1)
+       (if (== (size-atom $sources) 1)
+         (C4RecoveryExpressionSourceInEncounter (index-atom $sources 0) $encounter)
+         false))
+     (CPShape (index-atom $question 6) semantic-readings 2)))
+
 (= (C4VoiceRenderQuestion $contact $encounter $semantic-question
       $semantic-observation $direction $private-context $capability-context
       $revision-context)
@@ -909,8 +926,8 @@
          ((CPContactValid $contact)
           (CPShape $encounter constitutive-encounter 7)
           (CPShape $semantic-question c4-contact-semantic-question-v1 12)
-          (C4SemanticObservationValid $semantic-observation
-            $semantic-question)
+          (C4VoiceExpressionInputValid $semantic-observation
+            $semantic-question $encounter)
           (C4ModelDirectionValid $direction language-rendering)
           (C4VoiceDirectionMatchesPrivateContext $direction $private-context)
           (C4CapabilityContactContextValid $capability-context)
@@ -921,7 +938,9 @@
               (index-atom $participant 5) ()))
             ($cut (index-atom $encounter 1))
             ($movement (index-atom $encounter 5))
-            ($readings (index-atom (index-atom $semantic-observation 9) 1)))
+            ($recovery (CPShape $semantic-observation c4-native-recovery-expression-v1 3))
+            ($readings (if $recovery ((index-atom $semantic-observation 1))
+              (index-atom (index-atom $semantic-observation 9) 1))))
        (if (CPShape $claim participant-text-claim 5)
          (c4-voice-render-question-v1
            (question-reference (index-atom $contact 1) voice-rendering)
@@ -931,8 +950,10 @@
            (exact-contact-text (index-atom $claim 1) (index-atom $claim 2)
              (index-atom $claim 3))
            (native-movement (CP2MovementReference $cut $movement))
-           (semantic-readings $readings)
-           (native-intention respond-to-authorized-contact
+           (if $recovery (native-recovery-evidence $readings)
+             (semantic-readings $readings))
+           (native-intention (if $recovery explain-unresolved-native-continuation
+               respond-to-authorized-contact)
              preserve-plurality-and-uncertainty
              no-claim-of-unperformed-effect same-intention-required-in-audit
              source-relative-finding-interpretations-v1)
@@ -943,7 +964,7 @@
              relational-not-fixed-style no-unsupported-internal-state-claim
              $private-context $capability-context
              (C4VADCueSurface $contact) $revision-context)
-           (request-contract (C4VoiceInstructions)
+           (request-contract (if $recovery (C4VoiceRecoveryInstructions) (C4VoiceInstructions))
              rendering-not-movement candidate-utterance-not-effect
              no-contact-no-authority-no-choice)
            (C4ResourceRequestFromDirection $direction language-rendering))
@@ -1260,9 +1281,13 @@
 
 (= (C4VoiceAuditContext $voice-question)
    (native-voice-audit-context-v1 (index-atom $voice-question 7)
-     (semantic-reading-standing
-       (C4SemanticReadingIdsAt (index-atom (index-atom $voice-question 6) 1) 0)
-       fallible-alternatives-not-binding-obligations)
+     (if (CPShape (index-atom $voice-question 6) native-recovery-evidence 2)
+       (native-recovery-standing
+         (C4SemanticReadingIdsAt (index-atom (index-atom $voice-question 6) 1) 0)
+         returned-limitation-not-semantic-reading-or-operation-authority)
+       (semantic-reading-standing
+         (C4SemanticReadingIdsAt (index-atom (index-atom $voice-question 6) 1) 0)
+         fallible-alternatives-not-binding-obligations))
      assess-material-alteration-against-intention-and-current-evidence))
 
 ; Exact expression intention must survive the rendering-to-audit boundary.
@@ -1802,11 +1827,12 @@
             ($facts (index-atom $encounter 2))
             ($flourishing (index-atom $encounter 3))
             ($rendering (index-atom $voice-observation 9)))
-       (if (and (CPShape $rap rap-read-v2 6)
+       (if (and (C4VoiceSourceBoundToEncounter $voice-question $encounter)
+             (and (CPShape $rap rap-read-v2 6)
              (and (> (size-atom $facts) 0)
               (and (CPFactExpressionsLive $facts)
                (and (CPShape $flourishing flourishing-organization 3)
-                    (== (size-atom (index-atom $flourishing 2)) 9)))))
+                     (== (size-atom (index-atom $flourishing 2)) 9))))))
          (c4-native-voice-audit-basis-v1
            (ARNativeProofReference $proof)
            (one-simultaneous-rap $rap)
@@ -1845,12 +1871,13 @@
             ($flourishing (index-atom $encounter 3))
             ($rendering (index-atom $voice-observation 9))
             ($cut (index-atom $proof 1)))
-       (if (and (== $proof (ARNativeMovementProof $encounter))
+       (if (and (C4VoiceSourceBoundToEncounter $voice-question $encounter)
+             (and (== $proof (ARNativeMovementProof $encounter))
              (and (CPShape $rap rap-read-v2 6)
               (and (> (size-atom $facts) 0)
                (and (CPFactExpressionsLive $facts)
                 (and (CPShape $flourishing flourishing-organization 3)
-                     (== (size-atom (index-atom $flourishing 2)) 9))))))
+                     (== (size-atom (index-atom $flourishing 2)) 9)))))))
          (c4-native-voice-audit-basis-v1
            (native-proof-reference (index-atom $cut 1)
              (ARMovementReference $cut $movement) native-proof-store
@@ -1908,7 +1935,8 @@
             ($movement (index-atom $encounter 5))
             ($rendering (index-atom $voice-observation 9)))
        (==
-         ((== (index-atom $basis 1) (ARNativeProofReference $proof))
+         ((and (C4VoiceSourceBoundToEncounter $voice-question $encounter)
+            (== (index-atom $basis 1) (ARNativeProofReference $proof)))
           (== (index-atom $basis 2)
             (one-simultaneous-rap (C4VoiceMovementRAP $movement)))
           (== (index-atom $basis 3)
@@ -2385,11 +2413,22 @@
    (if (CPShape $voice-question c4-voice-render-question-v1 11)
      (let* (($commitments (index-atom $voice-question 8))
             ($private-context (index-atom $commitments 7)))
-       (if (C4PrivateContinuityContextPresent $private-context)
+       (if (CPShape (index-atom $voice-question 6) native-recovery-evidence 2)
+         (authorized-disclosure (native-recovery-disclosure-v1
+           (index-atom (index-atom (index-atom $voice-question 6) 1) 0)))
+        (if (C4PrivateContinuityContextPresent $private-context)
          (authorized-disclosure
            current-contact-and-scoped-continuity-to-selected-model)
-         (authorized-disclosure current-contact-and-derived-readings-only)))
+         (authorized-disclosure current-contact-and-derived-readings-only))))
      (authorized-disclosure unavailable)))
+
+(= (C4VoiceDisclosureValid $disclosure $proof)
+   (if (CPShape $disclosure authorized-disclosure 2)
+     (let $value (index-atom $disclosure 1)
+       (if (CPShape $value native-recovery-disclosure-v1 2)
+         (C4RecoveryExpressionSourceInProof (index-atom $value 1) $proof)
+         (CPHas $value (current-contact-and-derived-readings-only
+           current-contact-and-scoped-continuity-to-selected-model) 0))) false))
 
 (= (C4VoiceCertificateFromValidReviewed $encounter $reviewed $proof)
    (let* (($voice-question (index-atom $reviewed 1))
@@ -2531,12 +2570,7 @@
             source-scope-movement-bound)
           (== (index-atom (index-atom $certificate 8) 7)
             no-added-effect-authority)
-          (or (== (index-atom $certificate 9)
-                (authorized-disclosure
-                  current-contact-and-derived-readings-only))
-              (== (index-atom $certificate 9)
-                (authorized-disclosure
-                  current-contact-and-scoped-continuity-to-selected-model)))
+          (C4VoiceDisclosureValid (index-atom $certificate 9) $proof)
           (== (index-atom $certificate 10)
             (emission-authority mattermost-exact-resolved-group-only)))
          (true true true true true true true true true true true true true true
@@ -2623,7 +2657,7 @@
 ; externally supplied artifacts, which retain the general deep validators.
 (= (C4FreshDialogueResultOutcomeValid $result $outcome)
    (if (and (CPShape $result assistant-contact-incorporated-v5 6)
-         (CPShape $outcome assistant-dialogue-model-participation-v1 4))
+         (C4ExpressionOutcomeShape $outcome))
      (let* (($contact-id (index-atom $result 1))
             ($incorporated-encounter (index-atom $result 2))
             ($voice-question (index-atom $result 3))
@@ -2640,11 +2674,13 @@
               (C4MattermostEffectDescriptorFromValidReviewed
                 $contact-id $reviewed)))
        (==
-         ((C4SemanticObservationValid $semantic-observation
-            $semantic-question)
+         ((C4ExpressionOutcomeSourceValid $outcome)
           (C4FreshReviewedVoiceValid $reviewed)
           (== $voice-standing (voice-rendering-v2 $reviewed))
-          (== $voice-question (index-atom $reviewed 1))
+          (and (== $voice-question (index-atom $reviewed 1))
+            (if (CPShape $semantic-observation c4-native-recovery-expression-v1 3)
+              (== (index-atom $voice-question 6)
+                (native-recovery-evidence ((index-atom $semantic-observation 1)))) true))
           (== $incorporated-encounter $reviewed-encounter)
           (CPShape $source source-contact 3)
           (== (index-atom $source 1) $contact-id)
@@ -2678,13 +2714,22 @@
          model-failure-contact-binding-unavailable))
      $prepared))
 
+(= (C4ExpressionOutcomeShape $outcome)
+   (or (CPShape $outcome assistant-dialogue-model-participation-v1 4)
+       (CPShape $outcome assistant-dialogue-native-recovery-v1 4)))
+
+(= (C4ExpressionOutcomeSourceValid $outcome)
+   (if (CPShape $outcome assistant-dialogue-native-recovery-v1 4)
+     (C4RecoveryExpressionValid (index-atom $outcome 2) (index-atom $outcome 1))
+     (if (CPShape $outcome assistant-dialogue-model-participation-v1 4)
+       (C4SemanticObservationValid (index-atom $outcome 2) (index-atom $outcome 1)) false)))
+
 (= (C4DialogueModelOutcomeValid $outcome)
-   (if (CPShape $outcome assistant-dialogue-model-participation-v1 4)
+   (if (C4ExpressionOutcomeShape $outcome)
      (let* (($semantic-question (index-atom $outcome 1))
             ($semantic-observation (index-atom $outcome 2))
             ($voice-standing (index-atom $outcome 3)))
-       (and (C4SemanticObservationValid $semantic-observation
-              $semantic-question)
+       (and (C4ExpressionOutcomeSourceValid $outcome)
             (or (and (CPShape $voice-standing voice-rendering-v1 3)
                   (C4VoiceObservationValid (index-atom $voice-standing 2)
                     (index-atom $voice-standing 1)))
@@ -2714,8 +2759,10 @@
        voice-rendering-standing-unavailable)))
 
 (= (C4DialogueStageStanding $outcome)
-   (if (CPShape $outcome assistant-dialogue-model-participation-v1 4)
-     (dialogue-stage-standing-v1 semantic-reading-incorporated
+   (if (C4ExpressionOutcomeShape $outcome)
+     (dialogue-stage-standing-v1
+       (if (CPShape $outcome assistant-dialogue-native-recovery-v1 4)
+         native-recovery-limitation-incorporated semantic-reading-incorporated)
        (C4VoiceStageStanding (index-atom $outcome 3)))
      (if (CPShape $outcome assistant-dialogue-model-unavailable-v1 3)
        (let $observation (index-atom $outcome 2)
@@ -2733,9 +2780,11 @@
 ; already-established species and does not trigger another deep reviewed-voice
 ; validation. It cannot authorize an effect or alter a cut.
 (= (C4DialogueStageStandingFromValidated $outcome)
-   (if (CPShape $outcome assistant-dialogue-model-participation-v1 4)
+   (if (C4ExpressionOutcomeShape $outcome)
      (let $voice (index-atom $outcome 3)
-       (dialogue-stage-standing-v1 semantic-reading-incorporated
+       (dialogue-stage-standing-v1
+         (if (CPShape $outcome assistant-dialogue-native-recovery-v1 4)
+           native-recovery-limitation-incorporated semantic-reading-incorporated)
          (if (CPShape $voice voice-rendering-v2 2)
            voice-certified
            (if (CPShape $voice voice-rendering-unavailable 3)
@@ -3029,6 +3078,80 @@
        (capability-contact-context-v1 no-capability-request
          no-returned-capability-contact))))
 
+(= (C4ExpressionOutcome $question $observation $voice-standing)
+   (if (CPShape $observation c4-native-recovery-expression-v1 3)
+     (assistant-dialogue-native-recovery-v1 $question $observation $voice-standing)
+     (assistant-dialogue-model-participation-v1 $question $observation $voice-standing)))
+
+(= (C4PreparedForRecoveryExpression $prepared $question $observation)
+   (if (AR4PreparedEncounterValid $prepared)
+     (let* (($encounter (index-atom (index-atom $prepared 4) 2))
+            ($openings (C4RecoveryExpressionOpeningsAt
+              (C4ModelRecoveryBasePossibilities (index-atom $encounter 1)
+                (index-atom $encounter 3)
+                (CPParticipantRelationOrganization (index-atom $encounter 6)))
+              $question $observation 0)))
+       (if (> (size-atom $openings) 0)
+         (C4ReformPreparedWithParticipants $prepared $openings) $prepared)) $prepared))
+
+; One expression consumer for accepted interpretations and native limitation
+; evidence. Both use the same candidate, audit, formation and certificate.
+(= (C4ExpressPreparedUsingV1 $root $context $contact $final-prepared
+      $capability-prepared $question $observation $returned-capability-context
+      $model-writer)
+   (let* (
+      ($enriched-contact (index-atom $capability-prepared 3))
+      ($encounter (if (AR4PreparedEncounterValid $capability-prepared)
+        (index-atom (index-atom $capability-prepared 4) 2)
+        (constitutive-encounter-unavailable capability-reformation-invalid)))
+      ($capability-context $returned-capability-context)
+      ($private-context
+        (if (CPShape $observation c4-native-recovery-expression-v1 3)
+          (private-continuity-context () scope-verified-native-candidates-not-authority)
+          (C4SemanticSourceContext $question $observation $enriched-contact)))
+      ($voice-direction (as_model_direction $root
+        (CPContactScope $enriched-contact) language-rendering))
+      ($voice-question (C4VoiceRenderQuestion
+        $enriched-contact $encounter $question $observation $voice-direction
+        $private-context $capability-context
+        (voice-revision-context initial-no-prior-defect)))
+      ($voice-observation (if (CPShape $voice-question c4-voice-render-question-v1 11)
+        (C4ModelQuestionUsingV1 $root $voice-question $model-writer)
+        (c4-model-observation-unavailable-v1
+          (question-reference (index-atom $contact 1) voice-rendering)
+          (CPContactScope $contact)
+          (if (C4ModelDirectionValid $voice-direction language-rendering)
+            (index-atom $voice-direction 1) unknown-model-resource)
+          native-voice-question-unavailable no-candidate-admitted)))
+      ($reviewed (C4ReviewVoiceUsingV1 $root
+        (c4-voice-review-context-v1 $enriched-contact $capability-prepared
+          $encounter $question $observation $voice-direction $private-context
+          $voice-question $voice-observation) $model-writer)))
+     (if (CPShape $reviewed c4-voice-reviewed-v3 8)
+       (let* (($reviewed-formation (index-atom $reviewed 6))
+              ($reviewed-prepared (index-atom $reviewed-formation 1))
+              ($incorporated (AR4IncorporatePreparedEncounter $reviewed-prepared))
+              ($bound-result (AR4RecordBoundContextV1 $context $incorporated)))
+         (if (CPShape $bound-result assistant-contact-incorporated 3)
+           (let $descriptor
+             (C4MattermostEffectDescriptorFromValidReviewed
+               (index-atom $contact 1) $reviewed)
+             (assistant-processed-v3
+               (assistant-contact-incorporated-v5 (index-atom $contact 1)
+                 (index-atom $bound-result 2) (index-atom $reviewed 1)
+                 $reviewed $descriptor)
+               (C4ExpressionOutcome $question $observation
+                 (voice-rendering-v2 $reviewed))))
+           (assistant-processed-v3 $bound-result
+             (C4ExpressionOutcome $question $observation
+               (voice-rendering-unavailable $voice-question
+                 native-audit-formation-not-incorporated)))))
+       (let* (($incorporated (AR4IncorporatePreparedEncounter $final-prepared))
+              ($bound-result (AR4RecordBoundContextV1 $context $incorporated)))
+         (assistant-processed-v3 $bound-result
+           (C4ExpressionOutcome $question $observation
+             (voice-rendering-unavailable $voice-question $reviewed)))))))
+
 (= (C4BoundContactUsingV1 $root $binding $contact $memory-writer $model-writer
       $capability-environment-reader $capability-proof-writer
       $capability-writer $vad-writer)
@@ -3133,79 +3256,9 @@
                         $capability-writer 3 ()))
                       ($capability-prepared (index-atom $capability-result 1)))
                  (if (AR4PreparedEncounterValid $capability-prepared)
-                   (let* (
-                      ($enriched-contact (index-atom $capability-prepared 3))
-                      ($encounter (if
-                        (AR4PreparedEncounterValid $capability-prepared)
-                        (index-atom (index-atom $capability-prepared 4) 2)
-                        (constitutive-encounter-unavailable
-                          capability-reformation-invalid)))
-                      ($capability-context
-                        (index-atom $capability-result 2))
-                      ($private-context
-                        (C4SemanticSourceContext $question $observation
-                          $enriched-contact))
-                      ($voice-direction
-                        (as_model_direction $root
-                          (CPContactScope $enriched-contact)
-                          language-rendering))
-                      ($voice-question (C4VoiceRenderQuestion
-                        $enriched-contact $encounter $question
-                        $observation $voice-direction $private-context
-                        $capability-context
-                        (voice-revision-context initial-no-prior-defect)))
-                      ($voice-observation (if (CPShape $voice-question
-                        c4-voice-render-question-v1 11)
-                        (C4ModelQuestionUsingV1 $root $voice-question $model-writer)
-                        (c4-model-observation-unavailable-v1
-                          (question-reference (index-atom $contact 1)
-                            voice-rendering)
-                          (CPContactScope $contact)
-                          (if (C4ModelDirectionValid $voice-direction
-                                language-rendering)
-                            (index-atom $voice-direction 1)
-                            unknown-model-resource)
-                          native-voice-question-unavailable
-                          no-candidate-admitted)))
-                      ($reviewed (C4ReviewVoiceUsingV1 $root
-                        (c4-voice-review-context-v1 $enriched-contact
-                          $capability-prepared $encounter $question $observation
-                          $voice-direction $private-context $voice-question
-                          $voice-observation) $model-writer)))
-                 (if (CPShape $reviewed c4-voice-reviewed-v3 8)
-                   (let* (($reviewed-formation (index-atom $reviewed 6))
-                          ($reviewed-prepared
-                            (index-atom $reviewed-formation 1))
-                          ($incorporated (AR4IncorporatePreparedEncounter
-                            $reviewed-prepared))
-                          ($bound-result
-                            (AR4RecordBoundContextV1 $context $incorporated)))
-                     (if (CPShape $bound-result
-                           assistant-contact-incorporated 3)
-                       (let $descriptor
-                         (C4MattermostEffectDescriptorFromValidReviewed
-                           (index-atom $contact 1) $reviewed)
-                         (assistant-processed-v3
-                           (assistant-contact-incorporated-v5
-                             (index-atom $contact 1)
-                             (index-atom $bound-result 2)
-                             (index-atom $reviewed 1) $reviewed $descriptor)
-                           (assistant-dialogue-model-participation-v1 $question
-                             $observation (voice-rendering-v2 $reviewed))))
-                       (assistant-processed-v3 $bound-result
-                         (assistant-dialogue-model-participation-v1 $question
-                           $observation
-                           (voice-rendering-unavailable $voice-question
-                             native-audit-formation-not-incorporated)))))
-                   (let* (($incorporated (AR4IncorporatePreparedEncounter
-                            $final-prepared))
-                          ($bound-result
-                            (AR4RecordBoundContextV1 $context $incorporated)))
-                     (assistant-processed-v3 $bound-result
-                       (assistant-dialogue-model-participation-v1 $question
-                         $observation
-                         (voice-rendering-unavailable $voice-question
-                           $reviewed))))))
+                   (C4ExpressPreparedUsingV1 $root $context $contact
+                     $final-prepared $capability-prepared $question $observation
+                     (index-atom $capability-result 2) $model-writer)
                    (assistant-processed-v3
                      (assistant-contact-held (index-atom $contact 1)
                        (capability-reformation-held $capability-prepared))
@@ -3224,13 +3277,20 @@
                          native-voice-question-not-formed
                          (c4-voice-review-held-v1
                            semantic-reformation-native-standing-held))))))
-               (let* (($failure-prepared $model-prepared)
-                      ($incorporated
-                        (C4IncorporateBoundContactWithoutModel $context
-                          $failure-prepared))
-                      ($outcome (assistant-dialogue-model-unavailable-v1
+               (let* (($failure-prepared
+                        (C4PreparedForRecoveryExpression $model-prepared $question $observation))
+                      ($failure-encounter (if (AR4PreparedEncounterValid $failure-prepared)
+                        (index-atom (index-atom $failure-prepared 4) 2) ()))
+                      ($expression (C4RecoveryExpressionFor $failure-encounter
                         $question $observation)))
-                 (assistant-processed-v3 $incorporated $outcome))))
+                 (if (C4RecoveryExpressionValid $expression $question)
+                   (C4ExpressPreparedUsingV1 $root $context $contact
+                     $failure-prepared $failure-prepared $question $expression
+                     (capability-contact-context-v1 no-capability-request
+                       no-returned-capability-contact) $model-writer)
+                   (assistant-processed-v3
+                     (C4IncorporateBoundContactWithoutModel $context $failure-prepared)
+                     (assistant-dialogue-model-unavailable-v1 $question $observation))))))
            (assistant-processed-v3
              (AR4IncorporatePreparedEncounter $prepared)
              (assistant-dialogue-model-unavailable-v1

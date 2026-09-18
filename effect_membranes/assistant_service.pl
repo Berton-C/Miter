@@ -1268,9 +1268,16 @@ as_mattermost_voice_certificate(
     AuditProofReference==ProofReference,
     as_mattermost_native_voice_disposition(NativeDisposition,
       AuditProofReference),
-    memberchk(Disclosure,
-      ['current-contact-and-derived-readings-only',
-       'current-contact-and-scoped-continuity-to-selected-model']).
+    as_mattermost_voice_disclosure(Disclosure,Proof).
+
+as_mattermost_voice_disclosure(Disclosure,_) :-
+    memberchk(Disclosure,['current-contact-and-derived-readings-only',
+      'current-contact-and-scoped-continuity-to-selected-model']).
+as_mattermost_voice_disclosure(['native-recovery-disclosure-v1',Source],Proof) :-
+    % The fixed native checker, not this receiver, establishes the source's
+    % relationship to the proof. No rejected proposal is admitted here.
+    current_predicate('C4RecoveryExpressionSourceInProof'/3),
+    once('C4RecoveryExpressionSourceInProof'(Source,Proof,true)).
 
 % This is a closed-shape and cross-reference check only.  MeTTa has already
 % formed the disposition from the complete constitutive organization; the
