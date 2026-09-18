@@ -6306,6 +6306,75 @@ Already carried:
   Exact lookup is now implemented; this is not full named-artifact resolution,
   research delivery, general recovery or whole-C4 closure.
 
+  **C4 scoped artifact reference discovery, 2026-09-17:**
+  At this cut the Atlas, C-034--042 and S-801--803 are reread. The preceding
+  exact-version reader could recover a named source, but the ordinary semantic
+  question disclosed no way for a model participant to propose that source.
+  An isolated two-write checkpoint proves the gap: both native version rows
+  exist while its old continuity surface carries neither handle. This is a
+  missing participation seam, not permission to make a model choose a head or
+  to infer current file state from historical content.
+
+  Native dialogue participation now derives a complete, exact-scope projection
+  of indexed artifact headers: request identity, relative path, content hash
+  and the write's original prior-content relation. Both competing versions
+  remain visible. The projection says explicitly that unindexed history is not
+  absence and that headers contain no body, current-file claim or write
+  authority. Scope without indexed versions retains its prior v2 carrier.
+  The v3 carrier is disclosure-checked against the exact active native capsule,
+  saved operation claims and returned observations. A shared mechanical capsule
+  reader retains the same immutable-object and unchanged-active-pointer checks
+  already used for exact content. The receiving code neither ranks versions
+  nor interprets their relevance. Full original proof verification remains at
+  requested historical-byte access, not every header disclosure.
+
+  Independent checks refuse a wrong scope, invented or duplicate identity,
+  omitted competing version and missing receipt. Restoring the receipt changes
+  availability without changing the current file. Metadata-only catalogs
+  require the existing private-context grant; a public-only grant is refused.
+  Provider projection excludes host paths and local scope identifiers. Ordinary
+  VoiceRNA private context is preserved. One hundred native catalog lookups
+  take 0.007505/0.007530/0.007730 seconds with 0/1,000/5,000 unrelated history
+  rows. These are indexed projection measurements, not whole-history closure.
+
+  One complete local ordinary dialogue path requests the original draft after
+  two actual writes and an external current-file change. Structured provider
+  fixtures traverse the actual producer JSON, receiving validation, native
+  possibility formation, proof-bound read, rendering, audit and independent
+  Mattermost certificate check. The exact first body enters rendering and audit
+  as historical proposal content; the changed current file stays unchanged.
+  The path takes 12.396 wall / 11.926 CPU seconds, three fixture model exchanges
+  and zero external calls. This establishes integration, not unfamiliar-language
+  competence by a live model. A non-Mattermost fixture contact ID initially
+  failed the outbound certificate; using a correctly shaped fixture ID passes
+  without changing the certificate. The trial also exposes an existing prompt
+  contradiction: unused method was described as empty while the closed producer
+  schema requires `none`. The instruction is corrected to match that schema;
+  no bound, checker or authority condition is weakened.
+
+  Ordinary no-artifact turns retain v2 and unchanged calls, formations and
+  factor counts: 5.843/5.620 and 5.882/5.663 wall/CPU seconds versus
+  5.792/5.572 and 5.839/5.621 before. Their 104,311/141,102-byte checkpoints
+  increase by only the 21-character instruction correction. Cold bootstrap is
+  1.122/1.089 seconds. Supported disposable install/start/stop/restart preserves
+  all 21 checkpoint, continuity, operation, proof and workspace records. Fresh
+  native restore, exact headers, historical body and independent certificate
+  readback pass. Startup/restart reach waiting in 5.573/5.586 seconds; five idle
+  seconds add 0.19 child CPU seconds and 224 KiB RSS. There is no replay,
+  external model call, post, installed upgrade or live-state write.
+
+  Source balance, diff and runtime-only tracked-file checks pass. All diagnostic
+  process families are stopped; the stage area, two disposable workspace/runtime
+  directories and two output terms are removed, and the reusable private runner
+  is restored. Earlier captures and live state are untouched. Process inspection
+  finds only installed broker 88003, supervisor 88487 and child 88498; at
+  1:22:07 the child is at 3.1% sampled CPU and 976,752 KiB RSS. This closes the
+  discovery handoff and local ordinary-path carry, not live named-version
+  resolution, broader skill transfer or whole C4. Next are supported installed
+  carry and the remaining distribution/growth seams below; competing revision
+  judgment and current-file reconciliation must not be claimed from header
+  availability alone.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

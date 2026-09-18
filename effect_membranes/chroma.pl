@@ -91,7 +91,15 @@ miter_continuity_sources_checked(Root0,Question,Rows) :-
     ground(Question),acyclic_term(Question),
     miter_continuity_source_question(Question,Scope,Sources),
     (Sources==[] -> Rows=[]
-    ; miter_chroma_root(Root0,Root),miter_chroma_runtime_id(Root,RuntimeId),
+    ; miter_continuity_scope_context(Root0,Scope,Context,Guard),
+      maplist(miter_continuity_source_result(Context),Sources,Rows),
+      miter_continuity_context_unchanged(Guard) ).
+
+% One mechanical active-capsule read, shared by exact content and historical
+% artifact-reference disclosure. This does not choose a source or a version.
+miter_continuity_scope_context(Root0,Scope,Context,
+    active_pointer(ActivePath,PointerHash)) :-
+      miter_chroma_root(Root0,Root),miter_chroma_runtime_id(Root,RuntimeId),
       directory_file_path(Root,'checkpoints/active.json',ActivePath),
       miter_continuity_regular_file(ActivePath,65536),
       crypto_file_hash(ActivePath,PointerHash,[algorithm(sha256),encoding(octet)]),
@@ -113,9 +121,10 @@ miter_continuity_sources_checked(Root0,Question,Rows) :-
       miter_continuity_read_sources(CapsulePath,CapsuleHash,Scope,Capsule,Nodes),
       crypto_file_hash(CapsulePath,FileHash,[algorithm(sha256),encoding(octet)]),
       Context=source_context(RuntimeId,Scope,CapsuleRelative,FileHash,
-        CapsuleHash,SnapshotHash,Capsule,Nodes),
-      maplist(miter_continuity_source_result(Context),Sources,Rows),
-      crypto_file_hash(ActivePath,PointerHash,[algorithm(sha256),encoding(octet)]) ).
+        CapsuleHash,SnapshotHash,Capsule,Nodes).
+
+miter_continuity_context_unchanged(active_pointer(Path,Hash)) :-
+    crypto_file_hash(Path,Hash,[algorithm(sha256),encoding(octet)]).
 
 miter_continuity_regular_file(Path,Max) :-
     (read_link(Path,_,_) -> throw(error(exact_source_held('source-is-symlink'),_))

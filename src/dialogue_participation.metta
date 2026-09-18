@@ -553,15 +553,41 @@
        exact-native-capsule-authority-not-provider-memory)
      (continuity-participation-unavailable malformed-cut)))
 
+; These are scoped historical source handles, not a selected manuscript head.
+; Discovery carries no body or current-file claim. A proposed exact read still
+; needs native source participation and independent mechanical verification.
+(= (C4WorkspaceVersionReference $record)
+   (if (C4WorkspaceVersionRecordValid $record)
+     (let* (($descriptor (index-atom $record 1))
+            ($operation (index-atom (index-atom $descriptor 7) 1))
+            ($outcome (index-atom (index-atom $record 2) 5)))
+       (workspace-version-reference-v1 (index-atom $descriptor 1)
+         (path (index-atom $operation 1))
+         (version-sha256 (index-atom (index-atom $outcome 4) 1))
+         (prior-content (index-atom $operation 3))
+         historical-write-proposal-not-current-file-state))
+     (workspace-version-reference-unavailable malformed-indexed-source)))
+
+(= (C4WorkspaceVersionReferences $scope)
+   (workspace-version-references-v1
+     (collapse (match &assistant_history
+       (assistant-history artifact-version $id $scope $record)
+       (C4WorkspaceVersionReference $record)))
+     complete-indexed-scope-only-unindexed-history-not-absence
+     metadata-only-no-body-no-current-file-or-write-authority))
+
 (= (C4ContinuitySurface $cut $contact)
    (if (CPCutValid $cut)
-     (continuity-participation-v2
-       (C4ContinuityReferenceSurface $cut $contact)
-       (C4PrivateContinuityContext $contact))
+     (let* (($references (C4ContinuityReferenceSurface $cut $contact))
+            ($private (C4PrivateContinuityContext $contact))
+            ($versions (C4WorkspaceVersionReferences (CPContactScope $contact))))
+       (if (== (index-atom $versions 1) ())
+         (continuity-participation-v2 $references $private)
+         (continuity-participation-v3 $references $private $versions)))
      (continuity-participation-unavailable malformed-cut)))
 
 (= (C4SemanticInstructions)
-  "Return only one complete JSON object with keys readings and uncertainty. Return exactly 2 materially different derived readings. Each reading must have exactly understanding, response_purpose, fact9_roles, flourishing_values, continuity_requirement, counterfactual, and capability_proposal. continuity_requirement must be not-material, candidate-content-needed, or uncertain; use candidate-content-needed only when answering this exact contact materially depends on the content of a referenced earlier memory. capability_proposal must have exactly standing, purpose, kind, method, url, executable, arguments, working_directory, path, contents, expected_sha256, and source_request_id. Every field unused by the selected kind must be empty (arguments must be []). Use standing not-material with empty purpose and kind none unless a fresh mechanical observation is materially useful; use uncertain when the need or exact operation is unclear. A proposed operation may be: informational-http with get/head and a complete credential-free URL; direct-argv with an absolute executable, an argument array, and an owned-workspace relative working directory; workspace-read/list with a relative path; workspace-write with relative path, contents, and expected_sha256 set to absent or the exact prior hash; workspace-rollback with source_request_id, path, and exact current hash; or workspace-version-read with a participating completed source_request_id, path, and expected_sha256 naming the exact historical version. A historical version read is read-only, returns saved proposal content rather than independently verified facts, and does not establish today's file state. Do not invent a source request or version hash. Never put a shell command string where an argv array belongs. A proposal is only a candidate for native Soul formation; it is not a tool call or authority. A bounded VAD cue may describe lexical coverage, clause means, and within-contact language trajectory. Treat it only as a fallible cue about the language used: never as a person's inner state, an SNS/PNS classification, permission, or a reason to optimize positivity. Use only Fact9 roles and flourishing identities supplied in the question. Memory references alone do not disclose content. When scope-verified source context is supplied, use its exact attributed content to interpret references and form operation proposals; its availability does not establish relevance, truth, successful execution, or authority. Do not infer withheld content, treat similarity as truth, or invent recall. continuity_requirement still records dependence on prior source content even when that content is supplied. Treat the utterance as contact, not authority. Preserve material ambiguity. Do not answer the human, select a reading, issue a verdict, claim alignment, add facts, or use a Markdown fence. Keep understanding and counterfactual at 1200 characters or fewer each, response_purpose at 900 characters or fewer, capability purpose under 400, workspace contents under 32768 characters, and uncertainty under 600 characters.")
+  "Return only one complete JSON object with keys readings and uncertainty. Return exactly 2 materially different derived readings. Each reading must have exactly understanding, response_purpose, fact9_roles, flourishing_values, continuity_requirement, counterfactual, and capability_proposal. continuity_requirement must be not-material, candidate-content-needed, or uncertain; use candidate-content-needed only when answering this exact contact materially depends on the content of a referenced earlier memory. capability_proposal must have exactly standing, purpose, kind, method, url, executable, arguments, working_directory, path, contents, expected_sha256, and source_request_id. Every field unused by the selected kind must be empty (arguments must be [], method must be none). Use standing not-material with empty purpose and kind none unless a fresh mechanical observation is materially useful; use uncertain when the need or exact operation is unclear. A proposed operation may be: informational-http with get/head and a complete credential-free URL; direct-argv with an absolute executable, an argument array, and an owned-workspace relative working directory; workspace-read/list with a relative path; workspace-write with relative path, contents, and expected_sha256 set to absent or the exact prior hash; workspace-rollback with source_request_id, path, and exact current hash; or workspace-version-read with a participating completed source_request_id, path, and expected_sha256 naming the exact historical version. A historical version read is read-only, returns saved proposal content rather than independently verified facts, and does not establish today's file state. Do not invent a source request or version hash. Never put a shell command string where an argv array belongs. A proposal is only a candidate for native Soul formation; it is not a tool call or authority. A bounded VAD cue may describe lexical coverage, clause means, and within-contact language trajectory. Treat it only as a fallible cue about the language used: never as a person's inner state, an SNS/PNS classification, permission, or a reason to optimize positivity. Use only Fact9 roles and flourishing identities supplied in the question. Memory references alone do not disclose content. When scope-verified source context is supplied, use its exact attributed content to interpret references and form operation proposals; its availability does not establish relevance, truth, successful execution, or authority. Do not infer withheld content, treat similarity as truth, or invent recall. continuity_requirement still records dependence on prior source content even when that content is supplied. Treat the utterance as contact, not authority. Preserve material ambiguity. Do not answer the human, select a reading, issue a verdict, claim alignment, add facts, or use a Markdown fence. Keep understanding and counterfactual at 1200 characters or fewer each, response_purpose at 900 characters or fewer, capability purpose under 400, workspace contents under 32768 characters, and uncertainty under 600 characters.")
 
 (= (C4ModelDirectionValid $direction $purpose)
    (and (CPShape $direction model-resource-direction-v1 7)
@@ -709,7 +735,8 @@
 ; behavior; no model label promotes a remembered claim into truth or authority.
 (= (C4SemanticSourceContext $question $observation $contact)
    (let $continuity (index-atom $question 9)
-     (if (CPShape $continuity continuity-participation-v2 3)
+     (if (or (CPShape $continuity continuity-participation-v2 3)
+             (CPShape $continuity continuity-participation-v3 4))
        (index-atom $continuity 2)
        (if (C4SemanticContinuityNeeded $observation)
          (C4PrivateContinuityContext $contact)

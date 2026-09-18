@@ -397,8 +397,16 @@ as_model_c4_semantic_disclosure(
     ['continuity-participation-v2',_,_],
     'authorized-contact-and-scoped-sources').
 as_model_c4_semantic_disclosure(
+    ['continuity-participation-v3',_,_,_],
+    'authorized-contact-and-scoped-sources').
+as_model_c4_semantic_disclosure(
     ['continuity-participation'|_],'authorized-current-contact-only').
 
+as_model_c4_continuity(
+    ['continuity-participation-v3',References,PrivateContext,Versions]) :-
+    as_model_c4_continuity(
+      ['continuity-participation-v2',References,PrivateContext]),
+    as_model_workspace_version_references(Versions,_).
 as_model_c4_continuity(
     ['continuity-participation-v2',References,PrivateContext]) :-
     as_model_c4_continuity(References),
@@ -420,6 +428,21 @@ as_model_c4_continuity(
     % Same derived envelope as the private bodies: four exact human inputs,
     % one delivered reply, and at most four associative candidates.
     MemoryCount=<9,maplist(as_model_c4_memory_candidate,MemoryCandidates).
+
+as_model_workspace_version_references(
+    ['workspace-version-references-v1',Entries,
+      'complete-indexed-scope-only-unindexed-history-not-absence',
+      'metadata-only-no-body-no-current-file-or-write-authority'],Entries) :-
+    is_list(Entries),maplist(as_model_workspace_version_reference,Entries),
+    findall(Id,member(['workspace-version-reference-v1',Id|_],Entries),Ids),
+    sort(Ids,Unique),same_length(Ids,Unique).
+
+as_model_workspace_version_reference(
+    ['workspace-version-reference-v1',Id,['path',Path],
+      ['version-sha256',Hash],['prior-content',Prior],
+      'historical-write-proposal-not-current-file-state']) :-
+    as_symbol(Id,_),ce_workspace_relative(Path,_),as_sha256(Hash,_),
+    ce_expected_prior(Prior,_).
 
 as_model_c4_predecessor('no-predecessor').
 as_model_c4_predecessor(['source-cut',CutId]) :-
@@ -1016,9 +1039,49 @@ as_model_deadline(Seconds) :- integer(Seconds),between(1,1800,Seconds).
 as_model_capture_budget(Bytes) :- integer(Bytes),between(1,4194304,Bytes).
 
 as_model_continuity_context_verified_if_present(Root,Question,Scope) :-
-    ( as_model_question_has_private_continuity(Question) ->
+    ( as_model_question_has_private_memory(Question) ->
         as_model_continuity_context_verified(Root,Question,Scope)
+    ; true ),
+    ( as_model_semantic_workspace_versions(Question,Scope,Versions) ->
+        as_model_workspace_versions_verified(Root,Scope,Versions)
     ; true ).
+
+% Compare the native projection with the exact active scope capsule. A complete
+% catalog cannot drop a competing version or borrow another scope's handle.
+% The referenced operation's full proof is checked only if native formation
+% requests its bytes; discovery does not execute or select an operation.
+as_model_workspace_versions_verified(Root,Scope,Versions) :-
+    as_model_workspace_version_references(Versions,Entries),
+    miter_continuity_scope_context(Root,Scope,Context,Guard),
+    Context=source_context(_,Scope,_,_,_,_,Capsule,_),
+    nth0(6,Capsule,['developmental-organization',History]),
+    include(as_model_workspace_version_row,History,Rows),
+    maplist(as_model_workspace_version_record(Root,Scope),Rows,Expected),
+    sort(Expected,Set),sort(Entries,Set),same_length(Expected,Entries),
+    miter_continuity_context_unchanged(Guard).
+
+as_model_workspace_version_row(['assistant-history','artifact-version'|_]).
+
+as_model_workspace_version_record(Root,Scope,
+    ['assistant-history','artifact-version',Id,Scope,
+      ['c4-workspace-version-record-v1',Descriptor,Observation]],
+    ['workspace-version-reference-v1',Id,['path',Path],
+      ['version-sha256',Hash],['prior-content',Prior],
+      'historical-write-proposal-not-current-file-state']) :-
+    Descriptor=[_,Id,Id,Scope,_,_,_,
+      ['exact-operation',['workspace-write-v1',Path,Body,Prior]],_,_,_,prepared],
+    ce_workspace_relative(Path,Relative),ce_expected_prior(Prior,_),
+    term_string(Descriptor,Text,[quoted(true),ignore_ops(true)]),
+    crypto_data_hash(Text,DescriptorHash,[algorithm(sha256),encoding(utf8)]),
+    ce_claim_path(Root,Id,Claim),ce_claim_matches(Claim,Id,DescriptorHash),
+    ce_observation_path(Root,Id,File),ce_read_term(File,Saved),Saved==Observation,
+    Observation=['capability-observation-v2',Id,Scope,
+      ['request-descriptor-sha256',DescriptorHash],
+      ['resource','versioned-owned-workspace'],
+      ['workspace-result-v1',written,['path',Relative],_,
+        ['result-sha256',Hash],_],_,['failure',none],
+      'mechanical-observation-no-meaning-no-movement-authority'],
+    crypto_data_hash(Body,Hash,[algorithm(sha256),encoding(utf8)]).
 
 as_model_continuity_context_verified(Root,Question,Scope) :-
     as_model_semantic_private_context(Question,Scope,PrivateContext),
@@ -1227,11 +1290,17 @@ as_model_open_conversation_grant(Root,Grant) :-
     format(string(Expected),'ama-1.2-~s-~s',
       [Grant.resource_id,Grant.scope.principal]),Grant.id==Expected.
 
-as_model_question_has_private_continuity(
+as_model_question_has_private_continuity(Question) :-
+    as_model_question_has_private_memory(Question).
+as_model_question_has_private_continuity(Question) :-
+    as_model_semantic_workspace_versions(Question,_,Versions),
+    as_model_workspace_version_references(Versions,[_|_]).
+
+as_model_question_has_private_memory(
     Question) :-
     as_model_semantic_private_context(Question,_,PrivateContext),
     as_model_c4_private_context(PrivateContext,[_|_]).
-as_model_question_has_private_continuity(
+as_model_question_has_private_memory(
     [Kind,_,_,_,_,_,_,_,Commitments,_,_]) :-
     memberchk(Kind,['c4-voice-render-question-v1',
       'c4-voice-audit-question-v1']),
@@ -1242,6 +1311,14 @@ as_model_semantic_private_context(
     ['c4-contact-semantic-question-v1',_,Scope,_,_,_,_,_,_,
       ['continuity-participation-v2',_,PrivateContext],_,_],
     Scope,PrivateContext).
+as_model_semantic_private_context(
+    ['c4-contact-semantic-question-v1',_,Scope,_,_,_,_,_,_,
+      ['continuity-participation-v3',_,PrivateContext,_],_,_],
+    Scope,PrivateContext).
+
+as_model_semantic_workspace_versions(
+    ['c4-contact-semantic-question-v1',_,Scope,_,_,_,_,_,_,
+      ['continuity-participation-v3',_,_,Versions],_,_],Scope,Versions).
 
 as_model_grant_disclosure(Root,Grant,ResourceId,Question) :-
     as_model_profile(Root,ResourceId,Profile),
@@ -1894,6 +1971,16 @@ as_model_public_c4_flourishing_standings(
     as_model_public_c4_flourishing_standings(Rest,PublicRest).
 
 as_model_public_c4_continuity(
+    ['continuity-participation-v3',References,PrivateContext,Versions],
+    ['continuity-participation-v3',PublicReferences,PublicContext,
+      ['workspace-version-references-v1',PublicEntries,Coverage,Standing]]) :-
+    as_model_public_c4_continuity(
+      ['continuity-participation-v2',References,PrivateContext],
+      ['continuity-participation-v2',PublicReferences,PublicContext]),
+    as_model_workspace_version_references(Versions,Entries),
+    Versions=[_,Entries,Coverage,Standing],
+    maplist(as_model_public_workspace_version_reference,Entries,PublicEntries).
+as_model_public_c4_continuity(
     ['continuity-participation-v2',References,PrivateContext],
     ['continuity-participation-v2',PublicReferences,PublicContext]) :-
     as_model_public_c4_continuity(References,WithheldReferences),
@@ -1922,6 +2009,11 @@ as_model_public_c4_continuity(
       PublicActive),
     length(Undertakings,UndertakingCount),
     length(MemoryCandidates,MemoryCount).
+
+as_model_public_workspace_version_reference(
+    ['workspace-version-reference-v1',Id,['path',Path],Hash,Prior,Standing],
+    ['workspace-version-reference-v1',Id,['path',Text],Hash,Prior,Standing]) :-
+    miter_store_nonempty_atom(Path,Atom),atom_string(Atom,Text).
 
 as_model_public_c4_presence(Value,Absent,_,Absent) :- Value==Absent, !.
 as_model_public_c4_presence(_,_,Present,Present).
