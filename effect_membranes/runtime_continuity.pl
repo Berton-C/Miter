@@ -171,8 +171,19 @@ miter_runtime_continuity_read_factorized(Path, Term) :-
 
 miter_runtime_continuity_term_hash(Term, Hash) :-
     ground(Term), acyclic_term(Term),
-    term_string(Term, Text, [quoted(true),ignore_ops(true)]),
-    crypto_data_hash(Text, Hash, [algorithm(sha256),encoding(utf8)]).
+    % Preserve the existing canonical UTF-8 byte stream and every historical
+    % identity without allocating its fully expanded string. Native proof
+    % sharing can make that string far larger than the factorized checkpoint.
+    setup_call_cleanup(open_null_stream(Null),
+      setup_call_cleanup(
+        crypto_open_hash_stream(Null,Stream,
+          [algorithm(sha256),encoding(octet),close_parent(false)]),
+        ( set_stream(Stream,encoding(utf8)),
+          write_term(Stream,Term,[quoted(true),ignore_ops(true)]),
+          flush_output(Stream),
+          crypto_stream_hash(Stream,Hash) ),
+        close(Stream)),
+      close(Null)).
 
 miter_runtime_continuity_sha256(Hash) :-
     atom(Hash), atom_length(Hash,64), atom_codes(Hash,Codes),

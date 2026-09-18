@@ -7435,6 +7435,86 @@ Already carried:
   hypothesis to prove across contact families, not a shipped selection policy
   or a claim of C4 completion.
 
+  **C4 exact returned-operation prospect and persistence carry, 2026-09-18:**
+  Baseline `fbc7fc2` has the returned GET/HEAD comparison and independently
+  refuses effect replay downstream, but its native comparison does not relate
+  that same exact returned-operation evidence to a presently untried prospect.
+  The common native comparison now makes this relation prospectively: only
+  one untried operation may form an observation possibility; multiple untried
+  alternatives remain plural, and zero does not complete the undertaking.
+  The full source family, union of its Fact9/flourishing requirements, failed
+  return and unknowns remain in the same ordinary constitutive formation and
+  simultaneous R/A/P reading. The resulting movement must still pass the
+  independent proof and execution boundary. A new candidate identifier cannot
+  authorize replay of an effect-identical operation. A prospective native
+  participant prevents upgrades from regrading historical comparison proofs.
+
+  The exact saved, independently witnessed GLM proposal now reaches the
+  ordinary shared consumer and forms the untried HEAD observation. Its local
+  fixture return changes the next native organization and expression context;
+  both completed operations then remain unavailable for replay. No new model
+  call or network request is needed for this cut. Exact reconstruction,
+  removed source return, withdrawn environment, foreign scope/contact,
+  independent-opening plurality, retained requirements and both-returned
+  falsifiers pass. Historical comparison proofs and VoiceRNA source-lineage
+  certificates remain valid. Workspace read/list counterfacts also change the
+  untried set with changed evidence, retain unknown file preconditions and
+  refuse fabricated write preconditions. Those are explicitly matcher-level,
+  builder-supplied counterfacts whose amended descriptors fail independent
+  execution validation, not autonomous cross-family discovery or execution.
+
+  The ordinary incorporation/checkpoint carry exposed a separate mechanical
+  failure: hashing expanded shared proof terms through a temporary string
+  raised heap use from about 36.6 MB to 719 MB; immediate readback exhausted
+  the default 1 GiB stack. The persistence membrane now streams the same
+  canonical UTF-8 bytes directly into SHA-256, with an explicit final flush.
+  Compatibility testing caught the prototype's missing final-buffer flush
+  before commit. The corrected version matches the old hashes on two real
+  snapshots, Unicode/quoting/numeric/null cases and buffer-boundary cases, and
+  reads an old-format checkpoint exactly. No identity/schema, retained data,
+  native judgment or memory limit changes. On the older/current snapshots,
+  hashing takes 0.446/0.344 wall and 0.443/0.343 CPU seconds versus
+  0.652/0.465 and 0.609/0.433; heap growth is about 33 KB instead of
+  117/88 MB. This is exact representation repair, not evidence thinning.
+
+  Efficiency waypoint: the new returned-contact relation invalidates its
+  comparison and dependent movement/consequence/expression organization only.
+  Two matched shared-consumer trials take 10.596/10.346 wall and
+  10.213/10.041 CPU seconds versus 5.842/5.742 and 5.658/5.595 on the parent.
+  The new path performs two full reformations, one saved model callback and
+  one local fixture observation; the parent performs one reformation, one
+  saved callback and no observation. The extra formation incorporates the
+  newly warranted consequence, not repeated validation of unchanged meaning.
+  Factorized result carriers are about 205.8 KB versus 184.2 KB. Cold load
+  is 1.296/1.229 wall/CPU versus 1.272/1.216. Ordinary one/two-contact turns
+  take 6.205/6.202 versus 6.031/6.034 wall seconds; corrected turns take
+  10.170/10.024 versus 10.062/10.169. All four expanded snapshots are exactly
+  identical, at 104,311/141,102 bytes ordinary and 108,647/148,730 corrected,
+  with unchanged two/three fixture callbacks. No provider latency is hidden
+  in these offline measurements.
+
+  Supported credential-free install/start/stop/restart preserves fourteen
+  protected records and reaches native waiting in 6.507/6.423 seconds. The
+  ordinary row/state carrier is 217,773 bytes with 1,304 factors. Checkpoint
+  preparation takes 3.821 seconds and ends at 61.1 MB heap; exact fresh
+  readback retains the original failure, unknowns, new fixture consequence
+  and unfinished route, refusing terminal contact and consultation replay.
+  Five idle seconds add 0.32 child CPU seconds; RSS changes from 220,096 to
+  220,336 KiB. Owned runtime/process cleanup is verified. Source balance,
+  authority pins and the 66-file runtime/document-only tree pass. The live
+  installation is untouched; its one supported child remains at 1.9% CPU,
+  354,336 KiB after 4h40m. Larger-history cost and fresh installed conversation
+  remain unmeasured, not inferred from these disposable carries.
+
+  Next falsifier: carry an actual differently sourced failure through the
+  same native inquiry, model-assisted possibility formation, ordinary proof,
+  local enactment and returned consequence. The workspace counterfacts above
+  do not substitute for that consumer-level proof. Change evidence and
+  authority independently, preserve unknown versus absent and incomplete
+  purpose across restart, and retain independent openings. General discovery,
+  cross-family judgment and the remaining Open Growth/distribution obligations
+  stay open; this is not whole-C4 completion or live research delivery.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

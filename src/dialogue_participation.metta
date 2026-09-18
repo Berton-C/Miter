@@ -1067,7 +1067,14 @@
            native-authority (index-atom $question 2)
            (lineage c4 prospective-returned-comparison $source)
            (participant-relation-claim returned-proposal-comparison unresolved $basis)
-           candidate no-contact-no-movement-authority))) ())) ()))
+           candidate no-contact-no-movement-authority)
+          (participant-contribution (as_native_id c4-returned-observation-prospect $basis)
+            native-authority (index-atom $question 2)
+            (lineage c4 prospective-returned-observation $source)
+            (participant-relation-claim returned-observation-prospect unresolved
+              (c4-returned-observation-prospect-v1 $basis
+                no-replay-evidence-not-execution-authority))
+            candidate no-contact-no-movement-authority))) ())) ()))
 
 (= (C4ReturnedSemanticParticipants $proof $question $observation)
    (if (and (ARNativeMovementProofValid $proof)

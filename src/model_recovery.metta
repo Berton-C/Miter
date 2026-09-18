@@ -643,6 +643,57 @@
             ($rest (C4ComparisonRetainOthersAt $possibilities $members (+ $i 1))))
        (if (CPHas $p $members 0) $rest (cons-atom $p $rest))) ()))
 
+; Returned contact retires an effect in this contact's execution slice even
+; when a later candidate gives that same effect a different identity. This is
+; not success, absence or exhaustion of the undertaking. Scope and source
+; contact must match; an unrelated return cannot rule out a present prospect.
+(= (C4ComparisonOperationReturnedAt $claims $cut $operation $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i)) ($evidence (index-atom $claim 6))
+            ($returned (if (C4CapabilityReturnedEvidenceValid $evidence)
+              (let $descriptor (index-atom (index-atom $evidence 1) 1)
+                (== ((index-atom $claim 2) (index-atom $descriptor 3)
+                     (index-atom $descriptor 4) (index-atom $descriptor 7))
+                    (tool (index-atom $cut 3)
+                     (source-contact (index-atom (index-atom $cut 1) 1))
+                     (exact-operation $operation)))) false)))
+       (if $returned true
+         (C4ComparisonOperationReturnedAt $claims $cut $operation (+ $i 1)))) false))
+
+(= (C4ComparisonUntriedAt $possibilities $claims $cut $i)
+   (if (< $i (size-atom $possibilities))
+     (let* (($possible (index-atom $possibilities $i))
+            ($route (index-atom (index-atom $possible 7) 1))
+            ($rest (C4ComparisonUntriedAt $possibilities $claims $cut (+ $i 1))))
+       (if (C4ComparisonOperationReturnedAt $claims $cut (index-atom $route 3) 0)
+         $rest (cons-atom $possible $rest))) ()))
+
+; Prospective admission prevents an upgrade from regrading historical
+; comparison proofs. It grants no selection; the full native joint still
+; judges the resulting possibility with every family requirement retained.
+(= (C4ComparisonProspectAdmittedAt $claims $basis $scope $i)
+   (if (< $i (size-atom $claims))
+     (let $claim (index-atom $claims $i)
+       (if (== ((index-atom $claim 2) (index-atom (index-atom $basis 2) 2)
+                (index-atom $claim 4) (index-atom $claim 6))
+               (native-authority $scope unresolved
+                 (c4-returned-observation-prospect-v1 $basis
+                   no-replay-evidence-not-execution-authority)))
+         true (C4ComparisonProspectAdmittedAt $claims $basis $scope (+ $i 1)))) false))
+
+(= (C4ComparisonProspect $family $expected $claims $cut)
+   (if (C4ComparisonProspectAdmittedAt $claims (index-atom $family 1)
+         (index-atom $cut 3) 0)
+     (let $untried (C4ComparisonUntriedAt $expected $claims $cut 0)
+       (if (== (size-atom $untried) 1)
+         (let* (($selected (index-atom $untried 0))
+                ($route (index-atom (index-atom $selected 7) 1))
+                ($id (as_native_id c4-returned-observation-prospect ($family $route))))
+           (c4-comparison-prospect-v1 $id
+             (c4-capability-request-route-v1 $id (index-atom $route 2)
+               (index-atom $route 3) dedicated-user-open-growth-environment)))
+         no-unique-untried-prospect)) no-prospective-admission))
+
 (= (C4ComparisonJoinBasis $possibilities $basis $cut $flourishing $relations $claims)
    (if (C4ComparisonBasisValid $basis $cut $claims)
      (let* (($source (index-atom $basis 1)) ($question (index-atom $basis 2))
@@ -663,13 +714,19 @@
                   (exact-member-possibilities $members)
                   all-members-retained-without-selection
                   no-new-contact-or-operation-authority))
-                ($comparison (possible-movement (as_native_id c4-returned-comparison $family)
+                ($prospect (C4ComparisonProspect $family $expected $claims $cut))
+                ($prospect-valid (CPShape $prospect c4-comparison-prospect-v1 3))
+                ($comparison (possible-movement
+                  (if $prospect-valid (index-atom $prospect 1)
+                    (as_native_id c4-returned-comparison $family))
                   inquiry
                   (C4ComparisonRequirementsAt $members 3 0 ())
                   (C4ComparisonRequirementsAt $members 4 0 ())
                   (C4ComparisonRequirementsAt $members 5 0 ())
                   (C4ComparisonRequirementsAt $members 6 0 ())
-                  (consequence-route (soul-formed-returned-proposal-comparison $family)
+                  (consequence-route
+                    (if $prospect-valid (index-atom $prospect 2)
+                      (soul-formed-returned-proposal-comparison $family))
                     non-certifying) l2425-supported)))
            (cons-atom $comparison (C4ComparisonRetainOthersAt $possibilities $members 0)))
          $possibilities)) $possibilities))
