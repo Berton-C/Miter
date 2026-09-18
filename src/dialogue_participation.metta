@@ -3146,7 +3146,10 @@
              (C4ExpressionOutcome $question $observation
                (voice-rendering-unavailable $voice-question
                  native-audit-formation-not-incorporated)))))
-       (let* (($incorporated (AR4IncorporatePreparedEncounter $final-prepared))
+       ; A held expression does not undo a completed capability. Preserve
+       ; its already formed returned contact without certifying a reply or
+       ; replaying the operation. Internal rollback is not worldly rollback.
+       (let* (($incorporated (AR4IncorporatePreparedEncounter $capability-prepared))
               ($bound-result (AR4RecordBoundContextV1 $context $incorporated)))
          (assistant-processed-v3 $bound-result
            (C4ExpressionOutcome $question $observation

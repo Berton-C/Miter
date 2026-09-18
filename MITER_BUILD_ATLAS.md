@@ -6191,6 +6191,53 @@ Already carried:
   a terminal input. Continue C4's named artifact/version formation and
   resolution seam while the operator performs the installation handoff.
 
+  **Installed carry and C4 artifact prerequisite, 2026-09-17:** Berton's
+  installation output confirms `37639c4` running with the same active
+  checkpoint (`6ff0797f...`), no carried input, no replay and the existing
+  open conversation policy. The new-contact/provider recovery carry is still
+  unobserved; installation is not conversational acceptance. C4 work proceeds
+  without interrupting that installed runtime.
+
+  Before adding artifact/version resolution, inspection of its actual consumer
+  exposed a consequential loss: when VoiceRNA held a reply, the shared consumer
+  incorporated the pre-capability encounter instead of the already formed
+  returned-capability encounter. A completed operation could therefore remain
+  in mechanical receipts but disappear from native continuity. The same
+  fallback existed before the shared-consumer extraction. A one-variable
+  offline trial confirms the loss against `37639c4`; the correction retains
+  the returned encounter, without certifying a reply, retrying the operation,
+  changing authority, or reinterpreting failure as success (C-066, S-1001).
+
+  The affected closure is incorporation/checkpoint of already formed returned
+  participation when expression is held: no new model call or constitutive
+  formation. The direct trial takes 2.970 wall / 2.839 CPU seconds against
+  3.031 / 2.900; its checkpoint is 105,619 bytes / 773 factors instead of
+  105,018 / 770, retaining precisely the previously lost participant. Two real
+  proof-bound writes in a private disposable workspace then carry distinct
+  versions through the held-expression consumer: 6.228 / 5.936 and
+  6.297 / 6.012 wall/CPU seconds, 98,894 / 144,270 checkpoint bytes and
+  742 / 1,129 factors. Each has one initial formation and one returned-contact
+  reformation. Repeated exact descriptors return the saved observations with
+  no duplicate write; no unaudited reply is authorized. These are controlled
+  component contacts with offline model carriers, not live conversations.
+
+  The supported disposable `bin/miter` install/start/stop/restart preserves
+  all 14 checkpoint, continuity, workspace, claim, observation and proof files
+  exactly. Both version operations pass independent proof readback and cached
+  no-replay access after fresh native restore. Waiting follows start in
+  5.134 / 5.118 seconds; five idle seconds add 0.23 child CPU seconds and
+  272 KiB RSS. The ordinary accepted-semantic path remains exactly equal to
+  `37639c4` at two history sizes (103,950 / 140,741 bytes): 6.037 / 5.769 and
+  6.147 / 5.843 wall/CPU versus 6.061 / 5.761 and 6.204 / 5.871, with unchanged
+  calls/formations; cold bootstrap is 1.183 / 1.128 versus 1.189 / 1.135.
+  Source-balance and diff checks pass. Every disposable family exits; only
+  installed broker 88003, supervisor 88487 and child 88498 remain (child
+  4.9% CPU, 976,720 KiB RSS, 17:05 elapsed). No live write or external model
+  call occurred. This prerequisite preserves operation evidence; it does not
+  yet implement the older named-artifact resolver or close C4. Continue that
+  exact-version seam and unrelated-history cost test next, using the existing
+  native checkpoint and immutable source records, not recency or a new store.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
