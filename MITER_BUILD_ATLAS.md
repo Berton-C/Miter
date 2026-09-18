@@ -7399,6 +7399,42 @@ Already carried:
   limitation. Fresh installed conversation, larger-history cost and whole-C4
   completion remain unclaimed.
 
+  **C4 comparison renewal falsifier, 2026-09-18:** Against `6e9b79c`, the
+  saved returned-proposal comparison has a native-formed, admissible inquiry
+  but no corresponding model-consumer focus. Its idle path also declines
+  endogenous contact because an undertaking is live and two partial openings
+  remain. Neither guard is permission to remove the other or fabricate a new
+  human contact. Historical native proof and exact restore still pass.
+
+  A reversible experiment admitted one independently proof/receipt/raw-bound
+  comparison consultation through the shared consumer. It kept all members,
+  unknowns and authority, used one deterministic comparison slice per original
+  return, and refused another consultation after recording its result. One
+  authorized GLM request retained ZDR and denied data collection. The request
+  returned in 12.358 seconds; ordinary native reformation took 9.171 wall /
+  8.760 CPU seconds. The new readings proposed the **same exact GET and HEAD
+  operations**. No operation became selected. This falsifies the proposition
+  that another contextualized semantic call alone closes this gap. The entire
+  experimental runtime delta was reverted to `6e9b79c`; it is not enabled in
+  ordinary conversation or installed. No extra callback, new policy or test
+  file is committed. Raw trial records and the reversible patch remain only
+  in the temporary active investigation area. No capability or live effect
+  executed; all owned trial process groups were cleaned.
+
+  Exact further inspection establishes a narrower next hypothesis: the GET
+  proposal is effect-identical to a request with an existing returned record;
+  HEAD has no such record. The current comparison retains both, while the
+  later execution consumer separately refuses previously returned operations.
+  Investigate this existing no-replay distinction in native comparison before
+  proposing another model call. A new prospect must retain the entire family,
+  all Fact9/flourishing requirements and the unfinished undertaking, and pass
+  fresh ordinary judgment and independent execution checks. Previously tried,
+  uncertain or denied effects cannot become retries by receiving a new
+  candidate identifier. More than one genuinely untried alternative must
+  remain plural; zero does not mean that the purpose is complete. This is a
+  hypothesis to prove across contact families, not a shipped selection policy
+  or a claim of C4 completion.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
