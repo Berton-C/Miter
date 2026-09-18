@@ -573,8 +573,10 @@
           ; A later memory-standing inquiry is the exact source-grounded
           ; refinement of the generic alignment inquiry on this contact.  Keep
           ; one rather than duplicating the same cognitive opening.
-          ($source-inquiry (if (> (size-atom $memory-continuation) 0)
-            () $base-source-inquiry))
+          ($source-inquiry (C4ContinuationJoinAt
+            (if (> (size-atom $memory-continuation) 0)
+              () $base-source-inquiry)
+            (C4ContinuationPossibilities $cut $flourishing $participant-relations) 0))
           ($specialized (CPListAppend $pln-inquiry
             (CPListAppend $nace-inquiry
             (CPListAppend $memory-continuation

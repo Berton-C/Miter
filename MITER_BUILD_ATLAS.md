@@ -1005,8 +1005,8 @@ evidence, but it is not a separate problem-solving policy for that surface.
 The reusable capacity belongs in the same native cognitive organization:
 relate the returned failure to the undertaking, retained evidence, unknowns,
 available observations and actual authority; form and compare warranted
-continuations; integrate their consequences; and preserve or terminate the
-undertaking explicitly when further recovery is not justified. Neither a
+continuations; integrate their consequences; and distinguish an exhausted
+execution route from the continuing undertaking. Neither a
 universal retry loop nor surface-specific prescriptions relocated into MeTTa
 establish this capacity. Model-proposed continuations remain candidates.
 
@@ -1022,6 +1022,82 @@ re-forms returned contact and usually proceeds toward expression, with an
 explicit redirect continuation; model contract correction is separately
 bounded. Complete this shared continuation seam within C4 instead of treating
 more adapter-specific fixes as evidence that it already exists.
+
+**Finite attempt, continuing discovery, clarified with Berton on 2026-09-18:**
+"No warranted next step" is not a claim that every beneficial path has been
+exhausted. It means no executable continuation is presently justified for the
+examined route under its evidence, dependencies, authority and resource slice.
+An inquiry needs a grounded prospect of learning or opening participation,
+not advance proof that it will succeed. Native cognition may question the
+frame, compose a different approach, seek an observation, test a capability,
+ask for genuinely missing authority, or preserve an undertaking for another
+opportunity. These are possibilities to form, not a new compulsory sequence.
+
+Exhausting retries or yielding a slice must not complete or abandon the
+undertaking, suppress other supported openings, or stop the native driver.
+Retain purpose, tried routes, unknowns, unresolved effects and dependencies;
+record what could warrant renewed participation. New contact, changed
+availability, due obligations and materially renewed native orientation can
+reopen it. Neither endless calls on unchanged evidence nor permanent
+gap-holding establishes development. Waiting and quiescent readiness remain
+lawful; actual completion or abandonment needs its own situated ground.
+This applies S-605--607/703--705/1103 and C-070--075 without changing authority
+or promising that every original objective has an achievable solution.
+
+The shared-recovery falsifier must include a blocked or exhausted route plus
+a materially different supported opening. The latter must not disappear just
+because the former remains unresolved. If no opening can presently be formed,
+the carry must retain an incomplete, revisitable undertaking across restart,
+not relabel budget exhaustion as wisdom, success or permanent impossibility.
+
+**Native cognitive shape and anti-drift check:**
+The shared capacity is not a generic host recovery manager or a fixed
+"retry, read, ask, stop" script written in MeTTa. A membrane supplies exact
+typed contact and mechanically enforces already-established boundaries.
+The same native organization relates that contact to the living undertaking,
+Fact9 and flourishing participation, alternatives, unknowns, dependencies,
+resources and authority; forms or revises inquiry; judges the present movement;
+and integrates what actually returns. Surface-specific code may correct a
+factual transport/representation contract, but may not decide the undertaking's
+meaning or prescribe a separate cognitive policy for each failure family.
+
+Keep these distinctions explicit during every related C4 stage:
+
+- **Failure of an artifact or route is not failure of the purpose.** Record
+  what failed and what remains open. A lack of presently formed options is
+  not evidence that no beneficial alternative exists.
+- **A possibility is not an authorized or selected action.** Native inquiry
+  may explore an uncertain prospect; it does not need advance proof of
+  success. New proposals still require situated judgment and the ordinary
+  independent execution checks. Unknown evidence and authority are not
+  supplied by optimism, a model, a receiver or a retry counter.
+- **Continuing discovery is not compulsory activity.** Renewed native
+  orientation may uncover an opening without a new human message, but an
+  unchanged poll or repeated effect is not developmental progress. Readiness,
+  waiting and quiescence remain revisitable dispositions, not permanent
+  conclusions about value or possibility.
+- **A bounded slice is not the undertaking's lifetime.** Preserve its purpose,
+  attempted routes, unresolved effects, dependency versions and intended next
+  participation at a boundary. Changed evidence, available relations, native
+  reframing or genuinely renewed resources can change the next movement;
+  no budget boundary grants more authority or licenses blind effect replay.
+- **Another beneficial direction does not retroactively complete the original
+  request.** Native reframing remains answerable to the actual purpose and
+  relationship. State an unresolved, revised, completed or abandoned
+  undertaking according to its own evidence, not merely because execution
+  moved elsewhere.
+- **Preserving an opening is not discovering or judging it.** A builder-supplied
+  alternative can falsify hidden-priority suppression, but cannot establish
+  autonomous recovery. C4 must also carry native formation and comparison of
+  alternatives through the same consumer across different failure sources,
+  with materially changed continuation when evidence or authority changes.
+
+Before claiming this capacity, identify which of receiving evidence, forming
+possibilities, judging movement, enacting, integrating consequence and carrying
+unfinished purpose the trial actually establishes. Keep unproved responsibilities
+open. This check applies C-054--057/060/064/067--075 and
+S-605--607/703--705/901--905/1103; it does not amend them, introduce a second
+cognitive engine, or require a predetermined successful outcome.
 
 ### Constitutive efficiency law
 
@@ -6600,6 +6676,91 @@ Already carried:
   general recovery. Verified state-schema migration, broader skill transfer,
   earned effect authority and installed conversational carry remain open.
 
+  **C4 prospective continuation openings, 2026-09-18:**
+  Berton's distinction between an exhausted route and a living undertaking is
+  now explicit in section 7, with the native cognitive shape and anti-drift
+  check. The Atlas and C-054--057/060/064/067--075,
+  S-605--607/703--705/901--905/1103 are revisited during this stage and at its
+  commit. Neither an unchanged retry nor permanent gap-holding establishes
+  development; preserving a candidate is not autonomous discovery or judgment.
+
+  Against immediate parent `6cc4588`, the exact captured exhausted model-repair
+  encounter suppresses an independently supplied read proposal. The proposal
+  is present in capability possibilities, but category-wide model-recovery
+  precedence omits it from the shared native possibilities. Removing only the
+  old failure exposes the same read. This is a native candidate-visibility
+  defect, not Mattermost transport, provider limits or missing write authority.
+
+  New independently sourced V2 proposals now acquire a prospective, exact-
+  source continuation participant during ordinary native reformation. The
+  shared possibility consumer retains that opening beside unresolved routes;
+  existing M25 formation, simultaneous R/A/P judgment and independently checked
+  execution remain in control. V1 semantic contrasts remain one proposal
+  family, not multiple independently issued requests. Existing checkpoints
+  retain their original formation; no retroactive regrading is introduced.
+  Only the newly enriched participant organization and its downstream native
+  possibilities, movement, proof and checkpoint are invalidated. Unchanged
+  ordinary encounters and older source relations keep their existing meaning.
+
+  The captured failure plus the same independent read now forms an inquiry
+  while retaining the exhausted route. The actual proof-bound workspace read
+  returns typed missing-file evidence into that encounter. Correlation requires
+  exact contact, scope, movement and operation, not equal operation text. Any
+  correlated outcome, including uncertainty, retires this execution opening;
+  it does not license replay. A second independently supplied tool/list proposal
+  remains available alongside the returned read evidence through the same
+  consumer. Their jointly live movement remains plural rather than selecting
+  the first candidate. These proposals are builder-supplied discriminating
+  evidence, not a claim that Miter discovered its own alternative.
+
+  Malformed, cross-scope, authority-claiming, wrong-contact, missing-source and
+  unavailable-environment controls do not acquire an executable opening.
+  Repeated exact proposals do not add another opening. Wrong movement, changed
+  operation, non-tool and wrong-scope returns cannot retire a different route;
+  a valid uncertain return cannot reopen the same execution. Unknown write
+  preconditions remain unknown and fail validation, not inferred absent.
+  The actual returned-movement check exposed an index-order error in this
+  candidate, corrected before commit. A same-process restore attempt correctly
+  refused nonempty native state; fresh-process restoration, not a weakened
+  guard, establishes exact carry and independent movement-proof validation.
+  Duplicate terminal contact is refused, and two older failure/expression
+  checkpoints still restore without new prospective participants or regrading.
+
+  Material reformation with the independent read takes 4.19--4.23 wall seconds
+  (the final run 4.228 / 4.031 CPU); adding the second opening after returned
+  contact takes 5.778 / 5.501. The retained snapshot is 123,059 bytes / 838
+  factors and restores exactly in 1.500 / 1.421 seconds. Ordinary unchanged
+  three-turn comparisons use the supported disposable configuration and saved
+  semantic fixture: parent 6.165/6.201/6.224 wall seconds versus candidate
+  6.145/6.297/6.301, with two local callbacks and no external model calls.
+  Instrumented single-turn runs retain two full formations and one material
+  reformation in both versions (6.081 / 5.777 versus 6.356 / 5.987 wall/CPU).
+  Cold bootstrap is 1.214 versus 1.238 seconds in the three-turn runs.
+  Ordinary checkpoint sizes remain 104,069 / 140,244 / 171,642 bytes, with
+  761 / 1,141 / 1,308 factors; expanded first-turn native snapshots are equal.
+  Pure opening projection at 1/8/32 candidates averages
+  0.000257/0.002114/0.009502 wall seconds. This is not a claim about complete
+  32-way formation or autonomous choice cost.
+
+  Supported disposable install/start/stop/restart reaches native waiting in
+  approximately 6/7 seconds and preserves all seven protected checkpoint,
+  continuity and capability records byte-for-byte. Spend/effect records stay
+  empty; no replay occurs. All owned trial process groups and service children
+  are gone. No live installation, restart, model call, network request or post
+  is made. The live family remains unchanged; at 86 minutes its child is
+  sampled at 3.6% CPU / 986,864 KiB RSS, without meaningful growth from the
+  preceding waypoint. Stage instruments remain only in the owned temporary
+  area and are removed after this knowledge is committed, before further work.
+
+  This closes proved suppression and consequence-carry defects, not shared
+  autonomous recovery or C4. The next falsifier is native formation/comparison
+  of continuations from differing failed contacts, with evidence and authority
+  changed independently, through the ordinary consumer and restart. Do not
+  disguise a predetermined retry as reasoning or replace jointly live routes
+  with an arbitrary first choice. Installed conversation, general recovery,
+  state-schema migration, broader skill transfer and earned effect authority
+  remain open; this correction is locally verified and not yet installed.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -6695,10 +6856,12 @@ Next movement:
    installs those changes together with exact historical artifact access and
    scoped version discovery. Fresh installed conversational carry remains
    open; local fixtures are not its substitute. The growing-history restart
-   correction and complete-trial-evidence correction above are locally verified
-   but not installed. The next native C4 cut is the shared cross-surface recovery
-   continuation defined in section 7, ahead of further state-migration-specific
-   behavior. Continue fresh installed carry, real developmental-history
+   correction, complete-trial-evidence correction and prospective-continuation
+   correction above are locally verified but not installed. Preserving a
+   builder-supplied opening is now carried; native discovery and comparison of
+   shared cross-surface continuations remain the next C4 responsibility under
+   section 7, ahead of further state-migration-specific behavior. Continue
+   fresh installed carry, real developmental-history
    proportionality and the remaining Open Growth seams; do not interrupt ordinary conversation for
    unrelated trials. Main publication is complete,
    not a standing blocker. Future live

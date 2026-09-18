@@ -80,7 +80,7 @@
     },
     {
       "path": "src/provisional_dynamics.metta",
-      "sha256": "b3823a70f17e2d03d8fee76c11c143c9e47786b3aa19b9a50a54d5a57238741b"
+      "sha256": "9b31f21a724692734a1e2274df3564968d67f241515e4e7ae38ec8e43091e92d"
     },
     {
       "path": "src/model_participation.metta",
@@ -92,7 +92,7 @@
     },
     {
       "path": "src/capability_environment.metta",
-      "sha256": "63559672c501b691c47a77631e3296b6c08e80ab4a99a6d5d2e15d0086616272"
+      "sha256": "869e4d9e69c1f95d16d1d209ba47570be2e471f9e434f4d1d147a930fec83097"
     },
     {
       "path": "src/model_recovery.metta",

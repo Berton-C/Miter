@@ -2834,10 +2834,12 @@
             ($scope (index-atom $prepared 2))
             ($contact (index-atom $prepared 3))
             ($grounded (index-atom $prepared 4))
+            ($prospective (CPListAppend $additional-participants
+              (C4ContinuationOpeningParticipantsAt $contact $additional-participants 0)))
             ($enriched-contact (CP2ContactWithAuthorityParticipants $contact
-              $additional-participants))
+              $prospective))
             ($reformed (miter_petta_c4_reformed_encounter
-              $contact $additional-participants $grounded)))
+              $contact $prospective $grounded)))
        (if (CPShape $reformed authority-grounded-encounter 3)
          (prepared-encounter-v1 $id $scope $enriched-contact $reformed)
          (prepared-encounter-held $id

@@ -940,6 +940,131 @@
        (capability-contact-context-v1 no-capability-request
          no-returned-capability-contact))))
 
+; A newly supplied proposal is a prospective opening, not a replacement for
+; every unresolved route on the encounter. A V2 source proposal has its own
+; source identity; V1 readings are contrasts within one semantic family, not
+; independently issued requests. Record the exact source so older
+; checkpoints keep their original formation and new openings cannot be hidden
+; by a category-wide recovery/result preference. This grants consideration,
+; never execution: ordinary M25 formation and the proof-bound writer remain.
+(= (C4ContinuationProposalValid $participant $scope)
+   (if (CPShape $participant participant-contribution 8)
+     (if (CPShape (index-atom $participant 5) participant-relation-claim 4)
+       (let $claim (index-atom $participant 5)
+         (==
+           ((CPHas (index-atom $participant 2) (model human tool) 0)
+            (== (index-atom $participant 3) $scope)
+            (== (index-atom $participant 7) no-contact-no-movement-authority)
+            (== (index-atom $claim 1) open-growth-capability-request-proposal)
+            (== (index-atom $claim 2) unresolved)
+            (CPShape (index-atom $claim 3) c4-capability-proposal-evidence-v2 5)
+            (C4CapabilityProposalEvidenceValid (index-atom $claim 3)))
+           (true true true true true true true))) false)
+     false))
+
+(= (C4ContinuationOpeningParticipantsAt $contact $additional $i)
+   (if (< $i (size-atom $additional))
+     (let* (($proposal (index-atom $additional $i))
+            ($rest (C4ContinuationOpeningParticipantsAt $contact $additional (+ $i 1))))
+       (if (if (C4ContinuationProposalValid $proposal (CPContactScope $contact))
+             (== (CPHas $proposal (CPParticipants $contact) 0) false) false)
+         (cons-atom
+           (participant-contribution
+             (as_native_id c4-continuation-opening
+               ((index-atom $contact 1) $proposal))
+             native-authority (CPContactScope $contact)
+             (lineage c4 prospective-candidate-participation (index-atom $proposal 1))
+             (participant-relation-claim continuation-opening unresolved
+               (c4-continuation-opening-v1 (index-atom $contact 1) $proposal))
+             candidate no-contact-no-movement-authority)
+           $rest)
+         $rest)) ()))
+
+(= (C4ContinuationOpeningClaimsAt $relations $i)
+   (if (< $i (size-atom $relations))
+     (let $relation (index-atom $relations $i)
+       (if (if (CPShape $relation participant-proposed-relation 4)
+             (== (index-atom $relation 1) continuation-opening) false)
+         (index-atom $relation 3)
+         (C4ContinuationOpeningClaimsAt $relations (+ $i 1)))) ()))
+
+(= (C4ContinuationProposalClaim $proposal)
+   (participant-relation-evidence (index-atom $proposal 1)
+     (index-atom $proposal 2) (index-atom $proposal 4)
+     (index-atom (index-atom $proposal 5) 2) (index-atom $proposal 6)
+     (index-atom (index-atom $proposal 5) 3)))
+
+; Any correlated returned outcome retires this exact execution opening,
+; including uncertainty. Failure does not license replay. Equal operations
+; alone do not establish correlation; source, scope and movement must agree.
+(= (C4ContinuationHasReturnAt $claims $cut $id $operation $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($evidence (if (CPShape $claim participant-relation-evidence 7)
+              (index-atom $claim 6) ())))
+       (if (if (C4CapabilityReturnedEvidenceValid $evidence)
+             (let* (($descriptor (index-atom (index-atom $evidence 1) 1))
+                    ($movement (index-atom (index-atom $descriptor 5) 1)))
+               (if (CPShape $movement movement-reference 5)
+                 (==
+                   ((index-atom $claim 2) (index-atom $descriptor 3)
+                    (index-atom $descriptor 4) (index-atom $movement 1)
+                    (index-atom $movement 2) (index-atom $movement 3)
+                    (index-atom $movement 4) (index-atom $descriptor 7))
+                   (tool (index-atom $cut 3)
+                    (source-contact (index-atom (index-atom $cut 1) 1))
+                    (index-atom $cut 1) formed inquiry $id (exact-operation $operation)))
+                 false)) false)
+         true (C4ContinuationHasReturnAt $claims $cut $id $operation (+ $i 1)))) false))
+
+(= (C4ContinuationReturnedClaimsAt $claims $cut $id $operation $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($rest (C4ContinuationReturnedClaimsAt $claims $cut $id $operation (+ $i 1))))
+       (if (C4ContinuationHasReturnAt ($claim) $cut $id $operation 0)
+         (cons-atom $claim $rest) $rest)) ()))
+
+(= (C4ContinuationPossibilitiesAt $claims $cut $flourishing $relations $i)
+   (if (< $i (size-atom $claims))
+     (let* (($claim (index-atom $claims $i))
+            ($opening (if (CPShape $claim participant-relation-evidence 7)
+              (index-atom $claim 6) ()))
+            ($rest (C4ContinuationPossibilitiesAt $claims $cut $flourishing $relations (+ $i 1))))
+       (if (if (CPShape $opening c4-continuation-opening-v1 3)
+             (and (== (index-atom $claim 2) native-authority)
+               (and (== (index-atom $opening 1) (index-atom (index-atom $cut 1) 1))
+                    (C4ContinuationProposalValid (index-atom $opening 2) (index-atom $cut 3)))) false)
+         (let* (($proposal (index-atom $opening 2))
+                ($source (C4ContinuationProposalClaim $proposal))
+                ($evidence (index-atom $source 6))
+                ($returned (C4ContinuationReturnedClaimsAt (C4CapabilityReturnedClaims $relations)
+                  $cut (C4CapabilityProposalMovementId $evidence)
+                  (C4CapabilityProposalOperation $evidence) 0)))
+           (if (CPHas $source (C4CapabilityProposalClaims $relations) 0)
+             (CPListAppend
+               (if (> (size-atom $returned) 0)
+                 (C4CapabilityResultPossibilitiesAt $returned $cut 0)
+                 (if (C4EnvironmentAvailableInRelations $relations)
+                   (C4CapabilityProposalPossibilitiesAt ($source) $cut $flourishing 0) ()))
+               $rest)
+             $rest))
+         $rest)) ()))
+
+(= (C4ContinuationPossibilities $cut $flourishing $relations)
+   (if (CPShape $relations participant-relation-organization 2)
+     (C4ContinuationPossibilitiesAt
+       (C4ContinuationOpeningClaimsAt (index-atom $relations 1) 0)
+       $cut $flourishing $relations 0) ()))
+
+; Exact duplicates represent one possibility. Different openings stay live;
+; this function neither ranks them nor chooses the first for enactment.
+(= (C4ContinuationJoinAt $base $openings $i)
+   (if (< $i (size-atom $openings))
+     (let $opening (index-atom $openings $i)
+       (C4ContinuationJoinAt
+         (if (CPHas $opening $base 0) $base
+           (CPListAppend $base ($opening))) $openings (+ $i 1))) $base))
+
 (= (C4CapabilityContactContextValid $context)
    (if (CPShape $context capability-contact-context-v1 12)
      (and (CPShape (index-atom $context 1) request-id 2)
