@@ -7070,6 +7070,75 @@ Already carried:
   describe availability as execution authority. Installed conversation,
   broad history scaling and whole-C4 closure remain unclaimed.
 
+  **C4 shared native-formed returned-inquiry consumer, 2026-09-18:**
+  The next bounded trial distinguishes a missing consumer from missing
+  judgment. In the saved redirect case, partial openings belonged to deferral
+  and the unfinished undertaking; the redirect itself was already formed.
+  Their empty required-flourishing sets do not justify weakening C3 inquiry
+  formation or asking a model after every unresolved alternative. With the
+  return alone varied to connection refusal or a successful page, native
+  formation already selects inquiry answerable to that exact returned contact.
+  The model-failure proof likewise selects its exact correction inquiry.
+
+  Both now reach one native request consumer. Its warrant binds the independently
+  validated source proof, retained semantic question, scope, selected return
+  and full native inquiry basis. The membrane rederives the warrant and checks
+  the persisted original claim and return; it does not select a recovery.
+  The existing correction path and the ordinary capability-return path use
+  this consumer. Returned proposals use the common V3 source-bound admission
+  and ordinary native reformation; only a newly formed, independently checked
+  operation can execute. An exact operation already returned in the encounter
+  is not repeated by this slice. Redirect continuation retains its own existing
+  proof and loop prevention. No network response supplies execution authority.
+
+  One authorized GLM call against the native-formed connection-refusal inquiry
+  returns GET/HEAD alternatives while keeping the cause unknown. The alternatives
+  participate in native comparison, but that trial does not form an executable
+  operation. It is evidence of shared request/admission and retained comparison,
+  not autonomous resolution. Successful-return, unavailable-model and malformed-
+  model trials exercise the same consumer. Invalid content stays rejected;
+  held resource and attempted inquiry remain explicit. Re-entry does not request
+  the unchanged inquiry again. Changed scope, substituted question, invented
+  inquiry and invalid proof records are refused. Changed return changes attempt
+  identity; changed proof embodiment does not. Model correction retains exactly
+  its historical V1/V2 spend identity.
+
+  Efficiency against immediate parent `0607e69`: ordinary one/two-contact
+  paths take 5.900/5.956 wall seconds in the parent versus 5.864/5.922
+  (candidate CPU 5.641/5.704). Corrected paths take 9.653/9.764 versus
+  9.618/9.851 wall seconds (CPU 9.281/9.500). Expanded snapshots are exactly
+  equal at both sizes, with carriers 104,311/141,102 bytes ordinary and
+  108,647/148,730 corrected. Cold loading remains 1.183--1.198 seconds.
+  Neither path adds a model call or full formation. The newly reached tool
+  inquiry adds at most one consultation and one material participant reformation
+  in this slice, retaining the unchanged M24/M26 dependency basis. Saved-return
+  carries take 6.097--6.227 wall / 5.869--5.987 CPU seconds; unavailable/invalid
+  carries take 3.196/3.242 wall / 3.066/3.112 CPU seconds. The real call takes
+  11.788 seconds separately, 6,330 tokens and $0.01212; native/transport total
+  is 17.924 wall / 5.920 CPU seconds. Its diagnostic state carrier is 215,614
+  bytes. No capability executes or live post/checkpoint changes in these trials.
+
+  Credential-free supported install/start/stop/restart reaches waiting in
+  6.279/6.279 seconds, preserves ten protected records and restores exactly the
+  changed native state, rejected duplicate contact, original failure, unresolved
+  flourishing and completed inquiry receipt. Idle process CPU increases 0.27
+  seconds over the five-second sample; broader memory/history scaling is not
+  established by that sample. Both owned families stop and cleanup is verified.
+  A separate full cached-call attempt correctly refuses this disposable root's
+  missing original private continuity capsules; it is not reported as a passed
+  installed cached-call trial. No check is bypassed to make that trial pass.
+  All 34 authority pins, source balance and the 66-file runtime-only tree remain
+  intact. Tests and raw evidence stay outside Git.
+
+  **Next falsifier:** inspect the exact unresolved native comparison after the
+  shared return, including its Fact9/flourishing requirements and supported
+  partial openings. Establish a source-bound discriminating continuation, with
+  evidence and authority varied independently, without treating every partial
+  alternative as permission for another call or every available proposal as a
+  selected operation. Preserve the unfinished undertaking and independent
+  openings. This consumer closes the request handoff, not the broader cognitive
+  judgment, live research delivery, growing-history or whole-C4 obligations.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

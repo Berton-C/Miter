@@ -49,6 +49,12 @@ as_model_checked(Root0, Question, Observation) :-
       as_model_correction_witness(Root,Question)),
     as_model_checked_attempt(Root,Original,Question,Observation).
 as_model_checked(Root0, Question, Observation) :-
+    Question=['c4-returned-inquiry-request-v1',Original,_,_],!,
+    as_model_preflight('runtime-root-invalid',as_root(Root0,Root)),
+    as_model_preflight('returned-inquiry-witness-invalid',
+      as_model_returned_inquiry_witness(Root,Question)),
+    as_model_checked_attempt(Root,Original,Question,Observation).
+as_model_checked(Root0, Question, Observation) :-
     as_model_checked_attempt(Root0,Question,Question,Observation).
 
 % The native caller alone requests a retry. Its distinct, deterministic
@@ -130,6 +136,12 @@ as_model_question_expected_model(Question,Model) :-
 as_model_write_attempt_lineage(_Claim,Question,Attempt) :-
     Attempt==Question, !.
 as_model_write_attempt_lineage(Claim,Question,
+    ['c4-returned-inquiry-request-v1',Question,Record,Warrant]) :-
+    as_model_question_sha256(Question,OriginalHash),
+    directory_file_path(Claim,'returned-inquiry-of.term',Path),
+    as_model_write_observation(Path,
+      ['c4-returned-inquiry-lineage-v1',OriginalHash,Record,Warrant]).
+as_model_write_attempt_lineage(Claim,Question,
     ['c4-empty-completion-retry-v1',Question,Prior]) :-
     as_model_question_sha256(Question,OriginalHash),
     directory_file_path(Claim,'retry-of.term',Path),
@@ -150,6 +162,34 @@ as_model_write_attempt_lineage(Claim,Question,
 
 % Mechanical proof and persisted-return checks. The membrane neither chooses
 % this inquiry nor converts a schema defect into world evidence or authority.
+as_model_returned_inquiry_witness(Root,
+    ['c4-returned-inquiry-request-v1',Q,Record,Warrant]) :-
+    ground([Q,Record,Warrant]),
+    Q=['c4-contact-semantic-question-v1',_,Scope|_],
+    ce_capability_proof_record(Root,Record,Scope,_,_,Proof),
+    'C4ReturnedInquiryWarrantFromValidatedProof'(Proof,Q,Expected),
+    Warrant==Expected,
+    Warrant=['c4-returned-inquiry-warrant-v1',_,Scope,_,
+      ['returned-inquiry-focus',Focus],_,_,_],
+    as_model_returned_focus_persisted(Root,Q,Record,Focus).
+
+as_model_returned_focus_persisted(Root,Q,Record,
+    ['c4-model-return-failure-evidence-v1',Q,Prior]) :-
+    'C4ContractCorrectionInstructions'(Instructions),
+    as_model_correction_proof(Root,Q,Prior,Record,Instructions,_).
+as_model_returned_focus_persisted(Root,_Q,_Record,Focus) :-
+    Focus=[Kind,['request-descriptor',Descriptor]|_],
+    memberchk(Kind,['c4-open-growth-observation-evidence-v1',
+      'c4-open-growth-observation-evidence-v2']),
+    ce_request_descriptor(Root,Descriptor,RequestId,_,_,_,_,_,Hash),
+    ce_claim_path(Root,RequestId,Claim),ce_claim_matches(Claim,RequestId,Hash),
+    ce_observation_path(Root,RequestId,Path),ce_read_term(Path,Saved),
+    ce_observation_identity(Saved,RequestId,Hash),
+    'C4CapabilityObservationParticipant'(Descriptor,Saved,Participant),
+    Participant=[_,_,tool,_,_,
+      ['participant-relation-claim','open-growth-request-returned',unresolved,
+        Expected],_,_],Focus==Expected.
+
 as_model_correction_witness(Root,
     ['c4-model-contract-correction-v1',Q,Prior,Record,Instructions]) :-
     as_model_correction_proof(Root,Q,Prior,Record,Instructions,_).
@@ -186,6 +226,18 @@ as_model_correction_proof(Root,Q,Prior,Record,Instructions,Proof) :-
 % The exact native inquiry stays in the checked proof/attempt lineage. Its
 % disclosure projection preserves partial judgments and unknowns, not local
 % identities or the rejected artifact. This is candidate input, never a grant.
+as_model_request_for_attempt(Profile,Q,
+    ['c4-returned-inquiry-request-v1',Q,Record,
+      ['c4-returned-inquiry-warrant-v1',_,_,_,
+        ['returned-inquiry-focus',Focus],Inquiry,_,_]],Instructions,Tokens,Body) :- !,
+    ( Focus=['c4-model-return-failure-evidence-v1',Q,Prior] ->
+        'C4ContractCorrectionInstructions'(Correction),
+        as_model_request_for_attempt(Profile,Q,
+          ['c4-model-contract-correction-v2',Q,Prior,Record,Correction,Inquiry],
+          Instructions,Tokens,Body)
+    ; as_model_request(Profile,Q,Instructions,Tokens,Ordinary),
+      as_model_inquiry_request_context(Profile,Inquiry,Ordinary,Body)
+    ).
 as_model_request_for_attempt(Profile,Q,
     ['c4-model-contract-correction-v2',Q,Prior,Record,Correction,Inquiry],
     Instructions,Tokens,Body) :- !,
@@ -1073,6 +1125,18 @@ as_model_question_sha256(
     Hash) :- !,
     as_model_question_sha256(
       ['c4-model-contract-attempt-v1',Question,Prior,Instructions],Hash).
+% A re-embodied proof or changed projection cannot renew this exact return's
+% spend. Model corrections keep the historical V1/V2 attempt identity.
+as_model_question_sha256(
+    ['c4-returned-inquiry-request-v1',Q,_Record,
+      ['c4-returned-inquiry-warrant-v1',_,_,_,
+        ['returned-inquiry-focus',Focus],_,_,_]],Hash) :- !,
+    ( Focus=['c4-model-return-failure-evidence-v1',Q,Prior] ->
+        'C4ContractCorrectionInstructions'(Instructions),
+        as_model_question_sha256(
+          ['c4-model-contract-attempt-v1',Q,Prior,Instructions],Hash)
+    ; as_model_question_sha256(['c4-returned-contact-model-attempt-v1',Q,Focus],Hash)
+    ).
 as_model_question_sha256(Question, Hash) :-
     term_string(Question, Text, [quoted(true),ignore_ops(true)]),
     crypto_data_hash(Text, Hash, [algorithm(sha256),encoding(utf8)]).
@@ -3023,6 +3087,8 @@ as_model_write_text_durable(Path,Text) :-
 as_model_unavailable(['c4-empty-completion-retry-v1',Question,_],Error,
     Observation) :- !,
     as_model_unavailable(Question,Error,Observation).
+as_model_unavailable(['c4-returned-inquiry-request-v1',Question,_,_],Error,
+    Observation) :- !,as_model_unavailable(Question,Error,Observation).
 as_model_unavailable(['c4-model-contract-correction-v1',Question,_,_,_],Error,
     Observation) :- !,as_model_unavailable(Question,Error,Observation).
 as_model_unavailable(['c4-model-contract-correction-v2',Question,_,_,_,_],Error,
@@ -3062,7 +3128,8 @@ as_model_failure_reason(error(model_preflight_hold(Stage),_),Stage) :-
       'model-spend-claim-held','request-schema-invalid',
       'request-persistence-held','credential-unavailable',
       'observation-persistence-held','empty-completion-witness-invalid',
-      'attempt-lineage-persistence-held','contract-correction-witness-invalid']), !.
+      'attempt-lineage-persistence-held','contract-correction-witness-invalid',
+      'returned-inquiry-witness-invalid']), !.
 as_model_failure_reason(error(model_transport_or_schema_hold(_,_,_,_,_),_),
     'transport-or-schema-held') :- !.
 as_model_failure_reason(error(model_provider_hold(Reason,_,_),_),Reason) :- !.

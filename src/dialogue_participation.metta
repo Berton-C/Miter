@@ -971,6 +971,91 @@
        (if $bound true
          (C4ReturnedQuestionBoundAt $participants $question (+ $i 1)))) false))
 
+; A formed inquiry's exact returned-contact answerability supplies the warrant,
+; not the mere existence of failure or a partial alternative.
+(= (C4ReturnedConsequenceRoute $movement)
+   (if (if (CPShape $movement movement-formed 7)
+         (== (index-atom $movement 1) inquiry) false)
+     (let* (($answer (index-atom $movement 5))
+            ($star (if (CPShape $answer answerability 2) (index-atom $answer 1) ()))
+            ($route (if (CPShape $star o-star 2) (index-atom $star 1) ())))
+       (if (if (CPShape $route consequence-route 3)
+             (== (index-atom $route 2) non-certifying) false)
+         (index-atom $route 1) no-returned-inquiry-route))
+     no-returned-inquiry-route))
+
+; These two projections preserve the existing meaning of typed source routes.
+; Neither projection selects the route or invents a new behavioral choice.
+(= (C4ReturnedEvidenceRoute $evidence)
+   (if (C4RecoveryEvidenceValid $evidence)
+     (c4-model-recovery-route-v1 (C4RecoveryBasis $evidence) $evidence)
+     (if (C4CapabilityReturnedEvidenceValid $evidence)
+       (C4CapabilityReturnedRoute
+         (index-atom (index-atom (index-atom $evidence 1) 1) 1) $evidence)
+       no-returned-evidence-route)))
+
+(= (C4ReturnedInquiryFocusAt $route $evidence $i)
+   (if (< $i (size-atom $evidence))
+     (let $item (index-atom $evidence $i)
+       (if (== $route (C4ReturnedEvidenceRoute $item))
+         (returned-inquiry-focus $item)
+         (C4ReturnedInquiryFocusAt $route $evidence (+ $i 1))))
+     no-selected-returned-inquiry))
+
+(= (C4ReturnedInquiryObservationBound $question $observation)
+   (or (C4SemanticObservationValid $observation $question)
+     (or (C4RecoveryEvidenceValid
+           (c4-model-return-failure-evidence-v1 $question $observation))
+       (if (CPShape $observation c4-model-observation-unavailable-v1 6)
+         (and (== (index-atom $observation 1) (index-atom $question 1))
+          (and (== (index-atom $observation 2) (index-atom $question 2))
+           (and (== (index-atom $observation 3) (C4QuestionResource $question))
+                (== (index-atom $observation 5) no-candidate-admitted)))) false))))
+
+(= (C4ReturnedInquiryObservedAt $participants $question $focus $i)
+   (if (< $i (size-atom $participants))
+     (let* (($participant (index-atom $participants $i))
+            ($claim (if (CPShape $participant participant-contribution 8)
+              (index-atom $participant 5) ()))
+            ($result (if (CPShape $claim participant-relation-claim 4)
+              (index-atom $claim 3) ()))
+            ($matches (if (CPShape $result c4-returned-inquiry-result-v1 4)
+              (and (== (index-atom $participant 2) tool)
+               (and (== (index-atom $participant 3) (index-atom $question 2))
+                (and (== (index-atom $claim 1) returned-inquiry-result)
+                 (and (== (index-atom $result 1) $question)
+                  (and (== (index-atom $result 2) $focus)
+                    (C4ReturnedInquiryObservationBound $question
+                      (index-atom $result 3))))))) false)))
+       (if $matches true
+         (C4ReturnedInquiryObservedAt $participants $question $focus (+ $i 1)))) false))
+
+(= (C4ReturnedInquiryWarrantFromValidatedProof $proof $question)
+   (let* (($inquiry (C4ReturnedInquiryBasisFromValidatedProof $proof))
+          ($movement (index-atom $proof 3))
+          ($basis (C3MovementBasisFromReadings $movement))
+          ($route (C4ReturnedConsequenceRoute $movement))
+          ($focus (if (CPShape $inquiry c4-returned-inquiry-basis-v1 9)
+            (C4ReturnedInquiryFocusAt $route (index-atom (index-atom $inquiry 3) 1) 0)
+            no-selected-returned-inquiry)))
+     (if (if (CPShape $focus returned-inquiry-focus 2)
+           (if (CPShape $question c4-contact-semantic-question-v1 12)
+             (and (== (index-atom $proof 2) (index-atom $question 2))
+               (and (C4ReturnedQuestionBoundAt (index-atom $basis 3) $question 0)
+                 (== (C4ReturnedInquiryObservedAt (index-atom $basis 3)
+                   $question $focus 0) false))) false) false)
+       (c4-returned-inquiry-warrant-v1
+         (index-atom $question 1) (index-atom $proof 2)
+         (ARNativeProofReference $proof) $focus $inquiry
+         (standing native-formed-inquiry-into-exact-returned-contact)
+         (authority provider-proposes-only-no-new-execution-authority))
+       (c4-returned-inquiry-held no-source-bound-selected-inquiry))))
+
+(= (C4ReturnedInquiryWarrant $proof $question)
+   (if (ARNativeMovementProofValid $proof)
+     (C4ReturnedInquiryWarrantFromValidatedProof $proof $question)
+     (c4-returned-inquiry-held invalid-native-proof)))
+
 (= (C4ReturnedSemanticParticipants $proof $question $observation)
    (if (and (ARNativeMovementProofValid $proof)
             (C4SemanticObservationValid $observation $question))
@@ -2996,6 +3081,36 @@
          (CPParticipants (index-atom (index-atom $semantic-contact 1) 3)) 0)
        $participants)))
 
+; One native-selected request consumer for typed returns. The model membrane
+; independently checks the exact proof and saved return before claiming a
+; deterministic attempt. No request is formed merely because a failure exists.
+(= (C4ReturnedInquiryUsingV1 $root $prepared $question $writer $proof-writer)
+   (let* (($encounter (if (AR4PreparedEncounterValid $prepared)
+             (index-atom (index-atom $prepared 4) 2) ()))
+          ($proof (if (CPShape $encounter constitutive-encounter 7)
+             (ARNativeMovementProof $encounter) ()))
+          ($warrant (C4ReturnedInquiryWarrant $proof $question)))
+     (if (CPShape $warrant c4-returned-inquiry-warrant-v1 8)
+       (let* (($record ($proof-writer $root (C4CapabilityProofId $encounter) $proof))
+              ($returned ($writer $root
+                (c4-returned-inquiry-request-v1 $question $record $warrant))))
+         (c4-returned-consultation-v1 $warrant $returned))
+       (c4-returned-consultation-held $warrant))))
+
+(= (C4ReturnedInquiryResultParticipants $question $consultation)
+   (if (CPShape $consultation c4-returned-consultation-v1 3)
+     (let* (($warrant (index-atom $consultation 1))
+            ($observation (index-atom $consultation 2))
+            ($focus (index-atom $warrant 4)))
+       (if (C4ReturnedInquiryObservationBound $question $observation)
+         ((participant-contribution
+           (as_native_id c4-returned-inquiry-result ($question $focus))
+           tool (index-atom $question 2)
+           (lineage (index-atom $question 1) $focus)
+           (participant-relation-claim returned-inquiry-result support
+             (c4-returned-inquiry-result-v1 $question $focus $observation))
+           supported no-contact-no-movement-authority)) ())) ()))
+
 ; A completed rejection is returned contact, not automatic termination.
 ; Exactly one native-formed correction opening can be exercised here. The
 ; persisted proof/claim/return is checked again by the membrane, including
@@ -3015,13 +3130,13 @@
               (== (index-atom (index-atom $route 1) 8)
                 (continuation corrected-candidate-inquiry)) false)))
        (if $inquiry
-         (let* (($proof (ARNativeMovementProof $encounter))
-                ($record ($proof-writer $root
-                  (C4CapabilityProofId $encounter) $proof))
-                ($correction (c4-model-contract-correction-v2 $question
-                  $observed $record (C4ContractCorrectionInstructions)
-                  (C4ReturnedInquiryBasisFromValidatedProof $proof)))
-                ($returned ($writer $root $correction)))
+         (let* (($consultation (C4ReturnedInquiryUsingV1 $root
+                   $failure-prepared $question $writer $proof-writer))
+                ($returned (if (CPShape $consultation c4-returned-consultation-v1 3)
+                  (index-atom $consultation 2)
+                  (c4-model-observation-unavailable-v1 (index-atom $question 1)
+                    (index-atom $question 2) (C4QuestionResource $question)
+                    no-source-bound-selected-inquiry no-candidate-admitted))))
            (if (C4SemanticObservationValid $returned $question)
              (C4ReturnedSemanticContact $failure-prepared $question $returned
                ((participant-contribution
@@ -3273,6 +3388,51 @@
        (capability-contact-context-v1 no-capability-request
          no-returned-capability-contact)))))
 
+; A returned inquiry gets one candidate-participation slice before expression.
+; Its result rejoins the same encounter. A new exact operation is never taken
+; from provider text: it must be formed again, then checked by the ordinary
+; membrane. Completed operations in this encounter cannot be repeated here.
+(= (C4ReturnedCapabilityInquiryUsingV1 $root $capability-result $question
+      $original-observation $model-writer $proof-writer $capability-writer)
+   (let* (($prepared (index-atom $capability-result 1))
+          ($context (index-atom $capability-result 2))
+          ($consultation (if (and (C4CapabilityContactContextValid $context)
+              (!= $context (capability-contact-context-v1 no-capability-request
+                no-returned-capability-contact)))
+            (C4ReturnedInquiryUsingV1 $root $prepared $question
+              $model-writer $proof-writer)
+            (c4-returned-consultation-held no-returned-capability-contact))))
+     (if (CPShape $consultation c4-returned-consultation-v1 3)
+       (let* (($returned (index-atom $consultation 2))
+              ($result-participants
+                (C4ReturnedInquiryResultParticipants $question $consultation))
+              ($valid (C4SemanticObservationValid $returned $question))
+              ($participants (if $valid
+                (C4SemanticContactParticipants $question
+                  (C4ReturnedSemanticContact $prepared $question $returned
+                    $result-participants)) $result-participants))
+              ($next (if (> (size-atom $participants) 0)
+                (C4ReformPreparedWithParticipants $prepared $participants) $prepared)))
+         (if (AR4PreparedEncounterValid $next)
+           (let* (($encounter (index-atom (index-atom $next 4) 2))
+                  ($route (C4CapabilityRouteFromMovement (index-atom $encounter 5)))
+                  ($returned-claims (C4CapabilityReturnedClaims
+                    (CPParticipantRelationOrganization (index-atom $encounter 6))))
+                  ($new-operation (if (CPShape $route c4-capability-request-route-v1 5)
+                    (== (C4HTTPReturnedOperationAt $returned-claims
+                      (index-atom $route 3) 0) false) false))
+                  ($continued (if (and $valid $new-operation)
+                    (C4CapabilityContactUsingV1 $root $next $proof-writer
+                      $capability-writer 3 ())
+                    (c4-capability-contact-v1 $next $context))))
+             (c4-capability-inquiry-contact-v1
+               (index-atom $continued 1)
+               (if $valid $returned $original-observation)
+               (index-atom $continued 2)))
+           (c4-capability-inquiry-contact-v1 $next
+             $original-observation $context)))
+       (c4-capability-inquiry-contact-v1 $prepared $original-observation $context))))
+
 (= (C4ExpressionOutcome $question $observation $voice-standing)
    (if (CPShape $observation c4-native-recovery-expression-v1 3)
      (assistant-dialogue-native-recovery-v1 $question $observation $voice-standing)
@@ -3449,11 +3609,14 @@
                       ($capability-result (C4CapabilityContactUsingV1 $root
                         $final-prepared $capability-proof-writer
                         $capability-writer 3 ()))
-                      ($capability-prepared (index-atom $capability-result 1)))
+                      ($continued (C4ReturnedCapabilityInquiryUsingV1 $root
+                        $capability-result $question $observation $model-writer
+                        $capability-proof-writer $capability-writer))
+                      ($capability-prepared (index-atom $continued 1)))
                  (if (AR4PreparedEncounterValid $capability-prepared)
                    (C4ExpressPreparedUsingV1 $root $context $contact
-                     $final-prepared $capability-prepared $question $observation
-                     (index-atom $capability-result 2) $model-writer)
+                     $final-prepared $capability-prepared $question (index-atom $continued 2)
+                     (index-atom $continued 3) $model-writer)
                    (assistant-processed-v3
                      (assistant-contact-held (index-atom $contact 1)
                        (capability-reformation-held $capability-prepared))
