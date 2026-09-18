@@ -8,7 +8,7 @@
     miter_assistant_continuity_restore miter_assistant_semantic_restore
     as_chroma as_continuity_sources))
 !(import_prolog_functions_from_file "./effect_membranes/model.pl"
-  (as_model as_model_direction as_model_literal_span))
+  (as_model as_model_direction as_model_literal_span as_model_failure_bound))
 !(import_prolog_functions_from_file "./effect_membranes/capability_environment.pl"
   (as_capability_environment as_capability_proof as_capability_request))
 !(import_prolog_functions_from_file "./effect_membranes/vad.pl"

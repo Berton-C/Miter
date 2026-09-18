@@ -1508,6 +1508,8 @@ as_model_local_response_schema('c4-voice-audit-question-v1',
 % they do not select a capability or assign it authority.
 as_model_c4_capability_response_schema(_{oneOf:Alternatives}) :-
     as_model_c4_capability_required(Required),
+    as_model_c4_capability_hash_schema(HashSchema),
+    WriteExpected=_{oneOf:[_{const:"absent"},HashSchema]},
     as_model_c4_empty_capability_properties("not-material",_{const:""},
       NotMaterialProperties),
     as_model_c4_empty_capability_properties("uncertain",
@@ -1533,7 +1535,7 @@ as_model_c4_capability_response_schema(_{oneOf:Alternatives}) :-
       _{type:"array",maxItems:0,items:_{type:"string"}},_{const:""},
       _{type:"string",minLength:1,maxLength:4096},
       _{type:"string",maxLength:32768},
-      _{type:"string",maxLength:64},_{const:""},WriteProperties),
+      WriteExpected,_{const:""},WriteProperties),
     as_model_c4_workspace_read_properties("workspace-read",ReadProperties),
     as_model_c4_workspace_read_properties("workspace-list",ListProperties),
     as_model_c4_capability_properties("proposed",
@@ -1541,12 +1543,18 @@ as_model_c4_capability_response_schema(_{oneOf:Alternatives}) :-
       _{const:"none"},_{const:""},_{const:""},
       _{type:"array",maxItems:0,items:_{type:"string"}},_{const:""},
       _{type:"string",minLength:1,maxLength:4096},_{const:""},
-      _{type:"string",minLength:64,maxLength:64},
+      HashSchema,
       _{type:"string",minLength:1,maxLength:256},RollbackProperties),
     maplist(as_model_c4_capability_alternative(Required),
       [NotMaterialProperties,UncertainProperties,HttpProperties,
         ArgvProperties,WriteProperties,ReadProperties,ListProperties,
         RollbackProperties],Alternatives).
+
+% Match the existing receiver's exact precondition grammar. An empty value
+% is not absence, and a syntactically valid hash is not evidence of file state.
+% Native formation and the workspace membrane still establish effect reach.
+as_model_c4_capability_hash_schema(
+    _{type:"string",minLength:64,maxLength:64,pattern:"^[0-9a-f]{64}$"}).
 
 as_model_c4_capability_required(["standing","purpose","kind","method",
   "url","executable","arguments","working_directory","path","contents",
@@ -2015,18 +2023,65 @@ as_model_execute(Root,Hash,QuestionRef,Scope,Question,ResourceId,Profile,Body,
     as_model_write_text_durable(RawPath,Raw),
     crypto_data_hash(Raw,RawHash,[algorithm(sha256),encoding(utf8)]),
     ( Transport==eof, Status=:=200 ->
-        ( as_model_provider_observation(Raw,Question,QuestionRef,Scope,
-              ResourceId,Profile,RawHash,Observation) -> true
-        ; as_model_provider_failure(Raw,Question,Failure),
-          ( Failure=='provider-empty-completion',
-            as_model_empty_completion(Raw,Profile.model) ->
-              % This EOF / HTTP 200 outcome is persisted by the normal
-              % observation writer, unlike an uncertain transmission.
-              as_model_unavailable(Question,
-                error(model_provider_hold(Failure,ElapsedMs,Bytes),_),Observation)
-          ; throw(error(model_provider_hold(Failure,ElapsedMs,Bytes),_)) ) )
+        as_model_completed_return(Raw,Question,Hash,QuestionRef,Scope,
+          ResourceId,Profile,RawHash,ElapsedMs,Bytes,Observation)
     ; throw(error(model_transport_or_schema_hold(Transport,Status,ErrorClass,
         ElapsedMs,Bytes),_)) ).
+
+as_model_completed_return(Raw,Question,Hash,QuestionRef,Scope,ResourceId,
+    Profile,RawHash,ElapsedMs,Bytes,Observation) :-
+    ( catch(as_model_provider_observation(Raw,Question,QuestionRef,Scope,
+          ResourceId,Profile,RawHash,Observation),error(syntax_error(_),_),fail)
+      -> true
+    ; as_model_provider_failure(Raw,Question,Failure),
+      ( Failure=='provider-empty-completion',
+        as_model_empty_completion(Raw,Profile.model) ->
+          % Preserve the existing separately witnessed empty-result retry.
+          as_model_unavailable(Question,
+            error(model_provider_hold(Failure,ElapsedMs,Bytes),_),Observation)
+      ; as_model_c4_question(Question) ->
+          as_model_completed_failure(Question,Hash,RawHash,Failure,Observation)
+      ; throw(error(model_provider_hold(Failure,ElapsedMs,Bytes),_)) ) ).
+
+% Completed rejected returns are durable observations, not unknown sends.
+% Preserve their exact attempt/question/raw identities without admitting any
+% fragment of the rejected artifact or choosing a recovery movement.
+as_model_completed_failure(Question,AttemptHash,RawHash,Reason,
+    ['c4-model-observation-unavailable-v2',QuestionRef,Scope,ResourceId,Reason,
+      ['request-lineage',QuestionHash,AttemptHash],
+      ['completed-provider-return',eof,200,['raw-sha256',RawHash]],
+      'artifact-not-admitted','no-candidate-admitted']) :-
+    as_model_c4_question(Question),Question=[_,QuestionRef,Scope|_],
+    as_model_question_resource(Question,ResourceId),
+    as_model_question_sha256(Question,QuestionHash),
+    as_sha256(AttemptHash,AttemptHash),as_sha256(RawHash,RawHash),
+    as_model_completed_failure_reason(Reason).
+
+as_model_completed_failure_reason(Reason) :-
+    memberchk(Reason,['provider-output-truncated','provider-finish-held',
+      'provider-artifact-semantic-invalid','provider-artifact-malformed',
+      'provider-envelope-malformed']).
+
+as_model_completed_failure_shape(Observation) :-
+    ground(Observation),acyclic_term(Observation),
+    Observation=['c4-model-observation-unavailable-v2',QuestionRef,Scope,
+      ResourceId,Reason,['request-lineage',QuestionHash,AttemptHash],
+      ['completed-provider-return',eof,200,['raw-sha256',RawHash]],
+      'artifact-not-admitted','no-candidate-admitted'],
+    QuestionRef=['question-reference',_,_],as_local_scope(Scope),
+    as_symbol(ResourceId,_),as_model_completed_failure_reason(Reason),
+    as_sha256(QuestionHash,QuestionHash),as_sha256(AttemptHash,AttemptHash),
+    as_sha256(RawHash,RawHash).
+
+% Mechanical identity comparison only. Native MeTTa owns the significance
+% of this evidence and any continuation; a match grants no retry or effect.
+as_model_failure_bound(Question,Observation,Standing) :-
+    ( as_model_completed_failure_shape(Observation),
+      as_model_c4_question(Question),Question=[_,Ref,Scope|_],
+      as_model_question_resource(Question,Resource),
+      as_model_question_sha256(Question,Hash),
+      Observation=[_,Ref,Scope,Resource,_,['request-lineage',Hash,_]|_]
+    -> Standing=true ; Standing=false ), !.
 
 as_model_http_options(Profile,Body,Key,Deadline,Status,
     [method(post),post(json(Body)),status_code(Status),timeout(Deadline),
@@ -2534,7 +2589,8 @@ as_model_read_observation(Path,Observation) :-
     ( memberchk(Kind,['c3-model-observation-v1','c4-semantic-observation-v1',
         'c4-voice-observation-v1','c4-voice-audit-observation-v1'])
     ; Observation=['c4-model-observation-unavailable-v1',_,_,_,
-        'provider-empty-completion','no-candidate-admitted'] ).
+        'provider-empty-completion','no-candidate-admitted']
+    ; as_model_completed_failure_shape(Observation) ).
 
 as_model_write_text_durable(Path,Text) :-
     \+ exists_file(Path), file_directory_name(Path,Directory),

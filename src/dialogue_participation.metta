@@ -747,11 +747,29 @@
      false))
 
 (= (C4ModelUnavailableValid $observation $question)
-   (and (CPShape $observation c4-model-observation-unavailable-v1 6)
+   (if (CPShape $observation c4-model-observation-unavailable-v2 9)
+     (as_model_failure_bound $question $observation)
+     (and (CPShape $observation c4-model-observation-unavailable-v1 6)
      (and (== (index-atom $observation 1) (index-atom $question 1))
       (and (== (index-atom $observation 2) (index-atom $question 2))
        (and (== (index-atom $observation 3) (C4QuestionResource $question))
-            (== (index-atom $observation 5) no-candidate-admitted))))))
+            (== (index-atom $observation 5) no-candidate-admitted)))))))
+
+; A completed rejected model artifact contributes only the witnessed failure.
+; Its bytes are not semantic readings, capability proposals or file evidence.
+; This participant belongs to the same encounter, independent of its surface.
+(= (C4ModelFailureParticipants $question $observation)
+   (if (and (CPShape $observation c4-model-observation-unavailable-v2 9)
+            (C4ModelUnavailableValid $observation $question))
+     ((participant-contribution
+        (c4-model-return-failure (index-atom $observation 5))
+        tool (index-atom $question 2)
+        (lineage (index-atom $question 1) (index-atom $observation 5)
+          (index-atom $observation 6))
+        (participant-relation-claim model-return-failure unresolved
+          (c4-model-return-failure-evidence-v1 $question $observation))
+        unresolved no-contact-no-movement-authority))
+     ()))
 
 ; The question is already native-formed and still unanswered. One completed
 ; empty provider return permits one new attempt at that exact question, not
@@ -2641,6 +2659,21 @@
    (let $result (AR4IncorporatePreparedEncounter $prepared)
      (AR4RecordBoundContextV1 $context $result)))
 
+; Failure participation is not itself a recovery decision. Preserve the full
+; reformed native encounter; never fall back to the old proof if it is held.
+(= (C4PreparedWithModelFailure $prepared $question $observation)
+   (if (CPShape $observation c4-model-observation-unavailable-v2 9)
+     (if (and (AR4PreparedEncounterValid $prepared)
+           (and (C4ModelUnavailableValid $observation $question)
+             (and (== (index-atom (index-atom $question 1) 1)
+                      (index-atom $prepared 1))
+                  (== (index-atom $question 2) (index-atom $prepared 2)))))
+       (C4ReformPreparedWithParticipants $prepared
+         (C4ModelFailureParticipants $question $observation))
+       (prepared-encounter-held (index-atom $prepared 1)
+         model-failure-contact-binding-unavailable))
+     $prepared))
+
 (= (C4DialogueModelOutcomeValid $outcome)
    (if (CPShape $outcome assistant-dialogue-model-participation-v1 4)
      (let* (($semantic-question (index-atom $outcome 1))
@@ -2682,7 +2715,8 @@
        (C4VoiceStageStanding (index-atom $outcome 3)))
      (if (CPShape $outcome assistant-dialogue-model-unavailable-v1 3)
        (let $observation (index-atom $outcome 2)
-         (if (CPShape $observation c4-model-observation-unavailable-v1 6)
+         (if (or (CPShape $observation c4-model-observation-unavailable-v1 6)
+                 (CPShape $observation c4-model-observation-unavailable-v2 9))
            (dialogue-stage-standing-v1 semantic-reading-held
              (index-atom $observation 4))
            (dialogue-stage-standing-v1 semantic-reading-held
@@ -3121,9 +3155,11 @@
                          native-voice-question-not-formed
                          (c4-voice-review-held-v1
                            semantic-reformation-native-standing-held))))))
-               (let* (($incorporated
+               (let* (($failure-prepared (C4PreparedWithModelFailure
+                         $prepared $question $observation))
+                      ($incorporated
                         (C4IncorporateBoundContactWithoutModel $context
-                          $prepared))
+                          $failure-prepared))
                       ($outcome (assistant-dialogue-model-unavailable-v1
                         $question $observation)))
                  (assistant-processed-v3 $incorporated $outcome))))

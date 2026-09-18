@@ -5963,6 +5963,78 @@ Already carried:
   recovery, installed delivery, and recovery/restart cost remain unproved;
   broader C4 work remains paused for this repair.
 
+  **C4 resumed: durable model-failure participation, 2026-09-17.** Berton
+  explicitly directed continuation of C4. Native bounded recovery is now the
+  active C4 stage, not an unrelated Mattermost detour that must be completed
+  before C4 can resume. The previously proved transport, scope, VoiceRNA
+  certification, delivery, and no-replay boundaries remain inherited
+  foundations. The integration gap is that most completed rejected model
+  returns lost reusable failure evidence and the semantic-failure branch
+  incorporated the contact without native reconsideration.
+
+  The first prerequisite cut corrects the producer/receiver precondition
+  mismatch above and durably records completed EOF/HTTP-200 rejected C4
+  returns with exact question, attempt, scope, resource, and raw-response
+  identities. Truncation, held finish, invalid artifact, malformed artifact,
+  and malformed envelope retain separate existing standings. Invalid content
+  remains unadmitted; neither a file-state witness nor an operation is made
+  from it. The existing separately witnessed empty-completion retry and the
+  unknown-transmission/no-replay boundary are unchanged.
+
+  Native MeTTa binds that failure to the same prepared contact and adds it as
+  an unresolved, non-authoritative participant through the existing complete
+  constitutive reformation. The changed dependency is participant/relation
+  organization and its M25 movement formation; unchanged M24/M26 source
+  organization is retained by the existing exact reformation seam. No second
+  reactor, canned reply, automatic correction call, or new effect authority
+  is introduced. The participant constructor is surface-independent; this
+  first runtime consumer is the semantic-return failure branch, not yet every
+  VoiceRNA, memory, or tool failure branch.
+
+  **Carry and efficiency waypoint against `26bc7e5` (same runtime source as
+  installed `f9e5be1`):** all 30 producer/receiver cases pass. Offline checks
+  preserve a saved successful semantic response exactly, retain the empty
+  retry contract, distinguish uncertain transmission, and reject wrong
+  question/scope/resource identities. The saved invalid `19aj` response is
+  injected through the actual `C4BoundContactUsingV1` branch with offline
+  membranes and an explicitly diagnostic scope binding. It remains rejected,
+  produces a valid ordinary cycle row, enters the native snapshot, invokes
+  the fixture model exactly once, and invokes no capability. This is not a
+  replay or reconstruction of `19aj`'s complete private live encounter.
+
+  Two successive isolated contacts take 6.114/6.448 wall and 5.834/6.131 CPU
+  seconds, versus 3.100/3.333 wall and 2.955/3.178 CPU on the preceding source.
+  The added cost is one material failure reformation, not repeated validation
+  of unchanged cognition: two full encounter formations instead of one.
+  Factorized checkpoints are 99,224/137,096 bytes versus 93,653/129,390 bytes.
+  This bounded increase is justified by preserving the previously omitted
+  failure as constitutive participation; long-history growth and installed
+  conversational latency remain open, not inferred from these two points.
+
+  Fresh-process native proof readback passes; direct supported native restore
+  preserves every active/history atom and exact failure identity and refuses
+  the same terminal contact. The test initially re-evaluated a stored history
+  expression by passing the snapshot as executable evaluator input. Using
+  the compiled restore entry, as the runtime does, removes that test-induced
+  difference; no unrelated cognition rewrite was made. A credential-free
+  disposable `bin/miter` runtime then restores the failure-bearing checkpoint,
+  reaches idle, stops, restarts, and preserves all four checkpoint/continuity
+  records with zero model claims or effect records. Idle is reached 5.200 and
+  5.115 seconds after the respective start replies. Five idle seconds add
+  0.20 child CPU seconds and 272 KiB RSS. Source balance/let syntax passes;
+  all diagnostic process groups and detached disposable families are cleaned
+  up. Instruments and captures remain private under `/tmp`, outside Git.
+
+  **Not closure:** the native result currently exposes a general inquiry,
+  not a justified executable recovery route. It does not yet establish the
+  unknown-versus-absent file-precondition judgment, selection of corrected
+  proposal/observation/clarification/explanation, exhaustion, or an installed
+  reply. Next, expose the specific contract defect as evidence without
+  admitting the rejected proposal, and prove native continuation changes
+  with the evidence and available authority through the ordinary checks and
+  restart. Do not relabel failure participation as self-repair or substitute
+  a predetermined retry. No live runtime was changed in this cut.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -6046,14 +6118,16 @@ Next movement:
    Installed `09cebcc` now carries the live settings and two proved requests
    through redirect to a returned page. Its exact saved turn exposed the
    completed-redirect dependency defect recorded above; the narrow native
-   correction is locally verified and next for installation and live revision
-   carry. Research delivery is not yet claimed. No terminal
+   correction is installed as `f9e5be1`. Its next human turn reached the
+   independent semantic-contract failure documented above before capability
+   execution. Research delivery is not yet claimed. No terminal
    input is replayed. Full live web-research delivery remains open.
    Preserve the known-working
    baseline, open conversation authority and all terminal history; do not
    replay consumed contacts or reopen native cognition to fix a mechanical
-   handoff. C4 remains paused for this concrete repair. After the
-   live repair carry, resume C4 with the native older-
+   handoff. C4 is active on bounded native failure recovery, with the first
+   durable-participation prerequisite and remaining judgment gap recorded
+   above. After this native recovery and its live carry, continue the older-
    artifact/version-resolution seam identified above and its growing-history
    proportionality obligation; do not interrupt ordinary conversation for
    unrelated trials. Main publication is complete,
