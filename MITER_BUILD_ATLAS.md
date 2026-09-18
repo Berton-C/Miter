@@ -6911,6 +6911,92 @@ Already carried:
   native formation/comparison falsifier and its genuine disclosure boundary;
   do not replace it with more adapter-specific repair policy.
 
+  **C4 scoped GLM inquiry authorization and active shared-recovery stage,
+  2026-09-18:** Berton explicitly authorizes GLM requests specific to C4 work,
+  including the scoped native returned-inquiry context discussed above. The
+  earlier disclosure hold is therefore resolved for this scope; it is not a
+  reason to stop or ask for repeated per-call approval. Preserve the existing
+  OpenRouter hosting/fallback and privacy settings, disclose only the scoped
+  material needed, exclude credentials/security-risk material, and use only
+  the calls needed. This does not grant unrelated disclosure, effect authority,
+  live message replay, or permission to bypass ordinary execution checks.
+
+  The active falsifier is unchanged: the same native organization must form
+  and compare continuations from materially different returned contacts, with
+  evidence and authority varied independently. First carry the existing
+  proof-bound inquiry into model participation without turning unknown
+  flourishing relations into positive evidence or resetting persisted attempt
+  identity. A useful provider proposal remains a candidate, not completion of
+  shared native recovery. Continue through native reformation, independent
+  effect checks, consequence and restart; retain unfinished purpose and other
+  openings when a route is exhausted. No installed or whole-C4 closure is
+  claimed by this authorization or its request plumbing.
+
+  **C4 proof-bound inquiry participation, 2026-09-18:** The exact follow-up
+  authorization explicitly includes the existing named Keychain credential,
+  captured test conversation, scoped recall, typed failures, partial R/A/P,
+  Fact9/flourishing relations, candidate replies and audit findings through
+  OpenRouter GLM 5.3 and its hosting/fallback providers. Keep `zdr=true` and
+  `data_collection=deny`; credentials never enter the payload. Necessary C4
+  calls have no numerical cap. The first live request after that exact approval
+  succeeds; the earlier execution-review refusal is no longer a blocker.
+
+  The V2 correction now transmits a mechanical disclosure projection of its
+  independently proof-bound native inquiry. Exact typed returned evidence,
+  request lineage, partial openings and all nine flourishing standings remain
+  present, including unknowns. Local scope names and proof-storage references
+  are withheld. No raw rejected artifact becomes a reading. The existing V1
+  request and the V1/V2 attempt identity remain unchanged, so an upgrade cannot
+  renew a spent correction. Malformed or cross-source inquiry cannot fall
+  through to the earlier request. Security-risk material remains excluded.
+
+  Two necessary live diagnostic requests return admitted candidates. The
+  model-failure case retains missing recalled criteria and exact URL as unknown
+  and proposes no operation; its native capability route remains unavailable.
+  The web-return case uses the actual disclosed redirect and scoped prior
+  criteria to propose GET and HEAD alternatives. Both returns pass ordinary
+  candidate validation, native reformation and independent movement-proof
+  readback. This second trial uses the question retained in the saved proof:
+  reconstructing a new question without its prior active organization correctly
+  failed the carrier check. No predecessor was fabricated to pass it.
+
+  These are isolated candidate-participation results, not a completed common
+  recovery consumer or proof that the model's alternatives determined movement.
+  The web proof already contains a native redirect opening. Its resulting
+  capability route is not evidence of newly discovered autonomous selection.
+  No capability executes and no live conversation, checkpoint or post changes.
+  Shared request projection must not be mislabeled shared recovery judgment.
+
+  Efficiency against immediate parent `874ce5b`: only disclosed request bytes
+  change; native meaning, formation count and checkpoint dependencies do not.
+  Projection costs about 0.004 wall / 0.003 CPU seconds; this captured user
+  message grows from 8,021 to 21,525 characters. Offline valid correction,
+  repeated-invalid correction and unavailable correction take respectively
+  4.065/6.973/6.907 wall seconds in the parent versus
+  3.972--4.006/6.802--6.878/6.746--6.773 in the candidate (candidate CPU
+  3.783--3.810/6.485--6.547/6.430--6.445). Each uses one local correction
+  callback, no additional formation and no network. The expanded native
+  checkpoint is exactly equal; its factorized diagnostic carrier is 102,464
+  characters with 769 factors. The two real provider calls take 15.281 and
+  12.284 seconds, separately from native reformation at 3.986/3.138 wall and
+  3.764/2.966 CPU seconds. No new model call is added to the supported path.
+
+  Credential-free supported install/start/stop/restart reaches native waiting
+  in 5.259/5.257 seconds and preserves all nine checked checkpoint, proof,
+  spend, raw-return and observation records exactly. The terminal contact is
+  refused on fresh restore; no effect or model request replays. The disposable
+  family is stopped and cleanup verified. All 34 manifest hashes and native
+  syntax/balance checks pass. Only runtime source and this Atlas change; the
+  tracked tree remains 66 files. Diagnostic captures remain outside the repo
+  for the immediately continuing shared-consumer cut. Ordinary installed
+  conversation and broad growing-history slope are not newly measured here.
+
+  **Next falsifier:** enact a single native returned-inquiry consumer from two
+  different failure sources, not merely send their context through one JSON
+  projector. Change evidence and authority independently, retain exhausted
+  routes beside independent openings, and carry its actual changed continuation
+  and unfinished undertaking through consequence and restart. No C4 closure.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
