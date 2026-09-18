@@ -7216,6 +7216,68 @@ Already carried:
   stay outside Git. Cross-family changed-authority judgment, faithful comparison
   expression, live research, growing history and whole-C4 completion remain open.
 
+  **C4 comparison source lineage through VoiceRNA, 2026-09-18:**
+  The preceding counterexample identifies a projection gap, not a reason to
+  loosen audit or promote a model's preferred proposal. The native voice
+  intention now projects an already-formed comparison's exact returned source,
+  all derived reading identities and candidate alternatives. Interpretations
+  of the same return are explicitly not additional world events; proposals
+  remain unexecuted and the undertaking remains incomplete. This is shared
+  native projection, with typed model-rejection and capability-return species,
+  not a surface-specific reply template or recovery-choice policy.
+
+  New seven-field intentions must match the actual encounter's comparison,
+  complete capability context and exact reading family. Substituted event
+  identity, an omitted alternative, a changed reading family or a changed
+  return retaining the same request ID fails that binding. The producer also
+  refuses the changed return before calling a model. Historical six-field
+  intentions retain their original interpretation and reviewed-proof readback.
+  The typed rejected-model source projection is exercised separately; a full
+  new multi-alternative model-failure expression trial is not claimed here.
+
+  A controlled trial changes only this source-comparison context, retaining
+  the conversation, evidence, provider settings and ordinary audit contract.
+  Two approved GLM calls take 4.361 and 2.081 provider seconds (6.610 wall /
+  0.156 CPU for the path). The reply distinguishes the current connection
+  refusal from the earlier unspecified failure, preserves uncertainty about
+  persistence and claims neither successful research nor an executed proposal.
+  Native review, independent effect certification and the mechanical boundary
+  pass. Production constructs the exact tested question; offline reuse of its
+  saved exchanges passes in 0.107 wall / 0.099 CPU seconds without new calls.
+  This is one source-faithful trial, not general semantic correctness. The
+  reply still asks which approach to pursue; autonomous recovery selection and
+  completion of the research remain unproved. Nothing is posted or installed.
+
+  Efficiency baseline is immediate parent `7fd990e`. Only a selected native
+  comparison dirties its voice-intention projection and dependent render/audit
+  identity and validation; no new constitutive formation, host verdict cache,
+  model round or retry is introduced. Warm projection averages 0.07--0.10 ms
+  wall / 0.07--0.08 ms CPU. Two cold loads take 1.323/1.350 versus 1.292/1.292
+  wall seconds (candidate CPU 1.238/1.261). Supported offline ordinary
+  one/two-contact paths take 6.366/6.468 versus 6.473/6.415 wall seconds
+  (CPU 5.953/6.030); corrected paths take 10.540/10.680 versus 10.313/10.516
+  (CPU 9.920/10.036). The modest corrected-path increase is retained for exact
+  source binding, not represented as a speedup. All four expanded snapshots
+  remain identical, at 104,311/141,102 bytes ordinary and 108,647/148,730
+  corrected; fixture callbacks remain two and three respectively. Render user
+  context grows from 16,040 to 18,049 characters. The reviewed carrier is
+  203,729 versus 203,081 bytes, including different prose/audit contents; the
+  underlying 190,407-byte native snapshot is unchanged.
+
+  Credential-free supported install/start/stop/restart reaches native waiting
+  in 10.450/10.330 seconds and preserves eleven protected records, including
+  exact reviewed-voice readback bound to the restored comparison. Terminal
+  contact and unchanged-model replay remain refused; failure and unknown
+  flourishing remain present. Five seconds idle adds 0.29 child CPU seconds,
+  with RSS moving from 1,569,952 to 1,635,744 KiB. Both disposable families
+  stop cleanly and owned cleanup passes. Syntax/balance, all 34 authority pins
+  and the 66-file runtime/document-only tree pass. The existing installed
+  service is unchanged. This envelope does not establish a growing-history
+  slope or a fresh installed human conversation. The next substantive C4
+  falsifier remains shared native judgment and continuation with independently
+  changed evidence and authority across contact families; fluent explanation
+  of the comparison is not a substitute for that capacity.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

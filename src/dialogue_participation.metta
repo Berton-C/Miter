@@ -1147,12 +1147,107 @@
      (C4SemanticObservationValid $observation $question)))
 
 (= (C4VoiceSourceBoundToEncounter $question $encounter)
-   (if (CPShape (index-atom $question 6) native-recovery-evidence 2)
-     (let $sources (index-atom (index-atom $question 6) 1)
-       (if (== (size-atom $sources) 1)
-         (C4RecoveryExpressionSourceInEncounter (index-atom $sources 0) $encounter)
-         false))
-     (CPShape (index-atom $question 6) semantic-readings 2)))
+   (and
+     (if (CPShape (index-atom $question 6) native-recovery-evidence 2)
+       (let $sources (index-atom (index-atom $question 6) 1)
+         (if (== (size-atom $sources) 1)
+           (C4RecoveryExpressionSourceInEncounter (index-atom $sources 0) $encounter)
+           false))
+       (CPShape (index-atom $question 6) semantic-readings 2))
+     (if (CPShape (index-atom $question 7) native-intention 7)
+       (and (== (index-atom $question 7)
+              (C4VoiceNativeIntention
+                (CPShape (index-atom $question 6) native-recovery-evidence 2)
+                (index-atom $encounter 5) (C4VoiceCapabilityContext $question)))
+         (== (index-atom $question 6)
+           (C4VoiceComparisonReadings (index-atom $encounter 5))))
+       ; Historical six-field intentions keep their original interpretation.
+       (CPShape (index-atom $question 7) native-intention 6))))
+
+; Expression projects an already-formed comparison. Its readings share a
+; returned source: they are neither independent events nor enacted proposals.
+; No surface name, failure phrase or preferred reply participates in this joint.
+(= (C4VoiceComparisonProposalsAt $readings $i)
+   (if (< $i (size-atom $readings))
+     (let* (($reading (index-atom $readings $i))
+            ($proposal (index-atom $reading 8))
+            ($rest (C4VoiceComparisonProposalsAt $readings (+ $i 1))))
+       (if (== (index-atom $proposal 1) proposed)
+         (cons-atom
+           (unexecuted-comparison-candidate
+             (reading-id (index-atom $reading 1))
+             (index-atom $reading 4) (index-atom $reading 5)
+             (purpose (index-atom $proposal 2))
+             (operation (index-atom $proposal 3))
+             proposal-not-execution-evidence) $rest) $rest)) ()))
+
+(= (C4VoiceComparisonReadings $movement)
+   (let $route (C4ReturnedConsequenceRoute $movement)
+     (if (CPShape $route soul-formed-returned-proposal-comparison 2)
+       (let $basis (index-atom (index-atom $route 1) 1)
+         (semantic-readings (index-atom (index-atom (index-atom $basis 4) 9) 1)))
+       unavailable-comparison-readings)))
+
+(= (C4VoiceComparisonCapabilityContext $focus)
+   (let $descriptor (index-atom (index-atom $focus 1) 1)
+     (if (CPShape $focus c4-open-growth-observation-evidence-v2 6)
+       (capability-contact-context-v2 (request-id (index-atom $descriptor 1))
+         (index-atom $descriptor 5) (index-atom $descriptor 6) (index-atom $descriptor 7)
+         (index-atom $focus 2) (index-atom $focus 3)
+         (index-atom $focus 4) (index-atom $focus 5)
+         untrusted-returned-contact-no-authority)
+       (capability-contact-context-v1 (request-id (index-atom $descriptor 1))
+         (index-atom $descriptor 5) (index-atom $descriptor 6) (index-atom $descriptor 7)
+         (index-atom $focus 2) (index-atom $focus 3) (index-atom $focus 4)
+         (index-atom $focus 5) (index-atom $focus 6) (index-atom $focus 7)
+         untrusted-returned-contact-no-authority))))
+
+(= (C4VoiceComparisonReturnSource $focus $capability-context)
+   (if (C4RecoveryEvidenceValid $focus)
+     (completed-rejected-model-return
+       (index-atom (index-atom $focus 2) 6)
+       rejected-artifact-not-world-evidence)
+     (if (C4CapabilityReturnedEvidenceValid $focus)
+       (if (== $capability-context (C4VoiceComparisonCapabilityContext $focus))
+         (index-atom $capability-context 1) unavailable-comparison-source)
+       unavailable-comparison-source)))
+
+(= (C4VoiceReturnedComparisonContext $movement $capability-context)
+   (let $route (C4ReturnedConsequenceRoute $movement)
+     (if (CPShape $route soul-formed-returned-proposal-comparison 2)
+       (let* (($family (index-atom $route 1)) ($basis (index-atom $family 1))
+              ($observation (index-atom $basis 4))
+              ($readings (index-atom (index-atom $observation 9) 1))
+              ($source (C4VoiceComparisonReturnSource
+                (index-atom $basis 3) $capability-context)))
+         (if (!= $source unavailable-comparison-source)
+           (native-returned-comparison-expression-v1
+             (formed-native-standing comparison-inquiry-no-proposal-selected)
+             (returned-event-source $source)
+             (derived-readings-of-that-same-event
+               (C4SemanticReadingIdsAt $readings 0)
+               interpretations-not-additional-world-events)
+             (candidate-alternatives (C4VoiceComparisonProposalsAt $readings 0))
+             (comparison-retains-all-source-requirements)
+             (undertaking not-completed-by-failure-or-comparison)
+             no-new-execution-authority)
+           unavailable-comparison-expression))
+       no-formed-returned-comparison)))
+
+(= (C4VoiceNativeIntention $recovery $movement $capability-context)
+   (let* (($base (native-intention
+                  (if $recovery explain-unresolved-native-continuation
+                    respond-to-authorized-contact)
+                  preserve-plurality-and-uncertainty
+                  no-claim-of-unperformed-effect same-intention-required-in-audit
+                  source-relative-finding-interpretations-v1))
+          ($comparison (C4VoiceReturnedComparisonContext $movement $capability-context)))
+     (if (CPShape $comparison native-returned-comparison-expression-v1 8)
+       ; CPListAppend prepends its second list to its first.
+       (CPListAppend ($comparison) $base)
+       (if (== $comparison unavailable-comparison-expression)
+         (native-intention-unavailable returned-comparison-source-not-bound)
+         $base))))
 
 (= (C4VoiceRenderQuestion $contact $encounter $semantic-question
       $semantic-observation $direction $private-context $capability-context
@@ -1174,9 +1269,14 @@
             ($cut (index-atom $encounter 1))
             ($movement (index-atom $encounter 5))
             ($recovery (CPShape $semantic-observation c4-native-recovery-expression-v1 3))
+            ($intention (C4VoiceNativeIntention $recovery $movement $capability-context))
             ($readings (if $recovery ((index-atom $semantic-observation 1))
               (index-atom (index-atom $semantic-observation 9) 1))))
-       (if (CPShape $claim participant-text-claim 5)
+       (if (and (CPShape $claim participant-text-claim 5)
+             (or (CPShape $intention native-intention 6)
+               (and (CPShape $intention native-intention 7)
+                 (== (semantic-readings $readings)
+                   (C4VoiceComparisonReadings $movement)))))
          (c4-voice-render-question-v1
            (question-reference (index-atom $contact 1) voice-rendering)
            (CPContactScope $contact)
@@ -1187,11 +1287,7 @@
            (native-movement (CP2MovementReference $cut $movement))
            (if $recovery (native-recovery-evidence $readings)
              (semantic-readings $readings))
-           (native-intention (if $recovery explain-unresolved-native-continuation
-               respond-to-authorized-contact)
-             preserve-plurality-and-uncertainty
-             no-claim-of-unperformed-effect same-intention-required-in-audit
-             source-relative-finding-interpretations-v1)
+           $intention
            (voice-commitments source-bound scope-bound movement-bound
              (if (C4PrivateContinuityContextPresent $private-context)
                disclosure-current-contact-and-scoped-continuity
@@ -1204,7 +1300,7 @@
              no-contact-no-authority-no-choice)
            (C4ResourceRequestFromDirection $direction language-rendering))
          (c4-voice-render-question-unavailable
-           semantic-observation-not-bound-to-current-contact)))
+           semantic-or-comparison-source-not-bound-to-current-contact)))
      (c4-voice-render-question-unavailable
        malformed-contact-encounter-or-semantic-observation)))
 
