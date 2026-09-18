@@ -234,7 +234,7 @@ mw_reconcile(Root,RequestId,
     ; Standing='trial-failed',
       Failure='independent-trial-evidence-incomplete-or-failed' ).
 mw_reconcile(Root,RequestId,
-    ['extension-activate-v1',Id,Version,StageRequest,TrialRequest,_Expected],
+    ['extension-activate-v1',Id,Version,StageRequest,TrialRequest,Expected],
     activated,
     ['activation',RequestId,['active',Active],['trial-request',TrialRequest],
       Compatibility,'recovered-from-durable-prepared-transition'],none) :-
@@ -242,14 +242,10 @@ mw_reconcile(Root,RequestId,
     mw_read_term(PreparedPath,
       ['extension-activation-prepared-v1',RequestId,Id,Version,StageRequest,
         TrialRequest,ManifestHash,Commit,Prior,Compatibility]),
-    mw_stage_record(Root,Id,Version,StageRequest,
-      ['extension-stage-record-v1',StageRequest,ManifestHash,Commit,_Branch,
-        CandidateRelative,Manifest]),
-    mw_trial_record(Root,Id,Version,TrialRequest,
-      ['extension-trial-record-v1',TrialRequest,StageRequest,Commit,Manifest,
-        Results,'trial-passed']),
+    mw_activation_candidate(Root,Id,Version,StageRequest,TrialRequest,
+      ManifestHash,Commit,Manifest,Results,'trial-passed'),
     mw_trials_passed(Manifest,Results),
-    mw_candidate_verified(Root,CandidateRelative,Commit,Manifest,_),
+    mw_activation_boundary(Prior,Expected,Id,Manifest,Compatibility),
     Active=['active-executable-extension-v1',Id,Version,Commit,Manifest,
       ['activation-reference',RequestId],['prior-active',Prior],
       'hot-at-serialized-capability-cut'],
@@ -263,6 +259,7 @@ mw_reconcile(Root,RequestId,
     mw_read_term(PreparedPath,
       ['extension-rollback-prepared-v1',RequestId,Current,Prior]),
     Current=['active-executable-extension-v1',Id,ExpectedVersion|_],
+    nth0(6,Current,['prior-active',Prior]),
     mw_active_index(Root,Id,ActivePath),
     mw_finish_exact_rollback(ActivePath,Current,Prior).
 
@@ -410,19 +407,12 @@ mw_trial_observed(Candidate,Manifest,
 
 mw_activate(Root,RequestId,Id,Version,StageRequest,TrialRequest,Expected,
     Standing,Detail,Failure) :-
-    mw_stage_record(Root,Id,Version,StageRequest,Stage),
-    Stage=['extension-stage-record-v1',StageRequest,ManifestHash,Commit,_Branch,
-      CandidateRelative,Manifest],
-    mw_trial_record(Root,Id,Version,TrialRequest,Trial),
-    Trial=['extension-trial-record-v1',TrialRequest,StageRequest,Commit,Manifest,
-      Results,TrialStanding],
-    mw_candidate_verified(Root,CandidateRelative,Commit,Manifest,_Candidate),
+    mw_activation_candidate(Root,Id,Version,StageRequest,TrialRequest,
+      ManifestHash,Commit,Manifest,Results,TrialStanding),
     mw_active_index(Root,Id,ActivePath),
     mw_active_or_none(ActivePath,Current),
-    ( mw_expected_matches(Current,Expected),
-      mw_within_open_growth_authority(Manifest),
-      TrialStanding=='trial-passed',mw_trials_passed(Manifest,Results),
-      mw_compatible(Current,Manifest,Compatibility) ->
+    ( mw_activation_boundary(Current,Expected,Id,Manifest,Compatibility),
+      TrialStanding=='trial-passed',mw_trials_passed(Manifest,Results) ->
         Prepared=['extension-activation-prepared-v1',RequestId,Id,Version,
           StageRequest,TrialRequest,ManifestHash,Commit,Current,Compatibility],
         mw_prepared_index(Root,RequestId,PreparedPath),
@@ -442,9 +432,40 @@ mw_activate(Root,RequestId,Id,Version,StageRequest,TrialRequest,Expected,
         ['trial-evidence',TrialRequest,['recorded-standing',TrialStanding],
           ['required-trials',RequiredTrials],['results',Results]]] ).
 
+% Durable preparation records an intended transition, not an exemption from
+% its mechanical contract. Normal activation and restart reconciliation bind
+% the same canonical manifest, identity, hash, candidate and exact trial set.
+mw_activation_candidate(Root,Id,Version,StageRequest,TrialRequest,
+    ManifestHash,Commit,Manifest,Results,TrialStanding) :-
+    mw_stage_record(Root,Id,Version,StageRequest,Stage),
+    Stage=['extension-stage-record-v1',StageRequest,ManifestHash,Commit,_Branch,
+      CandidateRelative,Manifest],
+    mw_manifest(Manifest,Manifest),
+    mw_manifest_identity(Manifest,Id,Version),
+    mw_manifest_hash(Manifest,ObservedManifestHash),
+    ObservedManifestHash==ManifestHash,
+    mw_trial_record(Root,Id,Version,TrialRequest,Trial),
+    Trial=['extension-trial-record-v1',TrialRequest,StageRequest,Commit,Manifest,
+      Results,TrialStanding],
+    mw_candidate_verified(Root,CandidateRelative,Commit,Manifest,_Candidate).
+
+mw_activation_boundary(Current,Expected,Id,Manifest,Compatibility) :-
+    mw_expected_active(Expected,Expected),mw_expected_matches(Current,Expected),
+    mw_active_identity(Current,Id),mw_within_open_growth_authority(Manifest),
+    mw_compatible(Current,Manifest,Compatibility).
+
+mw_active_identity('no-active-version',_Id).
+mw_active_identity(Current,Id) :-
+    Current=['active-executable-extension-v1',Id,Version,_Commit,Manifest|_],
+    mw_manifest(Manifest,Manifest),mw_manifest_identity(Manifest,Id,Version).
+
 mw_activation_hold(Current,Expected,_Manifest,_Results,_TrialStanding,held,
     'expected-active-version-mismatch') :-
     \+ mw_expected_matches(Current,Expected),!.
+mw_activation_hold(Current,_Expected,Manifest,_Results,_TrialStanding,held,
+    'active-extension-identity-mismatch') :-
+    mw_manifest_identity(Manifest,Id,_Version),
+    \+ mw_active_identity(Current,Id),!.
 mw_activation_hold(_Current,_Expected,Manifest,_Results,_TrialStanding,held,
     'relational-authority-requires-human') :-
     \+ mw_within_open_growth_authority(Manifest),!.

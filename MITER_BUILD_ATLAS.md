@@ -6846,6 +6846,71 @@ Already carried:
   local record nor the old single correction establishes that judgment. No
   C4 closure, new live research success or installation is claimed here.
 
+  **C4 prepared workshop transition integrity, 2026-09-18:**
+  The new outbound inquiry-context disclosure remains unapproved. That holds
+  only that disclosure, not all authorized C4 work. This independent local
+  carry inspects the remaining workshop version boundary under C-093--098
+  and S-607. The Atlas is revisited at stage start, the changed finding and
+  commit. It does not replace the shared native formation/comparison priority
+  below or claim that state-schema migration already exists.
+
+  Against immediate parent `06f1d1b`, normal activation holds an incompatible
+  interface, unproved migration, expanded authority or wrong expected active
+  version. Reconciliation of an injected inconsistent prepared record accepts
+  each and changes the active pointer. It trusts the saved compatibility label
+  and ignores the operation's expected predecessor. A mismatched manifest hash
+  or extension identity is also accepted by both paths. These are corrupted-
+  record controls, not evidence of a live corruption or a Mattermost defect.
+  A companion control proves prepared rollback can substitute `no-active-
+  version` for the predecessor actually recorded in the current activation.
+
+  Both activation paths now share exact canonical manifest identity/hash,
+  candidate, expected predecessor, authority and interface/state checks.
+  Reconciliation rederives compatibility instead of trusting its label.
+  Rollback binds the prepared predecessor to the current record's own
+  predecessor. Complete trial evidence remains independently required. No
+  migration, permission or semantic judgment is manufactured. The invalid
+  recovery stays held through the ordinary claimed-operation consumer,
+  without a new observation, changed claim, active-pointer write or replay.
+
+  Eleven activation cases cover new/compatible activation, already-applied
+  recovery, wrong predecessor, interface change, unproved migration, expanded
+  authority, invented compatibility, changed hash, incomplete trials and wrong
+  extension identity. The additional substituted-rollback control holds while
+  exact rollback still succeeds. Fresh processes carry valid prepared
+  activation, byte-identical cached result/claim and exact predecessor rollback;
+  invocation remains excluded from replay. The candidate is a real isolated
+  Git worktree with independently checked source bytes. Trial-result carriers
+  are explicit diagnostic fixtures: this stage does not claim a Docker trial,
+  new native selection or earned extension authorship.
+
+  Only mechanical admissibility at activation/reconciliation is invalidated;
+  native formations, model requests, ordinary conversation and checkpoint
+  meaning are unchanged. The equivalent valid recovery checks take about
+  0.070--0.079 wall / 0.001--0.002 CPU seconds in the parent and
+  0.072--0.080 / 0.001--0.002 in the corrected source, dominated by the same
+  Git checks. No new persistent carrier or history scan is added. Two initial
+  lifecycle attempts expose diagnostic setup mistakes (duplicate restoration,
+  then an unrefreshed source-integrity pin); these are corrected without
+  weakening startup or restore. Final supported credential-free disposable
+  install/start/stop/restart reaches waiting in 5.198/5.297 seconds. All 64
+  protected checkpoint, workshop, capability and continuity records remain
+  byte-identical, with zero model/network calls or replayed operations. Exact
+  native restore and terminal-contact refusal pass in a fresh process. The
+  native checkpoint stays 104,434 bytes; this mechanical check adds no full
+  constitutive formations. Ordinary live-turn and Docker performance are not
+  newly measured by this stage.
+
+  All 34 authority-manifest hashes, source balance and diff checks pass. Only
+  runtime source, its integrity pin and this Atlas enter Git; the tracked tree
+  remains 66 files. Owned trial processes are stopped and this stage's exact
+  temporary area is removed at the commit waypoint. Live Miter, Mattermost,
+  credentials and earlier captures are unchanged. This closes a proved
+  prepared-transition integrity defect, not general state migration, installed
+  predecessor rollback, shared autonomous recovery or C4. Continue the shared
+  native formation/comparison falsifier and its genuine disclosure boundary;
+  do not replace it with more adapter-specific repair policy.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
