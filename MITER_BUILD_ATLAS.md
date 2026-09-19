@@ -450,52 +450,71 @@ It is not installed, a second persistent checkout, or repo content. Remove
 these owned artifacts at the integrated J1 closure (or if superseded), after
 recording durable findings. Older protected scratch is unchanged.
 
-**J1-e frozen integration discriminator — prospective source and carry:**
-predecessor `5ec136a`; the source identities above remain unchanged. Read
-C-030–045, S-1403–1412, F-01–09 and the full active map; retain §3's complete
-ledger. Source tracing identifies an existing carry path:
-`C3ParticipantsAfterSemanticConsequence` retains unresolved participants in
-`AR3ReconstituteAfterConsequence`. Do not invent a parallel pending-work store.
+**J1-e result — local admission PASS-BOUNDED; consequence/carry OPEN:**
+frozen at `51f5c68` on predecessor `5ec136a`, under the unchanged controls
+above and C-030–045/S-1406–1410. Only the temporary source copy changed.
+The ordinary validated initial and returned proposal producers now derive
+the prospective precondition participant from their exact source/question;
+`C4ReformPreparedWithParticipants` carries it into the actual live M25 family.
+Absent/invalid proposals, severed original source, unrelated predicates and
+wrong source/scope/descriptor bindings cannot supply that obligation/evidence.
+Neutral participant ordering preserves its route; restoration restores the
+whole encounter. Historical proof meaning and the independent HTTP inquiry
+remain intact. All sixteen prior J1-d cases still pass.
 
-In the temporary copy only, extend the ordinary initial and returned proposal
-producers to append a prospective native precondition participant derived from
-their exact validated proposal and question. Retain the original participant,
-scope, question, returned-source lineage, fallible meaning and independent
-directions. No raw rejected provider bytes become a candidate. Malformed or
-unrelated obligations must not borrow evidence. Existing historical proofs
-without this new prospective participant retain their meaning.
+A separate controlled read was formed natively, independently proof-checked,
+and observed actual temporary file bytes. Its ordinary tool participant
+changed the precondition continuation to support, contradiction or unknown
+for matching, changed or unavailable observations, with the cut and authority
+unchanged. This was **not** autonomous execution of the new recovery route:
+the full competing family remains plural and the ordinary effect boundary
+correctly declines to turn it into a single request. The prototype establishes
+operation-precondition relevance, not situated benefit or write permission.
 
-Relate this participant to ordinary `C4CapabilityObservationParticipant`
-records using exact descriptor/contact/scope/operation lineage and the J1-d
-native identity predicate. A source match is not semantic endorsement or write
-permission. Keep obtained evidence explicitly at its observation contact.
-After a real native consequence transition, unfinished source organization
-must remain available through the existing retained participant basis, while
-an old successful read must not become fresh file-state certainty. Do not use
-an arbitrary ancestor-cut search or silently rewrite the source question.
+Five exact fresh proofs reconstruct. `AR3ReconstituteAfterConsequence` cannot
+advance this unselected plural family: `AR2MovementBasis` and M24's consequence
+basis require an actually undertaken movement. That is a boundary, not a
+license to manufacture an effect/consequence certificate. Its participant-carry
+helper does preserve unresolved sources. A raw next-cut projection retains
+historical support as **unknown current state**, but is not an accepted K→K′.
 
-Before implementation, expected discriminators are: ordinary valid initial
-and returned-source proposals produce the bounded obligation; absent/rejected
-proposals do not; wrong source/scope/property cannot supply support; real
-matching/changed/unavailable read evidence changes the same native inquiry;
-severance, neutral ordering and restoration preserve their earlier meanings.
-Test full re-entry through `C4ReformPreparedWithParticipants`, native next-cut
-formation through `AR3ReconstituteAfterConsequence`, and fresh reconstruction
-with the complete competing family. Record an unavailable executable/read or
-consequence consumer as a gap, not permission to synthesize its certificate.
-No Miter write executes. A candidate inquiry remains non-executable unless
-the ordinary independent request boundary itself establishes otherwise.
+Ordinary incorporation retains the complete family in active state/history.
+A new controlled contact prepares successfully but does not reintroduce the
+prototype's pending obligation. `AR4PrepareEncounterV1` uses the prior cut and
+specific earned-development participants, not the unresolved prior family.
+This narrows the missing consumer; it does **not** establish storage loss, a
+universal installed defect, or that every old proposal belongs in every new
+contact. Relevant unfinished re-entry, purpose-grounded choice and supported
+restart are unproved. Do not copy/reactivate historical operations wholesale.
 
-Authorized temporary expansion: the J1-d module/join/bootstrap plus a native
-source-admission helper and the initial/returned proposal producers in
-`dialogue_participation.metta`; change the consequence producer only if exact
-source inspection proves existing carry insufficient and record that finding
-first. No production runtime changes, new effect grant, parser weakening,
-README/control edit, installation, live/model/network call or publication.
-Run bounded owned processes and retain failures. F-09 rows 1/5–7/9 are the
-bounded integration claim; full situated purpose/Fact9/compass discrimination,
-executable recovery, materially different contact and supported restart in
-§2.2 remain mandatory. This is not a new C4 closure or another hash-only test.
+Evidence: `/private/tmp/miter-c4-admission.ppxugL` holds the bounded instruments,
+raw attempts and factorized results. Native helper SHA-256
+`91abd8624d71a90147c1a99ecaa4e7553ad706b7c50c7a6f45ae164613f1901f`;
+fresh-verifier log `9a33f0a595f2950934d090937d20631cb75fb404ba674eab5a33a334c6c22fd9`;
+contact-carry result `04f37ba4642b2669d74ab5938371fe5469716e41126fe116ec421e8d154d7379`.
+Five fresh reconstructions took 3.08–4.16 wall / 2.94–3.97 CPU seconds each;
+these are not supported-service scaling measurements, and peak RSS is unknown.
+Instrument errors (claim-row layout, fixture shape, expected atom spelling,
+and entry-point exit handling) remain in raw logs; explicit final entries exit
+zero. Every owned process group was reaped. No model/network/live-state writes.
+Both named temporary areas are retained only for the immediate J1 successor,
+not installation or a second persistent checkout; remove at J1 closure or
+supersession after recording knowledge. All §3 obligations remain open.
+
+**J1-f next discriminator — relevant unfinished participation:** before another
+native edit, trace the ordinary next-contact path against an explicitly related
+undertaking and a same-scope unrelated contact. Inspect the full prior family,
+current W/relations, scoped continuity projection and their actual consumers;
+same scope, matching prose or an old source ID alone cannot establish relevance.
+Hypothesis: retained records/references reach continuity presentation without
+the pending distinctions becoming native continuation dependencies. Falsify it
+if an existing source-bound native consumer already performs that re-entry.
+Keep the relatedness premise explicitly controlled, not model-established or
+unseen. Vary that premise alone; distinguish historical availability, present
+relevance and effect authority. This is a bounded consumer-location test, not
+a new recovery policy. Record the finding before widening the temporary source
+scope. Do not choose one alternative merely to unblock the consequence path;
+§2.2's situated meaning/Fact9/flourishing and supported joint remain the target.
 
 ## 3. Requirements, implementation, and evidence
 
