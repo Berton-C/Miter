@@ -31,16 +31,26 @@ import urllib.request
 SOURCE_ROOT = pathlib.Path(__file__).resolve().parent
 CONFIG_PATH = SOURCE_ROOT / "config" / "miter.json"
 APPLICATION_MEMBERS = (
+    "ACCEPTANCE.md",
+    "AUTHORITY_MAP.md",
+    "BUILD_FIDELITY_PROTOCOL.md",
     "CONSTITUTION.md",
+    "DECISIONS.md",
+    "FAST_PATH.md",
+    "HEADLONG_INHERITANCE.md",
     "LICENSE",
     "MITER_BUILD_ATLAS.md",
     "MITER_SOUL_CONSTITUTIVE_SPEC.md",
+    "POC_SPEC.md",
     "README.md",
+    "SOURCE_MATERIALS_CHECKLIST.md",
+    "WORK_PROTOCOL.md",
     "install_miter.py",
     "authority",
     "bin",
     "config",
     "constitution",
+    "docs",
     "effect_membranes",
     "src",
 )

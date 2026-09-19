@@ -95,9 +95,17 @@ developmental change.
 
 ## 3. Canon and historical provenance
 
-Only the two control documents and five ratified mathematical authorities in
-this repository govern the build. Historical sources may clarify intent but
-do not silently regain authority.
+The two control documents and five ratified mathematical authorities govern
+constitutional meaning. Their cited supporting contracts also govern the build
+within their stated subordinate jurisdictions: [AUTHORITY_MAP.md](AUTHORITY_MAP.md),
+[POC_SPEC.md](POC_SPEC.md), [ACCEPTANCE.md](ACCEPTANCE.md),
+[BUILD_FIDELITY_PROTOCOL.md](BUILD_FIDELITY_PROTOCOL.md), and
+[WORK_PROTOCOL.md](WORK_PROTOCOL.md). This Atlas is the current operations map,
+not permission to omit those contracts or narrow their falsifiers. The
+[public documentation register](docs/PUBLIC_DOCUMENTATION.md) links their
+ratification records, decision history and Headlong inheritance, identifies
+restored source versions, and distinguishes historical sources not distributed
+here. Historical inspiration does not silently regain constitutional authority.
 
 `ORIG_ClarityClaw_Soul_Architecture_Strategy_Map_current.md` has been read in
 full from preserved `initial_canon` provenance. It contributes two important
@@ -142,8 +150,12 @@ non-checkout archive, but it may not remain another active Git working tree.
 
 Only distributable runtime source, native membranes, required configuration,
 the finite installer and operator entry, the Constitution, Soul specification,
-five mathematical authorities, this Atlas, a concise README, the license, and
-the public-safe ignore file may be tracked. Tests, fixture forests, logs,
+five mathematical authorities, this Atlas, its cited governing and construction
+contracts, ratification and decision records, public source-provenance and
+inheritance documentation, a concise README, the license, and the public-safe
+ignore file may be tracked. The supporting documents were restored at Berton's
+explicit direction on 2026-09-19; the former omission was inconsistent with
+the controls that cite them. Tests, fixture forests, logs,
 evidence trees, gate or campaign paperwork, generated reports, duplicate
 checkpoints, runtime state, model material, private memory, credentials, and
 obsolete implementations SHALL NOT enter the repository.
@@ -916,6 +928,34 @@ live contact will carry the new stage witness and must not be inferred in
 advance.
 
 ## 7. The only build cycle
+
+Read the applicable supporting contracts linked in Section 3 as well as the
+Constitution, Soul specification and mathematical source meaning. Follow
+BUILD_FIDELITY_PROTOCOL F-01–F-09 with this Atlas's current clean-source storage
+practice: review at stage opening, during extended work, near closure, and
+before and after a commit. Do not substitute hash checks or a restatement of
+this Atlas for reading the material clauses. The historical source copies are
+preserved, not silently amended; old in-repository fixture/evidence paths do
+not override Berton's later `/tmp`-only instruction. Genuine conflicts in
+protected meaning require explicit human adjudication.
+
+**Current direction, 2026-09-19:** C4 implementation is paused while the cited
+governance documents are restored publicly and Berton and the builder review
+PoC/C4 alignment. Do not resume C4 from a documentation-publication success;
+resume only after that alignment is agreed. The latest conditional-purpose
+experiment remains quarantined and unadmitted. Publication restores source
+access, not proof of cognitive completion.
+
+Documentation restoration verification: twelve supporting documents match
+their original committed bytes at archived `ec06bfbe6d34444310577b54e5906b9a4973afa0`;
+the public register retains their exact identities. The user's remote README
+is preserved byte-for-byte. All 125 local document links resolve. All 34
+current source-integrity pins verify; only the Soul specification's file pin
+changes for publication metadata and links, with its normative clauses,
+historical fingerprints and constitutional AtomSpace pins unchanged. An
+isolated packaging trial carries all 78 distribution files byte-for-byte and
+passes repeated packaging without touching the installed product. No native
+cognitive code changes or acceptance claims follow from these checks.
 
 **C4 causal-participation standard, reaffirmed by Berton on 2026-09-18:**
 Soul participation is not established by storing value names, verifying

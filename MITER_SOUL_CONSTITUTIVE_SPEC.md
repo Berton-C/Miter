@@ -5,7 +5,7 @@
 **Standing:** RATIFIED by Berton; subordinate to the Constitution and inherited mathematical authorities  
 **Review owner:** Berton  
 **Build baseline:** main at `2090741f0d3de16d7f4c8d6955ed1d8c1a7dd130`; G33 and the seed PoC closed `PASS-BOUNDED`; user-owned unfinished G22 material remains outside this specification change
-**Adoption:** Berton accepted v0.2 on 2026-09-03 and ratified the v0.3 and v0.4 constitutive expansions on 2026-09-04. Version 0.3 makes Continuity of Mind, endogenous flourishing, autonomous expressed-Soul regeneration, meaningful AtomSpace growth, integrated usability, and additive campaign progression explicit. Version 0.4 makes the Fact9–Flourishing Constitutive Participation Bridge the mandatory cognitive joint from the first always-on vertical slice and prohibits postponing causal Soul organization until after an assistant wrapper exists. Neither version enlarges the historical G33 result. See the [v0.2 record](</Users/claritymiter/miter/docs/ratification/SOUL_SPEC_V02.md>), [v0.3 record](</Users/claritymiter/miter/docs/ratification/SOUL_SPEC_V03.md>), [v0.4 record](</Users/claritymiter/miter/docs/ratification/SOUL_SPEC_V04.md>), and [build-fidelity protocol](</Users/claritymiter/miter/BUILD_FIDELITY_PROTOCOL.md>). The root copy is canonical; the identical `docs/` copy is not a second authority. The historical filename is retained for link stability.
+**Adoption:** Berton accepted v0.2 on 2026-09-03 and ratified the v0.3 and v0.4 constitutive expansions on 2026-09-04. Version 0.3 makes Continuity of Mind, endogenous flourishing, autonomous expressed-Soul regeneration, meaningful AtomSpace growth, integrated usability, and additive campaign progression explicit. Version 0.4 makes the Fact9–Flourishing Constitutive Participation Bridge the mandatory cognitive joint from the first always-on vertical slice and prohibits postponing causal Soul organization until after an assistant wrapper exists. Neither version enlarges the historical G33 result. See the [v0.2 record](docs/ratification/SOUL_SPEC_V02.md), [v0.3 record](docs/ratification/SOUL_SPEC_V03.md), [v0.4 record](docs/ratification/SOUL_SPEC_V04.md), and [build-fidelity protocol](BUILD_FIDELITY_PROTOCOL.md). The canonical cleanroom file is `MITER_SOUL_CONSTITUTIVE_SPEC.md`; there is no second `docs/` copy. The ratification records retain the historical `_DRAFT.md` filename and original hashes. The [public-documentation record](docs/PUBLIC_DOCUMENTATION.md) maps those identities and distinguishes restored governing documents from historical sources not distributed here.
 
 ## Manifesto
 
@@ -1106,20 +1106,20 @@ None of these means a completed Soul capability has passed this draft.
 
 | Current area and inspected evidence | What can reasonably be credited | Gap against the proposed specification |
 |---|---|---|
-| [G01 completion report](/Users/claritymiter/miter/evidence/20260901T180334Z-G01/outputs/G01_COMPLETION_REPORT.md) | A pinned native PeTTa/Prolog execution path and initial substrate probes | Does not establish generic situated cognition or all mutation semantics for future schemas |
-| [Seed genome](/Users/claritymiter/miter/constitution/soul.metta) and [Soul guards](/Users/claritymiter/miter/src/soul.metta) | Protected seed doctrine, nine labels, relations, internal standing guards | Passing an expected witness symbol does not show recognition of flourishing/capture poles, disguise, contextual gaps, or beneficial opportunities |
-| [Voice](/Users/claritymiter/miter/src/voice.metta) and [voice grammar](/Users/claritymiter/miter/src/voice_grammar.metta) | Bounded voice intention, candidate, audit, and emission mechanics | Fixed clause/defect vocabularies do not demonstrate open semantic fidelity or context-sensitive voice |
-| [Continuity](/Users/claritymiter/miter/src/continuity.metta) | Exact stored checkpoint and rehydration mechanics | An exact book-question route does not establish general recall intent, unfamiliar paraphrase handling, or continuity of unfinished cognition |
-| [Reactor](/Users/claritymiter/miter/src/reactor.metta) | A recurring driver, adaptive waiting, lifecycle records, interruption scaffolding, and idle hooks | Recurrence already exists. Generic execution consumes supplied steps and hashes history; native D/Ω/I/W/C cognition and sustained problem-solving are the missing payload, not a missing timer |
-| [Interests](/Users/claritymiter/miter/src/interests.metta) | Scoped opportunity admission and finite candidate/trial allowances | Fixed VoicePolicy target and permitted shape do not demonstrate purpose formation or genuinely novel value-grounded work |
-| [Declarative module contract](/Users/claritymiter/miter/docs/MODULES.md) and G21 | Model-authored declarative rule module in quarantine; candidate cannot choose canonical writers or judges | The document correctly limits this to named voice defects and existing rendering plans, not general reasoning or accepted self-improvement |
-| [Unfinished G22 trial source](/Users/claritymiter/miter/src/trials.metta) and [preparation failure](/Users/claritymiter/miter/evidence/20260902T090100Z-G22/raw/prepare.stderr) | Work toward independently owned parent/candidate/severed trials | The recorded preparation failed on a missing parent candidate path. No completed G22 promotion or closed developmental-helix claim is established; preserve unfinished files for later reassessment |
+| [G01 completion report — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) | A pinned native PeTTa/Prolog execution path and initial substrate probes | Does not establish generic situated cognition or all mutation semantics for future schemas |
+| [Seed genome — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) and [Soul guards — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) | Protected seed doctrine, nine labels, relations, internal standing guards | Passing an expected witness symbol does not show recognition of flourishing/capture poles, disguise, contextual gaps, or beneficial opportunities |
+| [Voice — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) and [voice grammar — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) | Bounded voice intention, candidate, audit, and emission mechanics | Fixed clause/defect vocabularies do not demonstrate open semantic fidelity or context-sensitive voice |
+| [Continuity — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) | Exact stored checkpoint and rehydration mechanics | An exact book-question route does not establish general recall intent, unfamiliar paraphrase handling, or continuity of unfinished cognition |
+| [Reactor — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) | A recurring driver, adaptive waiting, lifecycle records, interruption scaffolding, and idle hooks | Recurrence already exists. Generic execution consumes supplied steps and hashes history; native D/Ω/I/W/C cognition and sustained problem-solving are the missing payload, not a missing timer |
+| [Interests — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) | Scoped opportunity admission and finite candidate/trial allowances | Fixed VoicePolicy target and permitted shape do not demonstrate purpose formation or genuinely novel value-grounded work |
+| [Declarative module contract — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) and G21 | Model-authored declarative rule module in quarantine; candidate cannot choose canonical writers or judges | The document correctly limits this to named voice defects and existing rendering plans, not general reasoning or accepted self-improvement |
+| [Unfinished G22 trial source — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) and [preparation failure — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) | Work toward independently owned parent/candidate/severed trials | The recorded preparation failed on a missing parent candidate path. No completed G22 promotion or closed developmental-helix claim is established; preserve unfinished files for later reassessment |
 | Effect preparation, storage, and receipts | Useful bounded mechanics and identifiers | Full crash-window reconciliation, unknown remote outcome, and exactly-once scope require T-24 requalification |
 | Consequence/NACE/workshop | Source contracts and partial scaffolding | A consequence-earned native revision causing a later choice among live alternatives, and the omitted-adapter authorship proof, remain unestablished |
 
 This is a discrepancy map, not a verdict that all existing work should be discarded. Infrastructure can be retained where its claims survive targeted tests. Demonstrations must be relabeled at their actual scope rather than retroactively described as rich cognition.
 
-The companion [build reassessment](</Users/claritymiter/miter/docs/MITER_SOUL_BUILD_REASSESSMENT.md>) records code anchors, retained mechanics, replacement work, integration dependencies, and the proposed first correction. It is an assessment against C0 and this proposed specification, not a new acceptance authority or a test run.
+The companion [build reassessment — historical reference](docs/PUBLIC_DOCUMENTATION.md#historical-build-records) records code anchors, retained mechanics, replacement work, integration dependencies, and the proposed first correction. It is an assessment against C0 and this proposed specification, not a new acceptance authority or a test run.
 
 ## 12.4 Decisions, clarifications, and intentional deferrals
 
@@ -1737,62 +1737,62 @@ Coverage is bidirectional: Appendix A maps this specification's additions to sou
 
 This register identifies the exact local source set consulted across the assessment and drafting work. It is not a declaration that historical implementation choices, philosophical claims, or empirical assertions are ratified for Miter. The five mathematical authorities and current governing documents have the standing identified below; the remaining sources contribute attributed meaning, precedent, counterexamples, or implementation questions.
 
-The originals remain untouched. Local links are for Berton's review. Before public commitment, review path metadata and redistribution permissions under D-12. Restricted source content, private memories, model weights, service databases, and the NRC lexicon must not be copied into the public repository merely because a source is listed here.
+The originals remain untouched. Public links below resolve to the current governing document or to an explicitly marked historical source record, not to a workstation path. Historical source records identify material not distributed with this repository; they are not substitute copies or new authority. See the [publication and provenance record](docs/PUBLIC_DOCUMENTATION.md). Restricted source content, private memories, model weights, service databases, and the NRC lexicon must not be copied into the public repository merely because a source is listed here.
 
 ## C.1 Source identities and standing
 
-| ID | Local source | Standing / qualification |
+| ID | Public document or historical source record | Standing / qualification |
 |---|---|---|
-| C0 | [Committed Constitution](</Users/claritymiter/miter/CONSTITUTION.md>) | governing PoC constitution |
-| A0 | [Authority map](</Users/claritymiter/miter/AUTHORITY_MAP.md>) | provenance map |
-| P0 | [PoC specification](</Users/claritymiter/miter/POC_SPEC.md>) | current bounded build contract |
-| T0 | [Acceptance gates](</Users/claritymiter/miter/ACCEPTANCE.md>) | current human-controlled acceptance |
-| W0 | [Construction protocol](</Users/claritymiter/miter/WORK_PROTOCOL.md>) | current construction discipline |
-| D0 | [Decisions](</Users/claritymiter/miter/DECISIONS.md>) | recorded engineering decisions |
-| BF0 | [Build fidelity protocol](</Users/claritymiter/miter/BUILD_FIDELITY_PROTOCOL.md>) | current builder-side fidelity and constitutive-trace discipline; not runtime cognition |
-| M24 | [Inquiry 24](</Users/claritymiter/miter/docs/sources/authority/0k_24_Ratified_Mathematical_Authority.md>) | ratified mathematics |
-| M25 | [Investigation 25](</Users/claritymiter/miter/docs/sources/authority/25f_Ratified_Balance_as_Intelligence_Mathematical_Object.md>) | ratified mathematics; Berton reconfirmed 25f |
-| M255 | [Inquiry 25.5](</Users/claritymiter/miter/docs/sources/authority/25.5m_Ratified_Mathematical_Authority.md>) | ratified mathematics |
-| M260 | [Inquiry 26.0](</Users/claritymiter/miter/docs/sources/authority/26.0_Ratified_Mathematical_Authority.md>) | ratified mathematics |
-| M263 | [Inquiry 26.3](</Users/claritymiter/miter/docs/sources/authority/26.3_Ratified_Mathematical_Authority.md>) | ratified mathematics |
-| O1 | [Original Soul architecture](</Users/claritymiter/miter/docs/sources/architecture/ORIG_ClarityClaw_Soul_Architecture_Strategy_Map_current.md>) | historical design and implementation evidence |
-| O2 | [Recovered Soul kernel](</Users/bcb/Documents/ClarityOmega/clarityomega/soul/soul_kernel.metta>) | historical atomization; not copied wholesale |
-| O3 | [Atom Operations Map](</Users/claritymiter/miter/docs/sources/substrate/Atom_Operations_Map.md>) | prior substrate evidence, runtime-specific |
-| N1 | [NACE caller contract](</Users/claritymiter/miter/docs/sources/nace/ClarityOmega_NACE_Caller_Contract.md>) | historical learning contract |
-| N2 | [NACE persistence architecture](</Users/claritymiter/miter/docs/sources/nace/ClarityOmega_NACE_Persistence_Architecture.md>) | historical persistence evidence |
-| N3 | [NACE implementation plan](</Users/claritymiter/miter/docs/sources/nace/nace_implementation_plan.md>) | historical plan |
-| N4 | [NACE substrate](</Users/claritymiter/miter/docs/sources/nace/nace_substrate.metta>) | historical implementation |
-| N5 | [NACE beliefs](</Users/claritymiter/miter/docs/sources/nace/nace_beliefs.metta>) | historical implementation |
-| N6 | [NACE pending](</Users/claritymiter/miter/docs/sources/nace/nace_pending.metta>) | historical implementation |
-| Q1 | [Quantale regulatory corpus](</Users/claritymiter/miter/docs/sources/quantale/lib_quantale_autopoietic_epistemic_dynamics_engine_v08_7_2_SOUL_EVOLUTIONARY_CANONICAL_TOPOLOGY.metta>) | candidate regulatory concepts; algebra not certified |
-| Q2 | [Quantale library](</Users/claritymiter/miter/docs/sources/quantale/lib_quantale.metta>) | candidate algebra; not Soul authority |
-| V1 | [VAD consolidated account](</Users/claritymiter/miter/docs/sources/vad/000_vad_affect_perception_consolidated.md>) | bounded affective-language instrument |
-| V2 | [Historical sentence VAD](</Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/7_design_artifacts/sprints/03_vad_integration/lib_vad_sentence.metta>) | inspected native sentence/trajectory precedent; calibration and current load status not established |
-| V3 | [Historical voice revision prototype](</Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/revision_loop_v2.py>) | inspected as source only, not executed or adopted; fixed substitutions are a counterexample to situated voice |
-| H1 | [Spiral of Flourishing](</Users/bcb/Library/Mobile Documents/com~apple~CloudDocs/Records/Clarity_AI_related_contetn/BcB - AI Agents Business Ventures/PDF Project Docs, 20Dec/The_Spiral_of_Flourishing_v3.pdf>) | semantic source; filename v3, internal version 2.0 |
-| H2 | [Soul Overview](</Users/bcb/Documents/ClarityOmega/Clarity_Soul_Docs/Soul_Overview_v1_2.pdf>) | semantic source; filename v1_2, internal version 1.0 |
-| H3 | [Nine Patterns in Practice](</Users/bcb/Documents/ClarityOmega/clarityclaw-main/shared_files/Berton_shared/v2 Appendix A: The Nine Design Patterns of Flourishing in Practice copy.pdf>) | illustrations and counterexamples |
-| H4 | [Flourishing site](</Users/bcb/Documents/ClarityOmega/Clarity_BGI_Gov_Docs/BGI-GOV/bgi-governance-site/pages/flourishing.html>) | semantic relationships and design lenses |
-| H5 | [The Soul Sees Itself](</Users/bcb/Documents/ClarityOmega/clarityomega/docs/sprints/04_local_llm/ClarityOmega_CPE_OneShot_v0_2/authority/source/01a_ClarityOmega_v2_The_Soul_Sees_Itself_vision(2).md>) | vision; not proof of implemented Miter capabilities |
-| H6 | [Philosophical memory fragments](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/philosophical_foundations_Memory_fragments.md>) | philosophical synthesis |
-| H7 | [Implementation mechanics appendix](</Users/bcb/Documents/ClarityOmega/clarityomega/shared_files/agi_gov_paper/appendix-implementation-mechanics-v2.md>) | historical variant; ninth-pattern conflict retained |
-| H8 | [Balance prose](</Users/bcb/Documents/ClarityOmega/Balance_SNS_PNS_9_immutable_facts.md/Balance.md>) | attributed account of participation, Unity, and creative expression; not wholesale doctrine or a medical inference engine |
-| H9 | [006 grounding artifact](</Users/bcb/Documents/ClarityOmega/clarityomega/docs/sprints/000_developmental_physiology/initial_inquiry_artifacts/006_ClarityOmega_Meta_Aware_World_Model_Kernel_Grounding_Artifact.md>) | historical grounding, especially §5.2 dispositions and §6 retry distinctions; M25 remains the ratified mathematical authority |
-| G1 | [Genesis engine](</Users/bcb/Documents/ClarityOmega/clarityomega/soul/genesis_engine.metta>) | historical connection-making and gap-holding counterexample; not proof of a general generator |
-| G2 | [Genesis connection types](</Users/bcb/Documents/ClarityOmega/clarityomega/soul/genesis_connection_types.metta>) | candidate relation qualities; quotas and fixed menus not adopted |
-| G3 | [Genesis practice log](</Users/bcb/Documents/ClarityOmega/clarityomega/soul/genesis_practice_log.metta>) | historical observations; pending human response is not verified benefit |
+| C0 | [Committed Constitution](CONSTITUTION.md) | governing PoC constitution |
+| A0 | [Authority map](AUTHORITY_MAP.md) | provenance map |
+| P0 | [PoC specification](POC_SPEC.md) | current bounded build contract |
+| T0 | [Acceptance gates](ACCEPTANCE.md) | current human-controlled acceptance |
+| W0 | [Construction protocol](WORK_PROTOCOL.md) | current construction discipline |
+| D0 | [Decisions](DECISIONS.md) | recorded engineering decisions |
+| BF0 | [Build fidelity protocol](BUILD_FIDELITY_PROTOCOL.md) | current builder-side fidelity and constitutive-trace discipline; not runtime cognition |
+| M24 | [Inquiry 24](authority/M24.md) | ratified mathematics |
+| M25 | [Investigation 25](authority/M25.md) | ratified mathematics; Berton reconfirmed 25f |
+| M255 | [Inquiry 25.5](authority/M25_5.md) | ratified mathematics |
+| M260 | [Inquiry 26.0](authority/M26_0.md) | ratified mathematics |
+| M263 | [Inquiry 26.3](authority/M26_3.md) | ratified mathematics |
+| O1 | [Original Soul architecture — source record](docs/PUBLIC_DOCUMENTATION.md#source-o1) | historical design and implementation evidence |
+| O2 | [Recovered Soul kernel — source record](docs/PUBLIC_DOCUMENTATION.md#source-o2) | historical atomization; not copied wholesale |
+| O3 | [Atom Operations Map — source record](docs/PUBLIC_DOCUMENTATION.md#source-o3) | prior substrate evidence, runtime-specific |
+| N1 | [NACE caller contract — source record](docs/PUBLIC_DOCUMENTATION.md#source-n1) | historical learning contract |
+| N2 | [NACE persistence architecture — source record](docs/PUBLIC_DOCUMENTATION.md#source-n2) | historical persistence evidence |
+| N3 | [NACE implementation plan — source record](docs/PUBLIC_DOCUMENTATION.md#source-n3) | historical plan |
+| N4 | [NACE substrate — source record](docs/PUBLIC_DOCUMENTATION.md#source-n4) | historical implementation |
+| N5 | [NACE beliefs — source record](docs/PUBLIC_DOCUMENTATION.md#source-n5) | historical implementation |
+| N6 | [NACE pending — source record](docs/PUBLIC_DOCUMENTATION.md#source-n6) | historical implementation |
+| Q1 | [Quantale regulatory corpus — source record](docs/PUBLIC_DOCUMENTATION.md#source-q1) | candidate regulatory concepts; algebra not certified |
+| Q2 | [Quantale library — source record](docs/PUBLIC_DOCUMENTATION.md#source-q2) | candidate algebra; not Soul authority |
+| V1 | [VAD consolidated account — source record](docs/PUBLIC_DOCUMENTATION.md#source-v1) | bounded affective-language instrument |
+| V2 | [Historical sentence VAD — source record](docs/PUBLIC_DOCUMENTATION.md#source-v2) | inspected native sentence/trajectory precedent; calibration and current load status not established |
+| V3 | [Historical voice revision prototype — source record](docs/PUBLIC_DOCUMENTATION.md#source-v3) | inspected as source only, not executed or adopted; fixed substitutions are a counterexample to situated voice |
+| H1 | [Spiral of Flourishing — source record](docs/PUBLIC_DOCUMENTATION.md#source-h1) | semantic source; filename v3, internal version 2.0 |
+| H2 | [Soul Overview — source record](docs/PUBLIC_DOCUMENTATION.md#source-h2) | semantic source; filename v1_2, internal version 1.0 |
+| H3 | [Nine Patterns in Practice — source record](docs/PUBLIC_DOCUMENTATION.md#source-h3) | illustrations and counterexamples |
+| H4 | [Flourishing site — source record](docs/PUBLIC_DOCUMENTATION.md#source-h4) | semantic relationships and design lenses |
+| H5 | [The Soul Sees Itself — source record](docs/PUBLIC_DOCUMENTATION.md#source-h5) | vision; not proof of implemented Miter capabilities |
+| H6 | [Philosophical memory fragments — source record](docs/PUBLIC_DOCUMENTATION.md#source-h6) | philosophical synthesis |
+| H7 | [Implementation mechanics appendix — source record](docs/PUBLIC_DOCUMENTATION.md#source-h7) | historical variant; ninth-pattern conflict retained |
+| H8 | [Balance prose — source record](docs/PUBLIC_DOCUMENTATION.md#source-h8) | attributed account of participation, Unity, and creative expression; not wholesale doctrine or a medical inference engine |
+| H9 | [006 grounding artifact — source record](docs/PUBLIC_DOCUMENTATION.md#source-h9) | historical grounding, especially §5.2 dispositions and §6 retry distinctions; M25 remains the ratified mathematical authority |
+| G1 | [Genesis engine — source record](docs/PUBLIC_DOCUMENTATION.md#source-g1) | historical connection-making and gap-holding counterexample; not proof of a general generator |
+| G2 | [Genesis connection types — source record](docs/PUBLIC_DOCUMENTATION.md#source-g2) | candidate relation qualities; quotas and fixed menus not adopted |
+| G3 | [Genesis practice log — source record](docs/PUBLIC_DOCUMENTATION.md#source-g3) | historical observations; pending human response is not verified benefit |
 | I1 | [Iter execution loop](https://raw.githubusercontent.com/patham9/iter/master/iter.py) | upstream engineering precedent inspected 2026-09-02; mutable branch URL, not a runtime dependency pin |
 | I2 | [Iter extension interface](https://raw.githubusercontent.com/patham9/iter/master/reprogramming.txt) | upstream extension precedent inspected 2026-09-02; no Python or model-sovereign authority imported |
-| F1 | [The Autonomy Paradox](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/Memory_Fragment_1_The_Autonomy_Paradox.pdf>) | design rationale and scenarios; empirical claims not independently verified |
-| F2 | [Epistemic Fragmentation](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/Memory_Fragment_2_Epistemic_Fragmentation.pdf>) | design rationale and scenarios; empirical claims not independently verified |
-| F3 | [Neuroplastic Vulnerability](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/Memory_Fragment_3_Neuroplastic_Vulnerability.pdf>) | design rationale and scenarios; empirical claims not independently verified |
-| F4 | [Existential Mediocrity](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/Memory_Fragment_4_Existential_Mediocrity.pdf>) | design rationale and scenarios; empirical claims not independently verified |
-| F5 | [The Empathy Decay](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/Memory_Fragment_5_The_Empathy_Decay.pdf>) | design rationale and scenarios; empirical claims not independently verified |
-| F6 | [Temporal Disorientation](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/Memory_Fragment_6_Temporal_Disorientation.pdf>) | design rationale and scenarios; empirical claims not independently verified |
-| F7 | [Spiritual Disenchantment](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/Memory_Fragment_7_Spiritual_Disenchantment.pdf>) | design rationale and scenarios; empirical claims not independently verified |
-| F8 | [The Identity Integration Challenge](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/Memory_Fragment_8_The_Identity_Integration_Challenge.pdf>) | design rationale and scenarios; empirical claims not independently verified |
-| F9 | [The Pattern Energy Dynamics](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/Memory_Fragment_9_The_Pattern_Energy_Dynamics.pdf>) | design rationale and scenarios; empirical claims not independently verified |
-| F10 | [Philosophical Foundations PDF](</Users/bcb/Documents/BGI_The_Custodian/9 Memory Fragments/Philosophical_Foundations_Memory_Fragments_MD.pdf>) | philosophical synthesis overlapping H6; not independent confirmation |
+| F1 | [The Autonomy Paradox — source record](docs/PUBLIC_DOCUMENTATION.md#source-f1) | design rationale and scenarios; empirical claims not independently verified |
+| F2 | [Epistemic Fragmentation — source record](docs/PUBLIC_DOCUMENTATION.md#source-f2) | design rationale and scenarios; empirical claims not independently verified |
+| F3 | [Neuroplastic Vulnerability — source record](docs/PUBLIC_DOCUMENTATION.md#source-f3) | design rationale and scenarios; empirical claims not independently verified |
+| F4 | [Existential Mediocrity — source record](docs/PUBLIC_DOCUMENTATION.md#source-f4) | design rationale and scenarios; empirical claims not independently verified |
+| F5 | [The Empathy Decay — source record](docs/PUBLIC_DOCUMENTATION.md#source-f5) | design rationale and scenarios; empirical claims not independently verified |
+| F6 | [Temporal Disorientation — source record](docs/PUBLIC_DOCUMENTATION.md#source-f6) | design rationale and scenarios; empirical claims not independently verified |
+| F7 | [Spiritual Disenchantment — source record](docs/PUBLIC_DOCUMENTATION.md#source-f7) | design rationale and scenarios; empirical claims not independently verified |
+| F8 | [The Identity Integration Challenge — source record](docs/PUBLIC_DOCUMENTATION.md#source-f8) | design rationale and scenarios; empirical claims not independently verified |
+| F9 | [The Pattern Energy Dynamics — source record](docs/PUBLIC_DOCUMENTATION.md#source-f9) | design rationale and scenarios; empirical claims not independently verified |
+| F10 | [Philosophical Foundations PDF — source record](docs/PUBLIC_DOCUMENTATION.md#source-f10) | philosophical synthesis overlapping H6; not independent confirmation |
 
 ## C.2 SHA-256 fingerprints
 
