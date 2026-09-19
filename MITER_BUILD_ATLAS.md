@@ -478,7 +478,8 @@ license to manufacture an effect/consequence certificate. Its participant-carry
 helper does preserve unresolved sources. A raw next-cut projection retains
 historical support as **unknown current state**, but is not an accepted K→K′.
 
-Ordinary incorporation retains the complete family in active state/history.
+Ordinary incorporation retains the complete family in active state. J1-f below
+shows that compact encounter history alone does not preserve that whole basis.
 A new controlled contact prepares successfully but does not reintroduce the
 prototype's pending obligation. `AR4PrepareEncounterV1` uses the prior cut and
 specific earned-development participants, not the unresolved prior family.
@@ -524,24 +525,64 @@ with separate related/unrelated incorporation logs and complete resulting
 snapshots. Native restore of the prior family passes before each case. No
 runtime source, live state, model call or network was changed by this probe.
 
-**Frozen next repair within J1-f:** in the same temporary source copy, extend
-`assistant_reactor_authority.metta` only: preserve the exact prior unresolved
-v3 cut/family in existing append-only native history before replacing the active
-row. Give this material its own typed historical, non-executable standing; do
-not relabel it a voice proof, effect, current fact, or selected movement. Use
-the whole common retained basis and ordinary native reconstruction, not the
-first alternative or a host semantic chooser. Existing compact encounter rows
-and old snapshots retain their meanings. No new store or cognitive loop.
+**J1-f retention result — PASS-BOUNDED, quarantined:** the repair frozen in
+`313868b` changes only the temporary `assistant_reactor_authority.metta`.
+Before ordinary AR4 contact replacement, it records the whole prior unselected
+v3 cut/family in existing native history as `unfinished-organization`, explicitly
+historical and non-executable. Exact scope/cut identity keys the record; unequal
+payloads conflict rather than overwrite. Native reconstruction checks the whole
+retained basis on restore. Compact historical rows keep their meanings.
 
-Expected tests: incorporation preserves the exact unfinished family, duplicate
-observation does not multiply records, wrong scope/altered family are rejected,
-fresh native restore retains it without effects, and new current formation is
-unchanged by retention alone. Compare one/two retained organizations for cost
-and growth. Keep the related/unrelated non-relevance result: this prerequisite
-does not yet authorize historical participation in a present purpose. A later
-source-bound native consumer must warrant that re-entry, and §2.2's full
-semantic/Fact9/flourishing/consequence/supported-restart joint remains open.
-No production edit, installation, publication, new authority or external call.
+Both controlled related/unrelated contacts retain the old family in the next
+snapshot and capsule. The related current active organization and all prior
+history remain exactly equal to the unrepaired baseline: retention alone has
+not asserted current relevance. Duplicate retention adds nothing. A conflicting
+record prevents replacement without changing state. Full restore rejects wrong
+scope, erased alternatives and promoted historical authority before populating
+native state; lawful restoration then recovers the exact snapshot. Older
+snapshots still restore. Five previous admission/observation proofs reconstruct;
+unknown/current versus historical support and independent plural directions
+remain distinct. No effect, model call, network or live write occurred.
+
+One and two retained organizations serialize to 239,553 and 284,900 bytes;
+fresh native restore took 3.95/3.69 and 5.30/5.02 wall/CPU seconds respectively.
+The second proposal was controlled and ordinarily admitted, not autonomous
+discovery. These snapshots also have different current contacts, so this is
+bounded end-to-end growth, not an isolated marginal-cost law. Peak RSS and
+supported-service scaling remain unmeasured. The first ID design expanded the
+shared proof to 6,634,119 characters and failed its helper bound; source-cut
+identity plus exact conflict checks repaired that without increasing the bound.
+An initial two-size instrument omitted the required second reading; its refusal
+is preserved alongside the corrected run. Every trial group was reaped.
+
+Evidence in `/private/tmp/miter-c4-admission.ppxugL`: `growth-two.term` SHA-256
+`d1cdcacfb69409ce7165ce920143ce50f1e1c334854aa65e229abfcca74651da`;
+negative restore log `535c7b2ebfeeaeb6b31c14b48dbacae27fbaa62245f915eb4587468fb9dc0297`;
+admission regression `79cce192210ea20a5ecfd9ddd1a7fde294676c8e621d6281e4743ecbbbaaad6f`.
+Temporary reactor source SHA-256
+`f27beb02b7290f74ec80e3322d9838d1991dcbccfbeb3daeca1ddbc09ce0c183`.
+Retention remains unadmitted with the immediate J1 materials. This does not
+prove relevance, useful recovery, all unresolved forms, changed installed
+capability dependencies, or supported `bin/miter` restart. In particular,
+historical reconstruction currently consults active capability state; its
+changed-interface fidelity must be qualified before promotion, not assumed.
+
+**Next within J1 — historical participation versus present warrant:** first
+trace the retained record into the ordinary next-contact/semantic question and
+existing C3 inquiry/memory consumers. With the same new contact and authority,
+compare exact retained material, its absence, and a scope-blocked history in
+separate disposable processes. Expected finding: retention itself neither
+supplies a current precondition nor forces a historical operation. Identify
+whether an existing consumer can make that organization available as fallible
+material without falsely claiming an earned consequence. If it cannot, freeze
+the missing source-bound native representation and consumer before code. Do not
+solve the gap by copying all old proposals, matching thread IDs, adding prompt
+text alone, or treating an untried route as useful. The next constructive proof
+must connect interpreted purpose, material dependency and changed evidence to
+a warranted continuation; §2.2's Fact9/flourishing, independent consequence,
+different contact family and supported-restart obligations remain open.
+No production edit, installation, publication, authority expansion or external
+call follows from this result. C4 and every §3 acceptance family remain open.
 
 ## 3. Requirements, implementation, and evidence
 
