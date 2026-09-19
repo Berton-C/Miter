@@ -8049,6 +8049,70 @@ Already carried:
   flourishing judgment. Test code, logs and disposable runtimes remain outside
   Git and are removed after the repair facts are committed.
 
+  **C4 question-relative observation experiment, 2026-09-18:** Against
+  `e944d4b`, inspect the saved source before changing the recovery policy.
+  Its GET reading seeks returned content; its HEAD reading explicitly seeks
+  response status after a connection refusal. HEAD is therefore not itself
+  a demonstrated erroneous continuation. The actual native consumer forms
+  that HEAD prospect, but its existing uniqueness/untried calculation does
+  not establish the semantic relationship between a proposed observation and
+  the question it is meant to investigate.
+
+  A quarantined finite experiment distinguishes observation of response
+  status, returned entity content, current file identity and directory
+  entries. These are interface-contract distinctions, not a vocabulary of
+  situations or prescribed recovery behaviors. Twelve native reductions
+  distinguish an unavailable observation from an inapplicable question and
+  an observed empty value. Independent calls to the actual body reader and
+  isolated workspace reader confirm that HEAD does not return entity content,
+  and that a missing file, an oversized file and a directory leave file
+  identity unresolved rather than establish absence. These observations do
+  not establish the truth of retrieved content, future success or authority.
+
+  One authorized GLM diagnostic call supplies source-qualified question
+  interpretations for the two saved proposals. Both excerpts bind to the
+  exact supplied purposes; the interpretations identify content for GET and
+  status for HEAD. This is a fallible interpretation of the supplied source,
+  not independent certification of its meaning or benefit. The call uses
+  Modal through the approved OpenRouter profile, completes in 3.091 seconds
+  with 4,257 prompt / 423 completion tokens, and preserves the approved privacy
+  settings. No operation or surface post follows it.
+
+  In a disposable source copy, the same comparison consumer retains the whole
+  family while making an untried observation prospect conditional on that
+  question's observable distinction. Eight cases with complete M25 formations
+  and independent native reconstructions carry the historical baseline, provider
+  interpretations, a status question, a content question, an inapplicable
+  file question, missing questions, order-only variation and restoration.
+  The status interpretation permits HEAD; the content/file/missing-question
+  cases retain all three comparison members without an executable operation
+  or an additional competing inquiry. Reordering preserves the operation,
+  not the proof/request identifier; exact restoration recovers the original
+  proof. Across two successful runs, formation plus reconstruction takes
+  2.081/2.154 seconds for the historical baseline, 2.100/2.141 for provider
+  interpretations, 2.091--2.147 for the other executable cases, and
+  3.838--3.944 for retained comparison. This is not an
+  improvement claim for the different retained-family work. Fresh-process
+  full reconstruction reproduces the exact 142,252-byte proof in 1.088 wall /
+  1.016 CPU seconds; this is not supported service restart or installed carry.
+
+  **Admission remains withheld.** An operation's ability to discriminate a
+  question does not establish that the question materially serves the live
+  undertaking. In this experiment the builder still connects the proposed
+  questions to the comparison marker outside the ordinary C4 producer; source
+  excerpts alone do not supply that missing native judgment. Promoting this
+  primitive as a universal probe gate would replace one insufficient test
+  (untried uniqueness) with another (observable-field compatibility). Continue
+  the existing source-bound inquiry work by relating proposed questions to
+  the undertaking's supported and unresolved native dependencies, retaining
+  fallible interpretations, partial progress and other supported openings.
+  The interrelated flourishing meanings must determine that situated use;
+  neither this finite contract nor model-assigned facets establish Section 7.
+  No application source or installed state changes in this experiment.
+  Instruments, private responses and the disposable source copy stay only in
+  `/private/tmp` during the active investigation. All its diagnostic process
+  groups are reaped, with no surviving stage-owned process. C4 remains open.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
