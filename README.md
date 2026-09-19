@@ -35,6 +35,13 @@ means or which movement Miter takes. Python appears exactly once, in the
 finite installer, and exits before the organism runs. There is no imperative
 layer in which cognition could hide.
 
+The ratified Soul specification states the central construction question this
+entire architecture answers to:
+
+> How does this implementation allow the Soul-grounded organization of an
+> encounter to determine its unfolding, rather than substituting a behavior
+> selected beforehand by the builder?
+
 ## The name
 
 Miter descends from [Iter](https://github.com/patham9/iter) — *Iterative
@@ -51,9 +58,12 @@ experience, made iterative — and, here, made constitutional.
 
 ## What would falsify it
 
-Miter states its own failure conditions. The controlling document is
-[MITER_SOUL_CONSTITUTIVE_SPEC.md](MITER_SOUL_CONSTITUTIVE_SPEC.md); its core
-is a causal test protocol, not a checklist:
+Miter states its own failure conditions. [CONSTITUTION.md](CONSTITUTION.md)
+governs the implementation; the ratified
+[MITER_SOUL_CONSTITUTIVE_SPEC.md](MITER_SOUL_CONSTITUTIVE_SPEC.md) gives that
+constitution its complete constitutive meaning and falsifiers, and both are
+subordinate to the inherited mathematical authorities. Their core is a causal
+test protocol, not a checklist:
 
 - **Severance.** Removing or corrupting expressed Soul organization must cause
   a *predicted* loss or alteration of cognitive capacity in unfamiliar
@@ -73,6 +83,19 @@ without predictable change in unfamiliar cognition; if new experience cannot
 reorganize later possibility; if humans cannot install and use the integrated
 assistant; or if the LLM, host harness, membrane, or builder-selected workflow
 turns out to be the actual source of cognitive choice.
+
+The protocol is enforced as mandatory severed-arm controls — Soul-severed,
+memory-severed, voice-audit-severed, NACE-severed, consequence-severed,
+continuity-severed, and workshop-policy-severed — where behavioral equivalence
+on discriminating cases falsifies the claimed causal role of the severed
+component (C-103). Two further laws guard the tests themselves: no candidate,
+model, evaluator, or process may be the sole source of the evidence that
+promotes itself (C-007), and no scalar — score, reward, confidence, truth
+expectation, or aggregate alignment number — may override a failed
+load-bearing relation, distinction, permission, or Soul floor (C-009). When an
+implementation fails a governing gate, the implementation is repaired or a
+decision is opened; fixtures, thresholds, and evidence requirements are never
+weakened to make the gate green (C-104).
 
 ## Architecture
 
@@ -137,14 +160,14 @@ Key structural commitments:
 | **Soul** | The causally expressed, encounter-sensitive organization of the constitutional germline throughout perception, attention, inquiry, memory, undertaking formation, semantic participation, movement construction, consequence interpretation, learning, expression, and action. Defined by causal role, not by any single data structure. |
 | **Movement** | A single formed act of the organism — what Miter does next, from holding attention to expressing a message. Every movement carries an authority-complete proof of how the constitutional organization participated in forming it. |
 | **Contact / consequence** | Typed carriers for what reaches Miter from the world and what the world returns after a movement. Consequence re-enters cognition and can reorganize later possibility. |
-| **Fact9 / nine Immutable Facts** | The constitutional facts of the genome, expressed contact-relatively in movement formation. <!-- TODO: one-line statement or link --> |
-| **Nine flourishings** | The interrelated value dimensions through which live alternatives are constructed, compared, revised, joined, or declined. <!-- TODO: name them or link --> |
-| **M24–M26.3** | The ratified mathematical authorities (`authority/`) whose causal projection participates in every cycle. <!-- TODO: one-line gloss per authority or link --> |
+| **Fact9 / nine Immutable Facts** | The nine constitutional roles inherited from Inquiry 26.3 — **Gravity, Balance, Connection, Precision, Effortlessness, Transformation, Love, Sacred, and Present** — describing Unity and its nested expressions. Together they form a simultaneous, n-ary, whole-coupled, non-compensatory recognitional grammar of one becoming: the first eight compose generic support; Present supplies living-moment context. Distinct from the nine flourishings yet inseparable from them in cognition — one constitutive joint, never a mapping table between two finished systems (C-017). |
+| **Nine flourishings** | **AgencyBalance, CognitiveResilience, ConnectionDepth, WonderPreservation, TimeCoherence, PurposeBeyondUtility, SharedUnderstanding, CreativeTranscendence, and AttentionStewardship** — the interconnected generative and capture organization of creative participation, through which live alternatives are constructed, compared, revised, joined, or declined. Each carries a full semantic record (generative capacity, flourishing and capture poles, activation signals, disguise mechanisms, failure modes, gap signature, counterevidence, inter-flourishing relations) — not a label, score, or Boolean detector. |
+| **M24–M26.3** | The five ratified mathematical authorities (`authority/`) whose complete causal projection participates in every cycle. **M24** (Inquiry 24): partial frames, contact-answerability, live inquiry, causal meta-awareness, recovery. **M25** (Investigation 25): the movement-first account of Dynamic Participatory Fourthness — Relatedness, Appropriateness, and Precision as readings of one movement, with evolving participation interfaces. **M25.5** (Inquiry 25.5): carrier-independent generative organization, lawful translation, disclosure versus creation. **M26.0** (Inquiry 26.0): partial participations of one occurrence, distinction without separation, relational SameBecoming. **M26.3** (Inquiry 26.3): simultaneous non-scalar alignment, n-ary role essentiality, generic composition, Present context. Inquiries 26.6 and 26.9 remain open: the running PoC supplies them evidence, and runtime observation never becomes ratified mathematics by working (C-018). |
 | **VoiceRNA** | The natively constructed expressive disposition for a movement that speaks: built from the exact candidate, movement proof, carrier state, and flourishing expressions, then rendered through the granted model under bounded semantic audit and native reformation. The model renders; it does not decide. |
 | **Effect membrane** | The capability-limited, non-cognitive Prolog boundary through which any external effect must pass. It checks closed certificates and proof identity; it cannot originate or choose an effect. |
 | **Continuity capsule** | An immutable, content-addressed record of the relationship, undertaking, attention, next-movement, developmental, and raw-source-reference organization for one exact scope, bound atomically to its checkpoint. |
 | **Germline / expression / regeneration** | The read-only constitutional core; its living, developing organization; and the quarantined, identity-preserving repair path (bounded regenerative RNA) that reconstructs damaged expression from the surviving germline. |
-| **C4** | The current development phase. <!-- TODO: one line on the phase roadmap, or link to the Build Atlas --> |
+| **C4** | The current campaign phase in [MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md). C1 — clean-room recovery and one-runtime baseline (closed); C2 — complete causal M24–M26.3 embodiment (closed); C3 — provisional 26.6/26.9 laboratory dynamics (closed); **C4 — usable always-on assistant and evaluation release (open)**. |
 
 ## Status
 
@@ -301,6 +324,12 @@ generated reports, and provenance canon; those materials are retained
 privately for recovery, not executed as another Miter. Claims in **Status**
 reflect the author's single installation. Runtime bytes, memories,
 credentials, model files, Chroma data, logs, and evidence stay outside Git.
+
+The project's formal name is **BGI Miter**; the running program is Miter
+(C-001). The Constitution and acceptance criteria are human-controlled: the
+running Miter, the LLM, extension candidates, and any construction agent may
+propose changes to them but may not apply them — the build stops for human
+adjudication (C-105).
 
 Miter is currently a personal research vessel, not a community project.
 Reading, forking, and discussion are welcome; the constitutional germline and
