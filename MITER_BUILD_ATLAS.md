@@ -281,22 +281,11 @@ Verified source identities (SHA-256):
 - M25: `0dba10f6c6ceec140343995aba7cd74779489334573b33809ce8ec8f3a55936b`.
 - M25.5: `be72bb351b304111551b16dd51072b66992a6585b3f885a536aef1f7a5a2a012`.
 
-**First discriminating probe (J1-a):** test R3 before wiring another semantic
-consumer into `C3NativePossibilities`. Two independently grounded inquiry
-openings must remain represented unless exact evidence establishes that one
-refines the same source opening. Family position or nonempty status alone is
-not that evidence. Use the existing native constructors on a captured cut;
-record which openings each constructor produces and which survive ordinary
-formation. Synthetic co-presence is a controlled intervention, not a new live
-observation or an unseen case.
-
-Keep evidence/authority fixed while adding one separately source-bound opening;
-then sever only that opening, reorder participants, and restore it. Distinguish
-a legitimate same-source refinement from loss of a different open question.
-The falsifier is disappearance solely because another family is nonempty.
-Do not change runtime code if the tested coexistence is invalid or if an exact
-refinement accounts for the disappearance. Record that result and proceed to
-the semantic dependency consumer instead; no speculative priority rewrite.
+**Frozen probe history:** `18a9b91` pins J1-a's co-presence/severance/order/
+restoration expectation; `744facc` pins J1-b's one-marker intervention before
+execution. Read those committed plans to reproduce them; this active map
+retains the findings and successor, not a growing transcript. Both probes use
+saved cuts and controlled interventions, not unseen cases or new live evidence.
 
 **Change boundary:** instruments and any source-copy trial stay in `/tmp`.
 A proved formation defect may justify a prospective native repair confined to
@@ -335,16 +324,36 @@ The C4 returned-inquiry basis retains those openings. That question gate must
 not be bypassed merely to make a test succeed. This result establishes neither
 situated semantic usefulness nor a supported restart of new cognition.
 
-**Next discriminator (J1-b):** isolate the admitted untried-prospect marker from
-the interpretation and returned evidence. On the same saved cut, sever only
-that marker: predict that the executable capability route becomes an explicit
-retained comparison, with all three members, partial openings, evidence and
-authority preserved. Reorder, restore, and reconstruct independently. Inspect
-the resulting terms, not only counts or identifiers. This is a causal-location
-test of R2, not a repair or new model judgment. All instruments remain in `/tmp`;
-no runtime edits or new external calls are needed. Its successor must replace
-the missing interpretation/evidence-to-purpose relation, not merely delete the
-prospect, force clarification, or admit the quarantined purpose prototype.
+**J1-b result — PASS-BOUNDED causal location, not a repair:** severing only the
+saved v1 prospect marker changed HEAD inquiry into an explicit three-member
+comparison (two proposed capability routes plus returned contact). Four semantic
+readings, the entire revised cut, exact returned evidence, two partial openings
+and unchanged-authority statement remained equal. Neutral order preserved exact
+member routes; restoration reproduced the complete original encounter. All four
+formations passed ordinary independent reconstruction (2.12–3.95 seconds each,
+including that check; not a scalability qualification). The first instrument
+assumed v2 and refused the saved v1 marker; accepting its actual historical
+version changed no expected outcome. Every diagnostic group was reaped.
+
+**Active successor — interpretation/consequence-to-purpose warrant:** R1/R2
+remain open. The next consumer must retain a source-bound, fallible meaning
+alternative, its material obligation or unresolved distinction, the observation
+that could inform it, and the actual difference that information makes through
+the same native joint. An operation contract can establish what may be observed;
+it cannot establish why that observation advances this undertaking. The existing
+purpose experiment's opaque interpretation leaves do not supply that relation.
+Do not substitute another prompted verdict, source-span match, always-unresolved
+leaf, or “sole untried” rule for this missing primitive.
+
+Before runtime implementation, freeze the concrete representation and consumer
+against §2.2 and the current source. The decisive new test must hold operation
+and permission fixed while changed interpretation/consequence changes a warranted
+continuation; changing only an observation facet repeats old prototype evidence.
+Preserve competing supported directions, unknowns and unfinished purpose. Mere
+removal of the prospect, compulsory clarification or permanent deferral is not
+a positive repair. The materially different contact family, full compass causal
+review, ordinary execution boundary and supported restart remain due. No new
+cognitive capacity, installed change or C4 closure is claimed by J1-a/b.
 
 ## 3. Requirements, implementation, and evidence
 
