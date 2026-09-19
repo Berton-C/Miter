@@ -450,6 +450,53 @@ It is not installed, a second persistent checkout, or repo content. Remove
 these owned artifacts at the integrated J1 closure (or if superseded), after
 recording durable findings. Older protected scratch is unchanged.
 
+**J1-e frozen integration discriminator — prospective source and carry:**
+predecessor `5ec136a`; the source identities above remain unchanged. Read
+C-030–045, S-1403–1412, F-01–09 and the full active map; retain §3's complete
+ledger. Source tracing identifies an existing carry path:
+`C3ParticipantsAfterSemanticConsequence` retains unresolved participants in
+`AR3ReconstituteAfterConsequence`. Do not invent a parallel pending-work store.
+
+In the temporary copy only, extend the ordinary initial and returned proposal
+producers to append a prospective native precondition participant derived from
+their exact validated proposal and question. Retain the original participant,
+scope, question, returned-source lineage, fallible meaning and independent
+directions. No raw rejected provider bytes become a candidate. Malformed or
+unrelated obligations must not borrow evidence. Existing historical proofs
+without this new prospective participant retain their meaning.
+
+Relate this participant to ordinary `C4CapabilityObservationParticipant`
+records using exact descriptor/contact/scope/operation lineage and the J1-d
+native identity predicate. A source match is not semantic endorsement or write
+permission. Keep obtained evidence explicitly at its observation contact.
+After a real native consequence transition, unfinished source organization
+must remain available through the existing retained participant basis, while
+an old successful read must not become fresh file-state certainty. Do not use
+an arbitrary ancestor-cut search or silently rewrite the source question.
+
+Before implementation, expected discriminators are: ordinary valid initial
+and returned-source proposals produce the bounded obligation; absent/rejected
+proposals do not; wrong source/scope/property cannot supply support; real
+matching/changed/unavailable read evidence changes the same native inquiry;
+severance, neutral ordering and restoration preserve their earlier meanings.
+Test full re-entry through `C4ReformPreparedWithParticipants`, native next-cut
+formation through `AR3ReconstituteAfterConsequence`, and fresh reconstruction
+with the complete competing family. Record an unavailable executable/read or
+consequence consumer as a gap, not permission to synthesize its certificate.
+No Miter write executes. A candidate inquiry remains non-executable unless
+the ordinary independent request boundary itself establishes otherwise.
+
+Authorized temporary expansion: the J1-d module/join/bootstrap plus a native
+source-admission helper and the initial/returned proposal producers in
+`dialogue_participation.metta`; change the consequence producer only if exact
+source inspection proves existing carry insufficient and record that finding
+first. No production runtime changes, new effect grant, parser weakening,
+README/control edit, installation, live/model/network call or publication.
+Run bounded owned processes and retain failures. F-09 rows 1/5–7/9 are the
+bounded integration claim; full situated purpose/Fact9/compass discrimination,
+executable recovery, materially different contact and supported restart in
+§2.2 remain mandatory. This is not a new C4 closure or another hash-only test.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
