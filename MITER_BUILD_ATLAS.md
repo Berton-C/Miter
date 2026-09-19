@@ -917,6 +917,28 @@ advance.
 
 ## 7. The only build cycle
 
+**C4 causal-participation standard, reaffirmed by Berton on 2026-09-18:**
+Soul participation is not established by storing value names, verifying
+hashes, counting expected relations, satisfying presence checks, routing
+through a nominal Soul function, or selecting a builder-prewritten behavior.
+Miter must encounter situations whose appropriate unfolding was not encoded
+beforehand; construct, compare, revise, join, or decline live alternatives
+through the interrelated nine flourishings and inherited mathematical
+structures; and produce proof-relevant traces showing that this computation
+materially determined what became possible next. Material severance must
+cause the predicted loss or alteration, meaning-preserving perturbation must
+not, and lawful restoration must recover the capacity.
+
+Apply this standard to the actual runtime consumer, not only an isolated
+validator. A unique untried operation, successful mechanical migration, intact
+checkpoint, or passing source-identity check is supporting evidence, not by
+itself this cognitive proof. Separate builder-supplied counterfacts from
+independently proposed alternatives and genuinely unfamiliar participation.
+Report precisely which causal relation has been carried and which broader
+generalization remains open. This makes C-012/016/017 and the existing native
+cognitive-shape guidance explicit; it neither replaces their laws nor declares
+C4 complete.
+
 Every additive cut follows the same four movements. This is a builder method,
 not a behavioral policy installed inside Miter.
 
@@ -7657,6 +7679,54 @@ Already carried:
   Resume the remaining Open Growth state-migration and held-out developmental
   obligations, then the fresh installed conversational/distribution carry.
 
+  **C4 causal-participation discrimination, 2026-09-18:** Against `b40f0b7`,
+  the independently proposed web-recovery family is re-formed through the
+  current `M25ConstitutiveEncounter`, native movement proof, capability route,
+  proof-object writer and ordinary independent descriptor checks. Section 7
+  now states Berton's full acceptance criterion explicitly. This is a bounded
+  counterfactual carry, not a new runtime policy or whole-C4 closure.
+
+  Holding the operation, nine flourishing identities and their relation rows
+  constant, changing each unresolved flourishing standing to contradiction
+  leaves the information-seeking route available. Both standings can warrant
+  inquiry; this is **not** counted as a successful severance or as proof that
+  their distinct meanings affected this operation. Merely changing a trace is
+  insufficient. Reordering the same views preserves the capacity, and exact
+  restoration reproduces the original proof.
+
+  Three builder-supplied support compositions -- Balance/Precision;
+  Gravity/Connection/Transformation; and Effortlessness/Love/Sacred/Precision --
+  materialize through the existing generic Fact9 constructor without new core
+  behavior entries. Reversing the matched support and flourishing-view order
+  preserves the information-seeking operation. Substituting one Omega role
+  while retaining the original whole-support evidence leaves role count and
+  valid first-eight membership unchanged, but yields the precise
+  `missing-nary-materiality-or-role-essentiality` standing and no executable
+  route. Lawful restoration recovers the exact proof, proof-object identity
+  and request identity. All twelve native proofs pass fresh-process readback.
+  Supported, neutral and restored cases pass the ordinary proof-bound request
+  checks. Severed cases retain a valid **unresolved** native proof without
+  becoming executable; a lawful record of inability is not corruption.
+
+  Four formations per composition take 3.013--3.561 wall / 2.898--3.222 CPU
+  seconds; their twelve factorized proofs occupy 186,484 bytes. No model call,
+  network request, external effect, installation or live-state write occurs.
+  All instruments and proof objects remain directly under `/private/tmp` and
+  owned process groups terminate under the deadline wrapper. Instrument-only
+  assumptions about root markers and unresolved-proof executability were
+  corrected without changing production semantics to satisfy the trial.
+
+  This establishes whole-support causal dependency and its ordinary request
+  boundary, **not** autonomous discovery of these compositions, situated
+  comparison through the full nine flourishing meanings, or installed
+  conversational consequence. A unique untried operation and retained value
+  names cannot discharge those obligations. The next cognitive discrimination
+  must inspect how source-grounded semantic relations enter the ordinary C4
+  consumer, then vary a material relationship while preserving names, carrier
+  validity and authority. Name any missing cognitive machinery before an
+  additive implementation; do not manufacture a preferred operation or alter
+  inherited laws to make a chosen test pass.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
@@ -7754,9 +7824,12 @@ Next movement:
    open; local fixtures are not its substitute. The growing-history restart
    correction, complete-trial-evidence correction and prospective-continuation
    correction above are locally verified but not installed. Preserving a
-   builder-supplied opening is now carried; native discovery and comparison of
-   shared cross-surface continuations remain the next C4 responsibility under
-   section 7, ahead of further state-migration-specific behavior. Continue
+   builder-supplied opening is carried. The later shared web/workspace inquiry,
+   exact returned-operation comparison and bounded n-ary causal carries above
+   add evidence, but do not establish general situated comparison through the
+   nine flourishing meanings. That remaining cognitive responsibility stays
+   explicit under section 7, ahead of further state-migration-specific
+   behavior. Continue
    fresh installed carry, real developmental-history
    proportionality and the remaining Open Growth seams; do not interrupt ordinary conversation for
    unrelated trials. Main publication is complete,
