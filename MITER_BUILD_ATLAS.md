@@ -487,13 +487,27 @@ At context recovery or stage resumption:
    If authoritative state is unavailable, name the uncertainty and recover it;
    do not invent a status or let a stale summary authorize action.
 
-Every substantive reply ends with **Tracking**: stable PoC target; active stage
-and claim; evidence/open dependencies; decisions and operative boundaries;
-next movement and what warrants it. Keep it short and forward-looking, not a
-turn recap or growing second rulebook. Cite this map/claim IDs when useful;
-only change standing rules when they actually change. Missing verification
-stays missing across replies. No independent test is claimed when the same
-builder reviewed it.
+Every substantive reply ends with **Tracking**. Every display or refresh uses
+all five labels below, including when a field has not changed:
+
+- **Target:** the stable PoC capability, not a surface-specific substitute.
+- **Stage:** the active stage and its bounded claim, with its Atlas claim ID.
+- **Evidence/open gaps:** what is established, what is not, and the material
+  obligations or counterexamples still due. Prototype evidence stays distinct
+  from admitted capability and installed or live evidence.
+- **Boundaries:** operative decisions, authority limits and preservation rules.
+- **Next/trigger:** the next movement and the evidence or decision warranting it;
+  identify any actual blocker instead of implying that work continues unseen.
+
+Before sending, check these fields against the controlling requirements, the
+active Atlas claim and its recorded evidence—not the previous Tracking text.
+Check for omitted obligations as well as incorrect claims. Keep each field
+concise; use precise claim/source references for detail, never compression that
+silently drops an unresolved dependency. This is active state, not a turn recap
+or a growing second rulebook. Only change standing rules when they actually
+change. Missing verification stays missing across replies. No independent test
+is claimed when the same builder reviewed it. Presence of all five labels is a
+mechanical check, not proof that their contents remain aligned.
 
 At a stage boundary or context recovery, include the checked source revision
 and governing IDs in the opening/closure record. During work, new evidence,
