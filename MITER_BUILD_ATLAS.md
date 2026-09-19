@@ -262,12 +262,59 @@ general resource-choice competence, autonomous universal skill transfer, or
 blanket rewrite of M24–M26.3. An unresolved reading cannot universally veto
 otherwise supported participation.
 
-**Editorial handoff:** this revision preserves the old Atlas at [H], maps its
-operative obligations in §3–§5, and incorporates R1–R4 and tracker integrity.
-Its commit must record reference/scope checks and the preservation review,
-including unchanged protected/runtime/README content. Reread the committed map
-before the next C4 stage. Editorial verification neither reruns acceptance nor
-promotes code.
+### 2.3 C4-J1 — active integrated-joint investigation
+
+**Opening, 2026-09-19:** source predecessor
+`95125459987e262097fd10a37a5346205cf19b49`; installed state is not this
+baseline. The restructuring is complete; this is the next runtime investigation,
+not a new campaign. C-004–018/020–025, S-1401–1412, CA-01–09 and F-01–09
+govern; M25 §§4–11 and M25.5 §§4.1–4.2 require material discrimination,
+non-compensatory obligations, and Generated possibilities before choice.
+The §3 ten-row ledger remains open, not waived by this prerequisite.
+
+Verified source identities (SHA-256):
+
+- Constitution: `6997a1bb27a60117e85966c76f6bc4a696fdf4fcf6657dd7c512d2eba8a13713`.
+- Soul specification: `3bc3faa9572a7318f6fdfdf8fd936701836e3cb6366b9210f23753c91329da00`.
+- Fidelity: `cd325c9c233827b9ab6895c9788c7e9d30f1899ca1face248b12ba5f8cb78a4c`.
+- Acceptance: `018f2a917d7af18fc9e6bda8b116bebf21d181d998374c723573dc1b58f66930`.
+- M25: `0dba10f6c6ceec140343995aba7cd74779489334573b33809ce8ec8f3a55936b`.
+- M25.5: `be72bb351b304111551b16dd51072b66992a6585b3f885a536aef1f7a5a2a012`.
+
+**First discriminating probe (J1-a):** test R3 before wiring another semantic
+consumer into `C3NativePossibilities`. Two independently grounded inquiry
+openings must remain represented unless exact evidence establishes that one
+refines the same source opening. Family position or nonempty status alone is
+not that evidence. Use the existing native constructors on a captured cut;
+record which openings each constructor produces and which survive ordinary
+formation. Synthetic co-presence is a controlled intervention, not a new live
+observation or an unseen case.
+
+Keep evidence/authority fixed while adding one separately source-bound opening;
+then sever only that opening, reorder participants, and restore it. Distinguish
+a legitimate same-source refinement from loss of a different open question.
+The falsifier is disappearance solely because another family is nonempty.
+Do not change runtime code if the tested coexistence is invalid or if an exact
+refinement accounts for the disappearance. Record that result and proceed to
+the semantic dependency consumer instead; no speculative priority rewrite.
+
+**Change boundary:** instruments and any source-copy trial stay in `/tmp`.
+A proved formation defect may justify a prospective native repair confined to
+`src/provisional_dynamics.metta` and its existing inquiry consumers in
+`src/model_participation.metta` / `src/model_recovery.metta`; re-freeze before
+widening that scope. Keep historical proof meanings, full family requirements,
+ordinary independent reconstruction, and authority unchanged. No README,
+protected-control, installer, live-runtime, membrane-policy or germline change.
+No installation or automatic publication is part of this opening.
+
+**Successor within J1:** source-bound, fallible interpretations must materially
+change a warranted inquiry/continuation through this same joint. A co-presence
+repair alone cannot establish that warrant, natural-language understanding,
+complete compass participation, independent consequence, or restart. Retain
+the R1/R2 failures and quarantined prototypes. The full §2.2 discrimination,
+consequence, supported disposable carry and restart obligations remain the
+integrated target; name a missing primitive rather than claiming this probe
+completes them.
 
 ## 3. Requirements, implementation, and evidence
 
