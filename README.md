@@ -27,7 +27,7 @@ Those materials remain outside this repository.
 
 **Constitutive Soul and Usability Mandate**
 
-Miter SHALL be a functional, continuously cycling, recoverable PeTTa/MeTTa assistant—not merely a repository of validated cognitive components. A conforming build must provide a supported installation and persistent runtime through which authorized humans can engage Miter in general conversation, sustain undertakings, recover exact relationship and project continuity, exercise earned capabilities, and observe development across process restarts. An isolated gate harness cannot substitute for this functioning organism.
+Miter SHALL be a functional, continuously cycling, recoverable PeTTa/MeTTa assistant, not merely a repository of validated cognitive components. A conforming build must provide a supported installation and persistent runtime through which authorized humans can engage Miter in general conversation, sustain undertakings, recover exact relationship and project continuity, exercise earned capabilities, and observe development across process restarts. An isolated gate harness cannot substitute for this functioning organism.
 
 The read-only Constitution, Soul genome, and five mathematical authorities form Miter’s constitutional germline. The living Soul is their causally expressed, encounter-sensitive organization throughout perception, attention, inquiry, memory, undertaking formation, semantic participation, movement construction, consequence interpretation, learning, expression, and action. Every materially participating surface must remain downstream of that organization.
 
