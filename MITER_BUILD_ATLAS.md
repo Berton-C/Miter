@@ -7,9 +7,9 @@ substitute constitution, or claim that the PoC is complete.
 **Current position — 2026-09-19:** C4 is open. Berton has approved the
 reconciliation and the integrated semantic-to-continuation direction below.
 This reconciled map and its tracking safeguards replace the historical running
-chronicle. The next runtime stage is §2.2; this documentation revision neither
-implements that stage nor authorizes installation or claims cognitive
-acceptance. The working alpha's publication on `main` is historical operational
+chronicle. The active investigation is C4-J1 in §2.3, beneath the integrated
+claim in §2.2. Its quarantined results do not authorize installation or claim
+cognitive acceptance. The working alpha's publication on `main` is historical operational
 acceptance, not completion of C4 or the constitutive PoC.
 
 **Recovery baseline:** this restructuring starts from source commit
@@ -355,55 +355,51 @@ a positive repair. The materially different contact family, full compass causal
 review, ordinary execution boundary and supported restart remain due. No new
 cognitive capacity, installed change or C4 closure is claimed by J1-a/b.
 
-**J1-c opening — source-relative evidence obligations, 2026-09-19:** baseline
-`0eafa41` (runtime trees unchanged from J1-b); the control identities above
-remain exact. Reuse the finite `C4VoiceClaimUseProjection` algebra rather than
-add a second language judge. A report of what a source says and an assertion
-that its contents are actual incur different evidence obligations. Derive that
-difference natively from a fallible claim-use reading; do not ask a provider
-to choose the next operation. A source-disclosure observation can inform the
-first obligation without establishing the second.
+**J1-c result — bounded epistemic-use contrast; purpose adequacy FAIL:**
+the pre-implementation freeze is `3e751e7`, on unchanged runtime baseline
+`0eafa41`. In quarantine, `C4VoiceClaimUseProjection` fed a conditional evidence
+obligation into `C4ComparisonProspect`, then the ordinary native joint. Changing
+only attributed to asserted use changed the HEAD prospect to a three-member
+comparison. The revised cut, returned evidence and authority remained equal.
+Malformed/ambiguous readings, wrong source/question, severance, neutral order
+and proposition renaming, restoration and co-present model failure passed
+their bounded checks. A returned-answer fixture discharged only source need,
+not actuality; this was not a new external consequence.
 
-The quarantined representation is an exact source/question-bound reading with
-proposition identities, polarity, communicative force, and the source's typed
-observation question. Native projection derives a source-disclosure or
-independent-actuality obligation, or explicit unresolved standing. Returned
-source contact may discharge only its own obligation. A world-actuality leaf
-cannot be discharged by source text, schema validity, or a model assertion.
-This is conditional reasoning **under a reading**, not proof of the reading's
-adequacy or a complete purpose judgment. Conflicting readings remain distinct.
+Fresh-process reconstruction reproduced all three saved proofs exactly. The
+independent effect boundary accepted the prospective descriptor; no operation
+executed. Exact two source proposals and returned-contact member survived.
+Formation/checker cost was about 1.0/1.0 seconds for the prospect and 1.9/1.9
+for comparison on this one saved case, not a growth or supported-restart claim.
+The initial trial compiled later-loaded VoiceRNA names as data; explicit native
+callable dispatch corrected that wiring without changing expectations. The
+first verifier counted all historical proposals instead of the exact source
+family; correcting its projection preserved the expected three members.
 
-The consumer must reach `C4ComparisonProspect` through the same
-`M25ConstitutiveEncounter` and ordinary independent reconstruction, retaining
-every comparison member and its requirements. Historical proofs use unchanged
-rules; only an explicit trial marker enters the new branch. Reuse the existing
-quarantined observation contracts/conditional consumer where applicable, but
-do not admit their previous evidence as proof of this new semantic dependency.
-An operation's contract supplies what it can observe, never its permission.
+The decisive fidelity counterexample changed the proposition's meaning to an
+unrelated musical claim while retaining its typed observation association.
+The same prospect still passed native reconstruction. Therefore the connection
+distinguishes **epistemic use under supplied associations**, not the adequacy or
+material purpose of those associations. A valid proof boundary can faithfully
+reconstruct an insufficient semantic mechanism. Do not promote this prototype,
+call it situated understanding, or close R1/R2. No production source changed.
+The result, failures, source identities and reproduction outline are retained
+in this result commit; the completed trial's new temporary artifacts are removed
+after that record is committed. No model/network/live-state changes occurred.
 
-Frozen discriminator: hold operation, scope, returned evidence and permission
-fixed; change only attributed versus asserted use of the same proposition.
-The prospective source-observation continuation must change, while a report
-cannot certify actuality. Also test malformed and ambiguous readings, source
-and question mismatch, material severance, neutral order/proposition renaming,
-exact restoration, and newly returned source evidence. Preserve all distinct
-alternatives rather than force a clarification or erase the undertaking. A
-missing direct learning link does not prove that no indirect beneficial path
-exists. Historical J1-a/b and the captured failure remain regression material.
-
-This is a builder-controlled finite transfer trial, **not unseen cognition**.
-All new code, inputs and output remain under `/private/tmp`; a disposable copy
-may alter only the model-recovery consumer and its imports. Production source,
-README, controls, membranes, installation and live runtime remain unchanged.
-No network/model/effect call is needed for this first discriminator. A deadline
-owns and reaps the trial process group. Record separate formation/checker cost;
-a passing finite run does not settle growth. The §3 trace remains partial:
-the existing cut, Fact9/flourishing organization, plural formation and source
-re-entry are exercised, not fully semantically certified. Independent world
-consequence, complete compass discrimination, supported service restart and
-ordinary producer reachability remain due before promotion. Stop this trial if
-it merely repeats the old observation-facet result or fixes the response by
-case name; revise the hypothesis explicitly instead of calling that progress.
+**Next dependency within J1:** source-bound semantic-predicate grounding must
+connect a fallible meaning to a material distinction in the current cut and to
+what a proposed observation can actually discriminate. In the captured file
+failure, a proposal's claimed precondition and the independently observed file
+state must remain different; unknown cannot become absent, and learning the
+state cannot grant write permission. Reuse the existing consequence/qualified
+reasoning consumers before adding a primitive. Freeze its representation and
+consumer after that trace, before code. The positive test must include an
+actual changed observation and retained alternative—not only rejecting an
+unrelated proposition. The ten-row §3 obligations, full compass discrimination,
+ordinary producer, materially different contact family and supported unfinished
+restart remain open. Another always-unresolved leaf or source-quote test is not
+the missing grounding relation.
 
 ## 3. Requirements, implementation, and evidence
 
