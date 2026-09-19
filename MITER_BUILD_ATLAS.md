@@ -7727,6 +7727,49 @@ Already carried:
   additive implementation; do not manufacture a preferred operation or alter
   inherited laws to make a chosen test pass.
 
+  **C4 native semantic-question order neutrality, 2026-09-18:** Against
+  `44f6ab0`, inspection of the actual model-request receiver exposes a
+  mechanical obstruction to the preceding causal-participation work. Native
+  Fact9 producers preserve whole-support order, but both C3 and C4 inquiry
+  receivers require role and material-relation lists to be alphabetically
+  sorted. That restriction dates to the initial C4 integration; the common
+  single-Balance case concealed it. It is not a native constitutive law.
+
+  Six native formations of the three compositions above and their reversed
+  support orders produce valid material entries. Substituting only that exact
+  entry field into one independently saved valid C4 question, with every other
+  field fixed, makes five of six questions fail the ordinary request receiver
+  on the parent. This is explicitly a one-field boundary isolation, not a new
+  complete semantic-contact trial or provider interpretation. The correction
+  accepts valid unique members without imposing order, preserves their exact
+  carrier and proof identity, and leaves returned provider-reading validation,
+  movement selection, evidence and authority unchanged.
+
+  All six complete saved questions are exactly equal before and after the
+  correction and now pass the ordinary request projection. All 32 support
+  permutations across those compositions pass both native entry species;
+  reversing two material-relation identifiers also passes. Empty, duplicate,
+  unknown, non-symbol, cyclic and ungrounded cases remain rejected without
+  binding missing members. Fresh-process readback and native bootstrap pass.
+  This removes an order-only veto, not the obligation to form a justified
+  situated inquiry through the interrelated flourishing meanings.
+
+  The invalidation boundary is solely the representation check on the exact
+  outgoing native Fact9 field; no downstream term is normalized or rewritten.
+  Six full formations per run are unchanged: 1.000--1.031 wall / 0.960--0.990
+  CPU seconds versus 0.994--1.022 / 0.956--0.981 on the parent. Ten thousand
+  checks take 0.028406 wall / 0.028346 CPU seconds versus 0.027217 / 0.026998.
+  Fresh native load takes 1.268 wall / 1.222 CPU seconds. There are zero model
+  calls, added formations, retained state, checkpoint/schema changes, live
+  writes or external effects. Historical questions are read back exactly;
+  this stateless seam does not require another application migration trial.
+  Installed conversational consequence and wider situated flourishing
+  judgment remain unproved. The next step follows source-grounded semantic
+  relations through the existing native consequence/reformation consumer,
+  rather than introducing another recovery engine. Instruments remain in
+  `/private/tmp`; the unchanged installed service has its expected family and
+  no diagnostic survivor. The runtime/document-only tree remains 66 files.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

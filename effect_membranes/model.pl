@@ -546,10 +546,8 @@ as_model_c4_fact_entries(Entries) :-
 as_model_c4_fact_entry(
     ['c4-fact9-entry',Id,['roles',Roles],
       ['material-relations',Relations],Composition]) :-
-    as_symbol(Id,_), is_list(Roles), Roles=[_|_],
-    maplist(as_model_fact9_role,Roles), sort(Roles,Roles),
-    is_list(Relations), Relations=[_|_], maplist(as_symbol,Relations,_),
-    sort(Relations,Relations), Composition=['composition'|_],
+    as_model_native_fact_material(Id,Roles,Relations),
+    Composition=['composition'|_],
     ground(Composition).
 
 as_model_c4_flourishing_entries(Entries) :-
@@ -1047,10 +1045,18 @@ as_model_fact_surface_valid_for(Openings,
 as_model_fact_entry(
     ['fact9-inquiry-entry',Id,['roles',Roles],
       ['material-relations',Relations]]) :-
+    as_model_native_fact_material(Id,Roles,Relations).
+
+% Native support and relation lists are unique sets, not alphabetically
+% ordered carriers. Preserve their exact order and proof identity: this
+% receiver checks representation, not the meaning or merit of a composition.
+as_model_native_fact_material(Id,Roles,Relations) :-
     as_symbol(Id,_), is_list(Roles), Roles=[_|_],
-    maplist(as_model_fact9_role,Roles), sort(Roles,Roles),
+    ground(Roles-Relations),
+    maplist(as_model_fact9_role,Roles),
+    sort(Roles,UniqueRoles), same_length(Roles,UniqueRoles),
     is_list(Relations), Relations=[_|_], maplist(as_symbol,Relations,_),
-    sort(Relations,Relations).
+    sort(Relations,UniqueRelations), same_length(Relations,UniqueRelations).
 
 as_model_fact9_role(Role) :-
     memberchk(Role,['Balance','Connection','Effortlessness','Gravity','Love',
