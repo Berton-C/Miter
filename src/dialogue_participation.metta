@@ -521,6 +521,27 @@
          (C4FlourishingEntriesAt $expressions (+ $i 1))))
      ()))
 
+; New semantic inquiries disclose the actual loaded meanings, including their
+; tensions and inter-flourishing relations. Keep the exact immutable reference
+; in native history; the membrane expands it only for the disclosed request.
+; The older projection remains unchanged for historical returned-inquiry proofs.
+; This is not a beneficial-standing judgment: readings remain fallible proposals.
+(= (C4FlourishingInquiryEntriesAt $expressions $i)
+   (if (< $i (size-atom $expressions))
+     (let* (($expression (index-atom $expressions $i))
+            ($semantics (if (CPShape $expression flourishing-expression 4)
+              (CPResolveCompassSemantics (index-atom $expression 2))
+              no-loaded-flourishing-semantics)))
+       (if (if (CPShape $semantics compass-semantics 4)
+             (== (index-atom $semantics 1) (index-atom $expression 1)) false)
+         (cons-atom
+           (c4-flourishing-inquiry-entry-v2 (index-atom $expression 1)
+             (current-relational-standings (index-atom $expression 3))
+             (index-atom $expression 2))
+           (C4FlourishingInquiryEntriesAt $expressions (+ $i 1)))
+         (C4FlourishingInquiryEntriesAt $expressions (+ $i 1))))
+     ()))
+
 (= (C4CutPredecessorReference $cut)
    (if (CPCutValid $cut)
      (let $predecessor (index-atom $cut 2)
@@ -662,7 +683,7 @@
             ($cut (index-atom $encounter 1))
             ($movement (index-atom $encounter 5))
             ($facts (C4Fact9EntriesAt (index-atom $encounter 2) 0))
-            ($flourishing (C4FlourishingEntriesAt
+            ($flourishing (C4FlourishingInquiryEntriesAt
               (index-atom (index-atom $encounter 3) 2) 0)))
        (if (and (CPShape $claim participant-text-claim 5)
              (and (> (size-atom $facts) 0)

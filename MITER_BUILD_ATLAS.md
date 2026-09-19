@@ -7770,6 +7770,67 @@ Already carried:
   `/private/tmp`; the unchanged installed service has its expected family and
   no diagnostic survivor. The runtime/document-only tree remains 66 files.
 
+  **C4 flourishing inquiry source connection, 2026-09-18:** Against
+  `3f770fd`, tracing the ordinary recovery formation finds that the complete
+  loaded compass records have no resolving consumer on this path. The saved
+  native proof is reproduced exactly with 90 identity-reference accesses and
+  zero complete-semantic-record resolutions. Outgoing C4 semantic inquiry
+  supplies names and current relation standings, not the full meanings,
+  tensions and inter-flourishing relations. This identifies a missing source
+  connection; it does not establish that supplying source text is cognition.
+
+  New C4 semantic questions now retain exact immutable loaded-compass
+  references alongside their current relational standings. The ordinary
+  request projection resolves and discloses all fourteen fields for each
+  flourishing without replacing, summarizing or judging them. The receiver
+  checks exact source identity, rejects substituted, incomplete, unknown and
+  ungrounded references, and does not fill in missing meaning. Returned model
+  readings remain fallible proposals under the unchanged native formation,
+  authority and consequence checks. Historical questions and returned-inquiry
+  bases keep their old species and meaning; historical native proofs remain
+  exactly equal. This is a prerequisite to situated judgment, not S-1307 or
+  S-1404 closure and not another recovery engine.
+
+  The invalidation boundary is the new inquiry's flourishing disclosure and
+  its dependent question/proof identity. Prior cuts, immutable source records,
+  Fact9 material, return schema, authority and native movement construction
+  are unchanged. A first representation copied complete meanings into native
+  proofs: corrected-contact time rose to 11.270--11.429 seconds from
+  9.674--9.805. That avoidable regression was removed before commitment by
+  retaining compact exact references and expanding only at disclosure. The
+  entire provider-visible question and serialized request are identical to
+  that expanded representation; this is sharing, not a semantic cache.
+
+  Cold load is 1.215 wall / 1.174 CPU seconds versus 1.228 / 1.185.
+  Preparation and question formation is 2.990 / 2.868 versus 2.979 / 2.861.
+  Four warm question/request projections take 0.007878--0.008005 wall seconds
+  versus 0.001032--0.001202; the source-complete request grows from 17,926 to
+  40,979 JSON characters. Through the ordinary native contact consumer, two
+  contacts take 5.910 seconds each versus 5.955--5.980. Two corrected contacts
+  take 9.809--9.817 versus 9.674--9.805, with the same one/two incremental
+  formations and two/three offline callbacks per contact respectively. These
+  callbacks parse already-saved returns against the new exact questions; they
+  are not evidence of a provider having seen those questions. External model
+  calls, network calls, external effects and live-state writes are all zero.
+
+  Ordinary one/two-contact checkpoints are 104,678 / 141,733 bytes versus
+  104,311 / 141,366; corrected checkpoints are 109,014 / 149,373 versus
+  108,647 / 149,006. The observed overhead is a constant 367 bytes, not a
+  repeated semantic-text copy. Ordinary writes take 0.068/0.094 seconds and
+  corrected writes 0.076/0.148. Fresh-process corrected-state restoration
+  takes 1.063 wall / 1.018 CPU seconds, retains the exact snapshot and service
+  row, and rejects terminal-contact replay. All instruments remain directly
+  under `/private/tmp`. No installed release is changed. Provider latency and
+  wider heterogeneous-history cost are not measured by this offline carry.
+
+  The next decisive gap remains the native use of source-grounded semantic
+  relationships to form and compare unfamiliar alternatives through the
+  inherited joint. Current provider value lists and a unique untried operation
+  cannot establish it. Inspect and extend the existing semantic consequence
+  machinery, retain competing interpretations and unknowns, and require
+  material severance, meaning-preserving variation and lawful restoration to
+  change or recover an actual continuation rather than only its trace.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

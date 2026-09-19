@@ -560,7 +560,24 @@ as_model_c4_flourishing_entry(
       ['current-relational-standings',Standings]]) :-
     as_flourishing(Value), is_list(Standings), Standings=[_|_],
     maplist(as_model_flourishing_standing,Standings).
+as_model_c4_flourishing_entry(
+    ['c4-flourishing-inquiry-entry-v2',Value,Standings,Reference]) :-
+    as_model_c4_flourishing_entry(['c4-flourishing-entry',Value,Standings]),
+    % Check exact loaded-source identity, not the applicability or merit of
+    % any meaning. A model or caller cannot substitute its own compass.
+    ground(Reference),
+    current_predicate('CPCompassSemantics'/2),
+    once('CPCompassSemantics'(Value,Expected)),
+    Expected=['compass-semantics-reference',Value,'complete-fourteen-fields',_,
+      'immutable-loaded-compass'],Reference==Expected.
+
+as_model_c4_compass_material(Reference,Semantics) :-
+    current_predicate('CPResolveCompassSemantics'/2),
+    once('CPResolveCompassSemantics'(Reference,Semantics)),
+    Semantics=['compass-semantics',_,'complete-fourteen-fields',_].
 as_model_c4_flourishing_value(['c4-flourishing-entry',Value,_],Value).
+as_model_c4_flourishing_value(
+    ['c4-flourishing-inquiry-entry-v2',Value,_,_],Value).
 
 as_model_c4_semantic_disclosure(
     ['continuity-participation-v2',_,_],
@@ -2152,6 +2169,16 @@ as_model_public_c4_fact_entries(
 
 as_model_public_c4_flourishing_entries([],[]).
 as_model_public_c4_flourishing_entries(
+    [['c4-flourishing-inquiry-entry-v2',Value,
+      ['current-relational-standings',Standings],Reference]|Rest],
+    [['c4-flourishing-inquiry-entry-v2',Value,
+      ['current-relational-standings',PublicStandings],Semantics]|PublicRest]) :-
+    as_model_c4_flourishing_entry(['c4-flourishing-inquiry-entry-v2',Value,
+      ['current-relational-standings',Standings],Reference]),
+    as_model_c4_compass_material(Reference,Semantics),
+    as_model_public_c4_flourishing_standings(Standings,PublicStandings),
+    as_model_public_c4_flourishing_entries(Rest,PublicRest).
+as_model_public_c4_flourishing_entries(
     [['c4-flourishing-entry',Value,
       ['current-relational-standings',Standings]]|Rest],
     [['c4-flourishing-entry',Value,
@@ -2938,7 +2965,8 @@ as_model_c4_question_fact_roles(
 as_model_c4_question_flourishings(
     ['c4-contact-semantic-question-v1',_,_,_,_,_,_,
       ['flourishing-participation',Entries,_]|_],Values) :-
-    findall(Value,member(['c4-flourishing-entry',Value,_],Entries),Values0),
+    findall(Value,(member(Entry,Entries),
+      as_model_c4_flourishing_value(Entry,Value)),Values0),
     sort(Values0,Values).
 
 as_model_fact9_string_atom(String,Atom) :-
