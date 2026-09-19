@@ -8113,6 +8113,68 @@ Already carried:
   `/private/tmp` during the active investigation. All its diagnostic process
   groups are reaped, with no surviving stage-owned process. C4 remains open.
 
+  **C4 source-derived observation dependencies, 2026-09-18:** Against
+  `591f4de`, the next quarantined experiment removes the prior trial's
+  builder-supplied question rows. The existing returned-semantic participant
+  producer admits a prospective experimental marker; native composition
+  derives unanswered interface distinctions from its exact, validated source
+  operation and return. This is an interface-relative learning prospect,
+  not yet a semantic judgment of the larger human undertaking.
+
+  A crucial distinction is now explicit: HEAD can establish that the resource
+  responded, but cannot supply GET's status or entity content. Those two
+  method-specific questions remain open. Similarly, listing the parent of a
+  requested workspace path can discriminate whether its name is listed, not
+  establish the entry's file kind, current file identity or write authority.
+  An unrelated directory and a historical version read cannot supply those
+  current-state answers. Path decomposition is only mechanical syntax; the
+  source-relative relation and conditional use are native MeTTa reductions.
+  No result is inferred merely from the proposed probe's existence.
+
+  The finite reductions preserve observed status when another part of a
+  return fails, preserve missing/truncated content as unknown, distinguish
+  another resource from the same question, and tolerate the already-supported
+  atom/string representation of identical operation text. They do not erase
+  the unanswered undertaking or turn partial observation into completion.
+  These are typed interface-contract experiments, not held-out semantic
+  understanding or proof of the nine flourishing meanings' situated use.
+
+  In the disposable source copy, the ordinary native producer supplies the
+  marker to the existing M25 comparison consumer. Six complete formations
+  with independent native reconstruction compare historical behavior,
+  source-derived behavior, reordered participants, a changed-return
+  counterfact under both behaviors, and restoration. On the saved connection
+  failure both form the partial HEAD prospect. With status already observed
+  and content truncated, historical untried uniqueness still forms HEAD;
+  source-relative composition instead retains all three comparison members
+  without an operation. The changed return is a builder-supplied counterfact,
+  not a new live observation. Reordering preserves the operation, not exact
+  proof identity; restoration reproduces the exact experimental proof.
+
+  Across two completed six-case runs, historical formation plus reconstruction
+  takes 2.031 wall seconds; the source-derived case takes 2.038--2.048.
+  Retaining the comparison takes 3.629--3.650, not a speed improvement over
+  the different executable work. Fresh-process reconstruction reproduces
+  the 141,858-byte proof in 1.024 wall / 0.983 CPU seconds. Its ordinary proof
+  object, native descriptor and independent capability boundary validate in
+  an isolated temporary root; no execution claim or effect is made. This is
+  not a supported service restart or installed carry.
+
+  **Still not admitted as a universal recovery gate.** An unanswered field
+  of the prior attempted operation is a grounded partial learning prospect,
+  but the prior operation does not exhaust the human purpose. An alternative
+  source, reframing, or other beneficial opening must not be excluded merely
+  because it cannot answer that old operation's interface question. Likewise,
+  a known value may need renewed observation when a material temporal or
+  situated dependency warrants it; this trial does not decide that need.
+  The next consumer obligation remains source-qualified semantic dependency
+  and situated materiality through the same native joint, preserving this
+  partial derivation without making it the whole judgment. No application
+  source, installed runtime, live contact, model setting or authority changes.
+  No model or network call is made. Instruments and the disposable source copy
+  remain under `/private/tmp` during the active investigation; diagnostic
+  groups exit and are reaped. C4 remains open.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
