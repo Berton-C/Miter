@@ -501,20 +501,47 @@ Both named temporary areas are retained only for the immediate J1 successor,
 not installation or a second persistent checkout; remove at J1 closure or
 supersession after recording knowledge. All §3 obligations remain open.
 
-**J1-f next discriminator — relevant unfinished participation:** before another
-native edit, trace the ordinary next-contact path against an explicitly related
-undertaking and a same-scope unrelated contact. Inspect the full prior family,
-current W/relations, scoped continuity projection and their actual consumers;
-same scope, matching prose or an old source ID alone cannot establish relevance.
-Hypothesis: retained records/references reach continuity presentation without
-the pending distinctions becoming native continuation dependencies. Falsify it
-if an existing source-bound native consumer already performs that re-entry.
-Keep the relatedness premise explicitly controlled, not model-established or
-unseen. Vary that premise alone; distinguish historical availability, present
-relevance and effect authority. This is a bounded consumer-location test, not
-a new recovery policy. Record the finding before widening the temporary source
-scope. Do not choose one alternative merely to unblock the consequence path;
-§2.2's situated meaning/Fact9/flourishing and supported joint remain the target.
+**J1-f result — unfinished replacement gap, not storage deletion:** the
+discriminator frozen in `1eac328` included `AR4BoundContactContextV1` before
+preparation. A controlled continuity projection and one changed W undertaking
+identity distinguish related/unrelated premises; these are not unseen language
+interpretations or newly membrane-certified source documents. Both cases keep
+the scoped undertaking and prior plural reference, but neither reintroduces the
+pending dependency. After ordinary incorporation, the next snapshot/capsule
+contains neither the exact prior family nor its pending participant. The earlier
+saved capsule remains intact. Current proof reconstruction still passes: that
+check alone therefore cannot certify unfinished continuity.
+
+The exact seam is `ARReplaceActive` plus compact encounter history:
+`AR2EncounterSummary` retains references, while the full basis resides in the
+replaced active row. Commit `5aaf405` introduced that compact representation;
+this inspection does not date a live failure or warrant undoing its performance
+work. Native continuity capsules accurately project their supplied snapshot;
+they do not recover a missing basis by searching arbitrary older capsules.
+Evidence remains in the J1-e temporary area: `relevance.term` SHA-256
+`5cf5172bc84766bcb1c99def83631a5aafed43d262655252249790e3fc20d293`,
+with separate related/unrelated incorporation logs and complete resulting
+snapshots. Native restore of the prior family passes before each case. No
+runtime source, live state, model call or network was changed by this probe.
+
+**Frozen next repair within J1-f:** in the same temporary source copy, extend
+`assistant_reactor_authority.metta` only: preserve the exact prior unresolved
+v3 cut/family in existing append-only native history before replacing the active
+row. Give this material its own typed historical, non-executable standing; do
+not relabel it a voice proof, effect, current fact, or selected movement. Use
+the whole common retained basis and ordinary native reconstruction, not the
+first alternative or a host semantic chooser. Existing compact encounter rows
+and old snapshots retain their meanings. No new store or cognitive loop.
+
+Expected tests: incorporation preserves the exact unfinished family, duplicate
+observation does not multiply records, wrong scope/altered family are rejected,
+fresh native restore retains it without effects, and new current formation is
+unchanged by retention alone. Compare one/two retained organizations for cost
+and growth. Keep the related/unrelated non-relevance result: this prerequisite
+does not yet authorize historical participation in a present purpose. A later
+source-bound native consumer must warrant that re-entry, and §2.2's full
+semantic/Fact9/flourishing/consequence/supported-restart joint remains open.
+No production edit, installation, publication, new authority or external call.
 
 ## 3. Requirements, implementation, and evidence
 
