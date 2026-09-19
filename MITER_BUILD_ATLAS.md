@@ -8175,6 +8175,67 @@ Already carried:
   remain under `/private/tmp` during the active investigation; diagnostic
   groups exit and are reaped. C4 remains open.
 
+  **C4 conditional purpose dependencies, 2026-09-19:** Against `00b4c79`,
+  the next quarantined native experiment represents fallible purpose readings
+  with joint and alternative dependencies, distinguishing observable questions
+  from unresolved interpretation. The operators are frozen before receiving
+  fresh GLM proposals. A missing observation is not negative world evidence;
+  receiving content does not establish its relevance, truth or permission.
+  Synthetic reductions retain an alternative when another route is blocked,
+  prevent an unrelated benefit from discharging a failed shared prerequisite,
+  preserve conflict, and distinguish already-obtained answers from remaining
+  interpretation. These branch counterfacts are builder fixtures, not live
+  outcomes or evidence of autonomous discovery. Model assertions, including
+  permission language, cannot discharge the interpretation dependencies.
+
+  Two authorized diagnostic calls use the approved context and unchanged
+  privacy settings. The first candidate remains rejected for an undeclared
+  operation reference and a nonempty unused field. A builder-requested second
+  candidate corrects those contract errors; this is not native self-recovery.
+  Exact source-span binding establishes provenance only, not entailment. Both
+  purpose readings remain fallible and neither is silently selected as true.
+  The calls use Together and Crusoe, 18,929 prompt / 1,355 completion tokens
+  in total, and make no surface post or operation request.
+
+  A prospective experimental producer wraps the existing C4 returned producer,
+  retaining its source proof, question, observations and comparison members.
+  The same M25 comparison consumer uses the conditional dependency projection:
+  HEAD remains a prospect for the proposed status question, but changing that
+  dependency to entity content retains all three comparison members without
+  executing HEAD. That change is a synthetic interpretation counterfact, not
+  independent proof of the proper reading. Five complete formations, each
+  independently reconstructed, cover historical behavior, the candidate,
+  changed dependency, participant order and exact restoration. The historical
+  full proof stays identical. Order preserves the operation, not proof identity.
+  Restoration reproduces the exact experimental encounter.
+
+  Completed repetitions take 2.118--2.134 wall seconds for historical formation
+  plus reconstruction, 2.099--2.121 for the candidate, and 3.843--3.848 for the
+  different retained-family work. Fresh-process reconstruction reproduces the
+  145,231-byte proof in 1.091 wall / 1.016 CPU seconds. Ordinary proof persistence,
+  native descriptor validation and the independent capability boundary pass
+  in an isolated temporary root without an execution claim. This is not
+  supported service restart or installed carry. A separate synthetic dependency
+  growth check takes 0.000605 / 0.008005 / 0.176385 wall seconds at 16 / 64 / 256
+  leaves; its repeated list lookup/union is superlinear, not production-scalable
+  evidence. Exact indexing/sharing would be required before broad admission.
+
+  **Admission remains withheld; do not mistake conditional logic for situated
+  meaning.** The prototype computes consequences under a proposed purpose
+  dependency, but its interpretation leaves still lack a source-qualified
+  evidence/consequence consumer. Supplying the nine meanings to a model does
+  not establish their native causal participation. The next obligation is to
+  connect a material unresolved interpretation to native question formation
+  and returned consequence through the existing semantic lifecycle, preserving
+  competing readings and supported partial movement. Another observable-field
+  filter, a model-assigned benefit, or permanent unresolved standing would not
+  satisfy this obligation. This does not demand mechanical decidability of
+  every language implication or authorize a universal uncertainty veto.
+  No application source or installed state changes. All instruments and the
+  disposable source remain under `/private/tmp` for the active investigation;
+  completed diagnostic groups are reaped, with no stage-owned survivor.
+  C4 remains open under Section 7.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
