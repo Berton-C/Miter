@@ -387,71 +387,68 @@ The result, failures, source identities and reproduction outline are retained
 in this result commit; the completed trial's new temporary artifacts are removed
 after that record is committed. No model/network/live-state changes occurred.
 
-**Next dependency within J1:** source-bound semantic-predicate grounding must
-connect a fallible meaning to a material distinction in the current cut and to
-what a proposed observation can actually discriminate. In the captured file
-failure, a proposal's claimed precondition and the independently observed file
-state must remain different; unknown cannot become absent, and learning the
-state cannot grant write permission. Reuse the existing consequence/qualified
-reasoning consumers before adding a primitive. Freeze its representation and
-consumer after that trace, before code. The positive test must include an
-actual changed observation and retained alternative—not only rejecting an
-unrelated proposition. The ten-row §3 obligations, full compass discrimination,
-ordinary producer, materially different contact family and supported unfinished
-restart remain open. Another always-unresolved leaf or source-quote test is not
-the missing grounding relation.
+**J1-d result — PASS-BOUNDED operation-precondition grounding, unadmitted:**
+frozen plan `d14732e`, runtime baseline unchanged from `1f5b0be`. Source tracing
+confirmed that C3 semantic consequence resolution and qualified NAL/PLN
+consumers require an already classified premise; they do not derive whether a
+file observation answers a proposed precondition. No numerical confidence or
+invented “confirmed” premise was used to fill that gap.
 
-**J1-d frozen discriminator — grounded operation preconditions:** predecessor
-`1f5b0be`; the above control identities and §3 ledger are unchanged. Source
-trace shows `C3SemanticConsequenceResolution` consumes an already typed
-candidate-contact relation; qualified NAL/PLN consumers likewise require an
-already classified consequence. Neither derives whether a file observation
-answers a proposed precondition. Reuse their source/evidence distinctions,
-not numerical confidence or an invented “confirmed” premise.
+The temporary native `J1GPredicate` derives an identity-equality obligation
+from a controlled proposed write's exact path and expected prior identity.
+`J1GResolution` relates that fallible obligation to actual read-only observations
+through the existing workspace mechanics; `J1GPossibilities` joins the ordinary
+native possibility set before M25 formation. Host code validates only lexical
+path/hash shape and observes bytes. It does not decide meaning or movement.
+With proposal and authority fixed, unknown state exposed a read inquiry;
+matching/changed read evidence produced supported/contradicted reconsideration.
+Conflicting observations stayed contested. Failed reads did not establish
+absence; malformed expectations and unrelated subject/property did not borrow
+a successful observation. No Miter write executed or acquired authority.
 
-The bounded primitive is a source/scope-bound equality obligation derived
-from an actual proposed `workspace-write-v1` operation's path and expected
-prior identity. The proposal is not permission. A native reducer relates it
-to an independently obtained, same-resource `workspace-read-v1` result;
-successful complete reads may support or contradict an exact prior hash,
-but failed reads, malformed expected identities and missing evidence remain
-unknown. “No prior content” is contradicted by a successful read, never
-established by an unsuccessful one. A typed observation interface can inform
-this obligation only for its exact subject/property; an unrelated musical
-predicate cannot inherit that connection. This is bounded operation-contract
-grounding, not general language entailment or evidence that the proposed
-write advances the undertaking.
+All 16 controlled formations passed ordinary reconstruction and retained the
+pre-existing independent capability direction. Severing only returned evidence
+restored the exact unknown encounter; restoration recovered the complete
+supported encounter. Neutral order and renamed resource preserved the bounded
+result. One and two independent subjects remained represented. A separate
+process reproduced six saved proofs exactly, retained every source participant,
+checked unchanged revised cut/authority, compared the observed hash to actual
+fixture bytes, and rejected wrong source/cut bindings. Neither fixture work nor
+fresh-process reconstruction is a supported service/restart demonstration.
 
-In a disposable source copy, add the primitive and its prospective inquiry
-consumer before `model_recovery.metta`; connect that consumer to the existing
-possibility join in `provisional_dynamics.metta`. Retain the complete source
-alternatives and native R/A/P/Fact9/flourishing formation. A still-unknown,
-well-typed obligation can expose an exact read inquiry; an obtained result
-changes that inquiry into explicit evidence-bearing reconsideration, never
-a write. Unrelated routes remain co-present. No historical proof is regraded:
-only a new, exact scope/cut-bound trial participant activates this consumer.
+Final single-subject formation/checker times were about 1.42–1.55 / 1.43–1.55
+seconds; two-subject times were 2.00 / 1.98 seconds. Saved result: 277,140 bytes.
+An optional OS metrics wrapper failed on sandboxed `sysctl` after the trial
+itself passed; the separately rerun verifier passed. Peak RSS is unmeasured,
+not zero. All diagnostic groups were reaped. No model/network/live-state writes.
 
-Freeze before implementation: real reads of stage-owned temporary files;
-matching, changed and unavailable state; malformed expectation, unrelated
-subject/property, wrong scope, conflicting same-cut observations; material
-severance, neutral names/order and restoration. Hold proposed operation and
-authority fixed when varying the independently read file. Require changed
-native continuation, retained alternative, ordinary reconstruction and fresh
-process preservation; no test may equate those with supported service restart.
-No writes are executed by Miter. The builder's isolated file edits are explicit
-test interventions, not self-authored development or unseen cases. Test one
-and two independent subjects for cost/retention, not a scalability claim.
+**Fidelity boundary and next dependency:** this establishes typed operation
+precondition relevance, not why the proposed effect advances an undertaking.
+The controlled trial participants are not the ordinary source-bound producer;
+the new inquiry route has not earned an executable consumer. A direct boundary
+probe confirmed that its current-cut marker does **not** carry an unfinished
+obligation into a later cut. Do not weaken that check into an ancestor wildcard,
+count reconstruction as continuity, or promote the prototype. R1/R2 and all
+§3 integration duties remain open; no CA family closes here.
 
-Authorized delta: Atlas plus new stage-owned `/tmp` material; source-copy
-imports, the new native module and the one prospective join only. Do not
-modify production source, controls, README, live state, permissions, NAL/PLN
-semantics or historical recovery. F-09 rows 1/5/6/7 gain bounded grounding/
-plurality evidence if successful; row 9 includes real observed consequences
-but not the supported whole K→K′ producer. Rows 2–4/8/10 retain their existing
-open integration duties. Record failure rather than weakening expectations.
-Before promotion, the ordinary source producer, full situated purpose/compass
-causality, independent effect boundary and supported unfinished restart remain
-mandatory. No model/network call or installation is needed for this trial.
+Next, freeze the prospective producer/carry seam using
+`C4CapabilityProposalParticipantsAt` / `C4ReturnedProposalParticipantsAt`,
+`C4CapabilityObservationParticipant` and `C4ReformPreparedWithParticipants`.
+Derive obligations from exact validated proposal source and return lineage,
+rather than builder-inserting them. Preserve rejected-artifact versus admitted
+candidate standing, unknown preconditions, full competing family and independent
+effect checks. Establish meaningful unfinished next-cut carry through the
+existing consequence path. This must join, not replace, the larger situated
+meaning/Fact9/flourishing discrimination, materially different contact family
+and supported restart demonstration in §2.2. Another successful hash comparison
+alone cannot close that target.
+
+Active material disposition: `/private/tmp/miter-c4-grounding.2F0dJi` retains
+the unadmitted native primitive and bounded reproduction inputs for this
+immediate producer/carry integration; there are no running trial processes.
+It is not installed, a second persistent checkout, or repo content. Remove
+these owned artifacts at the integrated J1 closure (or if superseded), after
+recording durable findings. Older protected scratch is unchanged.
 
 ## 3. Requirements, implementation, and evidence
 
