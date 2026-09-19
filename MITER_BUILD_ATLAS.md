@@ -401,6 +401,58 @@ ordinary producer, materially different contact family and supported unfinished
 restart remain open. Another always-unresolved leaf or source-quote test is not
 the missing grounding relation.
 
+**J1-d frozen discriminator — grounded operation preconditions:** predecessor
+`1f5b0be`; the above control identities and §3 ledger are unchanged. Source
+trace shows `C3SemanticConsequenceResolution` consumes an already typed
+candidate-contact relation; qualified NAL/PLN consumers likewise require an
+already classified consequence. Neither derives whether a file observation
+answers a proposed precondition. Reuse their source/evidence distinctions,
+not numerical confidence or an invented “confirmed” premise.
+
+The bounded primitive is a source/scope-bound equality obligation derived
+from an actual proposed `workspace-write-v1` operation's path and expected
+prior identity. The proposal is not permission. A native reducer relates it
+to an independently obtained, same-resource `workspace-read-v1` result;
+successful complete reads may support or contradict an exact prior hash,
+but failed reads, malformed expected identities and missing evidence remain
+unknown. “No prior content” is contradicted by a successful read, never
+established by an unsuccessful one. A typed observation interface can inform
+this obligation only for its exact subject/property; an unrelated musical
+predicate cannot inherit that connection. This is bounded operation-contract
+grounding, not general language entailment or evidence that the proposed
+write advances the undertaking.
+
+In a disposable source copy, add the primitive and its prospective inquiry
+consumer before `model_recovery.metta`; connect that consumer to the existing
+possibility join in `provisional_dynamics.metta`. Retain the complete source
+alternatives and native R/A/P/Fact9/flourishing formation. A still-unknown,
+well-typed obligation can expose an exact read inquiry; an obtained result
+changes that inquiry into explicit evidence-bearing reconsideration, never
+a write. Unrelated routes remain co-present. No historical proof is regraded:
+only a new, exact scope/cut-bound trial participant activates this consumer.
+
+Freeze before implementation: real reads of stage-owned temporary files;
+matching, changed and unavailable state; malformed expectation, unrelated
+subject/property, wrong scope, conflicting same-cut observations; material
+severance, neutral names/order and restoration. Hold proposed operation and
+authority fixed when varying the independently read file. Require changed
+native continuation, retained alternative, ordinary reconstruction and fresh
+process preservation; no test may equate those with supported service restart.
+No writes are executed by Miter. The builder's isolated file edits are explicit
+test interventions, not self-authored development or unseen cases. Test one
+and two independent subjects for cost/retention, not a scalability claim.
+
+Authorized delta: Atlas plus new stage-owned `/tmp` material; source-copy
+imports, the new native module and the one prospective join only. Do not
+modify production source, controls, README, live state, permissions, NAL/PLN
+semantics or historical recovery. F-09 rows 1/5/6/7 gain bounded grounding/
+plurality evidence if successful; row 9 includes real observed consequences
+but not the supported whole K→K′ producer. Rows 2–4/8/10 retain their existing
+open integration duties. Record failure rather than weakening expectations.
+Before promotion, the ordinary source producer, full situated purpose/compass
+causality, independent effect boundary and supported unfinished restart remain
+mandatory. No model/network call or installation is needed for this trial.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
