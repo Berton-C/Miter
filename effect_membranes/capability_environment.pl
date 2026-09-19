@@ -21,6 +21,24 @@ as_capability_environment(Root0, Observation) :-
         'mechanical-observation-failed']),
     Observation=Observation0, !.
 
+% Exact representation equality for already typed operations. Atom and string
+% text with identical code points denote the same bytes; nothing is trimmed,
+% case-folded, path-resolved or inferred. Validation admits no effect, and this
+% comparison neither judges a return nor chooses the next native movement.
+as_capability_operation_same(Left,Right,Same) :-
+    ( ground(Left),ground(Right),acyclic_term(Left),acyclic_term(Right),
+      catch((ce_operation(Left,_,_),ce_operation(Right,_,_)),_,fail),
+      ce_operation_representation_same(Left,Right)
+    -> Same=true ; Same=false ), !.
+
+ce_operation_representation_same(Left,Right) :- Left==Right, !.
+ce_operation_representation_same(Left,Right) :-
+    ( atom(Left),string(Right) -> atom_string(Left,Right)
+    ; string(Left),atom(Right) -> atom_string(Right,Left)
+    ; is_list(Left),is_list(Right),same_length(Left,Right),
+      maplist(ce_operation_representation_same,Left,Right)
+    ).
+
 % Persist one complete native movement proof before a compact capability
 % request can refer to it.  The caller supplies the exact native identifier
 % and proof; this membrane only validates, factorizes, hashes, writes and
@@ -772,13 +790,16 @@ ce_write_factorized_proof_object(Root,Proof,
     term_factorized(Proof,Skeleton,Factors),
     length(Factors,FactorCount),
     Carrier=['miter-factorized-capability-proof-v1',Skeleton,Factors],
+    % Allocation-dependent variable names are not proof identity. Keep the
+    % same readable factor carrier, naming variables by exact traversal order.
+    term_variables(Carrier,Variables),ce_proof_variable_names(Variables,0,Names),
     directory_file_path(Root,'capabilities/proof-objects',Directory),
     make_directory_path(Directory),chmod(Directory,0o700),
     current_prolog_flag(pid,Pid),
     format(atom(StagedName),'.staged.~d.term',[Pid]),
     directory_file_path(Directory,StagedName,Staged),\+ exists_file(Staged),
     setup_call_cleanup(true,
-      ( ce_write_term_durable(Staged,Carrier),
+      ( ce_write_term_durable(Staged,Carrier,[variable_names(Names)]),
         crypto_file_hash(Staged,ObjectHash,
           [algorithm(sha256),encoding(octet)]),
         atomic_list_concat(['capabilities/proof-objects/',ObjectHash,'.term'],
@@ -788,6 +809,11 @@ ce_write_factorized_proof_object(Root,Proof,
             ce_read_bounded_term(Path,33554432,Existing),Existing =@= Carrier
         ; rename_file(Staged,Path),chmod(Path,0o600) ) ),
       (exists_file(Staged)->delete_file(Staged);true)).
+
+ce_proof_variable_names([],_,[]).
+ce_proof_variable_names([Variable|Rest],Index,[Name=Variable|Names]) :-
+    format(atom(Name),'V~d',[Index]),Next is Index+1,
+    ce_proof_variable_names(Rest,Next,Names).
 
 ce_read_factorized_proof_object(Root,
     ['proof-object','prolog-factorized-term-v1',Relative,
@@ -823,9 +849,13 @@ ce_read_term(Path,Term) :-
     term_string(Term,Text,[quoted(true),ignore_ops(true)]),ground(Term).
 
 ce_write_term_durable(Path,Term) :-
+    ce_write_term_durable(Path,Term,[]).
+
+ce_write_term_durable(Path,Term,Options) :-
     file_directory_name(Path,Directory),make_directory_path(Directory),
     atom_concat(Path,'.tmp',Temporary),\+ exists_file(Temporary),
-    term_string(Term,Text,[quoted(true),ignore_ops(true)]),
+    append([quoted(true),ignore_ops(true)],Options,WriteOptions),
+    term_string(Term,Text,WriteOptions),
     setup_call_cleanup(open(Temporary,write,Stream,[encoding(utf8)]),
       (chmod(Temporary,0o600),format(Stream,'~s',[Text]),flush_output(Stream),
        miter_store_fsync_stream(Stream)),close(Stream)),

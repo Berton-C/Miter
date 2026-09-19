@@ -11,7 +11,8 @@
   (as_model as_model_direction as_model_literal_span as_model_failure_bound
     as_model_semantic_bound))
 !(import_prolog_functions_from_file "./effect_membranes/capability_environment.pl"
-  (as_capability_environment as_capability_proof as_capability_request))
+  (as_capability_environment as_capability_proof as_capability_request
+    as_capability_operation_same))
 !(import_prolog_functions_from_file "./effect_membranes/vad.pl"
   (as_vad))
 ; The functions remain MeTTa-owned cognitive reductions. This pinned runtime

@@ -1072,7 +1072,7 @@
             native-authority (index-atom $question 2)
             (lineage c4 prospective-returned-observation $source)
             (participant-relation-claim returned-observation-prospect unresolved
-              (c4-returned-observation-prospect-v1 $basis
+              (c4-returned-observation-prospect-v2 $basis
                 no-replay-evidence-not-execution-authority))
             candidate no-contact-no-movement-authority))) ())) ()))
 
@@ -3571,8 +3571,8 @@
                   ($returned-claims (C4CapabilityReturnedClaims
                     (CPParticipantRelationOrganization (index-atom $encounter 6))))
                   ($new-operation (if (CPShape $route c4-capability-request-route-v1 5)
-                    (== (C4HTTPReturnedOperationAt $returned-claims
-                      (index-atom $route 3) 0) false) false))
+                    (== (C4ComparisonOperationReturnedUsingAt $returned-claims
+                      (index-atom $encounter 1) (index-atom $route 3) true 0) false) false))
                   ($continued (if (and $valid $new-operation)
                     (C4CapabilityContactUsingV1 $root $next $proof-writer
                       $capability-writer 3 ())

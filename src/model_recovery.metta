@@ -648,30 +648,48 @@
 ; not success, absence or exhaustion of the undertaking. Scope and source
 ; contact must match; an unrelated return cannot rule out a present prospect.
 (= (C4ComparisonOperationReturnedAt $claims $cut $operation $i)
+   (C4ComparisonOperationReturnedUsingAt $claims $cut $operation false $i))
+
+(= (C4ComparisonOperationReturnedUsingAt $claims $cut $operation $text-identity $i)
    (if (< $i (size-atom $claims))
      (let* (($claim (index-atom $claims $i)) ($evidence (index-atom $claim 6))
             ($returned (if (C4CapabilityReturnedEvidenceValid $evidence)
               (let $descriptor (index-atom (index-atom $evidence 1) 1)
-                (== ((index-atom $claim 2) (index-atom $descriptor 3)
-                     (index-atom $descriptor 4) (index-atom $descriptor 7))
-                    (tool (index-atom $cut 3)
-                     (source-contact (index-atom (index-atom $cut 1) 1))
-                     (exact-operation $operation)))) false)))
+                (and (== ((index-atom $claim 2) (index-atom $descriptor 3)
+                           (index-atom $descriptor 4))
+                          (tool (index-atom $cut 3)
+                           (source-contact (index-atom (index-atom $cut 1) 1))))
+                  (if $text-identity
+                    (as_capability_operation_same
+                      (index-atom (index-atom $descriptor 7) 1) $operation)
+                    (== (index-atom $descriptor 7) (exact-operation $operation))))) false)))
        (if $returned true
-         (C4ComparisonOperationReturnedAt $claims $cut $operation (+ $i 1)))) false))
+         (C4ComparisonOperationReturnedUsingAt $claims $cut $operation
+           $text-identity (+ $i 1)))) false))
 
 (= (C4ComparisonUntriedAt $possibilities $claims $cut $i)
+   (C4ComparisonUntriedUsingAt $possibilities $claims $cut false $i))
+
+(= (C4ComparisonUntriedUsingAt $possibilities $claims $cut $text-identity $i)
    (if (< $i (size-atom $possibilities))
      (let* (($possible (index-atom $possibilities $i))
             ($route (index-atom (index-atom $possible 7) 1))
-            ($rest (C4ComparisonUntriedAt $possibilities $claims $cut (+ $i 1))))
-       (if (C4ComparisonOperationReturnedAt $claims $cut (index-atom $route 3) 0)
+            ($rest (C4ComparisonUntriedUsingAt $possibilities $claims $cut
+                     $text-identity (+ $i 1))))
+       (if (C4ComparisonOperationReturnedUsingAt $claims $cut
+             (index-atom $route 3) $text-identity 0)
          $rest (cons-atom $possible $rest))) ()))
 
 ; Prospective admission prevents an upgrade from regrading historical
 ; comparison proofs. It grants no selection; the full native joint still
 ; judges the resulting possibility with every family requirement retained.
 (= (C4ComparisonProspectAdmittedAt $claims $basis $scope $i)
+   (!= (C4ComparisonProspectModeAt $claims $basis $scope $i) no-prospective-admission))
+
+; V1 proof meanings remain exact-term based. New participation explicitly
+; admits identical text representations; it does not merge different paths,
+; operations, scopes, evidence or authority.
+(= (C4ComparisonProspectModeAt $claims $basis $scope $i)
    (if (< $i (size-atom $claims))
      (let $claim (index-atom $claims $i)
        (if (== ((index-atom $claim 2) (index-atom (index-atom $basis 2) 2)
@@ -679,12 +697,22 @@
                (native-authority $scope unresolved
                  (c4-returned-observation-prospect-v1 $basis
                    no-replay-evidence-not-execution-authority)))
-         true (C4ComparisonProspectAdmittedAt $claims $basis $scope (+ $i 1)))) false))
+         exact-term
+         (if (== ((index-atom $claim 2) (index-atom (index-atom $basis 2) 2)
+                  (index-atom $claim 4) (index-atom $claim 6))
+                 (native-authority $scope unresolved
+                   (c4-returned-observation-prospect-v2 $basis
+                     no-replay-evidence-not-execution-authority)))
+           exact-text-representation
+           (C4ComparisonProspectModeAt $claims $basis $scope (+ $i 1)))))
+     no-prospective-admission))
 
 (= (C4ComparisonProspect $family $expected $claims $cut)
    (if (C4ComparisonProspectAdmittedAt $claims (index-atom $family 1)
          (index-atom $cut 3) 0)
-     (let $untried (C4ComparisonUntriedAt $expected $claims $cut 0)
+     (let $untried (C4ComparisonUntriedUsingAt $expected $claims $cut
+           (== (C4ComparisonProspectModeAt $claims (index-atom $family 1)
+                 (index-atom $cut 3) 0) exact-text-representation) 0)
        (if (== (size-atom $untried) 1)
          (let* (($selected (index-atom $untried 0))
                 ($route (index-atom (index-atom $selected 7) 1))

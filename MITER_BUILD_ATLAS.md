@@ -7515,6 +7515,84 @@ Already carried:
   cross-family judgment and the remaining Open Growth/distribution obligations
   stay open; this is not whole-C4 completion or live research delivery.
 
+  **C4 actual workspace recovery through shared inquiry, 2026-09-18:**
+  Baseline `322af58` now has a second, materially different actual source
+  rather than another matcher fixture: a proved read of a synthetic 33,000
+  character workspace file returns `file-unavailable-or-too-large` under the
+  existing read envelope. Its prior hash remains unavailable, not absent; no
+  write permission is present or acquired. The same native returned-contact
+  consumer forms its inquiry. One authorized GLM consultation, with the
+  existing privacy settings, independently proposes reading the file again
+  and listing its directory. No successor is supplied by the builder.
+
+  The trial proves a representation gap: the original operation uses an atom
+  path while the saved model proposal uses a string with identical code
+  points. Both are already valid mechanical representations of the same read,
+  but exact-term comparison leaves it falsely untried. The membrane now
+  exposes only equality of validated operation representations. It does not
+  trim, case-fold, resolve paths, interpret failure, select a movement or
+  authorize an effect. Native prospective V2 participation uses this equality;
+  historical V1 comparison proofs retain their original exact-term meaning.
+  The shared consumer uses the same scoped, source-contact-bound relation to
+  prevent representation-only effect renewal downstream.
+
+  Native comparison retains both proposals and their requirements, relates
+  the existing read return, and forms the sole untried listing possibility.
+  Ordinary R/A/P formation and independent proof validation warrant an actual
+  read-only listing in the private disposable workspace. The file is unchanged;
+  returned listing evidence changes the next formation; neither completed
+  operation is offered again. Removing the original return preserves plurality;
+  withdrawing the environment prevents execution. Foreign contact/scope cannot
+  retire a current operation, and unknown preconditions cannot become absent
+  or acquire write authority. Exact proof reconstruction, historical web and
+  VoiceRNA proofs, independent-opening plurality and both-returned falsifiers
+  pass. Ordinary incorporation retains the unfinished purpose and unknowns.
+  Its offline held voice observation is **not** an audited or delivered reply.
+
+  A forced pre-checkpoint re-entry also exposed allocation-dependent variable
+  names in factorized capability proof files. Identical logical proofs could
+  produce different object/descriptor hashes, so an existing durable claim
+  correctly refused the changed descriptor. Proof serialization now names
+  factor variables deterministically by traversal order. The readable carrier,
+  proof meaning and old object validation are unchanged. Existing claims and
+  proof objects are not rewritten, and legacy descriptor mismatches remain
+  conservatively held. A new credential-free trial with the exact saved model
+  return executes one listing; repeated entry reuses it with all 21 protected
+  records unchanged, including model claims, effect claims, proof objects and
+  workspace files. No new model call or effect occurs on that re-entry.
+
+  Efficiency: the single Together consultation takes 8.651 seconds, separate
+  from native time. The saved-return parent trial takes 4.087 wall / 3.964 CPU
+  seconds, with one reformation and no observation; the corrected trial takes
+  8.656 / 8.340, with two reformations incorporating the real listing. Cached
+  re-entry takes 8.547 / 8.232. Factorized preparation is 181,212 versus
+  160,451 bytes. Ordinary one/two-contact turns take 5.907/5.928 versus
+  5.919/5.938 wall seconds; corrected turns take 9.531/9.752 versus
+  9.695/9.773. All four expanded snapshots remain exactly identical, with
+  unchanged two/three callbacks. Cold load is 1.231/1.185 wall/CPU versus
+  1.215/1.175. This invalidates only the prospective returned-operation relation
+  and dependent formation, not unchanged ordinary contact or historical proofs.
+
+  The ordinary row/state carrier is 192,400 bytes with 1,226 factors. Supported
+  credential-free install/start/stop/restart reaches native waiting in
+  5.121/5.087 seconds. Checkpoint preparation takes 2.077 seconds, with heap
+  20.59 to 12.35 MB; exact fresh restore retains failure, unknowns and listing.
+  All 25 protected records remain unchanged, with no model/effect/contact
+  replay. Five idle seconds add 0.22 child CPU seconds; RSS changes from
+  129,904 to 130,160 KiB. Owned process-family cleanup is verified. All harnesses,
+  captures, logs and disposable runtimes were created directly under
+  `/private/tmp`; only runtime sources and this governing evidence enter the
+  66-file repository. No live installation, conversation or credential changes.
+
+  This closes the named actual second-source shared-consumer falsifier, not
+  general autonomous recovery, a new reviewed VoiceRNA reply or whole C4.
+  Next carry: growing developmental history through ordinary formation and
+  restart, preserving complete evidence/authority and measuring retained cost.
+  Then finish the remaining Open Growth/state-migration and distribution seams;
+  fresh installed conversational consequence remains required. The completed
+  local recovery proof is reusable evidence, not another surface-specific
+  retry policy or a reason to rerun already-passed human conversation tests.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
