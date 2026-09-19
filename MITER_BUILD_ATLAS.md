@@ -567,20 +567,52 @@ capability dependencies, or supported `bin/miter` restart. In particular,
 historical reconstruction currently consults active capability state; its
 changed-interface fidelity must be qualified before promotion, not assumed.
 
-**Next within J1 — historical participation versus present warrant:** first
-trace the retained record into the ordinary next-contact/semantic question and
-existing C3 inquiry/memory consumers. With the same new contact and authority,
-compare exact retained material, its absence, and a scope-blocked history in
-separate disposable processes. Expected finding: retention itself neither
-supplies a current precondition nor forces a historical operation. Identify
-whether an existing consumer can make that organization available as fallible
-material without falsely claiming an earned consequence. If it cannot, freeze
-the missing source-bound native representation and consumer before code. Do not
-solve the gap by copying all old proposals, matching thread IDs, adding prompt
-text alone, or treating an untried route as useful. The next constructive proof
-must connect interpreted purpose, material dependency and changed evidence to
-a warranted continuation; §2.2's Fact9/flourishing, independent consequence,
-different contact family and supported-restart obligations remain open.
+**J1-f consumer result — retained organization has no present-use consumer:**
+the comparison frozen in `848db6d` restored retained and absent histories in
+separate processes with the same new contact, binding and authority. The entire
+decoded bound contact, prepared encounter, semantic question and earned
+developmental participant lists were exactly equal. Factorized file bytes
+differ; semantic equality here means equality of the decoded native terms.
+Both preparations independently reconstruct. Neither the pending proposal nor
+its precondition route re-entered the current formation, and preparation changed
+no history. Corrupting the retained row's scope rejects restore before native
+state is populated; that is not a valid-other-scope isolation demonstration.
+The instrument now matches the supported caller's EffectiveContact argument;
+its earlier use of Prepared's enriched contact made no difference in this case,
+not a general equivalence claim. All four final process groups were reaped.
+
+The exact seam is `AR4PrepareEncounterV1` plus `C4ContinuityReferenceSurface`.
+The former consumes consequence-earned semantic/transfer/memory participants;
+the latter carries prior references, undertaking IDs and recalled candidates,
+not the unfinished basis. Existing C3 memory-application interfaces cannot be
+reused by falsely marking an unselected family as consequence-earned. Current
+`c4-derived-semantic-reading-claim-v1` also retains interpreted purpose as prose,
+without a relational continuation consumer (R1). Copying old operation proposals
+would repair neither connection. Comparison log SHA-256:
+`a5f43d220c34933a3913fa02e1deeb385d689e18acc845907f43732547124743`,
+in the retained J1-e temporary area. No runtime source changed in this probe.
+
+**Next within J1 — source-bound present-purpose discrimination:** the missing
+primitive must relate a current fallible interpretation, the exact unfinished
+organization, a proposed material dependency and independently qualified
+returned evidence. Its native consumer is the existing reformation/M25 joint,
+not VoiceRNA, a prompt selector or a second recovery policy. Distinguish source
+availability, interpretation adequacy, current relevance, expected consequence,
+and authority explicitly. Source IDs, matching undertaking IDs, matching value
+names and provider-declared benefit cannot supply those judgments. Reuse C3's
+partial R/A/P material and source-qualified inquiry operators where their actual
+premises hold; do not forge their earned-consequence premise.
+
+Before runtime edits, freeze the concrete representation, consumer and positive
+counterfactual in this section. It must change continuation when purpose or
+evidence changes with authority fixed, preserve a competing supported opening,
+and keep an unsupported association unresolved instead of borrowing evidence.
+The J1-c unrelated-proposition counterexample remains mandatory: relabeling a
+supplied association as a “purpose witness” is not a repair. Retention may make
+material available but cannot force a historic operation or mandatory inquiry.
+Full Fact9/flourishing participation, independent consequence, materially
+different contact and supported restart remain part of §2.2, not deferred out
+of C4. This design dependency is open, not a completed cognitive capability.
 No production edit, installation, publication, authority expansion or external
 call follows from this result. C4 and every §3 acceptance family remain open.
 
