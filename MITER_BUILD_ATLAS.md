@@ -186,7 +186,7 @@ compaction as a proven cause.
 |---|---|---|
 | R1 | `C4SemanticParticipantsAt` in [dialogue participation](src/dialogue_participation.metta) emits typed semantic readings not consumed as relational claims by `CPParticipantRelationReading` in [foundation](src/constitutive_foundation.metta). The [recorded discrimination][H-R1] retained two readings but recognized zero relational claims; changing/removing their prose left the inspected continuation projection unchanged. | Source-corroborated gap with a bounded recorded counterexample. VoiceRNA can still use those readings; complete proof/voice equality was not asserted. Native situated interpretation-to-continuation remains missing on this path. |
 | R2 | `C4ComparisonProspect` in [model recovery](src/model_recovery.metta) constructs a prospective route when exactly one admitted operation remains untried. Provider value identities and complete compass disclosure do not independently establish semantic usefulness. | Bounded loop prevention/provenance, not warranted purpose fulfillment. Later checks still apply; no authority bypass was established. [Latest prototype][H-R2] remains unadmitted. |
-| R3 | `C3NativePossibilities` in [provisional dynamics](src/provisional_dynamics.metta) orders nonempty inquiry families before later formation. Comments describe same-source refinements. | Unresolved risk, not a demonstrated runtime failure: test whether co-present distinct openings survive and genuine duplicates are justifiably consolidated. Do not begin a speculative broad rewrite. |
+| R3 | `C3NativePossibilities` in [provisional dynamics](src/provisional_dynamics.metta) orders nonempty inquiry families before later formation. Comments describe same-source refinements. | J1-a retained a model-failure inquiry beside a returned-capability inquiry through ordinary formation/reconstruction, severance, order change and restoration. This combination does **not** justify a priority rewrite. Other combinations remain an unresolved risk, not a demonstrated runtime failure. |
 | R4 | [CA-01–CA-09](ACCEPTANCE.md#ix-a-post-g33-constitutive-always-on-acceptance), PoC §20 and S-1301–1412 require unfamiliar composition, consequent learning, unfinished continuity, endogenous participation and joined supported operation. | Working conversation, intact proofs, installed source, and alpha publication do not close C4. Historical Mattermost authorship is separate from current transport. |
 
 Preserve the sustained-dialogue repair in `0cc0d72`: blanket unresolved
@@ -315,6 +315,36 @@ the R1/R2 failures and quarantined prototypes. The full §2.2 discrimination,
 consequence, supported disposable carry and restart obligations remain the
 integrated target; name a missing primitive rather than claiming this probe
 completes them.
+
+**J1-a result, 2026-09-19 — PASS-BOUNDED, no runtime change:** on source
+`18a9b913e790da591e3a30db26c3e0702cfd3155`, the saved capability encounter
+reproduced its complete historical proof. Adding one separately source-bound
+model-failure participant produced four possibilities and two live admissible
+inquiries; both distinct routes survived independent reconstruction. Participant
+reordering preserved both routes, not byte-identical IDs. Severing only the
+added failure restored the complete baseline encounter; lawful restoration
+restored the complete combined encounter. `C4ContinuationJoinAt` and the
+returned-comparison join explain the retention. Do not rewrite family priority
+on this evidence. The confirmatory test initially unpacked the plural wrapper
+incorrectly; correcting that test projection preserved its expected two routes.
+
+Both baseline encounters already contain two partial R/A/P openings. The C3
+semantic-question gate is unavailable because it requires its particular
+consequence-earned source, **not** because native partial openings are absent.
+The C4 returned-inquiry basis retains those openings. That question gate must
+not be bypassed merely to make a test succeed. This result establishes neither
+situated semantic usefulness nor a supported restart of new cognition.
+
+**Next discriminator (J1-b):** isolate the admitted untried-prospect marker from
+the interpretation and returned evidence. On the same saved cut, sever only
+that marker: predict that the executable capability route becomes an explicit
+retained comparison, with all three members, partial openings, evidence and
+authority preserved. Reorder, restore, and reconstruct independently. Inspect
+the resulting terms, not only counts or identifiers. This is a causal-location
+test of R2, not a repair or new model judgment. All instruments remain in `/tmp`;
+no runtime edits or new external calls are needed. Its successor must replace
+the missing interpretation/evidence-to-purpose relation, not merely delete the
+prospect, force clarification, or admit the quarantined purpose prototype.
 
 ## 3. Requirements, implementation, and evidence
 
