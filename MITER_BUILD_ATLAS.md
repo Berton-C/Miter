@@ -7831,6 +7831,52 @@ Already carried:
   material severance, meaning-preserving variation and lawful restoration to
   change or recover an actual continuation rather than only its trace.
 
+  **C4 semantic-return consumer discrimination, 2026-09-18:** Against
+  `a5738b1`, a saved completed semantic return is parsed against a new exact
+  native question, then carried through `C4ReformPreparedWithParticipants`
+  and the ordinary prepared-encounter validator. Its two primary semantic
+  readings are retained, but zero are recognized by the relational-claim
+  consumer. Removing only those readings, changing only their understanding,
+  response-purpose and counterfactual prose, and reordering participants each
+  leave the exact participant-relation organization, movement summary,
+  capability route and C3 semantic-inquiry availability unchanged. The latter
+  has no bound C3 question/candidates on this path. Restoration reproduces
+  that same projection. This isolates an unconsumed semantic distinction; it
+  does not assert equality of complete proofs or of subsequent VoiceRNA
+  behavior, where the readings still participate.
+
+  History explains the shape: `0cc0d72` deliberately replaced generic
+  unresolved relational claims with typed C4 candidates because the former
+  mechanically forced inquiry and prevented sustained undertakings. Reverting
+  that change would restore a known failure, not native understanding. The
+  repair must determine situated materiality of the interpretations rather
+  than count their presence or make every reading an unresolved veto. The
+  existing C3 comparison/consequence and VoiceRNA source-bound claim-use
+  machinery supplies reusable structure, but neither currently establishes
+  the missing full semantic-to-continuation connection merely by being loaded.
+
+  The next additive delta is source-grounded relational interpretation:
+  preserve competing, fallible readings and their actual semantic/source
+  dependencies; compare their implications against the native evidence and
+  authority already available; form an inquiry for a material unresolved
+  distinction without making all conversation permanently inquisitive; and
+  integrate the returned distinction through the same constitutive joint.
+  No model-produced value label, favorable verdict or proposed operation may
+  supply the judgment. No new general-purpose host recovery manager, parallel
+  cognitive engine, or scenario-specific behavior is admitted by this plan.
+  Historical proof meaning and the sustained-dialogue repair must remain
+  unchanged. The decisive carry must reach an actual continuation, not merely
+  a richer prompt, retained field or changed proof hash.
+
+  The five offline formations take 2.868--2.945 wall / 2.762--2.830 CPU
+  seconds including ordinary validation. No production code changes in this
+  discrimination, no network/model/effect calls, and no live-state writes
+  occur. The temporary process group exits and is reaped. Its instrument and
+  minimal source fixture remain under `/private/tmp` only while this active
+  cognitive gap is being repaired. C4 remains open under Section 7's complete
+  criterion; this finding is preserved so a later stage cannot mistake the
+  repaired request boundary for established Soul judgment.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
