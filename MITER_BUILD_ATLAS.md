@@ -355,6 +355,56 @@ a positive repair. The materially different contact family, full compass causal
 review, ordinary execution boundary and supported restart remain due. No new
 cognitive capacity, installed change or C4 closure is claimed by J1-a/b.
 
+**J1-c opening — source-relative evidence obligations, 2026-09-19:** baseline
+`0eafa41` (runtime trees unchanged from J1-b); the control identities above
+remain exact. Reuse the finite `C4VoiceClaimUseProjection` algebra rather than
+add a second language judge. A report of what a source says and an assertion
+that its contents are actual incur different evidence obligations. Derive that
+difference natively from a fallible claim-use reading; do not ask a provider
+to choose the next operation. A source-disclosure observation can inform the
+first obligation without establishing the second.
+
+The quarantined representation is an exact source/question-bound reading with
+proposition identities, polarity, communicative force, and the source's typed
+observation question. Native projection derives a source-disclosure or
+independent-actuality obligation, or explicit unresolved standing. Returned
+source contact may discharge only its own obligation. A world-actuality leaf
+cannot be discharged by source text, schema validity, or a model assertion.
+This is conditional reasoning **under a reading**, not proof of the reading's
+adequacy or a complete purpose judgment. Conflicting readings remain distinct.
+
+The consumer must reach `C4ComparisonProspect` through the same
+`M25ConstitutiveEncounter` and ordinary independent reconstruction, retaining
+every comparison member and its requirements. Historical proofs use unchanged
+rules; only an explicit trial marker enters the new branch. Reuse the existing
+quarantined observation contracts/conditional consumer where applicable, but
+do not admit their previous evidence as proof of this new semantic dependency.
+An operation's contract supplies what it can observe, never its permission.
+
+Frozen discriminator: hold operation, scope, returned evidence and permission
+fixed; change only attributed versus asserted use of the same proposition.
+The prospective source-observation continuation must change, while a report
+cannot certify actuality. Also test malformed and ambiguous readings, source
+and question mismatch, material severance, neutral order/proposition renaming,
+exact restoration, and newly returned source evidence. Preserve all distinct
+alternatives rather than force a clarification or erase the undertaking. A
+missing direct learning link does not prove that no indirect beneficial path
+exists. Historical J1-a/b and the captured failure remain regression material.
+
+This is a builder-controlled finite transfer trial, **not unseen cognition**.
+All new code, inputs and output remain under `/private/tmp`; a disposable copy
+may alter only the model-recovery consumer and its imports. Production source,
+README, controls, membranes, installation and live runtime remain unchanged.
+No network/model/effect call is needed for this first discriminator. A deadline
+owns and reaps the trial process group. Record separate formation/checker cost;
+a passing finite run does not settle growth. The §3 trace remains partial:
+the existing cut, Fact9/flourishing organization, plural formation and source
+re-entry are exercised, not fully semantically certified. Independent world
+consequence, complete compass discrimination, supported service restart and
+ordinary producer reachability remain due before promotion. Stop this trial if
+it merely repeats the old observation-facet result or fixes the response by
+case name; revise the hypothesis explicitly instead of calling that progress.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
