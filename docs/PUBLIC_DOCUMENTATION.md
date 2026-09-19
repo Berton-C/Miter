@@ -64,13 +64,18 @@ recorded in the Atlas and this publication request:
 - Historical G01–G33 claims are not current cleanroom proof. Restoring an
   acceptance document does not rerun a gate, renew a grant, close C4, or establish
   that the current Mattermost implementation satisfies the original omitted-part
-  self-authorship test. That distinction remains for the requested alignment review.
+  self-authorship test. That distinction remains explicit in the reconciled Atlas.
 - The Atlas cannot silently narrow these contracts. A substantive conflict or
   proposed change to protected meaning must be presented to Berton, not resolved
   by treating the latest summary, harness or successful conversation as authority.
 
-C4 is paused for the documentation repair and the subsequent PoC-alignment
-discussion. It resumes only after agreement with Berton.
+Berton approved the September 19 reconciliation and Atlas restructuring. The
+[active Atlas](../MITER_BUILD_ATLAS.md#2-current-stage-and-next-integrated-step)
+now separates bounded historical evidence, confirmed gaps, unresolved risks and
+the next integrated semantic-to-continuation stage. C4 remains open; this
+documentation update neither implements that stage nor certifies cognition.
+The prior Atlas is preserved at source commit
+`8aacacbee182d97113ac719a70e99f703aa113bb`, not copied into another archive file.
 
 ## Recovery identities
 
