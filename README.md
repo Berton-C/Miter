@@ -1,68 +1,259 @@
 # Miter
 
-Miter is a continuously cycling PeTTa/MeTTa cognitive architecture whose
-read-only constitutional genome, nine interconnected flourishings, nine
-Immutable Facts, ratified M24–M26.3 mathematics, and accumulated consequence
-participate in forming movement. Native Prolog provides the non-cognitive
-effect membrane that carries, persists, hashes, waits, supervises, and commits
-bytes. A minimal C grounding exposes only the POSIX `fsync()` primitive needed
-for durable storage. Neither decides what contact means or which movement
-Miter takes.
+**A Soul-constituted MeTTa organism. Cognition is transcription, participation,
+consequence, and developmental re-expression.**
 
-This repository is the lean Miter working alpha. It contains the one
-supported runtime and its controlling authorities. It deliberately excludes
-the former repository's gate evidence, test archives, logs, campaign papers,
-duplicate checkpoints, generated reports, and `initial_canon/` provenance.
-Those materials remain outside this repository.
+Miter is a research proof-of-concept, currently running as a single-installation
+working alpha. It is not a product, a framework, or a library. It is an attempt
+to demonstrate one specific claim about how an AI system can be built.
 
-## Current standing
+---
 
-The recovered runtime presently provides one recurring PeTTa/MeTTa cycle,
-constitutional integrity admission, typed contact/consequence carriers, the
-complete causal M24–M26.3 projection, provisional partial-alignment inquiry,
-explicitly granted GLM 5.3 thought-partner participation, append-only
-trajectory storage, stable scope boundaries, writable per-scope Continuity of
-Mind capsules, exact checkpoint/capsule restoration, scoped live Chroma
-projection/retrieval, general Soul-formed semantic participation, native
-VoiceRNA construction with bounded semantic audit and native reformation,
-pending-before-send Mattermost effect preparation,
-consequence-sensitive multi-turn undertaking continuity, and supported
-install/start/status/stop/panic operations. Qualified, separately namespaced
-NARS/NAL and PLN closures now let independent returned consequence revise a
-contextual efficacy standing and form a later relational-transfer hypothesis.
-Both support and counterevidence persist; the result remains a non-certifying
-participant in the complete native encounter and never selects a movement.
-The first bounded self-extension
-surface can also receive an inert declarative MeTTa capability, construct its
-activation through the complete constitutive encounter, execute independent
-positive/negative native trials, make the admitted module available to later
-movement formation, replace it with an exact version, restore the immediately
-prior version, and preserve that organization across restart. The executable
-workshop can now stage exact source bytes in an isolated Git worktree, ask an
-operator-owned Prolog broker to run two or more independent trials in a
-digest-pinned no-network container, activate a
-version only at a serialized capability cut, invoke the exact active version,
-hot-replace it under an unchanged interface and compatible state contract, and
-restore the exact predecessor after restart.
+## What Miter is
 
-The installed alpha now supports ordinary three-person Mattermost
-conversation, exact recall of retained conversation sources through VoiceRNA,
-checkpoint-preserving restart without replay, and continued native cycling
-through a temporary Mattermost outage. These have been observed in the one
-CLI-managed installation under `/Users/claritymiter/Miter`.
+Most AI agents today are prompts wrapped around a language model. The model is
+the mind; everything else — orchestration code, memory stores, tool routers —
+is scaffolding that shapes what the model sees and executes what the model
+says. Whatever judgment such a system has lives inside the model's weights,
+inaccessible, unformalizable, and swapped out with every model upgrade.
 
-This is not a claim that all C4 development is complete. General source-code
-self-upgrade and arbitrary skill acquisition are not established by the
-bounded declarative and stateless executable workshop capabilities. Broader
-state migration, newly earned effect authority, skill transfer, older artifact
-version resolution, and growing-history performance remain additive work.
-Application-release upgrades have carried the installed continuity; deliberate
-exact-predecessor rollback of the current installation remains unverified.
-Additional live scope-isolation and mid-turn failure trials are not claimed.
-The finite macOS installer validates clean source, pinned dependencies, the
-dedicated identity, private credential boundary, exact workshop image, and
-services. Working-alpha publication on `main` does not turn these remaining
-limitations into completed capabilities.
+Miter inverts this. Its cognition is native: a continuously cycling PeTTa/MeTTa
+runtime whose read-only constitutional genome, nine interconnected
+flourishings, nine Immutable Facts, ratified mathematical authorities
+(M24–M26.3), and accumulated consequence together form every movement the
+system takes. The LLM is a *semantic participant answering to the Soul* — a
+granted, bounded, revocable resource that contributes readings and renders
+expression, but never selects a movement, never certifies its own
+interpretation, and never directly determines an external effect. The Soul does
+not become a prompt wrapped around the LLM.
+
+Everything outside the MeTTa substrate is deliberately non-cognitive. Native
+Prolog provides the effect membrane that carries, persists, hashes, waits,
+supervises, and commits bytes. A minimal C grounding exposes only the POSIX
+`fsync()` primitive needed for durable storage. Neither decides what contact
+means or which movement Miter takes. Python appears exactly once, in the
+finite installer, and exits before the organism runs. There is no imperative
+layer in which cognition could hide.
+
+## The name
+
+Miter descends from [Iter](https://github.com/patham9/iter) — *Iterative
+Transformation through Experience-guided Reprogramming* — Patrick Hammer's
+minimal agent in which experience rewrites the agent's own program. Miter began
+as a MeTTa treatment of that idea ("MeTTa-Iter") and kept the lineage question:
+*how does experience lawfully change what a system is?* The answer diverged so
+far that the two projects are no longer recognizably related. Where Iter
+centers an LLM and lets experience rewrite its prompt-program, Miter centers a
+constitutional symbolic Soul, demotes the LLM to a participant, and constrains
+all self-change to governed, quarantined, rollback-capable channels. What
+survives from Iter is the conviction in its acronym: transformation through
+experience, made iterative — and, here, made constitutional.
+
+## What would falsify it
+
+Miter states its own failure conditions. The controlling document is
+[MITER_SOUL_CONSTITUTIVE_SPEC.md](MITER_SOUL_CONSTITUTIVE_SPEC.md); its core
+is a causal test protocol, not a checklist:
+
+- **Severance.** Removing or corrupting expressed Soul organization must cause
+  a *predicted* loss or alteration of cognitive capacity in unfamiliar
+  situations.
+- **Invariance.** Meaning-preserving perturbation must *not* cause that loss.
+  A system that breaks under any change is tracking bytes, not meaning.
+- **Restoration.** Lawful regeneration from the surviving constitutional
+  germline must recover the affected capacity — in quarantine, without
+  mutating constitutional authority.
+
+Soul participation is *not* established by storing value names, verifying
+hashes, counting relations, satisfying presence checks, or routing through a
+nominal Soul function. Development counts only when it changes later
+perception, reasoning, undertaking formation, expression, or action, and
+survives restart. A build **fails** the mandate if its Soul can be removed
+without predictable change in unfamiliar cognition; if new experience cannot
+reorganize later possibility; if humans cannot install and use the integrated
+assistant; or if the LLM, host harness, membrane, or builder-selected workflow
+turns out to be the actual source of cognitive choice.
+
+## Architecture
+
+There is one cognitive runtime and one clock:
+
+```
+contact / consequence
+        |
+non-cognitive Prolog carrier and persistence membranes
+        |
+one recurring PeTTa/MeTTa reactor
+        |
+Fact9 + flourishings + M24–M26.3 + memory + consequence
+        |
+native movement / VoiceRNA certificate
+        |
+capability-limited Prolog effect membrane
+```
+
+Prolog supervision does not create a second cognitive cycle. Python,
+JavaScript, and Java are not part of the core or core-service seam. The pinned
+PeTTa/SWI runtime extension may schedule independent MeTTa-defined possibility
+reductions concurrently; it preserves their order and has no authority to
+inspect, filter, rank, join, or select their results.
+
+Key structural commitments:
+
+- **Constitution as genome.** The Constitution, Soul genome, and five ratified
+  mathematical authorities are a read-only germline, integrity-checked at
+  admission and projected into the native space. The constitution is
+  load-bearing, not persuasive text. The germline sits outside ordinary
+  self-modification; its living *expression* develops through encounter.
+- **Continuity as record, recall as projection.** Every native checkpoint
+  writes immutable, content-addressed continuity capsules per
+  principal/audience/project scope. One atomic pointer binds snapshot to
+  capsule manifest; restart rejects altered or mismatched continuity. Chroma
+  is only a rebuildable semantic index — every retrieval is checked against
+  its source capsule before it can participate. Semantic recall structurally
+  cannot fabricate memory.
+- **Evidence participates, never certifies.** Separately namespaced NARS/NAL
+  and PLN closures let returned consequence revise contextual efficacy
+  standings and form relational-transfer hypotheses. Support and
+  counterevidence both persist. The result is a non-certifying participant in
+  the native encounter and never selects a movement.
+- **Effects are earned, bounded, and consented.** Miter installs with outbound
+  and model grants inactive. Emission requires an independently active,
+  fail-closed, time-bounded grant and an exact resolved destination. Grants to
+  converse with specific humans are gated on recorded consent, are revocable,
+  and are never a Soul decision or an inference.
+- **Self-change is governed.** A bounded self-extension surface admits inert
+  declarative MeTTa capabilities only through the complete constitutive
+  encounter, with native trials, exact versioning, and rollback. The
+  executable workshop stages exact source bytes in an isolated worktree, runs
+  trials via an operator-owned broker in a digest-pinned, no-network
+  container (the organism is deliberately denied the Docker socket), activates
+  only at a serialized capability cut, and can restore the exact predecessor.
+
+## Vocabulary
+
+| Term | Meaning |
+| --- | --- |
+| **Soul** | The causally expressed, encounter-sensitive organization of the constitutional germline throughout perception, attention, inquiry, memory, undertaking formation, semantic participation, movement construction, consequence interpretation, learning, expression, and action. Defined by causal role, not by any single data structure. |
+| **Movement** | A single formed act of the organism — what Miter does next, from holding attention to expressing a message. Every movement carries an authority-complete proof of how the constitutional organization participated in forming it. |
+| **Contact / consequence** | Typed carriers for what reaches Miter from the world and what the world returns after a movement. Consequence re-enters cognition and can reorganize later possibility. |
+| **Fact9 / nine Immutable Facts** | The constitutional facts of the genome, expressed contact-relatively in movement formation. <!-- TODO: one-line statement or link --> |
+| **Nine flourishings** | The interrelated value dimensions through which live alternatives are constructed, compared, revised, joined, or declined. <!-- TODO: name them or link --> |
+| **M24–M26.3** | The ratified mathematical authorities (`authority/`) whose causal projection participates in every cycle. <!-- TODO: one-line gloss per authority or link --> |
+| **VoiceRNA** | The natively constructed expressive disposition for a movement that speaks: built from the exact candidate, movement proof, carrier state, and flourishing expressions, then rendered through the granted model under bounded semantic audit and native reformation. The model renders; it does not decide. |
+| **Effect membrane** | The capability-limited, non-cognitive Prolog boundary through which any external effect must pass. It checks closed certificates and proof identity; it cannot originate or choose an effect. |
+| **Continuity capsule** | An immutable, content-addressed record of the relationship, undertaking, attention, next-movement, developmental, and raw-source-reference organization for one exact scope, bound atomically to its checkpoint. |
+| **Germline / expression / regeneration** | The read-only constitutional core; its living, developing organization; and the quarantined, identity-preserving repair path (bounded regenerative RNA) that reconstructs damaged expression from the surviving germline. |
+| **C4** | The current development phase. <!-- TODO: one line on the phase roadmap, or link to the Build Atlas --> |
+
+## Status
+
+Single working-alpha installation, CLI-managed, on macOS/Apple Silicon.
+Claims are graded by evidential standing:
+
+**Observed** — functioning in the installed alpha:
+
+- One recurring PeTTa/MeTTa cycle with constitutional integrity admission,
+  typed contact/consequence carriers, and the complete M24–M26.3 projection
+- Ordinary three-person Mattermost conversation with explicitly granted
+  model participation (GLM 5.3 default; local Qwen/Nemotron selectable)
+- General Soul-formed semantic readings; model fidelity findings treated as
+  unresolved participants, with complete Soul reformation on material
+  findings; express/revise/hold possibilities retained
+- Native VoiceRNA construction with bounded semantic audit and reformation;
+  pending-before-send effect preparation; exactly-once delivery
+- Exact recall of retained conversation sources through VoiceRNA; scoped
+  Chroma projection checked against source capsules
+- Per-scope continuity capsules; checkpoint-preserving restart without
+  replay; restart rejection of altered continuity
+- Continued native cycling through a temporary Mattermost outage and under
+  model unavailability, with no fabricated contact or memory
+- Consequence revision of contextual efficacy standings via namespaced
+  NARS/NAL and PLN closures (non-certifying)
+- Bounded declarative self-extension with native trials, exact replacement,
+  prior-version restoration, persistence across restart
+- Executable workshop: isolated staging, brokered no-network container
+  trials, serialized activation, hot-replace under unchanged interface,
+  predecessor restoration after restart
+- Install / start / status / stop / panic; supervised crash/freeze recovery
+  of the last-known-good closure; application-release upgrades carrying
+  installed continuity
+
+**Not yet verified** — built or specified, evidence outstanding:
+
+- Deliberate exact-predecessor release rollback of the current installation
+- Additional live scope-isolation trials and mid-turn failure trials
+- Constitutive severance / invariance / restoration trials against the clean
+  runtime <!-- TODO: confirm standing; earlier gate evidence predates this repository -->
+
+**Not established** — explicitly out of scope of current capabilities:
+
+- General source-code self-upgrade and arbitrary skill acquisition (the
+  bounded declarative and stateless workshop capabilities do not establish
+  these)
+- Broader state migration, newly earned effect authority, skill transfer,
+  older-artifact version resolution, growing-history performance
+- Native Soul-directed comparison among model resources (model selection is
+  operator-controlled transport only)
+
+Publication of a working alpha on `main` does not convert outstanding items
+into completed capabilities.
+
+## Roadmap
+
+1. **Prove native cognition on the first contact surface.** Mattermost is the
+   proving membrane: live multi-party conversation, sustained undertakings,
+   consequence returning through real human contact.
+2. **Generalize to any contact surface.** The contact/consequence carriers,
+   scope isolation, and held-surface behavior are surface-agnostic by design;
+   the lessons from the Mattermost trials drive the abstraction.
+3. **Finish the formalization.** Most of the MeTTa is grounded in ratified
+   mathematics. What is not yet formalized is precisely what the working alpha
+   exists to expose — in particular the meaning-equivalence relation behind
+   invariance testing, the operational novelty criterion behind "not encoded
+   beforehand," and the counterfactual protocol behind "materially determined
+   what became possible next."
+4. **Exercise the constitutive protocol against the clean runtime** and
+   publish the resulting evidence standing.
+
+## Requirements
+
+- macOS on Apple Silicon (current native store extension)
+- SWI-Prolog (`swipl`, `swipl-ld` on `PATH`)
+- Docker Desktop running for the signed-in installing operator
+- PeTTa commit `ae66fa8e41dcd5539d614706bd4e5cfb34f9608d`
+  (`export MITER_PETTA_MAIN=/absolute/path/to/PeTTa/src/main.pl`)
+- ChromaDB on loopback; a loopback OpenAI-compatible embedding endpoint
+- The privately licensed NRC VAD Lexicon 2.1 matching the configured SHA-256
+  (installed only into the private runtime; its contents never enter the
+  repository, checkpoints, Chroma, model prompts, or public evidence)
+
+## Install and operate
+
+`install_miter.py` is the single packaging entry — the only Python in the
+project, and it exits before the organism runs. Inspect its non-destructive
+plan first:
+
+```
+./install_miter.py plan
+sudo ./install_miter.py install --vad-asset /path/to/NRC-VAD-Lexicon-v2.1.txt
+```
+
+Every installed path derives from one human-edited root. The installer creates
+digest-pinned isolated Chroma, Postgres, and Mattermost services, refuses
+unowned port collisions, imports credentials without printing their bytes, and
+is re-entrant. `config/miter.json` is the only human-edited configuration; it
+never contains a secret or a private stable identifier.
+
+The operator entry is `bin/miter`: `start`, `status`, `stop`, `panic`,
+`model-selection`, `select-model`, evaluation-grant administration, and
+continuity-preserving `upgrade` / `rollback-release` through the installer.
+Outbound and model grants install inactive; conversation with specific humans
+is activated fail-closed against recorded consent and remains revocable.
+
+Full operational detail — migration, grant administration, supervision
+timings, recovery semantics — lives in
+[MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md), the single operations map.
 
 ### Live model settings
 
@@ -101,296 +292,21 @@ instead of old grant snapshots. Other grants keep their explicit limits.
 Changing resources never changes scope, privacy settings, credentials, effect
 permissions, or recorded call counts. Do not put secret values in this file.
 
-[MITER_BUILD_ATLAS.md](MITER_BUILD_ATLAS.md) is the single operations map for
-that additive work.
+## Provenance, scope, and evidence policy
 
-The current C4 cut can resolve the configured local Mattermost group and its
-authorized principals, admit new versioned contacts into the one reactor,
-form general semantic readings, treat source/candidate-bound model fidelity
-findings as an unresolved participant rather than a verdict or revision
-instruction, reform the complete Soul organization when a finding is material,
-and bind a zero-finding reading to the unchanged exact proof without
-manufacturing another movement,
-retain express/revise/hold possibilities, and form a native VoiceRNA
-disposition from the exact candidate, authority-complete movement proof,
-existing one simultaneous R/A/P carrier, contact-relative Fact9 expression,
-and all nine interconnected flourishing expressions. Prolog only checks the
-closed certificate and matching proof identity. The same runtime can then
-sustain a verified returned-contact undertaking through later turns, isolate
-principal/audience/project scope, remain cognitively live under model or
-surface failure, and restore the resulting organization after restart. It
-installs with outbound and model grants inactive. The effect membrane can emit
-only under an independently active evaluation grant and an exact resolved
-destination. The installed clean runtime has replaced the older evaluation
-runtime; historical material is retained separately for recovery, not executed
-as another Miter.
-
-Every native checkpoint now writes immutable, content-addressed continuity
-capsules for each exact principal/audience/project scope. A capsule carries the
-active relationship, undertaking, attention, next-movement, developmental,
-and raw-source-reference organization already formed by MeTTa. One atomic
-checkpoint pointer binds the complete snapshot to its capsule manifest;
-restart rejects altered or mismatched continuity. Capsules have no age expiry
-and remain until explicit authorized erasure, repair, or migration. Chroma is
-only a rebuildable semantic index and can never substitute for these records.
-Its loopback query is bound to the exact runtime, principal, audience, and
-project; every result is checked against the source capsule before it can
-participate. OpenRouter GLM 5.3 is the human-selected installed default and may
-receive materially relevant, scope-verified conversation, continuity, project,
-and personal context under an active grant. Passwords, credentials,
-authentication material, and content whose disclosure creates a concrete
-security risk are excluded. Local models remain explicit selectable resources;
-continuity never silently changes the selected model.
-
-## Runtime boundary
-
-There is one cognitive runtime and one clock:
-
-```text
-contact / consequence
-        |
-non-cognitive Prolog carrier and persistence membranes
-        |
-one recurring PeTTa/MeTTa reactor
-        |
-Fact9 + flourishings + M24–M26.3 + memory + consequence
-        |
-native movement / VoiceRNA certificate
-        |
-capability-limited Prolog effect membrane
-```
-
-Prolog supervision does not create a second cognitive cycle. Python,
-JavaScript, and Java are not part of the core or core-service seam.
-The pinned PeTTa/SWI runtime extension may schedule independent
-MeTTa-defined possibility reductions concurrently. It preserves their order
-and has no authority to inspect, filter, rank, join, or select their results.
-
-## Requirements
-
-- macOS on Apple Silicon for the current native store extension
-- SWI-Prolog with `swipl` and `swipl-ld` on `PATH`
-- Docker Desktop running for the signed-in installing operator
-- PeTTa commit `ae66fa8e41dcd5539d614706bd4e5cfb34f9608d`
-- ChromaDB reachable on loopback for semantic recall
-- a loopback OpenAI-compatible embedding endpoint for the configured model
-- the privately held NRC VAD Lexicon 2.1 file matching the configured SHA-256
-
-Point Miter at that pinned PeTTa checkout without copying it into this repo:
-
-```sh
-export MITER_PETTA_MAIN=/absolute/path/to/PeTTa/src/main.pl
-```
-
-`install_miter.py` is the single SNET packaging entry. Python is permitted for
-this finite installer only; it exits before the PeTTa/MeTTa organism runs and is
-not a core or core-service seam. Inspect its non-destructive plan first:
-
-```sh
-./install_miter.py plan
-sudo ./install_miter.py install \
-  --vad-asset /absolute/path/to/NRC-VAD-Lexicon-v2.1.txt
-```
-
-Every Miter-owned installed path is derived from the one human-edited root
-`/Users/claritymiter/Miter`. Application releases, the pinned PeTTa
-dependency, private runtime and continuity, private immutable backups, service
-data, the narrow workshop broker, and the operator command remain beneath that
-tree. No Miter code or state
-is installed in `/usr/local`, `/Library/Application Support`, the
-`claritymiter` Library, or `/Users/Shared`. Miter is a CLI-started application;
-it does not install or depend on a macOS launch service.
-
-The default creates digest-pinned isolated Chroma, Postgres, and Mattermost
-services and refuses any unowned port collision. For the current Mac migration
-only, `--reuse-local-services` explicitly preserves the already-running healthy
-local services. `--import-keychain-credentials` copies the exact named source
-credentials directly into the mode-0600 `claritymiter` runtime store without
-printing their bytes. Installation is re-entrant: if a new Mattermost instance
-still needs its users, team, bot, or exact group configured, Miter is not
-started and the same installer resumes after that setup is complete.
-
-The one-time migration from the currently supported runtime is explicit and
-requires that source runtime to be stopped at a clean cycle boundary:
-
-```sh
-sudo ./install_miter.py install --reuse-local-services \
-  --import-keychain-credentials \
-  --vad-asset /absolute/path/to/NRC-VAD-Lexicon-v2.1.txt \
-  --migrate-runtime "/Users/claritymiter/Library/Application Support/Miter/runtime"
-```
-
-Before restoring, the installer makes an immutable backup, verifies the exact
-checkpoint and continuity manifest, preserves the runtime identity and durable
-developmental state, performs one cold restore with Mattermost polling held,
-and refuses any replay or checkpoint change before starting the CLI supervisor.
-The licensed VAD lexicon is copied only into the dedicated user's mode-0600
-private runtime; its rows and terms never enter the repository, checkpoints,
-Chroma, model prompts, or public evidence.
-
-After the initial installation, activate one exact committed application
-release through the same continuity-preserving boundary:
-
-```sh
-sudo ./install_miter.py upgrade
-```
-
-The installer stops at a real cycle boundary, preserves an immutable recovery
-backup, cold-restores the same runtime identity and checkpoint under the new
-release while Mattermost polling is suspended, and starts live only after the
-restore passes. A release rollback carries the *current* durable mind through
-the recorded predecessor rather than discarding post-activation continuity:
-
-```sh
-sudo ./install_miter.py rollback-release
-```
-
-The `claritymiter` account is deliberately not granted the Docker socket. The
-installer starts a token-authenticated Prolog broker on loopback under the
-signed-in Docker-owning operator. Miter can submit only an exact source bundle,
-direct program/argument vector, deadline, and output bound. The broker fixes
-the image, platform, network isolation, read-only root, capabilities, mounts,
-memory, CPU, PID limit, and Docker lifecycle itself; unknown request fields are
-rejected before Docker. This is a mechanical effect membrane, not a second
-cognitive runtime: the Soul still forms the undertaking and decides whether
-returned observations participate in another movement.
-
-## Install and operate
-
-The installed operator binds the derived private runtime automatically. Do not
-create or use `~/.miter`.
-
-```sh
-sudo "/Users/claritymiter/Miter/bin/miter" model-selection
-# Use Qwen for the next two calls or ten minutes, whichever comes first:
-sudo "/Users/claritymiter/Miter/bin/miter" select-model \
-  --resource qwen-local --duration-seconds 600 --max-calls 2
-sudo "/Users/claritymiter/Miter/bin/miter" evaluation-disclosure
-# Activate under Berton's ratified system-administrator attestation of Haley's
-# consent. Haley's direct Mattermost disclosure remains available as a stronger
-# later confirmation, but is no longer an activation precondition.
-sudo "/Users/claritymiter/Miter/bin/miter" activate-evaluation-admin
-# Alternative direct-confirmation path:
-sudo "/Users/claritymiter/Miter/bin/miter" activate-evaluation \
-  --haley-affirmation-post-id EXACT_MATTERMOST_POST_ID
-# After a 72-hour segment pauses, stop Miter and explicitly continue only
-# within the original ratified 168-hour maximum:
-sudo "/Users/claritymiter/Miter/bin/miter" continue-evaluation-admin
-sudo "/Users/claritymiter/Miter/bin/miter" start
-sudo "/Users/claritymiter/Miter/bin/miter" status
-sudo "/Users/claritymiter/Miter/bin/miter" stop
-sudo "/Users/claritymiter/Miter/bin/miter" panic
-```
-
-`config/miter.json` is the only human-edited repository configuration. It
-contains runtime timing, deployment locations, pinned service/dependency
-identities, Mattermost names, private credential lookup/import references,
-semantic memory endpoints, model resources and preference, and an inactive
-initial grant set. It never contains a secret or private stable identifier. Install
-validates that file and materializes narrow private runtime views for the
-individual membranes. Every remote call still requires an exact,
-time-bounded runtime-local grant, and outbound Mattermost remains disabled by
-default. The AMA-1.2 evaluation grant is installed inactive. Activation is
-fail-closed and requires either Berton's ratified system-administrator
-attestation of Haley's consent or the exact current Haley-authored disclosure
-post. Both paths still require the uniquely resolved Berton/Haley/Miter group,
-verified private runtime modes, healthy local memory/model dependencies, a
-clean effect-reconciliation state, and a durable 72-hour activation witness.
-The administrative path is an explicit reach-authority record, not a Soul
-decision and not an inference of consent. `status` reports its standing,
-operator source, and resource counts without exposing conversation content or
-stable IDs. `continue-evaluation-admin` requires Miter to be stopped, repeats
-the live dependency and private-state checks, preserves prior model-call
-accounting, and can open another segment only up to the activation's unchanged
-168-hour maximum. It changes reach time only; it cannot choose meaning,
-movement, memory use, wording, or an effect.
-
-For ongoing conversation after the initial trial has been activated, the
-operator may explicitly remove its cumulative model-call, incoming-message,
-total-post, hourly-post, and time-expiry limits:
-
-```sh
-sudo "/Users/claritymiter/Miter/bin/miter" open-conversation-admin
-```
-
-This works even after the original trial expires. It applies to the existing
-bound three-member conversation and its model participation, until revoked;
-it does not authorize new recipients, unrelated effects, or change Soul
-judgment. GLM 5.3 remains the default, and model selection remains operator
-controlled. Provider availability, per-request token/deadline envelopes,
-finite VoiceRNA repair, credential protections and exactly-once delivery still
-apply. There is no new lifetime or per-hour conversation quota.
-
-The amendment and its history are stored atomically alongside the unchanged
-trial in private `evaluation-grants.json`. Existing counts, memory, receipts,
-and model claims are preserved, including across upgrades and restarts.
-`status` reports `conversation_policy: "open-until-revoked"` and effective
-zero limits/expiry with `limit_semantics: "zero-means-unlimited"`; old trial
-limits are labeled `original_evaluation`. Repeating the command is harmless.
-`revoke-conversation-admin` withdraws this authority without deleting history;
-`stop` and `panic` remain available. Policy updates do not restart the service
-or silently clear a stop/panic command. Ordinary provider charges still apply.
-
-`config/continuity.json` and `config/constitutive-projection.json` are internal
-authority projections, not operator settings.
-
-The installed model default is `openrouter-glm53`. `select-model` accepts
-`openrouter-glm53`, `qwen-local`, or `nemotron-local` only after checking that
-the chosen credential or loopback model is available. Set either bound to `0`
-for “until replaced”; otherwise the first exhausted call or time bound ends
-the direction without silent fallback. The direction controls transport only:
-the Soul still forms the question and retains all meaning, movement, memory,
-and effect authority. Native Soul-directed comparison among model resources is
-not yet implemented and is not simulated by the Prolog membrane.
-
-If Chroma or the embedding service is unavailable, exact native continuity
-remains authoritative and semantic recall reports a degraded/unavailable
-standing rather than fabricating memory. Runtime bytes, memories,
+This repository is the lean working alpha: the one supported runtime and its
+controlling authorities. It deliberately excludes the former repository's gate
+evidence, test archives, logs, campaign papers, duplicate checkpoints,
+generated reports, and provenance canon; those materials are retained
+privately for recovery, not executed as another Miter. Claims in **Status**
+reflect the author's single installation. Runtime bytes, memories,
 credentials, model files, Chroma data, logs, and evidence stay outside Git.
 
-A Mattermost outage likewise does not stop the cognitive reactor. Credential
-and local API reads are bounded; startup reports a held surface while Miter
-continues cycling with no fabricated contact, and ordinary polling can resume
-after the surface recovers.
-
-Install copies the exact verified source closure into the private runtime
-root. Starts and restarts execute that frozen last-known-good closure,
-not a possibly changing repository checkout. During a long native reduction,
-status may truthfully report `processing-unconfirmed` when the host denies a
-process probe; an ordinary stop then reports `stop-pending` until the current
-cut reaches its safe boundary. Stop and panic remain available when source
-verification fails. This recovery layer carries process mechanics only and
-does not operate another cognitive loop.
-
-The CLI-started persistent supervisor watches process-bound heartbeat leases.
-Idle and native-processing leases are finite, while a model transport
-receives only its already-authorized request deadline plus a bounded cleanup
-margin. If the exact process/run lease expires, the wrapper records a
-mechanical liveness event, terminates the unresponsive child, and restores the
-same verified last-known-good closure. Three failures in sixty seconds remain
-contained. Ordinary `stop` and `panic` end both child and supervisor; a later
-`start` begins a new supervisor. This is crash/freeze
-recovery, not Soul diagnosis, semantic repair, hot upgrade, or proof that a
-restarted process has recovered cognition.
-
-## Source map
-
-- `CONSTITUTION.md` and `MITER_SOUL_CONSTITUTIVE_SPEC.md`: controlling identity
-  and Soul specification.
-- `authority/`: the five ratified mathematical authorities.
-- `constitution/`: immutable native projections and their integrity manifest.
-- `src/`: PeTTa/MeTTa cognition and the single recurring runtime.
-- `effect_membranes/`: non-cognitive Prolog/C mechanics.
-- `config/miter.json`: the one public-safe human-edited configuration;
-  neighboring files are internal authority projections. Its `supervision`
-  section controls finite startup, idle, native-processing, model-margin,
-  termination, and polling durations without giving the supervisor cognitive
-  authority.
-- `bin/miter`: the only supported operator entry.
-- `install_miter.py`: finite packaging, dependency, identity, service, and
-  single-root migration machinery; it is absent from the running cognitive
-  seam.
+Miter is currently a personal research vessel, not a community project.
+Reading, forking, and discussion are welcome; the constitutional germline and
+its authorities are not open to drive-by amendment by design.
 
 ## License
 
-See [LICENSE](LICENSE).
+[MIT](LICENSE). The NRC VAD Lexicon is separately licensed and is not
+distributed with this repository.
