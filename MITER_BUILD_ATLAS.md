@@ -7936,6 +7936,119 @@ Already carried:
   instruments and private returns stay under `/private/tmp`, never in Git.
   Section 7's causal standard and whole-C4 acceptance remain open.
 
+  **C4 returned-record discrimination and inquiry-warrant falsifier,
+  2026-09-18:** A quarantined native experiment against `74b16e6` compares
+  conditional expectations with exact typed model-failure and capability
+  returns. Expectations bind to an issued request's identity, scope and
+  attempt, not a future response's content hash. The same reducer preserves
+  contradiction, unavailable source and unresolved comparison; it never
+  infers a file state or authority from a failed record lookup. Distinct
+  conditional participants reach ordinary M25 whole-family formation without
+  reinstating generic unresolved tags or their global inquiry veto. Changed
+  source participation changes the retained inquiry family; reordered
+  participation preserves availability; lawful reintroduction of the same
+  source settles its expectation without rewriting it. This is
+  builder-supplied conditional record discrimination, not independently
+  grounded semantic interpretation or full-compass causal judgment.
+
+  The experiment also falsifies unrestricted promotion of that mechanism.
+  An arbitrary field selector can ask a model/tool record for file-state
+  evidence which that record cannot supply. Treating every failed selector
+  as a worthwhile unknown inquiry creates a competing alternative even after
+  a supported continuation has already formed. A missing record, an invalid
+  question of that record, and an unknown world fact must remain distinct.
+  Conditional logical sensitivity alone is not a grounded learning prospect.
+  The prototype remains outside the runtime; no new generic inquiry engine
+  or source-specific recovery policy is admitted.
+
+  The existing `C4ReturnedInquiryWarrantFromValidatedProof` supplies the
+  relevant reuse seam: for both saved failure families it is available before
+  the exact source consultation, held after its returned participation, and
+  held for a mismatched source. These five reductions take 0.002--0.005 wall
+  / 0.002--0.004 CPU seconds. Further interpretation work must refine that
+  source-bound inquiry and retain its actual consequence and other supported
+  openings, rather than inject a fresh competing inquiry anywhere a
+  conditional field is unresolved. This warrant is necessary provenance and
+  stage discipline, not a substitute for situated flourishing judgment.
+
+  Fresh-process reconstruction of the two experimental plural proofs through
+  the complete `M25ConstitutiveEncounter` reproduces each exact proof in
+  1.715--1.748 wall / 1.625--1.642 CPU seconds and leaves no executable
+  capability route. The earlier temporary test label overstated what
+  `ARNativeMovementProofValid` alone established: its legacy check does not
+  reconstruct these v3 plural alternatives. That label is corrected, and
+  supported restore is a separate falsifier, not claimed from structural
+  acceptance or an isolated fresh process. No model calls, network contact,
+  live-state changes, installation or surface effects occur in this stage.
+  Temporary sources, instruments and proof objects remain in `/private/tmp`;
+  every completed diagnostic process group is reaped. C4 remains open.
+
+  **C4 retained-family restore correction, 2026-09-18:** The supported
+  `AssistantRestoreV2` path at `74b16e6` accepts a reproducible contradiction:
+  after native formation of a plural family, erasing only its admissible
+  alternatives still restores successfully. The fixture retains the saved
+  tool proposals and withholds only their prospective joining participants;
+  it is a controlled native counterexample, not a new live contact. With only
+  the observation-prospect participant withheld, the existing comparison
+  inquiry remains formed; withholding both prospective joining participants
+  produces three admissible alternatives among five retained readings.
+
+  The cause is exact: `AR2MovementBasis` exposes a selected v3 movement's
+  basis, but plural/unresolved movements retain theirs inside the primaries.
+  The old validation fallback therefore accepts their carrier without native
+  reconstruction. The additive correction derives a common validation basis
+  from every retained primary, including the exact primary inside a native
+  cardinality-failure wrapper, and re-forms the complete family once. This is
+  not selection of the first alternative or a new movement rule. Different
+  primary bases, malformed readings and an empty plural family are rejected;
+  a well-grounded unresolved family remains unresolved and restorable. Its
+  changed failure reason is rejected when it differs from reconstruction.
+  The selected-movement continuation consumer, authority, schema, stored
+  proofs and native generation rules are unchanged.
+
+  Thirteen restore cases pass: formed model/tool movements, repeated plural
+  carry, reordered source participation, unresolved material severance and
+  exact restoration are retained; erased alternatives, mixed source bases,
+  empty plurality, malformed reading and altered unresolved reason are
+  rejected without partial state admission. The correction covers the shared
+  consistency check used by restore, authority-grounded proof validation and
+  Soul repair candidate trials. Historical empty unresolved carriers with no
+  retained primary keep their explicitly limited legacy validation; this is
+  not a claim of reconstructing an absent basis or complete restart closure.
+
+  **Efficiency waypoint:** Compared with `74b16e6`, the dirty dependency is
+  the retained v3 family's shared encounter basis and complete native result.
+  It is recomputed once per validation, never once per alternative. Warm
+  plural restore now takes 1.956--1.979 wall / 1.875--1.888 CPU seconds versus
+  the old 0.011--0.021-second carrier-only acceptance. This new cost buys the
+  missing reconstruction; it is not reported as a speedup. Mixed/malformed
+  bases are rejected before formation. The common-basis scan over 5/10/20
+  rows, repeated 100 times, takes 0.013/0.027/0.054 wall seconds; this measures
+  validation-scan growth, not arbitrary cognitive-family growth.
+
+  Four fresh disposable runtimes are created through `bin/miter bootstrap`.
+  Saved provider responses then traverse the ordinary C4 contact consumer,
+  checkpoint, fresh-process native restore and terminal-contact no-replay
+  check. Two ordinary contacts take 6.116/6.142 seconds before and 6.149/6.066
+  after; two invalid-return/correction contacts take 10.073/10.160 before and
+  10.274/10.268 after. Their incremental formations remain one and two per
+  turn respectively. Ordinary checkpoints remain exactly 104,678/141,733
+  bytes; corrected checkpoints remain 109,014/149,373 bytes. Fresh restore
+  takes 1.056 versus 1.041 seconds for the ordinary pair and 1.100 versus
+  1.088 for the corrected pair, with exact snapshot identity and no replay.
+  These offline fixtures use two/three saved callbacks per turn and zero
+  external model calls; their rendering callback is deliberately held. They
+  are not a new live Mattermost/VoiceRNA delivery trial. Native source balance
+  and bootstrap pass. No running-service restart or installation is performed.
+
+  This closes the demonstrated nonempty retained-family validation hole, not
+  C4's source-grounded semantic judgment gap. The conditional interpretation
+  prototype remains quarantined. Continue at the existing exact source
+  inquiry/returned-participation seam with the distinctions recorded above;
+  do not promote a conditional field query as a warranted inquiry or a full
+  flourishing judgment. Test code, logs and disposable runtimes remain outside
+  Git and are removed after the repair facts are committed.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

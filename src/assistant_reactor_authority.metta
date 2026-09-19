@@ -951,8 +951,59 @@
          (CPMovementBasisV2 $movement)))
      no-continuation-basis))
 
+; Plural and unresolved v3 movements retain their derivation in every primary,
+; not in a selected movement's continuation slot. A common encounter basis is
+; not a chosen alternative: every retained primary must carry the same basis,
+; and the whole freshly formed family must agree before it can be restored.
+(= (AR2UnselectedRetainedFamily $movement)
+   (if (CPShape $movement movement-plural-live 4)
+     (index-atom $movement 3)
+     (if (CPShape $movement movement-unresolved 3)
+       (index-atom $movement 2) no-unselected-family)))
+
+(= (AR2RetainedReadingPrimary $reading)
+   (if (CPShape $reading m25-movement-reading-v3 9)
+     (index-atom $reading 1)
+     ; A mechanical cardinality hold still retains its exact native primary.
+     ; Re-form it too; unresolved is not permission to erase its dependencies.
+     (if (CPShape $reading m25-native-reading-reduction-unresolved-v1 4)
+       (let $source (index-atom $reading 1)
+         (if (CPShape $source source-primary 2)
+           (index-atom $source 1) no-retained-primary))
+       no-retained-primary)))
+
+(= (AR2ReadingFamilyBasisMatchesAt $readings $basis $i)
+   (if (< $i (size-atom $readings))
+     (let $primary (AR2RetainedReadingPrimary (index-atom $readings $i))
+       (if (CPShape $primary m25-primary-movement-v2 11)
+         (and (== (index-atom $primary 8) $basis)
+           (AR2ReadingFamilyBasisMatchesAt $readings $basis (+ $i 1)))
+         false)) true))
+
+(= (AR2UnselectedFamilyBasis $movement $retained)
+   (let $readings (index-atom $retained 1)
+     (if (CPRowsNonempty $readings)
+       (let* (($primary (AR2RetainedReadingPrimary (index-atom $readings 0)))
+              ($basis (if (CPShape $primary m25-primary-movement-v2 11)
+                (index-atom $primary 8) no-continuation-basis)))
+         (if (if (CPShape $basis continuation-basis-v3 6)
+               (AR2ReadingFamilyBasisMatchesAt $readings $basis 0) false)
+           $basis inconsistent-retained-family-basis))
+       ; Historical empty unresolved carriers have no reconstructible basis.
+       ; Preserve that explicit legacy standing, never claim a plural family.
+       (if (and (== $readings ())
+                (CPShape $movement movement-unresolved 3))
+         no-continuation-basis inconsistent-retained-family-basis))))
+
+(= (AR2MovementValidationBasis $movement)
+   (let $retained (AR2UnselectedRetainedFamily $movement)
+     (if (CPShape $retained retained-alternatives-v3 3)
+       (AR2UnselectedFamilyBasis $movement $retained)
+       (AR2MovementBasis $movement))))
+
 (= (AR2MovementConstitutivelyConsistent $cut $movement)
-   (let $basis (AR2MovementBasis $movement)
+   (let $basis (AR2MovementValidationBasis $movement)
+    (if (== $basis inconsistent-retained-family-basis) false
      (if (CPShape $basis continuation-basis-v3 6)
        (let* (($base-cut (CPBaseCutWithoutParticipantRelations $cut))
               ($encounter (M25ConstitutiveEncounter $base-cut
@@ -961,7 +1012,7 @@
                 (index-atom $basis 5))))
          (and (CPShape $encounter constitutive-encounter 7)
               (== (index-atom $encounter 5) $movement)))
-       (ARMovementConstitutivelyConsistent $cut $movement))))
+       (ARMovementConstitutivelyConsistent $cut $movement)))))
 
 ; Voice proof restored into the authority-grounded runtime must re-form through
 ; the v3 constitutive basis, not merely satisfy the earlier carrier shape.
