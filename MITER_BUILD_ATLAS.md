@@ -7877,6 +7877,65 @@ Already carried:
   criterion; this finding is preserved so a later stage cannot mistake the
   repaired request boundary for established Soul judgment.
 
+  **C4 source-qualified interpretation experiment, 2026-09-18:** The next
+  quarantined trial against `0ca89c1` distinguishes a useful logical primitive
+  from the missing semantic consumer. Native conditional reduction preserves
+  absent evidence as unknown, including under negation, and preserves support
+  and contradiction together. Conditional counterfactuals identify which
+  unresolved premise could change the exact projection. Six builder-supplied
+  cases take 0.000729--0.001510 wall / 0.000703--0.001302 CPU seconds: changed
+  evidence changes the material inquiry target, an unknown in an already
+  refuted branch does not force another inquiry, order changes preserve the
+  result, and restoration recovers the exact inquiry. Actual interfaces and
+  constitutional relations are unchanged. These are conditional learning
+  prospects, not new contact, selected movement, independently grounded
+  flourishing interpretation, or supported runtime carry. The experimental
+  rules remain outside the application.
+
+  Two authorized GLM diagnostic transmissions are attempted. The first ends
+  without a captured response; provider completion and its failure cause are
+  unknown, not reported as a proved timeout. The second completes through
+  Wafer in 119.799 seconds with 6,399 prompt / 28,353 completion tokens. The
+  existing approved privacy settings and resource profile remain unchanged.
+  No diagnostic result is admitted to the runtime. All fourteen quoted nodes
+  bind to exact supplied contact or compass fields, but that establishes
+  quotation identity only. The experimental producer and receiver disagree
+  about inquiry-target representation: the producer schema permits strings,
+  while the receiver expects proposition references. The return supplies
+  prose questions. This experimental contract ambiguity is not evidence of a
+  new installed-provider defect and must not be "fixed" by guessing IDs.
+
+  More importantly, the returned prerequisite lists mix source reports,
+  possible beneficial relations, possible harmful relations and unobserved
+  conditions. None of their fourteen proposition IDs is independently bound
+  to native evidence. Projecting just that prerequisite fragment retains both
+  alternatives as unresolved; severing its quoted-source metadata has no
+  effect because that metadata does not reach the conditional calculation.
+  Reordering prerequisites preserves the projection and restoration is exact
+  (four family projections: 0.041223 wall / 0.038540 CPU seconds). The test
+  deliberately does not infer semantics from the model's epistemic labels,
+  execute its proposed rule, or reinterpret its prose inquiry targets. It
+  rejects promotion of this representation as native meaning computation;
+  it is not a claim that source-grounded relational interpretation is
+  impossible, nor an end-to-end runtime regression result.
+
+  The route therefore remains the named C4 consumer gap, not another prompt
+  expansion, source-quote gate, or new graph interpreter presented as Soul
+  judgment. Before integration, the next representation must distinguish
+  source occurrence from the claim about it, conditional consequence from
+  actuality, enabling relation from defeater, and interpretive hypothesis
+  from returned evidence. Its materially unresolved distinction must form a
+  native inquiry through the existing constitutive joint, change on actual
+  returned contact, and retain independent authority checks. Existing C3
+  inquiry/consequence and VoiceRNA qualified claim-use machinery remain the
+  reuse points; generic unresolved C4 tags must not be reinstated. The earlier
+  independent-opening suppression repair is already recorded and is not
+  reopened by this experiment. No runtime source, installed state, surface
+  post, checkpoint, or effect is changed. All owned diagnostic process groups
+  are reaped; only the existing installed service family remains. Temporary
+  instruments and private returns stay under `/private/tmp`, never in Git.
+  Section 7's causal standard and whole-C4 acceptance remain open.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered
