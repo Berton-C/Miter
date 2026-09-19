@@ -7593,6 +7593,70 @@ Already carried:
   local recovery proof is reusable evidence, not another surface-specific
   retry policy or a reason to rerun already-passed human conversation tests.
 
+  **C4 developmental-history validation storage, 2026-09-18:** Baseline
+  `aaa29ce` is exercised with one, two, four and eight successive ordinary
+  native contacts, and one, two and four corrected-semantic contacts. These
+  are distinct diagnostic occurrences using the same saved source/semantic
+  fixture, not inserted dummy history rows, live conversation, independent
+  learning evidence or broad skill transfer. Every occurrence enters the
+  ordinary contact consumer, forms and incorporates its native organization,
+  and preserves continuity/encounter/NACE-pending/scope/semantic history.
+  Voice is deliberately unavailable; no unreviewed reply or effect is made.
+
+  Turn time stays near six seconds, but private table storage rises from
+  11.23 MB after one ordinary turn to 90.59 MB after eight. Four corrected
+  turns reach 104.47 MB. Inspection before and after service-row validation
+  and duplicate-contact checking identifies the same nine current structural
+  subgoals, not accumulating semantic verdicts. The existing targeted table
+  abolition removes all live entries but leaves SWI's private variant-index
+  arena allocated: after two turns, 22.46 MB remains with zero live tables,
+  unchanged by ordinary garbage collection. Resetting the empty private arena
+  releases it while preserving the exact native snapshot.
+
+  The existing named reformation cleanup now releases that arena **only when
+  no live table remains** after removing its three known structural validator
+  families. A separate table retains its exact identity and cached answer;
+  the cleanup does not discard another extension's tables. Interrupted-scope
+  cleanup, invalid native carriers and empty-state identity pass. This changes
+  only temporary representation lifetime at the existing boundary. No native
+  input, dependency, judgment, formation, history row or proof is removed,
+  reordered, summarized or cached as a host semantic verdict. If another
+  extension retains tables, global arena release is deliberately withheld;
+  that future coexistence needs its own proportionality carry.
+
+  Repaired ordinary turns retain 0.437--0.560 MB of table storage across the
+  eight contacts; corrected turns retain 0.452--0.543 MB across four. Ordinary
+  wall time is 5.893--5.969 seconds versus 5.827--5.975 on the parent;
+  corrected time is 9.587--9.785 versus 9.676--9.809. Cold load remains
+  1.208--1.218 seconds versus 1.213--1.239. Two/three fixture callbacks and
+  the native formation path are unchanged; there are zero external model
+  calls. Expanded native snapshots are exactly equal at every sampled size.
+  Ordinary factorized checkpoints are 104,575 / 141,256 / 205,018 / 332,697
+  bytes, with 5 / 10 / 20 / 40 native history rows; corrected checkpoints are
+  108,923 / 148,887 / 226,905 bytes. Ordinary file-write cost grows from
+  0.071 to 0.386 seconds, versus 0.068 to 0.392 on the parent. This preserves
+  necessary history growth while removing the independent table-storage slope.
+
+  Fresh native restore takes 0.976 wall / 0.938 CPU seconds for one contact
+  and 1.020 / 0.978 for eight; the predecessor eight-contact restore takes
+  1.026 / 0.978. Supported credential-free install/start/stop/restart carries
+  the exact 40-row state, reaches waiting in 6.248/6.243 seconds, and retains
+  all four protected checkpoint/capsule records with zero model/effect replay.
+  Full checkpoint preparation takes 2.164 wall / 2.152 CPU seconds. Five idle
+  seconds add 0.20 child CPU seconds; RSS changes from 120,672 to 120,976 KiB.
+  The owned service family is stopped and verified absent. The unchanged live
+  installation has one supervisor and expected child at 1.0% CPU, 354,384 KiB
+  after 5h40m; it is not evidence that this local correction is installed.
+
+  Source shape, authority pins and the 66-file runtime/document-only tree pass.
+  Completed workspace-recovery and history trial areas, including disposable
+  source copies, runtimes and instruments, are removed at this waypoint;
+  previously existing captures remain untouched. This closes the identified
+  temporary-table accumulation and this bounded native-history carry, not
+  larger heterogeneous proof/voice/effect histories or full C4 performance.
+  Resume the remaining Open Growth state-migration and held-out developmental
+  obligations, then the fresh installed conversational/distribution carry.
+
 Next movement:
 
 1. **completed bounded recall repair:** installed `a8025af` has delivered

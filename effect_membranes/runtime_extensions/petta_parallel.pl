@@ -25,7 +25,12 @@
 miter_petta_clear_cycle_validation_tables :-
     abolish_table_subgoals('M255GenSigStructuralValid'(_,_)),
     abolish_table_subgoals('M255GenTranslationValid'(_,_)),
-    abolish_table_subgoals('M255TranslationLawWitnessValid'(_,_,_)).
+    abolish_table_subgoals('M255TranslationLawWitnessValid'(_,_,_)),
+    % Removing subgoals leaves SWI's private variant-index storage allocated.
+    % Repeated ground proof carriers otherwise grow that empty storage across
+    % contacts. Release it only when no live table remains: another extension's
+    % tables must never be discarded by this narrow validation lifecycle.
+    ( \+ current_table(_,_) -> abolish_private_tables ; true ).
 
 miter_petta_bounded_m25_readings(Primaries, Cut, Developmental, Readings) :-
     is_list(Primaries),
