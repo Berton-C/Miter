@@ -1030,19 +1030,39 @@ rows 3/4 lack full semantic causality; row 8 has no new execution/voice path;
 CA family and R1/R2 remain open. Repository runtime, README and controls remain
 unchanged; raw tests/model material are not repo content.
 
+**Necessity discriminator after `6975f3b` — PASS-BOUNDED:** source inspection
+of `C4CapabilityOperationValid`, `ce_request_descriptor` and
+`ce_workspace_observe` distinguishes attempt admission from successful reading.
+The exact same saved read descriptor independently validates for successful
+and failed observations; both observations pass native validation. The failed
+return remains failure, not absence. An unknown write precondition is rejected;
+substituting a write under the saved read proof also fails. No fresh operation,
+model call or live write occurred. Log SHA-256
+`5b1d4bee3f84a4f759f2d0e619bf713214719229e7dca183f5b155fa87a580aa`
+is retained beside J1-k's evidence; the diagnostic group was reaped. This is
+not proof that every read is useful or authorized, or that this model's prose
+has been natively understood. The transport contract needs no relaxation here.
+
 **Next dependency:** distinguish a proposed prerequisite's truth from its
-necessity for this continuation. Inspect the existing native operation and
-independent descriptor/observation contracts before new code. A successful
-read needs available bytes; a lawful read attempt can instead return typed
-failure. That observation says nothing by itself about useful purpose or write
-permission. Test this distinction on the saved failed-read descriptor before
-designing a native dependency/challenge consumer. Do not simply filter unknown
-premises, trust provider role labels, weaken required floors, manufacture a
-file-existence fact, or repeat a prompt until the model approves. Its declaration
-of necessity is itself fallible material for the same joint, not law. The new
-consumer must justify its actual dependency and preserve alternatives, changed
-evidence and unfinished organization; ordinary producer/re-entry, complete
-compass participation and the rest of §2.2 remain due. No micro-approval pending.
+necessity for this continuation. The model's declaration of necessity is itself
+fallible material, not a native floor. Trace a proposed dependency to the actual
+goal, participation consequence or operation obligation; expose ungrounded
+necessity as an inquiry rather than silently adding it to a conjunction.
+Do not filter unknown premises merely to pass the positive, trust provider role
+labels, weaken material floors, invent existence, or repeat requests for approval.
+
+The inspected `C4RecoveryBasis` handles bound rejected-artifact findings; this
+saved semantic proposal is schema-valid, so it must not be relabelled a syntax
+failure to reuse that retry. The temporary `semantic-link-inquiry` is retained
+in the derivation but has no ordinary question/re-entry execution consumer.
+`J1SInquiryQuestion` was invoked by the diagnostic instrument, not autonomously
+by Miter. Native formation of a dependency challenge, evidence-sensitive return
+and continued alternatives is the next missing integration, not another source
+wrapper or a builder-run correction loop. Freeze that concrete consumer against
+the existing reformation/M25 joint before code. Preserve historical ReadApp's
+meaning and distinguish structural fitness from semantic warrant. Full compass
+materiality, ordinary producer/re-entry, new consequence, supported unfinished
+restart and the rest of §2.2 remain due. No micro-approval pending.
 
 ## 3. Requirements, implementation, and evidence
 
