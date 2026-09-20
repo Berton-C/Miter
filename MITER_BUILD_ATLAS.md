@@ -680,6 +680,37 @@ expansion failure and two-field context incompatibility; a four-field inert
 context now preserves the existing readers' structural envelope without
 asserting a relation or triggering their generic inquiry predicate.
 
+**J1-g carry correction — native dependency-ordered restore, frozen:**
+`restore-trace-1.log` isolates the failure: the same active organization fails
+without history and passes after the already-valid history is staged; no
+capability-state change is involved. Current comparisons, three independent
+temporary-file readings, severance/restoration and all three pre-existing
+possibilities pass, but the fresh whole snapshot rejects and leaves empty
+state. None of this closes C4.
+
+Extend the temporary change scope to `assistant_reactor_authority.metta`.
+Native restore must validate structural uniqueness/scope first, then stage
+only history rows whose ordinary native validators pass against dependencies
+already established. Repeat over the remaining finite rows only when some
+were validated; unresolved dependencies with no progress reject. This is
+dependency validation, not ranking or selecting a cognitive alternative.
+After all rows validate, preserve cross-row/effect consistency checks and
+reconstruct the complete active organization. Preserve original history order
+on final commit. On any rejection remove all temporary staged history and
+capabilities; do not trust source hashes alone or leave partial authority.
+No new Prolog policy or persistent semantic store. Preserve the existing full
+validators and older proof meanings; this changes dependency availability,
+not what constitutes valid history or movement.
+
+Test exact fresh restore, source omission/tampering/wrong scope, reordered
+history, an unresolved dependency, a second retained organization depending
+on the first, rollback to empty state, lawful restoration and the prior
+retention regressions. This remains an isolated native snapshot test, not
+supported `bin/miter` restart, automatic discovery, earned consequence or
+ordinary-prose purpose grounding. Controls, README and installed source stay
+unchanged. Before further promotion the source-bound purpose consumer must
+also establish situated semantic adequacy and full §2.2 participation.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
