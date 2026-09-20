@@ -798,6 +798,51 @@ Full Fact9/compass materiality, independent consequence, a different contact
 family, unfinished supported restart and the remaining §2.2 obligations remain
 due before admission. No additional user micro-approval is pending.
 
+**J1-i opening — conditional semantic consequence, not another predicate
+wrapper:** baseline `3623be6`; the six governing source identities recorded
+above are unchanged. Re-read §2/§3/§4, C-060–063, S-1404–1412, M25 §9–11
+and F-01–09. Inspection confirms `CPFlourishingRowsFor` validates supplied
+relations/standings and `M25ReadApp` currently exposes structural fittingness;
+neither interprets the relevance of J1-h's predicate association. Do not
+rewrite historical ReadApp or call these checks semantic adequacy.
+
+Bounded hypothesis: a fallible semantic participant can supply **conditional
+participation consequences**, while native MeTTa computes whether an available
+observation actually distinguishes those consequences. A predicate alone is
+insufficient. The new temporary consumer evaluates a finite compositional
+expression (`if-condition`, `joint`, situated consequence leaves), retaining
+unknown/conflicting evidence and every interpretation. It derives an inquiry
+only when changing the observed condition changes a proposed participation
+consequence; a missing semantic expression remains an open semantic question,
+not an inferred file-read warrant. Whole source/question/scope binding remains.
+
+Use the existing J1 source copy and reformation/M25 joint. Keep expression leaves
+attributed to their proposing source, with affected participation and exact
+compass-field references; no benefit, intent truth, selected effect or permission
+follows from a model expression. The complete loaded compass is available to
+the bounded semantic seam under M25 §10. No scenario-specific action rules,
+prose keyword chooser, model yes/no relevance verdict, or blanket uncertainty
+veto. Prolog may only transport/parse/serialize inputs and inspect outputs.
+
+Freeze the discriminator: hold file condition/authority fixed; related meaning
+must produce a conditional consequence difference while unrelated musical
+meaning must not acquire that file dependency. Equal branches, a severed
+relation, neutral branch/participant ordering and lawful restoration must be
+tested. Changed independent observation must revise the retained consequence
+organization without turning it into human-intent evidence. A false supplied
+causal expression remains a fidelity counterexample, not something hashes can
+certify; inspect any model-produced expression against the source separately.
+
+Only `/private/tmp/miter-c4-grounding.2F0dJi/source` may receive prototype
+changes (native module/bootstrap/existing J1 consumer); instruments/results in
+`/private/tmp/miter-c4-relevance.xYkSe8`. One deadline-owned process at a time.
+No installed change, README edit, live post/replay, production promotion or
+authority expansion. All §3/F-09 duties stay open: this prerequisite must join
+full Fact9/compass materiality, independent consequence, different contact and
+supported unfinished restart before admission. Record the actual limit if the
+new consumer merely relocates the semantic gap. Reuse valid earlier evidence;
+do not claim fixture-supplied meaning is ordinary or unseen interpretation.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
