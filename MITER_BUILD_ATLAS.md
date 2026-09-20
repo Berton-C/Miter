@@ -935,6 +935,26 @@ restart. All §2.2/§3 requirements remain due. No production source, README,
 historical ReadApp, installed state or germline change. Record failure rather
 than renaming this bounded premise calculus as completed situated cognition.
 
+**J1-j discriminating input revision — retain the failed positive expectation:**
+the first call returned only the saved case, not all three; it is partial
+coverage, not three passes. The second call returned the two omitted cases.
+Its controlled interpretation correctly exposed that “the cited content
+identity” does not identify which hash in the current contact. That assumption
+and a pragmatic operation mapping leave the conjunction unknown; the frozen
+positive expectation is therefore not established. Do not delete those
+premises or relabel them support to make the test pass. The musical argument
+also retains missing links, while the saved housing argument distinguishes
+requested retrieval from the proposed unrelated identity check.
+
+Before the next trial, version the positive contact explicitly: name the same
+already-controlled hash in the contact, with the same non-modification clause.
+Regenerate the question through ordinary native preparation and allow one
+new semantic reading of that changed evidence, not repeated voting over the
+unchanged input. Keep the prior result and its unknown reference as a required
+countercase. No native code or authority changes for this input revision. If
+that still exposes missing judgment, retain it rather than iterating prompts
+to obtain a desired result. Full joint checks and remaining §3 duties remain.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
