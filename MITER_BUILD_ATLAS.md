@@ -958,6 +958,41 @@ rows 3/4 still lack full semantic causality, row 8 no new effect, rows 9/10 no
 new independent consequence or supported unfinished restart. Every CA family
 and §2.2's integrated claim remain open. No micro-approval is pending.
 
+**J1-k opening — use-relative inquiry dependencies, 2026-09-19:** predecessor
+`c5fb737`; the six control identities and §2.2/§3 obligations are unchanged.
+The active map, C-060–064, S-1404–1412, M25 §§9–11, F-01–09 and CA-01–09
+were revisited. Actual `C4VoiceClaimUseProjection` already distinguishes
+`questioned` from actuality; J1-j discarded that force and conjoined all material
+as prior support. Correct that representation, not the historical VoiceRNA law.
+
+Bounded hypothesis: a source-bound argument separates grounding dependencies,
+the exact predicate sought as an inquiry target, and interpreted constraints.
+Native composition applies J1-j's non-compensating judgment to grounding, but
+uses the existing question-use projection for the target: an unknown answer
+does not veto asking. A target alone supplies neither purpose warrant nor
+permission. The conditional consequence must still materially distinguish
+outcomes; actual observations determine its standing through `J1HCondition`.
+Constraints remain visible, without becoming new grants or replacing the
+ordinary native/effect authority checks. No model returns an overall verdict.
+
+Change only the existing temporary `j1_semantic_grounding.metta` and its
+versioned dispatch in `j1_hypotheses.metta`; preserve J1-j's meaning for saved
+proofs. Instruments/returns belong in `/private/tmp/miter-c4-inquiry-use.qKwxUl`.
+First isolate the role distinction on controlled inputs; then exercise one
+new fallible GLM interpretation contract over the retained contacts. Keep the
+old returns unchanged. Test the warranted unknown target, absent/contradicted
+grounding, target/predicate mismatch, wrong scope/source, misleading proposition,
+severance, neutral order, restoration, returned evidence and unfinished native
+carry through the same reformation/M25 joint. A model-friendly positive alone
+cannot repair the dishonest-mapping counterexample or close semantic adequacy.
+
+Rows 1/2/5/6/7 receive this bounded delta; 3/4 still require full semantic
+materiality, 8 no new effect authority, 9 saved returns are not new learning,
+10 isolated carry is not supported restart. Measure affected native cost and
+retain all §2.2 duties. One deadline-owned CPU trial at a time; inspect process
+hygiene at commits. No repository runtime, README, protected-law, installed-state
+or live-post changes. Review the result before any admission or broader change.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
