@@ -720,52 +720,83 @@ joint. Full compass materiality, a different contact family, actual consequence,
 unfinished supported restart and all §2.2 discriminators remain due. This
 bounded prerequisite is not promotion authority or a substitute C4 closure.
 
-**J1-h opening — tentative interpretation is not world evidence:** baseline
-`3b16625`; the governing identities and complete §3 ledger remain unchanged.
-This successor removes J1-g's separately supplied, trusted typed purpose from
-one bounded inquiry experiment. It does **not** claim a solution to general
-prose entailment. Read C-004/012/016–020/060–063, S-1401–1412, M25 §§4–11,
-M25.5 §§4.1–4.2 and F-01–09 with this delta.
+**J1-h result — conditional inquiry PASS-BOUNDED; relevance/adequacy still FAIL
+as a proposed solution to R1/R2:** plan `0cdf3f9`, predecessor `3b16625`;
+governing identities and the whole §3 ledger unchanged. The existing temporary
+source copy now relates ordinary C4 semantic participants to attributed,
+fallible predicate hypotheses without J1-g's separately supplied true purpose.
+`J1HCondition` computes identity/negation/conjunction dependencies and current
+observation standings in MeTTa; `J1HPossibilities` joins the existing reformation
+and M25 path. Prolog instruments supply controlled hypotheses and inspect
+results, not native decisions. No provider understanding or discovery is claimed.
 
-Representation: ordinary source-bound C4 semantic participants plus fallible
-predicate hypotheses attributed to those exact readings. Identity, negation
-and conjunction describe proposed conditions, not facts about human intention.
-Native assessment keeps two separate coordinates: **interpretation adequacy
-unresolved** and independently observed condition standing. Returned file
-identity can discriminate the latter, never certify the former. Unsupported
-predicates stay unknown. No model-supplied association, including J1-c's musical
-counterexample, becomes established purpose, beneficial warrant or permission.
+The full joint retains both interpretations and the independent source-only
+possibility. Saved independently performed temporary reads change condition
+standing to support, contradiction, unknown or contested. No world observation
+certifies human intention; both interpretations remain explicitly unresolved.
+A returned failed read is not absence and no longer exposes the unchanged read
+as a fresh observation prospect. These are conditional inquiries, not selected
+execution, useful-purpose certification or write authority. No new read was
+performed by this stage and the fixture still supplies the predicate proposals.
 
-Claim: the same native reformation/M25 joint can retain competing interpretations
-and derive their missing observational dependencies without a host selector or
-a separately asserted true goal. Independent current-cut read evidence must
-change those dependency inquiries, while the source readings and their meaning
-uncertainty remain. An observation prospect is conditional informational reach,
-not a selected action or a claim that observing it fulfills the undertaking.
-Already returned or unavailable evidence must not create an unchanged automatic
-retry. Distinct independent native possibilities must remain present.
+Source omission/change, wrong scope, old-contact evidence, altered descriptor
+binding, attempted authority promotion, malformed predicates, non-compensating
+conjunction and unknown-preserving negation passed their checks. Reversal keeps
+the exact route set; restoration recovers it. Ordinary incorporation and fresh
+native restore preserve the complete 303,822-byte factorized snapshot. J1-g's
+purpose comparisons and failed-restore rollback/whole lawful restoration still
+pass. This is not supported `bin/miter` restart or automatic recovery execution.
 
-The trial uses the existing temporary source copy, adding a native hypothesis
-consumer and inert participant projection; no second checkout or production
-change. Instruments/results live in `/private/tmp/miter-c4-hypotheses.DckwLC`.
-Positive and negated/conjunctive predicates, unsupported/musical associations,
-missing or altered reading source, wrong scope, changed/unknown/conflicting
-returns, neutral participant order, severance/restoration, independent native
-proof reconstruction and fresh snapshot carry are frozen discriminators.
-Cases are builder-visible, not unseen or a model understanding benchmark.
+**The decisive limitation remains visible:** replacing a reading's prose with
+an unrelated musical claim, while holding its proposed file predicate fixed,
+leaves the conditional observation prospect unchanged. Adequacy is not falsely
+promoted, but marking it unresolved has not repaired situated relevance. The
+saved full native readings show `M25ReadApp` reporting the existing
+`structural-fitness/no-renderer-required` seam as fitting for both variants.
+This is a bounded inspection of inquiry readings, not evidence of an installed
+authority bypass or proof that lawful inquiry requires certainty. Do not promote
+this conditional consumer as the missing semantic judgment or “fix” it with a
+blanket uncertainty veto. The counterexample rules out treating more source
+wrappers, predicate propagation or intact proofs as resolution of R1/R2.
 
-F-09 delta: rows 1/2/5/6/7 exercise actual source/cut/plural/reformation consumers;
-rows 3/4 inherit the full joint but complete compass semantic materiality stays
-open; row 8 forbids new effect/voice authority; row 9 covers evidence-dependent
-reformation, not earned consequence/learning; row 10 tests isolated native carry,
-not supported restart. Existing J1-g proof/restore cases are regressions.
-If this merely renames unknowns or imports the chosen continuation from the
-fixture, it fails the claim. Even a pass cannot admit this machinery: adequacy,
-situated beneficial judgment, autonomous warranted enactment and the remaining
-§2.2 integrated spine must still be established. No GLM call, live write,
-installation, publication or README edit belongs to this opening. Preserve raw
-failures, own/reap each timed process group, and remove temporary artifacts at
-J1 closure/supersession after durable knowledge is recorded.
+F-09 delta: rows 1/2/5/6/7 have bounded source, evidence and retained-plural
+participation; rows 3/4 still lack the complete semantic-materiality proof;
+row 8 confirms no new effect route, not fresh voice/enactment; row 9 changes
+inquiry dependencies, not earned developmental learning; row 10 preserves
+isolated native state, not supported restart. No acceptance family closes.
+The builder's separate fidelity review retains the computational distinction
+but rejects its sufficiency for the integrated §2.2 claim.
+
+Evidence: `/private/tmp/miter-c4-hypotheses.DckwLC`; native module SHA-256
+`e739192672808c341fd91d6517d3ad537fec4321489bb231c70c41bdee56f299`;
+returned-evidence log `c73b3bdaf3f8e7a1bdb48d36872ec65bbd43c1d886a044b30b9512718bc7cc62`;
+counterexample `1a8ac027cf7fd56cd1c4f869a53e31812e68450977a6a28edb01c81fbbc6098d`;
+fresh-restore log `f4524c25999b353cce17c91291e71804070c053fd562a665bc6abdb4bd614738`.
+Formation plus independent reconstruction took 6.2–17.8 wall / 5.8–16.8 CPU
+seconds in the recorded cases; no supported cost or peak-memory claim. An initial
+attempt with an unclosed binding and broader context projection failed older
+restore; that run did not isolate those two defects. Its raw refusal and the
+later order-sensitive instrument failure remain recorded. The final balanced
+source and conditional source projection pass older-proof reconstruction;
+checks now address alternatives by source, not result order. All owned process
+groups were reaped and a final process inspection found none. No model/network,
+live state, repository runtime or README changes. Retain these materials only
+for the immediate J1 successor; remove at J1 closure/supersession after recording
+knowledge, not as a second permanent implementation.
+
+**Next dependency:** make the relationship between the current undertaking,
+an interpretation's proposed change, affected participation, and the complete
+flourishing/capture organization computationally material. Inspect the existing
+`CPFlourishingRowsFor`/`M25ReadApp` consumers before its concrete freeze. Current
+compass prose is resolved in `C4FlourishingEntriesAt` for model disclosure;
+disclosure is not native semantic adjudication. M25 §10 permits a bounded
+irreducible semantic seam, not a model verdict controlling movement. Reuse the
+qualified interpretation/observation distinction, but require a discriminator
+that changes relevance for a reason other than source identity or a fixture's
+supplied predicate. No new generic wrapper or unconditional held state counts.
+Full Fact9/compass materiality, independent consequence, a different contact
+family, unfinished supported restart and the remaining §2.2 obligations remain
+due before admission. No additional user micro-approval is pending.
 
 ## 3. Requirements, implementation, and evidence
 
