@@ -798,50 +798,90 @@ Full Fact9/compass materiality, independent consequence, a different contact
 family, unfinished supported restart and the remaining §2.2 obligations remain
 due before admission. No additional user micro-approval is pending.
 
-**J1-i opening — conditional semantic consequence, not another predicate
-wrapper:** baseline `3623be6`; the six governing source identities recorded
-above are unchanged. Re-read §2/§3/§4, C-060–063, S-1404–1412, M25 §9–11
-and F-01–09. Inspection confirms `CPFlourishingRowsFor` validates supplied
-relations/standings and `M25ReadApp` currently exposes structural fittingness;
-neither interprets the relevance of J1-h's predicate association. Do not
-rewrite historical ReadApp or call these checks semantic adequacy.
+**J1-i result — conditional consequence computation PASS-BOUNDED; situated
+semantic warrant remains FAIL as a proposed R1/R2 repair:** freeze `3b00762`,
+predecessor `3623be6`, unchanged governing identities and §3 obligations.
+Only the retained temporary source copy changed. `J1RConsequences` composes
+fallible conditional/joint participation expressions; `J1HSituatedCondition`
+joins its result to existing independent observation and reformation/M25.
+Unknown/conflicting conditions retain possibilities; a failed read remains
+unknown and does not request the same read again. No effect is selected.
 
-Bounded hypothesis: a fallible semantic participant can supply **conditional
-participation consequences**, while native MeTTa computes whether an available
-observation actually distinguishes those consequences. A predicate alone is
-insufficient. The new temporary consumer evaluates a finite compositional
-expression (`if-condition`, `joint`, situated consequence leaves), retaining
-unknown/conflicting evidence and every interpretation. It derives an inquiry
-only when changing the observed condition changes a proposed participation
-consequence; a missing semantic expression remains an open semantic question,
-not an inferred file-read warrant. Whole source/question/scope binding remains.
+Controlled positive/negative branches, equal consequences, unrelated musical
+meaning, condition negation, nested joint relations, duplicate branches,
+severance, participant order and exact restoration passed. Matching/changed
+saved independent reads change the retained **consequence expression**, not
+just a status label. Both interpretations and the prior independent source
+possibility survive. Seven saved encounters reconstruct in a fresh process;
+the 304,853-byte snapshot restores exactly, as does J1-h's previous snapshot.
+These are controlled conditional meanings over saved material, not ordinary
+housing-purpose understanding, new external consequence or supported restart.
 
-Use the existing J1 source copy and reformation/M25 joint. Keep expression leaves
-attributed to their proposing source, with affected participation and exact
-compass-field references; no benefit, intent truth, selected effect or permission
-follows from a model expression. The complete loaded compass is available to
-the bounded semantic seam under M25 §10. No scenario-specific action rules,
-prose keyword chooser, model yes/no relevance verdict, or blanket uncertainty
-veto. Prolog may only transport/parse/serialize inputs and inspect outputs.
+One authorized GLM 5.3 diagnostic (Together; 7,078 input/1,671 output tokens,
+reported $0.0172616, 5.529 seconds) received a native-formed scoped question,
+the complete loaded compass and explicitly controlled variants. It correctly
+withheld consequences for the musical reading, **but invented a connection
+between the experimental `item.txt` and the actual housing undertaking**. It
+also put experiment metadata into every proposed consequence standing, varying
+only compass citations across the two branches. This is failed semantic and
+contract evidence, not a successful ordinary interpretation producer. The
+diagnostic's mechanical projection into a source-bound trial participant is
+not supported automatic model-seam admission or an independent semantic judge.
 
-Freeze the discriminator: hold file condition/authority fixed; related meaning
-must produce a conditional consequence difference while unrelated musical
-meaning must not acquire that file dependency. Equal branches, a severed
-relation, neutral branch/participant ordering and lawful restoration must be
-tested. Changed independent observation must revise the retained consequence
-organization without turning it into human-intent evidence. A false supplied
-causal expression remains a fidelity counterexample, not something hashes can
-certify; inspect any model-produced expression against the source separately.
+That return exposed a native defect in the prototype: differing citations
+alone made equal participation consequences look different. Reproducing the
+saved return yielded a file prospect in both saved and controlled contexts.
+`J1RMaterialConsequence` now compares the affected participant, relation and
+proposed standing (preserving joint structure), retaining citations as grounds
+rather than treating them as changed consequences. The **same saved return**
+now creates no file prospect, including through the full joint; the reading
+remains available. A separate primitive excludes duplicate branches as a
+source of apparent information. This is no prompt rewrite or value-name gate.
 
-Only `/private/tmp/miter-c4-grounding.2F0dJi/source` may receive prototype
-changes (native module/bootstrap/existing J1 consumer); instruments/results in
-`/private/tmp/miter-c4-relevance.xYkSe8`. One deadline-owned process at a time.
-No installed change, README edit, live post/replay, production promotion or
-authority expansion. All §3/F-09 duties stay open: this prerequisite must join
-full Fact9/compass materiality, independent consequence, different contact and
-supported unfinished restart before admission. Record the actual limit if the
-new consumer merely relocates the semantic gap. Reuse valid earlier evidence;
-do not claim fixture-supplied meaning is ordinary or unseen interpretation.
+The stronger false-premise counterexample still passes structural checks:
+supply an invented conditional consequence for the musical reading, and a
+conditional inquiry remains possible. Therefore neither this repair nor a
+model's plausible causal explanation establishes situated warrant. The
+builder's separate fidelity review rejects promotion. Compass disclosure and
+reference integrity are not full compass causal participation. No blanket
+uncertainty veto or historical `M25ReadApp` rewrite was introduced.
+
+Evidence is retained in `/private/tmp/miter-c4-relevance.xYkSe8` only for the
+immediate J1 successor. Native module SHA-256
+`f497d4473bc46bf1b3643f8fb8800f06caef2e222e835c78b969dd162273b9a1`;
+saved provider proposal `dffee93fec8e29d3b50ca0372204f4a840d14a07db3d04a53c908962340733cf`;
+before/after projection identities
+`3e76e13b37cc9f6b920a5729f8900fbcba0d3151e36892eff1426bff90963d00` /
+`84993a035d646452b8928170da40a5930e4184f8064e611e39209291257e0052`.
+Formation plus independent reconstruction took 9.4–16.2 wall / 8.8–15.1 CPU
+seconds; no supported scaling or peak-memory claim. The JSON inspection first
+failed from an unbound Prolog dict field in a collection template; correcting
+that instrument preserved the raw failure. One next trial was started before
+the previous session's completion had been confirmed; subsequent inspection
+found only the next group, and all groups were reaped. This was a sequencing
+error, not evidence of an orphan. No production/README/live-state change.
+
+F-09 delta: bounded rows 1/2/5/6/7 retain source/evidence/plural qualification;
+rows 3/4 lack full Fact9/compass semantic causality; row 8 has no new effect or
+voice path; row 9 uses saved returns, not new earned learning; row 10 is isolated
+native restore, not supported restart. Every CA family remains open. Remove
+these owned artifacts at integrated J1 closure/supersession after durable
+knowledge is recorded, not as another permanent implementation.
+
+**Next dependency, narrowed by J1-i:** stop extending conditional wrappers as
+a substitute for the missing judgment. Trace and implement the named semantic
+seam allowed by M25 §10: an interpretation must expose which current contact,
+undertaking and affected-participation relations ground its proposed consequence,
+which connections are merely assumed, and which counterevidence defeats or
+leaves them open. Native construction must consume those distinctions alongside
+the whole R/A/P/Fact9/flourishing organization, not accept a model verdict or
+a field-reference count. The invented housing/file link is the next regression,
+beside a supported alternative and J1-h's musical false premise. Freeze the
+concrete seam before code; preserve historical ReadApp and actual authority.
+A missing relation may open another bounded inquiry, not force silence or
+repeated model voting. Ordinary producer/re-entry, independent consequence,
+different contact and supported unfinished restart remain due before admission.
+No user micro-approval is pending; C4 is not complete.
 
 ## 3. Requirements, implementation, and evidence
 
