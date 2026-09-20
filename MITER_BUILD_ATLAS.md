@@ -906,8 +906,11 @@ revision supplied that hash, the third model return still marked the unknown
 comparison result unresolved. The adapter had conjoined every returned premise
 as a prerequisite, and the native consumer required that conjunction's support
 before exposing the inquiry. It therefore required knowing what the inquiry
-was meant to discover. The positive expectation failed through the ordinary
-joint. This is a defect in the proposed argument contract/consumer, not a new
+was meant to discover in direct assessment. The positive expectation also
+failed through the ordinary joint, but J1-k subsequently isolated an additional
+cause there: its question record was absent from the consumer's projected
+context. The original full-path result does not isolate the premise defect.
+These are defects in the proposed contract/wiring, not a new
 diagnosis of the installed service. Do not delete the premise, relabel the
 return, or keep asking a model until it approves.
 
@@ -992,6 +995,23 @@ materiality, 8 no new effect authority, 9 saved returns are not new learning,
 retain all §2.2 duties. One deadline-owned CPU trial at a time; inspect process
 hygiene at commits. No repository runtime, README, protected-law, installed-state
 or live-post changes. Review the result before any admission or broader change.
+
+**J1-k scope correction before projection repair:** `control-1.log` reconstructs
+but exposes no prospect, while direct assessment of the same argument exposes
+one. `projection-1.log` confirms `J1PContextReadingsAt` lacks the native question;
+the saved J1-j full path also says `no-current-native-question`. Its earlier
+causal account is corrected above. Do not discard either raw result.
+
+Extend the temporary `constitutive_foundation.metta` context projection only
+when the new `j1-inquiry-meaning-v1` hypothesis is present. Carry the existing
+native question reading as non-relational/non-authorizing context; preserve
+J1-j and older projections for exact historical reconstruction. The semantic
+consumer still checks the entire question, scope and source. Test omission,
+wrong binding, normal full reformation and old snapshot restore. This repairs
+availability of evidence, not entailment or model-created preconditions.
+The single new model return remains saved and unaltered: it adds an unsupported
+file-existence premise and inferred intent even to the explicit contact.
+Do not claim that representation repair alone resolves that semantic failure.
 
 ## 3. Requirements, implementation, and evidence
 
