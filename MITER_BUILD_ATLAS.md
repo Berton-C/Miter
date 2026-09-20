@@ -660,6 +660,26 @@ Raw artifacts belong in `/private/tmp/miter-c4-purpose.JZhZAd`; the previously
 retained temporary source is reused, not copied again. One deadline-owned
 trial at a time; record failures, costs and cleanup before any admission.
 
+**J1-g representation correction, before further code:** the first joint
+attempt embedded the complete old organization in each candidate; ordinary
+reformation exhausted SWI private table space. Do not raise the table limit
+or accept an isolated operator result instead. Keep `joint-5.log` as failure
+evidence. Revised hypothesis: carry an exact immutable source reference and
+resolve it in native history before computing purpose impact. The reference
+contains scope/key and a mechanically computed identity of the entire retained
+term; native validation, not the identity, establishes its standing. Prolog
+may serialize/hash the term but cannot select a source or decide its relevance.
+Use the existing native history, not another semantic store. Full history must
+be available to independent reconstruction/fresh restore; missing, changed or
+wrong-scope material invalidates the reference. This is an explicit dependency,
+not a claim of self-contained proof or live supported restart. Temporary hash
+mechanics and the prospective native consumer are the only additional change
+paths; no production change. The prior comparison and severance expectations
+remain unchanged. Also retain the earlier instrument arity error, identifier
+expansion failure and two-field context incompatibility; a four-field inert
+context now preserves the existing readers' structural envelope without
+asserting a relation or triggering their generic inquiry predicate.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
