@@ -961,57 +961,88 @@ rows 3/4 still lack full semantic causality, row 8 no new effect, rows 9/10 no
 new independent consequence or supported unfinished restart. Every CA family
 and §2.2's integrated claim remain open. No micro-approval is pending.
 
-**J1-k opening — use-relative inquiry dependencies, 2026-09-19:** predecessor
-`c5fb737`; the six control identities and §2.2/§3 obligations are unchanged.
-The active map, C-060–064, S-1404–1412, M25 §§9–11, F-01–09 and CA-01–09
-were revisited. Actual `C4VoiceClaimUseProjection` already distinguishes
-`questioned` from actuality; J1-j discarded that force and conjoined all material
-as prior support. Correct that representation, not the historical VoiceRNA law.
+**J1-k result — inquiry-use/projection PASS-BOUNDED; ordinary semantic warrant
+still FAIL, 2026-09-19:** `14970b6` freezes use-relative dependencies;
+`a387f63` freezes the independently exposed question-projection repair and
+corrects J1-j's causal account. The six control identities, C-060–064,
+S-1404–1412, M25 §§9–11, F-01–09, CA-01–09 and §2.2/§3 remain unchanged.
+Only the retained temporary source changed; no repository runtime promotion.
 
-Bounded hypothesis: a source-bound argument separates grounding dependencies,
-the exact predicate sought as an inquiry target, and interpreted constraints.
-Native composition applies J1-j's non-compensating judgment to grounding, but
-uses the existing question-use projection for the target: an unknown answer
-does not veto asking. A target alone supplies neither purpose warrant nor
-permission. The conditional consequence must still materially distinguish
-outcomes; actual observations determine its standing through `J1HCondition`.
-Constraints remain visible, without becoming new grants or replacing the
-ordinary native/effect authority checks. No model returns an overall verdict.
+`J1SInquiryAssessment` separates grounds, a questioned target and interpreted
+constraints, reusing `C4VoiceClaimUseProjection` and `J1HCondition`. Unknown
+target truth no longer vetoes a controlled inquiry. The first full-path test
+still failed: `J1PContextReadingsAt` omitted the independently present native
+question. Projecting that inert/non-authorizing record only for the new meaning
+version restores the positive prospect without changing older proof meanings.
+This fixes availability of evidence, not entailment or authority.
 
-Change only the existing temporary `j1_semantic_grounding.metta` and its
-versioned dispatch in `j1_hypotheses.metta`; preserve J1-j's meaning for saved
-proofs. Instruments/returns belong in `/private/tmp/miter-c4-inquiry-use.qKwxUl`.
-First isolate the role distinction on controlled inputs; then exercise one
-new fallible GLM interpretation contract over the retained contacts. Keep the
-old returns unchanged. Test the warranted unknown target, absent/contradicted
-grounding, target/predicate mismatch, wrong scope/source, misleading proposition,
-severance, neutral order, restoration, returned evidence and unfinished native
-carry through the same reformation/M25 joint. A model-friendly positive alone
-cannot repair the dishonest-mapping counterexample or close semantic adequacy.
+Controlled missing/contradicted/conflicting grounds, asserted-not-questioned
+use, target mismatch, forged excerpt, wrong scope and equal consequences pass
+their bounded checks. Through ordinary reformation/M25 reconstruction, removing
+the native question removes the prospect; neutral participant order preserves
+the route set; restoration recovers the exact encounter. The prior independent
+possibility remains; no effect route is selected. Saved independent matching,
+changed and unavailable reads yield support, contradiction and unknown with
+different retained consequence expressions. An unavailable read does not become
+absence or expose the unchanged read again. These are controlled meanings over
+saved observations, not new-world consequence or autonomous recovery.
 
-Rows 1/2/5/6/7 receive this bounded delta; 3/4 still require full semantic
-materiality, 8 no new effect authority, 9 saved returns are not new learning,
-10 isolated carry is not supported restart. Measure affected native cost and
-retain all §2.2 duties. One deadline-owned CPU trial at a time; inspect process
-hygiene at commits. No repository runtime, README, protected-law, installed-state
-or live-post changes. Review the result before any admission or broader change.
+One new authorized GLM 5.3 call returned all three cases (Wafer, 21,651 prompt /
+2,450 completion tokens, $0.04065364, 10.832 seconds). Its exact saved proposal
+passes source projection and reconstruction but **fails the explicit positive**:
+it makes inferred desired identity and unobserved file existence additional
+grounds for asking. Housing and musical cases expose no file prospect. No
+premise was deleted, return relabelled, or repeated approval sought. The native
+consumer still accepts the provider's declaration that every listed ground is
+necessary; separating the answer alone does not determine dependency relevance.
+The dishonest-proposition/valid-excerpt falsifier also still passes. Thus no
+ordinary situated semantic adequacy or complete Soul materiality is established.
 
-**J1-k scope correction before projection repair:** `control-1.log` reconstructs
-but exposes no prospect, while direct assessment of the same argument exposes
-one. `projection-1.log` confirms `J1PContextReadingsAt` lacks the native question;
-the saved J1-j full path also says `no-current-native-question`. Its earlier
-causal account is corrected above. Do not discard either raw result.
+Ten complete saved encounters reconstruct in a fresh process. Controlled
+unfinished incorporation and exact fresh native restore pass (293,846-byte
+factorized snapshot); J1-j's older snapshot also restores exactly. These are
+isolated native restores, not supported `bin/miter` restart. Successful final
+formation plus reconstruction costs 11.25–14.45 wall / 10.74–13.80 CPU seconds
+on these cases; richer/cold inputs and earlier failed runs are not a controlled
+performance comparison. Supported growing-history cost and peak RSS stay open.
+The wrong-scope instrument initially failed while constructing the deliberately
+invalid fixture; the corrected test retains valid source readings then varies
+only the supplied question. One collection-parenthesis error in the test program
+is preserved with the corrected result. Neither changed a frozen expectation.
 
-Extend the temporary `constitutive_foundation.metta` context projection only
-when the new `j1-inquiry-meaning-v1` hypothesis is present. Carry the existing
-native question reading as non-relational/non-authorizing context; preserve
-J1-j and older projections for exact historical reconstruction. The semantic
-consumer still checks the entire question, scope and source. Test omission,
-wrong binding, normal full reformation and old snapshot restore. This repairs
-availability of evidence, not entailment or model-created preconditions.
-The single new model return remains saved and unaltered: it adds an unsupported
-file-existence premise and inferred intent even to the explicit contact.
-Do not claim that representation repair alone resolves that semantic failure.
+Evidence remains in `/private/tmp/miter-c4-inquiry-use.qKwxUl` for the immediate
+integrated J1 successor, to be removed at closure/supersession after recording
+knowledge. Native semantic module SHA-256
+`d110ebaf80bb17fa8f6f5428f984322db75a194cb81326d70bc935e1d6387a32`;
+saved proposal `47a34c07acc9e542967456285f11b8a3435bc96d091225e04e19cabf1e197de3`;
+fresh reconstruction `7ef08a093b912232565c280accdab0da4369c2e5c70ce4aa2f2e1973540a8b27`;
+exact restore `062c4eed8ace627660a9235be02e0913a0a50eb3d2abeaf03f1bfb63de8ee0dd`.
+All diagnostic groups were reaped; final inspection found no owned trial.
+The live supervisor independently has a replacement child (PID 79138 instead
+of 56118), about 971,200 KB RSS and 3–4% CPU, stable across several observations.
+Its cause is unestablished: privileged records are unreadable here; a bounded
+read-only operator capture is prepared/pending. It is not a diagnostic orphan,
+and no live process was signalled or changed. No live health claim follows.
+
+F-09 delta: rows 1/2/5/6/7 retain bounded source/use/evidence/plural credit;
+rows 3/4 lack full semantic causality; row 8 has no new execution/voice path;
+9 has no newly earned learning; 10 lacks supported unfinished restart. Every
+CA family and R1/R2 remain open. Repository runtime, README and controls remain
+unchanged; raw tests/model material are not repo content.
+
+**Next dependency:** distinguish a proposed prerequisite's truth from its
+necessity for this continuation. Inspect the existing native operation and
+independent descriptor/observation contracts before new code. A successful
+read needs available bytes; a lawful read attempt can instead return typed
+failure. That observation says nothing by itself about useful purpose or write
+permission. Test this distinction on the saved failed-read descriptor before
+designing a native dependency/challenge consumer. Do not simply filter unknown
+premises, trust provider role labels, weaken required floors, manufacture a
+file-existence fact, or repeat a prompt until the model approves. Its declaration
+of necessity is itself fallible material for the same joint, not law. The new
+consumer must justify its actual dependency and preserve alternatives, changed
+evidence and unfinished organization; ordinary producer/re-entry, complete
+compass participation and the rest of §2.2 remain due. No micro-approval pending.
 
 ## 3. Requirements, implementation, and evidence
 
