@@ -616,100 +616,109 @@ of C4. This design dependency is open, not a completed cognitive capability.
 No production edit, installation, publication, authority expansion or external
 call follows from this result. C4 and every §3 acceptance family remain open.
 
-**J1-g frozen experiment — conditional purpose impact, not prose entailment:**
-predecessor `6abb5e579169e8984a06e62186c68e299a011ddc`. With §2.3's unchanged
-governing sources, implement a finite
-native relation between an explicitly typed current purpose, a fallible
-interpretation of that purpose, an exact retained unselected organization,
-and a proposal's conditional outcome. Identity predicates, conjunction and
-negation are generic operators, not a catalogue of situations or responses.
-A write's proposed bytes can entail an outcome identity *if it succeeds*;
-neither that prediction nor purpose compatibility establishes actual success,
-benefit, interpretation of prose, authority or an executable movement.
+**J1-g result — PASS-BOUNDED conditional-purpose use and native snapshot carry;
+situated interpretation remains OPEN:** frozen plans are `0e8ddf5` (typed
+purpose), `a38a3aa` (exact source reference after expansion failure), and
+`e583cf8` (dependency-ordered restore). Governing identities above, C-060–063,
+S-1408–1411, CA-01–09 and F-09 remain unchanged. The experiment is still only
+in the retained temporary source copy, not the repository or installed service.
 
-This is a necessary but narrower prerequisite to §2.2. In this experiment the
-current contact explicitly supplies the typed purpose; it is not extracted
-from natural language by the fixture or Prolog. A source-bound reading may
-agree, conflict or remain uninterpretable. A prose-only/musical association
-must remain ungrounded even if a proposal or source label looks convenient.
-Do not call this a solution to ordinary C4 prose interpretation (R1/J1-c).
+The new MeTTa `J1PAssessment` relates a separately present, explicitly typed
+current-contact purpose to a fallible reading, an exact retained whole family,
+and a proposal's conditional outcome. Identity, conjunction and negation are
+generic finite operators. Proposed write bytes determine an identity **if the
+write succeeds**, not actual success, benefit or permission. Native source
+validation checks the complete retained organization; its scope/key/hash only
+addresses that dependency. No unselected history is labelled consequence-earned.
+`J1PPossibilities` joins `C3NativePossibilities` before ordinary M25 formation;
+a compatible purpose exposes non-certifying dependency inquiry, not execution.
+Four-field inert purpose context preserves existing readers and does not
+trigger blanket `CPParticipantNeedsInquiry`.
 
-Change scope is the retained temporary source copy only: a prospective
-`j1_purpose.metta`, its bootstrap import, non-relational context projection in
-`constitutive_foundation.metta`, and the existing `C3NativePossibilities`
-join. Full retained-source validation is reused; no history is relabelled as
-earned consequence. A new context row must not trigger blanket compulsory
-inquiry or alter older carriers. Pure contents hashing may be mechanical;
-purpose, consequence compatibility and inquiry formation must be MeTTa.
-Prolog instruments may generate labelled controlled inputs, call native
-operators and check results, but may not supply the native decision.
+With operation/authority fixed, compatible, incompatible, unrelated and
+non-compensating conjunctive purposes produced the expected different inquiry
+availability. Severing current purpose, its interpretation or retained source
+removed the new route; source-scope mismatch and false interpretation did not
+supply it. Participant reversal preserved the route; lawful restoration
+recovered the whole encounter. All three pre-existing possibilities remained
+exactly present. Unrelated/musical and malformed predicates stayed unknown;
+negation did not turn unknown into support. These are controlled typed cases,
+not ordinary-prose understanding or cases unseen by their implementer.
 
-Frozen discriminators: hold operation/authority fixed while changing purpose;
-hold purpose fixed while changing returned evidence; sever current purpose,
-its interpretation or the whole retained source; reverse participant order;
-restore exact material; preserve an independent competing opening. Reject
-wrong scope and unrelated predicates without turning unknown into absent.
-Use ordinary reformation/M25 and fresh native proof reconstruction, retaining
-the complete family. The new route is conditional inquiry, never a write.
-A new typed purpose is controlled evidence, not unseen language understanding
-or autonomous discovery. Actual effect, current-read freshness across cuts,
-consequence learning, full compass materiality and supported restart remain
-open. No model calls, external effects, installation or production edits.
+A separately native-formed, independently descriptor-checked read observed
+actual temporary files. Its ordinary current-cut tool participant changed
+the pending precondition to support, contradiction or unknown without write
+authority. Historical readings did not become current observations. This was
+not autonomous execution of the new inquiry: the instrument supplied the read
+proposal, and the ordinary boundary still refused to select a write from the
+plural family. Independent reconstruction passed on the same complete joint.
 
-Raw artifacts belong in `/private/tmp/miter-c4-purpose.JZhZAd`; the previously
-retained temporary source is reused, not copied again. One deadline-owned
-trial at a time; record failures, costs and cleanup before any admission.
+**Restore cause and correction:** embedding whole source families in every
+candidate exhausted private table space (`joint-5.log`); exact native-history
+references removed that duplication without raising a limit. The first fresh
+snapshot then rejected because active validation needed history not yet staged.
+`restore-trace-1.log` isolated that dependency. Native restore now stages only
+rows whose full native validators pass, revisiting remaining rows only after
+progress; unresolved dependencies reject rather than spin. Cross-row/effect
+checks and full active reconstruction remain. Original history order is restored
+exactly. A second failure doubled history: PeTTa's `remove-atom` takes its atom
+literally, so `(index-atom ...)` must be evaluated into a row before removal.
+Both staged-history and staged-state cleanup now bind that row first. This is
+a temporary native repair; no installed rollback defect is claimed observed.
 
-**J1-g representation correction, before further code:** the first joint
-attempt embedded the complete old organization in each candidate; ordinary
-reformation exhausted SWI private table space. Do not raise the table limit
-or accept an isolated operator result instead. Keep `joint-5.log` as failure
-evidence. Revised hypothesis: carry an exact immutable source reference and
-resolve it in native history before computing purpose impact. The reference
-contains scope/key and a mechanically computed identity of the entire retained
-term; native validation, not the identity, establishes its standing. Prolog
-may serialize/hash the term but cannot select a source or decide its relevance.
-Use the existing native history, not another semantic store. Full history must
-be available to independent reconstruction/fresh restore; missing, changed or
-wrong-scope material invalidates the reference. This is an explicit dependency,
-not a claim of self-contained proof or live supported restart. Temporary hash
-mechanics and the prospective native consumer are the only additional change
-paths; no production change. The prior comparison and severance expectations
-remain unchanged. Also retain the earlier instrument arity error, identifier
-expansion failure and two-field context incompatibility; a four-field inert
-context now preserves the existing readers' structural envelope without
-asserting a relation or triggering their generic inquiry predicate.
+Fresh tests passed exact snapshot restore, a second retained organization
+depending on the first, reversed history, missing dependency, source removal
+and restoration, altered source identity, wrong scope and erased alternatives.
+Failed restores left the restore-managed spaces empty; a subsequent lawful restore
+was exact. Older retained snapshots/proofs and promoted-history rejection still
+passed. A direct staging-cleanup check used a controlled inert row, not an
+admitted-capability fixture. Changed live capability versions, general malformed
+exception rollback and the supported `bin/miter` restart path remain unproved.
 
-**J1-g carry correction — native dependency-ordered restore, frozen:**
-`restore-trace-1.log` isolates the failure: the same active organization fails
-without history and passes after the already-valid history is staged; no
-capability-state change is involved. Current comparisons, three independent
-temporary-file readings, severance/restoration and all three pre-existing
-possibilities pass, but the fresh whole snapshot rejects and leaves empty
-state. None of this closes C4.
+**F-09 delta, read with the complete §3 ledger:** rows 1/2/7 have bounded
+current-scope/source/evidence discrimination through the ordinary joint; rows
+5/6 preserve the existing plural family plus conditional inquiry, including
+severance and neutral order. Rows 3/4 inherit full native inputs but have no new
+complete Fact9/flourishing semantic-materiality proof. Row 8 independently
+checks the controlled read, not autonomous new-route enactment or fresh voice.
+Row 9 has returned-evidence reformation, not earned developmental learning.
+Row 10 has exact isolated native carry, not supported restart or effect replay
+coverage. No acceptance family closes; J1-c's adequacy counterexample and
+R1/R2 remain load-bearing limitations.
 
-Extend the temporary change scope to `assistant_reactor_authority.metta`.
-Native restore must validate structural uniqueness/scope first, then stage
-only history rows whose ordinary native validators pass against dependencies
-already established. Repeat over the remaining finite rows only when some
-were validated; unresolved dependencies with no progress reject. This is
-dependency validation, not ranking or selecting a cognitive alternative.
-After all rows validate, preserve cross-row/effect consistency checks and
-reconstruct the complete active organization. Preserve original history order
-on final commit. On any rejection remove all temporary staged history and
-capabilities; do not trust source hashes alone or leave partial authority.
-No new Prolog policy or persistent semantic store. Preserve the existing full
-validators and older proof meanings; this changes dependency availability,
-not what constitutes valid history or movement.
+Evidence remains in `/private/tmp/miter-c4-purpose.JZhZAd`. Single-case
+formation plus reconstruction took about 9–15 seconds; one-source restore
+5.398 wall/5.155 CPU seconds, two-dependent-source restore 9.243/8.798, reversed
+order 10.748/10.217. Factorized snapshots are 282,418 and 273,200 bytes; sharing
+makes those bytes non-monotonic, not a memory-growth result. No peak-RSS or
+supported-service cost qualification. Native consumer SHA-256
+`885c2811b09eab99666c56a01556ebd615b874e0f0e3a00e9ff9f69e72a7c025`;
+temporary reactor `f534e5de7454ef3029873b3a359d9041da075cb2878829c634fba01f09602cb8`;
+final exact-restore log `61b2a2dca9c5036475bacecedb123c879ca989456160075d4cc85f9302bbb380`;
+dependency-order log `54079333f1b4fdb92054a3b155407bcc1e433010926819410af0f7fa54b6c7e0`.
+Earlier instrument arity, oversized identifier, context-shape and duplicate
+history failures remain with raw results. One deadline-owned trial at a time;
+all groups reaped. No model/network/live-state writes. Source, instruments and
+raw evidence remain only for the immediate integrated J1 successor; remove
+at J1 closure or supersession after durable knowledge is recorded.
 
-Test exact fresh restore, source omission/tampering/wrong scope, reordered
-history, an unresolved dependency, a second retained organization depending
-on the first, rollback to empty state, lawful restoration and the prior
-retention regressions. This remains an isolated native snapshot test, not
-supported `bin/miter` restart, automatic discovery, earned consequence or
-ordinary-prose purpose grounding. Controls, README and installed source stay
-unchanged. Before further promotion the source-bound purpose consumer must
-also establish situated semantic adequacy and full §2.2 participation.
+**Language boundary and next dependency:** purpose compatibility, source use,
+inquiry formation and dependency restoration are MeTTa. New Prolog helpers
+only serialize/hash bytes or exact terms; temporary Prolog instruments present
+controlled inputs and inspect outputs, not native decisions. C-060–063 permits
+mechanical Prolog and external participants, not a second semantic authority.
+The inspected service and scheduling/semantic adapters fit those roles, but
+this stage is not an audit certifying every repository `.pl` predicate.
+
+The ordinary `C4SemanticParticipantsAt` still carries interpreted purpose as
+prose, whereas J1-g's current purpose and relation were explicitly supplied.
+Do not connect them by silently treating a model's predicate or benefit claim
+as established meaning. The next integrated step must expose and qualify that
+fallible interpretation through current contact, competing readings and
+independent consequence; then show a warranted continuation through the same
+joint. Full compass materiality, a different contact family, actual consequence,
+unfinished supported restart and all §2.2 discriminators remain due. This
+bounded prerequisite is not promotion authority or a substitute C4 closure.
 
 ## 3. Requirements, implementation, and evidence
 
