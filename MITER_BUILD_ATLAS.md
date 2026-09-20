@@ -883,6 +883,58 @@ repeated model voting. Ordinary producer/re-entry, independent consequence,
 different contact and supported unfinished restart remain due before admission.
 No user micro-approval is pending; C4 is not complete.
 
+**J1-j opening — source-relative premise judgment, 2026-09-19:** predecessor
+`5747303` is now published on `main`; its 22 queued commits were fast-forwarded
+without a README change. This publication admits no prototype. The six control
+identities above are unchanged. The full active map, M25 §§9–11, C-060–064,
+S-1404–1412, CA-01–09 and F-01–09 were reread. The next dependency is the
+named semantic seam above, not another operation timeout or conditional wrapper.
+
+**Bounded claim and reuse:** use the source-relative distinction already made
+by `C4VoiceClaimUseProjection`: an attributed or hypothetical interpretation
+does not establish actuality. A new quarantined native premise consumer will
+compose the grounding of a proposed participation link from exact current
+contact, fallible textual interpretations, explicit assumptions and contrary
+readings. Its conjunction/negation must preserve unknown and contradiction;
+it must not count citations or model votes. Only a provisionally grounded link
+can expose that link's conditional observation prospect. Missing or contested
+grounds instead remain an explicit semantic inquiry in the same plural family,
+without suppressing independently supported directions. A grounded link is
+still fallible interpretation, not established intent, benefit or permission.
+
+**Concrete seam:** the native question binds the original C4 question, exact
+reading, predicate, proposed participation consequences, complete compass and
+Fact9 material. A returned argument links the current undertaking to the
+predicate's subject and affected participation; each material premise exposes
+its proposition, exact source/excerpt, polarity and textual-versus-assumed use.
+Native code checks source/question/scope identity and excerpt access, composes
+the premise standings, retains counterevidence and derives the unresolved
+dependency. The semantic evaluator interprets only those source relations; it
+cannot return an overall relevance/approval/selection or authority field.
+This deliberately retains an irreducible, fallible language seam: excerpt
+binding is not entailment, and a dishonest mapping must not be called proved
+meaning merely because the source bytes exist.
+
+**Frozen discriminators:** the saved housing contact must not acquire the
+invented file-purpose link; an explicitly related controlled contact should
+retain a conditional observation; the musical reading must not borrow that
+link. Hold operation/permission fixed. Independently vary a missing premise,
+contrary evidence, positive evidence, source removal, neutral order and lawful
+restoration. Reconstruct through `C4ReformPreparedWithParticipants`/M25, retain
+the competing source direction, reject promoted authority and wrong bindings,
+and recheck historical native restore. A model's favorable explanation is not
+the verifier. These disclosed cases are not unseen evaluation.
+
+**Scope and ledger:** only the existing temporary source copy's J1 consumer,
+bootstrap and mechanical test adapters may change; new artifacts belong in
+`/private/tmp/miter-c4-grounded-seam.7I83hl`. One deadline-owned trial at a time.
+Rows 1/2/5/6/7 of §3.4 are directly exercised; rows 3/4 retain the full inputs
+but their semantic-materiality claim remains open; row 8 grants no effect;
+rows 9/10 still require independent new consequence and supported unfinished
+restart. All §2.2/§3 requirements remain due. No production source, README,
+historical ReadApp, installed state or germline change. Record failure rather
+than renaming this bounded premise calculus as completed situated cognition.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
