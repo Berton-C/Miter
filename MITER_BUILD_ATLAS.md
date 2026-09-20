@@ -883,77 +883,80 @@ repeated model voting. Ordinary producer/re-entry, independent consequence,
 different contact and supported unfinished restart remain due before admission.
 No user micro-approval is pending; C4 is not complete.
 
-**J1-j opening — source-relative premise judgment, 2026-09-19:** predecessor
-`5747303` is now published on `main`; its 22 queued commits were fast-forwarded
-without a README change. This publication admits no prototype. The six control
-identities above are unchanged. The full active map, M25 §§9–11, C-060–064,
-S-1404–1412, CA-01–09 and F-01–09 were reread. The next dependency is the
-named semantic seam above, not another operation timeout or conditional wrapper.
+**J1-j result — FAIL positive capability; bounded source checks, 2026-09-19:**
+`644a78c` freezes the claim before code; `a1a56e4` versions the explicit-reference
+contact before its trial. The preceding 22 commits through `5747303` were
+fast-forwarded to remote `main`, preserving README. Publication admits no
+prototype. Atlas, C-060–064, S-1404–1412, M25 §§9–11, CA-01–09 and F-01–09
+were rechecked; the six control identities remain unchanged.
 
-**Bounded claim and reuse:** use the source-relative distinction already made
-by `C4VoiceClaimUseProjection`: an attributed or hypothetical interpretation
-does not establish actuality. A new quarantined native premise consumer will
-compose the grounding of a proposed participation link from exact current
-contact, fallible textual interpretations, explicit assumptions and contrary
-readings. Its conjunction/negation must preserve unknown and contradiction;
-it must not count citations or model votes. Only a provisionally grounded link
-can expose that link's conditional observation prospect. Missing or contested
-grounds instead remain an explicit semantic inquiry in the same plural family,
-without suppressing independently supported directions. A grounded link is
-still fallible interpretation, not established intent, benefit or permission.
+The quarantined consumer reuses `C4VoiceClaimUseProjection`, binds exact native
+question/contact/scope and literal excerpts, and composes attributed premise
+support, contradiction, unknown and conflict. Primitive checks reject forged
+excerpts/wrong bindings, preserve unknown under negation and conjunction, and
+do not turn duplicate or opposing readings into votes. Four saved/controlled
+arguments pass ordinary `C4ReformPreparedWithParticipants`/M25 reconstruction;
+all retain the independent source possibility and explicit semantic inquiry.
+Saved housing and musical readings do not acquire the invented file prospect.
+No effect is selected. These are bounded distinctions, not a positive C4 pass.
 
-**Concrete seam:** the native question binds the original C4 question, exact
-reading, predicate, proposed participation consequences, complete compass and
-Fact9 material. A returned argument links the current undertaking to the
-predicate's subject and affected participation; each material premise exposes
-its proposition, exact source/excerpt, polarity and textual-versus-assumed use.
-Native code checks source/question/scope identity and excerpt access, composes
-the premise standings, retains counterevidence and derives the unresolved
-dependency. The semantic evaluator interprets only those source relations; it
-cannot return an overall relevance/approval/selection or authority field.
-This deliberately retains an irreducible, fallible language seam: excerpt
-binding is not entailment, and a dishonest mapping must not be called proved
-meaning merely because the source bytes exist.
+**Decisive counterexample:** the initial controlled contact omitted the cited
+hash. Its returned argument remained unknown. After the explicitly frozen
+revision supplied that hash, the third model return still marked the unknown
+comparison result unresolved. The adapter had conjoined every returned premise
+as a prerequisite, and the native consumer required that conjunction's support
+before exposing the inquiry. It therefore required knowing what the inquiry
+was meant to discover. The positive expectation failed through the ordinary
+joint. This is a defect in the proposed argument contract/consumer, not a new
+diagnosis of the installed service. Do not delete the premise, relabel the
+return, or keep asking a model until it approves.
 
-**Frozen discriminators:** the saved housing contact must not acquire the
-invented file-purpose link; an explicitly related controlled contact should
-retain a conditional observation; the musical reading must not borrow that
-link. Hold operation/permission fixed. Independently vary a missing premise,
-contrary evidence, positive evidence, source removal, neutral order and lawful
-restoration. Reconstruct through `C4ReformPreparedWithParticipants`/M25, retain
-the competing source direction, reject promoted authority and wrong bindings,
-and recheck historical native restore. A model's favorable explanation is not
-the verifier. These disclosed cases are not unseen evaluation.
+A second falsifier changes a premise's proposition to “The music is in a minor
+key” while retaining the same valid excerpt and positive mapping: this calculus
+still reports support. Exact binding/polarity composition cannot independently
+establish the semantic mapping. The source-relative interpreter remains fallible;
+neither labels nor full compass disclosure prove material Soul participation.
+Useful positive inquiry, its severed/neutral/restored arms and changed-evidence
+continuation remain unestablished; unexecuted test helpers earn no coverage.
 
-**Scope and ledger:** only the existing temporary source copy's J1 consumer,
-bootstrap and mechanical test adapters may change; new artifacts belong in
-`/private/tmp/miter-c4-grounded-seam.7I83hl`. One deadline-owned trial at a time.
-Rows 1/2/5/6/7 of §3.4 are directly exercised; rows 3/4 retain the full inputs
-but their semantic-materiality claim remains open; row 8 grants no effect;
-rows 9/10 still require independent new consequence and supported unfinished
-restart. All §2.2/§3 requirements remain due. No production source, README,
-historical ReadApp, installed state or germline change. Record failure rather
-than renaming this bounded premise calculus as completed situated cognition.
+The unresolved family incorporates ordinarily and restores exactly in a fresh
+isolated process (293,562-byte snapshot). J1-i's prior snapshot also restores
+exactly in a separate fresh process. An initial attempt to restore it after
+already restoring the new snapshot was correctly refused by `ARSpacesEmpty`;
+this was test misuse, not a restore regression. The initial native dispatch
+syntax error was repaired and its raw failures retained. Neither isolated
+restore proves supported service restart or consequence-dependent learning.
 
-**J1-j discriminating input revision — retain the failed positive expectation:**
-the first call returned only the saved case, not all three; it is partial
-coverage, not three passes. The second call returned the two omitted cases.
-Its controlled interpretation correctly exposed that “the cited content
-identity” does not identify which hash in the current contact. That assumption
-and a pragmatic operation mapping leave the conjunction unknown; the frozen
-positive expectation is therefore not established. Do not delete those
-premises or relabel them support to make the test pass. The musical argument
-also retains missing links, while the saved housing argument distinguishes
-requested retrieval from the proposed unrelated identity check.
+Three authorized GLM calls used 42,191 prompt / 25,730 completion tokens,
+reported cost $0.16572542; privacy settings unchanged. The first returned only
+one requested case, the second the two omitted cases, the third the changed
+contact. Formation plus independent reconstruction cost 45.4–59.7 wall /
+35.1–36.7 CPU seconds versus J1-i's 9.4–16.2 / 8.8–15.1; richer inputs differ,
+so this is not an isolated marginal-cost estimate. The supported cost envelope
+and peak RSS remain unqualified. No further model call was made for this attempt.
 
-Before the next trial, version the positive contact explicitly: name the same
-already-controlled hash in the contact, with the same non-modification clause.
-Regenerate the question through ordinary native preparation and allow one
-new semantic reading of that changed evidence, not repeated voting over the
-unchanged input. Keep the prior result and its unknown reference as a required
-countercase. No native code or authority changes for this input revision. If
-that still exposes missing judgment, retain it rather than iterating prompts
-to obtain a desired result. Full joint checks and remaining §3 duties remain.
+Artifacts remain only in `/private/tmp/miter-c4-grounded-seam.7I83hl` and the
+existing temporary source copy for the immediate integrated J1 successor;
+remove at integrated closure/supersession after durable findings. Native module
+SHA-256 `291ab2feb41d46f608928896310a64536631e166c8961a64e712d5e520e7d759`;
+explicit proposal `0826480d0b7b281eb94e6c9dc63e6251c1c4150e19da913f04233de100c7eaf2`;
+closure log `c41fe7f490ff355f2010c9f49c1adb6ed718fea7cb6188b54187119fcc46990d`.
+Balance passes; trial groups were reaped and no owned diagnostics remained.
+Existing service/broker observations were 0/0/5.9% CPU and 6,896/18,608/42,016 KB
+RSS, not semantic-health evidence. Repository runtime and README are unchanged.
+
+**Next dependency:** replace the undirected all-premise prerequisite with
+use-relative dependencies: distinguish grounding for an inquiry, its unknown
+target, and constraints on effect. Inspect existing communicative-force and
+conditional-consequence consumers before freezing that change. An unknown
+answer must not veto a warranted question; missing purpose/evidence must not
+become permission merely by calling it a question. Retain both counterexamples,
+same-source alternatives and ordinary reconstruction. No keyword exception,
+new generic support wrapper, model approval verdict or fixed retry/read/ask
+route supplies the missing judgment. §3.4 rows 1/2/5/6/7 retain bounded credit;
+rows 3/4 still lack full semantic causality, row 8 no new effect, rows 9/10 no
+new independent consequence or supported unfinished restart. Every CA family
+and §2.2's integrated claim remain open. No micro-approval is pending.
 
 ## 3. Requirements, implementation, and evidence
 
