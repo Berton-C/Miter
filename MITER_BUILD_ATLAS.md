@@ -720,6 +720,53 @@ joint. Full compass materiality, a different contact family, actual consequence,
 unfinished supported restart and all §2.2 discriminators remain due. This
 bounded prerequisite is not promotion authority or a substitute C4 closure.
 
+**J1-h opening — tentative interpretation is not world evidence:** baseline
+`3b16625`; the governing identities and complete §3 ledger remain unchanged.
+This successor removes J1-g's separately supplied, trusted typed purpose from
+one bounded inquiry experiment. It does **not** claim a solution to general
+prose entailment. Read C-004/012/016–020/060–063, S-1401–1412, M25 §§4–11,
+M25.5 §§4.1–4.2 and F-01–09 with this delta.
+
+Representation: ordinary source-bound C4 semantic participants plus fallible
+predicate hypotheses attributed to those exact readings. Identity, negation
+and conjunction describe proposed conditions, not facts about human intention.
+Native assessment keeps two separate coordinates: **interpretation adequacy
+unresolved** and independently observed condition standing. Returned file
+identity can discriminate the latter, never certify the former. Unsupported
+predicates stay unknown. No model-supplied association, including J1-c's musical
+counterexample, becomes established purpose, beneficial warrant or permission.
+
+Claim: the same native reformation/M25 joint can retain competing interpretations
+and derive their missing observational dependencies without a host selector or
+a separately asserted true goal. Independent current-cut read evidence must
+change those dependency inquiries, while the source readings and their meaning
+uncertainty remain. An observation prospect is conditional informational reach,
+not a selected action or a claim that observing it fulfills the undertaking.
+Already returned or unavailable evidence must not create an unchanged automatic
+retry. Distinct independent native possibilities must remain present.
+
+The trial uses the existing temporary source copy, adding a native hypothesis
+consumer and inert participant projection; no second checkout or production
+change. Instruments/results live in `/private/tmp/miter-c4-hypotheses.DckwLC`.
+Positive and negated/conjunctive predicates, unsupported/musical associations,
+missing or altered reading source, wrong scope, changed/unknown/conflicting
+returns, neutral participant order, severance/restoration, independent native
+proof reconstruction and fresh snapshot carry are frozen discriminators.
+Cases are builder-visible, not unseen or a model understanding benchmark.
+
+F-09 delta: rows 1/2/5/6/7 exercise actual source/cut/plural/reformation consumers;
+rows 3/4 inherit the full joint but complete compass semantic materiality stays
+open; row 8 forbids new effect/voice authority; row 9 covers evidence-dependent
+reformation, not earned consequence/learning; row 10 tests isolated native carry,
+not supported restart. Existing J1-g proof/restore cases are regressions.
+If this merely renames unknowns or imports the chosen continuation from the
+fixture, it fails the claim. Even a pass cannot admit this machinery: adequacy,
+situated beneficial judgment, autonomous warranted enactment and the remaining
+§2.2 integrated spine must still be established. No GLM call, live write,
+installation, publication or README edit belongs to this opening. Preserve raw
+failures, own/reap each timed process group, and remove temporary artifacts at
+J1 closure/supersession after durable knowledge is recorded.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
