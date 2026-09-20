@@ -616,6 +616,50 @@ of C4. This design dependency is open, not a completed cognitive capability.
 No production edit, installation, publication, authority expansion or external
 call follows from this result. C4 and every §3 acceptance family remain open.
 
+**J1-g frozen experiment — conditional purpose impact, not prose entailment:**
+predecessor `6abb5e579169e8984a06e62186c68e299a011ddc`. With §2.3's unchanged
+governing sources, implement a finite
+native relation between an explicitly typed current purpose, a fallible
+interpretation of that purpose, an exact retained unselected organization,
+and a proposal's conditional outcome. Identity predicates, conjunction and
+negation are generic operators, not a catalogue of situations or responses.
+A write's proposed bytes can entail an outcome identity *if it succeeds*;
+neither that prediction nor purpose compatibility establishes actual success,
+benefit, interpretation of prose, authority or an executable movement.
+
+This is a necessary but narrower prerequisite to §2.2. In this experiment the
+current contact explicitly supplies the typed purpose; it is not extracted
+from natural language by the fixture or Prolog. A source-bound reading may
+agree, conflict or remain uninterpretable. A prose-only/musical association
+must remain ungrounded even if a proposal or source label looks convenient.
+Do not call this a solution to ordinary C4 prose interpretation (R1/J1-c).
+
+Change scope is the retained temporary source copy only: a prospective
+`j1_purpose.metta`, its bootstrap import, non-relational context projection in
+`constitutive_foundation.metta`, and the existing `C3NativePossibilities`
+join. Full retained-source validation is reused; no history is relabelled as
+earned consequence. A new context row must not trigger blanket compulsory
+inquiry or alter older carriers. Pure contents hashing may be mechanical;
+purpose, consequence compatibility and inquiry formation must be MeTTa.
+Prolog instruments may generate labelled controlled inputs, call native
+operators and check results, but may not supply the native decision.
+
+Frozen discriminators: hold operation/authority fixed while changing purpose;
+hold purpose fixed while changing returned evidence; sever current purpose,
+its interpretation or the whole retained source; reverse participant order;
+restore exact material; preserve an independent competing opening. Reject
+wrong scope and unrelated predicates without turning unknown into absent.
+Use ordinary reformation/M25 and fresh native proof reconstruction, retaining
+the complete family. The new route is conditional inquiry, never a write.
+A new typed purpose is controlled evidence, not unseen language understanding
+or autonomous discovery. Actual effect, current-read freshness across cuts,
+consequence learning, full compass materiality and supported restart remain
+open. No model calls, external effects, installation or production edits.
+
+Raw artifacts belong in `/private/tmp/miter-c4-purpose.JZhZAd`; the previously
+retained temporary source is reused, not copied again. One deadline-owned
+trial at a time; record failures, costs and cleanup before any admission.
+
 ## 3. Requirements, implementation, and evidence
 
 ### 3.1 Standing is two-dimensional
